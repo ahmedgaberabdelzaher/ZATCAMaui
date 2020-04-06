@@ -72,17 +72,17 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private int _selectedTab = 0;
-        public int SelectedTab
+        private int _selectedIndex = 0;
+        public int SelectedIndex
         {
             get
             {
-                return _selectedTab;
+                return _selectedIndex;
             }
             set
             {
-                _selectedTab = value;
-                RaisePropertyChanged("SelectedTab");
+                _selectedIndex = value;
+                RaisePropertyChanged("SelectedIndex");
             }
         }
 
@@ -2013,17 +2013,18 @@ namespace GAZT.ViewModel.NewViewModel
                     if (ButtonName == AppResources.ZVatStepTwo)
                     {
                         TaxpayerDetailsClicked();
+                        SelectedIndex = 1;
                         PageSelectedItem = VatTabbledPageList[1];
-                        SelectedTab = 1;
+                       
                         //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
                         //  _dialogService.ShowMessage(AppResources.ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm, AppResources.Information);
                     }
                     else if (ButtonName == AppResources.ZVatStepThree)
                     {
                         VATReturnFormClicked();
-
+                        SelectedIndex = 2;
                         PageSelectedItem = VatTabbledPageList[2];
-                        SelectedTab = 2;
+                       
                     }
                     else if (ButtonName == AppResources.ZVatStepFour)
                     {
@@ -2033,8 +2034,9 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                         await SummaryClicked();
                         ShowMsgs();
+                        SelectedIndex = 3;
                         PageSelectedItem = VatTabbledPageList[3];
-                        SelectedTab = 3;
+                       
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             IsLoading = false;
@@ -2515,7 +2517,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleInstrunction = true;
-            SelectedTab = 0;
+            SelectedIndex = 0;
             IsMainButtonEnabled = false;
             ButtonName = AppResources.ZVatStepTwo;
             if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
@@ -2535,7 +2537,7 @@ namespace GAZT.ViewModel.NewViewModel
             ClearPage();
 
             IsVisibleTaxPayerDetails = true;
-            SelectedTab = 1;
+            SelectedIndex = 1;
             ButtonName = AppResources.ZVatStepThree;
             if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
             {
@@ -2581,7 +2583,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ClearPage();
             IsVisibleVatReturnForm = true;
-            SelectedTab = 2;
+            SelectedIndex = 2;
             ButtonName = AppResources.ZVatStepFour;
 
 
@@ -2716,7 +2718,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
             IsVisibleSummary = true;
-            SelectedTab = 3;
+            SelectedIndex = 3;
             if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055" || App.ICRStatus== "E0058") && IsAmendClicked == false)
             {
                 IsTextBoxEnableForIban = false;
@@ -2971,7 +2973,7 @@ namespace GAZT.ViewModel.NewViewModel
                             FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
                         }
 
-                        if ((IsSwichButtonEnable == true && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
+                        if ((IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
                         {
                             StringBuilder Masseges = new StringBuilder();
                             Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
@@ -2993,8 +2995,9 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
                             VATReturnFormClicked();
+                            SelectedIndex = 2;
                             PageSelectedItem = VatTabbledPageList[2];
-                            SelectedTab = 2;
+                           
                         }
                         //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
                         //VATReturnFormClicked();
@@ -3644,9 +3647,10 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if(App.ICRStatus == "E0001" || App.ICRStatus == "E0045"  || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058" || App.ICRStatus == "E0055")
                     {
-                    InstrunctionClicked();
+                    //  InstrunctionClicked();
+                    SelectedIndex = 0;
                     PageSelectedItem = VatTabbledPageList[0];
-                    SelectedTab = 0;
+                  
                 }
 
 
@@ -4180,26 +4184,30 @@ namespace GAZT.ViewModel.NewViewModel
             if (VATDeclarationData.d.StepNumber == "01" || VATDeclarationData.d.StepNumber == "1" || VATDeclarationData.d.StepNumber == "0" || VATDeclarationData.d.StepNumber == "00")
             {
                 //InstrunctionClicked();
+                SelectedIndex = 0;
                 PageSelectedItem = VatTabbledPageList[0];
-                SelectedTab = 0;
+               
             }
             else if (VATDeclarationData.d.StepNumber == "02" || VATDeclarationData.d.StepNumber == "2")
             {
                 // TaxpayerDetailsClicked();
+                SelectedIndex = 1;
                 PageSelectedItem = VatTabbledPageList[1];
-                SelectedTab = 1;
+               
             }
             else if (VATDeclarationData.d.StepNumber == "03" || VATDeclarationData.d.StepNumber == "3")
             {
                 //VATReturnFormClicked();
+                SelectedIndex = 2;
                 PageSelectedItem = VatTabbledPageList[2];
-                SelectedTab = 2;
+                
             }
             else if (VATDeclarationData.d.StepNumber == "04" || VATDeclarationData.d.StepNumber == "4")
             {
                 //SummaryClicked();
+                SelectedIndex = 3;
                 PageSelectedItem = VatTabbledPageList[3];
-                SelectedTab = 3;
+               
             }
         }
 

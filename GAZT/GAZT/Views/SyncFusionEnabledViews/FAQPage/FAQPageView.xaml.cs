@@ -59,12 +59,28 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //}
 
 
-        public void onPageLoad()
+        public async void onPageLoad()
         {
             try
             {
-                viewModel.OnPageLoad();
-                Questions.ItemsSource = viewModel.Questions;
+
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+
+                await Task.Run(async () =>
+                {
+                    await viewModel.OnPageLoad();
+                    Questions.ItemsSource = viewModel.Questions;
+                });
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+
+                
             }
             catch(Exception ex)
             {

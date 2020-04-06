@@ -2,8 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<key>NSCameraUsageDescription</key>
-	<string>Please allow access to the camera to scan barcodes</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To take picture</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -62,12 +62,10 @@
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Picking Media</string>
-	<key>NSCameraUsageDescription</key>
-	<string>To take picture</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.2.9</string>
+	<string>2.0.3.0</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -86,6 +84,6 @@
 		</dict>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.2.9</string>
+	<string>2.0.3.0</string>
 </dict>
 </plist>

@@ -11,805 +11,47 @@
                 Title="{x:Static local:AppResources.ZZZVATReturn}"
                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
                 xmlns:custom="clr-namespace:GAZT"
-                FlowDirection="RightToLeft"
-                x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView">
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView"
+             NavigationPage.HasNavigationBar="False"
+             FlowDirection="RightToLeft"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
+        <Grid x:Name="ParentContainerForOTP">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="3" SelectedIndex="{Binding TabIndexStatus}" >
-            <tabview:SfTabView.SelectionIndicatorSettings>
-                <tabview:SelectionIndicatorSettings
+            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="3" SelectedIndex="{Binding TabIndexStatus}" >
+                <tabview:SfTabView.SelectionIndicatorSettings>
+                    <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
                     StrokeThickness="2"/>
-            </tabview:SfTabView.SelectionIndicatorSettings>
-            <tabview:SfTabView.Items>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.Submitted}"
+                </tabview:SfTabView.SelectionIndicatorSettings>
+                <tabview:SfTabView.Items>
+                    <tabview:SfTabItem Title="{x:Static local:AppResources.Submitted}"
                                 TitleFontSize="14"
                             SelectionColor="Black"
                                 FontIconFontColor="#FF00AFF0"
 
                                 TitleFontColor="Gray">
 
-                    <tabview:SfTabItem.Content>
-                        <ScrollView>
-                            <StackLayout>
-                                <syncfusion:SfExpander>
-                                    <syncfusion:SfExpander.Header>
-                                        <Grid>
-                                            <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </syncfusion:SfExpander.Header>
-                                    <syncfusion:SfExpander.Content>
-                                        <Grid >
-                                            <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                                                <ListView  x:Name="ICRList"
-            ItemsSource="{Binding ICRListVATSubmitted}"
-                                                            SelectedItem="{Binding SelectedICRVATSubmitted}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-
-                                BackgroundColor="White"
-
-            SeparatorVisibility="None"
-            >
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <ViewCell>
-                                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
-
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-                                                                        <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                            <Grid.ColumnDefinitions>
-                                                                                <ColumnDefinition Width="90*" />
-                                                                                <ColumnDefinition Width="10*" />
-                                                                            </Grid.ColumnDefinitions>
-                                                                            <Grid.RowDefinitions>
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                            </Grid.RowDefinitions>
-                                                                  
-
-                                                                            <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0"
-                                                       />
-
-
-
-
-                                                                            <Label Text="{Binding Incotext}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="1"
-                                                       Grid.Column="0"
-                                                       />
-
-                                                                            <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="2"
-                                                       Grid.Column="0"
-                                                       >
-                                                                                <Label.Triggers>
-                                                                                    <DataTrigger TargetType="Label"
-                                                                             Binding="{Binding FormBundleNumber}" Value="">
-                                                                                        <Setter Property="IsVisible" Value="False"></Setter>
-
-                                                                                    </DataTrigger>
-                                                                                </Label.Triggers>
-                                                                            </Label>
-
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-                                                                           
-
-                                                                          
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-
-                                                                          
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-
-
-
-                                                                               <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-                                                                              <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
-                                                                        </Grid>
-                                                                    </StackLayout>
-
-                                                                </cards1:SfCardView>
-                                                            </ViewCell>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
-                                            </StackLayout>
-
-                                        </Grid>
-                                    </syncfusion:SfExpander.Content>
-                                </syncfusion:SfExpander>
-                                <syncfusion:SfExpander>
-                                    <syncfusion:SfExpander.Header>
-                                        <Grid>
-                                            <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </syncfusion:SfExpander.Header>
-                                    <syncfusion:SfExpander.Content>
-                                        <Grid >
-                                            <ListView  x:Name="ZakatICRListSubmitted"
-            ItemsSource="{Binding MyZakatReturnsSubmitted}"
-                                        SelectedItem="{Binding SelectedZakatReturn}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                BackgroundColor="White"
-
-                                ItemTapped="Bills_ItemTapped"
-
-            SeparatorVisibility="None"
-            >
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
-                                                                    <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
-
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Grid.RowDefinitions>
-
-                                                                        </Grid.RowDefinitions>
-                                                                        <Label Text="{Binding FbtText}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0"
-                                                       />
-
-                                                                        <Label Text="{Binding TaxPeriod}"  Margin="0" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       Grid.Row="1"
-                                                       Grid.Column="0"
-                                                       />
-
-
-
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-
-
-                                                                        <Image  Grid.Row="0"
-                                                                Grid.Column="1"
-                                                                
-                                                               
-                                                                Source="{Binding StatusImage}"
-                                                                HorizontalOptions="CenterAndExpand"
-                                                                VerticalOptions="StartAndExpand"/>
-
-
-                                                                    </Grid>
-                                                                </StackLayout>
-
-
-                                                            </cards1:SfCardView>
-                                                        </ViewCell>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
-                                        </Grid>
-                                    </syncfusion:SfExpander.Content>
-                                </syncfusion:SfExpander>
-                            </StackLayout>
-                        </ScrollView>
-
-
-
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.NonSubmitted}"
-                                TitleFontSize="14"
-                            SelectionColor="Black"
-                                FontIconFontColor="#FF00AFF0"
-
-                                TitleFontColor="Gray">
-
-                    <tabview:SfTabItem.Content>
-                        <ScrollView>
-                            <StackLayout>
-                                <syncfusion:SfExpander>
-                                    <syncfusion:SfExpander.Header>
-                                        <Grid>
-                                            <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </syncfusion:SfExpander.Header>
-                                    <syncfusion:SfExpander.Content>
-                                        <Grid >
-                                            <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                                                <ListView  x:Name="ICRListNon"
-            ItemsSource="{Binding ICRListVATNonSubmitted}"
-                                                            SelectedItem="{Binding SelectedICRVATSubmitted}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-
-                                BackgroundColor="White"
-
-            SeparatorVisibility="None"
-            >
-                                                    <ListView.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <ViewCell>
-                                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
-
-                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-                                                                        <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                                                            <Grid.ColumnDefinitions>
-                                                                                <ColumnDefinition Width="90*" />
-                                                                                <ColumnDefinition Width="10*" />
-                                                                            </Grid.ColumnDefinitions>
-                                                                            <Grid.RowDefinitions>
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                                <RowDefinition Height="Auto" />
-                                                                            </Grid.RowDefinitions>
-                                                                            <!--<Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       TextColor="#005e4b"
-                                   Grid.Row="0"
-                                   Grid.Column="1" />-->
-
-                                                                            <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0"
-                                                       />
-
-
-                                                                            <!--<Label Text="{Binding Incotext}" 
-                                                  
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="1"  />-->
-
-                                                                            <Label Text="{Binding Incotext}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="1"
-                                                       Grid.Column="0"
-                                                       />
-
-                                                                            <!--<Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
-                                                
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="1"  >
-                                                            <Label.Triggers>
-                                                                <DataTrigger TargetType="Label"
-                                                                             Binding="{Binding FormBundleNumber}" Value="">
-                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                   
-                                                                </DataTrigger>
-                                                            </Label.Triggers>
-                                                        </Label>-->
-
-                                                                            <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="2"
-                                                       Grid.Column="0"
-                                                       >
-                                                                                <Label.Triggers>
-                                                                                    <DataTrigger TargetType="Label"
-                                                                             Binding="{Binding FormBundleNumber}" Value="">
-                                                                                        <Setter Property="IsVisible" Value="False"></Setter>
-
-                                                                                    </DataTrigger>
-                                                                                </Label.Triggers>
-                                                                            </Label>
-
-                                                                            <!--<Label 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                          Margin="8,0,8,0" 
-                                   Grid.Row="3"
-                                   Grid.Column="1" >
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static local:AppResources.ZTaxPeriod}"/>
-                                                                    -->
-                                                                            <!--<Span Text="      "/>-->
-                                                                            <!--<Span Text="{Binding StatusTxt}" TextColor="{Binding BorderColour}"/>-->
-                                                                            <!--
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>-->
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-                                                                            <!--<Label Text="{Binding FormatTaxPeriod}" 
-                                                  
-                                  Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="1" />-->
-
-                                                                            <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       
-                                   Grid.Row="5"
-                                   Grid.Column="1"/>
-
-
-                                                        <Label Text="{Binding StatusTxt}" 
-                                                  TextColor="{Binding BorderColour}"
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="1"  />-->
-
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-
-                                                                            <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="7"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedDate}" 
-                                                  
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="8"
-                                   Grid.Column="1"  />-->
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-
-
-
-                                                                            <!--<Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="9"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedSingleDueDate}" 
-                                                  
-                                 Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="10"
-                                   Grid.Column="1"  />-->
-
-                                                                            <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                                <Label.FormattedText>
-                                                                                    <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
-                                                                                    </FormattedString>
-                                                                                </Label.FormattedText>
-                                                                            </Label>
-
-
-                                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></StackLayout>-->
-                                                                            <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
-                                                                        </Grid>
-                                                                    </StackLayout>
-
-                                                                </cards1:SfCardView>
-                                                            </ViewCell>
-                                                        </DataTemplate>
-                                                    </ListView.ItemTemplate>
-                                                </ListView>
-                                            </StackLayout>
-
-                                        </Grid>
-                                    </syncfusion:SfExpander.Content>
-                                </syncfusion:SfExpander>
-                                <syncfusion:SfExpander>
-                                    <syncfusion:SfExpander.Header>
-                                        <Grid>
-                                            <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
-                                        </Grid>
-                                    </syncfusion:SfExpander.Header>
-                                    <syncfusion:SfExpander.Content>
-                                        <Grid >
-                                            <ListView  x:Name="ZakatICRListNonSubmitted"
-            ItemsSource="{Binding MyZakatReturnsNonSubmitted}"
-                                                        SelectedItem="{Binding SelectedZakatReturn}"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                BackgroundColor="White"
-
-                                ItemTapped="Bills_ItemTapped"
-
-            SeparatorVisibility="None"
-            >
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
-                                                                    <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
-                                                                        <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
-
-                                                                        </Grid.ColumnDefinitions>
-                                                                        <Grid.RowDefinitions>
-
-                                                                        </Grid.RowDefinitions>
-                                                                        <Label Text="{Binding FbtText}" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="StartAndExpand"
-                                                       Grid.Row="0"
-                                                       Grid.Column="0"
-                                                       />
-
-                                                                        <Label Text="{Binding TaxPeriod}"  Margin="0" 
-                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       Grid.Row="1"
-                                                       Grid.Column="0"
-                                                       />
-
-
-
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-                                                                        <Label  Margin="0" 
-                                  
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="5"
-                                   Grid.Column="0"
-                                                                        
-                                                           >
-                                                                            <Label.FormattedText>
-                                                                                <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
-                                                                                </FormattedString>
-                                                                            </Label.FormattedText>
-                                                                        </Label>
-
-
-                                                                        <Image  Grid.Row="0"
-                                                                Grid.Column="1"
-                                                                
-                                                              
-                                                                Source="{Binding StatusImage}"
-                                                                HorizontalOptions="CenterAndExpand"
-                                                                VerticalOptions="StartAndExpand"/>
-
-
-                                                                    </Grid>
-                                                                </StackLayout>
-
-
-                                                            </cards1:SfCardView>
-                                                        </ViewCell>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
-                                        </Grid>
-                                    </syncfusion:SfExpander.Content>
-                                </syncfusion:SfExpander>
-                            </StackLayout>
-                        </ScrollView>
-
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-                <tabview:SfTabItem Title="{x:Static local:AppResources.OverDue}"
-                                TitleFontSize="14"
-                            SelectionColor="Black"
-                                FontIconFontColor="#FF00AFF0"
-
-                                TitleFontColor="Gray">
-
-                    <tabview:SfTabItem.Content>
-                        <StackLayout>
+                        <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
                                     <syncfusion:SfExpander>
@@ -821,9 +63,346 @@
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
                                                 <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                                                    <ListView  x:Name="ICRListOver"
-            ItemsSource="{Binding ICRListVATOverDue}"
-                                                                SelectedItem="{Binding SelectedICRVATSubmitted}"
+                                                    <ListView  x:Name="ICRList"
+            ItemsSource="{Binding ICRListVATSubmitted}"
+                                                            SelectedItem="{Binding SelectedICRVATSubmitted}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+
+                                BackgroundColor="White"
+
+            SeparatorVisibility="None"
+            >
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+
+
+                                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                            <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="90*" />
+                                                                                    <ColumnDefinition Width="10*" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                </Grid.RowDefinitions>
+
+
+                                                                                <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       />
+
+
+
+
+                                                                                <Label Text="{Binding Incotext}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       />
+
+                                                                                <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="2"
+                                                       Grid.Column="0"
+                                                       >
+                                                                                    <Label.Triggers>
+                                                                                        <DataTrigger TargetType="Label"
+                                                                             Binding="{Binding FormBundleNumber}" Value="">
+                                                                                            <Setter Property="IsVisible" Value="False"></Setter>
+
+                                                                                        </DataTrigger>
+                                                                                    </Label.Triggers>
+                                                                                </Label>
+
+
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+
+
+
+
+
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+
+
+
+
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+
+
+
+
+
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="6"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+
+
+                                                                                <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+                                                                            </Grid>
+                                                                        </StackLayout>
+
+                                                                    </cards1:SfCardView>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </syncfusion:SfExpander.Content>
+                                    </syncfusion:SfExpander>
+                                    <syncfusion:SfExpander>
+                                        <syncfusion:SfExpander.Header>
+                                            <Grid>
+                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            </Grid>
+                                        </syncfusion:SfExpander.Header>
+                                        <syncfusion:SfExpander.Content>
+                                            <Grid >
+                                                <ListView  x:Name="ZakatICRListSubmitted"
+            ItemsSource="{Binding MyZakatReturnsSubmitted}"
+                                        SelectedItem="{Binding SelectedZakatReturn}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                BackgroundColor="White"
+
+                                ItemTapped="Bills_ItemTapped"
+
+            SeparatorVisibility="None"
+            >
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <ViewCell>
+                                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+
+                                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+
+                                                                        <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                            <Grid.ColumnDefinitions>
+                                                                                <ColumnDefinition Width="90*" />
+                                                                                <ColumnDefinition Width="10*" />
+
+                                                                            </Grid.ColumnDefinitions>
+                                                                            <Grid.RowDefinitions>
+
+                                                                            </Grid.RowDefinitions>
+                                                                            <Label Text="{Binding FbtText}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       />
+
+                                                                            <Label Text="{Binding TaxPeriod}"  Margin="0" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       />
+
+
+
+                                                                            <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+                                                                            <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                <Label.FormattedText>
+                                                                                    <FormattedString>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
+                                                                                    </FormattedString>
+                                                                                </Label.FormattedText>
+                                                                            </Label>
+
+
+                                                                            <Image  Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                
+                                                               
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="StartAndExpand"/>
+
+
+                                                                        </Grid>
+                                                                    </StackLayout>
+
+
+                                                                </cards1:SfCardView>
+                                                            </ViewCell>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                            </Grid>
+                                        </syncfusion:SfExpander.Content>
+                                    </syncfusion:SfExpander>
+                                </StackLayout>
+                            </ScrollView>
+
+
+
+                        </tabview:SfTabItem.Content>
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Title="{x:Static local:AppResources.NonSubmitted}"
+                                TitleFontSize="14"
+                            SelectionColor="Black"
+                                FontIconFontColor="#FF00AFF0"
+
+                                TitleFontColor="Gray">
+
+                        <tabview:SfTabItem.Content>
+                            <ScrollView>
+                                <StackLayout>
+                                    <syncfusion:SfExpander>
+                                        <syncfusion:SfExpander.Header>
+                                            <Grid>
+                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            </Grid>
+                                        </syncfusion:SfExpander.Header>
+                                        <syncfusion:SfExpander.Content>
+                                            <Grid >
+                                                <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                                    <ListView  x:Name="ICRListNon"
+            ItemsSource="{Binding ICRListVATNonSubmitted}"
+                                                            SelectedItem="{Binding SelectedICRVATSubmitted}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -1078,8 +657,8 @@
                                                                                 </Label>
 
 
-                                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></StackLayout>-->
-                                                                                <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></StackLayout>-->
+                                                                                <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                                             </Grid>
                                                                         </StackLayout>
@@ -1102,9 +681,9 @@
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
-                                                <ListView  x:Name="ZakatICRListOverDue"
-            ItemsSource="{Binding MyZakatReturnsOverDue}"
-                                                            SelectedItem="{Binding SelectedZakatReturn}"
+                                                <ListView  x:Name="ZakatICRListNonSubmitted"
+            ItemsSource="{Binding MyZakatReturnsNonSubmitted}"
+                                                        SelectedItem="{Binding SelectedZakatReturn}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -1219,7 +798,7 @@
                                                                             <Image  Grid.Row="0"
                                                                 Grid.Column="1"
                                                                 
-                                                            
+                                                              
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="StartAndExpand"/>
@@ -1240,11 +819,497 @@
                                 </StackLayout>
                             </ScrollView>
 
-                        </StackLayout>
-                    </tabview:SfTabItem.Content>
-                </tabview:SfTabItem>
-            </tabview:SfTabView.Items>
-        </tabview:SfTabView>
+                        </tabview:SfTabItem.Content>
+                    </tabview:SfTabItem>
+                    <tabview:SfTabItem Title="{x:Static local:AppResources.OverDue}"
+                                TitleFontSize="14"
+                            SelectionColor="Black"
+                                FontIconFontColor="#FF00AFF0"
 
+                                TitleFontColor="Gray">
+
+                        <tabview:SfTabItem.Content>
+                            <StackLayout>
+                                <ScrollView>
+                                    <StackLayout>
+                                        <syncfusion:SfExpander>
+                                            <syncfusion:SfExpander.Header>
+                                                <Grid>
+                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                </Grid>
+                                            </syncfusion:SfExpander.Header>
+                                            <syncfusion:SfExpander.Content>
+                                                <Grid >
+                                                    <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                                        <ListView  x:Name="ICRListOver"
+            ItemsSource="{Binding ICRListVATOverDue}"
+                                                                SelectedItem="{Binding SelectedICRVATSubmitted}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+
+                                BackgroundColor="White"
+
+            SeparatorVisibility="None"
+            >
+                                                            <ListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+
+
+                                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                                <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="90*" />
+                                                                                        <ColumnDefinition Width="10*" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <Grid.RowDefinitions>
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                    </Grid.RowDefinitions>
+                                                                                    <!--<Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
+                                 
+                                                       Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="Start"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       TextColor="#005e4b"
+                                   Grid.Row="0"
+                                   Grid.Column="1" />-->
+
+                                                                                    <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       />
+
+
+                                                                                    <!--<Label Text="{Binding Incotext}" 
+                                                  
+                                 Margin="8,0,8,0"
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="1"
+                                   Grid.Column="1"  />-->
+
+                                                                                    <Label Text="{Binding Incotext}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       />
+
+                                                                                    <!--<Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
+                                                
+                                 Margin="8,0,8,0"
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="1"  >
+                                                            <Label.Triggers>
+                                                                <DataTrigger TargetType="Label"
+                                                                             Binding="{Binding FormBundleNumber}" Value="">
+                                                                    <Setter Property="IsVisible" Value="False"></Setter>
+                                                                   
+                                                                </DataTrigger>
+                                                            </Label.Triggers>
+                                                        </Label>-->
+
+                                                                                    <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="2"
+                                                       Grid.Column="0"
+                                                       >
+                                                                                        <Label.Triggers>
+                                                                                            <DataTrigger TargetType="Label"
+                                                                             Binding="{Binding FormBundleNumber}" Value="">
+                                                                                                <Setter Property="IsVisible" Value="False"></Setter>
+
+                                                                                            </DataTrigger>
+                                                                                        </Label.Triggers>
+                                                                                    </Label>
+
+                                                                                    <!--<Label 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                          Margin="8,0,8,0" 
+                                   Grid.Row="3"
+                                   Grid.Column="1" >
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{x:Static local:AppResources.ZTaxPeriod}"/>
+                                                                    -->
+                                                                                    <!--<Span Text="      "/>-->
+                                                                                    <!--<Span Text="{Binding StatusTxt}" TextColor="{Binding BorderColour}"/>-->
+                                                                                    <!--
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>-->
+
+                                                                                    <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                        <Label.FormattedText>
+                                                                                            <FormattedString>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
+                                                                                            </FormattedString>
+                                                                                        </Label.FormattedText>
+                                                                                    </Label>
+
+                                                                                    <!--<Label Text="{Binding FormatTaxPeriod}" 
+                                                  
+                                  Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="1" />-->
+
+                                                                                    <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
+                                 
+                                                       Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="Start"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       
+                                   Grid.Row="5"
+                                   Grid.Column="1"/>
+
+
+                                                        <Label Text="{Binding StatusTxt}" 
+                                                  TextColor="{Binding BorderColour}"
+                                  Margin="8,0,8,0"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="6"
+                                   Grid.Column="1"  />-->
+
+
+                                                                                    <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                        <Label.FormattedText>
+                                                                                            <FormattedString>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
+                                                                                            </FormattedString>
+                                                                                        </Label.FormattedText>
+                                                                                    </Label>
+
+
+
+                                                                                    <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="7"
+                                   Grid.Column="1"/>
+
+                                                        <Label Text="{Binding FormatedDate}" 
+                                                  
+                                  Margin="8,0,8,0"
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="8"
+                                   Grid.Column="1"  />-->
+
+                                                                                    <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                        <Label.FormattedText>
+                                                                                            <FormattedString>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
+                                                                                            </FormattedString>
+                                                                                        </Label.FormattedText>
+                                                                                    </Label>
+
+
+
+
+
+                                                                                    <!--<Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="9"
+                                   Grid.Column="1"/>
+
+                                                        <Label Text="{Binding FormatedSingleDueDate}" 
+                                                  
+                                 Margin="8,0,8,0" 
+                                   Style="{StaticResource MiniGrayLabelStyle}"
+                                                   HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                   Grid.Row="10"
+                                   Grid.Column="1"  />-->
+
+                                                                                    <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="6"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                        <Label.FormattedText>
+                                                                                            <FormattedString>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
+                                                                                            </FormattedString>
+                                                                                        </Label.FormattedText>
+                                                                                    </Label>
+
+
+                                                                                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></StackLayout>-->
+                                                                                    <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+
+                                                                                </Grid>
+                                                                            </StackLayout>
+
+                                                                        </cards1:SfCardView>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </ListView.ItemTemplate>
+                                                        </ListView>
+                                                    </StackLayout>
+
+                                                </Grid>
+                                            </syncfusion:SfExpander.Content>
+                                        </syncfusion:SfExpander>
+                                        <syncfusion:SfExpander>
+                                            <syncfusion:SfExpander.Header>
+                                                <Grid>
+                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                </Grid>
+                                            </syncfusion:SfExpander.Header>
+                                            <syncfusion:SfExpander.Content>
+                                                <Grid >
+                                                    <ListView  x:Name="ZakatICRListOverDue"
+            ItemsSource="{Binding MyZakatReturnsOverDue}"
+                                                            SelectedItem="{Binding SelectedZakatReturn}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HasUnevenRows="True"
+                BackgroundColor="White"
+
+                                ItemTapped="Bills_ItemTapped"
+
+            SeparatorVisibility="None"
+            >
+                                                        <ListView.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <ViewCell>
+                                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+
+                                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+
+                                                                            <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="90*" />
+                                                                                    <ColumnDefinition Width="10*" />
+
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <Grid.RowDefinitions>
+
+                                                                                </Grid.RowDefinitions>
+                                                                                <Label Text="{Binding FbtText}" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="StartAndExpand"
+                                                       Grid.Row="0"
+                                                       Grid.Column="0"
+                                                       />
+
+                                                                                <Label Text="{Binding TaxPeriod}"  Margin="0" 
+                                                       Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                     
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       />
+
+
+
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+                                                                                <Label  Margin="0" 
+                                  
+                                                       HorizontalOptions="StartAndExpand"
+                                                       VerticalOptions="CenterAndExpand"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                                                        
+                                                           >
+                                                                                    <Label.FormattedText>
+                                                                                        <FormattedString>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
+                                                                                        </FormattedString>
+                                                                                    </Label.FormattedText>
+                                                                                </Label>
+
+
+                                                                                <Image  Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                
+                                                            
+                                                                Source="{Binding StatusImage}"
+                                                                HorizontalOptions="CenterAndExpand"
+                                                                VerticalOptions="StartAndExpand"/>
+
+
+                                                                            </Grid>
+                                                                        </StackLayout>
+
+
+                                                                    </cards1:SfCardView>
+                                                                </ViewCell>
+                                                            </DataTemplate>
+                                                        </ListView.ItemTemplate>
+                                                    </ListView>
+                                                </Grid>
+                                            </syncfusion:SfExpander.Content>
+                                        </syncfusion:SfExpander>
+                                    </StackLayout>
+                                </ScrollView>
+
+                            </StackLayout>
+                        </tabview:SfTabItem.Content>
+                    </tabview:SfTabItem>
+                </tabview:SfTabView.Items>
+            </tabview:SfTabView>
+            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="RollingBall" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
     </ContentPage.Content>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+               
+                    <ContentPresenter  VerticalOptions="FillAndExpand" />
+            
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 </ContentPage>

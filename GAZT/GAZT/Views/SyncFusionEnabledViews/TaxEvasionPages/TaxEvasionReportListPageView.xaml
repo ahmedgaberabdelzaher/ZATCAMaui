@@ -51,7 +51,7 @@
 
                     </controls:TitleView.TrailingView>
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>

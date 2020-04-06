@@ -36,7 +36,8 @@
     <x:String x:Key="Close">&#xe724;</x:String>
     <x:String x:Key="Edit">&#xe727;</x:String>
     <x:String x:Key="Menu">&#xe72e;</x:String>
-
+    <x:String x:Key="DownLoad">&#xe711;</x:String>
+    
     <x:String x:Key="More">&#xe719;</x:String>
     <x:String x:Key="Show">&#xe711;</x:String>
     <x:String x:Key="More2">&#xe715;</x:String>

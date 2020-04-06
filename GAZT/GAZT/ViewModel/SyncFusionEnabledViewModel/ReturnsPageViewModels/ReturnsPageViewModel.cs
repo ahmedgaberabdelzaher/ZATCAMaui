@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
@@ -15,13 +16,15 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
     public class ReturnsListCountsByStatus
     {
         public int SubmittedZakatCount;
-       public int NonSubmittedZakatCount;
-       public  int OverdueZakatCount;
+        public int NonSubmittedZakatCount;
+        public int OverdueZakatCount;
         public int SubmittedVATCount;
         public int NonSubmittedVATCount;
         public int OverdueVATCount;
+       
         public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
         private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
+        
         public string SubmittedZakatWithCountTest
         {
             get
@@ -33,6 +36,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 _submittedZakatWithCountTest = value;
             }
         }
+
+
     }
     public class ReturnsPageViewModel : ViewModelBase
     {
@@ -42,6 +47,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public static String ReturnPeriod = "";
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
+        public ICommand GoBackClick { get; set; }
 
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
         public ReturnsListCountsByStatus ReturnsListCountsByStatus
@@ -57,7 +63,19 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ReturnsListCountsByStatus");
             }
         }
-
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         public List<ICRListSet> ICRListVATSubmitted
         {
             get
@@ -82,7 +100,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ICRListVATSubmitted");
             }
         }
-        
+
         private List<ICRListSet> _iCRListVATNonSubmitted;
         public List<ICRListSet> ICRListVATNonSubmitted
         {
@@ -157,12 +175,13 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                             _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                         });
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
@@ -239,7 +258,14 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 throw new ArgumentNullException("dialogService");
             }
 
-          
+
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+
+
+            });
+
         }
         public void PopToRootPage()
         {
@@ -259,7 +285,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             {
                 await Task.Run(() =>
                 {
-                  //  IsLoading = true;
+                    //  IsLoading = true;
                 });
 
                 await Task.Run(async () =>
@@ -273,131 +299,160 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         string lang = UtilityManager.GetLanguageParameter();
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                        if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
-                        {
-                           icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.TaxPeriod)).ToList();
-                        }
-
-
-                        VATDeclaration vATDeclaration = new VATDeclaration();
-                        if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
-                        {
-                            ICRListVATSubmitted = new List<ICRListSet>();
-                            ICRListVATSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0055").ToList<ICRListSet>();
-                            ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001" || a.Status== "E0013").ToList<ICRListSet>();
-                            DateTime Today = DateTime.Now;
-                            ICRListVATOverDue = icrList.ICR_LISTSet.Where(a => a.Status != "E0045" && a.Status != "E0055" && a.DueDateDateTime < Today).ToList<ICRListSet>();
-                            ReturnsListCountsByStatus.SubmittedVATCount = ICRListVATSubmitted.Count;
-                            ReturnsListCountsByStatus.NonSubmittedVATCount = ICRListVATNonSubmitted.Count;
-                            ReturnsListCountsByStatus.OverdueVATCount = ICRListVATOverDue.Count;
-
-                        }
-                        else
-                        {
-                            _navigationService.GoBack();
-                        }
-
                         try
                         {
-                            estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
-                            PopToRootPage();
+                            if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                            {
+                                icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.TaxPeriod)).ToList();
+                            }
+
+
+                            VATDeclaration vATDeclaration = new VATDeclaration();
+                            if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
+                            {
+                                ICRListVATSubmitted = new List<ICRListSet>();
+                                ICRListVATSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0055").ToList<ICRListSet>();
+                                ICRListVATNonSubmitted = new List<ICRListSet>();
+                                ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001" || a.Status == "E0013").ToList<ICRListSet>();
+                                DateTime Today = DateTime.Now;
+                                ICRListVATOverDue = icrList.ICR_LISTSet.Where(a => a.Status != "E0045" && a.Status != "E0055" && a.DueDateDateTime < Today).ToList<ICRListSet>();
+                                if (ICRListVATSubmitted != null)
+                                {
+                                    ReturnsListCountsByStatus.SubmittedVATCount = ICRListVATSubmitted.Count;
+                                }
+                                if (ICRListVATNonSubmitted != null)
+                                {
+                                    ReturnsListCountsByStatus.NonSubmittedVATCount = ICRListVATNonSubmitted.Count;
+                                }
+                                if (ICRListVATOverDue != null)
+                                {
+                                    ReturnsListCountsByStatus.OverdueVATCount = ICRListVATOverDue.Count;
+                                }
+
+                            }
+                            else
+                            {
+                                _navigationService.GoBack();
+                            }
+
+                            try
+                            {
+                                estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
+                                PopToRootPage();
+                            }
+                            catch (InternetException ex)
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                });
+                            }
+                            List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
+                            myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.listSet.results));
+                            DateTime TodayNew = DateTime.Now;
+                            List<EstimatedZakatReturnsResult> MyZakatReturnsNonSubmittedChild = new List<EstimatedZakatReturnsResult>();
+                            List<EstimatedZakatReturnsResult> MyZakatReturnsSubmittedChild = new List<EstimatedZakatReturnsResult>();
+                            List<EstimatedZakatReturnsResult> MyZakatReturnsOverDueChild = new List<EstimatedZakatReturnsResult>();
+                            if (myZakatReturnsListTemp != null && myZakatReturnsListTemp.Count > 0)
+                            {
+                                for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
+                                {
+                                    if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12"))
+                                    {
+                                        if (App.IsArabic)
+                                        {
+                                            myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
+                                        }
+                                        else
+                                        {
+                                            if (myZakatReturnsListTemp[i].Period.Contains("-"))
+                                                myZakatReturnsListTemp[i].Period.Replace("-", "- ");
+                                        }
+                                        if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
+                                        {
+                                            if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                                            {
+
+                                                myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                                                myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                                                MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                            }
+                                            else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                            {
+                                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                                myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                                MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                            }
+                                            if (!string.Equals(myZakatReturnsListTemp[i].Stat, "P") && !string.Equals(myZakatReturnsListTemp[i].Stat, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                                            {
+                                                MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
+                                            {
+
+                                                myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
+                                                myZakatReturnsListTemp[i].BorderColour = "#944E22";
+                                                MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
+                                            }
+                                            else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                            {
+                                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                                myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                                MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
+
+                                            }
+                                            else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
+                                            {
+                                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                                myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
+                                            }
+                                            if (!string.Equals(myZakatReturnsListTemp[i].Statfg, "P") && !string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
+                                            {
+                                                MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
+                                            }
+                                        }
+
+                                        //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
+                                    }
+                                }
+
+
+                            }
+                            MyZakatReturnsNonSubmitted = MyZakatReturnsNonSubmittedChild;
+                            MyZakatReturnsSubmitted = MyZakatReturnsSubmittedChild;
+                            MyZakatReturnsOverDue = MyZakatReturnsOverDueChild;
+                            if (MyZakatReturnsSubmitted != null)
+                            {
+                                ReturnsListCountsByStatus.SubmittedZakatCount = MyZakatReturnsSubmitted.Count;
+                            }
+                            if (MyZakatReturnsNonSubmitted != null)
+                            {
+                                ReturnsListCountsByStatus.NonSubmittedZakatCount = MyZakatReturnsNonSubmitted.Count;
+                            }
+                            if (MyZakatReturnsOverDue != null)
+                            {
+                                ReturnsListCountsByStatus.OverdueZakatCount = MyZakatReturnsOverDue.Count;
+                            }
                         }
-                        catch (InternetException ex)
+                        catch (Exception ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                _navigationService.GoBack();
                             });
                         }
-                        List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
-                        myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>(GetSortedList(estimatedZakatReturnsList.d.listSet.results));
-                        DateTime TodayNew = DateTime.Now;
-                        List<EstimatedZakatReturnsResult> MyZakatReturnsNonSubmittedChild = new List<EstimatedZakatReturnsResult>();
-                        List<EstimatedZakatReturnsResult> MyZakatReturnsSubmittedChild = new List<EstimatedZakatReturnsResult>();
-                        List<EstimatedZakatReturnsResult> MyZakatReturnsOverDueChild = new List<EstimatedZakatReturnsResult>();
-                        if (myZakatReturnsListTemp != null && myZakatReturnsListTemp.Count > 0)
-                        {
-                            for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
-                            {
-                                if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12"))
-                                {
-                                    if (App.IsArabic)
-                                    {
-                                        myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
-                                    }
-                                    else
-                                    {
-                                        if (myZakatReturnsListTemp[i].Period.Contains("-"))
-                                            myZakatReturnsListTemp[i].Period.Replace("-", "- ");
-                                    }
-                                    if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
-                                    {
-                                        if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
-                                        {
-
-                                            myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
-                                            myZakatReturnsListTemp[i].BorderColour = "#944E22";
-                                            MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                        }
-                                        else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                                        {
-                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                            MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                        }
-                                        if (!string.Equals(myZakatReturnsListTemp[i].Stat, "P") && !string.Equals(myZakatReturnsListTemp[i].Stat, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                                        {
-                                            MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
-                                        }
-
-                                    }
-                                    else
-                                    {
-                                        if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
-                                        {
-
-                                            myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
-                                            myZakatReturnsListTemp[i].BorderColour = "#944E22";
-                                            MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
-                                        }
-                                        else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                                        {
-                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                            MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
-
-                                        }
-                                        else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
-                                        {
-                                            myZakatReturnsListTemp[i].BorderColour = "#005e4b";
-                                            myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
-                                        }
-                                        if (!string.Equals(myZakatReturnsListTemp[i].Statfg, "P") && !string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014") && Convert.ToDateTime(myZakatReturnsListTemp[i].DueDtC) < TodayNew)//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
-                                        {
-                                            MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
-                                        }
-                                    }
-
-                                    //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
-                                }
-                            }
-
-                           
-                        }
-                        MyZakatReturnsNonSubmitted = MyZakatReturnsNonSubmittedChild;
-                        MyZakatReturnsSubmitted = MyZakatReturnsSubmittedChild;
-                        MyZakatReturnsOverDue = MyZakatReturnsOverDueChild;
-                        ReturnsListCountsByStatus.SubmittedZakatCount = MyZakatReturnsSubmitted.Count;
-                        ReturnsListCountsByStatus.NonSubmittedZakatCount = MyZakatReturnsNonSubmitted.Count;
-                        ReturnsListCountsByStatus.OverdueZakatCount = MyZakatReturnsOverDue.Count;
                     }
                     catch (InternetException ex)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                           // IsLoading = false;
+                            // IsLoading = false;
                             _navigationService.GoBack();
 
                         });
@@ -412,7 +467,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 await Task.Run(() =>
                 {
 
-                  //  IsLoading = false;
+                    //  IsLoading = false;
                 });
 
 
@@ -473,7 +528,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                  //  IsLoading = false;
+                    //  IsLoading = false;
                     _navigationService.GoBack();
 
                 });
@@ -499,11 +554,11 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public async void GetVATAllReturnsAsync()
         {
 
-       
+
 
             await GetVATAllReturns();
 
-           
+
         }
         public bool isStatusNotValid()
         {

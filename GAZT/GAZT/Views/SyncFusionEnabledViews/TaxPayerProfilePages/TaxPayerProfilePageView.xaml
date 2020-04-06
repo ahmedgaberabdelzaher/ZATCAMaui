@@ -49,7 +49,7 @@
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>-->
@@ -76,7 +76,7 @@
                                                                  TabletPortrait='200,50',
                                                                  TabletLandscape='300,50',
                                                                  Desktop='30'}"  WidthRequest="{OnPlatform Default='-1',
-                                              UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
+                                              UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
                 <ScrollView HorizontalOptions="Center">
                     <ScrollView.VerticalOptions>
                         <OnIdiom
@@ -123,7 +123,8 @@
 
 
                     <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerTIN"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-   
+   Hint="{x:Static local:AppResources.TIN}"
+   IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TTIN" FontSize="Small"  Placeholder="{Binding Tin}" PlaceholderColor= "#ffffff"  IsEnabled="False">
@@ -147,7 +148,8 @@
 
 
                     <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerMobileNumber"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-    
+      Hint="{x:Static local:AppResources.MobileNumber}"
+     IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" PlaceholderColor= "#ffffff"  IsEnabled="False">
@@ -188,7 +190,8 @@
 
 
                     <inputLayout:SfTextInputLayout x:Name="LayoutEmail"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-   
+        Hint="{x:Static local:AppResources.Email}"
+      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TEmail" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" PlaceholderColor= "#ffffff"  IsEnabled="False">
@@ -227,7 +230,8 @@
                     </Image>-->
 
                     <inputLayout:SfTextInputLayout x:Name="LayoutPassword"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-   
+    Hint="{x:Static local:AppResources.Password}"
+     IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="Password" IsPassword="True" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#ffffff"  IsEnabled="False">

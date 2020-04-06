@@ -10,6 +10,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="GAZT.Views.NewViews.ZakatReturnDetailsPageView"
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
             FlowDirection="RightToLeft"
@@ -42,7 +43,7 @@
                     </controls:TitleView.LeadingView>
 
                 </controls:TitleView>
-                <ContentPresenter />
+                <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
@@ -255,13 +256,22 @@
                     </StackLayout>
                 </Grid>
              <!-- Acticity indicator layout start -->
-                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" VerticalOptions="FillAndExpand">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="RollingBall" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="White"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

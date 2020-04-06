@@ -102,5 +102,11 @@ namespace GAZT.Helper
         public static string GAZTGetUnSubmittedReturnSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq '";
         public static string GAZTGetPaymentOverdueSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq '";
         #endregion
+
+        #region TES
+        public static string GAZTGetFAQ = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
+
+
+        #endregion
     }
 }

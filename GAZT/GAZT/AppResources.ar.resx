@@ -1221,7 +1221,7 @@
     <value>اشعار استلام</value>
   </data>
   <data name="ZCRStatus" xml:space="preserve">
-    <value>حالة السجل</value>
+    <value>حالة السجل التجاري</value>
   </data>
   <data name="ZCurrentEmail" xml:space="preserve">
     <value>البريد الإلكتروني الحالي</value>
@@ -2964,5 +2964,9 @@
   <data name="ZStepsTitleScan" xml:space="preserve">
     <value>To perform the search, you can scan QR code:</value>
     <comment>vat look up</comment>
+  </data>
+  <data name="ZZAnexceptionwasraised" xml:space="preserve">
+    <value>An exception was raised</value>
+    <comment>VAT Decalaration</comment>
   </data>
 </root>

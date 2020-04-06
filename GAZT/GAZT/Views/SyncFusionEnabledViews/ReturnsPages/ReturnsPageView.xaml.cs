@@ -23,16 +23,40 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ReturnsPageView;
                 this.BindingContext = viewModel;
-                viewModel.onPageLoad();
+                OnPageLoad();
                 viewModel.TabIndexStatus = Index;
                 SetLTR();
+                ChangeAeroIcon();
             }
             catch (Exception ex)
             {
 
             }
         }
+        public async void OnPageLoad()
+        {
+            try
+            {
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
 
+
+                await Task.Run(async () =>
+                {
+                    await viewModel.onPageLoad();
+                });
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
         private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
@@ -47,6 +71,17 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
     }

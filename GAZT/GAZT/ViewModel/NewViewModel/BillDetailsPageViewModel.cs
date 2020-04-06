@@ -21,6 +21,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnCopySadadNumberButtonClicked { get; set; }
+        public ICommand DowmoadForm { get; set; }
         public ZakatReturnDetailsD zakatReturnDetailsD { get; set; }
         string Cokey = "";
         string Cotyp = "";
@@ -154,6 +155,12 @@ namespace GAZT.ViewModel.NewViewModel
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
+
+
+            });
+            DowmoadForm = new Command(async () =>
+            {
+                GetPdfUrl();
 
 
             });

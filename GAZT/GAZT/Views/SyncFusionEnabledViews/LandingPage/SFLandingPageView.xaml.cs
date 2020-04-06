@@ -11,6 +11,7 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Microsoft.AppCenter.Analytics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Resources;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -113,12 +114,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                     this.FlowDirection = FlowDirection.RightToLeft;
                     calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
                     calendar.FlowDirection = FlowDirection.RightToLeft;
+                    CalendarResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
                 else
                 {
                     this.FlowDirection = FlowDirection.LeftToRight;
                     calendar.Locale = new System.Globalization.CultureInfo("en-US");
                     calendar.FlowDirection = FlowDirection.LeftToRight;
+                    CalendarResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
+
                 }
 
             }
@@ -203,11 +207,15 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private async void OnTappedTest(object sender, EventArgs e)
         {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
 
-           
 
 
-                string controltype = sender.GetType().ToString();
+
+            string controltype = sender.GetType().ToString();
 
                 if (controltype == "Xamarin.Forms.Image")
                 {
@@ -391,7 +399,12 @@ namespace GAZTeServicesApp.Views.LandingPage
                
             }
 
-          
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
 
         }
 
@@ -399,9 +412,12 @@ namespace GAZTeServicesApp.Views.LandingPage
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
 
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
 
-
-                string controltype = sender.GetType().ToString();
+            string controltype = sender.GetType().ToString();
 
                 if (controltype == "Xamarin.Forms.StackLayout")
                 {
@@ -445,11 +461,16 @@ namespace GAZTeServicesApp.Views.LandingPage
                     }
 
                 }
-                
-            
 
 
-           
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+
+
+
         }
     }
 }
