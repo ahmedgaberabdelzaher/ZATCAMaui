@@ -188,27 +188,28 @@ namespace GAZT.Views.NewViews
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             //attachment.DocUrl;
 
-            if (attachment.FileExtn == "PDF" || attachment.FileExtn == "pdf")
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention == "PDF" || Extention == "pdf")
             {
-                if (Device.RuntimePlatform == Device.iOS)
-                {
-                    if (attachment.DocUrl != null)
-                    {
-                        //Uri uri = new Uri(pdfUrl);
-                        //Device.OpenUri(uri);
-                        viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
-                    }
-                    else
-                    {
-                        //pop that certificate is not available
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                        });
-                    }
-                }
-                else
-                {
+                //if (Device.RuntimePlatform == Device.iOS)
+                //{
+                //    if (attachment.DocUrl != null)
+                //    {
+                //        //Uri uri = new Uri(pdfUrl);
+                //        //Device.OpenUri(uri);
+                //        viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
+                //    }
+                //    else
+                //    {
+                //        //pop that certificate is not available
+                //        Device.BeginInvokeOnMainThread(async () =>
+                //        {
+                //            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                //        });
+                //    }
+                //}
+                //else
+                //{
                     if (attachment.DocUrl != null)
                     {
                         viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
@@ -221,7 +222,7 @@ namespace GAZT.Views.NewViews
                             await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                         });
                     }
-                }
+                //}
             }
             else
             {
@@ -242,7 +243,10 @@ namespace GAZT.Views.NewViews
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
-                viewModel.ShowPdf(attachment.DocUrl, attachment.Doguid);
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
             }
             else
             {
