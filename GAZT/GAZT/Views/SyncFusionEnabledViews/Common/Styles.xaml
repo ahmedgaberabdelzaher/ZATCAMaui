@@ -223,6 +223,7 @@
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="BackgroundColor" Value="#005e4b" />
     </Style>
 
     <!--  Common style for buttons  -->
