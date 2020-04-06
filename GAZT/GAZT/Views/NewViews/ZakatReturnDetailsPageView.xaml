@@ -106,9 +106,9 @@
 
                     <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
-                        <Label Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZZEstimatedSalesForFiscalYear}" Grid.Row="8" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
 
-                    </Label>
+                    </local1:CustomLabel>
 
                     <Label  Grid.Row="8" Grid.Column="1" FontFamily="{StaticResource SSTArBold}"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>

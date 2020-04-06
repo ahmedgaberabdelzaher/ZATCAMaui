@@ -25,7 +25,10 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
-
+            if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
+            {
+                Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
+            }
             // Xamarin.Essentials.Platform.Init(this, bundle);
 
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
