@@ -57,7 +57,7 @@
    
             <StackLayout HeightRequest="944" Spacing="0" BackgroundColor="White">
                 <ScrollView BackgroundColor="White" >
-                    <Grid  RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                    <Grid  RowSpacing="5" Padding="0,5,0,0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
