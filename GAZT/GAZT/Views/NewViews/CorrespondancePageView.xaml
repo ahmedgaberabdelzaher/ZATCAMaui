@@ -96,7 +96,7 @@
                                     </local:CustomButton>
 
                                     <syncfusion:SfPicker 
-                   
+                   HeaderText="{x:Static local:AppResources.ZZSort}" 
                     HeaderHeight="40"
                     ShowHeader="true"
                    

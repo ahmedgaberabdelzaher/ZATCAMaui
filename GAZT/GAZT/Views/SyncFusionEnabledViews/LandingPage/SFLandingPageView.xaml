@@ -4,6 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+    xmlns:local1="clr-namespace:GAZT"
+
     xmlns:behavior="clr-namespace:GAZTeServicesApp.Behaviors"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -162,7 +164,7 @@
 
                 <StackLayout Padding="5">
 
-                                        <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></Label>
+                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></local1:CustomLabel>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 

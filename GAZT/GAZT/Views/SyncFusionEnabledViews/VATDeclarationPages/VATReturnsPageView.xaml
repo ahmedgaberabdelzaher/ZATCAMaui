@@ -442,7 +442,7 @@
 
 
 
-                                        <local1:CustomLabel Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  >
+                                        <local1:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
                                         <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">

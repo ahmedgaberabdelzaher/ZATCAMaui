@@ -239,7 +239,7 @@
 
 
 
-                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,0,10,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
+                            <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
                                 <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
           HorizontalOptions="FillAndExpand"
