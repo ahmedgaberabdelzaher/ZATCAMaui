@@ -33,11 +33,11 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
 
             }
         }
-        public async void OnPageLoad()
+        public async Task OnPageLoad()
         {
             try
             {
-                Task.Run(() =>
+               await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
@@ -47,7 +47,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 {
                     await viewModel.onPageLoad();
                 });
-                Task.Run(() =>
+                await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
                 });
