@@ -164,7 +164,7 @@
 
                             <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
-                            <Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="8" Margin="20,0,20,0"  Grid.Column="0" Grid.ColumnSpan="2">
+                            <!--<Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="8" Margin="20,0,20,0"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
                             <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
@@ -173,7 +173,24 @@
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                                 </Image.GestureRecognizers>
+                            </Image>-->
+
+
+                             <inputLayout:SfTextInputLayout    Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+        Hint="{x:Static local:AppResources.ZZAttachment}"
+      IsHintAlwaysFloated="True"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
+                            </custom:GAZTBorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
+                             <Image Grid.Row="12"  Grid.Column="1"   Margin="13,2,13,1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                </Image.GestureRecognizers>
                             </Image>
+                   
 
                             <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="8"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"/>
 
@@ -273,29 +290,11 @@
                                                                            LineBreakMode="CharacterWrap"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                                          Grid.ColumnSpan="4"
+                                                                          Grid.ColumnSpan="3"
                                    />
 
-                                                                <!--<Label  
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="0"
-                                   Grid.Column="2" 
-                                   >
-                                                                        <Label.FormattedText>
-                                                                            <FormattedString>
-                                                                                <Span Text="{Binding Size}"/>
-                                                                                <Span Text="MB"/>
-                                                                            </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>-->
-
-                                                                <!--<Image Grid.Row="0"  Grid.Column="3"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
-
-                                                                    </Image>-->
-
-                                                                <Image Grid.Row="0"  Grid.Column="4" Grid.RowSpan="2" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
+                                                               
+                                                                <Image Grid.Row="0"  Grid.Column="3" Grid.RowSpan="2" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
                                                                     <Image.GestureRecognizers>
                                                                         <TapGestureRecognizer
                                                                                 Tapped="OnDeleteAttachmentClickedTapped"
@@ -312,7 +311,7 @@
                                                                           
                                                                            Grid.Row="1"
                                                                            Grid.Column="0"
-                                                                           Grid.ColumnSpan="4"
+                                                                           Grid.ColumnSpan="3"
                                    />
 
                                                             </Grid>
