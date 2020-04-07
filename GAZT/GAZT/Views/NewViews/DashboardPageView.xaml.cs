@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views
@@ -23,8 +24,9 @@ namespace GAZT.Views
         {
             viewModel = App.Locator.DashboardPageView;
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-            NavigationPage.SetHasBackButton(this, false);
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
           
             SetLTR();
            

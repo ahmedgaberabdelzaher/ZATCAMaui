@@ -12,7 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Entry = Xamarin.Forms.Entry;
 
 namespace GAZT.Views.NewViews
 {
@@ -36,6 +38,7 @@ namespace GAZT.Views.NewViews
             {
                 viewModel = App.Locator.VATReturnsPageView;
                 InitializeComponent();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageView;
                 this.BindingContext = viewModel;
@@ -59,7 +62,7 @@ namespace GAZT.Views.NewViews
                 viewModel.SelectedIndex = 0;
                 setAllCheckbox(false);
                 IntilizeAsync();
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
                 // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }

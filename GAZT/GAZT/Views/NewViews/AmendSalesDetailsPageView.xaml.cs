@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -26,6 +27,7 @@ namespace GAZT.Views.NewViews
         public AmendSalesDetailsPageView(SalesDetails SelectedSalesDetails)
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.AmendSalesDetailsPageView;
@@ -36,7 +38,7 @@ namespace GAZT.Views.NewViews
                 viewModel.isOnLoad = true;
                 viewModel.OnLoad();
                 SetLTR();
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 SetDynamicBehaviour();
                 ChangeAeroIcon();
 
@@ -74,7 +76,7 @@ namespace GAZT.Views.NewViews
 
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
 
