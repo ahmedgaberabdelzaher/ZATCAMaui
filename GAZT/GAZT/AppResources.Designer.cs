@@ -6811,6 +6811,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The selected service is not available to you.
+        /// </summary>
+        public static string ZZTheselectedserviceisnotavailabletoyou {
+            get {
+                return ResourceManager.GetString("ZZTheselectedserviceisnotavailabletoyou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports).
         /// </summary>
         public static string ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports {

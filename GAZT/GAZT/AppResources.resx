@@ -2976,4 +2976,8 @@ Should we require further information, we would be in contact.</value>
     <value>Return Status</value>
     <comment>VAT and Zakat Dropdown</comment>
   </data>
+  <data name="ZZTheselectedserviceisnotavailabletoyou" xml:space="preserve">
+    <value>The selected service is not available to you</value>
+    <comment>OTP Page</comment>
+  </data>
 </root>
