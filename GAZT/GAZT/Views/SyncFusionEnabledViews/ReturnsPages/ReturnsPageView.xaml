@@ -54,7 +54,7 @@
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -231,7 +231,7 @@
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -391,7 +391,7 @@
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -673,7 +673,7 @@
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -832,7 +832,7 @@
                             <StackLayout>
                                 <ScrollView>
                                     <StackLayout>
-                                        <syncfusion:SfExpander>
+                                        <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
                                                     <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1115,7 +1115,7 @@
                                             </syncfusion:SfExpander.Content>
                                         </syncfusion:SfExpander>
                                         <syncfusion:SfExpander>
-                                            <syncfusion:SfExpander.Header>
+                                            <syncfusion:SfExpander.Header IsVisible="{Binding IsZakatVisible}">
                                                 <Grid>
                                                     <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>

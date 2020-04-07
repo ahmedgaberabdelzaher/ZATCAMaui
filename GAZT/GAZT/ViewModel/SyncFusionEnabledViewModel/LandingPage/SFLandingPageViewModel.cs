@@ -709,6 +709,7 @@ private void ShowOptionsCommandClicked(object obj)
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
             if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
             {
+                UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
                 string[] TpTypes = DashboardData.results[0].TpType.Split(',');
                 foreach (string ItemType in TpTypes)
                 {

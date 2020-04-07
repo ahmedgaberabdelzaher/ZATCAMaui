@@ -25,6 +25,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
         private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
         
+       
+
         public string SubmittedZakatWithCountTest
         {
             get
@@ -48,6 +50,36 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
         public ICommand GoBackClick { get; set; }
+
+        private bool _isVATVisible = false;
+        public bool IsVATVisible
+        {
+            get
+            {
+                return _isVATVisible;
+            }
+            set
+            {
+                _isVATVisible = value;
+
+                RaisePropertyChanged("IsVATVisible");
+            }
+        }
+
+        private bool _isZakatVisible = false;
+        public bool IsZakatVisible
+        {
+            get
+            {
+                return _isZakatVisible;
+            }
+            set
+            {
+                _isZakatVisible = value;
+
+                RaisePropertyChanged("IsZakatVisible");
+            }
+        }
 
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
         public ReturnsListCountsByStatus ReturnsListCountsByStatus
@@ -292,7 +324,25 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 {
                     ICRListVATSubmitted = null;
                     ReturnsListCountsByStatus = new ReturnsListCountsByStatus();
+                    IsVATVisible = false;
+                    IsZakatVisible = false;
+                    if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                    {
+                        string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                        foreach (string ItemType in TpTypes)
+                        {
+                            if (ItemType == "05")
+                            {
 
+                                IsZakatVisible = true;
+                            }
+                            if (ItemType == "03" || ItemType == "13")
+                            {
+                                IsVATVisible = true;
+                            }
+
+                        }
+                    }
                     ICR icrList = null;
                     try
                     {
