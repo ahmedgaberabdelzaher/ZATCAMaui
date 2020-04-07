@@ -310,17 +310,17 @@ namespace GAZT.ViewModel
 
                         int iBillsCount = -1;
 
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) >= 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
                         }
 
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) >= 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
                         }
 
-                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
+                        if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) >= 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
                         }
