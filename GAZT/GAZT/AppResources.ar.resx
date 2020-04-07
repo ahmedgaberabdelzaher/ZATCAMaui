@@ -2735,7 +2735,7 @@
     <value>الرقم المميز غير صحيح</value>
   </data>
   <data name="ZInvalidVatNumber" xml:space="preserve">
-    <value>رقم ضريبة القيمة المضافة غير صالح</value>
+    <value>رقم حساب ضريبة القيمة المضافة غيرصحيح</value>
   </data>
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>لا توجد اقرارات</value>

@@ -61,5 +61,6 @@ namespace GAZT.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }

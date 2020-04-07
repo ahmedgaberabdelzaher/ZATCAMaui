@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -123,6 +123,22 @@ namespace GAZT.Views.NewViews
             }
 
         }
+
+        
+
+        public async void OnCopySadadNumberButtonClicked(object sender, EventArgs args)
+        {
+            await Clipboard.SetTextAsync(viewModel.EstimatedZAKATSADADNumber.Sopbel);
+            if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
+               await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
+
+                //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
+            }
+        }
+
         #endregion
 
     }
