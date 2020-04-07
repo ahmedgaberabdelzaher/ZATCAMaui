@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -30,9 +31,10 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.ZakatReturnDetailsPageView;
             InitializeComponent();
             Fbguid = fbguid;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
             this.BindingContext = viewModel;
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
 
         }

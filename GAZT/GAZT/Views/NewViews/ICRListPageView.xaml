@@ -86,7 +86,7 @@
                     </Image.GestureRecognizers>
                 </Image>-->
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,-6"
-    
+ 
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatus}" FontSize="Small">
@@ -96,7 +96,7 @@
                 </custom:CustomButton>
                 
                 <syncfusion:SfPicker 
-                   
+                    HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
                     HeaderHeight="40"
                     ShowHeader="true"
                     

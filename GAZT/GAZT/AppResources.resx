@@ -2972,4 +2972,8 @@ Should we require further information, we would be in contact.</value>
     <value>An exception was raised</value>
     <comment>VAT Decalaration</comment>
   </data>
+  <data name="ZZReturnStatus" xml:space="preserve">
+    <value>Return Status</value>
+    <comment>VAT and Zakat Dropdown</comment>
+  </data>
 </root>
