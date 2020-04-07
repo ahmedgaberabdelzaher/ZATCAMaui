@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -70,8 +69,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsObj");
             }
         }
-
-
 
 
         private ObservableCollection<MyBills> _myBills;
@@ -257,7 +254,6 @@ namespace GAZT.ViewModel
             }
         }
 
-
         public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -279,52 +275,14 @@ namespace GAZT.ViewModel
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
-            }
-            try
-            {
-                //onAllLabelClicked = new Command(() =>
-                //{
-                //    OnAllLabelClicked();
-                //});
-
-                //onPaidLabelClicked = new Command(() =>
-                //{
-                //    OnPaidClick();
-                //});
-                //onUnpaidLabelClicked = new Command(() =>
-                //{
-                //    OnUnpaidClick();
-                //});
-                //onPartiallyPaidLabelClicked = new Command(() =>
-                //{
-                //    OnPartiallyClicked();
-                //});
-
-            }
-            catch (Exception e)
-            {
-
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                //});
-            }
+            }            
         }
 
 
         public async Task onPageLoad(BillInfo billInfo)
         {
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = true;
-            //});
-
-            //await Task.Run(async () =>
-            //{
-
             MyBills = null;
-
             ObservableCollection<MyBills> myBills = null;
             try
             {
@@ -334,7 +292,6 @@ namespace GAZT.ViewModel
                     string lang = UtilityManager.GetLanguageParameter();
                     myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
 
                     if (myBills != null && myBills.Count != 0)
                     {
@@ -348,7 +305,7 @@ namespace GAZT.ViewModel
                         MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
 
                         ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-                        
+
                         GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
 
                         int iBillsCount = -1;
@@ -360,7 +317,7 @@ namespace GAZT.ViewModel
 
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#944E23") });
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
                         }
 
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
@@ -368,62 +325,40 @@ namespace GAZT.ViewModel
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
                         }
 
-
                         ListMyBillsChartModel = myBillsChartModels;
 
                         SelcectedBillsIndex = 0;
                         int milliseconds = 5000;
                         Thread.Sleep(milliseconds);
+                        
                         if (billInfo != null)
                         {
                             if (billInfo.BillTypeName == AppResources.Paid)
                             {
-                                //OnPaidClick();
                                 SelcectedBillsIndex = 1;
                             }
                             else if (billInfo.BillTypeName == AppResources.UnPaid)
                             {
-                                //OnPartiallyClicked();
                                 SelcectedBillsIndex = 2;
                             }
                             else if (billInfo.BillTypeName == AppResources.PartiallyPaid)
                             {
-                                // OnUnpaidClick();
                                 SelcectedBillsIndex = 3;
                             }
 
                         }
-                        //else
-                        //{
-                        //    //  _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-                        //    // _navigationService.GoBack();
-                        //    //   await Task.Run(() =>
-                        //    //  {
-                        //    IsLoading = false;
-                        //    //  });
-                        //    MyBills = null;
-                        //    SetNoDataLabelVisibility = true;
-                        //    MyBillsPaid = null;
-                        //    MyBillsUnPaid = null;
-                        //    MyBillsPartiallyPaid = null;
-
-                        //}
-                        //  SelcectedBillsIndex = 0;
                     }
                 }
                 catch (Exception e)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-
-                        _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                        await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
-                    //  await Task.Run(() =>
-                    //   {
-                    IsLoading = false;
-                    //   });
 
+                    IsLoading = false;
+                    
                 }
             }
             catch (InternetException ex)
@@ -431,51 +366,13 @@ namespace GAZT.ViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
 
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
-                //   await Task.Run(() =>
-                //   {
+                
                 IsLoading = false;
-                //  });
+                
             }
-            //});
-
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
-
-
-            //int i = 5;
-            //MyBills = new List<MyBills>();
-            //for (i = 0; i < 6; i++)
-            //{
-            //    MyBills m = new MyBills();
-            //    m.Abtypt = "Abc";
-            //    m.BETRW = "100";
-            //    m.FAEDN = "12:02:20";
-            //    m.Status = "P";
-            //    m.VTRE2 = "54321";
-
-            //    MyBills.Add(m);
-            //}
-
-            //int j = 5;
-            ////S MyBills = new List<MyBills>();
-            //for (i = 0; i < 6; i++)
-            //{
-            //    MyBills m = new MyBills();
-            //    m.Abtypt = "Abc";
-            //    m.BETRW = "100";
-            //    m.FAEDN = "12:02:20";
-            //    m.Status = "I";
-            //    m.VTRE2 = "54321";
-
-            //    MyBills.Add(m);
-            //}
-            //MyBillsOriginal = MyBills;
-
         }
 
         public async Task PopToRootPage()
@@ -492,12 +389,8 @@ namespace GAZT.ViewModel
 
         private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
         {
-            // List<MyBills> list = new List<MyBills>();
-
-
             for (int i = 0; i < myBills.Count; i++)
             {
-
                 if (myBills[i].TestDueAmount.Contains("."))
                 {
                     string[] Amount = new String[2];
@@ -522,7 +415,6 @@ namespace GAZT.ViewModel
                     {
                         myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         myBills[i].FAEDN = UtilityManager.ToArabicDate(myBills[i].FAEDN);
-
                     }
                     else
                     {
@@ -534,175 +426,5 @@ namespace GAZT.ViewModel
             return myBills;
         }
 
-        //   public void OnAllLabelClicked()
-        //    {
-        //        SelcectedBillsIndex = 0;
-        //        // IsUnderlineForAll = "None";
-        //        MyBills = null;
-        //        if (MyBillsOriginal != null)
-        //        {
-        //            if (MyBillsOriginal.Count != 0)
-        //            {
-        //                List<MyBills> myBills = new List<MyBills>();
-        //                myBills = MyBillsOriginal.ToList();
-        //                if (myBills != null && myBills.Count > 0)
-        //                {
-        //                    MyBills = myBills;
-        //                    SetNoDataLabelVisibility = false;
-        //                }
-        //                else
-        //                {
-        //                    MyBills = null;
-        //                    //Device.BeginInvokeOnMainThread(async () =>
-        //                    //{
-        //                    //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                    //});
-        //                    SetNoDataLabelVisibility = true;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MyBills = null;
-        //                SetNoDataLabelVisibility = true;
-        //                //Device.BeginInvokeOnMainThread(async () =>
-        //                //{
-        //                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                //});
-        //            }
-        //        }
-        //        else
-        //        {
-        //            SetNoDataLabelVisibility = true;
-        //            MyBills = null;
-        //        }
-        //    }
-
-        //    public void OnPaidClick()
-        //    {
-        //        SelcectedBillsIndex = 1;
-        //        MyBills = null;
-        //        if (MyBillsOriginal != null)
-        //        {
-        //            if (MyBillsOriginal.Count != 0)
-        //            {
-        //                List<MyBills> myBills = new List<MyBills>();
-        //                myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
-        //                if (myBills != null && myBills.Count > 0)
-        //                {
-        //                    MyBills = myBills;
-        //                    SetNoDataLabelVisibility = false;
-        //                }
-        //                else
-        //                {
-        //                    MyBills = null;
-        //                    SetNoDataLabelVisibility = true;
-        //                    //Device.BeginInvokeOnMainThread(async () =>
-        //                    //{
-        //                    //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                    //});
-        //                }
-        //            }
-        //            else
-        //            {
-        //                SetNoDataLabelVisibility = true;
-        //                MyBills = null;
-        //                //Device.BeginInvokeOnMainThread(async () =>
-        //                //{
-        //                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                //});
-        //            }
-        //        }
-        //        else
-        //        {
-        //            SetNoDataLabelVisibility = true;
-        //            MyBills = null;
-        //        }
-        //    }
-
-        //    public void OnUnpaidClick()
-        //    {
-        //        SelcectedBillsIndex = 2;
-        //        MyBills = null;
-        //        if (MyBillsOriginal != null)
-        //        {
-        //            if (MyBillsOriginal.Count != 0)
-        //            {
-        //                List<MyBills> myBills = new List<MyBills>();
-        //                myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
-        //                if (myBills != null && myBills.Count > 0)
-        //                {
-        //                    MyBills = myBills;
-        //                    SetNoDataLabelVisibility = false;
-        //                }
-        //                else
-        //                {
-        //                    MyBills = null;
-        //                    SetNoDataLabelVisibility = true;
-        //                    //Device.BeginInvokeOnMainThread(async () =>
-        //                    //{
-        //                    //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                    //});
-        //                }
-        //            }
-        //            else
-        //            {
-        //                MyBills = null;
-        //                SetNoDataLabelVisibility = true;
-        //                //Device.BeginInvokeOnMainThread(async () =>
-        //                //{
-        //                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                //});
-        //            }
-        //        }
-        //        else
-        //        {
-        //            SetNoDataLabelVisibility = true;
-        //            MyBills = null;
-        //        }
-        //    }
-
-        //    public void OnPartiallyClicked()
-        //    {
-        //        SelcectedBillsIndex = 3;
-        //        MyBills = null;
-        //        if (MyBillsOriginal != null)
-        //        {
-        //            if (MyBillsOriginal.Count != 0)
-        //            {
-        //                List<MyBills> myBills = new List<MyBills>();
-        //                myBills = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
-        //                if (myBills != null && myBills.Count > 0)
-        //                {
-        //                    MyBills = myBills;
-        //                    SetNoDataLabelVisibility = false;
-        //                }
-        //                else
-        //                {
-        //                    MyBills = null;
-        //                    SetNoDataLabelVisibility = true;
-        //                    //Device.BeginInvokeOnMainThread(async () =>
-        //                    //{
-        //                    //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                    //});
-        //                }
-
-        //            }
-        //            else
-        //            {
-        //                MyBills = null;
-        //                SetNoDataLabelVisibility = true;
-        //                //Device.BeginInvokeOnMainThread(async () =>
-        //                //{
-        //                //    await _dialogService.ShowMessageBox(AppResources.NoBillsAvailable, AppResources.Information);
-        //                //});
-        //            }
-        //        }
-        //        else
-        //        {
-        //            SetNoDataLabelVisibility = true;
-        //            MyBills = null;
-        //        }
-        //    }
-        //}
     }
 }
