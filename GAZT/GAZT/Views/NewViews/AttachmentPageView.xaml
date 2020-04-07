@@ -20,29 +20,7 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
-        <ControlTemplate>
-            <StackLayout Spacing="0">
-                <controls:TitleView Title=""  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
-                    <controls:TitleView.LeadingView>
-                        <buttons:SfButton
-                            x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.GoBackClick}"
-                            CommandParameter="{x:Reference backButton}"
-                            CornerRadius="4"
-                            TextColor="#006450"
-                            Style="{StaticResource IconButtonStyle}"
-                             Text="{DynamicResource StyleReverseBack}"
-                            
-                             />
-
-                    </controls:TitleView.LeadingView>
-
-                </controls:TitleView>
-                <ContentPresenter VerticalOptions="FillAndExpand" />
-            </StackLayout>
-        </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  Grid.Row="0">
@@ -72,7 +50,7 @@
 
                         <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                         <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
@@ -242,4 +220,28 @@
             <!-- Acticity indicator layout end -->
         </Grid>
     </ContentPage.Content>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title=""  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls:TitleView.LeadingView>
+
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
 </ContentPage>
