@@ -50,7 +50,7 @@
 
                         <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
 
                         <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
