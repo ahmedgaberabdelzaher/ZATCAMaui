@@ -4,10 +4,8 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Syncfusion.DataSource.Extensions;
 using Syncfusion.SfChart.XForms;
-using Syncfusion.XForms.TabView;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -92,10 +90,10 @@ namespace GAZT.Views
             await viewModel.onPageLoad(billInfo);
 
 
-           Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+            Task.Run(() =>
+             {
+                 viewModel.IsLoading = false;
+             });
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
@@ -143,43 +141,6 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
-        //private void ClickGestureRecognizer_ClickedForAll(object sender, EventArgs e)
-        //{
-
-        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-
-        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        //}
-
-        //private void ClickGestureRecognizer_ClickedForPaid(object sender, EventArgs e)
-        //{
-        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        //}
-        //private void ClickGestureRecognizer_ClickedForUnPaid(object sender, EventArgs e)
-        //{
-        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        //}
-        //private void ClickGestureRecognizer_ClickedForPartiallyPaid(object sender, EventArgs e)
-        //{
-        //    Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-        //    Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-           
-
-        //    Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-        //}
         protected void OnTaxPayerClicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
@@ -250,7 +211,7 @@ namespace GAZT.Views
 
         private void simTab_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
         {
-            
+
         }
     }
-    }
+}

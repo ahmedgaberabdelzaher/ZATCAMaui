@@ -55,7 +55,7 @@
 
     <ContentPage.Content>
         
-        <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
             <Grid  RowSpacing="0" Margin="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>

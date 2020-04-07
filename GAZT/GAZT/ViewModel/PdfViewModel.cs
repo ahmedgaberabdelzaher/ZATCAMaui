@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace GAZT.ViewModel
@@ -16,6 +17,7 @@ namespace GAZT.ViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand GoBackClick { get; set; }
         public string pdfUrl;
         #endregion
 
@@ -143,7 +145,12 @@ namespace GAZT.ViewModel
 
             _dialogService = dialogService;
 
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
 
+
+            });
 
 
         }

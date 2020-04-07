@@ -4395,6 +4395,27 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
+
+                        if (viewModel.IsVisibleInstrunction == true)
+                        {
+                            viewModel.SelectedIndex = 0;
+                        }
+                        if (viewModel.IsVisibleTaxPayerDetails == true)
+                        {
+                            viewModel.SelectedIndex = 1;
+
+                        }
+                        if (viewModel.IsVisibleVatReturnForm == true)
+                        {
+                            viewModel.SelectedIndex = 2;
+
+                        }
+                        if (viewModel.IsVisibleSummary == true)
+                        {
+                            viewModel.SelectedIndex = 3;
+
+                        }
+
                         viewModel.IsMainButtonEnabled = false;
 
                         viewModel.IsMainButtonEnabled = false;
