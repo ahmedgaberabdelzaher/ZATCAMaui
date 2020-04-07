@@ -253,7 +253,7 @@ namespace GAZT.Views.NewViews
 
         protected async void OnEditImageClicked(Object sender, EventArgs e)
         {
-            Label EditImage = sender as Label;
+            Image EditImage = sender as Image;
             SalesDetails selectedSalesDetails = (SalesDetails)EditImage.BindingContext;
 
             if (!viewModel.ConfirmButtonVisibility)

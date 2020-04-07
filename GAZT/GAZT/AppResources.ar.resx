@@ -1693,7 +1693,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSalesformpointofsales" xml:space="preserve">
-    <value>المبيعات من نقاط التحصيل</value>
+    <value>المبيعات عبر نقاط البيع</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZSomethingwentwrong" xml:space="preserve">
@@ -2968,5 +2968,9 @@
   <data name="ZZAnexceptionwasraised" xml:space="preserve">
     <value>An exception was raised</value>
     <comment>VAT Decalaration</comment>
+  </data>
+  <data name="ZZReturnStatus" xml:space="preserve">
+    <value>حالة الإقرار</value>
+    <comment>VAT and Zakat Dropdown</comment>
   </data>
 </root>

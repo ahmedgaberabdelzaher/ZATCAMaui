@@ -16,7 +16,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.ZZakatReturnListing}"
-             FlowDirection="LeftToRight"
+             FlowDirection="RightToLeft"
              x:Class="GAZT.Views.NewViews.ZakatReturnListPageView"
               NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -168,7 +168,7 @@
 
 
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,-6"
-    
+  
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatus}" FontSize="Small">
@@ -181,7 +181,7 @@
                    
                     HeaderHeight="40"
                     ShowHeader="true"
-                   
+                   HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
                     ShowColumnHeader="False"
                 x:Name="BPicker"
                    BackgroundColor="#EAF7CC"
