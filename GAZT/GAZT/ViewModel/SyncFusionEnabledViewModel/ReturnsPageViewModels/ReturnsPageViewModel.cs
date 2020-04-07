@@ -303,7 +303,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         {
                             if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                             {
-                                icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.TaxPeriod)).ToList();
+                                icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.DueDate)).ToList();
                             }
 
 
@@ -344,7 +344,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 });
                             }
                             List<EstimatedZakatReturnsResult> myZakatReturnsListTemp = new List<EstimatedZakatReturnsResult>();
@@ -456,10 +456,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             _navigationService.GoBack();
 
                         });
-                        //   await Task.Run(() =>
-                        //   {
-
-                        //  });
+                       
                     }
 
                 });
@@ -538,10 +535,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         {
             try
             {
-                var SortedList = ICRList.OrderBy(x => Convert.ToDateTime(x.DueDtC).TimeOfDay)
+                var SortedList = ICRList.OrderByDescending(x => Convert.ToDateTime(x.DueDtC).TimeOfDay)
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Date)
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Year);
-                return SortedList;
+                return SortedList.Reverse();
             }
             catch (Exception ex)
             {
