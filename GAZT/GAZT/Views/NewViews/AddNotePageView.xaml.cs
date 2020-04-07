@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -27,8 +28,9 @@ namespace GAZT.Views.NewViews
         public AddNotePageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
-            NavigationPage.SetBackButtonTitle(this, "");
-            NavigationPage.SetHasBackButton(this, false);
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
             ChangeAeroIcon();
             try

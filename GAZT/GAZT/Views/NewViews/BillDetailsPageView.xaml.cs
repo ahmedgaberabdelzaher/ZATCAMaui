@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using NavigationPage = Xamarin.Forms.NavigationPage;
 
 namespace GAZT.Views.NewViews
 {
@@ -25,6 +27,7 @@ namespace GAZT.Views.NewViews
         public BillDetailsPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.BillDetailsPageView;
             viewModel.ZakatReturnDetail = ZakatReturnDetail;
             SetLTR();
@@ -112,7 +115,7 @@ namespace GAZT.Views.NewViews
                 for (int index = Navigation.NavigationStack.Count - 2; index > 3; index--)
                 {
                     RemovedPageCount++;
-                    Page pg = Navigation.NavigationStack[index];
+                    Xamarin.Forms.Page pg = Navigation.NavigationStack[index];
                     Navigation.RemovePage(pg);
                     if (RemovedPageCount == 2)
                         break;

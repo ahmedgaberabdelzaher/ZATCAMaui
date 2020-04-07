@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GAZT.ViewModel.NewViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GAZT.Views.NewViews
 {
@@ -13,6 +14,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.AAcknowledgementView;
           
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             Acknowledgement.Source = url;
         }

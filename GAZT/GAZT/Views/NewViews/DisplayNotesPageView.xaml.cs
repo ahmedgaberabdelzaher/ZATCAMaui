@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -29,6 +30,7 @@ namespace GAZT.Views.NewViews
         {
 
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.DisplayNotesPageView;
@@ -61,7 +63,7 @@ namespace GAZT.Views.NewViews
                 //    note.Strline = "Registered in England. 125, Wharfedale Road, Winnersh Triangle, Wokingham RG41 5RB. Company No. 05872094. VAT No. GB 890 2687 92. Disclaimer: This e-mail and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom it is addressed. If you have received this e-mail in error, you must not copy, distribute or take any action in reliance on it.";
                 //    viewModel.NoteList.Add(note);
                 //}
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
             }
             catch(Exception e)

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views
@@ -27,6 +28,7 @@ namespace GAZT.Views
             try
             {
                 InitializeComponent();
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 //double unixTime = 1584987294.32348;
                 //DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
                 //long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
@@ -52,10 +54,10 @@ namespace GAZT.Views
             //}
             // string date = UtilityManager.SingleDateConversion("/Date(1442102400000)/");
             GetDeviceID();
-            NavigationPage.SetBackButtonTitle(this, "");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             //long number = 1000000000000;
             //string whatYouWant = number.ToString("#,##0");
-            NavigationPage.SetBackButtonTitle(this,"");
+            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this,"");
             App.IsArabic = true;
             this.BindingContext = viewModel;
             App.IsComingFromDashboardToLogOff = false;
