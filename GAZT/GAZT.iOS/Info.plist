@@ -65,7 +65,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.3.0</string>
+	<string>2.0.3.1</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -84,6 +84,6 @@
 		</dict>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.3.0</string>
+	<string>2.0.3.1</string>
 </dict>
 </plist>
