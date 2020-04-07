@@ -1,10 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GAZT.Views.PdfView" xmlns:controls="clr-namespace:pdfjs.Controls"
-              xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms">
-    <ContentPage.ToolbarItems>
+              xmlns:syncfusion="clr-namespace:Syncfusion.SfPdfViewer.XForms;assembly=Syncfusion.SfPdfViewer.XForms"
+             xmlns:controls1="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+              NavigationPage.HasNavigationBar="False"
+             FlowDirection="RightToLeft"
+               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl">
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation" 
                 Priority="1" Order="Primary" Clicked="Share_Clicked"  />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <custom1:DecimalPlacesConverter x:Key="DecimalPlacesConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -21,4 +38,42 @@
         </Grid>
         
     </ContentPage.Content>
+
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls1:TitleView   FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls1:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                            
+                             />
+
+                    </controls1:TitleView.LeadingView>
+                    <controls1:TitleView.TrailingView>
+                        <buttons:SfButton
+                            x:Name="ShareButton"
+                            Clicked="Share_Clicked"
+                           
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource Share}"
+                            
+                             />
+
+                    </controls1:TitleView.TrailingView>
+                </controls1:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
 </ContentPage>

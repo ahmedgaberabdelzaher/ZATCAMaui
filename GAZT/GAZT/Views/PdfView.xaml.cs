@@ -21,7 +21,10 @@ namespace GAZT.Views
             InitializeComponent();
             NavigationPage.SetBackButtonTitle(this, "");
             viewModel.pdfUrl = Pdfurl;
-          
+            ChangeAeroIcon();
+            SetLTR();
+
+
             this.BindingContext = viewModel;
            
         }
@@ -41,6 +44,26 @@ namespace GAZT.Views
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
+        }
+        private void SetLTR()
+        {
+
+
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
         private async void Share_Clicked(object sender, EventArgs e)
         {

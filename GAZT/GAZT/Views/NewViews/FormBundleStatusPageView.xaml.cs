@@ -25,6 +25,11 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
+            viewModel.FormBundleList = null;
+            viewModel.FormBundleApplicatioNumberList = null;
+            viewModel.SelectedFormBindleFbtyp = null;
+            viewModel.SelectedFormBindleFbnum = null;
+            viewModel.ListFormBudles = null;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
@@ -53,6 +58,7 @@ namespace GAZT.Views.NewViews
             await Task.Run(async () =>
             {
                 await viewModel.onPageLoad();
+                
             });
             Task.Run(() =>
             {
