@@ -208,7 +208,7 @@
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>
 
-                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}"></Label>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
@@ -227,7 +227,7 @@
                                                     <!--<Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
 
                                                     </Image>-->
-                                                    <Label TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
+                                                    <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
                                                         <Label.FormattedText >
                                                             <FormattedString>
                                                                 <Span  Text="{Binding BillTypeName}" />
@@ -236,27 +236,27 @@
                                                          <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
-                                                    </Label>
+                                                    </local1:CustomLabel>
                                                       <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnStackLayoutClicked"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <Label Text="{Binding BillCount}" FontSize="Title"  TextColor="#474747" Padding="0,10,0,15">
+                                                <local1:CustomLabel Text="{Binding BillCount}" FontSize="Title"  TextColor="#474747" Padding="0,10,0,15">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
-                                                </Label>
+                                                </local1:CustomLabel>
 
-                                                <Label Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray" FontFamily="{StaticResource SSTArabicMedium}">
+                                                <local1:CustomLabel Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray" FontFamily="{StaticResource SSTArabicMedium}">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
-                                                </Label>
-                                                <Label Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="Micro">
+                                                </local1:CustomLabel>
+                                                <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="Micro">
  <Label.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                     </Label.GestureRecognizers>
-                                                </Label>
+                                                </local1:CustomLabel>
                                                 <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnStackLayoutClicked"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
@@ -278,7 +278,7 @@
 
                     </listView:SfListView>
 
-                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"></Label>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
@@ -307,11 +307,11 @@
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
-                                                    <Label Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
-                                                    </Label>
+                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
+                                                    </local1:CustomLabel>
                                                 </StackLayout>
-                                                <Label Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}">
-                                                </Label>
+                                                <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}">
+                                                </local1:CustomLabel>
                                             </StackLayout>
                                         </Grid>
                                     </cards:SfCardView.Content>
@@ -330,7 +330,7 @@
 
                     </listView:SfListView>
 
-                    <Label Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}"></Label>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}"></local1:CustomLabel>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 

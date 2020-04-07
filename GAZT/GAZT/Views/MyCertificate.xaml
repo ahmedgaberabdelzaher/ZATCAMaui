@@ -56,7 +56,7 @@
             </tabView:SfTabView.SelectionIndicatorSettings>
             <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}">
                 <tabView:SfTabItem.Content>
-                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0" Margin="0,10,0,0">
+                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0">
                         <ListView  IsVisible="{Binding IsCertificateAvailableZakat}" ItemsSource ="{Binding CertificateListZakat}" VerticalOptions="Fill" x:Name="CertificateLstZakat" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                             <x:Arguments>
                                 <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
