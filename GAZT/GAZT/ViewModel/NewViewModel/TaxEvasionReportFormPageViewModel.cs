@@ -1044,7 +1044,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-            public void onPageLoad()
+            public async Task onPageLoad()
         {
 
             //   SelectedTaxEvasionCompanyType = ListFacilityCompanyType.Where(x => x.Id == "1").FirstOrDefault();
@@ -1059,7 +1059,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
                 ////string lang = UtilityManager.GetLanguageParameter();
-                regionlist = WebServiceManager.GAZTTESFormGetRegion();
+                regionlist = await WebServiceManager.GAZTTESFormGetRegion();
                 ////PopToRootPage();
                 ///FormBundleList = formbundleList.d.results;
                 if (regionlist != null && regionlist.RegionList.Count != 0)
@@ -1076,6 +1076,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
+      
         public void onSelectedTaxEvasionRegion()
         {
             try
@@ -1150,7 +1151,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-        public void CreateCompanyTypeList()
+        public async Task CreateCompanyTypeList()
         {
 
             try

@@ -23,6 +23,7 @@ namespace GAZT.Manager
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
         public static string IBANValidator = @"^[S][A]\d{22}$";
+        public static string TPTaxAvalable = string.Empty;
 
 
 

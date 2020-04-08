@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -34,6 +35,7 @@ namespace GAZT.Views.NewViews
         {
             InitializeComponent();
             ChangeAeroIcon();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.AttachmentPageView;
@@ -80,7 +82,7 @@ namespace GAZT.Views.NewViews
                 }
                 viewModel.OnPageLoad();
                 SetLTR();
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception e)
             {
@@ -172,7 +174,7 @@ namespace GAZT.Views.NewViews
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    var _navigation = Application.Current.MainPage.Navigation;
+                    var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
             }
@@ -235,7 +237,7 @@ namespace GAZT.Views.NewViews
 
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ListView Document = sender as ListView;
+            Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
 
             Attachment attachment = (Attachment)Document.SelectedItem;
             //attachment.DocUrl;
@@ -253,7 +255,7 @@ namespace GAZT.Views.NewViews
                 await email(attachment.Doguid, attachment);
             }
 
-            if (sender is ListView lv) lv.SelectedItem = null;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
 
         public async Task email(string doguid, Attachment attachment)

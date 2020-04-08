@@ -276,10 +276,9 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtLicenseNumber}" MaxLength="20" FontSize="Small">
                                         <Entry.Behaviors>
-
-                                            <custom1:RestrictSpecialCharactorsBehaviour/>
-                                            <!--<custom1:OnlyNumericValuesBehaviour/>-->
-
+                                        
+                                        <!--<custom1:RestrictSpecialCharactorsBehaviour/>-->
+                                            <custom1:OnlyNumericValuesBehaviour/>
                                         </Entry.Behaviors>
                                       </custom:BorderlessEntry>
                                   

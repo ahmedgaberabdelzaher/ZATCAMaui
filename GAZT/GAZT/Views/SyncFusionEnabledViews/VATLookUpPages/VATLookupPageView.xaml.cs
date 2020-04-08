@@ -14,8 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
+using Application = Xamarin.Forms.Application;
+using NavigationPage = Xamarin.Forms.NavigationPage;
 
 namespace GAZT.Views.NewViews
 {
@@ -29,6 +32,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.VATLookupPageView;
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
             //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
             this.BindingContext = viewModel;

@@ -6,6 +6,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
+using Android.Views;
 using Microsoft.AppCenter.Distribute;
 using Tavant.XToolkit;
 
@@ -28,7 +29,8 @@ namespace GAZT.Droid
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
-            }
+              
+            } 
             // Xamarin.Essentials.Platform.Init(this, bundle);
 
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
@@ -59,5 +61,6 @@ namespace GAZT.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
     }
 }
