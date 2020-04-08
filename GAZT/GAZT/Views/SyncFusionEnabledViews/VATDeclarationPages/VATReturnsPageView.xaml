@@ -11,6 +11,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              mc:Ignorable="d"
              Title="{x:Static local1:AppResources.VATDeclaration}"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
@@ -2368,7 +2369,7 @@
                                                 </Grid.ColumnDefinitions>
 
                                                 <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBAN}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                                <Frame Grid.Row="1" Margin="10,13,10,0"  Padding="20" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                                <!--<Frame Grid.Row="1" Margin="10,13,10,0"  Padding="20" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
                                                 <custom:GAZTBorderlessPicker Margin="11,13,11,0" PropertyChanged="BPicker_PropertyChanged" x:Name="BPicker" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" FontFamily="{StaticResource SSTArBold}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" ItemDisplayBinding="{Binding Iban}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -2376,8 +2377,49 @@
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="onIBANDropdownClicked" />
                                                     </Image.GestureRecognizers>
-                                                </Image>
-                                                <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
+                                                </Image>-->
+
+
+                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+   
+    ContainerType="Outlined" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+                                                                        IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" >
+                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontSize="Small" IsSpellCheckEnabled="False">
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <custom:CustomButton x:Name="btnIban" Clicked="btnIban_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                        </custom:CustomButton>
+
+                                        <syncfusion:SfPicker x:Name="BPicker"
+                                                             PropertyChanged="BPicker_PropertyChanged"
+                    HeaderHeight="60"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBAN}"
+                    
+                  
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                          HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             ShowColumnHeader="False"
+                                             ShowFooter="False"
+                                             BackgroundColor="#EAF7CC"
+                   ItemHeight="40"
+                    SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" DisplayMemberPath="Iban"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    PickerHeight="280"
+                    PickerWidth="270"
+                                          
+                     FooterHeight="46" >
+                                            <syncfusion:SfPicker.Behaviors>
+                                                <custom1:SfPickerBehavior />
+                                            </syncfusion:SfPicker.Behaviors>
+                                        </syncfusion:SfPicker>
+
+
+
+                                        <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
                                                     <CheckBox x:Name="chkCheckedRefund"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableCheckedRefund}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Start" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
 
                                                     </CheckBox>
@@ -2385,7 +2427,7 @@
 
                                                 </StackLayout>
                                                 <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANID}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                                <Frame Margin="10,13,10,0" Grid.Row="4" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                                <!--<Frame Margin="10,13,10,0" Grid.Row="4" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
                                                 <custom:GAZTBorderlessPicker Margin="11,13,11,0" x:Name="BPicker1" PropertyChanged="BPicker1_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"     SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" ItemDisplayBinding="{Binding Text}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -2393,9 +2435,47 @@
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="onIbanTypeButtonClicked" />
                                                     </Image.GestureRecognizers>
-                                                </Image>
-                                                <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                                <Frame Grid.Row="6"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
+                                                </Image>-->
+
+                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+   
+    ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
+                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontSize="Small" IsSpellCheckEnabled="False">
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <custom:CustomButton x:Name="btnIban1" Clicked="btnIban1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                        </custom:CustomButton>
+
+                                        <syncfusion:SfPicker x:Name="BPicker1"
+                                                             PropertyChanged="BPicker1_PropertyChanged"
+                    HeaderHeight="80"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBANID}"
+                    
+                    
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                          HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             ShowColumnHeader="False"
+                                             ShowFooter="False"
+                                             BackgroundColor="#EAF7CC"
+                   ItemHeight="40"
+                   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" DisplayMemberPath="Text"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    PickerHeight="280"
+                    PickerWidth="270"
+                                          
+                     FooterHeight="46" >
+                                            <syncfusion:SfPicker.Behaviors>
+                                                <custom1:SfPickerBehavior />
+                                            </syncfusion:SfPicker.Behaviors>
+                                        </syncfusion:SfPicker>
+
+
+                                        <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                <!--<Frame Grid.Row="6"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
                                                 <custom:GAZTBorderlessPicker Margin="11,13,11,0" PropertyChanged="BPicker2_PropertyChanged" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" x:Name="BPicker2"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}" FontFamily="{StaticResource SSTArBold}"   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" ItemDisplayBinding="{Binding Idnumber}"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  ></custom:GAZTBorderlessPicker>
@@ -2403,8 +2483,45 @@
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="onIdNumberButtonClicked" />
                                                     </Image.GestureRecognizers>
-                                                </Image>
-                                                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
+                                                </Image>-->
+
+                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+   
+    ContainerType="Outlined"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}"
+    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
+                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontSize="Small" IsSpellCheckEnabled="False">
+                                            </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                        <custom:CustomButton x:Name="btnIban2" Clicked="btnIban2_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                        </custom:CustomButton>
+
+                                        <syncfusion:SfPicker x:Name="BPicker2"
+                                                             PropertyChanged="BPicker2_PropertyChanged"
+                    HeaderHeight="80"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZVatRefundInformationSelectIBANIDNumber}"
+                    
+                    
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                          HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                                             ShowColumnHeader="False"
+                                             ShowFooter="False"
+                                             BackgroundColor="#EAF7CC"
+                   ItemHeight="40"
+                    SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" DisplayMemberPath="Idnumber"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    PickerHeight="280"
+                    PickerWidth="270"
+                                          
+                     FooterHeight="46" >
+                                            <syncfusion:SfPicker.Behaviors>
+                                                <custom1:SfPickerBehavior />
+                                            </syncfusion:SfPicker.Behaviors>
+                                        </syncfusion:SfPicker>
+
+                                        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding  IsIBANValid}" Value="false">
                                                             <Setter Property="BorderColor" Value="#ff0000" />
