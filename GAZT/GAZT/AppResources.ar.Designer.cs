@@ -4955,5 +4955,71 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSort", resourceCulture);
             }
         }
+        
+        public static string NoAppointmentText {
+            get {
+                return ResourceManager.GetString("NoAppointmentText", resourceCulture);
+            }
+        }
+        
+        public static string ZReturnStatus {
+            get {
+                return ResourceManager.GetString("ZReturnStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZZZBusinessInformation {
+            get {
+                return ResourceManager.GetString("ZZZBusinessInformation", resourceCulture);
+            }
+        }
+        
+        public static string ZZZContactInformation {
+            get {
+                return ResourceManager.GetString("ZZZContactInformation", resourceCulture);
+            }
+        }
+        
+        public static string ZZZIndividualInformation {
+            get {
+                return ResourceManager.GetString("ZZZIndividualInformation", resourceCulture);
+            }
+        }
+        
+        public static string ZOR {
+            get {
+                return ResourceManager.GetString("ZOR", resourceCulture);
+            }
+        }
+        
+        public static string ZQRScanner {
+            get {
+                return ResourceManager.GetString("ZQRScanner", resourceCulture);
+            }
+        }
+        
+        public static string ZStepsTitleScan {
+            get {
+                return ResourceManager.GetString("ZStepsTitleScan", resourceCulture);
+            }
+        }
+        
+        public static string ZZAnexceptionwasraised {
+            get {
+                return ResourceManager.GetString("ZZAnexceptionwasraised", resourceCulture);
+            }
+        }
+        
+        public static string ZZReturnStatus {
+            get {
+                return ResourceManager.GetString("ZZReturnStatus", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheselectedserviceisnotavailabletoyou {
+            get {
+                return ResourceManager.GetString("ZZTheselectedserviceisnotavailabletoyou", resourceCulture);
+            }
+        }
     }
 }

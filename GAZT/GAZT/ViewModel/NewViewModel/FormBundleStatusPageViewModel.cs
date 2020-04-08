@@ -300,8 +300,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
                 formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
+                    
+
                 PopToRootPage();
-                  FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
+                  FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x=>x.Fbnum).ToList();
                 });
 
                 Task.Run(() =>
