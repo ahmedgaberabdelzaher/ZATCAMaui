@@ -2198,7 +2198,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
-    <value>Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits.</value>
+    <value>Password has to contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZResendtheverificationcode" xml:space="preserve">
@@ -2230,7 +2230,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
-    <value>GCC ID should be between 7-15 digit</value>
+    <value>Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">
@@ -2565,7 +2565,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
-    <value>Account Confirmation</value>
+    <value>New Account Created Successfully</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">

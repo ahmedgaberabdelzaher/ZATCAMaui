@@ -10,7 +10,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              x:Class="GAZT.Views.NewViews.AmendSalesDetailsPageView"
              Title="{x:Static local:AppResources.ZAmendSalesDetails}"
              NavigationPage.HasNavigationBar="False"
@@ -84,7 +84,7 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Label x:Name="SalesType" Text="{Binding SalesType}" Grid.Row="0" IsEnabled="False"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
+                            <Label x:Name="SalesType" Text="{Binding SalesType}" Grid.Row="0" IsEnabled="False"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}" Margin="10">
 
                             </Label>
 
@@ -155,7 +155,7 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                     <custom:GAZTBorderlessEntry.Behaviors>
-                                        <custom:AlphaNumericValidatorBehaviour/>
+                                        <custom1:AlphabetandArabicCharacters/>
                                     </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>

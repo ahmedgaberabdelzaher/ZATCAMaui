@@ -3937,7 +3937,7 @@ namespace GAZT.Manager
             }
             else
             {
-
+                
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
 
             }

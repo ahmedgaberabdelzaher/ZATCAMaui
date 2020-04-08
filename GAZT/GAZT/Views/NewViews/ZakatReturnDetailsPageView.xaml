@@ -26,6 +26,7 @@
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
+         
             <StackLayout Spacing="0">
                 <controls:TitleView Title="{x:Static local:AppResources.ZZakatReturnDetails}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
@@ -49,6 +50,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
+           <ScrollView>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                  <Grid.RowDefinitions>
@@ -273,10 +275,12 @@
                                        ViewBoxHeight="70" 
                                        TextColor="White"/>
                     </StackLayout>
+                    
                 </StackLayout>
+                    
             </Grid>
                 <!-- Acticity indicator layout End -->
        </Grid>
-            <!--</ScrollView>-->
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -26,11 +26,25 @@ namespace GAZTeServicesApp.Views.Common
             InitializeComponent();
             SetLTR();
         }
+
+        //protected  override void OnAppearing()
+        //{
+        //    base.OnAppearing();
+        //    SetLTR();
+        //}
         private void SetLTR()
         {
             if (!App.IsArabic)
             {
                 this.FlowDirection = Xamarin.Forms.FlowDirection.LeftToRight;
+               
+            }
+            else
+            {
+
+                
+
+
             }
         }
 

@@ -234,7 +234,7 @@
      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  x:Name="Password" IsPassword="True" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+                            <custom:GAZTBorderlessEntry x:Name="Password" IsPassword="True" FontSize="Small" IsReadOnly="True"  Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" TextColor= "#ffffff"  IsEnabled="False">
                         </custom:GAZTBorderlessEntry>
 
                     </inputLayout:SfTextInputLayout>

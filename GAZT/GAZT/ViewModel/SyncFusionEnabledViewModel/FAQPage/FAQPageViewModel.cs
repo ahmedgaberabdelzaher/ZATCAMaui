@@ -48,6 +48,22 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
             }
         }
 
+        private bool _isNoDataLabelVisible;
+        public bool IsNoDataLabelVisible
+        {
+            get
+            {
+                return _isNoDataLabelVisible;
+            }
+            set
+            {
+                _isNoDataLabelVisible = value;
+                RaisePropertyChanged("IsNoDataLabelVisible");
+            }
+        }
+
+
+
 
         private bool _isLoading = false;
         public bool IsLoading
@@ -125,12 +141,32 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                     }
                     Questions = DummyQuestions;
                 }
-
+                
+                if (Questions==null)
+                {
+                    IsNoDataLabelVisible = true;
+                }
+                else
+                {
+                    if (Questions.Count == 0)
+                    {
+                        IsNoDataLabelVisible = true;
+                    }
+                    else
+                    {
+                        IsNoDataLabelVisible = false;
+                    }
+                }
                
             }
             catch(Exception ex)
             {
-
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.ZError);
+                    _navigationService.GoBack();
+                });
             }
         }
         public void PopToRootPage()
