@@ -4989,7 +4989,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account Confirmation.
+        ///   Looks up a localized string similar to New Account Created Successfully.
         /// </summary>
         public static string ZZAccountCreatedSuccessfully {
             get {
