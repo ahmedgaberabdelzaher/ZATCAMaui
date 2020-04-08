@@ -36,7 +36,7 @@
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
-                    <control:BorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"  Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray">
+                    <control:BorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray">
                     </control:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
 
