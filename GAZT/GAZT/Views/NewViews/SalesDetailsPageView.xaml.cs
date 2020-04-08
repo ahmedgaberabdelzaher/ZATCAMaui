@@ -2,10 +2,6 @@
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -210,7 +206,7 @@ namespace GAZT.Views.NewViews
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
                     index = 7;
-                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ?viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[7].IsOldValueChanged = IsOldValueChanged(index);
