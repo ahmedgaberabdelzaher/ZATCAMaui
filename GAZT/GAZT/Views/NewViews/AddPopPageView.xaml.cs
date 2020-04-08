@@ -20,13 +20,27 @@ namespace GAZT.Views.NewViews
         AddPopPageViewModel viewModel;
         public AddPopPageView(PopUp objPopUP)
         {
-            InitializeComponent();
+           
             try
             {
                 viewModel = App.Locator.AddPopPageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
                 SetLTR();
+
+                if (objPopUP.isFontSet)
+                {
+                    if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                    {
+                        Message_label.FontFamily = "SSTArabic-Bold.ttf#SSTArabic";
+                    }
+                    else
+                    {
+                        Message_label.FontFamily = "SSTArabic-Bold";
+                    }
+                    
+                    //Msglabel.FontFamily = "SSTArBold";
+                }
                 viewModel.PopMessage = objPopUP.Message;
                 viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
                 viewModel.Link = objPopUP.Link;

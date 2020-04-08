@@ -1297,6 +1297,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                      
                     }
                     else
                     {
@@ -1553,6 +1554,7 @@ namespace GAZT.Views.NewViews
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
                         }
                         else
                         {
@@ -1585,6 +1587,7 @@ namespace GAZT.Views.NewViews
                             if (App.IsArabic)
                             {
                                 popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
                             }
                             else
                             {
@@ -1619,6 +1622,7 @@ namespace GAZT.Views.NewViews
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
                         }
                         else
                         {
@@ -1650,6 +1654,7 @@ namespace GAZT.Views.NewViews
                             if (App.IsArabic)
                             {
                                 popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
                             }
                             else
                             {
@@ -1680,6 +1685,7 @@ namespace GAZT.Views.NewViews
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
                         }
                         else
                         {
@@ -1702,6 +1708,7 @@ namespace GAZT.Views.NewViews
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
                         }
                         else
                         {
