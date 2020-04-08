@@ -84,7 +84,7 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Label x:Name="SalesType" Text="{Binding SalesType}" Grid.Row="0" IsEnabled="False"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}">
+                            <Label x:Name="SalesType" Text="{Binding SalesType}" Grid.Row="0" IsEnabled="False"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}" Margin="10">
 
                             </Label>
 

@@ -10,7 +10,9 @@
     xmlns:localres="clr-namespace:GAZT;assembly:GAZT"
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
      xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:custom="clr-namespace:GAZT">
+    xmlns:custom="clr-namespace:GAZT"
+    FlowDirection="RightToLeft"
+    >
 
     <ContentView.Resources>
         <ResourceDictionary>
