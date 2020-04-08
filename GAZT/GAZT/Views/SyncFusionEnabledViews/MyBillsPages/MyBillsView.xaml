@@ -9,6 +9,7 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:local1="clr-namespace:GAZT"
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.MyBills}"
              x:Class="GAZT.Views.MyBillsView"
@@ -83,7 +84,7 @@
                                 </chart:SfChart.Series>
                             </chart:SfChart>-->
 
-                                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"  HeightRequest="250">
+                                <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand"  IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"  HeightRequest="250">
                                     <chart:SfChart.Title>
                                         <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"  />
                                     </chart:SfChart.Title>
@@ -150,6 +151,7 @@
 
                                 <ListView  x:Name="Bills" 
            ItemsSource="{Binding MyBills,Mode=TwoWay}"
+                                           IsVisible="{Binding SetNoDataLabelVisibilityALLList}"
                                        ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -282,7 +284,8 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-
+                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
+                                </local1:CustomLabel>
                             </StackLayout>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
@@ -298,6 +301,7 @@
                             <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <ListView  x:Name="BillsPaid" 
            ItemsSource="{Binding MyBillsPaid}"
+                                           IsVisible="{Binding SetNoDataLabelVisibilityPAIDList}"
                                             ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -430,6 +434,8 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPAID}">
+                                </local1:CustomLabel>
                             </StackLayout>
 
                         </tabview:SfTabItem.Content>
@@ -446,6 +452,7 @@
                             <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <ListView  x:Name="BillsUnPaid" 
            ItemsSource="{Binding MyBillsUnPaid}"
+                                           IsVisible="{Binding SetNoDataLabelVisibilityUNPAIDList}"
                                             ItemTapped="Bills_ItemTapped"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
@@ -578,6 +585,8 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityUNPAID}">
+                                </local1:CustomLabel>
                             </StackLayout>
 
                         </tabview:SfTabItem.Content>
@@ -596,6 +605,7 @@
            ItemsSource="{Binding MyBillsPartiallyPaid}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
+                                           IsVisible="{Binding SetNoDataLabelVisibilityPPAIDList}"
                                             ItemTapped="Bills_ItemTapped"
                                            
             HasUnevenRows="True"
@@ -727,6 +737,8 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPPAID}">
+                                </local1:CustomLabel>
                             </StackLayout>
 
                         </tabview:SfTabItem.Content>
