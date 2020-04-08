@@ -284,7 +284,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
                                 </local1:CustomLabel>
                             </StackLayout>
                         </tabview:SfTabItem.Content>
@@ -434,7 +434,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
 
@@ -585,7 +585,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityUNPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityUNPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
 
@@ -737,7 +737,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
 
