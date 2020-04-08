@@ -6161,7 +6161,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits..
+        ///   Looks up a localized string similar to Password has to contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits.
         /// </summary>
         public static string ZZPasswordregulationsforSignup {
             get {

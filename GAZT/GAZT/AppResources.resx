@@ -2198,7 +2198,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
-    <value>Password should contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits.</value>
+    <value>Password has to contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZResendtheverificationcode" xml:space="preserve">

@@ -178,6 +178,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
                     }
                     else
                     {
