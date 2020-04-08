@@ -8,7 +8,7 @@
                xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl">
     <!--<ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation" 
+        <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation1" 
                 Priority="1" Order="Primary" Clicked="Share_Clicked"  />
     </ContentPage.ToolbarItems>-->
 

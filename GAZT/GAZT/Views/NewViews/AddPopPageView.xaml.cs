@@ -48,6 +48,8 @@ namespace GAZT.Views.NewViews
                     viewModel.IsRed = "#7D858D";
                 }
                 viewModel.FlowDirections = objPopUP.FlowDirections;
+
+               
             }
             catch (Exception e)
             {
