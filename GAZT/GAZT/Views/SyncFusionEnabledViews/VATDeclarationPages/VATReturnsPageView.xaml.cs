@@ -4463,6 +4463,21 @@ namespace GAZT.Views.NewViews
         {
 
         }
+
+        private void btnIban_Clicked(object sender, EventArgs e)
+        {
+            BPicker.IsOpen = true;
+        }
+
+        private void btnIban1_Clicked(object sender, EventArgs e)
+        {
+            BPicker1.IsOpen = true;
+        }
+
+        private void btnIban2_Clicked(object sender, EventArgs e)
+        {
+            BPicker2.IsOpen = true;
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{
