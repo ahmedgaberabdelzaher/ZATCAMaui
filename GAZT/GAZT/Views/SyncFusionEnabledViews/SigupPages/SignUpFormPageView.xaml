@@ -391,11 +391,11 @@
     Hint="{x:Static local:AppResources.ZZPhoneNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtPhoneNumber}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small">
+                            <custom:BorderlessEntry Text="{Binding TxtPhoneNumber}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
                     </Grid>
