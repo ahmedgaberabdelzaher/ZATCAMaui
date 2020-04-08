@@ -165,12 +165,7 @@
                                         <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}">
                                         </Label>
                                        
-                                        <Label
-                       Grid.Column="2" Grid.Row="2"
-                        Margin="0,10,0,2"
-                        Style="{StaticResource IconLabelStyleVAT}"
-                         TextColor="#005e4b"
-                        Text="{StaticResource Help}" >
+                                        <Label Grid.Column="2" Grid.Row="0" Margin="0,10,0,2" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}" >
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
                                             </Label.GestureRecognizers>
@@ -185,7 +180,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </GAZT:CustomLabel>
-                                        <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="0" HorizontalOptions="StartAndExpand" VerticalOptions="End" Margin="0,10,0,10">
+                                        <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="End" Margin="0,10,0,10">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                 Tapped="OnEditImageClicked"
