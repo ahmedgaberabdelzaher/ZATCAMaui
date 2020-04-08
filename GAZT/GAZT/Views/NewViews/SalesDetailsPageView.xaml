@@ -50,7 +50,7 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
 
-            <Grid >
+            <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12*"/>
                     <RowDefinition Height="63*"/>
@@ -61,23 +61,25 @@
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
-                <GAZT:CustomLabel Margin="10,0,10,0"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"></StackLayout>
+                <GAZT:CustomLabel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,0,10,0"  FontSize="12"><!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
+
                     <GAZT:CustomLabel.FormattedText>
                         <FormattedString>
 
-                            <Span Text="{x:Static local:AppResources.FiscalYear}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <Span Text="{x:Static local:AppResources.FiscalYear}" TextColor="{StaticResource GoldLabelTextColor}"/>
                             <Span Text=" " />
-                            <Span Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                            <!--<Span Text="{x:Static x:Environment.NewLine}" />-->
-
-                            <!--<Span Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
-                            <Span Text=" " />
-                            <Span Text="{Binding Abrzu}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Span Text="{Binding Persl}"  TextColor="{StaticResource DashboardGrayTextColor}"/>
                             <Span Text="{x:Static x:Environment.NewLine}" />
 
-                            <Span Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                           <Span Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  TextColor="{StaticResource GoldLabelTextColor}"/>
+                            <Span Text=" " />
+                            <Span Text="{Binding Abrzu}" TextColor="{StaticResource DashboardGrayTextColor}"/>
+                            <Span Text="{x:Static x:Environment.NewLine}" />
+
+                            <Span Text="{x:Static local:AppResources.ZReturnReferenceNumber}" TextColor="{StaticResource GoldLabelTextColor}"/><!--Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"-->
                             <Span Text=" "/>
-                            <Span  Text="{Binding Fbnum}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+                            <Span  Text="{Binding Fbnum}" TextColor="{StaticResource DashboardGrayTextColor}"/>
 
                         </FormattedString>
                     </GAZT:CustomLabel.FormattedText>
@@ -98,7 +100,7 @@
                         <ColumnDefinition Width="10*"/>
                     </Grid.ColumnDefinitions>
 
-                    <BoxView  Grid.Row="0" Margin="0,2,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+                    <BoxView  Grid.Row="0" Margin="0,0,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
 
 
                     <Label Text="{x:Static local:AppResources.ZEstimatedSales}"  Grid.Row="1" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="10,0,10,0"/>
