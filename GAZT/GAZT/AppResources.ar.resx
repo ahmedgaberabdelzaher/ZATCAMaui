@@ -2563,7 +2563,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
-    <value>تم إنشاء اسم المستخدم بنجاح</value>
+    <value>تم إنشاء الحساب الجديد بنجاح</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
