@@ -61,23 +61,23 @@
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
 
-                <GAZT:CustomLabel Margin="10,0,10,2"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                <GAZT:CustomLabel Margin="10,0,10,0"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                     <GAZT:CustomLabel.FormattedText>
                         <FormattedString>
 
                             <Span Text="{x:Static local:AppResources.FiscalYear}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                             <Span Text=" " />
                             <Span Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                            <Span Text="{x:Static x:Environment.NewLine}" />
+                            <!--<Span Text="{x:Static x:Environment.NewLine}" />-->
 
-                            <Span Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                            <!--<Span Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                             <Span Text=" " />
                             <Span Text="{Binding Abrzu}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                             <Span Text="{x:Static x:Environment.NewLine}" />
 
                             <Span Text="{x:Static local:AppResources.ZReturnReferenceNumber}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
                             <Span Text=" "/>
-                            <Span  Text="{Binding Fbnum}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                            <Span  Text="{Binding Fbnum}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
 
                         </FormattedString>
                     </GAZT:CustomLabel.FormattedText>
