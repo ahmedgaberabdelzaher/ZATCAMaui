@@ -48,8 +48,8 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Frame Style="{StaticResource GAZTFrameStyleEntryForLableBackground}" HorizontalOptions="Start" VerticalOptions="StartAndExpand"  >
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <Frame Style="{StaticResource GAZTFrameStyleEntryForLableBackground}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"  >
                 <local1:CustomLabel Text="{x:Static local:AppResources.ZVatcreditcarriedforward}" HorizontalTextAlignment="Start" FontSize="Caption"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                 </local1:CustomLabel>
             </Frame>
