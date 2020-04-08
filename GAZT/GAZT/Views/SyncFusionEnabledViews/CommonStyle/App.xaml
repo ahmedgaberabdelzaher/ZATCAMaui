@@ -757,6 +757,15 @@
               
             </Style>
 
+            <Style x:Key="PickerEntryStyle" x:Name="PickerEntryStyle" TargetType="Entry">
+                <Setter Property="FontAttributes" Value="Bold">
+                  
+                </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
+
+            </Style>
+
+
             <!-- new styles -->
 
 
