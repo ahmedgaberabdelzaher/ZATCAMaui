@@ -1643,7 +1643,7 @@ namespace GAZT.Views.NewViews
                                 Messages.Append(Environment.NewLine);
 
                             }
-                            Messages.Append(AppResources.ZZPleaseEnterValidId);
+                            Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
 
                         }
                         if (Messages.Length > 0)

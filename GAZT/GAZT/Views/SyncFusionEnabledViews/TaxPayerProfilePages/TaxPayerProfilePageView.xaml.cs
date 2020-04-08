@@ -82,15 +82,15 @@ namespace GAZT.Views.NewViews
             }
 
         }
-        public void OnPasswordVisibilityClicked(object sender, EventArgs args)
-        {
-            viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
-        }
+        //public void OnPasswordVisibilityClicked(object sender, EventArgs args)
+        //{
+        //    viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
+        //}
 
-        public void OnPasswordFocused(object sender, EventArgs args)
-        {
-            Password.Unfocus();
-        }
+        //public void OnPasswordFocused(object sender, EventArgs args)
+        //{
+        //    Password.Unfocus();
+        //}
         
         protected override void OnDisappearing()
         {
