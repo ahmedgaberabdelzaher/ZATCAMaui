@@ -2,12 +2,9 @@
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.NewViews
@@ -31,6 +28,7 @@ namespace GAZT.Views.NewViews
         public SalesDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
                 viewModel = App.Locator.SalesDetailsPageView;
@@ -45,7 +43,7 @@ namespace GAZT.Views.NewViews
                 viewModel.ClearData();
                 viewModel.onPageLoad();
                 viewModel.ZakatReturnDetail = ZakatReturnDetail;
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
             }
             catch(Exception ex)
@@ -60,7 +58,7 @@ namespace GAZT.Views.NewViews
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
 
-                if (sender is ListView lv) lv.SelectedItem = null;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
         }
 
@@ -208,7 +206,7 @@ namespace GAZT.Views.NewViews
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
                     index = 7;
-                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ? viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
+                    viewModel.SalesDetailsList[7].InformationFromPartieToCompare = viewModel.SalesDetailsList[7].NewValue = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue == "" ?viewModel.SalesDetailsList[index].InformationFromPartie : AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;// AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                     viewModel.SalesDetailsList[7].ChangeReason = AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason;
                     viewModel.SalesDetailsList[7].estimateZakatAttachment = AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment;
                     viewModel.SalesDetailsList[7].IsOldValueChanged = IsOldValueChanged(index);

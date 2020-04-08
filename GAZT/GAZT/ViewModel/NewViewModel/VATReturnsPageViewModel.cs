@@ -1582,6 +1582,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _txtSelectedIBAN;
+        public string TxtSelectedIBAN
+        {
+            get
+            {
+                return _txtSelectedIBAN;
+            }
+            set
+            {
+                _txtSelectedIBAN = value;
+
+                RaisePropertyChanged("TxtSelectedIBAN");
+            }
+        }
+
         private Result2 _selectedIBAN;
         public Result2 SelectedIBAN
         {
@@ -1592,7 +1607,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBAN = value;
-
+                if (_selectedIBAN != null)
+                {
+                    TxtSelectedIBAN = _selectedIBAN.Iban;
+                }
                 RaisePropertyChanged("SelectedIBAN");
             }
         }
@@ -1850,13 +1868,28 @@ namespace GAZT.ViewModel.NewViewModel
                 if (_selectedIBANType != null)
                 {
                     SetIBANIdNumber();
-
+                    TxtSelectedIBANType = _selectedIBANType.Text;
                 }
                 else
                 {
 
                 }
                 RaisePropertyChanged("SelectedIBANType");
+            }
+        }
+
+        private string _txtSelectedIBANType;
+        public string TxtSelectedIBANType
+        {
+            get
+            {
+                return _txtSelectedIBANType;
+            }
+            set
+            {
+                _txtSelectedIBANType = value;
+               
+                RaisePropertyChanged("TxtSelectedIBANType");
             }
         }
 
@@ -1900,8 +1933,27 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBANIDNumber = value;
+                if (_selectedIBANIDNumber != null)
+                {
+                    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
+                }
 
                 RaisePropertyChanged("SelectedIBANIDNumber");
+            }
+        }
+
+        private string _TxtSelectedIBANIDNumber;
+        public string TxtSelectedIBANIDNumber
+        {
+            get
+            {
+                return _TxtSelectedIBANIDNumber;
+            }
+            set
+            {
+                _TxtSelectedIBANIDNumber = value;
+
+                RaisePropertyChanged("TxtSelectedIBANIDNumber");
             }
         }
 

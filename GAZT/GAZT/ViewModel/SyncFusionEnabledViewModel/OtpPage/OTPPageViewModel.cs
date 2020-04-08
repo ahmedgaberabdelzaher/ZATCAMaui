@@ -17,6 +17,7 @@ namespace GAZT.ViewModel.NewViewModel
     public class OTPPageViewModel : ViewModelBase
     {
         #region Variable
+        private Dashboard DashboardData = null;
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
@@ -145,7 +146,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private String _enteredOTP;
+        private String _enteredOTP = "0106";
         public String EnteredOTP
         {
             get
@@ -460,11 +461,65 @@ namespace GAZT.ViewModel.NewViewModel
                                 //_navigationService.NavigateTo(App.SFLandingPageView);
                                 if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
                                     {
-                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService, new BillInfo());
+                                      
+                                            _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService, new BillInfo());
+                                        
                                     }
                                     else
                                     {
-                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);
+                                        if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.ZakatReturnListPageView)
+                                        {
+                                            DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                                            bool IsServiceAvail = false;
+                                            string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                                            foreach (string ItemType in TpTypes)
+                                            {
+                                                if (ItemType == "05")
+                                                {
+                                                    IsServiceAvail = true;
+                                                }
+
+                                            }
+                                            if (IsServiceAvail == true)
+                                            {
+                                                _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);
+                                            }
+                                            else
+                                            {
+                                                _dialogService.ShowMessage(AppResources.ZZTheselectedserviceisnotavailabletoyou, AppResources.Information);
+                                                _navigationService.NavigateTo(App.SFLandingPageView);
+
+                                            }
+                                        }
+                                        else if(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.ICRListPageView)
+                                        {
+                                            DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                                            bool IsServiceAvail = false;
+                                            string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                                            foreach (string ItemType in TpTypes)
+                                            {
+                                                if (ItemType == "03" || ItemType == "13")
+                                                {
+                                                    IsServiceAvail = true;
+                                                }
+
+                                            }
+                                            if (IsServiceAvail == true)
+                                            {
+                                                _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);
+                                            }
+                                            else
+                                            {
+                                                _dialogService.ShowMessage(AppResources.ZZTheselectedserviceisnotavailabletoyou, AppResources.Information);
+                                                _navigationService.NavigateTo(App.SFLandingPageView);
+
+                                            }
+                                        }
+                                        else
+                                        {
+                                            _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);
+
+                                        }
 
                                     }
                                 });

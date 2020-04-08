@@ -25,6 +25,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
         private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
         
+       
+
         public string SubmittedZakatWithCountTest
         {
             get
@@ -48,6 +50,218 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
         public ICommand GoBackClick { get; set; }
+
+        
+        private bool _setNoDataLabelVisibilityVATSubmitted = false;
+        public bool SetNoDataLabelVisibilityVATSubmitted
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATSubmitted;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATSubmitted = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmitted");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatSubmitted = false;
+        public bool SetNoDataLabelVisibilityZakatSubmitted
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatSubmitted;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatSubmitted = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmitted");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVATNonSubmitted = false;
+        public bool SetNoDataLabelVisibilityVATNonSubmitted
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATNonSubmitted;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATNonSubmitted = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmitted");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatNonSubmitted = false;
+        public bool SetNoDataLabelVisibilityZakatNonSubmitted
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatNonSubmitted;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatNonSubmitted = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmitted");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVATOverDue = false;
+        public bool SetNoDataLabelVisibilityVATOverDue
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATOverDue;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATOverDue = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDue");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatOverDue = false;
+        public bool SetNoDataLabelVisibilityZakatOverDue
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatOverDue;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatOverDue = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDue");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVATSubmittedList = false;
+        public bool SetNoDataLabelVisibilityVATSubmittedList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATSubmittedList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATSubmittedList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmittedList");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatSubmittedList = false;
+        public bool SetNoDataLabelVisibilityZakatSubmittedList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatSubmittedList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatSubmittedList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmittedList");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVATNonSubmittedList = false;
+        public bool SetNoDataLabelVisibilityVATNonSubmittedList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATNonSubmittedList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATNonSubmittedList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmittedList");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatNonSubmittedList = false;
+        public bool SetNoDataLabelVisibilityZakatNonSubmittedList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatNonSubmittedList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatNonSubmittedList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmittedList");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityVATOverDueList = false;
+        public bool SetNoDataLabelVisibilityVATOverDueList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityVATOverDueList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityVATOverDueList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDueList");
+            }
+        }
+
+        private bool _setNoDataLabelVisibilityZakatOverDueList = false;
+        public bool SetNoDataLabelVisibilityZakatOverDueList
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityZakatOverDueList;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityZakatOverDueList = value;
+
+                RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDueList");
+            }
+        }
+
+
+        private bool _isVATVisible = false;
+        public bool IsVATVisible
+        {
+            get
+            {
+                return _isVATVisible;
+            }
+            set
+            {
+                _isVATVisible = value;
+
+                RaisePropertyChanged("IsVATVisible");
+            }
+        }
+
+        private bool _isZakatVisible = false;
+        public bool IsZakatVisible
+        {
+            get
+            {
+                return _isZakatVisible;
+            }
+            set
+            {
+                _isZakatVisible = value;
+
+                RaisePropertyChanged("IsZakatVisible");
+            }
+        }
 
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
         public ReturnsListCountsByStatus ReturnsListCountsByStatus
@@ -292,7 +506,25 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 {
                     ICRListVATSubmitted = null;
                     ReturnsListCountsByStatus = new ReturnsListCountsByStatus();
+                    IsVATVisible = false;
+                    IsZakatVisible = false;
+                    if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                    {
+                        string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                        foreach (string ItemType in TpTypes)
+                        {
+                            if (ItemType == "05")
+                            {
 
+                                IsZakatVisible = true;
+                            }
+                            if (ItemType == "03" || ItemType == "13")
+                            {
+                                IsVATVisible = true;
+                            }
+
+                        }
+                    }
                     ICR icrList = null;
                     try
                     {
@@ -316,17 +548,40 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                 ICRListVATNonSubmitted = icrList.ICR_LISTSet.Where(a => a.Status == "E0001" || a.Status == "E0013").ToList<ICRListSet>();
                                 DateTime Today = DateTime.Now;
                                 ICRListVATOverDue = icrList.ICR_LISTSet.Where(a => a.Status != "E0045" && a.Status != "E0055" && a.DueDateDateTime < Today).ToList<ICRListSet>();
-                                if (ICRListVATSubmitted != null)
+                                if (ICRListVATSubmitted.Count > 0)
                                 {
                                     ReturnsListCountsByStatus.SubmittedVATCount = ICRListVATSubmitted.Count;
+                                    SetNoDataLabelVisibilityVATSubmittedList = true;
+                                    SetNoDataLabelVisibilityVATSubmitted = false;
                                 }
-                                if (ICRListVATNonSubmitted != null)
+                                else
+                                {
+                                    SetNoDataLabelVisibilityVATSubmittedList = false;
+                                    SetNoDataLabelVisibilityVATSubmitted = true;
+                                }
+                                if (ICRListVATNonSubmitted.Count > 0)
                                 {
                                     ReturnsListCountsByStatus.NonSubmittedVATCount = ICRListVATNonSubmitted.Count;
+                                    SetNoDataLabelVisibilityVATNonSubmittedList = true;
+                                    SetNoDataLabelVisibilityVATNonSubmitted = false;
                                 }
-                                if (ICRListVATOverDue != null)
+                                else
+                                {
+                                    SetNoDataLabelVisibilityVATNonSubmittedList = false;
+                                    SetNoDataLabelVisibilityVATNonSubmitted = true;
+
+                                }
+                                if (ICRListVATOverDue.Count > 0)
                                 {
                                     ReturnsListCountsByStatus.OverdueVATCount = ICRListVATOverDue.Count;
+                                    SetNoDataLabelVisibilityVATOverDueList = true;
+                                    SetNoDataLabelVisibilityVATOverDue = false;
+                                }
+                                else
+                                {
+                                    SetNoDataLabelVisibilityVATOverDueList = false;
+                                    SetNoDataLabelVisibilityVATOverDue = true;
+
                                 }
 
                             }
@@ -425,17 +680,42 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             MyZakatReturnsNonSubmitted = MyZakatReturnsNonSubmittedChild;
                             MyZakatReturnsSubmitted = MyZakatReturnsSubmittedChild;
                             MyZakatReturnsOverDue = MyZakatReturnsOverDueChild;
-                            if (MyZakatReturnsSubmitted != null)
+                            if (MyZakatReturnsSubmitted.Count >0)
                             {
                                 ReturnsListCountsByStatus.SubmittedZakatCount = MyZakatReturnsSubmitted.Count;
+                                SetNoDataLabelVisibilityZakatSubmittedList = true;
+                                SetNoDataLabelVisibilityZakatSubmitted = false;
                             }
-                            if (MyZakatReturnsNonSubmitted != null)
+                            else
+                            {
+                                SetNoDataLabelVisibilityZakatSubmittedList = false;
+                                SetNoDataLabelVisibilityZakatSubmitted = true;
+
+                            }
+                            if (MyZakatReturnsNonSubmitted.Count > 0)
                             {
                                 ReturnsListCountsByStatus.NonSubmittedZakatCount = MyZakatReturnsNonSubmitted.Count;
+                                SetNoDataLabelVisibilityZakatNonSubmittedList = true;
+                                SetNoDataLabelVisibilityZakatNonSubmitted = false;
+
                             }
-                            if (MyZakatReturnsOverDue != null)
+                            else
+                            {
+                                SetNoDataLabelVisibilityZakatNonSubmittedList = false;
+                                SetNoDataLabelVisibilityZakatNonSubmitted = true;
+
+                            }
+                            if (MyZakatReturnsOverDue.Count > 0)
                             {
                                 ReturnsListCountsByStatus.OverdueZakatCount = MyZakatReturnsOverDue.Count;
+                                SetNoDataLabelVisibilityZakatOverDueList = true;
+                                SetNoDataLabelVisibilityZakatOverDue = false;
+                            }
+                            else
+                            {
+                                SetNoDataLabelVisibilityZakatOverDueList = false;
+                                SetNoDataLabelVisibilityZakatOverDue = true;
+
                             }
                         }
                         catch (Exception ex)

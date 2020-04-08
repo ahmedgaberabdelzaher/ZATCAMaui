@@ -653,7 +653,7 @@
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,-5"/>
+                <Setter Property="Padding" Value="0,0,0,0"/>
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
@@ -756,6 +756,15 @@
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
               
             </Style>
+
+            <Style x:Key="PickerEntryStyle" x:Name="PickerEntryStyle" TargetType="Entry">
+                <Setter Property="FontAttributes" Value="Bold">
+                  
+                </Setter>
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
+
+            </Style>
+
 
             <!-- new styles -->
 

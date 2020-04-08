@@ -227,7 +227,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFDAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False" >
+                            <Entry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -235,7 +235,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}" >
+                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}"  MaxLength="100">
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -360,24 +360,11 @@ xmlns:custom="clr-namespace:GAZT"
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-
-                                <!--<Label Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static local:AppResources.ZZTIN}"  />
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <Frame  Grid.Row="1"  x:Name="FrmTIN"  Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}">
-                                </Frame>
-                                <custom:GAZTBorderlessEntry  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>-->
-
                                 <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZTIN}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused" IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
+                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused"  IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
                             </Grid>

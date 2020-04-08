@@ -2735,7 +2735,7 @@
     <value>الرقم المميز غير صحيح</value>
   </data>
   <data name="ZInvalidVatNumber" xml:space="preserve">
-    <value>رقم ضريبة القيمة المضافة غير صالح</value>
+    <value>رقم حساب ضريبة القيمة المضافة غيرصحيح</value>
   </data>
   <data name="ZZZReturnsNotFound" xml:space="preserve">
     <value>لا توجد اقرارات</value>
@@ -2972,5 +2972,9 @@
   <data name="ZZReturnStatus" xml:space="preserve">
     <value>حالة الإقرار</value>
     <comment>VAT and Zakat Dropdown</comment>
+  </data>
+  <data name="ZZTheselectedserviceisnotavailabletoyou" xml:space="preserve">
+    <value>The selected service is not available to you</value>
+    <comment>OTP Page</comment>
   </data>
 </root>

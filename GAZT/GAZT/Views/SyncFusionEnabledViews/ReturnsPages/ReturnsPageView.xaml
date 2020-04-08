@@ -8,7 +8,7 @@
                 xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
                 mc:Ignorable="d"
                 xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-                Title="{x:Static local:AppResources.ZZZVATReturn}"
+                Title="{x:Static local:AppResources.Returns}"
                 xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
                 xmlns:custom="clr-namespace:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
@@ -54,7 +54,7 @@
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -62,7 +62,7 @@
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
-                                                <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                                <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityVATSubmittedList}" >
                                                     <ListView  x:Name="ICRList"
             ItemsSource="{Binding ICRListVATSubmitted}"
                                                             SelectedItem="{Binding SelectedICRVATSubmitted}"
@@ -227,11 +227,12 @@
                                                         </ListView.ItemTemplate>
                                                     </ListView>
                                                 </StackLayout>
-
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATSubmitted}">
+                                                </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -239,7 +240,7 @@
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
-                                                <ListView  x:Name="ZakatICRListSubmitted"
+                                                <ListView  x:Name="ZakatICRListSubmitted" IsVisible="{Binding SetNoDataLabelVisibilityZakatSubmittedList}"
             ItemsSource="{Binding MyZakatReturnsSubmitted}"
                                         SelectedItem="{Binding SelectedZakatReturn}"
             HorizontalOptions="FillAndExpand"
@@ -371,6 +372,8 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
+                                                <custom:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatSubmitted}">
+                                                </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
@@ -391,7 +394,7 @@
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -399,7 +402,7 @@
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
-                                                <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                                <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityVATNonSubmittedList}" >
                                                     <ListView  x:Name="ICRListNon"
             ItemsSource="{Binding ICRListVATNonSubmitted}"
                                                             SelectedItem="{Binding SelectedICRVATSubmitted}"
@@ -669,11 +672,12 @@
                                                         </ListView.ItemTemplate>
                                                     </ListView>
                                                 </StackLayout>
-
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATNonSubmitted}">
+                                                </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
-                                    <syncfusion:SfExpander>
+                                    <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
                                                 <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -681,7 +685,7 @@
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
                                             <Grid >
-                                                <ListView  x:Name="ZakatICRListNonSubmitted"
+                                                <ListView  x:Name="ZakatICRListNonSubmitted" IsVisible="{Binding SetNoDataLabelVisibilityZakatNonSubmittedList}"
             ItemsSource="{Binding MyZakatReturnsNonSubmitted}"
                                                         SelectedItem="{Binding SelectedZakatReturn}"
             HorizontalOptions="FillAndExpand"
@@ -813,6 +817,8 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatNonSubmitted}">
+                                                </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
                                     </syncfusion:SfExpander>
@@ -832,7 +838,7 @@
                             <StackLayout>
                                 <ScrollView>
                                     <StackLayout>
-                                        <syncfusion:SfExpander>
+                                        <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
                                                     <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -840,7 +846,7 @@
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
                                                 <Grid >
-                                                    <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                                                    <StackLayout Margin="10,0,10,0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  IsVisible="{Binding SetNoDataLabelVisibilityVATOverDueList}">
                                                         <ListView  x:Name="ICRListOver"
             ItemsSource="{Binding ICRListVATOverDue}"
                                                                 SelectedItem="{Binding SelectedICRVATSubmitted}"
@@ -1110,19 +1116,20 @@
                                                             </ListView.ItemTemplate>
                                                         </ListView>
                                                     </StackLayout>
-
+                                                    <custom:CustomLabel  Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATOverDue}">
+                                                    </custom:CustomLabel>
                                                 </Grid>
                                             </syncfusion:SfExpander.Content>
                                         </syncfusion:SfExpander>
                                         <syncfusion:SfExpander>
-                                            <syncfusion:SfExpander.Header>
+                                            <syncfusion:SfExpander.Header IsVisible="{Binding IsZakatVisible}">
                                                 <Grid>
                                                     <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
                                                 <Grid >
-                                                    <ListView  x:Name="ZakatICRListOverDue"
+                                                    <ListView  x:Name="ZakatICRListOverDue" IsVisible="{Binding SetNoDataLabelVisibilityZakatOverDueList}"
             ItemsSource="{Binding MyZakatReturnsOverDue}"
                                                             SelectedItem="{Binding SelectedZakatReturn}"
             HorizontalOptions="FillAndExpand"
@@ -1254,6 +1261,9 @@
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
                                                     </ListView>
+
+                                                    <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatOverDue}">
+                                                    </custom:CustomLabel>
                                                 </Grid>
                                             </syncfusion:SfExpander.Content>
                                         </syncfusion:SfExpander>
@@ -1290,7 +1300,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.Returns}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

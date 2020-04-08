@@ -192,7 +192,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                             //TaxEvasionReportList tax = new TaxEvasionReportList();
 
-                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                              _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
                             
                         }
                     }

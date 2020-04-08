@@ -11,7 +11,10 @@
     x:Name="LandingPage"
     xmlns:local1="clr-namespace:GAZT"
     BackgroundColor="{DynamicResource Gray-White}"
-    NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False"
+    
+    >
+   
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

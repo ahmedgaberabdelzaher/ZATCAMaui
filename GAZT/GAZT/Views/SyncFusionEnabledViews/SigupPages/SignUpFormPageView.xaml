@@ -276,10 +276,9 @@
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
                                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtLicenseNumber}" MaxLength="20" FontSize="Small">
                                         <Entry.Behaviors>
-
-                                            <custom1:RestrictSpecialCharactorsBehaviour/>
-                                            <!--<custom1:OnlyNumericValuesBehaviour/>-->
-
+                                        
+                                        <!--<custom1:RestrictSpecialCharactorsBehaviour/>-->
+                                            <custom1:OnlyNumericValuesBehaviour/>
                                         </Entry.Behaviors>
                                       </custom:BorderlessEntry>
                                   
@@ -392,7 +391,7 @@
     Hint="{x:Static local:AppResources.ZZPhoneNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtPhoneNumber}" x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small">
+                            <Entry Text="{Binding TxtPhoneNumber}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="1XXXXXXXX" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>

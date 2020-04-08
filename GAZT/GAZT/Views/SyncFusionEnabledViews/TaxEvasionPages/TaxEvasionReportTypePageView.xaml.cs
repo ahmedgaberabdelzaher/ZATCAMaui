@@ -24,6 +24,7 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            
 
             viewModel.TaxEvasionListobj = new TaxEvasionReportList();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -36,6 +37,20 @@ namespace GAZT.Views.NewViews
 
             SetLTR();
             //viewModel.onPageLoad();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            
+            viewModel.IsimgVisiblec1 = false;
+            viewModel.IsimgVisiblec2 = false;
+            viewModel.IsimgVisiblec3 = false;
+            viewModel.IsimgVisiblec4 = false;
+            viewModel.IsimgVisiblec5 = false;
+            viewModel.CategorySelected_Index = "0";
+
+
         }
 
 

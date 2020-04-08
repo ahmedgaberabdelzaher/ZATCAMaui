@@ -24,8 +24,15 @@ namespace GAZTeServicesApp.Views.Common
         public EmailEntry()
         {
             InitializeComponent();
+            SetLTR();
         }
-       
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = Xamarin.Forms.FlowDirection.LeftToRight;
+            }
+        }
 
         private void TINs_Clicked(object sender, System.EventArgs e)
         {

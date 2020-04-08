@@ -152,7 +152,7 @@
     </Style>
 <!--Common style for VAT Label Icon-->
     <Style x:Key="IconLabelStyleVAT" TargetType="Label">
-        <Setter Property="Margin" Value="5,8" />
+        <Setter Property="Margin" Value="5" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
         <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
         <Setter Property="FontSize" Value="25" />
