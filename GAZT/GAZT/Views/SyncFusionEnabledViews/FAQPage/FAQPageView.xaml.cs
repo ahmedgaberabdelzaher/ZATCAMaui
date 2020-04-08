@@ -73,18 +73,27 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
                 await Task.Run(async () =>
                 {
                     await viewModel.OnPageLoad();
-                    Questions.ItemsSource = viewModel.Questions;
+                    viewModel.IsLoading = false;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Questions.ItemsSource = viewModel.Questions;
+                    });
                 });
                 Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
+                   
                 });
 
                 
             }
             catch(Exception ex)
             {
-
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                    viewModel._navigationService.GoBack();
+                });
             }
            // InitializeComponent();
         }

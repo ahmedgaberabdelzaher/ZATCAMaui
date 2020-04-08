@@ -75,7 +75,9 @@
                     Spacing="0"
                     VerticalOptions="FillAndExpand">
 
-                    --><!--  Back button command  --><!--
+                    -->
+            <!--  Back button command  -->
+            <!--
                     <buttons:SfButton  x:Name="backButton"
                         Command="{Binding BackButtonCommand}"
                         CommandParameter="{x:Reference backButton}"
@@ -83,7 +85,9 @@
                         Style="{StaticResource IconButtonStyle}"
                         Text="{StaticResource Back}" />
 
-                    --><!--  FAQ page Title  --><!--
+                    -->
+            <!--  FAQ page Title  -->
+            <!--
                     <Label   Margin="16,0"
                         FontFamily="{StaticResource Montserrat-Medium}"
                         FontSize="16"
@@ -102,13 +106,17 @@
                     Orientation="Horizontal"
                     Spacing="0">
 
-                    --><!--  Back to title layout  --><!--
+                    -->
+            <!--  Back to title layout  -->
+            <!--
                     <buttons:SfButton   x:Name="BackToTitle"
                         Clicked="BackToTitle_Clicked"
                         Style="{StaticResource NavigationBarButtonStyle}"
                         Text="{StaticResource Back}" />
 
-                    --><!--  Rounded Search Entry  --><!--
+                    -->
+            <!--  Rounded Search Entry  -->
+            <!--
                     <border:SfBorder Style="{DynamicResource SfBorderStyle}">
 
                         <controls:BorderlessEntry  x:Name="SearchEntry"
@@ -120,7 +128,9 @@
 
                 </StackLayout>
 
-                --><!--  Search Button  --><!--
+                -->
+            <!--  Search Button  -->
+            <!--
                 <buttons:SfButton x:Name="SearchButton"
                     IsVisible="True"
                     Clicked="SearchButton_Clicked"
@@ -202,6 +212,9 @@
                     </controls1:SearchableFAQList.ItemTemplate>
                 </controls1:SearchableFAQList>
             </StackLayout>
+
+            <controls:CustomLabel Grid.Row="0"  Grid.RowSpan="2" Text="{x:Static local:AppResources.ZNoDataAvailable}" IsVisible="{Binding IsNoDataLabelVisible}"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+            </controls:CustomLabel>
 
             <Grid Grid.Row="0"  Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
