@@ -961,12 +961,12 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public async Task onPageLoad()
+        public void onPageLoad()
         {
             try
             {
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                regionlist = await WebServiceManager.GAZTTESFormGetRegion();
+                regionlist = WebServiceManager.GAZTTESFormGetRegion();
                 if (regionlist != null && regionlist.RegionList.Count != 0)
                 { RList = regionlist.RegionList; }
 
@@ -1073,7 +1073,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-        public async Task CreateCompanyTypeList()
+        public void CreateCompanyTypeList()
         {
 
             try
