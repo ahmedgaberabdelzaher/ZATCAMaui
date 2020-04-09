@@ -2798,7 +2798,7 @@
     <value>تم النسخ</value>
   </data>
   <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
-    <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يبدأ بـ 0</value>
+    <value>رقم هوية مواطني دول الخليج يجب أن لا يبدأ ب 0</value>
     <comment>signup</comment>
   </data>
   <data name="ZZZWrongEnterTin" xml:space="preserve">
