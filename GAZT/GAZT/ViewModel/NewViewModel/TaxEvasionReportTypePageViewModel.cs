@@ -188,11 +188,10 @@ namespace GAZT.ViewModel.NewViewModel
 
                         if (CategorySelected_Index != "0")
                         {
+
+                            TaxEvasionListobj = new TaxEvasionReport();
                             TaxEvasionListobj.ViolationType = CategorySelected_Index;
-
-                            //TaxEvasionReportList tax = new TaxEvasionReportList();
-
-                              _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
                             
                         }
                     }

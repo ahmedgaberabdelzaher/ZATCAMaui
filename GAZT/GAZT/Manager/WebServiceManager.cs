@@ -3946,51 +3946,11 @@ namespace GAZT.Manager
 
         public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TaxEvasionReportTobeUsedToSubmit Cred, List<UploadedDocumentsList> UploadedDocumentsListObj)
         {
-            //UploadedDocumentsList u = new UploadedDocumentsList();
-            //u.DocBinaryInBase64 = string.Empty;
-            //u.FileNameWithExtension = string.Empty;
-            //u.MimeType = string.Empty;
             Cred.UploadedDocumentsList = UploadedDocumentsListObj;
             string mobilenew = Cred.ReporterMobileNumber;
             Cred.ReporterMobileNumber = "05"+Cred.ReporterMobileNumber;
             string mobilenew1 = Cred.CompanyMobileNumber;
             Cred.CompanyMobileNumber = "05" + Cred.CompanyMobileNumber;
-
-            //TEReport Cred = new TEReport();
-            //Cred.Channel = "2";
-            //Cred.CityCode = "187";
-            //Cred.CompanyAddress = "Test Address";
-            //Cred.CompanyEmail = "ihussain@test.com";
-            //Cred.CompanyMobileNumber = "0565154482";
-            //Cred.CompanyName = "Test Company Name";
-            //Cred.CompanyOwnerName = "Test Complany Owner Name";
-            // Cred.CompanyType = "1";
-            //Cred.District = "Wizharat";
-            //Cred.HavingTIN = "true";
-            //Cred.ID = "1234567890";
-            //Cred.Latitude = "0.0";
-            //Cred.Longitude = "0.0";
-            //Cred.ReceivedDate = "27/11/2019";
-            //Cred.RegionCode = "1";
-            //Cred.ReportDetails = "test Reporter Details";
-            //Cred.ReporterEmail = "mahemood@infrability.com";
-            //Cred.ReporterMobileNumber = "0565154482";
-            //Cred.ReporterName = "Test Reporter Name";
-            //Cred.TIN = "3000000000";
-            //Cred.TaxType = "1";
-            ////Cred.UploadedDocumentsList.DocBinaryInBase64 = "";
-            ////Cred.UploadedDocumentsList.FileNameWithExtension = "";
-            ////Cred.UploadedDocumentsList.MimeType = "";
-            //Cred.VAT = "012345678978954";
-            //Cred.ViolationType = "1";
-            //Cred.WSUserName = "GAZT@CRM";
-            //Cred.WSPassword = "gazt@123";
-            //Cred.WorkType = "Industry";
-
-
-
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 TEReportResponsePostRootObject terfcity = new TEReportResponsePostRootObject();
@@ -4032,12 +3992,7 @@ namespace GAZT.Manager
             string trimedmob1 = trimedmob.Substring(5);
             Cred.MobileNumber = "0"+ trimedmob1;
             Cred.Channel = "2";
-
-
-
             ReportRetriveByMobNoRootObject Listobject = new ReportRetriveByMobNoRootObject();
-
-
             if (CrossConnectivity.Current.IsConnected)
             {
                 ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
