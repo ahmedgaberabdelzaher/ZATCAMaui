@@ -4953,7 +4953,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have one remaining attempt then the account will be locked.
+        ///   Looks up a localized string similar to You have {0} remaining attempt then the account will be locked.
         /// </summary>
         public static string ZYouhaveoneremainingattemptthentheaccountwillbelocked {
             get {
@@ -4962,7 +4962,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login attempt failed because of entering 3 wrong verification codes.
+        ///   Looks up a localized string similar to Login attempt failed because of entering {0} wrong verification codes.
         /// </summary>
         public static string ZYouraccounthasbeenlockedPleasecontactourcallcenter {
             get {
@@ -7248,6 +7248,24 @@ namespace GAZT {
         public static string ZZZBusinessInformation {
             get {
                 return ResourceManager.GetString("ZZZBusinessInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change of registration form..
+        /// </summary>
+        public static string ZZZChageOfRegistration {
+            get {
+                return ResourceManager.GetString("ZZZChageOfRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you do not agree with the above information, please visit GAZT portal to change the registration type.
+        /// </summary>
+        public static string ZZZChangeRegistationNote {
+            get {
+                return ResourceManager.GetString("ZZZChangeRegistationNote", resourceCulture);
             }
         }
         

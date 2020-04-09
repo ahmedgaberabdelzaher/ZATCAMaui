@@ -724,10 +724,10 @@
     <value>خطأ</value>
   </data>
   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
-    <value>تبقت لك محاولة واحدة وبعدها سيتم حجب حسابك</value>
+  <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
-    <value>تم إلغاء محاولة الدخول بسبب الفشل 3 مرات لإدخال رمز التحقق</value>
+    <value>فشلت عملية تسجيل الدخول بسبب ادخال الرمز التحقق }0{ مرات بشكل خاطىء</value>
   </data>
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
@@ -2976,5 +2976,11 @@
   <data name="ZZTheselectedserviceisnotavailabletoyou" xml:space="preserve">
     <value>The selected service is not available to you</value>
     <comment>OTP Page</comment>
+  </data>
+  <data name="ZZZChangeRegistationNote" xml:space="preserve">
+    <value>في حال كنت لا توافق على المعلومات أعلاه، الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
+  </data>
+  <data name="ZZZChageOfRegistration" xml:space="preserve">
+    <value>تغيير نموذج التسجيل</value>
   </data>
 </root>
