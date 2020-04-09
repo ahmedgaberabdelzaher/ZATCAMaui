@@ -2571,7 +2571,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
-    <value>الرجاء إدخال رمز التأكيد المرسل الى بريدك الإلكتروني</value>
+    <value>الرجاء إدخال رمز التأكيد المرسل الى البريد الإالكتروني</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
