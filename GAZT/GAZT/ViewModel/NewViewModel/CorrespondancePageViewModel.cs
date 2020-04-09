@@ -125,6 +125,89 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isZakatVisible = false;
+        public bool IsZakatVisible
+        {
+            get
+            {
+                return _isZakatVisible;
+            }
+            set
+            {
+                _isZakatVisible = value;
+                RaisePropertyChanged("IsZakatVisible");
+            }
+        }
+
+        private bool _isZakatVisibleLabel = false;
+        public bool IsZakatVisibleLabel
+        {
+            get
+            {
+                return _isZakatVisibleLabel;
+            }
+            set
+            {
+                _isZakatVisibleLabel = value;
+                RaisePropertyChanged("IsZakatVisibleLabel");
+            }
+        }
+
+        private bool _isVATVisible = false;
+        public bool IsVATVisible
+        {
+            get
+            {
+                return _isVATVisible;
+            }
+            set
+            {
+                _isVATVisible = value;
+                RaisePropertyChanged("IsVATVisible");
+            }
+        }
+
+        private bool _isVATVisibleLabel = false;
+        public bool IsVATVisibleLabel
+        {
+            get
+            {
+                return _isVATVisibleLabel;
+            }
+            set
+            {
+                _isVATVisibleLabel = value;
+                RaisePropertyChanged("IsVATVisibleLabel");
+            }
+        }
+
+        private bool _isETVisible = false;
+        public bool IsETVisible
+        {
+            get
+            {
+                return _isETVisible;
+            }
+            set
+            {
+                _isETVisible = value;
+                RaisePropertyChanged("IsVATVisible");
+            }
+        }
+
+        private bool _isETVisibleLabel = false;
+        public bool IsETVisibleLabel
+        {
+            get
+            {
+                return _isETVisibleLabel;
+            }
+            set
+            {
+                _isETVisibleLabel = value;
+                RaisePropertyChanged("IsETVisibleLabel");
+            }
+        }
 
         private bool _setNoDataLabelVisibility = false;
 
@@ -703,8 +786,10 @@ namespace GAZT.ViewModel.NewViewModel
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
 
                 // Assigning data in the list
-                if (ZakatCorres != null && ZakatCorres.d != null)
+                if (ZakatCorres != null && ZakatCorres.d.results.Count > 0)
                 {
+                    IsZakatVisible = true;
+                    IsZakatVisibleLabel = false;
                     ZakatCountDisplay = AppResources.ZZZAKAT + "(" + ZakatCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemZakat in ZakatCorres.d.results)
                     {
@@ -817,12 +902,19 @@ namespace GAZT.ViewModel.NewViewModel
 
                     ListZAKATCorrespondance = ZakatCo;
                 }
+                else
+                {
+                    IsZakatVisible = false;
+                    IsZakatVisibleLabel = true;
+                }
                
                 PopToRootPage();
 
                 // Assigning data in the list
-                if (VATCorres != null && VATCorres.d != null)
+                if (VATCorres != null && VATCorres.d.results.Count > 0)
                 {
+                    IsVATVisible = true;
+                    IsVATVisibleLabel = false;
                     List<CorrespondanceModel> VATCo = new List<CorrespondanceModel>();
                     VATCountDisplay = AppResources.ZZVAT + "(" + VATCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemVAT in VATCorres.d.results)
@@ -911,12 +1003,19 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     ListVATCorrespondance = VATCo;
                 }
+                else
+                {
+                    IsVATVisible = false;
+                    IsVATVisibleLabel = true;
+                }
                
                 PopToRootPage();
 
                 // Assigning data in the list
-                if(ETCorres != null && ETCorres.d != null)
+                if(ETCorres != null && ETCorres.d.results.Count > 0)
                 {
+                    IsETVisible = true;
+                    IsETVisibleLabel = false;
                     List<CorrespondanceModel> ETCo = new List<CorrespondanceModel>();
                     ETCountDisplay = AppResources.ZZET + "(" + ETCorres.d.results.Count + ")";
                     foreach (CorrespondenceResult itemET in ETCorres.d.results)
@@ -1007,6 +1106,11 @@ namespace GAZT.ViewModel.NewViewModel
                     SetSelectedIndexZakat = 4;
                     SetSelectedIndexET = 2;
                     SetSelectedIndexVAT = 2;
+                }
+                else
+                {
+                    IsETVisible = false;
+                    IsETVisibleLabel = true;
                 }
                
             }
