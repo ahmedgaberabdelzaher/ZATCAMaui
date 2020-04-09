@@ -3,13 +3,11 @@ using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Resources;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -23,21 +21,18 @@ namespace GAZT.Views.NewViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionReportFormPageView : ContentPage
     {
-
         TaxEvasionReportFormPageViewModel viewModel;
 
-
-        public TaxEvasionReportFormPageView(TaxEvasionReportList SelectedTaxEvasionListItem)
+        public TaxEvasionReportFormPageView(TaxEvasionReport SelectedTaxEvasionListItem)
         {
             try
             {
-              
                 InitializeComponent();
                 ChangeAeroIcon();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
-                viewModel.TEReportobj = new TEReport();
+                viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 Test1(SelectedTaxEvasionListItem);
                 SetLTR();
                 this.BindingContext = viewModel;
@@ -54,7 +49,7 @@ namespace GAZT.Views.NewViews
         }
 
 
-        public async void Test1(TaxEvasionReportList SelectedTaxEvasionListItem)
+        public async void Test1(TaxEvasionReport SelectedTaxEvasionListItem)
         {
             Task.Run(() =>
             {
@@ -72,7 +67,7 @@ namespace GAZT.Views.NewViews
             });
         }
 
-        public async Task Test(TaxEvasionReportList SelectedTaxEvasionListItem)
+        public async Task Test(TaxEvasionReport SelectedTaxEvasionListItem)
         {
             await viewModel.CreateCompanyTypeList();
             await viewModel.onPageLoad();
@@ -732,8 +727,8 @@ namespace GAZT.Views.NewViews
                     Position position = new Position(lat, lon);
                     MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                     mapView.MoveToRegion(mapSpan);
-                    viewModel.TEReportobj.Latitude = lat.ToString();
-                    viewModel.TEReportobj.Longitude = lon.ToString();
+                    viewModel.TaxEvasionReportTobeUsedToSubmit.Latitude = lat.ToString();
+                    viewModel.TaxEvasionReportTobeUsedToSubmit.Longitude = lon.ToString();
                 }
                 catch (FeatureNotSupportedException fnsEx)
                 {
@@ -806,8 +801,8 @@ namespace GAZT.Views.NewViews
             pin.Label = "Your Location";
             pin.Type = PinType.Place;
             pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-            viewModel.TEReportobj.Latitude = e.Position.Latitude.ToString();
-            viewModel.TEReportobj.Longitude = e.Position.Longitude.ToString();
+            viewModel.TaxEvasionReportTobeUsedToSubmit.Latitude = e.Position.Latitude.ToString();
+            viewModel.TaxEvasionReportTobeUsedToSubmit.Longitude = e.Position.Longitude.ToString();
             mapView.Pins.Clear();
             mapView.Pins.Add(pin);
         }
@@ -892,7 +887,7 @@ namespace GAZT.Views.NewViews
 
         private void RegionPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            RegionList selectedregion = (RegionList)e.NewValue;
+            TERRegion selectedregion = (TERRegion)e.NewValue;
             RegionPicker.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
@@ -902,7 +897,7 @@ namespace GAZT.Views.NewViews
 
         private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            RegionList selectedregion = (RegionList)e.NewValue;
+            TERRegion selectedregion = (TERRegion)e.NewValue;
             RegionPickerAR.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
@@ -911,7 +906,7 @@ namespace GAZT.Views.NewViews
 
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            CityList selectedcity = (CityList)e.NewValue;
+            TERCity selectedcity = (TERCity)e.NewValue;
             CityPicker.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
@@ -920,7 +915,7 @@ namespace GAZT.Views.NewViews
 
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            CityList selectedcity = (CityList)e.NewValue;
+            TERCity selectedcity = (TERCity)e.NewValue;
             CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
@@ -978,25 +973,16 @@ namespace GAZT.Views.NewViews
 
         }
         public void ChangeAeroIcon()
-
         {
 
             if (App.IsArabic)
-
             {
-
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];   
             }
-
             else
-
             {
-
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-
             }
-
         }
     }
 }

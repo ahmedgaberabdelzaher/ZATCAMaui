@@ -3899,7 +3899,7 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<TERFFAQObject> GAZTTESFAQRetrive()
+        public static async Task<TERFAQs> GAZTTESFAQRetrive()
         {
 
             FAQPost Cred = new FAQPost();
@@ -3910,12 +3910,12 @@ namespace GAZT.Manager
 
 
 
-            TERFFAQObject Listobject = new TERFFAQObject();
+            TERFAQs Listobject = new TERFAQs();
 
 
             if (CrossConnectivity.Current.IsConnected)
             {
-                TERFFAQObject terffaq = new TERFFAQObject();
+                TERFAQs terffaq = new TERFAQs();
                 try
                 {
 
@@ -3927,7 +3927,7 @@ namespace GAZT.Manager
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = await res.Content.ReadAsStringAsync();
-                    terffaq = JsonConvert.DeserializeObject<TERFFAQObject>(response);
+                    terffaq = JsonConvert.DeserializeObject<TERFAQs>(response);
                     return terffaq;
                 }
                 catch (Exception ex)
@@ -3944,7 +3944,7 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TEReport Cred, List<UploadedDocumentsList> UploadedDocumentsListObj)
+        public static async Task<TEReportResponsePostRootObject> GAZTTESReportSubmit(TaxEvasionReportTobeUsedToSubmit Cred, List<UploadedDocumentsList> UploadedDocumentsListObj)
         {
             //UploadedDocumentsList u = new UploadedDocumentsList();
             //u.DocBinaryInBase64 = string.Empty;
@@ -4028,7 +4028,7 @@ namespace GAZT.Manager
             ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
             Cred.WSUserName = "GAZT@CRM";
             Cred.WSPassword = "gazt@123";
-            string trimedmob = App.TP.Mobile;
+            string trimedmob = TPmobno;
             string trimedmob1 = trimedmob.Substring(5);
             Cred.MobileNumber = "0"+ trimedmob1;
             Cred.Channel = "2";

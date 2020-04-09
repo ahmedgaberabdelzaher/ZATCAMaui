@@ -2207,7 +2207,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
-    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
+    <value>كلمة السر يجب أن تحتوي على حرف كبير، حرف صغير، رمز واحد، ورقم واحد على الأقل ويجب أن يكون عدد الحروف بين 8 الى 16 حرف</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZResendtheverificationcode" xml:space="preserve">

@@ -26,7 +26,7 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             
 
-            viewModel.TaxEvasionListobj = new TaxEvasionReportList();
+            viewModel.TaxEvasionListobj = new TaxEvasionReport();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsimgVisiblec1 = false;
             viewModel.IsimgVisiblec2 = false;
