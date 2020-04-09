@@ -722,10 +722,10 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Error</value>
   </data>
   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
-    <value>You have one remaining attempt then the account will be locked</value>
+    <value>You have {0} remaining attempt then the account will be locked</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
-    <value>Login attempt failed because of entering 3 wrong verification codes</value>
+    <value>Login attempt failed because of entering {0} wrong verification codes</value>
   </data>
   <data name="ZSadadInvoiceNumber" xml:space="preserve">
     <value>SADAD invoice number</value>

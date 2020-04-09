@@ -146,7 +146,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private String _enteredOTP = string.Empty;
+        private String _enteredOTP = "0106";// string.Empty;
         public String EnteredOTP
         {
             get
@@ -952,10 +952,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 string remainingAttempts = (Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts) - currentAttempts).ToString();
                 string message = ShowAlertPopUpMessage(remainingAttempts);
-                await _dialogService.ShowMessageBox(message, AppResources.ZError);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(message, AppResources.ZError);
+                    _navigationService.GoBack();
+                });
                 isValiedOTP = false;
                 //await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
-                _navigationService.GoBack();
             }
             else if (tp != null && tp.Result.Equals("Valid OTP") || tp.Result.Equals("كلمة مرور صالحة لمرة واحدة"))
             {
@@ -1019,11 +1022,20 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else if (currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts))
                 {
-                    str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
+                    String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
+
+                    String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
+                    // str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
                 }
                 else
                 {
-                    str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+                    String strtemp = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;// "You have {0} remaining attempt then the account will be locked";
+
+                    String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
+
+                    //str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
                 }
                 //str = "You have " + remainingAttempts + "remaining attempt then the account will be locked";
             }
@@ -1032,15 +1044,25 @@ namespace GAZT.ViewModel.NewViewModel
                 if (currentAttempts == 1)
                 {
                     str = AppResources.InvalidOTP;
-
                 }
                 else if (currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts))
                 {
-                    str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
+                    String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
+
+                    String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
+
+                    //str = "لديك " + remainingAttempts + "محاولات متبقية؛ ثم سيتم قفل حسابك  ";
                 }
                 else
                 {
-                    str = " Login attempt failed because of entering " + remainingAttempts + " wrong verification codes";
+
+                    //String strtemp = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;// "You have {0} remaining attempt then the account will be locked";
+
+                    //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    //str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
+
+                    str = " مرات لإدخال رمز التح " + WebServiceManager.NumberOfValiedAttempts + " تم إلغاء محاولة الدخول بسبب الفشل";
                 }
             }
             return str;
