@@ -2313,7 +2313,7 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}">
                 <tabView:SfTabItem.Content>
-                            <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry" BackgroundColor="Red" IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >
+                            <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry"  IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >
 
                               
                                          <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
@@ -2345,7 +2345,7 @@
                                             <custom:CustomLabel Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                             <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}"/>
 
-                                    <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" HeightRequest="480" BackgroundColor="Blue" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Start">
+                                    <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" HeightRequest="480"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Start">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
@@ -2540,7 +2540,7 @@
                                             <Label Text="{x:Static local1:AppResources.ZVatSummary}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                                             </Label>
 
-                                    <Label BackgroundColor="Yellow" Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                                    <Label Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
                                     <local1:CustomLabel  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
