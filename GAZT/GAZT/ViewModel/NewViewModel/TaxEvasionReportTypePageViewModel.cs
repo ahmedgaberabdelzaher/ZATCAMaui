@@ -20,8 +20,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnBClicked { get;  set; }
 
         #endregion
-        private TaxEvasionReportList _taxEvasionListobj = null;
-        public TaxEvasionReportList TaxEvasionListobj
+        private TaxEvasionReport _taxEvasionListobj = null;
+        public TaxEvasionReport TaxEvasionListobj
         {
             get
             {

@@ -4478,6 +4478,11 @@ namespace GAZT.Views.NewViews
         {
             BPicker2.IsOpen = true;
         }
+
+        private void ChangeRegistrationTapped(object sender, EventArgs e)
+        {
+            viewModel._dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+        }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)
         //{

@@ -60,7 +60,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            viewModel.OnRefreshClick();
+                            RefreshForSadad();
                         }
                     }
                     else
@@ -76,7 +76,7 @@ namespace GAZT.Views.NewViews
                         {
                             if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
                             {
-                                viewModel.OnRefreshClick();
+                                RefreshForSadad();
                             }
                             else
                             {
@@ -119,6 +119,38 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+
+        public async void RefreshForSadad()
+        {
+            try
+            {
+
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+
+                await Task.Run(async () =>
+                {
+                    await viewModel.OnRefreshClick();
+                });
+
+                Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

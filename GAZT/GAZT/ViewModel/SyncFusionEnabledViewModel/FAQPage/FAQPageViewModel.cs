@@ -34,8 +34,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
 
 
 
-        private TERFFAQObject _tERFFAQRoot;
-        public TERFFAQObject TERFFAQRoot
+        private TERFAQs _tERFFAQRoot;
+        public TERFAQs TERFFAQRoot
         {
             get
             {
@@ -106,7 +106,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
         {
             try
             {
-                TERFFAQRoot = new TERFFAQObject();
+                TERFFAQRoot = new TERFAQs();
                 TERFFAQRoot = await WebServiceManager.GAZTTESFAQRetrive();
                 PopToRootPage();
                 if (TERFFAQRoot!=null && TERFFAQRoot.FAQList.Count!=0 && TERFFAQRoot.Success==true)

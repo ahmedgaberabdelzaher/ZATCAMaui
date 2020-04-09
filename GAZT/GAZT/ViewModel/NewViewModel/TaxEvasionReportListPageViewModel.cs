@@ -22,10 +22,10 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand GoBackClick { get; set; }
         public ICommand AddButtonClicked { get; set; }
         public ICommand OnOpenClicked_Tapped { get; set; }
-       
+
         private bool _setNoDataLabelVisibility = false;//SelectedTaxEvasionListItem
-        private TaxEvasionReportList _selectedTaxEvasionListItem;
-        public TaxEvasionReportList SelectedTaxEvasionListItem
+        private TaxEvasionReport _selectedTaxEvasionListItem;
+        public TaxEvasionReport SelectedTaxEvasionListItem
         {
             get
             {
@@ -44,7 +44,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -76,23 +76,21 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetNoDataLabelVisibility");
             }
         }
-        private List<TaxEvasionReportList> _taxEvasionReportList;
-        public List<TaxEvasionReportList> TERListReportbymobno
+        private List<TaxEvasionReport> _taxEvasionReportList;
+        public List<TaxEvasionReport> TERListReportbymobno
         {
             get
             {
                 return _taxEvasionReportList;
-
             }
             set
             {
                 _taxEvasionReportList = value;
-
                 RaisePropertyChanged("TERListReportbymobno");
             }
         }
-        private List<TaxEvasionReportList> _taxEvasionReportListClosed;
-        public List<TaxEvasionReportList> TERListReportbymobnoClosed
+        private List<TaxEvasionReport> _taxEvasionReportListClosed;
+        public List<TaxEvasionReport> TERListReportbymobnoClosed
         {
             get
             {
@@ -106,8 +104,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TERListReportbymobnoClosed");
             }
         }
-        private List<TaxEvasionReportList> _tERListReportbymobnoDummy;
-        public List<TaxEvasionReportList> TERListReportbymobnoDummy
+        private List<TaxEvasionReport> _tERListReportbymobnoDummy;
+        public List<TaxEvasionReport> TERListReportbymobnoDummy
         {
             get
             {
@@ -122,10 +120,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
-
-
-
         public TaxEvasionReportListPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -139,52 +133,45 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-            
+
             AddButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
             });
+
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
-
 
             OnCloseClicked_Tapped = new RelayCommand(async () =>
             {
                 try
                 {
-                   // TERListReportbymobno.Clear();
-                      TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3") ).ToList();
+                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
                     TERListReportbymobnoClosed.Clear();
                     TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                    //SetNoDataLabelVisibility
+
                     if (TERListReportbymobnoClosed == null)
                     {
                         SetNoDataLabelVisibility = true;
                     }
-                   
                 }
                 catch (Exception ex)
                 {
                 }
             });
 
-
-
-
             OnOpenClicked_Tapped = new RelayCommand(async () =>
             {
                 try
                 {
-                   // TERListReportbymobno.Clear();
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0")|| (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
+                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
                     if (TERListReportbymobno != null)
                     {
                         SetNoDataLabelVisibility = false;
@@ -198,13 +185,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                 }
             });
-
-
-
-
-
-
-
         }
 
         public void passSelectedTaxEvasionItem()
@@ -214,26 +194,21 @@ namespace GAZT.ViewModel.NewViewModel
                 _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
                 SelectedTaxEvasionListItem = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               
             }
-
         }
-
-
 
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
 
-                Device.BeginInvokeOnMainThread(async () => {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
-
-
             }
         }
 
@@ -241,79 +216,41 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-
-                ReportRetriveByMobNoRootObject rlist = new ReportRetriveByMobNoRootObject();
-                rlist = WebServiceManager.GAZTTESReportByMobNo("0565154482");
-
+                ReportRetriveByMobNoRootObject rootObject = new ReportRetriveByMobNoRootObject();
+                rootObject = WebServiceManager.GAZTTESReportByMobNo(App.TP.Mobile);
                 PopToRootPage();
 
-
-
-                if (rlist != null)
+                if (rootObject != null)
                 {
-                    if (rlist.TaxEvasionReportList != null && rlist.TaxEvasionReportList.Count > 0)
+                    if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
                     {
                         SetNoDataLabelVisibility = false;
-                        //CertificateType = AppResources.ZakatCertificates;
-                        //SetCertificateListViewVisibility();
-                        TERListReportbymobnoDummy = rlist.TaxEvasionReportList;
+                        TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
 
                         TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
                         if (TERListReportbymobno != null)
-                        { SetNoDataLabelVisibility = false; } 
-                            TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                       
-
-
-
+                        { SetNoDataLabelVisibility = false; }
+                        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
                     }
                     else
                     {
-
                         SetNoDataLabelViewVisibility();
                     }
-
                 }
                 else
                 {
                     SetNoDataLabelVisibility = true;
-
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 SetNoDataLabelVisibility = true;
-                _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts); }
-            ////_dialogService.ShowMessage(newrm, AppResources.Submitted);
-
-            //var _navigation = Application.Current.MainPage.Navigation;
-           
-            ////Go back 
-            //_navigation.PopAsync();
-            //_navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
+            }
         }
         private void SetNoDataLabelViewVisibility()
         {
-            //IsCertificateAvailable = false;
             SetNoDataLabelVisibility = true;
         }
-        private void SetCertificateListViewVisibility()
-        {
-            //IsCertificateAvailable = true;
-            SetNoDataLabelVisibility = false;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
-            } 
+}

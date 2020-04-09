@@ -724,7 +724,7 @@
     <value>خطأ</value>
   </data>
   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
-  <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
+    <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
     <value>فشلت عملية تسجيل الدخول بسبب ادخال الرمز التحقق }0{ مرات بشكل خاطىء</value>
@@ -2207,7 +2207,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
-    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
+    <value>كلمة السر يجب أن تحتوي على حرف كبير، حرف صغير، رمز واحد، ورقم واحد على الأقل ويجب أن يكون عدد الحروف بين 8 الى 16 حرف</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZResendtheverificationcode" xml:space="preserve">
@@ -2483,11 +2483,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>أسم المنشأة</value>
+    <value>اسم المنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المقاطعة للمنشأة</value>
+    <value>عنوان المنطقة للمنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
@@ -2499,7 +2499,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>أسم مقدم التقرير</value>
+    <value>اسم مقدم البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
@@ -2511,11 +2511,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
-    <value>موقع التقرير</value>
+    <value>موقع البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل التقرير</value>
+    <value>تفاصيل البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
@@ -2571,7 +2571,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
-    <value>الرجاء إدخال رمز التأكيد المرسل الى بريدك الإلكتروني</value>
+    <value>الرجاء إدخال رمز التأكيد المرسل الى البريد الإالكتروني</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
@@ -2798,7 +2798,7 @@
     <value>تم النسخ</value>
   </data>
   <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
-    <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يبدأ بـ 0</value>
+    <value>رقم هوية مواطني دول الخليج يجب أن لا يبدأ ب 0</value>
     <comment>signup</comment>
   </data>
   <data name="ZZZWrongEnterTin" xml:space="preserve">
@@ -2976,5 +2976,11 @@
   <data name="ZZTheselectedserviceisnotavailabletoyou" xml:space="preserve">
     <value>The selected service is not available to you</value>
     <comment>OTP Page</comment>
+  </data>
+  <data name="ZZZChangeRegistationNote" xml:space="preserve">
+    <value>في حال كنت لا توافق على المعلومات أعلاه، الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
+  </data>
+  <data name="ZZZChageOfRegistration" xml:space="preserve">
+    <value>تغيير نموذج التسجيل</value>
   </data>
 </root>
