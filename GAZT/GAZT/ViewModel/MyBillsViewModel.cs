@@ -490,7 +490,7 @@ namespace GAZT.ViewModel
                             {
                                 SelcectedBillsIndex = 2;
                             }
-                            else if (billInfo.BillTypeName == AppResources.PartiallyPaid)
+                            else if (billInfo.BillTypeName == AppResources.Partial)
                             {
                                 SelcectedBillsIndex = 3;
                             }
