@@ -2217,7 +2217,7 @@
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <local1:CustomLabel Text="{x:Static local1:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
                                                 <local1:CustomLabel.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onCreditCarriedForwardClicked}"></TapGestureRecognizer>
                                                 </local1:CustomLabel.GestureRecognizers>
