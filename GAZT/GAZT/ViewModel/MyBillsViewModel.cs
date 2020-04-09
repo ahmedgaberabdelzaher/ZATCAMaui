@@ -573,12 +573,12 @@ namespace GAZT.ViewModel
                     _dueDate = myBills[i].FAEDN.Split('T');
                     if (App.IsArabic)
                     {
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        myBills[i].FAEDN = UtilityManager.ToArabicDate(myBills[i].FAEDN);
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                       // myBills[i].FAEDN = UtilityManager.ToArabicDate(myBills[i].FAEDN);
                     }
                     else
                     {
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     }
                 }
 
