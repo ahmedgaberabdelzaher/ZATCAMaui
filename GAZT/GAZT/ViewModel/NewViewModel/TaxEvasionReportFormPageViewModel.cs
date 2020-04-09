@@ -1048,7 +1048,7 @@ namespace GAZT.ViewModel.NewViewModel
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
                   
 
-                    _dialogService.ShowMessage(newrm, AppResources.Submitted);
+                    _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
 
                     var _navigation = Application.Current.MainPage.Navigation;
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();

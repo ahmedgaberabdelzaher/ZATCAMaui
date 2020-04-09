@@ -446,7 +446,28 @@
                                         <local1:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
-                                        <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
+                                    <Label  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static local1:AppResources.ZVatNote}" FontAttributes="Bold"/>
+                                                <Span Text=":" />
+                                                <Span Text="{x:Static local1:AppResources.ZVatNoteDetail}"/>
+                                                <Span Text="&#160;&#160;"/>
+                                                <!--<Span Text="Change of registration form." TextColor="#c49b2d">
+                                                    <Span.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}"></TapGestureRecognizer>
+                                                    </Span.GestureRecognizers>
+                                                </Span>-->
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <local1:CustomLabel TextDecorations="Underline" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" TextColor="#c49b2d" Text="{x:Static local1:AppResources.ZZZChageOfRegistration}">
+                                        <local1:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />
+                                        </local1:CustomLabel.GestureRecognizers>
+                                    </local1:CustomLabel>
+
+                                    <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Kindly confirm that the above information is correct before proceeding."/>

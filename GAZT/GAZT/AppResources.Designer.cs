@@ -7198,7 +7198,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You should sign up as new user.
+        ///   Looks up a localized string similar to ID not found. Please sign up as new user.
         /// </summary>
         public static string ZZYoushouldsignupasnewuser {
             get {
@@ -7500,6 +7500,15 @@ namespace GAZT {
         public static string ZZZSignUpTitle {
             get {
                 return ResourceManager.GetString("ZZZSignUpTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submitted Report.
+        /// </summary>
+        public static string ZZZSubmittedReport {
+            get {
+                return ResourceManager.GetString("ZZZSubmittedReport", resourceCulture);
             }
         }
         
