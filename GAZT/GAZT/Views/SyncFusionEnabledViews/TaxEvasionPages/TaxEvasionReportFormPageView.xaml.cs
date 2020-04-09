@@ -32,7 +32,7 @@ namespace GAZT.Views.NewViews
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
-                viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
+                //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 Test1(SelectedTaxEvasionListItem);
                 SetLTR();
                 this.BindingContext = viewModel;
@@ -70,7 +70,8 @@ namespace GAZT.Views.NewViews
         public async Task Test(TaxEvasionReport SelectedTaxEvasionListItem)
         {
             await viewModel.CreateCompanyTypeList();
-            await viewModel.onPageLoad();
+            await viewModel.onPageLoad();//TaxEvasionReport
+            viewModel.selectedtaxEList = new TaxEvasionReport();
             viewModel.selectedtaxEList = SelectedTaxEvasionListItem;
             viewModel.SelectedCategory = SelectedTaxEvasionListItem.ViolationType;
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
@@ -727,8 +728,8 @@ namespace GAZT.Views.NewViews
                     Position position = new Position(lat, lon);
                     MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                     mapView.MoveToRegion(mapSpan);
-                    viewModel.TaxEvasionReportTobeUsedToSubmit.Latitude = lat.ToString();
-                    viewModel.TaxEvasionReportTobeUsedToSubmit.Longitude = lon.ToString();
+                    viewModel.Latitude = lat;
+                    viewModel.Longitude = lon;
                 }
                 catch (FeatureNotSupportedException fnsEx)
                 {
@@ -801,8 +802,8 @@ namespace GAZT.Views.NewViews
             pin.Label = "Your Location";
             pin.Type = PinType.Place;
             pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-            viewModel.TaxEvasionReportTobeUsedToSubmit.Latitude = e.Position.Latitude.ToString();
-            viewModel.TaxEvasionReportTobeUsedToSubmit.Longitude = e.Position.Longitude.ToString();
+            viewModel.Latitude = e.Position.Latitude;
+            viewModel.Longitude = e.Position.Longitude;
             mapView.Pins.Clear();
             mapView.Pins.Add(pin);
         }

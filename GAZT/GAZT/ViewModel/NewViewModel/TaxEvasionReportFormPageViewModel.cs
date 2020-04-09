@@ -236,7 +236,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 RaisePropertyChanged("ListFacilityCompanyType");
             }
-        }//IsLoading
+        }
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -328,14 +328,14 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _txtTIN = value;
-                if (!string.IsNullOrEmpty(_txtTIN))
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.TIN != null)
-                    {
+                //if (!string.IsNullOrEmpty(_txtTIN))
+                //{
+                //    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.TIN != null)
+                //    {
 
-                        _TaxEvasionReportTobeUsedToSubmit.TIN = _txtTIN;
-                    }
-                }
+                //        _TaxEvasionReportTobeUsedToSubmit.TIN = _txtTIN;
+                //    }
+                //}
                 RaisePropertyChanged("TxtTIN");
             }
         }
@@ -371,14 +371,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     ShowIdHelperText = true;
                 }
-                if (_isTINVisible != null)
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.HavingTIN != null)
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.HavingTIN = "true";
-
-                    }
-                }
+                
                 RaisePropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
@@ -395,11 +388,9 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (_selectedTaxEvasionCompanyType != null)
                 {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null)
-                    {
+
                         TxtFType = _selectedTaxEvasionCompanyType.Name;
 
-                    }
                 }
                 RaisePropertyChanged("SelectedTaxEvasionCompanyType");
             }
@@ -424,7 +415,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                 RaisePropertyChanged("SelectedCategory");
             }
-        }//TReportDetail
+        }
         private string _tReportDetail = string.Empty;
         public string TReportDetail
         {
@@ -435,13 +426,13 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tReportDetail = value;
-                if (_tReportDetail != null)
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.ReportDetails != null)
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.ReportDetails = _tReportDetail;
-                    }
-                }
+                //if (_tReportDetail != null)
+                //{
+                //    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.ReportDetails != null)
+                //    {
+                //        _TaxEvasionReportTobeUsedToSubmit.ReportDetails = _tReportDetail;
+                //    }
+                //}
 
                 RaisePropertyChanged("TReportDetail");
             }
@@ -474,8 +465,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isVisiblePickerEn = value;
-                //_tEReportobj.ViolationType = _selectedCategory;
-
                 RaisePropertyChanged("IsVisiblePickerEn");
             }
         }
@@ -490,17 +479,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tEmail = value;
-                if (!string.IsNullOrEmpty(_tEmail))
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.ReporterEmail != null)
-
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.ReporterEmail = _tEmail;
-                    }
-
-                }
-
-
+                
                 RaisePropertyChanged("TEmail");
             }
         }
@@ -519,14 +498,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _tName = value;
 
-                    if (!string.IsNullOrEmpty(_tName))
-                    {
-                        if (TaxEvasionReportTobeUsedToSubmit != null && TaxEvasionReportTobeUsedToSubmit.ReporterName != null)
-                        {
-                            TaxEvasionReportTobeUsedToSubmit.ReporterName = _tName;
-                        }
-
-                    }
+                   
 
 
                     RaisePropertyChanged("TName");
@@ -547,14 +519,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tMobNumber = value;
-                if (!string.IsNullOrEmpty(_tMobNumber))
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.ReporterMobileNumber != null)
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.ReporterMobileNumber = _tMobNumber;
-                    }
-
-                }
 
                 RaisePropertyChanged("TMobNumber");
             }
@@ -569,14 +533,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciName = value;
-                if (!string.IsNullOrEmpty(_tFaciName))
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.CompanyName != null)
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.CompanyName = _tFaciName;
-                    }
-
-                }
+               
 
 
 
@@ -595,18 +552,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciOwnerName = value;
-                if (!string.IsNullOrEmpty(_tFaciOwnerName))
-                {
-                    if (_TaxEvasionReportTobeUsedToSubmit != null && _TaxEvasionReportTobeUsedToSubmit.CompanyName != null)
-                    {
-                        _TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = _tFaciOwnerName;
-                    }
-
-                }
-
-
-
-
 
                 RaisePropertyChanged("TFaciOwnerName");
             }
@@ -637,14 +582,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFaciMobNo = value;
-                if (!string.IsNullOrEmpty(_tFaciMobNo))
-                {
-                    _TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = _tFaciMobNo;
-                }
-
-
-
-
 
                 RaisePropertyChanged("TFaciMobNo");
             }
@@ -660,14 +597,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _tFaciEmail = value;
 
-                if (!string.IsNullOrEmpty(_tFaciEmail))
-                {
-                    _TaxEvasionReportTobeUsedToSubmit.CompanyEmail = _tFaciEmail;
-                }
-
-
-
-
+                //if (!string.IsNullOrEmpty(_tFaciEmail))
+                //{
+                //    _TaxEvasionReportTobeUsedToSubmit.CompanyEmail = _tFaciEmail;
+                //}
 
                 RaisePropertyChanged("TFaciEmail");
             }
@@ -684,8 +617,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tID = value;
-                if (!string.IsNullOrEmpty(_tID))
-                { _TaxEvasionReportTobeUsedToSubmit.ID = _tID; }
 
                 RaisePropertyChanged("TID");
             }
@@ -703,10 +634,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tVatNumber = value;
-                if (!string.IsNullOrEmpty(_tVatNumber))
-                {
-                    _TaxEvasionReportTobeUsedToSubmit.VAT = _tVatNumber;
-                }
+               
 
                 RaisePropertyChanged("TVatNumber");
             }
@@ -723,10 +651,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFDAdress = value;
-                if (!string.IsNullOrEmpty(_tFDAdress))
-                {
-                    _TaxEvasionReportTobeUsedToSubmit.District = _tFDAdress;
-                }
+                //if (!string.IsNullOrEmpty(_tFDAdress))
+                //{
+                //    _TaxEvasionReportTobeUsedToSubmit.District = _tFDAdress;
+                //}
 
 
 
@@ -744,10 +672,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFSAddress = value;
-                if (!string.IsNullOrEmpty(_tFSAddress))
-                {
-                    _TaxEvasionReportTobeUsedToSubmit.CompanyAddress = _tFSAddress;
-                }
+                //if (!string.IsNullOrEmpty(_tFSAddress))
+                //{
+                //    _TaxEvasionReportTobeUsedToSubmit.CompanyAddress = _tFSAddress;
+                //}
 
 
                 RaisePropertyChanged("TFSAddress");
@@ -763,8 +691,8 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tFWType = value;
-                if (!string.IsNullOrEmpty(_tFWType))
-                { _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
+                //if (!string.IsNullOrEmpty(_tFWType))
+                //{ _TaxEvasionReportTobeUsedToSubmit.WorkType = _tFWType; }
 
                 RaisePropertyChanged("TFWType");
             }
@@ -787,8 +715,6 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedTaxEvasionRegion = value;
                 if (_selectedTaxEvasionRegion != null)
                 {
-
-                    _TaxEvasionReportTobeUsedToSubmit.RegionCode = _selectedTaxEvasionRegion.RegionCode;
                     //IsCPickerEnable = true;
                     //string v= SelectedTaxEvasionRegion.RegionCode;
                     onSelectedTaxEvasionRegion();
@@ -836,40 +762,46 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectLCType = value;
-
                 if (_selectLCType != null)
                 {
-                    _TaxEvasionReportTobeUsedToSubmit.CityCode = _selectLCType.CityCode;
-                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                    { _TaxEvasionReportTobeUsedToSubmit.Latitude = "0.0"; }
-                    else
-                    { _TaxEvasionReportTobeUsedToSubmit.Latitude = _selectLCType.Latitude; }
-                    if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                    { _TaxEvasionReportTobeUsedToSubmit.Longitude = "0.0"; }
-                    else
-                    { _TaxEvasionReportTobeUsedToSubmit.Longitude = _selectLCType.Longitude; }
-
-                    if (_selectLCType != null)
+                    if (App.IsArabic)
                     {
-                        if (App.IsArabic)
-                        {
-                            TxtReportDetailCity = _selectLCType.CityNameAR;
-                        }
-                        else
-                        {
-                            TxtReportDetailCity = _selectLCType.CityNameEN;
-                        }
+                        TxtReportDetailCity = _selectLCType.CityNameAR;
                     }
-
+                    else
+                    {
+                        TxtReportDetailCity = _selectLCType.CityNameEN;
+                    }
                 }
-
-
-
-
-
-                //ListFormBudles = null;
                 RaisePropertyChanged("SelectLCType");
             }
+
+
+
+                //if (_selectLCType != null)
+                //{
+
+
+
+
+                //    //  _TaxEvasionReportTobeUsedToSubmit.CityCode = _selectLCType.CityCode;
+                //    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                //    { //_TaxEvasionReportTobeUsedToSubmit.Latitude = "0.0"; 
+                //    }
+                //    else
+                //    {// _TaxEvasionReportTobeUsedToSubmit.Latitude = _selectLCType.Latitude; }
+                //        if (string.IsNullOrEmpty(_selectLCType.Latitude))
+                //        { _TaxEvasionReportTobeUsedToSubmit.Longitude = "0.0"; }
+                //        else
+                //        { //_TaxEvasionReportTobeUsedToSubmit.Longitude = _selectLCType.Longitude; }
+
+                            
+
+                //        }
+                //    }
+
+                    //ListFormBudles = null;
+            
         }
 
 
@@ -933,15 +865,6 @@ namespace GAZT.ViewModel.NewViewModel
 
             SubmitReportClicked = new Xamarin.Forms.Command(() =>
             {
-
-
-                /*if(regionlist != null && regionlist.RegionList.Count != 0)*/
-                //{ RList = regionlist.RegionList; }
-
-
-                //TEReportResponsePostRootObject
-                //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView);
-
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
@@ -1032,12 +955,6 @@ namespace GAZT.ViewModel.NewViewModel
 
 
                 }
-                //}
-                //else
-                //{ _dialogService.ShowMessage("Attachment size Cannot exceed 10MB", AppResources.Information); }
-
-
-
             }
 
 
@@ -1046,22 +963,10 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task onPageLoad()
         {
-
-            //   SelectedTaxEvasionCompanyType = ListFacilityCompanyType.Where(x => x.Id == "1").FirstOrDefault();
-            //_tEReportobj.ViolationType = _selectedCategory;
-            //_tEReportobj.Channel = "2";
-            //_tEReportobj.WSPassword = "gazt@123";
-            //_tEReportobj.WSUserName = "GAZT@CRM";
-            //_facilityCompanyType.Name=AppResources
-
-
             try
             {
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                ////string lang = UtilityManager.GetLanguageParameter();
                 regionlist = await WebServiceManager.GAZTTESFormGetRegion();
-                ////PopToRootPage();
-                ///FormBundleList = formbundleList.d.results;
                 if (regionlist != null && regionlist.RegionList.Count != 0)
                 { RList = regionlist.RegionList; }
 
@@ -1101,30 +1006,47 @@ namespace GAZT.ViewModel.NewViewModel
             try
             {
                 string date = DatePick;
-                _TaxEvasionReportTobeUsedToSubmit.ReceivedDate = date;
-                _TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
-                _TaxEvasionReportTobeUsedToSubmit.ViolationType = _selectedCategory;
-                _TaxEvasionReportTobeUsedToSubmit.Channel = "2";
-                _TaxEvasionReportTobeUsedToSubmit.WSPassword = "gazt@123";
-                _TaxEvasionReportTobeUsedToSubmit.WSUserName = "GAZT@CRM";
-                _TaxEvasionReportTobeUsedToSubmit.TaxType = "1";
-                _TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
-                _TaxEvasionReportTobeUsedToSubmit.TIN = TxtTIN;
-                _TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
-                _TaxEvasionReportTobeUsedToSubmit.ReportDetails = TReportDetail;
-                _TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
-                _TaxEvasionReportTobeUsedToSubmit.CompanyName = TFaciName;
-                _TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
-                _TaxEvasionReportTobeUsedToSubmit.ReporterMobileNumber = TMobNumber;
+                TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
+                TaxEvasionReportTobeUsedToSubmit.ReceivedDate = date;
+                TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
+                TaxEvasionReportTobeUsedToSubmit.ViolationType = _selectedCategory;
+                TaxEvasionReportTobeUsedToSubmit.Channel = "2";
+                TaxEvasionReportTobeUsedToSubmit.WSPassword = "gazt@123";
+                TaxEvasionReportTobeUsedToSubmit.WSUserName = "GAZT@CRM";
+                TaxEvasionReportTobeUsedToSubmit.TaxType = "1";
+                TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
+                TaxEvasionReportTobeUsedToSubmit.TIN = TxtTIN;
+                TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
+                TaxEvasionReportTobeUsedToSubmit.ReportDetails = TReportDetail;
+                TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
+                TaxEvasionReportTobeUsedToSubmit.CompanyName = TFaciName;
+                TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
+                TaxEvasionReportTobeUsedToSubmit.ReporterMobileNumber = TMobNumber;
+                TaxEvasionReportTobeUsedToSubmit.ID = TID;
+                TaxEvasionReportTobeUsedToSubmit.VAT = TVatNumber;
+                TaxEvasionReportTobeUsedToSubmit.Longitude = Longitude.ToString();
+                TaxEvasionReportTobeUsedToSubmit.Latitude = Latitude.ToString();
+                TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
+                TaxEvasionReportTobeUsedToSubmit.District = TFDAdress;
+                TaxEvasionReportTobeUsedToSubmit.CompanyAddress = TFSAddress;
+                TaxEvasionReportTobeUsedToSubmit.WorkType = TFWType;
+                TaxEvasionReportTobeUsedToSubmit.RegionCode = SelectedTaxEvasionRegion.RegionCode;
+                TaxEvasionReportTobeUsedToSubmit.CityCode = SelectLCType.CityCode;
+
+
+
+
+
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                _TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = TFaciMobNo;
+                TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = TFaciMobNo;
+                
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
-                response = await WebServiceManager.GAZTTESReportSubmit(_TaxEvasionReportTobeUsedToSubmit, newList);
+                response = await WebServiceManager.GAZTTESReportSubmit(TaxEvasionReportTobeUsedToSubmit, newList);
                 if (response != null && response.Success == true)
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
-                    _TaxEvasionReportTobeUsedToSubmit = null;
+                  
 
                     _dialogService.ShowMessage(newrm, AppResources.Submitted);
 
