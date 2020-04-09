@@ -192,7 +192,7 @@ namespace GAZT.ViewModel.NewViewModel
             try
             {
                 _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
-                SelectedTaxEvasionListItem = null;
+                
             }
             catch (Exception ex)
             {
