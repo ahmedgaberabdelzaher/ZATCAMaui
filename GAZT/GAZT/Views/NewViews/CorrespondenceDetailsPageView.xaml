@@ -12,8 +12,8 @@
              NavigationPage.HasNavigationBar="False"
              >
     <!--<ContentPage.ToolbarItems>
-        <ToolbarItem Icon="{Binding FavIcon}" Order="Primary" Priority="0" Command="{Binding OnFavClicked}"hdfhd />
-        </ContentPage.ToolbarItems>-->
+        <ToolbarItem Icon="{Binding FavIcon}" Order="Primary" Priority="0" Command="{Binding OnFavClicked}" />
+    </ContentPage.ToolbarItems>-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
