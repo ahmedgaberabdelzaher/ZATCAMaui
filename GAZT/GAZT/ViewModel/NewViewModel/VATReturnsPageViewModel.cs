@@ -40,6 +40,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnAcknowlwdgementClicked { get; set; }
 
         public ICommand onFaqSectionClicked { get; set; }
+        public ICommand ChangeRegistrationClicked { get; set; }
+
+        
 
 
         // bool IsFirstSubmission = true;
@@ -2058,6 +2061,14 @@ namespace GAZT.ViewModel.NewViewModel
 
 
             });
+
+            ChangeRegistrationClicked = new Command(async () =>
+            {
+                await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+            });
+
+
+            
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 if (!string.IsNullOrEmpty(ButtonName))

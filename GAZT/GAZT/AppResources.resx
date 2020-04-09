@@ -2980,4 +2980,10 @@ Should we require further information, we would be in contact.</value>
     <value>The selected service is not available to you</value>
     <comment>OTP Page</comment>
   </data>
+  <data name="ZZZChangeRegistationNote" xml:space="preserve">
+    <value>If you do not agree with the above information, please visit GAZT portal to change the registration type</value>
+  </data>
+  <data name="ZZZChageOfRegistration" xml:space="preserve">
+    <value>Change of registration form.</value>
+  </data>
 </root>

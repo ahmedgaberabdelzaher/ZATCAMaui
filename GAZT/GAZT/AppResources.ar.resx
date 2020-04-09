@@ -2977,4 +2977,10 @@
     <value>The selected service is not available to you</value>
     <comment>OTP Page</comment>
   </data>
+  <data name="ZZZChangeRegistationNote" xml:space="preserve">
+    <value>في حال كنت لا توافق على المعلومات أعلاه، الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
+  </data>
+  <data name="ZZZChageOfRegistration" xml:space="preserve">
+    <value>تغيير نموذج التسجيل</value>
+  </data>
 </root>

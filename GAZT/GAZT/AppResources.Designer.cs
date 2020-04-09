@@ -7252,6 +7252,24 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change of registration form..
+        /// </summary>
+        public static string ZZZChageOfRegistration {
+            get {
+                return ResourceManager.GetString("ZZZChageOfRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you do not agree with the above information, please visit GAZT portal to change the registration type.
+        /// </summary>
+        public static string ZZZChangeRegistationNote {
+            get {
+                return ResourceManager.GetString("ZZZChangeRegistationNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Information.
         /// </summary>
         public static string ZZZContactInformation {
