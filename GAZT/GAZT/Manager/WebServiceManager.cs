@@ -4504,8 +4504,9 @@ namespace GAZT.Manager
 
                                     XmlNode node = xmlDoc.SelectSingleNode("/soap:Envelope/soap:Body/ns2:loginValidationResponse/LoginResponse", xmlnsManager);
                                     App.Token = node.ChildNodes[0].InnerText;
-                                    NumberOfValiedAttempts = node.ChildNodes[2].InnerText;
-
+                                    if (node.ChildNodes.Count == 5)
+                                        NumberOfValiedAttempts = node.ChildNodes[4].InnerText;
+                              
                                     if ((0 == String.Compare(App.Token, "User does not exist")))
                                     {
                                         throw new GAZTUserDoesNotExistException();

@@ -759,12 +759,19 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childZakat.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    string second= UtilityManager.ConvertNumerals(result[2]);
+                                    time=  " "+ hours + ":"+ minutes+ " ";
+                                    
 
                                 }
                                 //16H36M15S
 
-                                StartDate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = StartDate + "  " + time;
+                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(Tstartdate, time);
+                                //StartDate = StartDate + "  " + time;
                             }
 
                         }
@@ -778,7 +785,11 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childZakat.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
-
+                                    string[] result = time.Split(':');
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes+" ";
                                 }
 
                                 StartDate = StartDate + "  " + time;
@@ -862,10 +873,16 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childVAT.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    string second = UtilityManager.ConvertNumerals(result[2]);
+                                    time = " " + hours + ":" + minutes + " ";
 
                                 }
-                                StartDate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = StartDate + "  " + time;
+                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(Tstartdate, time);
+
                             }
                         }
                         else
@@ -878,6 +895,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childVAT.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                 
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
 
                                 }
                                 StartDate = StartDate + "  " + time;
@@ -943,11 +966,16 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childET.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    string second = UtilityManager.ConvertNumerals(result[2]);
+                                    time = " " + hours + ":" + minutes + " ";
 
                                 }
 
-                                StartDate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = StartDate + time;
+                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(Tstartdate, time);
                             }
 
                         }
@@ -960,6 +988,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     time = childET.Coitm;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
+                                    string[] result = time.Split(':');
+                                    
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
+                                    time = " " + hours + ":" + minutes + " ";
 
                                 }
                                 StartDate = StartDate + time;

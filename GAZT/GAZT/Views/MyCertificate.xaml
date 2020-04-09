@@ -76,7 +76,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel  Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
+                        <local:CustomLabel Margin="0,20,0,0"  Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
                         </local:CustomLabel>
                     </StackLayout>
 
@@ -104,7 +104,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel  Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
+                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
                         </local:CustomLabel>
                     </StackLayout>
 
@@ -132,7 +132,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel  Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
+                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
                         </local:CustomLabel>
                     </StackLayout>
 

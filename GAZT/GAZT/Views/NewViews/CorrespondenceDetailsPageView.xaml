@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             Title="{x:Static local:AppResources.ZZCorrespondenceDetails}"
+             Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondenceDetailsPageView"
              NavigationPage.HasNavigationBar="False"
              >
@@ -25,7 +25,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZVatTermsAndConditions}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZCorrespondence}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

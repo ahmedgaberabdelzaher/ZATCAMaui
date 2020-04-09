@@ -724,10 +724,10 @@
     <value>خطأ</value>
   </data>
   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
-    <value>تبقت لك محاولة واحدة وبعدها سيتم حجب حسابك</value>
+  <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
-    <value>تم إلغاء محاولة الدخول بسبب الفشل 3 مرات لإدخال رمز التحقق</value>
+    <value>فشلت عملية تسجيل الدخول بسبب ادخال الرمز التحقق }0{ مرات بشكل خاطىء</value>
   </data>
   <data name="ZUserNameIncorrect" xml:space="preserve">
     <value>اسم المستخدم أو كلمة المرور غير صحيحة</value>
@@ -2567,15 +2567,15 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
-    <value>New password field and confirm Password field should match up</value>
+    <value>حقل كلمة السر وحقل تأكيد كلمة السر غير متطابقين</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
-    <value>Please enter confirmation code sent to your email address</value>
+    <value>الرجاء إدخال رمز التأكيد المرسل الى بريدك الإلكتروني</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyourmobilenumber" xml:space="preserve">
-    <value>Please enter confirmation code sent to your mobile number</value>
+    <value>الرجاء إدخال رمز التأكيد المرسل الى هاتفك الجوال</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
@@ -2924,7 +2924,7 @@
     <value>​​​​نبذة عن الهيئة​</value>
   </data>
   <data name="PdfIsNotAvailableFor" xml:space="preserve">
-    <value> PDF Not Available</value>
+    <value>ملف PDF غير موجود</value>
   </data>
   <data name="ZZZSetLanguageText" xml:space="preserve">
     <value>English</value>
@@ -2935,22 +2935,22 @@
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>No Dues</value>
+    <value>لا يوجد مستحقات</value>
   </data>
   <data name="ZReturnStatus" xml:space="preserve">
-    <value>Return Status</value>
+    <value>حالة الإقرار</value>
     <comment>Return status String</comment>
   </data>
   <data name="ZZZBusinessInformation" xml:space="preserve">
-    <value>Business Information</value>
+    <value>بيانات الأعمال</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZZContactInformation" xml:space="preserve">
-    <value>Contact Information</value>
+    <value>بيانات الاتصال</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZZIndividualInformation" xml:space="preserve">
-    <value>Individual Information</value>
+    <value>بيانات الأفراد</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZOR" xml:space="preserve">
@@ -2958,11 +2958,11 @@
     <comment>Vat Look Up</comment>
   </data>
   <data name="ZQRScanner" xml:space="preserve">
-    <value>QR Scanner</value>
+    <value>ماسح QR</value>
     <comment>vat Look up</comment>
   </data>
   <data name="ZStepsTitleScan" xml:space="preserve">
-    <value>To perform the search, you can scan QR code:</value>
+    <value>للبحث يمكنك مسح رمز QR:</value>
     <comment>vat look up</comment>
   </data>
   <data name="ZZAnexceptionwasraised" xml:space="preserve">
