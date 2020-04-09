@@ -395,95 +395,97 @@ private void ShowOptionsCommandClicked(object obj)
         {
             ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();
             ReturnInfoItems = new ObservableCollection<ReturnInfo>();
-
-            if (DashboardData.results != null && DashboardData.results.Count > 0)
+            if (DashboardData != null)
             {
-                if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
+                if (DashboardData.results != null && DashboardData.results.Count > 0)
                 {
-                    ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
-                    objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
-
-                    String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
-
-                    if (string.IsNullOrEmpty(RtnTotstr))
+                    if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
                     {
-                        RtnTotstr = "0";
-                    }
-                    else
-                    {
-                        string returnToString =  RtnTotstr.Substring(0, 1);
-                         if (returnToString.Equals("."))
+                        ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
+                        objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
+
+                        String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
+
+                        if (string.IsNullOrEmpty(RtnTotstr))
                         {
-                            RtnTotstr = "0" + RtnTotstr;
+                            RtnTotstr = "0";
                         }
-                         else
+                        else
                         {
+                            string returnToString = RtnTotstr.Substring(0, 1);
+                            if (returnToString.Equals("."))
+                            {
+                                RtnTotstr = "0" + RtnTotstr;
+                            }
+                            else
+                            {
+                            }
                         }
+
+
+                        objReturnInfoRtnTot.ReturnCount = RtnTotstr;
+
+                        objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
+                        objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
+                        objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
+                        objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
+                        _returnInfoItems.Add(objReturnInfoRtnTot);
+                        ReturnInfoItems = _returnInfoItems;
+                        // ReturnInfoItems.Add(objReturnInfoRtnTot);
                     }
-                  
 
-                    objReturnInfoRtnTot.ReturnCount = RtnTotstr;
+                    if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
+                    {
+                        ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
+                        objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
 
-                    objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
-                    objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
-                    objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
-                    objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
-                    _returnInfoItems.Add(objReturnInfoRtnTot);
-                    ReturnInfoItems = _returnInfoItems;
-                   // ReturnInfoItems.Add(objReturnInfoRtnTot);
+                        String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                        if (string.IsNullOrEmpty(NrtnTotstr))
+                        {
+                            NrtnTotstr = "0";
+                        }
+                        else if (NrtnTotstr.Substring(0, 1) == ".")
+                        {
+                            NrtnTotstr = "0" + NrtnTotstr;
+                        }
+                        objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
+
+                        objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
+                        objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
+                        objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
+                        objReturnInfoNrtnTot.ReturnTypeName = AppResources.NonSubmitted;
+
+                        ReturnInfoItems.Add(objReturnInfoNrtnTot);
+
+                    }
+
+
+                    if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                    {
+
+                        ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
+                        objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
+
+                        String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                        if (string.IsNullOrEmpty(DueIcrstr))
+                        {
+                            DueIcrstr = "0";
+                        }
+                        else if (DueIcrstr.Substring(0, 1) == ".")
+                        {
+                            DueIcrstr = "0" + DueIcrstr;
+                        }
+                        objReturnInfoDueIcr.ReturnCount = DueIcrstr;
+
+                        objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
+                        objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
+                        objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
+                        objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
+
+                        ReturnInfoItems.Add(objReturnInfoDueIcr);
+                    }
+
                 }
-
-                if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
-                {
-                    ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
-                    objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
-
-                    String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(NrtnTotstr))
-                    {
-                        NrtnTotstr = "0";
-                    }
-                    else if (NrtnTotstr.Substring(0, 1) == ".")
-                    {
-                        NrtnTotstr = "0" + NrtnTotstr;
-                    }
-                    objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
-
-                    objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
-                    objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
-                    objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
-                    objReturnInfoNrtnTot.ReturnTypeName = AppResources.NonSubmitted;
-
-                    ReturnInfoItems.Add(objReturnInfoNrtnTot);
-
-                }
-
-
-                if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
-                {
-
-                    ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
-                    objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
-
-                    String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(DueIcrstr))
-                    {
-                        DueIcrstr = "0";
-                    }
-                    else if (DueIcrstr.Substring(0, 1) == ".")
-                    {
-                        DueIcrstr = "0" + DueIcrstr;
-                    }
-                    objReturnInfoDueIcr.ReturnCount = DueIcrstr;
-
-                    objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
-                    objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
-                    objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
-                    objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
-
-                    ReturnInfoItems.Add(objReturnInfoDueIcr);
-                }
-
             }
         }
 

@@ -113,7 +113,7 @@
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                        <local1:CustomLabel  FlowDirection="LeftToRight"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="3."/>
@@ -122,7 +122,7 @@
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                        <local1:CustomLabel  FlowDirection="LeftToRight" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="4."/>
@@ -143,7 +143,7 @@
                                         </Label>
 
 
-                                        <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDeclarationCheckEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
+                                        <CheckBox x:Name="chkDeclaration" IsChecked="{Binding IsDeclarationCheckedForInstruction}" VerticalOptions="CenterAndExpand"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDeclarationCheckEnabled}"  Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
                                             <CheckBox.Triggers>
                                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclaration}, Path=IsChecked}" Value="false">
                                                     <Setter Property="Color" Value="#ff0000" />
@@ -152,7 +152,7 @@
                                         </CheckBox>
 
 
-                                    <local1:CustomLabel  Grid.Row="7" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                    <local1:CustomLabel  Grid.Row="7" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static local1:AppResources.ZVatDeclarationInstructions}"/>
@@ -432,7 +432,7 @@
                                         <custom:GAZTBorderlessEditor  HeightRequest="100"  Grid.Row="14"  IsEnabled="False" Grid.Column="0" Grid.ColumnSpan="2" IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.FullAddress}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12,3,12,3" BackgroundColor="White" VerticalOptions="FillAndExpand" >
 
                                         </custom:GAZTBorderlessEditor>
-                                        <CheckBox x:Name="chkClearification" CheckedChanged="chkClearification_CheckedChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTaxPayerCheckEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="15" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <CheckBox x:Name="chkClearification"  CheckedChanged="chkClearification_CheckedChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTaxPayerCheckEnabled}" IsChecked="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsCheckedTaxPayerDetailsInfo}" Grid.Row="15" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
                                             <CheckBox.Triggers>
                                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkClearification}, Path=IsChecked}" Value="false">
                                                     <Setter Property="Color" Value="#ff0000" />
@@ -443,7 +443,7 @@
 
 
 
-                                        <local1:CustomLabel HorizontalTextAlignment="Start" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
+                                        <local1:CustomLabel FlowDirection="LeftToRight" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
                                     <Label  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
@@ -754,7 +754,7 @@
                                 <TapGestureRecognizer Tapped="OnPrivateHealthcareAmountClicked" />
                             </Image.GestureRecognizers>
                         </Image>-->
-                                        <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        <local1:CustomLabel  FlowDirection="LeftToRight" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="2." FontFamily="{StaticResource SSTArBold}"/>
@@ -1669,7 +1669,7 @@
                                     <TapGestureRecognizer Tapped="OnVatImportsSubjectToVatAccountedAmountClickedNew" />
                                 </Image.GestureRecognizers>
                             </Image>-->
-                                        <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" FontAttributes="Bold" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        <local1:CustomLabel FlowDirection="LeftToRight"  Style="{StaticResource GAZTSmallGreenLabelStyle}" FontAttributes="Bold" Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" >
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="9." FontFamily="{StaticResource SSTArBold}"/>
@@ -2084,7 +2084,7 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <local1:CustomLabel Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                                            <local1:CustomLabel  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="12." FontFamily="{StaticResource SSTArBold}"/>
@@ -2105,7 +2105,7 @@
                                             <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
 
 
-                                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                            <local1:CustomLabel FlowDirection="LeftToRight"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
@@ -2115,7 +2115,7 @@
                                             </local1:CustomLabel>
                                             <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0">
+                                            <local1:CustomLabel FlowDirection="LeftToRight"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="13." FontFamily="{StaticResource SSTArBold}"/>
@@ -2125,14 +2125,14 @@
                                             </local1:CustomLabel>
                                             <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                                            <Label  FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                                            <local1:CustomLabel FlowDirection="LeftToRight"  FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="14." FontFamily="{StaticResource SSTArBold}"/>
                                                         <Span Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
-                                            </Label>
+                                            </local1:CustomLabel>
                                             <!--<Frame Grid.Row="6" x:Name="EntryPreperiodcorrFrame" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="3" >
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
@@ -2209,7 +2209,7 @@
 
 
 
-                                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                                            <local1:CustomLabel   FlowDirection="LeftToRight" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="15." FontFamily="{StaticResource SSTArBold}"/>
@@ -2360,10 +2360,10 @@
                                             </Grid.ColumnDefinitions>
                                             <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                                             </Frame>
-                                            <custom:CustomLabel Text="{x:Static local1:AppResources.ZVatRefundInformation}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformation}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                                             </custom:CustomLabel>
-                                            <custom:CustomLabel Text="{x:Static local1:AppResources.ZVatRefundInformationNoteOne}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <custom:CustomLabel Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteOne}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                             <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}"/>
 
                                     <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" HeightRequest="480"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Start">
@@ -2434,13 +2434,13 @@
 
 
                                         <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
-                                                    <CheckBox x:Name="chkCheckedRefund"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableCheckedRefund}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Start" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
+                                                    <CheckBox x:Name="chkCheckedRefund"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableCheckedRefund}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Center" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
 
                                                     </CheckBox>
-                                                    <Label Text="{x:Static local1:AppResources.ZVatRefundInformationCheckBoxInfo}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                    <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationCheckBoxInfo}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                                                 </StackLayout>
-                                                <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANID}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANID}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <!--<Frame Margin="10,13,10,0" Grid.Row="4" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
@@ -2488,7 +2488,7 @@
                                         </syncfusion:SfPicker>
 
 
-                                        <Label Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                        <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <!--<Frame Grid.Row="6"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
@@ -2552,7 +2552,7 @@
                                 <custom:GAZTBorderlessEntry x:Name="IbanIDNumber" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryNetdueVat_TextChanged" Grid.Row="8" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                                 </custom:GAZTBorderlessEntry>-->
-                                                <Label Text="{x:Static local1:AppResources.ZVatRefundInformationIBANIDNote}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Grid.Row="7" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                                <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationIBANIDNote}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Grid.Row="7" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                                             </Grid>
 
@@ -2560,11 +2560,11 @@
                                             </Frame>
                                             <Label Text="{x:Static local1:AppResources.ZVatSummary}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                                             </Label>
-
+                                             
                                     <Label Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
-                                    <local1:CustomLabel  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="1."/>
@@ -2574,7 +2574,7 @@
                                             </local1:CustomLabel>
 
 
-                                    <local1:CustomLabel  Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="2."/>
@@ -2583,7 +2583,7 @@
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
 
-                                    <local1:CustomLabel  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="3."/>
@@ -2592,7 +2592,7 @@
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
 
-                                    <local1:CustomLabel  Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="4."/>
@@ -2614,7 +2614,7 @@
                                             </CheckBox>
 
 
-                                    <local1:CustomLabel  Grid.Row="11" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="11" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{x:Static local1:AppResources.ZVatCertifyInformation}"/>
@@ -2631,7 +2631,7 @@
                                             </CheckBox>
 
 
-                                    <local1:CustomLabel  Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
+                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="{x:Static local1:AppResources.ZZIacknowledgethattheabovebankaccount}"/>
@@ -2640,11 +2640,11 @@
                                             </local1:CustomLabel>
 
 
-                                            <Label Text="{x:Static local1:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                            <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.OnGetAcknowledgementLinkClicked}"></TapGestureRecognizer>
                                                 </Label.GestureRecognizers>
-                                            </Label>
+                                            </local1:CustomLabel>
 
                                             <!--<Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
