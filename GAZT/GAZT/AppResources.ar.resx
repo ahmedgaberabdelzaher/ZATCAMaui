@@ -724,7 +724,7 @@
     <value>خطأ</value>
   </data>
   <data name="ZYouhaveoneremainingattemptthentheaccountwillbelocked" xml:space="preserve">
-  <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
+    <value>لديك {0} محاولات متبقية؛ ثم سيتم قفل حسابك</value>
   </data>
   <data name="ZYouraccounthasbeenlockedPleasecontactourcallcenter" xml:space="preserve">
     <value>فشلت عملية تسجيل الدخول بسبب ادخال الرمز التحقق }0{ مرات بشكل خاطىء</value>
@@ -2483,11 +2483,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>أسم المنشأة</value>
+    <value>اسم المنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المقاطعة للمنشأة</value>
+    <value>عنوان المنطقة للمنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
@@ -2499,7 +2499,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>أسم مقدم التقرير</value>
+    <value>اسم مقدم البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
@@ -2511,11 +2511,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
-    <value>موقع التقرير</value>
+    <value>موقع البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل التقرير</value>
+    <value>تفاصيل البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
