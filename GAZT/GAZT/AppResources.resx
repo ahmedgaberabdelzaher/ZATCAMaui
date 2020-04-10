@@ -2986,4 +2986,17 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZChageOfRegistration" xml:space="preserve">
     <value>Change of registration form.</value>
   </data>
+  <data name="ExciseTaxReturns" xml:space="preserve">
+    <value>Excise Tax Returns</value>
+  </data>
+  <data name="ZAKATReturns" xml:space="preserve">
+    <value>ZAKAT Returns</value>
+  </data>
+  <data name="ZAppVersion" xml:space="preserve">
+    <value>App Version</value>
+    <comment>Option</comment>
+  </data>
+  <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
+    <value>The selected service is not available</value>
+  </data>
 </root>
