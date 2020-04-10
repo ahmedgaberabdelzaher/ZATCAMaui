@@ -705,15 +705,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excise Tax Returns.
-        /// </summary>
-        public static string ExciseTaxReturns {
-            get {
-                return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
         public static string ExportValue {
@@ -2019,15 +2010,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ZAKAT Returns.
-        /// </summary>
-        public static string ZAKATReturns {
-            get {
-                return ResourceManager.GetString("ZAKATReturns", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected.
         /// </summary>
         public static string ZakatTaxType {
@@ -2069,15 +2051,6 @@ namespace GAZT {
         public static string ZAmountPayable {
             get {
                 return ResourceManager.GetString("ZAmountPayable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to App Version.
-        /// </summary>
-        public static string ZAppVersion {
-            get {
-                return ResourceManager.GetString("ZAppVersion", resourceCulture);
             }
         }
         
@@ -7491,15 +7464,6 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The selected service is not available.
-        /// </summary>
-        public static string ZZZselectedserviceisnotavailable {
-            get {
-                return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
             }
         }
         
