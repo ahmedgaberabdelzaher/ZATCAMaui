@@ -5021,5 +5021,23 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheselectedserviceisnotavailabletoyou", resourceCulture);
             }
         }
+        
+        public static string ZZZChangeRegistationNote {
+            get {
+                return ResourceManager.GetString("ZZZChangeRegistationNote", resourceCulture);
+            }
+        }
+        
+        public static string ZZZChageOfRegistration {
+            get {
+                return ResourceManager.GetString("ZZZChageOfRegistration", resourceCulture);
+            }
+        }
+        
+        public static string ZZZSubmittedReport {
+            get {
+                return ResourceManager.GetString("ZZZSubmittedReport", resourceCulture);
+            }
+        }
     }
 }

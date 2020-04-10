@@ -129,9 +129,9 @@
 
 
 
-                                    <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsZakatVisible}">
+                                    <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" >
 
-                                        <ListView  ItemsSource="{Binding ListZAKATCorrespondance}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" BackgroundColor="White" SeparatorVisibility="None">
+                                    <ListView  IsVisible="{Binding IsZakatVisible}" ItemsSource="{Binding ListZAKATCorrespondance}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" BackgroundColor="White" SeparatorVisibility="None">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
@@ -283,8 +283,9 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-
-                                    </StackLayout>
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsZakatVisibleLabel}">
+                                    </local:CustomLabel>
+                                </StackLayout>
                                 </Grid>
    
                         </tabView:SfTabItem.Content>
@@ -347,12 +348,13 @@
                                     </syncfusion:SfPicker.Behaviors>
                                 </syncfusion:SfPicker>
 
-                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsVATVisible}">
+                                <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1">
                                     <ListView 
            ItemsSource="{Binding ListVATCorrespondance}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                         IsVisible="{Binding IsVATVisible}"
                         BackgroundColor="White"
                         SeparatorVisibility="None"
                       ItemTapped="ListView_ItemTapped_1"
@@ -511,7 +513,8 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVATVisibleLabel}">
+                                    </local:CustomLabel>
 
                                 </StackLayout>
                                     </Grid>
@@ -575,12 +578,13 @@
                                             <custom:SfPickerBehavior />
                                         </syncfusion:SfPicker.Behaviors>
                                     </syncfusion:SfPicker>
-                                    <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" IsVisible="{Binding IsETVisible}">
+                                    <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" >
                                         <ListView 
            ItemsSource="{Binding ListETCorrespondance}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                            IsVisible="{Binding IsETVisible}"
                       ItemTapped="ListView_ItemTapped_2"
             SeparatorVisibility="None"
                         BackgroundColor="White"
@@ -736,7 +740,9 @@
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
-                                    </StackLayout>
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsETVisibleLabel}">
+                                    </local:CustomLabel>
+                                </StackLayout>
                                 </Grid>
                            
                         </tabView:SfTabItem.Content>
@@ -760,7 +766,7 @@
 
               
                
-                <local:CustomLabel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
+                <local:CustomLabel Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                 </local:CustomLabel>
 
             </Grid>

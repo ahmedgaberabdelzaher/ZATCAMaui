@@ -3817,7 +3817,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<TERFRegionRootObject> GAZTTESFormGetRegion()
+        public static TERFRegionRootObject GAZTTESFormGetRegion()
         {
 
             RegionPost Cred = new RegionPost();
@@ -3838,8 +3838,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    var response = await res.Content.ReadAsStringAsync();
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }

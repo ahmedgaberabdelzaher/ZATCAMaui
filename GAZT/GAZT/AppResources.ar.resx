@@ -2435,7 +2435,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
-    <value>You should sign up as new user</value>
+    <value>الرقم المميز غير موجود. الرجاء التسجيل كمكلف جديد</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
@@ -2982,5 +2982,9 @@
   </data>
   <data name="ZZZChageOfRegistration" xml:space="preserve">
     <value>تغيير نموذج التسجيل</value>
+  </data>
+  <data name="ZZZSubmittedReport" xml:space="preserve">
+    <value>بلاغ مقدم</value>
+    <comment>Tax Evasion Service</comment>
   </data>
 </root>

@@ -961,12 +961,12 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public async Task onPageLoad()
+        public void onPageLoad()
         {
             try
             {
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                regionlist = await WebServiceManager.GAZTTESFormGetRegion();
+                regionlist = WebServiceManager.GAZTTESFormGetRegion();
                 if (regionlist != null && regionlist.RegionList.Count != 0)
                 { RList = regionlist.RegionList; }
 
@@ -1048,7 +1048,7 @@ namespace GAZT.ViewModel.NewViewModel
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
                   
 
-                    _dialogService.ShowMessage(newrm, AppResources.Submitted);
+                    _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
 
                     var _navigation = Application.Current.MainPage.Navigation;
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();
@@ -1073,7 +1073,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-        public async Task CreateCompanyTypeList()
+        public void CreateCompanyTypeList()
         {
 
             try

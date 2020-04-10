@@ -2426,7 +2426,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
-    <value>You should sign up as new user</value>
+    <value>ID not found. Please sign up as new user</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
@@ -2985,5 +2985,9 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZZChageOfRegistration" xml:space="preserve">
     <value>Change of registration form.</value>
+  </data>
+  <data name="ZZZSubmittedReport" xml:space="preserve">
+    <value>Submitted Report</value>
+    <comment>Tax Evasion Service</comment>
   </data>
 </root>
