@@ -2990,4 +2990,8 @@ Should we require further information, we would be in contact.</value>
     <value>Submitted Report</value>
     <comment>Tax Evasion Service</comment>
   </data>
+  <data name="AppVersion" xml:space="preserve">
+    <value>App Version</value>
+    <comment>Option</comment>
+  </data>
 </root>
