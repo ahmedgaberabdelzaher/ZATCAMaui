@@ -714,6 +714,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excise Tax Returns.
+        /// </summary>
+        public static string ExciseTaxReturns {
+            get {
+                return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
         public static string ExportValue {
@@ -2015,6 +2024,15 @@ namespace GAZT {
         public static string ZakatCertificates {
             get {
                 return ResourceManager.GetString("ZakatCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ZAKAT Returns.
+        /// </summary>
+        public static string ZAKATReturns {
+            get {
+                return ResourceManager.GetString("ZAKATReturns", resourceCulture);
             }
         }
         
@@ -7473,6 +7491,15 @@ namespace GAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected service is not available.
+        /// </summary>
+        public static string ZZZselectedserviceisnotavailable {
+            get {
+                return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
             }
         }
         

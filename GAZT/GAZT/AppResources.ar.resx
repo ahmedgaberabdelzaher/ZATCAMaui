@@ -2991,4 +2991,13 @@
     <value>إصدار التطبيق</value>
     <comment>Option</comment>
   </data>
+  <data name="ExciseTaxReturns" xml:space="preserve">
+    <value>إقرار ضريبة السلع الانتقائية</value>
+  </data>
+  <data name="ZAKATReturns" xml:space="preserve">
+    <value>إقرار زكوي</value>
+  </data>
+  <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
+    <value>الخدمة المختارة غير متاحة</value>
+  </data>
 </root>
