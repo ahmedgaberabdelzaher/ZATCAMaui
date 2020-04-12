@@ -3012,4 +3012,7 @@
   <data name="ZZZLandingCreateAccountNote" xml:space="preserve">
     <value>يمكنك تسجيل الدخول عن طريق حسابك المسجل في الهيئة أو انشاء حساب جديد</value>
   </data>
+  <data name="ZZZWelcomeOnLanding" xml:space="preserve">
+    <value>مرحبا</value>
+  </data>
 </root>

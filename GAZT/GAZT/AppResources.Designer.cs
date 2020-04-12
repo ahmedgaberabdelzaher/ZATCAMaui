@@ -7234,7 +7234,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You should sign up as new user.
+        ///   Looks up a localized string similar to There already exists an account associated with this information, please signup as a new user.
         /// </summary>
         public static string ZZYoushouldsignupasnewuser {
             get {
@@ -7662,6 +7662,15 @@ namespace GAZT {
         public static string ZZZWelcome {
             get {
                 return ResourceManager.GetString("ZZZWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string ZZZWelcomeOnLanding {
+            get {
+                return ResourceManager.GetString("ZZZWelcomeOnLanding", resourceCulture);
             }
         }
         

@@ -127,7 +127,18 @@
 
                 <StackLayout Padding="5">
 
+                    <local1:CustomLabel  Margin="7,0,7,0" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
 
+                    <local1:CustomLabel  Margin="7,0,7,10" HorizontalOptions="StartAndExpand"   FontFamily="{StaticResource SSTArabicMedium}"  HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></local1:CustomLabel>
+
+
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
+                        <buttons:SfButton CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>
+                    </StackLayout>
+
+                    <StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
+                        <buttons:SfButton  CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>
+                    </StackLayout>
 
                     <local1:CustomLabel Padding="5"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
 
@@ -184,18 +195,7 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel  Margin="7,0,7,0" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcome}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
-
-                    <local1:CustomLabel  Margin="7,0,7,10" HorizontalOptions="StartAndExpand"   FontFamily="{StaticResource SSTArabicMedium}"  HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></local1:CustomLabel>
-
-
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
-                        <buttons:SfButton CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>
-                    </StackLayout>
-
-                    <StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
-                        <buttons:SfButton  CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>
-                    </StackLayout>
+                  
                 </StackLayout>
 
             </ScrollView>

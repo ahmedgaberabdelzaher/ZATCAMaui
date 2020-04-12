@@ -98,7 +98,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 tesmobnoscreen.MobileNumber = MobileNumber;
                 _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-                WebServiceManager.GetOtpVerification();
+                //WebServiceManager.GetOtpVerification();
 
 
             }
