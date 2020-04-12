@@ -3000,7 +3000,7 @@
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>الخدمة المختارة غير متاحة</value>
   </data>
-   <data name="UnSubmitted" xml:space="preserve">
+  <data name="UnSubmitted" xml:space="preserve">
     <value>غير مقدمة</value>
   </data>
   <data name="ZZZLandingPageTitle" xml:space="preserve">
@@ -3008,5 +3008,8 @@
   </data>
   <data name="ZZZTaxpayerServices" xml:space="preserve">
     <value>Taxpayer's Services</value>
+  </data>
+  <data name="ZZZLandingCreateAccountNote" xml:space="preserve">
+    <value>يمكنك تسجيل الدخول عن طريق حسابك المسجل في الهيئة أو انشاء حساب جديد</value>
   </data>
 </root>

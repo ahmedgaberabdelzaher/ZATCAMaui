@@ -36,6 +36,7 @@ namespace GAZT.Views.NewViews
             //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
             //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
@@ -55,6 +56,18 @@ namespace GAZT.Views.NewViews
             //    this.ToolbarItems.Add(toolbarItem1);
             //}
         }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
         private void SetLTR()
         {
             if (App.IsArabic)

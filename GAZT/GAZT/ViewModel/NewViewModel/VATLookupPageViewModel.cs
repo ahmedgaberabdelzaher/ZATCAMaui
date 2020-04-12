@@ -24,6 +24,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnHomeIconClicked { get; set; }
 
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
+
+        
 
         private bool _isTooltipEnableVisible = false;
         public bool IsTooltipEnableVisible
@@ -277,6 +280,14 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();    
+            });
+
+
+            
             OnSubmitClicked = new Command(async () =>
             {
              await OnSubmitClick();

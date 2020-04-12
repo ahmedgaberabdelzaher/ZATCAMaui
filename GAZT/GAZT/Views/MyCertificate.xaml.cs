@@ -23,6 +23,7 @@ namespace GAZT.Views
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.MyCertificate;
+                ChangeAeroIcon();
                 SetLTR();
 
                 this.BindingContext = viewModel;
@@ -114,6 +115,18 @@ namespace GAZT.Views
             //        return;
             //    } ((ListView)sender).SelectedItem = null;
             //};
+        }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
         private void SetLTR()
         {

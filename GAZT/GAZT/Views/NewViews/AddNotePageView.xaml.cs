@@ -55,6 +55,7 @@ namespace GAZT.Views.NewViews
                         if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
                         {
                             viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                            viewModel.PreviousNoteText = viewModel.NoteText;
                         }
                     }
                 }

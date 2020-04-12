@@ -26,6 +26,7 @@ namespace GAZT.ViewModel
         public ICommand OnHomeIconClicked { get; set; }
 
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
 
         private bool _setNoDataLabelVisibilityALLList = true;
@@ -394,6 +395,13 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+            
 
             if (dialogService == null)
             {
