@@ -667,7 +667,7 @@ private void ShowOptionsCommandClicked(object obj)
                         BillOrReturnDueEvent.Subject = item.Incotext + " | "+ AppResources.SADADNumber+ " : " + item.Fbnum + " | "  + AppResources.ZStatus +" : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount 
                             + " | " + item.Txt50;
 
-                        BillOrReturnDueEvent.Color = Color.FromHex("#ff0000");
+                        BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
                     }
                     else
                     {

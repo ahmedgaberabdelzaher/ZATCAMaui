@@ -209,7 +209,7 @@ namespace GAZT.Views.NewViews
                 {
                     FrmLicenseNumber.HasError = false;
                 }
-                if (viewModel.SelectedIssuedBy == null )
+                if (string.IsNullOrEmpty(viewModel.TxtLOrCIssuedBy))
                 {
                     FrmLicenseIssuedBy.HasError = true;
                     IsNextValid = false;
@@ -219,16 +219,16 @@ namespace GAZT.Views.NewViews
                     FrmLicenseIssuedBy.HasError = false;
 
                 }
-                if (viewModel.SelectCityList == null )
-                {
-                    FrmLicenseIssuedCity.HasError = true;
-                    IsNextValid = false;
-                }
-                else
-                {
-                    FrmLicenseIssuedCity.HasError = false;
+                //if (viewModel.SelectCityList == null )
+                //{
+                //    FrmLicenseIssuedCity.HasError = true;
+                //    IsNextValid = false;
+                //}
+                //else
+                //{
+                //    FrmLicenseIssuedCity.HasError = false;
 
-                }
+                //}
             }
             else
             {
@@ -321,6 +321,17 @@ namespace GAZT.Views.NewViews
                                         {
                                             SiguupModel.ALang = "E";
                                         }
+                                        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                        string month = selectedItem[0].ToString();
+                                        string day = selectedItem[1].ToString();
+                                        string year = selectedItem[2].ToString();
+                                        DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                        long ticks = DateOfBirth.Ticks;
+                                        TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                        string unixTime = span.TotalSeconds.ToString("N0");
+                                        unixTime = unixTime.Replace(",", "");
+                                        SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
                                         SiguupModel.AType = "1";
                                         SiguupModel.AFirstname = viewModel.TxtName;
                                         SiguupModel.ALastname = ".";
@@ -415,6 +426,18 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+
+                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[0].ToString();
+                                    string day = selectedItem[1].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                    long ticks = DateOfBirth.Ticks;
+                                    TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                    string unixTime = span.TotalSeconds.ToString("N0");
+                                    unixTime = unixTime.Replace(",", "");
+                                    SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
                                     SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
@@ -524,6 +547,18 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+
+                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[0].ToString();
+                                    string day = selectedItem[1].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                    long ticks = DateOfBirth.Ticks;
+                                    TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                    string unixTime = span.TotalSeconds.ToString("N0");
+                                    unixTime = unixTime.Replace(",", "");
+                                    SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
                                     SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
@@ -615,6 +650,19 @@ namespace GAZT.Views.NewViews
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+
+                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[0].ToString();
+                                string day = selectedItem[1].ToString();
+                                string year = selectedItem[2].ToString();
+                                DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                long ticks = DateOfBirth.Ticks;
+                                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                string unixTime = span.TotalSeconds.ToString("N0");
+                                unixTime = unixTime.Replace(",", "");
+                                SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
+
                                 SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
@@ -714,6 +762,20 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ALang = "E";
                                     }
+
+                                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                    string month = selectedItem[0].ToString();
+                                    string day = selectedItem[1].ToString();
+                                    string year = selectedItem[2].ToString();
+                                    DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                    long ticks = DateOfBirth.Ticks;
+                                    TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                    string unixTime = span.TotalSeconds.ToString("N0");
+                                    unixTime = unixTime.Replace(",", "");
+                                    SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
+
+
                                     SiguupModel.AType = "1";
                                     SiguupModel.AFirstname = viewModel.TxtName;
                                     SiguupModel.ALastname = ".";
@@ -805,6 +867,19 @@ namespace GAZT.Views.NewViews
                                 {
                                     SiguupModel.ALang = "E";
                                 }
+
+                                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                                string month = selectedItem[0].ToString();
+                                string day = selectedItem[1].ToString();
+                                string year = selectedItem[2].ToString();
+                                DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                long ticks = DateOfBirth.Ticks;
+                                TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                string unixTime = span.TotalSeconds.ToString("N0");
+                                unixTime = unixTime.Replace(",", "");
+                                SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+
+
                                 SiguupModel.AType = "1";
                                 SiguupModel.AFirstname = viewModel.TxtName;
                                 SiguupModel.ALastname = ".";
@@ -1356,8 +1431,7 @@ namespace GAZT.Views.NewViews
                 {
 
                     Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
-                    FrmTIN.HasError = true;
-                    EntryTIN.Text = string.Empty;
+                  
                     EntryTIN.Focus();
 
                 }
@@ -1524,7 +1598,7 @@ namespace GAZT.Views.NewViews
 
                     }
                     Message.Append(AppResources.ZZPhonenumberlengthcannotbelessthan9digits);
-
+                }
                     if (Message.Length > 0)
                     {
                         popUp.Message = Message.ToString();
@@ -1548,7 +1622,7 @@ namespace GAZT.Views.NewViews
                         FrmPhoneNumber.HasError = false;
                     }
                 }
-            }
+            
         }
 
      
@@ -1595,7 +1669,7 @@ namespace GAZT.Views.NewViews
                                 Messages.Append(Environment.NewLine);
 
                             }
-                            Messages.Append(AppResources.ZZPleaseenteravalidNationalID);
+                            Messages.Append(AppResources.ZZNationalIDlengthis10digit);
 
                         }
                         if (Messages.Length > 0)

@@ -107,11 +107,14 @@
                                             <chart:SfChart.Series>
 
                                                 <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChartModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
-
                                                     <chart:PieSeries.ColorModel>
+                                                        <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
+                                                        </chart:ChartColorModel>
+                                                    </chart:PieSeries.ColorModel>
+                                                    <!--<chart:PieSeries.ColorModel>
 
                                                         <chart:ChartColorModel Palette="Custom">
-                                                            <chart:ChartColorModel.CustomBrushes>
+                                                            <chart:ChartColorModel.CustomBrushes>   
                                                                 <Color>
 
                                                                     #006450
@@ -132,7 +135,7 @@
                                                             </chart:ChartColorModel.CustomBrushes>
                                                         </chart:ChartColorModel>
 
-                                                    </chart:PieSeries.ColorModel>
+                                                    </chart:PieSeries.ColorModel>-->
 
                                                     <chart:PieSeries.DataMarker>
                                                         <chart:ChartDataMarker >

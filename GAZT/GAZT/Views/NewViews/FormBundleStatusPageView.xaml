@@ -90,6 +90,7 @@
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                         </custom:CustomButton>
+                        
                         <syncfusion:SfPicker x:Name="DDlIDType"
                     HeaderHeight="50"
                     ShowHeader="true"

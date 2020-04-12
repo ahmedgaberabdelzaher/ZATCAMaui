@@ -14,6 +14,7 @@ using GAZT.Views.SyncFusionEnabledViews.AboutUs;
 using GAZT.Views.SyncFusionEnabledViews.FAQPage;
 using GAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
 using GAZT.Views.SyncFusionEnabledViews.ReturnsPages;
+using GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using GAZTeServicesApp.ViewModels.LoginPage;
 using GAZTeServicesApp.ViewModels.Options;
@@ -90,6 +91,7 @@ namespace GAZT
             SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportListPageViewModel>();
             
 
@@ -742,6 +744,24 @@ namespace GAZT
                 }
             }
         }
+        //TaxEvasionReportPhonePageView
+        public TaxEvasionReportMobilePageViewModel TaxEvasionReportPhonePageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
         public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
         {
             get
@@ -1068,6 +1088,7 @@ namespace GAZT
             navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
             navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
             navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
+            navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
             navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
             navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
             navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));

@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,6 +28,22 @@ namespace GAZT.ViewModel
 
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
+
+        private ChartColorCollection _colors = null;
+        public ChartColorCollection Colors
+        {
+            get
+            {
+                return _colors;
+            }
+            set
+            {
+                _colors = value;
+                RaisePropertyChanged("Colors");
+            }
+        }
+        
+
 
 
         private bool _setNoDataLabelVisibilityALLList = true;
@@ -415,6 +432,7 @@ namespace GAZT.ViewModel
 
             MyBills = null;
             ObservableCollection<MyBills> myBills = null;
+            ChartColorCollection ColorsChild = new ChartColorCollection();
             try
             {
                 try
@@ -446,12 +464,13 @@ namespace GAZT.ViewModel
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
                             SetNoDataLabelVisibilityPAID = false;
                             SetNoDataLabelVisibilityPAIDList = true;
                         }
                         else
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                           // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
                             SetNoDataLabelVisibilityPAID = true;
                             SetNoDataLabelVisibilityPAIDList = false;
                         }
@@ -459,12 +478,13 @@ namespace GAZT.ViewModel
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(170,12,25));
                             SetNoDataLabelVisibilityUNPAID = false;
                             SetNoDataLabelVisibilityUNPAIDList = true;
                         }
                         else
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                          //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
                             SetNoDataLabelVisibilityUNPAID = true;
                             SetNoDataLabelVisibilityUNPAIDList = false;
                         }
@@ -472,16 +492,17 @@ namespace GAZT.ViewModel
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
                             SetNoDataLabelVisibilityPPAID = false;
                             SetNoDataLabelVisibilityPPAIDList = true;
                         }
                         else
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
+                           // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
                             SetNoDataLabelVisibilityPPAID = true;
                             SetNoDataLabelVisibilityPPAIDList = false;
                         }
-
+                        Colors = ColorsChild;
                         ListMyBillsChartModel = myBillsChartModels;
 
                         SelcectedBillsIndex = 0;
