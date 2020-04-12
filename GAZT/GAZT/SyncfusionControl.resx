@@ -121,7 +121,7 @@
     <value>الغاء</value>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>No Dues</value>
+    <value>لا يوجد مستحقات</value>
   </data>
   <data name="OKText" xml:space="preserve">
     <value>موافق</value>

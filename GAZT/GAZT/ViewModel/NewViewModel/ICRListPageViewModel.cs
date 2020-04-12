@@ -24,6 +24,9 @@ namespace GAZT.ViewModel.NewViewModel
         public static string EUser = string.Empty;
         public static int numberOfAttachmentComingFromServer = 0;
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
+
+        
         #endregion
 
         #region Property
@@ -246,6 +249,12 @@ namespace GAZT.ViewModel.NewViewModel
 
 
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+
+
+           BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });

@@ -3000,4 +3000,13 @@
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>الخدمة المختارة غير متاحة</value>
   </data>
+   <data name="UnSubmitted" xml:space="preserve">
+    <value>غير مقدمة</value>
+  </data>
+  <data name="ZZZLandingPageTitle" xml:space="preserve">
+    <value>General Authority Of Zakat And Tax</value>
+  </data>
+  <data name="ZZZTaxpayerServices" xml:space="preserve">
+    <value>Taxpayer's Services</value>
+  </data>
 </root>

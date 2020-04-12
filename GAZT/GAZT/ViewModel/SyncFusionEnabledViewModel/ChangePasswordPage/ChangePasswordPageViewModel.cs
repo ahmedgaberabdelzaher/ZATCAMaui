@@ -420,6 +420,7 @@ namespace GAZT
 
                                     if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
                                     {
+                                        WebServiceManager.ErrorMessage = string.Empty;
                                         bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, CurrentPassword, NewPasswordForEmail);
                                         await PopToRootPage();
                                         if (response == true)
@@ -444,11 +445,22 @@ namespace GAZT
                                         }
                                         else
                                         {
-                                            String OnInvalidPassword = AppResources.InvalidPassword;
-                                            Device.BeginInvokeOnMainThread(async () =>
+                                            if(!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
                                             {
-                                                await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
-                                            });
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    await _dialogService.ShowMessageBox(WebServiceManager.ErrorMessage, AppResources.Information);
+                                                });
+                                            }
+                                            else
+                                            {
+                                                String OnInvalidPassword = AppResources.InvalidPassword;
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
+                                                });
+                                            }
+                                         
                                         }
 
                                     }
