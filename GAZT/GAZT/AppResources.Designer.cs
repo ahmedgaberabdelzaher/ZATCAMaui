@@ -7619,5 +7619,35 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
             }
         }
+        
+        public static string AppVersion {
+            get {
+                return ResourceManager.GetString("AppVersion", resourceCulture);
+            }
+        }
+        
+        public static string ExciseTaxReturns {
+            get {
+                return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
+            }
+        }
+        
+        public static string ZAKATReturns {
+            get {
+                return ResourceManager.GetString("ZAKATReturns", resourceCulture);
+            }
+        }
+        
+        public static string ZZZselectedserviceisnotavailable {
+            get {
+                return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
+            }
+        }
+        
+        public static string UnSubmitted {
+            get {
+                return ResourceManager.GetString("UnSubmitted", resourceCulture);
+            }
+        }
     }
 }

@@ -92,7 +92,7 @@ namespace GAZT.Views.NewViews
 
         public void OnPasswordFocused(object sender, EventArgs args)
         {
-            Password.Unfocus();
+          //  Password.Unfocus();
         }
         #endregion
 

@@ -681,6 +681,10 @@ namespace GAZT.Manager
                             {
                                 result = true;
                             }
+                            else if((0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "Please enter the correct old Password.")) || (0 == String.Compare(GAZTValidateAndChangePasswordResponseJToken.Value<String>(), "كلمة المرور القديمة المدخلة غير صحيحة") || GAZTValidateAndChangePasswordResponseJToken.Value<String>().Contains("كلمة المرور القديمة المدخلة غير صحيحة")))
+                            {
+                                ErrorMessage = GAZTValidateAndChangePasswordResponseJToken.Value<String>();
+                            }
                             else
                             {
                                 throw new ArgumentException(AppResources.PasswordGuidelineText);

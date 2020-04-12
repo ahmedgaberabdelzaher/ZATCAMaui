@@ -98,8 +98,9 @@ namespace GAZT.CustomControl
                         {
 
                             ObservableCollection<object> days = new ObservableCollection<object>();
-                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MMMM", CultureInfo.InvariantCulture).Month;
+                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
                             int year = int.Parse((e.NewValue as IList)[2].ToString());
+                       
                             for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
                             {
                                 if (j < 10)
@@ -133,7 +134,7 @@ namespace GAZT.CustomControl
                         }
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
 
                 }
@@ -151,10 +152,21 @@ namespace GAZT.CustomControl
                 if (i < 10)
                 {
                     Month.Add("0" + i);
+                    if (!months.ContainsKey("0" + i))
+                    {
+                        months.Add("0" + i, "0" + i);
+                    }
                 }
                 else
+                {
                     Month.Add(i.ToString());
-               // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
+                    if (!months.ContainsKey(i.ToString()))
+                    {
+                        months.Add(i.ToString(), i.ToString());
+                    }
+                }
+
+                // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
             }
 
             //populate year

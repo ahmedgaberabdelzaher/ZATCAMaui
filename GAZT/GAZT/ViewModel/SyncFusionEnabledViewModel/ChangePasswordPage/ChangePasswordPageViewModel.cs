@@ -349,113 +349,147 @@ namespace GAZT
 
                         if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
                         {
-                            if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
+                            if (!string.IsNullOrEmpty(CurrentPassword))
                             {
-                                TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, App.Otp, TaxPayerProfile.Tin, OldEmail, NewEmail, TaxPayerProfile.Password, NewPasswordForEmail);
-                                await PopToRootPage();
-                                if (TaxPayerProfile != null)
+                                if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true))
                                 {
-                                    CurrentPassword = NewPasswordForEmail;
-                                    App.TP.Email = NewEmail;
-                                    TaxPayerProfile.Email = NewEmail;
-                                    App.TP.Password = NewPasswordForEmail;
-                                    TaxPayerProfile.Password = NewPasswordForEmail;
-                                    setPropertyForEmailUpdation(NewEmail);
-                                    ClearEmailData();
-                                    String OnAuthenticationSuccess = AppResources.ZEmailUpdatedSuccessfully;
-                                    Device.BeginInvokeOnMainThread(async () =>
+                                    TP = await WebServiceManager.GAZTValidateOTPForEmail(lang, App.Otp, TaxPayerProfile.Tin, OldEmail, NewEmail, CurrentPassword, NewPasswordForEmail);
+                                    await PopToRootPage();
+                                    if (TaxPayerProfile != null)
                                     {
-                                        await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
-                                        Device.BeginInvokeOnMainThread(async () => {
-                                            var _navigation = Application.Current.MainPage.Navigation;
-                                            await _navigation.PopToRootAsync();
+                                       // CurrentPassword = NewPasswordForEmail;
+                                        App.TP.Email = NewEmail;
+                                        TaxPayerProfile.Email = NewEmail;
+                                        App.TP.Password = NewPasswordForEmail;
+                                        TaxPayerProfile.Password = NewPasswordForEmail;
+                                        setPropertyForEmailUpdation(NewEmail);
+                                        ClearEmailData();
+                                        String OnAuthenticationSuccess = AppResources.ZEmailUpdatedSuccessfully;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
+                                            Device.BeginInvokeOnMainThread(async () => {
+                                                var _navigation = Application.Current.MainPage.Navigation;
+                                                await _navigation.PopToRootAsync();
+                                            });
                                         });
-                                    });
-                                    ClearEmailData();
-                                    App.IsComingFromDashboardToLogOff = false;
-                                    Device.BeginInvokeOnMainThread(async () =>
+                                        ClearEmailData();
+                                        App.IsComingFromDashboardToLogOff = false;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+
+                                        });
+
+                                    }
+                                    else
                                     {
 
-                                    });
+                                        String OnInvalidEmail = AppResources.InvalidEmail;
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
+                                        });
 
+                                    }
                                 }
                                 else
                                 {
-
-                                    String OnInvalidEmail = AppResources.InvalidEmail;
+                                    String OnPasswordMatch = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
+                                        await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
                                     });
-
+                                    ClearPasswordDataForEmail();
                                 }
                             }
                             else
                             {
-                                String OnPasswordMatch = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(OnPasswordMatch, AppResources.Information);
+                                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.ZError);
                                 });
-                                ClearPasswordDataForEmail();
                             }
+                            
                         }
                         else if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsLogin)//For Default Password Change
-                    {
-
-                            try
+                        {
+                            if (!string.IsNullOrEmpty(CurrentPassword))
                             {
-                                if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
+                                try
                                 {
-                                    bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, TaxPayerProfile.Password, NewPasswordForEmail);
-                                    await PopToRootPage();
-                                    if (response == true)
+
+                                    if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
                                     {
-                                        CurrentPassword = NewPasswordForEmail;
-                                        App.TP.Password = NewPasswordForEmail;
-                                        TaxPayerProfile.Password = NewPasswordForEmail;
-                                        String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        WebServiceManager.ErrorMessage = string.Empty;
+                                        bool response = await WebServiceManager.GAZTValidateAndChangePassword(lang, TaxPayerProfile.Tin, CurrentPassword, NewPasswordForEmail);
+                                        await PopToRootPage();
+                                        if (response == true)
                                         {
-                                            await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
-                                        });
+                                           // CurrentPassword = NewPasswordForEmail;
+                                            App.TP.Password = NewPasswordForEmail;
+                                            TaxPayerProfile.Password = NewPasswordForEmail;
+                                            String OnAuthenticationSuccess = AppResources.PassWordChangedSucessfully;
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
+                                            });
 
-                                        App.IsComingFromDashboardToLogOff = false;
-                                        var _navigation = Application.Current.MainPage.Navigation;
+                                            App.IsComingFromDashboardToLogOff = false;
+                                            var _navigation = Application.Current.MainPage.Navigation;
 
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                ClearPasswordData();
+                                                await _navigation.PopToRootAsync();
+                                            });
+                                        }
+                                        else
                                         {
-                                            ClearPasswordData();
-                                            await _navigation.PopToRootAsync();
-                                        });
+                                            if(!string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                                            {
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    await _dialogService.ShowMessageBox(WebServiceManager.ErrorMessage, AppResources.Information);
+                                                });
+                                            }
+                                            else
+                                            {
+                                                String OnInvalidPassword = AppResources.InvalidPassword;
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
+                                                });
+                                            }
+                                         
+                                        }
+
                                     }
                                     else
                                     {
-                                        String OnInvalidPassword = AppResources.InvalidPassword;
+                                        String OnNotMatchAuthentication = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
+                                            await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
                                         });
                                     }
-
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    String OnNotMatchAuthentication = AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword;
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
+                                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                                        ClearPasswordDataForEmail();
                                     });
                                 }
                             }
-                            catch (Exception ex)
+                            else
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                                    ClearPasswordDataForEmail();
+                                    await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.ZError);
                                 });
                             }
+                          
 
                         }
                     }
@@ -519,7 +553,7 @@ namespace GAZT
             try
             {
                 TaxPayerProfile = App.TP;
-                CurrentPassword = TaxPayerProfile.Password;
+               // CurrentPassword = TaxPayerProfile.Password;
                 //CurrentPassword = App;
                 OldEmail = TaxPayerProfile.Email;
                 NewEmail = TaxPayerProfile.NewEmail;

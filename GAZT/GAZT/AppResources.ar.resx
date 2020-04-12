@@ -2821,7 +2821,7 @@
     <comment>Sf Sign up</comment>
   </data>
   <data name="ZZZLanguage" xml:space="preserve">
-    <value>Language</value>
+    <value>اللغة</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZSetToArabic" xml:space="preserve">
@@ -2931,7 +2931,7 @@
     <comment>option page</comment>
   </data>
   <data name="ZZSort" xml:space="preserve">
-    <value>Sort</value>
+    <value>ترتيب</value>
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
@@ -2986,6 +2986,22 @@
   <data name="ZZZSubmittedReport" xml:space="preserve">
     <value>بلاغ مقدم</value>
     <comment>Tax Evasion Service</comment>
+  </data>
+  <data name="AppVersion" xml:space="preserve">
+    <value>إصدار التطبيق</value>
+    <comment>Option</comment>
+  </data>
+  <data name="ExciseTaxReturns" xml:space="preserve">
+    <value>إقرار ضريبة السلع الانتقائية</value>
+  </data>
+  <data name="ZAKATReturns" xml:space="preserve">
+    <value>إقرار زكوي</value>
+  </data>
+  <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
+    <value>الخدمة المختارة غير متاحة</value>
+  </data>
+   <data name="UnSubmitted" xml:space="preserve">
+    <value>غير مقدمة</value>
   </data>
   <data name="ZZZLandingPageTitle" xml:space="preserve">
     <value>General Authority Of Zakat And Tax</value>

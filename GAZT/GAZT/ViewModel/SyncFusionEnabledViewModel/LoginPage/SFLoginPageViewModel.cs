@@ -20,12 +20,12 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        //private string password = "Init@123";
-        //private string email = "3102289204";
+        private string password = "Init@123";
+        private string email = "3102289204";
         // private string email = "3102285896";
 
-        private string password;
-        private string email;
+        //private string password;
+        //private string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;
@@ -494,7 +494,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private async Task LoginClicked()
         {
-
+            App.IsComingFromSleepMode = false;
             CurrentAttempt++;
 
             await Task.Run(() =>
