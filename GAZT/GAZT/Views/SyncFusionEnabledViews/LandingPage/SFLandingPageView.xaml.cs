@@ -68,8 +68,9 @@ namespace GAZTeServicesApp.Views.LandingPage
             try
             {
                 base.OnAppearing();
-
+                App.IsComingFromSleepMode = false;
                 SetLTR();
+               
                 viewModel.TaxPayerProfile = App.TP;
                 //await viewModel.LoadDashboardData();
 

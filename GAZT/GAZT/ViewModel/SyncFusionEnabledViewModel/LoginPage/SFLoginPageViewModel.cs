@@ -494,7 +494,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         /// <param name="obj">The Object</param>
         private async Task LoginClicked()
         {
-
+            App.IsComingFromSleepMode = false;
             CurrentAttempt++;
 
             await Task.Run(() =>
