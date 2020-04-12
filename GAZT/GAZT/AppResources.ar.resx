@@ -3000,4 +3000,7 @@
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>الخدمة المختارة غير متاحة</value>
   </data>
+   <data name="UnSubmitted" xml:space="preserve">
+    <value>غير مقدمة</value>
+  </data>
 </root>

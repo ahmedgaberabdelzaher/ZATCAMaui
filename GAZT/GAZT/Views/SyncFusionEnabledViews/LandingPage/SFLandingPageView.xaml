@@ -164,7 +164,7 @@
 
                 <StackLayout Padding="5">
 
-                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"></local1:CustomLabel>
+                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
@@ -208,7 +208,7 @@
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
@@ -278,7 +278,7 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
@@ -330,7 +330,7 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 

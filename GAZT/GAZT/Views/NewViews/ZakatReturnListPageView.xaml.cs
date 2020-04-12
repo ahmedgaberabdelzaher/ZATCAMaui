@@ -57,7 +57,7 @@ namespace GAZT.Views.NewViews
             else 
             {
 
-                //PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                //PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
             }
         }
         private void onDropdownButtonClicked(object sender, EventArgs e)

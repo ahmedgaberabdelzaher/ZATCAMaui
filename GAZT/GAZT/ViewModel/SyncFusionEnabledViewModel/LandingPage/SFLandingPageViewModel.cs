@@ -453,7 +453,7 @@ private void ShowOptionsCommandClicked(object obj)
                         objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
                         objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
                         objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
-                        objReturnInfoNrtnTot.ReturnTypeName = AppResources.NonSubmitted;
+                        objReturnInfoNrtnTot.ReturnTypeName = AppResources.UnSubmitted;
 
                         ReturnInfoItems.Add(objReturnInfoNrtnTot);
 
