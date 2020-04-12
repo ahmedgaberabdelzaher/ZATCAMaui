@@ -132,7 +132,10 @@
                                     <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" >
 
                                     <ListView  IsVisible="{Binding IsZakatVisible}" ItemsSource="{Binding ListZAKATCorrespondance}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" ItemTapped="ListView_ItemTapped" BackgroundColor="White" SeparatorVisibility="None">
-                                            <ListView.ItemTemplate>
+                                        <x:Arguments>
+                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                        </x:Arguments>
+                                        <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
@@ -362,6 +365,9 @@
       
                         
             >
+                                        <x:Arguments>
+                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                        </x:Arguments>
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
@@ -589,7 +595,10 @@
             SeparatorVisibility="None"
                         BackgroundColor="White"
             >
-                                            <ListView.ItemTemplate>
+                                        <x:Arguments>
+                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                        </x:Arguments>
+                                        <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <ViewCell>
                                                         <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
