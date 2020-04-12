@@ -12,7 +12,8 @@ namespace GAZT.Models
     {
         IsLogin=0,
         IsMobile=1,
-        IsEmail=2
+        IsEmail=2,
+        IsTes=3
     }
 
     public enum ComingToOptionScreenFrom
@@ -24,7 +25,8 @@ namespace GAZT.Models
     {
         IsDefault=0,
         IsMobile = 1,
-        IsEmail = 2
+        IsEmail = 2,
+            
     }
 
     public enum BillStatus
@@ -38,6 +40,8 @@ namespace GAZT.Models
     {
         public ComingToOTPVerificationScreenFrom _ComingToOTPVerificationScreenFrom { get; set; }
         public string NavigateToThisService {get;set;}
+        public string MobileNumber { get; set; }
+        public string tes { get; set; }
     }
 
 }
