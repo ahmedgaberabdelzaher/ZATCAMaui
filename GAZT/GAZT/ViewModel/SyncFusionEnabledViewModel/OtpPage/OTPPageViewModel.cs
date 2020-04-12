@@ -75,6 +75,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _tesotpSent = String.Empty;
+        public string TesotpSent
+        {
+            get
+            {
+                return _tesotpSent;
+            }
+            set
+            {
+                _tesotpSent = value;
+                RaisePropertyChanged("OTPSentOnThisBackup");
+            }
+        }
+
+
         private string _oTPSentOnThisBackup = String.Empty;
         public string OTPSentOnThisBackup
         {
@@ -383,6 +398,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     await Task.Run(async () =>
                     {
+                        
                         await SendOTPToRegisterMobileNumberToLogIn();
                     });
 
@@ -458,12 +474,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 App.TP.Password = Password;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                //_navigationService.NavigateTo(App.SFLandingPageView);
-                                if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
+                                    //_navigationService.NavigateTo(App.SFLandingPageView);
+                                    if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.MyBillsView)
                                     {
-                                      
-                                            _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService, new BillInfo());
-                                        
+
+                                        _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService, new BillInfo());
+
                                     }
                                     else
                                     {
@@ -491,7 +507,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                                             }
                                         }
-                                        else if(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.ICRListPageView)
+                                        else if (ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.ICRListPageView)
                                         {
                                             DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                                             bool IsServiceAvail = false;
@@ -653,6 +669,14 @@ namespace GAZT.ViewModel.NewViewModel
                         }
 
                     }
+                    else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
+                    {
+
+                        if (TesotpSent == EnteredOTP)
+                        { 
+                          
+                        }
+                    }
                     await Task.Run(() =>
                     {
                         IsLoading = false;
@@ -683,6 +707,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+
                 ShowAccountWIllBeLockedMessage();
                 FrmColour = "#B1B1B1";
                 TinNumber = App.TP.Tin;

@@ -14,6 +14,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using System.Threading.Tasks;
+using GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
@@ -78,6 +79,7 @@ namespace GAZT
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
+        public static string TaxEvasionReportMobilePageView = "TaxEvasionReportMobilePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
         public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
         public static string AccountCreatedPageView = "AccountCreatedPageView";
@@ -143,8 +145,8 @@ namespace GAZT
 
             VATDeclaration vAT = null;
 
-            //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportTypePageView()) { BarTextColor = Color.White };
-            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+          CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportMobilePageView()) { BarTextColor = Color.White };
+           // CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
