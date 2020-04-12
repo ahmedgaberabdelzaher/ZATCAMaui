@@ -7225,7 +7225,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ID not found. Please sign up as new user.
+        ///   Looks up a localized string similar to You should sign up as new user.
         /// </summary>
         public static string ZZYoushouldsignupasnewuser {
             get {
