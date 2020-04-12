@@ -515,6 +515,10 @@ namespace GAZT.ViewModel.NewViewModel
 
                                             }
                                         }
+                                        else if(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService == App.SFLandingPageView)
+                                        {
+                                            _navigationService.NavigateTo(App.SFLandingPageView);
+                                        }
                                         else
                                         {
                                             _navigationService.NavigateTo(ComingToOTPVerificationScreenFromAndNavigatingTo.NavigateToThisService);

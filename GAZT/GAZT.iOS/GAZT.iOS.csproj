@@ -1083,4 +1083,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\About_AR.html" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Eservices%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Eservices%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_Eservices.png" />
+  </ItemGroup>
 </Project>

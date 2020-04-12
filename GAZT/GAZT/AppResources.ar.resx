@@ -2987,4 +2987,10 @@
     <value>بلاغ مقدم</value>
     <comment>Tax Evasion Service</comment>
   </data>
+  <data name="ZZZLandingPageTitle" xml:space="preserve">
+    <value>General Authority Of Zakat And Tax</value>
+  </data>
+  <data name="ZZZTaxpayerServices" xml:space="preserve">
+    <value>Taxpayer's Services</value>
+  </data>
 </root>

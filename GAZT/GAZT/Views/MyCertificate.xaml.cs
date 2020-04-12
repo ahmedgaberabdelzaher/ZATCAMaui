@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace GAZT.Views
 {
@@ -19,7 +20,8 @@ namespace GAZT.Views
             try
             {
                 InitializeComponent();
-                NavigationPage.SetBackButtonTitle(this, "");
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.MyCertificate;
                 SetLTR();
 
@@ -82,21 +84,21 @@ namespace GAZT.Views
                 if (e.SelectedItem == null)
                 {
                     return;
-                } ((ListView)sender).SelectedItem = null;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
             CertificateLstZakat.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {
                     return;
-                } ((ListView)sender).SelectedItem = null;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
             CertificateLstVAT.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null)
                 {
                     return;
-                } ((ListView)sender).SelectedItem = null;
+                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
             //VATCertificateList.ItemSelected += (sender, e) =>
             //{

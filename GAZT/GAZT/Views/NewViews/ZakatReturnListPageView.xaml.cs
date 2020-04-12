@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.ZakatReturnListPageView;
+            ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.ClearData();
@@ -47,7 +48,17 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)

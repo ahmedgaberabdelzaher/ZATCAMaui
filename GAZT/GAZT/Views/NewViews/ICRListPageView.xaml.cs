@@ -32,6 +32,7 @@ namespace GAZT.Views.NewViews
 
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             SetLTR();
             Count = 1;
             App.ICRStatus = string.Empty;
@@ -55,7 +56,17 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         public async void IntialiseAsync()
         {
             try
