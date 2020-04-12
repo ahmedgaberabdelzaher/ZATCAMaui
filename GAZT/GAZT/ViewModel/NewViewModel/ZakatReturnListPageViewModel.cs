@@ -20,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
 
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
 
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         public List<EstimatedZakatReturnsResult> myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
@@ -212,6 +213,13 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+
+            
         }
         #endregion
 

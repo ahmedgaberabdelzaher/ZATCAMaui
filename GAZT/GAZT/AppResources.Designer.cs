@@ -143,15 +143,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to App Version.
-        /// </summary>
-        public static string AppVersion {
-            get {
-                return ResourceManager.GetString("AppVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
         public static string Attachment {
@@ -710,15 +701,6 @@ namespace GAZT {
         public static string ExciseCertificates {
             get {
                 return ResourceManager.GetString("ExciseCertificates", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Excise Tax Returns.
-        /// </summary>
-        public static string ExciseTaxReturns {
-            get {
-                return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
             }
         }
         
@@ -2024,15 +2006,6 @@ namespace GAZT {
         public static string ZakatCertificates {
             get {
                 return ResourceManager.GetString("ZakatCertificates", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ZAKAT Returns.
-        /// </summary>
-        public static string ZAKATReturns {
-            get {
-                return ResourceManager.GetString("ZAKATReturns", resourceCulture);
             }
         }
         
@@ -7225,7 +7198,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You should sign up as new user.
+        ///   Looks up a localized string similar to ID not found. Please sign up as new user.
         /// </summary>
         public static string ZZYoushouldsignupasnewuser {
             get {
@@ -7387,6 +7360,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Authority Of Zakat And Tax.
+        /// </summary>
+        public static string ZZZLandingPageTitle {
+            get {
+                return ResourceManager.GetString("ZZZLandingPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string ZZZLanguage {
@@ -7495,15 +7477,6 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The selected service is not available.
-        /// </summary>
-        public static string ZZZselectedserviceisnotavailable {
-            get {
-                return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to عربي.
         /// </summary>
         public static string ZZZSetLanguageText {
@@ -7554,6 +7527,15 @@ namespace GAZT {
         public static string ZZZSupport {
             get {
                 return ResourceManager.GetString("ZZZSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayer&apos;s Services.
+        /// </summary>
+        public static string ZZZTaxpayerServices {
+            get {
+                return ResourceManager.GetString("ZZZTaxpayerServices", resourceCulture);
             }
         }
         
@@ -7635,6 +7617,36 @@ namespace GAZT {
         public static string ZZZWrongEnterTin {
             get {
                 return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
+            }
+        }
+        
+        public static string AppVersion {
+            get {
+                return ResourceManager.GetString("AppVersion", resourceCulture);
+            }
+        }
+        
+        public static string ExciseTaxReturns {
+            get {
+                return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
+            }
+        }
+        
+        public static string ZAKATReturns {
+            get {
+                return ResourceManager.GetString("ZAKATReturns", resourceCulture);
+            }
+        }
+        
+        public static string ZZZselectedserviceisnotavailable {
+            get {
+                return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
+            }
+        }
+        
+        public static string UnSubmitted {
+            get {
+                return ResourceManager.GetString("UnSubmitted", resourceCulture);
             }
         }
     }

@@ -63,7 +63,7 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.TestPicker", Application.Current.GetType().Assembly);
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
 
             }
             else

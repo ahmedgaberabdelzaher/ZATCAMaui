@@ -91,37 +91,41 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 Image arrowImage = sender as Image;
                 eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                if (BModel.eServiceName == AppResources.VATDeclaration)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.ICRListPageView);
-                }
+                //if (BModel.eServiceName == AppResources.VATDeclaration)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.ICRListPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.EstimateZakat)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
-                }
-                
-                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
-                }
+                //if (BModel.eServiceName == AppResources.EstimateZakat)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.MyCertificate)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
-                }
+                //if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.ZTINStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
-                }
+                //if (BModel.eServiceName == AppResources.MyCertificate)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
+                //}
 
-                if (BModel.eServiceName == AppResources.ZZCorrespondence)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZTINStatus)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.MyBills)
+                //if (BModel.eServiceName == AppResources.ZZCorrespondence)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
+                //}
+
+                //if (BModel.eServiceName == AppResources.MyBills)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
+                //}
+                if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
                 {
                     viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
                 }
@@ -140,39 +144,44 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 Label arrowImage = sender as Label;
                 eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                if (BModel.eServiceName == AppResources.VATDeclaration)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ICRListPageView);
-                }
+                //if (BModel.eServiceName == AppResources.VATDeclaration)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ICRListPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.EstimateZakat)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
-                }
+                //if (BModel.eServiceName == AppResources.EstimateZakat)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.MyCertificate)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
-                }
+                //if (BModel.eServiceName == AppResources.MyCertificate)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
+                //}
 
-                if (BModel.eServiceName == AppResources.ZTINStatus)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZTINStatus)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.ZZCorrespondence)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZZCorrespondence)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
+                //}
 
-                if (BModel.eServiceName == AppResources.MyBills)
+                //if (BModel.eServiceName == AppResources.MyBills)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
+                //}
+
+                if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
                 {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 }
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
@@ -191,6 +200,23 @@ namespace GAZTeServicesApp.Views.LandingPage
         {
             ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
             viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+        }
+
+        private void SignUP_Clicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
+        }
+
+        private void OnGaztLinkClicked(object sender, EventArgs e)
+        {
+            if (App.IsArabic)
+            {
+                Device.OpenUri(new Uri("https://gazt.gov.sa/ar/pages/default.aspx"));
+            }
+            else
+            {
+                Device.OpenUri(new Uri("https://gazt.gov.sa/en/pages/default.aspx"));
+            }
         }
     }
 }

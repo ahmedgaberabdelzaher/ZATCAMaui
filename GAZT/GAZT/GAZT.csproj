@@ -79,10 +79,10 @@
     <Compile Update="AppResources.ar.Designer.cs">
       <DependentUpon>AppResources.ar.resx</DependentUpon>
     </Compile>
-    <Compile Update="TestPicker.Designer.cs">
+    <Compile Update="SyncfusionControl.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>TestPicker.resx</DependentUpon>
+      <DependentUpon>SyncfusionControl.resx</DependentUpon>
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFAnonymousLandingPageView.xaml.cs">
       <DependentUpon>SFAnonymousLandingPageView.xamll</DependentUpon>
@@ -109,9 +109,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="TestPicker.resx">
+    <EmbeddedResource Update="SyncfusionControl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>TestPicker.Designer.cs</LastGenOutput>
+      <LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ChangeMobileNumberView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

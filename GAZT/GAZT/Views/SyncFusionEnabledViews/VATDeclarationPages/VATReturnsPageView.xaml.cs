@@ -2296,7 +2296,22 @@ namespace GAZT.Views.NewViews
 
                         }
                     }
-                }
+                    else
+                    {
+                        if(viewModel.ResponseVATDeclarationD.GrpNo=="00" || viewModel.ResponseVATDeclarationD.GrpNo == "0")
+                        {
+                            if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
+                            {
+                                if (Convert.ToDouble(viewModel.ResponseVATDeclarationD.ZerosalesAmt) > 0)
+                                {
+                                    //PopUp popUp = new PopUp();
+                                    Message = AppResources.ZZOurrecordsindicatethatyouarenotapartofthezerorated;
+                                }
+                            }
+
+                         }
+                       }
+                    }
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
                 {
                     CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), Message);
