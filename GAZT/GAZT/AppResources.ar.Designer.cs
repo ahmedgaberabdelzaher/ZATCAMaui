@@ -5069,5 +5069,17 @@ namespace GAZT {
                 return ResourceManager.GetString("UnSubmitted", resourceCulture);
             }
         }
+        
+        public static string ZZZLandingPageTitle {
+            get {
+                return ResourceManager.GetString("ZZZLandingPageTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTaxpayerServices {
+            get {
+                return ResourceManager.GetString("ZZZTaxpayerServices", resourceCulture);
+            }
+        }
     }
 }

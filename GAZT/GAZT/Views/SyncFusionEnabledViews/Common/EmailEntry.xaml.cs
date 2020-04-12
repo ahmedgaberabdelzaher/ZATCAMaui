@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using static System.Net.Mime.MediaTypeNames;
@@ -69,6 +70,8 @@ namespace GAZTeServicesApp.Views.Common
                 else
                 {
                     EmailInputLayout.HasError = false;
+                    MessagingCenter.Send("TinList", "TinList");
+
                     //EmailInputLayout.ShowHint = false;
                 }
             }
