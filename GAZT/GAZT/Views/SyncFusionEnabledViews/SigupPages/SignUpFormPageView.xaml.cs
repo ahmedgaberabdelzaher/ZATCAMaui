@@ -301,14 +301,14 @@ namespace GAZT.Views.NewViews
                     try
                     {
                         DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty);
-                        if (ResultDuplicate.d.Flag == "X")
+                        if (ResultDuplicate.d.Flag == "")
                         {
                             if (viewModel.IsCRChecked == true)
                             {
                                 try
                                 {
                                     DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                    if (ResultDuplicateCR.d.Flag == "X")
+                                    if (ResultDuplicateCR.d.Flag == "")
                                     {
                                         CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
@@ -339,6 +339,9 @@ namespace GAZT.Views.NewViews
                                         {
                                             SiguupModel.ACommId = viewModel.TxtCRNumber;
                                             SiguupModel.ALicenceNo = "";
+                                            SiguupModel.AIssuedBy = "";
+                                            SiguupModel.ACity = "";
+                                            SiguupModel.ACityCode = "";
                                         }
                                         else
                                         {
@@ -353,7 +356,7 @@ namespace GAZT.Views.NewViews
                                         SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                                         //SiguupModel.ABirthdt = viewModel.PkrDBO;
 
-                                        SiguupModel.ACity = "";
+
                                         if (viewModel.SelectedSignUpUsing.ID == 1)
                                         {
                                             SiguupModel.AIdtype = "ZS0001";
@@ -366,6 +369,7 @@ namespace GAZT.Views.NewViews
                                         {
                                             SiguupModel.AIdtype = "ZS0003";
                                         }
+
                                         SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
 
                                         string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
@@ -429,6 +433,9 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
+                                        SiguupModel.AIssuedBy = "";
+                                        SiguupModel.ACity = "";
+                                        SiguupModel.ACityCode = "";
                                     }
                                     else
                                     {
@@ -497,14 +504,14 @@ namespace GAZT.Views.NewViews
                 if (viewModel.SelectedSignUpUsing.ID == 2)
                 {
                     DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
-                    if (ResultDuplicate.d.Flag == "X")
+                    if (ResultDuplicate.d.Flag == "")
                     {
                         if (viewModel.IsCRChecked == true)
                         {
                             try
                             {
                                 DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                if (ResultDuplicateCR.d.Flag == "X")
+                                if (ResultDuplicateCR.d.Flag == "")
                                 {
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
@@ -535,6 +542,9 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
+                                        SiguupModel.AIssuedBy = "";
+                                        SiguupModel.ACity = "";
+                                        SiguupModel.ACityCode = "";
                                     }
                                     else
                                     {
@@ -623,6 +633,9 @@ namespace GAZT.Views.NewViews
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
                                     SiguupModel.ALicenceNo = "";
+                                    SiguupModel.AIssuedBy = "";
+                                    SiguupModel.ACity = "";
+                                    SiguupModel.ACityCode = "";
                                 }
                                 else
                                 {
@@ -688,7 +701,7 @@ namespace GAZT.Views.NewViews
                             try
                             {
                                 DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                if (ResultDuplicateCR.d.Flag == "X")
+                                if (ResultDuplicateCR.d.Flag == "")
                                 {
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
@@ -719,6 +732,9 @@ namespace GAZT.Views.NewViews
                                     {
                                         SiguupModel.ACommId = viewModel.TxtCRNumber;
                                         SiguupModel.ALicenceNo = "";
+                                        SiguupModel.AIssuedBy = "";
+                                        SiguupModel.ACity = "";
+                                        SiguupModel.ACityCode = "";
                                     }
                                     else
                                     {
@@ -807,6 +823,9 @@ namespace GAZT.Views.NewViews
                                 {
                                     SiguupModel.ACommId = viewModel.TxtCRNumber;
                                     SiguupModel.ALicenceNo = "";
+                                    SiguupModel.AIssuedBy = "";
+                                    SiguupModel.ACity = "";
+                                    SiguupModel.ACityCode = "";
                                 }
                                 else
                                 {
