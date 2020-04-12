@@ -2435,7 +2435,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
-    <value>الرقم المميز غير موجود. الرجاء التسجيل كمكلف جديد</value>
+    <value>هناك حساب مسجل بالفعل بنفس المعلومات المدخلة، حاول التسجيل مره اخرى كمستخدم جديد</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">

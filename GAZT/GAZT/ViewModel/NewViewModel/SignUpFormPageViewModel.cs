@@ -832,7 +832,11 @@ namespace GAZT.ViewModel.NewViewModel
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
 
             //Select today dates
-            todaycollection.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Date.Month).Substring(0, 3));
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+          
             if (DateTime.Now.Date.Day < 10)
                 todaycollection.Add("0" + DateTime.Now.Date.Day);
             else
