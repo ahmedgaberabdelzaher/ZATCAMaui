@@ -2426,7 +2426,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
-    <value>ID not found. Please sign up as new user</value>
+    <value>You should sign up as new user</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
