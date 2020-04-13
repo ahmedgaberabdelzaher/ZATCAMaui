@@ -3026,4 +3026,7 @@ Should we require further information, we would be in contact.</value>
     <value>Wrong password</value>
     <comment>Login</comment>
   </data>
+  <data name="ZZZCopyrightText" xml:space="preserve">
+    <value>General Authority of Zakat and Income - All Rights Reserved © 2020</value>
+  </data>
 </root>

@@ -3023,4 +3023,7 @@
     <value>خطا في  كلمة  المرور</value>
     <comment>Login</comment>
   </data>
+  <data name="ZZZCopyrightText" xml:space="preserve">
+    <value>الهيئة العامة للزكاة والدخل - جميع الحقوق محفوظة © 2020</value>
+  </data>
 </root>
