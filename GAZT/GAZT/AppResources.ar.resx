@@ -3015,4 +3015,12 @@
   <data name="ZZZWelcomeOnLanding" xml:space="preserve">
     <value>مرحبا</value>
   </data>
+  <data name="ZZTheaccountislockedfor60minutesafterthelastloginattempt" xml:space="preserve">
+    <value>الحساب معلق لمدة 60 دقيقة من أخر محاولة للدخول</value>
+    <comment>Login</comment>
+  </data>
+  <data name="ZZWrongpassword" xml:space="preserve">
+    <value>خطا في  كلمة  المرور</value>
+    <comment>Login</comment>
+  </data>
 </root>

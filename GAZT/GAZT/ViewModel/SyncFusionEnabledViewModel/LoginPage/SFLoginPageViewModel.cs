@@ -20,12 +20,12 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        //private string password = "Init@123";
+        private string password = "Init@123";
         //private string email = "3102289204";
-        // private string email = "3102285896";
+        private string email = "3102285896";
 
-        private string password;
-        private string email;
+        //private string password;
+        //private string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;
@@ -728,11 +728,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         }
                         else if (gex is GAZTWrongPasswordException)
                         {
-                            MessageForTheUser = AppResources.InvalidPassword;
+                            MessageForTheUser = AppResources.ZZWrongpassword;
                         }
                         else if (gex is GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException)
                         {
-                            MessageForTheUser = AppResources.ZAccountLocked;
+                            MessageForTheUser = AppResources.ZZTheaccountislockedfor60minutesafterthelastloginattempt;
                         }
                         else if (gex is GAZTTaxpayersAccountNotActiveWithGAZTException)
                         {

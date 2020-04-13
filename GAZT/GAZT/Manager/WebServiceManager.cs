@@ -4504,7 +4504,7 @@ namespace GAZT.Manager
                                     }
                                     if ((0 == String.Compare(App.Token, "The account is locked for 60 minutes after the last login attempt")))
                                     {
-                                        throw new GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException("test");
+                                        throw new GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException();
                                     }
 
                                     if ((0 == String.Compare(App.Token, "Incomplete")) || (0 == String.Compare(App.Token, "Deregister - Death")) || (0 == String.Compare(App.Token, "Deregister - Bankruptcy")) || (0 == String.Compare(App.Token, "Deregister - Liquidation")) || (0 == String.Compare(App.Token, "Deregister - Merger")) || (0 == String.Compare(App.Token, "Deregister - Acquisition")) || (0 == String.Compare(App.Token, "Suspension - Bankruptcy")) || (0 == String.Compare(App.Token, "Suspension - Liquidation/Close")) || (0 == String.Compare(App.Token, "Deregister - Close")) || (0 == String.Compare(App.Token, "Deregister - Company-Establish")) || (0 == String.Compare(App.Token, "Suspension - Est. to Company")))
