@@ -36,8 +36,12 @@
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
-                    <control:BorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray">
-                    </control:BorderlessEntry>
+                    <custom:GAZTBorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" >
+                    </custom:GAZTBorderlessEntry>
+                    <!--<control:GAZTBorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" FontSize="Small" Text="{Binding Password}" TextColor="White" PlaceholderColor="Gray">
+                          
+                        </control:GAZTBorderlessEntry>-->
+
                 </inputLayout:SfTextInputLayout>
 
                 <!--<Label
@@ -86,9 +90,9 @@
    IsVisible="{Binding IsVisibleTinIds}"
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
-                    <control:BorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small">
+                    <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" >
 
-                    </control:BorderlessEntry>
+                    </custom:GAZTBorderlessEntry>
                 </inputLayout:SfTextInputLayout>
 
                 

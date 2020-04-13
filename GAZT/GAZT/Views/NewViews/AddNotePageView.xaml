@@ -43,7 +43,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
-        <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" IsVisible="{Binding IsVisibleNotes}" Grid.Column="0" Grid.ColumnSpan="8" VerticalOptions="FillAndExpand"  >
+        <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" Grid.Row="1" Margin="0,0,0,0" IsVisible="{Binding IsVisibleNotes}" Grid.Column="0" Grid.ColumnSpan="8" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" >
             <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  BackgroundColor="White" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*" />
@@ -63,7 +63,7 @@
 
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
-                <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12">
 
                 </custom:GAZTBorderlessEditor>
 
