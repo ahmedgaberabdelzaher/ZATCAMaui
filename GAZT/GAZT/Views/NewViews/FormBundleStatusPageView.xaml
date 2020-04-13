@@ -85,7 +85,7 @@
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry Text="{Binding TxtFBtype}" FontSize="Small">
+                            <custom:BorderlessEntry Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
@@ -149,7 +149,7 @@
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
     ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry Text="{Binding TxtFBnum}" FontSize="Small">
+                            <custom:BorderlessEntry Text="{Binding TxtFBnum}" FontSize="Small" FontAttributes="Bold">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" >

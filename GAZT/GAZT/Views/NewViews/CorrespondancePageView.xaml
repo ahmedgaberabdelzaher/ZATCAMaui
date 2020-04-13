@@ -88,7 +88,7 @@
     Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusZakat}" FontSize="Small">
+                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusZakat}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
 
@@ -313,7 +313,7 @@
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusVAT}" FontSize="Small">
+                                    <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusVAT}" FontSize="Small" FontAttributes="Bold">
                                     </local:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                                 <local:CustomButton x:Name="BPickerButtonVAT" Clicked="BPickerButtonVAT_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
@@ -547,7 +547,7 @@
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusET}" FontSize="Small">
+                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusET}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                     <local:CustomButton x:Name="BPickerButtonET" Clicked="BPickerButtonET_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >

@@ -120,7 +120,7 @@
     Hint="{x:Static local:AppResources.ZZIDType}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmIDType" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small" IsSpellCheckEnabled="False">
+                            <custom:BorderlessEntry Text="{Binding TxtIDType}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
@@ -289,7 +289,7 @@
     Hint="{x:Static local:AppResources.ZZLicenseNumberIssuedBy}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtLOrCIssuedBy}" FontSize="Small">
+                                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtLOrCIssuedBy}" FontSize="Small" FontAttributes="Bold">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                                 <custom:CustomButton x:Name="LIssuedBy" Clicked="LIssuedBy_Clicked" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
@@ -329,7 +329,7 @@
     Hint="{x:Static local:AppResources.ZZIssuingCity}" 
     ContainerType="Outlined" x:Name="FrmLicenseIssuedCity" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <custom:BorderlessEntry Text="{Binding TxtLOrCIssuedByCity}" IsSpellCheckEnabled="False" FontSize="Small">
+                                    <custom:BorderlessEntry Text="{Binding TxtLOrCIssuedByCity}" IsSpellCheckEnabled="False" FontSize="Small" FontAttributes="Bold">
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                                 <custom:CustomButton x:Name="LIssuedByCity" Clicked="LIssuedByCity_Clicked" BackgroundColor="Transparent" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >

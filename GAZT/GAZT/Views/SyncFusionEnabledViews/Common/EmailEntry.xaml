@@ -90,7 +90,7 @@
    IsVisible="{Binding IsVisibleTinIds}"
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
-                    <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" >
+                    <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" FontAttributes="Bold">
 
                     </custom:GAZTBorderlessEntry>
                 </inputLayout:SfTextInputLayout>
