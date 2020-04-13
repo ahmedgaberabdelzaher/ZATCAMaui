@@ -51,7 +51,22 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         private List<ICRListSet> _iCRListVATSubmitted;
         public ICommand GoBackClick { get; set; }
 
-        
+        private int _headerCount = 3;
+        public int HeaderCount
+        {
+            get
+            {
+                return _headerCount;
+
+            }
+            set
+            {
+                _headerCount = value;
+                RaisePropertyChanged("HeaderCount");
+            }
+        }
+
+
         private bool _setNoDataLabelVisibilityVATSubmitted = false;
         public bool SetNoDataLabelVisibilityVATSubmitted
         {
@@ -524,6 +539,23 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             }
 
                         }
+                    }
+
+                    if((IsVATVisible==true && IsZakatVisible==false) || (IsVATVisible == false && IsZakatVisible == true))
+                    {
+                        HeaderCount = 2;
+                    }
+                    else if((IsVATVisible == true && IsZakatVisible == true))
+                    {
+                        HeaderCount = 3;
+                    }
+                    else if ((IsVATVisible == false && IsZakatVisible == false))
+                    {
+                        HeaderCount = 1;
+                    }
+                    else
+                    {
+                        HeaderCount = 3;
                     }
                     ICR icrList = null;
                     try
