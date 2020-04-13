@@ -777,7 +777,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot user name.
+        ///   Looks up a localized string similar to Forgot username.
         /// </summary>
         public static string ForgotUsername {
             get {
@@ -1542,7 +1542,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select password/user name.
+        ///   Looks up a localized string similar to Select password/username.
         /// </summary>
         public static string SelectPasswordUserName {
             get {
@@ -6778,6 +6778,15 @@ namespace GAZT {
         public static string ZZTermsAndConditions {
             get {
                 return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The account is locked for 60 minutes after the last login attempt.
+        /// </summary>
+        public static string ZZTheaccountislockedfor60minutesafterthelastloginattempt {
+            get {
+                return ResourceManager.GetString("ZZTheaccountislockedfor60minutesafterthelastloginattempt", resourceCulture);
             }
         }
         

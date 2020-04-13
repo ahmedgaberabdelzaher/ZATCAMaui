@@ -541,22 +541,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         }
                     }
 
-                    if((IsVATVisible==true && IsZakatVisible==false) || (IsVATVisible == false && IsZakatVisible == true))
-                    {
-                        HeaderCount = 2;
-                    }
-                    else if((IsVATVisible == true && IsZakatVisible == true))
-                    {
-                        HeaderCount = 3;
-                    }
-                    else if ((IsVATVisible == false && IsZakatVisible == false))
-                    {
-                        HeaderCount = 1;
-                    }
-                    else
-                    {
-                        HeaderCount = 3;
-                    }
+                    HeaderCount = 3;
+                    
                     ICR icrList = null;
                     try
                     {

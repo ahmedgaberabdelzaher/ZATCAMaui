@@ -732,7 +732,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         }
                         else if (gex is GAZTAccountLockedFor60MinutesAfterLastLoginAttemptException)
                         {
-                            MessageForTheUser = AppResources.ZAccountLocked;
+                            MessageForTheUser = AppResources.ZZTheaccountislockedfor60minutesafterthelastloginattempt;
                         }
                         else if (gex is GAZTTaxpayersAccountNotActiveWithGAZTException)
                         {
