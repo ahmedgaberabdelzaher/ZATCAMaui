@@ -143,7 +143,12 @@ namespace GAZT.Models
         public string ViolationDate { get; set; }
         public string ViolationType { get; set; }
         public string WorkType { get; set; }
+        
+
+       
     }
+
+
 
     public class ReportRetriveByMobNoRootObject
     {

@@ -37,6 +37,20 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TaxEvasionListobj");
             }
         }
+        //MobileNumber
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
 
         private string _categorySelected_Index = "0";
         public string CategorySelected_Index
@@ -189,10 +203,17 @@ namespace GAZT.ViewModel.NewViewModel
                         if (CategorySelected_Index != "0")
                         {
 
+
                             TaxEvasionListobj = new TaxEvasionReport();
                             TaxEvasionListobj.ViolationType = CategorySelected_Index;
-                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
-                            
+                            if (!string.IsNullOrEmpty(MobileNumber))
+                            {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
+                                TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
+
+
+                                _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+
+                            }
                         }
                     }
                     catch (Exception ex)

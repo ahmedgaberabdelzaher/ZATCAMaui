@@ -93,12 +93,14 @@ namespace GAZT.ViewModel.NewViewModel
         {
             ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
             tesmobnoscreen.tes = "1";
+            tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
 ;
             if (MobileNumber.Length== 8)
             {
                 tesmobnoscreen.MobileNumber = MobileNumber;
                 _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-                WebServiceManager.GetOtpVerification();
+               // WebServiceManager.GetOtpVerification();
+
 
 
             }
