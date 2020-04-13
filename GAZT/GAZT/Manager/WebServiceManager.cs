@@ -3479,7 +3479,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static string GAZTValidateIDTypes(string IDType, string IDNumber, string DBO)
+        public async static Task<string> GAZTValidateIDTypes(string IDType, string IDNumber, string DBO)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3496,7 +3496,7 @@ namespace GAZT.Manager
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
-                    HttpResponseMessage SignupIsIDTypeValidList = client.GetAsync(uri).Result;
+                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
 
                     if (SignupIsIDTypeValidList != null)
                     {
@@ -3517,7 +3517,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        IsIDTypeValidList = SignupIsIDTypeValidList.Content.ReadAsStringAsync().Result;
+                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
 
                         //  SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(IsIDTypeValidList);
 

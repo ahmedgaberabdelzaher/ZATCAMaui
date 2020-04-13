@@ -82,7 +82,7 @@ namespace GAZT.CustomControl
                     if (Date.Count == 3)
                     {
                         bool isupdate = false;
-                        if (e.OldValue != null && e.NewValue != null)
+                        if (e.OldValue != null && e.NewValue != null && (e.OldValue as ObservableCollection<object>).Count == 3 && (e.NewValue as ObservableCollection<object>).Count == 3)
                         {
                             if (!object.Equals((e.OldValue as IList)[0], (e.NewValue as IList)[0]))
                             {
@@ -134,7 +134,7 @@ namespace GAZT.CustomControl
                         }
                     }
                 }
-                catch(Exception ex)
+                catch
                 {
 
                 }
