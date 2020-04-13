@@ -186,7 +186,7 @@
                                     TodayTextColor="Green"
                                     TodaySelectionBackgroundColor="Green"
                                     TodaySelectionTextColor="Black"
-                                    SelectedDayTextColor="Black"                                
+                                    SelectedDayTextColor="White"                                
                                     WeekEndBackgroundColor="Transparent" 
                                     PreviousMonthTextColor="White" SelectionShape="Circle" 
                                     DayHeaderFontSize="15" 
