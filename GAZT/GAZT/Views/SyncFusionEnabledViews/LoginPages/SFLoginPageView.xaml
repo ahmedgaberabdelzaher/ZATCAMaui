@@ -14,10 +14,11 @@
     xmlns:local1="clr-namespace:GAZT;assembly:GAZT"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
-    FlowDirection="LeftToRight"
+    FlowDirection="RightToLeft"
      xmlns:localres="clr-namespace:GAZT;assembly:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:custom="clr-namespace:GAZT"
+
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
                                                                   iOSTabletLandscape=sf_LoginBackground-Landscape.png}"
@@ -186,12 +187,17 @@
    Grid.Row="4" Grid.ColumnSpan="2" Hint="{x:Static local1:AppResources.Password}" 
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
-                            <control:BorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" Text="{Binding Password}"  FontSize="Small" TextColor="White" PlaceholderColor="Gray">
+                            <!--<control:BorderlessEntry Grid.Row="4" Grid.ColumnSpan="2" x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" Text="{Binding Password}"  FontSize="Small" TextColor="White" PlaceholderColor="Gray" HorizontalOptions="Start" BackgroundColor="White">
 
-                            </control:BorderlessEntry>
+                            </control:BorderlessEntry>-->
+
+                              <custom:GAZTBorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" FontSize="Small" Text="{Binding Password}" TextColor="White" PlaceholderColor="Gray">
+                          
+                        </custom:GAZTBorderlessEntry>
+
                         </inputLayout:SfTextInputLayout>
 
-
+                         
                         <!--<border:SfBorder
                             Grid.Row="3"
                             BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}"
