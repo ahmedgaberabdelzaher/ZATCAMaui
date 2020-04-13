@@ -443,7 +443,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Corporate</value>
   </data>
   <data name="ForgotUsername" xml:space="preserve">
-    <value>Forgot user name</value>
+    <value>Forgot username</value>
   </data>
   <data name="ForgotPassword" xml:space="preserve">
     <value>Forgot password</value>
@@ -455,7 +455,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Verification code</value>
   </data>
   <data name="SelectPasswordUserName" xml:space="preserve">
-    <value>Select password/user name</value>
+    <value>Select password/username</value>
   </data>
   <data name="EntityType" xml:space="preserve">
     <value>Entity type</value>
@@ -3003,7 +3003,7 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>The selected service is not available</value>
   </data>
-    <data name="UnSubmitted" xml:space="preserve">
+  <data name="UnSubmitted" xml:space="preserve">
     <value>Unsubmitted</value>
   </data>
   <data name="ZZZLandingPageTitle" xml:space="preserve">
@@ -3011,5 +3011,19 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZZTaxpayerServices" xml:space="preserve">
     <value>Taxpayer's Services</value>
+  </data>
+  <data name="ZZZLandingCreateAccountNote" xml:space="preserve">
+    <value>Please use your GAZT account to log in or create a new account</value>
+  </data>
+  <data name="ZZZWelcomeOnLanding" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="ZZTheaccountislockedfor60minutesafterthelastloginattempt" xml:space="preserve">
+    <value>The account is locked for 60 minutes after the last login attempt</value>
+    <comment>Login</comment>
+  </data>
+  <data name="ZZWrongpassword" xml:space="preserve">
+    <value>Wrong password</value>
+    <comment>Login</comment>
   </data>
 </root>

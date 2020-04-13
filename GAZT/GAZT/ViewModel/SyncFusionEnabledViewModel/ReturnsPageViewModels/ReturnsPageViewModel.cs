@@ -51,7 +51,22 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         private List<ICRListSet> _iCRListVATSubmitted;
         public ICommand GoBackClick { get; set; }
 
-        
+        private int _headerCount = 3;
+        public int HeaderCount
+        {
+            get
+            {
+                return _headerCount;
+
+            }
+            set
+            {
+                _headerCount = value;
+                RaisePropertyChanged("HeaderCount");
+            }
+        }
+
+
         private bool _setNoDataLabelVisibilityVATSubmitted = false;
         public bool SetNoDataLabelVisibilityVATSubmitted
         {
@@ -525,6 +540,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 
                         }
                     }
+
+                    HeaderCount = 3;
+                    
                     ICR icrList = null;
                     try
                     {

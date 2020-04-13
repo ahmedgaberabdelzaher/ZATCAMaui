@@ -1092,4 +1092,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_Eservices.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_gazt%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_gazt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_gazt%402x.png" />
+  </ItemGroup>
 </Project>

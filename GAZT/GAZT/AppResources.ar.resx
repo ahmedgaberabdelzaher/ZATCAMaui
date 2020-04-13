@@ -3000,7 +3000,7 @@
   <data name="ZZZselectedserviceisnotavailable" xml:space="preserve">
     <value>الخدمة المختارة غير متاحة</value>
   </data>
-   <data name="UnSubmitted" xml:space="preserve">
+  <data name="UnSubmitted" xml:space="preserve">
     <value>غير مقدمة</value>
   </data>
   <data name="ZZZLandingPageTitle" xml:space="preserve">
@@ -3008,5 +3008,19 @@
   </data>
   <data name="ZZZTaxpayerServices" xml:space="preserve">
     <value>Taxpayer's Services</value>
+  </data>
+  <data name="ZZZLandingCreateAccountNote" xml:space="preserve">
+    <value>يمكنك تسجيل الدخول عن طريق حسابك المسجل في الهيئة أو انشاء حساب جديد</value>
+  </data>
+  <data name="ZZZWelcomeOnLanding" xml:space="preserve">
+    <value>مرحبا</value>
+  </data>
+  <data name="ZZTheaccountislockedfor60minutesafterthelastloginattempt" xml:space="preserve">
+    <value>الحساب معلق لمدة 60 دقيقة من أخر محاولة للدخول</value>
+    <comment>Login</comment>
+  </data>
+  <data name="ZZWrongpassword" xml:space="preserve">
+    <value>خطا في  كلمة  المرور</value>
+    <comment>Login</comment>
   </data>
 </root>

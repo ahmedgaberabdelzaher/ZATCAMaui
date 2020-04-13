@@ -58,6 +58,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _previousNoteText;
+        public string PreviousNoteText
+        {
+            get
+            {
+                return _previousNoteText;
+            }
+            set
+            {
+                _previousNoteText = value;
+                RaisePropertyChanged("PreviousNoteText");
+            }
+        }
+
 
         #endregion
 
@@ -87,7 +101,14 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnClearButtonClicked = new Command(() =>
             {
-                NoteText = string.Empty;
+                if (!string.IsNullOrEmpty(NoteText))
+                {
+                    NoteText = PreviousNoteText;
+                }
+                else
+                {
+                    NoteText = string.Empty;
+                }
                 ClearNoteClicked = true;
                 _navigationService.GoBack();
             });

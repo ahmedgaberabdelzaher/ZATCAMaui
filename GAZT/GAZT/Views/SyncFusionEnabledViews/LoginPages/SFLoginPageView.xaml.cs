@@ -5,6 +5,7 @@ using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
 using System.Resources;
+using System.Text.RegularExpressions;
 using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -54,6 +55,9 @@ namespace GAZTeServicesApp.Views.LoginPage
 
                 DependencyService.Get<IStatusBar>().HideStatusBar();
             viewModel.TINIndex = 0;
+         
+
+
             // ParentContainer.RaiseChild(BusyIndicator);
         }
 
@@ -82,20 +86,32 @@ namespace GAZTeServicesApp.Views.LoginPage
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            ChangeAeroIcon();
-            App.TP = null;
-            viewModel.CurrentAttempt = 0;
-            if (App.CurrentDropdownTIN != null)
-                viewModel.SelectedTinId = App.CurrentDropdownTIN;
-            if (App.IsSessionExpired)
+           
+            try
             {
-                await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                MessagingCenter.Subscribe<string>(this, "TinList", message => {
+                    viewModel.IsVisibleTinIds = true;
+                });
+                ChangeAeroIcon();
+                App.TP = null;
+                viewModel.CurrentAttempt = 0;
+                if (App.CurrentDropdownTIN != null)
+                    viewModel.SelectedTinId = App.CurrentDropdownTIN;
+                if (App.IsSessionExpired)
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                }
+                else
+                {
+
+                }
+                viewModel.IsVisibleTinIds = false;
             }
-            else
+            catch(Exception ex)
             {
 
             }
-            viewModel.IsVisibleTinIds = false;
+           
         }
 
         private void OnPasswordVisibilityClicked(object sender, EventArgs e)
@@ -107,5 +123,65 @@ namespace GAZTeServicesApp.Views.LoginPage
         {
 
         }
+
+        //private void TINs_Clicked(object sender, System.EventArgs e)
+        //{
+        //    TinsPicker.IsOpen = true;
+        //}
+
+        //private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
+        //{
+        //    bool isNumber = false;
+        //    bool isEmailValid = false;
+        //    isNumber = IsEnglishNumber(Email.Text);
+        //    if (!isNumber)
+        //    {
+        //        isEmailValid = CheckValidEmail(Email.Text);
+        //        if (!isEmailValid)
+        //        {
+        //            EmailInputLayout.HasError = true;
+        //            //EmailInputLayout.ShowHint = true;
+        //        }
+        //        else
+        //        {
+        //            EmailInputLayout.HasError = false;
+        //            viewModel.IsVisibleTinIds = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        EmailInputLayout.HasError = false;
+        //        //EmailInputLayout.ShowHint = false;
+        //    }
+
+        //}
+
+        private static bool CheckValidEmail(string email)
+        {
+            bool isEmailValid = false;
+            if (!string.IsNullOrEmpty(email))
+            {
+                var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
+                isEmailValid = regex.IsMatch(email) && !email.EndsWith(".");
+            }
+            return isEmailValid;
+        }
+
+        public static bool IsEnglishNumber(String arText)
+        {
+            bool isAllNumeric = true;
+            if (!string.IsNullOrEmpty(arText))
+            {
+                foreach (char letter in arText.ToCharArray())
+                {
+                    if (!(letter >= 48 && letter <= 57))
+                    {
+                        isAllNumeric = false;
+                    }
+                }
+            }
+            return isAllNumeric;
+        }
+
     }
 }

@@ -24,6 +24,9 @@ namespace GAZT
         public readonly INavigationService _navigationService;
         private readonly IDialogService _dialogService;
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand BackButtonClicked { get; set; }
+
+        public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
@@ -411,6 +414,20 @@ namespace GAZT
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
 
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLandingPageView);
+            });
+
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+            
+
+
+
             //OnZakatCertificateClicked = new RelayCommand(async () =>
             //{
             //    try
@@ -461,7 +478,7 @@ namespace GAZT
             //});
 
 
-          
+
 
             OnBellClicked = new Command(async () =>
             {

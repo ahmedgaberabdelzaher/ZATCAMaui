@@ -33,6 +33,7 @@ namespace GAZT.Views.NewViews
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             OnPageLoad();
             //CPicker_imgtap.IsEnabled = false;
             //tapImg.Tapped += Gesture_Tapped;
@@ -46,7 +47,17 @@ namespace GAZT.Views.NewViews
             SetLTR();
         }
 
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         public async void OnPageLoad()
         {
             Task.Run(() =>

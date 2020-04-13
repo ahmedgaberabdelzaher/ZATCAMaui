@@ -31,6 +31,7 @@ namespace GAZT.Views.NewViews
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.CorrespondancePageView;
                 this.BindingContext = viewModel;
+                ChangeAeroIcon();
                 //  viewModel.onPageLoad();
             }
             catch(Exception ex)
@@ -39,7 +40,17 @@ namespace GAZT.Views.NewViews
             }
             SetLTR();
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         //private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
         //{
 
@@ -51,7 +62,7 @@ namespace GAZT.Views.NewViews
 
         //private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
         //{
-            
+
         //    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
         //    Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
         //    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
@@ -59,7 +70,7 @@ namespace GAZT.Views.NewViews
         //}
         //private void ClickGestureRecognizer_ClickedForET(object sender, EventArgs e)
         //{
-            
+
         //    Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
         //    Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
         //    Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];

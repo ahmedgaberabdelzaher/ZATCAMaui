@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="3" SelectedIndex="{Binding TabIndexStatus}" >
+            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="{Binding HeaderCount}" SelectedIndex="{Binding TabIndexStatus}" >
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"
