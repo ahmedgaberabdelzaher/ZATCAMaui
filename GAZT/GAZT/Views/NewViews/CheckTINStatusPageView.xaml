@@ -36,7 +36,7 @@
                             CornerRadius="4"
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
-                            Text="{StaticResource Home}"
+                             Text="{DynamicResource StyleReverseBack}"
                             
                             
                              />

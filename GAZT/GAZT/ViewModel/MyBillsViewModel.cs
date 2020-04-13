@@ -27,6 +27,7 @@ namespace GAZT.ViewModel
         public ICommand OnHomeIconClicked { get; set; }
 
         public ICommand OnHomeButtonClicked { get; set; }
+        public ICommand OnBackButtonClicked { get; set; }
 
         private ChartColorCollection _colors = null;
         public ChartColorCollection Colors
@@ -411,6 +412,13 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
+
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+            
 
             if (dialogService == null)
             {

@@ -30,6 +30,7 @@ namespace GAZT.Views
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            ChangeAeroIcon();
             viewModel = App.Locator.MyBillsView;
             try
             {
@@ -77,6 +78,17 @@ namespace GAZT.Views
 
         }
 
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
 
         public async void GetBillsReturnsAsync(BillInfo billInfo)
         {

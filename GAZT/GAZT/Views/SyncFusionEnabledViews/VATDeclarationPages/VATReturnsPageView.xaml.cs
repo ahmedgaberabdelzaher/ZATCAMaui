@@ -240,7 +240,8 @@ namespace GAZT.Views.NewViews
                     {
                         foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
                         {
-                            item.Strline = String.Empty;
+                            item.Strline = AddNotePageViewModel.NoteString;
+                            item.Tdline = AddNotePageViewModel.NoteString;
                         }
                         AddNotePageViewModel.IsComingFromNotePage = false;
                         AddNotePageViewModel.NoteString = string.Empty;

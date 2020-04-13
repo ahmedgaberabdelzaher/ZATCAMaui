@@ -89,10 +89,8 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <!--  Label to display the title of this page  -->
-                                                <local:EmailEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,0" />
 
-                        <!--<Label Grid.Row="0"
+                         <Label Grid.Row="0"
                                Grid.Column="0"
                                Grid.ColumnSpan="2"
                             FontFamily="{StaticResource GAZT_FONT_BOLD}"
@@ -111,7 +109,12 @@
                             Style="{StaticResource LabelStyle}"
                             Text="{x:Static local1:AppResources.ZZZLoginLabel}" />
 
-                        <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"
+                        <!--  Label to display the title of this page  -->
+                                                <local:EmailEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,0" />
+
+                       
+
+                      <!--  <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >

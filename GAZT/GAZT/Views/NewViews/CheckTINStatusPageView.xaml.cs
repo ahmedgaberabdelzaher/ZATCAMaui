@@ -21,12 +21,24 @@ namespace GAZT.Views.NewViews
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CheckTINStatusPageView;
             this.BindingContext = viewModel;
-
+            ChangeAeroIcon();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
+        }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
         private void SetLTR()
         {
