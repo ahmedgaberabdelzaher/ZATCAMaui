@@ -145,8 +145,8 @@ namespace GAZT
 
             VATDeclaration vAT = null;
 
-          CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-           // CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+          //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportMobilePageView()) { BarTextColor = Color.White };
+           CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();

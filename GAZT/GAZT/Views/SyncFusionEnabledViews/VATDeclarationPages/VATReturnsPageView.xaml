@@ -2398,7 +2398,7 @@
     ContainerType="Outlined" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
                                                                         IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" >
-                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontSize="Small" IsSpellCheckEnabled="False">
+                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <custom:CustomButton x:Name="btnIban" Clicked="btnIban_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
@@ -2454,7 +2454,7 @@
    
     ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
-                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontSize="Small" IsSpellCheckEnabled="False">
+                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <custom:CustomButton x:Name="btnIban1" Clicked="btnIban1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
@@ -2502,7 +2502,7 @@
    
     ContainerType="Outlined" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
-                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontSize="Small" IsSpellCheckEnabled="False">
+                                                <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <custom:CustomButton x:Name="btnIban2" Clicked="btnIban2_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >

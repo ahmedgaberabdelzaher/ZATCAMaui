@@ -110,10 +110,12 @@ namespace GAZT.Views.NewViews
                     }
                     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
                     { viewModel.TEmail = App.TP.Email; }
-                    if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
+                    if (viewModel.selectedtaxEList!=null && viewModel.selectedtaxEList.ReporterMobileNumber != null)
                     {
-                        string mobb = App.TP.Mobile;
-                        viewModel.TMobNumber = mobb.Replace("009665", string.Empty);
+                        
+                        string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
+                        viewModel.TMobNumber = mobb;
+                        TMobNumber.IsEnabled = false;
                     }
 
 

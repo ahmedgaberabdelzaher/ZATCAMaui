@@ -254,7 +254,7 @@
                             <OnIdiom x:DataType="Thickness" Default="0, 48, 0, 0" Phone="0" />
                         </StackLayout.Padding>-->
 
-                        <Label
+                        <Label IsVisible="False"
                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
@@ -263,7 +263,7 @@
                             VerticalTextAlignment="Center" />
 
                         <!--  Sign-up button  -->
-                        <buttons:SfButton
+                            <buttons:SfButton IsVisible="False"
                             Command="{Binding SignUpCommand}"
                             CornerRadius="4"
                              HorizontalOptions="CenterAndExpand"

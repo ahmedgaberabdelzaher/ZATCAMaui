@@ -503,7 +503,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Unpaid</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>Forget Username or Password</value>
+    <value>Forgot Username or Password</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value>Invalid captcha</value>

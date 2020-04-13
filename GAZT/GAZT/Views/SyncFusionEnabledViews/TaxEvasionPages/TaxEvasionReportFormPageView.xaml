@@ -155,7 +155,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityOwnerName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
+                            <Entry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" FontAttributes="Bold" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
                                 <Entry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </Entry.Behaviors>
@@ -235,7 +235,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}"  MaxLength="100">
+                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused" FontAttributes="Bold"  Text="{Binding TFSAddress}"  MaxLength="100">
 
                             </Entry>
                         </inputLayout:SfTextInputLayout>
@@ -299,7 +299,7 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                            <Entry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small" x:Name="City_entry">
+                            <Entry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small" FontAttributes="Bold" x:Name="City_entry">
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >

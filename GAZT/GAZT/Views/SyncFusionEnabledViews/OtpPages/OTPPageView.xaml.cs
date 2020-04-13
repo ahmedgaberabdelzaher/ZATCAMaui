@@ -44,6 +44,9 @@ namespace GAZT.Views.NewViews
             viewModel.numberOfSeconds = 120;
             try
             {
+               
+                    
+
                 viewModel.OnPageLoad();
             }
             catch (GAZTException gex)
@@ -76,7 +79,7 @@ namespace GAZT.Views.NewViews
 
             viewModel.IsComingFrom = _ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom;
 
-            if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom  == ComingToOTPVerificationScreenFrom.IsMobile)
+            if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsMobile)
             {
                 if (App.TP != null)
                 {
@@ -88,12 +91,12 @@ namespace GAZT.Views.NewViews
                         viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                         var MobileNumber = viewModel.OTPSentOnThis;
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
-                         firstDigits = MobileNumber.Substring(0, 2);
-                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-                       
+                        firstDigits = MobileNumber.Substring(0, 2);
+                        lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+
                         if (Device.RuntimePlatform == Device.iOS)
                         {
-                            MobileNumber = "9665" + MobileNumber + "+";                           
+                            MobileNumber = "9665" + MobileNumber + "+";
                         }
                         else
                         {
@@ -112,8 +115,8 @@ namespace GAZT.Views.NewViews
                         viewModel.OTPSentOnThisMobileNumber = App.TP.NewMobile;
                         var MobileNumber = viewModel.OTPSentOnThis;
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(4, 9);
-                         firstDigits = MobileNumber.Substring(1, 2);
-                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
+                        firstDigits = MobileNumber.Substring(1, 2);
+                        lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
                         MobileNumber = "+9665" + MobileNumber;
                         string _mobileNumber = App.TP.NewMobile.Substring(9, 4);
                         viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
@@ -155,7 +158,7 @@ namespace GAZT.Views.NewViews
                 viewModel.EmailOrMobileNumber = AppResources.Email;
                 if (App.TP != null)
                 {
-                   // string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
+                    // string _newEmail = App.TP.NewEmail.Substring(App.TP.Mobile.Length - 4);
                     viewModel.MobileNumber = App.TP.NewEmail;// "XXXXXXXXXX" + _mobileNumber;
                     viewModel.OTPSentOnThisText = AppResources.EnterVerificationCodeForEmail;
                     viewModel.OTPSentOnThisEmail = App.TP.NewEmail;
@@ -163,7 +166,7 @@ namespace GAZT.Views.NewViews
                 }
                 if (!App.IsArabic)
                 {
-                   viewModel.AccountWillBeBlocked = "The account will be locked after entering " + App.TP.Attempts + " wrong verification codes";
+                    viewModel.AccountWillBeBlocked = "The account will be locked after entering " + App.TP.Attempts + " wrong verification codes";
                 }
                 else
                 {
@@ -198,7 +201,7 @@ namespace GAZT.Views.NewViews
                     //    MobileNumber = "00" + MobileNumber;
                     //}
                     if (App.TP != null && !string.IsNullOrEmpty(MobileNumber))
-                        MobileNumber =MobileNumber.Substring(MobileNumber.Length - 9);
+                        MobileNumber = MobileNumber.Substring(MobileNumber.Length - 9);
                     else
                         throw new GAZTMobileNumberInProfileEmptyException();
 
@@ -230,6 +233,15 @@ namespace GAZT.Views.NewViews
                 DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             }
 
+            else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
+            {
+                viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
+                viewModel.TesReporterMobileNumber = _ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
+                viewModel.tessentOtptomobile();
+
+
+
+            }
           
 
         }
@@ -257,7 +269,14 @@ namespace GAZT.Views.NewViews
         {
             base.OnAppearing();
             ChangeAeroIcon();
+            if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
+            {
+
+            }
+            else
+            { 
             App.IsOTPiew = true;
+            
             viewModel.TimerStart(viewModel.numberOfSeconds);
             viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
             viewModel.IsResendOTPEnabled = false;
@@ -270,6 +289,7 @@ namespace GAZT.Views.NewViews
 
             });
             EnteredOTP.Focus();
+            }
         }
         private async void OnOTPEntered(Object sender, EventArgs e)
         {
