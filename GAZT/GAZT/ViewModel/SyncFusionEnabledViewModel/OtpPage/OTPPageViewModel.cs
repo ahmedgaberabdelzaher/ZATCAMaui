@@ -843,7 +843,8 @@ namespace GAZT.ViewModel.NewViewModel
            
             TesSetGenerateOtp();
                 string mobnumber = TesReporterMobileNumber;
-        TesMessageForSms = "Your otp code is"+ TesGeneratedOtpCode;
+        TesMessageForSms = String.Format(AppResources.ZOTPformobileverificationis,
+                         TesGeneratedOtpCode);
             try
             {
                 string r = WebServiceManager.GAZTTESVerfymobNoSendOtp(mobnumber, TesMessageForSms);
