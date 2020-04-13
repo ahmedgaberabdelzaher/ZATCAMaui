@@ -68,7 +68,12 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
                     </tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SfTabItem Title="{Binding ZakatCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding ZakatCountDisplay}"
+                                        TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridZakat"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,0" >
@@ -293,7 +298,11 @@
    
                         </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding VATCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridVAT"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,10" >
@@ -527,7 +536,11 @@
                             
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding ETCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridET"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,10" >

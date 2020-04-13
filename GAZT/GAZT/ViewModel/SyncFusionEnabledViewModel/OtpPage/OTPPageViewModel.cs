@@ -790,10 +790,12 @@ namespace GAZT.ViewModel.NewViewModel
             //if (ComingToOTPVerificationScreenFromAndNavigatingTo)
             if (ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
+                
                 string mobileNumber;
                 TesReporterMobileNumber = ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
                  mobileNumber = TesReporterMobileNumber.Substring(TesReporterMobileNumber.Length - 4);
                 MobileNumber = "XXXXXXXXXX" + mobileNumber;
+                
                 StopTimer = true;
                 IsVerifyOTPEnabled = true;
                 VerifyButtonDisableColor = Color.FromHex("#005e4b");

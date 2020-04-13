@@ -32,8 +32,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+
     <ContentPage.Content>
-        
+
+
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
@@ -47,8 +51,8 @@
                        VerticalOptions="Start"
                 HorizontalOptions="Start"
                         Margin="8,10,8,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#ffffff"
+  Style="{StaticResource IconLabelStyle}"
+                         TextColor="White"
                         Text="{DynamicResource StyleReverseBack}"
                 >
                     <custom:CustomLabel.GestureRecognizers>
@@ -106,7 +110,8 @@
                             Style="{StaticResource LabelStyle}"
                             Text="{x:Static local1:AppResources.ZZZLoginLabel}" />
 
-                            <!--Entry to get email ID from user--> <!--ZTERReportDetailNumber-->
+                            <!--Entry to get email ID from user-->
+                            <!--ZTERReportDetailNumber-->
                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" Margin="10,5,10,0">
                                 <Label  Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
@@ -123,8 +128,8 @@
 
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
-                            
-                           
+
+
                             <!--  Login button  -->
                             <buttons:SfButton
                           
