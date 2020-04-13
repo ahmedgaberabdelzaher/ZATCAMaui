@@ -15,6 +15,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.XPath;
 using Xamarin.Forms;
 using static GAZT.ErrorMessage;
@@ -3993,8 +3994,9 @@ namespace GAZT.Manager
             Cred.WSUserName = "GAZT@CRM";
             Cred.WSPassword = "gazt@123";
             string trimedmob = TPmobno;
-            string trimedmob1 = trimedmob.Substring(5);
-            Cred.MobileNumber = "0"+ trimedmob1;
+            //string trimedmob1 = trimedmob.Substring(5);
+            //Cred.MobileNumber = "0"+ trimedmob1;
+            Cred.MobileNumber = "05"+TPmobno;
             Cred.Channel = "2";
             ReportRetriveByMobNoRootObject Listobject = new ReportRetriveByMobNoRootObject();
             if (CrossConnectivity.Current.IsConnected)
@@ -4686,6 +4688,54 @@ namespace GAZT.Manager
             return profile;
         }
 
+
+        public static string GAZTTESVerfymobNoSendOtp(string mobno,string messageforsms )
+        {
+            string userName = "GaztApp";
+            string password= "Gazt@2020";
+            string tagName = "Gazt.gov.sa";
+            string recepientNumber = "9665"+ mobno;
+            string message = messageforsms;
+            string sendDateTime = "0";
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                //ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
+                try
+                {
+
+                  string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName="+userName+"&password="+ password +"&tagName="+tagName+"&recepientNumber="+ recepientNumber +"&message="+ message +"&sendDateTime=0";
+                   // string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=GaztApp&password=Gazt@2020&tagName=Gazt.gov.sa&recepientNumber=966571006494&message=Test123onkar13:40&sendDateTime=0";
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                   // client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    // var serilized = JsonConvert.SerializeObject(Cred);
+                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.GetAsync(uri).Result;
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    //XElement xmlroot = XElement.Parse(response);
+                    //XmlDocument xmlDoc = new XmlDocument();
+                    //xmlDoc.Load(response);
+                    XElement xmlroot = XElement.Parse(response);
+                    string statuscode = xmlroot.Value;
+                    //string firstNodeContent = ((System.Xml.Linq.XElement)(xmlroot.FirstNode)).Value;
+                   // XmlNodeList parentNode = xmlDoc.GetElementsByTagName("string");
+
+                    //terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
+                    //  string response="re";
+                    return statuscode;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+        }
         #endregion
 
 

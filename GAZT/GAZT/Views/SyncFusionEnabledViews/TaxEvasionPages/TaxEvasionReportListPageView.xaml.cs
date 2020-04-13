@@ -15,7 +15,7 @@ namespace GAZT.Views.NewViews
     public partial class TaxEvasionReportListPageView : ContentPage
     {
         TaxEvasionReportListPageViewModel viewModel;
-        public TaxEvasionReportListPageView()
+        public TaxEvasionReportListPageView(string mobno)
         {
             viewModel = App.Locator.TaxEvasionReportListPageView;
             InitializeComponent();
@@ -27,7 +27,13 @@ namespace GAZT.Views.NewViews
             viewModel.AddIcon = "ic_add1.png";
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
+
             SetLTR();
+            if (!string.IsNullOrEmpty(mobno))
+            { 
+                viewModel.MobileNumber = mobno;
+            }
+            
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
@@ -48,8 +54,9 @@ namespace GAZT.Views.NewViews
 
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             this.BindingContext = viewModel;
-            
-           
+ 
+
+
             viewModel.OnPageLoad();
         }
 

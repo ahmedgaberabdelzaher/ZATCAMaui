@@ -2693,217 +2693,223 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public async Task SummaryClicked()
         {
-            bool value = false;
-            ClearPage();
-            DisableForRefund();
-            //  IsFirstSubmission = true;
-            if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
+            try
             {
-
-                value = IsCheckedDraftMode();
-                if (Convert.ToDouble(NetdueVat) < 0)
+                bool value = false;
+                ClearPage();
+                DisableForRefund();
+                //  IsFirstSubmission = true;
+                if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
                 {
-                    IsRefundVisible = true;
-                    IsSwichButtonEnableToTap = true;
-                    if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
-                    {
-                        if (VATDeclarationData.d.RefundFg == "1")
-                        {
 
-                            IsSwichButtonEnable = true;
-                            IsVisibleDropdownForRefund = true;
-                            IsVisiblechkRefundDeclaration = true;
-                            //  IsDropdownVisibleForIban = true;
-                            if (VATDeclarationData.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
+                    value = IsCheckedDraftMode();
+                    if (Convert.ToDouble(NetdueVat) < 0)
+                    {
+                        IsRefundVisible = true;
+                        IsSwichButtonEnableToTap = true;
+                        if (value || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                        {
+                            if (VATDeclarationData.d.RefundFg == "1")
                             {
-                                IsTextBoxVisibleForIban = true;
-                                IsDropdownVisibleForIban = false;
-                                IsCheckedRefund = true;
-                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+
+                                IsSwichButtonEnable = true;
+                                IsVisibleDropdownForRefund = true;
+                                IsVisiblechkRefundDeclaration = true;
+                                //  IsDropdownVisibleForIban = true;
+                                if (VATDeclarationData.d.IbanCb == "1")// IbanCb is equal to 1 if there is no data in IBan List as per Vinay
                                 {
-                                    IbanNumberText = VATDeclarationData.d.Iban;
+                                    IsTextBoxVisibleForIban = true;
+                                    IsDropdownVisibleForIban = false;
+                                    IsCheckedRefund = true;
+                                    if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                    {
+                                        IbanNumberText = VATDeclarationData.d.Iban;
+                                    }
+                                }
+                                else
+                                {
+                                    IsTextBoxVisibleForIban = false;
+                                    IsDropdownVisibleForIban = true;
+
+                                    if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
+                                    {
+                                        SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
+                                    }
+                                    if (IBANList != null && IBANList.Count > 0)
+                                    {
+                                        IsVATRefunCheckedVisible = false;
+                                    }
+                                    else
+                                    {
+                                        IsVATRefunCheckedVisible = true;
+                                    }
+
+                                }
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
+                                {
+                                    SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
+                                    if (SelectedIBANType != null)
+                                    {
+                                        SetIBANIdNumber();
+                                    }
+                                }
+                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
+                                {
+                                    if (IBANIDNumberList != null && IBANIDNumberList.Count != 0)
+                                    {
+                                        SelectedIBANIDNumber = IBANIDNumberList.Where(x => x.Idnumber == VATDeclarationData.d.Idnum).FirstOrDefault();
+                                    }
                                 }
                             }
                             else
                             {
-                                IsTextBoxVisibleForIban = false;
-                                IsDropdownVisibleForIban = true;
+                                IsSwichButtonEnableToTap = true;
+                                IsSwichButtonEnable = false;
+                                IsDropdownVisibleForIban = false;
+                                IsVisibleDropdownForRefund = false;
+                                IsVisiblechkRefundDeclaration = false;
+                            }
+                        }
+                    }
+                    else
+                    {
 
-                                if (!string.IsNullOrEmpty(VATDeclarationData.d.Iban))
-                                {
-                                    SelectedIBAN = IBANList.Where(x => x.Iban == VATDeclarationData.d.Iban).FirstOrDefault();
-                                }
-                                if(IBANList != null && IBANList.Count > 0)
-                                {
-                                    IsVATRefunCheckedVisible = false;
-                                }
-                                else
-                                {
-                                    IsVATRefunCheckedVisible = true;
-                                }
+                        IsRefundVisible = false;
+                        IsTextBoxVisibleForIban = false;
+                        IsDropdownVisibleForIban = false;
+                        IsVisibleDropdownForRefund = false;
+                        IsVisiblechkRefundDeclaration = false;
+                    }
+                }
 
-                            }
-                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idtype))
-                            {
-                                SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
-                                if (SelectedIBANType != null)
-                                {
-                                    SetIBANIdNumber();
-                                }
-                            }
-                            if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
-                            {
-                                if (IBANIDNumberList != null && IBANIDNumberList.Count != 0)
-                                {
-                                    SelectedIBANIDNumber = IBANIDNumberList.Where(x => x.Idnumber == VATDeclarationData.d.Idnum).FirstOrDefault();
-                                }
-                            }
+                IsVisibleSummary = true;
+                SelectedIndex = 3;
+                if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
+                {
+                    IsTextBoxEnableForIban = false;
+                    IsEnableCheckedRefund = false;
+                    IsTextBoxEnableForIban = false;
+                    IsSwichButtonEnableToTap = false;
+                    IsGetAcknowledgementClicked = true;
+                    IschkRefundDeclaration = true;
+                    if (VATDeclarationData.d.IbanCb == "1")
+                    {
+                        IsCheckedRefund = true;
+                        IsVATRefunCheckedVisible = true;
+                    }
+                    else
+                    {
+                        if (IBANList != null && IBANList.Count > 0)
+                        {
+                            IsVATRefunCheckedVisible = false;
                         }
                         else
                         {
-                            IsSwichButtonEnableToTap = true;
-                            IsSwichButtonEnable = false;
-                            IsDropdownVisibleForIban = false;
-                            IsVisibleDropdownForRefund = false;
-                            IsVisiblechkRefundDeclaration = false;
+                            IsVATRefunCheckedVisible = true;
                         }
                     }
+
+                    ButtonName = AppResources.Submit;
+                    IsDeclarationCheckedForSummary = true;
+                    IsMainButtonEnabled = false;
                 }
                 else
                 {
 
-                    IsRefundVisible = false;
-                    IsTextBoxVisibleForIban = false;
-                    IsDropdownVisibleForIban = false;
-                    IsVisibleDropdownForRefund = false;
-                    IsVisiblechkRefundDeclaration = false;
-                }
-            }
+                    if (App.ICRStatus == "E0045" && IsAmendClicked == true)
+                    {
+                        if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
+                        {
+                            IBANList = new List<Result2>();
+                            IBANList = VATDeclarationData.d.IBANSet.results;
+                            IsVATRefunCheckedVisible = false;
+                            IsEnableCheckedRefund = false;
+                        }
+                        else
+                        {
+                            IsVATRefunCheckedVisible = true;
+                            IsEnableCheckedRefund = true;
+                        }
+                        createIBANType();
+                        IschkRefundDeclaration = false;
+                    }
 
-            IsVisibleSummary = true;
-            SelectedIndex = 3;
-            if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus=="E0055" || App.ICRStatus== "E0058") && IsAmendClicked == false)
-            {
-                IsTextBoxEnableForIban = false;
-                IsEnableCheckedRefund = false;
-                IsTextBoxEnableForIban = false;
-                IsSwichButtonEnableToTap = false;
-                IsGetAcknowledgementClicked = true;
-                IschkRefundDeclaration = true;
+                    ButtonName = AppResources.Submit;
+
+                    if (App.ICRStatus != "E0001")
+                    {
+                        if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
+                        {
+                            IsMainButtonEnabled = false;
+                            IsDeclarationCheckedForSummary = true;
+                        }
+                        else
+                        {
+                            IsMainButtonEnabled = false;
+                        }
+                        IsDeclarationCheckedForSummary = false;
+                        IschkRefundDeclaration = false;
+                    }
+                    else
+                    {
+                        if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
+                        {
+                            IsMainButtonEnabled = false;
+                            IsDeclarationCheckedForSummary = true;
+                        }
+                        else
+                        {
+                            IsMainButtonEnabled = false;
+                        }
+                        IsDeclarationCheckedForSummary = false;
+                        IschkRefundDeclaration = false;
+                    }
+                }
+                if (IsFirstSubmission == false)
+                {
+                    IsDeclarationCheckedForSummary = true;
+                    IschkRefundDeclaration = true;
+                }
+                //if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                //{
+                //    IsDeclarationCheckedForSummary = true;
+                //}
+                //else
+                //{
+                //    IsDeclarationCheckedForSummary = false;
+                //}
+
+                if (VATDeclarationData.d.DecFg == "1")
+                {
+                    IsDeclarationCheckedForSummary = true;
+                }
+                else
+                {
+                    IsDeclarationCheckedForSummary = false;
+                }
+
+                if (VATDeclarationData.d.TcFlg == "1")
+                {
+                    IschkRefundDeclaration = true;
+                }
+                else
+                {
+                    IschkRefundDeclaration = false;
+                }
+
                 if (VATDeclarationData.d.IbanCb == "1")
                 {
                     IsCheckedRefund = true;
-                    IsVATRefunCheckedVisible = true;
                 }
                 else
                 {
-                    if (IBANList != null && IBANList.Count > 0)
-                    {
-                        IsVATRefunCheckedVisible = false;
-                    }
-                    else
-                    {
-                        IsVATRefunCheckedVisible = true;
-                    }
-                }
-
-                ButtonName = AppResources.Submit;
-                IsDeclarationCheckedForSummary = true;
-                IsMainButtonEnabled = false;
-            }
-            else
-            {
-
-                if (App.ICRStatus == "E0045" && IsAmendClicked == true)
-                {
-                    if (VATDeclarationData.d.IBANSet.results != null && VATDeclarationData.d.IBANSet.results.Count() != 0)
-                    {
-                        IBANList = new List<Result2>();
-                        IBANList = VATDeclarationData.d.IBANSet.results;
-                        IsVATRefunCheckedVisible = false;
-                        IsEnableCheckedRefund = false;
-                    }
-                    else
-                    {
-                        IsVATRefunCheckedVisible = true;
-                        IsEnableCheckedRefund = true;
-                    }
-                    createIBANType();
-                    IschkRefundDeclaration = false;
-                }
-
-                ButtonName = AppResources.Submit;
-
-                if (App.ICRStatus != "E0001")
-                {
-                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006"))
-                    {
-                        IsMainButtonEnabled = false;
-                        IsDeclarationCheckedForSummary = true;
-                    }
-                    else
-                    {
-                        IsMainButtonEnabled = false;
-                    }
-                    IsDeclarationCheckedForSummary = false;
-                    IschkRefundDeclaration = false;
-                }
-                else
-                {
-                    if ((App.ICRStatus == "E0045" && IsAmendClicked == false) || (App.ICRStatus == "E0006") || App.ICRStatus == "E0058")
-                    {
-                        IsMainButtonEnabled = false;
-                        IsDeclarationCheckedForSummary = true;
-                    }
-                    else
-                    {
-                        IsMainButtonEnabled = false;
-                    }
-                    IsDeclarationCheckedForSummary = false;
-                    IschkRefundDeclaration = false;
+                    IsCheckedRefund = false;
                 }
             }
-            if (IsFirstSubmission == false)
+            catch(Exception ex)
             {
-                IsDeclarationCheckedForSummary = true;
-                IschkRefundDeclaration = true;
-            }
-            //if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
-            //{
-            //    IsDeclarationCheckedForSummary = true;
-            //}
-            //else
-            //{
-            //    IsDeclarationCheckedForSummary = false;
-            //}
 
-            if (VATDeclarationData.d.DecFg == "1")
-            {
-                IsDeclarationCheckedForSummary = true;
             }
-            else
-            {
-                IsDeclarationCheckedForSummary = false;
-            }
-
-            if (VATDeclarationData.d.TcFlg == "1")
-            {
-                IschkRefundDeclaration = true;
-            }
-            else
-            {
-                IschkRefundDeclaration = false;
-            }
-
-            if (VATDeclarationData.d.IbanCb == "1")
-            {
-                IsCheckedRefund = true;
-            }
-            else
-            {
-                IsCheckedRefund = false;
-            }
-
         }
 
         public void CreditCarriedClicked()

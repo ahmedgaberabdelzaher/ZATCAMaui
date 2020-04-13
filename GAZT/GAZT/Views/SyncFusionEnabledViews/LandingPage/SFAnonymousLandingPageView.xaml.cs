@@ -127,7 +127,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //}
                 if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
                 {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 }
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
