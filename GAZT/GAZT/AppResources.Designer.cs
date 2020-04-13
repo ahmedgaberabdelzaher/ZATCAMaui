@@ -7333,6 +7333,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Authority of Zakat and Income - All Rights Reserved © 2020.
+        /// </summary>
+        public static string ZZZCopyrightText {
+            get {
+                return ResourceManager.GetString("ZZZCopyrightText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
         public static string ZZZCorrespondenceTitle {

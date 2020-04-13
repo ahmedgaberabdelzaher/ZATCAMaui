@@ -31,6 +31,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
+                LoadDate();
                 LoadData();
                 SetLTR();
             }
@@ -39,6 +40,12 @@ namespace GAZTeServicesApp.Views.LandingPage
             }
         }
 
+        private void LoadDate()
+        {
+            String Year = DateTime.Now.Year.ToString();
+            String textWithDate = AppResources.ZZZCopyrightText.Replace("2020", Year);
+            viewModel.CopyRightText = textWithDate;
+        }
         private void LoadData()
         {
             try
@@ -132,7 +139,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
 
                 if (BModel.eServiceName == AppResources.VATLookup)
@@ -186,7 +193,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
-                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
+                    viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
 
                 if (BModel.eServiceName == AppResources.VATLookup)
