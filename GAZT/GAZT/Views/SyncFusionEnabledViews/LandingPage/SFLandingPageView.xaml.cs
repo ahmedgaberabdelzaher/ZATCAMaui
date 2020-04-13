@@ -494,5 +494,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
 
         }
+
+        protected override bool OnBackButtonPressed() => true;
     }
 }
