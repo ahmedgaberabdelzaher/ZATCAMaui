@@ -7207,6 +7207,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wrong password.
+        /// </summary>
+        public static string ZZWrongpassword {
+            get {
+                return ResourceManager.GetString("ZZWrongpassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can not upload more than 5 attachment.
         /// </summary>
         public static string ZZYoucannotuploadmorethan5attachment {
