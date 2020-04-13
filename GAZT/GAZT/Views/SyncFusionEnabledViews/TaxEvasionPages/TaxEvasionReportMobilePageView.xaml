@@ -108,7 +108,7 @@
                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                             HorizontalTextAlignment="Center"
                             Style="{StaticResource LabelStyle}"
-                            Text="{x:Static local1:AppResources.ZZZLoginLabel}" />
+                            Text="{x:Static local1:AppResources.ZZZPleaseenteryourmobilenumbertoproceedfurther}" />
 
                             <!--Entry to get email ID from user-->
                             <!--ZTERReportDetailNumber-->

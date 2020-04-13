@@ -3029,4 +3029,21 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZCopyrightText" xml:space="preserve">
     <value>General Authority of Zakat and Income - All Rights Reserved © 2020</value>
   </data>
+  <data name="ETReturns" xml:space="preserve">
+    <value>ET Returns</value>
+  </data>
+  <data name="VatReturns" xml:space="preserve">
+    <value>VAT Returns</value>
+  </data>
+  <data name="WHTreturns" xml:space="preserve">
+    <value>WHT Returns</value>
+  </data>
+  <data name="ZOTPformobileverificationis" xml:space="preserve">
+    <value>OTP for mobile verification is :{0}</value>
+    <comment>Tax evasion</comment>
+  </data>
+  <data name="ZZZPleaseenteryourmobilenumbertoproceedfurther" xml:space="preserve">
+    <value>Please enter your mobile number to proceed further</value>
+    <comment>Tax evasion  report service</comment>
+  </data>
 </root>
