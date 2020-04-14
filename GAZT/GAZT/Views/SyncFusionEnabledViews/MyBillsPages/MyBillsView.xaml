@@ -69,7 +69,7 @@
                 <tabview:SfTabView.Items>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.All}"   
                              TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -303,7 +303,7 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.Paid}"   
                              TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -454,7 +454,7 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.UnPaid}"   
                              TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -605,7 +605,7 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.PartiallyPaid}"   
                              TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
