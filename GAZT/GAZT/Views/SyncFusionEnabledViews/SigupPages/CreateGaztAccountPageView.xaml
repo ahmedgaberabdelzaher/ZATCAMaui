@@ -51,8 +51,8 @@
         <StackLayout Spacing="0">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,0,0,0" RowSpacing="10" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="80*" />
-                    <RowDefinition Height="20*" />
+                    <RowDefinition Height="85*" />
+                    <RowDefinition Height="15*" />
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -157,7 +157,7 @@
 
                     </Grid>
                 </ScrollView>
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,0,0,0"  BackgroundColor="White" HeightRequest="56">
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,0,0,0"  BackgroundColor="White" >
                      <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="End" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
 
                 </StackLayout>
