@@ -4,6 +4,7 @@ using GAZT.Models;
 using GAZTeServicesApp.ViewModels.LandingPage;
 using Syncfusion.XForms.Border;
 using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -79,6 +80,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 base.OnAppearing();
                 SetLTR();
                 Changecornerradious();
+                InitializeComponent();
             }
             catch (Exception)
             {

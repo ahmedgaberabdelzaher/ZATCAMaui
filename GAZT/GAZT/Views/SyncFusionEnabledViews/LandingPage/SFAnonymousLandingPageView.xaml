@@ -128,9 +128,9 @@
 
                 <StackLayout Padding="5">
 
-                    <local1:CustomLabel  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
+                    <Label  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></Label>
 
-                    <local1:CustomLabel  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></local1:CustomLabel>
+                    <Label  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></Label>
 
 
                     <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
@@ -141,7 +141,7 @@
                         <buttons:SfButton  CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>
                     </StackLayout>
 
-                    <local1:CustomLabel Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
+                    <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></Label>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 
@@ -196,8 +196,8 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel  Text="{Binding CopyRightText}" FontSize="Micro"   TextColor="#d99a29"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="End" VerticalOptions="EndAndExpand" Style="{StaticResource LabelStyleFromCommonGrayStyle}" >
-                    </local1:CustomLabel>
+                    <Label  Text="{Binding CopyRightText}" FontSize="Micro"   TextColor="#d99a29"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="End" VerticalOptions="EndAndExpand" Style="{StaticResource LabelStyleFromCommonGrayStyle}" >
+                    </Label>
                 </StackLayout>
 
             </ScrollView>
