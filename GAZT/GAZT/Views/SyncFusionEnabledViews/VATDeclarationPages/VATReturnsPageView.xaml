@@ -2388,7 +2388,7 @@
                                         </custom:CustomLabel>
                                         <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteOne}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                        <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}"/>
+                                        <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}" PropertyChanged="Switch_PropertyChanged"/>
                                         <StackLayout Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Fill">
                                             <Grid >
                                                 <Grid.RowDefinitions>
@@ -3236,7 +3236,7 @@
 
 
                     <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
                      Opacity="0.7"></Button>
                     <!--</StackLayout>-->
                 </Grid>
