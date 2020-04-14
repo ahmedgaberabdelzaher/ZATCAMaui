@@ -1199,7 +1199,7 @@ namespace GAZT.ViewModel.NewViewModel
                     String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
 
                     String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
-                    str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
+                    str = " You have" + remainingAttempts + "remaining attempt then the account will be locked";// String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
                     // str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
                 }
                 else
@@ -1221,12 +1221,12 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else if (currentAttempts > 1 && currentAttempts < Convert.ToInt16(WebServiceManager.NumberOfValiedAttempts))
                 {
-                    String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
+                    //String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
 
-                    String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
-                    str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
+                    //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    //str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
 
-                    //str = "لديك " + remainingAttempts + "محاولات متبقية؛ ثم سيتم قفل حسابك  ";
+                    str = "لديك " + remainingAttempts + "محاولات متبقية؛ ثم سيتم قفل حسابك  ";
                 }
                 else
                 {

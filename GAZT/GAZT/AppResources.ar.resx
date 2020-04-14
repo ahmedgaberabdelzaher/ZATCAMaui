@@ -3043,4 +3043,8 @@
     <value>للمتابعة فضلاً أدخل رقم الجوال</value>
     <comment>Tax evasion  report service</comment>
   </data>
+  <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
+    <value>الموافقة على الشروط والأحكام</value>
+    <comment>Signup </comment>
+  </data>
 </root>

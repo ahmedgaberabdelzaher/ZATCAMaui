@@ -10,7 +10,7 @@
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              x:Class="GAZT.Views.NewViews.BillDetailsPageView"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.ZBillDetails}"
              FlowDirection="RightToLeft"
              NavigationPage.HasNavigationBar="False">
@@ -253,9 +253,18 @@
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-                    </StackLayout>
+                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#d99a29"/>                    </StackLayout>
                 </StackLayout>
             </Grid>
                  <!--Acticity indicator layout End--> 

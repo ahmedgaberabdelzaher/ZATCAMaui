@@ -88,7 +88,7 @@
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="25,0,20,5"
  
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Margin="0,0,0,5" Text="{Binding TxtSelectedStatus}" FontSize="Small">
                     </custom:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
