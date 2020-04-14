@@ -116,7 +116,7 @@
     Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoemailaddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  Text="{Binding TxtEmailCode}" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">
+                            <Entry  Text="{Binding TxtEmailCode}" x:Name="ConfrmEmail_Entry" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>
@@ -135,7 +135,7 @@
     Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoMobileNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  Text="{Binding TxtMobileNumberCode}" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">
+                            <Entry  Text="{Binding TxtMobileNumberCode}" x:Name="CnfrmMob_entry" IsPassword="True" Keyboard="Numeric" FontSize="Small" IsEnabled="{Binding IsOTPEntryEnable}">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>
