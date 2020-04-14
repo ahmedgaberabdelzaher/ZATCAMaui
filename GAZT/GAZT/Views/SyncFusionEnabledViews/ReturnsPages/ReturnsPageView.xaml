@@ -36,11 +36,13 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <tabview:SfTabView Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="{Binding HeaderCount}" SelectedIndex="{Binding TabIndexStatus}" >
+            <tabview:SfTabView  Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="{Binding HeaderCount}" SelectedIndex="{Binding TabIndexStatus}" >
+                
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
+                        
                     StrokeThickness="2"/>
                 </tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SfTabView.Items>
@@ -57,7 +59,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <Label FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -235,7 +237,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -397,7 +399,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -680,7 +682,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -841,7 +843,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="VAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -1124,7 +1126,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="ZAKAT Returns"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
