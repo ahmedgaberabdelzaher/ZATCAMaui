@@ -56,7 +56,7 @@
             </tabView:SfTabView.SelectionIndicatorSettings>
             <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                              TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
@@ -88,7 +88,7 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -121,7 +121,7 @@
             </tabView:SfTabItem>
             <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">

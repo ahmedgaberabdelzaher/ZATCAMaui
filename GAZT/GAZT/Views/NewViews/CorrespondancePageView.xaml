@@ -70,7 +70,7 @@
                     </tabView:SfTabView.SelectionIndicatorSettings>
                     <tabView:SfTabItem Title="{Binding ZakatCountDisplay}"
                                         TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -299,7 +299,7 @@
                         </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
                     <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
@@ -537,7 +537,7 @@
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
                     <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
