@@ -40,6 +40,13 @@ namespace GAZT.Views.NewViews
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
+                if (CorrModel != null && CorrModel.RefNumber != null)
+                {
+                    if (App.IsArabic)
+                    {
+                        CorrModel.RefNumber = UtilityManager.ConvertNumerals(CorrModel.RefNumber);
+                    }
+                }
                 CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
 
                 if ((CorrespondenceD != null) && (CorrespondenceD.d != null) && (CorrespondenceD.d.results != null))

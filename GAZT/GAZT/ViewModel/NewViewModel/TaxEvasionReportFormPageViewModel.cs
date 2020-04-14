@@ -977,6 +977,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
+                _navigationService.GoBack();
             }
 
         }
