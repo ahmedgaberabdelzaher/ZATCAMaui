@@ -69,7 +69,11 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
                         </tabView:SfTabView.SelectionIndicatorSettings>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" >
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" TitleFontSize="14"
+                            SelectionColor="DarkGreen"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray" >
                             <tabView:SfTabItem.Content>
                                 <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabInstruction"  IsVisible="{Binding IsVisibleInstrunction}"  VerticalOptions="FillAndExpand"  >
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" >
@@ -188,7 +192,11 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZTaxPayerDetails}">
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZTaxPayerDetails}" TitleFontSize="14"
+                            SelectionColor="DarkGreen"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                             <tabView:SfTabItem.Content>
                                 <ScrollView  Orientation="Vertical"  x:Name="TabTaxPayerDetails"   IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}" >
@@ -506,7 +514,11 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZVATReturnForm}">
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZVATReturnForm}" TitleFontSize="14"
+                            SelectionColor="DarkGreen"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                             <tabView:SfTabItem.Content>
                                 <ScrollView Orientation="Vertical" x:Name="TabVatReturn" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}" >
@@ -2340,7 +2352,11 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}">
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}" TitleFontSize="14"
+                            SelectionColor="DarkGreen"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                             <tabView:SfTabItem.Content>
                                 <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry"    IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >
 
