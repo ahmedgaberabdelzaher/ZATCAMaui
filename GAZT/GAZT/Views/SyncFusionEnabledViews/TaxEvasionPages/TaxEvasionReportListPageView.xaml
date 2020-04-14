@@ -97,7 +97,7 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <cards:SfCardView HasShadow="True" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" Margin="0,6,0,6" CornerRadius="8"  IndicatorColor="Red" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                <cards:SfCardView HasShadow="True" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" Margin="0,6,0,6" CornerRadius="8"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5" >
                                               
                                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12"  >
                                                                 <Grid ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >

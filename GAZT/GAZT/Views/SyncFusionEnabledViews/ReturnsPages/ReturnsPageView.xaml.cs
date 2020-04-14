@@ -113,10 +113,12 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.FDirection = FlowDirection.LeftToRight;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.FDirection = FlowDirection.RightToLeft;
             }
         }
         public void ChangeAeroIcon()
