@@ -223,7 +223,7 @@ namespace GAZT.Views.NewViews
                             item.Tdline = AddNotePageViewModel.NoteString;
                         }
                         AddNotePageViewModel.IsComingFromNotePage = false;
-                        AddNotePageViewModel.NoteString = string.Empty;
+                       
                     }
                     else
                     {
@@ -248,6 +248,7 @@ namespace GAZT.Views.NewViews
                     }
                     AddNotePageViewModel.ClearNoteClicked = false;
                 }
+                AddNotePageViewModel.NoteString = string.Empty;
             }
         }
 

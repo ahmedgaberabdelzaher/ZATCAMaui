@@ -101,14 +101,20 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnClearButtonClicked = new Command(() =>
             {
-                if (!string.IsNullOrEmpty(NoteText))
+                //if (!string.IsNullOrEmpty(NoteText))
+                //{
+                //    NoteText = PreviousNoteText;
+                //}
+                //else
+                //{
+                //    NoteText = string.Empty;
+                //}
+
+                if (String.Compare(PreviousNoteText, NoteText) != 0)
                 {
                     NoteText = PreviousNoteText;
                 }
-                else
-                {
-                    NoteText = string.Empty;
-                }
+
                 ClearNoteClicked = true;
                 _navigationService.GoBack();
             });
