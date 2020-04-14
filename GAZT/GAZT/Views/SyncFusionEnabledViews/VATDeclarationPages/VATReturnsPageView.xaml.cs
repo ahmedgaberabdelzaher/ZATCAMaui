@@ -4480,6 +4480,63 @@ namespace GAZT.Views.NewViews
 
         }
 
+        private void SelectedIBANChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //viewModel.TxtIDNumber = string.Empty;
+            //EntryName.IsEnabled = true;
+            try
+            {
+                Result2 selectedIBAN = (Result2)e.NewValue;
+                viewModel.SelectedIBAN = selectedIBAN;
+                viewModel.TxtSelectedIBAN = selectedIBAN.Iban;
+            }
+            catch (Exception ex)
+            {
+
+            }
+          
+
+        }
+
+        private async void SelectedIBANTypeChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //viewModel.TxtIDNumber = string.Empty;
+            //EntryName.IsEnabled = true;
+            try
+            {
+                IBANType selectedIBANType = (IBANType)e.NewValue;
+                viewModel.SelectedIBANType = selectedIBANType;
+                viewModel.TxtSelectedIBANType = selectedIBANType.Text;
+                await viewModel.SetIBANIdNumber();
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+          
+
+        }
+
+        private void SelectedIBANIDNumberChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //viewModel.TxtIDNumber = string.Empty;
+            //EntryName.IsEnabled = true;
+            try
+            {
+                IBANIDNumber selectedIBANIDNumber = (IBANIDNumber)e.NewValue;
+                viewModel.SelectedIBANIDNumber = selectedIBANIDNumber;
+                viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
+            }
+            catch (Exception ex)
+            {
+
+            }
+         
+
+        }
+
+
         private void btnIban_Clicked(object sender, EventArgs e)
         {
             BPicker.IsOpen = true;

@@ -2421,7 +2421,7 @@
                                              ShowFooter="False"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
-                    SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBAN}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" DisplayMemberPath="Iban"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                     SelectionChanged="SelectedIBANChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANList}" DisplayMemberPath="Iban"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                                           
@@ -2477,7 +2477,7 @@
                                              ShowFooter="False"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
-                   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANType}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" DisplayMemberPath="Text"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   SelectionChanged="SelectedIBANTypeChanged" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANTypesList}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}" DisplayMemberPath="Text"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                                           
@@ -2525,7 +2525,7 @@
                                              ShowFooter="False"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
-                   SelectedItem="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SelectedIBANIDNumber}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" DisplayMemberPath="Idnumber"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                 SelectionChanged="SelectedIBANIDNumberChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}" ItemsSource="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IBANIDNumberList}" DisplayMemberPath="Idnumber"   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="280"
                     PickerWidth="270"
                                           

@@ -1610,10 +1610,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBAN = value;
-                if (_selectedIBAN != null)
-                {
-                    TxtSelectedIBAN = _selectedIBAN.Iban;
-                }
+                //if (_selectedIBAN != null)
+                //{
+                //    TxtSelectedIBAN = _selectedIBAN.Iban;
+                //}
                 RaisePropertyChanged("SelectedIBAN");
             }
         }
@@ -1868,15 +1868,15 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBANType = value;
-                if (_selectedIBANType != null)
-                {
-                    SetIBANIdNumber();
-                    TxtSelectedIBANType = _selectedIBANType.Text;
-                }
-                else
-                {
+                //if (_selectedIBANType != null)
+                //{
+                //    SetIBANIdNumber();
+                //    TxtSelectedIBANType = _selectedIBANType.Text;
+                //}
+                //else
+                //{
 
-                }
+                //}
                 RaisePropertyChanged("SelectedIBANType");
             }
         }
@@ -1936,10 +1936,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIBANIDNumber = value;
-                if (_selectedIBANIDNumber != null)
-                {
-                    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
-                }
+                //if (_selectedIBANIDNumber != null)
+                //{
+                //    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
+                //}
 
                 RaisePropertyChanged("SelectedIBANIDNumber");
             }
@@ -2487,12 +2487,12 @@ namespace GAZT.ViewModel.NewViewModel
             ResponseVATDeclarationD.Preperiodcorr = UtilityManager.GetCommaSeparatedAmount(ResponseVATDeclarationD.Preperiodcorr);
         }
 
-        public void SetIBANIdNumber()
+        public async Task SetIBANIdNumber()
         {
 
             try
             {
-                List<IBANIDNumber> iBANIDNumbersResponse = WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
+                List<IBANIDNumber> iBANIDNumbersResponse =await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
                 PopToRootPage();
                 if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
                 {
