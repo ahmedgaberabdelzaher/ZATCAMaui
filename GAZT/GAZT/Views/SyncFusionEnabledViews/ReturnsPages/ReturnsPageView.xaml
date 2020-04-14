@@ -48,7 +48,7 @@
                 <tabview:SfTabView.Items>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.Submitted}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
 
                                 TitleFontColor="Gray">
@@ -388,7 +388,7 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.NonSubmitted}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
 
                                 TitleFontColor="Gray">
@@ -831,7 +831,7 @@
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.OverDue}"
                                 TitleFontSize="14"
-                            SelectionColor="Black"
+                            SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
 
                                 TitleFontColor="Gray">
@@ -1284,7 +1284,7 @@
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
-                                       AnimationType="RollingBall" 
+                                       AnimationType="MovieTimer"
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
@@ -1292,7 +1292,7 @@
                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="White"/>
+                                       TextColor="#d99a29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

@@ -53,11 +53,11 @@
 
 
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,0" >
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="1000">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="100*" />
+                    <RowDefinition Height="*" />
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -66,9 +66,9 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="18*" />
-                    <ColumnDefinition Width="14*" />
 
 
 
@@ -85,11 +85,11 @@
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="20,0,20,5"
+                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="25,0,20,5"
  
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Margin="0,0,0,5" Text="{Binding TxtSelectedStatus}" FontSize="Small" FontAttributes="Bold">
+                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Margin="0,0,0,5" Text="{Binding TxtSelectedStatus}" FontSize="Small">
                     </custom:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
@@ -126,12 +126,13 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
-                <StackLayout Margin="10,0,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
+                <StackLayout Margin="10,-15,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" HeightRequest="1000">
                     <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                             
                               Margin="0,5,0,0"
                                BackgroundColor="White"
                  SelectedItem="{Binding SelectedICR}"     
@@ -423,7 +424,7 @@
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
-                                       AnimationType="RollingBall" 
+                                       AnimationType="MovieTimer"
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
@@ -431,7 +432,7 @@
                                          Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="White"/>
+                                        TextColor="#d99a29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

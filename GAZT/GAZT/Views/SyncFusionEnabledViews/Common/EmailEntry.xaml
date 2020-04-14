@@ -34,7 +34,7 @@
 
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
-    ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
                     <custom:GAZTBorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" >
                     </custom:GAZTBorderlessEntry>
