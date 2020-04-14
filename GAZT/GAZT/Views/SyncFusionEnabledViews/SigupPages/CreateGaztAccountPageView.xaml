@@ -88,7 +88,7 @@
     Hint="{x:Static local:AppResources.Password}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtPassword}"  x:Name="EntryPass"  FontSize="Small" IsPassword="True">
+                            <Entry Text="{Binding TxtPassword}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass"  FontSize="Small" IsPassword="True">
                                
                             </Entry>
                         </inputLayout:SfTextInputLayout>
