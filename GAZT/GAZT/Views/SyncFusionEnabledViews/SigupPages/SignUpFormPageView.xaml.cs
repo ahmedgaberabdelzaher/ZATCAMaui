@@ -2106,11 +2106,11 @@ namespace GAZT.Views.NewViews
         {
             try
             {
-                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[0].ToString();
-                string day = selectedItem[1].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PkrDBO = year + "/" + month + "/" + day;
+   var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            string month = selectedItem[0].ToString();
+            string day = selectedItem[1].ToString();
+            string year = selectedItem[2].ToString();
+            viewModel.PkrDBO = year + "/" + month + "/" + day;
             }
             catch(Exception ex)
             {
