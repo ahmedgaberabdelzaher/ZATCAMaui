@@ -473,6 +473,21 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("TabIndexStatus");
             }
         }
+
+        private FlowDirection _fDirection = FlowDirection.RightToLeft;
+        public FlowDirection FDirection
+        {
+            get
+            {
+                return _fDirection;
+            }
+            set
+            {
+                _fDirection = value;
+                RaisePropertyChanged("FDirection");
+            }
+        }
+
         public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -519,6 +534,14 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 
                 await Task.Run(async () =>
                 {
+                    if(App.IsArabic)
+                    {
+                        FDirection = FlowDirection.RightToLeft;
+                    }
+                    else
+                    {
+                        FDirection = FlowDirection.LeftToRight;
+                    }
                     ICRListVATSubmitted = null;
                     ReturnsListCountsByStatus = new ReturnsListCountsByStatus();
                     IsVATVisible = false;

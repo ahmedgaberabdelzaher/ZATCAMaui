@@ -1852,7 +1852,7 @@ namespace GAZT.Manager
         }
         //done internet exception handling
 
-        public static List<IBANIDNumber> GAZTGetIBANIdNumber(string IBANType)
+        public static async Task<List<IBANIDNumber>> GAZTGetIBANIdNumber(string IBANType)
         {
             List<IBANIDNumber> iBANIDNumbers = new List<IBANIDNumber>();
             if (CrossConnectivity.Current.IsConnected)
@@ -1870,7 +1870,7 @@ namespace GAZT.Manager
                     String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=disabled&sap-langauge='" + lang + "'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
 
-                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTValidateOTPResponse =await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
