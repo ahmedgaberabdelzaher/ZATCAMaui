@@ -52,7 +52,7 @@
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10"  Margin="0" Padding="0,0,0,0" BackgroundColor="White">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="100*" />
 
                 </Grid.RowDefinitions>
 
