@@ -52,7 +52,7 @@ namespace GAZTeServicesApp.Views.LoginPage
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
-
+            
                 DependencyService.Get<IStatusBar>().HideStatusBar();
             viewModel.TINIndex = 0;
          
