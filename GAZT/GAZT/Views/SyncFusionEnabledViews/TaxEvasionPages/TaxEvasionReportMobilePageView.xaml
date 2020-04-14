@@ -112,11 +112,11 @@
 
                             <!--Entry to get email ID from user-->
                             <!--ZTERReportDetailNumber-->
-                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" Margin="10,5,10,0">
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" Margin="10,5,10,0" x:Name="StacklayoutEn">
                                 <Label  Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
     Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
-    ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
                                     <control:BorderlessEntry x:Name="Mobile_Entry"  Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused"    FontSize="Small" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="8">
                                         <Entry.Behaviors>
@@ -127,6 +127,23 @@
                                     </control:BorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" x:Name="StackLayoutAr" Margin="10,5,10,0">
+
+                                <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
+    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
+    ContainerType="Outlined" x:Name="frmMobileAr" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
+                                    <control:BorderlessEntry x:Name="Mobile_EntryAr"  Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused"    FontSize="Small" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="8">
+                                        <Entry.Behaviors>
+
+                                            <custom1:OnlyNumericValuesBehaviour/>
+
+                                        </Entry.Behaviors>
+                                    </control:BorderlessEntry>
+
+                                </inputLayout:SfTextInputLayout>
+                                <Label  Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                             </StackLayout>
 
 

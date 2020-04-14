@@ -30,7 +30,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             viewModel = App.Locator.TaxEvasionReportPhonePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
-            Mobile_Entry.Text = string.Empty;
+           viewModel.MobileNumber= string.Empty;
+
             //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
 
@@ -58,28 +59,32 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                StacklayoutEn.IsVisible = false;
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                StackLayoutAr.IsVisible = false;
             }
         }
 
         private void Mobile_Entry_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(Mobile_Entry.Text))
+            if (!string.IsNullOrEmpty(viewModel.MobileNumber))
 
             {
-                if (Mobile_Entry.Text.Length != 8)
+                if (viewModel.MobileNumber.Length != 8)
                 {
-                    EmailInputLayout.HasError = true;
+                    frmMobile.HasError = true;
+                    frmMobileAr.HasError = true;
                     viewModel.IsVerifyEnable = false;
 
                 }
                 else
                 {
                     viewModel.IsVerifyEnable = true;
-                    EmailInputLayout.HasError = false;
+                    frmMobile.HasError = false;
+                    frmMobileAr.HasError = false;
                 }
             }
             
