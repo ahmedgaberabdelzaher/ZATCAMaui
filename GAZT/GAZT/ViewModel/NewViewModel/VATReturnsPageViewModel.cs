@@ -2492,6 +2492,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             try
             {
+                TxtSelectedIBANIDNumber = string.Empty;
                 List<IBANIDNumber> iBANIDNumbersResponse =await WebServiceManager.GAZTGetIBANIdNumber(SelectedIBANType.key);
                 PopToRootPage();
                 if (iBANIDNumbersResponse != null || iBANIDNumbersResponse.Count() != 0)
