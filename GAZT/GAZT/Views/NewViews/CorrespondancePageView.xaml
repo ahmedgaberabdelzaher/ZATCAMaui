@@ -52,7 +52,7 @@
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10"  Margin="0" Padding="0,0,0,0" BackgroundColor="White">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*" />
+                    <RowDefinition Height="auto" />
 
                 </Grid.RowDefinitions>
 
@@ -79,8 +79,8 @@
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridZakat"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,0" >
 
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="15*" />
-                                        <RowDefinition Height="85*" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
 
                                     </Grid.RowDefinitions>
 
