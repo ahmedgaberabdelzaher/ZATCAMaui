@@ -239,6 +239,8 @@ namespace GAZT.Views.NewViews
                 viewModel.TesReporterMobileNumber = _ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
                 viewModel.tessentOtptomobile();
 
+               // NumberOfAttemptsText.IsVisible = false;
+
 
 
             }

@@ -705,6 +705,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ET Returns.
+        /// </summary>
+        public static string ETReturns {
+            get {
+                return ResourceManager.GetString("ETReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EXCISE TAX.
         /// </summary>
         public static string ExciseCertificates {
@@ -1956,6 +1965,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Returns.
+        /// </summary>
+        public static string VatReturns {
+            get {
+                return ResourceManager.GetString("VatReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Verification code.
         /// </summary>
         public static string VerificationCode {
@@ -1970,6 +1988,15 @@ namespace GAZT {
         public static string Verify {
             get {
                 return ResourceManager.GetString("Verify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WHT Returns.
+        /// </summary>
+        public static string WHTreturns {
+            get {
+                return ResourceManager.GetString("WHTreturns", resourceCulture);
             }
         }
         
@@ -2557,6 +2584,15 @@ namespace GAZT {
         public static string ZOR {
             get {
                 return ResourceManager.GetString("ZOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OTP for mobile verification is :{0}.
+        /// </summary>
+        public static string ZOTPformobileverificationis {
+            get {
+                return ResourceManager.GetString("ZOTPformobileverificationis", resourceCulture);
             }
         }
         
@@ -7333,6 +7369,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General Authority of Zakat and Income - All Rights Reserved © 2020.
+        /// </summary>
+        public static string ZZZCopyrightText {
+            get {
+                return ResourceManager.GetString("ZZZCopyrightText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
         public static string ZZZCorrespondenceTitle {
@@ -7500,6 +7545,15 @@ namespace GAZT {
         public static string ZZZPasswordNotMatched {
             get {
                 return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your mobile number to proceed further.
+        /// </summary>
+        public static string ZZZPleaseenteryourmobilenumbertoproceedfurther {
+            get {
+                return ResourceManager.GetString("ZZZPleaseenteryourmobilenumbertoproceedfurther", resourceCulture);
             }
         }
         

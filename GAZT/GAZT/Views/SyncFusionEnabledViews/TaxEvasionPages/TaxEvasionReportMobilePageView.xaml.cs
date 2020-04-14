@@ -30,6 +30,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             viewModel = App.Locator.TaxEvasionReportPhonePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
+            Mobile_Entry.Text = string.Empty;
             //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
 
