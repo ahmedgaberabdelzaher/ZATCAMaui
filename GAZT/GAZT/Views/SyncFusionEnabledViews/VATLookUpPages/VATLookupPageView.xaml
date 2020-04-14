@@ -117,7 +117,7 @@
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZSearchParameter}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined"  Grid.Row="3" Grid.Column="0"  UnfocusedColor="#B1B1B1" x:Name="frmSearchParameter"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry x:Name="SearchParameterEnter" FontAttributes="Bold" Text="{Binding TxtSearchParameter}" Focused="OnParameterTypeEntryEntryFocussed" IsEnabled="False" IsSpellCheckEnabled="False" FontSize="Small">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -153,7 +153,7 @@
                         <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
                             <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
                                 <Entry.Behaviors>
 

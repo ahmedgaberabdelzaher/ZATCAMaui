@@ -251,7 +251,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatReturnType}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="2"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Incotext}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -271,7 +271,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatReturn}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="3"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Vrtaxret}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -291,7 +291,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatReturnReferenceNo}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="4"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Fbnum}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -311,7 +311,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZTaxPeriod}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="5"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Perslt}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -331,7 +331,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatPeriodFrom}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="6"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -352,7 +352,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatPeriodTo}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="7"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -375,7 +375,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.TIN}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="9"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Gpart}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -393,7 +393,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVATAccountNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="10"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Fin}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -412,7 +412,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatIdentificationNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="11"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Idnumber}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -433,7 +433,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatTaxpayersName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  Grid.Row="12"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Tpnm}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                             </custom:GAZTBorderlessEntry>
@@ -613,7 +613,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryVatAmountFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryVatAmount" PropertyChanged="EntryVatAmount_PropertyChanged"   Focused="EntryVatAmountFocused"  Unfocused="EntryVatAmount_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static local1:AppResources.ZVatAmountWithSAR}"  Text="{Binding StdsalesAmt}"     Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
@@ -673,7 +673,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local1:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryVatAdjustmentWithSARFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryVatAdjustmentWithSAR" PropertyChanged="EntryVatAdjustmentWithSAR_PropertyChanged"  Focused="EntryVatAdjustmentFocused" Unfocused="EntryVatAdjustmentWithSAR_Unfocused" Keyboard="Numeric" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  TextChanged="ClickGestureRecognizer_ClickedForVatAmount"   Text="{Binding StdsalesAdj}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
 
@@ -716,7 +716,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryStdsalesVat" Keyboard="Numeric" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat , StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" >
 
                                             </custom:GAZTBorderlessEntry>
@@ -785,7 +785,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntrySalesGccAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntrySalesGccAmt" PropertyChanged="EntrySalesGccAmt_PropertyChanged"  Focused="EntrySalesGccAmtFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntrySalesGccAmt_Unfocused" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Text="{Binding SalesGccAmt}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -843,7 +843,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntrySalesGccAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntrySalesGccAdj" PropertyChanged="EntrySalesGccAdj_PropertyChanged" Focused="EntrySalesGccAdjFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntrySalesGccAdj_Unfocused" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Text="{Binding SalesGccAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -917,7 +917,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryZerosalesAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryZerosalesAmt"  PropertyChanged="EntryZerosalesAmt_PropertyChanged" Focused="EntryZerosalesAmtFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryZerosalesAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Text="{Binding ZerosalesAmt}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -977,7 +977,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryZerosalesAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryZerosalesAdj" PropertyChanged="EntryZerosalesAdj_PropertyChanged" Focused="EntryZerosalesAdjFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryZerosalesAdj_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Text="{Binding ZerosalesAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1050,7 +1050,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExportsAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryExportsAmt" PropertyChanged="EntryExportsAmt_PropertyChanged" Focused="EntryExportsAmtFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryExportsAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForAllAmount" Grid.ColumnSpan="2" Placeholder="{x:Static local1:AppResources.ZVatAmountWithSAR}" Grid.Row="12" Text="{Binding ExportsAmt}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"  Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1108,7 +1108,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExportsAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryExportsAdj" PropertyChanged="EntryExportsAdj_PropertyChanged" Focused="EntryExportsAdjFocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryExportsAdj_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment"  Text="{Binding ExportsAdj}"      Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1184,7 +1184,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExemptsalesAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryExemptsalesAmt" PropertyChanged="EntryExemptsalesAmt_PropertyChanged" Focused="EntryExemptsalesAmtFocused"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryExemptsalesAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForAllAmount"  Text="{Binding ExemptsalesAmt}"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1244,7 +1244,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExemptsalesAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" PropertyChanged="EntryExemptsalesAdj_PropertyChanged" x:Name="EntryExemptsalesAdj" Unfocused="EntryExemptsalesAdj_Unfocused" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAdjustment" Placeholder="{x:Static local1:AppResources.ZVatAdjustmentWithSAR}" Grid.Row="16" Text="{Binding ExemptsalesAdj}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1367,7 +1367,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryStdpurchaseAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchaseAmt" Focused="EntryStdpurchaseAmtFocused" PropertyChanged="EntryStdpurchaseAmt_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryStdpurchaseAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Text="{Binding StdpurchaseAmt}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1425,7 +1425,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="21" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryStdpurchaseAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchaseAdj"  Focused="EntryStdpurchaseAdjFocused" PropertyChanged="EntryStdpurchaseAdj_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryStdpurchaseAdj_Unfocused"  TextChanged="ClickGestureRecognizer_ClickedForVatAmountForPurchase" Text="{Binding StdpurchaseAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1472,7 +1472,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="22" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
 
@@ -1540,7 +1540,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryZVatAmountWithSARFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryZVatAmountWithSAR" Focused="EntryZVatAmountWithSARFocused" PropertyChanged="EntryZVatAmountWithSAR_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryZVatAmountWithSAR_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms"  Text="{Binding ImportspaidAmt}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1598,7 +1598,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryImportspaidAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportspaidAdj"  Focused="EntryImportspaidAdjFocused" PropertyChanged="EntryImportspaidAdj_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryImportspaidAdj_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForVatPaidatcustoms" Text="{Binding ImportspaidAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1652,7 +1652,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat"  TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
@@ -1701,7 +1701,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="28" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryImportsaccAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccAmt" Focused="EntryImportsaccAmtFocused" PropertyChanged="EntryImportsaccAmt_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryImportsaccAmt_Unfocused" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Text="{Binding ImportsaccAmt}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors> 
                                 <custom1:DecimalPlacesConverter/>
@@ -1756,7 +1756,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="29" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryImportsaccAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccAdj" Focused="EntryImportsaccAdjFocused" PropertyChanged="EntryImportsaccAdj_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryImportsaccAdj_Unfocused" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForVatAccounted" Text="{Binding ImportsaccAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1807,7 +1807,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="30" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
 
@@ -1870,7 +1870,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="32" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryZeropurchaseAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryZeropurchaseAmt" Focused="EntryZeropurchaseAmtFocused" PropertyChanged="EntryZeropurchaseAmt_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryZeropurchaseAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Text="{Binding ZeropurchaseAmt}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1927,7 +1927,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="33" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryZeropurchaseAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryZeropurchaseAdj" Focused="EntryZeropurchaseAdjFocused" PropertyChanged="EntryZeropurchaseAdj_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryZeropurchaseAdj_Unfocused" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment"  Text="{Binding ZeropurchaseAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -1998,7 +1998,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="35" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExemptpurchaseAmtFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryExemptpurchaseAmt" Focused="EntryExemptpurchaseAmtFocused" PropertyChanged="EntryExemptpurchaseAmt_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryExemptpurchaseAmt_Unfocused" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAmount" Text="{Binding ExemptpurchaseAmt}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -2054,7 +2054,7 @@
                                         <inputLayout:SfTextInputLayout   Grid.Row="36" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatAdjustmentWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryExemptpurchaseAdjFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryExemptpurchaseAdj" Focused="EntryExemptpurchaseAdjFocused" PropertyChanged="EntryExemptpurchaseAdj_PropertyChanged" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Unfocused="EntryExemptpurchaseAdj_Unfocused" Grid.ColumnSpan="2" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseAdjustment"  Text="{Binding ExemptpurchaseAdj}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 <!--<custom:GAZTBorderlessEntry.Behaviors>
                                 <custom1:DecimalPlacesConverter/>
@@ -2194,7 +2194,7 @@
                                             <inputLayout:SfTextInputLayout   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"  Margin="10,-6,10,-6"  
   
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryPreperiodcorrFrame"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                 <custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Focused="EntryPreperiodcorrFocused" PropertyChanged="EntryPreperiodcorr_PropertyChanged" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="6" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" >
                                                     <!--<custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
@@ -2264,7 +2264,7 @@
                                             <inputLayout:SfTextInputLayout   Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3"  Margin="10,-6,10,-6"  
   
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                 <custom:GAZTBorderlessEntry x:Name="EntryCreditVat"  TextChanged="EntryCreditVat_TextChanged" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CreditVat}" Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                     <!--<custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:DecimalPlacesConverter/>
@@ -2320,7 +2320,7 @@
                                             <inputLayout:SfTextInputLayout   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3"  Margin="10,-6,10,-6"  
   
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False">
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                 <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat"  TextChanged="EntryNetdueVat_TextChanged" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
 
                                                 </custom:GAZTBorderlessEntry>
@@ -2421,7 +2421,7 @@
    
     ContainerType="Outlined" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
                                                                         IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" >
                                                     <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>
@@ -2477,7 +2477,7 @@
                                                 <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
    
     ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
                                                     <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>
@@ -2525,7 +2525,7 @@
                                                 <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
    
     ContainerType="Outlined" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
                                                     <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>

@@ -84,7 +84,7 @@
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -148,7 +148,7 @@
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
     ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtFBnum}" FontSize="Small" FontAttributes="Bold">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>

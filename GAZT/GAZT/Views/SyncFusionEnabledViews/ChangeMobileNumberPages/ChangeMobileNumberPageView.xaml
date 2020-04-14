@@ -100,7 +100,7 @@
     Hint="{x:Static local:AppResources.ZCurrentMobileNumber}"
            IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry  x:Name="TCurrentMobile" TextColor="#ffffff" FontSize="Small"  Placeholder="{Binding CurrentMobile}" PlaceholderColor= "White"  IsEnabled="False">
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
@@ -123,14 +123,14 @@
                                 <!--<inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                         <Label  Text="{Binding CountryCode}" Padding="0,14,0,14"  VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" TextColor="#7D858D" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
                     </inputLayout:SfTextInputLayout>-->
 
                                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="1"  x:Name="NewMobileNumberLayout"  Margin="7,0,7,0"
     Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
 
                                     <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center" TextColor="White" x:Name="Username" Keyboard="Numeric" FontSize="Small" >
                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -154,14 +154,14 @@
                                 <!--<inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                         <Label  Text="{Binding CountryCode}" Padding="0,14,0,14"  VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" TextColor="#7D858D" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
                     </inputLayout:SfTextInputLayout>-->
 
                                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"  x:Name="NewMobileNumberLayoutForArabic" FlowDirection="LeftToRight"  Margin="7,0,7,0"
     Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
 
                                     <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center"  TextColor="White" x:Name="UsernameForArabic" Keyboard="Numeric" FontSize="Small" >
                                         <custom:GAZTBorderlessEntry.Behaviors>

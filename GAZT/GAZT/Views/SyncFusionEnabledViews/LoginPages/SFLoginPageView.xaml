@@ -118,7 +118,7 @@
                       <!--  <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
                     <control:BorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start">
                     </control:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
@@ -141,7 +141,7 @@
                                                   Grid.Row="3" Grid.Column="0" 
    IsVisible="{Binding IsVisibleTinIds}"
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
                     <custom:BorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="Red" FontSize="Small">
 
                     </custom:BorderlessEntry>
@@ -174,7 +174,7 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>-->
-
+    
 
 
                     
@@ -186,7 +186,7 @@
                         <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True"  Margin="10,-6,10,-6" 
    Grid.Row="4" Grid.ColumnSpan="2" Hint="{x:Static local1:AppResources.Password}" 
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1" FocusedColor="#005e4b"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
+    OutlineCornerRadius="8"  ErrorColor="#B00020" HasError="False"  >
                             <!--<control:BorderlessEntry Grid.Row="4" Grid.ColumnSpan="2" x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" Text="{Binding Password}"  FontSize="Small" TextColor="White" PlaceholderColor="Gray" HorizontalOptions="Start" BackgroundColor="White">
 
                             </control:BorderlessEntry>-->
@@ -293,7 +293,8 @@
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
-                                       AnimationType="SingleCircle" 
+                                       AnimationType="SingleCircle"
+
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"

@@ -16,12 +16,12 @@ namespace GAZT.iOS.DependencyServices
 
         public void HideStatusBar()
         {
-            UIApplication.SharedApplication.StatusBarHidden = true;
+         //   UIApplication.SharedApplication.StatusBarHidden = true;
         }
 
         public void ShowStatusBar()
         {
-            UIApplication.SharedApplication.StatusBarHidden = false;
+           // UIApplication.SharedApplication.StatusBarHidden = false;
         }
 
         #endregion

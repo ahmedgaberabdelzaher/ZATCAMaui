@@ -12,7 +12,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="GAZT.Views.NewViews.CorrespondancePageView"
              NavigationPage.HasNavigationBar="False">
@@ -92,7 +92,7 @@
                                     <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"   Margin="20,5,20,0"
     Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                         <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusZakat}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -321,7 +321,7 @@
                                     <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"   Margin="20,5,20,-6"
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusVAT}" FontSize="Small" FontAttributes="Bold">
                                     </local:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
@@ -559,7 +559,7 @@
                                     <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"   Margin="20,5,20,-6"
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                         <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusET}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
@@ -801,8 +801,18 @@
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
 
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                          <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#d99a29"/>
                     </StackLayout>
                 </StackLayout>
 

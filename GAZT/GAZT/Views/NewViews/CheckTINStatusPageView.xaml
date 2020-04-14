@@ -70,7 +70,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryTIN"    Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.TIN}"
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" FontSize="Small" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
@@ -78,7 +78,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryTINStatus"    Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZTINStatus}"
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small" IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
 
                             </custom:BorderlessEntry>
@@ -86,7 +86,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdate"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
                                 
                             </custom:BorderlessEntry>
@@ -115,7 +115,7 @@
                                     <DataTemplate>
                                         <ViewCell>
 
-                                            <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                            <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="DarkGreen" IndicatorPosition="Left" IndicatorThickness="5" >
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,1,1,1" Padding="10" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
 
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >

@@ -117,7 +117,7 @@
                                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
     Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020"   >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
                                     <control:BorderlessEntry x:Name="Mobile_Entry"  Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused"    FontSize="Small" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="8">
                                         <Entry.Behaviors>
 

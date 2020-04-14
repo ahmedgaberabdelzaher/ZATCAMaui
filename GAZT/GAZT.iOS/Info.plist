@@ -37,8 +37,6 @@
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>
@@ -72,8 +70,6 @@
 	<string>Can we use your location at all times?</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Can we use your location at all times?</string>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

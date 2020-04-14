@@ -111,7 +111,7 @@
                                 <!--<inputLayout:SfTextInputLayout   x:Name="UsernameLayout"  Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.UserName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding TinNumber}" IsReadOnly="True"  TextColor="#7D858D" x:Name="Username"  FontSize="Small" >
 
                                 </custom:GAZTBorderlessEntry>
@@ -129,7 +129,7 @@
                                 <!--<inputLayout:SfTextInputLayout   x:Name="EmailOrMobileLayout"  Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{Binding EmailOrMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding MobileNumber}" x:Name="EmailOrMobile" IsReadOnly="True"  TextColor="#7D858D" FontSize="Small"  >
 
                                 </custom:GAZTBorderlessEntry>
@@ -147,7 +147,7 @@
                                 <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.VarificationCode}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <custom:GAZTBorderlessEntry Text="{Binding EnteredOTP}"  x:Name="EnteredOTP" TextChanged="OnOTPEntered" Keyboard="Numeric" Placeholder="{Binding VarificationCode}"  FontSize="Small" TextColor="White" IsPassword="True" IsEnabled="{Binding IsOTPEntryEnable}" >
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <custom:NumericValidationBehavior/>
