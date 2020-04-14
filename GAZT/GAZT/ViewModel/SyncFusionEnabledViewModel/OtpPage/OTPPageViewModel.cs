@@ -77,6 +77,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        //private string _resendButtonBackgroundColor = string.Empty;
+        //public string ResendButtonBackgroundColor
+        //{
+        //    get
+        //    {
+        //        return _resendButtonBackgroundColor;
+        //    }
+        //    set
+        //    {
+        //        _resendButtonBackgroundColor = value;
+        //        RaisePropertyChanged("ResendButtonBackgroundColor");
+        //    }
+        //}
+
+        
 
         private string _frmColour = "#B1B1B1";
         public string FrmColour
@@ -1034,10 +1049,12 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (TotalSec == 0)
                     {
+                        IsVerifyOTPEnabled = false;
                         return false;
                     }
                     else if (!StopTimer)
                     {
+                        IsVerifyOTPEnabled = false;
                         return false;
                     }
                     else
@@ -1053,6 +1070,7 @@ namespace GAZT.ViewModel.NewViewModel
                         VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
+                        
                         return false;
 
                     }
