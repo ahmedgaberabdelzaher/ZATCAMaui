@@ -59,6 +59,28 @@ namespace GAZT.Views.NewViews
 
             viewModel.OnPageLoad();
         }
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height); //must be called
+        //    if (this.width != width || this.height != height)
+        //    {
+        //        this.width = width;
+        //        this.height = height;
+        //        if (App.IsArabic)
+        //        {
+        //            if (width > height)
+        //            {
+        //                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+        //            }
+        //            else
+        //            {
+        //                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+        //            }
+        //        }
+
+        //        //reconfigure layout
+        //    }
+        //}
 
         protected override void OnAppearing()
         {
