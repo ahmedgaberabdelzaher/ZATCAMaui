@@ -3555,7 +3555,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        if (viewModel.SelectedIBAN != null && viewModel.SelectedIBANType != null && viewModel.SelectedIBANIDNumber != null && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
+                        if (!string.IsNullOrEmpty(viewModel.TxtSelectedIBAN) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANType) && !string.IsNullOrEmpty(viewModel.TxtSelectedIBANIDNumber) && viewModel.IsDeclarationCheckedForSummary != false && viewModel.IschkRefundDeclaration != false)
                         {
                             if (!resultForBilledOrNot)
                             {
@@ -4563,6 +4563,17 @@ namespace GAZT.Views.NewViews
         private void ChangeRegistrationTapped(object sender, EventArgs e)
         {
             viewModel._dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+        }
+
+        private void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
         }
     }
         //private void ICvalidation_Clicked(object sender, EventArgs e)

@@ -1,5 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
+using GAZT.Views.NewViews;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -92,6 +95,26 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         _navigationService.NavigateTo(App.SignUpFormPageView);
                     }
+                    else
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+
+
+                    }
+
+
                 }
                 catch (Exception ex)
                 { 
