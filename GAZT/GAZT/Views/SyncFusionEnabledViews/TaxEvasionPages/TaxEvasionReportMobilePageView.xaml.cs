@@ -30,6 +30,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             viewModel = App.Locator.TaxEvasionReportPhonePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
+            Mobile_Entry.Text = string.Empty;
             //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
 
@@ -66,17 +67,22 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 
         private void Mobile_Entry_Unfocused(object sender, FocusEventArgs e)
         {
-            if (Mobile_Entry.Text.Length < 8)
-            {
-                EmailInputLayout.HasError = true;
-                viewModel.IsVerifyEnable = false;
+            if (!string.IsNullOrEmpty(Mobile_Entry.Text))
 
-            }
-            else
             {
-                viewModel.IsVerifyEnable = true;
-                EmailInputLayout.HasError = false;
+                if (Mobile_Entry.Text.Length != 8)
+                {
+                    EmailInputLayout.HasError = true;
+                    viewModel.IsVerifyEnable = false;
+
+                }
+                else
+                {
+                    viewModel.IsVerifyEnable = true;
+                    EmailInputLayout.HasError = false;
+                }
             }
+            
 
         }
     }

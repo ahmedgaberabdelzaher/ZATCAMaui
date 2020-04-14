@@ -223,7 +223,7 @@ namespace GAZT.Views.NewViews
                             item.Tdline = AddNotePageViewModel.NoteString;
                         }
                         AddNotePageViewModel.IsComingFromNotePage = false;
-                        AddNotePageViewModel.NoteString = string.Empty;
+                       
                     }
                     else
                     {
@@ -248,6 +248,7 @@ namespace GAZT.Views.NewViews
                     }
                     AddNotePageViewModel.ClearNoteClicked = false;
                 }
+                AddNotePageViewModel.NoteString = string.Empty;
             }
         }
 
@@ -4297,72 +4298,98 @@ namespace GAZT.Views.NewViews
             }
             else if (PageName == 3)
             {
-                if (CheckMandetoryFields())
+                try
                 {
-                    try
+                    if (CheckMandetoryFields())
                     {
-
-
-
-                    }
-                    catch
-                    {
-
-                    }
-                    if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
-                    {
-                        bool value = viewModel.IsCheckedDraftMode();
-                        bool Tvalue = viewModel.IsTabbedValid("04");
-                        if (value && Tvalue)
+                        try
                         {
-                            if (viewModel.IsFirstTimeGet)
-                            {
-                                viewModel.IsDeclarationCheckedForInstruction = true;
-                                viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                            }
+
+
+
                         }
-                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
+                        catch
                         {
-                            bool value1 = viewModel.IsCheckedDraftMode();
 
-                            if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
+                        }
+                        if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true || (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057"))
+                        {
+                            bool value = viewModel.IsCheckedDraftMode();
+                            bool Tvalue = viewModel.IsTabbedValid("04");
+                            if (value && Tvalue)
                             {
-                                if (viewModel.IsVisibleInstrunction == true)
+                                if (viewModel.IsFirstTimeGet)
                                 {
-                                    viewModel.SelectedIndex = 0;
-                                }
-                                if (viewModel.IsVisibleTaxPayerDetails == true)
-                                {
-                                    viewModel.SelectedIndex = 1;
-
-                                }
-                                if (viewModel.IsVisibleVatReturnForm == true)
-                                {
-                                    viewModel.SelectedIndex = 2;
-
-                                }
-                                if (viewModel.IsVisibleSummary == true)
-                                {
-                                    viewModel.SelectedIndex = 3;
-
+                                    viewModel.IsDeclarationCheckedForInstruction = true;
+                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
                                 }
                             }
-                            else
+                            if (viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true)
                             {
-                                viewModel.SummaryClicked();
-                                // setColor(previous, current);
-                                //   NewSetColor(senderObject, current);
-                            }
+                                bool value1 = viewModel.IsCheckedDraftMode();
+
+                                if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
+                                {
+                                    if (viewModel.IsVisibleInstrunction == true)
+                                    {
+                                        viewModel.SelectedIndex = 0;
+                                    }
+                                    if (viewModel.IsVisibleTaxPayerDetails == true)
+                                    {
+                                        viewModel.SelectedIndex = 1;
+
+                                    }
+                                    if (viewModel.IsVisibleVatReturnForm == true)
+                                    {
+                                        viewModel.SelectedIndex = 2;
+
+                                    }
+                                    if (viewModel.IsVisibleSummary == true)
+                                    {
+                                        viewModel.SelectedIndex = 3;
+
+                                    }
+                                }
+                                else
+                                {
+                                    viewModel.SummaryClicked();
+                                    // setColor(previous, current);
+                                    //   NewSetColor(senderObject, current);
+                                }
 
 
-                            //Add because it will  not navigate in tobefilled and draft mode
-                            if (App.ICRStatus == "E0001" || value1)
-                            {
+                                //Add because it will  not navigate in tobefilled and draft mode
+                                if (App.ICRStatus == "E0001" || value1)
+                                {
 
-                                viewModel.SummaryClicked();
-                                //  setColor(previous, current);
-                                //   NewSetColor(senderObject, current);
+                                    viewModel.SummaryClicked();
+                                    //  setColor(previous, current);
+                                    //   NewSetColor(senderObject, current);
 
+                                }
+                                else
+                                {
+                                    if (viewModel.IsVisibleInstrunction == true)
+                                    {
+                                        viewModel.SelectedIndex = 0;
+                                    }
+                                    if (viewModel.IsVisibleTaxPayerDetails == true)
+                                    {
+                                        viewModel.SelectedIndex = 1;
+
+                                    }
+                                    if (viewModel.IsVisibleVatReturnForm == true)
+                                    {
+                                        viewModel.SelectedIndex = 2;
+
+                                    }
+                                    if (viewModel.IsVisibleSummary == true)
+                                    {
+                                        viewModel.SelectedIndex = 3;
+
+                                    }
+                                    //((CollectionView)sender).SelectedItem = null;
+                                }
                             }
                             else
                             {
@@ -4390,6 +4417,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
+
                             if (viewModel.IsVisibleInstrunction == true)
                             {
                                 viewModel.SelectedIndex = 0;
@@ -4409,12 +4437,16 @@ namespace GAZT.Views.NewViews
                                 viewModel.SelectedIndex = 3;
 
                             }
-                            //((CollectionView)sender).SelectedItem = null;
+
+                            viewModel.IsMainButtonEnabled = false;
+
+                            viewModel.IsMainButtonEnabled = false;
+                            chkDeclarationForSummary.IsChecked = false;
                         }
+                        viewModel.IsFirstTimeGet = false;
                     }
                     else
                     {
-
                         if (viewModel.IsVisibleInstrunction == true)
                         {
                             viewModel.SelectedIndex = 0;
@@ -4434,36 +4466,12 @@ namespace GAZT.Views.NewViews
                             viewModel.SelectedIndex = 3;
 
                         }
-
-                        viewModel.IsMainButtonEnabled = false;
-
-                        viewModel.IsMainButtonEnabled = false;
-                        chkDeclarationForSummary.IsChecked = false;
+                        // ((CollectionView)sender).SelectedItem = null;
                     }
-                    viewModel.IsFirstTimeGet = false;
                 }
-                else
+                catch(Exception ex)
                 {
-                    if (viewModel.IsVisibleInstrunction == true)
-                    {
-                        viewModel.SelectedIndex = 0;
-                    }
-                    if (viewModel.IsVisibleTaxPayerDetails == true)
-                    {
-                        viewModel.SelectedIndex = 1;
 
-                    }
-                    if (viewModel.IsVisibleVatReturnForm == true)
-                    {
-                        viewModel.SelectedIndex = 2;
-
-                    }
-                    if (viewModel.IsVisibleSummary == true)
-                    {
-                        viewModel.SelectedIndex = 3;
-
-                    }
-                    // ((CollectionView)sender).SelectedItem = null;
                 }
             }
 

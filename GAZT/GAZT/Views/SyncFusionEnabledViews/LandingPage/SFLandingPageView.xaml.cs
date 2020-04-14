@@ -262,8 +262,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
+                        string mobno=string.Empty;
                             Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                        if (App.TP != null && App.TP.Mobile != null)
+                        {
+                             mobno = App.TP.Mobile;
+                            mobno = mobno.Remove(0, 6);
+
+                        }
+                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         {
@@ -322,8 +329,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
-                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                        string mobno = string.Empty;
+                        if (App.TP != null && App.TP.Mobile != null)
+                        {
+                            mobno = App.TP.Mobile;
+                            mobno = mobno.Remove(0, 6);
+
+                        }
+                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         {
@@ -383,8 +397,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
-                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+                        string mobno = string.Empty;
+                        if (App.TP != null && App.TP.Mobile != null)
+                        {
+                            mobno = App.TP.Mobile;
+                            mobno = mobno.Remove(0, 6);
+
+                        }
+                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         {
@@ -473,5 +494,7 @@ namespace GAZTeServicesApp.Views.LandingPage
 
 
         }
+
+        protected override bool OnBackButtonPressed() => true;
     }
 }

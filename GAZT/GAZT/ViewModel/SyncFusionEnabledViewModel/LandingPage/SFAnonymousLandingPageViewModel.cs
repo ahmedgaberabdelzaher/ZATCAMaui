@@ -41,6 +41,24 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
         #endregion
 
+        #region Property
+        private string _copyRightText;
+        public string CopyRightText
+        {
+            get
+            {
+                return _copyRightText;
+            }
+            set
+            {
+                _copyRightText = value;
+                RaisePropertyChanged("CopyRightText");
+            }
+        }
+
+
+        #endregion
+
         #region Constructor
         /// <summary>
         /// Initializes a new instance for the <see cref="SFAnonymousLandingPageViewModel" /> class.

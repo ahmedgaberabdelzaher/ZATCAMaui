@@ -68,7 +68,12 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
                     </tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SfTabItem Title="{Binding ZakatCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding ZakatCountDisplay}"
+                                        TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridZakat"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,0" >
@@ -88,7 +93,7 @@
     Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusZakat}" FontSize="Small">
+                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusZakat}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
 
@@ -293,7 +298,11 @@
    
                         </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding VATCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridVAT"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,10" >
@@ -313,7 +322,7 @@
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                    <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusVAT}" FontSize="Small">
+                                    <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusVAT}" FontSize="Small" FontAttributes="Bold">
                                     </local:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                                 <local:CustomButton x:Name="BPickerButtonVAT" Clicked="BPickerButtonVAT_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
@@ -527,7 +536,11 @@
                             
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding ETCountDisplay}">
+                    <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridET"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,10" >
@@ -547,7 +560,7 @@
         Hint="{x:Static local:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" >
-                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusET}" FontSize="Small">
+                                        <local:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatusET}" FontSize="Small" FontAttributes="Bold">
                                         </local:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>
                                     <local:CustomButton x:Name="BPickerButtonET" Clicked="BPickerButtonET_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >

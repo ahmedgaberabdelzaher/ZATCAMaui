@@ -17,7 +17,7 @@ namespace GAZT.Views.NewViews
         //FormBundleStatusPageViewModel viewModel;
         TaxEvasionReportTypePageViewModel viewModel;
 
-        public TaxEvasionReportTypePageView()
+        public TaxEvasionReportTypePageView(string MobileNumber)
         {
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = false;
             viewModel.CategorySelected_Index = "0";
+            viewModel.MobileNumber = MobileNumber;
 
             SetLTR();
             //viewModel.onPageLoad();

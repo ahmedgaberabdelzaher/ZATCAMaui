@@ -1101,4 +1101,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\logo_gazt%402x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_BgImage_Gradient%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_BgImage_Gradient%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_BgImage_Gradient.png" />
+  </ItemGroup>
 </Project>

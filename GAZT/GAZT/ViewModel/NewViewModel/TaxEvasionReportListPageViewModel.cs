@@ -51,6 +51,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+
         private string _addIcon = string.Empty;
         public string AddIcon
         {
@@ -141,7 +155,7 @@ namespace GAZT.ViewModel.NewViewModel
 
             AddButtonClicked = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.TaxEvasionReportTypePageView);
+                _navigationService.NavigateTo(App.TaxEvasionReportTypePageView, MobileNumber);
             });
 
             GoBackClick = new Command(async () =>
@@ -216,8 +230,9 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                //string test = App.TP.Mobile;
                 ReportRetriveByMobNoRootObject rootObject = new ReportRetriveByMobNoRootObject();
-                rootObject = WebServiceManager.GAZTTESReportByMobNo(App.TP.Mobile);
+                rootObject = WebServiceManager.GAZTTESReportByMobNo(MobileNumber);
                 PopToRootPage();
 
                 if (rootObject != null)

@@ -48,7 +48,7 @@
 
        
                 <StackLayout Spacing="0">
-            <ScrollView>
+            
             <!--<StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -85,7 +85,7 @@
             
             
                 <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" />
-            </ScrollView>
+           
             <StackLayout BackgroundColor="White" HeightRequest="70" Margin="0,0,0,0" WidthRequest="1000" Orientation="Horizontal" VerticalOptions="Center">
                 <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
 

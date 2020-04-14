@@ -2844,7 +2844,7 @@
     <comment>Mendatory fields </comment>
   </data>
   <data name="RegistrationIsPending" xml:space="preserve">
-    <value>Registration is pending</value>
+    <value>جاري التحقق من بيانات التسجيل</value>
     <comment>Mendatory fields </comment>
   </data>
   <data name="ZZZVATReturn" xml:space="preserve">
@@ -2954,7 +2954,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZOR" xml:space="preserve">
-    <value>OR</value>
+    <value>أو</value>
     <comment>Vat Look Up</comment>
   </data>
   <data name="ZQRScanner" xml:space="preserve">
@@ -3007,12 +3007,40 @@
     <value>General Authority Of Zakat And Tax</value>
   </data>
   <data name="ZZZTaxpayerServices" xml:space="preserve">
-    <value>Taxpayer's Services</value>
+    <value>الخدمات الالكترونية للمكلفين</value>
   </data>
   <data name="ZZZLandingCreateAccountNote" xml:space="preserve">
     <value>يمكنك تسجيل الدخول عن طريق حسابك المسجل في الهيئة أو انشاء حساب جديد</value>
   </data>
   <data name="ZZZWelcomeOnLanding" xml:space="preserve">
     <value>مرحبا</value>
+  </data>
+  <data name="ZZTheaccountislockedfor60minutesafterthelastloginattempt" xml:space="preserve">
+    <value>الحساب معلق لمدة 60 دقيقة من أخر محاولة للدخول</value>
+    <comment>Login</comment>
+  </data>
+  <data name="ZZWrongpassword" xml:space="preserve">
+    <value>خطا في  كلمة  المرور</value>
+    <comment>Login</comment>
+  </data>
+  <data name="ZZZCopyrightText" xml:space="preserve">
+    <value>الهيئة العامة للزكاة والدخل - جميع الحقوق محفوظة © 2020</value>
+  </data>
+  <data name="ETReturns" xml:space="preserve">
+    <value>إقرارات ضريبة السلع الانتقائية</value>
+  </data>
+  <data name="VatReturns" xml:space="preserve">
+    <value>إقرارات ضريبة القيمة المضافة</value>
+  </data>
+  <data name="WHTreturns" xml:space="preserve">
+    <value>إقرارات ضريبة الاستقطاع</value>
+  </data>
+  <data name="ZOTPformobileverificationis" xml:space="preserve">
+    <value>رمز التحقق هو:{0}</value>
+    <comment>Tax evasion</comment>
+  </data>
+  <data name="ZZZPleaseenteryourmobilenumbertoproceedfurther" xml:space="preserve">
+    <value>للمتابعة فضلاً أدخل رقم الجوال</value>
+    <comment>Tax evasion  report service</comment>
   </data>
 </root>

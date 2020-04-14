@@ -54,7 +54,11 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
             </tabView:SfTabView.SelectionIndicatorSettings>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}">
+            <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}"
+                                TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                             TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0">
                         <ListView  IsVisible="{Binding IsCertificateAvailableZakat}" ItemsSource ="{Binding CertificateListZakat}" VerticalOptions="Fill" x:Name="CertificateLstZakat" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
@@ -82,7 +86,12 @@
 
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}">
+            <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}"
+                                TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
                         <ListView IsVisible="{Binding IsCertificateAvailableVAT}"   ItemsSource ="{Binding CertificateListVAT}" VerticalOptions="Fill" x:Name="CertificateLstVAT" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
@@ -110,7 +119,12 @@
 
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}">
+            <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}"
+                                TitleFontSize="14"
+                            SelectionColor="Black"
+                             FontIconFontColor="#FF00AFF0"
+                                   
+                             TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
                         <ListView IsVisible="{Binding IsCertificateAvailableET}"  ItemsSource ="{Binding CertificateListET}" VerticalOptions="Fill" x:Name="CertificateLstET" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
