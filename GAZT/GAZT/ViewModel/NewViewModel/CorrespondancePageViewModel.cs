@@ -948,7 +948,7 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             
                         }
-                        childVAT.Cokey = itemVAT.Cokey;
+                          childVAT.Cokey = itemVAT.Cokey;
                         childVAT.Coitm = itemVAT.Coitm;
                         childVAT.Cdate = itemVAT.Cdate;
                         childVAT.Ctime = itemVAT.Ctime;
