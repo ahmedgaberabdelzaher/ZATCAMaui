@@ -18,6 +18,8 @@ namespace GAZT.Views.NewViews
         #region Variable
         ICRListPageViewModel viewModel;
         int Count = 0;
+        private double width = 0;
+        private double height = 0;
         #endregion
 
         #region Property
@@ -56,6 +58,20 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+      
+
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height); //must be called
+        //    if (this.width != width || this.height != height)
+        //    {
+        //        this.width = width;
+        //        this.height = height;
+        //        //reconfigure layout
+        //    }
+        //}
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

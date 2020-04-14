@@ -5081,5 +5081,65 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTaxpayerServices", resourceCulture);
             }
         }
+        
+        public static string ZZZLandingCreateAccountNote {
+            get {
+                return ResourceManager.GetString("ZZZLandingCreateAccountNote", resourceCulture);
+            }
+        }
+        
+        public static string ZZZWelcomeOnLanding {
+            get {
+                return ResourceManager.GetString("ZZZWelcomeOnLanding", resourceCulture);
+            }
+        }
+        
+        public static string ZZTheaccountislockedfor60minutesafterthelastloginattempt {
+            get {
+                return ResourceManager.GetString("ZZTheaccountislockedfor60minutesafterthelastloginattempt", resourceCulture);
+            }
+        }
+        
+        public static string ZZWrongpassword {
+            get {
+                return ResourceManager.GetString("ZZWrongpassword", resourceCulture);
+            }
+        }
+        
+        public static string ZZZCopyrightText {
+            get {
+                return ResourceManager.GetString("ZZZCopyrightText", resourceCulture);
+            }
+        }
+        
+        public static string ETReturns {
+            get {
+                return ResourceManager.GetString("ETReturns", resourceCulture);
+            }
+        }
+        
+        public static string VatReturns {
+            get {
+                return ResourceManager.GetString("VatReturns", resourceCulture);
+            }
+        }
+        
+        public static string WHTreturns {
+            get {
+                return ResourceManager.GetString("WHTreturns", resourceCulture);
+            }
+        }
+        
+        public static string ZOTPformobileverificationis {
+            get {
+                return ResourceManager.GetString("ZOTPformobileverificationis", resourceCulture);
+            }
+        }
+        
+        public static string ZZZPleaseenteryourmobilenumbertoproceedfurther {
+            get {
+                return ResourceManager.GetString("ZZZPleaseenteryourmobilenumbertoproceedfurther", resourceCulture);
+            }
+        }
     }
 }
