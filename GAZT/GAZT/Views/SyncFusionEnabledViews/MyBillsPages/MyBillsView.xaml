@@ -195,7 +195,7 @@
                                                                     <RowDefinition Height="Auto" />
                                                                     <RowDefinition Height="Auto" />
                                                                 </Grid.RowDefinitions>
-                                                                <Label Text="{Binding Txt30}" 
+                                                            <local1:CustomLabel Text="{Binding Txt30}" 
                                        
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -204,7 +204,7 @@
                                    Grid.Column="0"
                                                            Grid.ColumnSpan="2"/>
 
-                                                                <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -219,7 +219,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding VTRE2}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
-                                                                </Label>
+                                                                </local1:CustomLabel>
                                                                 <Label  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
@@ -238,7 +238,7 @@
 
 
 
-                                                                <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -256,12 +256,12 @@
 
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
-                                                                </Label>
+                                                                </local1:CustomLabel>
 
 
 
 
-                                                                <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -276,7 +276,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
-                                                                </Label>
+                                                                </local1:CustomLabel>
 
 
 
@@ -346,7 +346,7 @@
                                                                 <RowDefinition Height="Auto" />
                                                                 <RowDefinition Height="Auto" />
                                                             </Grid.RowDefinitions>
-                                                            <Label Text="{Binding Txt30}" 
+                                                            <local1:CustomLabel Text="{Binding Txt30}" 
                                        
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -355,7 +355,7 @@
                                    Grid.Column="0"
                                                            Grid.ColumnSpan="2"/>
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -370,8 +370,8 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding VTRE2}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  Margin="0" 
+                                                            </local1:CustomLabel>
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -385,11 +385,11 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abtypt}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -407,12 +407,12 @@
 
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -427,7 +427,7 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
@@ -497,7 +497,7 @@
                                                                 <RowDefinition Height="Auto" />
                                                                 <RowDefinition Height="Auto" />
                                                             </Grid.RowDefinitions>
-                                                            <Label Text="{Binding Txt30}" 
+                                                            <local1:CustomLabel Text="{Binding Txt30}" 
                                        
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -506,7 +506,7 @@
                                    Grid.Column="0"
                                                            Grid.ColumnSpan="2"/>
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -521,8 +521,8 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding VTRE2}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  Margin="0" 
+                                                            </local1:CustomLabel>
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -536,11 +536,11 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abtypt}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -558,12 +558,12 @@
 
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -578,7 +578,7 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
@@ -644,7 +644,7 @@
                                                                 <RowDefinition Height="Auto" />
                                                                 <RowDefinition Height="Auto" />
                                                             </Grid.RowDefinitions>
-                                                            <Label Text="{Binding Txt30}" 
+                                                            <local1:CustomLabel Text="{Binding Txt30}" 
                                        
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -653,7 +653,7 @@
                                    Grid.Column="0"
                                                            Grid.ColumnSpan="2"/>
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -668,8 +668,8 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding VTRE2}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  Margin="0" 
+                                                            </local1:CustomLabel>
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -683,11 +683,11 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abtypt}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -705,12 +705,12 @@
 
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
 
-                                                            <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -725,7 +725,7 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </Label>
+                                                            </local1:CustomLabel>
 
 
 
