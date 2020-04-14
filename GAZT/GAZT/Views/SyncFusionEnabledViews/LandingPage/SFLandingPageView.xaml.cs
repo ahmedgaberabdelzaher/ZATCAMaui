@@ -53,7 +53,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             
         }
 
-        private async void LoadData()
+        private async Task LoadData()
         {
             await viewModel.LoadDashboardData();
 
@@ -450,9 +450,9 @@ namespace GAZTeServicesApp.Views.LandingPage
                         Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                         viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
                     }
-                    if (BModel.ReturnTypeName == AppResources.NonSubmitted)
+                    if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                     {
-                        Analytics.TrackEvent(AppResources.NonSubmitted + " from Dashboard", null);
+                        Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
                         viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
                     }
                     if (BModel.ReturnTypeName == AppResources.OverDue)
