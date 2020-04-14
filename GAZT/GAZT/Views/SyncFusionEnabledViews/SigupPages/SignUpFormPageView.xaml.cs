@@ -186,6 +186,12 @@ namespace GAZT.Views.NewViews
             {
                 FrmDBO.HasError = false;
             }
+            if (string.IsNullOrEmpty(DateEntry.Text))
+            {
+
+                IsNextValid = false;
+                FrmDBO.HasError = true;
+            }
 
             if (string.IsNullOrEmpty(viewModel.TxtName) )
             {
@@ -2104,8 +2110,10 @@ namespace GAZT.Views.NewViews
 
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            FrmDBO.HasError = false;
             try
             {
+                
    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
             string month = selectedItem[0].ToString();
             string day = selectedItem[1].ToString();

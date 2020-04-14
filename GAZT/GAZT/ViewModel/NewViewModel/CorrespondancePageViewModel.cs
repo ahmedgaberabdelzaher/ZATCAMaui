@@ -809,6 +809,14 @@ namespace GAZT.ViewModel.NewViewModel
                         CorrespondanceModel childZakat = new CorrespondanceModel();
                         childZakat.Title = itemZakat.Descript;
                         childZakat.RefNumber = itemZakat.LetterNum;
+                        if (itemZakat.LetterNum != null)
+                        {
+                            if (App.IsArabic)
+                            {
+                                childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
+                            }
+                            
+                        }
                         childZakat.Cokey = itemZakat.Cokey;
                         childZakat.Coitm = itemZakat.Coitm;
                         childZakat.Ctime = itemZakat.Ctime;
@@ -930,8 +938,17 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         CorrespondanceModel childVAT = new CorrespondanceModel();
                         childVAT.Title = itemVAT.Descript;
+
                         childVAT.RefNumber = itemVAT.LetterNum;
-                        childVAT.Cokey = itemVAT.Cokey;
+                        if (itemVAT.LetterNum != null)
+                        {
+                            if (App.IsArabic)
+                            {
+                                childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
+                            }
+                            
+                        }
+                          childVAT.Cokey = itemVAT.Cokey;
                         childVAT.Coitm = itemVAT.Coitm;
                         childVAT.Cdate = itemVAT.Cdate;
                         childVAT.Ctime = itemVAT.Ctime;
@@ -1039,6 +1056,13 @@ namespace GAZT.ViewModel.NewViewModel
                         CorrespondanceModel childET = new CorrespondanceModel();
                         childET.Title = itemET.Descript;
                         childET.RefNumber = itemET.LetterNum;
+                        if (itemET.LetterNum != null)
+                        {if (App.IsArabic)
+                            {
+                                childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
+                            }
+                            
+                        }
                         childET.Cokey = itemET.Cokey;
                         childET.Coitm = itemET.Coitm;
                         childET.Ctime = itemET.Ctime;
