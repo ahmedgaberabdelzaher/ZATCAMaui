@@ -69,7 +69,7 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
                         </tabView:SfTabView.SelectionIndicatorSettings>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" TitleFontSize="14"
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" 
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
@@ -192,7 +192,7 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZTaxPayerDetails}" TitleFontSize="14"
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZTaxPayerDetails}" 
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
@@ -514,7 +514,7 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZVATReturnForm}" TitleFontSize="14"
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZVATReturnForm}" 
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
@@ -2352,7 +2352,7 @@
 
                             </tabView:SfTabItem.Content>
                         </tabView:SfTabItem>
-                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}" TitleFontSize="14"
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}" 
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
