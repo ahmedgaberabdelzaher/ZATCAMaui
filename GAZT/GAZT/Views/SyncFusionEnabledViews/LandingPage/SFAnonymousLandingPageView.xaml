@@ -213,7 +213,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!--<Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>-->
-                <border:SfBorder x:Name="border" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="4"   CornerRadius="0,0,50,50" BorderWidth="0">
+                <border:SfBorder x:Name="border" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="4"    BorderWidth="0">
                     <Grid Grid.Row="0" Grid.Column="0"  Grid.RowSpan="4">
                         <gradient:SfGradientView>
                             <gradient:SfGradientView.BackgroundBrush>

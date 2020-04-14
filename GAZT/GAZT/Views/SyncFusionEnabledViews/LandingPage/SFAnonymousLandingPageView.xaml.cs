@@ -2,6 +2,7 @@
 using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesApp.ViewModels.LandingPage;
+using Syncfusion.XForms.Border;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -31,12 +32,25 @@ namespace GAZTeServicesApp.Views.LandingPage
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
+                Changecornerradious();
                 LoadDate();
                 LoadData();
                 SetLTR();
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void Changecornerradious()
+        {
+            if (App.IsArabic)
+            {
+                border.CornerRadius = new Thickness(0,0,0,40);
+            }
+            else
+            {
+                border.CornerRadius = new Thickness(0,0,40,0);
             }
         }
 
@@ -64,6 +78,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 base.OnAppearing();
                 SetLTR();
+                Changecornerradious();
             }
             catch (Exception)
             {
