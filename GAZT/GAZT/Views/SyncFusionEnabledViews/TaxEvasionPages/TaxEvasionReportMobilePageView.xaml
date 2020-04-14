@@ -170,7 +170,7 @@
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
-                                       AnimationType="RollingBall" 
+                                      AnimationType="SingleCircle"
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
@@ -178,7 +178,7 @@
                                        Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="White"/>
+                                        TextColor="#d99a29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

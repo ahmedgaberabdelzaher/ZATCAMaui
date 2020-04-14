@@ -12,6 +12,7 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              Title="{x:Static local1:AppResources.VATDeclaration}"
              x:Class="GAZT.Views.NewViews.VATReturnsPageView"
@@ -38,36 +39,43 @@
                 Priority="2" Order="Primary" Clicked="onMoreOptionClicked" />
     </ContentPage.ToolbarItems>-->
     <ContentPage.Content>
-        <StackLayout>
+        <Grid x:Name="ParentContainerForVAT" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   x:Name="MainGrid"  ColumnSpacing="0" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
-                <Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
 
-                    <RowDefinition Height="90*" />
-                    <RowDefinition Height="10*" />
+                        <RowDefinition Height="90*" />
+                        <RowDefinition Height="10*" />
 
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="auto" />
-            
+                        <ColumnDefinition Width="auto" />
 
 
-                </Grid.ColumnDefinitions>
 
-                <tabView:SfTabView BackgroundColor="White"  Grid.Column="0"  TabItemTapped="SfTabView_TabItemTapped" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" x:Name="SfTabView"  SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectionChanged="SfTabView_SelectionChanged">
-                    <tabView:SfTabView.SelectionIndicatorSettings>
-                        <tabView:SelectionIndicatorSettings
+                    </Grid.ColumnDefinitions>
+
+                    <tabView:SfTabView BackgroundColor="White"  Grid.Column="0"  TabItemTapped="SfTabView_TabItemTapped" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" x:Name="SfTabView"  SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}" SelectionChanged="SfTabView_SelectionChanged">
+                        <tabView:SfTabView.SelectionIndicatorSettings>
+                            <tabView:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
                     StrokeThickness="2"/>
-                    </tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SfTabItem   TitleFontSize="14"
-                            SelectionColor="Black"
+                        </tabView:SfTabView.SelectionIndicatorSettings>
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZInstruction}" 
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
-                             TitleFontColor="Gray" Title="{x:Static local1:AppResources.ZZInstruction}" >
-                <tabView:SfTabItem.Content>
-                            <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabInstruction"  IsVisible="{Binding IsVisibleInstrunction}"  VerticalOptions="FillAndExpand"  >
+                             TitleFontColor="Gray" >
+                            <tabView:SfTabItem.Content>
+                                <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabInstruction"  IsVisible="{Binding IsVisibleInstrunction}"  VerticalOptions="FillAndExpand"  >
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -156,7 +164,7 @@
                                         </CheckBox>
 
 
-                                    <local1:CustomLabel  Grid.Row="7" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                        <local1:CustomLabel  Grid.Row="7" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static local1:AppResources.ZVatDeclarationInstructions}"/>
@@ -180,17 +188,17 @@
 
                                     </Grid>
 
-                            </ScrollView>
-           
-                </tabView:SfTabItem.Content>
-            </tabView:SfTabItem>
-            <tabView:SfTabItem   TitleFontSize="14"
-                            SelectionColor="Black"
+                                </ScrollView>
+
+                            </tabView:SfTabItem.Content>
+                        </tabView:SfTabItem>
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZTaxPayerDetails}" 
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
-                             TitleFontColor="Gray" Title="{x:Static local1:AppResources.ZZTaxPayerDetails}">
-                <tabView:SfTabItem.Content>
-                                 <ScrollView  Orientation="Vertical"  x:Name="TabTaxPayerDetails"   IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                             TitleFontColor="Gray">
+                            <tabView:SfTabItem.Content>
+                                <ScrollView  Orientation="Vertical"  x:Name="TabTaxPayerDetails"   IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -454,28 +462,28 @@
                                         <local1:CustomLabel FlowDirection="LeftToRight" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
-                                    <Label  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{x:Static local1:AppResources.ZVatNote}" FontAttributes="Bold"/>
-                                                <Span Text=":" />
-                                                <Span Text="{x:Static local1:AppResources.ZVatNoteDetail}"/>
-                                                <Span Text="&#160;&#160;"/>
-                                                <!--<Span Text="Change of registration form." TextColor="#c49b2d">
+                                        <Label  Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatNote}" FontAttributes="Bold"/>
+                                                    <Span Text=":" />
+                                                    <Span Text="{x:Static local1:AppResources.ZVatNoteDetail}"/>
+                                                    <Span Text="&#160;&#160;"/>
+                                                    <!--<Span Text="Change of registration form." TextColor="#c49b2d">
                                                     <Span.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}"></TapGestureRecognizer>
                                                     </Span.GestureRecognizers>
                                                 </Span>-->
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <local1:CustomLabel TextDecorations="Underline" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" TextColor="#c49b2d" Text="{x:Static local1:AppResources.ZZZChageOfRegistration}">
-                                        <local1:CustomLabel.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />
-                                        </local1:CustomLabel.GestureRecognizers>
-                                    </local1:CustomLabel>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <local1:CustomLabel TextDecorations="Underline" Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" TextColor="#c49b2d" Text="{x:Static local1:AppResources.ZZZChageOfRegistration}">
+                                            <local1:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ChangeRegistrationClicked}" />
+                                            </local1:CustomLabel.GestureRecognizers>
+                                        </local1:CustomLabel>
 
-                                    <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
+                                        <!--<Label  Grid.Row="24" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{DynamicResource searchBarStyleForDeclarationChb}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="Kindly confirm that the above information is correct before proceeding."/>
@@ -503,16 +511,16 @@
 
                                 </ScrollView>
 
-                          
-                </tabView:SfTabItem.Content>
-            </tabView:SfTabItem>
-            <tabView:SfTabItem   TitleFontSize="14"
-                            SelectionColor="Black"
+
+                            </tabView:SfTabItem.Content>
+                        </tabView:SfTabItem>
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZVATReturnForm}" 
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
-                             TitleFontColor="Gray" Title="{x:Static local1:AppResources.ZZVATReturnForm}">
-                <tabView:SfTabItem.Content>
-                                 <ScrollView Orientation="Vertical" x:Name="TabVatReturn" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                             TitleFontColor="Gray">
+                            <tabView:SfTabItem.Content>
+                                <ScrollView Orientation="Vertical" x:Name="TabVatReturn" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                     <Grid BindingContext="{Binding ResponseVATDeclarationD}" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
@@ -1468,7 +1476,7 @@
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
 
-                                            <inputLayout:SfTextInputLayout.TrailingView>
+                                            <!--<inputLayout:SfTextInputLayout.TrailingView>
                                                 <Label
                        
                         Margin="0,0,0,2"
@@ -1479,7 +1487,7 @@
                                                         <TapGestureRecognizer Tapped="OnStandardrateddomesticpurchasesAdjustmentClicked" />
                                                     </Label.GestureRecognizers>
                                                 </Label>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout.TrailingView>-->
                                         </inputLayout:SfTextInputLayout>
 
 
@@ -1525,7 +1533,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="8." FontFamily="{StaticResource SSTArBold}"/>
-                                                    <Span Text="{x:Static local1:AppResources.ZVatStandardrateddomesticpurchases}"/>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatImportsVatPaidatcustoms}"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -2229,7 +2237,7 @@
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
+                                            <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatClickForMoreDetails}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3">
                                                 <local1:CustomLabel.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.onCreditCarriedForwardClicked}"></TapGestureRecognizer>
                                                 </local1:CustomLabel.GestureRecognizers>
@@ -2341,48 +2349,48 @@
                                     </Grid>
                                 </ScrollView>
 
-                           
-                </tabView:SfTabItem.Content>
-            </tabView:SfTabItem>
-            <tabView:SfTabItem   TitleFontSize="14"
-                            SelectionColor="Black"
+
+                            </tabView:SfTabItem.Content>
+                        </tabView:SfTabItem>
+                        <tabView:SfTabItem Title="{x:Static local1:AppResources.ZZSummary}" 
+                            SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
-                             TitleFontColor="Gray" Title="{x:Static local1:AppResources.ZZSummary}">
-                <tabView:SfTabItem.Content>
-                            <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry"  IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >
+                             TitleFontColor="Gray">
+                            <tabView:SfTabItem.Content>
+                                <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry"    IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >
 
-                              
-                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="15*"/>
-                                                <ColumnDefinition Width="90*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
-                                            </Frame>
-                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformation}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                                            </custom:CustomLabel>
-                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteOne}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                            <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}"/>
 
-                                    <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0" HeightRequest="480"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Start">
+                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Fill" RowSpacing="0" ColumnSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="15*"/>
+                                            <ColumnDefinition Width="90*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                                        </Frame>
+                                        <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformation}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        </custom:CustomLabel>
+                                        <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteOne}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationNoteClick}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <Switch Margin="10,0,10,0" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="LayoutOptions.CenterAndExpand" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsRefundVisible}" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnable}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwichButtonEnableToTap}"/>
+                                        <StackLayout Grid.Row="4"  Grid.Column="0" Grid.ColumnSpan="2"   IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" VerticalOptions="Fill">
+                                            <Grid >
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
@@ -2391,8 +2399,7 @@
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
                                                     <RowDefinition Height="auto"></RowDefinition>
-                                            <RowDefinition Height="auto"></RowDefinition>
-                                        </Grid.RowDefinitions>
+                                                </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="86*"></ColumnDefinition>
                                                     <ColumnDefinition Width="14*"></ColumnDefinition>
@@ -2410,18 +2417,18 @@
                                                 </Image>-->
 
 
-                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
    
     ContainerType="Outlined" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
                                                                         IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBAN}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsDropdownVisibleForIban}" >
-                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontSize="Small" IsSpellCheckEnabled="False">
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <custom:CustomButton x:Name="btnIban" Clicked="btnIban_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
-                                        </custom:CustomButton>
+                                                    <custom:BorderlessEntry Text="{Binding TxtSelectedIBAN}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
+                                                    </custom:BorderlessEntry>
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomButton x:Name="btnIban" Clicked="btnIban_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                                </custom:CustomButton>
 
-                                        <syncfusion:SfPicker x:Name="BPicker"
+                                                <syncfusion:SfPicker x:Name="BPicker"
                                                              PropertyChanged="BPicker_PropertyChanged"
                     HeaderHeight="60"
                     ShowHeader="true"
@@ -2442,14 +2449,14 @@
                     PickerWidth="270"
                                           
                      FooterHeight="46" >
-                                            <syncfusion:SfPicker.Behaviors>
-                                                <custom1:SfPickerBehavior />
-                                            </syncfusion:SfPicker.Behaviors>
-                                        </syncfusion:SfPicker>
+                                                    <syncfusion:SfPicker.Behaviors>
+                                                        <custom1:SfPickerBehavior />
+                                                    </syncfusion:SfPicker.Behaviors>
+                                                </syncfusion:SfPicker>
 
 
 
-                                        <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
+                                                <StackLayout Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVATRefunCheckedVisible}">
                                                     <CheckBox x:Name="chkCheckedRefund"  IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableCheckedRefund}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsCheckedRefund}" VerticalOptions="Center" Grid.Row="7" Margin="10,0,10,0" Grid.Column="0">
 
                                                     </CheckBox>
@@ -2467,17 +2474,17 @@
                                                     </Image.GestureRecognizers>
                                                 </Image>-->
 
-                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
    
     ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANType}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
-                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontSize="Small" IsSpellCheckEnabled="False">
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <custom:CustomButton x:Name="btnIban1" Clicked="btnIban1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
-                                        </custom:CustomButton>
+                                                    <custom:BorderlessEntry Text="{Binding TxtSelectedIBANType}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
+                                                    </custom:BorderlessEntry>
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomButton x:Name="btnIban1" Clicked="btnIban1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                                </custom:CustomButton>
 
-                                        <syncfusion:SfPicker x:Name="BPicker1"
+                                                <syncfusion:SfPicker x:Name="BPicker1"
                                                              PropertyChanged="BPicker1_PropertyChanged"
                     HeaderHeight="80"
                     ShowHeader="true"
@@ -2498,13 +2505,13 @@
                     PickerWidth="270"
                                           
                      FooterHeight="46" >
-                                            <syncfusion:SfPicker.Behaviors>
-                                                <custom1:SfPickerBehavior />
-                                            </syncfusion:SfPicker.Behaviors>
-                                        </syncfusion:SfPicker>
+                                                    <syncfusion:SfPicker.Behaviors>
+                                                        <custom1:SfPickerBehavior />
+                                                    </syncfusion:SfPicker.Behaviors>
+                                                </syncfusion:SfPicker>
 
 
-                                        <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                                <custom:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZVatRefundInformationSelectIBANIDNumber}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <!--<Frame Grid.Row="6"  Margin="10,13,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" Padding="20" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
 
                                                 </Frame>
@@ -2515,17 +2522,17 @@
                                                     </Image.GestureRecognizers>
                                                 </Image>-->
 
-                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
    
     ContainerType="Outlined" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsEnableIBANIdNumber}"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsVisibleDropdownForRefund}" >
-                                            <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontSize="Small" IsSpellCheckEnabled="False">
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
-                                        <custom:CustomButton x:Name="btnIban2" Clicked="btnIban2_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
-                                        </custom:CustomButton>
+                                                    <custom:BorderlessEntry Text="{Binding TxtSelectedIBANIDNumber}" FontAttributes="Bold" FontSize="Small" IsSpellCheckEnabled="False">
+                                                    </custom:BorderlessEntry>
+                                                </inputLayout:SfTextInputLayout>
+                                                <custom:CustomButton x:Name="btnIban2" Clicked="btnIban2_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
+                                                </custom:CustomButton>
 
-                                        <syncfusion:SfPicker x:Name="BPicker2"
+                                                <syncfusion:SfPicker x:Name="BPicker2"
                                                              PropertyChanged="BPicker2_PropertyChanged"
                     HeaderHeight="80"
                     ShowHeader="true"
@@ -2546,13 +2553,13 @@
                     PickerWidth="270"
                                           
                      FooterHeight="46" >
-                                            <syncfusion:SfPicker.Behaviors>
-                                                <custom1:SfPickerBehavior />
-                                            </syncfusion:SfPicker.Behaviors>
-                                        </syncfusion:SfPicker>
+                                                    <syncfusion:SfPicker.Behaviors>
+                                                        <custom1:SfPickerBehavior />
+                                                    </syncfusion:SfPicker.Behaviors>
+                                                </syncfusion:SfPicker>
 
 
-                                        <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
+                                                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTFrameStyleForEntry}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsTextBoxVisibleForIban}" >
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding  IsIBANValid}" Value="false">
                                                             <Setter Property="BorderColor" Value="#ff0000" />
@@ -2572,97 +2579,98 @@
 
                                             </Grid>
 
-                                            <Frame Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
-                                            </Frame>
-                                            <Label Text="{x:Static local1:AppResources.ZVatSummary}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
-                                            </Label>
-                                             
-                                    <Label Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
+                                        </StackLayout>
+                                        <Frame Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"     Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                                        </Frame>
+                                        <Label Text="{x:Static local1:AppResources.ZVatSummary}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        </Label>
+
+                                        <Label Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="1."/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTandCone}"/>
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="1."/>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatTandCone}"/>
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
 
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="2."/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTandCtwo}"/>
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="2."/>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatTandCtwo}"/>
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="3."/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTandCthree}"/>
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
+                                        <local1:CustomLabel FlowDirection="LeftToRight"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="3."/>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatTandCthree}"/>
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="4."/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTandCfour}"/>
-                                                        <!--<Span Text="{x:Static local1:AppResources.ZVatClickFaqInstructions}"  />-->
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
-
-
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="4."/>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatTandCfour}"/>
+                                                    <!--<Span Text="{x:Static local1:AppResources.ZVatClickFaqInstructions}"  />-->
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
 
 
-                                            <CheckBox x:Name="chkDeclarationForSummary" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkDeclarationForSummary_CheckedChanged" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="11" Margin="10,0,10,0" Grid.Column="0">
-                                                <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclarationForSummary}, Path=IsChecked}" Value="false">
-                                                        <Setter Property="Color" Value="#ff0000" />
-                                                    </DataTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
 
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="11" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatCertifyInformation}"/>
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
-
-                                            <CheckBox x:Name="chkRefundDeclaration" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkRefundDeclaration_CheckedChanged" IsChecked="{Binding IschkRefundDeclaration}" IsVisible="{Binding IsVisiblechkRefundDeclaration}" VerticalOptions="Start" Grid.Row="12" Margin="10,0,10,0" Grid.Column="0">
-                                                <CheckBox.Triggers>
-                                                    <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkRefundDeclaration}, Path=IsChecked}" Value="false">
-                                                        <Setter Property="Color" Value="#ff0000" />
-                                                    </DataTrigger>
-                                                </CheckBox.Triggers>
-                                            </CheckBox>
+                                        <CheckBox x:Name="chkDeclarationForSummary" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkDeclarationForSummary_CheckedChanged" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="11" Margin="10,0,10,0" Grid.Column="0">
+                                            <CheckBox.Triggers>
+                                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclarationForSummary}, Path=IsChecked}" Value="false">
+                                                    <Setter Property="Color" Value="#ff0000" />
+                                                </DataTrigger>
+                                            </CheckBox.Triggers>
+                                        </CheckBox>
 
 
-                                    <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
-                                                <local1:CustomLabel.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{x:Static local1:AppResources.ZZIacknowledgethattheabovebankaccount}"/>
-                                                    </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
-                                            </local1:CustomLabel>
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="11" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static local1:AppResources.ZVatCertifyInformation}"/>
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
+
+                                        <CheckBox x:Name="chkRefundDeclaration" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkRefundDeclaration_CheckedChanged" IsChecked="{Binding IschkRefundDeclaration}" IsVisible="{Binding IsVisiblechkRefundDeclaration}" VerticalOptions="Start" Grid.Row="12" Margin="10,0,10,0" Grid.Column="0">
+                                            <CheckBox.Triggers>
+                                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkRefundDeclaration}, Path=IsChecked}" Value="false">
+                                                    <Setter Property="Color" Value="#ff0000" />
+                                                </DataTrigger>
+                                            </CheckBox.Triggers>
+                                        </CheckBox>
 
 
-                                            <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
-                                                <Label.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.OnGetAcknowledgementLinkClicked}"></TapGestureRecognizer>
-                                                </Label.GestureRecognizers>
-                                            </local1:CustomLabel>
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="12" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsVisiblechkRefundDeclaration}">
+                                            <local1:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static local1:AppResources.ZZIacknowledgethattheabovebankaccount}"/>
+                                                </FormattedString>
+                                            </local1:CustomLabel.FormattedText>
+                                        </local1:CustomLabel>
 
-                                            <!--<Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Text="{x:Static local1:AppResources.ZZGeneralMessage_GetAcknowledgement}" HorizontalOptions="CenterAndExpand" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsGetAcknowledgementClicked}" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.OnGetAcknowledgementLinkClicked}"></TapGestureRecognizer>
+                                            </Label.GestureRecognizers>
+                                        </local1:CustomLabel>
+
+                                        <!--<Label Text="00000000000.00" Grid.Row="2" Grid.Column="1"    HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
 
                             <Label Text="Zakat Amount" Grid.Row="3" Grid.Column="0"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
@@ -2676,15 +2684,15 @@
 
 
 
-                                        </Grid>
-                                 
-                              
-                            </ScrollView>
-      
-                </tabView:SfTabItem.Content>
-            </tabView:SfTabItem>
-        </tabView:SfTabView>
-        <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
+                                    </Grid>
+
+
+                                </ScrollView>
+
+                            </tabView:SfTabItem.Content>
+                        </tabView:SfTabItem>
+                    </tabView:SfTabView>
+                    <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="12*" />
                 <RowDefinition Height="78*" />
@@ -2712,17 +2720,17 @@
             </StackLayout>
         </Grid>-->
 
-        
 
-              
 
-              
 
-               
 
-              
 
-                <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}"  VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+
+
+
+
+
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAttachments}"  VerticalOptions="FillAndExpand" Grid.Row="1"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -2863,13 +2871,16 @@
 
                                                                 <Image Grid.Row="0"  Grid.Column="4"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
 
-                                                                    --><!--<Image.GestureRecognizers>
+                                                                    -->
+                    <!--<Image.GestureRecognizers>
                                                                         <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
-                                                                    </Image.GestureRecognizers>--><!--
+                                                                    </Image.GestureRecognizers>-->
+                    <!--
                                                                 </Image>
 
 
-                                                                --><!--<Label Text="1" 
+                                                                -->
+                    <!--<Label Text="1" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -2889,7 +2900,8 @@
 
 
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
+                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                    <!--
 
 
                                                             </Grid>
@@ -2909,7 +2921,7 @@
                     </ScrollView>
                 </StackLayout>-->
 
-                <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAcknowledgment}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="{Binding IsVisibleAcknowledgment}" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="2" Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="8" >
                     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                             <Grid.RowDefinitions>
@@ -3008,7 +3020,7 @@
                     </Grid>
                 </ScrollView>-->
 
-                <!--<StackLayout Margin="10,10,10,0" IsVisible="{Binding IsVisibleCreditCarriedForward}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Grid.ColumnSpan="8">
+                    <!--<StackLayout Margin="10,10,10,0" IsVisible="{Binding IsVisibleCreditCarriedForward}"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"  Grid.ColumnSpan="8">
                     <ListView  x:Name="CreditCarriedList" 
            ItemsSource="{Binding CreditCarriedsList}"
           HorizontalOptions="FillAndExpand"
@@ -3117,7 +3129,9 @@
 
 
 
-                                                    --><!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>--><!--
+                                                    -->
+                    <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
+                    <!--
 
 
                                                 </Grid>
@@ -3131,29 +3145,29 @@
                 </StackLayout>-->
 
 
-                <Frame Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
-                </Frame>
-                <Label Text="{x:Static local1:AppResources.ZVatcreditcarriedforward}" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0"  >
-                </Label>
+                    <Frame Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                    </Frame>
+                    <Label Text="{x:Static local1:AppResources.ZVatcreditcarriedforward}" IsVisible="{Binding IsVisibleCreditCarriedLabel}"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0"  >
+                    </Label>
 
 
 
 
-                <CollectionView  SelectionChanged="OnPageSelected"   SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="False"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,0,5,0" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="#005e4b"  HorizontalOptions="Center">
-                                <local1:CustomLabel Text="{Binding pageName}" Style="{StaticResource forLightLabel}" x:Name="lblName"  Margin="5,0,5,0" TextColor="{Binding TextColor}" BackgroundColor="#005e4b"   FontSize="Small"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" >
-                                    <!--<local1:CustomLabel.GestureRecognizers>
+                    <CollectionView  SelectionChanged="OnPageSelected"   SelectedItem="{Binding PageSelectedItem,Mode=TwoWay}" IsVisible="False"  SelectionMode="Single"  ItemsSource="{Binding VatTabbledPageList}" x:Name="VATTabbedPageReturnCollectionView"  ItemsLayout="HorizontalList" Margin="0"   BackgroundColor="#005e4b" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Grid.Column="0" Grid.Row="0" Margin="5,0,5,0" VerticalOptions="CenterAndExpand" Orientation="Horizontal" BackgroundColor="#005e4b"  HorizontalOptions="Center">
+                                    <local1:CustomLabel Text="{Binding pageName}" Style="{StaticResource forLightLabel}" x:Name="lblName"  Margin="5,0,5,0" TextColor="{Binding TextColor}" BackgroundColor="#005e4b"   FontSize="Small"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" >
+                                        <!--<local1:CustomLabel.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForCustomLabel"  />
                                     </local1:CustomLabel.GestureRecognizers>-->
-                                </local1:CustomLabel>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                                    </local1:CustomLabel>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
-                <!--<StackLayout Margin="0" Grid.Row="0" Grid.Column="4" IsVisible="{Binding IsVisibleOptionMenu}" Grid.ColumnSpan="4" BackgroundColor="#FFFFFF" >
+                    <!--<StackLayout Margin="0" Grid.Row="0" Grid.Column="4" IsVisible="{Binding IsVisibleOptionMenu}" Grid.ColumnSpan="4" BackgroundColor="#FFFFFF" >
 
                     <StackLayout BackgroundColor="#FFFFFF">
                         <Label Text="Notes" FontSize="Caption" Padding="0,5,0,5"  VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GAZTGreyLabelStyleForOptionMenu}" >
@@ -3166,21 +3180,21 @@
                         <BoxView Style="{StaticResource GAZTBoxViewStyle}" BackgroundColor="#FFFFFF"></BoxView>
                     </StackLayout>
                     -->
-                <!--<StackLayout BackgroundColor="#FFFFFF" Margin="0">
+                    <!--<StackLayout BackgroundColor="#FFFFFF" Margin="0">
                         <Label Text="Validate"  Padding="0,5,0,5" BackgroundColor="#FFFFFF" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource GAZTGreyLabelStyleForOptionMenu}" >
                         </Label>
                         <BoxView Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
                     </StackLayout>-->
-                <!--
+                    <!--
 
                 </StackLayout>-->
 
 
-                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
                         
                 </StackLayout>-->
 
-                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="True" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="8"  BackgroundColor="#005e4b">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"     Margin="10,10,10,0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="5.08*" />
@@ -3221,25 +3235,36 @@
 
 
 
-                <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                    <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
+                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
                      Opacity="0.7"></Button>
-                <!--</StackLayout>-->
-            </Grid>
-            <!-- Acticity indicator layout start -->
+                    <!--</StackLayout>-->
+                </Grid>
+                <!-- Acticity indicator layout start -->
+             
+                <!-- Acticity indicator layout End -->
+
+            </StackLayout>
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local1:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                     AnimationType="SingleCircle" 
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                       Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#d99a29"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
-            <!-- Acticity indicator layout End -->
-        
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
