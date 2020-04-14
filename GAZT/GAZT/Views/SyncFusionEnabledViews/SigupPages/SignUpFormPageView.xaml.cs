@@ -2270,5 +2270,13 @@ namespace GAZT.Views.NewViews
             //    }
             //}
         }
+
+        private void EntryName_Unfocused(object sender, FocusEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(viewModel.TxtName))
+            {
+                FrmName.HasError = false;
+            }
+        }
     }
 }
