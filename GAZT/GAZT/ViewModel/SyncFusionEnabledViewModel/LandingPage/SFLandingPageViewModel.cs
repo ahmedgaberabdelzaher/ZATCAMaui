@@ -113,7 +113,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     }
                 }
             }
-            catch(GAZTSessionExpiredException)
+            catch (GAZTSessionExpiredException)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -140,7 +140,8 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () => {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
@@ -163,7 +164,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
 
             this.ShowOptionsCommand = new Command(this.ShowOptionsCommandClicked);
-            this.ItemSelectedCommand = new Command(this.ItemSelected);        
+            this.ItemSelectedCommand = new Command(this.ItemSelected);
         }
 
         #endregion
@@ -342,22 +343,19 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         }
 
 
- 
-#endregion
 
-#region Methods
+        #endregion
 
-/// <summary>
-/// Invoked when the menu button is clicked.
-/// </summary>
-/// <param name="obj">The Object</param>
-private void ShowOptionsCommandClicked(object obj)
+        #region Methods
+
+        /// <summary>
+        /// Invoked when the menu button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void ShowOptionsCommandClicked(object obj)
         {
-            
-                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
-                _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
-               
-
+            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+            _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
         }
 
         /// <summary>
@@ -395,97 +393,105 @@ private void ShowOptionsCommandClicked(object obj)
         {
             ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();
             ReturnInfoItems = new ObservableCollection<ReturnInfo>();
-            if (DashboardData != null)
+
+            try
             {
-                if (DashboardData.results != null && DashboardData.results.Count > 0)
+
+                if (DashboardData != null)
                 {
-                    if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
+                    if (DashboardData.results != null && DashboardData.results.Count > 0)
                     {
-                        ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
-                        objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
-
-                        String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
-
-                        if (string.IsNullOrEmpty(RtnTotstr))
+                        if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
                         {
-                            RtnTotstr = "0";
-                        }
-                        else
-                        {
-                            string returnToString = RtnTotstr.Substring(0, 1);
-                            if (returnToString.Equals("."))
+                            ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
+                            objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
+
+                            String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
+
+                            if (string.IsNullOrEmpty(RtnTotstr))
                             {
-                                RtnTotstr = "0" + RtnTotstr;
+                                RtnTotstr = "0";
                             }
                             else
                             {
+                                string returnToString = RtnTotstr.Substring(0, 1);
+                                if (returnToString.Equals("."))
+                                {
+                                    RtnTotstr = "0" + RtnTotstr;
+                                }
+                                else
+                                {
+                                }
                             }
+
+
+                            objReturnInfoRtnTot.ReturnCount = RtnTotstr;
+
+                            objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
+                            objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
+                            objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
+                            objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
+                            _returnInfoItems.Add(objReturnInfoRtnTot);
+                            ReturnInfoItems = _returnInfoItems;
+                            // ReturnInfoItems.Add(objReturnInfoRtnTot);
+                        }
+
+                        if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
+                        {
+                            ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
+                            objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
+
+                            String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(NrtnTotstr))
+                            {
+                                NrtnTotstr = "0";
+                            }
+                            else if (NrtnTotstr.Substring(0, 1) == ".")
+                            {
+                                NrtnTotstr = "0" + NrtnTotstr;
+                            }
+                            objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
+
+                            objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
+                            objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
+                            objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
+                            objReturnInfoNrtnTot.ReturnTypeName = AppResources.UnSubmitted;
+
+                            ReturnInfoItems.Add(objReturnInfoNrtnTot);
+
                         }
 
 
-                        objReturnInfoRtnTot.ReturnCount = RtnTotstr;
+                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        {
 
-                        objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
-                        objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
-                        objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
-                        objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
-                        _returnInfoItems.Add(objReturnInfoRtnTot);
-                        ReturnInfoItems = _returnInfoItems;
-                        // ReturnInfoItems.Add(objReturnInfoRtnTot);
+                            ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
+                            objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
+
+                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(DueIcrstr))
+                            {
+                                DueIcrstr = "0";
+                            }
+                            else if (DueIcrstr.Substring(0, 1) == ".")
+                            {
+                                DueIcrstr = "0" + DueIcrstr;
+                            }
+                            objReturnInfoDueIcr.ReturnCount = DueIcrstr;
+
+                            objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
+                            objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
+                            objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
+                            objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
+
+                            ReturnInfoItems.Add(objReturnInfoDueIcr);
+                        }
+
                     }
-
-                    if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
-                    {
-                        ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
-                        objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
-
-                        String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(NrtnTotstr))
-                        {
-                            NrtnTotstr = "0";
-                        }
-                        else if (NrtnTotstr.Substring(0, 1) == ".")
-                        {
-                            NrtnTotstr = "0" + NrtnTotstr;
-                        }
-                        objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
-
-                        objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
-                        objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
-                        objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
-                        objReturnInfoNrtnTot.ReturnTypeName = AppResources.UnSubmitted;
-
-                        ReturnInfoItems.Add(objReturnInfoNrtnTot);
-
-                    }
-
-
-                    if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
-                    {
-
-                        ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
-                        objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
-
-                        String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                        if (string.IsNullOrEmpty(DueIcrstr))
-                        {
-                            DueIcrstr = "0";
-                        }
-                        else if (DueIcrstr.Substring(0, 1) == ".")
-                        {
-                            DueIcrstr = "0" + DueIcrstr;
-                        }
-                        objReturnInfoDueIcr.ReturnCount = DueIcrstr;
-
-                        objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
-                        objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
-                        objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
-                        objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
-
-                        ReturnInfoItems.Add(objReturnInfoDueIcr);
-                    }
-
                 }
+            }
+            catch (Exception ex)
+            { 
             }
         }
 
@@ -493,7 +499,9 @@ private void ShowOptionsCommandClicked(object obj)
         {
             BillsInfoItems = new ObservableCollection<BillInfo>();
 
-            if (DashboardData.results != null && DashboardData.results.Count > 0)
+            try
+            {
+                if (DashboardData.results != null && DashboardData.results.Count > 0)
             {
 
                 //Paid Bills
@@ -630,15 +638,18 @@ private void ShowOptionsCommandClicked(object obj)
                     BillsInfoItems.Add(objBillInfoUpbillsTot);
                 }
             }
-
-        }
+            }
+            catch (Exception ex)
+            { 
+            }
+}
 
         public void PopulateBillsAndReturnsSchedule()
         {
             try
             {
                 BillsAndReturnsSchedule = new CalendarEventCollection();
-                
+
                 listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
@@ -653,7 +664,7 @@ private void ShowOptionsCommandClicked(object obj)
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
 
-               // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
+                // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
 
                 foreach (var item in listofPaymentReturn)
                 {
@@ -661,10 +672,10 @@ private void ShowOptionsCommandClicked(object obj)
 
                     BillOrReturnDueEvent.StartTime = item.DueDt;
                     BillOrReturnDueEvent.EndTime = item.DueDt;
-                   
+
                     if (item.IcrStatus == "O")
                     {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | "+ AppResources.SADADNumber+ " : " + item.Fbnum + " | "  + AppResources.ZStatus +" : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount 
+                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
                             + " | " + item.Txt50;
 
                         BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
@@ -674,33 +685,12 @@ private void ShowOptionsCommandClicked(object obj)
                         BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
                         BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
                     }
-                    
+
                     BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
                 }
-
-
-                //CalendarInlineEvent event1 = new CalendarInlineEvent()
-                //{
-                //    StartTime = DateTime.Today.AddHours(9),
-                //    EndTime = DateTime.Today.AddHours(10),
-                //    Subject = "Meeting",
-                //    Color = Color.Green
-                //};
-
-                //CalendarInlineEvent event2 = new CalendarInlineEvent()
-                //{
-                //    StartTime = DateTime.Today.AddHours(11),
-                //    EndTime = DateTime.Today.AddHours(12),
-                //    Subject = "Planning",
-                //    Color = Color.Fuchsia
-                //};
-
-                //// Add events into a CalendarInlineEvents collection
-                //BillsAndReturnsSchedule.Add(event1);
-                //BillsAndReturnsSchedule.Add(event2);
             }
-            catch(Exception ex)
-            { 
+            catch (Exception ex)
+            {
             }
         }
 
@@ -717,45 +707,33 @@ private void ShowOptionsCommandClicked(object obj)
                 {
                     if (ItemType == "05")
                     {
-                        
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png"});
+
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
 
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png"});
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
                     }
 
                 }
             }
-         
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName =  AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png"});
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png"});
+
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
         }
 
         public void NavigateToMyBills(BillInfo billInfo)
         {
-            // await h(billInfo);
             _navigationService.NavigateTo(App.MyBillsView, billInfo);
-            //_navigationService.NavigateTo(App.MyBillsView, billInfo);
-            //Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    IsLoading = false;
-            //});
         }
-     
-        //public async Task h(BillInfo billInfo)
-        //{
-          
-        //}
     }
 
-   
     #endregion
 }
 

@@ -90,7 +90,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-       
+
         public bool IsCPickerEnable
         {
             get
@@ -107,7 +107,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-  
+
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnum
         {
             get
@@ -128,7 +128,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        
+
         public string Fbnumdetail
         {
             get
@@ -143,7 +143,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
         public List<FormBundleApplicationNumberModelResult> FormBundleApplicatioNumberList
         {
             get
@@ -157,7 +157,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
         public FormBundleResult SelectedFormBindleFbtyp
         {
             get
@@ -172,19 +172,17 @@ namespace GAZT.ViewModel.NewViewModel
                     try
                     {
                         _formBundleApplicationNumberList = null;
-                        //FormBundleApplicatioNumberList = null;
-                        //SelectedFormBindleFbnum = null;
                         TxtFBnum = string.Empty;
                         TxtFBtype = _selectedFormBindleFbtyp.Txt50;
                         IsCPickerEnable = true;
                         onSelectedFormBindleFbtyp();
                     }
-                    catch (Exception ex) 
-                    { 
+                    catch (Exception ex)
+                    {
                     }
-                   
 
-                    
+
+
                 }
                 ListFormBudles = null;
                 RaisePropertyChanged("SelectedFormBindleFbtyp");
@@ -200,12 +198,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFormBindleFbtypCancel = value;
-              
 
 
 
-                
-             
+
+
+
                 RaisePropertyChanged("SelectedFormBindleFbtypCancel");
             }
         }
@@ -276,7 +274,7 @@ namespace GAZT.ViewModel.NewViewModel
                     // provide data not available message
                 }
 
-          //      FormBundleList = formbundleList.d.results;
+                //      FormBundleList = formbundleList.d.results;
             }
             catch (InternetException ex)
             {
@@ -287,10 +285,11 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-    
+
         public async void onSelectedFormBindleFbtyp()
         {
-            try{
+            try
+            {
                 Task.Run(() =>
                 {
                     IsLoading = true;
@@ -299,11 +298,12 @@ namespace GAZT.ViewModel.NewViewModel
                 await Task.Run(async () =>
                 {
                     FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
-                formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
-                    
+                    formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
 
-                PopToRootPage();
-                  FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x=>x.Fbnum).ToList();
+                    PopToRootPage();
+
+                    if(formbundleApplicationNumberList!=null)
+                        FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x => x.Fbnum).ToList();
                 });
 
                 Task.Run(() =>
@@ -311,7 +311,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-            catch(InternetException ex)
+            catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -358,8 +358,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     return FormBundleTypeList;
                 }
-                    
-               
+
+
                 return list;
             }
             catch (Exception ex)
