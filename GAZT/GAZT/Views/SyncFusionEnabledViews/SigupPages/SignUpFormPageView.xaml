@@ -208,7 +208,7 @@
     Hint="{x:Static local:AppResources.ZZName}"  HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry x:Name="EntryName" Text="{Binding TxtName}" IsSpellCheckEnabled="False" FontSize="Small" >
+                            <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False" FontSize="Small" >
                                 <Entry.Behaviors>
 
                                     <custom1:AlphabetandArabicCharacters/>

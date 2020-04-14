@@ -25,6 +25,7 @@ namespace GAZT.Views.NewViews
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CreateGaztAccountPageView;
             this.BindingContext = viewModel;
+            clearfields();
             viewModel.SignUpModelRootObjectM = SignUpModelRootObjectModel;
             viewModel.TxtEmailAddress = SignUpModelRootObjectModel.d.AEmail;
             string mobileno = SignUpModelRootObjectModel.d.AMobile;
@@ -33,6 +34,17 @@ namespace GAZT.Views.NewViews
             viewModel.OnPageLoad();
             SetLTR();
             ChangeAeroIcon();
+        }
+        public void clearfields()
+        {
+            EntryPass.Text = string.Empty;
+            EntryCfrmPass.Text = string.Empty;
+            CnfrmMob_entry.Text = string.Empty;
+            ConfrmEmail_Entry.Text = string.Empty;
+
+
+
+
         }
         public void ChangeAeroIcon()
         {
