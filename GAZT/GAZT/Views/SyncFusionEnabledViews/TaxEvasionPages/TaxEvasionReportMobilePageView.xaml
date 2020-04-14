@@ -178,7 +178,7 @@
                                        Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#d99a29"/>
+                                        TextColor="#006450"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>
