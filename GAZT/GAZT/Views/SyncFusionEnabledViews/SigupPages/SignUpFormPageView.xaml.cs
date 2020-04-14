@@ -327,7 +327,7 @@ namespace GAZT.Views.NewViews
                                         string year = selectedItem[2].ToString();
                                         DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                         long ticks = DateOfBirth.Ticks;
-                                        TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                        TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                         string unixTime = span.TotalSeconds.ToString("N0");
                                         unixTime = unixTime.Replace(",", "");
                                         SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -433,7 +433,7 @@ namespace GAZT.Views.NewViews
                                     string year = selectedItem[2].ToString();
                                     DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                     long ticks = DateOfBirth.Ticks;
-                                    TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                    TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                     string unixTime = span.TotalSeconds.ToString("N0");
                                     unixTime = unixTime.Replace(",", "");
                                     SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -554,7 +554,7 @@ namespace GAZT.Views.NewViews
                                     string year = selectedItem[2].ToString();
                                     DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                     long ticks = DateOfBirth.Ticks;
-                                    TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                    TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                     string unixTime = span.TotalSeconds.ToString("N0");
                                     unixTime = unixTime.Replace(",", "");
                                     SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -657,7 +657,7 @@ namespace GAZT.Views.NewViews
                                 string year = selectedItem[2].ToString();
                                 DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                 long ticks = DateOfBirth.Ticks;
-                                TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                 string unixTime = span.TotalSeconds.ToString("N0");
                                 unixTime = unixTime.Replace(",", "");
                                 SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -769,7 +769,7 @@ namespace GAZT.Views.NewViews
                                     string year = selectedItem[2].ToString();
                                     DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                     long ticks = DateOfBirth.Ticks;
-                                    TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                    TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                     string unixTime = span.TotalSeconds.ToString("N0");
                                     unixTime = unixTime.Replace(",", "");
                                     SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -874,7 +874,7 @@ namespace GAZT.Views.NewViews
                                 string year = selectedItem[2].ToString();
                                 DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                 long ticks = DateOfBirth.Ticks;
-                                TimeSpan span = (DateTime.UtcNow - new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day), 0, 0, 0, 0, DateTimeKind.Utc));
+                                TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                 string unixTime = span.TotalSeconds.ToString("N0");
                                 unixTime = unixTime.Replace(",", "");
                                 SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
