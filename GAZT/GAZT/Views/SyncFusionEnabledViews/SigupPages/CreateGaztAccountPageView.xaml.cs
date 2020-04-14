@@ -75,13 +75,13 @@ namespace GAZT.Views.NewViews
             bool IsAllValid = true;
             if (string.IsNullOrEmpty(viewModel.TxtEmailCode))
             {
-                frmMobileCode.HasError = true;
+                frmEmailCode.HasError = true;
                 PopMsg.Append(AppResources.ZZPleaseenterconfirmationcodesenttoyouremailaddress);
                 IsAllValid = false;
             }
             else
             {
-                frmMobileCode.HasError = false;
+                frmEmailCode.HasError = false;
             }
 
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumberCode))
@@ -191,7 +191,9 @@ namespace GAZT.Views.NewViews
 
         }
 
-
-       
+        private void EntryPass_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            frmPass.HasError = false;
+        }
     }
 }
