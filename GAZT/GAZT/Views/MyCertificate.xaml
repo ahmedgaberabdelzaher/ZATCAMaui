@@ -54,7 +54,7 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
             </tabView:SfTabView.SelectionIndicatorSettings>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}"
+            <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}" IsVisible="{Binding IsCertificateAvailableZakatTab}"
                                 TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
@@ -86,7 +86,7 @@
 
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}"
+            <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}" IsVisible="{Binding IsCertificateAvailableVATTab}"
                                 TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"
@@ -119,7 +119,7 @@
 
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}"
+            <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}" IsVisible="{Binding IsCertificateAvailableETTab}"
                                 TitleFontSize="14"
                             SelectionColor="Black"
                              FontIconFontColor="#FF00AFF0"

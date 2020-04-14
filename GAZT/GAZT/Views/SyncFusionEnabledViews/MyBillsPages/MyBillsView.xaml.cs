@@ -90,22 +90,22 @@ namespace GAZT.Views
             }
         }
 
-        public async void GetBillsReturnsAsync(BillInfo billInfo)
+        public void GetBillsReturnsAsync(BillInfo billInfo)
         {
 
 
-            Task.Run(() =>
-            {
-                viewModel.IsLoading = true;
-            });
+            //Task.Run(() =>
+            //{
+            //    viewModel.IsLoading = true;
+            //});
 
-            await viewModel.onPageLoad(billInfo);
+             viewModel.onPageLoad(billInfo);
 
 
-            Task.Run(() =>
-             {
-                 viewModel.IsLoading = false;
-             });
+            //Task.Run(() =>
+            // {
+            //     viewModel.IsLoading = false;
+            // });
         }
 
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
