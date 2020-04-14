@@ -185,7 +185,7 @@
 
                         <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True"  Margin="10,-6,10,-6" 
    Grid.Row="4" Grid.ColumnSpan="2" Hint="{x:Static local1:AppResources.Password}" 
-    ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined"  UnfocusedColor="#B1B1B1" FocusedColor="#005e4b"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
                             <!--<control:BorderlessEntry Grid.Row="4" Grid.ColumnSpan="2" x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" Text="{Binding Password}"  FontSize="Small" TextColor="White" PlaceholderColor="Gray" HorizontalOptions="Start" BackgroundColor="White">
 
