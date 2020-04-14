@@ -628,14 +628,32 @@ namespace GAZT.ViewModel.NewViewModel
             await Task.Run(async () =>
             {
             try
-                {
-                
+            {
+                    WebServiceManager.ErrorMessage = string.Empty;
                     if (PostOperation.Equals("66") || PostOperation.Equals("65"))
                     {
                         _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(zakatReturnDetailsD, PostOperation);
                         if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                         {
                             HideDisclaimer();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                            {
+                                await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                                WebServiceManager.ErrorMessage = string.Empty;
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                _navigationService.GoBack();
+                                WebServiceManager.ErrorMessage = string.Empty;
+                            }
+                            });
+                           
                         }
                     }
                     else
@@ -659,38 +677,56 @@ namespace GAZT.ViewModel.NewViewModel
                             }
                             AssignCalculatedValueAfterSubmission();
                         }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                                {
+                                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                            });
+                        }
                     }
                     if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                     {
-                    if (PostOperation.Equals("66") || PostOperation.Equals("65"))
-                    {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            HideAllButton();
-                            await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
-                            IsComingFromSalesDetailsPage = true;
-                            _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
+                            if (PostOperation.Equals("66") || PostOperation.Equals("65"))
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    HideAllButton();
+                                    await _dialogService.ShowMessageBox(AppResources.ZZReturnSubmittedSuccessfully, AppResources.Information);
+                                    IsComingFromSalesDetailsPage = true;
+                                    _navigationService.NavigateTo(App.BillDetailsPageView, zakatReturnDetailsD.d);
                         });
 
                     }
-                        if (PostOperation.Equals("05"))
-                        {
-                        if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
+                            if (PostOperation.Equals("05"))
                             {
-                                Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
-                                ShowOnlyInfoIcon();
-                                ShowConfirmButton();
-                                SetSalesDetailsData(_zakatReturnDetails);
-                               
-                                HideDisclaimer();
 
-                        }
-                        else
-                        {
+                                if (Convert.ToDouble(_zakatReturnDetails.d.Zkamt) >= existingZakatBase)//existingZakatBase
+                                    {
+                                        Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
+                                        ShowOnlyInfoIcon();
+                                        ShowConfirmButton();
+                                        SetSalesDetailsData(_zakatReturnDetails);
+                               
+                                        HideDisclaimer();
+
+                            }
+                            else
+                            {
                                 ShowDisclaimer();
                                 SetChangedValueToUploadAttachment();
-                            bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
-                            if (ISAllRequiredDocumentUploadedwithReason)
+                                bool ISAllRequiredDocumentUploadedwithReason = IsAllRequiredAttachmentUploaded();
+                                if (ISAllRequiredDocumentUploadedwithReason)
                                 {
                                     Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.d.Estsl);
                                     ShowConfirmButton();
@@ -708,18 +744,13 @@ namespace GAZT.ViewModel.NewViewModel
                             }
 
                         }
-                         }
+                    }
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.Information);
-
-                    });
+                     
                 }
-                    //ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(zakatReturnDetailsD.d.Fbguid);
-                    //zakatReturnDetailsD = zakatReturnDetails; //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                    //ZakatReturnDetail = zakatReturnDetailsD;
+                    
 
                 }
                 catch (InternetException ex)
