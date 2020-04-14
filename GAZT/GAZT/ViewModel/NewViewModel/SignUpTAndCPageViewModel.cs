@@ -92,6 +92,25 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         _navigationService.NavigateTo(App.SignUpFormPageView);
                     }
+                    else
+                    {
+                        popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+
+
+                    }
+
+
                 }
                 catch (Exception ex)
                 { 
