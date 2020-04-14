@@ -149,7 +149,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Image img = sender as Image;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                await viewModel.NavigateToMyBills(billInfo);
+                 viewModel.NavigateToMyBills(billInfo);
 
             await Task.Run(() =>
             {
@@ -169,7 +169,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Label img = sender as Label;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                await viewModel.NavigateToMyBills(billInfo);
+                 viewModel.NavigateToMyBills(billInfo);
 
             await Task.Run(() =>
             {
@@ -189,7 +189,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 StackLayout img = sender as StackLayout;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
-                await viewModel.NavigateToMyBills(billInfo);
+                 viewModel.NavigateToMyBills(billInfo);
 
             await Task.Run(() =>
             {

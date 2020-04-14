@@ -115,6 +115,54 @@ namespace GAZT
             }
         }
 
+
+        private bool _isCertificateAvailableZakatTab = false;
+
+        public bool IsCertificateAvailableZakatTab
+        {
+            get
+            {
+                return _isCertificateAvailableZakatTab;
+            }
+            set
+            {
+                _isCertificateAvailableZakatTab = value;
+                RaisePropertyChanged("IsCertificateAvailableZakatTab");
+            }
+        }
+
+        private bool _isCertificateAvailableVATTab = false;
+
+        public bool IsCertificateAvailableVATTab
+        {
+            get
+            {
+                return _isCertificateAvailableVATTab;
+            }
+            set
+            {
+                _isCertificateAvailableVATTab = value;
+                RaisePropertyChanged("IsCertificateAvailableVATTab");
+            }
+        }
+        private bool _isCertificateAvailableETTab = false;
+
+        public bool IsCertificateAvailableETTab
+        {
+            get
+            {
+                return _isCertificateAvailableETTab;
+            }
+            set
+            {
+                _isCertificateAvailableETTab = value;
+                RaisePropertyChanged("IsCertificateAvailableETTab");
+            }
+        }
+
+
+
+
         private bool _setNoDataLabelVisibilityZakat = false;
 
         public bool SetNoDataLabelVisibilityZakat
@@ -620,6 +668,31 @@ namespace GAZT
         {
             try
             {
+                IsCertificateAvailableVATTab = false;
+                IsCertificateAvailableZakatTab = false;
+                IsCertificateAvailableETTab = false;
+                if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                {
+                    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                    foreach (string ItemType in TpTypes)
+                    {
+                        if (ItemType == "05")
+                        {
+
+                            IsCertificateAvailableZakatTab = true;
+                        }
+                        if (ItemType == "03" || ItemType == "13")
+                        {
+                            IsCertificateAvailableVATTab = true;
+                        }
+                        if (ItemType == "07")
+                        {
+
+                            IsCertificateAvailableETTab = true;
+                        }
+                    }
+                }
+
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);

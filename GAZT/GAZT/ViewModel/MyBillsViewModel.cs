@@ -427,10 +427,11 @@ namespace GAZT.ViewModel
         }
 
 
-        public async Task onPageLoad(BillInfo billInfo)
+        public void  onPageLoad(BillInfo billInfo)
         {
-
+            IsLoading = true;
             MyBills = null;
+            ListMyBillsChartModel = null;
             ObservableCollection<MyBills> myBills = null;
             ChartColorCollection ColorsChild = new ChartColorCollection();
             try
@@ -439,8 +440,8 @@ namespace GAZT.ViewModel
                 {
 
                     string lang = UtilityManager.GetLanguageParameter();
-                    myBills = await WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                    myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (myBills != null && myBills.Count != 0)
                     {
@@ -562,6 +563,7 @@ namespace GAZT.ViewModel
                 IsLoading = false;
                 
             }
+            IsLoading = false;
         }
 
         public async Task PopToRootPage()

@@ -33,7 +33,7 @@
                 </Grid.ColumnDefinitions>
 
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Column="0" Grid.ColumnSpan="2"
-    Hint="{x:Static localres:AppResources.TinEmail}" 
+    Hint="{x:Static localres:AppResources.TinEmail}" FocusedColor="#005e4b"
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
                     <custom:GAZTBorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" >
@@ -87,7 +87,7 @@
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
                                                   Hint="{x:Static localres:AppResources.TINS}" 
                                                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
-   IsVisible="{Binding IsVisibleTinIds}"
+   IsVisible="{Binding IsVisibleTinIds}" FocusedColor="#005e4b"
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" ErrorColor="#B00020" HasError="False"  >
                     <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" FontAttributes="Bold">
