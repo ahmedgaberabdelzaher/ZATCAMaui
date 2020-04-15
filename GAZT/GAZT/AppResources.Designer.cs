@@ -768,7 +768,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forget Username or Password?.
+        ///   Looks up a localized string similar to Forgot Username or Password?.
         /// </summary>
         public static string ForgotPasswordORUseName {
             get {
