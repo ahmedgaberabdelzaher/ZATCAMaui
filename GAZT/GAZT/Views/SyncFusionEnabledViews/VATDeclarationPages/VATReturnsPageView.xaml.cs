@@ -193,6 +193,7 @@ namespace GAZT.Views.NewViews
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            ICRListPageView.AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = true;
 
             if (Device.RuntimePlatform == Device.iOS)
             {

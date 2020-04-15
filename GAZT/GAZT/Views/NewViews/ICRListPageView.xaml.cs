@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace GAZT.Views.NewViews
 
         #region Variable
         ICRListPageViewModel viewModel;
+        public static bool AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
         int Count = 0;
         private double width = 0;
         private double height = 0;
@@ -41,7 +43,7 @@ namespace GAZT.Views.NewViews
             viewModel.IsICRListVisible = true;
             viewModel.IsNoDataLabelVisible = false;
             IntialiseAsync();
-
+            AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
             ICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
@@ -111,7 +113,29 @@ namespace GAZT.Views.NewViews
             }
         }
 
-        public async Task IntialiseAsyncForPreviousSelectedFilter()
+        private void SelectedICR(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
+            {
+                AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
+                ICRStatus selectedICR = (ICRStatus)e.NewValue;
+                viewModel.SelectedICRStatus = selectedICR;
+                viewModel.TxtSelectedStatus = selectedICR.Txt30;
+                string str = App.ICRStatus;
+                viewModel.SetICRListData(viewModel.PreviousSelectedICRStatus);
+            }
+            else
+            {
+                ICRStatus selectedICR = (ICRStatus)e.NewValue;
+                viewModel.SelectedICRStatus = selectedICR;
+                viewModel.TxtSelectedStatus = selectedICR.Txt30;
+                string str = App.ICRStatus;
+                viewModel.SetICRListData(selectedICR);
+            }
+        
+           
+        }
+            public async Task IntialiseAsyncForPreviousSelectedFilter()
         {
             try
             {
