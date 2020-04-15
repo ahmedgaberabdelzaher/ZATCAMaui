@@ -3943,7 +3943,7 @@ namespace GAZT.Manager
             else
             {
                 
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException(AppResources.NetworkConnectivityIssue);
 
             }
         }
