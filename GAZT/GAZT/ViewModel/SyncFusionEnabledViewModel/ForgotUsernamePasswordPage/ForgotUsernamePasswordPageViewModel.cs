@@ -1477,7 +1477,7 @@ namespace GAZT.ViewModel.NewViewModel
                                     IsVisibleTinIds = false;
                                     await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                                 });
-                                IsVisibleTinIds = false;
+                                //IsVisibleTinIds = false;
                             }
                             await Task.Run(() =>
                             {
