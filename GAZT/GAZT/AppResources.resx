@@ -434,7 +434,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>App is facing network issue, please try again later</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value>Forget Username or Password?</value>
+    <value>Forgot Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
     <value>Individual/Personal business</value>
@@ -2984,7 +2984,7 @@ Should we require further information, we would be in contact.</value>
     <value>If you do not agree with the above information, please visit GAZT portal to change the registration type</value>
   </data>
   <data name="ZZZChageOfRegistration" xml:space="preserve">
-    <value>Change of registration form.</value>
+    <value>change of registration form.</value>
   </data>
   <data name="ZZZSubmittedReport" xml:space="preserve">
     <value>Submitted Report</value>
@@ -3048,6 +3048,6 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
     <value>Please agree terms and conditions.</value>
-    <comment>Signup </comment>
+    <comment>Signup</comment>
   </data>
 </root>

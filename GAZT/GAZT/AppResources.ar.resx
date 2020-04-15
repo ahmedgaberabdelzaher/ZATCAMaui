@@ -1995,7 +1995,7 @@
     <comment>VAT</comment>
   </data>
   <data name="ZZDeartaxpayerbasedonthesubmittedamendments" xml:space="preserve">
-    <value>عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة بالاستمرار، سيتم إنشاء طلب اعترااض لكم لدى الهيئة العامة للزكاة والدخل</value>
+    <value>عزيزي المكلف، عند احتساب التعديلات وجد أن تعديلاتكم لا تتطابق مع ما تم حسابه بواسطة الهيئة العامة للزكاة والدخل، في حال الرغبة بالاستمرار، سيتم إنشاء طلب إعتراض لكم لدى الهيئة العامة للزكاة والدخل</value>
     <comment>ZAKAT</comment>
   </data>
   <data name="ZDescription" xml:space="preserve">
@@ -2761,7 +2761,7 @@
     <value>الملف الشخصي</value>
   </data>
   <data name="ZZZFaq" xml:space="preserve">
-    <value>الاسئلة الشائعة</value>
+    <value>اسئلة متداولة</value>
   </data>
   <data name="ZZZHelp" xml:space="preserve">
     <value>المساعدة</value>
@@ -3042,9 +3042,5 @@
   <data name="ZZZPleaseenteryourmobilenumbertoproceedfurther" xml:space="preserve">
     <value>للمتابعة فضلاً أدخل رقم الجوال</value>
     <comment>Tax evasion  report service</comment>
-  </data>
-  <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
-    <value>الموافقة على الشروط والأحكام</value>
-    <comment>Signup </comment>
   </data>
 </root>

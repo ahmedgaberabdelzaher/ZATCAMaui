@@ -13,11 +13,14 @@
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
              Title="{x:Static local:AppResources.TaxpayerProfile}"
              BackgroundColor="White"
-             Style="{StaticResource ContentPageStyle}"
+            
               NavigationPage.HasNavigationBar="False"
-             BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
+     >
+
+    <!--  Style="{StaticResource ContentPageStyle}"
+    BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
-                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}">
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<ResourceDictionary>
@@ -71,12 +74,13 @@
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>
             <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
-            <StackLayout   Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+            <!--Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
                                                                  PhoneLandscape='150,32',
                                                                  TabletPortrait='200,50',
                                                                  TabletLandscape='300,50',
                                                                  Desktop='30'}"  WidthRequest="{OnPlatform Default='-1',
-                                              UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
+                                              UWP='350'}"-->
+            <StackLayout    HorizontalOptions="FillAndExpand" VerticalOptions="Center" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
                 <ScrollView HorizontalOptions="Center">
                     <ScrollView.VerticalOptions>
                         <OnIdiom

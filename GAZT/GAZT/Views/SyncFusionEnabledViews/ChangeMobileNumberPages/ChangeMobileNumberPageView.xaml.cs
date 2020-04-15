@@ -15,7 +15,10 @@ namespace GAZT.Views.NewViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeMobileNumberPageView : ContentPage
     {
+
         #region Variable
+        private double width = 0;
+        private double height = 0;
         ChangeMobileNumberPageViewModel viewModel;
         #endregion
         #region Constructor
@@ -34,7 +37,26 @@ namespace GAZT.Views.NewViews
         }
         #endregion
 
+
         #region Method
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+                }
+                else
+                {
+                    this.BackgroundImageSource = "sf_LoginBackground.png";
+                    //  outerStack.Orientation = StackOrientation.Vertical;
+                }
+            }
+        }
 
         public void ChangeAeroIcon()
         {

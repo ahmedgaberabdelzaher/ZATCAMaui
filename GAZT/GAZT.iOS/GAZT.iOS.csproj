@@ -1110,4 +1110,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_BgImage_Gradient.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_LoginBackgroundLand%402x.png" />
+  </ItemGroup>
 </Project>

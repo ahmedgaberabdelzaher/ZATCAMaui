@@ -432,6 +432,7 @@ namespace GAZT.ViewModel
             IsLoading = true;
             MyBills = null;
             ListMyBillsChartModel = null;
+            Colors = null;
             ObservableCollection<MyBills> myBills = null;
             ChartColorCollection ColorsChild = new ChartColorCollection();
             try

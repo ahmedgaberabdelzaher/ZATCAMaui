@@ -101,13 +101,13 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
+                            <custom:BorderlessEntry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
 
                                     <custom1:OnlyAlphabatesBehaviour/>
 
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
@@ -122,51 +122,51 @@ xmlns:custom="clr-namespace:GAZT"
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <Entry  x:Name="TMobNumber" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8">
+                                <custom:BorderlessEntry  x:Name="TMobNumber" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8">
                                     <Entry.Behaviors>
 
                                         <custom1:OnlyNumericValuesBehaviour/>
 
                                     </Entry.Behaviors>
-                                </Entry>
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmEmail"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailEMail}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TEmail" FontSize="Small"  Unfocused="TEmail_Unfocused" Text="{Binding TEmail}" IsSpellCheckEnabled="False" >
+                            <custom:BorderlessEntry  x:Name="TEmail" FontSize="Small"  Unfocused="TEmail_Unfocused" Text="{Binding TEmail}" IsSpellCheckEnabled="False" >
 
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout x:Name="FrmFName"   Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityName}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciName" IsSpellCheckEnabled="False" FontSize="Small"   Text="{Binding TFaciName}"  Unfocused="TFaciName_Unfocused">
+                            <custom:BorderlessEntry  x:Name="TFaciName" IsSpellCheckEnabled="False" FontSize="Small"   Text="{Binding TFaciName}"  Unfocused="TFaciName_Unfocused">
                                 <Entry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout x:Name="FrmFOName"   Grid.Row="4"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityOwnerName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" FontAttributes="Bold" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
+                            <custom:BorderlessEntry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" FontAttributes="Bold" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
                                 <Entry.Behaviors>
                                     <custom1:OnlyAlphabatesBehaviour/>
                                 </Entry.Behaviors>
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  HelperText="{x:Static local:AppResources.ZZZRequired}" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityType}"
     ContainerType="Outlined" x:Name="FrmFType" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtFType}"  FontSize="Small" IsSpellCheckEnabled="False" x:Name="FacilityType_entry">
-                            </Entry>
+                            <custom:BorderlessEntry Text="{Binding TxtFType}"  FontSize="Small" IsSpellCheckEnabled="False" x:Name="FacilityType_entry">
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnFacilityType" Clicked="btnFacilityType_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
@@ -199,7 +199,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <Entry FontSize="Small" Keyboard="Telephone" IsSpellCheckEnabled="False" Text="+9665" IsEnabled="False"/>
+                                <custom:BorderlessEntry FontSize="Small" Keyboard="Telephone" IsSpellCheckEnabled="False" Text="+9665" IsEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
@@ -208,44 +208,44 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <Entry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
+                                <custom:BorderlessEntry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
-                                </Entry>
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmFEmail"   Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityEmail}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFaciEmail" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFaciEmail_Unfocused"  Text="{Binding TFaciEmail}"  Keyboard="Email">
+                            <custom:BorderlessEntry  x:Name="TFaciEmail" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFaciEmail_Unfocused"  Text="{Binding TFaciEmail}"  Keyboard="Email">
 
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmFDAddress"   Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFDAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
+                            <custom:BorderlessEntry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
 
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmFSAddress"   Grid.Row="9"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused" FontAttributes="Bold"  Text="{Binding TFSAddress}"  MaxLength="100">
+                            <custom:BorderlessEntry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused" FontAttributes="Bold"  Text="{Binding TFSAddress}"  MaxLength="100">
 
-                            </Entry>
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailRegion}" HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="frmRegionPicker"
     ContainerType="Outlined" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry" IsSpellCheckEnabled="False" FontSize="Small">
-                            </Entry>
+                            <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry" IsSpellCheckEnabled="False" FontSize="Small">
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnTxtReportDetailRegion" Clicked="btnTxtReportDetailRegion_Clicked" FontSize="Small"  BackgroundColor="Transparent" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
@@ -299,8 +299,8 @@ xmlns:custom="clr-namespace:GAZT"
     Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Entry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small" FontAttributes="Bold" x:Name="City_entry">
-                            </Entry>
+                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small" FontAttributes="Bold" x:Name="City_entry">
+                            </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>

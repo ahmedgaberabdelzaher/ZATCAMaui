@@ -23,7 +23,7 @@ namespace GAZTeServicesApp.Views.LandingPage
     public partial class SFLandingPageView : ContentPage
     {
         SFLandingPageViewModel viewModel;
-       //  Calendar appointments;
+        //  CalendaTapGestureRecognizer_Tapped appointments;
         /// <summary>
         /// Initializes a new instance of the <see cref="LandingPageView" /> class.
         /// </summary>

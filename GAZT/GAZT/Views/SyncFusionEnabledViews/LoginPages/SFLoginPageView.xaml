@@ -19,12 +19,13 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:custom="clr-namespace:GAZT"
 
-    BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
-                                                                  iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
-                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"
+   
     NavigationPage.HasNavigationBar="False"
-    Style="{StaticResource ContentPageStyle}">
-
+   >
+    <!--BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
+                                                                  iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"-->
+    <!--Style="{StaticResource ContentPageStyle}"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -65,13 +66,13 @@
                         Default="CenterAndExpand"
                         Phone="FillAndExpand" />
                 </ScrollView.VerticalOptions>
-
-                <StackLayout
-                    Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                    <!--Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
                                                                  PhoneLandscape='150,32',
                                                                  TabletPortrait='200,50',
                                                                  TabletLandscape='300,50',
-                                                                 Desktop='30'}"
+                                                                 Desktop='30'}"-->
+                    <StackLayout
+                    
                     Spacing="0"
                     VerticalOptions="FillAndExpand"
                     WidthRequest="{OnPlatform Default='-1',
@@ -219,7 +220,7 @@
                             Margin="0,16"
                             FontFamily="{StaticResource GAZT_FONT_BOLD}"
                             FontSize="12"
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand" 
                             Text="{x:Static local1:AppResources.ForgotPasswordORUseName}"
                             TextColor="White">
                             <Label.GestureRecognizers>

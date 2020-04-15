@@ -115,25 +115,30 @@ namespace GAZT.Views.NewViews
 
         private void SelectedICR(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
+            try
             {
-                AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
-                ICRStatus selectedICR = (ICRStatus)e.NewValue;
-                viewModel.SelectedICRStatus = selectedICR;
-                viewModel.TxtSelectedStatus = selectedICR.Txt30;
-                string str = App.ICRStatus;
-                viewModel.SetICRListData(viewModel.PreviousSelectedICRStatus);
+                if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
+                {
+                    AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
+                    ICRStatus selectedICR = (ICRStatus)e.NewValue;
+                    viewModel.SelectedICRStatus = selectedICR;
+                    viewModel.TxtSelectedStatus = selectedICR.Txt30;
+                    string str = App.ICRStatus;
+                    viewModel.SetICRListData(viewModel.PreviousSelectedICRStatus);
+                }
+                else
+                {
+                    ICRStatus selectedICR = (ICRStatus)e.NewValue;
+                    viewModel.SelectedICRStatus = selectedICR;
+                    viewModel.TxtSelectedStatus = selectedICR.Txt30;
+                    string str = App.ICRStatus;
+                    viewModel.SetICRListData(selectedICR);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                ICRStatus selectedICR = (ICRStatus)e.NewValue;
-                viewModel.SelectedICRStatus = selectedICR;
-                viewModel.TxtSelectedStatus = selectedICR.Txt30;
-                string str = App.ICRStatus;
-                viewModel.SetICRListData(selectedICR);
+
             }
-        
-           
         }
             public async Task IntialiseAsyncForPreviousSelectedFilter()
         {
