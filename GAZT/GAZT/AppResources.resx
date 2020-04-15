@@ -434,7 +434,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>App is facing network issue, please try again later</value>
   </data>
   <data name="ForgotPasswordORUseName" xml:space="preserve">
-    <value>Forget Username or Password?</value>
+    <value>Forgot Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
     <value>Individual/Personal business</value>
