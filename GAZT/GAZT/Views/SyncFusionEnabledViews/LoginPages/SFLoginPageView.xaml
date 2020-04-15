@@ -219,7 +219,7 @@
                             Margin="0,16"
                             FontFamily="{StaticResource GAZT_FONT_BOLD}"
                             FontSize="12"
-                            HorizontalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand" 
                             Text="{x:Static local1:AppResources.ForgotPasswordORUseName}"
                             TextColor="White">
                             <Label.GestureRecognizers>
