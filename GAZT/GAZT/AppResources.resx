@@ -3046,4 +3046,8 @@ Should we require further information, we would be in contact.</value>
     <value>Please enter your mobile number to proceed further</value>
     <comment>Tax evasion  report service</comment>
   </data>
+  <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
+    <value>Please agree terms and conditions.</value>
+    <comment>Signup</comment>
+  </data>
 </root>

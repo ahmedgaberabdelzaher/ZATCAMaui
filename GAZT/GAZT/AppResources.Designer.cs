@@ -6548,6 +6548,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please agree terms and conditions..
+        /// </summary>
+        public static string ZZPleaseselecttermsandconditions {
+            get {
+                return ResourceManager.GetString("ZZPleaseselecttermsandconditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please select the City.
         /// </summary>
         public static string ZZPleaseselecttheCity {
