@@ -59,7 +59,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -237,7 +237,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -399,7 +399,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -682,7 +682,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -843,7 +843,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -1126,7 +1126,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <Label TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>

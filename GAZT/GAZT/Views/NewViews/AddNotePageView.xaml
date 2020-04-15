@@ -63,7 +63,7 @@
 
                 <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
-                <custom:GAZTBorderlessEditor  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12">
+                <custom:GAZTBorderlessEditor BackgroundColor="White"  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12">
 
                 </custom:GAZTBorderlessEditor>
 
