@@ -76,6 +76,46 @@ namespace GAZT.Views.NewViews
 
 
         #region Method
+
+
+        private void SfTabView_TabItemTapped(object sender, TabItemTappedEventArgs e)
+        {
+            try
+            {
+                bool isTrue = CheckMandetoryFields();
+
+                if (e.TabItem.Title == AppResources.ZZInstruction)
+                {
+                    //No check
+                }
+                else if (e.TabItem.Title == AppResources.ZZTaxPayerDetails)
+                {
+                    if (viewModel.IsDeclarationCheckedForInstruction == false)
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else if (e.TabItem.Title == AppResources.ZZVATReturnForm)
+                {
+                    if (!(viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true))
+                    {
+                        e.Cancel = true;
+                    }
+                }
+                else if (e.TabItem.Title == AppResources.ZZSummary)
+                {
+                    if (!(viewModel.IsDeclarationCheckedForInstruction == true && viewModel.IsCheckedTaxPayerDetailsInfo == true && isTrue == true))
+                    {
+                        e.Cancel = true;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -4484,10 +4524,7 @@ namespace GAZT.Views.NewViews
 
         }
 
-        private void SfTabView_TabItemTapped(object sender, TabItemTappedEventArgs e)
-        {
-
-        }
+       
 
         private void SelectedIBANChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
