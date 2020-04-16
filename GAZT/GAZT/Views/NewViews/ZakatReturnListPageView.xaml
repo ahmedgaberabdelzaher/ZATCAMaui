@@ -197,7 +197,7 @@
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
                     
-                 SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                 SelectedItem="{Binding SelectedICRStatus}" SelectionChanged="ICRStatusChnaged" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"
