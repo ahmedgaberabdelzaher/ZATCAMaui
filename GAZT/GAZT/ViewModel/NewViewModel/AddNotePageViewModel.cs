@@ -54,6 +54,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     NoteString = _noteText;
                 }
+                else
+                {
+                    NoteString = string.Empty;
+                }
                 RaisePropertyChanged("NoteText");
             }
         }
