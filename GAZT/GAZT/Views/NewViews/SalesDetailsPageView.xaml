@@ -167,7 +167,7 @@
                                         <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}">
                                         </Label>
                                        
-                                        <Label Grid.Column="2" Grid.Row="0" Margin="0,10,0,2" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}" >
+                                        <Label Grid.Column="2" Grid.Row="0" Margin="0,10,0,2" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}" IsVisible="{Binding HelpIconVisibility}">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
                                             </Label.GestureRecognizers>

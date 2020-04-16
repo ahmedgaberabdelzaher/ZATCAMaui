@@ -1251,6 +1251,7 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails1.InformationFromPartieToCompare =  salesDetails1.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslI);// IsThresholdGreaterLessVATAmount ? AppResources.ZNA ://string.IsNullOrEmpty(zakatReturnDetails.d.TvtslI) ? "0.00" : zakatReturnDetailsD.d.TvtslI;
                 salesDetails1.EstimateSales =  UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.TvtslE) + " " + AppResources.ZSAR;//IsThresholdGreaterLessVATAmount ? AppResources.ZNA ://string.IsNullOrEmpty(zakatReturnDetails.d.TvtslE) ? "0.00" : zakatReturnDetails.d.TvtslE;
                 salesDetails1.SelectedEditFieldId = "1";
+                salesDetails1.HelpIconVisibility = true;
                 if (IsThresholdGreaterLessVATAmount)
                 {
                     VATBackgroundColor = Color.FromHex("#EEEDED");
@@ -1278,7 +1279,7 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails2.SelectedEditFieldId = "2";
                 salesDetails2.SeparatorVisibility = true;
                 salesDetails2.InformationIconVisibility = true;
-                
+                salesDetails2.HelpIconVisibility = true;
                 salesDetails2.DisableItemBackgroundColor = CapitalBackgroundColor;
 
                 SalesDetailsDummyList.Add(salesDetails2);
@@ -1286,7 +1287,7 @@ namespace GAZT.ViewModel.NewViewModel
                 SalesDetails salesDetails3 = new SalesDetails();
                 salesDetails3.SalesType = AppResources.ZZImportsvalue;
                 salesDetails3.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails3.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.ImpvalI);//string.IsNullOrEmpty(ZakatReturnDetail.d.ImpvalI) ? "0.00" : ZakatReturnDetail.d.ImpvalI; // ZakatReturnDetail.d.ImpvalI;
-
+                salesDetails3.HelpIconVisibility = true;
                 if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
                 {
                     salesDetails3.EstimateSales = "0.00";// !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.LabnoE) + " " + AppResources.ZSAR;// string.IsNullOrEmpty(zakatReturnDetails.d.LabnoE) ? "0.00" : zakatReturnDetails.d.LabnoE; //ZakatReturnDetail.d.LabnoE;
@@ -1298,11 +1299,13 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails3.SelectedEditFieldId = "3";
                 salesDetails3.SeparatorVisibility = true;
                 salesDetails3.InformationIconVisibility = true;
+
                 salesDetails3.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails3);
 
                 SalesDetails salesDetails4 = new SalesDetails();
                 salesDetails4.SalesType = AppResources.ZZSalesformpointofsales;
+                salesDetails4.HelpIconVisibility = false;
                 salesDetails4.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails4.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PtoslI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PtoslI) ? "0.00" : ZakatReturnDetail.d.PtoslI; // ZakatReturnDetail.d.TvtslResn;
                 if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
                 {
@@ -1331,6 +1334,8 @@ namespace GAZT.ViewModel.NewViewModel
                     salesDetails5.EstimateSales = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.Sumcnt) + " " + AppResources.ZSAR;//string.IsNullOrEmpty(zakatReturnDetails.d.Sumcnt) ? "0.00" : zakatReturnDetails.d.Sumcnt; //ZakatReturnDetail.d.Estsl;
                 }
                 salesDetails5.SelectedEditFieldId = "5";
+                salesDetails5.HelpIconVisibility = true;
+
                 salesDetails5.SeparatorVisibility = false;
                 salesDetails5.InformationIconVisibility = true;
 
@@ -1351,11 +1356,14 @@ namespace GAZT.ViewModel.NewViewModel
                 salesDetails6.SelectedEditFieldId = "6";
                 salesDetails6.SeparatorVisibility = true;
                 salesDetails6.InformationIconVisibility = false;
+                salesDetails6.HelpIconVisibility = false;
+
                 salesDetails6.DisableItemBackgroundColor = CapitalBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails6);
 
                 SalesDetails salesDetails7 = new SalesDetails();
                 salesDetails7.SalesType = AppResources.ZZPurchasevalue;
+                salesDetails7.HelpIconVisibility = true;
                 salesDetails7.InformationFromPartieToCompare = !IsThresholdGreaterLessVATAmount ? AppResources.ZNA : salesDetails7.InformationFromPartie = UtilityManager.GetCommaSeparatedAmount(zakatReturnResponse.d.PramtI);//string.IsNullOrEmpty(ZakatReturnDetail.d.PramtI) ? "0.00" : ZakatReturnDetail.d.PramtI; // ZakatReturnDetail.d.PramtI;
                 if (SubmitButtonVisibility && !IsThresholdGreaterLessVATAmount)
                 {
@@ -1379,6 +1387,7 @@ namespace GAZT.ViewModel.NewViewModel
                 //SalesDetailsDummyList.Add(salesDetails8);
                 salesDetails8.SelectedEditFieldId = "8";
                 salesDetails8.SeparatorVisibility = true;
+                salesDetails8.HelpIconVisibility = true;
                 salesDetails8.InformationIconVisibility = true;
                 salesDetails8.DisableItemBackgroundColor = Color.White;
                 SalesDetailsDummyList.Add(salesDetails8);
