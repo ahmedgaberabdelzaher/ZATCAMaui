@@ -415,7 +415,7 @@
                 <!--</controls:TapAnimationGrid>-->
 
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
-                <local1:CustomLabel  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
+                <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
                     <Label.FormattedText >
                         <FormattedString>
                             <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
@@ -426,7 +426,7 @@
                             <Span Text="{Binding Tin}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
                         </FormattedString>
                     </Label.FormattedText>
-                </local1:CustomLabel>
+                </Label>
             </Grid>
 
             <Grid Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" IsVisible="{Binding IsLoading}">
