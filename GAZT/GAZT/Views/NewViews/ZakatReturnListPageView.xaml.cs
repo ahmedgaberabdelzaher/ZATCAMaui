@@ -20,7 +20,8 @@ namespace GAZT.Views.NewViews
 
         #region Variable
         ZakatReturnListPageViewModel viewModel;
-
+        private double width = 0;
+        private double height = 0;
         public static bool AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
 
         #endregion
@@ -52,6 +53,29 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
