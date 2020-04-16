@@ -969,14 +969,19 @@ namespace GAZT.ViewModel.NewViewModel
                 regionlist = WebServiceManager.GAZTTESFormGetRegion();
                 if (regionlist != null && regionlist.RegionList.Count != 0)
                 { RList = regionlist.RegionList; }
+                else
+                {
+                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+
+                }
 
             }
             catch (InternetException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
+
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                
                 _navigationService.GoBack();
             }
 
