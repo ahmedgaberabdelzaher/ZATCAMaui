@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.NewViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace GAZT.Views.NewViews
 
         #region Variable
         ZakatReturnListPageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
+        public static bool AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+
         #endregion
 
         #region Property
@@ -48,6 +53,29 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Method
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -65,7 +93,7 @@ namespace GAZT.Views.NewViews
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
-            else 
+            else
             {
 
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
@@ -88,7 +116,7 @@ namespace GAZT.Views.NewViews
         {
             base.OnAppearing();// called from here so List have the updated data after amendment or release
             viewModel.MyZakatReturns = new List<Models.EstimatedZakatReturnsResult>();
-              viewModel.myZakatReturnsList = new List<Models.EstimatedZakatReturnsResult>();
+            viewModel.myZakatReturnsList = new List<Models.EstimatedZakatReturnsResult>();
             await viewModel.OnPageLoad();
         }
 
@@ -99,6 +127,33 @@ namespace GAZT.Views.NewViews
 
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+
+        }
+
+        private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //if(AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage)
+            //{
+            //    ZAKATStatus selectedICRStatus = (ZAKATStatus)e.NewValue;
+            //    viewModel.SelectedICRStatus = selectedICRStatus;
+            //    viewModel.TxtSelectedStatus = viewModel.PreviousSelectedICRStatus.Value;
+            //    viewModel.GetFilteredZAKATICRList(viewModel.PreviousSelectedICRStatus);
+            //      viewModel.PreviousSelectedICRStatus = selectedICRStatus;             
+            //}
+            //else
+            //{
+            if(viewModel.myZakatReturnsList != null && viewModel.myZakatReturnsList.Count > 0)
+            {
+                ZAKATStatus selectedICRStatus = (ZAKATStatus)e.NewValue;
+                viewModel.SelectedICRStatus = selectedICRStatus;
+                viewModel.TxtSelectedStatus = selectedICRStatus.Value;
+                viewModel.PreviousSelectedICRStatus = selectedICRStatus;
+                viewModel.GetFilteredZAKATICRList(selectedICRStatus);
+            }
+               
+
+            //}
+
 
         }
     }

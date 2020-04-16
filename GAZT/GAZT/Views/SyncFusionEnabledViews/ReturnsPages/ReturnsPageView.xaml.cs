@@ -48,27 +48,27 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                         return;
                     } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
                 };
-                ZakatICRListNonSubmitted.ItemSelected += (sender, e) =>
-                {
-                    if (e.SelectedItem == null)
-                    {
-                        return;
-                    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
-                };
-                ZakatICRListOverDue.ItemSelected += (sender, e) =>
-                {
-                    if (e.SelectedItem == null)
-                    {
-                        return;
-                    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
-                };
-                ZakatICRListSubmitted.ItemSelected += (sender, e) =>
-                {
-                    if (e.SelectedItem == null)
-                    {
-                        return;
-                    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
-                };
+                //ZakatICRListNonSubmitted.ItemSelected += (sender, e) =>
+                //{
+                //    if (e.SelectedItem == null)
+                //    {
+                //        return;
+                //    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                //};
+                //ZakatICRListOverDue.ItemSelected += (sender, e) =>
+                //{
+                //    if (e.SelectedItem == null)
+                //    {
+                //        return;
+                //    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                //};
+                //ZakatICRListSubmitted.ItemSelected += (sender, e) =>
+                //{
+                //    if (e.SelectedItem == null)
+                //    {
+                //        return;
+                //    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                //};
             }
             catch (Exception ex)
             {

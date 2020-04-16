@@ -635,7 +635,8 @@ namespace GAZT.Views.NewViews
         {
             if (!string.IsNullOrEmpty(TxtTIN.Text))
             {
-                if (TxtTIN.Text.Length < 10)
+                
+                if (TxtTIN.Text.Length < 10 ||  (TxtTIN.Text.Substring(0, 1) != "3"))
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZInvalidTinNumber;
@@ -662,7 +663,9 @@ namespace GAZT.Views.NewViews
                     TxtTIN.Focus();
 
                 }
-                else { 
+
+                else
+                { 
                     FrmTIN.HasError = false; 
                 }
             }

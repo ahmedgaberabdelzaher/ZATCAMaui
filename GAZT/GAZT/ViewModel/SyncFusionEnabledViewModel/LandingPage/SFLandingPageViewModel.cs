@@ -713,7 +713,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATDeclaration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
                     }
 
                 }

@@ -155,9 +155,9 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="48*"/>
                                             <ColumnDefinition Width="40*"/>
-                                            <ColumnDefinition Width="10*"/>
+                                            <ColumnDefinition Width="12*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label  Text="{Binding SalesType}" Margin="10,0,10,0"  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                                         </Label>
@@ -167,22 +167,20 @@
                                         <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}">
                                         </Label>
                                        
-                                        <Label Grid.Column="2" Grid.Row="0" Margin="0,10,0,2" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}" IsVisible="{Binding HelpIconVisibility}">
+                                        <Label Grid.Column="2" Grid.Row="0" Margin="5,10,5,10" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}"  IsVisible="{Binding HelpIconVisibility}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
                                             </Label.GestureRecognizers>
                                         </Label>
-                                        <GAZT:CustomLabel FontFamily="{StaticResource SSTArBold}" Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                                        <GAZT:CustomLabel FontFamily="{StaticResource SSTArBold}" Text="{Binding InformationFromPartieToCompare}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="0"   HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                                         <GAZT:CustomLabel FontFamily="{StaticResource SSTArBold}" Margin="10,0,10,10"  Grid.Row="2" Grid.Column="1"   HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding InformationIconVisibility}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{Binding EstimateSales}"/>
-                                                    <!--<Span Text=" "/>
-                                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>-->
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </GAZT:CustomLabel>
-                                        <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions="End" Margin="0,10,0,10">
+                                        <Image Source="{Binding EditImageSource }" Grid.Column="2" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,5,5">
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                 Tapped="OnEditImageClicked"
