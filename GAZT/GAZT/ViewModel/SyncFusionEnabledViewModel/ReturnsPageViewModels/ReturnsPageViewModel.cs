@@ -398,13 +398,15 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 
                 if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
-                    if (SelectedZakatReturn.Fbtyp.Equals("FZ12"))
+                    EstimatedZakatReturnsResult ChidlSelectedICR = new EstimatedZakatReturnsResult();
+                    ChidlSelectedICR = SelectedZakatReturn;
+                    if (ChidlSelectedICR.Fbtyp.Equals("FZ12"))
                     {
-                        ReturnPeriod = SelectedZakatReturn.Period;
+                        ReturnPeriod = ChidlSelectedICR.Period;
                         //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
+                            _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, ChidlSelectedICR.Fbguid);
                         });
                     }
                     else
@@ -417,6 +419,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 }
             }
         }
+
+
+
+
 
         private List<EstimatedZakatReturnsResult> _myZakatReturnsSubmitted = null;
         public List<EstimatedZakatReturnsResult> MyZakatReturnsSubmitted

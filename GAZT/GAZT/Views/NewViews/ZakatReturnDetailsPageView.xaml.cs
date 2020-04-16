@@ -28,14 +28,21 @@ namespace GAZT.Views.NewViews
         string Fbguid = "";
         public ZakatReturnDetailsPageView(string fbguid)
         {
-            viewModel = App.Locator.ZakatReturnDetailsPageView;
-            InitializeComponent();
-            Fbguid = fbguid;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            SetLTR();
-            this.BindingContext = viewModel;
-            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            ChangeAeroIcon();
+            try
+            {
+                viewModel = App.Locator.ZakatReturnDetailsPageView;
+                InitializeComponent();
+                Fbguid = fbguid;
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                SetLTR();
+                this.BindingContext = viewModel;
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                ChangeAeroIcon();
+            }
+                catch(Exception ex)
+            {
+
+            }
 
         }
 
