@@ -9,7 +9,7 @@
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
     x:Name="LandingPage"
-    xmlns:local1="clr-namespace:GAZT"
+        xmlns:local1="clr-namespace:GAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
@@ -128,9 +128,9 @@
 
                 <StackLayout Padding="5">
 
-                    <Label  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></Label>
+                    <local1:CustomLabel  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></local1:CustomLabel>
 
-                    <Label  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></Label>
+                    <local1:CustomLabel  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" ></local1:CustomLabel>
 
 
                     <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">

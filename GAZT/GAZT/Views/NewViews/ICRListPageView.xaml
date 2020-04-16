@@ -114,8 +114,8 @@
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                  
-                 SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                    
+                 SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"

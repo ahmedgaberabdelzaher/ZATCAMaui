@@ -114,37 +114,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
-
-                if (_selectedICRStatus != null)
-                {
-                    // PreviousSelectedICRStatus = _selectedICRStatus;
-                    try
-                    {
-                        if (ICRDummyList != null && ICRDummyList.Count != 0)
-                        {
-                            if (string.Equals(_selectedICRStatus.Txt30, "All") || string.Equals(_selectedICRStatus.Txt30, "الجميع"))
-                            {
-                                ICRList = ICRDummyList;
-                            }
-                            else if (string.Equals(_selectedICRStatus.Estat, "E01TP"))
-                            {
-                                ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).ToList();
-                            }
-                            else
-                            {
-                                ICRList = ICRDummyList.Where(x => x.Status == _selectedICRStatus.Estat).ToList();
-                            }
-                        }
-                    }
-                    catch(Exception ex)
-                    {
-
-                    }
-                    TxtSelectedStatus = _selectedICRStatus.Txt30;
-                    RaisePropertyChanged("SelectedICRStatus");
-                }
-
-
+                RaisePropertyChanged("SelectedICRStatus");
             }
         }
 
@@ -542,6 +512,37 @@ namespace GAZT.ViewModel.NewViewModel
                     var _navigation = Application.Current.MainPage.Navigation;
                     _navigation.PopToRootAsync();
                 });
+            }
+        }
+
+        public void SetICRListData(ICRStatus selectedICRStat)
+        {
+            if (selectedICRStat != null)
+            {
+                // PreviousSelectedICRStatus = _selectedICRStatus;
+                try
+                {
+                    if (ICRDummyList != null && ICRDummyList.Count != 0)
+                    {
+                        if (string.Equals(selectedICRStat.Txt30, "All") || string.Equals(selectedICRStat.Txt30, "الجميع"))
+                        {
+                            ICRList = ICRDummyList;
+                        }
+                        else if (string.Equals(selectedICRStat.Estat, "E01TP"))
+                        {
+                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).ToList();
+                        }
+                        else
+                        {
+                            ICRList = ICRDummyList.Where(x => x.Status == selectedICRStat.Estat).ToList();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+                TxtSelectedStatus = selectedICRStat.Txt30;
             }
         }
         #endregion

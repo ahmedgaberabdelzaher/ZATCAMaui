@@ -16,10 +16,12 @@
              x:Class="GAZT.Views.NewViews.ChangeMobileNumberPageView"
              Title="{x:Static local:AppResources.ChangeMobileNumber}"
              NavigationPage.HasNavigationBar="False"
-             Style="{StaticResource ContentPageStyle}"
-              BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
+           
+>
+    <!--   Style="{StaticResource ContentPageStyle}"
+    BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
-                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}">
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"-->
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -62,12 +64,13 @@
 
                 <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
 
-
-                <StackLayout   Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                <!--Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
                                                                  PhoneLandscape='150,32',
                                                                  TabletPortrait='200,50',
                                                                  TabletLandscape='300,50',
-                                                                 Desktop='30'}"  WidthRequest="{OnPlatform Default='-1',
+                                                                 Desktop='30'}"-->
+
+                <StackLayout    WidthRequest="{OnPlatform Default='-1',
                                               UWP='350'}" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Orientation="Vertical"  IsVisible="{Binding OTPLayoutVisibility}" BackgroundColor="Transparent" Padding="0,10,0,0">
 
 

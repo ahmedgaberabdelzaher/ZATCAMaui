@@ -17,13 +17,15 @@
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
     FlowDirection="LeftToRight"
+    NavigationPage.HasNavigationBar="False"
     
+             x:Class="GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionReportMobilePageView">
+
+    <!-- Style="{StaticResource ContentPageStyle}"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
-                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"
-    NavigationPage.HasNavigationBar="False"
-    Style="{StaticResource ContentPageStyle}"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionReportMobilePageView">
+                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"-->
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -68,13 +70,14 @@
                         Default="CenterAndExpand"
                         Phone="FillAndExpand" />
                     </ScrollView.VerticalOptions>
-
-                    <StackLayout
-                    Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                    <!--Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
                                                                  PhoneLandscape='150,32',
                                                                  TabletPortrait='200,50',
                                                                  TabletLandscape='300,50',
-                                                                 Desktop='30'}"
+                                                                 Desktop='30'}"-->
+
+                    <StackLayout
+
                     Spacing="0"
                     VerticalOptions="FillAndExpand"
                     WidthRequest="{OnPlatform Default='-1',

@@ -205,8 +205,8 @@ namespace GAZT.Views.NewViews
             }
 
             if (viewModel.IsCRChecked == false)
-            {
-                if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber) || FrmLicenseNumber.HasError == true)
+            {//|| FrmLicenseNumber.HasError == true
+                if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber) )
                 {
                     FrmLicenseNumber.HasError = true;
                     IsNextValid = false;
