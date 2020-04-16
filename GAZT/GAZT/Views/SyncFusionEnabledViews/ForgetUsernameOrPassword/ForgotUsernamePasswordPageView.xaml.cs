@@ -221,8 +221,26 @@ namespace GAZT.Views.NewViews
         private void btnTxtTIN_Clicked(object sender, EventArgs e)
         {
             SelectedTinIdPicker.IsOpen = true;
+            
         }
+        private void SelectedTinIdChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            //viewModel.TxtIDNumber = string.Empty;
+            //EntryName.IsEnabled = true;
+            try
+            {
+              //  SelectedTinIdPicker.IsOpen = true;
+                TIN selectedId = (TIN)e.NewValue;
+                viewModel.SelectedTinId = selectedId;
+                viewModel.TxtTIN = selectedId.Tin;
+            }
+            catch (Exception ex)
+            {
 
+            }
+
+
+        }
         private void SelectPasswordUserNamePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             ForgotCredentialType selectedforgotType = (ForgotCredentialType)e.NewValue;

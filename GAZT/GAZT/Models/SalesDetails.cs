@@ -26,8 +26,9 @@ namespace GAZT.Models
         public bool IsOldValueChanged { get; set; } = false;
         public bool SeparatorVisibility { get; set; } = true;
         public bool InformationIconVisibility { get; set; } = true;
-
+        public bool HelpIconVisibility { get; set; }
         
+
 
         public ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
         // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
