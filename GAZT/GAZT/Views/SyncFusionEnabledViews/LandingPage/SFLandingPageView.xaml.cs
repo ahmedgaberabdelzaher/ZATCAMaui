@@ -224,7 +224,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                     {
                         Image arrowImage = sender as Image;
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                        if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                        if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
                             Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);
@@ -291,7 +291,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                     {
                         Label arrowImage = sender as Label;
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                        if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                        if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
                             Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);
@@ -359,7 +359,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                     {
                         Label arrowImage = sender as Label;
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                        if (BModel != null && BModel.eServiceName == AppResources.VATDeclaration)
+                        if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
                             Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);

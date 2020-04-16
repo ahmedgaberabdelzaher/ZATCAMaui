@@ -220,12 +220,13 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </local1:CustomLabel>
-                                                                <Label  Margin="0" 
+                                                            <local1:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
@@ -234,7 +235,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abtypt}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
-                                                                </Label>
+                                                                </local1:CustomLabel>
 
 
 
@@ -282,12 +283,8 @@
 
                                                                 <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
-                                                                <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
-
-
+                                                             
                                                             </Grid>
                                                         </StackLayout>
                                                     </cards1:SfCardView>
@@ -377,6 +374,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
@@ -433,11 +431,8 @@
 
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
-                                                            <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
-
+                                                             <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+                                              
 
                                                         </Grid>
                                                     </StackLayout>
@@ -528,6 +523,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
@@ -584,12 +580,8 @@
 
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
-                                                            <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
-
-
+                                                             <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+                                                          
                                                         </Grid>
                                                     </StackLayout>
                                                 </cards1:SfCardView>
@@ -731,12 +723,8 @@
 
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
 
-                                                            <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-                                                            <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
-                                                            <!--<BoxView  
-                     Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="0" BackgroundColor="Gray" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1"/>-->
-
-
+                                                             <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
+                                                        
                                                         </Grid>
                                                     </StackLayout>
                                                 </cards1:SfCardView>

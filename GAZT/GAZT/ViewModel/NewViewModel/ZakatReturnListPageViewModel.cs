@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZT.Views.NewViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace GAZT.ViewModel.NewViewModel
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         public List<EstimatedZakatReturnsResult> myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
         public static String ReturnPeriod = "";
+        public static int  SelectedICRStatusWhileGoingToZAKATDetails =13;
         #endregion
 
         #region Property
@@ -65,13 +67,28 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedICRStatus = value;
-                if (_selectedICRStatus != null)
-                {
-                    GetFilteredZAKATICRList(SelectedICRStatus);
-
-                }
-                TxtSelectedStatus = _selectedICRStatus.Value;
+                //if (_selectedICRStatus != null)
+                //{
+                //    GetFilteredZAKATICRList(SelectedICRStatus);
+                //}
+               // TxtSelectedStatus = _selectedICRStatus.Value;
              RaisePropertyChanged("SelectedICR");
+            }
+        }
+
+
+        private ZAKATStatus _previousSelectedICRStatus;
+        public ZAKATStatus PreviousSelectedICRStatus
+        {
+            get
+            {
+                return _previousSelectedICRStatus;
+            }
+            set
+            {
+                _previousSelectedICRStatus = value;
+                
+                RaisePropertyChanged("PreviousSelectedICRStatus");
             }
         }
 
@@ -92,6 +109,7 @@ namespace GAZT.ViewModel.NewViewModel
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
                     {
                         ReturnPeriod = SelectedZakatReturn.Period;
+                        SelectedICRStatusWhileGoingToZAKATDetails = SelectedICRStatus.index;
                         //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                          _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
@@ -116,6 +134,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _myZakatReturns = value;
+                if(MyZakatReturns != null && MyZakatReturns.Count > 0)
+                {
+                    HideNoDataMessage();
+                }
                 RaisePropertyChanged("MyZakatReturns");
             }
         }
@@ -228,6 +250,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task OnPageLoad()
         {
+          
             GetZAKATICRStatusList();
             await Task.Run(() =>
             {
@@ -240,7 +263,6 @@ namespace GAZT.ViewModel.NewViewModel
                 estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
                 PopToRootPage();
                 UpdateICRList();
-                SelectedIndex = 13;
                 }
                 catch (InternetException ex)
                 {
@@ -281,38 +303,38 @@ namespace GAZT.ViewModel.NewViewModel
         {
             List<ZAKATStatus> ZAKATStatusListEn = new List<ZAKATStatus>()
             {
-                new ZAKATStatus{ Key ="IP011", Value = "Submitted"},
-                 new ZAKATStatus{ Key ="IP014", Value = "Billed"},
-                  new ZAKATStatus{ Key ="U", Value = "Unsubmitted"},
-                   new ZAKATStatus{ Key ="P", Value = "Paid"},
-                   new ZAKATStatus{ Key ="I", Value = "Partially paid"},
-                 new ZAKATStatus{ Key ="IP015", Value = "In Processing"},
-                  new ZAKATStatus{ Key ="IP017", Value = "Parked"},
-                   new ZAKATStatus{ Key ="IP019", Value = "Rejected"},
-                   new ZAKATStatus{ Key ="IP021", Value = "To Be Approved"},
-                 new ZAKATStatus{ Key ="C0021", Value = "To Be Filled & Parked"},
-                  new ZAKATStatus{ Key ="ZP017", Value = "Parked in Amendment"},
-                   new ZAKATStatus{ Key ="E0089", Value = "GSTC – Escalation In Process"},
-                   new ZAKATStatus{ Key ="E0090", Value = "GSTC – Escalation Completed"},
+                new ZAKATStatus{ Key ="IP011", Value = "Submitted",index = 0},
+                 new ZAKATStatus{ Key ="IP014", Value = "Billed",index = 1},
+                  new ZAKATStatus{ Key ="U", Value = "Unsubmitted",index = 2},
+                   new ZAKATStatus{ Key ="P", Value = "Paid",index = 3},
+                   new ZAKATStatus{ Key ="I", Value = "Partially paid",index = 4},
+                 new ZAKATStatus{ Key ="IP015", Value = "In Processing",index = 5},
+                  new ZAKATStatus{ Key ="IP017", Value = "Parked",index = 6},
+                   new ZAKATStatus{ Key ="IP019", Value = "Rejected",index = 7},
+                   new ZAKATStatus{ Key ="IP021", Value = "To Be Approved",index = 8},
+                 new ZAKATStatus{ Key ="C0021", Value = "To Be Filled & Parked",index = 9},
+                  new ZAKATStatus{ Key ="ZP017", Value = "Parked in Amendment",index = 10},
+                   new ZAKATStatus{ Key ="E0089", Value = "GSTC – Escalation In Process",index = 11},
+                   new ZAKATStatus{ Key ="E0090", Value = "GSTC – Escalation Completed",index = 12},
                  new ZAKATStatus{ Key ="ALL", Value = "All"},
                    
             };
 
             List<ZAKATStatus> ZAKATStatusListAr = new List<ZAKATStatus>()
             {
-                new ZAKATStatus{ Key ="IP011", Value = "تم تقديمه"},
-                 new ZAKATStatus{ Key ="IP014", Value = "مفوتر"},
-                  new ZAKATStatus{ Key ="U", Value = "لم يتم تقديمه"},
-                   new ZAKATStatus{ Key ="P", Value = "مسدد"},
-                   new ZAKATStatus{ Key ="I", Value = "مسدد جزئياً"},
-                 new ZAKATStatus{ Key ="IP015", Value = "في طور المعالجة"},
-                  new ZAKATStatus{ Key ="IP017", Value = "محفوظ كمسودة"},
-                   new ZAKATStatus{ Key ="IP019", Value = "مرفوض"},
-                   new ZAKATStatus{ Key ="IP021", Value = "إنتظار الموافقة"},
-                 new ZAKATStatus{ Key ="C0021", Value = "جاهز للتعبئة و الحفظ كمسودة"},
-                  new ZAKATStatus{ Key ="ZP017", Value = "محفوظ كمسودة تعديل"},
-                   new ZAKATStatus{ Key ="E0089", Value = "الأمانة –قيد التصعيد"},
-                   new ZAKATStatus{ Key ="E0090", Value = "الأمانة – انتهاء التصعيد"},
+                new ZAKATStatus{ Key ="IP011", Value = "تم تقديمه",index = 0},
+                 new ZAKATStatus{ Key ="IP014", Value = "مفوتر",index = 1},
+                  new ZAKATStatus{ Key ="U", Value = "لم يتم تقديمه",index = 2},
+                   new ZAKATStatus{ Key ="P", Value = "مسدد",index = 3},
+                   new ZAKATStatus{ Key ="I", Value = "مسدد جزئياً",index = 4},
+                 new ZAKATStatus{ Key ="IP015", Value = "في طور المعالجة",index = 5},
+                  new ZAKATStatus{ Key ="IP017", Value = "محفوظ كمسودة",index = 6},
+                   new ZAKATStatus{ Key ="IP019", Value = "مرفوض",index = 7},
+                   new ZAKATStatus{ Key ="IP021", Value = "إنتظار الموافقة",index = 8},
+                 new ZAKATStatus{ Key ="C0021", Value = "جاهز للتعبئة و الحفظ كمسودة",index = 9},
+                  new ZAKATStatus{ Key ="ZP017", Value = "محفوظ كمسودة تعديل",index = 10},
+                   new ZAKATStatus{ Key ="E0089", Value = "الأمانة –قيد التصعيد",index = 11},
+                   new ZAKATStatus{ Key ="E0090", Value = "الأمانة – انتهاء التصعيد",index = 12},
                  new ZAKATStatus{ Key ="ALL", Value = "الجميع"},
 
             };
@@ -327,7 +349,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void GetFilteredZAKATICRList(ZAKATStatus selectedICR)
+        public void GetFilteredZAKATICRList(ZAKATStatus selectedICR)
         {
             try
             {
@@ -455,7 +477,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                         }
-
+                       
                         if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12") || myZakatReturnsListTemp[i].Fbtyp.Equals("ZKTE") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A-I") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A-I"))
                         {
                             myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
@@ -464,6 +486,18 @@ namespace GAZT.ViewModel.NewViewModel
                     }
 
                     MyZakatReturns = myZakatReturnsList;
+                    if(ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage)
+                    {
+                        SelectedIndex = SelectedICRStatusWhileGoingToZAKATDetails;
+                        TxtSelectedStatus = ICRStatusList[SelectedIndex].Value;
+                        ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+
+                    }
+                    else
+                    {
+                        SelectedIndex = 13;
+                    }
+
                 }
                 else
                 {
@@ -534,6 +568,10 @@ namespace GAZT.ViewModel.NewViewModel
           
         }
 
+        public void SetCurrentIndex()
+        {
+
+        }
         #endregion
     }
 }

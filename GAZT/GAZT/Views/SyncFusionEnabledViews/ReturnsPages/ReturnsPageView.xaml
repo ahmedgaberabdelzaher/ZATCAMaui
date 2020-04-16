@@ -76,6 +76,9 @@
 
             SeparatorVisibility="None"
             >
+                                                        <x:Arguments>
+                                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                        </x:Arguments>
                                                         <ListView.ItemTemplate>
                                                             <DataTemplate>
                                                                 <ViewCell>
@@ -237,7 +240,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -254,6 +257,9 @@
 
             SeparatorVisibility="None"
             >
+                                                    <x:Arguments>
+                                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                    </x:Arguments>
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <ViewCell>
@@ -268,7 +274,12 @@
 
                                                                             </Grid.ColumnDefinitions>
                                                                             <Grid.RowDefinitions>
-
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
                                                                             </Grid.RowDefinitions>
                                                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -399,7 +410,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -416,6 +427,9 @@
 
             SeparatorVisibility="None"
             >
+                                                        <x:Arguments>
+                                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                        </x:Arguments>
                                                         <ListView.ItemTemplate>
                                                             <DataTemplate>
                                                                 <ViewCell>
@@ -437,14 +451,7 @@
                                                                                     <RowDefinition Height="Auto" />
                                                                                     <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
-                                                                                <!--<Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       TextColor="#005e4b"
-                                   Grid.Row="0"
-                                   Grid.Column="1" />-->
+                                                 
 
                                                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -456,15 +463,6 @@
                                                        />
 
 
-                                                                                <!--<Label Text="{Binding Incotext}" 
-                                                  
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="1"  />-->
-
                                                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
@@ -474,22 +472,6 @@
                                                        Grid.Column="0"
                                                        />
 
-                                                                                <!--<Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
-                                                
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="1"  >
-                                                            <Label.Triggers>
-                                                                <DataTrigger TargetType="Label"
-                                                                             Binding="{Binding FormBundleNumber}" Value="">
-                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                   
-                                                                </DataTrigger>
-                                                            </Label.Triggers>
-                                                        </Label>-->
 
                                                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -508,24 +490,6 @@
                                                                                     </Label.Triggers>
                                                                                 </Label>
 
-                                                                                <!--<Label 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                          Margin="8,0,8,0" 
-                                   Grid.Row="3"
-                                   Grid.Column="1" >
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static local:AppResources.ZTaxPeriod}"/>
-                                                                    -->
-                                                                                <!--<Span Text="      "/>-->
-                                                                                <!--<Span Text="{Binding StatusTxt}" TextColor="{Binding BorderColour}"/>-->
-                                                                                <!--
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>-->
-
                                                                                 <Label  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
@@ -543,33 +507,7 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
 
-                                                                                <!--<Label Text="{Binding FormatTaxPeriod}" 
-                                                  
-                                  Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="1" />-->
-
-                                                                                <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       
-                                   Grid.Row="5"
-                                   Grid.Column="1"/>
-
-
-                                                        <Label Text="{Binding StatusTxt}" 
-                                                  TextColor="{Binding BorderColour}"
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="1"  />-->
+                                                                   
 
 
                                                                                 <Label  Margin="0" 
@@ -590,22 +528,6 @@
                                                                                 </Label>
 
 
-
-                                                                                <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="7"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedDate}" 
-                                                  
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="8"
-                                   Grid.Column="1"  />-->
 
                                                                                 <Label  Margin="0" 
                                   
@@ -628,21 +550,6 @@
 
 
 
-                                                                                <!--<Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="9"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedSingleDueDate}" 
-                                                  
-                                 Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="10"
-                                   Grid.Column="1"  />-->
 
                                                                                 <Label  Margin="0" 
                                   
@@ -662,7 +569,6 @@
                                                                                 </Label>
 
 
-                                                                                <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></StackLayout>-->
                                                                                 <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
 
                                                                             </Grid>
@@ -682,7 +588,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -699,6 +605,9 @@
 
             SeparatorVisibility="None"
             >
+                                                    <x:Arguments>
+                                                        <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                    </x:Arguments>
                                                     <ListView.ItemTemplate>
                                                         <DataTemplate>
                                                             <ViewCell>
@@ -713,7 +622,12 @@
 
                                                                             </Grid.ColumnDefinitions>
                                                                             <Grid.RowDefinitions>
-
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
+                                                                                <RowDefinition Height="Auto" />
                                                                             </Grid.RowDefinitions>
                                                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -843,7 +757,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -860,6 +774,9 @@
 
             SeparatorVisibility="None"
             >
+                                                            <x:Arguments>
+                                                                <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                            </x:Arguments>
                                                             <ListView.ItemTemplate>
                                                                 <DataTemplate>
                                                                     <ViewCell>
@@ -881,14 +798,7 @@
                                                                                         <RowDefinition Height="Auto" />
                                                                                         <RowDefinition Height="Auto" />
                                                                                     </Grid.RowDefinitions>
-                                                                                    <!--<Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       TextColor="#005e4b"
-                                   Grid.Row="0"
-                                   Grid.Column="1" />-->
+                                                   
 
                                                                                     <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -900,14 +810,6 @@
                                                        />
 
 
-                                                                                    <!--<Label Text="{Binding Incotext}" 
-                                                  
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="1"  />-->
 
                                                                                     <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -917,23 +819,6 @@
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
-                                                                                    <!--<Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
-                                                
-                                 Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="1"  >
-                                                            <Label.Triggers>
-                                                                <DataTrigger TargetType="Label"
-                                                                             Binding="{Binding FormBundleNumber}" Value="">
-                                                                    <Setter Property="IsVisible" Value="False"></Setter>
-                                                                   
-                                                                </DataTrigger>
-                                                            </Label.Triggers>
-                                                        </Label>-->
 
                                                                                     <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -952,23 +837,7 @@
                                                                                         </Label.Triggers>
                                                                                     </Label>
 
-                                                                                    <!--<Label 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                          Margin="8,0,8,0" 
-                                   Grid.Row="3"
-                                   Grid.Column="1" >
-                                                            <Label.FormattedText>
-                                                                <FormattedString>
-                                                                    <Span Text="{x:Static local:AppResources.ZTaxPeriod}"/>
-                                                                    -->
-                                                                                    <!--<Span Text="      "/>-->
-                                                                                    <!--<Span Text="{Binding StatusTxt}" TextColor="{Binding BorderColour}"/>-->
-                                                                                    <!--
-                                                                </FormattedString>
-                                                            </Label.FormattedText>
-                                                        </Label>-->
+                                                          
 
                                                                                     <Label  Margin="0" 
                                   
@@ -987,33 +856,6 @@
                                                                                         </Label.FormattedText>
                                                                                     </Label>
 
-                                                                                    <!--<Label Text="{Binding FormatTaxPeriod}" 
-                                                  
-                                  Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="4"
-                                   Grid.Column="1" />-->
-
-                                                                                    <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
-                                 
-                                                       Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="Start"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       
-                                   Grid.Row="5"
-                                   Grid.Column="1"/>
-
-
-                                                        <Label Text="{Binding StatusTxt}" 
-                                                  TextColor="{Binding BorderColour}"
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="6"
-                                   Grid.Column="1"  />-->
 
 
                                                                                     <Label  Margin="0" 
@@ -1035,21 +877,7 @@
 
 
 
-                                                                                    <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="7"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedDate}" 
-                                                  
-                                  Margin="8,0,8,0"
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="8"
-                                   Grid.Column="1"  />-->
+                                         
 
                                                                                     <Label  Margin="0" 
                                   
@@ -1069,24 +897,6 @@
                                                                                     </Label>
 
 
-
-
-
-                                                                                    <!--<Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
-                                                       HorizontalOptions="StartAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                   Grid.Row="9"
-                                   Grid.Column="1"/>
-
-                                                        <Label Text="{Binding FormatedSingleDueDate}" 
-                                                  
-                                 Margin="8,0,8,0" 
-                                   Style="{StaticResource MiniGrayLabelStyle}"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand"
-                                   Grid.Row="10"
-                                   Grid.Column="1"  />-->
 
                                                                                     <Label  Margin="0" 
                                   
@@ -1126,7 +936,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <local:CustomLabel TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -1143,6 +953,9 @@
 
             SeparatorVisibility="None"
             >
+                                                        <x:Arguments>
+                                                            <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
+                                                        </x:Arguments>
                                                         <ListView.ItemTemplate>
                                                             <DataTemplate>
                                                                 <ViewCell>
@@ -1157,7 +970,12 @@
 
                                                                                 </Grid.ColumnDefinitions>
                                                                                 <Grid.RowDefinitions>
-
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
+                                                                                    <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
                                                                                 <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -1245,13 +1063,6 @@
                                                                                 </Label>
 
 
-                                                                                <Image  Grid.Row="0"
-                                                                Grid.Column="1"
-                                                                
-                                                            
-                                                                Source="{Binding StatusImage}"
-                                                                HorizontalOptions="CenterAndExpand"
-                                                                VerticalOptions="StartAndExpand"/>
 
 
                                                                             </Grid>

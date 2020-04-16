@@ -14,6 +14,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Resources;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -306,16 +307,16 @@ namespace GAZT.Views.NewViews
                 {
                     try
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty);
-                        if (ResultDuplicate.d.Flag == "")
-                        {
+                        //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty);
+                        //if (ResultDuplicate.d.Flag == "")
+                        //{
                             if (viewModel.IsCRChecked == true)
                             {
                                 try
                                 {
-                                    DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                    if (ResultDuplicateCR.d.Flag == "")
-                                    {
+                                    //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                    //if (ResultDuplicateCR.d.Flag == "")
+                                    //{
                                         CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
                                         SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -392,22 +393,27 @@ namespace GAZT.Views.NewViews
                                         string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                         SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                         viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                        if (ResultFirstSubmitModel.d == null)
-                                        {
-                                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                            viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                if (ResultFirstSubmitModel.d == null)
+                                {
+                                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                    StringBuilder Message = new StringBuilder();
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                    Message.Append(Environment.NewLine);
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
 
-                                        }
-                                        else
-                                        {
-                                            viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                                        }
+                                    viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
-                                    }
-                                    else
-                                    {
-                                        viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                    }
+                                }
+                                else
+                                {
+                                    viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                                }
+
+                                    //}
+                                    //else
+                                    //{
+                                    //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                    //}
                                 }
                                 catch (InternetException ex)
                                 {
@@ -496,13 +502,18 @@ namespace GAZT.Views.NewViews
                                     string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                     viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                    if (ResultFirstSubmitModel.d == null)
-                                    {
-                                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                        viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                if (ResultFirstSubmitModel.d == null)
+                                {
+                                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                    StringBuilder Message = new StringBuilder();
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                    Message.Append(Environment.NewLine);
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
 
-                                    }
-                                    else
+                                    viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+                                }
+                                else
                                     {
                                         viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                     }
@@ -515,11 +526,11 @@ namespace GAZT.Views.NewViews
                                     });
                                 }
                             }
-                        }
-                        else
-                        {
-                            viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                        //}
                     }
                     catch (InternetException ex)
                     {
@@ -532,16 +543,16 @@ namespace GAZT.Views.NewViews
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 2)
                 {
-                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
-                    if (ResultDuplicate.d.Flag == "")
-                    {
+                    //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
+                    //if (ResultDuplicate.d.Flag == "")
+                    //{
                         if (viewModel.IsCRChecked == true)
                         {
                             try
                             {
-                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                if (ResultDuplicateCR.d.Flag == "")
-                                {
+                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                //if (ResultDuplicateCR.d.Flag == "")
+                                //{
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
                                     SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -617,21 +628,26 @@ namespace GAZT.Views.NewViews
                                     string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                     viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                    if (ResultFirstSubmitModel.d == null)
-                                    {
-                                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                        viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                StringBuilder Message = new StringBuilder();
+                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                Message.Append(Environment.NewLine);
+                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
 
-                                    }
-                                    else
+                                viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+                            }
+                            else
                                     {
                                         viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                     }
-                                }
-                                else
-                                {
-                                    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                }
+                                //}
+                                //else
+                                //{
+                                //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                //}
                             }
                             catch (InternetException ex)
                             {
@@ -721,13 +737,18 @@ namespace GAZT.Views.NewViews
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                if (ResultFirstSubmitModel.d == null)
-                                {
-                                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                    viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                            if (ResultFirstSubmitModel.d == null)
+                            {
+                                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                StringBuilder Message = new StringBuilder();
+                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                Message.Append(Environment.NewLine);
+                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
 
-                                }
+                                viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
                             }
+                        }
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -737,26 +758,26 @@ namespace GAZT.Views.NewViews
                             }
                         }
 
-                    }
-                    else
-                    {
-                        viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                    //}
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 3)
                 {
                     try
                     {
-                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty);
+                        //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty);
 
 
                         if (viewModel.IsCRChecked==true)
                         {
                             try
                             {
-                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                if (ResultDuplicateCR.d.Flag == "")
-                                {
+                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                //if (ResultDuplicateCR.d.Flag == "")
+                                //{
                                     CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
 
                                     SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
@@ -834,21 +855,26 @@ namespace GAZT.Views.NewViews
                                     string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                     viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
-                                    if (ResultFirstSubmitModel.d == null)
-                                    {
-                                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                        viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                if (ResultFirstSubmitModel.d == null)
+                                {
+                                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                                    StringBuilder Message = new StringBuilder();
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                    Message.Append(Environment.NewLine);
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
 
-                                    }
-                                    else
+                                    viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+                                }
+                                else
                                     {
                                         viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                     }
-                                }
-                                else
-                                {
-                                    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                }
+                                //}
+                                //else
+                                //{
+                                //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                //}
                             }
                             catch (InternetException ex)
                             {
@@ -880,7 +906,7 @@ namespace GAZT.Views.NewViews
                                 string year = selectedItem[2].ToString();
                                 DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
                                 long ticks = DateOfBirth.Ticks;
-                                TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Local));
                                 string unixTime = span.TotalSeconds.ToString("N0");
                                 unixTime = unixTime.Replace(",", "");
                                 SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
@@ -941,7 +967,12 @@ namespace GAZT.Views.NewViews
                                 if (ResultFirstSubmitModel.d == null)
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                                    viewModel._dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                                    StringBuilder Message = new StringBuilder();
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
+                                    Message.Append(Environment.NewLine);
+                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+
+                                    viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                                 }
                                 else
@@ -1539,16 +1570,18 @@ namespace GAZT.Views.NewViews
 
         public bool IsValid(string emailaddress)
         {
-            try
+            
+                bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+      
+            if (isEmail)
             {
-                MailAddress m = new MailAddress(emailaddress);
-
                 return true;
             }
-            catch (FormatException)
+            else
             {
                 return false;
             }
+    
         }
 
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)

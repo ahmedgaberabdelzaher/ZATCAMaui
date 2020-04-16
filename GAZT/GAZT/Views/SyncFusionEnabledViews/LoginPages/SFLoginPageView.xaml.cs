@@ -32,34 +32,40 @@ namespace GAZTeServicesApp.Views.LoginPage
         /// </summary>
         public SFLoginPageView(String strNavigateToThisService)
         {
-           // SetLTRDirection();
-            InitializeComponent();
-            
-            this.BindingContext = viewModel = App.Locator.SFLoginPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            ChangeAeroIcon();
-            viewModel.NavigateToThisService = strNavigateToThisService;
-            if (App.IsArabic)
+            // SetLTRDirection();
+            try
             {
+                InitializeComponent();
 
-                this.FlowDirection = FlowDirection.RightToLeft;
-                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+                this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                ChangeAeroIcon();
+                viewModel.NavigateToThisService = strNavigateToThisService;
+                if (App.IsArabic)
+                {
 
-            }
-            else
-            {
-                this.FlowDirection = FlowDirection.LeftToRight;
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
-            }
-            
+                    this.FlowDirection = FlowDirection.RightToLeft;
+                    CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                    PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+
+                }
+                else
+                {
+                    this.FlowDirection = FlowDirection.LeftToRight;
+                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                    PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
+                }
+
                 DependencyService.Get<IStatusBar>().HideStatusBar();
-            viewModel.TINIndex = 0;
-         
+                viewModel.TINIndex = 0;
 
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             // ParentContainer.RaiseChild(BusyIndicator);
         }
