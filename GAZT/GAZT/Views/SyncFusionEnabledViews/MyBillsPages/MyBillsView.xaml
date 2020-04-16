@@ -226,6 +226,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
@@ -373,6 +374,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
@@ -521,6 +523,7 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
