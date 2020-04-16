@@ -64,6 +64,7 @@ namespace GAZT.Views.NewViews
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = true;
           await viewModel.OnPageLoad(Fbguid);
             date.Text = viewModel.Abrzu;
 

@@ -1686,6 +1686,15 @@ namespace GAZT.Manager
                 return 'E';
         }
 
+        private static String GetLangZParameterAREN()
+        {
+            if (App.IsArabic)
+                return "AR";
+            else
+                return "EN";
+        }
+
+
         //done internet exception handling
         public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
@@ -2458,9 +2467,9 @@ namespace GAZT.Manager
                     zakatReturnDetailsD.d.UserTypz = "TP";
                     zakatReturnDetailsD.d.Langz = UtilityManager.GetLanguageParameter();
                     ZakatReturnDetails _zakatReturnDetailsD = new ZakatReturnDetails();
-                    char LangZ = GetLangZParameter();
+                    string LangZ = GetLangZParameterAREN();
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTSaveEstimatedZaktReturn;
+                    String url = Constants.GAZTSaveEstimatedZaktReturn + LangZ;
                     // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();

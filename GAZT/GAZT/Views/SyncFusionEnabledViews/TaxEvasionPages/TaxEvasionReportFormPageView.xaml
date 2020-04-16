@@ -451,25 +451,25 @@ ItemHeight="45" ShowFooter="False"  >
 
 
                         <!--Report Location-->
-                        <Label Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
+                        <local1:CustomLabel Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetailRLocation}"  />
                                 </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                            </local1:CustomLabel.FormattedText>
+                        </local1:CustomLabel>
                         <Frame  Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
                             <maps:Map Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                         </Frame>
                         <!--Attachment-->
-                        <Label Grid.Row="21" x:Name="Attachment_Label"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
-                            <Label.FormattedText>
+                        <local1:CustomLabel Grid.Row="21" x:Name="Attachment_Label"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                 </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
+                                </local1:CustomLabel.FormattedText>
+                        </local1:CustomLabel>
                         <Frame Grid.Row="22"  x:Name="Attachment_Frm" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
                         <custom:GAZTBorderlessEntry  Grid.Row="22" Text="{Binding AttachmentName}"  x:Name="Attachment_Entry"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
@@ -516,7 +516,7 @@ ItemHeight="45" ShowFooter="False"  >
                                                                         <RowDefinition Height="auto" />
                                                                     </Grid.RowDefinitions>
 
-                                                                    <Label Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
+                                                                    <local1:CustomLabel Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -524,7 +524,7 @@ ItemHeight="45" ShowFooter="False"  >
                                    Grid.Column="0"
                                                            />
 
-                                                                    <Label Text="{Binding FileNameWithExtension}" 
+                                                                    <local1:CustomLabel Text="{Binding FileNameWithExtension}" 
                                                   
                                   Margin="0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
