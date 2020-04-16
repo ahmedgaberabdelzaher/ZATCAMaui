@@ -853,7 +853,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
         }
-        public  void tessentOtptomobile()
+        public  async void tessentOtptomobile()
             {
            
             TesSetGenerateOtp();
@@ -862,17 +862,17 @@ namespace GAZT.ViewModel.NewViewModel
                          TesGeneratedOtpCode);
             try
             {
-                string r = WebServiceManager.GAZTTESVerfymobNoSendOtp(mobnumber, TesMessageForSms);
-                if (string.IsNullOrEmpty(r))
+                string r =await  WebServiceManager.GAZTTESVerfymobNoSendOtp(mobnumber, TesMessageForSms);
+                if (!string.IsNullOrEmpty(r))
                 {
-                    if (Int32.Parse(r) > 0)
+                    if (Int32.Parse(r) < 0)
                     {
+                        _dialogService.ShowMessageBox("Invalid Mobile number", AppResources.Information);
 
                     }
                     else
                     {
-                        _dialogService.ShowMessageBox("Invalid Mobile number", AppResources.Information);
-
+                        
 
                     }
 
