@@ -74,7 +74,7 @@ namespace GAZT.Views.NewViews
                         }
                         else
                         {
-                            if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
+                            if ((App.ICRStatus == "E0006" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0) || (App.ICRStatus == "E0056" && Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) > 0))
                             {
                                 RefreshForSadad();
                             }

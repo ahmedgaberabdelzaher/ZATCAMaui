@@ -270,10 +270,95 @@ namespace GAZT.Views.NewViews
                     {
                         SetNote();
                     }
-
-
-
                 }
+
+                if(App.ICRStatus == "E0045" && viewModel.IsAmendClicked==true && AddNotePageViewModel.ClearNoteClicked == false)
+                {
+                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                    
+                    if (note != null)
+                    {
+                        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        //{
+                        //    item.DataVersionz = "00001";
+                        //}
+                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (noteForEdited != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = AddNotePageViewModel.NoteString;
+                                item.Tdline = AddNotePageViewModel.NoteString;
+                            }
+                        }
+                        else
+                        {
+                            SetNoteForBilledAndAmend();
+                        }
+                    }
+                    else
+                    {
+                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (noteForEdited != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = AddNotePageViewModel.NoteString;
+                                item.Tdline = AddNotePageViewModel.NoteString;
+                            }
+                        }
+                        else
+                        {
+                            SetNoteForBilledAndAmend();
+                        }
+                    }
+                }
+
+
+                if (App.ICRStatus == "E0006" && viewModel.IsAmendClicked == true && AddNotePageViewModel.ClearNoteClicked == false)
+                {
+                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+
+                    if (note != null)
+                    {
+                        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                        //{
+                        //    item.DataVersionz = "00001";
+                        //}
+                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (noteForEdited != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = AddNotePageViewModel.NoteString;
+                                item.Tdline = AddNotePageViewModel.NoteString;
+                            }
+                        }
+                        else
+                        {
+                            SetNoteForBilledAndAmend();
+                        }
+                    }
+                    else
+                    {
+                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                        if (noteForEdited != null)
+                        {
+                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                            {
+                                item.Strline = AddNotePageViewModel.NoteString;
+                                item.Tdline = AddNotePageViewModel.NoteString;
+                            }
+                        }
+                        else
+                        {
+                            SetNoteForBilledAndAmend();
+                        }
+                    }
+                }
+
                 if (AddNotePageViewModel.ClearNoteClicked == true)
                 {
                     Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
@@ -330,6 +415,61 @@ namespace GAZT.Views.NewViews
             viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
             AddNotePageViewModel.IsComingFromNotePage = false;
             //AddNotePageViewModel.NoteString = string.Empty;
+        }
+
+        public void SetNoteForBilledAndAmend()
+        {
+            try
+            {
+                Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                if (note != null)
+                {
+
+                }
+                else
+                {
+                    viewModel.VATDeclarationData.d.NOTESSet.results = new List<Note>();
+                }
+
+
+                Note objNote = new Note();
+
+                int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                objNote.__metadata = new Metadata2();
+                objNote.__metadata.id = Url;
+                objNote.__metadata.uri = Url;
+                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+
+                objNote.Notenoz = (count + 1).ToString();
+                objNote.DataVersionz = "00000";
+                objNote.Refnamez = String.Empty;
+                objNote.XInvoicez = String.Empty;
+                objNote.XObsoletez = string.Empty;
+                objNote.Rcodez = "VATR";
+                objNote.ByPusrz = string.Empty;
+                objNote.Tdformat = string.Empty;
+                objNote.Tdline = string.Empty;
+                objNote.Erfusrz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.ByGpartz = viewModel.VATDeclarationData.d.Gpartz;
+                objNote.Namez = viewModel.VATDeclarationData.d.Tpnm;
+                objNote.AttByz = "TP";
+                objNote.Noteno = (count + 1).ToString();
+                objNote.Lineno = 1;
+                objNote.ElemNo = 0;
+                objNote.Strdt = string.Empty;
+                objNote.Strtime = string.Empty;
+                objNote.Sect = "VAT Return General Note";
+                objNote.Strline = AddNotePageViewModel.NoteString;
+                objNote.Tdline = AddNotePageViewModel.NoteString;
+                viewModel.VATDeclarationData.d.NOTESSet.results.Add(objNote);
+                AddNotePageViewModel.IsComingFromNotePage = false;
+                //AddNotePageViewModel.NoteString = string.Empty;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         private void ClickGestureRecognizer_ClickedForInstructions(object sender, EventArgs e)
