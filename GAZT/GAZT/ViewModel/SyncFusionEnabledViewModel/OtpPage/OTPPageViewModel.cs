@@ -219,7 +219,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private String _enteredOTP = "0106";// string.Empty;
+        private String _enteredOTP = string.Empty;
         public String EnteredOTP
         {
             get

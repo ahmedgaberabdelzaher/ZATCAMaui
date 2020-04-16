@@ -410,7 +410,7 @@
                                    Grid.Row="1"
                                    Grid.Column="0"
                                                            />-->
-                                                                    <Label  Margin="0" 
+                                                                    <local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -418,14 +418,14 @@
                                    Grid.Column="0"
                                                                       
                                                            >
-                                                                        <Label.FormattedText>
+                                                                        <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZTitle}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Title}"></Span>
                                                                             </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
 
 
 
@@ -454,7 +454,7 @@
                                    Grid.Column="0"
                                                            />-->
 
-                                                                    <Label  Margin="0" 
+                                                                    <local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -462,14 +462,14 @@
                                    Grid.Column="0"
                                                                       
                                                            >
-                                                                        <Label.FormattedText>
+                                                                        <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZReferenceNumber}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}"></Span>
                                                                             </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
 
 
 
@@ -495,7 +495,7 @@
                                                                                     
                                                                                 </Label>-->
 
-                                                                    <Label  Margin="0" 
+                                                                    <local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -503,14 +503,14 @@
                                    Grid.Column="0"
                                                                       
                                                            >
-                                                                        <Label.FormattedText>
+                                                                        <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZDateandTime}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DateAndTime}"></Span>
                                                                             </FormattedString>
-                                                                        </Label.FormattedText>
-                                                                    </Label>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
 
 
                                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
