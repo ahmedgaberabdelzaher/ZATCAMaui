@@ -64,10 +64,12 @@ namespace GAZTeServicesApp.Views.Options
             if (viewModel.IsComingFrom == ComingToOptionScreenFrom.IsAnonymousPage)
             {
                 viewModel.IsTaxPayerProfileVisible = false;
+                viewModel.IsCorrespondenceVisible = false;
             }
             else
             {
                 viewModel.IsTaxPayerProfileVisible = true;
+                viewModel.IsCorrespondenceVisible = true;
             }
             InitializeComponent();
         }

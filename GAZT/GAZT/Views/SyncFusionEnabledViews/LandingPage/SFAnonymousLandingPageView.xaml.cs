@@ -149,10 +149,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
                 //}
-                if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+                //}
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
@@ -203,10 +203,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
                 //}
 
-                if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
-                }
+                //if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
+                //{
+                //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+                //}
 
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
