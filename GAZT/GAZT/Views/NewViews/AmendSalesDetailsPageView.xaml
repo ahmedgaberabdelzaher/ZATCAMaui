@@ -253,7 +253,7 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <ContentView>
-                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
 
@@ -328,7 +328,7 @@
                     </ScrollView>
                 </Grid>
 
-                <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56" Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}"></Button>
+                <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56" Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}"></Button>
             
             </Grid>
             <!-- Acticity indicator layout start -->
