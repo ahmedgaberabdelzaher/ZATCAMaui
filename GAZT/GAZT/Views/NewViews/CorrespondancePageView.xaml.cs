@@ -45,10 +45,15 @@ namespace GAZT.Views.NewViews
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                viewModel.LabelHzAlignment = TextAlignment.End;
+
+
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+                viewModel.LabelHzAlignment = TextAlignment.Start;
+
             }
         }
         //private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)

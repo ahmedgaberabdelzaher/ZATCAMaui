@@ -68,11 +68,12 @@
                     StrokeThickness="2"/>
                     </tabView:SfTabView.SelectionIndicatorSettings>
                     <tabView:SfTabItem Title="{Binding ZakatCountDisplay}"
-                                        TitleFontSize="14"
+                                        TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
                              TitleFontColor="Gray">
+
                 <tabView:SfTabItem.Content>
                           
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridZakat"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,0" >
@@ -179,7 +180,8 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                                      
+                                                                                        
+                                                                                        HorizontalTextAlignment="{Binding LabelHzAlignment}"
                                                            >
                                                                         <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
@@ -297,7 +299,7 @@
    
                         </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="14"
+                    <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
@@ -535,7 +537,7 @@
                             
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="14"
+                    <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    

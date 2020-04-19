@@ -29,12 +29,29 @@ namespace GAZT.ViewModel.NewViewModel
 
         public ICommand OnBackButtonClicked { get; set; }
 
-        
+
 
         private List<CorrespondanceModel> _listVATCorrespondance = null;
         CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
+
+        private TextAlignment _labelHzAlignment = TextAlignment.Start;
+
+        public TextAlignment LabelHzAlignment
+        {
+            get
+            {
+                return _labelHzAlignment;
+            }
+            set
+            {
+                _labelHzAlignment = value;
+                RaisePropertyChanged("LabelHzAlignment");
+            }
+        }
+
+
         private string _txtSelectedStatusZakat = string.Empty;
         public string TxtSelectedStatusZakat
         {
