@@ -29,7 +29,9 @@ namespace GAZT.Views.NewViews
                 InitializeComponent();
                 clearFields();
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
-                viewModel.selectedtaxEList = SelectedTaxEvasionListItem;
+
+                viewModel.selectedtaxEList = new TaxEvasionReport();
+                viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
                 ChangeAeroIcon();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
@@ -106,7 +108,15 @@ namespace GAZT.Views.NewViews
                 {
                     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Name))
                     {
-                        viewModel.TName = App.TP.Name;
+                        try
+                        {
+                            viewModel.TName = App.TP.Name;
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+                        
                     }
                     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
                     { viewModel.TEmail = App.TP.Email; }
