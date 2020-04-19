@@ -264,16 +264,17 @@
                             VerticalTextAlignment="Center" />
 
                         <!--  Sign-up button  -->
-                            <buttons:SfButton IsVisible="False"
+                            <buttons:SfButton IsVisible="False" 
                             Command="{Binding SignUpCommand}"
                             CornerRadius="4"
                              HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center"
                             Style="{StaticResource SfFlatButtonStyle}"
-                            Text="{x:Static local1:AppResources.ZZSignup}" />
+                            Text="{x:Static local1:AppResources.ZZSignup}" >
+                            </buttons:SfButton>
 
-                    </StackLayout>
+                        </StackLayout>
 
                 </StackLayout>
             </ScrollView>
