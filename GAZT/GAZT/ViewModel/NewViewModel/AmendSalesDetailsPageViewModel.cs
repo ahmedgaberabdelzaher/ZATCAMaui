@@ -48,6 +48,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _zakatReturnAttachmentsList = value;
+                //if(ZakatReturnAttachmentsList != null)
+                //{
+                //    SetSaveButtonVisibility();
+                //}
                 RaisePropertyChanged("ZakatReturnAttachmentsList");
             }
         }
@@ -91,6 +95,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _newValue = value;
                 IsValueChanged();
+                SetSaveButtonVisibility();
                 if (!string.IsNullOrEmpty(NewValue))
                 {
                     SelectedSalesDetails.NewValue = NewValue;
@@ -130,8 +135,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _changeReason = value;
                 IsValueChanged();
+                SetSaveButtonVisibility();
                 if (!string.IsNullOrEmpty(NewValue))
                 {
+
                     SelectedSalesDetails.ChangeReason = ChangeReason;
                     if (SelectedSalesDetails.IsReasonRequird)
                     {
@@ -200,8 +207,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private Color _buttonBackgroundColor = Color.FromHex("#9EA4A9");
+        public Color ButtonBackgroundColor
+        {
+            get
+            {
+                return _buttonBackgroundColor;
+            }
+            set
+            {
+                _buttonBackgroundColor = value;
+                RaisePropertyChanged("ButtonBackgroundColor");
+            }
+        }
 
-      
         #endregion
 
         #region Constructor
@@ -521,10 +540,13 @@ namespace GAZT.ViewModel.NewViewModel
                             if (ZakatReturnAttachmentsList[i].Doguid.Equals(dougUD))
                             {
                                 ZakatReturnAttachmentsList.RemoveAt(i);
+                               
                                 SelectedSalesDetails.estimateZakatAttachment.RemoveAt(i);
+                              
                             }
                         }
                         IsValueChanged();
+                        SetSaveButtonVisibility();
                     }
                 }
                 catch (InternetException ex)
@@ -567,18 +589,22 @@ namespace GAZT.ViewModel.NewViewModel
             if(attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count )
             {
                 IsSaveButtonEnable = true;
+                ButtonBackgroundColor = Color.FromHex("#005e4b");
             }
             else if(newValue != NewValue && !isOnLoad)
             {
                 IsSaveButtonEnable = true;
+                ButtonBackgroundColor = Color.FromHex("#005e4b");
             }
             else if(changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
             {
                 IsSaveButtonEnable = true;
+                ButtonBackgroundColor = Color.FromHex("#005e4b");
             }
             else
             {
                 IsSaveButtonEnable = false;
+                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
             }
         }
 
@@ -610,8 +636,11 @@ namespace GAZT.ViewModel.NewViewModel
                     DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
                     long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
                     DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
-
+                   
                     _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
+                    string uploadedDate = _zakatAttachment.UploadededDateToShow;
+                    uploadedDate = uploadedDate.Replace("'", "");
+                    _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
                 catch(Exception ex)
@@ -629,6 +658,22 @@ namespace GAZT.ViewModel.NewViewModel
             int lengthOfCharacter = _erfdt.Length - 8;
             string unixDateTime = _erfdt.Substring(startIndex, lengthOfCharacter);
             return unixDateTime;
+        }
+
+        private void SetSaveButtonVisibility()
+        {
+            if((ZakatReturnAttachmentsList != null &&  ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+            {
+                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+            }
+            else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+            {
+                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+            }
+            else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
+            {
+                ButtonBackgroundColor = Color.FromHex("#005e4b");
+            }
         }
         #endregion
     }
