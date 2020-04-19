@@ -79,6 +79,7 @@ namespace GAZT.Views.NewViews
 
         protected async void OnBillsButtonClicked(object sender, EventArgs e)
         {
+            ZakatReturnDetailsPageViewModel.IsAmendButtonClicked = false;
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {
                 var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.OKText, AppResources.ZZCancel);

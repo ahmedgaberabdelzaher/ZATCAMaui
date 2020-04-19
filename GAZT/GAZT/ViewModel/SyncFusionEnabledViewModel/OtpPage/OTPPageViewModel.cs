@@ -219,7 +219,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private String _enteredOTP = "0106";// string.Empty;
+        private String _enteredOTP = string.Empty;
         public String EnteredOTP
         {
             get
@@ -1217,17 +1217,17 @@ namespace GAZT.ViewModel.NewViewModel
                     String strtemp = AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked;// "You have {0} remaining attempt then the account will be locked";
 
                     String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
-                    str = " You have" + remainingAttempts + "remaining attempt then the account will be locked";// String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
+                    str = " You have " + remainingAttempts + " remaining attempt then the account will be locked";// String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
                     // str = "You have " + remainingAttempts + " remaining attempt then the account will be locked";
                 }
                 else
                 {
-                    String strtemp = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;// "You have {0} remaining attempt then the account will be locked";
+                    //String strtemp = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;// "You have {0} remaining attempt then the account will be locked";
 
-                    String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
-                    str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
+                    //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
+                    //str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
 
-                    //str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
+                   str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
                 }
                 //str = "You have " + remainingAttempts + "remaining attempt then the account will be locked";
             }
@@ -1244,7 +1244,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
                     //str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
 
-                    str = "لديك " + remainingAttempts + "محاولات متبقية؛ ثم سيتم قفل حسابك  ";
+                    str = "لديك " + remainingAttempts +" محاولات متبقية؛ ثم سيتم قفل حسابك   ";
                 }
                 else
                 {
@@ -1254,7 +1254,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
                     //str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
 
-                    str = " مرات لإدخال رمز التح " + WebServiceManager.NumberOfValiedAttempts + " تم إلغاء محاولة الدخول بسبب الفشل";
+                    str = " مرات لإدخال رمز التح " + WebServiceManager.NumberOfValiedAttempts + " تم إلغاء محاولة الدخول بسبب الفشل ";
                 }
             }
             return str;
