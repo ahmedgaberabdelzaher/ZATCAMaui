@@ -35,7 +35,7 @@ namespace GAZT.Views.NewViews
                 viewModel.zakatReturnDetailsD = ZakatReturnDetail;
                 viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
                 SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
-
+             
                // AmendSalesDetailsPageViewModel.SelectedSalesDetails = new SalesDetails();
                 //viewModel.EstimatedZAKATSADADNumber.ObjectionInvoiceVisibility = false;
                 //viewModel.EstimatedZAKATSADADNumber.AmendInvoiceVisibility = false;
