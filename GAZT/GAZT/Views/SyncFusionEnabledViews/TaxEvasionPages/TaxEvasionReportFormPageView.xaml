@@ -52,11 +52,11 @@ xmlns:custom="clr-namespace:GAZT"
 
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="FillAndExpand" x:Name="TaxEvasionMainGrid" VerticalOptions="FillAndExpand"    Padding="0,0,0,10" >
+            <Grid HorizontalOptions="FillAndExpand" x:Name="TaxEvasionMainGrid" VerticalOptions="FillAndExpand"    Padding="0,0,0,0" >
                 <Grid.RowDefinitions>
                  
                     <RowDefinition Height="80*" />
-                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -64,7 +64,7 @@ xmlns:custom="clr-namespace:GAZT"
 
 
                 <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  Margin="0" Padding="0,10,0,10" >
+                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  BackgroundColor="White" Margin="0" Padding="0,10,0,10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -104,7 +104,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <custom:BorderlessEntry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
 
-                                    <custom1:OnlyAlphabatesBehaviour/>
+                                    <custom1:AlphabetandArabicCharacters/>
 
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
@@ -762,7 +762,7 @@ ItemHeight="45" ShowFooter="False"  >
                 <!--<Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
                 </Frame>-->
                 <!--<Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,-15"  BackgroundColor="White">
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
                     <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
 
 
