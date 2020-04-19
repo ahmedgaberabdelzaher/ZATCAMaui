@@ -329,7 +329,22 @@
                     </ScrollView>
                 </Grid>
 
-                <Button Text="{x:Static local:AppResources.Save}"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56" Style="{StaticResource GAZTVerifyButton}" IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}"></Button>
+                <buttons:SfButton Text="{x:Static local:AppResources.Save}" FontAttributes="Bold" TextColor="White"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56"  IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}" Opacity="0.7">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="gray" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="TextColor" Value="White" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </buttons:SfButton>
             
             </Grid>
             <!-- Acticity indicator layout start -->
