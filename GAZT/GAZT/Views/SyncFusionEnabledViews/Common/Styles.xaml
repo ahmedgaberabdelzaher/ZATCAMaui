@@ -31,7 +31,7 @@
     <x:String x:Key="Share">&#xe704;</x:String>
     <x:String x:Key="Next">&#xe71a;</x:String>
     <x:String x:Key="Account">&#xe70e;</x:String>
-    <x:String x:Key="Mail">&#xe70e;</x:String>
+    <x:String x:Key="Mail">&#xe725;</x:String>
     <x:String x:Key="Help">&#xe72c;</x:String>
     <x:String x:Key="Close">&#xe724;</x:String>
     <x:String x:Key="Edit">&#xe727;</x:String>

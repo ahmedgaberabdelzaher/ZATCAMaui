@@ -61,6 +61,7 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.EditPasswordCommand = new Command(this.EditPasswordClicked);
             this.EditEmailCommand = new Command(this.EditEmailClicked);
             this.AboutCommand = new Command(this.AboutUsClicked);
+            this.CorrespondenceCommand = new Command(this.CorrespondenceClicked);
 
 
 
@@ -71,6 +72,8 @@ namespace GAZTeServicesApp.ViewModels.Options
         #region Commands
 
         public Command MyProfileCommand { get; set; }
+        public Command CorrespondenceCommand { get; set; }
+        
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
         public Command EditEmailCommand { get; set; }
@@ -118,6 +121,21 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("_isTaxPayerProfileVisible");
             }
         }
+
+        private bool _isCorrespondenceVisible;
+        public bool IsCorrespondenceVisible
+        {
+            get
+            {
+                return _isCorrespondenceVisible;
+            }
+            set
+            {
+                _isCorrespondenceVisible = value;
+                RaisePropertyChanged("IsCorrespondenceVisible");
+            }
+        }
+
 
         private ComingToOptionScreenFrom _isComingFrom;
         public ComingToOptionScreenFrom IsComingFrom
@@ -280,6 +298,19 @@ namespace GAZTeServicesApp.ViewModels.Options
                 _navigationService.NavigateTo(App.TaxPayerProfilePageView);
             }
         }
+
+        private void CorrespondenceClicked(object obj)
+        {
+            if (lastTapped < DateTime.Now.AddSeconds(-2))
+            {
+                lastTapped = DateTime.Now;
+
+                _navigationService.NavigateTo(App.CorrespondancePageView);
+            }
+        }
+
+        
+
 
         private void EditMobileNumberClicked(object obj)
         {
