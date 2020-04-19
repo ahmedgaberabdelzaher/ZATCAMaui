@@ -3300,7 +3300,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource More}"
-                            
+                            IsEnabled="{TemplateBinding BindingContext.IsMoreButtonEnabled}"
                              />
 
                     </controls:TitleView.TrailingView>

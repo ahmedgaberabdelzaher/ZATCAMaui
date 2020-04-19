@@ -3031,6 +3031,7 @@ namespace GAZT.ViewModel.NewViewModel
                         IsEnableIBANType = false;
                         IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
+                        IsMoreButtonEnabled = false;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                     else
@@ -3116,6 +3117,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsEnableIBANType = false;
                                 IsEnableIBANIdNumber = false;
                                 IsGetAcknowledgementClicked = true;
+                                IsMoreButtonEnabled = false;
                                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                             }
                             else
@@ -3947,7 +3949,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-
+        
 
 
         private List<String> _ListOfActionButtonsApplicable;
@@ -3986,6 +3988,26 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("DummyListOfActionButtonsApplicable");
             }
         }
+
+
+        
+
+        private bool _isMoreButtonEnabled;
+        public bool IsMoreButtonEnabled
+        {
+            get
+            {
+                return _isMoreButtonEnabled;
+            }
+            set
+            {
+                _isMoreButtonEnabled = value;
+
+                RaisePropertyChanged("IsMoreButtonEnabled");
+            }
+        }
+
+
 
         private List<String> _ActualListOfActionButtonsApplicable;
         public List<String> ActualListOfActionButtonsApplicable

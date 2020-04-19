@@ -57,6 +57,7 @@ namespace GAZT.Views.NewViews
                 viewModel.IsGetAcknowledgementClicked = false;
                 viewModel.IsVisibleDropdownForRefund = false;
                 viewModel.IsFirstSubmission = true;
+                viewModel.IsMoreButtonEnabled = true;
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
                 viewModel.SelectedIndex = 0;
