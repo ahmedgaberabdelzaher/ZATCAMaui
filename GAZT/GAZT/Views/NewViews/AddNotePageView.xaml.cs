@@ -61,7 +61,7 @@ namespace GAZT.Views.NewViews
                         }
                     }
 
-                    if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                    if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                     {
                         if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
                         {
@@ -70,40 +70,40 @@ namespace GAZT.Views.NewViews
                         }
                     }
 
-                    if(App.ICRStatus=="E0045" && AddNotePageViewModel.NoteCount == 0)
-                    {
-                        viewModel.NoteText = string.Empty;
-                        AddNotePageViewModel.NoteCount++;
-                    }
-                    else
-                    {
-                        if (App.ICRStatus == "E0045")
-                        {
-                            if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
-                            {
-                                viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
-                                viewModel.PreviousNoteText = viewModel.NoteText;
-                            }
-                        }
-                    }
+                    //if(App.ICRStatus=="E0045" && AddNotePageViewModel.NoteCount == 0)
+                    //{
+                    //    viewModel.NoteText = string.Empty;
+                    //    AddNotePageViewModel.NoteCount++;
+                    //}
+                    //else
+                    //{
+                    //    if (App.ICRStatus == "E0045")
+                    //    {
+                    //        if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                    //        {
+                    //            viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                    //            viewModel.PreviousNoteText = viewModel.NoteText;
+                    //        }
+                    //    }
+                    //}
 
 
-                    if (App.ICRStatus == "E0006" && AddNotePageViewModel.NoteCount == 0)
-                    {
-                        viewModel.NoteText = string.Empty;
-                        AddNotePageViewModel.NoteCount++;
-                    }
-                    else
-                    {
-                        if (App.ICRStatus == "E0006")
-                        {
-                            if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
-                            {
-                                viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
-                                viewModel.PreviousNoteText = viewModel.NoteText;
-                            }
-                        }
-                    }
+                    //if (App.ICRStatus == "E0006" && AddNotePageViewModel.NoteCount == 0)
+                    //{
+                    //    viewModel.NoteText = string.Empty;
+                    //    AddNotePageViewModel.NoteCount++;
+                    //}
+                    //else
+                    //{
+                    //    if (App.ICRStatus == "E0006")
+                    //    {
+                    //        if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
+                    //        {
+                    //            viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                    //            viewModel.PreviousNoteText = viewModel.NoteText;
+                    //        }
+                    //    }
+                    //}
                 }
 
             }

@@ -1196,6 +1196,9 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region NewProperty
 
+       
+
+
         public string _totalsalesAmt = "0.00";
         public string TotalsalesAmt
         {
@@ -2306,6 +2309,7 @@ namespace GAZT.ViewModel.NewViewModel
             //    await _dialogService.ShowMessage("It has copied sadad payment number", AppResources.Information);
             //});
 
+            //Not this method in use
             OnSaveAsDraftClicked = new Command(async () =>
             {
                 CreateDataForPost();
@@ -2560,10 +2564,28 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    });
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                            //_navigationService.GoBack();
+                            WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                        });
+                    }
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //});
                 }
 
 
@@ -3000,7 +3022,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //{
                     //   _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
                     //});
-                    if (res != null)
+                    if (res != null && res.d!=null)
                     {
                         ManageEnabledProperty(false);
                         IsSwichButtonEnableToTap = false;
@@ -3010,6 +3032,28 @@ namespace GAZT.ViewModel.NewViewModel
                         IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                    }
+                    else
+                    {
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                               // _navigationService.GoBack();
+                                WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                            });
+                        }
+                        // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     }
                 }
                 else
@@ -3035,7 +3079,7 @@ namespace GAZT.ViewModel.NewViewModel
                 
 
 
-                    if (resNew != null)
+                    if (resNew != null && resNew.d!=null)
                     {
                         decimal FourteenA = 0;
                         if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
@@ -3063,10 +3107,24 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else
                         {
-                            await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                            VATReturnFormClicked();
-                            SelectedIndex = 2;
-                            PageSelectedItem = VatTabbledPageList[2];
+                            if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
+                            {
+                                ManageEnabledProperty(false);
+                                IsSwichButtonEnableToTap = false;
+                                IsEnableIBAN = false;
+                                IsEnableCheckedRefund = false;
+                                IsEnableIBANType = false;
+                                IsEnableIBANIdNumber = false;
+                                IsGetAcknowledgementClicked = true;
+                                _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                                VATReturnFormClicked();
+                                SelectedIndex = 2;
+                                PageSelectedItem = VatTabbledPageList[2];
+                            }
                            
                         }
                         //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
@@ -3077,7 +3135,27 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         IsFirstSubmission = true;
                         FirstSubmissionCount = 0;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+
+                        }
+                        else
+                        {
+                                Device.BeginInvokeOnMainThread(async () => {
+                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                        //_navigationService.GoBack();
+                                        WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                                });
+                        }
+
+                      //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
                     }
 
@@ -3208,11 +3286,30 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            IsLoading = false;
+                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
 
-                            });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                   // _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                                });
+                            }
+
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
+
+                            //});
                         }
                     }
                     catch (InternetException ex)
@@ -3272,10 +3369,29 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        });
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                               // _navigationService.GoBack();
+                                WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                            });
+                        }
+
+                        //Device.BeginInvokeOnMainThread(async () =>
+                        //{
+                        //    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //});
                     }
 
                 }
@@ -3353,10 +3469,29 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    });
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                           // _navigationService.GoBack();
+                            WebServiceManager.ErrorMessageForVAT = string.Empty;
+
+                        });
+                    }
+
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //});
                 }
             });
             await Task.Run(() =>
@@ -3539,6 +3674,7 @@ namespace GAZT.ViewModel.NewViewModel
                 IsFirstSubmission = true;
                 IsSadadNumberVisible = false;
                 IsAmendClicked = false;
+                WebServiceManager.ErrorMessageForVAT = string.Empty;
                 //await Task.Run(() =>
                 //{
                 //    IsLoading = true;
