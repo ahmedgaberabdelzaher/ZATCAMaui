@@ -961,13 +961,20 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public async void onPageLoad()
+        public void onPageLoad()
         {
             try
             {
-                Device.BeginInvokeOnMainThread(() => {IsLoading = true; });
-               await populateRegionDropDown();
-                Device.BeginInvokeOnMainThread(() => {IsLoading = false; });
+                TERFRegionRootObject regionlist = new TERFRegionRootObject();
+                regionlist = WebServiceManager.GAZTTESFormGetRegion();
+                if (regionlist != null && regionlist.RegionList.Count != 0)
+                { RList = regionlist.RegionList; }
+                else
+                {
+                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+
+                }
 
             }
             catch (InternetException ex)
@@ -975,30 +982,6 @@ namespace GAZT.ViewModel.NewViewModel
 
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 
-                _navigationService.GoBack();
-            }
-
-        }
-        public async Task populateRegionDropDown()
-        {
-            try { 
-            TERFRegionRootObject regionlist = new TERFRegionRootObject();
-            regionlist = await WebServiceManager.GAZTTESFormGetRegion();
-            if (regionlist != null && regionlist.RegionList.Count != 0)
-            { RList = regionlist.RegionList; }
-            else
-            {
-                _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
-
-            }
-
-        }
-             catch (InternetException ex)
-            {
-
-                _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
                 _navigationService.GoBack();
             }
 
