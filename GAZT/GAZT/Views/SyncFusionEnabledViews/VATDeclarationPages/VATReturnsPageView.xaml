@@ -3244,8 +3244,25 @@
 
 
                     <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
-                     Opacity="0.7"></Button>
+                    <buttons:SfButton  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" FontAttributes="Bold" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                     Opacity="0.7">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="gray" />
+                                        <Setter Property="BackgroundColor" Value="#9EA4A9"></Setter>
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="White" />
+                                        <Setter Property="BackgroundColor" Value="#006450"></Setter>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </buttons:SfButton>
                     <!--</StackLayout>-->
                 </Grid>
                 <!-- Acticity indicator layout start -->
