@@ -79,7 +79,7 @@
                         <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}" Margin="20,0,20,0"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
 
                         </custom:GAZTBorderlessEntry>
-                        <Image Grid.Row="6"  Grid.Column="1"  Margin="20,0,20,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_add.png" IsVisible="{Binding IsShowAttachmentButton}" >
+                        <Image Grid.Row="6"  Grid.Column="1"  Margin="20,0,20,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png" IsVisible="{Binding IsShowAttachmentButton}" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                             </Image.GestureRecognizers>
@@ -103,7 +103,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ContentView>
-                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{Binding Colorcode}" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
