@@ -90,7 +90,7 @@ namespace GAZT.Views.NewViews
 
           //  string trim1 = HTMLContent.Replace("</body>", " ");
             string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
-
+            string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
             var htmlSource = new HtmlWebViewSource();
 
             htmlSource.Html = newHTMLContent;
