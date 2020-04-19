@@ -177,6 +177,12 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
     {
         public GAZTSessionExpiredException()
         {
+            if (App.TP != null)
+            {
+                App.TP = null;
+                App.IsSessionExpired = true;
+                App.Token = String.Empty;
+            }
         }
 
         public GAZTSessionExpiredException(string ExceptionMessage) : base(ExceptionMessage)
