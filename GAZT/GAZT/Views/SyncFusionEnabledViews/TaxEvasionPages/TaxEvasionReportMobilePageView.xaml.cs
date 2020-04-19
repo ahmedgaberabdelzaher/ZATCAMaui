@@ -41,6 +41,12 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             {
 
                 this.FlowDirection = FlowDirection.RightToLeft;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    Arabic_mobCountycode.Text = string.Empty;
+                    Arabic_mobCountycode.Text = "9665+";
+                }
+                    
 
 
             }
