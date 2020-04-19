@@ -253,7 +253,7 @@ namespace GAZT.Views.NewViews
                 {
                     SetNote();
                 }
-                if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                 {
                     Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
                     if (note != null)
@@ -272,92 +272,92 @@ namespace GAZT.Views.NewViews
                     }
                 }
 
-                if(App.ICRStatus == "E0045" && viewModel.IsAmendClicked==true && AddNotePageViewModel.ClearNoteClicked == false)
-                {
-                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                //if(App.ICRStatus == "E0045" && viewModel.IsAmendClicked==true && AddNotePageViewModel.ClearNoteClicked == false)
+                //{
+                //    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                //    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
                     
-                    if (note != null)
-                    {
-                        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                        //{
-                        //    item.DataVersionz = "00001";
-                        //}
-                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
-                        if (noteForEdited != null)
-                        {
-                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                            {
-                                item.Strline = AddNotePageViewModel.NoteString;
-                                item.Tdline = AddNotePageViewModel.NoteString;
-                            }
-                        }
-                        else
-                        {
-                            SetNoteForBilledAndAmend();
-                        }
-                    }
-                    else
-                    {
-                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
-                        if (noteForEdited != null)
-                        {
-                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                            {
-                                item.Strline = AddNotePageViewModel.NoteString;
-                                item.Tdline = AddNotePageViewModel.NoteString;
-                            }
-                        }
-                        else
-                        {
-                            SetNoteForBilledAndAmend();
-                        }
-                    }
-                }
+                //    if (note != null)
+                //    {
+                //        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //        //{
+                //        //    item.DataVersionz = "00001";
+                //        //}
+                //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                //        if (noteForEdited != null)
+                //        {
+                //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //            {
+                //                item.Strline = AddNotePageViewModel.NoteString;
+                //                item.Tdline = AddNotePageViewModel.NoteString;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            SetNoteForBilledAndAmend();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                //        if (noteForEdited != null)
+                //        {
+                //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //            {
+                //                item.Strline = AddNotePageViewModel.NoteString;
+                //                item.Tdline = AddNotePageViewModel.NoteString;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            SetNoteForBilledAndAmend();
+                //        }
+                //    }
+                //}
 
 
-                if (App.ICRStatus == "E0006" && viewModel.IsAmendClicked == true && AddNotePageViewModel.ClearNoteClicked == false)
-                {
-                    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
+                //if (App.ICRStatus == "E0006" && viewModel.IsAmendClicked == true && AddNotePageViewModel.ClearNoteClicked == false)
+                //{
+                //    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
+                //    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
 
-                    if (note != null)
-                    {
-                        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                        //{
-                        //    item.DataVersionz = "00001";
-                        //}
-                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
-                        if (noteForEdited != null)
-                        {
-                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                            {
-                                item.Strline = AddNotePageViewModel.NoteString;
-                                item.Tdline = AddNotePageViewModel.NoteString;
-                            }
-                        }
-                        else
-                        {
-                            SetNoteForBilledAndAmend();
-                        }
-                    }
-                    else
-                    {
-                        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
-                        if (noteForEdited != null)
-                        {
-                            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
-                            {
-                                item.Strline = AddNotePageViewModel.NoteString;
-                                item.Tdline = AddNotePageViewModel.NoteString;
-                            }
-                        }
-                        else
-                        {
-                            SetNoteForBilledAndAmend();
-                        }
-                    }
-                }
+                //    if (note != null)
+                //    {
+                //        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //        //{
+                //        //    item.DataVersionz = "00001";
+                //        //}
+                //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                //        if (noteForEdited != null)
+                //        {
+                //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //            {
+                //                item.Strline = AddNotePageViewModel.NoteString;
+                //                item.Tdline = AddNotePageViewModel.NoteString;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            SetNoteForBilledAndAmend();
+                //        }
+                //    }
+                //    else
+                //    {
+                //        Note noteForEdited = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000").FirstOrDefault();
+                //        if (noteForEdited != null)
+                //        {
+                //            foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
+                //            {
+                //                item.Strline = AddNotePageViewModel.NoteString;
+                //                item.Tdline = AddNotePageViewModel.NoteString;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            SetNoteForBilledAndAmend();
+                //        }
+                //    }
+                //}
 
                 if (AddNotePageViewModel.ClearNoteClicked == true)
                 {
@@ -3847,6 +3847,7 @@ namespace GAZT.Views.NewViews
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
                     EntryVatAmount.TextColor = Color.Black;
+                    
                 }
             }
             catch (Exception ex)
