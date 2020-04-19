@@ -611,6 +611,10 @@ namespace GAZT.ViewModel.NewViewModel
                    // HideEditIcon();Fwebser
                 }
 
+                if (ZakatReturnDetailsPageViewModel.IsAmendButtonClicked)
+                {
+                    OnAmendReturnClicked();
+                }
             }
             catch (Exception ex)
             {
@@ -1459,6 +1463,25 @@ namespace GAZT.ViewModel.NewViewModel
 
             return zakatReturnDetails;
 
+        }
+
+        public void OnAmendReturnClicked()
+        {
+            try
+            {
+                ShowSubmitButton();
+                SetSalesDetailsData(zakatReturnDetailsD);
+                ShowDisclaimer();
+                ShowEditIcon();
+
+                CheckBoxStatus = false;
+
+                //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         #endregion
     }

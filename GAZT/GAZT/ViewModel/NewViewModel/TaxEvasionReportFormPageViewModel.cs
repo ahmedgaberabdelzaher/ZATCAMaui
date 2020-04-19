@@ -87,7 +87,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private UploadedDocumentsList _uploadedDocumentsList;
+        private UploadedDocumentsList _uploadedDocumentsList= null;
         public UploadedDocumentsList UploadedDocumentsList
         {
             get
@@ -375,7 +375,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
-        private FacilityCompanyType _selectedTaxEvasionCompanyType;
+        private FacilityCompanyType _selectedTaxEvasionCompanyType= null;
         public FacilityCompanyType SelectedTaxEvasionCompanyType
         {
             get
@@ -400,7 +400,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private string _selectedCategory;
+        private string _selectedCategory= string.Empty;
         public string SelectedCategory
         {
             get
@@ -556,7 +556,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TFaciOwnerName");
             }
         }
-        private string _attachmentName = "";
+        private string _attachmentName = string.Empty;
         public string AttachmentName
         {
             get
@@ -703,7 +703,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private TERRegion _selectedTaxEvasionRegion;
+        private TERRegion _selectedTaxEvasionRegion = null;
         public TERRegion SelectedTaxEvasionRegion
         {
             get
@@ -752,7 +752,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private TERCity _selectLCType;
+        private TERCity _selectLCType= null;
         public TERCity SelectLCType
         {
             get
@@ -812,7 +812,7 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-        private List<TERRegion> _rList;
+        private List<TERRegion> _rList= null;
         public List<TERRegion> RList
         {
             get
@@ -826,7 +826,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private List<TERCity> _cityList;
+        private List<TERCity> _cityList= null;
         public List<TERCity> CList
         {
             get
@@ -971,9 +971,9 @@ namespace GAZT.ViewModel.NewViewModel
                 { RList = regionlist.RegionList; }
                 else
                 {
-                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-
+                    //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                    //_navigationService.GoBack();
+                    NoInternetGoBack();
                 }
 
             }
@@ -985,6 +985,11 @@ namespace GAZT.ViewModel.NewViewModel
                 _navigationService.GoBack();
             }
 
+        }
+        public async  void NoInternetGoBack()
+        {
+            await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+            _navigationService.GoBack();
         }
 
 

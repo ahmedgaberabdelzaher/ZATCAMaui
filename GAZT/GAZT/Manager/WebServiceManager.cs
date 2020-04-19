@@ -889,6 +889,7 @@ namespace GAZT.Manager
                         if (headers.TryGetValues("token", out values))
                         {
                             NewToken = values.First();
+                            App.IsSessionExpired = false;
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
@@ -4189,6 +4190,10 @@ namespace GAZT.Manager
                 catch (HttpRequestException ex)
                 {
                     throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
                 }
                 catch (GAZTException gex)
                 {
