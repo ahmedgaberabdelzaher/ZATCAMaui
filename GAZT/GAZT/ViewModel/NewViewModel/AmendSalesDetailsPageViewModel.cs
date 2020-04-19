@@ -243,8 +243,6 @@ namespace GAZT.ViewModel.NewViewModel
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
             OnZakatReturnDataUpdateClicked = new Xamarin.Forms.Command(async () =>
             {
