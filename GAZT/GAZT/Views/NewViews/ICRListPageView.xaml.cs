@@ -97,7 +97,7 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-        public async void IntialiseAsync()
+        public async Task IntialiseAsync()
         {
             try
             {
@@ -119,7 +119,6 @@ namespace GAZT.Views.NewViews
             {
                 if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
                 {
-                    AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
                     ICRStatus selectedICR = (ICRStatus)e.NewValue;
                     viewModel.SelectedICRStatus = selectedICR;
                     viewModel.TxtSelectedStatus = selectedICR.Txt30;
@@ -147,9 +146,16 @@ namespace GAZT.Views.NewViews
                 await viewModel.onPageLoad();
                 if (viewModel.ICRStatusList != null && viewModel.ICRStatusList.Count != 0 && viewModel.PreviousSelectedICRStatus!=null)
                 {
-                    //int indexofPreviousSelectedFilter = viewModel.ICRStatusList.FindIndex(x => x.Estat == viewModel.PreviousSelectedICRStatus.Estat);
-                    viewModel.SelectedICRStatus = viewModel.PreviousSelectedICRStatus;
-                   // BPicker.SelectedIndex = indexofPreviousSelectedFilter;
+                    if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false)
+                    {
+                        viewModel.SelectedICRStatus = viewModel.PreviousSelectedICRStatus;
+                    }
+                    if(AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = true)
+                    {
+                        AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
+                    }
+                    // BPicker.SelectedIndex = indexofPreviousSelectedFilter;
+
                 }
             }
             catch (Exception e)
@@ -188,7 +194,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        IntialiseAsync();
+                       await IntialiseAsync();
                     }
                 }
                 Count++;

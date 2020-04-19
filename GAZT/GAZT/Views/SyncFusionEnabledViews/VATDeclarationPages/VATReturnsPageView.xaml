@@ -1537,7 +1537,7 @@
                                 <TapGestureRecognizer Tapped="OnVatImportsVatPaidatcustomsAmountClicked" />
                             </Image.GestureRecognizers>
                         </Image>-->
-                                        <local1:CustomLabel    Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="23" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        <local1:CustomLabel  FlowDirection="LeftToRight"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="23" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" HorizontalTextAlignment="Start" >
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="8." FontFamily="{StaticResource SSTArBold}"/>
