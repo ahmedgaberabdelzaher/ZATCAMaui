@@ -307,7 +307,18 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             if(App.TP!=null)
                 App.TP = null;
-            
+
+            if (App.PreviousIsArabic)
+            {
+                String langName = "ar-AE";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+            else
+            {
+                String langName = "en-US";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+
             var _navigation = Application.Current.MainPage.Navigation;
             _navigation.PopToRootAsync();
         }
