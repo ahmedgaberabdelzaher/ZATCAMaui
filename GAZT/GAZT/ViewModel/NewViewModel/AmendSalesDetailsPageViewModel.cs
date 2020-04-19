@@ -24,7 +24,7 @@ namespace GAZT.ViewModel.NewViewModel
         //  public ICommand OnBillsButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
-        public ICommand OnZakatReturnDataUpdateClicked { get; set; }
+        public Command OnZakatReturnDataUpdateClicked { get; set; }
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
         public static bool IsSaveButtonPressed = false;
@@ -244,18 +244,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.GoBack();
             });
-            OnZakatReturnDataUpdateClicked = new Xamarin.Forms.Command(async () =>
-            {
-                try
-                {
-                    IsSaveButtonPressed = true;
-                    _navigationService.GoBack();
-                }
-                catch(Exception ex)
-                {
-
-                }
-            });
+            OnZakatReturnDataUpdateClicked = new Command(ExecuteSaveClickCommand, CanExecuteSaveClickCommand);
+            //OnZakatReturnDataUpdateClicked = new Xamarin.Forms.Command(async () =>
+            //{
+               
+            //});
 
             //OnDeleteAttachmentClickedTapped = new Xamarin.Forms.Command(async () =>
             //{
@@ -438,7 +431,23 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Method
-        public void PopToRootPage()
+        public bool CanExecuteSaveClickCommand(object obj)
+        {
+            return _isSaveButtonEnable;
+        }
+        public  void ExecuteSaveClickCommand(object obj)
+        {
+            try
+            {
+                IsSaveButtonPressed = true;
+                _navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+            public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
@@ -587,17 +596,17 @@ namespace GAZT.ViewModel.NewViewModel
             if(attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count )
             {
                 IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#005e4b");
+                ButtonBackgroundColor = Color.FromHex("#006450");
             }
             else if(newValue != NewValue && !isOnLoad)
             {
                 IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#005e4b");
+                ButtonBackgroundColor = Color.FromHex("#006450");
             }
             else if(changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
             {
                 IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#005e4b");
+                ButtonBackgroundColor = Color.FromHex("#006450");
             }
             else
             {
@@ -671,7 +680,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
             {
-                ButtonBackgroundColor = Color.FromHex("#005e4b");
+                ButtonBackgroundColor = Color.FromHex("#006450");
             }
         }
         #endregion
