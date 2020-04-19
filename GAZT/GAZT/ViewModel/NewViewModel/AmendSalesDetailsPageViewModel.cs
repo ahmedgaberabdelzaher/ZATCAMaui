@@ -639,7 +639,8 @@ namespace GAZT.ViewModel.NewViewModel
                    
                     _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
                     string uploadedDate = _zakatAttachment.UploadededDateToShow;
-                    uploadedDate = uploadedDate.Replace("'", "");
+                    uploadedDate = uploadedDate.Replace("’", "");
+                    uploadedDate = uploadedDate.Replace("‘", "");
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
