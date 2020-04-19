@@ -165,7 +165,7 @@
 
                 <StackLayout Padding="5">
 
-                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
+                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
@@ -209,7 +209,7 @@
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
@@ -218,8 +218,8 @@
                                 <cards:SfCardView CornerRadius="2" BorderWidth=".25" BorderColor="#5d6770" HasShadow="True" ShadowColor="#5d6770" BackgroundColor="White">
                                     <cards:SfCardView.Content>
                                         <Grid>
-                                            <StackLayout Margin="5" Spacing="5" >
-                                                <StackLayout Orientation="Horizontal" >
+                                            <StackLayout Margin="5,0,5,0" Spacing="0" >
+                                                <StackLayout Orientation="Horizontal" HeightRequest="40">
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
                                                         <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnImageClicked"></TapGestureRecognizer>
@@ -228,7 +228,7 @@
                                                     <!--<Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
 
                                                     </Image>-->
-                                                    <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center">
+                                                    <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start">
                                                         <Label.FormattedText >
                                                             <FormattedString>
                                                                 <Span  Text="{Binding BillTypeName}" />
@@ -279,7 +279,7 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                     <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
@@ -331,7 +331,7 @@
 
                     </listView:SfListView>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" FontFamily="{StaticResource GAZT_FONT_BOLD}"></local1:CustomLabel>
+                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
 
