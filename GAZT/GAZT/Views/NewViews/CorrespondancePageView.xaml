@@ -180,7 +180,8 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                                      
+                                                                                        
+                                                                                        HorizontalTextAlignment="{Binding LabelHzAlignment}"
                                                            >
                                                                         <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
