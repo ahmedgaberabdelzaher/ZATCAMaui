@@ -27,7 +27,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
-        public ICommand OnStepButtonClicked { get; set; }
+        public Command OnStepButtonClicked { get; set; }
         public ICommand onInstructionsClicked { get; set; }
         public ICommand onTaxPayerDetailsClicked { get; set; }
         public ICommand onVATReturnFormClicked { get; set; }
@@ -598,6 +598,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isMainButtonEnabled = value;
+                OnStepButtonClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsMainButtonEnabled");
             }
         }
@@ -2055,9 +2056,8 @@ namespace GAZT.ViewModel.NewViewModel
             _navigationService = navigationService;
             _dialogService = dialogService;
 
-            IsMainButtonEnabled = false;
-
-            ManageEnabledProperty(true);
+           
+         
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
@@ -2071,75 +2071,13 @@ namespace GAZT.ViewModel.NewViewModel
             });
 
 
-            
-            OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
-            {
-                if (!string.IsNullOrEmpty(ButtonName))
-                {
-                    if (ButtonName == AppResources.ZVatStepTwo)
-                    {
-                        TaxpayerDetailsClicked();
-                        SelectedIndex = 1;
-                        PageSelectedItem = VatTabbledPageList[1];
-                       
-                        //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
-                        //  _dialogService.ShowMessage(AppResources.ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm, AppResources.Information);
-                    }
-                    else if (ButtonName == AppResources.ZVatStepThree)
-                    {
-                        VATReturnFormClicked();
-                        SelectedIndex = 2;
-                        PageSelectedItem = VatTabbledPageList[2];
-                       
-                    }
-                    else if (ButtonName == AppResources.ZVatStepFour)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = true;
-                        });
-                        await SummaryClicked();
-                        ShowMsgs();
-                        SelectedIndex = 3;
-                        PageSelectedItem = VatTabbledPageList[3];
-                       
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = false;
-                        });
+            OnStepButtonClicked = new Command(ExecuteStepBtnClickCommand, CanExecuteStepBtnClickCommand);
 
-                    }
-                    else if (ButtonName == AppResources.Submit)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = true;
-                        });
-                        await SubmitClicked();
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = false;
-                        });
-                    }
-                    //else if(ButtonName == AppResources.ZVatDownloadForm)
-                    //{
-                    //    String Url = string.Empty;
-                    //   // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                    //     Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                    //   ShowPdf(Url);
-                    //}
-                    else if (ButtonName == AppResources.ZNote)
-                    {
-                        SetNoteData();
-                    }
-                    else if (ButtonName == "Go to ICR List")
-                    {
-                        _navigationService.GoBack();
-                        _navigationService.NavigateTo(App.ICRListPageView);
-                    }
-                }
+            //OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
+            //{
+               
 
-            });
+            //});
           
             onStandardRatedSalesVatAmountTapped = new Xamarin.Forms.Command(() =>
             {
@@ -2336,12 +2274,85 @@ namespace GAZT.ViewModel.NewViewModel
                 await SaveReturnAndGetReturnAndSetButtons();
                 await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
             });
+            ManageEnabledProperty(true);
+            IsMainButtonEnabled = false;
+
         }
 
         #endregion
 
         #region Method
+        public bool CanExecuteStepBtnClickCommand(object arg)
+        {
+            return _isMainButtonEnabled;
+        }
+        public async void ExecuteStepBtnClickCommand(object obj)
+        {
+            if (!string.IsNullOrEmpty(ButtonName))
+            {
+                if (ButtonName == AppResources.ZVatStepTwo)
+                {
+                    TaxpayerDetailsClicked();
+                    SelectedIndex = 1;
+                    PageSelectedItem = VatTabbledPageList[1];
 
+                    //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
+                    //  _dialogService.ShowMessage(AppResources.ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm, AppResources.Information);
+                }
+                else if (ButtonName == AppResources.ZVatStepThree)
+                {
+                    VATReturnFormClicked();
+                    SelectedIndex = 2;
+                    PageSelectedItem = VatTabbledPageList[2];
+
+                }
+                else if (ButtonName == AppResources.ZVatStepFour)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading = true;
+                    });
+                    await SummaryClicked();
+                    ShowMsgs();
+                    SelectedIndex = 3;
+                    PageSelectedItem = VatTabbledPageList[3];
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                }
+                else if (ButtonName == AppResources.Submit)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading = true;
+                    });
+                    await SubmitClicked();
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading = false;
+                    });
+                }
+                //else if(ButtonName == AppResources.ZVatDownloadForm)
+                //{
+                //    String Url = string.Empty;
+                //   // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                //     Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                //   ShowPdf(Url);
+                //}
+                else if (ButtonName == AppResources.ZNote)
+                {
+                    SetNoteData();
+                }
+                else if (ButtonName == "Go to ICR List")
+                {
+                    _navigationService.GoBack();
+                    _navigationService.NavigateTo(App.ICRListPageView);
+                }
+            }
+        }
         public void switchForMainButton()
         {
             if(IsDeclarationCheckedForSummary==true)
@@ -3031,6 +3042,7 @@ namespace GAZT.ViewModel.NewViewModel
                         IsEnableIBANType = false;
                         IsEnableIBANIdNumber = false;
                         IsGetAcknowledgementClicked = true;
+                        IsMoreButtonEnabled = false;
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                     else
@@ -3116,6 +3128,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsEnableIBANType = false;
                                 IsEnableIBANIdNumber = false;
                                 IsGetAcknowledgementClicked = true;
+                                IsMoreButtonEnabled = false;
                                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                             }
                             else
@@ -3947,7 +3960,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
         }
-
+        
 
 
         private List<String> _ListOfActionButtonsApplicable;
@@ -3986,6 +3999,26 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("DummyListOfActionButtonsApplicable");
             }
         }
+
+
+        
+
+        private bool _isMoreButtonEnabled;
+        public bool IsMoreButtonEnabled
+        {
+            get
+            {
+                return _isMoreButtonEnabled;
+            }
+            set
+            {
+                _isMoreButtonEnabled = value;
+
+                RaisePropertyChanged("IsMoreButtonEnabled");
+            }
+        }
+
+
 
         private List<String> _ActualListOfActionButtonsApplicable;
         public List<String> ActualListOfActionButtonsApplicable

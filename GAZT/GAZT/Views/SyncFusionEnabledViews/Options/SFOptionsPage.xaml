@@ -90,6 +90,42 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}"   IsVisible="{Binding IsTaxPayerProfileVisible}" />
 
+
+                    <!--  Grid for Edit profile label and navigation bar icon  -->
+                    <controls:TapAnimationGrid
+                        IsVisible="{Binding IsCorrespondenceVisible}"
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding CorrespondenceCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Edit profile icon  -->
+                        <Label
+                              IsVisible="{Binding IsCorrespondenceVisible}"
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource Mail}" />
+                        <!--  Edit profile label  -->
+                        <Label
+                              IsVisible="{Binding IsCorrespondenceVisible}"
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        Text="{x:Static local:AppResources.ZZCorrespondence}" />
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+                    <BoxView Style="{StaticResource SeparatorStyle}"   IsVisible="{Binding IsCorrespondenceVisible}" />
+
                     <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"

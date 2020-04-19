@@ -60,7 +60,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*"/>
                     <RowDefinition Height="70*"/>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -73,7 +73,7 @@
 
 
 
-                <Frame Grid.Row="2" Grid.Column="0"   VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                <Frame Grid.Row="2" Grid.Column="0"    VerticalOptions="End" Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                     </Frame>
                 <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsAttachmentEnable}">
                         <Label.GestureRecognizers>
