@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GAZT;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
@@ -180,6 +181,12 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
 
         public GAZTSessionExpiredException(string ExceptionMessage) : base(ExceptionMessage)
         {
+            if (App.TP != null)
+            {
+                App.TP = null;
+                App.IsSessionExpired = true;
+                App.Token = String.Empty;
+            }
         }
     }
 

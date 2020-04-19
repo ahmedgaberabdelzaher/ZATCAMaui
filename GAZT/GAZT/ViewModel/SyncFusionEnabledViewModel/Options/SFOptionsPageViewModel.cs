@@ -305,7 +305,9 @@ namespace GAZTeServicesApp.ViewModels.Options
 
         public void LogOut()
         {
-
+            if(App.TP!=null)
+                App.TP = null;
+            
             var _navigation = Application.Current.MainPage.Navigation;
             _navigation.PopToRootAsync();
         }
