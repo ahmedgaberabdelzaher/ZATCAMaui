@@ -68,7 +68,7 @@
                                     <Span Text="     "/>
                                     <Span Text="{x:Static local:AppResources.OfText}"/>
                                     <Span Text="     "/>
-                                    <Span Text="MB. 300 "/>
+                                    <Span Text="300 MB"/>
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
