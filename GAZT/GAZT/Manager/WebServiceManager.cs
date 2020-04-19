@@ -888,6 +888,7 @@ namespace GAZT.Manager
                         if (headers.TryGetValues("token", out values))
                         {
                             NewToken = values.First();
+                            App.IsSessionExpired = false;
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
