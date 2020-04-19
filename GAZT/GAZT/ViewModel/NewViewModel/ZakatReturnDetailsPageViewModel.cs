@@ -22,7 +22,9 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnBillsButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
-        string ReturnStatus = "2";
+        public ICommand OnAmendReturnButtonClicked { get; set; }
+        public static bool IsAmendButtonClicked = false;
+        // string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
         public static string Fbguid  { get; set; }
       //  public Label DateLabel { get; set; }
@@ -130,7 +132,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-
+        private bool _amedmentButtonVisibility = false;
+        public bool AmedmentButtonVisibility
+        {
+            get
+            {
+                return _amedmentButtonVisibility;
+            }
+            set
+            {
+                _amedmentButtonVisibility = value;
+                RaisePropertyChanged("AmedmentButtonVisibility");
+            }
+        }
 
         #endregion
 
@@ -152,11 +166,23 @@ namespace GAZT.ViewModel.NewViewModel
             {
                
             });
+
+            OnAmendReturnButtonClicked = new Command(async () =>
+            {
+                try
+                {
+                    IsAmendButtonClicked = true;
+                    _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            });
+
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
          
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
@@ -164,6 +190,7 @@ namespace GAZT.ViewModel.NewViewModel
                 try
                 {
                     IsAmendButtonPressed = false;
+                    IsAmendButtonClicked = false;
                     await OnPageLoad(Fbguid);// Called again to get the latest status so buttton visibility can behaves properly as per web 
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 }
@@ -196,6 +223,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else if (ReleaseOrBillDetailsButtonText.Equals("Bills") || ReleaseOrBillDetailsButtonText.Equals("الفواتير"))
             {
+                AmedmentButtonVisibility = true;
                 _navigationService.NavigateTo(App.BillDetailsPageView, ZakatReturnDetail);
             }
             else if (ZakatReturnDetails.d.Statusz.Equals("E0004") || ZakatReturnDetails.d.Statusz.Equals("E0003"))//Whent the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
@@ -346,32 +374,38 @@ namespace GAZT.ViewModel.NewViewModel
                 else if (ButtonStatus.Equals("IP014"))
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0002"))// E0002 if return  released by GAZT officer 
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if(ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if(ButtonStatus.Equals("E0005"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0011"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing
@@ -438,8 +472,8 @@ namespace GAZT.ViewModel.NewViewModel
                 PopToRootPage();
                     //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
                      ZakatReturnDetails = zakatReturnDetails;
-
-                ZakatReturnDetail = zakatReturnDetails.d;
+                   
+                    ZakatReturnDetail = zakatReturnDetails.d;
                     GetUpdatedDataAfterAddingComma();
 
                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
