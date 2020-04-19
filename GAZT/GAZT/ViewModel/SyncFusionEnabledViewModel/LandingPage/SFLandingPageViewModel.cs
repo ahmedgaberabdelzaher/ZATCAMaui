@@ -60,24 +60,29 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
             await Task.Delay(3000);
 
-            Task GetDashboardDataTask = Task.Run(() =>
+            Task GetDashboardDataTask = null;
+            if (App.TP != null)
             {
-                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-            });
+                GetDashboardDataTask = Task.Run(() =>
+                {
+                    DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                });
 
-            Task GetUnsubmittedReturnDataTask = Task.Run(() =>
-            {
-                listUnsubmittedReturn = WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            });
+                Task GetUnsubmittedReturnDataTask = Task.Run(() =>
+                {
+                    listUnsubmittedReturn = WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                });
 
-            Task GetOverduePaymentDataTask = Task.Run(() =>
-            {
-                listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            });
+                Task GetOverduePaymentDataTask = Task.Run(() =>
+                {
+                    listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                });
+            }
 
             try
             {
-                GetDashboardDataTask.Wait();
+                if (GetDashboardDataTask != null)
+                    GetDashboardDataTask.Wait();
             }
             catch (AggregateException ae)
             {
@@ -491,7 +496,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 }
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
 
@@ -502,147 +507,129 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             try
             {
                 if (DashboardData.results != null && DashboardData.results.Count > 0)
-            {
-
-                //Paid Bills
-                if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
                 {
-                    BillInfo objBillInfoPbillsTot = new BillInfo();
 
-                    objBillInfoPbillsTot.BillTypeProperty = BillType.PbillsTot;
-
-                    String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
-                    String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
-
-                    //PaidBillsstr = Convert.ToDouble(PaidBillsstr).ToString();
-
-                    if (string.IsNullOrEmpty(PaidBillsstr))
+                    //Paid Bills
+                    if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
                     {
-                        PaidBillsstr = "0";
+                        BillInfo objBillInfoPbillsTot = new BillInfo();
+
+                        objBillInfoPbillsTot.BillTypeProperty = BillType.PbillsTot;
+
+                        String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
+                        String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
+
+                        //PaidBillsstr = Convert.ToDouble(PaidBillsstr).ToString();
+
+                        if (string.IsNullOrEmpty(PaidBillsstr))
+                        {
+                            PaidBillsstr = "0";
+                        }
+                        else if (PaidBillsstr.Substring(0, 1) == ".")
+                        {
+                            PaidBillsstr = "0" + PaidBillsstr;
+                        }
+
+                        if (string.IsNullOrEmpty(PaidBillsAmountstr))
+                        {
+                            PaidBillsAmountstr = "0";
+                        }
+                        else if (PaidBillsAmountstr.Substring(0, 1) == ".")
+                        {
+                            PaidBillsAmountstr = "0" + PaidBillsAmountstr;
+                        }
+
+                        string TotalPaidAmount = PaidBillsAmountstr;
+
+                        objBillInfoPbillsTot.BillCount = PaidBillsstr;
+                        objBillInfoPbillsTot.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+
+                        objBillInfoPbillsTot.BackgroundGradientStart = "#006450";
+                        objBillInfoPbillsTot.BackgroundGradientEnd = "#CCE0DC";
+                        objBillInfoPbillsTot.iConImagePath = "sf_ic_Paid.png";
+                        objBillInfoPbillsTot.BillTypeName = AppResources.Paid;
+
+
+                        BillsInfoItems.Add(objBillInfoPbillsTot);
                     }
-                    else if (PaidBillsstr.Substring(0, 1) == ".")
+
+                    //Partially Paid Bills
+
+                    if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
                     {
-                        PaidBillsstr = "0" + PaidBillsstr;
+                        BillInfo objBillInfoPrbillsTot = new BillInfo();
+
+                        objBillInfoPrbillsTot.BillTypeProperty = BillType.PrbillsTot;
+                        String PartialPaidBillsstr = DashboardData.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
+                        String PartialPaidBillsAmountstr = DashboardData.results[0].PrbillsBetrw.TrimStart(new Char[] { '0' });
+
+                        if (string.IsNullOrEmpty(PartialPaidBillsstr))
+                        {
+                            PartialPaidBillsstr = "0";
+                        }
+                        else if (PartialPaidBillsstr.Substring(0, 1) == ".")
+                        {
+                            PartialPaidBillsstr = "0" + PartialPaidBillsstr;
+                        }
+                        if (string.IsNullOrEmpty(PartialPaidBillsAmountstr))
+                        {
+                            PartialPaidBillsAmountstr = "0";
+                        }
+                        else if (PartialPaidBillsAmountstr.Substring(0, 1) == ".")
+                        {
+                            PartialPaidBillsAmountstr = "0" + PartialPaidBillsAmountstr;
+                        }
+                        objBillInfoPrbillsTot.BillCount = PartialPaidBillsstr;
+                        objBillInfoPrbillsTot.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
+
+                        objBillInfoPrbillsTot.BackgroundGradientStart = "#D99A29";
+                        objBillInfoPrbillsTot.BackgroundGradientEnd = "#F7EBD4";
+                        objBillInfoPrbillsTot.iConImagePath = "sf_ic_Partially_Paid.png";
+                        objBillInfoPrbillsTot.BillTypeName = AppResources.Partial;
+
+                        BillsInfoItems.Add(objBillInfoPrbillsTot);
                     }
 
-                    if (string.IsNullOrEmpty(PaidBillsAmountstr))
+                    //Unpaid Bills
+                    if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
                     {
-                        PaidBillsAmountstr = "0";
+                        BillInfo objBillInfoUpbillsTot = new BillInfo();
+
+                        objBillInfoUpbillsTot.BillTypeProperty = BillType.UpbillsTot;
+                        String UnpaidBillsstr = DashboardData.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
+                        String UnpaidBillsAmountstr = DashboardData.results[0].UpbillsBetrw.TrimStart(new Char[] { '0' });
+                        if (string.IsNullOrEmpty(UnpaidBillsstr))
+                        {
+                            UnpaidBillsstr = "0";
+                        }
+                        else if (UnpaidBillsstr.Substring(0, 1) == ".")
+                        {
+                            UnpaidBillsstr = "0" + UnpaidBillsstr;
+                        }
+                        if (string.IsNullOrEmpty(UnpaidBillsAmountstr))
+                        {
+                            UnpaidBillsAmountstr = "0";
+                        }
+                        else if (UnpaidBillsAmountstr.Substring(0, 1) == ".")
+                        {
+                            UnpaidBillsAmountstr = "0" + UnpaidBillsAmountstr;
+                        }
+                        objBillInfoUpbillsTot.BillCount = UnpaidBillsstr;
+                        objBillInfoUpbillsTot.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
+
+                        objBillInfoUpbillsTot.BackgroundGradientStart = " #AA0C19";
+                        objBillInfoUpbillsTot.BackgroundGradientEnd = "#EECED1";
+                        objBillInfoUpbillsTot.iConImagePath = "sf_ic_Unpaid.png";
+                        objBillInfoUpbillsTot.BillTypeName = AppResources.UnPaid;
+
+                        BillsInfoItems.Add(objBillInfoUpbillsTot);
                     }
-                    else if (PaidBillsAmountstr.Substring(0, 1) == ".")
-                    {
-                        PaidBillsAmountstr = "0" + PaidBillsAmountstr;
-                    }
-
-                    string TotalPaidAmount = PaidBillsAmountstr;
-
-                    objBillInfoPbillsTot.BillCount = PaidBillsstr;
-                    objBillInfoPbillsTot.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-
-                    objBillInfoPbillsTot.BackgroundGradientStart = "#006450";
-                    objBillInfoPbillsTot.BackgroundGradientEnd = "#CCE0DC";
-                    objBillInfoPbillsTot.iConImagePath = "sf_ic_Paid.png";
-                    objBillInfoPbillsTot.BillTypeName = AppResources.Paid;
-
-
-                    DateTime dateTime = new DateTime(2019, 5, 1);
-
-                    //objBillInfoPbillsTot.ChartData
-                    //= new ObservableCollection<ChartDataPoint>()
-                    //{
-                    //new ChartDataPoint(dateTime, 15),
-                    //new ChartDataPoint(dateTime.AddMonths(1), 20),
-                    //new ChartDataPoint(dateTime.AddMonths(2), 30),
-                    //new ChartDataPoint(dateTime.AddMonths(3), 17),
-                    //new ChartDataPoint(dateTime.AddMonths(4), 13),
-                    //new ChartDataPoint(dateTime.AddMonths(5), 25),
-                    //new ChartDataPoint(dateTime.AddMonths(6), 19),
-                    //new ChartDataPoint(dateTime.AddMonths(7), 43),
-                    //new ChartDataPoint(dateTime.AddMonths(8), 43),
-                    //new ChartDataPoint(dateTime.AddMonths(9), 43),
-                    //new ChartDataPoint(dateTime.AddMonths(10), 43)
-                    //};
-
-                    BillsInfoItems.Add(objBillInfoPbillsTot);
                 }
-
-                //Partially Paid Bills
-
-                if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
-                {
-                    BillInfo objBillInfoPrbillsTot = new BillInfo();
-
-                    objBillInfoPrbillsTot.BillTypeProperty = BillType.PrbillsTot;
-                    String PartialPaidBillsstr = DashboardData.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
-                    String PartialPaidBillsAmountstr = DashboardData.results[0].PrbillsBetrw.TrimStart(new Char[] { '0' });
-
-                    if (string.IsNullOrEmpty(PartialPaidBillsstr))
-                    {
-                        PartialPaidBillsstr = "0";
-                    }
-                    else if (PartialPaidBillsstr.Substring(0, 1) == ".")
-                    {
-                        PartialPaidBillsstr = "0" + PartialPaidBillsstr;
-                    }
-                    if (string.IsNullOrEmpty(PartialPaidBillsAmountstr))
-                    {
-                        PartialPaidBillsAmountstr = "0";
-                    }
-                    else if (PartialPaidBillsAmountstr.Substring(0, 1) == ".")
-                    {
-                        PartialPaidBillsAmountstr = "0" + PartialPaidBillsAmountstr;
-                    }
-                    objBillInfoPrbillsTot.BillCount = PartialPaidBillsstr;
-                    objBillInfoPrbillsTot.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
-
-                    objBillInfoPrbillsTot.BackgroundGradientStart = "#D99A29";
-                    objBillInfoPrbillsTot.BackgroundGradientEnd = "#F7EBD4";
-                    objBillInfoPrbillsTot.iConImagePath = "sf_ic_Partially_Paid.png";
-                    objBillInfoPrbillsTot.BillTypeName = AppResources.Partial;
-
-                    BillsInfoItems.Add(objBillInfoPrbillsTot);
-                }
-
-                //Unpaid Bills
-                if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
-                {
-                    BillInfo objBillInfoUpbillsTot = new BillInfo();
-
-                    objBillInfoUpbillsTot.BillTypeProperty = BillType.UpbillsTot;
-                    String UnpaidBillsstr = DashboardData.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
-                    String UnpaidBillsAmountstr = DashboardData.results[0].UpbillsBetrw.TrimStart(new Char[] { '0' });
-                    if (string.IsNullOrEmpty(UnpaidBillsstr))
-                    {
-                        UnpaidBillsstr = "0";
-                    }
-                    else if (UnpaidBillsstr.Substring(0, 1) == ".")
-                    {
-                        UnpaidBillsstr = "0" + UnpaidBillsstr;
-                    }
-                    if (string.IsNullOrEmpty(UnpaidBillsAmountstr))
-                    {
-                        UnpaidBillsAmountstr = "0";
-                    }
-                    else if (UnpaidBillsAmountstr.Substring(0, 1) == ".")
-                    {
-                        UnpaidBillsAmountstr = "0" + UnpaidBillsAmountstr;
-                    }
-                    objBillInfoUpbillsTot.BillCount = UnpaidBillsstr;
-                    objBillInfoUpbillsTot.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
-
-                    objBillInfoUpbillsTot.BackgroundGradientStart = " #AA0C19";
-                    objBillInfoUpbillsTot.BackgroundGradientEnd = "#EECED1";
-                    objBillInfoUpbillsTot.iConImagePath = "sf_ic_Unpaid.png";
-                    objBillInfoUpbillsTot.BillTypeName = AppResources.UnPaid;
-
-                    BillsInfoItems.Add(objBillInfoUpbillsTot);
-                }
-            }
             }
             catch (Exception ex)
-            { 
+            {
             }
-}
+        }
 
         public void PopulateBillsAndReturnsSchedule()
         {
