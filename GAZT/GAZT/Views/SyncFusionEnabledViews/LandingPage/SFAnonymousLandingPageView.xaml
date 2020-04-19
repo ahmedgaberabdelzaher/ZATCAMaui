@@ -114,8 +114,8 @@
     <ContentPage.Content>
         <Grid x:Name="ParentContainer">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="30*"/>
-                <RowDefinition  Height="70*"/>
+                <RowDefinition  Height="35*"/>
+                <RowDefinition  Height="65*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>

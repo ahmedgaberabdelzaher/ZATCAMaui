@@ -391,10 +391,20 @@ namespace GAZT.Views.NewViews
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     StringBuilder Message = new StringBuilder();
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                    Message.Append(Environment.NewLine);
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    {
+                                        if (itemerror.code.Contains("ZD_PUSR"))
+                                        {
+                                            if (Message.Length > 0)
+                                            {
+                                                Message.Append(Environment.NewLine);
+                                            }
+                                           
+                                                Message.Append(itemerror.message);
 
+                                            
+                                        }
+                                    }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                                 }
@@ -495,10 +505,20 @@ namespace GAZT.Views.NewViews
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     StringBuilder Message = new StringBuilder();
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                    Message.Append(Environment.NewLine);
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                    foreach(SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    {
+                                        if(itemerror.code.Contains("ZD_PUSR"))
+                                        {
+                                            if (Message.Length > 0)
+                                            {
+                                                Message.Append(Environment.NewLine);
+                                            }
+                                           
+                                                Message.Append(itemerror.message);
 
+                                           
+                                        }
+                                    }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                                 }
@@ -614,10 +634,20 @@ namespace GAZT.Views.NewViews
                             {
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                 StringBuilder Message = new StringBuilder();
-                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                Message.Append(Environment.NewLine);
-                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                {
+                                    if (itemerror.code.Contains("ZD_PUSR"))
+                                    {
+                                        if (Message.Length > 0)
+                                        {
+                                            Message.Append(Environment.NewLine);
+                                        }
+                                       
+                                            Message.Append(itemerror.message);
 
+                                        
+                                    }
+                                }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                             }
@@ -717,10 +747,20 @@ namespace GAZT.Views.NewViews
                             {
                                 SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                 StringBuilder Message = new StringBuilder();
-                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                Message.Append(Environment.NewLine);
-                                Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                {
+                                    if (itemerror.code.Contains("ZD_PUSR"))
+                                    {
+                                        if (Message.Length > 0)
+                                        {
+                                            Message.Append(Environment.NewLine);
+                                        }
+                                       
+                                            Message.Append(itemerror.message);
 
+                                        
+                                    }
+                                }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                             }
@@ -828,10 +868,20 @@ namespace GAZT.Views.NewViews
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     StringBuilder Message = new StringBuilder();
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                    Message.Append(Environment.NewLine);
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    {
+                                        if (itemerror.code.Contains("ZD_PUSR"))
+                                        {
+                                            if (Message.Length > 0)
+                                            {
+                                                Message.Append(Environment.NewLine);
+                                            }
+                                           
+                                                Message.Append(itemerror.message);
 
+                                            
+                                        }
+                                    }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                                 }
@@ -930,10 +980,20 @@ namespace GAZT.Views.NewViews
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     StringBuilder Message = new StringBuilder();
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message);
-                                    Message.Append(Environment.NewLine);
-                                    Message.Append(SignupErrorModelRootObjectModel.error.innererror.errordetails[1].message);
+                                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    {
+                                        if (itemerror.code.Contains("ZD_PUSR"))
+                                        {
+                                            if (Message.Length > 0)
+                                            {
+                                                Message.Append(Environment.NewLine);
+                                            }
+                                           
+                                                Message.Append(itemerror.message);
 
+                                            
+                                        }
+                                    }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
 
                                 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -61,6 +62,7 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.EditPasswordCommand = new Command(this.EditPasswordClicked);
             this.EditEmailCommand = new Command(this.EditEmailClicked);
             this.AboutCommand = new Command(this.AboutUsClicked);
+            this.CorrespondenceCommand = new Command(this.CorrespondenceClicked);
 
 
 
@@ -71,6 +73,8 @@ namespace GAZTeServicesApp.ViewModels.Options
         #region Commands
 
         public Command MyProfileCommand { get; set; }
+        public Command CorrespondenceCommand { get; set; }
+        
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
         public Command EditEmailCommand { get; set; }
@@ -118,6 +122,21 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("_isTaxPayerProfileVisible");
             }
         }
+
+        private bool _isCorrespondenceVisible;
+        public bool IsCorrespondenceVisible
+        {
+            get
+            {
+                return _isCorrespondenceVisible;
+            }
+            set
+            {
+                _isCorrespondenceVisible = value;
+                RaisePropertyChanged("IsCorrespondenceVisible");
+            }
+        }
+
 
         private ComingToOptionScreenFrom _isComingFrom;
         public ComingToOptionScreenFrom IsComingFrom
@@ -281,6 +300,19 @@ namespace GAZTeServicesApp.ViewModels.Options
             }
         }
 
+        private void CorrespondenceClicked(object obj)
+        {
+            if (lastTapped < DateTime.Now.AddSeconds(-2))
+            {
+                lastTapped = DateTime.Now;
+
+                _navigationService.NavigateTo(App.CorrespondancePageView);
+            }
+        }
+
+        
+
+
         private void EditMobileNumberClicked(object obj)
         {
             // Do something
@@ -319,8 +351,20 @@ namespace GAZTeServicesApp.ViewModels.Options
                 AppResources.Culture = new CultureInfo(langName);
             }
 
-            var _navigation = Application.Current.MainPage.Navigation;
-            _navigation.PopToRootAsync();
+            var _navigation = Application.Current.MainPage.Navigation; 
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                {
+                    _navigation.RemovePage(item); 
+                    break; 
+                }
+            }
+            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            _navigation.NavigationStack.ToList().Clear();
+
+            //var _navigation = Application.Current.MainPage.Navigation;
+            //_navigation.PopToRootAsync();
         }
 
 
