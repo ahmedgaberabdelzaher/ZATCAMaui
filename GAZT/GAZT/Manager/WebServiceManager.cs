@@ -4170,6 +4170,10 @@ namespace GAZT.Manager
                 {
                     throw ex;
                 }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
                 catch (GAZTException gex)
                 {
                     throw gex;
