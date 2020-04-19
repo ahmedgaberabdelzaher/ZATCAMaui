@@ -3831,7 +3831,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static TERFRegionRootObject GAZTTESFormGetRegion()
+        public static async Task<TERFRegionRootObject>  GAZTTESFormGetRegion()
         {
 
             RegionPost Cred = new RegionPost();
@@ -3852,8 +3852,8 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage res =await client.PostAsync(uri, contentPost);//.Result
+                    var response =await  res.Content.ReadAsStringAsync();//.Result
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }
@@ -4708,8 +4708,6 @@ namespace GAZT.Manager
             string sendDateTime = "0";
             if (CrossConnectivity.Current.IsConnected)
             {
-
-                //ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
                 try
                 {
 
@@ -4717,21 +4715,10 @@ namespace GAZT.Manager
                    // string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=GaztApp&password=Gazt@2020&tagName=Gazt.gov.sa&recepientNumber=966571006494&message=Test123onkar13:40&sendDateTime=0";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                   // client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    // var serilized = JsonConvert.SerializeObject(Cred);
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.GetAsync(uri);
                     var response =await  res.Content.ReadAsStringAsync();
-                    //XElement xmlroot = XElement.Parse(response);
-                    //XmlDocument xmlDoc = new XmlDocument();
-                    //xmlDoc.Load(response);
                     XElement xmlroot = XElement.Parse(response);
                     string statuscode = xmlroot.Value;
-                    //string firstNodeContent = ((System.Xml.Linq.XElement)(xmlroot.FirstNode)).Value;
-                   // XmlNodeList parentNode = xmlDoc.GetElementsByTagName("string");
-
-                    //terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
-                    //  string response="re";
                     return statuscode;
                 }
                 catch (Exception ex)
@@ -4747,10 +4734,6 @@ namespace GAZT.Manager
             }
         }
         #endregion
-
-
-
-
 
 
     }
