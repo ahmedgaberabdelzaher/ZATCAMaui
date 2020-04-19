@@ -191,7 +191,23 @@
                     Text="{x:Static local:AppResources.Verify}"
                          
                             Style="{StaticResource SfButtonStyle}"
-                           />
+                           >
+
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Disabled">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="gray" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </buttons:SfButton>
 
 
 
@@ -223,7 +239,23 @@
                            
                             Text="{x:Static local:AppResources.ResendOTP}"
                     TextColor="{DynamicResource Gray-White}"
-                     />
+                     >
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Disabled">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="gray" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="White" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </buttons:SfButton>
                 </StackLayout>
                 <!-- Acticity indicator layout start -->
                 <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">

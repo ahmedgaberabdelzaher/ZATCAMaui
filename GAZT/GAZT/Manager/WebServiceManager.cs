@@ -25,6 +25,7 @@ namespace GAZT.Manager
     public static class WebServiceManager
     {
         public static string ErrorMessage = string.Empty;
+        public static string ErrorMessageForVAT = string.Empty;
         public static string NumberOfValiedAttempts = string.Empty;
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
@@ -1700,6 +1701,7 @@ namespace GAZT.Manager
         public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
             VATDeclaration RequestVATDeclaration = new VATDeclaration();
+            VATDeclaration _vATDeclarationD = new VATDeclaration();
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
@@ -1724,7 +1726,7 @@ namespace GAZT.Manager
                             RequestVATDeclaration.d.ATTACHSet = aTTACHSet;
                         }
 
-                        VATDeclaration _vATDeclarationD = new VATDeclaration();
+                       
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();
                         String url = Constants.SaveVATDeclarationData;
@@ -1742,6 +1744,8 @@ namespace GAZT.Manager
                         var detailJson = res.Content.ReadAsStringAsync().Result;
 
                         _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+
+
 
                         if (_vATDeclarationD != null)
                         {
@@ -1790,15 +1794,31 @@ namespace GAZT.Manager
                                     _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
                                 }
                             }
+                            //else
+                            //{
+                            //    return null;
+                            //}
 
+                        }
+
+                        if (_vATDeclarationD == null || _vATDeclarationD.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                                ErrorMessageForVAT  += errorMesg.error.innererror.errordetails[1].message;
+                                //ErrorMessageForVAT
+                            }
                         }
 
                         return _vATDeclarationD;
                     }
-                    else
-                    {
-                        return null;
-                    }
+                    return _vATDeclarationD;
+                    //else
+                    //{
+                    //    return null;
+                    //}
                 }
                 catch (Exception ex)
                 {

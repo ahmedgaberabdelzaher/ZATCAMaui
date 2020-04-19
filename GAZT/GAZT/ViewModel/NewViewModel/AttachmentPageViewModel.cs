@@ -310,25 +310,36 @@ namespace GAZT.ViewModel.NewViewModel
                                                     VatAttachmentsList = myCollection;
                                                     foreach (var item in VatAttachmentsList)
                                                     {
-                                                        if (App.IsArabic)
+                                                       
+                                                        
+
+                                                        try
                                                         {
-                                                            if (item.Erfdt != null)
+                                                            if (App.IsArabic)
                                                             {
-                                                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                if (item.Erfdt != null)
+                                                                {
+                                                                    //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                    //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                                item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                                                                    item.Erfdt = item.Erfdt;
+                                                                }
                                                             }
+                                                            else
+                                                            {
+                                                                if (item.Erfdt != null)
+                                                                {
+                                                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                                                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                                                }
+                                                            }
+
                                                         }
-                                                        else
+                                                        catch (Exception ex)
                                                         {
-                                                            if (item.Erfdt != null)
-                                                            {
-                                                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                                            }
                                                         }
                                                     }
 
