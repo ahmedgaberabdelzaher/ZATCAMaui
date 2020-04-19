@@ -191,7 +191,23 @@
                     Text="{x:Static local:AppResources.Verify}"
                          
                             Style="{StaticResource SfButtonStyle}"
-                           />
+                           >
+
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Disabled">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="gray" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Normal">
+                                                <VisualState.Setters>
+                                                    <Setter Property="TextColor" Value="White" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                </buttons:SfButton>
 
 
 
@@ -229,11 +245,14 @@
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Disabled">
                                     <VisualState.Setters>
-                                        <Setter Property="TextColor" Value="blue" />
+                                        <Setter Property="TextColor" Value="gray" />
                                     </VisualState.Setters>
                                 </VisualState>
-
-
+                                <VisualState x:Name="Normal">
+                                    <VisualState.Setters>
+                                        <Setter Property="TextColor" Value="White" />
+                                    </VisualState.Setters>
+                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                     </buttons:SfButton>
