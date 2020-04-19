@@ -904,12 +904,12 @@ namespace GAZT.Views.NewViews
                                 string month = selectedItem[0].ToString();
                                 string day = selectedItem[1].ToString();
                                 string year = selectedItem[2].ToString();
-                                DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
-                                long ticks = DateOfBirth.Ticks;
-                                TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Local));
-                                string unixTime = span.TotalSeconds.ToString("N0");
-                                unixTime = unixTime.Replace(",", "");
-                                SiguupModel.ABirthdt = "/Date(" + unixTime + ")/";
+                                //DateTime DateOfBirth = new DateTime(Convert.ToInt32(year), Convert.ToInt32(month), Convert.ToInt32(day));
+                                //long ticks = DateOfBirth.Ticks;
+                                //TimeSpan span = (DateOfBirth - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Local));
+                                //string unixTime = span.TotalSeconds.ToString("N0");
+                                //unixTime = unixTime.Replace(",", "");
+                                SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
 
 
                                 SiguupModel.AType = "1";
