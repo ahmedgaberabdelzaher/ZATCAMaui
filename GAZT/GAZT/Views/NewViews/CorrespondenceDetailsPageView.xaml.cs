@@ -89,15 +89,34 @@ namespace GAZT.Views.NewViews
             }
 
           //  string trim1 = HTMLContent.Replace("</body>", " ");
+
             string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
-            string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
-            var htmlSource = new HtmlWebViewSource();
+           // string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:300%;'>");
+                var htmlSource = new HtmlWebViewSource();
 
-            htmlSource.Html = newHTMLContent;
-           // htmlSource.Html = HTMLContent;
+                htmlSource.Html = newHTMLForFonts;
+                htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+                CorWebView.Source = htmlSource;
+            }
+            else
+            {
+                var htmlSource = new HtmlWebViewSource();
 
-            htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-            CorWebView.Source = htmlSource;
+                htmlSource.Html = newHTMLContent;
+                htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+                CorWebView.Source = htmlSource;
+
+            }
+           // var htmlSource = new HtmlWebViewSource();
+
+           // htmlSource.Html = newHTMLContent;
+           //// htmlSource.Html = HTMLContent;
+
+            //htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
+            //CorWebView.Source = htmlSource;
 
             viewModel.CorrespondenceTitle = CorrModel.Title;
             viewModel.CorrespondenceD = CorrModel;
