@@ -22,4 +22,8 @@
     <Folder Include="Connected Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GAZT\GAZT.csproj" />
+  </ItemGroup>
+
 </Project>
