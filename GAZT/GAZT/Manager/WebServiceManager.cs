@@ -4698,7 +4698,7 @@ namespace GAZT.Manager
         }
 
 
-        public static string GAZTTESVerfymobNoSendOtp(string mobno,string messageforsms )
+        public static async Task<string> GAZTTESVerfymobNoSendOtp(string mobno,string messageforsms )
         {
             string userName = "GaztApp";
             string password= "Gazt@2020";
@@ -4708,6 +4708,7 @@ namespace GAZT.Manager
             string sendDateTime = "0";
             if (CrossConnectivity.Current.IsConnected)
             {
+
                 //ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
                 try
                 {
@@ -4719,8 +4720,8 @@ namespace GAZT.Manager
                    // client.DefaultRequestHeaders.Add("Accept", "application/json");
                     // var serilized = JsonConvert.SerializeObject(Cred);
                     //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.GetAsync(uri).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response =await  res.Content.ReadAsStringAsync();
                     //XElement xmlroot = XElement.Parse(response);
                     //XmlDocument xmlDoc = new XmlDocument();
                     //xmlDoc.Load(response);

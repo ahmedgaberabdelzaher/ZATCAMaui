@@ -167,7 +167,7 @@
                                                         <TapGestureRecognizer Tapped="OnTappedeService"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label HorizontalTextAlignment="Center" TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="Micro" >
+                                                <Label HorizontalTextAlignment="Center" TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="9" >
                                                     <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding eServiceName}"/>
