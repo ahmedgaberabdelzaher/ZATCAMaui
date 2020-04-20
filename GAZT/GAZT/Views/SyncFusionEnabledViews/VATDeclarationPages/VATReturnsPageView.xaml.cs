@@ -182,12 +182,19 @@ namespace GAZT.Views.NewViews
                         {
                             if (App.ICRStatus == "E0056")
                             {
-                                viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                                viewModel.IsDeclarationCheckedForInstruction = true;
-                                viewModel.IsDeclarationCheckEnabled = false;
-                                viewModel.IsTaxPayerCheckEnabled = false;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                                    viewModel.IsDeclarationCheckedForInstruction = true;
+                                    viewModel.IsDeclarationCheckEnabled = false;
+                                    viewModel.IsTaxPayerCheckEnabled = false;
+                                });
+                               
                             }
-                            await viewModel.NavigationSetupForDraft();
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await viewModel.NavigationSetupForDraft();
+                            });
                         }
 
                     }
