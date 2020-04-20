@@ -34,7 +34,7 @@ namespace GAZT.Views.NewViews
 
         private void Checked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
         }
     }
 }

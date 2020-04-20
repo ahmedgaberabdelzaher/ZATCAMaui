@@ -43,7 +43,7 @@
 		<string>ar</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>11.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>GAZT E-Services</string>
 	<key>CFBundleIdentifier</key>
