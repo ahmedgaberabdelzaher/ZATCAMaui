@@ -25,8 +25,8 @@ namespace GAZT.ViewModel.NewViewModel
         public static int numberOfAttachmentComingFromServer = 0;
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
+        public int  SelectedPickerIndex { get; set; }
 
-        
         #endregion
 
         #region Property
@@ -118,6 +118,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private int _sCRSelectedIndex;
+        public int ICRSelectedIndex
+        {
+            get
+            {
+                return _sCRSelectedIndex;
+            }
+            set
+            {
+                _sCRSelectedIndex = value;
+                RaisePropertyChanged("ICRSelectedIndex");
+            }
+        }
+
+        
         private List<ICRStatus> _iCRStatusList;
         public List<ICRStatus> ICRStatusList
         {
@@ -146,6 +161,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _selectedICR = value;
                     if (SelectedICR != null)
                     {
+                        SelectedPickerIndex = ICRSelectedIndex;
                         GetVATAllReturnsAsync();
                     }
                     RaisePropertyChanged("SelectedICR");

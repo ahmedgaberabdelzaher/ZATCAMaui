@@ -99,7 +99,7 @@
                     HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
                     HeaderHeight="40"
                     ShowHeader="true"
-                    
+                    SelectedIndex="{Binding ICRSelectedIndex}"
                     ShowColumnHeader="False"
                 x:Name="BPicker"
                    BackgroundColor="#EAF7CC"

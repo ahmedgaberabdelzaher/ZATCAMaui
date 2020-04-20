@@ -80,6 +80,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isSaveButtonEnable = value;
+                OnZakatReturnDataUpdateClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsSaveButtonEnable");
             }
         }
@@ -673,14 +674,17 @@ namespace GAZT.ViewModel.NewViewModel
             if((ZakatReturnAttachmentsList != null &&  ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
             {
                 ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                IsSaveButtonEnable = false;
             }
             else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
             {
                 ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                IsSaveButtonEnable = false;
             }
             else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
             {
                 ButtonBackgroundColor = Color.FromHex("#006450");
+                IsSaveButtonEnable = true;
             }
         }
         #endregion
