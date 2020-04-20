@@ -255,7 +255,7 @@ namespace GAZT.ViewModel.NewViewModel
         public async Task OnPageLoad()
         {
           
-            GetZAKATICRStatusList();
+          
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -303,7 +303,7 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
-        private void GetZAKATICRStatusList()
+        public void GetZAKATICRStatusList()
         {
             List<ZAKATStatus> ZAKATStatusListEn = new List<ZAKATStatus>()
             {
@@ -388,7 +388,7 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         MyZakatReturns = FilteredCRStatusList;
                         HandleNoDataMessageVisibility(FilteredCRStatusList);
-                        
+
                     }
 
                 }
@@ -496,7 +496,9 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             SelectedIndex = SelectedICRStatusWhileGoingToZAKATDetails;
                             TxtSelectedStatus = ICRStatusList[SelectedIndex].Value;
+                            SelectedICRStatus = ICRStatusList[SelectedIndex];
                             ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+                            GetFilteredZAKATICRList(SelectedICRStatus);
                         }
                         else
                         {
@@ -504,6 +506,8 @@ namespace GAZT.ViewModel.NewViewModel
                             TxtSelectedStatus = ICRStatusList[13].Value; 
                             ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
                             SelectedIndex = 13;
+                            SelectedICRStatus = ICRStatusList[SelectedIndex];
+                            GetFilteredZAKATICRList(SelectedICRStatus);
                         }
 
                     }
@@ -536,7 +540,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private void HandleNoDataMessageVisibility(List<EstimatedZakatReturnsResult> filteredCRStatusList)
+        public void HandleNoDataMessageVisibility(List<EstimatedZakatReturnsResult> filteredCRStatusList)
         {
             if(filteredCRStatusList != null && filteredCRStatusList.Count > 0)
             {
