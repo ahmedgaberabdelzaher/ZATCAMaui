@@ -146,7 +146,7 @@
                                     </control:BorderlessEntry>
 
                                 </inputLayout:SfTextInputLayout>
-                                <Label x:Name="Arabic_mobCountycode" Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                <Label x:Name="Arabic_mobCountycode" Text="9665+"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                             </StackLayout>
 
 

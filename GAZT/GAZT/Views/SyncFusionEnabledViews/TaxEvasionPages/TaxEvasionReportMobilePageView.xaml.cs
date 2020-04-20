@@ -44,7 +44,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     Arabic_mobCountycode.Text = string.Empty;
-                    Arabic_mobCountycode.Text = "9665+";
+                    Arabic_mobCountycode.Text = "+9665";
                 }
                     
 
