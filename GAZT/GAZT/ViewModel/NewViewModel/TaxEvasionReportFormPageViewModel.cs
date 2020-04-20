@@ -981,10 +981,9 @@ namespace GAZT.ViewModel.NewViewModel
             {
 
                 Device.BeginInvokeOnMainThread(async () =>
-                {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
-                    _navigationService.GoBack();
+                {_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                
+                _navigationService.GoBack();
 
                 });
                             }
