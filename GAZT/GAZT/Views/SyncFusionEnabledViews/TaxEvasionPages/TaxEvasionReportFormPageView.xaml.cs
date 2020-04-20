@@ -295,7 +295,7 @@ namespace GAZT.Views.NewViews
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     FmobcountrycodeAr.Text = "+9665";
-                    TmobcountrycodeAr.Text = "+9665";
+                    TmobcountrycodeAr.Text = "+9665";              
 
                 }
             }
