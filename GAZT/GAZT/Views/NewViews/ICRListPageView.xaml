@@ -17,7 +17,8 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="GAZT.Views.NewViews.ICRListPageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
 
     <ContentPage.Resources>
         <ResourceDictionary>
