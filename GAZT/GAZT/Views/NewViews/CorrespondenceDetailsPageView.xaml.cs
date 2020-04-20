@@ -94,7 +94,7 @@ namespace GAZT.Views.NewViews
            // string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
             if (Device.RuntimePlatform == Device.iOS)
             {
-                string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:16px;margin:10;'>");
+                string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;'>");
                 var htmlSource = new HtmlWebViewSource();
 
                 htmlSource.Html = newHTMLForFonts;
