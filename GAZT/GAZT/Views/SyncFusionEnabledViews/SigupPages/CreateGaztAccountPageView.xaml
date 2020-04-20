@@ -156,9 +156,9 @@
                     </Grid>
                 </ScrollView>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,0,0,0"  BackgroundColor="White" Orientation="Vertical">
-                    <Button Text="{x:Static local:AppResources.ZZResendtheverificationcode}" HeightRequest="56"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand" Margin="0" CornerRadius="0"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}"></Button>
+                    <Button Text="{x:Static local:AppResources.ZZResendtheverificationcode}" HeightRequest="56"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand" Margin="0" CornerRadius="0"   BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}" FontAttributes="Bold" Opacity="0.7" TextColor="{Binding ButtonDisableTextColor}"></Button>
 
-                    <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="End" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
+                    <Button x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="End" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"     BackgroundColor="{Binding VerifyButtonDisableColor}" Opacity="0.7"  FontAttributes="Bold" TextColor="{Binding VerifyButtonDisableTextColor}" />
 
                 </StackLayout>
             </Grid>
