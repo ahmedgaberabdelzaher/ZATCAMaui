@@ -110,6 +110,10 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         ReturnPeriod = SelectedZakatReturn.Period;
                         SelectedICRStatusWhileGoingToZAKATDetails = SelectedICRStatus.index;
+                        if(SelectedICRStatus.Value == "All" || SelectedICRStatus.Value == "All")
+                        {
+                            SelectedIndex = 13;
+                        }
                         //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                          _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
@@ -316,7 +320,7 @@ namespace GAZT.ViewModel.NewViewModel
                   new ZAKATStatus{ Key ="ZP017", Value = "Parked in Amendment",index = 10},
                    new ZAKATStatus{ Key ="E0089", Value = "GSTC – Escalation In Process",index = 11},
                    new ZAKATStatus{ Key ="E0090", Value = "GSTC – Escalation Completed",index = 12},
-                 new ZAKATStatus{ Key ="ALL", Value = "All"},
+                 new ZAKATStatus{ Key ="ALL", Value = "All",index = 13},
                    
             };
 
@@ -335,7 +339,7 @@ namespace GAZT.ViewModel.NewViewModel
                   new ZAKATStatus{ Key ="ZP017", Value = "محفوظ كمسودة تعديل",index = 10},
                    new ZAKATStatus{ Key ="E0089", Value = "الأمانة –قيد التصعيد",index = 11},
                    new ZAKATStatus{ Key ="E0090", Value = "الأمانة – انتهاء التصعيد",index = 12},
-                 new ZAKATStatus{ Key ="ALL", Value = "الجميع"},
+                 new ZAKATStatus{ Key ="ALL", Value = "الجميع",index = 13},
 
             };
 
@@ -488,9 +492,19 @@ namespace GAZT.ViewModel.NewViewModel
                     MyZakatReturns = myZakatReturnsList;
                     if(ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage)
                     {
-                        SelectedIndex = SelectedICRStatusWhileGoingToZAKATDetails;
-                        TxtSelectedStatus = ICRStatusList[SelectedIndex].Value;
-                        ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+                        if(SelectedIndex != 13)
+                        {
+                            SelectedIndex = SelectedICRStatusWhileGoingToZAKATDetails;
+                            TxtSelectedStatus = ICRStatusList[SelectedIndex].Value;
+                            ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+                        }
+                        else
+                        {
+                            //SelectedIndex = SelectedICRStatusWhileGoingToZAKATDetails;
+                            TxtSelectedStatus = ICRStatusList[13].Value; 
+                            ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
+                            SelectedIndex = 13;
+                        }
 
                     }
                     else

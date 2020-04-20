@@ -2532,6 +2532,13 @@ namespace GAZT.ViewModel.NewViewModel
             IsMainButtonEnabled = value;
         }
 
+        public async Task ManageEnabledAsyncProperty(bool value)
+        {
+            IsControlEnabled = value;
+            IsDeclarationCheckEnabled = value;
+            IsTaxPayerCheckEnabled = value;
+            IsMainButtonEnabled = value;
+        }
         public async Task OnSaveDraftClicked()
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -3793,15 +3800,24 @@ namespace GAZT.ViewModel.NewViewModel
 
                 if (VATDeclarationData.d.TcFg == "1")
                 {
-                    IsDeclarationCheckedForInstruction = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsDeclarationCheckedForInstruction = true;
+                    });
                 }
                 if (VATDeclarationData.d.ConfStp2 == "1")
                 {
-                    IsCheckedTaxPayerDetailsInfo = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsCheckedTaxPayerDetailsInfo = true;
+                    });
                 }
                 if (VATDeclarationData.d.DecFg == "1")
                 {
-                    IsDeclarationCheckedForSummary = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsDeclarationCheckedForSummary = true;
+                    });
                 }
                 List<VATDeclarationTabbedPageName> vatTabbedList = new List<VATDeclarationTabbedPageName>();
                 VatTabbledPageList = new List<VATDeclarationTabbedPageName>();
@@ -4106,7 +4122,10 @@ namespace GAZT.ViewModel.NewViewModel
 
                             //    SetData();
                             //}
-                            ManageEnabledProperty(true);
+                            Device.BeginInvokeOnMainThread(async() =>
+                            {
+                                await ManageEnabledAsyncProperty(true);
+                            });
                         }
 
                         await SetButtons(VATDeclarationData);
