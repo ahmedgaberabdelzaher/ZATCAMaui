@@ -214,7 +214,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isETVisible = value;
-                RaisePropertyChanged("IsVATVisible");
+                RaisePropertyChanged("IsETVisible");
             }
         }
 
@@ -1166,9 +1166,9 @@ namespace GAZT.ViewModel.NewViewModel
                         ETCo.Add(childET);
                     }
                     ListETCorrespondance = ETCo;
-                    SetSelectedIndexZakat = 4;
-                    SetSelectedIndexET = 2;
-                    SetSelectedIndexVAT = 2;
+                    SetSelectedIndexZakat = 3;
+                    SetSelectedIndexET = 1;
+                    SetSelectedIndexVAT = 1;
                 }
                 else
                 {

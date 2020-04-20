@@ -155,41 +155,64 @@ namespace GAZT.Views.NewViews
 
 
                 await viewModel.pageLoad();
-                if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
+                try
                 {
-                    viewModel.ManageEnabledProperty(false);
-                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                    viewModel.IsDeclarationCheckedForSummary = true;
-                    viewModel.IsDeclarationCheckedForInstruction = true;
-                    viewModel.IsVATRefunCheckedVisible = true;
-                    //viewModel.ButtonName = AppResources.ZVatDownloadForm;
-                    viewModel.IsMainButtonEnabled = false;
-                }
-                else
-                {
-                    viewModel.ManageEnabledProperty(true);
-                    if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
                     {
-                        if (App.ICRStatus == "E0056")
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                            viewModel.IsDeclarationCheckedForInstruction = true;
-                            viewModel.IsDeclarationCheckEnabled = false;
-                            viewModel.IsTaxPayerCheckEnabled = false;
+                            await viewModel.ManageEnabledAsyncProperty(false);
+                        });
+                     //   viewModel.ManageEnabledProperty(false);
+                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                        viewModel.IsDeclarationCheckedForSummary = true;
+                        viewModel.IsDeclarationCheckedForInstruction = true;
+                        viewModel.IsVATRefunCheckedVisible = true;
+                        //viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                        viewModel.IsMainButtonEnabled = false;
+                    }
+                    else
+                    {
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                           await viewModel.ManageEnabledAsyncProperty(true);
+                        });
+                        if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
+                        {
+                            if (App.ICRStatus == "E0056")
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                                    viewModel.IsDeclarationCheckedForInstruction = true;
+                                    viewModel.IsDeclarationCheckEnabled = false;
+                                    viewModel.IsTaxPayerCheckEnabled = false;
+                                });
+                               
+                            }
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await viewModel.NavigationSetupForDraft();
+                            });
                         }
-                        await viewModel.NavigationSetupForDraft();
+
                     }
 
+
+
+                    viewModel.ListOfActionButtonsApplicable = new List<string>();
+                    await viewModel.SetButtons(viewModel.VATDeclarationData);
+                    if (App.CheckTINStatusPageView != "0045")
+                    {
+                        onPageLoadCalculation();
+                    }
                 }
-
-
-
-                viewModel.ListOfActionButtonsApplicable = new List<string>();
-                await viewModel.SetButtons(viewModel.VATDeclarationData);
-                if (App.CheckTINStatusPageView != "0045")
+                catch(Exception ex)
                 {
-                    onPageLoadCalculation();
+
                 }
+               
 
             });
             await Task.Run(() =>

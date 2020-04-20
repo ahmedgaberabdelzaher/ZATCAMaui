@@ -22,7 +22,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
 
         private string password = "Init@123";
         private string email = "3102289044";
-        //private string email = "3102285896";
+        // private string email = "3000005973";
 
 
         //private string password;

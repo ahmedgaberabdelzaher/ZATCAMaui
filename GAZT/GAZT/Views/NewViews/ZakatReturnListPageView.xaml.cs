@@ -34,12 +34,16 @@ namespace GAZT.Views.NewViews
         public ZakatReturnListPageView()
         {
             InitializeComponent();
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            viewModel = App.Locator.ZakatReturnListPageView;
+                     On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+             viewModel = App.Locator.ZakatReturnListPageView;
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.ClearData();
+            viewModel.GetZAKATICRStatusList();
+            viewModel.SelectedIndex = 13;
+            viewModel.TxtSelectedStatus = viewModel.ICRStatusList[13].Value;
+            viewModel.HandleNoDataMessageVisibility(viewModel.MyZakatReturns);
             ZakatICRList.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
@@ -142,13 +146,25 @@ namespace GAZT.Views.NewViews
             //}
             //else
             //{
-            if(viewModel.myZakatReturnsList != null && viewModel.myZakatReturnsList.Count > 0)
+            if(viewModel.myZakatReturnsList != null )
             {
-                ZAKATStatus selectedICRStatus = (ZAKATStatus)e.NewValue;
-                viewModel.SelectedICRStatus = selectedICRStatus;
-                viewModel.TxtSelectedStatus = selectedICRStatus.Value;
-                viewModel.PreviousSelectedICRStatus = selectedICRStatus;
-                viewModel.GetFilteredZAKATICRList(selectedICRStatus);
+                try
+                {
+                    ZAKATStatus selectedICRStatus = (ZAKATStatus)e.NewValue;
+                    viewModel.SelectedICRStatus = selectedICRStatus;
+                    viewModel.TxtSelectedStatus = selectedICRStatus.Value;
+                    viewModel.PreviousSelectedICRStatus = selectedICRStatus;
+                    viewModel.GetFilteredZAKATICRList(selectedICRStatus);
+                }
+                catch(Exception ex)
+                {
+
+                }
+              
+            }
+            else
+            {
+
             }
                
 
