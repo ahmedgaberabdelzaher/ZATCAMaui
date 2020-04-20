@@ -386,26 +386,26 @@ namespace GAZT.ViewModel.NewViewModel
                 else if(ButtonStatus.Equals("E0003"))//E0003 The return is Paid OR Partially paid 
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = true;
+                    AmedmentButtonVisibility = true;// Verified
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
-                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Ameded by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
+                else if (ButtonStatus.Equals("E0004") || ButtonStatus.Equals("E0008"))//When the Return is already Amended by Taxpayer(E0004), and When the return is released but not Amended yet(E0003)
                 {
                     //ButtonStatus.Equals("E0008") This has been varified by using Code
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = true;
+                    AmedmentButtonVisibility = false;// Verified
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if(ButtonStatus.Equals("E0005"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = true;
+                    AmedmentButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals("E0011"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = true;
+                    AmedmentButtonVisibility = false;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing

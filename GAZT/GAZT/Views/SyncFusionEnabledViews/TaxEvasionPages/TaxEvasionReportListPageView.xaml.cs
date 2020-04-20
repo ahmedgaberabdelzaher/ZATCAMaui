@@ -162,5 +162,7 @@ namespace GAZT.Views.NewViews
 
             return;
         }
+
+        protected override bool OnBackButtonPressed() => true;
     }
 }
