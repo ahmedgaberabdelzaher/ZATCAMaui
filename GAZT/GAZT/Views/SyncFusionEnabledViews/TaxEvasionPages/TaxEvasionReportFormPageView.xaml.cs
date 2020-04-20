@@ -27,9 +27,9 @@ namespace GAZT.Views.NewViews
             try
             {
                 InitializeComponent();
-                clearFields();
+                
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
-
+               // clearFields();
                 viewModel.selectedtaxEList = new TaxEvasionReport();
                 viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
                 ChangeAeroIcon();
@@ -39,6 +39,7 @@ namespace GAZT.Views.NewViews
               
                 SetLTR();
                 this.BindingContext = viewModel;
+                clearFields(); ;
                 viewModel.CreateCompanyTypeList();
                 viewModel.onPageLoad();//TaxEvasionReport
                 viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
@@ -54,10 +55,12 @@ namespace GAZT.Views.NewViews
                     Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
                     checkBox.IsEnabled = false;
                     viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                    viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;
+                    viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
                     viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                     viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
-                    TFaciOwnerName.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
+                    TFaciOwnerName.IsEnabled = false;
+
+                    TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
                     RegionPicker.IsEnabled = false;
                     RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
 
@@ -126,6 +129,7 @@ namespace GAZT.Views.NewViews
                         string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
                         viewModel.TMobNumber = mobb;
                         TMobNumber.IsEnabled = false;
+                        TMobNumberAr.IsEnabled = false;
                     }
 
 
@@ -183,10 +187,10 @@ namespace GAZT.Views.NewViews
                          Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
                          checkBox.IsEnabled = false;
                          viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                         viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;
+                         viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
                          viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                          viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
-                         TFaciOwnerName.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
+                         TFaciOwnerName.IsEnabled = false;TFaciMobNoAr.IsEnabled = false; TFaciMobNo.IsEnabled = false; TFaciEmail.IsEnabled = false;
                          RegionPicker.IsEnabled = false;
                          RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
 
@@ -284,7 +288,10 @@ namespace GAZT.Views.NewViews
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
                 viewModel.IsVisiblePickerAr = true;
                 viewModel.IsVisiblePickerEn = false;
-
+                facilityMobileStackLayoutAr.IsVisible = true;
+                facilityMobileStackLayout.IsVisible = false;
+                reporterMobStackLayoutAr.IsVisible = true;
+                reporterMobStackLayout.IsVisible = false;
             }
             else
             {
@@ -294,6 +301,10 @@ namespace GAZT.Views.NewViews
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 viewModel.IsVisiblePickerAr = false;
                 viewModel.IsVisiblePickerEn = true;
+                facilityMobileStackLayout.IsVisible = true;
+                facilityMobileStackLayoutAr.IsVisible = false;
+                reporterMobStackLayoutAr.IsVisible = false;
+                reporterMobStackLayout.IsVisible = true;
             }
 
         }
@@ -372,9 +383,16 @@ namespace GAZT.Views.NewViews
                     flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
                 }
 
-                else if (string.IsNullOrEmpty(TMobNumber.Text))
+                else if ( string.IsNullOrEmpty(viewModel.TMobNumber))
                 {
-                    flag = false; TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
+                    flag = false;
+                    if (App.IsArabic)
+                    { TMobNumberAr.Focus(); FrmNumberAr.HasError = true; showFillFeildsMessage(); }
+                    else
+                    {
+                        TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
+                    }
+                    
                 }
                 else if (string.IsNullOrEmpty(TFaciName.Text))
                 { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
@@ -438,71 +456,152 @@ namespace GAZT.Views.NewViews
 
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(TMobNumber.Text))
+            if (App.IsArabic)
             {
-                if (TMobNumber.Text.Length < 8)
+                if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZInvalidMobileNoError;
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (TMobNumberAr.Text.Length < 8)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmNumberAr.HasError = true;
+                        TMobNumberAr.Text = string.Empty;
+
+
+
+
                     }
+
                     else
                     {
-                        popUp.FlowDirections = "LeftToRight";
+                        FrmNumberAr.HasError = false;
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmNumber.HasError = true;
-                    TMobNumber.Text = string.Empty;
-
-
-
-
                 }
 
-                else
+
+            }
+            else
+            {
+
+                if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    FrmNumber.HasError = false;
+                    if (TMobNumber.Text.Length < 8)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmNumber.HasError = true;
+                        TMobNumber.Text = string.Empty;
+
+
+
+
+                    }
+
+                    else
+                    {
+                        FrmNumber.HasError = false;
+                    }
                 }
+
             }
 
         }
 
         private void TFaciMobNo_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(TFaciMobNo.Text))
+            if (App.IsArabic)
             {
-                if (TFaciMobNo.Text.Length < 8)
+                if (!string.IsNullOrEmpty(TFaciMobNoAr.Text))
                 {
-                    PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZInvalidMobileNoError;
-
-
-                    popUp.IsLinkAvailable = false;
-
-                    if (App.IsArabic)
+                    if (TFaciMobNoAr.Text.Length < 8)
                     {
-                        popUp.FlowDirections = "RightToLeft";
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmFMobNoAr.HasError = true;
+                        TFaciMobNoAr.Text = string.Empty;
+                        TFaciMobNoAr.Focus();
                     }
+
                     else
                     {
-                        popUp.FlowDirections = "LeftToRight";
+                        FrmFMobNoAr.HasError = false;
                     }
-                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmFMobNo.HasError = true;
-                    TFaciMobNo.Text = string.Empty;
-                    TFaciMobNo.Focus();
                 }
 
-                else
-                {
-                    FrmFMobNo.HasError = false;
-                }
+
             }
+            else
+            {
+                if (!string.IsNullOrEmpty(TFaciMobNo.Text))
+                {
+                    if (TFaciMobNo.Text.Length < 8)
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZInvalidMobileNoError;
+
+
+                        popUp.IsLinkAvailable = false;
+
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmFMobNo.HasError = true;
+                        TFaciMobNo.Text = string.Empty;
+                        TFaciMobNo.Focus();
+                    }
+
+                    else
+                    {
+                        FrmFMobNo.HasError = false;
+                    }
+                }
+
+
+            }
+
 
         }
 
@@ -785,36 +884,38 @@ namespace GAZT.Views.NewViews
         }
         public void clearFields()
         {
-            //viewModel.SelectedTaxEvasionCompanyType = null;
-            //viewModel.SelectedTaxEvasionRegion = null;
-            //viewModel.SelectLCType = null;
-            //viewModel.UploadedDocumentsListObj = null;
+          
 
             try
             {
-               
-                //Attachment_Entry.Text = string.Empty;
-                //FacilityType_entry.Text = string.Empty;
-                //Date_entry.Text = string.Empty;
-                //City_entry.Text = string.Empty;
-                //Region_entry.Text = string.Empty;
-                //TName.Text = string.Empty;
-                //TFaciName.Text = string.Empty;
-                //TFaciOwnerName.Text = string.Empty;
-                //TMobNumber.Text = string.Empty;
-                //TFaciMobNo.Text = string.Empty;
-                //TEmail.Text = string.Empty;
-                //TFaciEmail.Text = string.Empty;
-                //TID.Text = string.Empty;
-                //TVatNumber.Text = string.Empty;
-                //TxtTIN.Text = string.Empty;
-                //viewModel.IsTIN = true;
-                //viewModel.IsTINVisible = true;
-                //TReportDetail.Text = string.Empty;
-                //TFWType.Text = string.Empty;
-                //TFDAdress.Text = string.Empty;
-                //TFSAddress.Text = string.Empty;
-                // DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
+                viewModel.SelectedTaxEvasionCompanyType = null;
+                viewModel.SelectedTaxEvasionRegion = null;
+                viewModel.SelectLCType = null;
+                viewModel.UploadedDocumentsListObj = null;
+                Attachment_Entry.Text = string.Empty;
+                FacilityType_entry.Text = string.Empty;
+                Date_entry.Text = string.Empty;
+                City_entry.Text = string.Empty;
+                Region_entry.Text = string.Empty;
+                TName.Text = string.Empty;
+                TFaciName.Text = string.Empty;
+                TFaciOwnerName.Text = string.Empty;
+                TMobNumber.Text = string.Empty;
+                TMobNumberAr.Text = string.Empty;
+                TFaciMobNo.Text = string.Empty;
+                TFaciMobNoAr.Text = string.Empty;
+                TEmail.Text = string.Empty;
+                TFaciEmail.Text = string.Empty;
+                TID.Text = string.Empty;
+                TVatNumber.Text = string.Empty;
+                TxtTIN.Text = string.Empty;
+                viewModel.IsTIN = true;
+                viewModel.IsTINVisible = true;
+                TReportDetail.Text = string.Empty;
+                TFWType.Text = string.Empty;
+                TFDAdress.Text = string.Empty;
+                TFSAddress.Text = string.Empty;
+                //DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
 
             }
             catch (Exception ex)
@@ -833,6 +934,8 @@ namespace GAZT.Views.NewViews
             if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber)))
             {
                 viewModel.IsLoading = false;
+                //clearFields();
+
             }
             else
             {
@@ -881,55 +984,67 @@ namespace GAZT.Views.NewViews
 
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            //try
-            //{
-            //    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-            //    var location = await Geolocation.GetLocationAsync(request);
+            if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber)))
+            {
+                //   viewModel.IsLoading = false;
+                //clearFields();
+                try
+                {
+                    var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                    var location = await Geolocation.GetLocationAsync(request);
 
-            //    if (location != null)
-            //    {
-                     
-                      
-                
-
-
-            //    Position position = new Position(location.Latitude, location.Longitude);
-            //    MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-            //    mapView.MoveToRegion(mapSpan);
-               
-            //    viewModel.TEReportobj.Latitude = location.Latitude.ToString();
-            //    viewModel.TEReportobj.Longitude = location.Longitude.ToString();
-            //    }
-            //}
-            //catch (FeatureNotSupportedException fnsEx)
-            //{
-            //    // Handle not supported on device exception
-            //}
-            //catch (FeatureNotEnabledException fneEx)
-            //{
-            //    // Handle not enabled on device exception
-            //}
-            //catch (PermissionException pEx)
-            //{
-            //    // Handle permission exception
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Unable to get location
-            //}
+                    if (location != null)
+                    {
 
 
 
 
 
-            Pin pin = new Pin();
-            pin.Label = "Your Location";
-            pin.Type = PinType.Place;
-            pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
-            viewModel.Latitude = e.Position.Latitude;
-            viewModel.Longitude = e.Position.Longitude;
-            mapView.Pins.Clear();
-            mapView.Pins.Add(pin);
+                        Position position = new Position(location.Latitude, location.Longitude);
+                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                        mapView.MoveToRegion(mapSpan);
+                        viewModel.Latitude = location.Latitude;
+                        //viewModel.TEReportobj.Latitude = location.Latitude.ToString();
+                        viewModel.Longitude = location.Longitude;
+                    }
+                }
+                catch (FeatureNotSupportedException fnsEx)
+                {
+                    // Handle not supported on device exception
+                }
+                catch (FeatureNotEnabledException fneEx)
+                {
+                    // Handle not enabled on device exception
+                }
+                catch (PermissionException pEx)
+                {
+                    // Handle permission exception
+                }
+                catch (Exception ex)
+                {
+                    // Unable to get location
+                }
+
+
+
+
+
+                Pin pin = new Pin();
+                pin.Label = "Your Location";
+                pin.Type = PinType.Place;
+                pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
+                viewModel.Latitude = e.Position.Latitude;
+                viewModel.Longitude = e.Position.Longitude;
+                mapView.Pins.Clear();
+                mapView.Pins.Add(pin);
+
+            }
+            else { 
+            
+            
+            }
+
+            
         }
 
         private void btnFacilityType_Clicked(object sender, EventArgs e)
