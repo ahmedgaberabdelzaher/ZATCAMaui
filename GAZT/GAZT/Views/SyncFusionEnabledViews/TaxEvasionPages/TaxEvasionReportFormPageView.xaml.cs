@@ -254,6 +254,10 @@ namespace GAZT.Views.NewViews
 
                      }
                  });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch(Exception ex)
             {
