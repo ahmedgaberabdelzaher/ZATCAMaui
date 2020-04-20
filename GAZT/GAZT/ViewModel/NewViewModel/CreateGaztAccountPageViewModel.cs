@@ -20,7 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
-        public ICommand OnResendOTPClicked { get; set; }
+        public Command OnResendOTPClicked { get; set; }
         public int numberOfSeconds = 120;
         int TotalSec;
         public bool StopTimer = false;
@@ -53,9 +53,11 @@ namespace GAZT.ViewModel.NewViewModel
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#005e4b");
+                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableTextColor = Color.White;
                     IsResendOTPEnabled = true;
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableTextColor = Color.Gray;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
@@ -106,7 +108,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
+        private Color _buttonDisableTextColor = Color.Gray;
+        public Color ButtonDisableTextColor
+        {
+            get
+            {
+                return _buttonDisableTextColor;
+            }
+            set
+            {
+                _buttonDisableTextColor = value;
+                RaisePropertyChanged("ButtonDisableTextColor");
+            }
+        }
+
+
+        private Color _verifybuttonDisableColor = Color.FromHex("#006450");
         public Color VerifyButtonDisableColor
         {
             get
@@ -119,6 +136,22 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
+
+
+        private Color _verifybuttonDisableTextColor = Color.White;
+        public Color VerifyButtonDisableTextColor
+        {
+            get
+            {
+                return _verifybuttonDisableTextColor;
+            }
+            set
+            {
+                _verifybuttonDisableTextColor = value;
+                RaisePropertyChanged("VerifyButtonDisableTextColor");
+            }
+        }
+
         private string _txtEmailAddress = string.Empty;
         public string TxtEmailAddress
         {
@@ -306,7 +339,9 @@ namespace GAZT.ViewModel.NewViewModel
                                 _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
                             });
                             ButtonDisableColor = Color.FromHex("#9EA4A9");
-                            VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                            ButtonDisableTextColor = Color.Gray;
+                            VerifyButtonDisableColor = Color.FromHex("#006450");
+                            VerifyButtonDisableTextColor = Color.White;
                             IsResendOTPEnabled = false;
                             IsVerifyOTPEnabled = true;
                             IsOTPEntryEnable = true;
@@ -383,9 +418,11 @@ namespace GAZT.ViewModel.NewViewModel
                     if (TotalSec == 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        ButtonDisableColor = Color.FromHex("#006450");
+                        ButtonDisableTextColor = Color.White;
                         IsResendOTPEnabled = true;
                         VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableTextColor = Color.Gray;
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
                         return false;
