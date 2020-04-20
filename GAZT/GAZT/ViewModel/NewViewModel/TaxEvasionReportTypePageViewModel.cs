@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -172,49 +173,35 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigationService.GoBack();
                 });
 
-                OnBClicked = new Command(() =>
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                //});
+
+                OnBClicked = new Command(async () =>
                 {
-                    CategorySelected_Index = "0";
+                   
 
 
                     try
                     {
-                        if (IsimgVisiblec1 == true)
-                        {
-                            CategorySelected_Index = "1";
-                        }
-                        else if (IsimgVisiblec2 == true)
-                        {
-                            CategorySelected_Index = "2";
-                        }
-                        else if (IsimgVisiblec3 == true)
-                        {
-                            CategorySelected_Index = "3";
-                        }
-                        else if (IsimgVisiblec4 == true)
-                        {
-                            CategorySelected_Index = "4";
-                        }
-                        else if (IsimgVisiblec5 == true)
-                        {
-                            CategorySelected_Index = "5";
-                        }
 
-                        if (CategorySelected_Index != "0")
+                        Task.Run(() =>
                         {
+                            IsLoading = true;
+                        });
 
 
-                            TaxEvasionListobj = new TaxEvasionReport();
-                            TaxEvasionListobj.ViolationType = CategorySelected_Index;
-                            if (!string.IsNullOrEmpty(MobileNumber))
-                            {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
-                                TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
+                        await Task.Run(async () =>
+                        {
+                            await  navigateToFormPage();
 
+                        });
+                        Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
 
-                                _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
-
-                            }
-                        }
                     }
                     catch (Exception ex)
                     {
@@ -230,6 +217,58 @@ namespace GAZT.ViewModel.NewViewModel
         
 
     }
+
+
+        public async Task navigateToFormPage()
+        {
+
+
+
+
+            CategorySelected_Index = "0";
+
+
+            if (IsimgVisiblec1 == true)
+            {
+                CategorySelected_Index = "1";
+            }
+            else if (IsimgVisiblec2 == true)
+            {
+                CategorySelected_Index = "2";
+            }
+            else if (IsimgVisiblec3 == true)
+            {
+                CategorySelected_Index = "3";
+            }
+            else if (IsimgVisiblec4 == true)
+            {
+                CategorySelected_Index = "4";
+            }
+            else if (IsimgVisiblec5 == true)
+            {
+                CategorySelected_Index = "5";
+            }
+
+            if (CategorySelected_Index != "0")
+            {
+
+
+                TaxEvasionListobj = new TaxEvasionReport();
+                TaxEvasionListobj.ViolationType = CategorySelected_Index;
+                if (!string.IsNullOrEmpty(MobileNumber))
+                {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
+                    TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                    });
+                    
+
+                }
+            }
+
+        }
 
         public void PopToRootPage()
         {

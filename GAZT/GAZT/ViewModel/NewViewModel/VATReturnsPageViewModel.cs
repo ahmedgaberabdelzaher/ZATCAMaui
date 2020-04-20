@@ -2274,7 +2274,11 @@ namespace GAZT.ViewModel.NewViewModel
                 await SaveReturnAndGetReturnAndSetButtons();
                 await _dialogService.ShowMessage(AppResources.DraftSaved, AppResources.Information);
             });
-            ManageEnabledProperty(true);
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await ManageEnabledAsyncProperty(true);
+            });
+            //ManageEnabledProperty(true);
             IsMainButtonEnabled = false;
 
         }
@@ -3042,14 +3046,19 @@ namespace GAZT.ViewModel.NewViewModel
                     //});
                     if (res != null && res.d!=null)
                     {
-                        ManageEnabledProperty(false);
-                        IsSwichButtonEnableToTap = false;
-                        IsEnableIBAN = false;
-                        IsEnableCheckedRefund = false;
-                        IsEnableIBANType = false;
-                        IsEnableIBANIdNumber = false;
-                        IsGetAcknowledgementClicked = true;
-                        IsMoreButtonEnabled = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await ManageEnabledAsyncProperty(false);
+                            IsSwichButtonEnableToTap = false;
+                            IsEnableIBAN = false;
+                            IsEnableCheckedRefund = false;
+                            IsEnableIBANType = false;
+                            IsEnableIBANIdNumber = false;
+                            IsGetAcknowledgementClicked = true;
+                            IsMoreButtonEnabled = false;
+                        });
+                        //ManageEnabledProperty(false);
+                       
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
                     else
@@ -3128,14 +3137,19 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
                             {
-                                ManageEnabledProperty(false);
-                                IsSwichButtonEnableToTap = false;
-                                IsEnableIBAN = false;
-                                IsEnableCheckedRefund = false;
-                                IsEnableIBANType = false;
-                                IsEnableIBANIdNumber = false;
-                                IsGetAcknowledgementClicked = true;
-                                IsMoreButtonEnabled = false;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await ManageEnabledAsyncProperty(false);
+                                    IsSwichButtonEnableToTap = false;
+                                    IsEnableIBAN = false;
+                                    IsEnableCheckedRefund = false;
+                                    IsEnableIBANType = false;
+                                    IsEnableIBANIdNumber = false;
+                                    IsGetAcknowledgementClicked = true;
+                                    IsMoreButtonEnabled = false;
+                                });
+                                //ManageEnabledProperty(false);
+                              
                                 _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                             }
                             else
@@ -3297,7 +3311,11 @@ namespace GAZT.ViewModel.NewViewModel
                         var res = await SaveReturnAndGetReturnAndSetButtons();
                         if (res != null && res.d!=null && response!=null)
                         {
-                            ManageEnabledProperty(false);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await ManageEnabledAsyncProperty(false);
+                            });
+                           // ManageEnabledProperty(false);
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
@@ -3481,11 +3499,16 @@ namespace GAZT.ViewModel.NewViewModel
                 var res = await SaveReturnAndGetReturnAndSetButtons();
                 if (res != null && res.d!=null)
                 {
-                    ManageEnabledProperty(true);
-                    IsDeclarationCheckEnabled = false;
-                    IsTaxPayerCheckEnabled = false;
-                    IsAmendClicked = true;
-                    IsMainButtonEnabled = true;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await ManageEnabledAsyncProperty(true);
+                        IsDeclarationCheckEnabled = false;
+                        IsTaxPayerCheckEnabled = false;
+                        IsAmendClicked = true;
+                        IsMainButtonEnabled = true;
+                    });
+                    //ManageEnabledProperty(true);
+                    
                 }
                 else
                 {
