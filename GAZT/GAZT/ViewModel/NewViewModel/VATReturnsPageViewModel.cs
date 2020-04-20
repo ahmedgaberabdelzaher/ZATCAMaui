@@ -2579,7 +2579,7 @@ namespace GAZT.ViewModel.NewViewModel
                     
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                       await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved,Environment.NewLine+res.d.Fbnum), AppResources.Information);
+                       await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved,"  "+res.d.Fbnum), AppResources.Information);
 
                        // await _dialogService.ShowMessage(AppResources.DraftSaved + res.d.Fbnum, AppResources.Information);
                     });
