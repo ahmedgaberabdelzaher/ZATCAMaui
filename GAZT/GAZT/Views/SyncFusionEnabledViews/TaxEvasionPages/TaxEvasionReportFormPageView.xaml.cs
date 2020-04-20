@@ -984,7 +984,7 @@ namespace GAZT.Views.NewViews
 
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber)))
+            if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
             {
                 //   viewModel.IsLoading = false;
                 //clearFields();
@@ -1039,7 +1039,8 @@ namespace GAZT.Views.NewViews
                 mapView.Pins.Add(pin);
 
             }
-            else { 
+            else 
+            { 
             
             
             }
