@@ -147,7 +147,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry x:Name="TmobcountrycodeAr" FontSize="Small"  Keyboard="Telephone"  Text="9665+" IsEnabled="False" IsSpellCheckEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
@@ -251,7 +251,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry x:Name="FmobcountrycodeAr" FontSize="Small" Keyboard="Telephone"  Text="9665+" IsEnabled="False" IsSpellCheckEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
