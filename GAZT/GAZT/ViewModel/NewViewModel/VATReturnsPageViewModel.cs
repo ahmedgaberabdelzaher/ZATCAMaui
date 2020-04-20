@@ -2532,6 +2532,13 @@ namespace GAZT.ViewModel.NewViewModel
             IsMainButtonEnabled = value;
         }
 
+        public async Task ManageEnabledAsyncProperty(bool value)
+        {
+            IsControlEnabled = value;
+            IsDeclarationCheckEnabled = value;
+            IsTaxPayerCheckEnabled = value;
+            IsMainButtonEnabled = value;
+        }
         public async Task OnSaveDraftClicked()
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -4106,7 +4113,10 @@ namespace GAZT.ViewModel.NewViewModel
 
                             //    SetData();
                             //}
-                            ManageEnabledProperty(true);
+                            Device.BeginInvokeOnMainThread(async() =>
+                            {
+                                await ManageEnabledAsyncProperty(true);
+                            });
                         }
 
                         await SetButtons(VATDeclarationData);
