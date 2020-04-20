@@ -430,7 +430,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0", contentType);
 
-                    if (attachment != null)
+                    if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
                         AttachmentSizeVisibility = attachmentSizeVisibility;
