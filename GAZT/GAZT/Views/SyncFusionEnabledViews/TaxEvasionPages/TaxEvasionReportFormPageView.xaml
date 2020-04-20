@@ -109,17 +109,17 @@ xmlns:custom="clr-namespace:GAZT"
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="FillAndExpand" x:Name="reporterMobStackLayout" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}">
+    ContainerType="Outlined" 
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
                                 <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
 
                             <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
-    
+    Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:BorderlessEntry  x:Name="TMobNumber" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8">
@@ -130,6 +130,28 @@ xmlns:custom="clr-namespace:GAZT"
                                     </Entry.Behaviors>
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="1"  Grid.Column="0"  x:Name="reporterMobStackLayoutAr" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
+    
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                <custom:BorderlessEntry  x:Name="TMobNumberAr" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8">
+                                    <Entry.Behaviors>
+
+                                        <custom1:OnlyNumericValuesBehaviour/>
+
+                                    </Entry.Behaviors>
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
+    ContainerType="Outlined" 
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+
+
+                            </inputLayout:SfTextInputLayout>
+
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmEmail"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailEMail}"
@@ -195,11 +217,11 @@ xmlns:custom="clr-namespace:GAZT"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker> 
 
-                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="FillAndExpand" x:Name="facilityMobileStackLayout" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                <custom:BorderlessEntry FontSize="Small" Keyboard="Telephone" IsSpellCheckEnabled="False" Text="+9665" IsEnabled="False"/>
+    ContainerType="Outlined" 
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
 
 
                             </inputLayout:SfTextInputLayout>
@@ -213,6 +235,25 @@ xmlns:custom="clr-namespace:GAZT"
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
                                 </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand"  x:Name="facilityMobileStackLayoutAr" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <inputLayout:SfTextInputLayout x:Name="FrmFMobNoAr"  HorizontalOptions="FillAndExpand"     Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                <custom:BorderlessEntry  x:Name="TFaciMobNoAr" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
+                                    <Entry.Behaviors>
+                                        <custom1:OnlyNumericValuesBehaviour/>
+                                    </Entry.Behaviors>
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                            <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
+    ContainerType="Outlined" 
+    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+
+
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmFEmail"   Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
