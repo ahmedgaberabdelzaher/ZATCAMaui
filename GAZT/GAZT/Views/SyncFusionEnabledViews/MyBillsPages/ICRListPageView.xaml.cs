@@ -182,6 +182,9 @@ namespace GAZT.Views.NewViews
             try
             {
                 base.OnAppearing();
+                //var safeInsets = On().SafeAreaInsets();
+                //safeInsets.Left = 24;
+                //this.Padding = safeInsets;
                 AttachmentPageViewModel.AttachmentUploadedSize = 0;
                 AttachmentPageViewModel.attachmentSizeVisibility = false;
                 if (Count != 1)

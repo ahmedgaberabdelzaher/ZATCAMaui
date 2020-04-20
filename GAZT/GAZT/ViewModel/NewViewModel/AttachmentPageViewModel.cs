@@ -347,6 +347,12 @@ namespace GAZT.ViewModel.NewViewModel
                                                     // TotalAttachmentSize += AttachmentSize;
                                                     AttachmentName = string.Empty;
                                                 }
+                                                else
+                                                {
+                                                    AttachmentName = string.Empty;
+                                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+
+                                                }
                                             }
                                             else
                                             {
