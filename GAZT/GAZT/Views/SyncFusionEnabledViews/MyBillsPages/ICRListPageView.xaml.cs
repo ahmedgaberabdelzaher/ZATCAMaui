@@ -120,10 +120,11 @@ namespace GAZT.Views.NewViews
                 if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
                 {
                     ICRStatus selectedICR = (ICRStatus)e.NewValue;
-                    viewModel.SelectedICRStatus = selectedICR;
+                    viewModel.SelectedICRStatus = viewModel.ICRStatusList[viewModel.SelectedPickerIndex];// selectedICR;
                     viewModel.TxtSelectedStatus = selectedICR.Txt30;
                     string str = App.ICRStatus;
                     viewModel.SetICRListData(viewModel.PreviousSelectedICRStatus);
+                    viewModel.ICRSelectedIndex = viewModel.SelectedPickerIndex;
                 }
                 else
                 {
