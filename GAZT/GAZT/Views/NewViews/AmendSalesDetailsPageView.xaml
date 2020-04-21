@@ -291,17 +291,10 @@
                                                                            LineBreakMode="WordWrap"
                                    Grid.Row="0"
                                    Grid.Column="0"
-                                                                          Grid.ColumnSpan="3"
+                                                                          Grid.ColumnSpan="2"
                                    />
 
-                                                               
-                                                                <Image Grid.Row="0"  Grid.Column="3" Grid.RowSpan="2" Aspect="AspectFit"  HorizontalOptions="End" VerticalOptions="Center" Source="ic_delete.png"  >
-                                                                    <Image.GestureRecognizers>
-                                                                        <TapGestureRecognizer
-                                                                                Tapped="OnDeleteAttachmentClickedTapped"
-                                                                                NumberOfTapsRequired="1" />
-                                                                    </Image.GestureRecognizers>
-                                                                </Image>
+                                                              
 
                                                                 <Label Text="{Binding UploadededDateToShow}" 
                                                                        Margin="0,0,0,0"
@@ -312,9 +305,21 @@
                                                                           
                                                                            Grid.Row="1"
                                                                            Grid.Column="0"
-                                                                           Grid.ColumnSpan="3"
+                                                                           Grid.ColumnSpan="2"
                                    />
 
+                                                                  <Image Grid.Row="0"  Grid.Column="2"   HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+                                                                <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
+                                                                </Image.GestureRecognizers>
+                                                            </Image>
+                                                                <Image Grid.Row="0"  Grid.Column="3"  Aspect="AspectFit"  HorizontalOptions="Center" VerticalOptions="Center" Source="ic_delete.png"  >
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer
+                                                                                Tapped="OnDeleteAttachmentClickedTapped"
+                                                                                NumberOfTapsRequired="1" />
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
                                                             </Grid>
 
                                                         </StackLayout>

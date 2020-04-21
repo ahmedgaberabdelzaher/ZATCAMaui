@@ -75,7 +75,30 @@ namespace GAZT.Views.NewViews
             }
         }
         #endregion
+        private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
+        {
+            Image DownloadImage = sender as Image;
 
+            ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
+
+            //attachment.DocUrl;
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+
+        }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;

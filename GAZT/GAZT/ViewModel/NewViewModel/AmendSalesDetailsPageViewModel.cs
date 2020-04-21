@@ -640,7 +640,8 @@ namespace GAZT.ViewModel.NewViewModel
                     _zakatAttachment.Mimetype = obj.Mimetype;
                     _zakatAttachment.ByPusr = obj.ByPusr;
                     _zakatAttachment.Erfdt = obj.Erfdt;
-                    _zakatAttachment.DataVersion = obj.DataVersion;
+                    _zakatAttachment.DataVersion = obj.
+                        DataVersion;
                     _zakatAttachment.DocUrl = obj.DocUrl;
                     _zakatAttachment.OutletRef = obj.OutletRef;
                     string unixDate = GetUnixDate(_zakatAttachment.Erfdt);

@@ -178,6 +178,7 @@
                             <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 
+                               
                               BackgroundColor="#EAF7CC"
                                      HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"

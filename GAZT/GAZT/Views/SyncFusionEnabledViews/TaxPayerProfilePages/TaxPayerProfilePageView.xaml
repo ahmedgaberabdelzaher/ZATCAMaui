@@ -156,7 +156,7 @@
      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" PlaceholderColor= "#ffffff"  IsEnabled="False">
+                            <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Placeholder="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" PlaceholderColor= "#ffffff"  >
              
                         </custom:GAZTBorderlessEntry>
 

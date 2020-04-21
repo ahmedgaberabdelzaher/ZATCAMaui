@@ -902,6 +902,7 @@ namespace GAZT.Views.NewViews
                 //viewModel.SelectedTaxEvasionRegion = null;
                 //viewModel.SelectLCType = null;
                 //viewModel.UploadedDocumentsListObj = null;
+                viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
                 Date_entry.Text = string.Empty;
