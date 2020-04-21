@@ -104,6 +104,7 @@ namespace GAZT.Views.NewViews
 
         private void ListView_ItemTapped_2(object sender, ItemTappedEventArgs e)
         {
+
             CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
             string Url = Constants.GAZTGetCorrespondenceAttach + "'" + Correspondence.Cokey + "',Cotyp='" + Correspondence.Cotype + "')/$value";
             viewModel.ShowETPDF(Correspondence);
