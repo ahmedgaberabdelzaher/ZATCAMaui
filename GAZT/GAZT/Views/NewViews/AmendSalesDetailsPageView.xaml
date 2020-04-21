@@ -254,7 +254,7 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <ContentView>
-                                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                    <cards1:SfCardView HasShadow="True" Margin="10,10,10,0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
 
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
 
@@ -288,7 +288,7 @@
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                                                           LineBreakMode="CharacterWrap"
+                                                                           LineBreakMode="WordWrap"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                                           Grid.ColumnSpan="3"
@@ -304,7 +304,7 @@
                                                                 </Image>
 
                                                                 <Label Text="{Binding UploadededDateToShow}" 
-                                                                       Margin="3,0,3,0"
+                                                                       Margin="0,0,0,0"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
                                                                         HorizontalOptions="StartAndExpand"
                                                                          VerticalOptions="CenterAndExpand"
