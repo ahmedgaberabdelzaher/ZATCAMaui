@@ -286,6 +286,8 @@ namespace GAZT.ViewModel.NewViewModel
             StopTimer = true;
             numberOfSeconds = 120;
             TimerStart(numberOfSeconds);
+            IsResendOTPEnabled = false;
+            IsVerifyOTPEnabled = true;
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {
