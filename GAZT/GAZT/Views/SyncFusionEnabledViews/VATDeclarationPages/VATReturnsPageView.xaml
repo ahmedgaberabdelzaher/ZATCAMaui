@@ -462,7 +462,7 @@
                                         <local1:CustomLabel FlowDirection="LeftToRight" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsChangeRegistrationlinkVisible}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static local1:AppResources.ZVatNote}" FontAttributes="Bold"/>

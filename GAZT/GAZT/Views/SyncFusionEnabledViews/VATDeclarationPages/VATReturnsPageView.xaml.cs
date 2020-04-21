@@ -48,6 +48,15 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
                 }
+                if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
+                {
+                    viewModel.IsChangeRegistrationlinkVisible = true;
+                }
+                else
+                {
+                    viewModel.IsChangeRegistrationlinkVisible = false;
+                }
+
                 // viewModel.IsSwitchToggled = false;
                 viewModel.IsFirstTimeGet = true;
                 viewModel.IsSwitchToggled = false;
@@ -848,7 +857,19 @@ namespace GAZT.Views.NewViews
                                 await viewModel.VATReturnAmendAsync();
                                 break;
                             case ArButtons.حفظكمسودة:
-                                await viewModel.OnSaveDraftClicked();
+                                viewModel.IsVATReturnFieldCheckForSaveAsDraft = true;
+                                if (CheckMandetoryFields())
+                                {
+                                    await viewModel.OnSaveDraftClicked();
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
+                                    });
+                                }
+                                viewModel.IsVATReturnFieldCheckForSaveAsDraft = false;
                                 break;
                             default:
                                 break;
@@ -885,7 +906,19 @@ namespace GAZT.Views.NewViews
                                 await viewModel.VATReturnAmendAsync();
                                 break;
                             case Buttons.SaveasDraft:
-                                await viewModel.OnSaveDraftClicked();
+                                viewModel.IsVATReturnFieldCheckForSaveAsDraft = true;
+                                if (CheckMandetoryFields())
+                                {
+                                    await viewModel.OnSaveDraftClicked();
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await viewModel._dialogService.ShowMessage(AppResources.ZZGeneralMessage_PleaseCorrectHighlightedFields, AppResources.Information);
+                                    });
+                                }
+                                viewModel.IsVATReturnFieldCheckForSaveAsDraft = false;
                                 break;
                             default:
                                 break;
@@ -1875,7 +1908,7 @@ namespace GAZT.Views.NewViews
             bool IsAllEntered = true;
             try
             {
-                if (TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked!=true)
+                if ((TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked!=true) || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
                 {
 
                     if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
