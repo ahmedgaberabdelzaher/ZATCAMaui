@@ -494,6 +494,36 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isVATReturnFieldCheckForSaveAsDraft = false;
+        public bool IsVATReturnFieldCheckForSaveAsDraft
+        {
+            get
+            {
+                return _isVATReturnFieldCheckForSaveAsDraft;
+            }
+            set
+            {
+                _isVATReturnFieldCheckForSaveAsDraft = value;
+                RaisePropertyChanged("IsVATReturnFieldCheckForSaveAsDraft");
+            }
+        }
+
+        private bool _isChangeRegistrationlinkVisible;
+        public bool IsChangeRegistrationlinkVisible
+        {
+            get
+            {
+                return _isChangeRegistrationlinkVisible;
+            }
+            set
+            {
+                _isChangeRegistrationlinkVisible = value;
+                RaisePropertyChanged("IsChangeRegistrationlinkVisible");
+            }
+        }
+
+
+
         private bool _isDeclarationCheckedForSummary = false;
         public bool IsDeclarationCheckedForSummary
         {
@@ -2549,65 +2579,69 @@ namespace GAZT.ViewModel.NewViewModel
         }
         public async Task OnSaveDraftClicked()
         {
-            Device.BeginInvokeOnMainThread(() =>
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async() =>
-            {
-                CreateDataForPost();
-                string operation = "05";// Passed 05 to save the data as a draft
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    CreateDataForPost();
+                    string operation = "05";// Passed 05 to save the data as a draft
                 VATDeclarationData.d.Operationz = operation;
-                StepNumber = "00";
-                StepNumberz = "1";
-                if (IsDeclarationCheckedForInstruction == true)
-                {
-                    StepNumberz = "2";
-                }
-                if (IsCheckedTaxPayerDetailsInfo == true)
-                {
-                    StepNumberz = "3";
-                }
-                if (IsDeclarationCheckedForSummary == true)
-                {
-                    StepNumberz = "4";
-                }
-
-                VATDeclarationData.d.StepNumber = StepNumber;
-                VATDeclarationData.d.StepNumberz = StepNumberz;
-                VATDeclarationData.d.UserTypz = "TP";
-
-                var res = await SaveReturnAndGetReturnAndSetButtons();
-                if (res != null && res.d != null)
-                {
-                    
-                    Device.BeginInvokeOnMainThread(async () =>
+                    StepNumber = "00";
+                    StepNumberz = "1";
+                    if (IsDeclarationCheckedForInstruction == true)
                     {
-                       await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved,"  "+res.d.Fbnum), AppResources.Information);
+                        StepNumberz = "2";
+                    }
+                    if (IsCheckedTaxPayerDetailsInfo == true)
+                    {
+                        StepNumberz = "3";
+                    }
+                    if (IsDeclarationCheckedForSummary == true)
+                    {
+                        StepNumberz = "4";
+                    }
 
-                       // await _dialogService.ShowMessage(AppResources.DraftSaved + res.d.Fbnum, AppResources.Information);
+                    VATDeclarationData.d.StepNumber = StepNumber;
+                    VATDeclarationData.d.StepNumberz = StepNumberz;
+                    VATDeclarationData.d.UserTypz = "TP";
+
+                    var res = await SaveReturnAndGetReturnAndSetButtons();
+                    if (res != null && res.d != null)
+                    {
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
+
+                        // await _dialogService.ShowMessage(AppResources.DraftSaved + res.d.Fbnum, AppResources.Information);
                     });
-                }
-                else
-                {
-                    IsLoading = false;
-                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                    {
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                            _navigationService.GoBack();
-                        });
-
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                        IsLoading = false;
+                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                             //_navigationService.GoBack();
                             WebServiceManager.ErrorMessageForVAT = string.Empty;
 
-                        });
-                    }
+                            });
+                        }
                     //Device.BeginInvokeOnMainThread(async () =>
                     //{
                     //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -2615,12 +2649,16 @@ namespace GAZT.ViewModel.NewViewModel
                 }
 
 
-            });
-            Device.BeginInvokeOnMainThread(() =>
+                });
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(Exception ex)
             {
-                IsLoading = false;
-            });
 
+            }
         }
 
 
