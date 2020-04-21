@@ -161,22 +161,27 @@ namespace GAZT.Views.NewViews
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await viewModel.ManageEnabledAsyncProperty(false);
+                            viewModel.ManageEnabledAsyncProperty(false);
+                            //   viewModel.ManageEnabledProperty(false);
+                            viewModel.IsCheckedTaxPayerDetailsInfo = true;
+                            viewModel.IsDeclarationCheckedForSummary = true;
+                            viewModel.IsDeclarationCheckedForInstruction = true;
+                            viewModel.IsVATRefunCheckedVisible = true;
+                            //viewModel.ButtonName = AppResources.ZVatDownloadForm;
+                            viewModel.IsMainButtonEnabled = false;
                         });
-                     //   viewModel.ManageEnabledProperty(false);
-                        viewModel.IsCheckedTaxPayerDetailsInfo = true;
-                        viewModel.IsDeclarationCheckedForSummary = true;
-                        viewModel.IsDeclarationCheckedForInstruction = true;
-                        viewModel.IsVATRefunCheckedVisible = true;
-                        //viewModel.ButtonName = AppResources.ZVatDownloadForm;
-                        viewModel.IsMainButtonEnabled = false;
+                  
                     }
                     else
                     {
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                           await viewModel.ManageEnabledAsyncProperty(true);
+                           viewModel.ManageEnabledAsyncProperty(true);
+                            if(App.ICRStatus=="E0001")
+                            {
+                                viewModel.IsMainButtonEnabled = false;
+                            }
                         });
                         if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057")
                         {
@@ -1870,7 +1875,7 @@ namespace GAZT.Views.NewViews
             bool IsAllEntered = true;
             try
             {
-                if (TabVatReturn.IsVisible == true)
+                if (TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked!=true)
                 {
 
                     if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
@@ -4350,6 +4355,12 @@ namespace GAZT.Views.NewViews
                 //  setColor(previous, current);
                 //  NewSetColor(senderObject, current);
                 viewModel.IsFirstTimeGet = false;
+
+                if(viewModel.IsGetAcknowledgementClicked==true)
+                {
+                    viewModel.IsMainButtonEnabled = false;
+                }
+
             }
             else if (PageName ==1)
             {
@@ -4425,6 +4436,10 @@ namespace GAZT.Views.NewViews
                     }
                 }
                 viewModel.IsFirstTimeGet = false;
+                if (viewModel.IsGetAcknowledgementClicked == true)
+                {
+                    viewModel.IsMainButtonEnabled = false;
+                }
             }
             else if (PageName == 2)
             {
@@ -4497,6 +4512,10 @@ namespace GAZT.Views.NewViews
                     // ((CollectionView)sender).SelectedItem = null;
                 }
                 viewModel.IsFirstTimeGet = false;
+                if (viewModel.IsGetAcknowledgementClicked == true)
+                {
+                    viewModel.IsMainButtonEnabled = false;
+                }
                 //else
                 //{
                 //    viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
@@ -4536,25 +4555,25 @@ namespace GAZT.Views.NewViews
 
                                 if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
                                 {
-                                    if (viewModel.IsVisibleInstrunction == true)
-                                    {
-                                        viewModel.SelectedIndex = 0;
-                                    }
-                                    if (viewModel.IsVisibleTaxPayerDetails == true)
-                                    {
-                                        viewModel.SelectedIndex = 1;
+                                    //if (viewModel.IsVisibleInstrunction == true)
+                                    //{
+                                    //    viewModel.SelectedIndex = 0;
+                                    //}
+                                    //if (viewModel.IsVisibleTaxPayerDetails == true)
+                                    //{
+                                    //    viewModel.SelectedIndex = 1;
 
-                                    }
-                                    if (viewModel.IsVisibleVatReturnForm == true)
-                                    {
-                                        viewModel.SelectedIndex = 2;
+                                    //}
+                                    //if (viewModel.IsVisibleVatReturnForm == true)
+                                    //{
+                                    //    viewModel.SelectedIndex = 2;
 
-                                    }
-                                    if (viewModel.IsVisibleSummary == true)
-                                    {
-                                        viewModel.SelectedIndex = 3;
+                                    //}
+                                    //if (viewModel.IsVisibleSummary == true)
+                                    //{
+                                    //    viewModel.SelectedIndex = 3;
 
-                                    }
+                                    //}
                                 }
                                 else
                                 {
@@ -4673,6 +4692,10 @@ namespace GAZT.Views.NewViews
 
                         }
                         // ((CollectionView)sender).SelectedItem = null;
+                    }
+                    if (viewModel.IsGetAcknowledgementClicked == true)
+                    {
+                        viewModel.IsMainButtonEnabled = false;
                     }
                 }
                 catch(Exception ex)
