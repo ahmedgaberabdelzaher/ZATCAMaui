@@ -55,7 +55,7 @@
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>Custom Property</key>
-	<string></string>
+	<string></string>SfPicker
 	<key>Custom Property1</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>

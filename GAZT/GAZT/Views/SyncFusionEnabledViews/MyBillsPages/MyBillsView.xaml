@@ -274,7 +274,7 @@
                                                                         <FormattedString>
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FAEDN}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </local1:CustomLabel>
