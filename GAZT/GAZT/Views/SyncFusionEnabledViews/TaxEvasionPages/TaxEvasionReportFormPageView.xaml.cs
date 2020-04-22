@@ -254,6 +254,10 @@ namespace GAZT.Views.NewViews
 
                      }
                  });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch(Exception ex)
             {
@@ -292,6 +296,12 @@ namespace GAZT.Views.NewViews
                 facilityMobileStackLayout.IsVisible = false;
                 reporterMobStackLayoutAr.IsVisible = true;
                 reporterMobStackLayout.IsVisible = false;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    FmobcountrycodeAr.Text = "+9665";
+                    TmobcountrycodeAr.Text = "+9665";              
+
+                }
             }
             else
             {
@@ -888,10 +898,11 @@ namespace GAZT.Views.NewViews
 
             try
             {
-                viewModel.SelectedTaxEvasionCompanyType = null;
-                viewModel.SelectedTaxEvasionRegion = null;
-                viewModel.SelectLCType = null;
-                viewModel.UploadedDocumentsListObj = null;
+                //viewModel.SelectedTaxEvasionCompanyType = null;
+                //viewModel.SelectedTaxEvasionRegion = null;
+                //viewModel.SelectLCType = null;
+                //viewModel.UploadedDocumentsListObj = null;
+                viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
                 Date_entry.Text = string.Empty;

@@ -980,16 +980,23 @@ namespace GAZT.ViewModel.NewViewModel
             catch (InternetException ex)
             {
 
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {_dialogService.ShowMessage(ex.Message, AppResources.Information);
                 
                 _navigationService.GoBack();
-            }
+
+                });
+                            }
 
         }
         public async  void NoInternetGoBack()
         {
-            await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
-            _navigationService.GoBack();
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                _navigationService.GoBack();
+            });
+
         }
 
 

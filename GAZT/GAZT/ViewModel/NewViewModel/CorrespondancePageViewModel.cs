@@ -687,9 +687,30 @@ namespace GAZT.ViewModel.NewViewModel
 
         #region Methods
 
-        public void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
+        public async  void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {
-            _navigationService.NavigateTo(App.CorrespondenceDetailsPageView, CorresModel);
+            Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+
+            await Task.Run(async () =>
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _navigationService.NavigateTo(App.CorrespondenceDetailsPageView, CorresModel);
+                });
+                //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
+
+            });
+            Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+           // _navigationService.NavigateTo(App.CorrespondenceDetailsPageView, CorresModel);
         }
 
         public void ShowVATPDF(CorrespondanceModel CorrespondenceD)
@@ -712,7 +733,32 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     //Uri uri = new Uri(pdfUrl);
                     //Device.OpenUri(uri);
-                    _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
+                    Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+
+                    await Task.Run(async () =>
+                    {
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                        });
+                      //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
+
+                    });
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+
+
+
+
+                   
                 }
                 else
                 {
@@ -727,7 +773,27 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 if (pdfUrl != null)
                 {
-                    _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
+
+                    await Task.Run(async () =>
+                    {
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                        });
+                      //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
+
+                    });
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    ///_navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {

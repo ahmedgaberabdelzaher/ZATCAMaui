@@ -80,6 +80,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isSaveButtonEnable = value;
+                OnZakatReturnDataUpdateClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsSaveButtonEnable");
             }
         }
@@ -334,7 +335,7 @@ namespace GAZT.ViewModel.NewViewModel
                                                 _estimateZakatAttachment.Mimetype = string.Empty;
                                                 _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
                                                 _estimateZakatAttachment.DataVersion = string.Empty;
-                                                DateTime currentDate = DateTime.Now;
+                                                DateTime currentDate = DateTime.Now.ToLocalTime();
                                                 long ticks = currentDate.Ticks;
                                                     //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
                                                     TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
@@ -592,27 +593,31 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
         private void IsValueChanged()
-        {            
-            if(attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count )
+        {
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#006450");
-            }
-            else if(newValue != NewValue && !isOnLoad)
-            {
-                IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#006450");
-            }
-            else if(changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
-            {
-                IsSaveButtonEnable = true;
-                ButtonBackgroundColor = Color.FromHex("#006450");
-            }
-            else
-            {
-                IsSaveButtonEnable = false;
-                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
-            }
+                if (attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count)
+                {
+                    IsSaveButtonEnable = true;
+                    ButtonBackgroundColor = Color.FromHex("#006450");
+                }
+                else if (newValue != NewValue && !isOnLoad)
+                {
+                    IsSaveButtonEnable = true;
+                    ButtonBackgroundColor = Color.FromHex("#006450");
+                }
+                else if (changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
+                {
+                    IsSaveButtonEnable = true;
+                    ButtonBackgroundColor = Color.FromHex("#006450");
+                }
+                else
+                {
+                    IsSaveButtonEnable = false;
+                    ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                }
+            });
+            
         }
 
         private ObservableCollection<ZakatAttachment> CloneAttachmmentListInLocalList(ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment)
@@ -635,7 +640,8 @@ namespace GAZT.ViewModel.NewViewModel
                     _zakatAttachment.Mimetype = obj.Mimetype;
                     _zakatAttachment.ByPusr = obj.ByPusr;
                     _zakatAttachment.Erfdt = obj.Erfdt;
-                    _zakatAttachment.DataVersion = obj.DataVersion;
+                    _zakatAttachment.DataVersion = obj.
+                        DataVersion;
                     _zakatAttachment.DocUrl = obj.DocUrl;
                     _zakatAttachment.OutletRef = obj.OutletRef;
                     string unixDate = GetUnixDate(_zakatAttachment.Erfdt);
@@ -643,11 +649,13 @@ namespace GAZT.ViewModel.NewViewModel
                     DateTime unixStart = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
                     long unixTimeStampInTicks = (long)(unixTime * TimeSpan.TicksPerSecond);
                     DateTime dt = new DateTime(unixStart.Ticks + unixTimeStampInTicks, System.DateTimeKind.Utc);
-                   
-                    _zakatAttachment.UploadededDateToShow = dt.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");
+                    TimeZone localZone = TimeZone.CurrentTimeZone;
+                    string standardName = localZone.DaylightName;
+                    _zakatAttachment.UploadededDateToShow = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’")  ;
                     string uploadedDate = _zakatAttachment.UploadededDateToShow;
                     uploadedDate = uploadedDate.Replace("’", "");
                     uploadedDate = uploadedDate.Replace("‘", "");
+                    uploadedDate = uploadedDate.Replace("UTC", "GMT");
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
@@ -670,18 +678,33 @@ namespace GAZT.ViewModel.NewViewModel
 
         private void SetSaveButtonVisibility()
         {
-            if((ZakatReturnAttachmentsList != null &&  ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+            try
             {
-                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+                    {
+                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        IsSaveButtonEnable = false;
+                    }
+                    else if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+                    {
+                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        IsSaveButtonEnable = false;
+                    }
+                    else if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
+                    {
+                        ButtonBackgroundColor = Color.FromHex("#006450");
+                        IsSaveButtonEnable = true;
+                    }
+                });
             }
-            else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
+            catch(Exception ex)
             {
-                ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+
             }
-            else if((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
-            {
-                ButtonBackgroundColor = Color.FromHex("#006450");
-            }
+            
+          
         }
         #endregion
     }

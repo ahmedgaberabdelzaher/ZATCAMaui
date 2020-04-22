@@ -462,7 +462,7 @@
                                         <local1:CustomLabel FlowDirection="LeftToRight" HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" Text="{x:Static local1:AppResources.ZVatConfirmMessage}"  Style="{DynamicResource searchBarStyleForClearificationChb}" Grid.Row="15" Grid.Column="1"  Margin="10,0,10,0" >
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.IsChangeRegistrationlinkVisible}" Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static local1:AppResources.ZVatNote}" FontAttributes="Bold"/>
@@ -3244,9 +3244,9 @@
 
 
                     <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                    <buttons:SfButton  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" FontAttributes="Bold" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" FontAttributes="Bold" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
                      Opacity="0.7">
-                        <VisualStateManager.VisualStateGroups>
+                        <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Disabled">
                                     <VisualState.Setters>
@@ -3261,8 +3261,8 @@
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </buttons:SfButton>
+                        </VisualStateManager.VisualStateGroups>-->
+                    </Button>
                     <!--</StackLayout>-->
                 </Grid>
                 <!-- Acticity indicator layout start -->

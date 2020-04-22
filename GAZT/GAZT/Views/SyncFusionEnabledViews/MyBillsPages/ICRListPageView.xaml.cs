@@ -120,10 +120,11 @@ namespace GAZT.Views.NewViews
                 if (AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage)
                 {
                     ICRStatus selectedICR = (ICRStatus)e.NewValue;
-                    viewModel.SelectedICRStatus = selectedICR;
+                    viewModel.SelectedICRStatus = viewModel.ICRStatusList[viewModel.SelectedPickerIndex];// selectedICR;
                     viewModel.TxtSelectedStatus = selectedICR.Txt30;
                     string str = App.ICRStatus;
                     viewModel.SetICRListData(viewModel.PreviousSelectedICRStatus);
+                    viewModel.ICRSelectedIndex = viewModel.SelectedPickerIndex;
                 }
                 else
                 {
@@ -181,6 +182,9 @@ namespace GAZT.Views.NewViews
             try
             {
                 base.OnAppearing();
+                //var safeInsets = On().SafeAreaInsets();
+                //safeInsets.Left = 24;
+                //this.Padding = safeInsets;
                 AttachmentPageViewModel.AttachmentUploadedSize = 0;
                 AttachmentPageViewModel.attachmentSizeVisibility = false;
                 if (Count != 1)

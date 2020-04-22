@@ -53,9 +53,15 @@
             </ControlTemplate>
         </ContentPage.ControlTemplate>
         <ContentPage.Content >
-        <StackLayout BackgroundColor="White" Spacing="0">
-   
-            <StackLayout HeightRequest="944" Spacing="0" BackgroundColor="White">
+        <Grid BackgroundColor="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+
+            <StackLayout VerticalOptions="FillAndExpand" Grid.Row="0" Spacing="0" BackgroundColor="White">
+
                 <ScrollView BackgroundColor="White" >
                     <Grid  RowSpacing="5" Padding="0,5,0,0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
@@ -198,19 +204,7 @@
                             </Grid>
 
                         </StackLayout>
-                        <!-- Acticity indicator layout start -->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="5" IsVisible="{Binding IsLoading}">
-                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
-                            </StackLayout>
-                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                                    <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                                    <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
-                                </StackLayout>
-                            </StackLayout>
-                        </Grid>
 
-                        <!-- Acticity indicator layout end -->
                     </Grid>
 
 
@@ -221,7 +215,7 @@
 
             <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
             <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
-            <StackLayout  HeightRequest="56" VerticalOptions="FillAndExpand"  WidthRequest="1000" BackgroundColor="White">
+            <StackLayout Grid.Row="1" HeightRequest="56" VerticalOptions="FillAndExpand"  WidthRequest="1000" BackgroundColor="White">
                 <buttons:SfButton
                     Margin="0"
                  CornerRadius="0"
@@ -237,7 +231,20 @@
                      />
 
             </StackLayout>
-        </StackLayout>
+            <!-- Acticity indicator layout start -->
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+            <!-- Acticity indicator layout end -->
+        </Grid>
         
     </ContentPage.Content>
 </ContentPage>
