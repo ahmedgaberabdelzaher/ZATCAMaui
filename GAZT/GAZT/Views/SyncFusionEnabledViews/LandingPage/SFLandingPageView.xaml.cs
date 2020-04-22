@@ -69,7 +69,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (viewModel.listofPaymentReturn != null)
                 {
                     List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                    sortedList = viewModel.listofPaymentReturn.OrderByDescending(icr => DateTime.Parse(icr.DueDate)).ToList();
+                    sortedList = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
                     ReturnsList.ItemsSource = sortedList;
                 }
             }
