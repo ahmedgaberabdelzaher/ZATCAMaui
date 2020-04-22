@@ -13,6 +13,7 @@
     xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:local11="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
     x:Name="LandingPage"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False"
@@ -167,7 +168,7 @@
 
                                         <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
-                    <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
+                    <!--<syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
@@ -195,10 +196,10 @@
                                 <syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
                                     <DataTemplate>
                                         <StackLayout VerticalOptions="CenterAndExpand">
-                                            <!--<Label TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro">--> 
+                                            --><!--<Label TextColor="Red" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" LineBreakMode="WordWrap" Padding="0,15,0,1" FontSize="Micro">--><!-- 
                                             <Editor HeightRequest="80" TextColor="#AA0C19" Text="{Binding Subject}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"         FontSize="Micro" IsEnabled="False" IsSpellCheckEnabled="False"/>
                                             
-                                            <!--<Button BackgroundColor="DarkGreen" Text="COPY" TextColor="White" />-->
+                                            --><!--<Button BackgroundColor="DarkGreen" Text="COPY" TextColor="White" />--><!--
                                         </StackLayout>
                                     </DataTemplate>
                                 </syncfusionCalendar:MonthViewSettings.InlineItemTemplate>
@@ -207,7 +208,232 @@
                             
                             
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
-                    </syncfusionCalendar:SfCalendar>
+                    </syncfusionCalendar:SfCalendar>-->
+
+                    <listView:SfListView  x:Name="ReturnsList" 
+           ItemsSource="{Binding listUnsubmittedReturn,Mode=TwoWay}"
+                                       IsScrollBarVisible="True"
+                                         SelectionBackgroundColor="White"
+                                      Orientation="Horizontal"
+          HorizontalOptions="FillAndExpand"
+            HeightRequest="160"
+           AutoFitMode="Height" ItemSpacing="5" 
+                 BackgroundColor="White"     
+           
+            >
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <cards:SfCardView HasShadow="True" HeightRequest="120" VerticalOptions="CenterAndExpand" Margin="0,0,0,0" Padding="0" Opacity=".9" WidthRequest="340" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4"   >
+ 
+                                        <StackLayout Orientation="Horizontal"  BackgroundColor="White"  >
+                                            <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="2"   BackgroundColor="White" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="15*" />
+                                                    <ColumnDefinition Width="85*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+
+                                                </Grid.RowDefinitions>
+
+
+                                                <local1:CustomLabel Text="{Binding Incotext}" 
+                                       FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                                    FontSize="Micro"
+                                                                    IsVisible="{Binding IsUnSubmittedReturn}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                                                     Margin="5,0,5,0"
+                                                           />
+
+                                                <local1:CustomLabel Text="{Binding Txt50}" 
+                                         FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                                    FontSize="Micro"
+                                                                    IsVisible="{Binding IsPaymentOverdue}"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                                                     Margin="5,0,5,0"
+                                                           />
+                                                <!--<local1:CustomLabel Text="{Binding TaxPeriod}" 
+                                         FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                                    FontSize="Micro"
+                                                                    IsVisible="{Binding IsUnSubmittedReturn}"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                                                     Grid.ColumnSpan="2"
+                                                                     Margin="5,0,5,0"
+                                                           />-->
+
+
+                                                <local1:CustomLabel 
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                                    FontSize="Micro"
+                                                  IsVisible="{Binding IsUnSubmittedReturn}"
+                                   Grid.Row="2"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+                                                <!--<local1:CustomLabel Text="{Binding Fbnum}" 
+                                         FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                                    FontSize="Micro"
+                                                                      IsVisible="{Binding IsFBNumberExist}"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                                    Grid.ColumnSpan="2"
+                                                                     Margin="5,0,5,0"
+                                                           />-->
+
+                                                <local1:CustomLabel 
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                                    FontSize="Micro"
+                                                   IsVisible="{Binding IsFBNumberExist}"
+                                   Grid.Row="3"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNo}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+
+
+                                                <local1:CustomLabel 
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                                    FontSize="Micro"
+                                                    IsVisible="{Binding IsPaymentOverdue}"
+                                   Grid.Row="4"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.SADADNumber}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Sopbel}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+                                                <local1:CustomLabel 
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                   Grid.Row="5"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding IcrStatus}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+                                                <local1:CustomLabel 
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                                    IsVisible="{Binding IsPaymentOverdue}"
+                                   Grid.Row="6"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZSAR}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Amount}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+
+
+                                                <local1:CustomLabel 
+                                                      FontFamily="{StaticResource SSTArLight}"
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       HorizontalOptions="StartAndExpand"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="5,0,5,0"
+                                   Grid.Row="7"
+                                   Grid.Column="0"
+                                                       Grid.ColumnSpan="2"
+                                                          >
+                                                    <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}" FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
+
+                                               
+
+
+                                                <Image  Grid.Row="0"  Grid.Column="0"  Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="Center" VerticalOptions="Start"/>
+
+                                            </Grid>
+                                        </StackLayout>
+                                    </cards:SfCardView>
+                                </ViewCell>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                    </listView:SfListView>
+
+                  
 
                     <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 

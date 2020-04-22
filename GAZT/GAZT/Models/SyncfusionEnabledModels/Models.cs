@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GAZT.Manager;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -67,8 +69,77 @@ namespace GAZT.Models
         public string Incotext { get; set; }
         public string IcrStatus { get; set; }
         public string Sopbel { get; set; }
-        public DateTime DueDt { get; set; }
-        public string Fbnum { get; set; }
+
+        public bool IsFBNumberExist { get; set; }
+
+        public string TaxPeriod { get; set; }
+
+        private string _formatedSingleDueDate;
+        public string FormatedSingleDueDate
+        {
+            get
+            {
+                return _formatedSingleDueDate;
+            }
+            set
+            {
+                _formatedSingleDueDate = value;
+            }
+        }
+
+        private DateTime _dueDateDateTime;
+        public DateTime DueDateDateTime
+        {
+            get
+            {
+                return _dueDateDateTime;
+            }
+            set
+            {
+                _dueDateDateTime = value;
+
+            }
+        }
+
+        public string _dueDT;
+        public string DueDt
+        {
+
+            get
+            {
+                return _dueDT;
+            }
+            set
+            {
+                _dueDT = value;
+                if (_dueDT != null)
+                {
+                    if (_dueDT.Contains("T"))
+                    {
+                        string[] _dueDate = new String[2];
+                        _dueDate = _dueDT.Split('T');
+
+                        DueDate = _dueDate[0];
+                    }
+                }
+            }
+        }//DueDate
+
+        private string _fbnum;
+        public string Fbnum
+        {
+            get
+            {
+                return _fbnum;
+            }
+            set
+            {
+                _fbnum = value;
+               
+            }
+        }
+
+
         public string CalendarTyp { get; set; }
         public string Fbtyp { get; set; }
         public string FbtText { get; set; }
@@ -76,6 +147,81 @@ namespace GAZT.Models
         public string Persl { get; set; }
         public string Amount { get; set; }
         public string Waers { get; set; }
+
+        private string _dueDate;
+        public string DueDate
+        {
+            get
+            {
+                return _dueDate;
+            }
+            set
+            {
+                _dueDate = value;
+                if (_dueDate != null)
+                {
+                    if (App.IsArabic)
+                    {
+                        string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
+                        DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    }
+                    else
+                    {
+                        FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    }
+                }
+            }
+        }
+
+        public bool IsPaymentOverdue { get; set; }
+
+        private bool _isUnSubmittedReturn;
+        public bool IsUnSubmittedReturn
+        {
+            get
+            {
+                return _isUnSubmittedReturn;
+            }
+            set
+            {
+                _isUnSubmittedReturn = value;
+                if(_isUnSubmittedReturn!=null)
+                {
+                    if(_isUnSubmittedReturn==true)
+                    {
+                        StatusImage = "sf_ic_Overdue_Returns_Commitments.png";
+                        TaxPeriod = Txt50;
+                        if (!string.IsNullOrEmpty(_fbnum))
+                        {
+                            IsFBNumberExist = true;
+                        }
+                        else
+                        {
+                            IsFBNumberExist = false;
+                        }
+                    }
+                    else
+                    {
+                        StatusImage = "sf_ic_Unpaid_Commitments.png";
+                    }
+                }
+            }
+        }
+
+        private string _statusImage;
+        public string StatusImage
+        {
+            get
+            {
+                return _statusImage;
+            }
+            set
+            {
+                _statusImage = value;
+            }
+        }
     }
     public enum ReturnType
     {
