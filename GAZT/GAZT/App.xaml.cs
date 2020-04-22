@@ -88,6 +88,7 @@ namespace GAZT
         public static string FAQPageView = "FAQPageView";
         public static string AboutUsPageView = "AboutUsPageView";
         public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
+        public static string MyReturnsPageView = "MyReturnsPageView";
 
 
 

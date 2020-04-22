@@ -3043,4 +3043,8 @@
     <value>للمتابعة فضلاً أدخل رقم الجوال</value>
     <comment>Tax evasion  report service</comment>
   </data>
+  <data name="ZZWithholding" xml:space="preserve">
+    <value>ضريبة الاستقطاع</value>
+    <comment>My Returns</comment>
+  </data>
 </root>

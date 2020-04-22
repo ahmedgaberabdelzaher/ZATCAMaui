@@ -188,6 +188,9 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\FAQPage\FAQPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\MyReturnPagesNew\MyReturnsPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\OtpPages\OTPPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
