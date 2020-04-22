@@ -12,6 +12,7 @@ using Microsoft.AppCenter.Analytics;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Resources;
+using System.Linq;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
@@ -38,9 +39,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                 LoadData();
 
                 //  ParentContainer.RaiseChild(BusyIndicator);
-                calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
+             //   calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
 
                 SetLTR();
+                    
+
                 viewModel.TaxPayerProfile = App.TP;
 
 
@@ -55,12 +58,25 @@ namespace GAZTeServicesApp.Views.LandingPage
 
         private async Task LoadData()
         {
-            await viewModel.LoadDashboardData();
+            try
+            {
+                await viewModel.LoadDashboardData();
 
-            viewModel.PopulateReturnsInformation();
-            viewModel.PopulateBillsInformation();
-            viewModel.PopulateBillsAndReturnsSchedule();
-            viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                viewModel.PopulateReturnsInformation();
+                viewModel.PopulateBillsInformation();
+                viewModel.PopulateBillsAndReturnsSchedule();
+                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                if (viewModel.listofPaymentReturn != null)
+                {
+                    List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
+                    sortedList = viewModel.listofPaymentReturn.OrderByDescending(icr => DateTime.Parse(icr.DueDate)).ToList();
+                    ReturnsList.ItemsSource = sortedList;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         protected async override void OnAppearing()
@@ -113,15 +129,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                 if (App.IsArabic)
                 {
                     this.FlowDirection = FlowDirection.RightToLeft;
-                    calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
-                    calendar.FlowDirection = FlowDirection.RightToLeft;
+                   // calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
+                  //  calendar.FlowDirection = FlowDirection.RightToLeft;
                     CalendarResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
                 else
                 {
                     this.FlowDirection = FlowDirection.LeftToRight;
-                    calendar.Locale = new System.Globalization.CultureInfo("en-US");
-                    calendar.FlowDirection = FlowDirection.LeftToRight;
+                   // calendar.Locale = new System.Globalization.CultureInfo("en-US");
+                  //  calendar.FlowDirection = FlowDirection.LeftToRight;
                     CalendarResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
 
                 }
@@ -448,41 +464,41 @@ namespace GAZTeServicesApp.Views.LandingPage
                     if (BModel.ReturnTypeName == AppResources.Submitted)
                     {
                         Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 0);
                     }
                     if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                     {
                         Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
                     }
                     if (BModel.ReturnTypeName == AppResources.OverDue)
                     {
                         Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
                     }
 
                 }
-                if (controltype == "Xamarin.Forms.Label")
+            if (controltype == "Xamarin.Forms.Label")
+            {
+                Label arrowImage = sender as Label;
+                ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
+                if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    Label arrowImage = sender as Label;
-                    ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
-                    if (BModel.ReturnTypeName == AppResources.Submitted)
-                    {
-                        Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 0);
-                    }
-                    if (BModel.ReturnTypeName == AppResources.NonSubmitted)
-                    {
-                        Analytics.TrackEvent(AppResources.NonSubmitted + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 1);
-                    }
-                    if (BModel.ReturnTypeName == AppResources.OverDue)
-                    {
-                        Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
-                        viewModel._navigationService.NavigateTo(App.ReturnsPageView, 2);
-                    }
-
+                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView);// , 0);
                 }
+                if (BModel.ReturnTypeName == AppResources.UnSubmitted)
+                {
+                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                }
+                if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                }
+
+            }
 
 
             await Task.Run(() =>

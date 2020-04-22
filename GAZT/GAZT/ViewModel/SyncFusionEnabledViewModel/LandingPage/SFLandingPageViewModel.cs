@@ -643,38 +643,42 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                 foreach (var PaymentReturn in listOverduePaymentReturn)
                 {
+                    PaymentReturn.IsUnSubmittedReturn = false;
+                    PaymentReturn.IsPaymentOverdue = true;
                     listofPaymentReturn.Add(PaymentReturn);
                 }
 
                 foreach (var UnsubmittedReturn in listUnsubmittedReturn)
                 {
+                    UnsubmittedReturn.IsUnSubmittedReturn = true;
+                    UnsubmittedReturn.IsPaymentOverdue = false;
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
 
                 // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
 
-                foreach (var item in listofPaymentReturn)
-                {
-                    CalendarInlineEvent BillOrReturnDueEvent = new CalendarInlineEvent();
+                //foreach (var item in listofPaymentReturn)
+                //{
+                //    CalendarInlineEvent BillOrReturnDueEvent = new CalendarInlineEvent();
 
-                    BillOrReturnDueEvent.StartTime = item.DueDt;
-                    BillOrReturnDueEvent.EndTime = item.DueDt;
+                //    BillOrReturnDueEvent.StartTime = item.DueDt;
+                //    BillOrReturnDueEvent.EndTime = item.DueDt;
 
-                    if (item.IcrStatus == "O")
-                    {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
-                            + " | " + item.Txt50;
+                //    if (item.IcrStatus == "O")
+                //    {
+                //        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
+                //            + " | " + item.Txt50;
 
-                        BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
-                    }
-                    else
-                    {
-                        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
-                        BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
-                    }
+                //        BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
+                //    }
+                //    else
+                //    {
+                //        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
+                //        BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
+                //    }
 
-                    BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
-                }
+                //    BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
+                //}
             }
             catch (Exception ex)
             {
@@ -689,10 +693,11 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
             {
                 UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
+                UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
                 string[] TpTypes = DashboardData.results[0].TpType.Split(',');
                 foreach (string ItemType in TpTypes)
                 {
-                    if (ItemType == "05")
+                    if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
                     {
 
                         eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });

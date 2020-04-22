@@ -2949,6 +2949,188 @@ namespace GAZT.Droid
 			global::PanCardView.Droid.Resource.Styleable.View_paddingEnd = global::GAZT.Droid.Resource.Styleable.View_paddingEnd;
 			global::PanCardView.Droid.Resource.Styleable.View_paddingStart = global::GAZT.Droid.Resource.Styleable.View_paddingStart;
 			global::PanCardView.Droid.Resource.Styleable.View_theme = global::GAZT.Droid.Resource.Styleable.View_theme;
+			global::Plugin.Permissions.Resource.Attribute.alpha = global::GAZT.Droid.Resource.Attribute.alpha;
+			global::Plugin.Permissions.Resource.Attribute.coordinatorLayoutStyle = global::GAZT.Droid.Resource.Attribute.coordinatorLayoutStyle;
+			global::Plugin.Permissions.Resource.Attribute.font = global::GAZT.Droid.Resource.Attribute.font;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderAuthority = global::GAZT.Droid.Resource.Attribute.fontProviderAuthority;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderCerts = global::GAZT.Droid.Resource.Attribute.fontProviderCerts;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderFetchStrategy = global::GAZT.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderFetchTimeout = global::GAZT.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderPackage = global::GAZT.Droid.Resource.Attribute.fontProviderPackage;
+			global::Plugin.Permissions.Resource.Attribute.fontProviderQuery = global::GAZT.Droid.Resource.Attribute.fontProviderQuery;
+			global::Plugin.Permissions.Resource.Attribute.fontStyle = global::GAZT.Droid.Resource.Attribute.fontStyle;
+			global::Plugin.Permissions.Resource.Attribute.fontVariationSettings = global::GAZT.Droid.Resource.Attribute.fontVariationSettings;
+			global::Plugin.Permissions.Resource.Attribute.fontWeight = global::GAZT.Droid.Resource.Attribute.fontWeight;
+			global::Plugin.Permissions.Resource.Attribute.keylines = global::GAZT.Droid.Resource.Attribute.keylines;
+			global::Plugin.Permissions.Resource.Attribute.layout_anchor = global::GAZT.Droid.Resource.Attribute.layout_anchor;
+			global::Plugin.Permissions.Resource.Attribute.layout_anchorGravity = global::GAZT.Droid.Resource.Attribute.layout_anchorGravity;
+			global::Plugin.Permissions.Resource.Attribute.layout_behavior = global::GAZT.Droid.Resource.Attribute.layout_behavior;
+			global::Plugin.Permissions.Resource.Attribute.layout_dodgeInsetEdges = global::GAZT.Droid.Resource.Attribute.layout_dodgeInsetEdges;
+			global::Plugin.Permissions.Resource.Attribute.layout_insetEdge = global::GAZT.Droid.Resource.Attribute.layout_insetEdge;
+			global::Plugin.Permissions.Resource.Attribute.layout_keyline = global::GAZT.Droid.Resource.Attribute.layout_keyline;
+			global::Plugin.Permissions.Resource.Attribute.statusBarBackground = global::GAZT.Droid.Resource.Attribute.statusBarBackground;
+			global::Plugin.Permissions.Resource.Attribute.ttcIndex = global::GAZT.Droid.Resource.Attribute.ttcIndex;
+			global::Plugin.Permissions.Resource.Color.browser_actions_bg_grey = global::GAZT.Droid.Resource.Color.browser_actions_bg_grey;
+			global::Plugin.Permissions.Resource.Color.browser_actions_divider_color = global::GAZT.Droid.Resource.Color.browser_actions_divider_color;
+			global::Plugin.Permissions.Resource.Color.browser_actions_text_color = global::GAZT.Droid.Resource.Color.browser_actions_text_color;
+			global::Plugin.Permissions.Resource.Color.browser_actions_title_color = global::GAZT.Droid.Resource.Color.browser_actions_title_color;
+			global::Plugin.Permissions.Resource.Color.notification_action_color_filter = global::GAZT.Droid.Resource.Color.notification_action_color_filter;
+			global::Plugin.Permissions.Resource.Color.notification_icon_bg_color = global::GAZT.Droid.Resource.Color.notification_icon_bg_color;
+			global::Plugin.Permissions.Resource.Color.ripple_material_light = global::GAZT.Droid.Resource.Color.ripple_material_light;
+			global::Plugin.Permissions.Resource.Color.secondary_text_default_material_light = global::GAZT.Droid.Resource.Color.secondary_text_default_material_light;
+			global::Plugin.Permissions.Resource.Dimension.browser_actions_context_menu_max_width = global::GAZT.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::Plugin.Permissions.Resource.Dimension.browser_actions_context_menu_min_padding = global::GAZT.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::Plugin.Permissions.Resource.Dimension.compat_button_inset_horizontal_material = global::GAZT.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::Plugin.Permissions.Resource.Dimension.compat_button_inset_vertical_material = global::GAZT.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::Plugin.Permissions.Resource.Dimension.compat_button_padding_horizontal_material = global::GAZT.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::Plugin.Permissions.Resource.Dimension.compat_button_padding_vertical_material = global::GAZT.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::Plugin.Permissions.Resource.Dimension.compat_control_corner_material = global::GAZT.Droid.Resource.Dimension.compat_control_corner_material;
+			global::Plugin.Permissions.Resource.Dimension.compat_notification_large_icon_max_height = global::GAZT.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::Plugin.Permissions.Resource.Dimension.compat_notification_large_icon_max_width = global::GAZT.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::Plugin.Permissions.Resource.Dimension.notification_action_icon_size = global::GAZT.Droid.Resource.Dimension.notification_action_icon_size;
+			global::Plugin.Permissions.Resource.Dimension.notification_action_text_size = global::GAZT.Droid.Resource.Dimension.notification_action_text_size;
+			global::Plugin.Permissions.Resource.Dimension.notification_big_circle_margin = global::GAZT.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::Plugin.Permissions.Resource.Dimension.notification_content_margin_start = global::GAZT.Droid.Resource.Dimension.notification_content_margin_start;
+			global::Plugin.Permissions.Resource.Dimension.notification_large_icon_height = global::GAZT.Droid.Resource.Dimension.notification_large_icon_height;
+			global::Plugin.Permissions.Resource.Dimension.notification_large_icon_width = global::GAZT.Droid.Resource.Dimension.notification_large_icon_width;
+			global::Plugin.Permissions.Resource.Dimension.notification_main_column_padding_top = global::GAZT.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::Plugin.Permissions.Resource.Dimension.notification_media_narrow_margin = global::GAZT.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::Plugin.Permissions.Resource.Dimension.notification_right_icon_size = global::GAZT.Droid.Resource.Dimension.notification_right_icon_size;
+			global::Plugin.Permissions.Resource.Dimension.notification_right_side_padding_top = global::GAZT.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::Plugin.Permissions.Resource.Dimension.notification_small_icon_background_padding = global::GAZT.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::Plugin.Permissions.Resource.Dimension.notification_small_icon_size_as_large = global::GAZT.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::Plugin.Permissions.Resource.Dimension.notification_subtext_size = global::GAZT.Droid.Resource.Dimension.notification_subtext_size;
+			global::Plugin.Permissions.Resource.Dimension.notification_top_pad = global::GAZT.Droid.Resource.Dimension.notification_top_pad;
+			global::Plugin.Permissions.Resource.Dimension.notification_top_pad_large_text = global::GAZT.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::Plugin.Permissions.Resource.Drawable.notification_action_background = global::GAZT.Droid.Resource.Drawable.notification_action_background;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg = global::GAZT.Droid.Resource.Drawable.notification_bg;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg_low = global::GAZT.Droid.Resource.Drawable.notification_bg_low;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg_low_normal = global::GAZT.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg_low_pressed = global::GAZT.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg_normal = global::GAZT.Droid.Resource.Drawable.notification_bg_normal;
+			global::Plugin.Permissions.Resource.Drawable.notification_bg_normal_pressed = global::GAZT.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::Plugin.Permissions.Resource.Drawable.notification_icon_background = global::GAZT.Droid.Resource.Drawable.notification_icon_background;
+			global::Plugin.Permissions.Resource.Drawable.notification_template_icon_bg = global::GAZT.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::Plugin.Permissions.Resource.Drawable.notification_template_icon_low_bg = global::GAZT.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::Plugin.Permissions.Resource.Drawable.notification_tile_bg = global::GAZT.Droid.Resource.Drawable.notification_tile_bg;
+			global::Plugin.Permissions.Resource.Drawable.notify_panel_notification_icon_bg = global::GAZT.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::Plugin.Permissions.Resource.Id.actions = global::GAZT.Droid.Resource.Id.actions;
+			global::Plugin.Permissions.Resource.Id.action_container = global::GAZT.Droid.Resource.Id.action_container;
+			global::Plugin.Permissions.Resource.Id.action_divider = global::GAZT.Droid.Resource.Id.action_divider;
+			global::Plugin.Permissions.Resource.Id.action_image = global::GAZT.Droid.Resource.Id.action_image;
+			global::Plugin.Permissions.Resource.Id.action_text = global::GAZT.Droid.Resource.Id.action_text;
+			global::Plugin.Permissions.Resource.Id.all = global::GAZT.Droid.Resource.Id.all;
+			global::Plugin.Permissions.Resource.Id.async = global::GAZT.Droid.Resource.Id.async;
+			global::Plugin.Permissions.Resource.Id.blocking = global::GAZT.Droid.Resource.Id.blocking;
+			global::Plugin.Permissions.Resource.Id.bottom = global::GAZT.Droid.Resource.Id.bottom;
+			global::Plugin.Permissions.Resource.Id.browser_actions_header_text = global::GAZT.Droid.Resource.Id.browser_actions_header_text;
+			global::Plugin.Permissions.Resource.Id.browser_actions_menu_items = global::GAZT.Droid.Resource.Id.browser_actions_menu_items;
+			global::Plugin.Permissions.Resource.Id.browser_actions_menu_item_icon = global::GAZT.Droid.Resource.Id.browser_actions_menu_item_icon;
+			global::Plugin.Permissions.Resource.Id.browser_actions_menu_item_text = global::GAZT.Droid.Resource.Id.browser_actions_menu_item_text;
+			global::Plugin.Permissions.Resource.Id.browser_actions_menu_view = global::GAZT.Droid.Resource.Id.browser_actions_menu_view;
+			global::Plugin.Permissions.Resource.Id.center = global::GAZT.Droid.Resource.Id.center;
+			global::Plugin.Permissions.Resource.Id.center_horizontal = global::GAZT.Droid.Resource.Id.center_horizontal;
+			global::Plugin.Permissions.Resource.Id.center_vertical = global::GAZT.Droid.Resource.Id.center_vertical;
+			global::Plugin.Permissions.Resource.Id.chronometer = global::GAZT.Droid.Resource.Id.chronometer;
+			global::Plugin.Permissions.Resource.Id.clip_horizontal = global::GAZT.Droid.Resource.Id.clip_horizontal;
+			global::Plugin.Permissions.Resource.Id.clip_vertical = global::GAZT.Droid.Resource.Id.clip_vertical;
+			global::Plugin.Permissions.Resource.Id.end = global::GAZT.Droid.Resource.Id.end;
+			global::Plugin.Permissions.Resource.Id.fill = global::GAZT.Droid.Resource.Id.fill;
+			global::Plugin.Permissions.Resource.Id.fill_horizontal = global::GAZT.Droid.Resource.Id.fill_horizontal;
+			global::Plugin.Permissions.Resource.Id.fill_vertical = global::GAZT.Droid.Resource.Id.fill_vertical;
+			global::Plugin.Permissions.Resource.Id.forever = global::GAZT.Droid.Resource.Id.forever;
+			global::Plugin.Permissions.Resource.Id.icon = global::GAZT.Droid.Resource.Id.icon;
+			global::Plugin.Permissions.Resource.Id.icon_group = global::GAZT.Droid.Resource.Id.icon_group;
+			global::Plugin.Permissions.Resource.Id.info = global::GAZT.Droid.Resource.Id.info;
+			global::Plugin.Permissions.Resource.Id.italic = global::GAZT.Droid.Resource.Id.italic;
+			global::Plugin.Permissions.Resource.Id.left = global::GAZT.Droid.Resource.Id.left;
+			global::Plugin.Permissions.Resource.Id.line1 = global::GAZT.Droid.Resource.Id.line1;
+			global::Plugin.Permissions.Resource.Id.line3 = global::GAZT.Droid.Resource.Id.line3;
+			global::Plugin.Permissions.Resource.Id.none = global::GAZT.Droid.Resource.Id.none;
+			global::Plugin.Permissions.Resource.Id.normal = global::GAZT.Droid.Resource.Id.normal;
+			global::Plugin.Permissions.Resource.Id.notification_background = global::GAZT.Droid.Resource.Id.notification_background;
+			global::Plugin.Permissions.Resource.Id.notification_main_column = global::GAZT.Droid.Resource.Id.notification_main_column;
+			global::Plugin.Permissions.Resource.Id.notification_main_column_container = global::GAZT.Droid.Resource.Id.notification_main_column_container;
+			global::Plugin.Permissions.Resource.Id.right = global::GAZT.Droid.Resource.Id.right;
+			global::Plugin.Permissions.Resource.Id.right_icon = global::GAZT.Droid.Resource.Id.right_icon;
+			global::Plugin.Permissions.Resource.Id.right_side = global::GAZT.Droid.Resource.Id.right_side;
+			global::Plugin.Permissions.Resource.Id.start = global::GAZT.Droid.Resource.Id.start;
+			global::Plugin.Permissions.Resource.Id.tag_transition_group = global::GAZT.Droid.Resource.Id.tag_transition_group;
+			global::Plugin.Permissions.Resource.Id.tag_unhandled_key_event_manager = global::GAZT.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::Plugin.Permissions.Resource.Id.tag_unhandled_key_listeners = global::GAZT.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::Plugin.Permissions.Resource.Id.text = global::GAZT.Droid.Resource.Id.text;
+			global::Plugin.Permissions.Resource.Id.text2 = global::GAZT.Droid.Resource.Id.text2;
+			global::Plugin.Permissions.Resource.Id.time = global::GAZT.Droid.Resource.Id.time;
+			global::Plugin.Permissions.Resource.Id.title = global::GAZT.Droid.Resource.Id.title;
+			global::Plugin.Permissions.Resource.Id.top = global::GAZT.Droid.Resource.Id.top;
+			global::Plugin.Permissions.Resource.Integer.status_bar_notification_info_maxnum = global::GAZT.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Plugin.Permissions.Resource.Layout.browser_actions_context_menu_page = global::GAZT.Droid.Resource.Layout.browser_actions_context_menu_page;
+			global::Plugin.Permissions.Resource.Layout.browser_actions_context_menu_row = global::GAZT.Droid.Resource.Layout.browser_actions_context_menu_row;
+			global::Plugin.Permissions.Resource.Layout.notification_action = global::GAZT.Droid.Resource.Layout.notification_action;
+			global::Plugin.Permissions.Resource.Layout.notification_action_tombstone = global::GAZT.Droid.Resource.Layout.notification_action_tombstone;
+			global::Plugin.Permissions.Resource.Layout.notification_template_custom_big = global::GAZT.Droid.Resource.Layout.notification_template_custom_big;
+			global::Plugin.Permissions.Resource.Layout.notification_template_icon_group = global::GAZT.Droid.Resource.Layout.notification_template_icon_group;
+			global::Plugin.Permissions.Resource.Layout.notification_template_part_chronometer = global::GAZT.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::Plugin.Permissions.Resource.Layout.notification_template_part_time = global::GAZT.Droid.Resource.Layout.notification_template_part_time;
+			global::Plugin.Permissions.Resource.String.status_bar_notification_info_overflow = global::GAZT.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::Plugin.Permissions.Resource.Style.TextAppearance_Compat_Notification = global::GAZT.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::Plugin.Permissions.Resource.Style.TextAppearance_Compat_Notification_Info = global::GAZT.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::Plugin.Permissions.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::GAZT.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::Plugin.Permissions.Resource.Style.TextAppearance_Compat_Notification_Time = global::GAZT.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::Plugin.Permissions.Resource.Style.TextAppearance_Compat_Notification_Title = global::GAZT.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::Plugin.Permissions.Resource.Style.Widget_Compat_NotificationActionContainer = global::GAZT.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::Plugin.Permissions.Resource.Style.Widget_Compat_NotificationActionText = global::GAZT.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::Plugin.Permissions.Resource.Style.Widget_Support_CoordinatorLayout = global::GAZT.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Plugin.Permissions.Resource.Styleable.ColorStateListItem = global::GAZT.Droid.Resource.Styleable.ColorStateListItem;
+			global::Plugin.Permissions.Resource.Styleable.ColorStateListItem_alpha = global::GAZT.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::Plugin.Permissions.Resource.Styleable.ColorStateListItem_android_alpha = global::GAZT.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::Plugin.Permissions.Resource.Styleable.ColorStateListItem_android_color = global::GAZT.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_keylines = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::Plugin.Permissions.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::GAZT.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily = global::GAZT.Droid.Resource.Styleable.FontFamily;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont = global::GAZT.Droid.Resource.Styleable.FontFamilyFont;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_android_font = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_android_fontStyle = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_android_fontWeight = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_font = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_fontStyle = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_fontWeight = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::Plugin.Permissions.Resource.Styleable.FontFamilyFont_ttcIndex = global::GAZT.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderAuthority = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderCerts = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderPackage = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Plugin.Permissions.Resource.Styleable.FontFamily_fontProviderQuery = global::GAZT.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor = global::GAZT.Droid.Resource.Styleable.GradientColor;
+			global::Plugin.Permissions.Resource.Styleable.GradientColorItem = global::GAZT.Droid.Resource.Styleable.GradientColorItem;
+			global::Plugin.Permissions.Resource.Styleable.GradientColorItem_android_color = global::GAZT.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::Plugin.Permissions.Resource.Styleable.GradientColorItem_android_offset = global::GAZT.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_centerColor = global::GAZT.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_centerX = global::GAZT.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_centerY = global::GAZT.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_endColor = global::GAZT.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_endX = global::GAZT.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_endY = global::GAZT.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_gradientRadius = global::GAZT.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_startColor = global::GAZT.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_startX = global::GAZT.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_startY = global::GAZT.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_tileMode = global::GAZT.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::Plugin.Permissions.Resource.Styleable.GradientColor_android_type = global::GAZT.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Plugin.Permissions.Resource.Xml.xamarin_essentials_fileprovider_file_paths = global::GAZT.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths;
 			global::Syncfusion.Buttons.XForms.Android.Resource.Animation.btn_checkbox_indeterminate_to_checked_box_inner_merged_animation = global::GAZT.Droid.Resource.Animation.btn_checkbox_indeterminate_to_checked_box_inner_merged_animation;
 			global::Syncfusion.Buttons.XForms.Android.Resource.Animation.btn_checkbox_indeterminate_to_checked_icon_null_animation = global::GAZT.Droid.Resource.Animation.btn_checkbox_indeterminate_to_checked_icon_null_animation;
 			global::Syncfusion.Buttons.XForms.Android.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation = global::GAZT.Droid.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation;
@@ -20819,14 +21001,14 @@ namespace GAZT.Droid
 			// aapt resource value: 0x7F0701EF
 			public const int Search = 2131165679;
 			
-			// aapt resource value: 0x7F070216
-			public const int sfprogressbar_determinate_linear = 2131165718;
-			
-			// aapt resource value: 0x7F070217
-			public const int sfprogressbar_indeterminate_circular = 2131165719;
-			
 			// aapt resource value: 0x7F070218
-			public const int sfprogressbar_indeterminate_linear = 2131165720;
+			public const int sfprogressbar_determinate_linear = 2131165720;
+			
+			// aapt resource value: 0x7F070219
+			public const int sfprogressbar_indeterminate_circular = 2131165721;
+			
+			// aapt resource value: 0x7F07021A
+			public const int sfprogressbar_indeterminate_linear = 2131165722;
 			
 			// aapt resource value: 0x7F0701F0
 			public const int sf_BannerImage = 2131165680;
@@ -20871,106 +21053,112 @@ namespace GAZT.Droid
 			public const int sf_ic_Menu = 2131165693;
 			
 			// aapt resource value: 0x7F0701FE
-			public const int sf_ic_Overdue_Returns_White = 2131165694;
+			public const int sf_ic_Overdue_Returns_Commitments = 2131165694;
 			
 			// aapt resource value: 0x7F0701FF
-			public const int sf_ic_Paid = 2131165695;
+			public const int sf_ic_Overdue_Returns_White = 2131165695;
 			
 			// aapt resource value: 0x7F070200
-			public const int sf_ic_Paid_White = 2131165696;
+			public const int sf_ic_Paid = 2131165696;
 			
 			// aapt resource value: 0x7F070201
-			public const int sf_ic_Partially_Paid = 2131165697;
+			public const int sf_ic_Paid_White = 2131165697;
 			
 			// aapt resource value: 0x7F070202
-			public const int sf_ic_Partially_Paid_White = 2131165698;
+			public const int sf_ic_Partially_Paid = 2131165698;
 			
 			// aapt resource value: 0x7F070203
-			public const int sf_ic_Partialy_Paid_White = 2131165699;
+			public const int sf_ic_Partially_Paid_White = 2131165699;
 			
 			// aapt resource value: 0x7F070204
-			public const int sf_ic_Submited_Returns = 2131165700;
+			public const int sf_ic_Partialy_Paid_White = 2131165700;
 			
 			// aapt resource value: 0x7F070205
-			public const int sf_ic_Submited_Returns_White = 2131165701;
+			public const int sf_ic_Submited_Returns = 2131165701;
 			
 			// aapt resource value: 0x7F070206
-			public const int sf_ic_Unpaid = 2131165702;
+			public const int sf_ic_Submited_Returns_White = 2131165702;
 			
 			// aapt resource value: 0x7F070207
-			public const int sf_ic_Unpaid_White = 2131165703;
+			public const int sf_ic_Unpaid = 2131165703;
 			
 			// aapt resource value: 0x7F070208
-			public const int sf_ic_Unsubmited_Returns_White = 2131165704;
+			public const int sf_ic_Unpaid_Commitments = 2131165704;
 			
 			// aapt resource value: 0x7F070209
-			public const int sf_ic_User = 2131165705;
+			public const int sf_ic_Unpaid_White = 2131165705;
 			
 			// aapt resource value: 0x7F07020A
-			public const int sf_LoginBackground = 2131165706;
+			public const int sf_ic_Unsubmited_Returns_White = 2131165706;
 			
 			// aapt resource value: 0x7F07020B
-			public const int sf_LoginBackgroundLand = 2131165707;
+			public const int sf_ic_User = 2131165707;
 			
 			// aapt resource value: 0x7F07020C
-			public const int sf_My_Bills = 2131165708;
+			public const int sf_LoginBackground = 2131165708;
 			
 			// aapt resource value: 0x7F07020D
-			public const int sf_My_Certificate = 2131165709;
+			public const int sf_LoginBackgroundLand = 2131165709;
 			
 			// aapt resource value: 0x7F07020E
-			public const int sf_OurTeam = 2131165710;
+			public const int sf_My_Bills = 2131165710;
 			
 			// aapt resource value: 0x7F07020F
-			public const int sf_Sadad_logo = 2131165711;
+			public const int sf_My_Certificate = 2131165711;
 			
 			// aapt resource value: 0x7F070210
-			public const int sf_Submited_Returns = 2131165712;
+			public const int sf_OurTeam = 2131165712;
 			
 			// aapt resource value: 0x7F070211
-			public const int sf_Tax_Evasion = 2131165713;
+			public const int sf_Sadad_logo = 2131165713;
 			
 			// aapt resource value: 0x7F070212
-			public const int sf_TIN_Status = 2131165714;
+			public const int sf_Submited_Returns = 2131165714;
 			
 			// aapt resource value: 0x7F070213
-			public const int sf_Unsubmited_Returns = 2131165715;
+			public const int sf_Tax_Evasion = 2131165715;
 			
 			// aapt resource value: 0x7F070214
-			public const int sf_VAT_Declaration = 2131165716;
+			public const int sf_TIN_Status = 2131165716;
 			
 			// aapt resource value: 0x7F070215
-			public const int sf_VAT_Lookup = 2131165717;
+			public const int sf_Unsubmited_Returns = 2131165717;
 			
-			// aapt resource value: 0x7F070219
-			public const int SignaturePadBottomCorner = 2131165721;
+			// aapt resource value: 0x7F070216
+			public const int sf_VAT_Declaration = 2131165718;
 			
-			// aapt resource value: 0x7F07021A
-			public const int SignaturepadRoundedCorners = 2131165722;
+			// aapt resource value: 0x7F070217
+			public const int sf_VAT_Lookup = 2131165719;
 			
 			// aapt resource value: 0x7F07021B
-			public const int SignaturePadTopCorner = 2131165723;
+			public const int SignaturePadBottomCorner = 2131165723;
 			
 			// aapt resource value: 0x7F07021C
-			public const int splash = 2131165724;
+			public const int SignaturepadRoundedCorners = 2131165724;
 			
 			// aapt resource value: 0x7F07021D
-			public const int TimeZone = 2131165725;
+			public const int SignaturePadTopCorner = 2131165725;
 			
 			// aapt resource value: 0x7F07021E
-			public const int tooltip_frame_dark = 2131165726;
+			public const int splash = 2131165726;
 			
 			// aapt resource value: 0x7F07021F
-			public const int tooltip_frame_light = 2131165727;
+			public const int TimeZone = 2131165727;
 			
 			// aapt resource value: 0x7F070220
-			public const int Untitled2 = 2131165728;
+			public const int tooltip_frame_dark = 2131165728;
 			
 			// aapt resource value: 0x7F070221
-			public const int user = 2131165729;
+			public const int tooltip_frame_light = 2131165729;
 			
 			// aapt resource value: 0x7F070222
-			public const int ViewMode = 2131165730;
+			public const int Untitled2 = 2131165730;
+			
+			// aapt resource value: 0x7F070223
+			public const int user = 2131165731;
+			
+			// aapt resource value: 0x7F070224
+			public const int ViewMode = 2131165732;
 			
 			static Drawable()
 			{

@@ -96,6 +96,9 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
     <Compile Include="CustomRenderer\CustomEditorRenderer.cs" />
@@ -1118,5 +1121,23 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_LoginBackgroundLand%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid_Commitments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid_Commitments%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Unpaid_Commitments%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments%403x.png" />
   </ItemGroup>
 </Project>
