@@ -7252,6 +7252,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Withholding.
+        /// </summary>
+        public static string ZZWithholding {
+            get {
+                return ResourceManager.GetString("ZZWithholding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrong password.
         /// </summary>
         public static string ZZWrongpassword {

@@ -3,10 +3,12 @@ using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -73,11 +75,52 @@ namespace GAZT.Views.NewViews
             }
         }
         #endregion
-
-        private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
-            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
-            return;
+            Image DownloadImage = sender as Image;
+
+            ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
+
+            //attachment.DocUrl;
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+
+        }
+        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
+
+            ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
+            //attachment.DocUrl;
+            if (attachment.Filename.Contains(".")) ;
+            string Extention = attachment.Filename.Split('.')[1];
+            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            {
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+            }
+            else
+            {
+                await email(attachment.Doguid, attachment);
+            }
+
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+
         }
 
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
@@ -97,7 +140,48 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
+        public async Task email(string doguid, ZakatAttachment attachment)
+        {
+            try
+            {
+                string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                byte[] PdfBytes;
+                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                WebResponse myResp = myReq.GetResponse();
+                using (Stream streams = myResp.GetResponseStream())
+                using (MemoryStream Ms = new MemoryStream())
+                {
+                    int count = 0;
+                    do
+                    {
+                        byte[] buf = new byte[1024];
+                        count = streams.Read(buf, 0, 1024);
+                        Ms.Write(buf, 0, count);
+                    } while (streams.CanRead && count > 0);
+                    PdfBytes = Ms.ToArray();
+                }
 
+                var message = new EmailMessage
+                {
+                    Subject = "Attached Form :",
+
+                };
+                var fn = attachment.Filename;
+                var file = Path.Combine(FileSystem.CacheDirectory, fn);
+
+                File.WriteAllBytes(file, PdfBytes);
+
+                await Share.RequestAsync(new ShareFileRequest
+                {
+                    Title = Title,
+                    File = new ShareFile(file)
+                });
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();

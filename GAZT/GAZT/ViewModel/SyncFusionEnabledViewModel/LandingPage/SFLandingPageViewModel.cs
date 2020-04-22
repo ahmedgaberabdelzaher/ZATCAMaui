@@ -689,10 +689,11 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
             {
                 UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
+                UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
                 string[] TpTypes = DashboardData.results[0].TpType.Split(',');
                 foreach (string ItemType in TpTypes)
                 {
-                    if (ItemType == "05")
+                    if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
                     {
 
                         eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
