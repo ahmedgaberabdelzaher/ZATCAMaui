@@ -121,9 +121,9 @@
                                                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                             <Grid.ColumnDefinitions>
                                                             
-                                                                <ColumnDefinition Width="60*" />                                                               
-                                                                <ColumnDefinition Width="20*" />
-                                                                <ColumnDefinition Width="20*" />
+                                                                <ColumnDefinition Width="70*" />                                                               
+                                                                <ColumnDefinition Width="15*" />
+                                                                <ColumnDefinition Width="15*" />
                                                             </Grid.ColumnDefinitions>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="Auto" />
@@ -162,7 +162,7 @@
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
-                                   Grid.Column="0" Grid.ColumnSpan="3" 
+                                   Grid.Column="0" Grid.ColumnSpan="2" 
                                    />
                                                         </Grid>
                                                     </StackLayout>
