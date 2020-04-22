@@ -82,7 +82,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}" SelectedItem="{Binding SelectedReturnsVATSubmited}" IsVisible="{Binding IsVisibleVATSumbitted}">
+                                            <listView:SfListView  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
