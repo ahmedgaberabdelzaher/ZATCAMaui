@@ -24,6 +24,7 @@ namespace GAZT.Manager
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
         public static string IBANValidator = @"^[S][A]\d{22}$";
         public static string TPTaxAvalable = string.Empty;
+        public static string IsZakatAvailable = string.Empty;
 
 
 

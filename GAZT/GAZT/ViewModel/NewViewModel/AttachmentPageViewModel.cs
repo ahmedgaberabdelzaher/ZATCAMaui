@@ -300,7 +300,14 @@ namespace GAZT.ViewModel.NewViewModel
                                                 if (_attachment != null && _attachment.d != null)
                                                 {
                                                     AttachmentName = string.Empty;
-
+                                                    TimeZone localZone = TimeZone.CurrentTimeZone;
+                                                    string standardName = localZone.DaylightName;
+                                                    _attachment.d.Erfdt = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘UTC’ ‘zzz’");
+                                                    string uploadedDate = _attachment.d.Erfdt;// _zakatAttachment.UploadededDateToShow;
+                                                    uploadedDate = uploadedDate.Replace("’", "");
+                                                    uploadedDate = uploadedDate.Replace("‘", "");
+                                                    uploadedDate = uploadedDate.Replace("UTC", "GMT");
+                                                    _attachment.d.Erfdt = uploadedDate;
                                                     VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
                                                     ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
                                                     Device.BeginInvokeOnMainThread(async () =>

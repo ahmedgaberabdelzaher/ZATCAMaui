@@ -30,10 +30,43 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
+        
         public OTPPageView(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
         {
 
             InitializeComponent();
+            // TimeZone localZone = TimeZone.CurrentTimeZone;// Got +3
+           // string cd = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’ ‘zzz’ ");
+           // // dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss \"GMT\"zzz");
+           // DateTimeOffset local_offset = new DateTimeOffset(DateTime.Now.ToLocalTime());
+           // DateTimeOffset utc_offset = local_offset.ToUniversalTime();
+           // string str = utc_offset.DateTime.ToLongTimeString();
+           // string str1 = utc_offset.DateTime.ToShortDateString();
+           // const string dataFmt = "{0,-30}{1}";
+           // const string timeFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
+           // TimeZone localZone = TimeZone.CurrentTimeZone;
+           // DateTime currentDate = DateTime.Now;
+           // int currentYear = currentDate.Year;
+           // string standardName = localZone.StandardName;
+           // string dayLightTime = localZone.DaylightName;
+           // string Currentdateandtime = string.Format("\n" + timeFmt, "Current date and time:",
+           // currentDate);
+           // string DaylightTime = string.Format(dataFmt, "Daylight saving time?",
+           // localZone.IsDaylightSavingTime(currentDate));
+
+           // DateTime currentUTC =
+           //localZone.ToUniversalTime(currentDate);
+           // TimeSpan currentOffset =
+           //     localZone.GetUtcOffset(currentDate);
+           // string CoordinatedUniversalTime = string.Format(timeFmt, "Coordinated Universal Time:",
+           //     currentUTC);
+
+           // string UTCoffset = string.Format(dataFmt, "UTC offset:", currentOffset);
+
+          
+
+            //DaylightTime daylight =  localZone.GetDaylightChanges(currentYear);
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();

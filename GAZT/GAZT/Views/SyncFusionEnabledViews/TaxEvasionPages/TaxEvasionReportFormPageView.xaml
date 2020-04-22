@@ -15,7 +15,7 @@ xmlns:custom="clr-namespace:GAZT"
              
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="GAZT.Views.NewViews.TaxEvasionReportFormPageView" BackgroundColor="White" >
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -29,7 +29,7 @@ xmlns:custom="clr-namespace:GAZT"
                 <!--  Title View  -->
                 <controls:TitleView Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
-                       
+
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
@@ -54,7 +54,7 @@ xmlns:custom="clr-namespace:GAZT"
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" x:Name="TaxEvasionMainGrid" VerticalOptions="FillAndExpand"    Padding="0,0,0,0" >
                 <Grid.RowDefinitions>
-                 
+
                     <RowDefinition Height="80*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
@@ -89,9 +89,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="200"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80*"/>
@@ -215,7 +213,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker> 
+                        </syncfusion:SfPicker>
 
                         <StackLayout HorizontalOptions="FillAndExpand" x:Name="facilityMobileStackLayout" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
@@ -433,7 +431,7 @@ xmlns:custom="clr-namespace:GAZT"
 
                         </inputLayout:SfTextInputLayout>
 
-                                               <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -509,7 +507,7 @@ ItemHeight="45" ShowFooter="False"  >
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                 </FormattedString>
-                                </local1:CustomLabel.FormattedText>
+                            </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
                         <Frame Grid.Row="22"  x:Name="Attachment_Frm" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
@@ -524,40 +522,43 @@ ItemHeight="45" ShowFooter="False"  >
                                 <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand"  Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start">
-                            <ListView  
+                        <!--HasUnevenRows="True"
+                                                 SeparatorVisibility="None"-->
+                        <!--<StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand"  Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start">-->
+                        <listView:SfListView  AutoFitMode="DynamicHeight" 
            ItemsSource="{Binding UploadedDocumentsListObj}"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Start"
-            HasUnevenRows="True"
+                                                   Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2"
+
                                BackgroundColor="White"
                            
-            SeparatorVisibility="None"
+            
             >
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
+                            <listView:SfListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
 
-                                            <ContentView>
-                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                        <ContentView>
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
 
-                                                    <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
+                                                <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
 
-                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
+                                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
 
-                                                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
-                                                                <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
-                                                                    <Grid.ColumnDefinitions>
-                                                                        <ColumnDefinition Width="auto" />
+                                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
+                                                            <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto" />
 
 
-                                                                    </Grid.ColumnDefinitions>
-                                                                    <Grid.RowDefinitions>
-                                                                        <RowDefinition Height="auto" />
-                                                                        <RowDefinition Height="auto" />
-                                                                    </Grid.RowDefinitions>
+                                                                </Grid.ColumnDefinitions>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" />
+                                                                    <RowDefinition Height="auto" />
+                                                                </Grid.RowDefinitions>
 
-                                                                    <local1:CustomLabel Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
+                                                                <local1:CustomLabel Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -565,7 +566,7 @@ ItemHeight="45" ShowFooter="False"  >
                                    Grid.Column="0"
                                                            />
 
-                                                                    <local1:CustomLabel Text="{Binding FileNameWithExtension}" 
+                                                                <local1:CustomLabel Text="{Binding FileNameWithExtension}" 
                                                   
                                   Margin="0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -576,21 +577,21 @@ ItemHeight="45" ShowFooter="False"  >
                                                            />
 
 
-                                                                    
 
 
-                                                                </Grid>
-                                                            </StackLayout>
+
+                                                            </Grid>
                                                         </StackLayout>
                                                     </StackLayout>
                                                 </StackLayout>
+                                            </StackLayout>
 
-                                            </ContentView>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-                        </StackLayout>
+                                        </ContentView>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+                        <!--</StackLayout>-->
 
 
                         <!--Close attachment-->

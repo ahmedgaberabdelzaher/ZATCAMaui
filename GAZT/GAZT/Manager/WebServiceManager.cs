@@ -4212,6 +4212,85 @@ namespace GAZT.Manager
             return dashboardData;
         }
 
+
+        public static MyReturnsRootObject GAZTGetReturnData(string lang, string TIN)
+        {
+            MyReturnsRootObject ReturnsdData = null;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                DateTime currentDate = DateTime.Now;
+                string NewToken = string.Empty;
+                try
+                {
+                    if (false == CrossConnectivity.Current.IsConnected)
+                    {
+                        throw new GAZTInternetException();
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    string uri = Constants.GAZTGetReturnList + TIN +"' and Lang eq '"+lang+ "'&saml2=disabled&$format=json";
+                    HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
+
+                    if (GAZTGetDashboardResponse != null)
+                    {
+                        HttpHeaders headers = GAZTGetDashboardResponse.Headers;
+                        IEnumerable<string> values = null;
+
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+                            App.Token = NewToken;
+                        }
+
+                        string GAZTGetDashboardResponseJSON = GAZTGetDashboardResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTGetDashboardResponseJSON))
+                        {
+                            GAZTGetDashboardResponseJSON = JObject.Parse(GAZTGetDashboardResponseJSON).ToString();
+                            ReturnsdData = JsonConvert.DeserializeObject<MyReturnsRootObject>(GAZTGetDashboardResponseJSON);
+                        }
+                    }
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException();
+            }
+
+            return ReturnsdData;
+        }
+
+
         public static Dashboard GAZTGetAdditionalDashboardData(string lang, string TIN)
         {
             Dashboard dashboardData = null;

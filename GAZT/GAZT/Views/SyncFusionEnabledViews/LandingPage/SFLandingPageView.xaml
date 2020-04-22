@@ -112,7 +112,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid x:Name="ParentContainer">
+        <Grid x:Name="ParentContainer" RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition  Height="30*"/>
                 <RowDefinition  Height="70*"/>
@@ -628,7 +628,7 @@
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
+                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
 
                 <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
                 <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
@@ -641,7 +641,7 @@
                 <!--</controls:TapAnimationGrid>-->
 
                 <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="sf_ic_Dashboard_Logo_White.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
-                <Label  Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}">
+                <Label  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}">
                     <Label.FormattedText >
                         <FormattedString>
                             <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
