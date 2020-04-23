@@ -28,23 +28,22 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid x:Name="ParentContainer" RowSpacing="0">
+        <Grid x:Name="ParentContainer" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="30*"/>
-                <RowDefinition  Height="70*"/>
+                <RowDefinition  Height="35*"/>
+                <RowDefinition  Height="65*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
 
-           
 
-            <ScrollView Grid.Row="1" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <ScrollView Grid.Row="1" Grid.Column="0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                                        <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
 
+                                    
                     <!--<syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
@@ -87,14 +86,18 @@
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>-->
 
+                    <local1:CustomLabel Text="{x:Static local:AppResources.NoAppointmentText}" BackgroundColor="White" IsVisible="{Binding IsNoDuesLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                    </local1:CustomLabel>
                     <listView:SfListView  x:Name="ReturnsList" 
            ItemsSource="{Binding listUnsubmittedReturn}"
                                        IsScrollBarVisible="True"
                                          SelectionBackgroundColor="White"
-                                      Orientation="Horizontal"
+                                        
+                                      Orientation="Vertical"
                                           IsScrollingEnabled="True"
+                                          IsVisible="{Binding IsListviewVisible}"
           HorizontalOptions="FillAndExpand"
-            HeightRequest="160"
+            HeightRequest="142"
            AutoFitMode="Height" ItemSpacing="5" 
                  BackgroundColor="White"     
            
@@ -102,7 +105,7 @@
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <cards:SfCardView HasShadow="True" HeightRequest="120" VerticalOptions="CenterAndExpand" WidthRequest="300" Margin="0,0,10,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
+                                    <cards:SfCardView HasShadow="True"  VerticalOptions="CenterAndExpand" WidthRequest="300" Margin="0,0,10,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
  
                                         <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand"  >
                                             <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="2"   BackgroundColor="White" HorizontalOptions="FillAndExpand" >
@@ -295,11 +298,11 @@
                         </listView:SfListView.ItemTemplate>
                     </listView:SfListView>
 
-                  
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+                    <StackLayout BackgroundColor="White">
+                    <local1:CustomLabel Padding="5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
 
-                    <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
+                    <listView:SfListView SelectionMode="None" BackgroundColor="White" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -366,10 +369,10 @@
                         </listView:SfListView.Behaviors>
 
                     </listView:SfListView>
+                    </StackLayout>
+                    <local1:CustomLabel Padding="5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
-                    <local1:CustomLabel Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.Returns}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
-
-                    <listView:SfListView SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
+                    <listView:SfListView SelectionMode="None" BackgroundColor="White" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding ReturnInfoItems}">
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -480,11 +483,12 @@
 
             </ScrollView>
 
-            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0">
+            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="50*"/>
-                    <RowDefinition  Height="30*"/>
                     <RowDefinition  Height="20*"/>
+                    <RowDefinition  Height="13*"/>
+                    <RowDefinition  Height="17*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
@@ -515,6 +519,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+
+                <local1:CustomLabel Grid.Row="3" BackgroundColor="White" Grid.Column="0" Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+
             </Grid>
 
             <Grid Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" IsVisible="{Binding IsLoading}">

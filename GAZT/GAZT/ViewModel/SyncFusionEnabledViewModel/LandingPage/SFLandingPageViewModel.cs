@@ -36,6 +36,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
         private CalendarEventCollection _BillsAndReturnsSchedule = null;
+        private bool _isListviewVisible = false;
+        private bool _isNoDuesLabelVisible = false;
+        
         private ICommand EserviceCommand { get; set; }
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -53,14 +56,16 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         public async Task LoadDashboardData()
         {
 
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = true;
+            //});
 
             await Task.Delay(3000);
 
             Task GetDashboardDataTask = null;
+            //Task GetUnsubmittedReturnDataTask = null;
+            //Task GetOverduePaymentDataTask = null;
             if (App.TP != null)
             {
                 GetDashboardDataTask = Task.Run(() =>
@@ -68,21 +73,23 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 });
 
-                Task GetUnsubmittedReturnDataTask = Task.Run(() =>
-                {
-                    listUnsubmittedReturn = WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                });
+                //GetUnsubmittedReturnDataTask = Task.Run(async() =>
+                //{
+                //    listUnsubmittedReturn =await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                //});
 
-                Task GetOverduePaymentDataTask = Task.Run(() =>
-                {
-                    listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                });
+                //GetOverduePaymentDataTask = Task.Run(async() =>
+                //{
+                //    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                //});
             }
 
             try
             {
                 if (GetDashboardDataTask != null)
                     GetDashboardDataTask.Wait();
+                //GetUnsubmittedReturnDataTask.Wait();
+                //GetOverduePaymentDataTask.Wait();
             }
             catch (AggregateException ae)
             {
@@ -152,6 +159,97 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 });
             }
 
+        }
+
+        public async Task DuesData()
+        {
+            try
+            {
+                listOverduePaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listUnsubmittedReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                try
+                {
+                    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                }
+                catch(Exception ex)
+                {
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        
+                    //});
+                }
+          
+                listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn.Clear();
+                // Create events
+
+                foreach (var PaymentReturn in listOverduePaymentReturn)
+                {
+                    PaymentReturn.IsUnSubmittedReturn = false;
+                    PaymentReturn.IsPaymentOverdue = true;
+                    listofPaymentReturn.Add(PaymentReturn);
+                }
+
+                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
+                {
+                    UnsubmittedReturn.IsUnSubmittedReturn = true;
+                    UnsubmittedReturn.IsPaymentOverdue = false;
+                    listofPaymentReturn.Add(UnsubmittedReturn);
+                }
+            }
+            catch (AggregateException ae)
+            {
+                IsLoading = false;
+                foreach (var gex in ae.InnerExceptions)
+                {
+                    // Handle the GAZT custom exception.
+                    if (gex is GAZTException)
+                    {
+                        string MessageForTheUser = gex.Message;
+                        if (gex is GAZTNetworkConnectivityIssueException)
+                        {
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                        }
+                        else if (gex is GAZTInternetException)
+                        {
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        });
+                    }
+                    // Rethrow any other exception.
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            catch (GAZTSessionExpiredException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                    PopToRootPage();
+                });
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    PopToRootPage();
+                });
+            }
         }
 
         public SFLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
@@ -247,6 +345,35 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 this.RaisePropertyChanged("IsButtonEnabled");
             }
         }
+
+        public bool IsListviewVisible
+        {
+            get
+            {
+                return this._isListviewVisible;
+            }
+
+            set
+            {
+                this._isListviewVisible = value;
+                this.RaisePropertyChanged("IsListviewVisible");
+            }
+        }
+
+        public bool IsNoDuesLabelVisible
+        {
+            get
+            {
+                return this._isNoDuesLabelVisible;
+            }
+
+            set
+            {
+                this._isNoDuesLabelVisible = value;
+                this.RaisePropertyChanged("IsNoDuesLabelVisible");
+            }
+        }
+
 
 
         /// <summary>
@@ -394,6 +521,39 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             return amountWithComma;
         }
 
+        public async Task SetDataForDues()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn.Clear();
+                // Create events
+
+                foreach (var PaymentReturn in listOverduePaymentReturn)
+                {
+                    PaymentReturn.IsUnSubmittedReturn = false;
+                    PaymentReturn.IsPaymentOverdue = true;
+                    listofPaymentReturn.Add(PaymentReturn);
+                }
+
+                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
+                {
+                    UnsubmittedReturn.IsUnSubmittedReturn = true;
+                    UnsubmittedReturn.IsPaymentOverdue = false;
+                    listofPaymentReturn.Add(UnsubmittedReturn);
+                }
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+        }
         public void PopulateReturnsInformation()
         {
             ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();

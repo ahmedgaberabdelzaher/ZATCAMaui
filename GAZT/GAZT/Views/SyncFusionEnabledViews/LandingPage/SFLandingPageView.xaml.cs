@@ -35,7 +35,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
-                
+                LoadDuesData();
                 LoadData();
 
                 //  ParentContainer.RaiseChild(BusyIndicator);
@@ -56,22 +56,53 @@ namespace GAZTeServicesApp.Views.LandingPage
             
         }
 
+        public async void LoadDuesData()
+        {
+            try
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+
+               
+                    await viewModel.DuesData();
+                    if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
+                    {
+                        List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
+                        sortedList = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
+                        ReturnsList.ItemsSource = sortedList;
+                        viewModel.IsListviewVisible = true;
+                        viewModel.IsNoDuesLabelVisible = false;
+                    }
+                    else
+                    {
+                        viewModel.IsListviewVisible = false;
+                        viewModel.IsNoDuesLabelVisible = true;
+                    }
+                
+
+                //Task.Run(() =>
+                //{
+                //    viewModel.IsLoading = false;
+                //});
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         private async Task LoadData()
         {
             try
             {
                 await viewModel.LoadDashboardData();
-
                 viewModel.PopulateReturnsInformation();
                 viewModel.PopulateBillsInformation();
-                viewModel.PopulateBillsAndReturnsSchedule();
+              // viewModel.PopulateBillsAndReturnsSchedule();
                 viewModel.PopulateeServicesApplicableToTheTaxPayer();
-                if (viewModel.listofPaymentReturn != null)
-                {
-                    List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                    sortedList = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-                    ReturnsList.ItemsSource = sortedList;
-                }
+             
             }
             catch(Exception ex)
             {
