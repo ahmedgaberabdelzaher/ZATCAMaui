@@ -65,79 +65,79 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         /// </summary>
         /// 
 
-        public async Task LoadDashboardData()
-        {
+        //public async Task LoadDashboardData()
+        //{
 
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = true;
+        //    });
 
-            await Task.Delay(3000);
+        //    await Task.Delay(3000);
 
-            Task GetDashboardDataTask = Task.Run(() =>
-            {
-                DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
-            });
+        //    Task GetDashboardDataTask = Task.Run(() =>
+        //    {
+        //        DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+        //    });
 
-            Task GetUnsubmittedReturnDataTask = Task.Run(() =>
-            {
-                listUnsubmittedReturn = WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            });
+        //    Task GetUnsubmittedReturnDataTask = Task.Run(() =>
+        //    {
+        //        listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+        //    });
 
-            Task GetOverduePaymentDataTask = Task.Run(() =>
-            {
-                listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            });
+        //    Task GetOverduePaymentDataTask = Task.Run(() =>
+        //    {
+        //        listOverduePaymentReturn = WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+        //    });
 
-            try
-            {
-                GetDashboardDataTask.Wait();
-            }
-            catch (AggregateException ae)
-            {
-                IsLoading = false;
-                foreach (var gex in ae.InnerExceptions)
-                {
-                    // Handle the GAZT custom exception.
-                    if (gex is GAZTException)
-                    {
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
+        //    try
+        //    {
+        //        GetDashboardDataTask.Wait();
+        //    }
+        //    catch (AggregateException ae)
+        //    {
+        //        IsLoading = false;
+        //        foreach (var gex in ae.InnerExceptions)
+        //        {
+        //            // Handle the GAZT custom exception.
+        //            if (gex is GAZTException)
+        //            {
+        //                string MessageForTheUser = gex.Message;
+        //                if (gex is GAZTNetworkConnectivityIssueException)
+        //                {
+        //                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //                }
+        //                else if (gex is GAZTInternetException)
+        //                {
+        //                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //                }
 
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        });
-                    }
-                    // Rethrow any other exception.
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                });
-            }
+        //                Device.BeginInvokeOnMainThread(async () =>
+        //                {
+        //                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                });
+        //            }
+        //            // Rethrow any other exception.
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        IsLoading = false;
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+        //        });
+        //    }
 
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
-        }
+        //    await Task.Run(() =>
+        //    {
+        //        IsLoading = false;
+        //    });
+        //}
 
         public SFAnonymousLandingPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {

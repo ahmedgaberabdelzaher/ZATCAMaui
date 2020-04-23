@@ -4366,7 +4366,7 @@ namespace GAZT.Manager
             return dashboardData;
         }
 
-        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
+        public static async Task<List<OverduePaymentsAndUnSubmittedReturn>> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
         {
             //lang = "E";
             //TIN = "3311620297";
@@ -4390,7 +4390,7 @@ namespace GAZT.Manager
 
                     string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
 
-                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = await client.GetAsync(uri);
 
                     if (GAZTGetUnSubmittedReturnSetResponse != null)
                     {
@@ -4411,7 +4411,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        string GAZTGetUnSubmittedReturnSetResponseJSON = GAZTGetUnSubmittedReturnSetResponse.Content.ReadAsStringAsync().Result;
+                        string GAZTGetUnSubmittedReturnSetResponseJSON = await GAZTGetUnSubmittedReturnSetResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(GAZTGetUnSubmittedReturnSetResponseJSON))
                         {
                             GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["d"].ToString();
@@ -4445,7 +4445,7 @@ namespace GAZT.Manager
             return overduePayments;
         }
 
-        public static List<OverduePaymentsAndUnSubmittedReturn> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
+        public static async Task<List<OverduePaymentsAndUnSubmittedReturn>> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
         {
             List<OverduePaymentsAndUnSubmittedReturn> paymentOverdueSet = null;
 
@@ -4466,7 +4466,7 @@ namespace GAZT.Manager
 
                     string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
 
-                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await client.GetAsync(uri);
 
                     if (GAZTGetPaymentOverdueSetResponse != null)
                     {
@@ -4487,7 +4487,7 @@ namespace GAZT.Manager
                             App.Token = NewToken;
                         }
 
-                        string GAZTGetPaymentOverdueSetResponseJSON = GAZTGetPaymentOverdueSetResponse.Content.ReadAsStringAsync().Result;
+                        string GAZTGetPaymentOverdueSetResponseJSON = await GAZTGetPaymentOverdueSetResponse.Content.ReadAsStringAsync();
                         if (!string.IsNullOrEmpty(GAZTGetPaymentOverdueSetResponseJSON))
                         {
                             GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["d"].ToString();
