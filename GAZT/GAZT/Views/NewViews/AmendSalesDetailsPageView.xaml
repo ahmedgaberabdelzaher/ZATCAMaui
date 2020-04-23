@@ -179,10 +179,9 @@
 
                              <inputLayout:SfTextInputLayout    Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
         Hint="{x:Static local:AppResources.ZZAttachment}"
-      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                             </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>

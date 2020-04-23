@@ -5147,5 +5147,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZWithholding", resourceCulture);
             }
         }
+        
+        public static string ZBillDetailsDisclaimer {
+            get {
+                return ResourceManager.GetString("ZBillDetailsDisclaimer", resourceCulture);
+            }
+        }
     }
 }
