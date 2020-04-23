@@ -94,11 +94,13 @@
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
+                        <!-- Resolving issue of Bill Details displayed twice on page
+                        @Divya Jannapureddy Commented line number 98 to 102-->
+                        <!-- <Frame Grid.Row="0" Grid.Column="0"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  Grid.ColumnSpan="2" >
                         </Frame>
 
                         <Label Text="{x:Static local:AppResources.ZBillDetails}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-                        </Label>
+                        </Label>-->
 
                         <Image Grid.Column="0" Grid.Row="1" Source="sadad_logo_ar.png" Grid.ColumnSpan="2" HeightRequest="40" WidthRequest="40"></Image>
 
@@ -125,8 +127,19 @@
                             </Label.FormattedText>
 
                         </Label>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" IsVisible="{Binding InvoiceVisibility}"/>
-
+                        <!--//@Divya Jannapureddy adding line number
+                        //Added below control below method-->
+                        <local1:CustomLabel Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" IsVisible="{Binding InvoiceVisibility}">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static local:AppResources.ZBillDetailsDisclaimer}"/>
+                                    <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZBillDeatilsInfo}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </local1:CustomLabel>
+                        <!--//@Divya Jannapureddy adding line number
+                        //Added above control above method-->
                         <!--<Button Text="{x:Static local:AppResources.CopySADADPaymentNumber}" IsEnabled="False" Command="{Binding OnCopySadadNumberButtonClicked}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>
 
                         <Button Text="{x:Static local:AppResources.PayByMADA}" IsEnabled="False" Command="{Binding OnPayByMadaButtonClicked}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTVerifyButton}" IsVisible="{Binding InvoiceVisibility}"></Button>-->
@@ -232,8 +245,14 @@
                         <buttons:SfButton Text="{x:Static local:AppResources.CopySADADPaymentNumber}" Clicked="OnCopySadadNumberButtonClicked"  CornerRadius="0" Margin="0,0,0,0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand" Grid.ColumnSpan="1" Style="{StaticResource SfButtonStyle}" IsVisible="{Binding ObjectionInvoiceVisibility}" BackgroundColor="#006450"
                      Opacity="0.7"></buttons:SfButton>
 
-                        <buttons:SfButton Text="{x:Static local:AppResources.PayByMADA}" Command="{Binding OnPayByMadaButtonClicked}" IsEnabled="False" Grid.Row="1"  Margin="0,0,0,0" CornerRadius="0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand" Style="{StaticResource SfButtonStyle}" IsVisible="{Binding ObjectionInvoiceVisibility}" BackgroundColor="#006450"
-                     Opacity="0.7"></buttons:SfButton>
+                        <!-- Resolving issue of Removing Pay By Mada button @Divya Jannapureddy Commented line number 238 to 243-->
+
+                        <!--<buttons:SfButton Text="{x:Static local:AppResources.PayByMADA}"
+                                          Command="{Binding OnPayByMadaButtonClicked}" IsEnabled="False" Grid.Row="1"
+                                          Margin="0,0,0,0" CornerRadius="0" Padding="0" HeightRequest="56"
+                                          VerticalOptions="EndAndExpand" Style="{StaticResource SfButtonStyle}"
+                                          IsVisible="False" BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>-->
 
 
                         <buttons:SfButton Text="{x:Static local:AppResources.CopySADADPaymentNumber}"  Clicked="OnCopySadadNumberButtonClicked" CornerRadius="0" Margin="0,0,0,0" Padding="0" HeightRequest="56" VerticalOptions="EndAndExpand" Grid.ColumnSpan="1" Style="{StaticResource SfButtonStyle}" IsVisible="{Binding InvoiceVisibility}" BackgroundColor="#006450"

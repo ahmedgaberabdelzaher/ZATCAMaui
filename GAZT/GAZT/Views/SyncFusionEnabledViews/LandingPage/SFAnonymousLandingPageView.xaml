@@ -143,8 +143,8 @@
 
                     <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" ></Label>
 
-                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
-
+                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=250, Tablet=320, Desktop=320}"
+                                         ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="Center" VerticalOptions="Center">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
@@ -187,7 +187,7 @@
 
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=2, Desktop=2}" />
                         </listView:SfListView.LayoutManager>
 
                         <listView:SfListView.Behaviors>

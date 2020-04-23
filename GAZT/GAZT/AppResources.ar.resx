@@ -3047,4 +3047,8 @@
     <value>ضريبة الاستقطاع</value>
     <comment>My Returns</comment>
   </data>
+  <data name="ZBillDetailsDisclaimer" xml:space="preserve">
+    <value>تعهد</value>
+    <comment>Zakat Bills details</comment>
+  </data>
 </root>

@@ -2136,6 +2136,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disclaimer.
+        /// </summary>
+        public static string ZBillDetailsDisclaimer {
+            get {
+                return ResourceManager.GetString("ZBillDetailsDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Reason.
         /// </summary>
         public static string ZChangeReason {
