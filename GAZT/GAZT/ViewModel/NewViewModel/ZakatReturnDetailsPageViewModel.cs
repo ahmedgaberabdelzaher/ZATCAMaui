@@ -369,6 +369,7 @@ namespace GAZT.ViewModel.NewViewModel
                 if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("IP011"))
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
+                    AmedmentButtonVisibility = false;// Verified
                     ReleaseOrBillDetailsButtonText = AppResources.Release;
                 }
                 else if (ButtonStatus.Equals("IP014"))

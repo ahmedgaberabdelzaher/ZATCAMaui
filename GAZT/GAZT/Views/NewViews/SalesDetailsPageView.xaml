@@ -9,6 +9,7 @@
              xmlns:local="clr-namespace:GAZT"
              xmlns:GAZT="clr-namespace:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
+                 xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              x:Class="GAZT.Views.NewViews.SalesDetailsPageView"
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.ZSalesDetails}"
@@ -49,17 +50,55 @@
         <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
-
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="15*"/>
                     <RowDefinition Height="63*"/>
-                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="22*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
+                 <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1" Grid.ColumnSpan="2">
+                   <BoxView  Grid.Row="0" Margin="0,0,0,5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
+
+                    <Grid BackgroundColor="White" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
+                          <ScrollView VerticalOptions="End">
+                        <Grid RowSpacing="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
+                                 <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="90*"/>
+
+                            </Grid.ColumnDefinitions>
+                            <CheckBox x:Name="checkBox" Grid.Row="0" Grid.Column="0"  VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
+                            <GAZT:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static local:AppResources.ZZDeclarationText}" VerticalOptions="Start" IsVisible="{Binding DesClaimerVisibility}"></GAZT:CustomLabel>
+                            <buttons:SfButton Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
+
+                    <buttons:SfButton Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
+                    <buttons:SfButton Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding SubmitButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
+                    <buttons:SfButton Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Clicked="OnConfirmButtonClicked"   Style="{StaticResource SfButtonStyle}"  IsVisible="{Binding ConfirmButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
+                     Opacity="0.7"></buttons:SfButton>
+
+                        </Grid>
+                       
+                        </ScrollView>
+
+                    </Grid>
+                    
+
+                </StackLayout>
 
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"></StackLayout>
                 <GAZT:CustomLabel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,0,10,0"  FontSize="12"><!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
@@ -95,9 +134,9 @@
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="48*"/>
                         <ColumnDefinition Width="40*"/>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="12*"/>
                     </Grid.ColumnDefinitions>
 
                     <BoxView  Grid.Row="0" Margin="0,0,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
@@ -105,7 +144,7 @@
 
                     <Label Text="{x:Static local:AppResources.ZEstimatedSales}"  Grid.Row="1" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="10,0,10,0"/>
 
-                    <Label  Margin="10,0,10,0"  FontFamily="{StaticResource SSTArBold}" Grid.Row="1" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  VerticalTextAlignment="Center" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
+                    <Label  Margin="0,0,0,0"  FontFamily="{StaticResource SSTArBold}" Grid.Row="1" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  VerticalTextAlignment="Center" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="{Binding Estsl}"/>
@@ -123,7 +162,7 @@
                         </Image>-->
                     <Label
                        Grid.Column="2" Grid.Row="1"
-                        Margin="0,0,0,0"
+                        Margin="10,0,10,0"
                         Style="{StaticResource IconLabelStyleVAT}"
                          TextColor="#005e4b"
                         Text="{StaticResource Help}" >
@@ -138,16 +177,16 @@
            ItemsSource="{Binding SalesDetailsList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
+           HasUnevenRows="True"
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
                       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
-            SeparatorVisibility="None"
+          
             >
-                        <ListView.ItemTemplate>
+                       <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid RowSpacing="0" ColumnSpacing="5" BackgroundColor="{Binding DisableItemBackgroundColor}">
+                                    <Grid  RowSpacing="0" ColumnSpacing="5" BackgroundColor="{Binding DisableItemBackgroundColor}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
@@ -207,46 +246,7 @@
 
                 </StackLayout>-->
 
-                <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1" Grid.ColumnSpan="2">
-                   <BoxView  Grid.Row="0" Margin="0,2,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
-
-                    <Grid BackgroundColor="White" Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
-                          <ScrollView VerticalOptions="End">
-                        <Grid RowSpacing="3">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                 <RowDefinition Height="auto"/>
-                                 <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="90*"/>
-
-                            </Grid.ColumnDefinitions>
-                            <CheckBox x:Name="checkBox" Grid.Row="0" Grid.Column="0"  VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
-                            <GAZT:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static local:AppResources.ZZDeclarationText}" VerticalOptions="Start" IsVisible="{Binding DesClaimerVisibility}"></GAZT:CustomLabel>
-                            <buttons:SfButton Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7"></buttons:SfButton>
-
-                    <buttons:SfButton Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7"></buttons:SfButton>
-                    <buttons:SfButton Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding SubmitButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7"></buttons:SfButton>
-                    <buttons:SfButton Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Clicked="OnConfirmButtonClicked"   Style="{StaticResource SfButtonStyle}"  IsVisible="{Binding ConfirmButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7"></buttons:SfButton>
-
-                        </Grid>
-                       
-                        </ScrollView>
-
-                    </Grid>
-                    
-
-                </StackLayout>
-
+               
             </Grid>
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">

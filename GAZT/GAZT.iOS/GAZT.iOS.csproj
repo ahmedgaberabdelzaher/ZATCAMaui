@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: Parag Bihade (XTS6299Y8J)</CodesignKey>
+    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>GAZT Developer KSA</CodesignProvision>
+    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--interpreter</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>

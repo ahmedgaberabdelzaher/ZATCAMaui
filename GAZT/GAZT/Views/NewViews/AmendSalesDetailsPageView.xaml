@@ -246,6 +246,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                           HeightRequest="400"
                       ItemTapped="Attachmentlist_ItemTapped"
                 BackgroundColor="White"
             SeparatorVisibility="None"
