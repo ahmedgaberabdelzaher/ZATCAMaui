@@ -108,7 +108,20 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
+                            {
+                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
+                            {
+                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
+                            {
+                                PopToRootPage();
+                            }
                         });
                     }
                     // Rethrow any other exception.
