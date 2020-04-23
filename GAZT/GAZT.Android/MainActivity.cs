@@ -8,6 +8,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
 using Microsoft.AppCenter.Distribute;
+using Plugin.Permissions;
 using Tavant.XToolkit;
 
 namespace GAZT.Droid
@@ -57,7 +58,30 @@ namespace GAZT.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            for (int i = 0; i < permissions.Length; i++)
+            {
+                if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)
+                {
+                    global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                }
+                //else
+                //{
+                //    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                //    AlertDialog alert = dialog.Create();
+                //    alert.SetTitle("Alert");
+                //    alert.SetMessage("Kindly Grant Camera Permission");
+                //    alert.SetButton("OK", (c, ev) =>
+                //    {
+                //        // Ok button click task  
+                //    });
+                //    alert.Show();
+
+                //}
+
+            }
+
+           // global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);

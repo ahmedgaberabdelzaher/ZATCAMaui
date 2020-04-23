@@ -5141,5 +5141,11 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZPleaseenteryourmobilenumbertoproceedfurther", resourceCulture);
             }
         }
+        
+        public static string ZZWithholding {
+            get {
+                return ResourceManager.GetString("ZZWithholding", resourceCulture);
+            }
+        }
     }
 }
