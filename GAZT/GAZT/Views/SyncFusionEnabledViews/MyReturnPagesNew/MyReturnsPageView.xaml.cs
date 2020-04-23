@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
@@ -17,6 +18,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
         public MyReturnsPageView(int Index)
         {
             viewModel = App.Locator.MyReturnsPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             InitializeComponent();
             this.BindingContext = viewModel;
             ChangeAeroIcon();

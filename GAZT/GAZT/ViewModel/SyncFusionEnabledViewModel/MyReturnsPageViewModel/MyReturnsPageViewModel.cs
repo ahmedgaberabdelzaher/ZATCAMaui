@@ -638,6 +638,175 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 RaisePropertyChanged("TabIndexStatus");
             }
         }
+
+        private string _submittedVATReturnsCount = string.Empty;
+        public string SubmittedVATReturnsCount
+        {
+            get
+            {
+                return _submittedVATReturnsCount;
+            }
+            set
+            {
+                _submittedVATReturnsCount = value;
+                RaisePropertyChanged("SubmittedVATReturnsCount");
+            }
+        }
+
+        private string _nonSubmittedVATReturnsCount = string.Empty;
+        public string NonSubmittedVATReturnsCount
+        {
+            get
+            {
+                return _nonSubmittedVATReturnsCount;
+            }
+            set
+            {
+                _nonSubmittedVATReturnsCount = value;
+                RaisePropertyChanged("NonSubmittedVATReturnsCount");
+            }
+        }
+
+        private string _overDueVATReturnsCount = string.Empty;
+        public string OverDueVATReturnsCount
+        {
+            get
+            {
+                return _overDueVATReturnsCount;
+            }
+            set
+            {
+                _overDueVATReturnsCount = value;
+                RaisePropertyChanged("OverDueVATReturnsCount");
+            }
+        }
+
+        private string _submittedZakatReturnsCount = string.Empty;
+        public string SubmittedZakatReturnsCount
+        {
+            get
+            {
+                return _submittedZakatReturnsCount;
+            }
+            set
+            {
+                _submittedZakatReturnsCount = value;
+                RaisePropertyChanged("SubmittedZakatReturnsCount");
+            }
+        }
+
+        private string _nonSubmittedZakatReturnsCount = string.Empty;
+        public string NonSubmittedZakatReturnsCount
+        {
+            get
+            {
+                return _nonSubmittedZakatReturnsCount;
+            }
+            set
+            {
+                _nonSubmittedZakatReturnsCount = value;
+                RaisePropertyChanged("NonSubmittedZakatReturnsCount");
+            }
+        }
+
+        private string _overDueZakatReturnsCount = string.Empty;
+        public string OverDueZakatReturnsCount
+        {
+            get
+            {
+                return _overDueZakatReturnsCount;
+            }
+            set
+            {
+                _overDueZakatReturnsCount = value;
+                RaisePropertyChanged("OverDueZakatReturnsCount");
+            }
+        }
+
+
+        private string _submittedETReturnsCount = string.Empty;
+        public string SubmittedETReturnsCount
+        {
+            get
+            {
+                return _submittedETReturnsCount;
+            }
+            set
+            {
+                _submittedETReturnsCount = value;
+                RaisePropertyChanged("SubmittedETReturnsCount");
+            }
+        }
+
+        private string _nonSubmittedETReturnsCount = string.Empty;
+        public string NonSubmittedETReturnsCount
+        {
+            get
+            {
+                return _nonSubmittedETReturnsCount;
+            }
+            set
+            {
+                _nonSubmittedETReturnsCount = value;
+                RaisePropertyChanged("NonSubmittedETReturnsCount");
+            }
+        }
+
+        private string _overDueETReturnsCount = string.Empty;
+        public string OverDueETReturnsCount
+        {
+            get
+            {
+                return _overDueETReturnsCount;
+            }
+            set
+            {
+                _overDueETReturnsCount = value;
+                RaisePropertyChanged("OverDueETReturnsCount");
+            }
+        }
+
+        private string _submittedWHReturnsCount = string.Empty;
+        public string SubmittedWHReturnsCount
+        {
+            get
+            {
+                return _submittedWHReturnsCount;
+            }
+            set
+            {
+                _submittedWHReturnsCount = value;
+                RaisePropertyChanged("SubmittedWHReturnsCount");
+            }
+        }
+
+        private string _nonSubmittedWHReturnsCount = string.Empty;
+        public string NonSubmittedWHReturnsCount
+        {
+            get
+            {
+                return _nonSubmittedWHReturnsCount;
+            }
+            set
+            {
+                _nonSubmittedWHReturnsCount = value;
+                RaisePropertyChanged("NonSubmittedWHReturnsCount");
+            }
+        }
+
+        private string _overDueWHReturnsCount = string.Empty;
+        public string OverDueWHReturnsCount
+        {
+            get
+            {
+                return _overDueWHReturnsCount;
+            }
+            set
+            {
+                _overDueWHReturnsCount = value;
+                RaisePropertyChanged("OverDueWHReturnsCount");
+            }
+        }
         #endregion
 
         #region Methods
@@ -855,7 +1024,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
                 foreach (string ItemType in TpTypes)
                 {
-                    if (ItemType == "05" && UtilityManager.IsZakatAvailable == "X")
+                    if (ItemType == "05")
                     {
                         IsZakatVisible = true;
                     }
@@ -873,6 +1042,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     }
                 }
             }
+
+            
+             
+            
             if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
             {
 
@@ -948,67 +1121,88 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild;
                     IsVisibleZakatNonSumbitted = true;
                     IsVisibleZakatNonSumbittedLabel = false;
+                    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatNonSubmitedChild.Count + ")";
                 }
                 else
                 {
                     IsVisibleZakatNonSumbitted = false;
                     IsVisibleZakatNonSumbittedLabel = true;
+                    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+
                 }
                 if (ReturnsZakatOverDueChild.Count > 0)
                 {
                     ReturnsZakatOverDue = ReturnsZakatOverDueChild;
                     IsVisibleZakatOverDue = true;
                     IsVisibleZakatOverDueLabel = false;
+                    OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleZakatOverDue = false;
                     IsVisibleZakatOverDueLabel = true;
+                    OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+
                 }
                 if (ReturnsZakatSubmitedChild.Count > 0)
                 {
                     ReturnsZakatSubmited = ReturnsZakatSubmitedChild;
                     IsVisibleZakatSumbitted = true;
                     IsVisibleZakatSumbittedLabel = false;
+                    SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatSubmitedChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleZakatSumbitted = false;
                     IsVisibleZakatSumbittedLabel = true;
+                    SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+
                 }
                 if (ReturnsVATNonSubmitedChild.Count > 0)
                 {
                     ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild;
                     IsVisibleVATNonSumbitted = true;
                     IsVisibleVATNonSumbittedLabel = false;
-
+                    NonSubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATNonSubmitedChild.Count + ")";
                 }
                 else
                 {
                     IsVisibleVATNonSumbitted = false;
                     IsVisibleVATNonSumbittedLabel = true;
+                    NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+
                 }
                 if (ReturnsVATOverDueChild.Count > 0)
                 {
                     ReturnsVATOverDue = ReturnsVATOverDueChild;
                     IsVisibleVATOverDue = true;
                     IsVisibleVATOverDueLabel = false;
+                    OverDueVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATOverDueChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleVATOverDue = false;
                     IsVisibleVATOverDueLabel = true;
+                    OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
+
                 }
                 if (ReturnsVATSubmitedChild.Count > 0)
                 {
                     ReturnsVATSubmited = ReturnsVATSubmitedChild;
                     IsVisibleVATSumbitted = true;
                     IsVisibleVATSumbittedLabel = false;
+                    SubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATSubmitedChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleVATSumbitted = false;
                     IsVisibleVATSumbittedLabel = true;
+                    SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+
                 }
 
                 if (ReturnsETNonSubmitedChild.Count > 0)
@@ -1016,33 +1210,46 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     ReturnsETNonSubmited = ReturnsETNonSubmitedChild;
                     IsVisibleETNonSumbitted = true;
                     IsVisibleETNonSumbittedLabel = false;
+                    NonSubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETNonSubmitedChild.Count + ")";
+
+
                 }
                 else
                 {
                     IsVisibleETNonSumbitted = false;
                     IsVisibleETNonSumbittedLabel = true;
+                    NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+
                 }
                 if (ReturnsETOverDueChild.Count > 0)
                 {
                     ReturnsETOverDue = ReturnsETOverDueChild;
                     IsVisibleETOverDue = true;
                     IsVisibleETOverDueLabel = false;
+                    OverDueETReturnsCount = AppResources.ETReturns + "(" + ReturnsETOverDueChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleETOverDue = false;
                     IsVisibleETOverDueLabel = true;
+                    OverDueETReturnsCount = AppResources.ETReturns + "(0)";
+
                 }
                 if (ReturnsETSubmitedChild.Count > 0)
                 {
                     ReturnsETSubmited = ReturnsETSubmitedChild;
                     IsVisibleETSumbitted = true;
                     IsVisibleETSumbittedLabel = false;
+                    SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleETSumbitted = false;
                     IsVisibleETSumbittedLabel = true;
+                    SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+
                 }
 
                 if (ReturnsWHNonSubmitedChild.Count > 0)
@@ -1050,33 +1257,45 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                     ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild;
                     IsVisibleWHNonSumbitted = true;
                     IsVisibleWHNonSumbittedLabel = false;
+                    NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHNonSubmitedChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleWHNonSumbitted = false;
                     IsVisibleWHNonSumbittedLabel = true;
+                    NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
                 }
                 if (ReturnsWHOverDueChild.Count > 0)
                 {
                     ReturnsWHOverDue = ReturnsWHOverDueChild;
                     IsVisibleWHOverDue = true;
                     IsVisibleWHOverDueLabel = false;
+                    OverDueWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHOverDueChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleWHOverDue = false;
                     IsVisibleWHOverDueLabel = true;
+                    OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
                 }
                 if (ReturnsWHSubmitedChild.Count > 0)
                 {
                     ReturnsWHSubmited = ReturnsWHSubmitedChild;
                     IsVisibleWHSumbitted = true;
                     IsVisibleWHSumbittedLabel = false;
+                    SubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHSubmitedChild.Count + ")";
+
                 }
                 else
                 {
                     IsVisibleWHSumbitted = false;
                     IsVisibleWHSumbittedLabel = true;
+                    SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
                 }
             }
             else
@@ -1108,6 +1327,31 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 IsVisibleWHOverDueLabel = true;
                 IsVisibleWHSumbitted = false;
                 IsVisibleWHSumbittedLabel = true;
+
+                NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+                OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+
+                SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+
+                NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+
+                OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
+
+                SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+
+                NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+
+                OverDueETReturnsCount = AppResources.ETReturns + "(0)";
+
+                SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+
+                NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
+                OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
+                SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+
+
             }
 
         }
