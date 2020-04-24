@@ -91,8 +91,8 @@ namespace GAZT.Views.NewViews
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         ICRList.Margin = new Thickness(0, 5, 0, 0);
-                        BPicker.Margin = new Thickness(0, 0, 0, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(0, 0, 0, 5);
+                        BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
 
 
                     }

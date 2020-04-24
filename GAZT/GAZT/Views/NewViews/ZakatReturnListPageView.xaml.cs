@@ -72,7 +72,7 @@ namespace GAZT.Views.NewViews
                     {
                         // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         var safeInsets = On<iOS>().SafeAreaInsets();
-                        ZakatICRList.Margin = new Thickness(0, 5, 70, 0);
+                        ZakatICRList.Margin = new Thickness(10, 5, 70, 0);
                         BPicker.Margin = new Thickness(20, 0, 60, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
 
@@ -84,9 +84,9 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        ZakatICRList.Margin = new Thickness(0, 5, 0, 0);
-                        BPicker.Margin = new Thickness(0, 0, 0, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(0, 0, 0, 5);
+                        ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
+                        BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
 
 
                     }
