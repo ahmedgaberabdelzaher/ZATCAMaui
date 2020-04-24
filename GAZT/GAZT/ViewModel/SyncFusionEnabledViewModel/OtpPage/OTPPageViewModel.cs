@@ -1209,7 +1209,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else
             {
-                str = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(WebServiceManager.NumberOfValiedAttempts) + " " + "رموز تحقق خاطئة";
+                str = "سيتم قفل الحساب بعد إدخال" + " " + WebServiceManager.NumberOfValiedAttempts + " " + "رموز تحقق خاطئة";
 
             }
             return str;

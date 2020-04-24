@@ -30,8 +30,8 @@
     <ContentPage.Content>
         <Grid x:Name="ParentContainer" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="35*"/>
-                <RowDefinition  Height="65*"/>
+                <RowDefinition  Height="30*"/>
+                <RowDefinition  Height="70*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
@@ -39,9 +39,9 @@
 
 
 
-            <ScrollView Grid.Row="1" Grid.Column="0" BackgroundColor="White"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1" Grid.Column="0" BackgroundColor="White" Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" >
+                <StackLayout Padding="5" HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
 
                                     
                     <!--<syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
@@ -85,16 +85,28 @@
                             
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>-->
+                    <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" RowSpacing="0">
 
-                    <local1:CustomLabel Text="{x:Static local:AppResources.NoAppointmentText}" BackgroundColor="White" IsVisible="{Binding IsNoDuesLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="25*"/>
+                            <RowDefinition  Height="75*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+
+                      
+
+                        <local1:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.NoAppointmentText}" BackgroundColor="White" IsVisible="{Binding IsNoDuesLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
                     </local1:CustomLabel>
                     <listView:SfListView  x:Name="ReturnsList" 
-           ItemsSource="{Binding listUnsubmittedReturn}"
+                                          Grid.Row="1" Grid.Column="0"
+           
                                        IsScrollBarVisible="True"
                                          SelectionBackgroundColor="White"
                                         
                                       Orientation="Vertical"
-                                          IsScrollingEnabled="True"
+                                         
                                           IsVisible="{Binding IsListviewVisible}"
           HorizontalOptions="FillAndExpand"
             HeightRequest="142"
@@ -265,25 +277,47 @@
                                                 </local1:CustomLabel>
 
 
-
-                                                <local1:CustomLabel 
-                                                      FontFamily="{StaticResource SSTArLight}"
+                                                <StackLayout  Grid.Row="7" Margin="5,0,5,0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3">
+                                                    <local1:CustomLabel
+                                                     
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                       HorizontalOptions="StartAndExpand"
+                                                       
                                                    VerticalOptions="CenterAndExpand"
-                                                    Margin="5,0,5,0"
-                                   Grid.Row="7"
-                                   Grid.Column="0"
-                                                       Grid.ColumnSpan="3"
+                                                    Margin="0,0,0,0"
+                                                    
+                                                   
+                                  FontFamily="{StaticResource SSTArLight}"
                                                           >
-                                                    <local1:CustomLabel.FormattedText>
+                                                        <local1:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                        </FormattedString>
+                                                    </local1:CustomLabel.FormattedText>
+                                                    </local1:CustomLabel>
+                                                    <Label
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                      FontSize="Micro"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        
+                                                   Text="{Binding FormatedSingleDueDate}"
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                        <!--<Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" FontSize="Micro"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}" FontSize="Micro"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"  FontSize="Micro"></Span>
                                                         </FormattedString>
-                                                    </local1:CustomLabel.FormattedText>
-                                                </local1:CustomLabel>
+                                                    </Label.FormattedText>-->
+                                                    </Label>
+                                              
+                                                </StackLayout>
+                                                
+                                                
 
                                                
 
@@ -297,8 +331,12 @@
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
                     </listView:SfListView>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Margin="0" VerticalOptions="FillAndExpand">
+                            <local1:CustomLabel   BackgroundColor="White"  Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
-
+                        </StackLayout>
+                      
+                    </Grid>
                     <StackLayout BackgroundColor="White">
                     <local1:CustomLabel Padding="5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
 
@@ -486,15 +524,15 @@
             <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="50*"/>
+                    <RowDefinition  Height="30*"/>
                     <RowDefinition  Height="20*"/>
-                    <RowDefinition  Height="13*"/>
-                    <RowDefinition  Height="17*"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
+                <Image Grid.Row="0" Grid.Column="0" BackgroundColor="White" Grid.RowSpan="3" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
 
                 <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
                 <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
@@ -520,8 +558,7 @@
                     </Label.FormattedText>
                 </Label>
 
-                <local1:CustomLabel Grid.Row="3" BackgroundColor="White" Grid.Column="0" Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
-
+              
             </Grid>
 
             <Grid Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" IsVisible="{Binding IsLoading}">
