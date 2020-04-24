@@ -123,14 +123,14 @@ namespace GAZTeServicesApp.Views.LoginPage
                 viewModel.CurrentAttempt = 0;
                 if (App.CurrentDropdownTIN != null)
                     viewModel.SelectedTinId = App.CurrentDropdownTIN;
-                if (App.IsSessionExpired)
-                {
-                    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                }
-                else
-                {
+                //if (App.IsSessionExpired)
+                //{
+                //    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                //}
+                //else
+                //{
 
-                }
+                //}
                 viewModel.IsVisibleTinIds = false;
             }
             catch(Exception ex)

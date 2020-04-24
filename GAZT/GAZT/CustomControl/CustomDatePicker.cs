@@ -22,6 +22,12 @@ namespace GAZT.CustomControl
         public ObservableCollection<object> Hour;
         public ObservableCollection<object> Format;
 
+        // Resolving Issue of Date of Birth to prevent selecting future date
+
+        // @Divya Jannapureddy added line number 26
+        private String selectedYear;
+
+
         public ObservableCollection<string> Headers { get; set; }
         public CustomDatePicker()
         {
@@ -79,6 +85,7 @@ namespace GAZT.CustomControl
             {
                 try
                 {
+
                     if (Date.Count == 3)
                     {
                         bool isupdate = false;
@@ -94,46 +101,54 @@ namespace GAZT.CustomControl
                             }
                         }
 
-                        if (isupdate)
+                        //@Divya Jannapureddy added line number 102 to 103
+                        if (resetDate())
                         {
-
-                            ObservableCollection<object> days = new ObservableCollection<object>();
-                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
-                            int year = int.Parse((e.NewValue as IList)[2].ToString());
-
-                            for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
+                            if (isupdate)
                             {
-                                if (j < 10)
+
+                                ObservableCollection<object> days = new ObservableCollection<object>();
+                                int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
+                                int year = int.Parse((e.NewValue as IList)[2].ToString());
+
+                                for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
                                 {
-                                    days.Add("0" + j);
+                                    if (j < 10)
+                                    {
+                                        days.Add("0" + j);
+                                    }
+                                    else
+                                        days.Add(j.ToString());
+                                }
+                                ObservableCollection<object> oldvalue = new ObservableCollection<object>();
+
+                                foreach (var item in e.NewValue as IList)
+                                {
+                                    oldvalue.Add(item);
+                                }
+                                if (days.Count > 0)
+                                {
+                                    Date.RemoveAt(1);
+                                    Date.Insert(1, days);
+                                }
+
+                                if ((Date[1] as IList).Contains(oldvalue[1]))
+                                {
+                                    this.SelectedItem = oldvalue;
                                 }
                                 else
-                                    days.Add(j.ToString());
-                            }
-                            ObservableCollection<object> oldvalue = new ObservableCollection<object>();
-
-                            foreach (var item in e.NewValue as IList)
-                            {
-                                oldvalue.Add(item);
-                            }
-                            if (days.Count > 0)
-                            {
-                                Date.RemoveAt(1);
-                                Date.Insert(1, days);
-                            }
-
-                            if ((Date[1] as IList).Contains(oldvalue[1]))
-                            {
-                                this.SelectedItem = oldvalue;
-                            }
-                            else
-                            {
-                                oldvalue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
-                                this.SelectedItem = oldvalue;
+                                {
+                                    oldvalue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
+                                    this.SelectedItem = oldvalue;
+                                }
                             }
                         }
+
+                        // @Divya Jannapureddy adding line number 148
+                        selectedYear = (SelectedItem as IList)[2].ToString();
                     }
                 }
+
                 catch
                 {
 
@@ -169,8 +184,9 @@ namespace GAZT.CustomControl
                 // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
             }
 
+
             //populate year
-            for (int i = 1900; i < 2050; i++)
+            for (int i = 1900; i <= DateTime.Today.Year; i++)
             {
                 Year.Add(i.ToString());
             }
@@ -189,6 +205,20 @@ namespace GAZT.CustomControl
             Date.Add(Month);
             Date.Add(Day);
             Date.Add(Year);
+        }
+
+        // @Divya Jannapureddy adding line number 211 to 222
+        private Boolean resetDate()
+        {
+            if (selectedYear != DateTime.Today.Year.ToString())
+            {
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

@@ -101,6 +101,22 @@ namespace GAZT.ViewModel.NewViewModel
 
         }
 
+        //@Divya Jannapureddy adding line number 105 to 118
+        private bool _isShowLessMoreLblVisible = true;
+        public bool IsShowLessMoreLblVisible
+        {
+            get
+            {
+                return _isShowLessMoreLblVisible;
+            }
+            set
+            {
+                _isShowLessMoreLblVisible = value;
+                RaisePropertyChanged("IsShowLessMoreLblVisible");
+            }
+
+        }
+
         private TINStatus _listTINStatus;
 
         public TINStatus ListTINStatus
@@ -146,7 +162,9 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
+        //@Divya Jannapureddy adding line number
+        //Replace the below method
         public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             _dialogService = dialogService;
@@ -158,14 +176,17 @@ namespace GAZT.ViewModel.NewViewModel
 
             OnClickLessOrMore = new Command(async () =>
             {
+                ShowLessOrMore = string.Empty;
+               
                 if (IsVisibleListItems == false)
                 {
+                   
                     IsVisibleListItems = true;
                     ShowLessOrMore = AppResources.ZShowlessdetails;
-
                 }
                 else
                 {
+                   
                     IsVisibleListItems = false;
                     ShowLessOrMore = AppResources.ZShowmoredetails;
                 }
@@ -177,6 +198,8 @@ namespace GAZT.ViewModel.NewViewModel
             });
         }
 
+        //@Divya Jannapureddy adding line number
+        //Replace below method
         public async Task OnPageLoad()
         {
             try
@@ -194,18 +217,18 @@ namespace GAZT.ViewModel.NewViewModel
                         TINStatus = ListTINStatus.d.StatusText;
                         if (ListTINStatus.d.Udate != null)
                         {
-                          
+
                             if (App.IsArabic)
                             {
-                                string dateLU =UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
-                                LastUpdate = dateLU;                               
+                                string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
+                                LastUpdate = dateLU;
                                 LastUpdate = UtilityManager.ToArabicDate(LastUpdate);
                             }
                             else
                             {
                                 string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
                                 LastUpdate = dateLU;
-                              
+
 
                             }
                         }
@@ -213,8 +236,9 @@ namespace GAZT.ViewModel.NewViewModel
                         ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
                         if (ConsumerRegisteration.Count > 0)
                         {
+                            IsShowLessMoreLblVisible = true;
                             IsLabelVisible = false;
-                          
+
                             if (ConsumerRegisteration != null)
                             {
                                 if (ListTINStatus.d.ItemSet.results != null)
@@ -241,7 +265,7 @@ namespace GAZT.ViewModel.NewViewModel
                         else
                         {
                             IsLabelVisible = true;
-                           
+                            IsShowLessMoreLblVisible = false;
                         }
                     }
                     else
@@ -262,9 +286,9 @@ namespace GAZT.ViewModel.NewViewModel
                 //};
                 //ListTINStatus = StatusList;
             }
-            catch(InternetException ex)
+            catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information); 
+                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
         public void PopToRootPage()

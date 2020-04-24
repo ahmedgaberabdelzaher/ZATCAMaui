@@ -92,12 +92,19 @@
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                        <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
-                            <Label.GestureRecognizers>
+                        <!--//@Divya Jannapureddy adding line number 100 to 103
+                        //Added below control below control-->
+
+                        <custom:CustomLabel Text="{Binding ShowLessOrMore}"  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10" IsVisible="{Binding IsShowLessMoreLblVisible}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" >
+                            <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnClickLessOrMore}"></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
+                            </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
+
+                        <!--//@Divya Jannapureddy adding line number 100 to 103
+                        //Added above control-->
                         <!--new card view-->
+                        
                         <StackLayout   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsVisibleListItems}">
                             <ListView  
            
@@ -189,8 +196,11 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                               </StackLayout>
-                        <Label Text="{x:Static local:AppResources.ZZNocommercialregistrationslinkedtotheTIN}" VerticalOptions="CenterAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="CenterAndExpand" Style="{StaticResource MicroGrayLabelStyleNew}" IsVisible="{Binding IsLabelVisible}"></Label>
-
+                        <!--//@Divya Jannapureddy adding line number 204
+                        //Added below control below control-->
+                        <Label Text="{x:Static local:AppResources.ZZNocommercialregistrationslinkedtotheTIN}" VerticalOptions="CenterAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0"  HorizontalOptions="CenterAndExpand" Style="{StaticResource MicroGrayLabelStyleNew}" IsVisible="{Binding IsLabelVisible}"></Label>
+                        <!--//@Divya Jannapureddy adding line number 204
+                        //Added Above control-->
                     </Grid>
                 </ScrollView>
             </Grid>

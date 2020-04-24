@@ -15,7 +15,7 @@
               Title="{x:Static local:AppResources.ZZakatReturnDetails}"
             FlowDirection="RightToLeft"
              NavigationPage.HasNavigationBar="False"
-             >
+            BackgroundColor="White" >
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -243,7 +243,7 @@
 
                         </Grid>
                     </StackLayout>-->
-                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="StartAndExpand" Spacing="1">
+                    <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1">
                        
                         <buttons:SfButton Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}"  Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" BackgroundColor="#006450"
                      Opacity="0.7" ></buttons:SfButton>

@@ -73,16 +73,26 @@ namespace GAZTeServicesApp.Views.LandingPage
             }
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
+                if (App.IsSessionExpired)
+                {
+                    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                    App.IsSessionExpired = false;
+                }
+                else
+                {
+
+                }
                 SetLTR();
                 Changecornerradious();
                 InitializeComponent();
+               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

@@ -3054,4 +3054,8 @@ Should we require further information, we would be in contact.</value>
     <value>Withholding</value>
     <comment>My Returns</comment>
   </data>
+  <data name="ZBillDetailsDisclaimer" xml:space="preserve">
+    <value>Disclaimer</value>
+    <comment>Zakat Bills details</comment>
+  </data>
 </root>
