@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -69,11 +70,25 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        var safeInsets = On<iOS>().SafeAreaInsets();
+                        ZakatICRList.Margin = new Thickness(0, 5, 70, 0);
+                        BPicker.Margin = new Thickness(20, 0, 60, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+
+                        //safeInsets.Left = 80;
+                        //safeInsets.Right = 80;
+                        Padding = safeInsets;
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        ZakatICRList.Margin = new Thickness(0, 5, 0, 0);
+                        BPicker.Margin = new Thickness(0, 0, 0, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(0, 0, 0, 5);
+
+
                     }
                 }
 
