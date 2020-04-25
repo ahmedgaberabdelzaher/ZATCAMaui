@@ -893,13 +893,13 @@ namespace GAZT.ViewModel.NewViewModel
                         childZakat.Title = itemZakat.Descript;
                         childZakat.RefNumber = itemZakat.LetterNum;
                         if (itemZakat.LetterNum != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
-                            }
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                         childZakat.Cokey = itemZakat.Cokey;
                         childZakat.Coitm = itemZakat.Coitm;
                         childZakat.Ctime = itemZakat.Ctime;
@@ -1023,14 +1023,14 @@ namespace GAZT.ViewModel.NewViewModel
                         childVAT.Title = itemVAT.Descript;
 
                         childVAT.RefNumber = itemVAT.LetterNum;
-                        if (itemVAT.LetterNum != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
-                            }
+                        //if (itemVAT.LetterNum != null)
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                           childVAT.Cokey = itemVAT.Cokey;
                         childVAT.Coitm = itemVAT.Coitm;
                         childVAT.Cdate = itemVAT.Cdate;
@@ -1140,12 +1140,12 @@ namespace GAZT.ViewModel.NewViewModel
                         childET.Title = itemET.Descript;
                         childET.RefNumber = itemET.LetterNum;
                         if (itemET.LetterNum != null)
-                        {if (App.IsArabic)
-                            {
-                                childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
-                            }
+                        //{if (App.IsArabic)
+                        //    {
+                        //        childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                         childET.Cokey = itemET.Cokey;
                         childET.Coitm = itemET.Coitm;
                         childET.Ctime = itemET.Ctime;
