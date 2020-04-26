@@ -90,7 +90,7 @@
  
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                    <custom:BorderlessEntry IsSpellCheckEnabled="False" Margin="0,0,0,5" Text="{Binding TxtSelectedStatus}" FontSize="Small">
+                    <custom:BorderlessEntry IsSpellCheckEnabled="False"  Text="{Binding TxtSelectedStatus}" FontSize="Small">
                     </custom:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
@@ -134,7 +134,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                              
-                              Margin="0,5,0,0"
+                             
                                BackgroundColor="White"
                  SelectedItem="{Binding SelectedICR}"     
             SeparatorVisibility="None"

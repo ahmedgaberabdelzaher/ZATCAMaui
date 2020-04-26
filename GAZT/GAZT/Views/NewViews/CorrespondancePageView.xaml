@@ -260,8 +260,44 @@
                                                                                     
                                                                                     
                                                                                 </Label>-->
+                                                                <StackLayout   Grid.Row="3"
+                                   Grid.Column="0"
+                                                    Grid.ColumnSpan="2"  Margin="0" Orientation="Horizontal" >
+                                                                    <local:CustomLabel
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"  
+                                                       
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                    
+                                                   
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                                        <local:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZDateandTime}"  ></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                            </FormattedString>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
+                                                                    <Label
+                                                     
+                                 
+                                                      
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   Text="{Binding DateAndTime}"
+                                  
+                                                          >
+                                                                    </Label>
 
-                                                                <local:CustomLabel  Margin="0" 
+                                                                </StackLayout>
+
+
+
+                                                                <!--<local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -276,7 +312,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DateAndTime}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
-                                                                </local:CustomLabel>
+                                                                </local:CustomLabel>-->
 
 
                                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
@@ -496,9 +532,48 @@
 
                                                                                     
                                                                                     
-                                                                                </Label>-->
+                                                   Margin="5,0,5,0"                             </Label>-->
+                                                                <StackLayout     Grid.Row="2"
+                                   Grid.Column="0" Margin="0" Orientation="Horizontal" >
+                                                                    <local:CustomLabel
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                    
+                                                   
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                                        <local:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}"   Text="{x:Static local:AppResources.ZZDateandTime}" ></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                            </FormattedString>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
+                                                                    <Label
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                    
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        
+                                                   Text="{Binding DateAndTime}"
+                                                          >
 
-                                                                <local:CustomLabel  Margin="0" 
+                                                                    </Label>
+
+                                                                </StackLayout>
+
+
+
+
+
+
+
+                                                                <!--<local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -513,7 +588,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DateAndTime}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
-                                                                </local:CustomLabel>
+                                                                </local:CustomLabel>-->
 
 
                                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
@@ -731,8 +806,45 @@
                                                                                     
                                                                                     
                                                                                 </Label>-->
+                                                                <StackLayout   Margin="0" 
+                                  
+                                                      
+                                   Grid.Row="2"
+                                   Grid.Column="0" Orientation="Horizontal" >
+                                                                    <local:CustomLabel
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                       
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                    
+                                                   
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                                        <local:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZDateandTime}" FontSize="Micro"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                                            </FormattedString>
+                                                                        </local:CustomLabel.FormattedText>
+                                                                    </local:CustomLabel>
+                                                                    <Label
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                      FontSize="Micro"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        
+                                                   Text="{Binding DateAndTime}"
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                                    </Label>
 
-                                                                <local:CustomLabel  Margin="0" 
+                                                                </StackLayout>
+
+
+                                                                <!--<local:CustomLabel  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -747,7 +859,7 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DateAndTime}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
-                                                                </local:CustomLabel>
+                                                                </local:CustomLabel>-->
 
 
                                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->

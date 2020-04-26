@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -39,6 +40,7 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             SetLTR();
             Count = 1;
+            FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
             App.ICRStatus = string.Empty;
             viewModel.IsICRListVisible = true;
             viewModel.IsNoDataLabelVisible = false;
@@ -74,11 +76,25 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                       // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        var safeInsets = On<iOS>().SafeAreaInsets();
+                       ICRList.Margin = new Thickness(0, 5, 60, 0);
+                        BPicker.Margin = new Thickness(20, 0, 60, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+                        
+                        //safeInsets.Left = 80;
+                        //safeInsets.Right = 80;
+                        Padding = safeInsets;
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        ICRList.Margin = new Thickness(0, 5, 0, 0);
+                        BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+
+
                     }
                 }
                
@@ -185,6 +201,7 @@ namespace GAZT.Views.NewViews
                 //var safeInsets = On().SafeAreaInsets();
                 //safeInsets.Left = 24;
                 //this.Padding = safeInsets;
+               
                 AttachmentPageViewModel.AttachmentUploadedSize = 0;
                 AttachmentPageViewModel.attachmentSizeVisibility = false;
                 if (Count != 1)

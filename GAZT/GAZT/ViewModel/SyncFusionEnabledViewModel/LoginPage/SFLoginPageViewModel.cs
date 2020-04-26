@@ -761,7 +761,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         {
                             MessageForTheUser = AppResources.RegistrationIsPending;
                         }
-
+                        else if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.Somethingwentwrong;
+                        }
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
