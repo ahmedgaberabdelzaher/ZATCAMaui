@@ -5,6 +5,7 @@ using GAZTeServicesApp.ViewModels.LandingPage;
 using Syncfusion.XForms.Border;
 using System;
 using System.Globalization;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -30,6 +31,7 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -37,12 +39,23 @@ namespace GAZTeServicesApp.Views.LandingPage
                 LoadDate();
                 LoadData();
                 SetLTR();
+              //  DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
             }
             catch (Exception ex)
             {
             }
         }
+     
 
+        //void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        //{
+        //    // Process changes
+        //    var displayInfo = e.DisplayInfo;
+        //    if(displayInfo.Orientation.Equals("Landscape"))
+        //    {
+        //    }
+        //}
         private void Changecornerradious()
         {
             if (App.IsArabic)
