@@ -1004,10 +1004,16 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                TERFCityRetrieveRootObject citylist = new TERFCityRetrieveRootObject();
-                citylist = WebServiceManager.GAZTTESFormGetCity(SelectedTaxEvasionRegion.RegionCode);
-                PopToRootPage();
-                CList = citylist.CityList;
+                if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.RegionCode != null)
+                {
+                    TERFCityRetrieveRootObject citylist = new TERFCityRetrieveRootObject();
+                    citylist = WebServiceManager.GAZTTESFormGetCity(SelectedTaxEvasionRegion.RegionCode);
+                    PopToRootPage();
+                    CList = citylist.CityList;
+                }
+                
+
+                
                 // FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
             }
             catch (InternetException ex)
