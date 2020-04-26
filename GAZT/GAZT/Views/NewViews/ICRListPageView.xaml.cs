@@ -40,7 +40,7 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             SetLTR();
             Count = 1;
-            FrmLicenseIssuedBy.Margin = new Thickness(0, 0, 0, 5);
+            FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
             App.ICRStatus = string.Empty;
             viewModel.IsICRListVisible = true;
             viewModel.IsNoDataLabelVisible = false;
