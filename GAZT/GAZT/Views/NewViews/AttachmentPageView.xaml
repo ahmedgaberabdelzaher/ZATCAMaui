@@ -126,13 +126,13 @@
                                                                 <ColumnDefinition Width="15*" />
                                                             </Grid.ColumnDefinitions>
                                                             <Grid.RowDefinitions>
-                                                                <RowDefinition Height="Auto" />
-                                                                <RowDefinition Height="Auto" />
+                                                                <RowDefinition Height="30" />
+                                                                <RowDefinition Height="30" />
 
                                                             </Grid.RowDefinitions>
                                                         
                                                             <Label Text="{Binding Filename}" 
-                                                                 LineBreakMode="WordWrap"     
+                                                                 LineBreakMode="TailTruncation"     
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"

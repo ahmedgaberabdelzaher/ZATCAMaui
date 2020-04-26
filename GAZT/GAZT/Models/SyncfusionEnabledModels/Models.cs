@@ -160,17 +160,19 @@ namespace GAZT.Models
                 _dueDate = value;
                 if (_dueDate != null)
                 {
-                    if (App.IsArabic)
-                    {
-                        string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
-                        DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    }
-                    else
-                    {
-                        FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    }
+                    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //if (App.IsArabic)
+                    //{
+                    //    string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
+                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //}
+                    //else
+                    //{
+                    //    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //}
                 }
             }
         }

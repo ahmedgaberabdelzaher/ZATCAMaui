@@ -14,7 +14,7 @@
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.ZSalesDetails}"
              NavigationPage.HasNavigationBar="False"
-             >
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -52,8 +52,8 @@
 
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="15*"/>
-                    <RowDefinition Height="63*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="78*"/>
                     <RowDefinition Height="22*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -100,8 +100,8 @@
 
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical"></StackLayout>
-                <GAZT:CustomLabel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,0,10,0"  FontSize="12"><!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Margin="0,5,0,5"></StackLayout>
+                <GAZT:CustomLabel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,5,10,5"  FontSize="12"><!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
 
                     <GAZT:CustomLabel.FormattedText>
                         <FormattedString>
@@ -110,12 +110,10 @@
                             <Span Text=" " />
                             <Span Text="{Binding Persl}"  TextColor="{StaticResource DashboardGrayTextColor}"/>
                             <Span Text="{x:Static x:Environment.NewLine}" />
-
                            <Span Text="{x:Static local:AppResources.ZFinancialPeriodFrom}"  TextColor="{StaticResource GoldLabelTextColor}"/>
                             <Span Text=" " />
                             <Span Text="{Binding Abrzu}" TextColor="{StaticResource DashboardGrayTextColor}"/>
                             <Span Text="{x:Static x:Environment.NewLine}" />
-
                             <Span Text="{x:Static local:AppResources.ZReturnReferenceNumber}" TextColor="{StaticResource GoldLabelTextColor}"/><!--Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"-->
                             <Span Text=" "/>
                             <Span  Text="{Binding Fbnum}" TextColor="{StaticResource DashboardGrayTextColor}"/>
@@ -125,7 +123,7 @@
                 </GAZT:CustomLabel>
                 <!--<ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">-->
 
-                <Grid Grid.Row="1" Grid.Column="0" RowSpacing="0" Grid.ColumnSpan="2">
+                <Grid Grid.Row="1" Grid.Column="0" RowSpacing="0" Grid.ColumnSpan="2" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -178,6 +176,7 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
            HasUnevenRows="True"
+                               SeparatorVisibility="None"
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
                       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"

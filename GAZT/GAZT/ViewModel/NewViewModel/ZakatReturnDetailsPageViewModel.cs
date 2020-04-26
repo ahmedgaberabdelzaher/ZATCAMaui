@@ -182,7 +182,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             GoBackClick = new Command(async () =>
             {
-                _navigationService.GoBack();
+                if(!IsLoading)
+                {
+                    _navigationService.GoBack();
+                }
             });
          
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>

@@ -22,8 +22,8 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
 
         //private string password = "Init@123";
         //private string email = "3102290395";
-        private string password = "Init@123";
-        private string email = "3102292043";
+        private string password = "Unit@123";
+        private string email = "3102290567";
         //private string email = "3102289204";
         //private string email = "3101740267";
 
@@ -761,7 +761,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         {
                             MessageForTheUser = AppResources.RegistrationIsPending;
                         }
-
+                        else if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.Somethingwentwrong;
+                        }
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);

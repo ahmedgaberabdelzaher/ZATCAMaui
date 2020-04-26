@@ -60,7 +60,7 @@ namespace GAZTeServicesApp.Views.LandingPage
         {
             try
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
@@ -70,9 +70,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                     if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
                     {
                         List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                        sortedList = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-                        ReturnsList.ItemsSource = sortedList;
-                        viewModel.IsListviewVisible = true;
+                    viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
+                    ReturnsList.ItemsSource = viewModel.listofPaymentReturn;
+                    await Task.Delay(3000);
+                    viewModel.IsListviewVisible = true;
                         viewModel.IsNoDuesLabelVisible = false;
                     }
                     else
