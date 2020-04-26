@@ -87,9 +87,12 @@
     
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryLastUpdate" Text="{Binding LastUpdate}"  IsReadOnly="True" TextColor="#7D858D"  FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+
+                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdate" FlowDirection="LeftToRight" HorizontalOptions="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                                <!--<local1:GAZTBorderlessEntry FlowDirection="LeftToRight" x:Name="entryLastUpdate" IsReadOnly="True"  HorizontalOptions="Start"  Text="{Binding LastUpdate}"   TextColor="#7D858D"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">-->
                                 
-                            </custom:BorderlessEntry>
+                            </local1:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
                         <!--//@Divya Jannapureddy adding line number 100 to 103
