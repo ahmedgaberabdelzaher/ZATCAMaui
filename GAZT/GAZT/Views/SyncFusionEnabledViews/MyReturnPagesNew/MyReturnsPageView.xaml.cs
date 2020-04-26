@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -15,18 +16,49 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
     public partial class MyReturnsPageView : ContentPage
     {
         MyReturnsPageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         public MyReturnsPageView(int Index)
         {
             viewModel = App.Locator.MyReturnsPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+              On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //0 On<Xamarin.Forms.PlatformConfiguration.iOS>().
+
             InitializeComponent();
+            ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
+
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
             viewModel.OnPageLoad();
             viewModel.TabIndexStatus = Index;
+            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
         }
 
+        void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
+        {
+            // Process changes
+            var displayInfo = e.DisplayInfo;
+            if (displayInfo.Orientation.Equals("Landscape"))
+            {
+            //    ReturnsVATSubmited.WidthRequest = displayInfo.Width - 100;// new Thickness(0, 5, 0, 0);
+            //    ReturnsZakatSubmited.WidthRequest = displayInfo.Width - 100;//  new Thickness(0, 5, 0, 0);
+            //    ReturnsETSubmited.WidthRequest = displayInfo.Width - 100;//  new Thickness(0, 5, 0, 0);
+            //    ReturnsWHSubmited.WidthRequest = displayInfo.Width - 100;//  new Thickness(0, 5, 0, 0);
+            //    ReturnsVATNonSubmited.WidthRequest = displayInfo.Width - 100;//  new Thickness(0, 5, 0, 0);
+            //    ReturnsZakatNonSubmited.WidthRequest = displayInfo.Width - 100;// new Thickness(0, 5, 0, 0);
+
+            //    ReturnsETNonSubmited.WidthRequest = displayInfo.Width - 100;// new Thickness(0, 5, 0, 0);
+            //    ReturnsWHNonSubmited.WidthRequest = displayInfo.Width - 100;//  new Thickness(0, 5, 0, 0);
+            //    ReturnsVATOverDue.WidthRequest = displayInfo.Width - 100;// new displayInfo.Width - 50;// Thickness(0, 5, 0, 0);
+            //    ReturnsZakatOverDue.WidthRequest = displayInfo.Width - 100;// displayInfo.Width - 50;// new Thickness(0, 5, 0, 0);
+            //    ReturnsETOverDue.WidthRequest = displayInfo.Width - 100;// new Thickness(0, 5, 0, 0);
+            //    ReturnsETOverDue.WidthRequest = displayInfo.Width - 100; ;
+
+
+            }
+        }
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -40,6 +72,122 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
                 viewModel.FDirection = FlowDirection.RightToLeft;
             }
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+           // var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+           //// safeInsets.Left = 24;
+           // safeInsets.Right = 24;
+           // this.Padding = safeInsets;
+        }
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        ParentContainerForOTP.Padding = new Thickness(40, 0, 40, 0);
+                        //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        //var safeInsets = On<iOS>().SafeAreaInsets();
+                        //ReturnsVATSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsWHSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsVATNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+
+                        //ReturnsETNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsWHNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsVATOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETOverDue.Margin = new Thickness(0, 5, 0, 0);
+
+
+                        //ReturnsVATSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsETSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsWHSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsVATNonSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsZakatNonSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsETNonSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+
+                        //ReturnsWHNonSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsVATOverDueExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsZakatOverDueExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsETOverDueExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsWHOverDueExpander.Margin = new Thickness(0, 5, 80, 0);
+                        //ReturnsZakatSubmitedExpander.Margin = new Thickness(0, 5, 80, 0);
+
+
+
+                        //BPicker.Margin = new Thickness(20, 0, 60, 0);
+                        //FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+                        //var safeInsets = On<iOS>().SafeAreaInsets();
+                        //safeInsets.Left = -80;
+                        //Padding = safeInsets;
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+                        ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
+
+                        //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        //ReturnsVATSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsWHSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsVATNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+
+                        //ReturnsETNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsWHNonSubmited.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsVATOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsZakatOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ReturnsETOverDue.Margin = new Thickness(0, 5, 0, 0);
+
+
+                        //ReturnsVATSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsETSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsWHSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsVATNonSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsZakatNonSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsETNonSubmitedExpander.Margin = new Thickness(0, 5, 65, 0);
+
+                        //ReturnsWHNonSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsVATOverDueExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsZakatOverDueExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsETOverDueExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsWHOverDueExpander.Margin = new Thickness(0, 5, 5, 0);
+                        //ReturnsZakatSubmitedExpander.Margin = new Thickness(0, 5, 5, 0);
+
+
+
+
+                        //ICRList.Margin = new Thickness(0, 5, 60, 0);
+                        //ZakatICRListSubmitted.Margin = new Thickness(0, 5, 0, 0);
+                        //ICRListNon.Margin = new Thickness(0, 5, 0, 0);
+                        //ZakatICRListOverDue.Margin = new Thickness(0, 5, 0, 0);
+                        //ZakatICRListNonSubmitted.Margin = new Thickness(0, 5, 0, 0);
+                        //ICRListOver.Margin = new Thickness(0, 5, 0, 0);
+
+
+
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

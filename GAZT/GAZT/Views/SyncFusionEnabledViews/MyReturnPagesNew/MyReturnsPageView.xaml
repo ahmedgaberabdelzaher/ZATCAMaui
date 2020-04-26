@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
-               xmlns:local="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:GAZT"
              xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -46,7 +46,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid x:Name="ParentContainerForOTP">
+        <Grid x:Name="ParentContainerForOTP"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -74,7 +74,7 @@
                         <tabview:SfTabItem.Content>
 
                             <StackLayout>
-                                <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"  Text="{Binding SubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" />
@@ -82,7 +82,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}">
+                                            <listView:SfListView  x:Name="ReturnsVATSubmited"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}" HorizontalOptions="Center">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -233,7 +233,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -241,7 +241,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatSubmited}" IsVisible="{Binding IsVisibleZakatSumbitted}">
+                                            <listView:SfListView  HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatSubmited"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatSubmited}" IsVisible="{Binding IsVisibleZakatSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -393,7 +393,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -401,7 +401,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -553,7 +553,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -561,7 +561,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -727,7 +727,7 @@
 
                         <tabview:SfTabItem.Content>
                             <StackLayout>
-                                <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsVATNonSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -735,7 +735,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}" IsVisible="{Binding IsVisibleVATNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsVATNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}" IsVisible="{Binding IsVisibleVATNonSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -886,7 +886,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsZakatNonSubmitedExpander" IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -894,7 +894,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatNonSubmited}" IsVisible="{Binding IsVisibleZakatNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsZakatNonSubmited"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatNonSubmited}" IsVisible="{Binding IsVisibleZakatNonSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1045,7 +1045,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsETNonSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1053,7 +1053,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsETNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1205,7 +1205,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsWHNonSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1213,7 +1213,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsWHNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1375,7 +1375,7 @@
 
                         <tabview:SfTabItem.Content>
                             <StackLayout>
-                                <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsVATOverDueExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0" >
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1383,7 +1383,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}" IsVisible="{Binding IsVisibleVATOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsVATOverDue" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}" IsVisible="{Binding IsVisibleVATOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1534,7 +1534,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsZakatOverDueExpander" IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1542,7 +1542,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatOverDue}" IsVisible="{Binding IsVisibleZakatOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatOverDue" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatOverDue}" IsVisible="{Binding IsVisibleZakatOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1694,7 +1694,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsETOverDueExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1702,7 +1702,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETOverDue"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1854,7 +1854,7 @@
                                     </syncfusion:SfExpander.Content>
 
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander x:Name="ReturnsWHOverDueExpander"  IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -1862,7 +1862,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHOverDue"   SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
