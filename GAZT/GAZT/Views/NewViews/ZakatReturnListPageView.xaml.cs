@@ -3,9 +3,11 @@ using GAZT.ViewModel.NewViewModel;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -108,14 +110,21 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+
             }
             else
             {
-
-                //PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
         private void onDropdownButtonClicked(object sender, EventArgs e)
@@ -146,7 +155,11 @@ namespace GAZT.Views.NewViews
 
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            ZAKATStatus selectedZakatStatus = (ZAKATStatus)e.NewValue;
+            BPicker.SelectedItem = selectedZakatStatus;
+            viewModel.SelectedICRStatus = selectedZakatStatus;
+            viewModel.SelectedICRStatusPrev = selectedZakatStatus;
+            viewModel.TxtSelectedStatus = selectedZakatStatus.Value;
         }
 
         private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -186,6 +199,11 @@ namespace GAZT.Views.NewViews
             //}
 
 
+        }
+
+        private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
         }
     }
 }

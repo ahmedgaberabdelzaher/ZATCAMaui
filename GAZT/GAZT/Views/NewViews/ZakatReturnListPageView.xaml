@@ -201,7 +201,10 @@
                     PickerHeight="280"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"
-                    ShowFooter="False" FooterHeight="46">
+                    CancelButtonClicked="BPicker_CancelButtonClicked"
+                     ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
 
                     <syncfusion:SfPicker.Behaviors>

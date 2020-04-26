@@ -76,6 +76,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ZAKATStatus _selectedICRStatusPrev;
+        public ZAKATStatus SelectedICRStatusPrev
+        {
+            get
+            {
+                return _selectedICRStatusPrev;
+            }
+            set
+            {
+                _selectedICRStatusPrev = value;
+                RaisePropertyChanged("SelectedICRPrev");
+            }
+        }
+
 
         private ZAKATStatus _previousSelectedICRStatus;
         public ZAKATStatus PreviousSelectedICRStatus

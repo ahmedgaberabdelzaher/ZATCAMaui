@@ -104,7 +104,7 @@
                     ShowColumnHeader="False"
                 x:Name="BPicker"
                    BackgroundColor="#EAF7CC"
-                   
+                  
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                     
@@ -117,10 +117,13 @@
                    ItemHeight="40"
                     
                  SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"
-                    ShowFooter="False" FooterHeight="46">
+                    CancelButtonClicked="BPicker_CancelButtonClicked"
+                    ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
                  
                     <syncfusion:SfPicker.Behaviors>

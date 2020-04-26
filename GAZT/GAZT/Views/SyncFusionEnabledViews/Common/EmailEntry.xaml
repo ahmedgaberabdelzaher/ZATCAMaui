@@ -113,13 +113,14 @@
                     SelectedItem="{Binding SelectedTinId,Mode=TwoWay}" DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
                     
                     PickerWidth="270"
+                                     PickerHeight="200"
                                      HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                       ShowFooter="True"
                                     OKButtonBackgroundColor="#EAF7CC"
-                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46" OkButtonClicked="TinsPicker_OkButtonClicked" CancelButtonClicked="TinsPicker_CancelButtonClicked">
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>

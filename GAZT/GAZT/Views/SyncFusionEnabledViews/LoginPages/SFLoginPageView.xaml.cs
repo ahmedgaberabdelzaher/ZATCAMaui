@@ -1,5 +1,6 @@
 ﻿using GAZT;
 using GAZT.Helper;
+using GAZT.Models;
 using GAZTeServicesApp.ViewModels.LoginPage;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -209,5 +210,16 @@ namespace GAZTeServicesApp.Views.LoginPage
             return isAllNumeric;
         }
 
+        private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TIN SelectedTin = (TIN)e.NewValue;
+            viewModel.SelectedTinId = SelectedTin;
+            viewModel.SelectedTinIdPrev = SelectedTin;
+        }
+
+        private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;
+        }
     }
 }

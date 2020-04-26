@@ -20,6 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         private List<FormBundleResult> _formBundleList;
         private bool _isCPickerEnable = false;
         private FormBundleApplicationNumberModelResult _selectedFormBindleFbnum = null;
+        private FormBundleApplicationNumberModelResult _selectedFormBindleFbnumPrev = null;
         private List<FormBundleApplicationNumberModelResult> _formBundleApplicationNumberList;
         private string _fbnumdetail;
         private FormBundleResult _selectedFormBindleFbtyp = null;
@@ -126,6 +127,19 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        public FormBundleApplicationNumberModelResult SelectedFormBindleFbnumPrev
+        {
+            get
+            {
+                return _selectedFormBindleFbnumPrev;
+            }
+            set
+            {
+                _selectedFormBindleFbnumPrev = value;
+              
+                RaisePropertyChanged("SelectedFormBindleFbnumPrev");
+            }
+        }
 
 
 

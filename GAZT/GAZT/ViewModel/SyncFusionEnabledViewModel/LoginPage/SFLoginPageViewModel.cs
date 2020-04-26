@@ -342,6 +342,21 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             }
         }
 
+        private TIN _selectedTinIdPrev;
+        public TIN SelectedTinIdPrev
+        {
+            get
+            {
+                return _selectedTinIdPrev;
+            }
+            set
+            {
+                _selectedTinIdPrev = value;
+                
+                RaisePropertyChanged("SelectedTinIdPrev");
+            }
+        }
+
         private bool _passwordVisibility = true;
         public bool PasswordVisibility
         {

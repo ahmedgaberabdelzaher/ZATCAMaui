@@ -107,10 +107,13 @@
                                 SelectedItemFontSize="15"               
                    ItemHeight="40"
                                          SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }"
-                     DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
-                    PickerHeight="280"
+                     DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
+                    PickerHeight="200"
                     PickerWidth="350"
-                    ShowFooter="False" FooterHeight="46">
+                        ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                             FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -171,9 +174,11 @@
                                           BackgroundColor="#EAF7CC"
                                          SelectedItem="{Binding SelectedFormBindleFbnum}"
                    DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Margin="10,0,10,0"
-                    PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked"
+                    PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked" CancelButtonClicked="CPicker_CancelButtonClicked"
                     PickerWidth="350" IsEnabled="True"
-                    ShowFooter="False" FooterHeight="46">
+                    ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
