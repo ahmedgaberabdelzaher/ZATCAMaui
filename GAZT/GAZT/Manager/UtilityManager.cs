@@ -231,6 +231,39 @@ namespace GAZT.Manager
             return FullDate;
         }
 
+        public static string englishDateConversion(string Date)
+        {
+            String FullDate = string.Empty;
+            String StartDate = string.Empty;
+            String EndDate = string.Empty;
+
+            if (!string.IsNullOrEmpty(Date))
+            {
+                string[] _dueDate = new String[2];
+                _dueDate = Date.Split('-');
+
+                StartDate = _dueDate[0];
+                EndDate = _dueDate[1];
+
+
+                if (StartDate != null)
+                {
+                    string trimStartDate = StartDate.Trim();
+                    string dateStart = FormatAccordingToDeviceForVAT(trimStartDate);
+                    StartDate = dateStart;
+
+                }
+                if (EndDate != null)
+                {
+                    string trimEndDate = EndDate.Trim();
+                    string dateEnd = FormatAccordingToDeviceForVAT(trimEndDate);
+                    EndDate = dateEnd;
+                }
+                FullDate = StartDate + " - " + EndDate;
+            }
+            return FullDate;
+        }
+
 
 
         public static bool IsEnglishNumber(String arText)

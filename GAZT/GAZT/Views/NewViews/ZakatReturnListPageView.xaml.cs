@@ -39,6 +39,10 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
                      On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
              viewModel = App.Locator.ZakatReturnListPageView;
+            ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
+            BPicker.Margin = new Thickness(10, 0, 10, 0);
+            FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
@@ -72,21 +76,21 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                        // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-                        var safeInsets = On<iOS>().SafeAreaInsets();
-                        ZakatICRList.Margin = new Thickness(10, 5, 70, 0);
-                        BPicker.Margin = new Thickness(20, 0, 60, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
-
+                       On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                       ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
+                        BPicker.Margin = new Thickness(40, 0, 40, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(40, 0, 40, 5);
 
                         //safeInsets.Left = 80;
                         //safeInsets.Right = 80;
-                        Padding = safeInsets;
+                        //Padding = safeInsets;
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
+                        ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
+
+                        //ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
                         BPicker.Margin = new Thickness(10, 0, 10, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
 

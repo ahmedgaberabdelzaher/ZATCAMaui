@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -15,12 +16,14 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
     public partial class ReturnsPageView : ContentPage
     {
         ReturnsPageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         public ReturnsPageView(int Index)
         {
             try
             {
                 InitializeComponent();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //    On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.ReturnsPageView;
                 this.BindingContext = viewModel;
                 OnPageLoad();
@@ -74,6 +77,54 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             {
 
             }
+        }
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            //base.OnSizeAllocated(width, height); //must be called
+            //if (this.width != width || this.height != height)
+            //{
+            //    this.width = width;
+            //    this.height = height;
+            //    if (App.IsArabic)
+            //    {
+            //        if (width > height)
+            //        {
+            //            // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+            //            var safeInsets = On<iOS>().SafeAreaInsets();
+            //            ICRList.Margin = new Thickness(0, 5, 60, 0);
+            //            ZakatICRListSubmitted.Margin = new Thickness(0, 5, 60, 0);
+            //            ICRListNon.Margin = new Thickness(0, 5, 60, 0);
+            //            ZakatICRListOverDue.Margin = new Thickness(0, 5, 60, 0);
+            //            ZakatICRListNonSubmitted.Margin = new Thickness(0, 5, 60, 0);
+            //            ICRListOver.Margin = new Thickness(0, 5, 60, 0);
+
+                        
+
+            //            //BPicker.Margin = new Thickness(20, 0, 60, 0);
+            //            //FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+
+            //            //safeInsets.Left = 80;
+            //            //safeInsets.Right = 80;
+            //           // Padding = safeInsets;
+            //        }
+            //        else
+            //        {
+            //            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            //            ICRList.Margin = new Thickness(0, 5, 60, 0);
+            //            ZakatICRListSubmitted.Margin = new Thickness(0, 5, 0, 0);
+            //            ICRListNon.Margin = new Thickness(0, 5, 0, 0);
+            //            ZakatICRListOverDue.Margin = new Thickness(0, 5, 0, 0);
+            //            ZakatICRListNonSubmitted.Margin = new Thickness(0, 5, 0, 0);
+            //            ICRListOver.Margin = new Thickness(0, 5, 0, 0);
+
+
+
+            //        }
+            //    }
+
+            //    //reconfigure layout
+            //}
         }
         public async Task OnPageLoad()
         {
