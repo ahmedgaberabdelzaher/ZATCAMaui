@@ -1128,7 +1128,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No TIN&apos;s linked with this email address.
+        ///   Looks up a localized string similar to No TIN linked with the entered Email address.
         /// </summary>
         public static string NoTINsAvailable {
             get {

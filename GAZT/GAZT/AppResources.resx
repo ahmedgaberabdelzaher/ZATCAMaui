@@ -428,7 +428,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Tin Number</value>
   </data>
   <data name="NoTINsAvailable" xml:space="preserve">
-    <value>No TIN's linked with this email address</value>
+    <value>No TIN linked with the entered Email address</value>
   </data>
   <data name="NetworkConnectivityIssue" xml:space="preserve">
     <value>App is facing network issue, please try again later</value>
