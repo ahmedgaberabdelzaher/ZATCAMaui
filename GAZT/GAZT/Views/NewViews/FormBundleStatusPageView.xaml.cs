@@ -154,6 +154,7 @@ namespace GAZT.Views.NewViews
             FormBundleApplicationNumberModelResult selectedfbnum = (FormBundleApplicationNumberModelResult)e.NewValue;
             CPicker.SelectedItem = selectedfbnum;//Fbnum
             viewModel.SelectedFormBindleFbnum = selectedfbnum;
+            viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
             viewModel.TxtFBnum = selectedfbnum.Fbnum;
 
             //var item = sender as Picker;
@@ -176,6 +177,11 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
             viewModel.TxtFBtype = selectedfbtyp.Txt50;
 
+        }
+
+        private void CPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedFormBindleFbnum = viewModel.SelectedFormBindleFbnumPrev;
         }
     }
 }

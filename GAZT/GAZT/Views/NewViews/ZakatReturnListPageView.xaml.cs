@@ -3,9 +3,11 @@ using GAZT.ViewModel.NewViewModel;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -37,6 +39,10 @@ namespace GAZT.Views.NewViews
             InitializeComponent();
                      On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
              viewModel = App.Locator.ZakatReturnListPageView;
+            ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
+            BPicker.Margin = new Thickness(10, 0, 10, 0);
+            FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
@@ -70,21 +76,21 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                        // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-                        var safeInsets = On<iOS>().SafeAreaInsets();
-                        ZakatICRList.Margin = new Thickness(10, 5, 70, 0);
-                        BPicker.Margin = new Thickness(20, 0, 60, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
-
+                       On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                       ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
+                        BPicker.Margin = new Thickness(40, 0, 40, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(40, 0, 40, 5);
 
                         //safeInsets.Left = 80;
                         //safeInsets.Right = 80;
-                        Padding = safeInsets;
+                        //Padding = safeInsets;
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
+                        ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
+
+                        //ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
                         BPicker.Margin = new Thickness(10, 0, 10, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
 
@@ -108,14 +114,21 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                this.FlowDirection = FlowDirection.LeftToRight;
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+
             }
             else
             {
-
-                //PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
         private void onDropdownButtonClicked(object sender, EventArgs e)
@@ -146,7 +159,11 @@ namespace GAZT.Views.NewViews
 
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            ZAKATStatus selectedZakatStatus = (ZAKATStatus)e.NewValue;
+            BPicker.SelectedItem = selectedZakatStatus;
+            viewModel.SelectedICRStatus = selectedZakatStatus;
+            viewModel.SelectedICRStatusPrev = selectedZakatStatus;
+            viewModel.TxtSelectedStatus = selectedZakatStatus.Value;
         }
 
         private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -186,6 +203,11 @@ namespace GAZT.Views.NewViews
             //}
 
 
+        }
+
+        private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
         }
     }
 }

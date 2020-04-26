@@ -118,6 +118,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private ICRStatus _selectedICRStatusPrev;
+        public ICRStatus SelectedICRStatusPrev
+        {
+            get
+            {
+                return _selectedICRStatusPrev;
+            }
+            set
+            {
+                _selectedICRStatusPrev = value;
+                RaisePropertyChanged("SelectedICRStatusPrev");
+            }
+        }
+
         private int _sCRSelectedIndex;
         public int ICRSelectedIndex
         {

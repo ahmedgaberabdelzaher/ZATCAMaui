@@ -1,9 +1,13 @@
 ﻿using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -76,24 +80,30 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                       // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-                        var safeInsets = On<iOS>().SafeAreaInsets();
-                       ICRList.Margin = new Thickness(0, 5, 60, 0);
-                        BPicker.Margin = new Thickness(20, 0, 60, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        //ICRList.Margin = new Thickness(0, 5, 0, 0);
+                        BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+                        ListLayout.Padding = new Thickness(40, 0, 40, 5);
 
-                        
+                        // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        // var safeInsets = On<iOS>().SafeAreaInsets();
+                        //ICRList.Margin = new Thickness(0, 5, 60, 0);
+                        // BPicker.Margin = new Thickness(20, 0, 60, 0);
+                        // FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+
                         //safeInsets.Left = 80;
                         //safeInsets.Right = 80;
-                        Padding = safeInsets;
+                        //Padding = safeInsets;
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        ICRList.Margin = new Thickness(0, 5, 0, 0);
+                        //ICRList.Margin = new Thickness(0, 5, 0, 0);
                         BPicker.Margin = new Thickness(10, 0, 10, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-
+                        ListLayout.Padding = new Thickness(10, 0, 10, 5);
 
                     }
                 }
@@ -183,11 +193,21 @@ namespace GAZT.Views.NewViews
 
         private void SetLTR()
         {
+            if (App.IsArabic)
+            {
 
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
 
-            if (!App.IsArabic)
+            }
+            else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
 
@@ -239,7 +259,16 @@ namespace GAZT.Views.NewViews
 
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            ICRStatus selectedfbtyp = (ICRStatus)e.NewValue;
+            BPicker.SelectedItem = selectedfbtyp;
+            viewModel.SelectedICRStatus = selectedfbtyp;
+            viewModel.SelectedICRStatusPrev = selectedfbtyp;
+            viewModel.TxtSelectedStatus = selectedfbtyp.Txt30;
+        }
 
+        private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
         }
     }
 }

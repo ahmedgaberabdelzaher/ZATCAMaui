@@ -392,7 +392,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
             GoBackClick = new Command(async () =>
             {
-                if (IsLoading)
+                if (!IsLoading)
                 {
                     _navigationService.GoBack();
                 }

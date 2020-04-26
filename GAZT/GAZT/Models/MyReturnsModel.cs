@@ -46,6 +46,7 @@ namespace GAZT.Models
         public string Sortperiod { get; set; }
         public string TaxType { get; set; }
         public string Fbnum { get; set; }
+        public string Fbguid { get; set; }
     }
 
     public class MyReturnsD

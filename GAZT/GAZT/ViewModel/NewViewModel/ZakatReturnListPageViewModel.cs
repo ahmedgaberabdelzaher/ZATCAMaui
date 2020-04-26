@@ -76,6 +76,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ZAKATStatus _selectedICRStatusPrev;
+        public ZAKATStatus SelectedICRStatusPrev
+        {
+            get
+            {
+                return _selectedICRStatusPrev;
+            }
+            set
+            {
+                _selectedICRStatusPrev = value;
+                RaisePropertyChanged("SelectedICRPrev");
+            }
+        }
+
 
         private ZAKATStatus _previousSelectedICRStatus;
         public ZAKATStatus PreviousSelectedICRStatus
@@ -409,15 +423,17 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     for (int i = 0; i < myZakatReturnsListTemp.Count; i++)
                     {
-                        if(App.IsArabic)
-                        {
-                            myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
-                        }
-                        else
-                        {
+                        //if(App.IsArabic)
+                        //{
+                        //    myZakatReturnsListTemp[i].Period = UtilityManager.GetTaxPeriodDate(myZakatReturnsListTemp[i].Period);
+                        //}
+                        //else
+                        //{
                             if (myZakatReturnsListTemp[i].Period.Contains("-"))
-                                myZakatReturnsListTemp[i].Period.Replace("-", "- ");
+                        {
+                            myZakatReturnsListTemp[i].Period.Replace("-", "- ");
                         }
+                        //}
                         if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))
                         {
                             if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
