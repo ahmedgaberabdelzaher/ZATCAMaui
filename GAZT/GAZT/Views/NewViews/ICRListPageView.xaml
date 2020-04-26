@@ -127,7 +127,7 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
-                <StackLayout Margin="10,-15,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" HeightRequest="1000">
+                <StackLayout  x:Name="ListLayout"  Margin="10,-15,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" HeightRequest="1000">
                     <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"

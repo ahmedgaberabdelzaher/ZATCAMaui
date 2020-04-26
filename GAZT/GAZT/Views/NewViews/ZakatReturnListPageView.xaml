@@ -211,9 +211,9 @@
 
 
 
-
+                <StackLayout x:Name="ZakatICRListLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                 <ListView  x:Name="ZakatICRList" 
-                               Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7"
+                               
            ItemsSource="{Binding MyZakatReturns}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="Fill"
@@ -342,6 +342,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
+                    </StackLayout>
                 <!--<local1:CustomLabel Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                 </local1:CustomLabel>-->
                 <!--<BoxView Grid.Row="5" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="0.5" BackgroundColor="#d5d5d5" />
