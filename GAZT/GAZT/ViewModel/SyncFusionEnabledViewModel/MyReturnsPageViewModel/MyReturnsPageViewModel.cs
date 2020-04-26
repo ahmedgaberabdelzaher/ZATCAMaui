@@ -839,8 +839,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         //                {
 
         //                    String SelectedICRGUID = SelectedReturnsVATSubmited.Fbguid;
-        //                    EUser = SelectedICR.Euser;
-        //                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
+                           
+        //                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVATSubmited.Fbguid, SelectedReturnsVATSubmited.Fbnum, SelectedReturnsVATSubmited.Euser, SelectedReturnsVATSubmited.Persl);
         //                    PopToRootPage();
 
 

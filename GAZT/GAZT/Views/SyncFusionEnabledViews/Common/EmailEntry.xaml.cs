@@ -113,7 +113,15 @@ namespace GAZTeServicesApp.Views.Common
             }
             return isAllNumeric;
         }
-    
 
+        private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
