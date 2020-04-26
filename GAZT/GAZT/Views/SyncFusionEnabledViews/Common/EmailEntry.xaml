@@ -117,7 +117,9 @@
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
-                    ShowFooter="False" FooterHeight="46">
+                      ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>

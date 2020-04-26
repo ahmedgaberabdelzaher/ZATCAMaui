@@ -137,7 +137,9 @@
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              ShowColumnHeader="False"
-                                             ShowFooter="False"
+                                              ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
                                              BackgroundColor="#EAF7CC"
 
                     ColumnHeaderHeight="46"
@@ -146,8 +148,9 @@
                                              SelectedItem="{Binding SelectedParameterType,Mode=TwoWay}"
                                 SelectedItemFontSize="12"               
                    ItemHeight="40"
+                                             CancelButtonClicked="PPicker_CancelButtonClicked"
                     ItemsSource="{Binding ParameterTypeList}" OkButtonClicked="SelectedParametes_OkayButtonClicked" Focused="OnParameterTypeEntryEntryFocussed"  DisplayMemberPath="ParameterType"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
                      FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>

@@ -35,7 +35,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
+                           
                              />
 
                     </controls:TitleView.LeadingView>
@@ -60,7 +60,7 @@
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
-                        
+                       
                     StrokeThickness="2"/>
                 </tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SfTabView.Items>
@@ -107,7 +107,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -136,13 +136,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -157,13 +157,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -177,13 +177,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -200,13 +200,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -266,7 +266,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -295,13 +295,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -316,13 +316,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -336,13 +336,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -359,13 +359,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -391,7 +391,7 @@
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
-                                    
+
                                 </syncfusion:SfExpander>
                                 <syncfusion:SfExpander x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
@@ -426,7 +426,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -455,13 +455,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -476,13 +476,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -496,13 +496,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -519,13 +519,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -586,7 +586,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -615,13 +615,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -636,13 +636,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -656,13 +656,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -679,13 +679,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -713,11 +713,11 @@
 
                                 </syncfusion:SfExpander>
                             </StackLayout>
-                          
+
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
-                
-                
+
+
                     <tabview:SfTabItem Title="{x:Static local:AppResources.UnSubmitted}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
@@ -760,7 +760,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -789,13 +789,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -810,13 +810,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -830,13 +830,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -853,13 +853,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -918,7 +918,7 @@
                                                                             <RowDefinition Height="Auto" />
                                                                         </Grid.RowDefinitions>
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -947,13 +947,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -968,13 +968,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -988,13 +988,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1011,13 +1011,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1078,7 +1078,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1107,13 +1107,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1128,13 +1128,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1148,13 +1148,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1171,13 +1171,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1237,7 +1237,7 @@
                                                                             <RowDefinition Height="Auto" />
                                                                         </Grid.RowDefinitions>
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1266,13 +1266,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1287,13 +1287,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1307,13 +1307,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1330,13 +1330,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1408,7 +1408,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1437,13 +1437,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1458,13 +1458,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1478,13 +1478,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1501,13 +1501,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1567,7 +1567,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1596,13 +1596,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1617,13 +1617,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1637,13 +1637,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1660,13 +1660,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1727,7 +1727,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1756,13 +1756,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1777,13 +1777,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1797,13 +1797,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1820,13 +1820,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1887,7 +1887,7 @@
                                                                         </Grid.RowDefinitions>
 
 
-                                                                        <Label Text="{Binding FbtText}" 
+                                                                        <Label Text="{Binding FbtText}"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                      
                                                        HorizontalOptions="StartAndExpand"
@@ -1916,13 +1916,13 @@
                                                                         </Label>
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1937,13 +1937,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1957,13 +1957,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
@@ -1980,13 +1980,13 @@
 
 
 
-                                                                        <Label  Margin="0" 
-                                  
+                                                                        <Label  Margin="0"
+                                 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
+                                                                       
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>

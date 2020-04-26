@@ -130,19 +130,22 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZZIDType}"
-                    
+                    UnSelectedItemFontSize="14"
                     SelectedIndex="{Binding IDTypeIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                           HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                                             
                                              ShowColumnHeader="False"
-                                             ShowFooter="False"
+                                             ShowFooter="True"
+                                             OKButtonBackgroundColor="#EAF7CC"
+                                             CancelButtonBackgroundColor="#EAF7CC"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
                      DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
                                               SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"
                      FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
@@ -180,10 +183,12 @@
 								Margin="2" 
                                
                               BackgroundColor="#EAF7CC"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
                                      HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-								
+								ShowFooter="True"
 								 ShowColumnHeader="True"
                                              ColumnHeaderBackgroundColor="#EAF7CC"
 								ColumnHeaderHeight="50"
@@ -197,7 +202,8 @@
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
-								ItemHeight="45" ShowFooter="False"  >
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="45" >
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
@@ -306,7 +312,9 @@
                     PickerMode="Dialog"
                              SelectedItemFontSize="10"     
                    ItemHeight="40"
-                                     ShowFooter="False"
+                                     ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
                                     ShowColumnHeader="False"
                                        HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
@@ -314,9 +322,10 @@
                                              BackgroundColor="#EAF7CC"
                                     SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"
                  ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
                                     OkButtonClicked="ddlLIssuedBy_OkButtonClicked"
+                                    CancelButtonClicked="ddlLIssuedBy_CancelButtonClicked"
                     FooterHeight="46">
                                     <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
 
@@ -353,10 +362,13 @@
                                              BackgroundColor="#EAF7CC"
                                     SelectedItem="{Binding SelectCityList,Mode=TwoWay}"
                    ItemsSource="{Binding CityList}" DisplayMemberPath="CityName"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
                                     OkButtonClicked="ddlLIssuedByCity_OkButtonClicked"
-                    ShowFooter="False" FooterHeight="46">
+                                    CancelButtonClicked="ddlLIssuedByCity_CancelButtonClicked"
+                      ShowFooter="True"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom1:SfPickerBehavior />
                                     </syncfusion:SfPicker.Behaviors>
@@ -419,7 +431,7 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>-->
-            <Grid Grid.Row="0" Grid.RowSpan="2"   Grid.Column="0" IsVisible="{Binding IsLoading}" >
+            <Grid Grid.Row="0" Grid.RowSpan="2"   Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
                 <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">

@@ -35,17 +35,21 @@ namespace GAZTeServicesApp.Views.Common
         //}
         private void SetLTR()
         {
-            if (!App.IsArabic)
+            if (App.IsArabic)
             {
-                this.FlowDirection = Xamarin.Forms.FlowDirection.LeftToRight;
-               
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+
             }
             else
             {
-
-                
-
-
+                this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
 

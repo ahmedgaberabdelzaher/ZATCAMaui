@@ -111,7 +111,8 @@ namespace GAZT.CustomControl
                                 int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
                                 int year = int.Parse((e.NewValue as IList)[2].ToString());
 
-                                for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
+                                // @Divya Jannapureddy replace line number 115
+                                for (int j = 1; j <= DateTime.Today.Day; j++)
                                 {
                                     if (j < 10)
                                     {
@@ -157,12 +158,13 @@ namespace GAZT.CustomControl
             });
         }
 
+
         private void PopulateDateCollection()
         {
 
             //populate months
-
-            for (int i = 1; i < 13; i++)
+            // @Divya Jannapureddy replace line number 167
+            for (int i = 1; i <= DateTime.Today.Month; i++)
             {
                 if (i < 10)
                 {
@@ -192,7 +194,9 @@ namespace GAZT.CustomControl
             }
 
             //populate Days
-            for (int i = 1; i <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); i++)
+
+            // @Divya Jannapureddy replace line number 199
+            for (int i = 1; i <= DateTime.Today.Day; i++)
             {
                 if (i < 10)
                 {
