@@ -24,14 +24,15 @@ namespace GAZT.Models
                 _TaxPeriod = value;
                 if(!string.IsNullOrEmpty(_TaxPeriod))
                 {
-                    if (App.IsArabic)
-                    {
-                        FormatTaxPeriod = UtilityManager.ConvertNumerals(_TaxPeriod);
-                    }
-                    else
-                    {
-                        FormatTaxPeriod = _TaxPeriod;
-                    }
+                    FormatTaxPeriod = _TaxPeriod;
+                    //if (App.IsArabic)
+                    //{
+                    //    FormatTaxPeriod = UtilityManager.ConvertNumerals(_TaxPeriod);
+                    //}
+                    //else
+                    //{
+                    //    FormatTaxPeriod = _TaxPeriod;
+                    //}
                 }
             }
         }//TaxPeriodDescription
@@ -47,14 +48,15 @@ namespace GAZT.Models
             set
             {
                 _Fbnum = value;
-                    if(App.IsArabic)
-                    {
-                        FormBundleNumber = UtilityManager.ConvertNumerals(_Fbnum);
-                    }
-                    else
-                    {
-                        FormBundleNumber = _Fbnum;
-                    }
+                FormBundleNumber = _Fbnum;
+                //if (App.IsArabic)
+                //    {
+                //        FormBundleNumber = UtilityManager.ConvertNumerals(_Fbnum);
+                //    }
+                //    else
+                //    {
+                //        FormBundleNumber = _Fbnum;
+                //    }
             }
         }
 
@@ -71,7 +73,7 @@ namespace GAZT.Models
                 _txt50 = value;
                 if (_txt50 != null)
                 {
-                    FormatedDate=UtilityManager.dateConversion(_txt50);
+                    FormatedDate=UtilityManager.englishDateConversion(_txt50);
                 }
             }
         }//ReturnPeriod
@@ -115,17 +117,19 @@ namespace GAZT.Models
                 _dueDate = value;
                 if (_dueDate != null)
                 {
-                    if (App.IsArabic)
-                    {
-                        string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
-                        DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    }
-                    else
-                    {
-                        FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    }
+                    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //if (App.IsArabic)
+                    //{
+                    //    string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
+                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //}
+                    //else
+                    //{
+                    //    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
+                    //}
                 }
             }
         }
