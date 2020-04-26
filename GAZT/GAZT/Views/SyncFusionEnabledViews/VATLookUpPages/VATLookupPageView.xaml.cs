@@ -115,6 +115,7 @@ namespace GAZT.Views.NewViews
             VATParameterType vATParameterType = (VATParameterType)e.NewValue;
             PPicker.SelectedItem = vATParameterType;
             viewModel.SelectedParameterType = vATParameterType;
+            viewModel.SelectedParameterTypePrev = vATParameterType;
             viewModel.SetSelectedParameterTypeData();
             //viewModel.SelectedSignUpUsing = signUpUsing;
             //viewModel.TxtIDNumber = signUpUsing.SUType;
@@ -429,6 +430,11 @@ namespace GAZT.Views.NewViews
                 
             };
            
+        }
+
+        private void PPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedParameterType = viewModel.SelectedParameterTypePrev;
         }
     }
 }

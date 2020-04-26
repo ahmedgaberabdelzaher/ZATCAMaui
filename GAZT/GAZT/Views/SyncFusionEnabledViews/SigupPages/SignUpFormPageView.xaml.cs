@@ -399,10 +399,10 @@ namespace GAZT.Views.NewViews
                                             {
                                                 Message.Append(Environment.NewLine);
                                             }
-                                           
-                                                Message.Append(itemerror.message);
 
-                                            
+                                            Message.Append(itemerror.message);
+
+
                                         }
                                     }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -505,18 +505,18 @@ namespace GAZT.Views.NewViews
                                 {
                                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                                     StringBuilder Message = new StringBuilder();
-                                    foreach(SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                                     {
-                                        if(itemerror.code.Contains("ZD_PUSR"))
+                                        if (itemerror.code.Contains("ZD_PUSR"))
                                         {
                                             if (Message.Length > 0)
                                             {
                                                 Message.Append(Environment.NewLine);
                                             }
-                                           
-                                                Message.Append(itemerror.message);
 
-                                           
+                                            Message.Append(itemerror.message);
+
+
                                         }
                                     }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -642,10 +642,10 @@ namespace GAZT.Views.NewViews
                                         {
                                             Message.Append(Environment.NewLine);
                                         }
-                                       
-                                            Message.Append(itemerror.message);
 
-                                        
+                                        Message.Append(itemerror.message);
+
+
                                     }
                                 }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -755,10 +755,10 @@ namespace GAZT.Views.NewViews
                                         {
                                             Message.Append(Environment.NewLine);
                                         }
-                                       
-                                            Message.Append(itemerror.message);
 
-                                        
+                                        Message.Append(itemerror.message);
+
+
                                     }
                                 }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -876,10 +876,10 @@ namespace GAZT.Views.NewViews
                                             {
                                                 Message.Append(Environment.NewLine);
                                             }
-                                           
-                                                Message.Append(itemerror.message);
 
-                                            
+                                            Message.Append(itemerror.message);
+
+
                                         }
                                     }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -988,10 +988,10 @@ namespace GAZT.Views.NewViews
                                             {
                                                 Message.Append(Environment.NewLine);
                                             }
-                                           
-                                                Message.Append(itemerror.message);
 
-                                            
+                                            Message.Append(itemerror.message);
+
+
                                         }
                                     }
                                     viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
@@ -1296,8 +1296,9 @@ namespace GAZT.Views.NewViews
             string month = selectedItem[0].ToString();
             string day = selectedItem[1].ToString();
             string year = selectedItem[2].ToString();
-
+            viewModel.PkrDBO = year + "/" + month + "/" + day;
             string DBO = year + month + day;
+            viewModel.PkrDBOPrev = viewModel.PkrDBO;
             //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
 
             EntryName.IsEnabled = true;
@@ -1935,154 +1936,9 @@ namespace GAZT.Views.NewViews
 
         }
 
-        private async void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DOBpicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-
-            //string month = selectedItem[0].ToString();
-            //string day = selectedItem[1].ToString();
-            //string year = selectedItem[2].ToString();
-
-            //           viewModel.PkrDBO = year + "/" + month + "/" + day;
-            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-
-            string month = selectedItem[0].ToString();
-            string day = selectedItem[1].ToString();
-            string year = selectedItem[2].ToString();
-            viewModel.PkrDBO = year + "/" + month + "/" + day;
-            string DBO = year + month + day;
-            //string DBO = Convert.ToDateTime(DpDbo.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
-
-            EntryName.IsEnabled = true;
-            if (viewModel.SelectedSignUpUsing.ID == 1)
-            {
-                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
-                {
-                    try
-                    {
-
-                        string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                        IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                        if (SignupIsIDTypeValid.d == null)
-                        {
-
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                            {
-                                FrmIDNumber.HasError = true;
-                                EntryName.Text = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                            else
-                            {
-                                FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-
-                            }
-                        }
-                        else
-                        {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryName.IsEnabled = false;
-                            FrmIDNumber.HasError = false;
-                        }
-
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
-                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                            {
-                                FrmIDNumber.HasError = true;
-                                EntryName.Text = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                            else
-                            {
-                                FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                        }
-                        catch (InternetException ex)
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            });
-                        }
-
-                    }
-                }
-            }
-            if (viewModel.SelectedSignUpUsing.ID == 2)
-            {
-                EntryName.IsEnabled = true;
-                if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
-                {
-                    try
-                    {
-                        string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                        IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                        if (SignupIsIDTypeValid.d == null)
-                        {
-
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                            {
-                                FrmIDNumber.HasError = true;
-                                EntryName.Text = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                            else
-                            {
-                                FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                        }
-                        else
-                        {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.Name2;
-                            EntryName.IsEnabled = false;
-                            FrmIDNumber.HasError = false;
-                        }
-
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
-                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-
-                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                            {
-                                FrmIDNumber.HasError = true;
-                                EntryName.Text = string.Empty;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                            else
-                            {
-                                FrmIDNumber.HasError = false;
-                                viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                            }
-                        }
-                        catch (InternetException ex)
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            });
-                        }
-                    }
-                }
-            }
-
+            ValidateIDNumber();
         }
 
         private void btnDate_Clicked(object sender, EventArgs e)
@@ -2111,12 +1967,11 @@ namespace GAZT.Views.NewViews
 
         private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.TxtIDNumber = string.Empty;
-            EntryName.IsEnabled = true;
 
-            SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
-            viewModel.SelectedSignUpUsing = signUpUsing;
-            viewModel.TxtIDType = signUpUsing.SUType;
+
+            //SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
+            //viewModel.SelectedSignUpUsing = signUpUsing;
+            //viewModel.TxtIDType = signUpUsing.SUType;
 
         }
 
@@ -2133,16 +1988,43 @@ namespace GAZT.Views.NewViews
         }
 
         private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {//viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
-         //   DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
-         //   viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
+        {
+            // viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
+            DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
+            viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
         }
 
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            // SignUpUsing signUpUsing = (SignUpUsing)e.NewValue;
-            //  viewModel.SelectedSignUpUsing = signUpUsing;
-            //  viewModel.TxtIDType = signUpUsing.SUType;
+            viewModel.TxtIDNumber = string.Empty;
+            EntryName.IsEnabled = true;
+            // SfPicker signUpUsing = (SfPicker)sender;
+            viewModel.SelectedSignUpUsing = (SignUpUsing)DDlIDType.SelectedItem;
+            viewModel.TxtIDType = viewModel.SelectedSignUpUsing.SUType;
+            if (viewModel.SelectedSignUpUsing != null)
+            {
+                try
+                {
+                    if (viewModel.SelectedSignUpUsing.ID == 1)
+                    {
+                        viewModel.MaxLengthID = 10;
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 2)
+                    {
+                        viewModel.MaxLengthID = 10;
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 3)
+                    {
+                        viewModel.MaxLengthID = 15;
+                    }
+                    //  TxtIDType = _selectedSignUpUsing.SUType;
+                }
+                catch (Exception Ex)
+                {
+
+                }
+                viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
+            }
         }
 
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -2151,6 +2033,7 @@ namespace GAZT.Views.NewViews
             IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
             ddlLIssuedBy.SelectedItem = issuedByResponse;
             viewModel.SelectedIssuedBy = issuedByResponse;
+            viewModel.SelectedIssuedByPrev = issuedByResponse;
             viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
         }
 
@@ -2159,6 +2042,7 @@ namespace GAZT.Views.NewViews
             SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
             ddlLIssuedByCity.SelectedItem = selectedcity;
             viewModel.SelectCityList = selectedcity;
+            viewModel.SelectCityListPrev = selectedcity;
             viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
 
         }
@@ -2186,7 +2070,7 @@ namespace GAZT.Views.NewViews
 
         private async void DpDbo_Closed(object sender, EventArgs e)
         {
-            ValidateIDNumber();
+            // ValidateIDNumber();
             //var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
 
             //string month = selectedItem[0].ToString();
@@ -2332,6 +2216,35 @@ namespace GAZT.Views.NewViews
             {
                 FrmName.HasError = false;
             }
+        }
+
+        private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.PkrDBO = viewModel.PkrDBOPrev;
+            if (!string.IsNullOrEmpty(viewModel.PkrDBOPrev))
+            {
+                string[] Date = viewModel.PkrDBOPrev.Split('/');
+                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+
+                //Select today dates
+
+                todaycollection.Add(Date[1]);
+                todaycollection.Add(Date[2]);
+                todaycollection.Add(Date[0]);
+
+                DpDbo.SelectedItem = todaycollection;
+
+            }
+        }
+
+        private void ddlLIssuedBy_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedIssuedBy = viewModel.SelectedIssuedByPrev;
+        }
+
+        private void ddlLIssuedByCity_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectCityList = viewModel.SelectCityListPrev;
         }
     }
 }

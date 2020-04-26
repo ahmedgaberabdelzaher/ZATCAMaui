@@ -4533,6 +4533,7 @@ namespace GAZT.Manager
                 string Message = string.Empty;
                 try
                 {
+                    lang = "EN";
                     HttpWebRequest SOAPRequest = CreateGAZTSOAPWebRequestForAuthenticationService();
                     if (SOAPRequest != null)
                     {

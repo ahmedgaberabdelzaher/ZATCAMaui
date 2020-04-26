@@ -259,6 +259,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private SignupCityResult _selectCityListPrev = null;
+        public SignupCityResult SelectCityListPrev
+        {
+            get
+            {
+                return _selectCityListPrev;
+            }
+            set
+            {
+                _selectCityListPrev = value;
+             
+                RaisePropertyChanged("SelectCityListPrev");
+            }
+        }
+
         private List<SignupCityResult> _cityList = null;
         public List<SignupCityResult> CityList
         {
@@ -351,6 +366,20 @@ namespace GAZT.ViewModel.NewViewModel
                     TxtLOrCIssuedBy = _selectedIssuedBy.txt50;
                 }
                 RaisePropertyChanged("SelectedIssuedBy");
+            }
+        }
+        private IssuedByResponse _selectedIssuedByPrev = null;
+        public IssuedByResponse SelectedIssuedByPrev
+        {
+            get
+            {
+                return _selectedIssuedByPrev;
+            }
+            set
+            {
+                _selectedIssuedByPrev = value;
+               
+                RaisePropertyChanged("SelectedIssuedByPrev");
             }
         }
         private List<IssuedByResponse> _issuedByList = null;
@@ -518,6 +547,21 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _pkrDBO = value;
                 RaisePropertyChanged("PkrDBO");
+            }
+        }
+
+        private string _pkrDBOPrev = string.Empty;
+
+        public string PkrDBOPrev
+        {
+            get
+            {
+                return _pkrDBOPrev;
+            }
+            set
+            {
+                _pkrDBOPrev = value;
+                RaisePropertyChanged("PkrDBOPrev");
             }
         }
 

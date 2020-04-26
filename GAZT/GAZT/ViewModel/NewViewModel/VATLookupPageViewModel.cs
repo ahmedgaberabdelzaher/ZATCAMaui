@@ -156,14 +156,29 @@ namespace GAZT.ViewModel.NewViewModel
                 //Name = string.Empty;
                 //StringBuilder captcha = GetCaptcha();
                 //Captcha = captcha.ToString();
-                if (SelectedParameterType != null)
+                if (_selectedParameterType != null)
                 {
                     SetSelectedParameterTypeData();
-                    TxtSearchParameter = SelectedParameterType.ParameterType;
+                    TxtSearchParameter = _selectedParameterType.ParameterType;
                     SetPlaceholderText();
                }
-                RaisePropertyChanged("_selectedParameterType");
+                RaisePropertyChanged("SelectedParameterType");
               
+            }
+        }
+
+        private VATParameterType _selectedParameterTypePrev = null;
+        public VATParameterType SelectedParameterTypePrev
+        {
+            get
+            {
+                return _selectedParameterTypePrev;
+            }
+            set
+            {
+                _selectedParameterTypePrev = value;
+                RaisePropertyChanged("SelectedParameterTypePrev");
+
             }
         }
         private string _VATACCOrCRNOOrVATCER = "";// AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
