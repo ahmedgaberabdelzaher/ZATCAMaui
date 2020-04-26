@@ -331,7 +331,41 @@
                                    Grid.Row="8"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
 
-                                                <Label  Margin="0" 
+                                                <StackLayout  Margin="0" 
+                                                                     Grid.Row="5"
+                                   Grid.Column="0" Orientation="Horizontal">
+                                                    <Label
+                                                     
+                                  
+                                                       
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text="{x:Static local:AppResources.ZReturnPeriod}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                    
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        
+                                                 Text="{Binding FormatedDate}"
+                                  
+                                                          >
+
+                                                    </Label>
+
+                                                </StackLayout>
+
+
+                                                <!--<Label  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -346,7 +380,7 @@
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
-                                                </Label>
+                                                </Label>-->
 
 
 
@@ -368,7 +402,46 @@
                                    Grid.Row="10"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
 
-                                                <Label  Margin="0" 
+                                                <StackLayout  Margin="0" 
+                                                  Grid.Row="6"
+                                   Grid.Column="0" Orientation="Horizontal">
+                                                    <Label
+                                                     
+                             
+                                                       
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                    
+                                                   
+                                  FontFamily="{StaticResource SSTArLight}"
+                                                          >
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                    <Label
+                                                     
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                     
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        
+                                                 Text="{Binding FormatedSingleDueDate}"
+                                  
+                                                          >
+
+                                                    </Label>
+
+                                                </StackLayout>
+
+
+
+
+                                                <!--<Label  Margin="0" 
                                   
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -383,7 +456,7 @@
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
-                                                </Label>
+                                                </Label>-->
 
 
                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
