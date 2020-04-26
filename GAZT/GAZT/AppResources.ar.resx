@@ -424,7 +424,7 @@
     <value>الرقم المميز</value>
   </data>
   <data name="NoTINsAvailable" xml:space="preserve">
-    <value>ايوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
+    <value>لا يوجد رقم مميز مرتبط مع البريد الالكتروني المدخل</value>
   </data>
   <data name="NetworkConnectivityIssue" xml:space="preserve">
     <value>توجد مشكلة في الشبكة, الرجاء إعادة المحاولة لاحقًا</value>

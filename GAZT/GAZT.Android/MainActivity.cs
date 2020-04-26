@@ -45,6 +45,10 @@ namespace GAZT.Droid
             {
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadExternalStorage }, 0);
             }
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera }, 0);
+            }
             PackageInfo info = this.PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
             App app = new App();
