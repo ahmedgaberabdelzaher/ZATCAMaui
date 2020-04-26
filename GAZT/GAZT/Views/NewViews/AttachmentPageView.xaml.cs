@@ -56,26 +56,32 @@ namespace GAZT.Views.NewViews
                         viewModel.VatAttachmentsList = myCollection;
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
-                            if (App.IsArabic)
+                            if (item.Erfdt != null)
                             {
-                                if (item.Erfdt != null)
-                                {
-                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
-                                    item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
-                                }
+                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             }
-                            else
-                            {
-                                if (item.Erfdt != null)
-                                {
-                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            //if (App.IsArabic)
+                            //{
+                            //    if (item.Erfdt != null)
+                            //    {
+                            //        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                }
-                            }
+                            //        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            //        item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    if (item.Erfdt != null)
+                            //    {
+                            //        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            //        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            //    }
+                            //}
                         }
                     }
 

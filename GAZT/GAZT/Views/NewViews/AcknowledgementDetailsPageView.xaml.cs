@@ -96,16 +96,17 @@ namespace GAZT.Views.NewViews
 
 
 
+                    viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
 
-                    if (App.IsArabic)
-                    {
-                        ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                        viewModel.ReceiptDate = UtilityManager.ToArabicDate(ReceiptDate);
-                    }
-                    else
-                    {
-                        viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    }
+                    //if (App.IsArabic)
+                    //{
+                    //    ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //    viewModel.ReceiptDate = UtilityManager.ToArabicDate(ReceiptDate);
+                    //}
+                    //else
+                    //{
+                    //    viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                    //}
                 }
 
 

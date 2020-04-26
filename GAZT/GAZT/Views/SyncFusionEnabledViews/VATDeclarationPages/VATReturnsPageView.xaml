@@ -328,13 +328,17 @@
 
                         </custom:GAZTBorderlessEntry>-->
 
+
+                                       
                                         <inputLayout:SfTextInputLayout   Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"  
     Hint="{x:Static local:AppResources.ZVatPeriodFrom}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:GAZTBorderlessEntry  Grid.Row="6"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
-                                            </custom:GAZTBorderlessEntry>
+                                            <local1:GAZTBorderlessEntry  Grid.Row="6"  FlowDirection="LeftToRight" HorizontalOptions="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
+
+                                            </local1:GAZTBorderlessEntry>
+
                                         </inputLayout:SfTextInputLayout>
 
 
@@ -353,9 +357,14 @@
     Hint="{x:Static local:AppResources.ZVatPeriodTo}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:GAZTBorderlessEntry  Grid.Row="7"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                            <!--<custom:GAZTBorderlessEntry  Grid.Row="7"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
-                                            </custom:GAZTBorderlessEntry>
+                                            </custom:GAZTBorderlessEntry>-->
+
+                                            <local1:GAZTBorderlessEntry  Grid.Row="7"  FlowDirection="LeftToRight" HorizontalOptions="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
+
+                                            </local1:GAZTBorderlessEntry>
+
                                         </inputLayout:SfTextInputLayout>
 
                                         <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
@@ -2596,7 +2605,7 @@
                                         <Label Text="{x:Static local1:AppResources.ZVatTermsAndConditions}"  Grid.Row="6" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
 
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="7" FontFamily="{StaticResource SSTArabicMedium}" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="1."/>
@@ -2606,7 +2615,7 @@
                                         </local1:CustomLabel>
 
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="2."/>
@@ -2615,7 +2624,7 @@
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" FontFamily="{StaticResource SSTArabicMedium}"  Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="3."/>
@@ -2624,7 +2633,7 @@
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
 
-                                        <local1:CustomLabel FlowDirection="LeftToRight" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
+                                        <local1:CustomLabel FlowDirection="LeftToRight" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="4."/>
