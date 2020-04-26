@@ -893,13 +893,13 @@ namespace GAZT.ViewModel.NewViewModel
                         childZakat.Title = itemZakat.Descript;
                         childZakat.RefNumber = itemZakat.LetterNum;
                         if (itemZakat.LetterNum != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
-                            }
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                         childZakat.Cokey = itemZakat.Cokey;
                         childZakat.Coitm = itemZakat.Coitm;
                         childZakat.Ctime = itemZakat.Ctime;
@@ -959,17 +959,20 @@ namespace GAZT.ViewModel.NewViewModel
                                     time = childZakat.Ctime;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
                                     string[] result = time.Split(':');
-                                    string hours = UtilityManager.ConvertNumerals(result[0]);
-                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
-                                    string second= UtilityManager.ConvertNumerals(result[2]);
-                                    time=  " "+ hours + ":"+ minutes+ " ";
+                                    //string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    //string second= UtilityManager.ConvertNumerals(result[2]);
+                                    //string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second= result[2];
+                                                                        time=  " "+ hours + ":"+ minutes+ " ";
                                     
 
                                 }
                                 //16H36M15S
 
-                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = String.Concat(Tstartdate, time);
+                                //var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(StartDate, time);
                                 //StartDate = StartDate + "  " + time;
                             }
 
@@ -1023,14 +1026,14 @@ namespace GAZT.ViewModel.NewViewModel
                         childVAT.Title = itemVAT.Descript;
 
                         childVAT.RefNumber = itemVAT.LetterNum;
-                        if (itemVAT.LetterNum != null)
-                        {
-                            if (App.IsArabic)
-                            {
-                                childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
-                            }
+                        //if (itemVAT.LetterNum != null)
+                        //{
+                        //    if (App.IsArabic)
+                        //    {
+                        //        childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                           childVAT.Cokey = itemVAT.Cokey;
                         childVAT.Coitm = itemVAT.Coitm;
                         childVAT.Cdate = itemVAT.Cdate;
@@ -1081,14 +1084,17 @@ namespace GAZT.ViewModel.NewViewModel
                                     time = childVAT.Ctime;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
                                     string[] result = time.Split(':');
-                                    string hours = UtilityManager.ConvertNumerals(result[0]);
-                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
-                                    string second = UtilityManager.ConvertNumerals(result[2]);
+                                    //string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    //string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    //string second = UtilityManager.ConvertNumerals(result[2]);
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
 
                                 }
-                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = String.Concat(Tstartdate, time);
+                                //var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(StartDate, time);
 
                             }
                         }
@@ -1140,12 +1146,12 @@ namespace GAZT.ViewModel.NewViewModel
                         childET.Title = itemET.Descript;
                         childET.RefNumber = itemET.LetterNum;
                         if (itemET.LetterNum != null)
-                        {if (App.IsArabic)
-                            {
-                                childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
-                            }
+                        //{if (App.IsArabic)
+                        //    {
+                        //        childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
+                        //    }
                             
-                        }
+                        //}
                         childET.Cokey = itemET.Cokey;
                         childET.Coitm = itemET.Coitm;
                         childET.Ctime = itemET.Ctime;
@@ -1195,15 +1201,18 @@ namespace GAZT.ViewModel.NewViewModel
                                     time = childET.Ctime;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
                                     string[] result = time.Split(':');
-                                    string hours = UtilityManager.ConvertNumerals(result[0]);
-                                    string minutes = UtilityManager.ConvertNumerals(result[1]);
-                                    string second = UtilityManager.ConvertNumerals(result[2]);
+                                    //string hours = UtilityManager.ConvertNumerals(result[0]);
+                                    //string minutes = UtilityManager.ConvertNumerals(result[1]);
+                                    //string second = UtilityManager.ConvertNumerals(result[2]);
+                                    string hours = result[0];
+                                    string minutes = result[1];
+                                    string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
 
                                 }
 
-                                var Tstartdate = UtilityManager.ToArabicDate(StartDate);
-                                StartDate = String.Concat(Tstartdate, time);
+                               // var Tstartdate = UtilityManager.ToArabicDate(StartDate);
+                                StartDate = String.Concat(StartDate, time);
                             }
 
                         }

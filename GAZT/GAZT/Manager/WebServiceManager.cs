@@ -4642,7 +4642,7 @@ namespace GAZT.Manager
                 }
                 catch (XPathException xex)
                 {
-                    throw new GAZTInvalidDataException();
+                    throw new GAZTInvalidDataException( AppResources.Somethingwentwrong);
                 }
                 catch (HttpRequestException ex)
                 {
