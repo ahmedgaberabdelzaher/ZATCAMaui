@@ -201,7 +201,7 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             IsLoading = false;
                         });
-
+                       
                     }
                     catch (Exception ex)
                     {

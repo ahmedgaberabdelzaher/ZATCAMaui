@@ -57,7 +57,7 @@ namespace GAZT.Views.NewViews
                     Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
                     checkBox.IsEnabled = false;
                     viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                    viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber; TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
+                    viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber.Remove(0,2); TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
                     viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                     viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                     TFaciOwnerName.IsEnabled = false;
