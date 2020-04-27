@@ -58,6 +58,20 @@ namespace GAZT.ViewModel
             }
         }
 
+        private bool _loading = false;
+        public bool Loading
+        {
+            get
+            {
+                return _loading;
+            }
+            set
+            {
+                _loading = value;
+                RaisePropertyChanged("Loading");
+            }
+        }
+
         private bool _isVisiblePdfView = false;
         public bool IsVisiblePdfView
         {

@@ -224,7 +224,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
 
                     </controls:TitleView.LeadingView>

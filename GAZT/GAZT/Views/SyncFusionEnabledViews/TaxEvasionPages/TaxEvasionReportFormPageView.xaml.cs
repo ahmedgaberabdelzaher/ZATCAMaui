@@ -38,7 +38,7 @@ namespace GAZT.Views.NewViews
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-                MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                MainLayout.Padding = new Thickness(0, 0, 0, 0);
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields(); ;
@@ -161,7 +161,7 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                        MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
 
