@@ -25,6 +25,8 @@ namespace GAZT.Views.NewViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookupPageView : ContentPage
     {
+        private double width = 0;
+        private double height = 0;
         bool isMendatoryDataEntered = true;
         VATLookupPageViewModel viewModel;
         int LanguageToolBarCount = 0;
@@ -32,6 +34,8 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.VATLookupPageView;
             InitializeComponent();
+            MainLayout.Padding = new Thickness(10, 0, 10, 0);
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
             //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
@@ -67,7 +71,30 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        MainLayout.Padding = new Thickness(40, 0, 40, 0);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                    }
+                }
 
+                //reconfigure layout
+            }
+        }
         private void SetLTR()
         {
             if (App.IsArabic)
