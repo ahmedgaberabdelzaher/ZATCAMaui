@@ -41,6 +41,135 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 RaisePropertyChanged("SelectedReturnsVATSubmited");
             }
         }
+
+        private MyReturnsResult _selectedReturnsVATNonSubmited = null;
+        public MyReturnsResult SelectedReturnsVATNonSubmited
+        {
+            get
+            {
+                return _selectedReturnsVATNonSubmited;
+            }
+            set
+            {
+                _selectedReturnsVATNonSubmited = value;
+                if (_selectedReturnsVATNonSubmited != null)
+                {
+                    GetVATAllReturnsAsync();
+                }
+
+                RaisePropertyChanged("SelectedReturnsVATNonSubmited");
+            }
+        }
+
+        private MyReturnsResult _selectedReturnsVATOverDue = null;
+        public MyReturnsResult SelectedReturnsVATOverDue
+        {
+            get
+            {
+                return _selectedReturnsVATOverDue;
+            }
+            set
+            {
+                _selectedReturnsVATOverDue = value;
+                if (_selectedReturnsVATOverDue != null)
+                {
+                    GetVATAllReturnsAsync();
+                }
+
+                RaisePropertyChanged("SelectedReturnsVATOverDue");
+            }
+        }
+
+        private MyReturnsResult _selectedZakatReturnSubmitted;
+        public MyReturnsResult SelectedZakatReturnSubmitted
+        {
+            get
+            {
+                return _selectedZakatReturnSubmitted;
+            }
+            set
+            {
+                _selectedZakatReturnSubmitted = value;
+                RaisePropertyChanged("SelectedZakatReturnSubmitted");
+
+                if (SelectedZakatReturnSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+                    if (SelectedZakatReturnSubmitted.Fbtyp.Equals("FZ12"))
+                    {
+                      
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnSubmitted.Fbguid);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+                    }
+
+                }
+            }
+        }
+
+        private MyReturnsResult _selectedZakatReturnNonSubmitted;
+        public MyReturnsResult SelectedZakatReturnNonSubmitted
+        {
+            get
+            {
+                return _selectedZakatReturnNonSubmitted;
+            }
+            set
+            {
+                _selectedZakatReturnNonSubmitted = value;
+                RaisePropertyChanged("SelectedZakatReturnNonSubmitted");
+
+                if (SelectedZakatReturnNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+                    if (SelectedZakatReturnNonSubmitted.Fbtyp.Equals("FZ12"))
+                    {
+
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnNonSubmitted.Fbguid);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+                    }
+
+                }
+            }
+        }
+
+        private MyReturnsResult _selectedZakatReturnOverDue;
+        public MyReturnsResult SelectedZakatReturnOverDue
+        {
+            get
+            {
+                return _selectedZakatReturnOverDue;
+            }
+            set
+            {
+                _selectedZakatReturnOverDue = value;
+                RaisePropertyChanged("SelectedZakatReturnOverDue");
+
+                if (SelectedZakatReturnOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+                    if (SelectedZakatReturnOverDue.Fbtyp.Equals("FZ12"))
+                    {
+
+                        _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.Fbguid);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () => {
+                            await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                        });
+                    }
+
+                }
+            }
+        }
+
         private List<MyReturnsResult> _returnsZakatSubmited = null;
         public List<MyReturnsResult> ReturnsZakatSubmited
         {
