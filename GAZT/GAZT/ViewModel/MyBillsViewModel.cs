@@ -508,7 +508,7 @@ namespace GAZT.ViewModel
                         ListMyBillsChartModel = myBillsChartModels;
 
                         SelcectedBillsIndex = 0;
-                        int milliseconds = 5000;
+                        int milliseconds = 1000;
                         Thread.Sleep(milliseconds);
                         
                         if (billInfo != null)
