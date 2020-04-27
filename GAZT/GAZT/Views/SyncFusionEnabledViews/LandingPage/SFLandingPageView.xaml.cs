@@ -315,7 +315,8 @@ namespace GAZTeServicesApp.Views.LandingPage
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                              mobno = App.TP.Mobile;
-                            mobno = mobno.Remove(0, 6);
+                            // mobno = mobno.Remove(0, 6);
+                            mobno = mobno.Replace("009665", string.Empty);
 
                         }
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
@@ -381,7 +382,9 @@ namespace GAZTeServicesApp.Views.LandingPage
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                             mobno = App.TP.Mobile;
-                            mobno = mobno.Remove(0, 6);
+
+                            //mobno = mobno.Remove(0, 6);
+                            mobno = mobno.Replace("009665", string.Empty);
 
                         }
                         Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
@@ -449,8 +452,8 @@ namespace GAZTeServicesApp.Views.LandingPage
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                             mobno = App.TP.Mobile;
-                            mobno = mobno.Remove(0, 6);
-
+                            //mobno = mobno.Remove(0, 6);
+                            mobno = mobno.Replace("009665", string.Empty);
                         }
                         Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
