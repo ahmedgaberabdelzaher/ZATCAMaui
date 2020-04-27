@@ -56,7 +56,7 @@ namespace GAZT.Helper
 
 
         public static string GAZTGetVATDeclarationCalculationDataUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
-        public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-language=’";
+        public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-language=’";
         public static string GAZTGetZakatReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZMB_ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
         public static string GAZTGetZakatReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='";
         public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZMB_ZDP_FZ12_SRV/HeaderSet?saml2=disabled&sap-language=";
