@@ -21,6 +21,8 @@ namespace GAZT.Views.NewViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionReportFormPageView : ContentPage
     {
+        private double width = 0;
+        private double height = 0;
         TaxEvasionReportFormPageViewModel viewModel;
         public TaxEvasionReportFormPageView(TaxEvasionReport SelectedTaxEvasionListItem)
         {
@@ -36,7 +38,7 @@ namespace GAZT.Views.NewViews
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-              
+                MainLayout.Padding = new Thickness(10, 0, 10, 0);
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields(); ;
@@ -142,7 +144,30 @@ namespace GAZT.Views.NewViews
             // viewModel.SelectedCategory = SelectedCat;
         }
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        MainLayout.Padding = new Thickness(40, 0, 40, 0);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                    }
+                }
 
+                //reconfigure layout
+            }
+        }
         //public async Task Test1()
         //{
         //   await Task.Run(() =>

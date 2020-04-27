@@ -40,7 +40,7 @@
 
 
 
-        <Grid>
+        <Grid x:Name="MainLayout">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
             </Grid.RowDefinitions>

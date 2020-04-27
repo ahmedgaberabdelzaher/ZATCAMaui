@@ -51,7 +51,7 @@ xmlns:custom="clr-namespace:GAZT"
 
 
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="MainLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" x:Name="TaxEvasionMainGrid" VerticalOptions="FillAndExpand"    Padding="0,0,0,0" >
                 <Grid.RowDefinitions>
 

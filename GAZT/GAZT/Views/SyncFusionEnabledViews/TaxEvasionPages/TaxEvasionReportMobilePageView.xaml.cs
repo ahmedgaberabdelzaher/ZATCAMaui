@@ -27,8 +27,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
         public TaxEvasionReportMobilePageView()
         {
             InitializeComponent();
+            MainLayout.Padding = new Thickness(10, 0, 10, 0);
             //viewModel = App.Locator.TaxEvasionReportPhonePageView;
-         this.BindingContext = viewModel;
+            this.BindingContext = viewModel;
             viewModel = App.Locator.TaxEvasionReportPhonePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
@@ -62,24 +63,53 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
         }
 
 
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height);
+        //    if (width != this.width || height != this.height)
+        //    {
+        //        this.width = width;
+        //        this.height = height;
+        //        if (width > height)
+        //        {
+        //            this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+        //        }
+        //        else
+        //        {
+        //            this.BackgroundImageSource = "sf_LoginBackground.png";
+        //            //  outerStack.Orientation = StackOrientation.Vertical;
+        //        }
+        //    }
+        //}
+
         protected override void OnSizeAllocated(double width, double height)
         {
-            base.OnSizeAllocated(width, height);
-            if (width != this.width || height != this.height)
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
             {
                 this.width = width;
                 this.height = height;
-                if (width > height)
+                if (App.IsArabic)
                 {
-                    this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+                    if (width > height)
+                    {
+                        this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        MainLayout.Padding = new Thickness(40, 0, 40, 0);
+                    }
+                    else
+                    {
+                        this.BackgroundImageSource = "sf_LoginBackground.png";
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                    }
                 }
-                else
-                {
-                    this.BackgroundImageSource = "sf_LoginBackground.png";
-                    //  outerStack.Orientation = StackOrientation.Vertical;
-                }
+
+                //reconfigure layout
             }
         }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
