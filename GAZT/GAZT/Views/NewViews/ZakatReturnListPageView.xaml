@@ -254,7 +254,6 @@
 
                                             <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                        Grid.Row="1"
