@@ -46,7 +46,7 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-
+        <StackLayout x:Name="MainLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <tabView:SfTabView BackgroundColor="White" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" VisibleHeaderCount="3" SelectedIndex="{Binding SelectedTab}"  >
             <tabView:SfTabView.SelectionIndicatorSettings>
                 <tabView:SelectionIndicatorSettings
@@ -153,7 +153,7 @@
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
         </tabView:SfTabView>
-
+            </StackLayout>
         <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="12*" />

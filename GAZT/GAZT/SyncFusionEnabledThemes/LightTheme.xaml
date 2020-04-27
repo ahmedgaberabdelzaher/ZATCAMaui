@@ -186,7 +186,7 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE SS Three" />
+            <On Platform="iOS" Value="GE SS Two" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>

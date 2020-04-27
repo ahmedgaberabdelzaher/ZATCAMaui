@@ -109,10 +109,9 @@
 
                             <inputLayout:SfTextInputLayout   x:Name="CurrentEmailLayout"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
      Hint="{x:Static local:AppResources.ZCurrentEmail}"
-      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry Placeholder="{Binding OldEmail}" PlaceholderColor="White" IsEnabled="False" x:Name="CurrentEmail"     FontSize="Small" TextColor="White"  >
+                                <custom:GAZTBorderlessEntry Placeholder="{Binding OldEmail}" PlaceholderColor="White" IsReadOnly="True" x:Name="CurrentEmail"     FontSize="Small" TextColor="White"  >
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </custom:GAZTBorderlessEntry.Behaviors>
