@@ -19,9 +19,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fa-brands-400.ttf</string>
-		<string>SST Arabic Bold.ttf</string>
-		<string>SST Arabic Light.ttf</string>
-		<string>SST Arabic Medium.ttf</string>
 		<string>SSTArabic-Bold.ttf</string>
 		<string>SSTArabic-Light.ttf</string>
 		<string>SSTArabic-Medium.ttf</string>

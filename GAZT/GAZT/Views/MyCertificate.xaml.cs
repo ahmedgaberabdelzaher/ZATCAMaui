@@ -14,12 +14,15 @@ namespace GAZT.Views
         // ObservableCollection<String> Items = new ObservableCollection<String>();
 
         MyCertificateViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         List<string> list = new List<string>();
         public MyCertificate()
         {
             try
             {
                 InitializeComponent();
+                MainLayout.Margin = new Thickness(0, 0, 0, 5);
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.MyCertificate;
@@ -117,6 +120,33 @@ namespace GAZT.Views
             //};
         }
 
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        MainLayout.Margin = new Thickness(40, 0, 40, 5);
+
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        MainLayout.Margin = new Thickness(0, 0, 0, 5);
+
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
