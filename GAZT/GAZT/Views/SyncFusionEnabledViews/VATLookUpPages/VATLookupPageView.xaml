@@ -53,7 +53,7 @@
             </ControlTemplate>
         </ContentPage.ControlTemplate>
         <ContentPage.Content >
-        <Grid BackgroundColor="White" >
+        <Grid BackgroundColor="White"  x:Name="MainLayout" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*"/>
                 <RowDefinition Height="auto"/>
