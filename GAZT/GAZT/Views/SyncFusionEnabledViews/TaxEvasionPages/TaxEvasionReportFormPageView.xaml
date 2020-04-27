@@ -51,7 +51,7 @@ xmlns:custom="clr-namespace:GAZT"
 
 
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid x:Name="MainLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" x:Name="TaxEvasionMainGrid" VerticalOptions="FillAndExpand"    Padding="0,0,0,0" >
                 <Grid.RowDefinitions>
 
@@ -204,12 +204,15 @@ xmlns:custom="clr-namespace:GAZT"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                                                OkButtonClicked="ddlFacilityType_OkButtonClicked"
+                                             CancelButtonClicked="ddlFacilityType_CancelButtonClicked"
                                              SelectedItem="{Binding SelectedTaxEvasionCompanyType}"
                    ItemHeight="40"
                     ItemsSource="{Binding DListFacilityCompanyType}" DisplayMemberPath="Name"      Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
-                    ShowFooter="False" FooterHeight="46">
+                    ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -301,11 +304,14 @@ xmlns:custom="clr-namespace:GAZT"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                             SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"
-                           
+                           OkButtonClicked="RegionPicker_OkButtonClicked"
+                            CancelButtonClicked="RegionPicker_CancelButtonClicked"
                     x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameEN"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
-                    ShowFooter="False" FooterHeight="46">
+                    ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -324,11 +330,15 @@ xmlns:custom="clr-namespace:GAZT"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                           SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"
+                            OkButtonClicked="RegionPickerAR_OkButtonClicked"
+                            CancelButtonClicked="RegionPickerAR_CancelButtonClicked"
                    ItemHeight="40"
                    x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR"  IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
-                    ShowFooter="False" FooterHeight="46">
+                     ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -352,15 +362,18 @@ xmlns:custom="clr-namespace:GAZT"
                     PickerMode="Dialog"                                              
                    ItemHeight="40"
                             OkButtonClicked="CityPicker_OkButtonClicked"
+                            CancelButtonClicked="CityPicker_CancelButtonClicked"
                               HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                             SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
-                    ShowFooter="False" FooterHeight="46">
+                     ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -377,13 +390,17 @@ xmlns:custom="clr-namespace:GAZT"
                                HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                            OkButtonClicked="CityPickerAR_OkButtonClicked"
+                            CancelButtonClicked="CityPickerAR_CancelButtonClicked"
                                              BackgroundColor="#EAF7CC"
                             SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    ItemHeight="40"
                    x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="280"
+                    PickerHeight="200"
                     PickerWidth="270"
-                    ShowFooter="False" FooterHeight="46">
+                    ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                             <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
@@ -449,6 +466,7 @@ Margin="2"
 ShowColumnHeader="True"
                             ColumnHeaderBackgroundColor="#EAF7CC"
 ColumnHeaderHeight="50"
+                            
                                 PickerMode="Dialog"
 HeaderText="{x:Static local:AppResources.Date}"
 Grid.Row="15" Grid.Column="0"    Grid.ColumnSpan="2"
@@ -458,8 +476,12 @@ x:Name="DpDbo"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                             Closed="DpDbo_Closed"
-                              
-ItemHeight="45" ShowFooter="False"  >
+                            OkButtonClicked="DpDbo_OkButtonClicked"
+                            CancelButtonClicked="DpDbo_CancelButtonClicked"
+                              SelectionChanged="DpDbo_SelectionChanged"
+ItemHeight="45" ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"  >
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>

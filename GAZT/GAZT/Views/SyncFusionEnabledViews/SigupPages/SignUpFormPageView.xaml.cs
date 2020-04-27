@@ -1479,7 +1479,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
-
+                        popUp.isFontSet = true;
                     }
                     else
                     {
@@ -1541,6 +1541,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
                     }
                     else
                     {
@@ -1574,6 +1575,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                       // popUp.isFontSet = true;
                     }
                     else
                     {
@@ -1642,6 +1644,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
                     }
                     else
                     {
@@ -1697,6 +1700,7 @@ namespace GAZT.Views.NewViews
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
                     }
                     else
                     {
@@ -2245,6 +2249,11 @@ namespace GAZT.Views.NewViews
         private void ddlLIssuedByCity_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectCityList = viewModel.SelectCityListPrev;
+        }
+
+        private void DpDbo_SelectionChanged_1(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

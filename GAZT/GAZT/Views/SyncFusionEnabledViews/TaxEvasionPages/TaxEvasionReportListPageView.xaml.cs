@@ -15,11 +15,14 @@ namespace GAZT.Views.NewViews
     public partial class TaxEvasionReportListPageView : ContentPage
     {
         TaxEvasionReportListPageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         public TaxEvasionReportListPageView(string mobno)
         {
             viewModel = App.Locator.TaxEvasionReportListPageView;
             InitializeComponent();
             ChangeAeroIcon();
+            MainLayout.Padding = new Thickness(10, 0, 10, 0);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             this.CertificateLst.SelectedItem = null;
@@ -82,6 +85,30 @@ namespace GAZT.Views.NewViews
         //    }
         //}
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        MainLayout.Padding = new Thickness(40, 0, 40, 0);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();

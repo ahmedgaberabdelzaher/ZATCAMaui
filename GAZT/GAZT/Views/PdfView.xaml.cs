@@ -70,33 +70,45 @@ namespace GAZT.Views
         private async void Share_Clicked(object sender, EventArgs e)
         {
             
-            email();
+          await  email();
         }
 
 
-        public async void email()
+        public async Task email()
         {
-            var message = new EmailMessage
+            await Task.Run(() =>
             {
-                Subject = "Attached Form :" ,
+                viewModel.Loading = true;
+            });
 
-            };
-            if (viewModel.PdfBytes!=null)
+            await Task.Run(async () =>
             {
-                var fn = "GAZT"+viewModel.TaxPayerProfile+ ".pdf";
-                var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                File.WriteAllBytes(file, viewModel.PdfBytes);
-                await Share.RequestAsync(new ShareFileRequest
+                var message = new EmailMessage
                 {
-                    Title = Title,
-                    File = new ShareFile(file)
-                });
-            }
-            else
-            {
-                viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
-            }
+                    Subject = "Attached Form :",
 
+                };
+                if (viewModel.PdfBytes != null)
+                {
+                    var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, viewModel.PdfBytes);
+                    await Share.RequestAsync(new ShareFileRequest
+                    {
+                        Title = Title,
+                        File = new ShareFile(file)
+                    });
+                }
+                else
+                {
+                  await  viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                viewModel.Loading = false;
+            });
         }
 
     }

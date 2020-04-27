@@ -50,7 +50,7 @@
 
 
     <ContentPage.Content>
-        <Grid>
+        <Grid x:Name="MainLayout">
          
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="0"  Margin="0" Padding="0,10,0,0"  RowSpacing="0">
                 <Grid.RowDefinitions>

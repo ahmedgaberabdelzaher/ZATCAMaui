@@ -197,7 +197,7 @@ namespace GAZT.Views.NewViews
             //attachment.DocUrl;
 
             string Extention = attachment.Filename.Split('.')[1];
-            if (Extention == "PDF" || Extention == "pdf")
+            if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
             {
                 //if (Device.RuntimePlatform == Device.iOS)
                 //{
@@ -266,45 +266,58 @@ namespace GAZT.Views.NewViews
 
         public async Task email(string doguid, Attachment attachment)
         {
-            try
+            await Task.Run(async () =>
             {
-                string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
-                byte[] PdfBytes;
-                HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
-                WebResponse myResp = myReq.GetResponse();
-                using (Stream streams = myResp.GetResponseStream())
-                using (MemoryStream Ms = new MemoryStream())
+                viewModel.IsLoading = true;
+            });
+
+            await Task.Run(async() =>
+            {
+                try
                 {
-                    int count = 0;
-                    do
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
                     {
-                        byte[] buf = new byte[1024];
-                        count = streams.Read(buf, 0, 1024);
-                        Ms.Write(buf, 0, count);
-                    } while (streams.CanRead && count > 0);
-                    PdfBytes = Ms.ToArray();
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+
+                    File.WriteAllBytes(file, PdfBytes);
+
+                    await Share.RequestAsync(new ShareFileRequest
+                    {
+                        Title = Title,
+                        File = new ShareFile(file)
+                    });
                 }
-
-                var message = new EmailMessage
+                catch (Exception ex)
                 {
-                    Subject = "Attached Form :",
+                    viewModel.IsLoading = false;
+                }
+            });
 
-                };
-                var fn = attachment.Filename;
-                var file = Path.Combine(FileSystem.CacheDirectory, fn);
-
-                File.WriteAllBytes(file, PdfBytes);
-
-                await Share.RequestAsync(new ShareFileRequest
-                {
-                    Title = Title,
-                    File = new ShareFile(file)
-                });
-            }
-            catch (Exception ex)
+            await Task.Run(async () =>
             {
-
-            }
+                viewModel.IsLoading = false;
+            });
         }
         public void ChangeAeroIcon()
         {
