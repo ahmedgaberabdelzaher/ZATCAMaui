@@ -217,5 +217,62 @@ namespace GAZT.Views.NewViews
         {
             FPickerET.IsOpen = true;
         }
+
+        private void FPickerZakat_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            CorrespondenceFiltersModel selectedZakat = (CorrespondenceFiltersModel)e.NewValue;
+            FPickerZakat.SelectedItem = selectedZakat;
+            viewModel.SelectedFilterZakat = selectedZakat;//selectedregion
+            viewModel.SelectedFilterZakatPrev = selectedZakat;//selectedregion
+            viewModel.TxtSelectedStatusZakat = selectedZakat.Filter;
+        }
+
+        private void FPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            FPickerZakat.SelectedItem = viewModel.SelectedFilterZakatPrev;
+            viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;//selectedregion
+            if (viewModel.SelectedFilterZakatPrev == null)
+            {
+                viewModel.TxtSelectedStatusZakat = string.Empty;
+            }
+        }
+
+        private void FPickerVAT_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            CorrespondenceFiltersModel selectedVAT = (CorrespondenceFiltersModel)e.NewValue;
+            FPickerVAT.SelectedItem = selectedVAT;
+            viewModel.SelectedFilterVAT = selectedVAT;//selectedregion
+            viewModel.SelectedFilterVATPrev = selectedVAT;//selectedregion
+            viewModel.TxtSelectedStatusVAT = selectedVAT.Filter;
+        }
+
+        private void FPickerVAT_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            FPickerVAT.SelectedItem = viewModel.SelectedFilterVATPrev;
+            viewModel.SelectedFilterVAT = viewModel.SelectedFilterVATPrev;//selectedregion
+            if (viewModel.SelectedFilterVATPrev == null)
+            {
+                viewModel.TxtSelectedStatusVAT = string.Empty;
+            }
+        }
+
+        private void FPickerET_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            CorrespondenceFiltersModel selectedET = (CorrespondenceFiltersModel)e.NewValue;
+            FPickerET.SelectedItem = selectedET;
+            viewModel.SelectedFilterET = selectedET;//selectedregion
+            viewModel.SelectedFilterETPrev = selectedET;//selectedregion
+            viewModel.TxtSelectedStatusET = selectedET.Filter;
+        }
+
+        private void FPickerET_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            FPickerET.SelectedItem = viewModel.SelectedFilterETPrev;
+            viewModel.SelectedFilterET = viewModel.SelectedFilterETPrev;//selectedregion
+            if (viewModel.SelectedFilterETPrev == null)
+            {
+                viewModel.TxtSelectedStatusET = string.Empty;
+            }
+        }
     }
 }

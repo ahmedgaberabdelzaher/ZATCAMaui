@@ -108,10 +108,10 @@
                     SelectedIndex="{Binding TINIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"              
                    ItemHeight="40"
                     SelectedItem="{Binding SelectedTinId,Mode=TwoWay}" DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
-                    
+                  
                     PickerWidth="270"
                                      PickerHeight="200"
                                      HeaderBackgroundColor="#006450"
