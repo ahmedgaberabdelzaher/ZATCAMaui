@@ -396,7 +396,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private FacilityCompanyType _selectedTaxEvasionCompanyTypePrev = null;
+        public FacilityCompanyType SelectedTaxEvasionCompanyTypePrev
+        {
+            get
+            {
+                return _selectedTaxEvasionCompanyTypePrev;
+            }
+            set
+            {
+                _selectedTaxEvasionCompanyTypePrev = value;
 
+                
+                RaisePropertyChanged("SelectedTaxEvasionCompanyTypePrev");
+            }
+        }
 
 
 
@@ -733,6 +747,23 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedTaxEvasionRegion");
             }
         }
+
+        private TERRegion _selectedTaxEvasionRegionPrev = null;
+        public TERRegion SelectedTaxEvasionRegionPrev
+        {
+            get
+            {
+                return _selectedTaxEvasionRegionPrev;
+            }
+            set
+            {
+                _selectedTaxEvasionRegionPrev = value;
+            
+                //ListFormBudles = null;
+                RaisePropertyChanged("SelectedTaxEvasionRegionPrev");
+            }
+        }
+
         private string _datePick = string.Empty;
 
         public string DatePick
@@ -749,6 +780,25 @@ namespace GAZT.ViewModel.NewViewModel
 
 
                 RaisePropertyChanged("DatePick");
+            }
+        }
+
+        private string _datePickPrev = string.Empty;
+
+        public string DatePickPrev
+        {
+            get
+            {
+                return _datePickPrev;
+            }
+            set
+            {
+                _datePickPrev = value;
+
+
+
+
+                RaisePropertyChanged("DatePickPrev");
             }
         }
 
@@ -804,7 +854,21 @@ namespace GAZT.ViewModel.NewViewModel
             
         }
 
+        private TERCity _selectLCTypePrev = null;
+        public TERCity SelectLCTypePrev
+        {
+            get
+            {
+                return _selectLCTypePrev;
+            }
+            set
+            {
+                _selectLCTypePrev = value;
+                
+                RaisePropertyChanged("SelectLCTypePrev");
+            }
 
+        }
 
 
 

@@ -38,7 +38,7 @@ namespace GAZT.Views.NewViews
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-                MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                MainLayout.Padding = new Thickness(0, 0, 0, 0);
                 SetLTR();
                 this.BindingContext = viewModel;
                 clearFields(); ;
@@ -161,7 +161,7 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                        MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
 
@@ -1140,6 +1140,7 @@ namespace GAZT.Views.NewViews
             string year = selectedItem[2].ToString();
 
             viewModel.DatePick = day + "/" + month + "/" + year;
+            viewModel.DatePickPrev = day + "/" + month + "/" + year;
         }
 
         private void btn4_Clicked(object sender, EventArgs e)
@@ -1157,6 +1158,7 @@ namespace GAZT.Views.NewViews
             FacilityCompanyType selectedcompanytyp = (FacilityCompanyType)e.NewValue;
             ddlFacilityType.SelectedItem = selectedcompanytyp;
             viewModel.SelectedTaxEvasionCompanyType = selectedcompanytyp;
+            viewModel.SelectedTaxEvasionCompanyTypePrev = selectedcompanytyp;
             viewModel.TxtFType = selectedcompanytyp.Name;
 
             FrmFType.HasError = false;
@@ -1167,6 +1169,7 @@ namespace GAZT.Views.NewViews
             TERRegion selectedregion = (TERRegion)e.NewValue;
             RegionPicker.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
+            viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
             frmRegionPicker.HasError = false;
             //SelectedTaxEvasionRegion
@@ -1177,6 +1180,7 @@ namespace GAZT.Views.NewViews
             TERRegion selectedregion = (TERRegion)e.NewValue;
             RegionPickerAR.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
+            viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
             frmRegionPicker.HasError = false;
         }
@@ -1186,6 +1190,7 @@ namespace GAZT.Views.NewViews
             TERCity selectedcity = (TERCity)e.NewValue;
             CityPicker.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
+            viewModel.SelectLCTypePrev = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
             FrmCity.HasError = false;
         }
@@ -1195,6 +1200,7 @@ namespace GAZT.Views.NewViews
             TERCity selectedcity = (TERCity)e.NewValue;
             CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
+            viewModel.SelectLCTypePrev = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
             FrmCity.HasError = false;
         }
@@ -1220,7 +1226,7 @@ namespace GAZT.Views.NewViews
 
         private void DpDbo_Closed(object sender, EventArgs e)
         {
-              var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
 
             string month = selectedItem[0].ToString();
             string day = selectedItem[1].ToString();
@@ -1259,6 +1265,68 @@ namespace GAZT.Views.NewViews
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
+
+        private void ddlFacilityType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedTaxEvasionCompanyType = viewModel.SelectedTaxEvasionCompanyTypePrev;
+        }
+
+        private void RegionPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
+        }
+
+        private void RegionPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
+        }
+
+        private void CityPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectLCType = viewModel.SelectLCTypePrev;
+        }
+
+        private void CityPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.SelectLCType = viewModel.SelectLCTypePrev;
+        }
+
+        private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.DatePick = viewModel.DatePickPrev;
+            if (!string.IsNullOrEmpty(viewModel.DatePickPrev))
+            {
+                string[] Date = viewModel.DatePickPrev.Split('/');
+                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+
+                //Select today dates
+
+                todaycollection.Add(Date[1]);
+                todaycollection.Add(Date[2]);
+                todaycollection.Add(Date[0]);
+
+                DpDbo.SelectedItem = todaycollection;
+
+            }
+        }
+
+        private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            FrmDBO.HasError = false;
+            try
+            {
+
+                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[0].ToString();
+                string day = selectedItem[1].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.DatePick = year + "/" + month + "/" + day;
+            }
+            catch (Exception ex)
+            {
+
             }
         }
     }

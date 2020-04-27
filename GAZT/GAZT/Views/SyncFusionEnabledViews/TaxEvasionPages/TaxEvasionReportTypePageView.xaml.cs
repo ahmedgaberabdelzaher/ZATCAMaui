@@ -23,7 +23,7 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
             ChangeAeroIcon();
-            MainLayout.Padding = new Thickness(10, 0, 10, 0);
+            MainLayout.Padding = new Thickness(0, 0, 0, 0);
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
@@ -60,7 +60,7 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        MainLayout.Padding = new Thickness(10, 0, 10, 0);
+                        MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
 

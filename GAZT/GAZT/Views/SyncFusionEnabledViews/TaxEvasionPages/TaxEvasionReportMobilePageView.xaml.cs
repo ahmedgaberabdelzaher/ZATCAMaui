@@ -89,18 +89,30 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             {
                 this.width = width;
                 this.height = height;
+
+                if (width > height)
+                {
+                    this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+
+
+                }
+                else
+                {
+                    this.BackgroundImageSource = "sf_LoginBackground.png";
+
+                }
                 if (App.IsArabic)
                 {
                     if (width > height)
                     {
-                        this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
+                        //this.BackgroundImageSource = "sf_LoginBackgroundLand.png";
 
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         MainLayout.Padding = new Thickness(40, 0, 40, 0);
                     }
                     else
                     {
-                        this.BackgroundImageSource = "sf_LoginBackground.png";
+                      //  this.BackgroundImageSource = "sf_LoginBackground.png";
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         MainLayout.Padding = new Thickness(10, 0, 10, 0);
                     }
@@ -108,6 +120,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 
                 //reconfigure layout
             }
+           
+          
+
+              
         }
 
         public void ChangeAeroIcon()
