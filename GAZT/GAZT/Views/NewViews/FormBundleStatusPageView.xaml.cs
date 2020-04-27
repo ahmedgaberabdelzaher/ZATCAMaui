@@ -21,10 +21,14 @@ namespace GAZT.Views.NewViews
     public partial class FormBundleStatusPageView : ContentPage
     {
         FormBundleStatusPageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         public FormBundleStatusPageView()
         {
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
+            ParentContainerForOTP.Padding = new Thickness(10, 0, 10, 0);
+
             viewModel.FormBundleList = null;
             viewModel.FormBundleApplicatioNumberList = null;
             viewModel.SelectedFormBindleFbtyp = null;
@@ -45,6 +49,31 @@ namespace GAZT.Views.NewViews
 
 
             SetLTR();
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        ParentContainerForOTP.Padding = new Thickness(40, 0, 40, 0);
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        ParentContainerForOTP.Padding = new Thickness(10, 0, 10, 0);
+                    }
+                }
+
+                //reconfigure layout
+            }
         }
 
         public void ChangeAeroIcon()
