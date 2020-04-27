@@ -51,7 +51,7 @@
 
 
     <ContentPage.Content>
-        <Grid x:Name="ParentContainerForOTP">
+        <Grid x:Name="ParentContainerForOTP" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
             </Grid.RowDefinitions>
