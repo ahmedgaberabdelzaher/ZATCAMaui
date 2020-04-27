@@ -340,27 +340,30 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     var response = await WebServiceManager.GAZTGetVATDeclarationSADADNumber(VATDeclarationData.d.Fbnum);
                     PopToRootPage();
-                    SadadNumber = response.d.results[0].Sopbel;
-                    AmountPayable = response.d.results[0].Betrh;
-                    if (!string.IsNullOrEmpty(SadadNumber))
+                    if (response != null && response.d != null && response.d.results.Count!=0)
                     {
-                        IsSadadNoteVisible = false;
-                        if (VATDeclarationData.d.RefundFg == "1")
+                        SadadNumber = response.d.results[0].Sopbel;
+                        AmountPayable = response.d.results[0].Betrh;
+                        if (!string.IsNullOrEmpty(SadadNumber))
                         {
-                            IsSadadNumberVisible = false;
+                            IsSadadNoteVisible = false;
+                            if (VATDeclarationData.d.RefundFg == "1")
+                            {
+                                IsSadadNumberVisible = false;
+                            }
+                            else
+                            {
+                                IsSadadNumberVisible = true;
+                            }
+
+                            IsButtonVisible = true;
+                            IsRefreshButtonVisible = false;
                         }
                         else
                         {
-                            IsSadadNumberVisible = true;
+                            IsButtonVisible = false;
+                            IsRefreshButtonVisible = true;
                         }
-
-                        IsButtonVisible = true;
-                        IsRefreshButtonVisible = false;
-                    }
-                    else
-                    {
-                        IsButtonVisible = false;
-                        IsRefreshButtonVisible = true;
                     }
                 });
                 await Task.Run(() =>
