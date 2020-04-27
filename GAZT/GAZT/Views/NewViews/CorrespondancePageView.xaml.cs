@@ -18,6 +18,8 @@ namespace GAZT.Views.NewViews
     public partial class CorrespondancePageView : ContentPage
     {
         CorrespondancePageViewModel viewModel;
+        private double width = 0;
+        private double height = 0;
         public CorrespondancePageView()
         {
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
@@ -28,6 +30,8 @@ namespace GAZT.Views.NewViews
             try
             {
                 InitializeComponent();
+                ParentGridZakat.Margin = new Thickness(0, 0, 0, 5);
+
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.CorrespondancePageView;
                 this.BindingContext = viewModel;
@@ -40,6 +44,54 @@ namespace GAZT.Views.NewViews
             }
             SetLTR();
         }
+
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height); //must be called
+            if (this.width != width || this.height != height)
+            {
+                this.width = width;
+                this.height = height;
+                if (App.IsArabic)
+                {
+                    if (width > height)
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        ParentGridZakat.Margin = new Thickness(40, 0, 40, 5);
+
+                        //ICRList.Margin = new Thickness(0, 5, 0, 0);
+                        //BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        //FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+                        //ListLayout.Padding = new Thickness(40, 0, 40, 5);
+
+                        // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        // var safeInsets = On<iOS>().SafeAreaInsets();
+                        //ICRList.Margin = new Thickness(0, 5, 60, 0);
+                        // BPicker.Margin = new Thickness(20, 0, 60, 0);
+                        // FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
+
+
+                        //safeInsets.Left = 80;
+                        //safeInsets.Right = 80;
+                        //Padding = safeInsets;
+                    }
+                    else
+                    {
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                        ParentGridZakat.Margin = new Thickness(0, 0, 0, 5);
+                        //ICRList.Margin = new Thickness(0, 5, 0, 0);
+                        //BPicker.Margin = new Thickness(10, 0, 10, 0);
+                        //FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+                        //ListLayout.Padding = new Thickness(10, 0, 10, 5);
+
+                    }
+                }
+
+                //reconfigure layout
+            }
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

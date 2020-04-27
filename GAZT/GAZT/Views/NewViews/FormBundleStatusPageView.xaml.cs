@@ -27,7 +27,7 @@ namespace GAZT.Views.NewViews
         {
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
-            ParentContainerForOTP.Padding = new Thickness(10, 0, 10, 0);
+            ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
 
             viewModel.FormBundleList = null;
             viewModel.FormBundleApplicatioNumberList = null;
@@ -68,7 +68,7 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        ParentContainerForOTP.Padding = new Thickness(10, 0, 10, 0);
+                        ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
 
