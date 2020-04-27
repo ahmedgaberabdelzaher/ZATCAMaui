@@ -82,7 +82,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView  x:Name="ReturnsVATSubmited"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}" HorizontalOptions="Center">
+                                            <listView:SfListView  x:Name="ReturnsVATSubmited"   AutoFitMode="Height" SelectionBackgroundColor="White" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}" SelectedItem="{Binding SelectedReturnsVATSubmited}" IsVisible="{Binding IsVisibleVATSumbitted}" HorizontalOptions="Center">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -735,7 +735,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsVATNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}" IsVisible="{Binding IsVisibleVATNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name = "ReturnsVATNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}" SelectedItem="{Binding SelectedReturnsVATSubmited}" IsVisible="{Binding IsVisibleVATNonSumbitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -1383,7 +1383,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsVATOverDue" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}" IsVisible="{Binding IsVisibleVATOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name="ReturnsVATOverDue" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}" SelectedItem="{Binding SelectedReturnsVATSubmited}" IsVisible="{Binding IsVisibleVATOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>

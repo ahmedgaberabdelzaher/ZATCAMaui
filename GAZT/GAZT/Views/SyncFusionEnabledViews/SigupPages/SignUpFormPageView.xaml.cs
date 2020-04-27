@@ -2246,5 +2246,10 @@ namespace GAZT.Views.NewViews
         {
             viewModel.SelectCityList = viewModel.SelectCityListPrev;
         }
+
+        private void DpDbo_SelectionChanged_1(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

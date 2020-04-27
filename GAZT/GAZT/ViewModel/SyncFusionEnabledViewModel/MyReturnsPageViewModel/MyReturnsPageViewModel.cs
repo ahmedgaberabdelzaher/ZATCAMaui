@@ -23,16 +23,21 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #endregion
 
         #region Properties
-        private MyReturnsResult _selectedReturnsZakatSubmited = null;
+        private MyReturnsResult _selectedReturnsVATSubmited = null;
         public MyReturnsResult SelectedReturnsVATSubmited
         {
             get
             {
-                return _selectedReturnsZakatSubmited;
+                return _selectedReturnsVATSubmited;
             }
             set
             {
-                _selectedReturnsZakatSubmited = value;
+                _selectedReturnsVATSubmited = value;
+                if (_selectedReturnsVATSubmited != null)
+                {
+                     GetVATAllReturnsAsync();
+                }
+
                 RaisePropertyChanged("SelectedReturnsVATSubmited");
             }
         }
@@ -810,102 +815,102 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #endregion
 
         #region Methods
-        //public async void GetVATAllReturnsAsync()
-        //{
+        public async void GetVATAllReturnsAsync()
+        {
 
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        IsLoading = true;
-        //    });
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    IsLoading = true;
+            //});
 
-        //    await GetVATAllReturns();
+            await GetVATAllReturns();
 
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        IsLoading = false;
-        //    });
-        //}
-        //private async Task GetVATAllReturns()
-        //{
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    IsLoading = false;
+            //});
+        }
+        private async Task GetVATAllReturns()
+        {
 
-        //    try
-        //    {
-        //        try
-        //        {
+            try
+            {
+                try
+                {
 
-        //            if (SelectedReturnsVATSubmited != null)
-        //            {
-        //                if (isStatusNotValid())
-        //                {
+                    if (SelectedReturnsVATSubmited != null)
+                    {
+                        if (isStatusNotValid())
+                        {
 
-        //                    String SelectedICRGUID = SelectedReturnsVATSubmited.Fbguid;
-                           
-        //                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVATSubmited.Fbguid, SelectedReturnsVATSubmited.Fbnum, SelectedReturnsVATSubmited.Euser, SelectedReturnsVATSubmited.Persl);
-        //                    PopToRootPage();
+                            String SelectedICRGUID = SelectedReturnsVATSubmited.Fbguid;
+                            App.ICRStatus = SelectedReturnsVATSubmited.Stat;
+                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVATSubmited.Fbguid, SelectedReturnsVATSubmited.Fbnum, App.TP.Tin, SelectedReturnsVATSubmited.Persl);
+                            PopToRootPage();
 
 
-        //                    if (_vATDeclaration != null && _vATDeclaration.d != null)
-        //                    {
+                            if (_vATDeclaration != null && _vATDeclaration.d != null)
+                            {
 
-        //                        _vATDeclaration.d.Fbguid = SelectedICRGUID;
-        //                        VATDeclaration vATDeclaration = new VATDeclaration();
-        //                        VATDeclarationD vATDeclarationD = new VATDeclarationD();
-        //                        if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-        //                            numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
-        //                        Result5 result5 = new Result5();
-        //                        List<Result5> lst = new List<Result5>();
-        //                        ADRSet _aDRSet = new ADRSet();
+                                _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                VATDeclaration vATDeclaration = new VATDeclaration();
+                                VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                                //if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                 //   numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                                Result5 result5 = new Result5();
+                                List<Result5> lst = new List<Result5>();
+                                ADRSet _aDRSet = new ADRSet();
 
-        //                        lst.Add(result5);
-        //                        vATDeclaration.d = vATDeclarationD;
-        //                        vATDeclaration.d.ADRSet = _aDRSet;
-        //                        vATDeclaration.d.ADRSet.results = lst;
+                                lst.Add(result5);
+                                vATDeclaration.d = vATDeclarationD;
+                                vATDeclaration.d.ADRSet = _aDRSet;
+                                vATDeclaration.d.ADRSet.results = lst;
 
-        //                        Device.BeginInvokeOnMainThread(() =>
-        //                        {
-        //                            _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
-        //                        });
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                                });
 
-        //                    }
-        //                    else
-        //                    {
-        //                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
-        //                }
-        //            }
-        //        }
-        //        catch (InternetException ex)
-        //        {
-        //            Device.BeginInvokeOnMainThread(async () =>
-        //            {
-        //                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            }
+                        }
+                        else
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+                        }
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
-        //                _navigationService.GoBack();
+                        _navigationService.GoBack();
 
-        //            });
-        //        }
-        //    }
-        //    catch (InternetException ex)
-        //    {
-        //        Device.BeginInvokeOnMainThread(async () =>
-        //        {
-        //            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
-        //            _navigationService.GoBack();
+                    _navigationService.GoBack();
 
-        //        });
+                });
 
-        //    }
+            }
 
-        //}
+        }
         public bool isStatusNotValid()
         {
             bool isValid = true;
-            if (SelectedReturnsVATSubmited.Fbust == "E0020" || SelectedReturnsVATSubmited.Fbust == "E0057" || SelectedReturnsVATSubmited.Fbust == "E0076" || SelectedReturnsVATSubmited.Fbust == "E0077" || SelectedReturnsVATSubmited.Fbust == "E0078" || SelectedReturnsVATSubmited.Fbust == "E0089" || SelectedReturnsVATSubmited.Fbust == "E0090")
+            if (SelectedReturnsVATSubmited.Stat == "E0020" || SelectedReturnsVATSubmited.Stat == "E0057" || SelectedReturnsVATSubmited.Stat == "E0076" || SelectedReturnsVATSubmited.Stat == "E0077" || SelectedReturnsVATSubmited.Stat == "E0078" || SelectedReturnsVATSubmited.Stat == "E0089" || SelectedReturnsVATSubmited.Stat == "E0090")
             {
                 isValid = false;
             }
