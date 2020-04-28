@@ -12,6 +12,7 @@ using GAZT.Manager;
 using System.Globalization;
 using Newtonsoft.Json;
 using GAZT.Helper;
+using System.Linq;
 
 namespace GAZT.ViewModel.NewViewModel
 {
@@ -295,10 +296,23 @@ namespace GAZT.ViewModel.NewViewModel
         {
             if (App.IsSessionExpired)
             {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
 
-                var _navigation = Application.Current.MainPage.Navigation;
-                _navigation.PopToRootAsync();
-
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //_navigation.PopToRootAsync();
+                });
             }
         }
     }

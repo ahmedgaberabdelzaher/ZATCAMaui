@@ -56,24 +56,29 @@ namespace GAZTeServicesApp.Views.LandingPage
             
         }
 
-        public async void LoadDuesData()
+        public async Task LoadDuesData()
         {
             try
             {
-                Task.Run(() =>
+              await  Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-
-               
+                await Task.Run(async() =>
+                {
                     await viewModel.DuesData();
                     if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
                     {
                         List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                    viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-                    ReturnsList.ItemsSource = viewModel.listofPaymentReturn;
-                    await Task.Delay(3000);
-                    viewModel.IsListviewVisible = true;
+                        viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            viewModel.CommitmentReturnsList = viewModel.listofPaymentReturn;
+                          //  ReturnsList.ItemsSource = viewModel.listofPaymentReturn;
+                        });
+                        await Task.Delay(3000);
+                        viewModel.IsListviewVisible = true;
                         viewModel.IsNoDuesLabelVisible = false;
                     }
                     else
@@ -81,12 +86,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                         viewModel.IsListviewVisible = false;
                         viewModel.IsNoDuesLabelVisible = true;
                     }
+                });
+
                 
 
-                //Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = false;
-                //});
+
+              await  Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch(Exception ex)
             {

@@ -89,7 +89,7 @@
                             
                         </syncfusionCalendar:SfCalendar.MonthViewSettings>
                     </syncfusionCalendar:SfCalendar>-->
-                    <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" RowSpacing="0">
+                    <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="0">
 
                         <Grid.RowDefinitions>
                             <RowDefinition  Height="5*"/>
@@ -105,7 +105,7 @@
                         </local1:CustomLabel>
                         <listView:SfListView  x:Name="ReturnsList" 
                                           Grid.Row="1" Grid.Column="0"
-           
+          ItemsSource="{Binding CommitmentReturnsList}"
                                        IsScrollBarVisible="True"
                                          SelectionBackgroundColor="White"
                                         
@@ -122,7 +122,7 @@
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <cards:SfCardView HasShadow="True"  VerticalOptions="CenterAndExpand" WidthRequest="300" Margin="0,0,10,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
+                                        <cards:SfCardView HasShadow="True"  VerticalOptions="CenterAndExpand"  Margin="0,0,0,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
 
                                             <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand"  >
                                                 <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="2"   BackgroundColor="White" HorizontalOptions="FillAndExpand" >
@@ -339,7 +339,7 @@
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
                         <StackLayout Grid.Row="0" Grid.Column="0" Margin="0" VerticalOptions="FillAndExpand">
-                            <local1:CustomLabel   BackgroundColor="White"  Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyUpcomingCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+                            <local1:CustomLabel   BackgroundColor="White"  Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyUpcomingCommitments}" Margin="0,15,0,0" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                         </StackLayout>
 
@@ -493,7 +493,7 @@
                                                         <TapGestureRecognizer Tapped="OnTappedTest" NumberOfTapsRequired="1"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label HorizontalTextAlignment="Center"  TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" LineHeight="{OnPlatform iOS=0.7,  Android=1}" FontSize="9">
+                                                <Label HorizontalTextAlignment="Center"  TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="9" >
                                                     <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding eServiceName}"/>

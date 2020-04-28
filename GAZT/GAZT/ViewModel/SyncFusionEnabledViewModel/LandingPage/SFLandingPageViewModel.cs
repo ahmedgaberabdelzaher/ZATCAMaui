@@ -391,7 +391,22 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
+        private List<OverduePaymentsAndUnSubmittedReturn> _commitmentReturnsList ;
+        public List<OverduePaymentsAndUnSubmittedReturn> CommitmentReturnsList
+        {
+            get
+            {
+                return this._commitmentReturnsList;
+            }
+
+            set
+            {
+                this._commitmentReturnsList = value;
+                this.RaisePropertyChanged("CommitmentReturnsList");
+            }
+        }
         
+
         public bool IsButtonEnabled
         {
             get
