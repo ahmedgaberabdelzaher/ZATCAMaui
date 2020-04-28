@@ -217,19 +217,21 @@ namespace GAZT.ViewModel
                 myReq.Headers.Add("Token", App.Token);
                 WebResponse myResp = myReq.GetResponse();
                 if (myResp != null)
-                { 
-                using (Stream streams = myResp.GetResponseStream())
-                using (MemoryStream ms = new MemoryStream())
                 {
-                    int count = 0;
-                    do
+                    using (Stream streams = myResp.GetResponseStream())
                     {
-                        byte[] buf = new byte[1024];
-                        count = streams.Read(buf, 0, 1024);
-                        ms.Write(buf, 0, count);
-                    } while (streams.CanRead && count > 0);
-                    PdfBytes = ms.ToArray();
-                }
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            int count = 0;
+                            do
+                            {
+                                byte[] buf = new byte[1024];
+                                count = streams.Read(buf, 0, 1024);
+                                ms.Write(buf, 0, count);
+                            } while (streams.CanRead && count > 0);
+                            PdfBytes = ms.ToArray();
+                        }
+                    }
                 string strBase64 = String.Empty;
                 if (PdfBytes != null)
                 {
@@ -237,11 +239,18 @@ namespace GAZT.ViewModel
                     strBase64 = Convert.ToBase64String(PdfBytes);
                 
                 
-                if (string.IsNullOrEmpty(strBase64) != true)
+                if (!string.IsNullOrEmpty(strBase64))
                 {
-                    byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
-                    stream = new MemoryStream(sPDFDecoded);
-                    StreamForDownloadURL = stream;
+                            try
+                            {
+                                byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
+                                stream = new MemoryStream(sPDFDecoded);
+                                StreamForDownloadURL = stream;
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
                       
                 }
                  else
