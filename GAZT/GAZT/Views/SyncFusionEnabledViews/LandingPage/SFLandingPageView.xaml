@@ -336,7 +336,7 @@
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
                         <StackLayout Grid.Row="0" Grid.Column="0" Margin="0" VerticalOptions="FillAndExpand">
-                            <local1:CustomLabel   BackgroundColor="White"  Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+                            <local1:CustomLabel   BackgroundColor="White"  Padding="5,0,5,0" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyUpcomingCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
                         </StackLayout>
 

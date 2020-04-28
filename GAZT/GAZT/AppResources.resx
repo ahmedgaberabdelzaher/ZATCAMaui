@@ -3058,4 +3058,8 @@ Should we require further information, we would be in contact.</value>
     <value>Disclaimer</value>
     <comment>Zakat Bills details</comment>
   </data>
+  <data name="ZZMyUpcomingCommitments" xml:space="preserve">
+    <value>My Upcoming Commitments</value>
+    <comment>Dashboard</comment>
+  </data>
 </root>
