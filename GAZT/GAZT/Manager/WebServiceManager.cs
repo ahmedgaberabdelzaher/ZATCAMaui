@@ -3229,7 +3229,7 @@ namespace GAZT.Manager
                     var serilized = JsonConvert.SerializeObject(FavoriteCorrespondence);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                     var detailJson = res.Content.ReadAsStringAsync().Result; 
 
                     return null;
                 }
