@@ -3,12 +3,16 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using Syncfusion.XForms.TabView;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -148,9 +152,21 @@ namespace GAZT.Views.NewViews
         {
 
 
-            if (!App.IsArabic)
+            if (App.IsArabic)
+            {
+
+                this.FlowDirection = FlowDirection.RightToLeft;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+
+            }
+            else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
         public async Task IntilizeAsync()
@@ -4832,6 +4848,86 @@ namespace GAZT.Views.NewViews
                 {
                     ValidationsForVATRefund();
                 }
+            }
+        }
+
+        private async void BPicker1_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            IBANType selectedIBANType = (IBANType)e.NewValue;
+            BPicker1.SelectedItem = selectedIBANType;
+            viewModel.SelectedIBANType = selectedIBANType;
+            viewModel.SelectedIBANTypePrev = selectedIBANType;
+            viewModel.TxtSelectedIBANType = selectedIBANType.Text;
+
+            await viewModel.SetIBANIdNumber();
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
+        }
+
+        private void BPicker1_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            BPicker1.SelectedItem = viewModel.SelectedIBANTypePrev;
+            viewModel.SelectedIBANType = viewModel.SelectedIBANTypePrev;
+            if (viewModel.SelectedIBANTypePrev == null)
+            {
+                viewModel.TxtSelectedIBANType = string.Empty;
+            }
+        }
+
+        private void BPicker2_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            IBANIDNumber selectedIBANIDNumber = (IBANIDNumber)e.NewValue;
+            BPicker2.SelectedItem = selectedIBANIDNumber;
+            viewModel.SelectedIBANIDNumber = selectedIBANIDNumber;
+            viewModel.SelectedIBANIDNumberPrev = selectedIBANIDNumber;
+            viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
+        }
+
+        private void BPicker2_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            BPicker2.SelectedItem = viewModel.SelectedIBANIDNumberPrev;
+            viewModel.SelectedIBANIDNumber = viewModel.SelectedIBANIDNumberPrev;
+            if (viewModel.SelectedIBANIDNumberPrev == null)
+            {
+                viewModel.TxtSelectedIBANIDNumber = string.Empty;
+            }
+        }
+
+        private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            Result2 selectedIBAN = (Result2)e.NewValue;
+            BPicker.SelectedItem = selectedIBAN;
+            viewModel.SelectedIBAN = selectedIBAN;
+            viewModel.SelectedIBANPrev = selectedIBAN;
+            viewModel.TxtSelectedIBAN = selectedIBAN.Iban;
+            if (viewModel.IsVisibleSummary == true)
+            {
+                if (viewModel.IsVisibleDropdownForRefund == true)
+                {
+                    ValidationsForVATRefund();
+                }
+            }
+        }
+
+        private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            BPicker.SelectedItem = viewModel.SelectedIBANPrev;
+            viewModel.SelectedIBAN = viewModel.SelectedIBANPrev;
+            if (viewModel.SelectedIBANPrev == null)
+            {
+                viewModel.TxtSelectedIBAN = string.Empty;
             }
         }
     }
