@@ -124,7 +124,7 @@
                                     <ViewCell>
                                         <cards:SfCardView HasShadow="True"  VerticalOptions="CenterAndExpand"  Margin="0,0,0,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
 
-                                            <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand"  >
+                                            <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand" Margin="5" >
                                                 <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="2"   BackgroundColor="White" HorizontalOptions="FillAndExpand" >
                                                     <Grid.ColumnDefinitions>
                                                         <!--<ColumnDefinition Width="15*" />-->
@@ -144,8 +144,8 @@
 
 
                                                     <local1:CustomLabel Text="{Binding Incotext}" 
-                                       FontFamily="{StaticResource SSTArLight}"
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                                        HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                                     FontSize="Micro"
@@ -157,7 +157,7 @@
                                                            />
 
                                                     <local1:CustomLabel Text="{Binding Txt50}" 
-                                         FontFamily="{StaticResource SSTArLight}"
+                                         FontFamily="{StaticResource SSTArabicMedium}"
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
@@ -183,9 +183,9 @@
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TaxPeriod}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
@@ -287,18 +287,18 @@
                                                     <StackLayout  Grid.Row="2" Margin="5,0,5,0" Orientation="Horizontal" Grid.Column="0" >
                                                         <local1:CustomLabel
                                                      
-                                   Style="{StaticResource MicroGrayLabelStyleNew}"
+                                 
                                                        
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
                                                     
                                                    
-                                  FontFamily="{StaticResource SSTArLight}"
+                                FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                             <local1:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="Micro"></Span>
-                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="Micro"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                                 </FormattedString>
                                                             </local1:CustomLabel.FormattedText>
                                                         </local1:CustomLabel>
@@ -311,7 +311,7 @@
                                                     FlowDirection="LeftToRight"
                                                         
                                                    Text="{Binding FormatedSingleDueDate}"
-                                  FontFamily="{StaticResource SSTArLight}"
+                                  FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                             <!--<Label.FormattedText>
                                                         <FormattedString>

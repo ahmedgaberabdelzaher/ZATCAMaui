@@ -567,7 +567,7 @@
 
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
