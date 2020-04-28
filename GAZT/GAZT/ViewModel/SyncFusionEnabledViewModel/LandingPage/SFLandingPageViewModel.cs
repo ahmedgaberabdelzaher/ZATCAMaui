@@ -238,7 +238,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                             else
                             {
                                 listofPaymentReturn.RemoveAt(3);
-                                listofPaymentReturn.RemoveAt(4);
+                                listofPaymentReturn.RemoveAt(3);
                             }
                         }
 
