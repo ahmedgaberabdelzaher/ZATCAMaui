@@ -44,7 +44,7 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             SetLTR();
             Count = 1;
-            FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+            FrmLicenseIssuedBy.Margin = new Thickness(5, 0, 5, 5);
             App.ICRStatus = string.Empty;
             viewModel.IsICRListVisible = true;
             viewModel.IsNoDataLabelVisible = false;
@@ -82,8 +82,8 @@ namespace GAZT.Views.NewViews
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         //ICRList.Margin = new Thickness(0, 5, 0, 0);
-                        BPicker.Margin = new Thickness(10, 0, 10, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
+                        BPicker.Margin = new Thickness(8, 0, 8, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
                         ListLayout.Padding = new Thickness(40, 0, 40, 5);
 
                         // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
@@ -101,9 +101,9 @@ namespace GAZT.Views.NewViews
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         //ICRList.Margin = new Thickness(0, 5, 0, 0);
-                        BPicker.Margin = new Thickness(10, 0, 10, 0);
-                        FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-                        ListLayout.Padding = new Thickness(10, 0, 10, 5);
+                        BPicker.Margin = new Thickness(8, 0, 8, 0);
+                        FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
+                        ListLayout.Padding = new Thickness(0, 0, 0, 5);
 
                     }
                 }
@@ -269,6 +269,11 @@ namespace GAZT.Views.NewViews
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
+            BPicker.SelectedItem = viewModel.SelectedICRStatusPrev;
+            if(viewModel.SelectedICRStatusPrev == null)
+            {
+                viewModel.TxtSelectedStatus = string.Empty;
+            }
         }
     }
 }

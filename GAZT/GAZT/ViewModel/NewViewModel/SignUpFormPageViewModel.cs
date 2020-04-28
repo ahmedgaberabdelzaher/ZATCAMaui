@@ -787,10 +787,11 @@ namespace GAZT.ViewModel.NewViewModel
                     ListSignUpUsing.Add(new SignUpUsing { ID = 2, SUType = AppResources.ZZIqamaID });
                     ListSignUpUsing.Add(new SignUpUsing { ID = 3, SUType = AppResources.ZZGCCID });
                     SignUpUsingList = ListSignUpUsing;
-                    SignUpUsing SignUpUsingM = new SignUpUsing();
-                    SignUpUsingM.ID = 1;
-                    SignUpUsingM.SUType = AppResources.ZZNationalID;
-                    SelectedSignUpUsing = SignUpUsingM;
+                    TxtIDType = AppResources.ZZNationalID;
+                    //SignUpUsing SignUpUsingM = new SignUpUsing();
+                    //SignUpUsingM.ID = 1;
+                    //SignUpUsingM.SUType = AppResources.ZZNationalID;
+                    //SelectedSignUpUsing = SignUpUsingM;
                     //LcTypeList = null;
                     //List<LicenseOrCRModel> LIstLcType = new List<LicenseOrCRModel>();
                     //LIstLcType.Add(new LicenseOrCRModel { ID = 1, LCType = AppResources.ZZLicenseNumber });

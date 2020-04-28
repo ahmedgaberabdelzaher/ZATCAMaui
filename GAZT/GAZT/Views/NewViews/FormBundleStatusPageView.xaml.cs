@@ -197,6 +197,10 @@ namespace GAZT.Views.NewViews
         {
             DDlIDType.SelectedItem = viewModel.SelectedFormBindleFbtypCancel;
             viewModel.SelectedFormBindleFbtyp = viewModel.SelectedFormBindleFbtypCancel;
+            if (viewModel.SelectedFormBindleFbtypCancel == null)
+            {
+                viewModel.TxtFBtype = string.Empty;
+            }
         }
 
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -211,6 +215,11 @@ namespace GAZT.Views.NewViews
         private void CPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedFormBindleFbnum = viewModel.SelectedFormBindleFbnumPrev;
+            CPicker.SelectedItem = viewModel.SelectedFormBindleFbnumPrev;
+            if(viewModel.SelectedFormBindleFbnumPrev == null)
+            {
+                viewModel.TxtFBnum = string.Empty;
+            }
         }
     }
 }

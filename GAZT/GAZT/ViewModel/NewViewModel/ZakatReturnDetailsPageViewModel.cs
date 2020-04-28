@@ -427,29 +427,46 @@ namespace GAZT.ViewModel.NewViewModel
 
         public async Task ReleaseEstimateZakatReturn()
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
             try
             {
-                    GetUpdatedDataAfterRemovingComma();
-                ZakatReturnDetails _zakatReturnDetails =await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails,"59");
-                if(_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                await Task.Run(() =>
                 {
-                    Device.BeginInvokeOnMainThread(async () => {
-                        await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZSUCCESS);
-                    });
-                    // 
-                }
-                else
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    try
                     {
+                        GetUpdatedDataAfterRemovingComma();
+                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
+                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
+                        {
+                            try
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZSUCCESS);
+                                });
+                            //Device.BeginInvokeOnMainThread(async () =>
+                            //{
+                            //    _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZSUCCESS);
+                            //});
+                            // 
+                        }
+                            catch (Exception ex)
+                            {
 
-                        //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
-                        //{
-                            Device.BeginInvokeOnMainThread(async () => {
+                            }
+                        }
+                        else
+                        {
+
+                            try
+                            {
+                            //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
+                            //{
+                            Device.BeginInvokeOnMainThread(async () =>
+                                {
                                 //if (App.IsArabic)
                                 //{
                                 //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
@@ -459,41 +476,66 @@ namespace GAZT.ViewModel.NewViewModel
                                 //}
                                 //else
                                 //{
-                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
                                     _navigationService.GoBack();
                                     WebServiceManager.ErrorMessage = string.Empty;
                                 //}
                             });
-                        //}
+                            //}
+                        }
+                            catch (Exception ex)
+                            {
+
+                            }
 
                         //Device.BeginInvokeOnMainThread(async () => {
                         //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
                         //    _navigationService.GoBack();
                         //});
-                       
-                    }
-                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                PopToRootPage();
-                    //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
-                     ZakatReturnDetails = zakatReturnDetails;
-                   
-                    ZakatReturnDetail = zakatReturnDetails.d;
-                    GetUpdatedDataAfterAddingComma();
 
-                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    }
+                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                        PopToRootPage();
+                        //  EsimatedZAKATReturnsButtonSets esimatedZAKATReturnsButtonSets = await WebServiceManager.GAZTGetZAKATReturnButtonSet();
+                        if (zakatReturnDetails != null)
+                        {
+                            ZakatReturnDetails = zakatReturnDetails;
+                            if (zakatReturnDetails.d != null)
+                            { ZakatReturnDetail = zakatReturnDetails.d;                         
+                       
+                        
+                        GetUpdatedDataAfterAddingComma();
+
+                                if (ZakatReturnDetails.d.Statusz != null)
+                                {
+                                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                                }
+                        
+                            }
+
+                        }
+
+                    }
+                    catch (InternetException ex)
                     {
-                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception ex)
+            { 
+            
+            
+            }
+
+
 
         }
 

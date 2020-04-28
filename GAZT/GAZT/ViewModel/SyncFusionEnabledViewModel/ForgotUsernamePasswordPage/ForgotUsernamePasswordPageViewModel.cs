@@ -91,6 +91,24 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private ForgotUserNamePassword _selectedTaxPayerTypePrev;
+        public ForgotUserNamePassword SelectedTaxPayerTypePrev
+        {
+            get
+            {
+                return _selectedTaxPayerTypePrev;
+            }
+            set
+            {
+                _selectedTaxPayerTypePrev = value;
+             
+                RaisePropertyChanged("SelectedTaxPayerTypePrev");
+
+
+            }
+        }
+
         private List<ForgotCredentialType> _forgotTypeList;
         public List<ForgotCredentialType> ForgotTypeList
         {
@@ -187,6 +205,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private TIN _selectedTinIdPrev;
+        public TIN SelectedTinIdPrev
+        {
+            get
+            {
+                return _selectedTinIdPrev;
+            }
+            set
+            {
+                _selectedTinIdPrev = value;
+              
+                RaisePropertyChanged("SelectedTinIdPrev");
+            }
+        }
+
         private bool _isVisibleTinIds = false;
         public bool IsVisibleTinIds
         {
@@ -230,6 +263,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private ForgotCredentialType _selectedForgotTypePrev;
+        public ForgotCredentialType SelectedForgotTypePrev
+        {
+            get
+            {
+                return _selectedForgotTypePrev;
+            }
+            set
+            {
+                _selectedForgotTypePrev = value;
+                RaisePropertyChanged("_selectedForgotTypePrev");
+             
+
+
+            }
+        }
 
 
         private ForgotUserNamePassword _forgotCredentialType;

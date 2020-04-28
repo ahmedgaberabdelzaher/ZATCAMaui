@@ -137,6 +137,8 @@
                           HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                                              OKButtonTextColor="#006450"      
+                                             CancelButtonTextColor="#006450"
                                              
                                              ShowColumnHeader="False"
                                              ShowFooter="True"
@@ -147,15 +149,15 @@
                      DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
-                                              SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"
+                                              
                      FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
-                       
+                    <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
 
-                        <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6" 
+                    <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6" 
     Hint="{x:Static local:AppResources.IDNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
@@ -197,7 +199,8 @@
 								Grid.Row="6" Grid.Column="0"    Grid.ColumnSpan="2"
 								x:Name="DpDbo"
                            SelectionChanged="DpDbo_SelectionChanged"
-                            
+                             OKButtonTextColor="#006450"      
+                                             CancelButtonTextColor="#006450"
                             Closed="DpDbo_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
@@ -320,7 +323,8 @@
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
-                                    SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"
+                                  OKButtonTextColor="#006450"      
+                                             CancelButtonTextColor="#006450"
                  ItemsSource="{Binding IssuedByList}" DisplayMemberPath="txt50"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="200"
                     PickerWidth="270"
@@ -354,13 +358,14 @@
                 x:Name="ddlLIssuedByCity"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                               
+                                    OKButtonTextColor="#006450"      
+                                             CancelButtonTextColor="#006450"            
                    ItemHeight="40"
                                       HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
-                                    SelectedItem="{Binding SelectCityList,Mode=TwoWay}"
+                                 
                    ItemsSource="{Binding CityList}" DisplayMemberPath="CityName"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" 
                     PickerHeight="200"
                     PickerWidth="270"

@@ -115,8 +115,8 @@
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    
-                 SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                  SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="200"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"
@@ -124,7 +124,7 @@
                     ShowFooter="True"
                      OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
-                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+                    <!--SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}"-->
                  
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
@@ -177,7 +177,7 @@
 
                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
+                                                       FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
@@ -196,7 +196,8 @@
 
                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
+                                                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
@@ -222,8 +223,7 @@
 
                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
-                                                       HorizontalOptions="StartAndExpand"
+ FontFamily="{StaticResource SSTArLight}"                                                       HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
                                                        Grid.Column="0"
@@ -254,7 +254,7 @@
                                                         </Label>-->
 
                                                 <Label  Margin="0" 
-                                  
+                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -300,7 +300,7 @@
 
 
                                                 <Label  Margin="0" 
-                                  
+                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -339,7 +339,7 @@
                                    Grid.Column="0" Orientation="Horizontal">
                                                     <Label
                                                      
-                                  
+                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
@@ -410,7 +410,6 @@
                                    Grid.Column="0" Orientation="Horizontal">
                                                     <Label
                                                      
-                             
                                                        
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"

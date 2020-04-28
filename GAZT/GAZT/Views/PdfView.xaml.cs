@@ -76,39 +76,65 @@ namespace GAZT.Views
 
         public async Task email()
         {
-            await Task.Run(() =>
+            try
             {
-                viewModel.Loading = true;
-            });
 
-            await Task.Run(async () =>
-            {
-                var message = new EmailMessage
+                await Task.Run(() =>
                 {
-                    Subject = "Attached Form :",
+                    viewModel.Loading = true;
+                });
 
-                };
-                if (viewModel.PdfBytes != null)
+                await Task.Run(async () =>
                 {
-                    var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
-                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
-                    File.WriteAllBytes(file, viewModel.PdfBytes);
-                    await Share.RequestAsync(new ShareFileRequest
+                    try
                     {
-                        Title = Title,
-                        File = new ShareFile(file)
-                    });
-                }
-                else
-                {
-                  await  viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
-                }
-            });
 
-            await Task.Run(() =>
-            {
-                viewModel.Loading = false;
-            });
+                        var message = new EmailMessage
+                        {
+                            Subject = "Attached Form :",
+
+                        };
+                        if (viewModel.PdfBytes != null)
+                        {
+                            var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
+                            var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                            File.WriteAllBytes(file, viewModel.PdfBytes);
+                            await Share.RequestAsync(new ShareFileRequest
+                            {
+                                Title = Title,
+                                File = new ShareFile(file)
+                            });
+
+                        }
+                        else
+                        {
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
+                            });
+                            //await viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                });
+
+                await Task.Run(() =>
+                {
+                    viewModel.Loading = false;
+                });
+
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+
+
         }
 
     }

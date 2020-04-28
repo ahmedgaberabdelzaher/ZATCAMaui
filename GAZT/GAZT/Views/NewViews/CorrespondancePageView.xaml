@@ -119,13 +119,17 @@
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    
-                 SelectedIndex="{Binding SetSelectedIndexZakat}"  IsEnabled="true" SelectedItem="{Binding SelectedFilterZakat,Mode=TwoWay}" ItemsSource="{Binding CorresFilterZakat}" DisplayMemberPath="Filter" Grid.Row="0" Grid.Column="0"
-                    PickerHeight="280"
+                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    OkButtonClicked="FPickerZakat_OkButtonClicked"
+                                    CancelButtonClicked="FPickerZakat_CancelButtonClicked"
+                 SelectedIndex="{Binding SetSelectedIndexZakat}"  IsEnabled="true"  ItemsSource="{Binding CorresFilterZakat}" DisplayMemberPath="Filter" Grid.Row="0" Grid.Column="0"
+                    PickerHeight="200"
                     PickerWidth="270"
                                   
-                    ShowFooter="False" FooterHeight="46">
-                                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+                    ShowFooter="True" FooterHeight="46">
+                                    <!--SelectedItem="{Binding SelectedFilterZakat,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom:SfPickerBehavior />
@@ -381,17 +385,20 @@
                     HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-                    
+                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    
-                 SelectedIndex="{Binding SetSelectedIndexVAT}"  IsEnabled="true" SelectedItem="{Binding SelectedFilterVAT,Mode=TwoWay}" ItemsSource="{Binding CorresFilterVAT}" DisplayMemberPath="Filter" Grid.Row="0" Grid.Column="0"
-                    PickerHeight="280"
+                    OkButtonClicked="FPickerVAT_OkButtonClicked"
+                                    CancelButtonClicked="FPickerVAT_CancelButtonClicked"
+                 SelectedIndex="{Binding SetSelectedIndexVAT}"  IsEnabled="true"  ItemsSource="{Binding CorresFilterVAT}" DisplayMemberPath="Filter" Grid.Row="0" Grid.Column="0"
+                    PickerHeight="200"
                     PickerWidth="270"
                                    
-                    ShowFooter="False" FooterHeight="46">
-                                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+                    ShowFooter="True" FooterHeight="46">
+                                    <!--SelectedItem="{Binding SelectedFilterVAT,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom:SfPickerBehavior />
@@ -658,17 +665,20 @@
                     HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-                    
+                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    
-                 SelectedIndex="{Binding SetSelectedIndexET}"  IsEnabled="true" SelectedItem="{Binding SelectedFilterET,Mode=TwoWay}" ItemsSource="{Binding CorresFilterET}" DisplayMemberPath="Filter" Grid.Row="1" Grid.Column="0"
-                    PickerHeight="280"
+                    OkButtonClicked="FPickerET_OkButtonClicked"
+                                    CancelButtonClicked="FPickerET_CancelButtonClicked"
+                 SelectedIndex="{Binding SetSelectedIndexET}"  IsEnabled="true"  ItemsSource="{Binding CorresFilterET}" DisplayMemberPath="Filter" Grid.Row="1" Grid.Column="0"
+                    PickerHeight="200"
                     PickerWidth="270"
                                    
-                    ShowFooter="False" FooterHeight="46">
-                                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+                    ShowFooter="True" FooterHeight="46">
+                                    <!--SelectedItem="{Binding SelectedFilterET,Mode=TwoWay}"-->
 
                                     <syncfusion:SfPicker.Behaviors>
                                         <custom:SfPickerBehavior />

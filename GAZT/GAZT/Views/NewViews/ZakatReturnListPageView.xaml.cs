@@ -37,8 +37,8 @@ namespace GAZT.Views.NewViews
         public ZakatReturnListPageView()
         {
             InitializeComponent();
-                     On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-             viewModel = App.Locator.ZakatReturnListPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            viewModel = App.Locator.ZakatReturnListPageView;
             ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
             BPicker.Margin = new Thickness(10, 0, 10, 0);
             FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
@@ -76,8 +76,8 @@ namespace GAZT.Views.NewViews
                 {
                     if (width > height)
                     {
-                       On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-                       ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
+                        On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
+                        ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
                         BPicker.Margin = new Thickness(40, 0, 40, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(40, 0, 40, 5);
 
@@ -178,7 +178,7 @@ namespace GAZT.Views.NewViews
             //}
             //else
             //{
-            if(viewModel.myZakatReturnsList != null )
+            if (viewModel.myZakatReturnsList != null)
             {
                 try
                 {
@@ -188,17 +188,17 @@ namespace GAZT.Views.NewViews
                     viewModel.PreviousSelectedICRStatus = selectedICRStatus;
                     viewModel.GetFilteredZAKATICRList(selectedICRStatus);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
-              
+
             }
             else
             {
 
             }
-               
+
 
             //}
 
@@ -208,6 +208,11 @@ namespace GAZT.Views.NewViews
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
+            BPicker.SelectedItem = viewModel.SelectedICRStatusPrev;
+            if (viewModel.SelectedICRStatusPrev == null)
+            {
+                viewModel.TxtSelectedStatus = string.Empty;
+            }
         }
     }
 }

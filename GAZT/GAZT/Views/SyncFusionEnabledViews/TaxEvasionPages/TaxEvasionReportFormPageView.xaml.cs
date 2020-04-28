@@ -1271,26 +1271,51 @@ namespace GAZT.Views.NewViews
         private void ddlFacilityType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionCompanyType = viewModel.SelectedTaxEvasionCompanyTypePrev;
+            ddlFacilityType.SelectedItem = viewModel.SelectedTaxEvasionCompanyTypePrev;
+            if (viewModel.SelectedTaxEvasionCompanyTypePrev == null)
+            {
+                viewModel.TxtFType = string.Empty;
+            }
         }
 
         private void RegionPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
+            RegionPicker.SelectedItem = viewModel.SelectedTaxEvasionRegionPrev;
+            if (viewModel.SelectedTaxEvasionRegionPrev == null)
+            {
+                viewModel.TxtReportDetailRegion = string.Empty;
+            }
         }
 
         private void RegionPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
+            RegionPickerAR.SelectedItem = viewModel.SelectedTaxEvasionRegionPrev;
+            if (viewModel.SelectedTaxEvasionRegionPrev == null)
+            {
+                viewModel.TxtReportDetailRegion = string.Empty;
+            }
         }
 
         private void CityPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
+            CityPicker.SelectedItem = viewModel.SelectLCTypePrev;
+            if (viewModel.SelectLCTypePrev == null)
+            {
+                viewModel.TxtReportDetailCity = string.Empty;
+            }
         }
 
         private void CityPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
+            CityPickerAR.SelectedItem = viewModel.SelectLCTypePrev;
+            if (viewModel.SelectLCTypePrev == null)
+            {
+                viewModel.TxtReportDetailCity = string.Empty;
+            }
         }
 
         private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
