@@ -540,8 +540,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+
                     var _navigation = Application.Current.MainPage.Navigation;
-                    _navigation.PopToRootAsync();
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
+                    //var _navigation = Application.Current.MainPage.Navigation;
+                    //_navigation.PopToRootAsync();
                 });
             }
         }

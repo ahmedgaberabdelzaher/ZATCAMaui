@@ -174,7 +174,7 @@
                                 <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" Margin="10,0,10,0">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}"  Style="{StaticResource InformationGrayColorLabel}"   />
+                                            <Span  Text="{x:Static local:AppResources.TheAccountwillbelockedwithinTwomin}" TextColor="#7D858D"   Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                             <Span  Text="{Binding OTPValidDuration}" TextColor="#D99A29" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
                                         </FormattedString>
                                     </Label.FormattedText>
