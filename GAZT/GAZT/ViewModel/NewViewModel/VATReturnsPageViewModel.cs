@@ -1656,6 +1656,24 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private Result2 _selectedIBANPrev;
+        public Result2 SelectedIBANPrev
+        {
+            get
+            {
+                return _selectedIBANPrev;
+            }
+            set
+            {
+                _selectedIBANPrev = value;
+                //if (_selectedIBAN != null)
+                //{
+                //    TxtSelectedIBAN = _selectedIBAN.Iban;
+                //}
+                RaisePropertyChanged("SelectedIBANPrev");
+            }
+        }
+
         private List<Result2> _iBANList;
         public List<Result2> IBANList
         {
@@ -1919,6 +1937,29 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private IBANType _selectedIBANTypePrev;
+        public IBANType SelectedIBANTypePrev
+        {
+            get
+            {
+                return _selectedIBANTypePrev;
+            }
+            set
+            {
+                _selectedIBANTypePrev = value;
+                //if (_selectedIBANType != null)
+                //{
+                //    SetIBANIdNumber();
+                //    TxtSelectedIBANType = _selectedIBANType.Text;
+                //}
+                //else
+                //{
+
+                //}
+                RaisePropertyChanged("SelectedIBANTypePrev");
+            }
+        }
+
         private string _txtSelectedIBANType;
         public string TxtSelectedIBANType
         {
@@ -1980,6 +2021,25 @@ namespace GAZT.ViewModel.NewViewModel
                 //}
 
                 RaisePropertyChanged("SelectedIBANIDNumber");
+            }
+        }
+
+        private IBANIDNumber _selectedIBANIDNumberPrev;
+        public IBANIDNumber SelectedIBANIDNumberPrev
+        {
+            get
+            {
+                return _selectedIBANIDNumberPrev;
+            }
+            set
+            {
+                _selectedIBANIDNumberPrev = value;
+                //if (_selectedIBANIDNumber != null)
+                //{
+                //    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
+                //}
+
+                RaisePropertyChanged("SelectedIBANIDNumberPrev");
             }
         }
 
