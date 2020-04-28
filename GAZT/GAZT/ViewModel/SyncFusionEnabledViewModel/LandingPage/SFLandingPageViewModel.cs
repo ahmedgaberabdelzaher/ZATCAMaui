@@ -31,6 +31,8 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
         public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
         public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
+        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnFive = null;
+        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnThree = null;
         public bool _isButtonEnabled = true;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
@@ -223,6 +225,38 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     UnsubmittedReturn.IsPaymentOverdue = false;
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
+                if (listofPaymentReturn != null)
+                {
+                    if (listofPaymentReturn.Count > 3)
+                    {
+                        listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+
+                        if (listofPaymentReturn.Count > 3)
+                        {
+                            if (listofPaymentReturn[2].DueDateDateTime.Date == listofPaymentReturn[3].DueDateDateTime.Date)
+                            {
+                                if (listofPaymentReturn.Count > 4)
+                                {
+                                    if (listofPaymentReturn[2].DueDateDateTime.Date == listofPaymentReturn[4].DueDateDateTime.Date)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        listofPaymentReturn.RemoveAt(4);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                listofPaymentReturn.RemoveAt(3);
+                                listofPaymentReturn.RemoveAt(4);
+                            }
+                        }
+
+                    }
+                }
+
             }
             catch (AggregateException ae)
             {
@@ -357,6 +391,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
+        
         public bool IsButtonEnabled
         {
             get

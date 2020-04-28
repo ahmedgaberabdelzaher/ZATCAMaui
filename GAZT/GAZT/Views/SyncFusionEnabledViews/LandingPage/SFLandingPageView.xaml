@@ -92,8 +92,8 @@
                     <Grid BackgroundColor="White" VerticalOptions="FillAndExpand" RowSpacing="0">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition  Height="25*"/>
-                            <RowDefinition  Height="75*"/>
+                            <RowDefinition  Height="5*"/>
+                            <RowDefinition  Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100*"/>
@@ -113,7 +113,8 @@
                                          
                                           IsVisible="{Binding IsListviewVisible}"
           HorizontalOptions="FillAndExpand"
-            HeightRequest="142"
+           IsScrollingEnabled="False"
+                                      
            AutoFitMode="Height" ItemSpacing="5" 
                  BackgroundColor="White"     
            
@@ -126,18 +127,18 @@
                                             <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand"  >
                                                 <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="2"   BackgroundColor="White" HorizontalOptions="FillAndExpand" >
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="15*" />
-                                                        <ColumnDefinition Width="85*" />
+                                                        <!--<ColumnDefinition Width="15*" />-->
+                                                        <ColumnDefinition Width="auto" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
+                                                        <!--<RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
                                                         <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
-                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition Height="Auto" />-->
 
                                                     </Grid.RowDefinitions>
 
@@ -150,7 +151,8 @@
                                                                     FontSize="Micro"
                                                                     IsVisible="{Binding IsUnSubmittedReturn}"
                                    Grid.Row="0"
-                                   Grid.Column="1"
+                                   Grid.Column="0"
+                                                                       
                                                                      Margin="5,0,5,0"
                                                            />
 
@@ -162,7 +164,8 @@
                                                                     FontSize="Micro"
                                                                     IsVisible="{Binding IsPaymentOverdue}"
                                    Grid.Row="0"
-                                   Grid.Column="1"
+                                     Grid.Column="0"
+                                                                      
                                                                      Margin="5,0,5,0"
                                                            />
 
@@ -174,9 +177,9 @@
                                                     Margin="5,0,5,0"
                                                     FontSize="Micro"
                                                   IsVisible="{Binding IsUnSubmittedReturn}"
-                                   Grid.Row="2"
+                                   Grid.Row="1"
                                    Grid.Column="0"
-                                                       Grid.ColumnSpan="3"
+                                                     
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
@@ -189,7 +192,7 @@
 
 
 
-                                                    <local1:CustomLabel 
+                                                    <!--<local1:CustomLabel 
                                                       FontFamily="{StaticResource SSTArLight}"
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -208,11 +211,11 @@
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
-                                                    </local1:CustomLabel>
+                                                    </local1:CustomLabel>-->
 
 
 
-                                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="4"
+                                                    <!--<StackLayout HorizontalOptions="FillAndExpand" Grid.Row="4"
                                    Grid.Column="0"
                                                             
                                                        Grid.ColumnSpan="2">
@@ -238,10 +241,10 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
-                                                    </StackLayout>
+                                                    </StackLayout>-->
 
 
-                                                    <local1:CustomLabel 
+                                                    <!--<local1:CustomLabel 
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                       FontFamily="{StaticResource SSTArLight}"
                                                        HorizontalOptions="StartAndExpand"
@@ -258,9 +261,9 @@
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding IcrStatus}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
-                                                    </local1:CustomLabel>
+                                                    </local1:CustomLabel>-->
 
-                                                    <local1:CustomLabel 
+                                                    <!--<local1:CustomLabel 
                                                       FontFamily="{StaticResource SSTArLight}"
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -278,10 +281,10 @@
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding Amount}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
-                                                    </local1:CustomLabel>
+                                                    </local1:CustomLabel>-->
 
 
-                                                    <StackLayout  Grid.Row="7" Margin="5,0,5,0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="3">
+                                                    <StackLayout  Grid.Row="2" Margin="5,0,5,0" Orientation="Horizontal" Grid.Column="0" >
                                                         <local1:CustomLabel
                                                      
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -326,7 +329,7 @@
 
 
 
-                                                    <Image  Grid.Row="0"  Grid.Column="0"  Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="Center" VerticalOptions="Start"/>
+                                                    <!--<Image  Grid.Row="0"  Grid.Column="0"  Grid.RowSpan="2"  Source="{Binding StatusImage}" HorizontalOptions="Center" VerticalOptions="Start"/>-->
 
                                                 </Grid>
                                             </StackLayout>
