@@ -203,5 +203,5 @@ namespace GAZT.Views.NewViews
             }
 
         }
-    }7
+    }
 }
