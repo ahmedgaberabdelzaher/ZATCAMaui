@@ -177,7 +177,7 @@
 
                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                       FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+                                                       FontFamily="{StaticResource SSTArabicMedium}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
@@ -196,7 +196,7 @@
 
                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                                         FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+                                                                                         FontFamily="{StaticResource SSTArabicMedium}"
 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
@@ -223,7 +223,7 @@
 
                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
- FontFamily="{StaticResource SSTArLight}"                                                       HorizontalOptions="StartAndExpand"
+ FontFamily="{StaticResource SSTArabicMedium}"                                                       HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
                                                        Grid.Column="0"
@@ -254,7 +254,6 @@
                                                         </Label>-->
 
                                                 <Label  Margin="0" 
-                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -263,9 +262,9 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FormatTaxPeriod}"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -300,7 +299,6 @@
 
 
                                                 <Label  Margin="0" 
-                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -309,9 +307,9 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding StatusTxt}"></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -339,15 +337,15 @@
                                    Grid.Column="0" Orientation="Horizontal">
                                                     <Label
                                                      
-                                    FontFamily="{StaticResource GAZT_FONT_REGULAR}"
+                                    FontFamily="{StaticResource SSTArabicMedium}"
                                                        
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
                                                           >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text="{x:Static local:AppResources.ZReturnPeriod}" ></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZReturnPeriod}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -358,7 +356,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
-                                                        
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedDate}"
                                   
                                                           >
@@ -415,19 +413,19 @@
                                                     Margin="0,0,0,0"
                                                     
                                                    
-                                  FontFamily="{StaticResource SSTArLight}"
+                                 
                                                           >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" ></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text=" : " ></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
                                                     <Label
                                                      
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                     
+                                                     FontFamily="{StaticResource SSTArabicMedium}" 
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"

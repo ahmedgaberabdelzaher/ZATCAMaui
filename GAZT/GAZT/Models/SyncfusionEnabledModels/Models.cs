@@ -1,6 +1,7 @@
 ﻿using GAZT.Manager;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text;
@@ -61,9 +62,9 @@ namespace GAZT.Models
     }
     public class OverduePaymentsAndUnSubmittedReturn
     {
-        public DateTime Abrzu { get; set; }
+        public DateTime? Abrzu { get; set; }
         public string Gpartz { get; set; }
-        public DateTime Abrzo { get; set; }
+        public DateTime? Abrzo { get; set; }
         public string Langz { get; set; }
         public string Incotyp { get; set; }
         public string Incotext { get; set; }
@@ -100,6 +101,8 @@ namespace GAZT.Models
 
             }
         }
+
+        public Color ColorCode { get; set; }
 
         public string _dueDT;
         public string DueDt

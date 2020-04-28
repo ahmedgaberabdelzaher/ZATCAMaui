@@ -129,12 +129,12 @@
                         </Label>
                         <!--//@Divya Jannapureddy adding line number
                         //Added below control below method-->
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZBillDeatilsInfo}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"  Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding InvoiceVisibility}">
+                        <local1:CustomLabel  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Margin="10"   IsVisible="{Binding InvoiceVisibility}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZBillDetailsDisclaimer}"/>
+                                    <Span Text="{x:Static local:AppResources.ZBillDetailsDisclaimer}"  FontFamily="{StaticResource SSTArBold}"/>
                                     <Span Text="&#10;"/>
-                                    <Span Text="{x:Static local:AppResources.ZBillDeatilsInfo}"/>
+                                    <Span Text="{x:Static local:AppResources.ZBillDeatilsInfo}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </local1:CustomLabel>
