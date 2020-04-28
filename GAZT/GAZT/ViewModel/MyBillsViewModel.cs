@@ -573,8 +573,33 @@ namespace GAZT.ViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                   
+
+                    if (App.TP != null)
+                        App.TP = null;
+
+                    if (App.PreviousIsArabic)
+                    {
+                        String langName = "ar-AE";
+                        AppResources.Culture = new CultureInfo(langName);
+                    }
+                    else
+                    {
+                        String langName = "en-US";
+                        AppResources.Culture = new CultureInfo(langName);
+                    }
+
                     var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
                 });
             }
         }
