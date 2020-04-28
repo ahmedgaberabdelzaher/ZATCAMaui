@@ -213,7 +213,9 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 String lang = "E";
                 if (App.IsArabic == true)
-                    lang = "A";
+                    lang = "A"; 
+                if(TaxPayerProfile !=null && TaxPayerProfile.Tin != null)
+                { 
                 String mobilenumber = await WebServiceManager.GAZTGetTaxPayerProfile(TaxPayerProfile.Tin, lang);
                  PopToRootPage();
                 if (mobilenumber != null)
@@ -233,6 +235,7 @@ namespace GAZT.ViewModel.NewViewModel
                     App.TP.NewMobile = string.Empty;
                     TaxPayerProfile.NewMobile = string.Empty;
                     CurrentPassword = TaxPayerProfile.Password;
+                }
                 }
             }
             catch (InternetException ex)

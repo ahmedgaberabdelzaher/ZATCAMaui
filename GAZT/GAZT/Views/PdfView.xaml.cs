@@ -69,8 +69,13 @@ namespace GAZT.Views
         }
         private async void Share_Clicked(object sender, EventArgs e)
         {
-            
-          await  email();
+            try
+            {
+                await email();
+            }
+            catch (Exception ex)
+            { 
+            }
         }
 
 

@@ -540,7 +540,7 @@
                 <Setter Property="Margin" Value="15,0,15,0"/>
                 <Setter Property="FontSize" Value="Small"/>
                   <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}"/>
+                <!--<Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}"/>-->
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
@@ -614,7 +614,7 @@
 
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="FontAttributes" Value="Bold" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
@@ -636,7 +636,7 @@
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Padding" Value="0,0,0,-5"/>
-                <Setter Property="FontAttributes" Value="Bold" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
             </Style>
 
             <Style x:Key="GAZTGoldLabelStyleForCaptionFont" x:Name="GAZTGoldLabelStyleForCaptionFont" TargetType="Label">
@@ -645,7 +645,8 @@
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
-                <Setter Property="FontAttributes" Value="Bold" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+
             </Style>
 
             <Style x:Key="GAZTGrayLabelStyleForSmallFont" x:Name="GAZTGrayLabelStyleForSmallFont" TargetType="Label">
@@ -663,7 +664,7 @@
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
-                <Setter Property="FontAttributes" Value="Bold" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />--><!-- commented as we are provideing bold font family inline -->
             </Style>
 
             <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Frame">
