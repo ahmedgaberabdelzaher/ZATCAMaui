@@ -85,7 +85,7 @@
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold">
+                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
@@ -153,7 +153,7 @@
     Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
     ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBnum}" FontSize="Small" FontAttributes="Bold">
+                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBnum}" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" >
@@ -264,9 +264,9 @@
                                                            >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FbStatus}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FbStatus}"></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -302,9 +302,9 @@
                                                            >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FbDesc}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"       Text="{Binding FbDesc}"></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
@@ -363,7 +363,8 @@
                                        ViewBoxWidth = "70" 
                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
+                                       ViewBoxHeight="70"
+
                                        TextColor="#006450"/>
                     </StackLayout>
                 </StackLayout>
