@@ -206,6 +206,7 @@ namespace GAZT.ViewModel
             {
                 
                 HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
+               // myReq.Headers.Add("Token", App.Token);
                 WebResponse myResp = myReq.GetResponse();
                 using (Stream streams = myResp.GetResponseStream())
                 using (MemoryStream ms = new MemoryStream())
