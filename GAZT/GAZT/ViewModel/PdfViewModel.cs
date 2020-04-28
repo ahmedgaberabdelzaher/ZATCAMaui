@@ -113,7 +113,7 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfUrl");
             }
         }
-        private string _DownloadUrl = String.Empty;
+        private string _DownloadUrl = string.Empty;
         public string DownloadUrl
         {
             get
@@ -127,7 +127,7 @@ namespace GAZT.ViewModel
             }
         }
 
-        private Stream _StreamForDownloadURL = null;
+        private Stream _StreamForDownloadURL ;
         public Stream StreamForDownloadURL
         {
             get
@@ -136,7 +136,9 @@ namespace GAZT.ViewModel
             }
             set
             {
-                _StreamForDownloadURL = value;
+                
+                    _StreamForDownloadURL = value;
+               
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
@@ -175,28 +177,34 @@ namespace GAZT.ViewModel
 
         public async Task OnPageLoad()
         {
-           
-            await Task.Run(async () =>
-             {
-                 IsLoading = true;
-                if (!string.IsNullOrEmpty(pdfUrl))
+            try
+            {
+                await Task.Run(async () =>
                  {
-                    DownloadUrl = pdfUrl;
+                     IsLoading = true;
+                     if (!string.IsNullOrEmpty(pdfUrl))
+                     {
+                         DownloadUrl = pdfUrl;
                      //DownloadUrl = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='005056B1365C1EEA80F0BFC0C36DE462',Cotyp='ZVT3')/$value";
                      //getPdfStream();
                      getPdfStream();
 
 
-                 }
-                 else
-                 {
-                     String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
+                     }
+                     else
+                     {
+                         String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
 
-                     await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
+                         await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
 
-                 }
-                 IsLoading = false;
-             });
+                     }
+                     IsLoading = false;
+                 });
+            }
+            catch (Exception ex)
+            { 
+            
+            }
         }
 
         public async void getPdfStream()
@@ -208,6 +216,8 @@ namespace GAZT.ViewModel
                 HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
                 myReq.Headers.Add("Token", App.Token);
                 WebResponse myResp = myReq.GetResponse();
+                if (myResp != null)
+                { 
                 using (Stream streams = myResp.GetResponseStream())
                 using (MemoryStream ms = new MemoryStream())
                 {
@@ -243,7 +253,7 @@ namespace GAZT.ViewModel
                     }
 
                 }
-               
+                }
 
             }
             catch (Exception ex)

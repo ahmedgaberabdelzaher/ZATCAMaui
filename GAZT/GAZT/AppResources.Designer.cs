@@ -6088,6 +6088,15 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Upcoming Commitments.
+        /// </summary>
+        public static string ZZMyUpcomingCommitments {
+            get {
+                return ResourceManager.GetString("ZZMyUpcomingCommitments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string ZZName {
