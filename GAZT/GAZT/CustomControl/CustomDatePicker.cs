@@ -24,7 +24,7 @@ namespace GAZT.CustomControl
 
         // Resolving Issue of Date of Birth to prevent selecting future date
 
-        // @Divya Jannapureddy added line number 26
+        // @Divya Jannapureddy added line number 28
         private String selectedYear;
 
 
@@ -79,6 +79,7 @@ namespace GAZT.CustomControl
         {
             UpdateDays(Date, e);
         }
+
         public void UpdateDays(ObservableCollection<object> Date, SelectionChangedEventArgs e)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -101,17 +102,23 @@ namespace GAZT.CustomControl
                             }
                         }
 
-                        //@Divya Jannapureddy added line number 102 to 103
-                        if (resetDate())
+
+                        //@DivyaJannapureddy replace from line number 107 to 189
+                        if (isupdate)
                         {
-                            if (isupdate)
+
+
+                            ObservableCollection<object> days = new ObservableCollection<object>();
+                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
+                            int year = int.Parse((e.NewValue as IList)[2].ToString());
+
+                            months.Clear();
+                            days.Clear();
+                            Month.Clear();
+
+                            if (resetDate(year))
                             {
 
-                                ObservableCollection<object> days = new ObservableCollection<object>();
-                                int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
-                                int year = int.Parse((e.NewValue as IList)[2].ToString());
-
-                                // @Divya Jannapureddy replace line number 115
                                 for (int j = 1; j <= DateTime.Today.Day; j++)
                                 {
                                     if (j < 10)
@@ -121,33 +128,92 @@ namespace GAZT.CustomControl
                                     else
                                         days.Add(j.ToString());
                                 }
-                                ObservableCollection<object> oldvalue = new ObservableCollection<object>();
 
-                                foreach (var item in e.NewValue as IList)
+                                for (int i = 1; i <= DateTime.Today.Month; i++)
                                 {
-                                    oldvalue.Add(item);
-                                }
-                                if (days.Count > 0)
-                                {
-                                    Date.RemoveAt(1);
-                                    Date.Insert(1, days);
-                                }
+                                    if (i < 10)
+                                    {
+                                        if (!Month.Contains("0" + i)) { Month.Add("0" + i); }
 
-                                if ((Date[1] as IList).Contains(oldvalue[1]))
-                                {
-                                    this.SelectedItem = oldvalue;
-                                }
-                                else
-                                {
-                                    oldvalue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
-                                    this.SelectedItem = oldvalue;
+                                        if (!months.ContainsKey("0" + i))
+                                        {
+                                            months.Add("0" + i, "0" + i);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (!Month.Contains(i.ToString())) { Month.Add(i.ToString()); }
+
+                                        if (!months.ContainsKey(i.ToString()))
+                                        {
+                                            months.Add(i.ToString(), i.ToString());
+                                        }
+
+                                    }
                                 }
                             }
-                        }
+                            else
+                            {
+                                for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
+                                {
+                                    if (j < 10)
+                                    {
+                                        days.Add("0" + j);
+                                    }
+                                    else
+                                        days.Add(j.ToString());
+                                }
 
-                        // @Divya Jannapureddy adding line number 148
-                        selectedYear = (SelectedItem as IList)[2].ToString();
+                                for (int i = 1; i <= 12; i++)
+                                {
+                                    if (i < 10)
+                                    {
+                                        if (!Month.Contains("0" + i)) { Month.Add("0" + i); }
+
+                                        if (!months.ContainsKey("0" + i))
+                                        {
+                                            months.Add("0" + i, "0" + i);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (!Month.Contains(i.ToString())) { Month.Add(i.ToString()); }
+
+                                        if (!months.ContainsKey(i.ToString()))
+                                        {
+                                            months.Add(i.ToString(), i.ToString());
+                                        }
+
+                                    }
+                                }
+                            }
+
+
+                            ObservableCollection<object> oldvalue = new ObservableCollection<object>();
+
+                            foreach (var item in e.NewValue as IList)
+                            {
+                                oldvalue.Add(item);
+                            }
+                            if (days.Count > 0)
+                            {
+                                Date.RemoveAt(1);
+                                Date.Insert(1, days);
+                            }
+
+                            if ((Date[1] as IList).Contains(oldvalue[1]))
+                            {
+                                this.SelectedItem = oldvalue;
+                            }
+                            else
+                            {
+                                oldvalue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
+                                this.SelectedItem = oldvalue;
+                            }
+                        }
                     }
+
+
                 }
 
                 catch
@@ -163,7 +229,7 @@ namespace GAZT.CustomControl
         {
 
             //populate months
-            // @Divya Jannapureddy replace line number 167
+
             for (int i = 1; i <= DateTime.Today.Month; i++)
             {
                 if (i < 10)
@@ -195,7 +261,7 @@ namespace GAZT.CustomControl
 
             //populate Days
 
-            // @Divya Jannapureddy replace line number 199
+
             for (int i = 1; i <= DateTime.Today.Day; i++)
             {
                 if (i < 10)
@@ -211,17 +277,17 @@ namespace GAZT.CustomControl
             Date.Add(Year);
         }
 
-        // @Divya Jannapureddy adding line number 211 to 222
-        private Boolean resetDate()
+        // @Divya Jannapureddy replace this method
+        private Boolean resetDate(int year)
         {
-            if (selectedYear != DateTime.Today.Year.ToString())
+            if (year != DateTime.Today.Year)
             {
-                return true;
+                return false;
 
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
