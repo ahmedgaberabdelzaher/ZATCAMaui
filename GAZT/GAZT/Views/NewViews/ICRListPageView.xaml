@@ -115,8 +115,8 @@
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    
-                 SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
+                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                  SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="200"
                     PickerWidth="270"
                                     OkButtonClicked="BPicker_OkButtonClicked"
@@ -124,7 +124,7 @@
                     ShowFooter="True"
                      OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
-                    <!--SelectedItem="{Binding SelectedIssuedBy,Mode=TwoWay}"-->
+                    <!--SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}"-->
                  
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />

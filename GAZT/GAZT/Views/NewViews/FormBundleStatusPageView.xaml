@@ -99,6 +99,7 @@
                     
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
+                                             OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
                                             HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
@@ -106,7 +107,7 @@
                     UnSelectedItemTextColor="#006450"
                                 SelectedItemFontSize="15"               
                    ItemHeight="40"
-                                         SelectedItem="{Binding SelectedFormBindleFbtyp,Mode=TwoWay }"
+                                       
                      DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
                     PickerHeight="200"
                     PickerWidth="350"
@@ -172,7 +173,7 @@
                     UnSelectedItemTextColor="#006450"            
                    ItemHeight="40"
                                           BackgroundColor="#EAF7CC"
-                                         SelectedItem="{Binding SelectedFormBindleFbnum}"
+                                        
                    DisplayMemberPath="Fbnum" ItemsSource="{Binding FormBundleApplicatioNumberList}"     Grid.Row="1" Grid.Column="0" Margin="10,0,10,0"
                     PickerHeight="280" SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked" CancelButtonClicked="CPicker_CancelButtonClicked"
                     PickerWidth="350" IsEnabled="True"

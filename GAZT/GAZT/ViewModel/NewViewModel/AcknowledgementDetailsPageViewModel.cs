@@ -18,7 +18,7 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnVATRefreshButtonClicked { get; set; }
-        public ICommand OnDownloadAcknowlwdgementClicked { get; set; }
+        public ICommand OnDownloadFormClicked { get; set; }
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand GoHomeClick { get; set; }
@@ -260,11 +260,12 @@ namespace GAZT.ViewModel.NewViewModel
             });
 
 
-            OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
+            OnDownloadFormClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+               // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser=’"+ App.TP.Tin+"’, Fbnum='"+VATDeclarationData.d.Fbnum+"',Utype='')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
 
@@ -272,7 +273,9 @@ namespace GAZT.ViewModel.NewViewModel
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+               // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
+
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser=’"+ App.TP.Tin+ "’,Fbnum='"+VATDeclarationData.d.Fbnum+"')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
 

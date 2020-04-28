@@ -3051,4 +3051,8 @@
     <value>تعهد</value>
     <comment>Zakat Bills details</comment>
   </data>
+  <data name="ZZMyUpcomingCommitments" xml:space="preserve">
+    <value>التزاماتي القادمة</value>
+    <comment>Dashboard</comment>
+  </data>
 </root>

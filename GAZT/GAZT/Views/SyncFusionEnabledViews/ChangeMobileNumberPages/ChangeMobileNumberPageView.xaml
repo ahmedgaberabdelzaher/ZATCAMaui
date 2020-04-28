@@ -101,9 +101,10 @@
 
                             <inputLayout:SfTextInputLayout x:Name="LayoutCurrentMobile"   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZCurrentMobileNumber}"
+                                                           
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry  x:Name="TCurrentMobile" TextColor="#ffffff" FontSize="Small"  Placeholder="{Binding CurrentMobile}" PlaceholderColor= "White"  IsReadOnly="True">
+                                <custom:GAZTBorderlessEntry  x:Name="TCurrentMobile" TextColor="#ffffff" FontSize="Small"  Text="{Binding CurrentMobile}" PlaceholderColor= "White"  IsReadOnly="True">
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 

@@ -144,6 +144,7 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedParameterType = vATParameterType;
             viewModel.SelectedParameterTypePrev = vATParameterType;
             viewModel.SetSelectedParameterTypeData();
+            viewModel.TxtSearchParameter = vATParameterType.ParameterType;
             //viewModel.SelectedSignUpUsing = signUpUsing;
             //viewModel.TxtIDNumber = signUpUsing.SUType;
         }
@@ -462,6 +463,13 @@ namespace GAZT.Views.NewViews
         private void PPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedParameterType = viewModel.SelectedParameterTypePrev;
+            PPicker.SelectedItem = viewModel.SelectedParameterTypePrev;
+            //if(viewModel.SelectedParameterTypePrev == null)
+            //{
+            //    viewModel.TxtSearchParameter = string.Empty;
+            //}
         }
+
+   
     }
 }

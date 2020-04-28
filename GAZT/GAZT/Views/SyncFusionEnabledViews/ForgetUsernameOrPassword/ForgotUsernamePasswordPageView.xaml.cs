@@ -246,6 +246,7 @@ namespace GAZT.Views.NewViews
             ForgotCredentialType selectedforgotType = (ForgotCredentialType)e.NewValue;
             SelectPasswordUserNamePicker.SelectedItem = selectedforgotType;
             viewModel.SelectedForgotType = selectedforgotType;
+            viewModel.SelectedForgotTypePrev = selectedforgotType;
             viewModel.TxtSelectedUsernameAndPassword = selectedforgotType.CredentialType;
             //tSelectedUsernameAndPassword
 
@@ -257,8 +258,48 @@ namespace GAZT.Views.NewViews
             ForgotUserNamePassword selectedTaxPayerType = (ForgotUserNamePassword)e.NewValue;
             SelectTaxpayerTypePicker.SelectedItem = selectedTaxPayerType;
             viewModel.SelectedTaxPayerType = selectedTaxPayerType;
+            viewModel.SelectedTaxPayerTypePrev = selectedTaxPayerType;
             viewModel.TxtSelectedUsernameAndPassword = selectedTaxPayerType.TaxPayerType;
 
+        }
+
+        private void SelectPasswordUserNamePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            SelectPasswordUserNamePicker.SelectedItem = viewModel.SelectedForgotTypePrev;
+            viewModel.SelectedForgotType = viewModel.SelectedForgotTypePrev;
+            if (viewModel.SelectedForgotTypePrev == null)
+            {
+                viewModel.TxtSelectedUsernameAndPassword = string.Empty;
+            }
+        }
+
+        private void SelectTaxpayerTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            SelectTaxpayerTypePicker.SelectedItem = viewModel.SelectedTaxPayerTypePrev;
+            viewModel.SelectedTaxPayerType = viewModel.SelectedTaxPayerTypePrev;
+            if(viewModel.SelectedTaxPayerTypePrev==null)
+            {
+                viewModel.TxtSelectedUsernameAndPassword = string.Empty;
+            }
+        }
+
+        private void SelectedTinIdPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            TIN selectedTIN = (TIN)e.NewValue;
+            SelectedTinIdPicker.SelectedItem = selectedTIN;
+            viewModel.SelectedTinId = selectedTIN;
+            viewModel.SelectedTinIdPrev = selectedTIN;
+            viewModel.TxtTIN = selectedTIN.Tin;
+        }
+
+        private void SelectedTinIdPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            SelectedTinIdPicker.SelectedItem = viewModel.SelectedTinIdPrev;
+            viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;
+            if (viewModel.SelectedTinIdPrev == null)
+            {
+                viewModel.TxtTIN = string.Empty;
+            }
         }
     }
 }

@@ -1996,6 +1996,10 @@ namespace GAZT.Views.NewViews
             // viewModel.SelectedSignUpUsingSetForCancle = (SignUpUsing)DDlIDType.SelectedItem;
             DDlIDType.SelectedItem = viewModel.SelectedSignUpUsingSetForCancle;
             viewModel.SelectedSignUpUsing = viewModel.SelectedSignUpUsingSetForCancle;
+            if(viewModel.SelectedSignUpUsingSetForCancle== null)
+            {
+                viewModel.TxtIDType = string.Empty;
+            }
         }
 
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -2005,6 +2009,7 @@ namespace GAZT.Views.NewViews
             // SfPicker signUpUsing = (SfPicker)sender;
             viewModel.SelectedSignUpUsing = (SignUpUsing)DDlIDType.SelectedItem;
             viewModel.TxtIDType = viewModel.SelectedSignUpUsing.SUType;
+       
             if (viewModel.SelectedSignUpUsing != null)
             {
                 try
@@ -2244,11 +2249,21 @@ namespace GAZT.Views.NewViews
         private void ddlLIssuedBy_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedIssuedBy = viewModel.SelectedIssuedByPrev;
+            ddlLIssuedBy.SelectedItem = viewModel.SelectedIssuedByPrev;
+            if (viewModel.SelectedIssuedByPrev==null)
+            {
+                viewModel.TxtLOrCIssuedBy = string.Empty;
+            }
         }
 
         private void ddlLIssuedByCity_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectCityList = viewModel.SelectCityListPrev;
+            ddlLIssuedByCity.SelectedItem = viewModel.SelectCityListPrev;
+            if (viewModel.SelectCityListPrev == null)
+            {
+                viewModel.TxtLOrCIssuedByCity = string.Empty;
+            }
         }
 
         private void DpDbo_SelectionChanged_1(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)

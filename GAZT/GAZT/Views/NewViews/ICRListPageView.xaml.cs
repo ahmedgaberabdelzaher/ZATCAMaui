@@ -269,6 +269,11 @@ namespace GAZT.Views.NewViews
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
+            BPicker.SelectedItem = viewModel.SelectedICRStatusPrev;
+            if(viewModel.SelectedICRStatusPrev == null)
+            {
+                viewModel.TxtSelectedStatus = string.Empty;
+            }
         }
     }
 }

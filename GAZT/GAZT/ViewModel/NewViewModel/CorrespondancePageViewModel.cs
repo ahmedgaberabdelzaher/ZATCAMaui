@@ -421,6 +421,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+        private CorrespondenceFiltersModel _selectedFilterZakatPrev = null;
+        public CorrespondenceFiltersModel SelectedFilterZakatPrev
+        {
+            get
+            {
+                return _selectedFilterZakatPrev;
+            }
+            set
+            {
+                _selectedFilterZakatPrev = value;
+              
+                RaisePropertyChanged("SelectedFilterZakatPrev");
+            }
+        }
+
         private CorrespondenceFiltersModel _selectedFilterVAT = null;
         public CorrespondenceFiltersModel SelectedFilterVAT
         {
@@ -502,6 +518,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private CorrespondenceFiltersModel _selectedFilterVATPrev = null;
+        public CorrespondenceFiltersModel SelectedFilterVATPrev
+        {
+            get
+            {
+                return _selectedFilterVATPrev;
+            }
+            set
+            {
+                _selectedFilterVATPrev = value;
+               
+                RaisePropertyChanged("SelectedFilterVATPrev");
+            }
+        }
+
         private CorrespondenceFiltersModel _selectedFilterET = null;
         public CorrespondenceFiltersModel SelectedFilterET
         {
@@ -577,6 +608,22 @@ namespace GAZT.ViewModel.NewViewModel
                 }
 
                 RaisePropertyChanged("SelectedFilterET");
+            }
+        }
+
+        private CorrespondenceFiltersModel _selectedFilterETPrev = null;
+        public CorrespondenceFiltersModel SelectedFilterETPrev
+        {
+            get
+            {
+                return _selectedFilterETPrev;
+            }
+            set
+            {
+                _selectedFilterETPrev = value;
+                
+
+                RaisePropertyChanged("SelectedFilterETPrev");
             }
         }
 
