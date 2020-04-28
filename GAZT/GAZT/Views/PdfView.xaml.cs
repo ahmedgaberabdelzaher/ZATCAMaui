@@ -15,7 +15,7 @@ namespace GAZT.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PdfView : ContentPage
 	{
-        PdfViewModel viewModel = null;
+        PdfViewModel viewModel ;
 		public PdfView (string Pdfurl)
 		{
             viewModel = App.Locator.pdfView;    
