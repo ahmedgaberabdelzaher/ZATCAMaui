@@ -203,7 +203,7 @@
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNo}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNo}" FontSize="Micro"  FontFamily="{StaticResource GAZT_FONT_REGULAR}"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="Micro"></Span>
                                                             </FormattedString>
@@ -232,9 +232,9 @@
                                                           >
                                                             <Label.FormattedText >
                                                                 <FormattedString>
-                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.SADADNumber}" FontSize="Micro"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.SADADNumber}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}"  FontSize="Micro"></Span>
                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
-                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Sopbel}" FontSize="Micro"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding Sopbel}" FontSize="Micro"></Span>
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
@@ -253,9 +253,9 @@
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="Micro" ></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding IcrStatus}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding IcrStatus}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
@@ -273,9 +273,9 @@
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZSAR}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZSAR}" FontSize="Micro"  FontFamily="{StaticResource GAZT_FONT_REGULAR}"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Amount}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding Amount}" FontSize="Micro"></Span>
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
@@ -294,7 +294,7 @@
                                                           >
                                                             <local1:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}" FontSize="Micro"></Span>
+                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="Micro"></Span>
                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
                                                                 </FormattedString>
                                                             </local1:CustomLabel.FormattedText>
@@ -361,7 +361,7 @@
                                                         <!--<Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
 
                                                     </Image>-->
-                                                        <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                                                        <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                             <Label.FormattedText >
                                                                 <FormattedString>
                                                                     <Span  Text="{Binding BillTypeName}" />
@@ -375,18 +375,18 @@
                                                             <TapGestureRecognizer Tapped="OnStackLayoutClicked"></TapGestureRecognizer>
                                                         </StackLayout.GestureRecognizers>
                                                     </StackLayout>
-                                                    <local1:CustomLabel Text="{Binding BillCount}" FontSize="Title"  TextColor="#474747" Padding="0,10,0,15">
+                                                    <local1:CustomLabel Text="{Binding BillCount}" FontSize="Title"  TextColor="#474747" Padding="0,10,0,15" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}">
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
                                                     </local1:CustomLabel>
 
-                                                    <local1:CustomLabel Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray" FontFamily="{StaticResource SSTArabicMedium}">
+                                                    <local1:CustomLabel Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray"  Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
                                                     </local1:CustomLabel>
-                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="Micro">
+                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelValue}" >
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
@@ -441,10 +441,10 @@
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
-                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}">
+                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}">
                                                     </local1:CustomLabel>
                                                 </StackLayout>
-                                                <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}">
+                                                <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                 </local1:CustomLabel>
                                             </StackLayout>
                                         </Grid>
@@ -490,7 +490,7 @@
                                                         <TapGestureRecognizer Tapped="OnTappedTest" NumberOfTapsRequired="1"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label HorizontalTextAlignment="Center"  TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="9">
+                                                <Label HorizontalTextAlignment="Center"  TextColor="#006450" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" LineHeight="{OnPlatform iOS=0.7,  Android=1}" FontSize="9">
                                                     <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding eServiceName}"/>
