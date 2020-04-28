@@ -33,10 +33,10 @@ namespace GAZT.Views.NewViews
 
             SetLTR();
             if (!string.IsNullOrEmpty(mobno))
-            { 
+            {
                 viewModel.MobileNumber = mobno;
             }
-            
+
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
 
@@ -57,7 +57,7 @@ namespace GAZT.Views.NewViews
 
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             this.BindingContext = viewModel;
- 
+
 
 
             viewModel.OnPageLoad();
@@ -113,7 +113,7 @@ namespace GAZT.Views.NewViews
         {
             base.OnAppearing();
             viewModel.OnPageLoad();
-           // this.Content = null;
+            // this.Content = null;
         }
 
         private void SetLTR()
@@ -131,7 +131,7 @@ namespace GAZT.Views.NewViews
 
 
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-            
+
         }
 
         private void TapGestureRecognizer_ForClosedReports(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace GAZT.Views.NewViews
 
         private void CertificateLstClosed_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
 
             return;
         }
@@ -190,6 +190,18 @@ namespace GAZT.Views.NewViews
             return;
         }
 
-        protected override bool OnBackButtonPressed() => true;
-    }
+        //protected override bool OnBackButtonPressed() => true;
+        protected override bool OnBackButtonPressed()
+        {
+            if (App.TP != null && App.TP.Mobile != null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+    }7
 }
