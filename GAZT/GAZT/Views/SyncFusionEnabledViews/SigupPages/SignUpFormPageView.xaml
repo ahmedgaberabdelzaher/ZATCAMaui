@@ -289,7 +289,7 @@
                                         <Entry.Behaviors>
                                         
                                         <!--<custom1:RestrictSpecialCharactorsBehaviour/>-->
-                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        <custom1:RestrictSpecialCharactorsBehaviour/>
                                         </Entry.Behaviors>
                                       </custom:BorderlessEntry>
                                   

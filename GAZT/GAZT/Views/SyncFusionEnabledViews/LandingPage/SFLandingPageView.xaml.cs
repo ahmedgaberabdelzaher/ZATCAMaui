@@ -16,6 +16,7 @@ using System.Linq;
 
 namespace GAZTeServicesApp.Views.LandingPage
 {
+    
     /// <summary>
     /// Page to show the article tile
     /// </summary>

@@ -60,18 +60,18 @@
                     <ColumnDefinition Width="100*" />
 
                 </Grid.ColumnDefinitions>
-                <tabView:SfTabView BackgroundColor="White" VerticalOptions="FillAndExpand" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0" VisibleHeaderCount="3" >
+                <tabView:SfTabView BackgroundColor="White" VerticalOptions="FillAndExpand" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  >
                     <tabView:SfTabView.SelectionIndicatorSettings>
                         <tabView:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
                     StrokeThickness="2"/>
                     </tabView:SfTabView.SelectionIndicatorSettings>
-                    <tabView:SfTabItem Title="{Binding ZakatCountDisplay}"
+                    <tabView:SfTabItem  IsVisible="{Binding IsZakatTabVisible}" Title="{Binding ZakatCountDisplay}"
                                         TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
+                               
                              TitleFontColor="Gray">
 
                         <tabView:SfTabItem.Content>
@@ -340,10 +340,10 @@
 
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="12"
+                    <tabView:SfTabItem   IsVisible="{Binding IsVATTabVisible}" Title="{Binding VATCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
+                                  
                              TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
 
@@ -620,7 +620,7 @@
 
                         </tabView:SfTabItem.Content>
                     </tabView:SfTabItem>
-                    <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="12"
+                    <tabView:SfTabItem  IsVisible="{Binding IsETTabVisible}" Title="{Binding ETCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                                    
