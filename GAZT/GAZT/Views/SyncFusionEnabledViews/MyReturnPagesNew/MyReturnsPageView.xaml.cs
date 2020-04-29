@@ -33,7 +33,13 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             viewModel.OnPageLoad();
             viewModel.TabIndexStatus = Index;
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+            //ReturnsVATSubmited.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            //{
+            //    // don't do anything if we just de-selected the row.
+            //    if (e.Item == null) return;
 
+            //    if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            //};
         }
 
         void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
