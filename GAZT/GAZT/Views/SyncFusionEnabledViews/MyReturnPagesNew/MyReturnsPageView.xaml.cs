@@ -1,4 +1,5 @@
 ﻿using GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
+using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,77 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             viewModel.OnPageLoad();
             viewModel.TabIndexStatus = Index;
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+            ReturnsVATSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
 
+            ReturnsVATNonSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsVATOverDue.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsETSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsETNonSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsETOverDue.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsWHSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsWHNonSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsWHOverDue.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
         }
 
         void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
@@ -198,6 +269,11 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void ReturnsVATSubmited_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
+
         }
     }
 }
