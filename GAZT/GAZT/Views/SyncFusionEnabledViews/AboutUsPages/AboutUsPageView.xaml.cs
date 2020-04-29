@@ -37,7 +37,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
-
             if (Device.RuntimePlatform == Device.iOS)
             {
                 string baseUrl = DependencyService.Get<IBaseUrl>().Get();
