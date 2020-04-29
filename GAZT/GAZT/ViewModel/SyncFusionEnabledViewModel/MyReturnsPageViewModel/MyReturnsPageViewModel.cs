@@ -171,6 +171,156 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             }
         }
 
+        
+              private MyReturnsResult _selectedReturnsETSubmitted;
+        public MyReturnsResult SelectedReturnsETSubmitted
+        {
+            get
+            {
+                return _selectedReturnsETSubmitted;
+            }
+            set
+            {
+                _selectedReturnsETSubmitted = value;
+                RaisePropertyChanged("SelectedReturnsETSubmitted");
+
+                if (_selectedReturnsETSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+
+        private MyReturnsResult _selectedReturnsETNonSubmitted;
+        public MyReturnsResult SelectedReturnsETNonSubmitted
+        {
+            get
+            {
+                return _selectedReturnsETNonSubmitted;
+            }
+            set
+            {
+                _selectedReturnsETNonSubmitted = value;
+                RaisePropertyChanged("SelectedReturnsETNonSubmitted");
+
+                if (_selectedReturnsETNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+        private MyReturnsResult _selectedReturnsETOverDue;
+        public MyReturnsResult SelectedReturnsETOverDue
+        {
+            get
+            {
+                return _selectedReturnsETOverDue;
+            }
+            set
+            {
+                _selectedReturnsETOverDue = value;
+                RaisePropertyChanged("SelectedReturnsETOverDue");
+
+                if (_selectedReturnsETOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+
+        private MyReturnsResult _selectedReturnsWHSubmitted;
+        public MyReturnsResult SelectedReturnsWHSubmitted
+        {
+            get
+            {
+                return _selectedReturnsWHSubmitted;
+            }
+            set
+            {
+                _selectedReturnsWHSubmitted = value;
+                RaisePropertyChanged("SelectedReturnsWHSubmitted");
+
+                if (_selectedReturnsWHSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+
+        private MyReturnsResult _selectedReturnsWHNonSubmitted;
+        public MyReturnsResult SelectedReturnsWHNonSubmitted
+        {
+            get
+            {
+                return _selectedReturnsWHNonSubmitted;
+            }
+            set
+            {
+                _selectedReturnsWHNonSubmitted = value;
+                RaisePropertyChanged("SelectedReturnsWHNonSubmitted");
+
+                if (_selectedReturnsWHNonSubmitted != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+        private MyReturnsResult _selectedReturnsWHOverDue;
+        public MyReturnsResult SelectedReturnsWHOverDue
+        {
+            get
+            {
+                return _selectedReturnsWHOverDue;
+            }
+            set
+            {
+                _selectedReturnsWHOverDue = value;
+                RaisePropertyChanged("SelectedReturnsWHOverDue");
+
+                if (_selectedReturnsWHOverDue != null)// FZ12 to check that the selected return belongs to Form 12 return
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+
+
+                }
+            }
+        }
+
+
         private List<MyReturnsResult> _returnsZakatSubmited = null;
         public List<MyReturnsResult> ReturnsZakatSubmited
         {
