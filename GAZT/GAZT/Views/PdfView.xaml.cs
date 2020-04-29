@@ -20,6 +20,9 @@ namespace GAZT.Views
 		{
             viewModel = App.Locator.pdfView;    
             InitializeComponent();
+
+            PdfViewForCertificate.Unload();
+
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.pdfUrl = Pdfurl;
