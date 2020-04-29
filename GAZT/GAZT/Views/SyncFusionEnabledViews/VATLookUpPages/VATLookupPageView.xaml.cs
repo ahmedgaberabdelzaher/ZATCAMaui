@@ -464,10 +464,10 @@ namespace GAZT.Views.NewViews
         {
             viewModel.SelectedParameterType = viewModel.SelectedParameterTypePrev;
             PPicker.SelectedItem = viewModel.SelectedParameterTypePrev;
-            //if(viewModel.SelectedParameterTypePrev == null)
-            //{
-            //    viewModel.TxtSearchParameter = string.Empty;
-            //}
+            if(viewModel.SelectedParameterTypePrev == null)
+            {
+                viewModel.TxtSearchParameter = string.Empty;
+            }
         }
 
    
