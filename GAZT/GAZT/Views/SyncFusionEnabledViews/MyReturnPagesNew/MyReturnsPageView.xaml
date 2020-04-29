@@ -672,7 +672,7 @@
                                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
                                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="-"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </local:CustomLabel>
