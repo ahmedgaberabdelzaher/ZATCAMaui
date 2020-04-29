@@ -476,17 +476,21 @@ namespace GAZT.ViewModel.NewViewModel
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
                 
                 string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
-                SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
 
-                if (ResultFirstSubmitModel.d == null)
+                if (ResultFirstSubmit != null)
                 {
-                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                    _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                    SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
 
-                }
-                else
-                {
-                    _navigationService.NavigateTo(App.AccountCreatedPageView);
+                    if (ResultFirstSubmitModel.d == null)
+                    {
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                        _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+
+                    }
+                    else
+                    {
+                        _navigationService.NavigateTo(App.AccountCreatedPageView);
+                    }
                 }
             }
             catch (InternetException ex)

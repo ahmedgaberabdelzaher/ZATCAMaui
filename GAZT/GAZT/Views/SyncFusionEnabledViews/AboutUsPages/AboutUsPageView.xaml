@@ -45,11 +45,17 @@
 
     <ContentPage.Content>
 
-        <StackLayout>
-            <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+           
 
-                <WebView x:Name="AboutUsWebView" Source="{Binding WebUrl}" HeightRequest="860" WidthRequest="1000" />
-            </ScrollView>
-        </StackLayout>
+                <WebView x:Name="AboutUsWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" />
+         
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
