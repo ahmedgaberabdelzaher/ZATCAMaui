@@ -79,7 +79,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"  Text="{Binding SubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" />
+                                            <local:CustomLabel   FontFamily="{StaticResource SSTArabicMedium}" TextColor="#495F6E" Margin="10,0,10,0" Padding="0"  Text="{Binding SubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -238,7 +238,7 @@
                                 <syncfusion:SfExpander   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel  FlowDirection="{Binding FDirection}" TextColor="#495F6E"   FontFamily="{StaticResource SSTArabicMedium}" Margin="10,0,10,0"  Text="{Binding SubmittedZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -398,7 +398,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedETReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -558,7 +558,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding SubmittedWHReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -734,7 +734,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsVATNonSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding NonSubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -893,7 +893,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsZakatNonSubmitedExpander" IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedZakatReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1052,7 +1052,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsETNonSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedETReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1212,7 +1212,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsWHNonSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding NonSubmittedWHReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1384,7 +1384,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsVATOverDueExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0" >
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueVATReturnsCount}"   FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1543,7 +1543,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsZakatOverDueExpander" IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueZakatReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueZakatReturnsCount}" FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1703,7 +1703,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsETOverDueExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueETReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueETReturnsCount}" FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
@@ -1863,7 +1863,7 @@
                                 <syncfusion:SfExpander x:Name="ReturnsWHOverDueExpander"  IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueWHReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{Binding OverDueWHReturnsCount}" FontFamily="{StaticResource SSTArabicMedium}" HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
