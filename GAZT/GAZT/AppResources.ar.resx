@@ -3055,4 +3055,28 @@
     <value>التزاماتي القادمة</value>
     <comment>Dashboard</comment>
   </data>
+  <data name="ZZZTotalPurchasesAdjustment" xml:space="preserve">
+    <value>إجمالي تصحيحات المشتريات من فترات سابقة</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalPurchasesAmount" xml:space="preserve">
+    <value>إجمالي قيمة المشتريات</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalSalesAdjustment" xml:space="preserve">
+    <value>إجمالي تصحيحات المبيعات من فترات سابقة</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalSalesAmount" xml:space="preserve">
+    <value>إجمالي قيمة المبيعات</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalVATTaxableAmountonPurchases" xml:space="preserve">
+    <value>إجمالي قيمة المشتريات الخاضعة للضريبة</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalVATTaxableAmountonSales" xml:space="preserve">
+    <value>إجمالي قيمة المبيعات الخاضعة للضريبة</value>
+    <comment>VAT Form Label</comment>
+  </data>
 </root>

@@ -7720,6 +7720,60 @@ namespace GAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Purchases Adjustment.
+        /// </summary>
+        public static string ZZZTotalPurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZZZTotalPurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Purchases Amount.
+        /// </summary>
+        public static string ZZZTotalPurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZZZTotalPurchasesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Sales Adjustment.
+        /// </summary>
+        public static string ZZZTotalSalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZZZTotalSalesAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Sales Amount.
+        /// </summary>
+        public static string ZZZTotalSalesAmount {
+            get {
+                return ResourceManager.GetString("ZZZTotalSalesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total VAT Taxable Amount on Purchases.
+        /// </summary>
+        public static string ZZZTotalVATTaxableAmountonPurchases {
+            get {
+                return ResourceManager.GetString("ZZZTotalVATTaxableAmountonPurchases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total VAT Taxable Amount on Sales.
+        /// </summary>
+        public static string ZZZTotalVATTaxableAmountonSales {
+            get {
+                return ResourceManager.GetString("ZZZTotalVATTaxableAmountonSales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
         public static string ZZZVATLookupTitle {
