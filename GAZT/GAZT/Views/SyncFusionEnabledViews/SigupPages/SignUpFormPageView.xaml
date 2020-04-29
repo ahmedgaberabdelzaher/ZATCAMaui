@@ -51,8 +51,8 @@
         <!--ZZZRequired-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" RowSpacing="0" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="80*" />
-                <RowDefinition Height="20*" />
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -423,7 +423,7 @@
             
             
             
-                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" VerticalOptions="End" HeightRequest="56" BackgroundColor="White" >
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
                     <buttons:SfButton x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZNext}" CornerRadius="0" VerticalOptions="End" FontAttributes="Bold"  HeightRequest="56" Clicked="btnSubmitNext_Clicked"   Margin="0" FontSize="15"   Grid.ColumnSpan="2"   Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" />
             </StackLayout>
             <!--<Grid  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">

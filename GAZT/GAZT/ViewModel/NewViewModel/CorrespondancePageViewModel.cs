@@ -36,6 +36,20 @@ namespace GAZT.ViewModel.NewViewModel
         CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
 
+        private int _headerCount = 3;
+        public int HeaderCount
+        {
+            get
+            {
+                return _headerCount;
+            }
+            set
+            {
+                _headerCount = value;
+                RaisePropertyChanged("HeaderCount");
+            }
+        }
+
         private TextAlignment _labelHzAlignment = TextAlignment.Start;
 
         public TextAlignment LabelHzAlignment
@@ -981,30 +995,59 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                IsZakatTabVisible = false;
-                IsVATTabVisible = false;
-                IsETTabVisible = false;
-                if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
-                {
+                IsZakatTabVisible = true;
+                IsVATTabVisible = true;
+                IsETTabVisible = true;
+                //if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                //{
 
-                    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
-                    foreach (string ItemType in TpTypes)
-                    {
-                        if (ItemType == "05")
-                        {
-                            IsZakatTabVisible = true;
-                        }
-                        if (ItemType == "03" || ItemType == "13")
-                        {
-                            IsVATTabVisible = true;
-                        }
-                        if (ItemType == "07")
-                        {
-                            IsETTabVisible = true;
-                        }
+                //    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                //    foreach (string ItemType in TpTypes)
+                //    {
+                //        if (ItemType == "05")
+                //        {
+                //            IsZakatTabVisible = true;
+                //        }
+                //        if (ItemType == "03" || ItemType == "13")
+                //        {
+                //            IsVATTabVisible = true;
+                //        }
+                //        if (ItemType == "07")
+                //        {
+                //            IsETTabVisible = true;
+                //        }
                     
-                    }
-                }
+                //    }
+                //}
+
+                //if(IsZakatTabVisible==true && IsVATTabVisible == true && IsETTabVisible == true)
+                //{
+                //    HeaderCount = 3;
+                //}
+                //else if(IsZakatTabVisible == false && IsVATTabVisible == true && IsETTabVisible == true)
+                //{
+                //    HeaderCount = 2;
+                //}
+                //else if (IsZakatTabVisible == true && IsVATTabVisible == false && IsETTabVisible == true)
+                //{
+                //    HeaderCount = 2;
+                //}
+                //else if (IsZakatTabVisible == true && IsVATTabVisible == true && IsETTabVisible == false)
+                //{
+                //    HeaderCount = 2;
+                //}
+                //else if (IsZakatTabVisible == true && IsVATTabVisible == false && IsETTabVisible == false)
+                //{
+                //    HeaderCount = 1;
+                //}
+                //else if (IsZakatTabVisible == false && IsVATTabVisible == true && IsETTabVisible == false)
+                //{
+                //    HeaderCount = 1;
+                //}
+                //else if (IsZakatTabVisible == false && IsVATTabVisible == false && IsETTabVisible == true)
+                //{
+                //    HeaderCount = 1;
+                //}
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
 
                 // Assigning data in the list

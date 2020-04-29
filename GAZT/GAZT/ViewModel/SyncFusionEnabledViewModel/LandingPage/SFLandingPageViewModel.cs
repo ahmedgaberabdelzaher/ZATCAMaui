@@ -227,8 +227,11 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     UnsubmittedReturn.ColorCode = System.Drawing.Color.Gray;
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
+                
                 if (listofPaymentReturn != null)
                 {
+                    DateTime Today =  DateTime.Now;
+                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today).ToList<OverduePaymentsAndUnSubmittedReturn>();
                     if (listofPaymentReturn.Count > 3)
                     {
                         listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
