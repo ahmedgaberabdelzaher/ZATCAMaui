@@ -305,7 +305,7 @@ namespace GAZT.Views.NewViews
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
 
-                                    viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
+                                    viewModel._dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
 

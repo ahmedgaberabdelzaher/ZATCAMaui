@@ -751,7 +751,7 @@
     <value>رقم السجل التجاري</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
+    <value>عدد األرقام في رمز المعرف يجب أن يكون 10 رقم</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -784,7 +784,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>Entered number must be 15 digit</value>
+    <value>عدد األرقام في رمز المعرف يجب أن يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>أهلا:</value>
