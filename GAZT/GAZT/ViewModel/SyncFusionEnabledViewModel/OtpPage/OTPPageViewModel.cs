@@ -952,7 +952,12 @@ namespace GAZT.ViewModel.NewViewModel
 
                     ShowAccountWIllBeLockedMessage();
                     FrmColour = "#B1B1B1";
-                    TinNumber = App.TP.Tin;
+
+                    if (App.TP != null && !string.IsNullOrEmpty(App.TP.Tin))
+                    {
+                        TinNumber = App.TP.Tin;
+                    }
+                    
                     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
                     {
                         string mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
