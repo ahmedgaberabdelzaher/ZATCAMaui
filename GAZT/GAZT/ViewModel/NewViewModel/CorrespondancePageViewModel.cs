@@ -1132,9 +1132,14 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    ZakatCountDisplay = AppResources.ZZZAKAT + "(0)";
+                    if (IsZakatTabVisible == true)
+                    {
+                        ZakatCountDisplay = AppResources.ZZZAKAT + "(0)";
+                    }
                     IsZakatVisible = false;
-                    IsZakatVisibleLabel = true;
+                    
+                        IsZakatVisibleLabel = true;
+                    
                 }
                
                 PopToRootPage();
@@ -1252,9 +1257,14 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 else
                 {
-                    VATCountDisplay = AppResources.ZZVAT + "(0)";
+                    if (IsVATTabVisible == true)
+                    {
+                        VATCountDisplay = AppResources.ZZVAT + "(0)";
+                    }
                     IsVATVisible = false;
-                    IsVATVisibleLabel = true;
+                   
+                        IsVATVisibleLabel = true;
+                    
                 }
                
                 PopToRootPage();
@@ -1375,7 +1385,10 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsETVisible = false;
                     IsETVisibleLabel = true;
-                    ETCountDisplay = AppResources.ZZET + "(0)";
+                    if (IsETTabVisible == true)
+                    {
+                        ETCountDisplay = AppResources.ZZET + "(0)";
+                    }
                 }
                
             }
