@@ -748,6 +748,23 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private int _forgotTypeIndex ;
+
+        public int ForgotTypeIndex
+        {
+            get
+            {
+                return _forgotTypeIndex;
+            }
+            set
+            {
+                _forgotTypeIndex = value;
+                RaisePropertyChanged("ForgotTypeIndex");
+            }
+        }
+
+        
+
         #endregion
 
         #region Constructor
@@ -890,10 +907,10 @@ namespace GAZT.ViewModel.NewViewModel
 
             };
                 ForgotTypeList = forgotCredentialListlist;
-
                 if(ForgotTypeList!=null && ForgotTypeList.Count!=0)
                 {
-                    SelectedForgotType = ForgotTypeList.Where(x => x.id == "1").FirstOrDefault();
+                    SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
+                    ForgotTypeIndex = 1;
                 }
 
                
