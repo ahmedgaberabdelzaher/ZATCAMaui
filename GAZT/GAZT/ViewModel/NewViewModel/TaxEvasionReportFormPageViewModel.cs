@@ -1028,6 +1028,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
                 regionlist = WebServiceManager.GAZTTESFormGetRegion();
                 if (regionlist != null && regionlist.RegionList.Count != 0)
@@ -1088,7 +1089,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-                string date = DatePick;
+                string date = DateTime.UtcNow.ToString("yyyy/MM/dd");//1902/03/09
+                date = DatePick;
                 TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 TaxEvasionReportTobeUsedToSubmit.ReceivedDate = date;
                 TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;

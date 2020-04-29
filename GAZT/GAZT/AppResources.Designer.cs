@@ -1083,7 +1083,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Dues.
+        ///   Looks up a localized string similar to No Upcoming Commitments.
         /// </summary>
         public static string NoAppointmentText {
             get {

@@ -1555,7 +1555,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                    throw new InternetException(AppResources.ZZSomethingwentwrong);
                 }
             }
             else
