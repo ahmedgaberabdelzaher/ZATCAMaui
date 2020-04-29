@@ -400,6 +400,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 {
                     EstimatedZakatReturnsResult ChidlSelectedICR = new EstimatedZakatReturnsResult();
                     ChidlSelectedICR = SelectedZakatReturn;
+                    if(ChidlSelectedICR!=null && ChidlSelectedICR.Fbtyp!=null)
+                    { 
                     if (ChidlSelectedICR.Fbtyp.Equals("FZ12"))
                     {
                         ReturnPeriod = ChidlSelectedICR.Period;
@@ -415,6 +417,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
+                    }
+
                     }
                 }
             }
