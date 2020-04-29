@@ -5159,5 +5159,41 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMyUpcomingCommitments", resourceCulture);
             }
         }
+        
+        public static string ZZZTotalPurchasesAdjustment {
+            get {
+                return ResourceManager.GetString("ZZZTotalPurchasesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTotalPurchasesAmount {
+            get {
+                return ResourceManager.GetString("ZZZTotalPurchasesAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTotalSalesAdjustment {
+            get {
+                return ResourceManager.GetString("ZZZTotalSalesAdjustment", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTotalSalesAmount {
+            get {
+                return ResourceManager.GetString("ZZZTotalSalesAmount", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTotalVATTaxableAmountonPurchases {
+            get {
+                return ResourceManager.GetString("ZZZTotalVATTaxableAmountonPurchases", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTotalVATTaxableAmountonSales {
+            get {
+                return ResourceManager.GetString("ZZZTotalVATTaxableAmountonSales", resourceCulture);
+            }
+        }
     }
 }

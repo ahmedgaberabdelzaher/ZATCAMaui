@@ -24,7 +24,7 @@ namespace GAZT.Helper
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
 
-
+        public static string ForgotPasswordServiceName = "ZMB_ZDP_FRGT_USRNM_PWD_SRV";// service name has been used in Metadata in ForgotUserNamePassword Page
         public static string JSONContentType = "application/json";
         public static string GAZTSOAPWebRequestForAuthenticationService = BaseUrlOfAuthentication + "/local~mblgapi/AuthenticatedService";
         public static string GAZTSendAndReceiveOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='";
@@ -42,7 +42,7 @@ namespace GAZT.Helper
         public static string GetMyBills = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_MYBILLS_SRV/MyBillsSet?$filter=";
         public static string FogotPasswordSendOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='";
         public static string SendUserNameToEmail = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
-        public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet? saml2 = disabled";
+        public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
         public static string ChangePassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
 
 

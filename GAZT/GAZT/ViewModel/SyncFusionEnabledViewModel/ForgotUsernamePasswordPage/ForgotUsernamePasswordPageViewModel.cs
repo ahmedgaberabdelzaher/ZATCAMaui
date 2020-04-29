@@ -1170,14 +1170,13 @@ namespace GAZT.ViewModel.NewViewModel
                         currentAttempts++;
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-                        //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
 
-                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/"+Constants.ForgotPasswordServiceName+"/HeaderSet(Tin=";
 
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
-                        string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                        string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
                         Metadata metadata = new Metadata();
                         metadata.id = id;
@@ -1299,14 +1298,13 @@ namespace GAZT.ViewModel.NewViewModel
                 {
 
                     string lang = UtilityManager.GetLanguageParameter();
-                    string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-                    //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                    string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                     string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
 
-                    string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                    string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
 
                     string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "1" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
-                    string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                    string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                     ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
                     Metadata metadata = new Metadata();
                     metadata.id = id;
@@ -1397,14 +1395,13 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
-                        //string str = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3050000029',Langu='EN',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='5866',Dob=datetime'2019-12-21T00%3A00%3A00',NewPwd='',RdBt='P')";
+                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
 
-                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin=";
+                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
 
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
-                        string type = "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                        string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
                         Metadata metadata = new Metadata();
                         metadata.id = id;

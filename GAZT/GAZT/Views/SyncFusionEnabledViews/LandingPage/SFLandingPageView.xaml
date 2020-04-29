@@ -207,7 +207,10 @@
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Amount}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Amount}" FontSize="9"></Span>
+                                                                <Span Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray"  Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="9"></Span>
+
+                                                                
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
@@ -275,7 +278,7 @@
 
                     </Grid>
                     <StackLayout BackgroundColor="White">
-                        <local1:CustomLabel Padding="5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
+                        <local1:CustomLabel Padding="5,10,5,5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
 
                         <listView:SfListView SelectionMode="None" BackgroundColor="White" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 
@@ -319,7 +322,7 @@
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
                                                     </local1:CustomLabel>
-                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelValue}" >
+                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelValue}" FontSize="9">
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
