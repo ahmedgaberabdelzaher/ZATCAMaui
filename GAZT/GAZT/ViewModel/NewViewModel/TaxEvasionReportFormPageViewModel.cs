@@ -729,8 +729,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _selectedTaxEvasionRegion = value;
                 if (_selectedTaxEvasionRegion != null)
                 {
-                    //IsCPickerEnable = true;
-                    //string v= SelectedTaxEvasionRegion.RegionCode;
+    
                     onSelectedTaxEvasionRegion();
                     if (App.IsArabic)
                     {
@@ -1075,10 +1074,6 @@ namespace GAZT.ViewModel.NewViewModel
                     PopToRootPage();
                     CList = citylist.CityList;
                 }
-                
-
-                
-                // FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results;
             }
             catch (InternetException ex)
             {
