@@ -265,7 +265,7 @@ namespace GAZT.ViewModel.NewViewModel
 
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-                    if (fileData != null)
+                    if (fileData != null && fileData.DataArray!=null && fileData.DataArray.Length > 0)
                     {
 
 

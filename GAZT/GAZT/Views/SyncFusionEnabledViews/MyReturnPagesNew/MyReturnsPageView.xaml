@@ -87,7 +87,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView   HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -401,7 +401,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsETSubmitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -561,7 +561,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsWHSubmitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
@@ -740,7 +740,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -899,7 +899,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1053,12 +1053,12 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsETNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsETNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsETNonSubmitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1213,12 +1213,12 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsWHNonSubmited" SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsWHNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsWHNonSubmitted}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1388,7 +1388,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1547,7 +1547,7 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1702,12 +1702,12 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETOverDue"  SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETOverDue"    AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsETOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
@@ -1862,12 +1862,12 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHOverDue"   SelectionMode="None" AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}">
+                                            <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHOverDue"     AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}" SelectionBackgroundColor="White" SelectedItem="{Binding SelectedReturnsWHOverDue}">
 
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
-                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
+                                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
 
 
                                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >

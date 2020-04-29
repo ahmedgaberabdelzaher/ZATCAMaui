@@ -40,14 +40,11 @@ namespace GAZT.Views.NewViews
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
-                //if (CorrModel != null && CorrModel.RefNumber != null)
-                //{
-                //    if (App.IsArabic)
-                //    {
-                //        CorrModel.RefNumber = UtilityManager.ConvertNumerals(CorrModel.RefNumber);
-                //    }
-                //}
-                CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+
+
+                        CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
+                 
+                
 
                 if ((CorrespondenceD != null) && (CorrespondenceD.d != null) && (CorrespondenceD.d.results != null))
                 {
@@ -78,6 +75,8 @@ namespace GAZT.Views.NewViews
             string HTMLContent = string.Empty;
             string HTMLContentTest = string.Empty;
 
+            if(CorrespondenceD!= null && CorrespondenceD.d!=null && CorrespondenceD.d.results!=null)
+            { 
             foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
             {
 
@@ -111,14 +110,13 @@ namespace GAZT.Views.NewViews
                 CorWebView.Source = htmlSource;
 
             }
-           // var htmlSource = new HtmlWebViewSource();
 
-           // htmlSource.Html = newHTMLContent;
-           //// htmlSource.Html = HTMLContent;
 
-            //htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
-            //CorWebView.Source = htmlSource;
 
+            }
+
+            if (CorrModel!= null)
+            { 
             viewModel.CorrespondenceTitle = CorrModel.Title;
             viewModel.CorrespondenceD = CorrModel;
             if (CorrModel.IsFav == true)
@@ -128,6 +126,7 @@ namespace GAZT.Views.NewViews
             else
             {
                 viewModel.FavIcon = "ic_star_border.png";
+            }
             }
             SetLTR();
         }

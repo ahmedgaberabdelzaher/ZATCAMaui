@@ -148,6 +148,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+
+
         private bool _isZakatVisible = false;
         public bool IsZakatVisible
         {
@@ -159,6 +161,19 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _isZakatVisible = value;
                 RaisePropertyChanged("IsZakatVisible");
+            }
+        }
+        private bool _isZakatTabVisible = false;
+        public bool IsZakatTabVisible
+        {
+            get
+            {
+                return _isZakatTabVisible;
+            }
+            set
+            {
+                _isZakatTabVisible = value;
+                RaisePropertyChanged("IsZakatTabVisible");
             }
         }
 
@@ -190,6 +205,20 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isVATTabVisible = false;
+        public bool IsVATTabVisible
+        {
+            get
+            {
+                return _isVATTabVisible;
+            }
+            set
+            {
+                _isVATTabVisible = value;
+                RaisePropertyChanged("IsVATTabVisible");
+            }
+        }
+
         private bool _isVATVisibleLabel = false;
         public bool IsVATVisibleLabel
         {
@@ -215,6 +244,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _isETVisible = value;
                 RaisePropertyChanged("IsETVisible");
+            }
+        }
+
+        private bool _isETTabVisible = false;
+        public bool IsETTabVisible
+        {
+            get
+            {
+                return _isETTabVisible;
+            }
+            set
+            {
+                _isETTabVisible = value;
+                RaisePropertyChanged("IsETTabVisible");
             }
         }
 
@@ -938,6 +981,30 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
+                IsZakatTabVisible = false;
+                IsVATTabVisible = false;
+                IsETTabVisible = false;
+                if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                {
+
+                    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                    foreach (string ItemType in TpTypes)
+                    {
+                        if (ItemType == "05")
+                        {
+                            IsZakatTabVisible = true;
+                        }
+                        if (ItemType == "03" || ItemType == "13")
+                        {
+                            IsVATTabVisible = true;
+                        }
+                        if (ItemType == "07")
+                        {
+                            IsETTabVisible = true;
+                        }
+                    
+                    }
+                }
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
 
                 // Assigning data in the list
