@@ -20,6 +20,7 @@ namespace GAZT.Views
 		{
             viewModel = App.Locator.pdfView;    
             InitializeComponent();
+
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.pdfUrl = Pdfurl;
@@ -33,16 +34,20 @@ namespace GAZT.Views
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+          
             viewModel.DownloadUrl = string.Empty;
-            //viewModel.LocalPath = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
+            
             await viewModel.OnPageLoad();
             
         }
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
+
+            PdfViewForCertificate.Unload();
+
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
