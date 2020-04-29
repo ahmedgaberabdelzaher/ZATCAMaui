@@ -71,7 +71,7 @@
                                         TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
+                                   IsVisible="{Binding IsZakatTabVisible}"
                              TitleFontColor="Gray">
 
                         <tabView:SfTabItem.Content>
@@ -343,7 +343,7 @@
                     <tabView:SfTabItem Title="{Binding VATCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
+                                    IsVisible="{Binding IsVATTabVisible}"
                              TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
 
@@ -623,7 +623,7 @@
                     <tabView:SfTabItem Title="{Binding ETCountDisplay}"  TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
+                                    IsVisible="{Binding IsETTabVisible}"
                              TitleFontColor="Gray">
                         <tabView:SfTabItem.Content>
 
