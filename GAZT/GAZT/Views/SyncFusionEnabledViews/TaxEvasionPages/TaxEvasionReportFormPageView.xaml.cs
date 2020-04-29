@@ -930,6 +930,7 @@ namespace GAZT.Views.NewViews
                 //viewModel.UploadedDocumentsListObj = null;
                 viewModel.CList.Clear();
                 viewModel.RList.Clear();
+                viewModel.AttachmentCount = 0;
                 viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
@@ -1350,7 +1351,7 @@ namespace GAZT.Views.NewViews
                 string month = selectedItem[0].ToString();
                 string day = selectedItem[1].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.DatePick = year + "/" + month + "/" + day;
+                viewModel.DatePick = day + "/" + month + "/" + year;
             }
             catch (Exception ex)
             {

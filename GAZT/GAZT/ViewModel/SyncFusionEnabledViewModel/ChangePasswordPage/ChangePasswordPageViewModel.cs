@@ -574,6 +574,7 @@ namespace GAZT
                 RetypePasswordForEmail = string.Empty;
                 IsEnabledNewPasswordForEmail = true;
                 IsEnabledRetypePasswordForEmail = true;
+                CurrentPassword = string.Empty;
             }
             catch(Exception ex)
             {
