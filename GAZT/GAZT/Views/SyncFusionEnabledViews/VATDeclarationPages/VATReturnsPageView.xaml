@@ -1303,36 +1303,36 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Micro" Grid.Row="0" Grid.Column="0">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="6." FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTotalSales}"/>
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalSalesAmount}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
+                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
 
-                                            <Label   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0">
+                                            <Label Margin="10,0,10,1" FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTotalAdjustment}"/>
+                                                        <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalSalesAdjustment}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-                                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
+                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
 
 
-                                            <local1:CustomLabel   Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                            <local1:CustomLabel Margin="10,0,10,1"  FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZTotalVat}"/>
+                                                        <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalVATTaxableAmountonSales}"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <Label Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
+                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
                                         </Grid>
 
                                         <Frame Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
@@ -2121,38 +2121,38 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-                                            <local1:CustomLabel  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                                            <local1:CustomLabel  Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontSize="Micro"  Grid.Row="0" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="12." FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTotalPurchases}"/>
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalPurchasesAmount}"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                            <local1:CustomLabel FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAmt, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}"  HorizontalOptions="CenterAndExpand" x:Name="LabelTotalpurchaseAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                                            <local1:CustomLabel  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0"  >
-                                                <local1:CustomLabel.FormattedText>
+                                            <local1:CustomLabel  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Margin="10,0,10,1" FontSize="Micro" Text="{x:Static local1:AppResources.ZZZTotalPurchasesAdjustment}" Grid.Row="1" Grid.Column="0"  >
+                                                <!--<local1:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}" />
-                                                        <Span Text="{x:Static local1:AppResources.ZVatTotalAdjustment}"/>
+                                                        --><!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}" />--><!--
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalPurchasesAdjustment}"/>
                                                     </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel.FormattedText>-->
                                             </local1:CustomLabel>
-                                            <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                            <local1:CustomLabel FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseAdj, StringFormat='{0:D2}'}" x:Name="LabelTotalpurchaseAdj" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"/>
 
 
-                                            <local1:CustomLabel FlowDirection="LeftToRight"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
-                                                <local1:CustomLabel.FormattedText>
+                                            <local1:CustomLabel FlowDirection="LeftToRight" Margin="10,0,10,1"   FontSize="Micro" Text="{x:Static local1:AppResources.ZZZTotalVATTaxableAmountonPurchases}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                                <!--<local1:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZZVATAmount}"/>
+                                                        --><!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>--><!--
+                                                        <Span Text="{x:Static local1:AppResources.ZZZTotalVATTaxableAmountonPurchases}"/>
                                                     </FormattedString>
-                                                </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel.FormattedText>-->
                                             </local1:CustomLabel>
-                                            <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                            <local1:CustomLabel FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalpurchaseVat, StringFormat='{0:D2}'}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
 
-                                            <local1:CustomLabel FlowDirection="LeftToRight"  Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0">
+                                            <local1:CustomLabel FlowDirection="LeftToRight" FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="3" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="13." FontFamily="{StaticResource SSTArBold}"/>
@@ -2160,13 +2160,13 @@
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <local1:CustomLabel Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                                            <local1:CustomLabel FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotaldueVat}"  x:Name="LabelTotaldueVat" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"  HorizontalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
 
                                             <local1:CustomLabel FlowDirection="LeftToRight"  FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="14." FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}"/>
+                                                        <Span Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.CarriedValueString}" FontFamily="{StaticResource SSTArBold}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </local1:CustomLabel>
@@ -2250,7 +2250,7 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="15." FontFamily="{StaticResource SSTArBold}"/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatcreditcarriedforward}"/>
+                                                        <Span Text="{x:Static local1:AppResources.ZVatcreditcarriedforward}" FontFamily="{StaticResource SSTArBold}"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
@@ -2312,7 +2312,7 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="16."/>
-                                                        <Span Text="{x:Static local1:AppResources.ZVatNetdue}"/>
+                                                        <Span Text="{x:Static local1:AppResources.ZVatNetdue}" FontFamily="{StaticResource SSTArBold}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

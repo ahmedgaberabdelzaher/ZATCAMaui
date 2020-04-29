@@ -3062,4 +3062,28 @@ Should we require further information, we would be in contact.</value>
     <value>My Upcoming Commitments</value>
     <comment>Dashboard</comment>
   </data>
+  <data name="ZZZTotalPurchasesAdjustment" xml:space="preserve">
+    <value>Total Purchases Adjustment</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalPurchasesAmount" xml:space="preserve">
+    <value>Total Purchases Amount</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalSalesAdjustment" xml:space="preserve">
+    <value>Total Sales Adjustment</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalSalesAmount" xml:space="preserve">
+    <value>Total Sales Amount</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalVATTaxableAmountonPurchases" xml:space="preserve">
+    <value>Total VAT Taxable Amount on Purchases</value>
+    <comment>VAT Form Label</comment>
+  </data>
+  <data name="ZZZTotalVATTaxableAmountonSales" xml:space="preserve">
+    <value>Total VAT Taxable Amount on Sales</value>
+    <comment>VAT Form Label</comment>
+  </data>
 </root>

@@ -207,7 +207,10 @@
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " FontSize="Micro"></Span>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Amount}" FontSize="Micro"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Amount}" FontSize="9"></Span>
+                                                                <Span Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray"  Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="9"></Span>
+
+                                                                
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
@@ -319,7 +322,7 @@
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
                                                     </local1:CustomLabel>
-                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelValue}" >
+                                                    <local1:CustomLabel Text="{Binding BillAmount}" TextColor="#006450"  FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelValue}" FontSize="9">
                                                         <Label.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnLabelClicked"></TapGestureRecognizer>
                                                         </Label.GestureRecognizers>
