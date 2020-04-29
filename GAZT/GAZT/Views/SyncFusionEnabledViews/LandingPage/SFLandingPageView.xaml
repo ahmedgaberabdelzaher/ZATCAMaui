@@ -275,7 +275,7 @@
 
                     </Grid>
                     <StackLayout BackgroundColor="White">
-                        <local1:CustomLabel Padding="5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
+                        <local1:CustomLabel Padding="5,10,5,5" BackgroundColor="White" TextColor="#006450" Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}" VerticalOptions="FillAndExpand"></local1:CustomLabel>
 
                         <listView:SfListView SelectionMode="None" BackgroundColor="White" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding BillsInfoItems}" SelectedItem="{Binding SelectedBillsType}">
 

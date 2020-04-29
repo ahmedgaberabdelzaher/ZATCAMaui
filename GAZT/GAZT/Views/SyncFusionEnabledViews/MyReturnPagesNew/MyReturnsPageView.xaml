@@ -68,6 +68,8 @@
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
+ FontIconFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                               TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
 
                                 TitleFontColor="Gray">
 
@@ -146,9 +148,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TaxPeriod}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -167,9 +169,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RetStatTxt}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding RetStatTxt}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -187,11 +189,11 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="-"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="-"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -210,9 +212,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -305,9 +307,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TaxPeriod}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -326,9 +328,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RetStatTxt}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding RetStatTxt}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -346,11 +348,11 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="-"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="-"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -369,9 +371,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -465,9 +467,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TaxPeriod}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -486,9 +488,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RetStatTxt}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding RetStatTxt}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -506,11 +508,11 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="-"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="-"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -529,9 +531,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -625,9 +627,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding TaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TaxPeriod}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -646,9 +648,9 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RetStatTxt}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding RetStatTxt}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -666,11 +668,11 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="-"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzu, StringFormat='{0:d}'}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="-"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Abrzo, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
@@ -689,8 +691,8 @@
                                                            >
                                                                             <Label.FormattedText>
                                                                                 <FormattedString>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                    <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDt, StringFormat='{0:d}'}"></Span>
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
@@ -706,7 +708,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -722,6 +724,8 @@
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
+ FontIconFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                               TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
 
                                 TitleFontColor="Gray">
 
@@ -1370,6 +1374,8 @@
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
+ FontIconFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                               TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
 
                                 TitleFontColor="Gray">
 
