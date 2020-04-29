@@ -34,6 +34,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             viewModel.OnPageLoad();
             viewModel.TabIndexStatus = Index;
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
             ReturnsVATSubmited.ItemTapped += (sender, e) =>
             {
                 if (e.ItemData == null)

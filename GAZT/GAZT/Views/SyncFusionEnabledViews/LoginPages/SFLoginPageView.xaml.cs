@@ -116,6 +116,9 @@ namespace GAZTeServicesApp.Views.LoginPage
            
             try
             {
+                viewModel.password = string.Empty;
+                viewModel.email = string.Empty;
+
                 MessagingCenter.Subscribe<string>(this, "TinList", message => {
                     viewModel.IsVisibleTinIds = true;
                 });

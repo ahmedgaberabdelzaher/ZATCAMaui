@@ -48,6 +48,7 @@ namespace GAZT.Views.NewViews
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
                 {
                     btn4.IsEnabled = false;
+
                     FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                     btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                     CityPicker.IsEnabled = false;
@@ -927,6 +928,8 @@ namespace GAZT.Views.NewViews
                 //viewModel.SelectedTaxEvasionRegion = null;
                 //viewModel.SelectLCType = null;
                 //viewModel.UploadedDocumentsListObj = null;
+                viewModel.CList.Clear();
+                viewModel.RList.Clear();
                 viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
