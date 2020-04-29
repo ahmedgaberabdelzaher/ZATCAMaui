@@ -27,8 +27,8 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         //private string email = "3102289204";
         //  private string email = "3102292043";
 
-        private string password;
-        private string email;
+        public string password;
+        public string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;

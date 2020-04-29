@@ -59,6 +59,31 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
                 } ((SfListView)sender).SelectedItem = null;
             };
 
+            ReturnsZakatSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsZakatNonSubmited.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+            ReturnsZakatOverDue.ItemTapped += (sender, e) =>
+            {
+                if (e.ItemData == null)
+                {
+                    return;
+                } ((SfListView)sender).SelectedItem = null;
+            };
+
+
             ReturnsETSubmited.ItemTapped += (sender, e) =>
             {
                 if (e.ItemData == null)

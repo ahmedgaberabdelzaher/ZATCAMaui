@@ -2935,7 +2935,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="NoAppointmentText" xml:space="preserve">
-    <value>لا يوجد مستحقات</value>
+    <value>لا يوجد التزامات قادمة</value>
   </data>
   <data name="ZReturnStatus" xml:space="preserve">
     <value>حالة الإقرار</value>

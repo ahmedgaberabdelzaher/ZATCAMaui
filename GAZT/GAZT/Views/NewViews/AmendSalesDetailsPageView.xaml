@@ -48,7 +48,7 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
             <Grid >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="88*"/>
@@ -59,10 +59,10 @@
                     <ColumnDefinition Width="auto"/>
 
                 </Grid.ColumnDefinitions>
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">-->
                     <ScrollView BackgroundColor="White" Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
-                        <Grid >
+                        <Grid BackgroundColor="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -336,7 +336,7 @@
                             </StackLayout>
                         </Grid>
                     </ScrollView>
-                </Grid>
+                <!--</Grid>-->
 
                 <buttons:SfButton Text="{x:Static local:AppResources.Save}" FontAttributes="Bold" TextColor="White"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56"  IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}" Opacity="0.7">
                     <VisualStateManager.VisualStateGroups>

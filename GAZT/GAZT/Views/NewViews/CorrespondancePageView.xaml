@@ -60,9 +60,10 @@
                     <ColumnDefinition Width="100*" />
 
                 </Grid.ColumnDefinitions>
-                <tabView:SfTabView BackgroundColor="White" VerticalOptions="FillAndExpand" x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  >
+                <tabView:SfTabView BackgroundColor="White" SelectionChanged="tabView_SelectionChanged" VerticalOptions="FillAndExpand"  x:Name="tabView" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"   VisibleHeaderCount="{Binding HeaderCount}" >
                     <tabView:SfTabView.SelectionIndicatorSettings>
                         <tabView:SelectionIndicatorSettings
+                        
                     Color="DarkGreen"
                     Position="Bottom"
                     StrokeThickness="2"/>

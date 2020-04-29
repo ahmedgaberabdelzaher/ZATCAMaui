@@ -274,5 +274,10 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtSelectedStatusET = string.Empty;
             }
         }
+
+        private void tabView_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
