@@ -51,7 +51,7 @@
                     <Grid.RowDefinitions>
 
                         <RowDefinition Height="90*" />
-                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="auto" />
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -3267,9 +3267,11 @@
                 </StackLayout>-->
 
 
-
+                    <!--<StackLayout BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" VerticalOptions="FillAndExpand">
+                        
+                    </StackLayout>-->
                     <!--<StackLayout BackgroundColor="White" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="8" Margin="0,0,0,-10" VerticalOptions="EndAndExpand">-->
-                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" FontAttributes="Bold" IsEnabled="{Binding IsMainButtonEnabled}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
+                    <Button  Text="{Binding ButtonName}" VerticalOptions="EndAndExpand" FontAttributes="Bold" IsEnabled="{Binding IsMainButtonEnabled}" IsVisible="{Binding IsMainButtonVisible}" Grid.Row="1" Grid.Column="0" Command="{Binding OnStepButtonClicked}" TextColor="White"   Margin="0,0,0,-10" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450" Grid.ColumnSpan="2"
                      Opacity="0.7">
                         <!--<VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
