@@ -2199,7 +2199,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entered number must be 10 digit.
+        ///   Looks up a localized string similar to ID Number has to be 10 digits long.
         /// </summary>
         public static string ZCRNumberisnotequalto10 {
             get {
@@ -4449,7 +4449,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entered number must be 15 digit.
+        ///   Looks up a localized string similar to ID Number has to be 15 digits long.
         /// </summary>
         public static string ZVATNumberisnotequalto15 {
             get {
