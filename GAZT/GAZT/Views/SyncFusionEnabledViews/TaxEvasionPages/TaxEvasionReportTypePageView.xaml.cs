@@ -27,7 +27,7 @@ namespace GAZT.Views.NewViews
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            
+
 
             viewModel.TaxEvasionListobj = new TaxEvasionReport();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -95,6 +95,17 @@ namespace GAZT.Views.NewViews
 
 
 
+        }
+
+        private void BackButtonClicked(object sender, EventArgs e)
+        {
+            Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
+            Navigation.RemovePage(pg);
+           // viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, viewModel.MobileNumber);
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+               
+            //}
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

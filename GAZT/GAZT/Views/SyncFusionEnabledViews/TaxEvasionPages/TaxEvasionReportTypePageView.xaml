@@ -33,7 +33,7 @@
 
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            Clicked="BackButtonClicked"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
                             TextColor="#006450"
