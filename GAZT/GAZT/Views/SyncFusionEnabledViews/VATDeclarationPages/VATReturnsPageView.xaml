@@ -2459,6 +2459,8 @@
                     BorderColor="Black"
                                              ShowColumnHeader="False"
                                               ShowFooter="True"
+                                                                      FlowDirection="{Binding FDirection}"
+                                                                     
                                                                      OKButtonBackgroundColor="#EAF7CC"
                                                                      CancelButtonBackgroundColor="#EAF7CC"
                                                                      OkButtonClicked="BPicker_OkButtonClicked"
@@ -2518,6 +2520,7 @@
                           HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                                                                      FlowDirection="{Binding FDirection}"
                                                                 OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
                                              ShowColumnHeader="False"
                                              ShowFooter="True"
@@ -2574,6 +2577,8 @@
                     BorderColor="Black"
                                              ShowColumnHeader="False"
                                               ShowFooter="True"
+                                                                      FlowDirection="{Binding FDirection}"
+                                                                   
                                                                      OKButtonBackgroundColor="#EAF7CC"
                                                                      CancelButtonBackgroundColor="#EAF7CC"
                                                                      OkButtonClicked="BPicker2_OkButtonClicked"

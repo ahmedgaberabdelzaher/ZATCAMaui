@@ -240,11 +240,13 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
                 viewModel.FDirection = FlowDirection.LeftToRight;
+                viewModel.IsArabic = false;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.FDirection = FlowDirection.RightToLeft;
+                viewModel.IsArabic = true;
             }
         }
         protected override void OnAppearing()
