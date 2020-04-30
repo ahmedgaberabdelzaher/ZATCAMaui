@@ -441,11 +441,11 @@ namespace GAZT.Views.NewViews
             Note objNote = new Note();
 
             int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
             objNote.__metadata = new Metadata2();
             objNote.__metadata.id = Url;
             objNote.__metadata.uri = Url;
-            objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+            objNote.__metadata.type = "ZMB_ZDP_VATR_M_SRV.NOTES";
 
             objNote.Notenoz = (count + 1).ToString();
             objNote.DataVersionz = "00000";
@@ -491,11 +491,11 @@ namespace GAZT.Views.NewViews
                 Note objNote = new Note();
 
                 int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
                 objNote.__metadata = new Metadata2();
                 objNote.__metadata.id = Url;
                 objNote.__metadata.uri = Url;
-                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+                objNote.__metadata.type = "ZMB_ZDP_VATR_M_SRV.NOTES";
 
                 objNote.Notenoz = (count + 1).ToString();
                 objNote.DataVersionz = "00000";
