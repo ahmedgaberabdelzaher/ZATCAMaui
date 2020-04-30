@@ -122,7 +122,7 @@
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <cards:SfCardView HasShadow="True" IndicatorColor="{Binding ColorCode}" IndicatorPosition="Left" IndicatorThickness="5" VerticalOptions="CenterAndExpand"  Margin="0,0,0,0" Padding="0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="4" HorizontalOptions="FillAndExpand"  >
+                                        <cards:SfCardView HasShadow="True" IndicatorColor="{Binding ColorCode}" IndicatorPosition="Left"  IndicatorThickness="5" VerticalOptions="CenterAndExpand"  Margin="3" Padding="0" Opacity=".9" BorderWidth=".01" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand"  >
 
                                             <StackLayout Orientation="Horizontal"  BackgroundColor="White" HorizontalOptions="FillAndExpand" Margin="5" >
                                                 <Grid Style="{DynamicResource GridStyle}"  ColumnSpacing="0" RowSpacing="1"   BackgroundColor="White" HorizontalOptions="FillAndExpand" >
@@ -208,6 +208,7 @@
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}" FontSize="Micro"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " FontSize="Micro"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Amount}" FontSize="9"></Span>
+                                                              <Span Text=" "  TextColor="Gray"  Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="9"></Span>
                                                                 <Span Text="{x:Static local:AppResources.ZSAR}"  TextColor="Gray"  Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="9"></Span>
 
                                                                 
