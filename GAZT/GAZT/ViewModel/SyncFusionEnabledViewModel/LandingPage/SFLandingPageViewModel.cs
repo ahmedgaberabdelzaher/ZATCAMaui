@@ -216,7 +216,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
                     PaymentReturn.IsUnSubmittedReturn = false;
                     PaymentReturn.IsPaymentOverdue = true;
-                    PaymentReturn.ColorCode = System.Drawing.Color.Red;
+                    PaymentReturn.ColorCode = Color.FromHex("#AA0C19");
                     listofPaymentReturn.Add(PaymentReturn);
                 }
 
@@ -224,7 +224,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
                     UnsubmittedReturn.IsUnSubmittedReturn = true;
                     UnsubmittedReturn.IsPaymentOverdue = false;
-                    UnsubmittedReturn.ColorCode = System.Drawing.Color.Gray;
+                    UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
                 

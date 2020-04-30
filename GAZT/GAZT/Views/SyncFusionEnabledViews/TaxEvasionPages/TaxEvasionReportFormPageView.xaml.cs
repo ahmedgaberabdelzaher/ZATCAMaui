@@ -41,7 +41,7 @@ namespace GAZT.Views.NewViews
                 MainLayout.Padding = new Thickness(0, 0, 0, 0);
                 SetLTR();
                 this.BindingContext = viewModel;
-                clearFields(); ;
+                ClearFields(); 
                 viewModel.CreateCompanyTypeList();
                 viewModel.onPageLoad();//TaxEvasionReport
                 viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
@@ -918,7 +918,7 @@ namespace GAZT.Views.NewViews
 
 
         }
-        public void clearFields()
+        public void ClearFields()
         {
           
 

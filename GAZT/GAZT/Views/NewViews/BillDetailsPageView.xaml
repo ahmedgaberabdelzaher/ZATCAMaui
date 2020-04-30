@@ -59,7 +59,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" IsVisible="{Binding IsMainGridVisble}">
                 <Grid BindingContext="{Binding EstimatedZAKATSADADNumber}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="90*"/>
