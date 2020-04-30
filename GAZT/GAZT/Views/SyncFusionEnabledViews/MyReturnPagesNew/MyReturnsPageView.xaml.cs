@@ -1,8 +1,10 @@
 ﻿using GAZT.Models;
+using GAZT.ViewModel.NewViewModel;
 using GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
 using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
         MyReturnsPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
+        public static String ReturnPeriod = "";
         public MyReturnsPageView(int Index)
         {
             viewModel = App.Locator.MyReturnsPageView;
@@ -76,7 +79,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
-
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) +" - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
@@ -101,6 +104,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -125,6 +129,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
