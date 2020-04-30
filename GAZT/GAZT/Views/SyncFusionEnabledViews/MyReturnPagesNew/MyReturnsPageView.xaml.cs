@@ -99,10 +99,20 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
 
-                Device.BeginInvokeOnMainThread(async () =>
+                if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
-                    viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
-                });
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+                }
                 if (e.ItemData == null)
                 {
                     return;
