@@ -234,7 +234,14 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                     listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today).ToList<OverduePaymentsAndUnSubmittedReturn>();
                     if (listofPaymentReturn.Count > 3)
                     {
-                        listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        if(listofPaymentReturn.Count == 4)
+                        {
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(4).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        }
+                        else
+                        {
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        }
 
                         if (listofPaymentReturn.Count > 3)
                         {
@@ -254,8 +261,14 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                             }
                             else
                             {
-                                listofPaymentReturn.RemoveAt(3);
-                                listofPaymentReturn.RemoveAt(3);
+                                if (listofPaymentReturn.Count > 3)
+                                {
+                                    listofPaymentReturn.RemoveAt(3);
+                                }
+                                if (listofPaymentReturn.Count > 3)
+                                {
+                                    listofPaymentReturn.RemoveAt(3);
+                                }
                             }
                         }
 
