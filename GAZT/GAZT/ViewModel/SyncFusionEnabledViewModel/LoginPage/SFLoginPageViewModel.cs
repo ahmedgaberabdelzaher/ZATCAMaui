@@ -20,15 +20,15 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     {
         #region Fields
 
-        public string password = "Init@123";
+        //public string password = "Init@123";
         //private string email = "3101593128";
         //private string password = "Test@123";
         //private string email = "3102290567";
         //private string email = "3102289204";
-       public string email = "3102292043";
+        // public string email = "3102292043";
 
-        //public string password;
-        //public string email;
+        public string password;
+        public string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;
