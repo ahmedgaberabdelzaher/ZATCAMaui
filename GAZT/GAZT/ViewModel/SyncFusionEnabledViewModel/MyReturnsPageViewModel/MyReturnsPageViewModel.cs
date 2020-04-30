@@ -24,6 +24,20 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #endregion
 
         #region Properties
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private MyReturnsResult _selectedReturnsVATSubmited = null;
         public MyReturnsResult SelectedReturnsVATSubmited
         {
@@ -36,7 +50,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 _selectedReturnsVATSubmited = value;
                 if (_selectedReturnsVATSubmited != null)
                 {
-                     GetVATAllReturnsAsync();
+                     GetVATAllReturnsAsync(_selectedReturnsVATSubmited);
                 }
 
                 RaisePropertyChanged("SelectedReturnsVATSubmited");
@@ -55,7 +69,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 _selectedReturnsVATNonSubmited = value;
                 if (_selectedReturnsVATNonSubmited != null)
                 {
-                    GetVATAllReturnsAsync();
+                    GetVATAllReturnsAsync(_selectedReturnsVATNonSubmited);
                 }
 
                 RaisePropertyChanged("SelectedReturnsVATNonSubmited");
@@ -74,7 +88,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 _selectedReturnsVATOverDue = value;
                 if (_selectedReturnsVATOverDue != null)
                 {
-                    GetVATAllReturnsAsync();
+                    GetVATAllReturnsAsync(_selectedReturnsVATOverDue);
                 }
 
                 RaisePropertyChanged("SelectedReturnsVATOverDue");
@@ -1095,22 +1109,22 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #endregion
 
         #region Methods
-        public async void GetVATAllReturnsAsync()
+        public async void GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
 
-            //Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    IsLoading = true;
-            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                IsLoading = true;
+            });
 
-            await GetVATAllReturns();
+            await GetVATAllReturns(SelectedReturnsVAT);
 
-            //Device.BeginInvokeOnMainThread(() =>
-            //{
-            //    IsLoading = false;
-            //});
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                IsLoading = false;
+            });
         }
-        private async Task GetVATAllReturns()
+        private async Task GetVATAllReturns(MyReturnsResult SelectedReturnsVAT)
         {
 
             try
@@ -1118,14 +1132,14 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 try
                 {
 
-                    if (SelectedReturnsVATSubmited != null)
+                    if (SelectedReturnsVAT != null)
                     {
-                        if (isStatusNotValid())
+                        if (isStatusNotValid(SelectedReturnsVAT))
                         {
 
-                            String SelectedICRGUID = SelectedReturnsVATSubmited.Fbguid;
-                            App.ICRStatus = SelectedReturnsVATSubmited.Stat;
-                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVATSubmited.Fbguid, SelectedReturnsVATSubmited.Fbnum, App.TP.Tin, SelectedReturnsVATSubmited.Persl);
+                            String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
+                            App.ICRStatus = SelectedReturnsVAT.Stat;
+                            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
                             PopToRootPage();
 
 
@@ -1187,10 +1201,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             }
 
         }
-        public bool isStatusNotValid()
+        public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
         {
             bool isValid = true;
-            if (SelectedReturnsVATSubmited.Stat == "E0020" || SelectedReturnsVATSubmited.Stat == "E0057" || SelectedReturnsVATSubmited.Stat == "E0076" || SelectedReturnsVATSubmited.Stat == "E0077" || SelectedReturnsVATSubmited.Stat == "E0078" || SelectedReturnsVATSubmited.Stat == "E0089" || SelectedReturnsVATSubmited.Stat == "E0090")
+            if (SelectedReturnsVAT.Stat == "E0020" || SelectedReturnsVAT.Stat == "E0057" || SelectedReturnsVAT.Stat == "E0076" || SelectedReturnsVAT.Stat == "E0077" || SelectedReturnsVAT.Stat == "E0078" || SelectedReturnsVAT.Stat == "E0089" || SelectedReturnsVAT.Stat == "E0090")
             {
                 isValid = false;
             }

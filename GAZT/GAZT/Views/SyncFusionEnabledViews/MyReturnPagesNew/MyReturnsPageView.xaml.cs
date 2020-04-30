@@ -1,4 +1,5 @@
-﻿using GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
+﻿using GAZT.Models;
+using GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
 using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsVATSubmited.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
+
+                viewModel.GetVATAllReturnsAsync(SelectedItem);
+
                 if (e.ItemData == null)
                 {
                     return;
@@ -45,6 +50,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsVATNonSubmited.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
+
+                viewModel.GetVATAllReturnsAsync(SelectedItem);
                 if (e.ItemData == null)
                 {
                     return;
@@ -53,6 +61,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsVATOverDue.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
+
+                viewModel.GetVATAllReturnsAsync(SelectedItem);
                 if (e.ItemData == null)
                 {
                     return;
@@ -61,6 +72,23 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsZakatSubmited.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = e.ItemData as MyReturnsResult;
+
+                if (SelectedItem.Fbtyp.Equals("FZ12"))
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+                }
+               
                 if (e.ItemData == null)
                 {
                     return;
@@ -69,6 +97,12 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsZakatNonSubmited.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -77,6 +111,22 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsZakatOverDue.ItemTapped += (sender, e) =>
             {
+                MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
+
+                if (SelectedItem.Fbtyp.Equals("FZ12"))
+                {
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
+                    });
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () => {
+                        viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                    });
+                }
                 if (e.ItemData == null)
                 {
                     return;
@@ -86,6 +136,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsETSubmited.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -94,6 +147,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsETNonSubmited.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -102,6 +158,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsETOverDue.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -110,6 +169,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsWHSubmited.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -118,6 +180,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsWHNonSubmited.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -126,6 +191,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
 
             ReturnsWHOverDue.ItemTapped += (sender, e) =>
             {
+                Device.BeginInvokeOnMainThread(async () => {
+                    viewModel._dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
+                });
                 if (e.ItemData == null)
                 {
                     return;
@@ -297,9 +365,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
             }
         }
 
-        private void ReturnsVATSubmited_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-        {
-
-        }
+     
     }
 }
