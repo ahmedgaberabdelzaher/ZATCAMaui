@@ -321,7 +321,7 @@ xmlns:custom="clr-namespace:GAZT"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
 
-                        <!--<syncfusion:SfPicker
+                        <syncfusion:SfPicker
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailRegion}"
@@ -333,7 +333,6 @@ xmlns:custom="clr-namespace:GAZT"
                                              BackgroundColor="#EAF7CC"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                          SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"
                             OkButtonClicked="RegionPickerAR_OkButtonClicked"
                             CancelButtonClicked="RegionPickerAR_CancelButtonClicked"
                    ItemHeight="40"
@@ -346,7 +345,8 @@ xmlns:custom="clr-namespace:GAZT"
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>-->
+                        </syncfusion:SfPicker>
+                       <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
 
 
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
@@ -373,7 +373,6 @@ xmlns:custom="clr-namespace:GAZT"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
-                            SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
@@ -386,7 +385,10 @@ xmlns:custom="clr-namespace:GAZT"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
 
-                        <!--<syncfusion:SfPicker
+                       <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
+
+
+                        <syncfusion:SfPicker
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
@@ -400,7 +402,6 @@ xmlns:custom="clr-namespace:GAZT"
                             OkButtonClicked="CityPickerAR_OkButtonClicked"
                             CancelButtonClicked="CityPickerAR_CancelButtonClicked"
                                              BackgroundColor="#EAF7CC"
-                            SelectedItem="{Binding SelectLCType,Mode=TwoWay}"
                    ItemHeight="40"
                    x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
@@ -411,7 +412,8 @@ xmlns:custom="clr-namespace:GAZT"
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>-->
+                        </syncfusion:SfPicker>
+                        <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
 
                         <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
 

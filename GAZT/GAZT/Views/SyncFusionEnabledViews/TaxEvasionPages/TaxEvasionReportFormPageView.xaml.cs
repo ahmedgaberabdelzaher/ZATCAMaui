@@ -61,9 +61,9 @@ namespace GAZT.Views.NewViews
                 FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                 btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
-                //CityPickerAR.IsEnabled = false;
+                CityPickerAR.IsEnabled = false;
                 btnTxtReportDetailRegion.IsEnabled = false; RegionPicker.IsEnabled = false;
-                //RegionPickerAR.IsEnabled = false; Region_entry.IsEnabled = false; Attachment_Label.IsVisible = false;
+                RegionPickerAR.IsEnabled = false; Region_entry.IsEnabled = false; Attachment_Label.IsVisible = false;
                 Attachment_Label.IsVisible = false; TFSAddress.IsEnabled = false;
                 Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
                 checkBox.IsEnabled = false;
@@ -75,7 +75,7 @@ namespace GAZT.Views.NewViews
 
                 TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
                 RegionPicker.IsEnabled = false;
-                //RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
+                RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
 
                 viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
                 viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
@@ -84,7 +84,7 @@ namespace GAZT.Views.NewViews
 
                 viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
-                //RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
+                RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
                     viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
@@ -239,7 +239,7 @@ namespace GAZT.Views.NewViews
         {
             if (App.IsArabic)
             {
-                //RegionPickerAR.Focus();
+                RegionPickerAR.Focus();
 
 
 
@@ -259,7 +259,7 @@ namespace GAZT.Views.NewViews
 
             if (App.IsArabic)
             {
-                //CityPickerAR.Focus();
+                CityPickerAR.Focus();
                 viewModel.IsVisiblePickerAr = true;
                 viewModel.IsVisiblePickerEn = false;
             }
@@ -336,7 +336,7 @@ namespace GAZT.Views.NewViews
                     flag = false; frmRegionPicker.HasError = true;
                     if (App.IsArabic)
                     {
-                        //RegionPickerAR.IsOpen = true;
+                        RegionPickerAR.IsOpen = true;
                     }
                     else
                     {
@@ -350,7 +350,7 @@ namespace GAZT.Views.NewViews
                     showFillFeildsMessage();
                     if (App.IsArabic)
                     {
-                        //CityPickerAR.IsOpen = true;
+                        CityPickerAR.IsOpen = true;
                     }
                     else
                     {
@@ -990,7 +990,7 @@ namespace GAZT.Views.NewViews
         {
             if (App.IsArabic)
             {
-                //RegionPickerAR.IsOpen = true;
+                RegionPickerAR.IsOpen = true;
             }
             else
             {
@@ -1005,7 +1005,7 @@ namespace GAZT.Views.NewViews
             {
                 if (App.IsArabic)
                 {
-                    //CityPickerAR.IsOpen = true;
+                    CityPickerAR.IsOpen = true;
                 }
                 else
                 {
@@ -1018,7 +1018,7 @@ namespace GAZT.Views.NewViews
             {
                 if (App.IsArabic)
                 {
-                    //RegionPickerAR.IsOpen = true;
+                    RegionPickerAR.IsOpen = true;
                 }
                 else
                 {
@@ -1069,17 +1069,20 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
             frmRegionPicker.HasError = false;
+            viewModel.SelectLCTypePrev = null;
             //SelectedTaxEvasionRegion
         }
 
         private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERRegion selectedregion = (TERRegion)e.NewValue;
-            //RegionPickerAR.SelectedItem = selectedregion;
+            RegionPickerAR.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
             viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
             frmRegionPicker.HasError = false;
+            viewModel.SelectLCTypePrev = null;
+
         }
 
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1095,7 +1098,7 @@ namespace GAZT.Views.NewViews
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERCity selectedcity = (TERCity)e.NewValue;
-            //CityPickerAR.SelectedItem = selectedcity;
+            CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
@@ -1188,7 +1191,7 @@ namespace GAZT.Views.NewViews
         private void RegionPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
-            //RegionPickerAR.SelectedItem = viewModel.SelectedTaxEvasionRegionPrev;
+            RegionPickerAR.SelectedItem = viewModel.SelectedTaxEvasionRegionPrev;
             if (viewModel.SelectedTaxEvasionRegionPrev == null)
             {
                 viewModel.TxtReportDetailRegion = string.Empty;
@@ -1208,7 +1211,7 @@ namespace GAZT.Views.NewViews
         private void CityPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
-            //CityPickerAR.SelectedItem = viewModel.SelectLCTypePrev;
+            CityPickerAR.SelectedItem = viewModel.SelectLCTypePrev;
             if (viewModel.SelectLCTypePrev == null)
             {
                 viewModel.TxtReportDetailCity = string.Empty;
