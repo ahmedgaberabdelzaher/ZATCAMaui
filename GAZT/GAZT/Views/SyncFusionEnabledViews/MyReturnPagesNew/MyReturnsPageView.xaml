@@ -75,7 +75,7 @@
                                 TitleFontColor="Gray">
 
                         <tabview:SfTabItem.Content>
-
+                            
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
