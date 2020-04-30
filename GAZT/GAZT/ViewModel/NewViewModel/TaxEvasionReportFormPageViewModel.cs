@@ -1024,15 +1024,18 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public void onPageLoad()
+        public async Task onPageLoad()
         {
             try
              {
                 //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
                 TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                regionlist = WebServiceManager.GAZTTESFormGetRegion();
+                regionlist =await WebServiceManager.GAZTTESFormGetRegion();
                 if (regionlist != null && regionlist.RegionList.Count != 0)
-                { RList = regionlist.RegionList; }
+                {
+                    RList = regionlist.RegionList;
+
+                }
                 else
                 {
                     //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
