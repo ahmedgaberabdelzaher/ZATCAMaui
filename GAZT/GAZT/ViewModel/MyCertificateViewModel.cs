@@ -668,30 +668,30 @@ namespace GAZT
         {
             try
             {
-                IsCertificateAvailableVATTab = false;
-                IsCertificateAvailableZakatTab = false;
-                IsCertificateAvailableETTab = false;
-                if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
-                {
-                    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
-                    foreach (string ItemType in TpTypes)
-                    {
-                        if (ItemType == "05")
-                        {
+                IsCertificateAvailableVATTab = true;
+                IsCertificateAvailableZakatTab = true;
+                IsCertificateAvailableETTab = true;
+                //if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
+                //{
+                //    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                //    foreach (string ItemType in TpTypes)
+                //    {
+                //        if (ItemType == "05")
+                //        {
 
-                            IsCertificateAvailableZakatTab = true;
-                        }
-                        if (ItemType == "03" || ItemType == "13")
-                        {
-                            IsCertificateAvailableVATTab = true;
-                        }
-                        if (ItemType == "07")
-                        {
+                //            IsCertificateAvailableZakatTab = true;
+                //        }
+                //        if (ItemType == "03" || ItemType == "13")
+                //        {
+                //            IsCertificateAvailableVATTab = true;
+                //        }
+                //        if (ItemType == "07")
+                //        {
 
-                            IsCertificateAvailableETTab = true;
-                        }
-                    }
-                }
+                //            IsCertificateAvailableETTab = true;
+                //        }
+                //    }
+                //}
 
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;

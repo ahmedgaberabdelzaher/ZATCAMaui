@@ -194,6 +194,7 @@ namespace GAZT.Views.NewViews
                             viewModel.IsVATRefunCheckedVisible = true;
                             //viewModel.ButtonName = AppResources.ZVatDownloadForm;
                             viewModel.IsMainButtonEnabled = false;
+                            viewModel.IsMainButtonVisible = false;
                         });
                   
                     }
@@ -203,7 +204,8 @@ namespace GAZT.Views.NewViews
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                            viewModel.ManageEnabledAsyncProperty(true);
-                            if(App.ICRStatus=="E0001")
+                            viewModel.IsMainButtonVisible = true;
+                            if (App.ICRStatus=="E0001")
                             {
                                 viewModel.IsMainButtonEnabled = false;
                             }

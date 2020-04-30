@@ -1083,7 +1083,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Dues.
+        ///   Looks up a localized string similar to No Upcoming Commitments.
         /// </summary>
         public static string NoAppointmentText {
             get {
@@ -2118,7 +2118,7 @@ namespace GAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By Paying the invoice,GAZT Zakat Certificate will be issued to you automatically in case there are no other outstanding obligation,paying the invoice means you conform the correctness of the return information..
+        ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations. Paying the invoice means you confirm the correctness of the return information..
         /// </summary>
         public static string ZBillDeatilsInfo {
             get {

@@ -637,6 +637,27 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isMainButtonVisible = false;
+        public bool IsMainButtonVisible
+        {
+            get
+            {
+                return _isMainButtonVisible;
+            }
+            set
+            {
+                if (value == true)
+                {
+
+                }
+                _isMainButtonVisible = value;
+                //OnStepButtonClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsMainButtonVisible");
+            }
+        }
+
+
+        
 
         private bool _isUnFocusedTextBox = false;
         public bool IsUnFocusedTextBox
@@ -2971,6 +2992,8 @@ namespace GAZT.ViewModel.NewViewModel
                             IBANList = VATDeclarationData.d.IBANSet.results;
                             IsVATRefunCheckedVisible = false;
                             IsEnableCheckedRefund = false;
+                            IsTextBoxVisibleForIban=false;
+                            IsDropdownVisibleForIban = true;
                         }
                         else
                         {
@@ -3151,6 +3174,7 @@ namespace GAZT.ViewModel.NewViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
+                            IsMainButtonVisible = false;
                             IsSwichButtonEnableToTap = false;
                             IsEnableIBAN = false;
                             IsEnableCheckedRefund = false;
@@ -3233,7 +3257,8 @@ namespace GAZT.ViewModel.NewViewModel
                             Pop.IsBold = "Bold";
                             Pop.Message = Masseges.ToString();
                             PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-
+                            SelectedIndex = 2;
+                            PageSelectedItem = VatTabbledPageList[2];
                         }
                         else
                         {
@@ -3242,6 +3267,7 @@ namespace GAZT.ViewModel.NewViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await ManageEnabledAsyncProperty(false);
+                                    IsMainButtonVisible = false;
                                     IsSwichButtonEnableToTap = false;
                                     IsEnableIBAN = false;
                                     IsEnableCheckedRefund = false;
@@ -3608,6 +3634,7 @@ namespace GAZT.ViewModel.NewViewModel
                         IsTaxPayerCheckEnabled = false;
                         IsAmendClicked = true;
                         IsMainButtonEnabled = true;
+                        IsMainButtonVisible = true;
                     });
                     //ManageEnabledProperty(true);
                     

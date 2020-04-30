@@ -31,112 +31,112 @@ namespace GAZT.Views.NewViews
                 InitializeComponent();
                 
                 viewModel = App.Locator.TaxEvasionReportFormPageView;
-               // clearFields();
-                viewModel.selectedtaxEList = new TaxEvasionReport();
-                viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
-                ChangeAeroIcon();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                viewModel.UploadedDocumentsList = new UploadedDocumentsList();
-                //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-                MainLayout.Padding = new Thickness(0, 0, 0, 0);
-                SetLTR();
-                this.BindingContext = viewModel;
-                ClearFields(); 
-                viewModel.CreateCompanyTypeList();
-                viewModel.onPageLoad();//TaxEvasionReport
-                viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
-                if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
-                {
-                    btn4.IsEnabled = false;
+               //// clearFields();
+               // viewModel.selectedtaxEList = new TaxEvasionReport();
+               // viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
+               // ChangeAeroIcon();
+               // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+               // viewModel.UploadedDocumentsList = new UploadedDocumentsList();
+               // //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
+               // MainLayout.Padding = new Thickness(0, 0, 0, 0);
+               // SetLTR();
+               // this.BindingContext = viewModel;
+               // ClearFields(); 
+               // viewModel.CreateCompanyTypeList();
+               // viewModel.onPageLoad();//TaxEvasionReport
+               // viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
+               // if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+               // {
+               //     btn4.IsEnabled = false;
 
-                    FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
-                    btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
-                    CityPicker.IsEnabled = false;
-                    CityPickerAR.IsEnabled = false;
-                    btnTxtReportDetailRegion.IsEnabled = false; RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; Region_entry.IsEnabled = false; Attachment_Label.IsVisible = false;
-                    Attachment_Label.IsVisible = false; TFSAddress.IsEnabled = false;
-                    Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
-                    checkBox.IsEnabled = false;
-                    viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                    viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber.Remove(0,2); TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
-                    viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
-                    viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
-                    TFaciOwnerName.IsEnabled = false;
+               //     FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
+               //     btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
+               //     CityPicker.IsEnabled = false;
+               //     CityPickerAR.IsEnabled = false;
+               //     btnTxtReportDetailRegion.IsEnabled = false; RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; Region_entry.IsEnabled = false; Attachment_Label.IsVisible = false;
+               //     Attachment_Label.IsVisible = false; TFSAddress.IsEnabled = false;
+               //     Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
+               //     checkBox.IsEnabled = false;
+               //     viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
+               //     viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber.Remove(0,2); TMobNumber.IsEnabled = false;TMobNumberAr.IsEnabled = false;
+               //     viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
+               //     viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
+               //     TFaciOwnerName.IsEnabled = false;
 
-                    TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
-                    RegionPicker.IsEnabled = false;
-                    RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
+               //     TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
+               //     RegionPicker.IsEnabled = false;
+               //     RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
 
-                    viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
-                    viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
-                    viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
-                    viewModel.IsSubmitButtonEnable = false; submit_btnmane.IsEnabled = false; submit_btnmane.BackgroundColor = Color.Gray;
+               //     viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
+               //     viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
+               //     viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
+               //     viewModel.IsSubmitButtonEnable = false; submit_btnmane.IsEnabled = false; submit_btnmane.BackgroundColor = Color.Gray;
 
-                    viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
-                    viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
-                    RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
-                    if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
-                    {
-                        viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
-                        viewModel.onSelectedTaxEvasionRegion();
-                        if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.CityCode))
-                        {
-                            viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
-                        }
+               //     viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
+               //     viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
+               //     RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
+               //     if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
+               //     {
+               //         viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
+               //         viewModel.onSelectedTaxEvasionRegion();
+               //         if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.CityCode))
+               //         {
+               //             viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
+               //         }
 
-                    }
-                    if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
-                    {
-                        Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        mapView.MoveToRegion(mapSpan);
-                        Pin pin = new Pin();
-                        pin.Label = "Report Location";
-                        pin.Type = PinType.Place;
-                        pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                        mapView.Pins.Clear();
-                        mapView.Pins.Add(pin);
+               //     }
+               //     if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
+               //     {
+               //         Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+               //         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+               //         mapView.MoveToRegion(mapSpan);
+               //         Pin pin = new Pin();
+               //         pin.Label = "Report Location";
+               //         pin.Type = PinType.Place;
+               //         pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
+               //         mapView.Pins.Clear();
+               //         mapView.Pins.Add(pin);
 
-                    }
-                    mapView.IsEnabled = false;
+               //     }
+               //     mapView.IsEnabled = false;
 
-                    if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TIN))
-                    { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.TIN; viewModel.IsTINVisible = true; }
-                    else
-                    {
-                        viewModel.IsTIN = false;
-                    }
-                    TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
-                    viewModel.TID = viewModel.selectedtaxEList.ID; TID.IsEnabled = false;
+               //     if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TIN))
+               //     { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.TIN; viewModel.IsTINVisible = true; }
+               //     else
+               //     {
+               //         viewModel.IsTIN = false;
+               //     }
+               //     TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
+               //     viewModel.TID = viewModel.selectedtaxEList.ID; TID.IsEnabled = false;
 
-                }
-                else
-                {
-                    if (App.TP != null && !string.IsNullOrEmpty(App.TP.Name))
-                    {
-                        try
-                        {
-                            viewModel.TName = App.TP.Name;
-                        }
-                        catch(Exception ex)
-                        {
+               // }
+               // else
+               // {
+               //     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Name))
+               //     {
+               //         try
+               //         {
+               //             viewModel.TName = App.TP.Name;
+               //         }
+               //         catch(Exception ex)
+               //         {
 
-                        }
+               //         }
                         
-                    }
-                    if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
-                    { viewModel.TEmail = App.TP.Email; }
-                    if (viewModel.selectedtaxEList!=null && viewModel.selectedtaxEList.ReporterMobileNumber != null)
-                    {
+               //     }
+               //     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
+               //     { viewModel.TEmail = App.TP.Email; }
+               //     if (viewModel.selectedtaxEList!=null && viewModel.selectedtaxEList.ReporterMobileNumber != null)
+               //     {
                         
-                        string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
-                        viewModel.TMobNumber = mobb;
-                        TMobNumber.IsEnabled = false;
-                        TMobNumberAr.IsEnabled = false;
-                    }
+               //         string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
+               //         viewModel.TMobNumber = mobb;
+               //         TMobNumber.IsEnabled = false;
+               //         TMobNumberAr.IsEnabled = false;
+               //     }
 
 
-                }
+               // }
             }
             catch (Exception ex)
             {
@@ -930,6 +930,7 @@ namespace GAZT.Views.NewViews
                 //viewModel.UploadedDocumentsListObj = null;
                 viewModel.CList.Clear();
                 viewModel.RList.Clear();
+                viewModel.AttachmentCount = 0;
                 viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
@@ -1350,7 +1351,7 @@ namespace GAZT.Views.NewViews
                 string month = selectedItem[0].ToString();
                 string day = selectedItem[1].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.DatePick = year + "/" + month + "/" + day;
+                viewModel.DatePick = day + "/" + month + "/" + year;
             }
             catch (Exception ex)
             {
