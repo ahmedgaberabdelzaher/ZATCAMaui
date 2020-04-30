@@ -28,7 +28,7 @@ namespace GAZT.Views.NewViews
             this.CertificateLst.SelectedItem = null;
             this.CertificateLstClosed.SelectedItem = null;
             viewModel.AddIcon = "ic_add1.png";
-            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+      //      Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
 
 
             SetLTR();
