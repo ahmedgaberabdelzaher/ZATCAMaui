@@ -63,6 +63,21 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+
+        private bool _isNumberOfAttemptTextVisible=false;
+        public bool IsNumberOfAttemptTextVisible
+        {
+            get
+            {
+                return _isNumberOfAttemptTextVisible;
+            }
+            set
+            {
+                _isNumberOfAttemptTextVisible = value;
+                RaisePropertyChanged("IsNumberOfAttemptTextVisible");
+            }
+        }
+
         private string _tesMessageForSms = string.Empty;
         public string TesMessageForSms
         {

@@ -72,6 +72,21 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             viewModel = App.Locator.OTPPageView;
             viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;
+            try
+            {
+                if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsLogin)
+                {
+                    viewModel.IsNumberOfAttemptTextVisible = true;
+                }
+                else
+                {
+                    viewModel.IsNumberOfAttemptTextVisible = false;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
 
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
 
