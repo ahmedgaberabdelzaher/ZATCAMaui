@@ -207,9 +207,10 @@ namespace GAZT.Views.NewViews
         {//SelectedFormBindleFbtyp
             FormBundleResult selectedfbtyp = (FormBundleResult)e.NewValue;
             DDlIDType.SelectedItem = selectedfbtyp;
+             viewModel.SelectedFormBindleFbnumPrev=null;
             viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
             viewModel.TxtFBtype = selectedfbtyp.Txt50;
-
+             
         }
 
         private void CPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
