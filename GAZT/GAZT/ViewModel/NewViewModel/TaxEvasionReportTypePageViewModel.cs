@@ -170,7 +170,10 @@ namespace GAZT.ViewModel.NewViewModel
                 _dialogService = dialogService;
                 BackButtonClicked = new Xamarin.Forms.Command(() =>
                 {
-                    _navigationService.GoBack();
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        _navigationService.GoBack();
+                    });
                 });
 
                 //Device.BeginInvokeOnMainThread(async () =>
@@ -178,29 +181,15 @@ namespace GAZT.ViewModel.NewViewModel
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 //});
 
-                OnBClicked = new Command(async () =>
+                OnBClicked = new Command(() =>
                 {
-                   
-
-
                     try
                     {
-
-                        Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
-
-
-                        await Task.Run(async () =>
-                        {
-                            await  navigateToFormPage();
-
-                        });
-                        Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
+                        navigateToFormPage();
+                        //Task.Run(() =>
+                        //{
+                        //    IsLoading = false;
+                        //});
                        
                     }
                     catch (Exception ex)
@@ -219,14 +208,9 @@ namespace GAZT.ViewModel.NewViewModel
     }
 
 
-        public async Task navigateToFormPage()
+        public void navigateToFormPage()
         {
-
-
-
-
             CategorySelected_Index = "0";
-
 
             if (IsimgVisiblec1 == true)
             {
@@ -259,7 +243,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
                     TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
 
-                    Device.BeginInvokeOnMainThread(async () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
                     });
