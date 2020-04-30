@@ -47,6 +47,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
+        private bool _isMainGridVisble = false;
+        public bool IsMainGridVisble
+        {
+            get
+            {
+                return _isMainGridVisble;
+            }
+            set
+            {
+                _isMainGridVisble = value;
+                RaisePropertyChanged("IsMainGridVisble");
+            }
+        }
+
+
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -199,6 +214,7 @@ namespace GAZT.ViewModel.NewViewModel
                     PopToRootPage();
                     if(estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                     {
+                        IsMainGridVisble = true;
                         if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].Disamt) > 0)
                         {
                             Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
@@ -327,6 +343,7 @@ namespace GAZT.ViewModel.NewViewModel
         public void ClearData()
         {
             IsrefreshEnabled = false;
+            IsMainGridVisble = false;
         }
 
         private void GetUpdatedDataAfterAddingComma()
