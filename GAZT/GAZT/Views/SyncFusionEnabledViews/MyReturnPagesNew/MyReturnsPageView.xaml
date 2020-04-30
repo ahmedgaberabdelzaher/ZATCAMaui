@@ -75,12 +75,12 @@
                                 TitleFontColor="Gray">
 
                         <tabview:SfTabItem.Content>
-
+                            
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
-                                            <local:CustomLabel  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"  Text="{Binding SubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" />
+                                            <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0" Padding="0"  Text="{Binding SubmittedVATReturnsCount}"  HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
