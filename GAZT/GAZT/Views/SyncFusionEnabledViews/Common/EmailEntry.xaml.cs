@@ -1,4 +1,6 @@
 ﻿using GAZT;
+using GAZT.Models;
+using GAZTeServicesApp.ViewModels.LoginPage;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
@@ -19,12 +21,16 @@ namespace GAZTeServicesApp.Views.Common
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmailEntry
     {
+        SFLoginPageViewModel viewModel;
+        
+                
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailEntry" /> class.
         /// </summary>
         public EmailEntry()
         {
             InitializeComponent();
+            this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             SetLTR();
         }
 
@@ -116,6 +122,12 @@ namespace GAZTeServicesApp.Views.Common
 
         private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+
+            TIN selectedtin = (TIN)e.NewValue;
+            TinsPicker.SelectedItem = selectedtin;//TINID
+            viewModel.SelectedTinId = selectedtin;//selectedregion
+            viewModel.TINID = selectedtin.Tin;
+
 
         }
 
