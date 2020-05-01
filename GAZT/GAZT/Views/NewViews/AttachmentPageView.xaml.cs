@@ -34,6 +34,7 @@ namespace GAZT.Views.NewViews
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
+            SetLTR();
             ChangeAeroIcon();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
@@ -87,7 +88,7 @@ namespace GAZT.Views.NewViews
 
                 }
                 viewModel.OnPageLoad();
-                SetLTR();
+               
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception e)
