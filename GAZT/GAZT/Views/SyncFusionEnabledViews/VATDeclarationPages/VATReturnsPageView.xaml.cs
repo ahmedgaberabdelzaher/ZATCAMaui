@@ -78,7 +78,7 @@ namespace GAZT.Views.NewViews
                 viewModel.SelectedIBANPrev = null;
                 viewModel.SelectedIBANTypePrev = null;
                 viewModel.TxtSelectedIBANIDNumber = string.Empty;
-                viewModel.TxtSelectedIBAN = string.Empty; 
+                viewModel.TxtSelectedIBAN = string.Empty;
                 viewModel.TxtSelectedIBANType = string.Empty;
 
                 setAllCheckbox(false);
@@ -131,7 +131,7 @@ namespace GAZT.Views.NewViews
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -205,16 +205,16 @@ namespace GAZT.Views.NewViews
                             viewModel.IsMainButtonEnabled = false;
                             viewModel.IsMainButtonVisible = false;
                         });
-                  
+
                     }
                     else
                     {
 
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                           viewModel.ManageEnabledAsyncProperty(true);
+                            viewModel.ManageEnabledAsyncProperty(true);
                             viewModel.IsMainButtonVisible = true;
-                            if (App.ICRStatus=="E0001")
+                            if (App.ICRStatus == "E0001")
                             {
                                 viewModel.IsMainButtonEnabled = false;
                             }
@@ -230,7 +230,7 @@ namespace GAZT.Views.NewViews
                                     viewModel.IsDeclarationCheckEnabled = false;
                                     viewModel.IsTaxPayerCheckEnabled = false;
                                 });
-                               
+
                             }
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -249,11 +249,11 @@ namespace GAZT.Views.NewViews
                         onPageLoadCalculation();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
-               
+
 
             });
             await Task.Run(() =>
@@ -329,7 +329,7 @@ namespace GAZT.Views.NewViews
                             item.Tdline = AddNotePageViewModel.NoteString;
                         }
                         AddNotePageViewModel.IsComingFromNotePage = false;
-                       
+
                     }
                     else
                     {
@@ -341,7 +341,7 @@ namespace GAZT.Views.NewViews
                 //{
                 //    int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
                 //    Note note = viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00001").FirstOrDefault();
-                    
+
                 //    if (note != null)
                 //    {
                 //        //foreach (var item in viewModel.VATDeclarationData.d.NOTESSet.results.Where(w => w.DataVersionz == "00000"))
@@ -450,11 +450,11 @@ namespace GAZT.Views.NewViews
             Note objNote = new Note();
 
             int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+            string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
             objNote.__metadata = new Metadata2();
             objNote.__metadata.id = Url;
             objNote.__metadata.uri = Url;
-            objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+            objNote.__metadata.type = "ZMB_ZDP_VATR_M_SRV.NOTES";
 
             objNote.Notenoz = (count + 1).ToString();
             objNote.DataVersionz = "00000";
@@ -500,11 +500,11 @@ namespace GAZT.Views.NewViews
                 Note objNote = new Note();
 
                 int count = viewModel.VATDeclarationData.d.NOTESSet.results.Count;
-                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
+                string Url = Constants.QABaseUrlForODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
                 objNote.__metadata = new Metadata2();
                 objNote.__metadata.id = Url;
                 objNote.__metadata.uri = Url;
-                objNote.__metadata.type = "ZDP_VATR_M_SRV.NOTES";
+                objNote.__metadata.type = "ZMB_ZDP_VATR_M_SRV.NOTES";
 
                 objNote.Notenoz = (count + 1).ToString();
                 objNote.DataVersionz = "00000";
@@ -531,7 +531,7 @@ namespace GAZT.Views.NewViews
                 AddNotePageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -1935,7 +1935,7 @@ namespace GAZT.Views.NewViews
             bool IsAllEntered = true;
             try
             {
-                if ((TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked!=true) || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
+                if ((TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked != true) || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
                 {
 
                     if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
@@ -2570,7 +2570,7 @@ namespace GAZT.Views.NewViews
                     }
                     else
                     {
-                        if(viewModel.ResponseVATDeclarationD.GrpNo=="00" || viewModel.ResponseVATDeclarationD.GrpNo == "0")
+                        if (viewModel.ResponseVATDeclarationD.GrpNo == "00" || viewModel.ResponseVATDeclarationD.GrpNo == "0")
                         {
                             if (viewModel.ResponseVATDeclarationD.ZerosalesAmt != "." && !viewModel.ResponseVATDeclarationD.ZerosalesAmt.Contains("-") && !string.IsNullOrEmpty(viewModel.ResponseVATDeclarationD.ZerosalesAmt))
                             {
@@ -2581,9 +2581,9 @@ namespace GAZT.Views.NewViews
                                 }
                             }
 
-                         }
-                       }
+                        }
                     }
+                }
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && !string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAmt.Text != "." && EntryZerosalesAdj.Text != "." && EntryZerosalesAmt.Text != "," && EntryZerosalesAdj.Text != ",")
                 {
                     CheckThreeaThreeb(Convert.ToDecimal(EntryZerosalesAmt.Text), Convert.ToDecimal(EntryZerosalesAdj.Text), Message);
@@ -3936,7 +3936,7 @@ namespace GAZT.Views.NewViews
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
                     EntryVatAmount.TextColor = Color.Black;
-                    
+
                 }
             }
             catch (Exception ex)
@@ -4385,7 +4385,7 @@ namespace GAZT.Views.NewViews
 
             int PageName = SfTabView.SelectedIndex;
 
-            if (PageName ==0)
+            if (PageName == 0)
             {
 
                 viewModel.InstrunctionClicked();
@@ -4416,13 +4416,13 @@ namespace GAZT.Views.NewViews
                 //  NewSetColor(senderObject, current);
                 viewModel.IsFirstTimeGet = false;
 
-                if(viewModel.IsGetAcknowledgementClicked==true)
+                if (viewModel.IsGetAcknowledgementClicked == true)
                 {
                     viewModel.IsMainButtonEnabled = false;
                 }
 
             }
-            else if (PageName ==1)
+            else if (PageName == 1)
             {
                 bool value = viewModel.IsCheckedDraftMode();
                 bool Tvalue = viewModel.IsTabbedValid("02");
@@ -4758,7 +4758,7 @@ namespace GAZT.Views.NewViews
                         viewModel.IsMainButtonEnabled = false;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -4772,7 +4772,7 @@ namespace GAZT.Views.NewViews
 
         }
 
-       
+
 
         private void SelectedIBANChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -4788,7 +4788,7 @@ namespace GAZT.Views.NewViews
             {
 
             }
-          
+
 
         }
 
@@ -4802,13 +4802,13 @@ namespace GAZT.Views.NewViews
                 viewModel.SelectedIBANType = selectedIBANType;
                 viewModel.TxtSelectedIBANType = selectedIBANType.Text;
                 await viewModel.SetIBANIdNumber();
-                
+
             }
             catch (Exception ex)
             {
 
             }
-          
+
 
         }
 
@@ -4826,7 +4826,7 @@ namespace GAZT.Views.NewViews
             {
 
             }
-         
+
 
         }
 
@@ -4942,36 +4942,36 @@ namespace GAZT.Views.NewViews
             }
         }
     }
-        //private void ICvalidation_Clicked(object sender, EventArgs e)
-        //{
-        //   //if(TabInstruction.IsVisible==true)
-        //   // {
-        //   //     if(chkDeclaration.IsChecked==false)
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-        //   //     }
-        //   //     else
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+    //private void ICvalidation_Clicked(object sender, EventArgs e)
+    //{
+    //   //if(TabInstruction.IsVisible==true)
+    //   // {
+    //   //     if(chkDeclaration.IsChecked==false)
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+    //   //     }
+    //   //     else
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-        //   //     }
-        //   // }
-        //   //if(TabTaxPayerDetails.IsVisible==true)
-        //   // {
-        //   //     if (chkClearification.IsChecked == false)
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-        //   //     }
-        //   //     else
-        //   //     {
-        //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+    //   //     }
+    //   // }
+    //   //if(TabTaxPayerDetails.IsVisible==true)
+    //   // {
+    //   //     if (chkClearification.IsChecked == false)
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+    //   //     }
+    //   //     else
+    //   //     {
+    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
 
-        //   //     }
+    //   //     }
 
-        //   // }
-        //}
+    //   // }
+    //}
 
-    }
+}
 
 
 
