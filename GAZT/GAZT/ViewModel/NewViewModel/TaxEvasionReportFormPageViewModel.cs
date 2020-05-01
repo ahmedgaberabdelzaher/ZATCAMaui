@@ -1042,6 +1042,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if (CList != null && CList.Count > 0)
                         {
                             CList.Clear();
+                        TxtReportDetailCity = string.Empty;
                         }
                         RList = regionlist.RegionList;
 
