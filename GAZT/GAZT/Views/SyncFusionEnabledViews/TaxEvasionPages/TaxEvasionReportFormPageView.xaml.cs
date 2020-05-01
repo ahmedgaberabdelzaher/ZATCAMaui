@@ -60,7 +60,19 @@ namespace GAZT.Views.NewViews
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
             {
                 btn4.IsEnabled = false;
-
+                if (App.IsArabic)
+                {
+                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameAr;
+                    viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameAr;
+                }
+                else
+                {
+                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameEn;
+                    viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameEn;
+                }
+               
+                
+                
                 FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                 btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
@@ -819,6 +831,8 @@ namespace GAZT.Views.NewViews
                 viewModel.CList.Clear();
                 viewModel.RList.Clear();
                 viewModel.AttachmentCount = 0;
+                viewModel.TxtReportDetailCity = string.Empty;
+                viewModel.TxtReportDetailRegion = string.Empty;
                 viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
                 FacilityType_entry.Text = string.Empty;
