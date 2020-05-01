@@ -17,8 +17,8 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
-        public ICommand OnNextClicked { get; set; }
-        public ICommand OnBClicked { get;  set; }
+       // public ICommand OnNextClicked { get; set; }
+        public ICommand OnNextClicked{ get;  set; }
 
         #endregion
         private TaxEvasionReport _taxEvasionListobj = null;
@@ -170,10 +170,13 @@ namespace GAZT.ViewModel.NewViewModel
                 _dialogService = dialogService;
                 BackButtonClicked = new Xamarin.Forms.Command(() =>
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    if (!IsLoading)
                     {
-                        _navigationService.GoBack();
-                    });
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.GoBack();
+                        });
+                    }
                 });
 
                 //Device.BeginInvokeOnMainThread(async () =>
@@ -181,16 +184,12 @@ namespace GAZT.ViewModel.NewViewModel
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 //});
 
-                OnBClicked = new Command(() =>
+                OnNextClicked = new Command(async() =>
                 {
                     try
                     {
-                        navigateToFormPage();
-                        //Task.Run(() =>
-                        //{
-                        //    IsLoading = false;
-                        //});
-                       
+                          await  navigateToFormPage();
+
                     }
                     catch (Exception ex)
                     {
@@ -208,49 +207,69 @@ namespace GAZT.ViewModel.NewViewModel
     }
 
 
-        public void navigateToFormPage()
+        public async Task navigateToFormPage()
         {
-            CategorySelected_Index = "0";
-
-            if (IsimgVisiblec1 == true)
+            await Task.Run(() =>
             {
-                CategorySelected_Index = "1";
-            }
-            else if (IsimgVisiblec2 == true)
-            {
-                CategorySelected_Index = "2";
-            }
-            else if (IsimgVisiblec3 == true)
-            {
-                CategorySelected_Index = "3";
-            }
-            else if (IsimgVisiblec4 == true)
-            {
-                CategorySelected_Index = "4";
-            }
-            else if (IsimgVisiblec5 == true)
-            {
-                CategorySelected_Index = "5";
-            }
+                IsLoading = true;
+            });
 
-            if (CategorySelected_Index != "0")
+            await Task.Run(() =>
             {
+                CategorySelected_Index = "0";
 
-
-                TaxEvasionListobj = new TaxEvasionReport();
-                TaxEvasionListobj.ViolationType = CategorySelected_Index;
-                if (!string.IsNullOrEmpty(MobileNumber))
-                {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
-                    TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
-
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
-                    });
-                    
-
+                if (IsimgVisiblec1 == true)
+                {
+                    CategorySelected_Index = "1";
                 }
-            }
+                else if (IsimgVisiblec2 == true)
+                {
+                    CategorySelected_Index = "2";
+                }
+                else if (IsimgVisiblec3 == true)
+                {
+                    CategorySelected_Index = "3";
+                }
+                else if (IsimgVisiblec4 == true)
+                {
+                    CategorySelected_Index = "4";
+                }
+                else if (IsimgVisiblec5 == true)
+                {
+                    CategorySelected_Index = "5";
+                }
+
+                if (CategorySelected_Index != "0")
+                {
+
+
+                    TaxEvasionListobj = new TaxEvasionReport();
+                    TaxEvasionListobj.ViolationType = CategorySelected_Index;
+                    if (!string.IsNullOrEmpty(MobileNumber))
+                    {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
+                        TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                        });
+
+
+                    }
+                }
+                else
+                {
+                    //IsLoading = false;
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+
+            
 
         }
 

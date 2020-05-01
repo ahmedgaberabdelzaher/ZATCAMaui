@@ -3575,7 +3575,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static TERFRegionRootObject GAZTTESFormGetRegion()
+        public static async Task<TERFRegionRootObject>  GAZTTESFormGetRegion()
         {
 
             RegionPost Cred = new RegionPost();
@@ -3596,12 +3596,12 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res =await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }
-                catch (Exception ex)
+                catch(Exception ex)
                 {
                     return null;
                 }
@@ -3613,7 +3613,7 @@ namespace GAZT.Manager
 
             }
         }
-        public static TERFCityRetrieveRootObject GAZTTESFormGetCity(string regioncode)
+        public static async Task<TERFCityRetrieveRootObject>  GAZTTESFormGetCity(string regioncode)
         {
 
             CityPost Cred = new CityPost();
@@ -3638,14 +3638,14 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res =await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
                     return terfcity;
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    throw new InternetException(AppResources.ZZInternetConnectionMessage);
                 }
             }
             else
