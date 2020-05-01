@@ -24,7 +24,7 @@ namespace GAZTeServicesApp.Views.LoginPage
     {
         SFLoginPageViewModel viewModel;
         private string strNavigaateToThisService;
-        
+
         private double width = 0;
         private double height = 0;
 
@@ -63,7 +63,7 @@ namespace GAZTeServicesApp.Views.LoginPage
                 viewModel.TINIndex = 0;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -110,15 +110,24 @@ namespace GAZTeServicesApp.Views.LoginPage
 
 
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.password = string.Empty;
+            viewModel.email = string.Empty;
+            viewModel.Password = string.Empty;
+            viewModel.Email = string.Empty;
+        }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-           
+
             try
             {
-               viewModel.password = string.Empty;
-               viewModel.email = string.Empty;
-
+                //viewModel.password = string.Empty;
+                //viewModel.email = string.Empty;
+                // viewModel.Password = string.Empty;
+                // viewModel.Email = string.Empty;
                 MessagingCenter.Subscribe<string>(this, "TinList", message => {
                     viewModel.IsVisibleTinIds = true;
                 });
@@ -137,11 +146,11 @@ namespace GAZTeServicesApp.Views.LoginPage
                 //}
                 viewModel.IsVisibleTinIds = false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
-           
+
         }
 
         private void OnPasswordVisibilityClicked(object sender, EventArgs e)

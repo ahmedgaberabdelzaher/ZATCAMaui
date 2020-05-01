@@ -15,9 +15,9 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False"
-    BackgroundImageSource="logo_gazt.png"
+    
     >
-   
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -32,7 +32,9 @@
 
             <DataTemplate x:Key="HeaderView">
                 <StackLayout Spacing="8">
-                    --><!--  Rotator view  --><!--
+                    -->
+            <!--  Rotator view  -->
+            <!--
                     <rotator:SfRotator
                         x:Name="Rotator"
                         BackgroundColor="White"
@@ -108,7 +110,7 @@
             FontAttributes="Bold" 
             TextColor="Black" />
             </DataTemplate>-->
-            
+
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -122,8 +124,8 @@
             </Grid.ColumnDefinitions>
 
 
-         
-            
+
+
             <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                 <StackLayout Padding="5">
@@ -241,17 +243,17 @@
                         </gradient:SfGradientView.BackgroundBrush>
                     </gradient:SfGradientView>
                 </StackLayout>-->
-       
+
                 <!--<controls:TapAnimationGrid  Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}" RowSpacing="0" Tapped="False" x:Name="burgerMenu_tapGrid" BackgroundColor="Transparent" VerticalOptions="Start"  HorizontalOptions="Start" >-->
                 <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Padding="4,0,0,0"  Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowOptionsCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
-                    
+
                 <!--</controls:TapAnimationGrid>-->
                 <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
-                    <!--<Image  Aspect="AspectFit" Source="logo_gazt.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>-->
+                    <Image  Aspect="AspectFit" Source="logo_gazt.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>
 
                     <!--<local1:CustomLabel  TextColor="White" Text="{x:Static local:AppResources.ZZZLandingPageTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource LabelStyleFromCommonStyle}" ></local1:CustomLabel>-->
 
@@ -260,7 +262,7 @@
                  <Button   VerticalOptions="Center" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#d99a29"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>              
                 </StackLayout>-->
                 <!--HeightRequest="56"-->
-               
+
             </Grid>
 
             <!--<local1:CustomLabel Grid.Row="2" Grid.Column="0" Text="Copyright" TextDecorations="Underline"   TextColor="Black"  HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand" Style="{StaticResource LabelStyleFromCommonStyle}" >
@@ -276,7 +278,9 @@
                     </local1:CustomLabel.GestureRecognizers>
                 </local1:CustomLabel>
 
-                --><!--<buttons:SfButton  CornerRadius="4" VerticalOptions="Center"   HeightRequest="56" Text="{x:Static local:AppResources.ZZSignup}" TextColor="White"  BackgroundColor="#d99a29"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>--><!--
+                -->
+            <!--<buttons:SfButton  CornerRadius="4" VerticalOptions="Center"   HeightRequest="56" Text="{x:Static local:AppResources.ZZSignup}" TextColor="White"  BackgroundColor="#d99a29"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>-->
+            <!--
             </StackLayout>-->
             <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" AnimationType="HorizontalPulsingBox" ViewBoxWidth = "150" ViewBoxHeight="150" TextColor="DarkGreen" IsBusy="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"/>-->
         </Grid>
