@@ -63,6 +63,21 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
+
+        private bool _isNumberOfAttemptTextVisible = false;
+        public bool IsNumberOfAttemptTextVisible
+        {
+            get
+            {
+                return _isNumberOfAttemptTextVisible;
+            }
+            set
+            {
+                _isNumberOfAttemptTextVisible = value;
+                RaisePropertyChanged("IsNumberOfAttemptTextVisible");
+            }
+        }
+
         private string _tesMessageForSms = string.Empty;
         public string TesMessageForSms
         {
@@ -91,7 +106,7 @@ namespace GAZT.ViewModel.NewViewModel
         //    }
         //}
 
-        
+
 
         private string _frmColour = "#B1B1B1";
         public string FrmColour
@@ -219,7 +234,7 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        private String _enteredOTP =  string.Empty;
+        private String _enteredOTP = string.Empty;
         public String EnteredOTP
         {
             get
@@ -423,7 +438,7 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             //OnSubmitClicked = new Command(async () =>
             //{
-               
+
 
 
 
@@ -434,9 +449,9 @@ namespace GAZT.ViewModel.NewViewModel
 
             //    if (IsResendOTPEnabled == true)
             //    {
-                   
 
-                   
+
+
 
             //    }
 
@@ -540,87 +555,87 @@ namespace GAZT.ViewModel.NewViewModel
 
 
 
-                   
 
 
-                        try
+
+                    try
+                    {
+                        string lang = UtilityManager.GetLanguageParameter();
+
+                        if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
                         {
-                            string lang = UtilityManager.GetLanguageParameter();
-
-                            if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsLogin)
+                            EmailOrMobileNumber = AppResources.MobileNumber;
+                            var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
+                            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                             {
-                                EmailOrMobileNumber = AppResources.MobileNumber;
-                                var response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, App.TP.Userid, currentAttempts.ToString());
-                                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                                if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
-                                {
-                                    bool IsNavigatingFromLogin = true;
-                                    IsResendOTPEnabled = false;
-                                    ButtonDisableColor = Color.FromHex("#9EA4A9");
-                                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                                bool IsNavigatingFromLogin = true;
+                                IsResendOTPEnabled = false;
+                                ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
 
-                                    IsVerifyOTPEnabled = true;
-                                    IsOTPEntryEnable = true;
-                                    //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
-                                    //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                    numberOfSeconds = 120;
-                                    TimerStart(numberOfSeconds);
-
-                                }
+                                IsVerifyOTPEnabled = true;
+                                IsOTPEntryEnable = true;
+                                //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
+                                //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
 
                             }
-                            else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
+
+                        }
+                        else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsMobile)
+                        {
+                            EmailOrMobileNumber = AppResources.MobileNumber;
+                            bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
+                            if (response)
                             {
-                                EmailOrMobileNumber = AppResources.MobileNumber;
-                                bool response = await WebServiceManager.GAZTValidateMobileNumber(lang, App.TP.Tin, App.TP.Mobile, App.TP.NewMobile);
-                                if (response)
-                                {
-                                    bool IsNavigatingFromLogin = true;
-                                    ButtonDisableColor = Color.FromHex("#9EA4A9");
-                                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                                    IsResendOTPEnabled = false;
-                                    IsVerifyOTPEnabled = true;
-                                    IsOTPEntryEnable = true;
-                                    string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
-                                    MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                    numberOfSeconds = 120;
-                                    TimerStart(numberOfSeconds);
-                                }
-
-
+                                bool IsNavigatingFromLogin = true;
+                                ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                                IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
+                                IsOTPEntryEnable = true;
+                                string _mobileNumber = App.TP.NewMobile.Substring(App.TP.Mobile.Length - 4);
+                                MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
                             }
-                            else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsEmail)
-                            {
-                                EmailOrMobileNumber = AppResources.Email;
-                                bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
-                                await PopToRootPage();
-                                if (response)
-                                {
-                                    bool IsNavigatingFromLogin = true;
-                                    ButtonDisableColor = Color.FromHex("#9EA4A9");
-                                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                                    IsResendOTPEnabled = false;
-                                    IsVerifyOTPEnabled = true;
-                                    IsOTPEntryEnable = true;
-                                    string _newEmail = App.TP.NewEmail;
-                                    MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
-                                    numberOfSeconds = 120;
-                                    TimerStart(numberOfSeconds);
-                                }
-
-                            }
-                            //else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
-                            //{ 
-
-                            //}
 
 
                         }
-                        catch (Exception ex)
+                        else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsEmail)
                         {
+                            EmailOrMobileNumber = AppResources.Email;
+                            bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, App.TP.Userid, App.TP.Email, App.TP.NewEmail);
+                            await PopToRootPage();
+                            if (response)
+                            {
+                                bool IsNavigatingFromLogin = true;
+                                ButtonDisableColor = Color.FromHex("#9EA4A9");
+                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                                IsResendOTPEnabled = false;
+                                IsVerifyOTPEnabled = true;
+                                IsOTPEntryEnable = true;
+                                string _newEmail = App.TP.NewEmail;
+                                MobileNumber = _newEmail;// "XXXXXXXXXX" + _mobileNumber;
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
+                            }
 
                         }
-                  
+                        //else if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
+                        //{ 
+
+                        //}
+
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
 
 
 
@@ -900,11 +915,11 @@ namespace GAZT.ViewModel.NewViewModel
                         }
 
                     }
-                    
+
                     await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                    {
+                        IsLoading = false;
+                    });
                 }
                 catch (Exception ex)
                 {
@@ -932,12 +947,12 @@ namespace GAZT.ViewModel.NewViewModel
             //if (ComingToOTPVerificationScreenFromAndNavigatingTo)
             if (ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
-                
+
                 string mobileNumber;
                 TesReporterMobileNumber = ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
-                 mobileNumber = TesReporterMobileNumber.Substring(TesReporterMobileNumber.Length - 4);
+                mobileNumber = TesReporterMobileNumber.Substring(TesReporterMobileNumber.Length - 4);
                 MobileNumber = "XXXXXXXXXX" + mobileNumber;
-                
+
                 StopTimer = true;
                 IsVerifyOTPEnabled = true;
                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
@@ -957,7 +972,7 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         TinNumber = App.TP.Tin;
                     }
-                    
+
                     if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
                     {
                         string mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
@@ -985,16 +1000,16 @@ namespace GAZT.ViewModel.NewViewModel
 
 
         }
-        public  async void tessentOtptomobile()
-            {
-           
+        public async void tessentOtptomobile()
+        {
+
             TesSetGenerateOtp();
-                string mobnumber = TesReporterMobileNumber;
-        TesMessageForSms = String.Format(AppResources.ZOTPformobileverificationis,
-                         TesGeneratedOtpCode);
+            string mobnumber = TesReporterMobileNumber;
+            TesMessageForSms = String.Format(AppResources.ZOTPformobileverificationis,
+                             TesGeneratedOtpCode);
             try
             {
-                string r =await  WebServiceManager.GAZTTESVerfymobNoSendOtp(mobnumber, TesMessageForSms);
+                string r = await WebServiceManager.GAZTTESVerfymobNoSendOtp(mobnumber, TesMessageForSms);
                 if (!string.IsNullOrEmpty(r))
                 {
                     if (Int32.Parse(r) < 0)
@@ -1004,7 +1019,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-                        
+
 
                     }
 
@@ -1015,21 +1030,21 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (Exception ex)
             {
-                
+
             }
-           
 
 
 
 
 
-        numberOfSeconds = 120;
-                TimerStart(numberOfSeconds);
 
-    }
+            numberOfSeconds = 120;
+            TimerStart(numberOfSeconds);
+
+        }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {
-           
+
         }
 
         public void TimerStart(int Seconds)
@@ -1049,15 +1064,15 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
-                    // StopTimer = true;
-                }
+                        // StopTimer = true;
+                    }
                     else
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
                         StopTimer = true;
-                    // TimerStart(TotalSec);
-                }
+                        // TimerStart(TotalSec);
+                    }
 
 
                 }
@@ -1090,7 +1105,7 @@ namespace GAZT.ViewModel.NewViewModel
                         VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
-                        
+
                         return false;
 
                     }
@@ -1178,22 +1193,22 @@ namespace GAZT.ViewModel.NewViewModel
             }
             else if ((tp.Result.Equals("Invalid OTP") || tp.Result.Equals("مكتب المدعي العام غير صالح")))
             {
-                
-                    int Test;
-                    var TestMessage=string.Empty;
-                    int ValidAttempts = Convert.ToInt32(WebServiceManager.NumberOfValiedAttempts);
-                    int CurrentAttempts= Convert.ToInt32(currentAttempts);
 
-                    Test = ValidAttempts - CurrentAttempts;
-                    string Test1 = Convert.ToString(Test);
-                    TestMessage = ShowAlertPopUpMessage(Test1);
-                     isValiedOTP = false;
-               // throw new Exception(TestMessage);
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(TestMessage, AppResources.ZError);
-                    });
-               
+                int Test;
+                var TestMessage = string.Empty;
+                int ValidAttempts = Convert.ToInt32(WebServiceManager.NumberOfValiedAttempts);
+                int CurrentAttempts = Convert.ToInt32(currentAttempts);
+
+                Test = ValidAttempts - CurrentAttempts;
+                string Test1 = Convert.ToString(Test);
+                TestMessage = ShowAlertPopUpMessage(Test1);
+                isValiedOTP = false;
+                // throw new Exception(TestMessage);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessageBox(TestMessage, AppResources.ZError);
+                });
+
 
 
 
@@ -1247,7 +1262,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
                     //str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
 
-                   str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
+                    str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
                 }
                 //str = "You have " + remainingAttempts + "remaining attempt then the account will be locked";
             }
@@ -1264,7 +1279,7 @@ namespace GAZT.ViewModel.NewViewModel
                     //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
                     //str = String.Format(strSumberOfAttemptsRemaining, remainingAttempts);
 
-                    str = "لديك " + remainingAttempts +" محاولات متبقية؛ ثم سيتم قفل حسابك   ";
+                    str = "لديك " + remainingAttempts + " محاولات متبقية؛ ثم سيتم قفل حسابك   ";
                 }
                 else
                 {
@@ -1290,7 +1305,7 @@ namespace GAZT.ViewModel.NewViewModel
                 StringBuilder captcha = new StringBuilder();
                 for (int i = 0; i < 4; i++)
                     captcha.Append(combination[random.Next(combination.Length)]);
-                
+
                 Captcha = captcha;
 
                 TesGeneratedOtpCode = Captcha.ToString();
@@ -1301,7 +1316,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
 
 
-           // return Captcha;
+            // return Captcha;
 
 
         }

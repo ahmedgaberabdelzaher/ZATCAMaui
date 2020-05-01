@@ -40,7 +40,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
         private CalendarEventCollection _BillsAndReturnsSchedule = null;
         private bool _isListviewVisible = false;
         private bool _isNoDuesLabelVisible = false;
-        
+
         private ICommand EserviceCommand { get; set; }
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -198,15 +198,15 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
                     listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     //Device.BeginInvokeOnMainThread(async () =>
                     //{
                     //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        
+
                     //});
                 }
-          
+
                 listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                 listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
@@ -216,7 +216,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
                     PaymentReturn.IsUnSubmittedReturn = false;
                     PaymentReturn.IsPaymentOverdue = true;
-                    PaymentReturn.ColorCode = System.Drawing.Color.Red;
+                    PaymentReturn.ColorCode = Color.FromHex("#AA0C19");
                     listofPaymentReturn.Add(PaymentReturn);
                 }
 
@@ -224,17 +224,24 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 {
                     UnsubmittedReturn.IsUnSubmittedReturn = true;
                     UnsubmittedReturn.IsPaymentOverdue = false;
-                    UnsubmittedReturn.ColorCode = System.Drawing.Color.Gray;
+                    UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
-                
+
                 if (listofPaymentReturn != null)
                 {
-                    DateTime Today =  DateTime.Now;
+                    DateTime Today = DateTime.Now;
                     listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList<OverduePaymentsAndUnSubmittedReturn>();
                     if (listofPaymentReturn.Count > 3)
                     {
-                        listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        if (listofPaymentReturn.Count == 4)
+                        {
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(4).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        }
+                        else
+                        {
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                        }
 
                         if (listofPaymentReturn.Count > 3)
                         {
@@ -254,8 +261,14 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                             }
                             else
                             {
-                                listofPaymentReturn.RemoveAt(3);
-                                listofPaymentReturn.RemoveAt(3);
+                                if (listofPaymentReturn.Count > 3)
+                                {
+                                    listofPaymentReturn.RemoveAt(3);
+                                }
+                                if (listofPaymentReturn.Count > 3)
+                                {
+                                    listofPaymentReturn.RemoveAt(3);
+                                }
                             }
                         }
 
@@ -396,7 +409,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             }
         }
 
-        private List<OverduePaymentsAndUnSubmittedReturn> _commitmentReturnsList ;
+        private List<OverduePaymentsAndUnSubmittedReturn> _commitmentReturnsList;
         public List<OverduePaymentsAndUnSubmittedReturn> CommitmentReturnsList
         {
             get
@@ -410,7 +423,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 this.RaisePropertyChanged("CommitmentReturnsList");
             }
         }
-        
+
 
         public bool IsButtonEnabled
         {

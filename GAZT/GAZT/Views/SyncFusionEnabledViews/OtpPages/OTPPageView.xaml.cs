@@ -30,40 +30,40 @@ namespace GAZT.Views.NewViews
         #endregion
 
         #region Constructor
-        
+
         public OTPPageView(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
         {
 
             InitializeComponent();
             // TimeZone localZone = TimeZone.CurrentTimeZone;// Got +3
-           // string cd = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’ ‘zzz’ ");
-           // // dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss \"GMT\"zzz");
-           // DateTimeOffset local_offset = new DateTimeOffset(DateTime.Now.ToLocalTime());
-           // DateTimeOffset utc_offset = local_offset.ToUniversalTime();
-           // string str = utc_offset.DateTime.ToLongTimeString();
-           // string str1 = utc_offset.DateTime.ToShortDateString();
-           // const string dataFmt = "{0,-30}{1}";
-           // const string timeFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
-           // TimeZone localZone = TimeZone.CurrentTimeZone;
-           // DateTime currentDate = DateTime.Now;
-           // int currentYear = currentDate.Year;
-           // string standardName = localZone.StandardName;
-           // string dayLightTime = localZone.DaylightName;
-           // string Currentdateandtime = string.Format("\n" + timeFmt, "Current date and time:",
-           // currentDate);
-           // string DaylightTime = string.Format(dataFmt, "Daylight saving time?",
-           // localZone.IsDaylightSavingTime(currentDate));
+            // string cd = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’ ‘zzz’ ");
+            // // dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss \"GMT\"zzz");
+            // DateTimeOffset local_offset = new DateTimeOffset(DateTime.Now.ToLocalTime());
+            // DateTimeOffset utc_offset = local_offset.ToUniversalTime();
+            // string str = utc_offset.DateTime.ToLongTimeString();
+            // string str1 = utc_offset.DateTime.ToShortDateString();
+            // const string dataFmt = "{0,-30}{1}";
+            // const string timeFmt = "{0,-30}{1:yyyy-MM-dd HH:mm}";
+            // TimeZone localZone = TimeZone.CurrentTimeZone;
+            // DateTime currentDate = DateTime.Now;
+            // int currentYear = currentDate.Year;
+            // string standardName = localZone.StandardName;
+            // string dayLightTime = localZone.DaylightName;
+            // string Currentdateandtime = string.Format("\n" + timeFmt, "Current date and time:",
+            // currentDate);
+            // string DaylightTime = string.Format(dataFmt, "Daylight saving time?",
+            // localZone.IsDaylightSavingTime(currentDate));
 
-           // DateTime currentUTC =
-           //localZone.ToUniversalTime(currentDate);
-           // TimeSpan currentOffset =
-           //     localZone.GetUtcOffset(currentDate);
-           // string CoordinatedUniversalTime = string.Format(timeFmt, "Coordinated Universal Time:",
-           //     currentUTC);
+            // DateTime currentUTC =
+            //localZone.ToUniversalTime(currentDate);
+            // TimeSpan currentOffset =
+            //     localZone.GetUtcOffset(currentDate);
+            // string CoordinatedUniversalTime = string.Format(timeFmt, "Coordinated Universal Time:",
+            //     currentUTC);
 
-           // string UTCoffset = string.Format(dataFmt, "UTC offset:", currentOffset);
+            // string UTCoffset = string.Format(dataFmt, "UTC offset:", currentOffset);
 
-          
+
 
             //DaylightTime daylight =  localZone.GetDaylightChanges(currentYear);
 
@@ -72,6 +72,21 @@ namespace GAZT.Views.NewViews
             ChangeAeroIcon();
             viewModel = App.Locator.OTPPageView;
             viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;
+            try
+            {
+                if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsLogin)
+                {
+                    viewModel.IsNumberOfAttemptTextVisible = true;
+                }
+                else
+                {
+                    viewModel.IsNumberOfAttemptTextVisible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
 
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
 
@@ -79,8 +94,8 @@ namespace GAZT.Views.NewViews
             viewModel.numberOfSeconds = 120;
             try
             {
-               
-                    
+
+
 
                 viewModel.OnPageLoad();
             }
@@ -90,10 +105,10 @@ namespace GAZT.Views.NewViews
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                      await  viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Alerts);
+                        await viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Alerts);
                         viewModel._navigationService.GoBack();
                     });
-                  
+
                     return;
                 }
             }
@@ -101,13 +116,13 @@ namespace GAZT.Views.NewViews
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Alerts);
+                    await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Alerts);
                     viewModel._navigationService.GoBack();
                 });
                 return;
             }
             this.BindingContext = viewModel;
-            if(Device.RuntimePlatform==Device.Android)
+            if (Device.RuntimePlatform == Device.Android)
             {
                 DependencyService.Get<IStatusBar>().HideStatusBar();
             }
@@ -274,12 +289,12 @@ namespace GAZT.Views.NewViews
                 viewModel.TesReporterMobileNumber = _ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
                 viewModel.tessentOtptomobile();
 
-               // NumberOfAttemptsText.IsVisible = false;
+                // NumberOfAttemptsText.IsVisible = false;
 
 
 
             }
-          
+
 
         }
 
@@ -329,21 +344,21 @@ namespace GAZT.Views.NewViews
 
             }
             else
-            { 
-            App.IsOTPiew = true;
-            
-            viewModel.TimerStart(viewModel.numberOfSeconds);
-            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-            viewModel.IsResendOTPEnabled = false;
-            viewModel.IsOTPEntryEnable = true;
-            viewModel.currentAttempts = 0;
-            await Task.Run(() =>
             {
+                App.IsOTPiew = true;
 
-                Task.Delay(100);
+                viewModel.TimerStart(viewModel.numberOfSeconds);
+                viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                viewModel.IsResendOTPEnabled = false;
+                viewModel.IsOTPEntryEnable = true;
+                viewModel.currentAttempts = 0;
+                await Task.Run(() =>
+                {
 
-            });
-            EnteredOTP.Focus();
+                    Task.Delay(100);
+
+                });
+                EnteredOTP.Focus();
             }
         }
         private async void OnOTPEntered(Object sender, EventArgs e)
@@ -401,6 +416,6 @@ namespace GAZT.Views.NewViews
             }
         }
 
-     
+
     }
 }
