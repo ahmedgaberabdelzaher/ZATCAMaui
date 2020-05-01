@@ -288,7 +288,7 @@
                                                                 <Label Text="{Binding Filename}" 
                                                                     
                                    Style="{StaticResource MiniGrayLabelStyle}"
-  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+  FontFamily="{StaticResource SSTArabicMedium}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                                            LineBreakMode="WordWrap"

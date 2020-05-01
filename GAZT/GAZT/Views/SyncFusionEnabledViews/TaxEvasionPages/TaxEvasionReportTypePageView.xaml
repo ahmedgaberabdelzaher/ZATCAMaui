@@ -50,7 +50,9 @@
 
 
     <ContentPage.Content>
-        <Grid x:Name="MainLayout">
+
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid Grid.Row="0" x:Name="MainLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
          
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="0"  Margin="0" Padding="0,10,0,0"  RowSpacing="0">
                 <Grid.RowDefinitions>
@@ -188,7 +190,7 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
   
 
                 <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
-                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnBClicked}" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnNextClicked}" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
 
                 </StackLayout>
                 <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
@@ -197,11 +199,13 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
                 <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
             </Grid>
-            <!-- Acticity indicator layout start -->
-            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" >
-                <StackLayout Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+          
+            
+        </Grid>
+
+<Grid Grid.Row="0"  Grid.Column="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7">
+               
+                <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
@@ -214,20 +218,11 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
-
-
                     </StackLayout>
-                    <!--<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
-                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" TextColor="White" />
-                    </StackLayout>-->
                 </StackLayout>
             </Grid>
-                <!-- Acticity indicator layout End -->
-            
-        </Grid>
 
-
+</Grid>
     </ContentPage.Content>
 
 </ContentPage>

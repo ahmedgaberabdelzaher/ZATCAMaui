@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -62,6 +63,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _mobileNumber = value;
                 RaisePropertyChanged("MobileNumber");
+            }
+        }
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -216,15 +231,32 @@ namespace GAZT.ViewModel.NewViewModel
 
         public void passSelectedTaxEvasionItem()
         {
-            try
-            {
+            //Task.Run(() =>
+            //{
+            //    IsLoading = true;
+            //});
+            //await Task.Run(() =>
+            //{
+            //    try
+            //    {
                 _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
-                
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
+                //});
+
+            //}
+            //catch (Exception ex)
+            //    {
+            //    }
+            //});
+            //Task.Run(() =>
+            //    {
+            //        IsLoading = false;
+            //    });
+
+
             }
-            catch (Exception ex)
-            {
-            }
-        }
 
         public void PopToRootPage()
         {

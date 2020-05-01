@@ -1024,31 +1024,50 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public async Task onPageLoad()
+        public async Task OnPageLoad()
         {
             try
              {
-                //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
-                TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                regionlist =await WebServiceManager.GAZTTESFormGetRegion();
-                if (regionlist != null && regionlist.RegionList.Count != 0)
-                {
-                    RList = regionlist.RegionList;
+               
 
-                }
-                else
-                {
-                    //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                    //_navigationService.GoBack();
-                    NoInternetGoBack();
-                }
+                //await Task.Run(async() =>
+                //{
+                    //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
+                    TERFRegionRootObject regionlist = new TERFRegionRootObject();
+                    regionlist = await WebServiceManager.GAZTTESFormGetRegion();
+
+
+                    if (regionlist != null && regionlist.RegionList.Count != 0)
+                    {
+                        if (CList != null && CList.Count > 0)
+                        {
+                            CList.Clear();
+                        }
+                        RList = regionlist.RegionList;
+
+                    }
+                    else
+                    {
+                        //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        //_navigationService.GoBack();
+                        NoInternetGoBack();
+                    }
+                //});
+
+                //await Task.Run(() =>
+                //{
+                //    IsLoading = true;
+                //});
+
+               
 
             }
             catch (InternetException ex)
             {
 
                 Device.BeginInvokeOnMainThread(async () =>
-                {_dialogService.ShowMessage(ex.Message, AppResources.Information);
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 
                 _navigationService.GoBack();
 
@@ -1067,25 +1086,45 @@ namespace GAZT.ViewModel.NewViewModel
         }
 
 
-        public void onSelectedTaxEvasionRegion()
+        public async Task onSelectedTaxEvasionRegion()
         {
-            try
+            await Task.Run(() =>
+          {
+              IsLoading = true;
+          });
+
+            await Task.Run(async() =>
             {
-                if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.RegionCode != null)
+                try
                 {
-                    TERFCityRetrieveRootObject citylist = new TERFCityRetrieveRootObject();
-                    citylist = WebServiceManager.GAZTTESFormGetCity(SelectedTaxEvasionRegion.RegionCode);
-                    PopToRootPage();
-                    CList = citylist.CityList;
+                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.RegionCode != null)
+                    {
+                        TERFCityRetrieveRootObject citylist = new TERFCityRetrieveRootObject();
+                        citylist = await WebServiceManager.GAZTTESFormGetCity(SelectedTaxEvasionRegion.RegionCode);
+                        PopToRootPage();
+                        CList = citylist.CityList;
+                    }
+                    else
+                    {
+                      
+                      
+                    }
                 }
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
+                catch (InternetException ex)
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-            }
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //});
+                    NoInternetGoBack();
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+          
 
         }
         public async Task SubmitCreatedReport()

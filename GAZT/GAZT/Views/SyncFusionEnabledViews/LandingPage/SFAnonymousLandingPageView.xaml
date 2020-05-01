@@ -15,7 +15,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False"
-    
+    BackgroundImageSource="logo_gazt.png"
     >
    
     <ContentPage.Resources>
@@ -251,7 +251,7 @@
                     
                 <!--</controls:TapAnimationGrid>-->
                 <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
-                    <Image  Aspect="AspectFit" Source="logo_gazt.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>
+                    <!--<Image  Aspect="AspectFit" Source="logo_gazt.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>-->
 
                     <!--<local1:CustomLabel  TextColor="White" Text="{x:Static local:AppResources.ZZZLandingPageTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource LabelStyleFromCommonStyle}" ></local1:CustomLabel>-->
 

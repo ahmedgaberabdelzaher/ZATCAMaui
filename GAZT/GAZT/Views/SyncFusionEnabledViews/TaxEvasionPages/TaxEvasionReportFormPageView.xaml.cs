@@ -42,6 +42,9 @@ namespace GAZT.Views.NewViews
                 ClearFields();
                 viewModel.CreateCompanyTypeList();
                 SetDataToUI();
+
+                GetRegionList();
+
             }
             catch (Exception ex)
             {
@@ -855,11 +858,28 @@ namespace GAZT.Views.NewViews
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-         await   SetLocationToMap();
-          await  viewModel.onPageLoad();//TaxEvasionReport
-
+          
         }
 
+        public async Task GetRegionList()
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+
+            await Task.Run(async() =>
+            {
+                await SetLocationToMap();
+                await viewModel.OnPageLoad();//TaxEvasionReport
+            });
+
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+
+        }
         private async  Task SetLocationToMap()
         {
             try

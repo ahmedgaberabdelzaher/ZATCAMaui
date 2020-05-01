@@ -90,6 +90,11 @@ namespace GAZT.Views.NewViews
             }
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.IsLoading = false;
+        }
         private void Button_Clicked(object sender, EventArgs e)
         {
 
@@ -99,8 +104,12 @@ namespace GAZT.Views.NewViews
 
         private void BackButtonClicked(object sender, EventArgs e)
         {
-            Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
-            Navigation.RemovePage(pg);
+            if (!viewModel.IsLoading)
+            {
+                Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
+                Navigation.RemovePage(pg);
+            }
+          
            // viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, viewModel.MobileNumber);
             //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
             //{
