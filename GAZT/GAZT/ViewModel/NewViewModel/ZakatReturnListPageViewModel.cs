@@ -604,7 +604,7 @@ namespace GAZT.ViewModel.NewViewModel
                 var SortedList = ICRList.OrderBy(x => Convert.ToDateTime(x.DueDtC).TimeOfDay)
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Date)
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Year);
-                return SortedList;
+                return SortedList.OrderByDescending(x => Convert.ToDateTime(x.DueDtC)).ToList();
             }
             catch(Exception ex)
             {

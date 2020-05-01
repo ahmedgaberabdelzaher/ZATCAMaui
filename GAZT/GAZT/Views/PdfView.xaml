@@ -93,7 +93,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource Share}"
-                            
+                               IsEnabled="{TemplateBinding BindingContext.IsShareButtonEnable}"
                              />
 
                     </controls1:TitleView.TrailingView>

@@ -25,7 +25,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static int numberOfAttachmentComingFromServer = 0;
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
-        public int  SelectedPickerIndex { get; set; }
+        public int SelectedPickerIndex { get; set; }
 
         #endregion
 
@@ -147,7 +147,7 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
 
-        
+
         private List<ICRStatus> _iCRStatusList;
         public List<ICRStatus> ICRStatusList
         {
@@ -255,7 +255,7 @@ namespace GAZT.ViewModel.NewViewModel
             });
 
 
-           BackButtonClicked = new Xamarin.Forms.Command(() =>
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
@@ -287,7 +287,7 @@ namespace GAZT.ViewModel.NewViewModel
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                        if (icrList!=null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
+                        if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
@@ -324,7 +324,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRList = new List<ICRListSet>();
-                            ICRList = icrList.ICR_LISTSet;
+                            ICRList = icrList.ICR_LISTSet.OrderByDescending(x => x.DueDateDateTime).ToList();
                             ICRDummyList = ICRList;
 
 
@@ -355,10 +355,10 @@ namespace GAZT.ViewModel.NewViewModel
                 });
 
                 await Task.Run(() =>
-                    {
+                {
 
-                        IsLoading = false;
-                    });
+                    IsLoading = false;
+                });
 
 
 
@@ -468,12 +468,12 @@ namespace GAZT.ViewModel.NewViewModel
 
                             if (_vATDeclaration != null && _vATDeclaration.d != null)
                             {
-                                 PreviousSelectedICRStatus = _selectedICRStatus;
+                                PreviousSelectedICRStatus = _selectedICRStatus;
                                 _vATDeclaration.d.Fbguid = SelectedICRGUID;
                                 VATDeclaration vATDeclaration = new VATDeclaration();
                                 VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                                if(_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                                numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                                if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                    numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
                                 Result5 result5 = new Result5();
                                 List<Result5> lst = new List<Result5>();
                                 ADRSet _aDRSet = new ADRSet();
@@ -535,7 +535,7 @@ namespace GAZT.ViewModel.NewViewModel
             return isValid;
         }
         public void PopToRootPage()
-         {
+        {
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -569,15 +569,15 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (string.Equals(selectedICRStat.Txt30, "All") || string.Equals(selectedICRStat.Txt30, "الجميع"))
                         {
-                            ICRList = ICRDummyList;
+                            ICRList = ICRDummyList.OrderByDescending(x => x.DueDateDateTime).ToList();
                         }
                         else if (string.Equals(selectedICRStat.Estat, "E01TP"))
                         {
-                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).ToList();
+                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).OrderByDescending(x => x.DueDateDateTime).ToList();
                         }
                         else
                         {
-                            ICRList = ICRDummyList.Where(x => x.Status == selectedICRStat.Estat).ToList();
+                            ICRList = ICRDummyList.Where(x => x.Status == selectedICRStat.Estat).OrderByDescending(x => x.DueDateDateTime).ToList();
                         }
                     }
                 }
