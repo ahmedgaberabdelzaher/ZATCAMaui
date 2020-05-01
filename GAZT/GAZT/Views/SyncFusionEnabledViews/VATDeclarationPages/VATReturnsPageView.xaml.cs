@@ -74,6 +74,13 @@ namespace GAZT.Views.NewViews
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
                 viewModel.SelectedIndex = 0;
+                viewModel.SelectedIBANIDNumberPrev = null;
+                viewModel.SelectedIBANPrev = null;
+                viewModel.SelectedIBANTypePrev = null;
+                viewModel.TxtSelectedIBANIDNumber = string.Empty;
+                viewModel.TxtSelectedIBAN = string.Empty; 
+                viewModel.TxtSelectedIBANType = string.Empty;
+
                 setAllCheckbox(false);
                 IntilizeAsync();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
@@ -156,6 +163,7 @@ namespace GAZT.Views.NewViews
             {
 
                 this.FlowDirection = FlowDirection.RightToLeft;
+                viewModel.FDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
@@ -164,6 +172,7 @@ namespace GAZT.Views.NewViews
             else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.FDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);

@@ -231,7 +231,7 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
                 if (listofPaymentReturn != null)
                 {
                     DateTime Today =  DateTime.Now;
-                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList<OverduePaymentsAndUnSubmittedReturn>();
                     if (listofPaymentReturn.Count > 3)
                     {
                         listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
