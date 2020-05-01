@@ -93,7 +93,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                 base.OnAppearing();
                 if (App.IsSessionExpired)
                 {
-                    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
                     App.IsSessionExpired = false;
                 }
                 else

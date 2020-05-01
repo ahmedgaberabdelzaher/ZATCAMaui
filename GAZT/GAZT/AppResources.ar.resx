@@ -403,7 +403,7 @@
     <value>اشعار</value>
   </data>
   <data name="OKText" xml:space="preserve">
-    <value>موافق</value>
+    <value>Ok</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>فشلت مصادقة المستخدم</value>
@@ -2852,7 +2852,7 @@
     <comment>Tax Return Title</comment>
   </data>
   <data name="CancelText" xml:space="preserve">
-    <value>Cancel Ar</value>
+    <value>Cancel</value>
   </data>
   <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
     <value>لا يوجد سجلات تجارية مرتبطة بالرقم المميز</value>

@@ -536,7 +536,7 @@ ItemHeight="45" ShowFooter="True"
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <!--<Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />-->
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
