@@ -60,6 +60,19 @@ namespace GAZT.ViewModel.NewViewModel
         #endregion
 
         #region Property
+        private FlowDirection _fDirection = FlowDirection.RightToLeft;
+        public FlowDirection FDirection
+        {
+            get
+            {
+                return _fDirection;
+            }
+            set
+            {
+                _fDirection = value;
+                RaisePropertyChanged("FDirection");
+            }
+        }
 
         private int _firstSubmissionCount = 0;
         public int FirstSubmissionCount

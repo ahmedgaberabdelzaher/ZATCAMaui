@@ -324,7 +324,7 @@ namespace GAZT.ViewModel.NewViewModel
                         if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRList = new List<ICRListSet>();
-                            ICRList = icrList.ICR_LISTSet;
+                            ICRList = icrList.ICR_LISTSet.OrderByDescending(x=>x.DueDateDateTime).ToList();
                             ICRDummyList = ICRList;
 
 
@@ -569,15 +569,15 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         if (string.Equals(selectedICRStat.Txt30, "All") || string.Equals(selectedICRStat.Txt30, "الجميع"))
                         {
-                            ICRList = ICRDummyList;
+                            ICRList = ICRDummyList.OrderByDescending(x => x.DueDateDateTime).ToList();
                         }
                         else if (string.Equals(selectedICRStat.Estat, "E01TP"))
                         {
-                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).ToList();
+                            ICRList = ICRDummyList.Where(x => (x.Status == "E0001") || (x.Status == "E0013")).OrderByDescending(x => x.DueDateDateTime).ToList();
                         }
                         else
                         {
-                            ICRList = ICRDummyList.Where(x => x.Status == selectedICRStat.Estat).ToList();
+                            ICRList = ICRDummyList.Where(x => x.Status == selectedICRStat.Estat).OrderByDescending(x => x.DueDateDateTime).ToList(); 
                         }
                     }
                 }

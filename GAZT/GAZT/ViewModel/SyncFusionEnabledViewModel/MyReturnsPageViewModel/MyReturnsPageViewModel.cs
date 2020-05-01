@@ -24,6 +24,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         #endregion
 
         #region Properties
+        
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -35,6 +36,20 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
             {
                 _isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool _isArabic = false;
+        public bool IsArabic
+        {
+            get
+            {
+                return _isArabic;
+            }
+            set
+            {
+                _isArabic = value;
+                RaisePropertyChanged("IsArabic");
             }
         }
 
@@ -1442,7 +1457,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatNonSubmitedChild.Count > 0)
                 {
-                    ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild;
+                    ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleZakatNonSumbitted = true;
                     IsVisibleZakatNonSumbittedLabel = false;
                     NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatNonSubmitedChild.Count + ")";
@@ -1456,7 +1471,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatOverDueChild.Count > 0)
                 {
-                    ReturnsZakatOverDue = ReturnsZakatOverDueChild;
+                    ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleZakatOverDue = true;
                     IsVisibleZakatOverDueLabel = false;
                     OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
@@ -1471,7 +1486,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsZakatSubmitedChild.Count > 0)
                 {
-                    ReturnsZakatSubmited = ReturnsZakatSubmitedChild;
+                    ReturnsZakatSubmited = ReturnsZakatSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleZakatSumbitted = true;
                     IsVisibleZakatSumbittedLabel = false;
                     SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatSubmitedChild.Count + ")";
@@ -1486,7 +1501,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATNonSubmitedChild.Count > 0)
                 {
-                    ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild;
+                    ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleVATNonSumbitted = true;
                     IsVisibleVATNonSumbittedLabel = false;
                     NonSubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATNonSubmitedChild.Count + ")";
@@ -1500,7 +1515,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATOverDueChild.Count > 0)
                 {
-                    ReturnsVATOverDue = ReturnsVATOverDueChild;
+                    ReturnsVATOverDue = ReturnsVATOverDueChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleVATOverDue = true;
                     IsVisibleVATOverDueLabel = false;
                     OverDueVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATOverDueChild.Count + ")";
@@ -1515,7 +1530,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsVATSubmitedChild.Count > 0)
                 {
-                    ReturnsVATSubmited = ReturnsVATSubmitedChild;
+                    ReturnsVATSubmited = ReturnsVATSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleVATSumbitted = true;
                     IsVisibleVATSumbittedLabel = false;
                     SubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATSubmitedChild.Count + ")";
@@ -1531,7 +1546,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
 
                 if (ReturnsETNonSubmitedChild.Count > 0)
                 {
-                    ReturnsETNonSubmited = ReturnsETNonSubmitedChild;
+                    ReturnsETNonSubmited = ReturnsETNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleETNonSumbitted = true;
                     IsVisibleETNonSumbittedLabel = false;
                     NonSubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETNonSubmitedChild.Count + ")";
@@ -1547,7 +1562,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsETOverDueChild.Count > 0)
                 {
-                    ReturnsETOverDue = ReturnsETOverDueChild;
+                    ReturnsETOverDue = ReturnsETOverDueChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleETOverDue = true;
                     IsVisibleETOverDueLabel = false;
                     OverDueETReturnsCount = AppResources.ETReturns + "(" + ReturnsETOverDueChild.Count + ")";
@@ -1562,7 +1577,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsETSubmitedChild.Count > 0)
                 {
-                    ReturnsETSubmited = ReturnsETSubmitedChild;
+                    ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleETSumbitted = true;
                     IsVisibleETSumbittedLabel = false;
                     SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
@@ -1578,7 +1593,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
 
                 if (ReturnsWHNonSubmitedChild.Count > 0)
                 {
-                    ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild;
+                    ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleWHNonSumbitted = true;
                     IsVisibleWHNonSumbittedLabel = false;
                     NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHNonSubmitedChild.Count + ")";
@@ -1593,7 +1608,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsWHOverDueChild.Count > 0)
                 {
-                    ReturnsWHOverDue = ReturnsWHOverDueChild;
+                    ReturnsWHOverDue = ReturnsWHOverDueChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleWHOverDue = true;
                     IsVisibleWHOverDueLabel = false;
                     OverDueWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHOverDueChild.Count + ")";
@@ -1608,7 +1623,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                 }
                 if (ReturnsWHSubmitedChild.Count > 0)
                 {
-                    ReturnsWHSubmited = ReturnsWHSubmitedChild;
+                    ReturnsWHSubmited = ReturnsWHSubmitedChild.OrderByDescending(a=>a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleWHSumbitted = true;
                     IsVisibleWHSumbittedLabel = false;
                     SubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHSubmitedChild.Count + ")";

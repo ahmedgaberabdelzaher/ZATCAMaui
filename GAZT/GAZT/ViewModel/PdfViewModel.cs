@@ -113,6 +113,21 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfUrl");
             }
         }
+
+        private bool _isShareButtonEnable;
+        public bool IsShareButtonEnable
+        {
+            get
+            {
+                return _isShareButtonEnable;
+            }
+            set
+            {
+                _isShareButtonEnable = value;
+                RaisePropertyChanged("IsShareButtonEnable");
+            }
+        }
+
         private string _DownloadUrl = string.Empty;
         public string DownloadUrl
         {
@@ -187,6 +202,7 @@ namespace GAZT.ViewModel
                      }
                      else
                      {
+                        IsShareButtonEnable = false;
                         String OnSuccessfulAuthentication = AppResources.PdfIsNoteAvailable;
                         await _dialogService.ShowMessageBox(OnSuccessfulAuthentication, AppResources.Information);
                      }
@@ -245,17 +261,22 @@ namespace GAZT.ViewModel
                                         StreamForDownloadURL.Close();
                                        // StreamForDownloadURL = null;
                                     }
-
+                                    IsShareButtonEnable = true;
                                     StreamForDownloadURL = stream;
+                                }
+                                else
+                                {
+                                    IsShareButtonEnable = false;
                                 }
                             }
                             catch (Exception ex)
                             {
-
+                                IsShareButtonEnable = false;
                             }
                         }
                         else
                         {
+                            IsShareButtonEnable = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
@@ -263,12 +284,28 @@ namespace GAZT.ViewModel
                         }
 
                     }
+                    else
+                    {
+                        IsShareButtonEnable = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                        });
+                    }
+                }
+                else
+                {
+                    IsShareButtonEnable = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
+                    });
                 }
 
             }
             catch (Exception ex)
             {
-
+                IsShareButtonEnable = false;
             }
         }
 

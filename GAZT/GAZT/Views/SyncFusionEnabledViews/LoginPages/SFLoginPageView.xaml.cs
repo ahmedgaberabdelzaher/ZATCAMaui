@@ -113,10 +113,10 @@ namespace GAZTeServicesApp.Views.LoginPage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //viewModel.password = string.Empty;
-            //viewModel.email = string.Empty;
-            //viewModel.Password = string.Empty;
-            //viewModel.Email = string.Empty;
+            viewModel.password = string.Empty;
+            viewModel.email = string.Empty;
+            viewModel.Password = string.Empty;
+            viewModel.Email = string.Empty;
         }
         protected async override void OnAppearing()
         {
