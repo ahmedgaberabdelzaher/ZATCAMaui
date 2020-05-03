@@ -13,7 +13,6 @@ using System.Globalization;
 using Newtonsoft.Json;
 using GAZT.Helper;
 using System.Linq;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ChecKTINStatusViewModel : ViewModelBase
@@ -22,13 +21,9 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
         public ICommand OnCloseClick { get; set; }
-
         public ICommand OnClickLessOrMore { get; set; }
         public DateTime lastTapped;
-
-
         private string _TIN = string.Empty;
-
         public string TIN
         {
             get
@@ -41,10 +36,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TIN");
             }
         }
-
-
         private string _TINStatus = string.Empty;
-
         public string TINStatus
         {
             get
@@ -57,7 +49,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TINStatus");
             }
         }
-
         private string _LastUpdate = string.Empty;
         public string LastUpdate
         {
@@ -71,7 +62,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LastUpdate");
             }
         }
-
         private bool _isLabelVisible = false;
         public bool IsLabelVisible
         {
@@ -84,9 +74,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isLabelVisible = value;
                 RaisePropertyChanged("IsLabelVisible");
             }
-
         }
-
         private bool _isVisibleListItems = false;
         public bool IsVisibleListItems
         {
@@ -99,9 +87,7 @@ namespace GAZT.ViewModel.NewViewModel
                 _isVisibleListItems = value;
                 RaisePropertyChanged("IsVisibleListItems");
             }
-
         }
-
         //@Divya Jannapureddy adding line number 105 to 118
         private bool _isShowLessMoreLblVisible = true;
         public bool IsShowLessMoreLblVisible
@@ -115,11 +101,8 @@ namespace GAZT.ViewModel.NewViewModel
                 _isShowLessMoreLblVisible = value;
                 RaisePropertyChanged("IsShowLessMoreLblVisible");
             }
-
         }
-
         private TINStatus _listTINStatus;
-
         public TINStatus ListTINStatus
         {
             get
@@ -132,9 +115,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ListTINStatus");
             }
         }
-
         private List<ConsumerRegisteration> _consumerRegisteration;
-
         public List<ConsumerRegisteration> ConsumerRegisteration
         {
             get
@@ -147,9 +128,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ConsumerRegisteration");
             }
         }
-
         private string _showLessOrMore= AppResources.ZShowmoredetails;
-
         public string ShowLessOrMore
         {
             get
@@ -162,8 +141,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ShowLessOrMore");
             }
         }
-
-
         //@Divya Jannapureddy adding line number
         //Replace the below method
         public ChecKTINStatusViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -174,20 +151,16 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    _navigationService.NavigateTo(App.DashboardPageView);
             //});
-
             OnClickLessOrMore = new Command(async () =>
             {
                 ShowLessOrMore = string.Empty;
-               
                 if (IsVisibleListItems == false)
                 {
-                   
                     IsVisibleListItems = true;
                     ShowLessOrMore = AppResources.ZShowlessdetails;
                 }
                 else
                 {
-                   
                     IsVisibleListItems = false;
                     ShowLessOrMore = AppResources.ZShowmoredetails;
                 }
@@ -198,7 +171,6 @@ namespace GAZT.ViewModel.NewViewModel
                 _navigationService.GoBack();
             });
         }
-
         //@Divya Jannapureddy adding line number
         //Replace below method
         public async Task OnPageLoad()
@@ -218,7 +190,6 @@ namespace GAZT.ViewModel.NewViewModel
                         TINStatus = ListTINStatus.d.StatusText;
                         if (ListTINStatus.d.Udate != null)
                         {
-
                             if (App.IsArabic)
                             {
                                 string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
@@ -229,17 +200,13 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 string dateLU = UtilityManager.FormatAccordingToDevice(ListTINStatus.d.Udate.ToString().Split(' ')[0]);
                                 LastUpdate = dateLU;
-
-
                             }
                         }
-
                         ConsumerRegisteration = ListTINStatus.d.ItemSet.results;
                         if (ConsumerRegisteration.Count > 0)
                         {
                             IsShowLessMoreLblVisible = true;
                             IsLabelVisible = false;
-
                             if (ConsumerRegisteration != null)
                             {
                                 if (ListTINStatus.d.ItemSet.results != null)
@@ -256,7 +223,6 @@ namespace GAZT.ViewModel.NewViewModel
                                             else
                                             {
                                                 itemCR.Udate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemCR.Udate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                                             }
                                         }
                                     }
@@ -274,7 +240,6 @@ namespace GAZT.ViewModel.NewViewModel
                         //  await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
                     }
                 }
-
                 //List<TINStatus> StatusList = new List<TINStatus>
                 //{
                 //    new TINStatus{ CRNos="111111111111111",CRStatus="Deactive",LastUpdate="10-10-2019"},
@@ -298,7 +263,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {

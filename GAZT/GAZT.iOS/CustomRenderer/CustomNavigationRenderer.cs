@@ -5,7 +5,6 @@ using UIKit;
 using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using CoreGraphics;
-
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
@@ -34,12 +33,10 @@ namespace GAZT.iOS.CustomRenderer
             //    ft = UIFont.FromName("Cairo-Regular", 16);
             //else
             //    ft = UIFont.FromName("Helvetica-Normal", 16);
-
             //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
             //{
             //    //Font = ft
             //};
-
             //try
             //{
             //    MessagingCenter.Unsubscribe<string>(this, "SetFont");
@@ -48,16 +45,12 @@ namespace GAZT.iOS.CustomRenderer
             //{
             //    System.Diagnostics.Debug.WriteLine("Exception: " + exe.Message);
             //}
-
             //MessagingCenter.Subscribe<string>(this, "SetFont", message =>
             //{
-
             //    if (App.IsArabic)
             //        ft = UIFont.FromName("Cairo-Regular", 16);
             //    else
             //        ft = UIFont.FromName("Helvetica-Normal", 16);
-
-
             //    try
             //    {
             //        UIBarButtonItem backButton = new UIBarButtonItem();
@@ -66,19 +59,13 @@ namespace GAZT.iOS.CustomRenderer
             //    }
             //    catch (Exception)
             //    {
-
             //    }
-
             //    //this.NavigationBar.TitleTextAttributes = new UIStringAttributes()
             //    //{
             //    //    Font = ft
             //    //};
-
             //    // NavigationBar.EffectiveUserInterfaceLayoutDirection = UIUserInterfaceLayoutDirection.RightToLeft;
-
             //});
-
-
             //    UIBarButtonItem button = new UIBarButtonItem("Logout", UIBarButtonItemStyle.Plain, (sender, e) =>
             //    {
             //        var Confirm = new UIAlertView("Confirmation", "Are you Sure You Want to Logout?", null, "Cancel", "Confirm");
@@ -96,10 +83,7 @@ namespace GAZT.iOS.CustomRenderer
             //            }
             //        };
             //    });
-
             //    this.NavigationItem.LeftBarButtonItem = button;
-
-
             //}
         }
     }

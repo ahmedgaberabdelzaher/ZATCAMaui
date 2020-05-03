@@ -7,15 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     public interface IBaseUrl { string Get(); }
-    
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CorrespondenceDetailsPageView : ContentPage
     {
@@ -29,30 +26,21 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
             ChangeAeroIcon();
             viewModel = App.Locator.CorrespondenceDetailsPageView;
             this.BindingContext = viewModel;
             viewModel.IsAttachmentEnabled = false;
-
-
             CorrespondenceDetailsRootObject CorrespondenceD = new CorrespondenceDetailsRootObject();
             try
             {
-
-
                         CorrespondenceD = WebServiceManager.GAZTGetCorrespondeceDetails(CorrModel);
-                 
-                
-
                 if ((CorrespondenceD != null) && (CorrespondenceD.d != null) && (CorrespondenceD.d.results != null))
                 {
                     string response = CorrespondenceD.d.results.LastOrDefault().Attfg;
                     if (response.Equals("X"))
                     {
                         viewModel.IsAttachmentEnabled = true;
-
                     }
                     else
                     {
@@ -60,9 +48,7 @@ namespace GAZT.Views.NewViews
                         Attachment_Label.TextColor = Color.FromHex("#A9A9A9");
                         viewModel.IsAttachmentEnabled = false;
                     }
-
                 }
-
                 PopToRootPage();
             }
             catch (InternetException ex)
@@ -74,28 +60,19 @@ namespace GAZT.Views.NewViews
             }
             string HTMLContent = string.Empty;
             string HTMLContentTest = string.Empty;
-
             if(CorrespondenceD!= null && CorrespondenceD.d!=null && CorrespondenceD.d.results!=null)
             { 
             foreach (CorrespondenceDetailsResult ItemC in CorrespondenceD.d.results)
             {
-
-
-
                 HTMLContent = HTMLContent + ItemC.Tdline;
-
-
             }
-
           //  string trim1 = HTMLContent.Replace("</body>", " ");
-
             string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
            // string newHTMLForFonts= newHTMLContent.Replace("<body>", "<body style='font-size:200%;'>");
             if (Device.RuntimePlatform == Device.iOS)
             {
                 string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;'>");
                 var htmlSource = new HtmlWebViewSource();
-
                 htmlSource.Html = newHTMLForFonts;
                 htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
                 CorWebView.Source = htmlSource;
@@ -104,17 +81,11 @@ namespace GAZT.Views.NewViews
             {
                 string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:16px;margin:10;'>");
                 var htmlSource = new HtmlWebViewSource();
-
                 htmlSource.Html = newHTMLForFonts;
                 htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
                 CorWebView.Source = htmlSource;
-
             }
-
-
-
             }
-
             if (CorrModel!= null)
             { 
             viewModel.CorrespondenceTitle = CorrModel.Title;
@@ -141,7 +112,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -160,6 +130,5 @@ namespace GAZT.Views.NewViews
                 });
             }
         }
-
     }
 }

@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,14 +23,11 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             MainLayout.Margin = new Thickness(0, 0, 0, 5);
-
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
         }
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -46,20 +41,16 @@ namespace GAZT.Views.NewViews
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         MainLayout.Margin = new Thickness(40, 0, 40, 5);
-
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         MainLayout.Margin = new Thickness(0, 0, 0, 5);
-
                     }
                 }
-
                 //reconfigure layout
             }
         }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -78,7 +69,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         private void ListTINStatus_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;

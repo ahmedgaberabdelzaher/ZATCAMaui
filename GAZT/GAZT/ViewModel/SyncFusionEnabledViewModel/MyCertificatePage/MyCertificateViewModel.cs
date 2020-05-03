@@ -15,7 +15,6 @@ using pdfjs.Interfaces;
 using System.IO;
 using System.Collections.Generic;
 using GAZT.Helper;
-
 namespace GAZT
 {
     public class MyCertificateViewModel : ViewModelBase
@@ -25,7 +24,6 @@ namespace GAZT
         private readonly IDialogService _dialogService;
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
-
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnLoginButtonClicked { get; set; }
         public ICommand OnBellClicked { get; set; }
@@ -35,15 +33,9 @@ namespace GAZT
         public ICommand OnVATCertificateClicked { get; set; }
         public ICommand OnExciseCertificateClicked { get; set; }
         public AllCertificate allCertificate { get; set; }
-
-
         #endregion
-
         #region Property
-
-        
         private int _selectedTab = 0;
-
         public int SelectedTab
         {
             get
@@ -57,7 +49,6 @@ namespace GAZT
             }
         }
         private bool _isLoading = false;
-
         public bool IsLoading
         {
             get
@@ -70,9 +61,7 @@ namespace GAZT
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _isCertificateAvailableZakat = false;
-
         public bool IsCertificateAvailableZakat
         {
             get
@@ -85,9 +74,7 @@ namespace GAZT
                 RaisePropertyChanged("IsCertificateAvailableZakat");
             }
         }
-
         private bool _isCertificateAvailableVAT = false;
-
         public bool IsCertificateAvailableVAT
         {
             get
@@ -101,7 +88,6 @@ namespace GAZT
             }
         }
         private bool _isCertificateAvailableET = false;
-
         public bool IsCertificateAvailableET
         {
             get
@@ -114,10 +100,7 @@ namespace GAZT
                 RaisePropertyChanged("IsCertificateAvailableET");
             }
         }
-
-
         private bool _isCertificateAvailableZakatTab = false;
-
         public bool IsCertificateAvailableZakatTab
         {
             get
@@ -130,9 +113,7 @@ namespace GAZT
                 RaisePropertyChanged("IsCertificateAvailableZakatTab");
             }
         }
-
         private bool _isCertificateAvailableVATTab = false;
-
         public bool IsCertificateAvailableVATTab
         {
             get
@@ -146,7 +127,6 @@ namespace GAZT
             }
         }
         private bool _isCertificateAvailableETTab = false;
-
         public bool IsCertificateAvailableETTab
         {
             get
@@ -159,12 +139,7 @@ namespace GAZT
                 RaisePropertyChanged("IsCertificateAvailableETTab");
             }
         }
-
-
-
-
         private bool _setNoDataLabelVisibilityZakat = false;
-
         public bool SetNoDataLabelVisibilityZakat
         {
             get
@@ -177,9 +152,7 @@ namespace GAZT
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakat");
             }
         }
-
         private bool _setNoDataLabelVisibilityVAT = false;
-
         public bool SetNoDataLabelVisibilityVAT
         {
             get
@@ -192,9 +165,7 @@ namespace GAZT
                 RaisePropertyChanged("SetNoDataLabelVisibilityVAT");
             }
         }
-
         private bool _setNoDataLabelVisibilityET = false;
-
         public bool SetNoDataLabelVisibilityET
         {
             get
@@ -207,11 +178,7 @@ namespace GAZT
                 RaisePropertyChanged("SetNoDataLabelVisibilityET");
             }
         }
-
-
-
         private bool _isVATCertificateAvailable = false;
-
         public bool IsVATCertificateAvailable
         {
             get
@@ -224,12 +191,7 @@ namespace GAZT
                 RaisePropertyChanged("IsVATCertificateAvailable");
             }
         }
-
-       
-
-
         private List<Result> _certificateListZakat;
-
         public List<Result> CertificateListZakat
         {
             get
@@ -243,7 +205,6 @@ namespace GAZT
             }
         }
         private List<Result> _certificateListVAT;
-
         public List<Result> CertificateListVAT
         {
             get
@@ -256,7 +217,6 @@ namespace GAZT
                 RaisePropertyChanged("CertificateListVAT");
             }
         }
-
         private List<Result> _certificateListET;
         public List<Result> CertificateListET
         {
@@ -270,10 +230,7 @@ namespace GAZT
                 RaisePropertyChanged("CertificateListET");
             }
         }
-
-
         private Result _selectedCertificate;
-
         public Result SelectedCertificate
         {
             get
@@ -290,8 +247,6 @@ namespace GAZT
                 }
             }
         }
-
-
         private string _PdfSelected;
         public string PdfSelected
         {
@@ -318,9 +273,6 @@ namespace GAZT
                 }
             }
         }
-
-
-
         private bool _CertificateVisible = false;
         public bool CertificateVisible
         {
@@ -334,8 +286,6 @@ namespace GAZT
                 RaisePropertyChanged("CertificateVisible");
             }
         }
-
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -349,7 +299,6 @@ namespace GAZT
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
-
         private string _PathOfPdf;
         public string PathOfPdf
         {
@@ -363,9 +312,6 @@ namespace GAZT
                 RaisePropertyChanged("PathOfPdf");
             }
         }
-
-        
-
         private string _certificateType;
         public string CertificateType
         {
@@ -379,8 +325,6 @@ namespace GAZT
                 RaisePropertyChanged("CertificateType");
             }
         }
-
-
         private string _DownloadUrl = String.Empty;
         public string DownloadUrl
         {
@@ -394,7 +338,6 @@ namespace GAZT
                 RaisePropertyChanged("DownloadUrl");
             }
         }
-
         private Stream _StreamForDownloadURL = null;
         public Stream StreamForDownloadURL
         {
@@ -408,31 +351,24 @@ namespace GAZT
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
-
-
         #endregion
-
         #region Constructor
-
         public MyCertificateViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-           
             _dialogService = dialogService;
             OnLoginButtonClicked = new RelayCommand(async () =>
             {
                 bool IsComingFromSearch = true;
                 // _navigationService.NavigateTo(App.LoginView);
-
             });
             //OnVATCertificateClicked = new RelayCommand(async () =>
             //{
@@ -461,21 +397,14 @@ namespace GAZT
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
-            
-
-
-
             //OnZakatCertificateClicked = new RelayCommand(async () =>
             //{
             //    try
@@ -494,13 +423,11 @@ namespace GAZT
             //                SetNoDataLabelViewVisibility();
             //            }
             //        }
-
             //    }
             //    catch (Exception ex)
             //    {
             //    }
             //});
-
             //OnExciseCertificateClicked = new RelayCommand(async () =>
             //{
             //    try
@@ -524,27 +451,17 @@ namespace GAZT
             //    {
             //    }
             //});
-
-
-
-
             OnBellClicked = new Command(async () =>
             {
                 //_navigationService.NavigateTo(App.MyCertificate);
-
             });
-
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-
         }
-
         #endregion
-
         #region Method
-
         public void pdf()
         {
             var localPath = string.Empty;
@@ -554,41 +471,27 @@ namespace GAZT
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     var dependency = DependencyService.Get<ILocalFileProvider>();
-
                     if (dependency == null)
                     {
                         // DisplayAlert("Error loading PDF", "Computer says no", "OK");
-
                         return;
                     }
-
                     var fileName = Guid.NewGuid().ToString();
-
                     // Download PDF locally for viewing
-
                     using (System.Net.WebClient client = new System.Net.WebClient())
                     {
                         try
                         {
-
                             StreamForDownloadURL = client.OpenRead(DownloadUrl);
-
                             BinaryReader br = new BinaryReader(StreamForDownloadURL);
-
                             byte[] result = br.ReadBytes((int)StreamForDownloadURL.Length);
-
                             string strBase64 = Convert.ToBase64String(result);
-
                             if (string.IsNullOrEmpty(strBase64) != true)
                             {
-
                                 byte[] sPDFDecoded = Convert.FromBase64String(strBase64);
                                 stream = new MemoryStream(sPDFDecoded);
-
                                 StreamForDownloadURL = stream;
-
                             }
-
                             localPath =
                           Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                         }
@@ -596,23 +499,18 @@ namespace GAZT
                         {
                         }
                     }
-
                     //    using (var httpClient = new HttpClient())
                     //{
                     //    var pdfStream = Task.Run(() => httpClient.GetStreamAsync("https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/corr_dataSet(Cokey='C4346B23F48E1ED982858E704178C406',Cotyp='ZVT3')/$value")).Result;
-
                     //    localPath =
                     //        Task.Run(() => dependency.SaveFileToDisk(pdfStream, $"{fileName}.pdf")).Result;
                     //}
-
                     if (string.IsNullOrWhiteSpace(localPath))
                     {
                         //   DisplayAlert("Error loading PDF", "Computer says no", "OK");
-
                         return;
                     }
                 }
-
                 if (Device.RuntimePlatform == Device.Android)
                     PathOfPdf = $"file:///android_asset/pdfjs/web/viewer.html?file={"file:///" + WebUtility.UrlEncode(localPath)}";
                 //else
@@ -623,8 +521,6 @@ namespace GAZT
                 throw e;
             }
         }
-
-
         public async void ShowPdf(string pdfUrl)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -661,9 +557,6 @@ namespace GAZT
                 }
             }
         }
-
-      
-
         public void OnPageLoad()
         {
             try
@@ -678,7 +571,6 @@ namespace GAZT
                 //    {
                 //        if (ItemType == "05")
                 //        {
-
                 //            IsCertificateAvailableZakatTab = true;
                 //        }
                 //        if (ItemType == "03" || ItemType == "13")
@@ -687,12 +579,10 @@ namespace GAZT
                 //        }
                 //        if (ItemType == "07")
                 //        {
-
                 //            IsCertificateAvailableETTab = true;
                 //        }
                 //    }
                 //}
-
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
@@ -749,12 +639,8 @@ namespace GAZT
                         IsCertificateAvailableET = false;
                         SetNoDataLabelVisibilityET = true;
                     }
-
                     //ZAKATCertificateList = allCertificate.ZakatSet.results;
                     //EXICISECertificateList = allCertificate.ExciseSet.results;
-
-
-
                     //if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
                     //{
                     //    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
@@ -775,7 +661,6 @@ namespace GAZT
                 _navigationService.GoBack();
             }
         }
-
         //private void SetLayoutVisibility()
         //{
         //    if(VATCertificateList != null && VATCertificateList.Count > 0)
@@ -803,33 +688,26 @@ namespace GAZT
         //        IsEXISECertificateAvailable = false;
         //    }
         //}
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
-
                 Device.BeginInvokeOnMainThread(async () => {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
                 });
-
-              
             }
         }
-
         //private void SetCertificateListViewVisibility()
         //{
         //    IsCertificateAvailable = true;
         //    SetNoDataLabelVisibility = false;
         //}
-
         //private void SetNoDataLabelViewVisibility()
         //{
         //    IsCertificateAvailable = false;
         //    SetNoDataLabelVisibility = true;
         //}
-
         #endregion
     }
 }

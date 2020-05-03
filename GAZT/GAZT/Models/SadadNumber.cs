@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class IBANType
@@ -14,19 +13,16 @@ namespace GAZT.Models
         public string Idnumber { get; set; }
         public string Type { get; set; }
     }
-
     public class SadadNumber
     {
         public SadadNumberD d { get; set; }
     }
-
     public class SadadNumberMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class SadadNumberResult
     {
         public Metadata __metadata { get; set; }
@@ -41,7 +37,6 @@ namespace GAZT.Models
         public bool IsAutoAsmnt { get; set; }
         public string Fbust { get; set; }
     }
-
     public class SadadNumberD
     {
         public List<SadadNumberResult> results { get; set; }

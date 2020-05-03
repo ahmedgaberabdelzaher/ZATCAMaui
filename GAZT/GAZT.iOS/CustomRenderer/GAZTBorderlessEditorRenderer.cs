@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Foundation;
 using GAZT;
 using GAZT.CustomControl;
@@ -10,9 +9,7 @@ using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-
 [assembly: ExportRenderer(typeof(GAZTBorderlessEditor), typeof(GAZTBorderlessEditorRenderer))]
-
 namespace GAZT.iOS.CustomRenderer
 {
     class GAZTBorderlessEditorRenderer : EditorRenderer
@@ -21,9 +18,6 @@ namespace GAZT.iOS.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
         {
             base.OnElementChanged(e);
-
-
-
             if (Control != null)
             {
                 fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));

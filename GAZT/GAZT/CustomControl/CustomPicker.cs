@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public  class CustomPicker : Picker
@@ -22,25 +21,19 @@ namespace GAZT
                 case "Android":
                     break;
             }
-
             SelectedIndexChanged += OnSelectionChanged;
         }
         #endregion Constructor
-
         #region Fields
-
         //Bindable property for the items source
         public static readonly BindableProperty DisplayMemberBindingProperty =
             BindableProperty.Create<CustomPicker, string>(p => p.DisplayMemberBinding, string.Empty, BindingMode.TwoWay);
-
         //Bindable property for the selected item
         public static readonly BindableProperty SelectedItemProperty =
             BindableProperty.Create<CustomPicker, object>(p => p.SelectedItem, null, BindingMode.TwoWay, propertyChanged: OnSelectedItemPropertyChanged);
-
         //Bindable property for the items source
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create<CustomPicker, IList>(p => p.ItemsSource, null, propertyChanged: OnItemsSourcePropertyChanged);
-
         public string DoneButtonText
         {
             get
@@ -52,7 +45,6 @@ namespace GAZT
                 SetValue(DoneButtonTextProperty, value);
             }
         }
-
         public static readonly BindableProperty DoneButtonTextProperty = BindableProperty.Create(
                                                           propertyName: "DoneButtonTextProperty",
                                                           returnType: typeof(string),
@@ -60,12 +52,10 @@ namespace GAZT
                                                           defaultValue: string.Empty,
                                                           defaultBindingMode: BindingMode.TwoWay,
                                                           propertyChanged: DoneButtonTextPropertyChanged);
-
         private static void DoneButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             (bindable as CustomPicker).DoneButtonText = newValue.ToString();
         }
-
         public string CancelButtonText
         {
             get
@@ -77,7 +67,6 @@ namespace GAZT
                 SetValue(CancelButtonTextProperty, value);
             }
         }
-
         public static readonly BindableProperty CancelButtonTextProperty = BindableProperty.Create(
                                                           propertyName: "CancelButtonTextProperty",
                                                           returnType: typeof(string),
@@ -85,16 +74,12 @@ namespace GAZT
                                                           defaultValue: string.Empty,
                                                           defaultBindingMode: BindingMode.TwoWay,
                                                           propertyChanged: CancelButtonTextPropertyChanged);
-
         private static void CancelButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             (bindable as CustomPicker).CancelButtonText = newValue.ToString();
         }
-
         #endregion Fields
-
         #region Properties
-
         /// <summary>
         /// Gets or sets the items source.
         /// </summary>
@@ -106,13 +91,11 @@ namespace GAZT
             get { return (IList)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
-
         public string DisplayMemberBinding
         {
             get { return GetValue(DisplayMemberBindingProperty).ToString(); }
             set { SetValue(DisplayMemberBindingProperty, value); }
         }
-      
         /// <summary>
         /// Gets or sets the selected item.
         /// </summary>
@@ -124,103 +107,52 @@ namespace GAZT
             get { return GetValue(SelectedItemProperty); }
             set { SetValue(SelectedItemProperty, value); }
         }
-
-
         //public string DoneButtonText
-
         //{
-
         //    get
-
         //    {
-
         //        return (string)GetValue(DoneButtonTextProperty);
-
         //    }
-
         //    set
-
         //    {
-
         //        SetValue(DoneButtonTextProperty, value);
-
         //    }
-
         //}
-
-
-
         //public static readonly BindableProperty DoneButtonTextProperty = BindableProperty.Create(
-
         //propertyName: "DoneButtonTextProperty",
-
         //returnType: typeof(string),
-
         //declaringType: typeof(CustomPicker),
-
         //defaultValue: string.Empty,
-
         //defaultBindingMode: BindingMode.TwoWay,
-
         //propertyChanged: DoneButtonTextPropertyChanged);
-
-
-
         //public string CancelButtonText
-
         //{
-
         //    get
-
         //    {
-
         //        return (string)GetValue(CancelButtonTextProperty);
-
         //    }
-
         //    set
-
         //    {
-
         //        SetValue(CancelButtonTextProperty, value);
-
         //    }
-
         //}
-
-
-
         //public static readonly BindableProperty CancelButtonTextProperty = BindableProperty.Create(
-
         //propertyName: "CancelButtonTextProperty",
-
         //returnType: typeof(string),
-
         //declaringType: typeof(CustomPicker),
-
         //defaultValue: string.Empty,
-
         //defaultBindingMode: BindingMode.TwoWay,
-
         //propertyChanged: CancelButtonTextPropertyChanged);
-
         #endregion Properties
-
         #region Methods
-
-
         //private static void CancelButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         //{
         //    (bindable as CustomPicker).CancelButtonText = newValue.ToString();
         //}
-
         //private static void DoneButtonTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         //{
         //    (bindable as CustomPicker).DoneButtonText = newValue.ToString();
-
         //}
-
-
         /// <summary>
         /// Called when [items source property changed].
         /// </summary>
@@ -232,7 +164,6 @@ namespace GAZT
             var picker = (CustomPicker)bindable;
             var eventList = picker.GetType().GetRuntimeEvents();
             var notifyCollection = newValue as INotifyCollectionChanged;
-
             if (notifyCollection != null)
             {
                 notifyCollection.CollectionChanged += (sender, args) =>
@@ -253,12 +184,9 @@ namespace GAZT
                     }
                 };
             }
-
             if (newValue == null)
                 return;
-
             picker.Items.Clear();
-
             if (string.IsNullOrWhiteSpace(picker.DisplayMemberBinding))
                 foreach (var item in newValue)
                     picker.Items.Add(item as string);
@@ -276,7 +204,6 @@ namespace GAZT
                                 actualValue = field.GetValue(item).ToString();
                             }
                         }
-
                         picker.Items.Add((actualValue ?? "").ToString());
                     }
                     catch (Exception e)
@@ -285,7 +212,6 @@ namespace GAZT
                     }
                 }
         }
-
         /// <summary>
         /// Called when [selected item property changed].
         /// </summary>
@@ -298,7 +224,6 @@ namespace GAZT
                 return;
             picker.SelectedIndex = index;
         }
-
         private void OnSelectionChanged(object sender, System.EventArgs e)
         {
             try
@@ -323,15 +248,10 @@ namespace GAZT
             }
             catch (Exception ex)
             {
-
             }
         }
-
-
-
         //public static readonly BindableProperty ImageProperty =
         //    BindableProperty.Create(nameof(Image), typeof(string), typeof(CustomPicker), string.Empty);
-
         //public string Image
         //{
         //    get { return (string)GetValue(ImageProperty); }

@@ -13,10 +13,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Resources;
 using System.Linq;
-
 namespace GAZTeServicesApp.Views.LandingPage
 {
-    
     /// <summary>
     /// Page to show the article tile
     /// </summary>
@@ -38,25 +36,17 @@ namespace GAZTeServicesApp.Views.LandingPage
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 LoadDuesData();
                 LoadData();
-
                 //  ParentContainer.RaiseChild(BusyIndicator);
              //   calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
-
                 SetLTR();
-                    
-
                 viewModel.TaxPayerProfile = App.TP;
-
-
             }
             catch (Exception gex)
             {
                 viewModel.TaxPayerProfile = App.TP;
                 int i = 0;
             }
-            
         }
-
         public async Task LoadDuesData()
         {
             try
@@ -72,7 +62,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                     {
                         List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
                         viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             viewModel.CommitmentReturnsList = viewModel.listofPaymentReturn;
@@ -88,10 +77,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                         viewModel.IsNoDuesLabelVisible = true;
                     }
                 });
-
-                
-
-
               await  Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
@@ -99,10 +84,8 @@ namespace GAZTeServicesApp.Views.LandingPage
             }
             catch(Exception ex)
             {
-
             }
         }
-
         private async Task LoadData()
         {
             try
@@ -112,14 +95,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                 viewModel.PopulateBillsInformation();
               // viewModel.PopulateBillsAndReturnsSchedule();
                 viewModel.PopulateeServicesApplicableToTheTaxPayer();
-             
             }
             catch(Exception ex)
             {
-
             }
         }
-
         protected async override void OnAppearing()
         {
             try
@@ -127,10 +107,8 @@ namespace GAZTeServicesApp.Views.LandingPage
                 base.OnAppearing();
                 App.IsComingFromSleepMode = false;
                 SetLTR();
-               
                 viewModel.TaxPayerProfile = App.TP;
                 //await viewModel.LoadDashboardData();
-
                 //viewModel.PopulateReturnsInformation();
                 //viewModel.PopulateBillsInformation();
                 //viewModel.PopulateBillsAndReturnsSchedule();
@@ -138,13 +116,10 @@ namespace GAZTeServicesApp.Views.LandingPage
             }
             catch(Exception ex)
             {
-
             }
         }
-
         private void Calendar_OnMonthCellLoaded(object sender, MonthCellLoadedEventArgs args)
         {
-
           //  // As default setting Month cell Background color as Green 
           ////  args.BackgroundColor = Color.Green;
           //  viewModel.BillsAndReturnsSchedule = calendar.DataSource as CalendarEventCollection;
@@ -152,7 +127,6 @@ namespace GAZTeServicesApp.Views.LandingPage
           //  {
           //      for (int i = 0; i < viewModel.BillsAndReturnsSchedule.Count; i++)
           //      {
-
           //          var appointment = viewModel.BillsAndReturnsSchedule[i];
           //          if (args.Date.Date == appointment.StartTime.Date)
           //          {
@@ -162,7 +136,6 @@ namespace GAZTeServicesApp.Views.LandingPage
           //      }
           //  }
         }
-
         private void SetLTR()
         {
             try
@@ -180,40 +153,30 @@ namespace GAZTeServicesApp.Views.LandingPage
                    // calendar.Locale = new System.Globalization.CultureInfo("en-US");
                   //  calendar.FlowDirection = FlowDirection.LeftToRight;
                     CalendarResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
-
                 }
-
             }
             catch (Exception gec)
             {
-
             }
-          
         }
-
         private void Button_Clicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo("OptionsPageView");
         }
-
         private async  void OnImageClicked(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
-
             Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Image img = sender as Image;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
                  viewModel.NavigateToMyBills(billInfo);
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
-
         }
         private async void OnLabelClicked(object sender, EventArgs e)
         {
@@ -221,22 +184,16 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 viewModel.IsLoading = true;
             });
-
             viewModel.IsButtonEnabled = false;
                 Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
                 Label img = sender as Label;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
                  viewModel.NavigateToMyBills(billInfo);
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
-
-
         }
-
         private async void OnStackLayoutClicked(object sender, EventArgs e)
         {
             await Task.Run(() =>
@@ -247,34 +204,23 @@ namespace GAZTeServicesApp.Views.LandingPage
                 StackLayout img = sender as StackLayout;
                 BillInfo billInfo = (BillInfo)img.BindingContext;
                  viewModel.NavigateToMyBills(billInfo);
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
         }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
            // viewModel.IsButtonEnabled = true;
         }
-
-  
-
         private async void OnTappedTest(object sender, EventArgs e)
         {
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
-
-
-
-
             string controltype = sender.GetType().ToString();
-
                 if (controltype == "Xamarin.Forms.Image")
                 {
                     try
@@ -296,7 +242,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                             Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                         }
-
                         if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                         {
                             Analytics.TrackEvent(App.MyCertificate + " eService", null);
@@ -326,7 +271,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                              mobno = App.TP.Mobile;
                             // mobno = mobno.Remove(0, 6);
                             mobno = mobno.Replace("009665", string.Empty);
-
                         }
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
                         }
@@ -338,10 +282,7 @@ namespace GAZTeServicesApp.Views.LandingPage
                     }
                     catch (Exception ex)
                     {
-
                     }
-
-
                 }
                 if (controltype == "Xamarin.Forms.Label")
                 {
@@ -364,7 +305,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                             Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                         }
-
                         if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                         {
                             Analytics.TrackEvent(App.MyCertificate + " eService", null);
@@ -391,10 +331,8 @@ namespace GAZTeServicesApp.Views.LandingPage
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                             mobno = App.TP.Mobile;
-
                             //mobno = mobno.Remove(0, 6);
                             mobno = mobno.Replace("009665", string.Empty);
-
                         }
                         Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
@@ -404,15 +342,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
-
                     }
                     catch (Exception ex)
                     {
-
                     }
-
                 }
-
                 if (controltype == "Xamarin.Forms.StackLayout")
                 {
                     try
@@ -434,7 +368,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                             Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                         }
-
                         if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                         {
                             Analytics.TrackEvent(App.MyCertificate + " eService", null);
@@ -472,35 +405,23 @@ namespace GAZTeServicesApp.Views.LandingPage
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
-
                     }
                     catch (Exception ex)
                     {
                     }
-                
-               
             }
-
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
-
         }
-
-
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
-
             string controltype = sender.GetType().ToString();
-
                 if (controltype == "Xamarin.Forms.StackLayout")
                 {
                     StackLayout arrowImage = sender as StackLayout;
@@ -520,7 +441,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                         Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
                     }
-
                 }
             if (controltype == "Xamarin.Forms.Label")
             {
@@ -541,20 +461,12 @@ namespace GAZTeServicesApp.Views.LandingPage
                     Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
                 }
-
             }
-
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
-
-
-
         }
-
         protected override bool OnBackButtonPressed() => true;
     }
 }

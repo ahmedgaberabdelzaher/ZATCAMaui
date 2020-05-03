@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -18,9 +17,7 @@ namespace GAZT.Droid.DependencyServices
     public class StatusBarImplementation : IStatusBar
     {
         WindowManagerFlags _originalFlags;
-
         #region IStatusBar implementation
-
         public void HideStatusBar()
         {
             //var activity = (Activity)Forms.Context;
@@ -36,7 +33,6 @@ namespace GAZT.Droid.DependencyServices
             //attrs.Flags = _originalFlags;
             //activity.Window.Attributes = attrs;
         }
-
         #endregion
     }
 }

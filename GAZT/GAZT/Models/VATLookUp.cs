@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class VATLookUp
     {
         public VATLookUpD d { get; set; }
     }
-
     public class VATLookUpResult
     {
         public Metadata __metadata { get; set; }
@@ -26,10 +24,8 @@ namespace GAZT.Models
         public string Code { get; set; }
         public string Description { get; set; }
     }
-
     public class VATLookUpD
     {
         public List<VATLookUpResult> results { get; set; }
     }
-
 }

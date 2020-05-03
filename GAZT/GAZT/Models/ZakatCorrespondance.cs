@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class Correspondance
     {
     }
-
     public class CorrespondenceMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class CorrespondenceResult
     {
         public CorrespondenceMetadata __metadata { get; set; }
@@ -47,17 +44,12 @@ namespace GAZT.Models
         public string CaseId { get; set; }
         public string LetterNum { get; set; }
     }
-
     public class CorrespondenceD
     {
         public List<CorrespondenceResult> results { get; set; }
     }
-
     public class CorrespondenceRootObject
     {
         public CorrespondenceD d { get; set; }
     }
-
-
-
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class ZakatReturnDetails
@@ -35,7 +34,6 @@ namespace GAZT.Models
         public string DocUrl { get; set; }
         public string OutletRef { get; set; }
     }
-
     public class ZakatAttachment
     {
         //  public Metadata3 __metadata { get; set; }
@@ -57,19 +55,14 @@ namespace GAZT.Models
         public string OutletRef { get; set; }
         public string UploadededDateToShow { get; set; }
     }
-
     public class ReasonSet
     {
         public List<ZakatReturnDetailsReason> results { get; set; }
     }
-
     public class AttachSet
     {
         public List<EstimateZakatAttachment> results { get; set; }
     }
-
-    
-
     public class ZakatReturnDetailsInvoice
     {
         public Metadata3 __metadata { get; set; }
@@ -82,14 +75,10 @@ namespace GAZT.Models
         public string Sdisamt { get; set; }
         public string Stotamt { get; set; }
     }
-
     public class InvoiceSet
     {
         public List<ZakatReturnDetailsInvoice> results { get; set; }
     }
-
-    
-
     public class ZakatReturnDetailsThresholdSet
     {
         public Metadata4 __metadata { get; set; }
@@ -101,12 +90,10 @@ namespace GAZT.Models
         public string Value { get; set; }
         public string Type { get; set; }
     }
-
     public class ThresholdSet
     {
         public List<ZakatReturnDetailsThresholdSet> results { get; set; }
     }
-
     public class ZakatReturnDetailsD
     {
         public Metadata __metadata { get; set; }
@@ -187,6 +174,4 @@ namespace GAZT.Models
         public InvoiceSet InvoiceSet { get; set; }
         public ThresholdSet ThresholdSet { get; set; }
     }
-
-    
 }

@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ChangeEmailPageViewModel: ViewModelBase
@@ -21,15 +20,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
         public ICommand OnVerifyEmailButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
-        
-
         #region Property
-
-
-
-       
-
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -43,7 +34,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -57,8 +47,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-        
         private string _NewEmail = string.Empty;
         public string NewEmail
         {
@@ -80,7 +68,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewEmail");
             }
         }
-
         private string _RetypeEmail = string.Empty;
         public string RetypeEmail
         {
@@ -102,8 +89,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("RetypeEmail");
             }
         }
-
-
         private bool _IsEnabledVerifyForEmail = false;
         public bool IsEnabledVerifyForEmail
         {
@@ -117,7 +102,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledVerifyForEmail");
             }
         }
-
         private bool _IsEnabledSubmitForEmail = false;
         public bool IsEnabledSubmitForEmail
         {
@@ -131,8 +115,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledSubmitForEmail");
             }
         }
-
-
         private bool _IsEnabledRetypeEmail = false;
         public bool IsEnabledRetypeEmail
         {
@@ -146,7 +128,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledRetypeEmail");
             }
         }
-
         private string _OldEmail = string.Empty;
         public string OldEmail
         {
@@ -160,7 +141,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("OldEmail");
             }
         }
-
         private bool _IsEnabledNewEmail = true;
         public bool IsEnabledNewEmail
         {
@@ -174,12 +154,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsEnabledNewEmail");
             }
         }
-
         #endregion
-
-
         #region Constructor
-
         public ChangeEmailPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -192,24 +168,16 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
-
-
             BackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 _navigationService.GoBack();
             });
-
-
-
                 OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-
                 Task.Run(() =>
                 {
                     IsLoading = true;
                 });
-
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
                 bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
                 bool _isNEwEmailAndOldEmailSame = IsNewEmailSameAsOldEmailSame();
@@ -230,27 +198,19 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                        await ShowNewEmailAndRetypedemailSameInformation();
                     }
-                  
-                  
                 }
                 else
                 {
                     await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 }
-
                 Task.Run(() =>
                 {
                     IsLoading = false;
                 });
             });
-
         }
-
         #endregion
-
         #region Method
-
-
         private async Task VarifyEmail()
         {
             try
@@ -259,7 +219,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     ComingToOTPVerificationScreenFrom NavigatingFromEmail = ComingToOTPVerificationScreenFrom.IsEmail;
@@ -270,18 +229,12 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         bool IsValidNewEmail = IsValidEmailAddress(NewEmail);
                         bool IsValidRetypeEmail = IsValidEmailAddress(RetypeEmail);
-
-
                         if (IsValidNewEmail && IsValidRetypeEmail)
                         {
-
                             bool response = await WebServiceManager.GAZTGetOTPForEmail(lang, TaxPayerProfile.Tin, OldEmail, NewEmail);
                             PopToRootPage();
-
                             if (response == true)
                             {
-
-
                                 IsEnabledRetypeEmail = false;
                                 IsEnabledNewEmail = false;
                                 App.TP.NewEmail = NewEmail;
@@ -290,14 +243,9 @@ namespace GAZT.ViewModel.NewViewModel
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
-
                                     _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
-
                                    // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
                                 });
-
-
-
                             }
                         }
                         else
@@ -319,8 +267,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 {
                                     await _dialogService.ShowMessageBox(OnNotMatchAuthentication, AppResources.Information);
                                 });
-
-
                             }
                         }
                     }
@@ -332,7 +278,6 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -350,13 +295,11 @@ namespace GAZT.ViewModel.NewViewModel
         public void OnPageLoad()
         {
             TaxPayerProfile = App.TP;
-           
             OldEmail = TaxPayerProfile.Email;
             NewEmail = string.Empty;
             RetypeEmail = string.Empty;
             IsEnabledNewEmail = true;
             IsEnabledRetypeEmail = true;
-
         }
         private bool IsValidEmailAddress(string EmailAddress)
         {
@@ -381,7 +324,6 @@ namespace GAZT.ViewModel.NewViewModel
                 return false;
             }
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -400,7 +342,6 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-
                 });
             }
         }
@@ -409,10 +350,8 @@ namespace GAZT.ViewModel.NewViewModel
             //NewEmail = string.Empty;
             //RetypeEmail = string.Empty;
             //  CurrentPasswordForEmail = string.Empty;
-           
             IsEnabledNewEmail = true;
         }
-
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -426,7 +365,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return IsMandatoryFieldEntered;
         }
-
         private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             if (!IsMandatoryFieldEntered)
@@ -436,15 +374,11 @@ namespace GAZT.ViewModel.NewViewModel
                     await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
                 });
             }
-
         }
-
         private async Task ShowNewEmailAndOldEmailNotBeSameInformation()
         {
-
             Device.BeginInvokeOnMainThread(async () =>
             {
-              
                 await _dialogService.ShowMessageBox(AppResources.ZZTheNewEmailMustNotMatchtheexistingEmail, AppResources.Alerts);
                 await Task.Run(() =>
                 {
@@ -452,7 +386,6 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             });
         }
-
         private bool IsNewEmailSameAsOldEmailSame()
         {
             if (NewEmail.ToUpper().Equals(App.TP.Email))
@@ -464,18 +397,13 @@ namespace GAZT.ViewModel.NewViewModel
                 return false;
             }
         }
-
         private async Task ShowNewEmailAndRetypedemailSameInformation()
         {
-
             Device.BeginInvokeOnMainThread(async () =>
             {
-
                 await _dialogService.ShowMessageBox(AppResources.NewEmailandRetypeEmailNotMatch, AppResources.ZError);
-             
             });
         }
-
         #endregion
     }
 }

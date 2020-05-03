@@ -12,7 +12,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Views.Options
 {
     /// <summary>
@@ -23,7 +22,6 @@ namespace GAZTeServicesApp.Views.Options
     public partial class SFOptionsPageView : ContentPage
     {
         SFOptionsPageViewModel viewModel;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageView" /> class.
         /// </summary>
@@ -42,12 +40,10 @@ namespace GAZTeServicesApp.Views.Options
             {
                 viewModel.TranslateText = AppResources.ZZZSetLanguageText;
             }
-
             //if (Device.Idiom == TargetIdiom.Tablet)
             //{
             //    ContentLayout.HeightRequest = 900;
             //}
-
             SetLTR();
         }
         //public void AddTapGestures()
@@ -89,7 +85,6 @@ namespace GAZTeServicesApp.Views.Options
                 viewModel.LogOut();
             }
         }
-      
         public void SetRTLDirection()
         {
             String langName = "ar-AE";
@@ -108,46 +103,35 @@ namespace GAZTeServicesApp.Views.Options
             this.FlowDirection = FlowDirection.LeftToRight;
             viewModel.TranslateText = AppResources.ZZZSetToArabic;
         }
-
         //private void LanguageChanged()
         //{
         //    if (App.IsArabic)
         //    {
-
         //        App.IsArabic = false;
         //        App.changeFontFamily(App.appObj);
         //        SetLTRDirection();
-
         //    }
         //    else
         //    {
-
         //        App.IsArabic = true;
         //        App.changeFontFamily(App.appObj);
         //        SetRTLDirection();
-
         //    }
         //}
-
         private void LanguageClicked(object sender, EventArgs e)
         {
             if (App.IsArabic)
             {
-
                 App.IsArabic = false;
                 App.changeFontFamily(App.appObj);
                 SetLTRDirection();
-
             }
             else
             {
-
                 App.IsArabic = true;
                 App.changeFontFamily(App.appObj);
                 SetRTLDirection();
-
             }
-
             if (viewModel.IsComingFrom == ComingToOptionScreenFrom.IsDashboardPage)
             {
                 viewModel._navigationService.NavigateTo(App.SFLandingPageView);

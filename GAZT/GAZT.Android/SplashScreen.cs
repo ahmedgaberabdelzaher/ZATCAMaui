@@ -1,9 +1,7 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -17,7 +15,6 @@ using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Gms.Common;
 using Firebase.Iid;
-
 namespace GAZT.Droid
 {
     [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", NoHistory = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
@@ -28,14 +25,11 @@ namespace GAZT.Droid
             base.OnCreate(savedInstanceState);
             //   await Task.Delay(4000);
             var refreshedToken = FirebaseInstanceId.Instance.Token;
-
             StartActivity(typeof(MainActivity));
         }
-
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
         public bool IsPlayServiceAvailable()

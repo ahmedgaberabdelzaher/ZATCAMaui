@@ -5,7 +5,6 @@ using UIKit;
 using CoreGraphics;
 using GAZT.iOS.CustomRenderer;
 using Xamarin.Forms.Platform.iOS;
-
 [assembly: ExportRenderer(typeof(Page), typeof(KeyboardRender))]
 namespace GAZT.iOS.CustomRenderer
 {
@@ -18,12 +17,10 @@ namespace GAZT.iOS.CustomRenderer
         private bool _pageWasShiftedUp;
         private bool _isKeyboardShown;
         private double _viewHeight;
-
         public static void Init(bool isEnabled)
         {
             _isEnabled = isEnabled;
         }
-
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
@@ -33,19 +30,16 @@ namespace GAZT.iOS.CustomRenderer
             }
             RegisterForKeyboardNotifications();
         }
-
         public override void ViewWillDisappear(bool animated)
         {
             base.ViewWillDisappear(animated);
             UnregisterForKeyboardNotifications();
         }
-
         private void RegisterForKeyboardNotifications()
         {
             _keyboardShowObserver = _keyboardShowObserver ?? NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillShowNotification, OnKeyboardShow);
             _keyboardHideObserver = _keyboardHideObserver ?? NSNotificationCenter.DefaultCenter.AddObserver(UIKeyboard.WillHideNotification, OnKeyboardHide);
         }
-
         private void UnregisterForKeyboardNotifications()
         {
             _isKeyboardShown = false;
@@ -55,7 +49,6 @@ namespace GAZT.iOS.CustomRenderer
                 _keyboardShowObserver.Dispose();
                 _keyboardShowObserver = null;
             }
-
             if (_keyboardHideObserver != null)
             {
                 NSNotificationCenter.DefaultCenter.RemoveObserver(_keyboardHideObserver);
@@ -63,7 +56,6 @@ namespace GAZT.iOS.CustomRenderer
                 _keyboardHideObserver = null;
             }
         }
-
         protected virtual void OnKeyboardShow(NSNotification notification)
         {
             if (!IsViewLoaded || _isKeyboardShown) return;
@@ -71,42 +63,31 @@ namespace GAZT.iOS.CustomRenderer
             var keyboardFrame = UIKeyboard.FrameEndFromNotification(notification);
             ShiftPageUp(keyboardFrame.Height);
         }
-
         private void OnKeyboardHide(NSNotification notification)
         {
             if (!IsViewLoaded) return;
-
             _isKeyboardShown = false;
             var keyboardFrame = UIKeyboard.FrameEndFromNotification(notification);
-
             if (_pageWasShiftedUp)
             {
                 ShiftPageDown();
             }
         }
-
         private void ShiftPageUp(nfloat keyboardHeight)
         {
             var pageFrame = Element.Bounds;
             _viewHeight = pageFrame.Height;
-
             var newHeight = pageFrame.Height - keyboardHeight;
-
             Element.LayoutTo(new Rectangle(pageFrame.X, pageFrame.Y,
                pageFrame.Width, newHeight));
-
             _pageWasShiftedUp = true;
         }
-
         private void ShiftPageDown()
         {
             var pageFrame = Element.Bounds;
-
             var newHeight = _viewHeight;
-
             Element.LayoutTo(new Rectangle(pageFrame.X, pageFrame.Y,
              pageFrame.Width, newHeight));
-
             _pageWasShiftedUp = false;
         }
     }

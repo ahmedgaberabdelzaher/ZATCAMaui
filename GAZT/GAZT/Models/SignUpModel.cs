@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     class SignUpModel
@@ -13,7 +12,6 @@ namespace GAZT.Models
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class SignUpModelD
     {
         public SignUpModelMetadata __metadata { get; set; }
@@ -55,7 +53,6 @@ namespace GAZT.Models
         public string AAgree { get; set; }
         public string AAgreeTm { get; set; }
     }
-
     public class SignUpModelRootObject
     {
         public SignUpModelD d { get; set; }

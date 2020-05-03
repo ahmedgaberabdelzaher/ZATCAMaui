@@ -15,7 +15,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -42,18 +41,13 @@ namespace GAZT.Views.NewViews
                 ClearFields();
                 viewModel.CreateCompanyTypeList();
                 SetDataToUI();
-
                 GetRegionList();
-
             }
             catch (Exception ex)
             {
-
             }
             // viewModel.SelectedCategory = SelectedCat;
         }
-
-
         private void SetDataToUI()
         {
             viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
@@ -70,9 +64,6 @@ namespace GAZT.Views.NewViews
                     viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameEn;
                     viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameEn;
                 }
-               
-                
-                
                 FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                 btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
@@ -87,16 +78,13 @@ namespace GAZT.Views.NewViews
                 viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
                 TFaciOwnerName.IsEnabled = false;
-
                 TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
                 RegionPicker.IsEnabled = false;
                 RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
-
                 viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
                 viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
                 viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
                 viewModel.IsSubmitButtonEnable = false; submit_btnmane.IsEnabled = false; submit_btnmane.BackgroundColor = Color.Gray;
-
                 viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
                 RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
@@ -108,7 +96,6 @@ namespace GAZT.Views.NewViews
                     {
                         viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
                     }
-
                 }
                 if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
                 {
@@ -121,10 +108,8 @@ namespace GAZT.Views.NewViews
                     pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                     mapView.Pins.Clear();
                     mapView.Pins.Add(pin);
-
                 }
                 mapView.IsEnabled = false;
-
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TIN))
                 { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.TIN; viewModel.IsTINVisible = true; }
                 else
@@ -133,7 +118,6 @@ namespace GAZT.Views.NewViews
                 }
                 TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
                 viewModel.TID = viewModel.selectedtaxEList.ID; TID.IsEnabled = false;
-
             }
             else
             {
@@ -145,25 +129,19 @@ namespace GAZT.Views.NewViews
                     }
                     catch (Exception ex)
                     {
-
                     }
-
                 }
                 if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
                 { viewModel.TEmail = App.TP.Email; }
                 if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.ReporterMobileNumber != null)
                 {
-
                     string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
                     viewModel.TMobNumber = mobb;
                     TMobNumber.IsEnabled = false;
                     TMobNumberAr.IsEnabled = false;
                 }
-
-
             }
         }
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -184,14 +162,9 @@ namespace GAZT.Views.NewViews
                         MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
-
                 //reconfigure layout
             }
         }
-        
-
-       
-
         private void SetLTR()
         {
             //if (!App.IsArabic)
@@ -199,8 +172,6 @@ namespace GAZT.Views.NewViews
             //    this.FlowDirection = FlowDirection.LeftToRight;
             //    viewModel.IsVisiblePickerAr = false;
             //    viewModel.IsVisiblePickerEn = true;
-
-
             //}
             //else
             //{
@@ -208,10 +179,8 @@ namespace GAZT.Views.NewViews
             //    viewModel.IsVisiblePickerAr = true;
             //    viewModel.IsVisiblePickerEn = false;
             //}
-
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
@@ -226,7 +195,6 @@ namespace GAZT.Views.NewViews
                 {
                     FmobcountrycodeAr.Text = "+9665";
                     TmobcountrycodeAr.Text = "+9665";              
-
                 }
             }
             else
@@ -242,36 +210,20 @@ namespace GAZT.Views.NewViews
                 reporterMobStackLayoutAr.IsVisible = false;
                 reporterMobStackLayout.IsVisible = true;
             }
-
         }
-
-        
-
-
-
-
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             if (App.IsArabic)
             {
                 RegionPickerAR.Focus();
-
-
-
             }
             else
             {
                 RegionPicker.Focus();
-
             }
-
-
-
         }
-
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-
             if (App.IsArabic)
             {
                 CityPickerAR.Focus();
@@ -281,24 +233,15 @@ namespace GAZT.Views.NewViews
             else
             {
                 CityPicker.Focus();
-
             }
-
         }
-
         private async void Button_Clicked(object sender, EventArgs e)
         {
-
             Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
-
             await AddReport();
-
             Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = false; });
-
             //viewModel.SubmitCreatedReport();
-
         }
-
         public async Task AddReport()
         {
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
@@ -307,18 +250,11 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-
-
-
-
-
                 bool flag = true;
-
                 if (string.IsNullOrEmpty(TName.Text))
                 {
                     flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
                 }
-
                 else if ( string.IsNullOrEmpty(viewModel.TMobNumber))
                 {
                     flag = false;
@@ -328,7 +264,6 @@ namespace GAZT.Views.NewViews
                     {
                         TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
                     }
-                    
                 }
                 else if (string.IsNullOrEmpty(TFaciName.Text))
                 { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
@@ -340,13 +275,11 @@ namespace GAZT.Views.NewViews
                 { flag = false; FrmFSAddress.HasError = true; showFillFeildsMessage(); TFSAddress.Focus(); }
                 else if (string.IsNullOrEmpty(TxtTIN.Text) && checkBox.IsChecked == true)
                 {  flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage(); }
-
                 else if (string.IsNullOrEmpty(TReportDetail.Text))
                 { flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFWType.Text))
                 { flag = false; FrmTFW.HasError = true; TFWType.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(Region_entry.Text))
-
                 {
                     flag = false; frmRegionPicker.HasError = true;
                     if (App.IsArabic)
@@ -358,7 +291,6 @@ namespace GAZT.Views.NewViews
                         RegionPicker.IsOpen = true;
                     }
                 }
-
                 else if (string.IsNullOrEmpty(City_entry.Text))
                 {
                     flag = false; FrmCity.HasError = true;
@@ -370,26 +302,20 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         CityPicker.IsOpen = true;
-
                     }
-
                 }
-
                 else if (string.IsNullOrEmpty(Date_entry.Text))
                 {
                     showFillFeildsMessage();
                     flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
                 }
-
                 else
                 {
                     if (flag == true)
                     { await viewModel.SubmitCreatedReport(); }
                 }
-
             }
         }
-
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
         {
             if (App.IsArabic)
@@ -400,9 +326,7 @@ namespace GAZT.Views.NewViews
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
-
                         popUp.IsLinkAvailable = false;
-
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -414,32 +338,22 @@ namespace GAZT.Views.NewViews
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmNumberAr.HasError = true;
                         TMobNumberAr.Text = string.Empty;
-
-
-
-
                     }
-
                     else
                     {
                         FrmNumberAr.HasError = false;
                     }
                 }
-
-
             }
             else
             {
-
                 if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
                     if (TMobNumber.Text.Length < 8)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
-
                         popUp.IsLinkAvailable = false;
-
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -451,22 +365,14 @@ namespace GAZT.Views.NewViews
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmNumber.HasError = true;
                         TMobNumber.Text = string.Empty;
-
-
-
-
                     }
-
                     else
                     {
                         FrmNumber.HasError = false;
                     }
                 }
-
             }
-
         }
-
         private void TFaciMobNo_Unfocused(object sender, FocusEventArgs e)
         {
             if (App.IsArabic)
@@ -477,10 +383,7 @@ namespace GAZT.Views.NewViews
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
-
-
                         popUp.IsLinkAvailable = false;
-
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -494,14 +397,11 @@ namespace GAZT.Views.NewViews
                         TFaciMobNoAr.Text = string.Empty;
                         TFaciMobNoAr.Focus();
                     }
-
                     else
                     {
                         FrmFMobNoAr.HasError = false;
                     }
                 }
-
-
             }
             else
             {
@@ -511,10 +411,7 @@ namespace GAZT.Views.NewViews
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
-
-
                         popUp.IsLinkAvailable = false;
-
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -528,33 +425,23 @@ namespace GAZT.Views.NewViews
                         TFaciMobNo.Text = string.Empty;
                         TFaciMobNo.Focus();
                     }
-
                     else
                     {
                         FrmFMobNo.HasError = false;
                     }
                 }
-
-
             }
-
-
         }
-
         private void TName_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TName.Text))
             {
                 FrmName.HasError = true;
-
                 TName.Text = string.Empty;
             }
            else
            { FrmName.HasError = false; }
-
-
         }
-
         private void TEmail_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(TEmail.Text))
@@ -564,10 +451,7 @@ namespace GAZT.Views.NewViews
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
-
-
                     popUp.IsLinkAvailable = false;
-
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
@@ -578,22 +462,18 @@ namespace GAZT.Views.NewViews
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmEmail.HasError = true;
-                   
                 }
                 else
                 {
                     FrmEmail.HasError = false;
                 }
             }
-
-
         }
         public bool IsValid(string emailaddress)
         {
             try
             {
                 MailAddress m = new MailAddress(emailaddress);
-
                 return true;
             }
             catch (FormatException)
@@ -601,20 +481,13 @@ namespace GAZT.Views.NewViews
                 return false;
             }
         }
-
         private void TFaciOwnerName_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TFaciOwnerName.Text))
             {
-
                 FrmFOName.HasError = false;
             }
-           
-            
-
-
         }
-
         private void TFaciEmail_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(TFaciEmail.Text))
@@ -624,10 +497,7 @@ namespace GAZT.Views.NewViews
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
-
-
                     popUp.IsLinkAvailable = false;
-
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
@@ -645,25 +515,16 @@ namespace GAZT.Views.NewViews
                     FrmFEmail.HasError = false;
                 }
             }
-
-
-
         }
-
         private void TFDAdress_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TFDAdress.Text))
             {
                 FrmFDAddress.HasError = true;
-             
-                
-
             }
             else
             { FrmFDAddress.HasError = false; }
-
         }
-
         private void TFSAddress_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TFSAddress.Text))
@@ -675,20 +536,15 @@ namespace GAZT.Views.NewViews
                 FrmFSAddress.HasError = false;
             }
         }
-
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtTIN.Text))
             {
-                
                 if (TxtTIN.Text.Length < 10 ||  (TxtTIN.Text.Substring(0, 1) != "3"))
                 {
                     PopUp popUp = new PopUp();
                     popUp.Message = AppResources.ZInvalidTinNumber;
-
-
                     popUp.IsLinkAvailable = false;
-
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
@@ -701,53 +557,35 @@ namespace GAZT.Views.NewViews
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
-
-
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
-
                 }
-
                 else
                 { 
                     FrmTIN.HasError = false; 
                 }
             }
-
-
         }
-
         private void TID_Unfocused(object sender, FocusEventArgs e)
         {
-
             if (!string.IsNullOrEmpty(TID.Text))
             {
                 if (TID.Text.Length < 10)
                 {
                     FrmID.HasError = true;
                     TID.Focus();
-
                 }
                 else
                 {
                     FrmID.HasError = false;
-
                 }
-
-
             }
             else 
             {
                 FrmID.HasError = false;
             }
-
-
-
-          
-
         }
-
         private void TVatNumber_Unfocused(object sender, FocusEventArgs e)
         {
             {
@@ -757,10 +595,7 @@ namespace GAZT.Views.NewViews
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidVatNumber;
-
-
                         popUp.IsLinkAvailable = false;
-
                         if (App.IsArabic)
                         {
                             popUp.FlowDirections = "RightToLeft";
@@ -772,38 +607,25 @@ namespace GAZT.Views.NewViews
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
-
-
-
                     }
                     else
                     {
                         FrmVAT.HasError = false;
-
                     }
-
-
                 }
-
             }
         }
-
         private void TReportDetail_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TReportDetail.Text))
             {
                 FrmReportDetail.HasError = true; 
-            
             }
             else
             {
-
-
                 FrmReportDetail.HasError = false;
             }
-
         }
-
         private void TFWType_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TFWType.Text))
@@ -815,13 +637,9 @@ namespace GAZT.Views.NewViews
             {
                 FrmTFW.HasError = false;
             }
-
-
         }
         public void ClearFields()
         {
-          
-
             try
             {
                 //viewModel.SelectedTaxEvasionCompanyType = null;
@@ -858,41 +676,30 @@ namespace GAZT.Views.NewViews
                 TFDAdress.Text = string.Empty;
                 TFSAddress.Text = string.Empty;
                 //DateLabel.IsVisible = false; DateLabel.IsEnabled = false; DateLabel.Text = string.Empty;
-
             }
             catch (Exception ex)
             {
-
             }
-
         }
-
-
-
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-          
         }
-
         public async Task GetRegionList()
         {
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
             });
-
             await Task.Run(async() =>
             {
                 await SetLocationToMap();
                 await viewModel.OnPageLoad();//TaxEvasionReport
             });
-
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
-
         }
         private async  Task SetLocationToMap()
         {
@@ -902,7 +709,6 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.IsLoading = false;
                     //clearFields();
-
                 }
                 else
                 {
@@ -911,14 +717,11 @@ namespace GAZT.Views.NewViews
                     {
                         var request = new GeolocationRequest(GeolocationAccuracy.Medium);
                         var location = await Geolocation.GetLocationAsync(request);
-
                         if (location != null)
                         {
                             lat = location.Latitude;
                             lon = location.Longitude;
                         }
-
-
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                         mapView.MoveToRegion(mapSpan);
@@ -945,9 +748,7 @@ namespace GAZT.Views.NewViews
                 }
             catch (Exception ex)
             {
-
             }
-           
         }
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
@@ -959,14 +760,8 @@ namespace GAZT.Views.NewViews
                 {
                     var request = new GeolocationRequest(GeolocationAccuracy.Medium);
                     var location = await Geolocation.GetLocationAsync(request);
-
                     if (location != null)
                     {
-
-
-
-
-
                         Position position = new Position(location.Latitude, location.Longitude);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                         mapView.MoveToRegion(mapSpan);
@@ -991,11 +786,6 @@ namespace GAZT.Views.NewViews
                 {
                     // Unable to get location
                 }
-
-
-
-
-
                 Pin pin = new Pin();
                 pin.Label = "Your Location";
                 pin.Type = PinType.Place;
@@ -1004,22 +794,15 @@ namespace GAZT.Views.NewViews
                 viewModel.Longitude = e.Position.Longitude;
                 mapView.Pins.Clear();
                 mapView.Pins.Add(pin);
-
             }
             else 
             { 
-            
-            
             }
-
-            
         }
-
         private void btnFacilityType_Clicked(object sender, EventArgs e)
         {
             ddlFacilityType.IsOpen = true;
         }
-
         private void btnTxtReportDetailRegion_Clicked(object sender, EventArgs e)
         {
             if (App.IsArabic)
@@ -1030,9 +813,7 @@ namespace GAZT.Views.NewViews
             {
                 RegionPicker.IsOpen = true;
             }
-
         }
-
         private void btnReportDetailCity_Clicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Region_entry.Text))
@@ -1044,9 +825,7 @@ namespace GAZT.Views.NewViews
                 else
                 {
                     CityPicker.IsOpen = true;
-
                 }
-
             }
             else
             {
@@ -1059,31 +838,23 @@ namespace GAZT.Views.NewViews
                     RegionPicker.IsOpen = true;
                 }
             }
-            
         }
-
         private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-
             string month = selectedItem[0].ToString();
             string day = selectedItem[1].ToString();
             string year = selectedItem[2].ToString();
-
             viewModel.DatePick = day + "/" + month + "/" + year;
             viewModel.DatePickPrev = day + "/" + month + "/" + year;
         }
-
         private void btn4_Clicked(object sender, EventArgs e)
         {
             DpDbo.IsOpen = true;
         }
-
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-
         }
-
         private void ddlFacilityType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FacilityCompanyType selectedcompanytyp = (FacilityCompanyType)e.NewValue;
@@ -1091,10 +862,8 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedTaxEvasionCompanyType = selectedcompanytyp;
             viewModel.SelectedTaxEvasionCompanyTypePrev = selectedcompanytyp;
             viewModel.TxtFType = selectedcompanytyp.Name;
-
             FrmFType.HasError = false;
         }
-
         private void RegionPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERRegion selectedregion = (TERRegion)e.NewValue;
@@ -1106,7 +875,6 @@ namespace GAZT.Views.NewViews
             viewModel.SelectLCTypePrev = null;
             //SelectedTaxEvasionRegion
         }
-
         private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERRegion selectedregion = (TERRegion)e.NewValue;
@@ -1116,9 +884,7 @@ namespace GAZT.Views.NewViews
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
             frmRegionPicker.HasError = false;
             viewModel.SelectLCTypePrev = null;
-
         }
-
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERCity selectedcity = (TERCity)e.NewValue;
@@ -1128,7 +894,6 @@ namespace GAZT.Views.NewViews
             viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
             FrmCity.HasError = false;
         }
-
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERCity selectedcity = (TERCity)e.NewValue;
@@ -1138,7 +903,6 @@ namespace GAZT.Views.NewViews
             viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
             FrmCity.HasError = false;
         }
-
         private void TFaciName_Unfocused(object sender, FocusEventArgs e)
         {
             if (string.IsNullOrEmpty(TFaciName.Text))
@@ -1148,35 +912,26 @@ namespace GAZT.Views.NewViews
                 FrmFName.HasError = false;
             }
         }
-
         private void Date_entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(Date_entry.Text))
             {
                 FrmDBO.HasError = false;
             }
-
         }
-
         private void DpDbo_Closed(object sender, EventArgs e)
         {
             var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-
             string month = selectedItem[0].ToString();
             string day = selectedItem[1].ToString();
             string year = selectedItem[2].ToString();
-
             viewModel.DatePick = day + "/" + month + "/" + year;
         }
-
         private void showFillFeildsMessage()
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZPleasefillallthemandatoryfields;
-
-
             popUp.IsLinkAvailable = false;
-
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1186,12 +941,9 @@ namespace GAZT.Views.NewViews
                 popUp.FlowDirections = "LeftToRight";
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-
-
         }
         public void ChangeAeroIcon()
         {
-
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];   
@@ -1201,7 +953,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void ddlFacilityType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionCompanyType = viewModel.SelectedTaxEvasionCompanyTypePrev;
@@ -1211,7 +962,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtFType = string.Empty;
             }
         }
-
         private void RegionPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
@@ -1221,7 +971,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtReportDetailRegion = string.Empty;
             }
         }
-
         private void RegionPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
@@ -1231,7 +980,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtReportDetailRegion = string.Empty;
             }
         }
-
         private void CityPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
@@ -1241,7 +989,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtReportDetailCity = string.Empty;
             }
         }
-
         private void CityPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
@@ -1251,7 +998,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtReportDetailCity = string.Empty;
             }
         }
-
         private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.DatePick = viewModel.DatePickPrev;
@@ -1259,24 +1005,18 @@ namespace GAZT.Views.NewViews
             {
                 string[] Date = viewModel.DatePickPrev.Split('/');
                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-
                 //Select today dates
-
                 todaycollection.Add(Date[1]);
                 todaycollection.Add(Date[2]);
                 todaycollection.Add(Date[0]);
-
                 DpDbo.SelectedItem = todaycollection;
-
             }
         }
-
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;
             try
             {
-
                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                 string month = selectedItem[0].ToString();
                 string day = selectedItem[1].ToString();
@@ -1285,7 +1025,6 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception ex)
             {
-
             }
         }
     }

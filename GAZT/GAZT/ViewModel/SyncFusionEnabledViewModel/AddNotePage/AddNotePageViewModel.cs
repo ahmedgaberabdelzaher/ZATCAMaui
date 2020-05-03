@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class AddNotePageViewModel : ViewModelBase
@@ -23,9 +22,7 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnClearButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         #endregion
-
         #region Property
-
         private VATDeclaration _vATDeclarationData;
         public VATDeclaration VATDeclarationData
         {
@@ -39,7 +36,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATDeclarationData");
             }
         }
-
         private string _noteText;
         public string NoteText
         {
@@ -61,7 +57,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NoteText");
             }
         }
-
         private string _previousNoteText;
         public string PreviousNoteText
         {
@@ -75,12 +70,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PreviousNoteText");
             }
         }
-
-
         #endregion
-
         #region Constructor
-
         public AddNotePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -89,20 +80,14 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-
             OnClearButtonClicked = new Command(() =>
             {
                 //if (!string.IsNullOrEmpty(NoteText))
@@ -113,26 +98,19 @@ namespace GAZT.ViewModel.NewViewModel
                 //{
                 //    NoteText = string.Empty;
                 //}
-
                 if (String.Compare(PreviousNoteText, NoteText) != 0)
                 {
                     NoteText = PreviousNoteText;
                 }
-
                 ClearNoteClicked = true;
                 _navigationService.GoBack();
             });
-
             OnAddButtonClicked = new Command(() =>
             {
                 _navigationService.GoBack();
             });
-
         }
-
-
         #endregion
-
         #region Method
         #endregion
     }

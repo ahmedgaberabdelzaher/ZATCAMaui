@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Interactivity;
 using Xamarin.Forms;
-
 namespace GAZT.CustomControl
 {
     public class RestrictSpecialCharactorsBehaviour : Xamarin.Forms.Behavior<Entry>
@@ -13,14 +12,11 @@ namespace GAZT.CustomControl
             entry.TextChanged += OnEntryTextChanged;
             base.OnAttachedTo(entry);
         }
-
         protected override void OnDetachingFrom(Entry entry)
         {
             entry.TextChanged -= OnEntryTextChanged;
             base.OnDetachingFrom(entry);
         }
-
-
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
             if (!string.IsNullOrWhiteSpace(args.NewTextValue))
@@ -36,7 +32,6 @@ namespace GAZT.CustomControl
                     {
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
-
                 }
                 //if (!isValidNumber)
                 //    {

@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Controls
 {
     /// <summary>
@@ -16,9 +15,7 @@ namespace GAZTeServicesApp.Controls
         {
             this.TextChanged += this.ExtendableEditor_TextChanged;
         }
-
         #region Methods
-
         /// <summary>
         /// Invoked when editor text is changed.
         /// </summary>
@@ -28,7 +25,6 @@ namespace GAZTeServicesApp.Controls
         {
             this.InvalidateMeasure();
         }
-
         #endregion
     }
 }

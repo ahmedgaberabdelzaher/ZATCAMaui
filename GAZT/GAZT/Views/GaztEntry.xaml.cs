@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public partial class GaztEntry : ContentView
@@ -23,7 +22,6 @@ namespace GAZT
             {
                 EntryLabelText.Margin = new Thickness(15, -20, 15, 0);
             }
-
         }
         public static void Init()
         {
@@ -31,8 +29,6 @@ namespace GAZT
         public static BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryWithGaztStyle), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty SourceProperty = BindableProperty.Create(nameof(Source), typeof(string), typeof(EntryWithGaztStyle), defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty LabelTextProperty = BindableProperty.Create(nameof(LabelText), typeof(string), typeof(EntryWithGaztStyle), defaultBindingMode: BindingMode.TwoWay);
-
-
         public string Text
         {
             get
@@ -44,7 +40,6 @@ namespace GAZT
                 SetValue(TextProperty, value);
             }
         }
-
         public string Source
         {
             get
@@ -67,6 +62,5 @@ namespace GAZT
                 SetValue(LabelTextProperty, value);
             }
         }
-
     }
 }

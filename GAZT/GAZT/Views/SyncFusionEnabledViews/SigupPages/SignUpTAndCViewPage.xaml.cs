@@ -6,14 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
-   
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpTAndCViewPage : ContentPage
     {
@@ -32,7 +29,6 @@ namespace GAZT.Views.NewViews
                 {
                     string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                     string path = DependencyService.Get<IBaseUrl>().Get();
-
                     if (!App.IsArabic)
                     {
                         string url = Path.Combine(path, "TermsAndConditionsEN.html");
@@ -42,7 +38,6 @@ namespace GAZT.Views.NewViews
                     {
                         string url = Path.Combine(path, "TermsAndConditionsAR.html");
                         TCWebView.Source = url;
-
                     }
                 }
                 else
@@ -54,14 +49,12 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         TCWebView.Source = "file:///android_asset/TermsAndConditionsAR.html";
-
                     }
                 }
                 // NavigationPage.SetHasNavigationBar(this, false);
             }
             catch(Exception ex)
             {
-
             }
         }
         public void ChangeAeroIcon()
@@ -84,8 +77,6 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;

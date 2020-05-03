@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.ViewModels.LoginPage
 {
     /// <summary>
@@ -19,33 +18,24 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-
         //public string password = "Init@123";
         //private string email = "3101593128";
         //private string password = "Test@123";
         //private string email = "3102290567";
         //private string email = "3102289204";
         // public string email = "3102292043";
-
         public string password;
         public string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
         private DateTime lastTapped;
         #endregion
-
         #region ConstructorF
-
-
         /// <summary>
         /// Initializes a new instance for the <see cref="LoginPageViewModel" /> class.
         /// </summary>
         public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
-
-           
-
             this.LoginCommand = new Command(async() =>
             {
                 //Task LoginClickedTask = Task.Run(async () =>
@@ -54,7 +44,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 //    {
                 //        await this.LoginClicked();
                 //    }
-                  
                 //});
                 try
                 {
@@ -62,7 +51,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                     {
                         IsLoading = true;
                     });
-
                     await Task.Run(async() =>
                     {
                         Task LoginClickedTask = Task.Run(async () =>
@@ -97,7 +85,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                             {
                                 MessageForTheUser = AppResources.RegistrationIsPending;
                             }
-
                             Device.BeginInvokeOnMainThread(() =>
                             {
                                 _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
@@ -118,22 +105,14 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     });
                 }
-
-
             });
-
-          
             this.BackButtonClicked = new Command(this.BackButtonClick);
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
         }
-
         #endregion
-
         #region property
-
-
         private string _appVersion = App.AppVersion;
         public string AppVersion
         {
@@ -147,7 +126,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("AppVersion");
             }
         }
-
         public string DeviceId { get; set; }
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
@@ -158,26 +136,22 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             {
                 return this.password;
             }
-
             set
             {
                 if (this.password == value)
                 {
                     return;
                 }
-
                 this.password = value;
                 this.RaisePropertyChanged("Password");
             }
         }
-
         public string Email 
         {
             get
             {
                 return this.email;
             }
-
             set
             {
                 if (this.email == value)
@@ -203,7 +177,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("Email");
             }   
         }
-
         private bool _IsFocused = false;
         public bool IsFocused
         {
@@ -235,8 +208,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("IsFocused");
             }
         }
-
-
         private string _PreviousUserName = String.Empty;
         public string PreviousUserName
         {
@@ -249,7 +220,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 _PreviousUserName = value;
             }
         }
-
         private string _tINID = string.Empty;
         public string TINID
         {
@@ -263,7 +233,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("TINID");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -277,7 +246,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 this.RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _isLoginEnabled = false;
         public bool IsLoginEnabled
         {
@@ -291,7 +259,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("IsLoginEnabled");
             }
         }
-
         private int _tINIndex = 0;
         public int TINIndex
         {
@@ -305,8 +272,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("TINIndex");
             }
         }
-
-
         private List<TIN> _tINs;
         public List<TIN> TINs
         {
@@ -320,8 +285,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("TINs");
             }
         }
-
-
         private TIN _selectedTinId;
         public TIN SelectedTinId
         {
@@ -341,7 +304,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("SelectedTinId");
             }
         }
-
         private TIN _selectedTinIdPrev;
         public TIN SelectedTinIdPrev
         {
@@ -352,11 +314,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             set
             {
                 _selectedTinIdPrev = value;
-                
                 RaisePropertyChanged("SelectedTinIdPrev");
             }
         }
-
         private bool _passwordVisibility = true;
         public bool PasswordVisibility
         {
@@ -370,7 +330,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("PasswordVisibility");
             }
         }
-
         private bool _isVisibleTinIds = false;
         public bool IsVisibleTinIds
         {
@@ -383,10 +342,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 _isVisibleTinIds = value;
                 if (_isVisibleTinIds == true)
                 {
-
-
                     TINs = new List<TIN>();
-
                     Task.Run(async () =>
                     {
                         try
@@ -397,7 +353,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                 {
                                     IsLoading = true;
                                 });
-
                                 TINs = WebServiceManager.SFGAZTGetAllTINs(Email);
                                 if ((TINs != null) && (TINs.Count != 0))
                                 {
@@ -428,7 +383,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     IsVisibleTinIds = false;
                                     await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
                                 });
-
                                 await Task.Run(() =>
                                 {
                                     IsLoading = false;
@@ -438,9 +392,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         catch (GAZTException gex)
                         {
                             IsLoading = false;
-
                             string MessageForTheUser = gex.Message;
-
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -463,7 +415,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 RaisePropertyChanged("IsVisibleTinIds");
             }
         }
-
         private string _NavigaateToThisService = String.Empty;
         public string NavigateToThisService
         {
@@ -476,36 +427,26 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 _NavigaateToThisService = value;
             }
         }
-
-
         #endregion
-
         #region Command
-
         /// <summary>
         /// Gets or sets the command that is executed when the Log In button is clicked.
         /// </summary>
         public Command LoginCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command that is executed when the Sign Up button is clicked.
         /// </summary>
         public Command SignUpCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command that is executed when the Forgot Password button is clicked.
         /// </summary>
         public Command ForgotPasswordCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command that is executed when the social media login button is clicked.
         /// </summary>
         public Command SocialMediaLoginCommand { get; set; }
-
         #endregion
-
         #region methods
-
         /// <summary>
         /// Invoked when the Log In button is clicked.
         /// </summary>
@@ -514,7 +455,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         {
             App.IsComingFromSleepMode = false;
             CurrentAttempt++;
-
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -525,7 +465,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                 string UserId = string.Empty;
                 await Task.Run(async () =>
                 {
-
                     try
                     {
                         string language = UtilityManager.GetLanguageParameter();
@@ -536,16 +475,13 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         {
                             throw new GAZTLoginDetailsException();
                         }
-                        
                         string _currentAttempts = CurrentAttempt.ToString();
                         string languag = UtilityManager.GetLanguageParameter();
-                        
                         if (SelectedTinId != null && IsVisibleTinIds == true)
                         {
                             bool isValidEmail = UtilityManager.IsValidEmailAddress(Email);
                             if (isValidEmail == true)
                             {
-
                                 response = WebServiceManager.SFGAZTAuthenticateTIN(SelectedTinId.Tin, Password, DeviceId, _currentAttempts, languag);
                                 UserId = SelectedTinId.Tin;
                             }
@@ -558,19 +494,15 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                         {
                             bool isValidTIN = UtilityManager.IsOTPNumberValid(Email);
                             if (isValidTIN == true)
-
                             {
                                 response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
                                 UserId = Email;
-
                             }
                             else
                             {
                                 throw new GAZTUserNameIncorrectException();
                             }
                         }
-
-
                         if (0 == String.Compare("success", response, true))
                         {
                             TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
@@ -585,7 +517,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                 TPProfile.Userid = UserId;
                                 App.TP = TPProfile;
                             }
-
                             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
                             String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
                             await Task.Run(async () =>
@@ -596,12 +527,9 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
                                     if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                                     {
-
                                         App.TP.Userid = UserId;
                                         App.TP.Password = Password;
-                                        
                                         ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
-
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
                                             _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()       
@@ -627,8 +555,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                     {
                                         await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                                     });
-                                    
-
                                 }
                                 catch (Exception)
                                 {
@@ -637,7 +563,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                                         await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
                                     });
                                 }
-                                
                             });
                         }
                         else
@@ -671,7 +596,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                             {
                                 IsLoading = false;
                             });
-
                             if (0 == String.Compare("Error: NameResolutionFailure", response, true))
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -681,14 +605,12 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                             }
                             else
                             {
-
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessageBox(response, AppResources.Information);
                                 });
                             }
                         }
-
                         await Task.Run(() =>
                         {
                             IsLoading = false;
@@ -697,9 +619,7 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                     catch (GAZTException gex)
                     {
                         IsLoading = false;
-
                         string MessageForTheUser = gex.Message;
-
                         if (gex is GAZTUserDoesNotExistException)
                         {
                             MessageForTheUser = AppResources.UserDoesNotExist;
@@ -795,13 +715,11 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
                     IsLoading = false;
                 });
             }
-
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
         }
-
         /// <summary>
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
@@ -811,7 +729,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             _navigationService.NavigateTo(App.SignUpTAndCViewPage);
             // Do something
         }
-
         /// <summary>
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
@@ -824,7 +741,6 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
             label.BackgroundColor = Color.Transparent;
             _navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
         }
-
         /// <summary>
         /// Invoked when social media login button is clicked.
         /// </summary>
@@ -833,12 +749,10 @@ namespace GAZTeServicesApp.ViewModels.LoginPage
         {
             // Do something
         }
-
         public void BackButtonClick()
         {
             _navigationService.GoBack();
         }
-
         #endregion
     }
 }

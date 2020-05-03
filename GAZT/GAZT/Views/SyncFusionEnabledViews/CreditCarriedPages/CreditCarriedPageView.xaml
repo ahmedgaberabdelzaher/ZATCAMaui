@@ -19,11 +19,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
@@ -37,11 +34,8 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
-
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
@@ -53,7 +47,6 @@
                 <local1:CustomLabel Text="{x:Static local:AppResources.ZVatcreditcarriedforward}" HorizontalTextAlignment="Start" FontSize="Caption"  VerticalOptions="Center" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                 </local1:CustomLabel>
             </Frame>
-       
         <StackLayout Margin="10,10,10,0"    HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <ListView  x:Name="NewCreditCarriedList" 
            ItemsSource="{Binding CreditCarriedsList}"
@@ -69,12 +62,10 @@
                         <ViewCell>
                             <ContentView>
                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3" >
-
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto" />
-                                                    
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto" />
@@ -82,18 +73,14 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
-
                                                 </Grid.RowDefinitions>
-
                                                 <!--<Label Text="{x:Static local:AppResources.ZVatSerialNumber}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="1"/>
-
                                                 <Label Text="{Binding LineNo}" 
-                                                  
                                  Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -101,9 +88,7 @@
                                    Grid.Row="0"
                                    Grid.Column="2" 
                                    Grid.ColumnSpan="4"/>-->
-
                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
@@ -117,7 +102,6 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
                                                 <!--<Label Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -125,9 +109,7 @@
                                                            Margin="8,0,8,0"
                                    Grid.Row="1"
                                    Grid.Column="1"/>
-
                                                 <Label Text="{Binding Fbnum}" 
-                                                  
                                   Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -135,10 +117,7 @@
                                    Grid.Row="1"
                                    Grid.Column="2"
                                    Grid.ColumnSpan="4"/>-->
-
-
                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
@@ -152,17 +131,13 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
-
                                                 <!--<Label Text="{x:Static local:AppResources.ZVatDocumentNumber}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="1"/>
-
                                                 <Label Text="{Binding DocNo}" 
-                                                  
                                   Margin="-7,0,-7,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -170,9 +145,7 @@
                                    Grid.Row="2"
                                    Grid.Column="2"
                                    Grid.ColumnSpan="4"/>-->
-
                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
@@ -186,18 +159,13 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
-
-
                                                 <!--<Label Text="{x:Static local:AppResources.ZAmount}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="1"/>
-
                                                 <Label Text="{Binding CreditAmt}" 
-                                                  
                                   Margin="-7,0,-7,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -205,9 +173,7 @@
                                    Grid.Row="3"
                                    Grid.Column="2" 
                                    Grid.ColumnSpan="4"/>-->
-
                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -221,10 +187,7 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
-
-
                                             </Grid>
                                         </StackLayout>
                                     </cards1:SfCardView>
@@ -237,6 +200,5 @@
                 </local1:CustomLabel>
             </StackLayout>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

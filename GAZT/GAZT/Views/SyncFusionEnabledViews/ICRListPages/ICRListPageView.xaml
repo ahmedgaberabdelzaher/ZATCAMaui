@@ -19,7 +19,6 @@
              x:Class="GAZT.Views.NewViews.ICRListPageView"
              NavigationPage.HasNavigationBar="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -28,8 +27,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
@@ -43,7 +40,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
-                            
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
@@ -51,18 +47,14 @@
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
-
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="1000">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="3*" />
@@ -70,24 +62,16 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="2*" />
-
-
-
-
                 </Grid.ColumnDefinitions>
-
                 <!--<Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
-
                 </Frame>
                 <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Txt30}"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5"  ></custom:GAZTBorderlessPicker>
-
                 <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
                 </Image>-->
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="25,0,20,5"
- 
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False"  Text="{Binding TxtSelectedStatus}" FontSize="Small">
@@ -95,7 +79,6 @@
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
                 </custom:CustomButton>
-                
                 <syncfusion:SfPicker 
                     HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
                     HeaderHeight="40"
@@ -104,14 +87,11 @@
                     ShowColumnHeader="False"
                 x:Name="BPicker"
                    BackgroundColor="#EAF7CC"
-                  
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                    
                     HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-                    
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
@@ -125,7 +105,6 @@
                      OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                     <!--SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}"-->
-                 
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
@@ -136,8 +115,6 @@
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                             
-                             
                                BackgroundColor="White"
                  SelectedItem="{Binding SelectedICR}"     
             SeparatorVisibility="None"
@@ -149,8 +126,6 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
-
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                             <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                         <Grid.ColumnDefinitions>
@@ -167,14 +142,12 @@
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
                                                         <!--<Label Text="{x:Static local:AppResources.ZVATReturnForm}" Margin="8,0,8,0" 
-                                 
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"
                                                        VerticalOptions="CenterAndExpand"
                                                        TextColor="#005e4b"
                                    Grid.Row="0"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>-->
-
                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        FontFamily="{StaticResource SSTArabicMedium}"
@@ -183,29 +156,22 @@
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
-
                                                 <!--<Label Text="{Binding Incotext}" 
-                                                  
                                  Margin="8,0,8,0"
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-
                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                                                          FontFamily="{StaticResource SSTArabicMedium}"
-
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                       />
-
                                                 <!--<Label x:Name="Fbnumber" Text="{Binding FormBundleNumber}" 
-                                                
                                  Margin="8,0,8,0"
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -216,11 +182,9 @@
                                                                 <DataTrigger TargetType="Label"
                                                                              Binding="{Binding FormBundleNumber}" Value="">
                                                                     <Setter Property="IsVisible" Value="False"></Setter>
-                                                                   
                                                                 </DataTrigger>
                                                             </Label.Triggers>
                                                         </Label>-->
-
                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
  FontFamily="{StaticResource SSTArabicMedium}"                                                       HorizontalOptions="StartAndExpand"
@@ -232,11 +196,9 @@
                                                         <DataTrigger TargetType="Label"
                                                                              Binding="{Binding FormBundleNumber}" Value="">
                                                             <Setter Property="IsVisible" Value="False"></Setter>
-
                                                         </DataTrigger>
                                                     </Label.Triggers>
                                                 </Label>
-
                                                 <!--<Label 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -252,13 +214,11 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>-->
-
                                                 <Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -268,26 +228,19 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
                                                 <!--<Label Text="{Binding FormatTaxPeriod}" 
-                                                  
                                   Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>-->
-
                                                         <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="8,0,8,0" 
-                                 
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"
                                                        VerticalOptions="CenterAndExpand"
-                                                       
                                    Grid.Row="5"
                                    Grid.Column="1"/>
-
-
                                                         <Label Text="{Binding StatusTxt}" 
                                                   TextColor="{Binding BorderColour}"
                                   Margin="8,0,8,0"
@@ -296,14 +249,11 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-
-
                                                 <Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                      
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -313,32 +263,24 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
-
-
-
                                                 <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="7"
                                    Grid.Column="1"/>
-
                                                         <Label Text="{Binding FormatedDate}" 
-                                                  
                                   Margin="8,0,8,0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="8"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-
                                                 <StackLayout  Margin="0" 
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                     <Label
-                                                     
                                     FontFamily="{StaticResource SSTArabicMedium}"
-                                                       
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
                                                           >
@@ -350,29 +292,20 @@
                                                         </Label.FormattedText>
                                                     </Label>
                                                     <Label
-                                                     
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                    
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedDate}"
-                                  
                                                           >
-
                                                     </Label>
-
                                                 </StackLayout>
-
-
                                                 <!--<Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                       
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -382,38 +315,25 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>-->
-
-
-
-
-
                                                 <!--<Label Text="{x:Static local:AppResources.DueDate}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="9"
                                    Grid.Column="1"/>
-
                                                         <Label Text="{Binding FormatedSingleDueDate}" 
-                                                  
                                  Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="10"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-
                                                 <StackLayout  Margin="0" 
                                                   Grid.Row="6"
                                    Grid.Column="0" Orientation="Horizontal">
                                                     <Label
-                                                     
-                                                       
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
-                                                    
-                                                   
-                                 
                                                           >
                                                         <Label.FormattedText>
                                                             <FormattedString>
@@ -423,31 +343,20 @@
                                                         </Label.FormattedText>
                                                     </Label>
                                                     <Label
-                                                     
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                      FontFamily="{StaticResource SSTArabicMedium}" 
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
-                                                        
                                                  Text="{Binding FormatedSingleDueDate}"
-                                  
                                                           >
-
                                                     </Label>
-
                                                 </StackLayout>
-
-
-
-
                                                 <!--<Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="0"
-                                                                      
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
@@ -457,14 +366,10 @@
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>-->
-
-
                                                 <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.RowSpan="4" ></StackLayout>-->
                                                         <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-                                                      
                                                     </Grid>
                                                 </StackLayout>
-                                      
                                     </cards:SfCardView>
                                 </ViewCell>
                             </DataTemplate>
@@ -485,8 +390,6 @@
                     <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
                 </Image.GestureRecognizers>
             </Image>-->
-
-
                 <local1:CustomLabel Text="{x:Static local:AppResources.ZZZReturnsNotFound}" IsVisible="{Binding IsNoDataLabelVisible}" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
                 </local1:CustomLabel>
             </Grid>

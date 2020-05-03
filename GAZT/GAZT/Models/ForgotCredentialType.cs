@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
      public class ForgotCredentialType
@@ -9,14 +8,12 @@ namespace GAZT.Models
         public string id { get; set; }
         public string CredentialType { get; set; }
     }
-
     public class ChangePasswordForEmail
     {
         public string OldEmail { get; set; }
         public string NewEmail { get; set; }
         public ComingToOTPVerificationScreenFrom navigateTo { get; set; }
     }
-
     public class VATParameterType
     {
         public string id { get; set; }

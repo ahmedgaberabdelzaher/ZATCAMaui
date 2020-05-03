@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class EnumForNavigation
     {
-         
     }
     public enum ComingToOTPVerificationScreenFrom
     {
@@ -15,7 +13,6 @@ namespace GAZT.Models
         IsEmail=2,
         IsTes=3
     }
-
     public enum ComingToOptionScreenFrom
     {
         IsDashboardPage = 0,
@@ -26,16 +23,13 @@ namespace GAZT.Models
         IsDefault=0,
         IsMobile = 1,
         IsEmail = 2,
-            
     }
-
     public enum BillStatus
     {
         P = 0,
         I = 1,
         O = 2
     }
-
     public class ComingToOTPVerificationScreenFromAndNavigatingTo
     {
         public ComingToOTPVerificationScreenFrom _ComingToOTPVerificationScreenFrom { get; set; }
@@ -43,5 +37,4 @@ namespace GAZT.Models
         public string MobileNumber { get; set; }
         public string tes { get; set; }
     }
-
 }

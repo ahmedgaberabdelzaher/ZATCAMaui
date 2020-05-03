@@ -12,7 +12,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Views.LoginPage
 {
     /// <summary>
@@ -24,10 +23,8 @@ namespace GAZTeServicesApp.Views.LoginPage
     {
         SFLoginPageViewModel viewModel;
         private string strNavigaateToThisService;
-
         private double width = 0;
         private double height = 0;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
         /// </summary>
@@ -37,19 +34,16 @@ namespace GAZTeServicesApp.Views.LoginPage
             try
             {
                 InitializeComponent();
-
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 viewModel.NavigateToThisService = strNavigateToThisService;
                 if (App.IsArabic)
                 {
-
                     this.FlowDirection = FlowDirection.RightToLeft;
                     CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                     PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
                 }
                 else
                 {
@@ -58,16 +52,12 @@ namespace GAZTeServicesApp.Views.LoginPage
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
-
                 DependencyService.Get<IStatusBar>().HideStatusBar();
                 viewModel.TINIndex = 0;
-
             }
             catch (Exception ex)
             {
-
             }
-
             // ParentContainer.RaiseChild(BusyIndicator);
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -107,8 +97,6 @@ namespace GAZTeServicesApp.Views.LoginPage
             AppResources.Culture = ci;
             //InitializeComponent();
             // this.FlowDirection = FlowDirection.LeftToRight;
-
-
         }
         protected override void OnDisappearing()
         {
@@ -121,7 +109,6 @@ namespace GAZTeServicesApp.Views.LoginPage
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
             try
             {
                 //viewModel.password = string.Empty;
@@ -142,32 +129,24 @@ namespace GAZTeServicesApp.Views.LoginPage
                 //}
                 //else
                 //{
-
                 //}
                 viewModel.IsVisibleTinIds = false;
             }
             catch (Exception ex)
             {
-
             }
-
         }
-
         private void OnPasswordVisibilityClicked(object sender, EventArgs e)
         {
             viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
         }
-
         private void onBackButtonClicked(object sender, EventArgs e)
         {
-
         }
-
         //private void TINs_Clicked(object sender, System.EventArgs e)
         //{
         //    TinsPicker.IsOpen = true;
         //}
-
         //private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
         //{
         //    bool isNumber = false;
@@ -192,9 +171,7 @@ namespace GAZTeServicesApp.Views.LoginPage
         //        EmailInputLayout.HasError = false;
         //        //EmailInputLayout.ShowHint = false;
         //    }
-
         //}
-
         private static bool CheckValidEmail(string email)
         {
             bool isEmailValid = false;
@@ -205,7 +182,6 @@ namespace GAZTeServicesApp.Views.LoginPage
             }
             return isEmailValid;
         }
-
         public static bool IsEnglishNumber(String arText)
         {
             bool isAllNumeric = true;
@@ -221,14 +197,12 @@ namespace GAZTeServicesApp.Views.LoginPage
             }
             return isAllNumeric;
         }
-
         private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TIN SelectedTin = (TIN)e.NewValue;
             viewModel.SelectedTinId = SelectedTin;
             viewModel.SelectedTinIdPrev = SelectedTin;
         }
-
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;

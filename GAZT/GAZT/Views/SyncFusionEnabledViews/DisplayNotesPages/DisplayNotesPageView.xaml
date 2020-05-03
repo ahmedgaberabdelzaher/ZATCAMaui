@@ -20,7 +20,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -36,20 +35,15 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
-
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
         <StackLayout>
-
             <StackLayout Margin="10,10,10,0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                 <ListView  x:Name="DisplayNotes" 
            ItemsSource="{Binding NoteList}"
@@ -64,18 +58,15 @@
                             <ViewCell>
                                 <ContentView>
                                     <Frame OutlineColor="#C9C9C9"
-                                               
                                        Margin="0,0,0,10"
                                        Padding="0,0,0,0"
                                        CornerRadius="0"
-                                       
                                >
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="50*" />
                                                     <ColumnDefinition Width="50*" />
-
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto" />
@@ -83,9 +74,7 @@
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
-
                                                 </Grid.RowDefinitions>
-
                                                 <Label Text="{Binding Sect}"  
                                                        Margin="10,0,10,-7"
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
@@ -93,20 +82,13 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
-
-
-
                                                 <Label Text="{Binding Strline}" 
                                                        Margin="10,0,10,-3"
                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                           
                                    Grid.Row="1"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
-
-
-
                                                 <Label Text="{Binding Namez}" 
                                                        Margin="10,0,10,-8"
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
@@ -114,18 +96,12 @@
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
-
-
                                                 <Label 
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                       
-                                                       
-                                                       
                                    Grid.Row="3"
                                    Grid.Column="0">
-
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{Binding Strdt}" />
@@ -133,11 +109,7 @@
                                                             <Span Text="{Binding Strtime}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
-
                                                 </Label>
-
-
-
                                             </Grid>
                                         </StackLayout>
                                     </Frame>

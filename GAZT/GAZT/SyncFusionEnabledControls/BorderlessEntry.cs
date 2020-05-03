@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Controls
 {
     /// <summary>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class ZakatReturns
@@ -10,19 +9,15 @@ namespace GAZT.Models
         public string FiscalYear { get;set; }
         public string ReturnPeriod { get; set; }
         public string DueDate { get; set; }
-
         public string Status { get; set; }
-
         public string StatusImage { get; set; } = "ic_Paid.png";
         public string BorderColour { get; set; } = "#bfbebe";
     }
-
     public class ZakatReturnStatus
     {
         public string key { get; set; }
         public int Value { get; set; }
     }
-
     public class SalesDetailsAttachments
     {
         public string Id { get; set; }

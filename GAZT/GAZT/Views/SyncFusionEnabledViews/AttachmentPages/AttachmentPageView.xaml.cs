@@ -16,20 +16,16 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AttachmentPageView : ContentPage
     {
-
         #region Variable
         AttachmentPageViewModel viewModel;
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
         public AttachmentPageView(VATDeclaration vATDeclaration)
         {
@@ -48,19 +44,15 @@ namespace GAZT.Views.NewViews
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
-
-
                     if (viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Count != 0)
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
-
                         viewModel.VatAttachmentsList = myCollection;
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
                             if (item.Erfdt != null)
                             {
                                 item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                                 item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             }
                             //if (App.IsArabic)
@@ -68,9 +60,7 @@ namespace GAZT.Views.NewViews
                             //    if (item.Erfdt != null)
                             //    {
                             //        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                             //        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                             //        item.Erfdt = UtilityManager.ToArabicDate(item.Erfdt);
                             //    }
                             //}
@@ -79,25 +69,20 @@ namespace GAZT.Views.NewViews
                             //    if (item.Erfdt != null)
                             //    {
                             //        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                             //        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             //    }
                             //}
                         }
                     }
-
                 }
                 viewModel.OnPageLoad();
-               
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
             catch (Exception e)
             {
-
             }
         }
         #endregion
-
         #region Method
         private void SetLTR()
         {
@@ -111,7 +96,6 @@ namespace GAZT.Views.NewViews
             try
             {
                 Image arrowImage = sender as Image;
-
                 Attachment attachment = (Attachment)arrowImage.BindingContext;
                 if (attachment != null)
                 {
@@ -119,8 +103,6 @@ namespace GAZT.Views.NewViews
                     DeleteAttachment(result, attachment);
                 }
             }
-
-
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -128,7 +110,6 @@ namespace GAZT.Views.NewViews
                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
         public async Task DeleteAttachment(bool result, Attachment attachment)
         {
@@ -138,13 +119,11 @@ namespace GAZT.Views.NewViews
                 {
                     viewModel.IsLoading = true;
                 });
-
                 await Task.Run(() =>
                 {
                     if (result)
                     {
                         int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-
                         string results = WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
                         PopToRootPage();
                         if (results == "X")
@@ -154,25 +133,19 @@ namespace GAZT.Views.NewViews
                                                    select itm)
                                             .FirstOrDefault<Attachment>();
                             viewModel.VatAttachmentsList.Remove(listitem);
-
                             viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
-
                             if (indexToReduceTheSize != -1)
                                 viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
                 });
-
-
             }
             catch (Exception ex)
             {
-
             }
         }
         public void PopToRootPage()
@@ -186,17 +159,12 @@ namespace GAZT.Views.NewViews
                 });
             }
         }
-
-
         #endregion
-
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
             Image arrowImage = sender as Image;
-
             Attachment attachment = (Attachment)arrowImage.BindingContext;
             //attachment.DocUrl;
-
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
             {
@@ -237,15 +205,11 @@ namespace GAZT.Views.NewViews
             {
                 await email(attachment.Doguid, attachment);
             }
-
-
             // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
         }
-
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
-
             Attachment attachment = (Attachment)Document.SelectedItem;
             //attachment.DocUrl;
             if (attachment.Filename.Contains(".")) ;
@@ -261,17 +225,14 @@ namespace GAZT.Views.NewViews
             {
                 await email(attachment.Doguid, attachment);
             }
-
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
-
         public async Task email(string doguid, Attachment attachment)
         {
             await Task.Run(async () =>
             {
                 viewModel.IsLoading = true;
             });
-
             await Task.Run(async() =>
             {
                 try
@@ -292,17 +253,13 @@ namespace GAZT.Views.NewViews
                         } while (streams.CanRead && count > 0);
                         PdfBytes = Ms.ToArray();
                     }
-
                     var message = new EmailMessage
                     {
                         Subject = "Attached Form :",
-
                     };
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
-
                     File.WriteAllBytes(file, PdfBytes);
-
                     await Share.RequestAsync(new ShareFileRequest
                     {
                         Title = Title,
@@ -314,7 +271,6 @@ namespace GAZT.Views.NewViews
                     viewModel.IsLoading = false;
                 }
             });
-
             await Task.Run(async () =>
             {
                 viewModel.IsLoading = false;
@@ -331,6 +287,5 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
     }
 }

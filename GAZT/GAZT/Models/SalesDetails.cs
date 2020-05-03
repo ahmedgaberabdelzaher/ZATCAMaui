@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT.Models
 {
     public class SalesDetails : INotifyPropertyChanged
@@ -27,12 +26,8 @@ namespace GAZT.Models
         public bool SeparatorVisibility { get; set; } = true;
         public bool InformationIconVisibility { get; set; } = true;
         public bool HelpIconVisibility { get; set; }
-        
-
-
         public ObservableCollection<EstimateZakatAttachment> estimateZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
         // public string SalesDetailsList { get; set; } = "ic_edit_gray.png";
-
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyRaised(string propertyname)
         {
@@ -41,7 +36,6 @@ namespace GAZT.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
         }
-
         private string _informationFromPartieToCompare;
         public string InformationFromPartieToCompare
         {
@@ -55,7 +49,6 @@ namespace GAZT.Models
                 OnPropertyRaised("InformationFromPartieToCompare");
             }
         }
-
         private Color _disableItemBackgroundColor = Color.Gray;
         public Color DisableItemBackgroundColor
         {
@@ -69,7 +62,5 @@ namespace GAZT.Models
                 OnPropertyRaised("DisableItemBackgroundColor");
             }
         }
-
-        
     }
 }

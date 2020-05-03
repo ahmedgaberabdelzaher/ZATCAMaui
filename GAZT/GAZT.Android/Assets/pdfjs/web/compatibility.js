@@ -13,16 +13,13 @@
  * limitations under the License.
  */
 /* globals VBArray, PDFJS */
-
 (function compatibilityWrapper() {
   'use strict';
-
 // Initializing PDFJS global object here, it case if we need to change/disable
 // some PDF.js features, e.g. range requests
 if (typeof PDFJS === 'undefined') {
   (typeof window !== 'undefined' ? window : this).PDFJS = {};
 }
-
 // Checking if the typed arrays are supported
 // Support: iOS<6.0 (subarray), IE<10, Android<4.0
 (function checkTypedArrayCompatibility() {
@@ -36,18 +33,15 @@ if (typeof PDFJS === 'undefined') {
           return new Float32Array(this.slice(start, end));
         };
     }
-
     // Support: Android<4.1
     if (typeof Float64Array === 'undefined') {
       window.Float64Array = Float32Array;
     }
     return;
   }
-
   function subarray(start, end) {
     return new TypedArray(this.slice(start, end));
   }
-
   function setArrayOffset(array, offset) {
     if (arguments.length < 2) {
       offset = 0;
@@ -56,7 +50,6 @@ if (typeof PDFJS === 'undefined') {
       this[offset] = array[i] & 0xFF;
     }
   }
-
   function TypedArray(arg1) {
     var result, i, n;
     if (typeof arg1 === 'number') {
@@ -72,21 +65,17 @@ if (typeof PDFJS === 'undefined') {
         result[i] = arg1[i];
       }
     }
-
     result.subarray = subarray;
     result.buffer = result;
     result.byteLength = result.length;
     result.set = setArrayOffset;
-
     if (typeof arg1 === 'object' && arg1.buffer) {
       result.buffer = arg1.buffer;
     }
     return result;
   }
-
   window.Uint8Array = TypedArray;
   window.Int8Array = TypedArray;
-
   // we don't need support for set, byteLength for 32-bit array
   // so we can use the TypedArray as well
   window.Uint32Array = TypedArray;
@@ -95,7 +84,6 @@ if (typeof PDFJS === 'undefined') {
   window.Float32Array = TypedArray;
   window.Float64Array = TypedArray;
 })();
-
 // URL = URL || webkitURL
 // Support: Safari<7, Android 4.2+
 (function normalizeURLObject() {
@@ -103,7 +91,6 @@ if (typeof PDFJS === 'undefined') {
     window.URL = window.webkitURL;
   }
 })();
-
 // Object.defineProperty()?
 // Support: Android<4.0, Safari<5.1
 (function checkObjectDefinePropertyCompatibility() {
@@ -125,7 +112,6 @@ if (typeof PDFJS === 'undefined') {
       return;
     }
   }
-
   Object.defineProperty = function objectDefineProperty(obj, name, def) {
     delete obj[name];
     if ('get' in def) {
@@ -145,8 +131,6 @@ if (typeof PDFJS === 'undefined') {
     }
   };
 })();
-
-
 // No XMLHttpRequest#response?
 // Support: IE<11, Android <4.0
 (function checkXMLHttpRequestResponseCompatibility() {
@@ -162,10 +146,8 @@ if (typeof PDFJS === 'undefined') {
   if ('responseType' in xhr) {
     return;
   }
-
   // The worker will be using XHR, so we can save time and disable worker.
   PDFJS.disableWorker = true;
-
   Object.defineProperty(xhrPrototype, 'responseType', {
     get: function xmlHttpRequestGetResponseType() {
       return this._responseType || 'text';
@@ -180,7 +162,6 @@ if (typeof PDFJS === 'undefined') {
       }
     }
   });
-
   // Support: IE9
   if (typeof VBArray !== 'undefined') {
     Object.defineProperty(xhrPrototype, 'response', {
@@ -194,7 +175,6 @@ if (typeof PDFJS === 'undefined') {
     });
     return;
   }
-
   Object.defineProperty(xhrPrototype, 'response', {
     get: function xmlHttpRequestResponseGet() {
       if (this.responseType !== 'arraybuffer') {
@@ -210,17 +190,14 @@ if (typeof PDFJS === 'undefined') {
     }
   });
 })();
-
 // window.btoa (base64 encode function) ?
 // Support: IE<10
 (function checkWindowBtoaCompatibility() {
   if ('btoa' in window) {
     return;
   }
-
   var digits =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
   window.btoa = function windowBtoa(chars) {
     var buffer = '';
     var i, n;
@@ -237,14 +214,12 @@ if (typeof PDFJS === 'undefined') {
     return buffer;
   };
 })();
-
 // window.atob (base64 encode function)?
 // Support: IE<10
 (function checkWindowAtobCompatibility() {
   if ('atob' in window) {
     return;
   }
-
   // https://github.com/davidchambers/Base64.js
   var digits =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -271,14 +246,12 @@ if (typeof PDFJS === 'undefined') {
     return output;
   };
 })();
-
 // Function.prototype.bind?
 // Support: Android<4.0, iOS<6.0
 (function checkFunctionPrototypeBindCompatibility() {
   if (typeof Function.prototype.bind !== 'undefined') {
     return;
   }
-
   Function.prototype.bind = function functionPrototypeBind(obj) {
     var fn = this, headArgs = Array.prototype.slice.call(arguments, 1);
     var bound = function functionPrototypeBindBound() {
@@ -288,7 +261,6 @@ if (typeof PDFJS === 'undefined') {
     return bound;
   };
 })();
-
 // HTMLElement dataset property
 // Support: IE<11, Safari<5.1, Android<4.0
 (function checkDatasetProperty() {
@@ -296,13 +268,11 @@ if (typeof PDFJS === 'undefined') {
   if ('dataset' in div) {
     return; // dataset property exists
   }
-
   Object.defineProperty(HTMLElement.prototype, 'dataset', {
     get: function() {
       if (this._dataset) {
         return this._dataset;
       }
-
       var dataset = {};
       for (var j = 0, jj = this.attributes.length; j < jj; j++) {
         var attribute = this.attributes[j];
@@ -315,7 +285,6 @@ if (typeof PDFJS === 'undefined') {
           });
         dataset[key] = attribute.value;
       }
-
       Object.defineProperty(this, '_dataset', {
         value: dataset,
         writable: false,
@@ -326,7 +295,6 @@ if (typeof PDFJS === 'undefined') {
     enumerable: true
   });
 })();
-
 // HTMLElement classList property
 // Support: IE<10, Android<4.0, iOS<5.0
 (function checkClassListProperty() {
@@ -334,7 +302,6 @@ if (typeof PDFJS === 'undefined') {
   if ('classList' in div) {
     return; // classList property exists
   }
-
   function changeList(element, itemName, add, remove) {
     var s = element.className || '';
     var list = s.split(/\s+/g);
@@ -351,7 +318,6 @@ if (typeof PDFJS === 'undefined') {
     element.className = list.join(' ');
     return (index >= 0);
   }
-
   var classListPrototype = {
     add: function(name) {
       changeList(this.element, name, true, false);
@@ -366,13 +332,11 @@ if (typeof PDFJS === 'undefined') {
       changeList(this.element, name, true, true);
     }
   };
-
   Object.defineProperty(HTMLElement.prototype, 'classList', {
     get: function() {
       if (this._classList) {
         return this._classList;
       }
-
       var classList = Object.create(classListPrototype, {
         element: {
           value: this,
@@ -390,7 +354,6 @@ if (typeof PDFJS === 'undefined') {
     enumerable: true
   });
 })();
-
 // Check console compatibility
 // In older IE versions the console object is not available
 // unless console is open.
@@ -415,7 +378,6 @@ if (typeof PDFJS === 'undefined') {
     })(console.warn);
   }
 })();
-
 // Check onclick compatibility in Opera
 // Support: Opera<15
 (function checkOnClickCompatibility() {
@@ -434,7 +396,6 @@ if (typeof PDFJS === 'undefined') {
     document.addEventListener('click', ignoreIfTargetDisabled, true);
   }
 })();
-
 // Checks if possible to use URL.createObjectURL()
 // Support: IE
 (function checkOnBlobSupport() {
@@ -443,7 +404,6 @@ if (typeof PDFJS === 'undefined') {
     PDFJS.disableCreateObjectURL = true;
   }
 })();
-
 // Checks if navigator.language is supported
 (function checkNavigatorLanguage() {
   if ('language' in navigator) {
@@ -451,7 +411,6 @@ if (typeof PDFJS === 'undefined') {
   }
   PDFJS.locale = navigator.userLanguage || 'en-US';
 })();
-
 (function checkRangeRequests() {
   // Safari has issues with cached range requests see:
   // https://github.com/mozilla/pdf.js/issues/3260
@@ -459,7 +418,6 @@ if (typeof PDFJS === 'undefined') {
   // Support: Safari 6.0+
   var isSafari = Object.prototype.toString.call(
                   window.HTMLElement).indexOf('Constructor') > 0;
-
   // Older versions of Android (pre 3.0) has issues with range requests, see:
   // https://github.com/mozilla/pdf.js/issues/3381.
   // Make sure that we only match webkit-based Android browsers,
@@ -467,16 +425,13 @@ if (typeof PDFJS === 'undefined') {
   // Support: Android<3.0
   var regex = /Android\s[0-2][^\d]/;
   var isOldAndroid = regex.test(navigator.userAgent);
-
   // Range requests are broken in Chrome 39 and 40, https://crbug.com/442318
   var isChromeWithRangeBug = /Chrome\/(39|40)\./.test(navigator.userAgent);
-
   if (isSafari || isOldAndroid || isChromeWithRangeBug) {
     PDFJS.disableRange = true;
     PDFJS.disableStream = true;
   }
 })();
-
 // Check if the browser supports manipulation of the history.
 // Support: IE<10, Android<4.2
 (function checkHistoryManipulation() {
@@ -487,7 +442,6 @@ if (typeof PDFJS === 'undefined') {
     PDFJS.disableHistory = true;
   }
 })();
-
 // Support: IE<11, Chrome<21, Android<4.4, Safari<6
 (function checkSetPresenceInImageData() {
   // IE < 11 will use window.CanvasPixelArray which lacks set function.
@@ -518,7 +472,6 @@ if (typeof PDFJS === 'undefined') {
       // Safari < 6 lacks the set function.
       polyfill = versionMatch && parseInt(versionMatch[1]) < 6;
     }
-
     if (polyfill) {
       var contextPrototype = window.CanvasRenderingContext2D.prototype;
       var createImageData = contextPrototype.createImageData;
@@ -536,13 +489,11 @@ if (typeof PDFJS === 'undefined') {
     }
   }
 })();
-
 // Support: IE<10, Android<4.0, iOS
 (function checkRequestAnimationFrame() {
   function fakeRequestAnimationFrame(callback) {
     window.setTimeout(callback, 20);
   }
-
   var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
   if (isIOS) {
     // requestAnimationFrame on iOS is broken, replacing with fake one.
@@ -557,7 +508,6 @@ if (typeof PDFJS === 'undefined') {
     window.webkitRequestAnimationFrame ||
     fakeRequestAnimationFrame;
 })();
-
 (function checkCanvasSizeLimitation() {
   var isIOS = /(iPad|iPhone|iPod)/g.test(navigator.userAgent);
   var isAndroid = /Android/g.test(navigator.userAgent);
@@ -566,7 +516,6 @@ if (typeof PDFJS === 'undefined') {
     PDFJS.maxCanvasPixels = 5242880;
   }
 })();
-
 // Disable fullscreen support for certain problematic configurations.
 // Support: IE11+ (when embedded).
 (function checkFullscreenSupport() {
@@ -576,7 +525,6 @@ if (typeof PDFJS === 'undefined') {
     PDFJS.disableFullscreen = true;
   }
 })();
-
 // Provides document.currentScript support
 // Support: IE, Chrome<29.
 (function checkCurrentScript() {
@@ -592,5 +540,4 @@ if (typeof PDFJS === 'undefined') {
     configurable: true
   });
 })();
-
 }).call((typeof window === 'undefined') ? this : window);

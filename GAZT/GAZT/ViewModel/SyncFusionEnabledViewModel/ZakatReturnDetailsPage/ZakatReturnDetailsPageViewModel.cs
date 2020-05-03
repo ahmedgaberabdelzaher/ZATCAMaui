@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
    public class ZakatReturnDetailsPageViewModel: ViewModelBase
@@ -29,9 +28,7 @@ namespace GAZT.ViewModel.NewViewModel
         public static bool IsAmendButtonPressed = false;
         public static string Fbguid  { get; set; }
       //  public Label DateLabel { get; set; }
-
         #endregion
-
         #region Property
         private bool _isLoading = false;
         public bool IsLoading
@@ -46,7 +43,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private ZakatReturnDetailsD _zakatReturnDetail ;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -60,7 +56,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnDetail");
             }
         }
-
         private ZakatReturnDetails _zakatReturnDetails;
         public ZakatReturnDetails ZakatReturnDetails
         {
@@ -74,7 +69,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnDetails");
             }
         }
-
         private bool _salesDetailsAndReleaseButtonVisibility = true;
         public bool SalesDetailsAndReleaseButtonVisibility
         {
@@ -88,9 +82,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SalesDetailsAndReleaseButtonVisibility");
             }
         }
-
-
-        
         private string _releaseOrBillDetailsButtonText;
         public string ReleaseOrBillDetailsButtonText
         {
@@ -104,7 +95,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ReleaseOrBillDetailsButtonText");
             }
         }
-
         private string _abrzu;
         public string Abrzu
         {
@@ -118,7 +108,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Abrzu");
             }
         }
-
         private string _abrzo;
         public string Abrzo
         {
@@ -132,7 +121,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Abrzo");
             }
         }
-
         private bool _amedmentButtonVisibility = false;
         public bool AmedmentButtonVisibility
         {
@@ -146,9 +134,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("AmedmentButtonVisibility");
             }
         }
-
         #endregion
-
         #region Constructor
         public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -162,12 +148,9 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             OnBillsButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-               
             });
-
             OnAmendReturnButtonClicked = new Command(async () =>
             {
                 try
@@ -177,10 +160,8 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (Exception ex)
                 {
-
                 }
             });
-
             GoBackClick = new Command(async () =>
             {
                 if(!IsLoading)
@@ -188,7 +169,6 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigationService.GoBack();
                 }
             });
-         
             OnSalesDetailsClicked = new Xamarin.Forms.Command(async () =>
             {
                 try
@@ -200,16 +180,11 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch(Exception ex)
                 {
-
                 }
-                
             });
-
         }
         #endregion
-
         #region Method
-
         public async Task OnReleaseOrBillsClicked()
         {
             if (ZakatReturnDetails.d.Statusz.Equals("E0001") || ZakatReturnDetails.d.Statusz.Equals("IP011"))
@@ -252,7 +227,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
@@ -265,7 +239,6 @@ namespace GAZT.ViewModel.NewViewModel
                         ZakatReturnDetail = zakatReturnDetails.d;
                         GetUpdatedDataAfterAddingComma();
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-
                         Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
                         //if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
                         //{
@@ -281,9 +254,7 @@ namespace GAZT.ViewModel.NewViewModel
                         //        }
                         //        catch (Exception ex)
                         //        {
-
                         //        }
-
                         //        // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
                         //    }
                         //    else
@@ -293,15 +264,12 @@ namespace GAZT.ViewModel.NewViewModel
                         //            Abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzu + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
-
                         //        }
                         //        catch (Exception ex)
                         //        {
-
                         //        }
                         //    }
                         //}
-
                     }
                     else
                     {
@@ -312,7 +280,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
                             });
-
                         }
                         else
                         {
@@ -325,7 +292,6 @@ namespace GAZT.ViewModel.NewViewModel
                                         await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
                                         _navigationService.GoBack();
                                         WebServiceManager.ErrorMessage = string.Empty;
-
                                     }
                                     else
                                     {
@@ -335,11 +301,8 @@ namespace GAZT.ViewModel.NewViewModel
                                     }
                                 });
                             }
-                              
                         }
-                      
                     }
-
                 });
                 await Task.Run(() =>
                 {
@@ -353,7 +316,6 @@ namespace GAZT.ViewModel.NewViewModel
                    await  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
         public void PopToRootPage()
         {
@@ -361,7 +323,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -372,8 +333,6 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-
-
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
@@ -431,15 +390,11 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     SalesDetailsAndReleaseButtonVisibility = false;
                 }
-
             }
             catch(Exception ex)
             {
-
             }
-           
         }
-
         public async Task ReleaseEstimateZakatReturn()
         {
             try
@@ -470,12 +425,10 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                             catch (Exception ex)
                             {
-
                             }
                         }
                         else
                         {
-
                             try
                             {
                             //if (WebServiceManager.ErrorMessage.Equals(""))// message is always coming in english from the server
@@ -487,7 +440,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 //    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
                                 //    _navigationService.GoBack();
                                 //    WebServiceManager.ErrorMessage = string.Empty;
-
                                 //}
                                 //else
                                 //{
@@ -500,14 +452,11 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                             catch (Exception ex)
                             {
-
                             }
-
                         //Device.BeginInvokeOnMainThread(async () => {
                         //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
                         //    _navigationService.GoBack();
                         //});
-
                     }
                         ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
                         PopToRootPage();
@@ -517,19 +466,13 @@ namespace GAZT.ViewModel.NewViewModel
                             ZakatReturnDetails = zakatReturnDetails;
                             if (zakatReturnDetails.d != null)
                             { ZakatReturnDetail = zakatReturnDetails.d;                         
-                       
-                        
                         GetUpdatedDataAfterAddingComma();
-
                                 if (ZakatReturnDetails.d.Statusz != null)
                                 {
                                     SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
                                 }
-                        
                             }
-
                         }
-
                     }
                     catch (InternetException ex)
                     {
@@ -546,14 +489,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (Exception ex)
             { 
-            
-            
             }
-
-
-
         }
-
       private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()
         {
             if(ZakatReturnDetail != null)
@@ -563,10 +500,8 @@ namespace GAZT.ViewModel.NewViewModel
                 ZakatReturnDetail.Zbamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zbamt);
                 ZakatReturnDetail.Zkamt = UtilityManager.GetCommaSeparatedAmount(ZakatReturnDetail.Zkamt);
             }
-          
             return ZakatReturnDetail;
         }
-
         private void GetUpdatedDataAfterRemovingComma()
         {
             if (ZakatReturnDetails != null)
@@ -576,11 +511,7 @@ namespace GAZT.ViewModel.NewViewModel
                 ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
                 ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
             }
-
-         
         }
-        
-
         #endregion
     }
 }

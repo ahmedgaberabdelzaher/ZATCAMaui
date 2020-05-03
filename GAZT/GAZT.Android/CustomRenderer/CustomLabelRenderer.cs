@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -20,25 +19,14 @@ namespace GAZT.Droid.CustomRenderer
     public class CustomLabelRenderer : LabelRenderer
     {
         Context _context;
-
-
-      
-
-
         public CustomLabelRenderer(Context context) : base(context)
         {
             _context = context;
         }
-
         #region Method
-
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
-          
             base.OnElementChanged(e);
-
-
-
             //if (Control != null)
             //{
             if (App.IsArabic)
@@ -55,7 +43,6 @@ namespace GAZT.Droid.CustomRenderer
               //  Typeface font = Typeface.CreateFromAsset(_context.Assets, "SSTArabic-Light.ttf");
               //  Control.Typeface = font;
             }
-            
         }
         #endregion Method
     }

@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class CorrespondancePageViewModel : ViewModelBase
@@ -25,17 +24,11 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand onETLabelClicked { get; set; }
         public ICommand onCITLabelClicked { get; set; }
         public ICommand OnHomeButtonClicked { get; set; }
-
-
         public ICommand OnBackButtonClicked { get; set; }
-
-
-
         private List<CorrespondanceModel> _listVATCorrespondance = null;
         CorrespondenceRootObject ZakatCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject VATCorres = new CorrespondenceRootObject();
         CorrespondenceRootObject ETCorres = new CorrespondenceRootObject();
-
         private int _headerCount = 3;
         public int HeaderCount
         {
@@ -49,9 +42,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("HeaderCount");
             }
         }
-
         private TextAlignment _labelHzAlignment = TextAlignment.Start;
-
         public TextAlignment LabelHzAlignment
         {
             get
@@ -64,8 +55,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LabelHzAlignment");
             }
         }
-
-
         private string _txtSelectedStatusZakat = string.Empty;
         public string TxtSelectedStatusZakat
         {
@@ -79,7 +68,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtSelectedStatusZakat");
             }
         }
-
         private string _txtSelectedStatusVAT = string.Empty;
         public string TxtSelectedStatusVAT
         {
@@ -93,7 +81,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtSelectedStatusVAT");
             }
         }
-
         private string _txtSelectedStatusET = string.Empty;
         public string TxtSelectedStatusET
         {
@@ -119,7 +106,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ListVATCorrespondance");
             }
         }
-
         private List<CorrespondanceModel> _listZAKATCorrespondance = null;
         public List<CorrespondanceModel> ListZAKATCorrespondance
         {
@@ -133,7 +119,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ListZAKATCorrespondance");
             }
         }
-
         private List<CorrespondanceModel> _listETCorrespondance = null;
         public List<CorrespondanceModel> ListETCorrespondance
         {
@@ -147,7 +132,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ListETCorrespondance");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -161,9 +145,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-
-
         private bool _isZakatVisible = false;
         public bool IsZakatVisible
         {
@@ -190,7 +171,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsZakatTabVisible");
             }
         }
-
         private bool _isZakatVisibleLabel = false;
         public bool IsZakatVisibleLabel
         {
@@ -204,7 +184,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsZakatVisibleLabel");
             }
         }
-
         private bool _isVATVisible = false;
         public bool IsVATVisible
         {
@@ -218,7 +197,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVATVisible");
             }
         }
-
         private bool _isVATTabVisible = false;
         public bool IsVATTabVisible
         {
@@ -232,7 +210,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVATTabVisible");
             }
         }
-
         private bool _isVATVisibleLabel = false;
         public bool IsVATVisibleLabel
         {
@@ -246,7 +223,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVATVisibleLabel");
             }
         }
-
         private bool _isETVisible = false;
         public bool IsETVisible
         {
@@ -260,7 +236,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsETVisible");
             }
         }
-
         private bool _isETTabVisible = false;
         public bool IsETTabVisible
         {
@@ -274,7 +249,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsETTabVisible");
             }
         }
-
         private bool _isETVisibleLabel = false;
         public bool IsETVisibleLabel
         {
@@ -288,9 +262,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsETVisibleLabel");
             }
         }
-
         private bool _setNoDataLabelVisibility = false;
-
         public bool SetNoDataLabelVisibility
         {
             get
@@ -303,9 +275,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetNoDataLabelVisibility");
             }
         }
-
-       
-
         private string _zakatCountDisplay = string.Empty;
         public string ZakatCountDisplay
         {
@@ -319,7 +288,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatCountDisplay");
             }
         }
-
         private string _vATCountDisplay = string.Empty;
         public string VATCountDisplay
         {
@@ -333,7 +301,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATCountDisplay");
             }
         }
-
         private string _eTCountDisplay = string.Empty;
         public string ETCountDisplay
         {
@@ -347,11 +314,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ETCountDisplay");
             }
         }
-
-     
-
         private List<CorrespondenceFiltersModel> _corresFilterZakat;
-
         public List<CorrespondenceFiltersModel> CorresFilterZakat
         {
             get
@@ -365,7 +328,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         private List<CorrespondenceFiltersModel> _corresFilterVAT;
-
         public List<CorrespondenceFiltersModel> CorresFilterVAT
         {
             get
@@ -379,7 +341,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         private List<CorrespondenceFiltersModel> _corresFilterET;
-
         public List<CorrespondenceFiltersModel> CorresFilterET
         {
             get
@@ -392,7 +353,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CorresFilterET");
             }
         }
-
         private CorrespondenceFiltersModel _selectedFilterZakat = null;
         public CorrespondenceFiltersModel SelectedFilterZakat
         {
@@ -407,24 +367,17 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (_selectedFilterZakat.ID == 1)
                     {
-                      
                             if (ListZAKATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListZAKATCorrespondance;
                                 ListZAKATCorrespondance = null;
                                 var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-
-
                                 ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
-                            
                         }
-
-                    
                     }
                     if (_selectedFilterZakat.ID == 2)
                     {
-                       
                             if (ListZAKATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
@@ -436,49 +389,32 @@ namespace GAZT.ViewModel.NewViewModel
                                     ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
-
-                        
-
-                       
                     }
                     if (_selectedFilterZakat.ID == 3)
                     {
-                     
                             if (ListZAKATCorrespondance != null)
                             {
                                 var SortedList = from item in ListZAKATCorrespondance
                                                  orderby item.IsFav ascending
                                                  select item;
-
-
                                 ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        
-
-                      
                     }
                     if (_selectedFilterZakat.ID == 4)
                     {
-                       
                             if (ListZAKATCorrespondance != null)
                             {
                                 var SortedList = from item in ListZAKATCorrespondance
                                                  orderby item.IsFav descending
                                                  select item;
-
-
                                 ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        
                     }
                     TxtSelectedStatusZakat = _selectedFilterZakat.Filter;
                 }
-               
                 RaisePropertyChanged("SelectedFilterZakat");
             }
         }
-
-
         private CorrespondenceFiltersModel _selectedFilterZakatPrev = null;
         public CorrespondenceFiltersModel SelectedFilterZakatPrev
         {
@@ -489,11 +425,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFilterZakatPrev = value;
-              
                 RaisePropertyChanged("SelectedFilterZakatPrev");
             }
         }
-
         private CorrespondenceFiltersModel _selectedFilterVAT = null;
         public CorrespondenceFiltersModel SelectedFilterVAT
         {
@@ -508,26 +442,17 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (_selectedFilterVAT.ID == 1)
                     {
-                       
-
                         if (ListVATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListVATCorrespondance;
                                 ListVATCorrespondance = null;
                                 var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-
-
                                 ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                     
                     }
                     if (_selectedFilterVAT.ID == 2)
                     {
-                        
-                           
-
-                      
                             if (ListVATCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
@@ -539,21 +464,16 @@ namespace GAZT.ViewModel.NewViewModel
                                     ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
-                       
                     }
                     if (_selectedFilterVAT.ID == 3)
                     {
-                      
                             if (ListVATCorrespondance != null)
                             {
                                 var SortedList = from item in ListVATCorrespondance
                                                  orderby item.IsFav ascending
                                                  select item;
-
-
                                 ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                    
                     }
                     if (_selectedFilterVAT.ID == 4)
                     {
@@ -562,19 +482,14 @@ namespace GAZT.ViewModel.NewViewModel
                                 var SortedList = from item in ListVATCorrespondance
                                                  orderby item.IsFav descending
                                                  select item;
-
-
                                 ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                       
                     }
                     TxtSelectedStatusVAT = _selectedFilterVAT.Filter;
                 }
-
                 RaisePropertyChanged("SelectedFilterVAT");
             }
         }
-
         private CorrespondenceFiltersModel _selectedFilterVATPrev = null;
         public CorrespondenceFiltersModel SelectedFilterVATPrev
         {
@@ -585,11 +500,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFilterVATPrev = value;
-               
                 RaisePropertyChanged("SelectedFilterVATPrev");
             }
         }
-
         private CorrespondenceFiltersModel _selectedFilterET = null;
         public CorrespondenceFiltersModel SelectedFilterET
         {
@@ -604,70 +517,54 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     if (_selectedFilterET.ID == 1)
                     {
-                      
                             if (ListETCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListETCorrespondance;
                                 ListETCorrespondance = null;
                                 var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-                               
                                 ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        
                     }
                     if (_selectedFilterET.ID == 2)
                     {
-                        
                             if (ListETCorrespondance != null)
                             {
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListETCorrespondance;
                                 ListETCorrespondance = null;
-
                                 if (CorreTosort != null)
                                 {
                                     var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
                                     ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
-                        
                     }
                     if (_selectedFilterET.ID == 3)
                     {
-                      
                             if (ListETCorrespondance != null)
                             {
                                 var SortedList = from item in ListETCorrespondance
                                                  orderby item.IsFav ascending
                                                  select item;
-
-
                                 ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        
                     }
                     if (_selectedFilterET.ID == 4)
                     {
-                        
                             if (ListETCorrespondance != null)
                             {
                                 var SortedList = from item in ListETCorrespondance
                                                  orderby item.IsFav descending
                                                  select item;
-
-
                                 ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
-                        
                     }
                     TxtSelectedStatusET = _selectedFilterET.Filter;
                 }
-
                 RaisePropertyChanged("SelectedFilterET");
             }
         }
-
         private CorrespondenceFiltersModel _selectedFilterETPrev = null;
         public CorrespondenceFiltersModel SelectedFilterETPrev
         {
@@ -678,13 +575,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFilterETPrev = value;
-                
-
                 RaisePropertyChanged("SelectedFilterETPrev");
             }
         }
-
-
         private int? _setSelectedIndexZakat = 0;
         public int? SetSelectedIndexZakat
         {
@@ -698,7 +591,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetSelectedIndexZakat");
             }
         }
-
         private int? _setSelectedIndexVAT = 0;
         public int? SetSelectedIndexVAT
         {
@@ -712,7 +604,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetSelectedIndexVAT");
             }
         }
-
         private int? _setSelectedIndexET = 0;
         public int? SetSelectedIndexET
         {
@@ -726,12 +617,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetSelectedIndexET");
             }
         }
-
-
-
-
         #endregion
-
         #region Constructor
         public CorrespondancePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -739,8 +625,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 throw new ArgumentNullException("navigationService");
             }
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -749,28 +633,19 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             onZakatLabelClicked = new Xamarin.Forms.Command( () =>
             {
-                
-                
             });
             onVATLabelClicked = new Xamarin.Forms.Command( () =>
             {
                 try
                 {
-                  
-
                     List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
                     Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
                     Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-
-                  
                 }
                 catch (Exception ex)
                 {
-
                 }
-               
             });
-
             onETLabelClicked = new Xamarin.Forms.Command( () =>
             {
             });
@@ -778,57 +653,43 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
-            
-
         }
         #endregion
-
         #region Methods
-
         public async  void ShowCorrespondenceDetails(CorrespondanceModel CorresModel)
         {
             Task.Run(() =>
             {
                 IsLoading = true;
             });
-
-
             await Task.Run(async () =>
             {
-
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _navigationService.NavigateTo(App.CorrespondenceDetailsPageView, CorresModel);
                 });
                 //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
-
             });
             Task.Run(() =>
             {
                 IsLoading = false;
             });
-
            // _navigationService.NavigateTo(App.CorrespondenceDetailsPageView, CorresModel);
         }
-
         public void ShowVATPDF(CorrespondanceModel CorrespondenceD)
         {
             string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
             ShowPdf(Url);
         }
-
         public void ShowETPDF(CorrespondanceModel CorrespondenceD)
         {
             string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
             ShowPdf(Url);
         }
-
         public async void ShowPdf(string pdfUrl)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -841,28 +702,18 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         IsLoading = true;
                     });
-
-
                     await Task.Run(async () =>
                     {
-
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _navigationService.NavigateTo(App.PdfView, pdfUrl);
                         });
                       //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
-
                     });
                     Task.Run(() =>
                     {
                         IsLoading = false;
                     });
-
-
-
-
-
-                   
                 }
                 else
                 {
@@ -881,17 +732,13 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         IsLoading = true;
                     });
-
-
                     await Task.Run(async () =>
                     {
-
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _navigationService.NavigateTo(App.PdfView, pdfUrl);
                         });
                       //  _navigationService.NavigateTo(App.PdfView, pdfUrl);
-
                     });
                     Task.Run(() =>
                     {
@@ -918,7 +765,6 @@ namespace GAZT.ViewModel.NewViewModel
                 });
                 await Task.Run(() =>
                 {
-                  
                     SetNoDataLabelVisibility = false;
                     SetStatusPickerItem();
                         ZakatCorres = WebServiceManager.GAZTGetZakatCorrespondece();
@@ -938,7 +784,6 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
         public void PopToRootPage()
         {
@@ -946,7 +791,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -963,34 +807,26 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         private void SetStatusPickerItem()
         {
             try
             {
                 List<CorrespondenceFiltersModel> FiltersZAKAT = new List<CorrespondenceFiltersModel>();
                 List<CorrespondenceFiltersModel> FiltersVATET = new List<CorrespondenceFiltersModel>();
-
                 FiltersVATET.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
                 FiltersVATET.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-
                 CorresFilterZakat = FiltersZAKAT;
                 CorresFilterVAT = FiltersVATET;
                 CorresFilterET = FiltersVATET;
             }
             catch (Exception ex)
             {
-
             }
-
-
         }
-
         public void SetData()
         {
             try
@@ -1000,7 +836,6 @@ namespace GAZT.ViewModel.NewViewModel
                 IsETTabVisible = true;
                 //if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
                 //{
-
                 //    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
                 //    foreach (string ItemType in TpTypes)
                 //    {
@@ -1016,10 +851,8 @@ namespace GAZT.ViewModel.NewViewModel
                 //        {
                 //            IsETTabVisible = true;
                 //        }
-                    
                 //    }
                 //}
-
                 //if(IsZakatTabVisible==true && IsVATTabVisible == true && IsETTabVisible == true)
                 //{
                 //    HeaderCount = 3;
@@ -1049,7 +882,6 @@ namespace GAZT.ViewModel.NewViewModel
                 //    HeaderCount = 1;
                 //}
                 List<CorrespondanceModel> ZakatCo = new List<CorrespondanceModel>();
-
                 // Assigning data in the list
                 if (ZakatCorres != null && ZakatCorres.d.results.Count > 0)
                 {
@@ -1067,15 +899,11 @@ namespace GAZT.ViewModel.NewViewModel
                         //    {
                         //        childZakat.RefNumber = UtilityManager.ConvertNumerals(childZakat.RefNumber);
                         //    }
-                            
                         //}
                         childZakat.Cokey = itemZakat.Cokey;
                         childZakat.Coitm = itemZakat.Coitm;
                         childZakat.Ctime = itemZakat.Ctime;
                         childZakat.Cdate = itemZakat.Cdate;
-
-
-
                         if (itemZakat.Copri != null)
                         {
                             childZakat.Txtco = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Copri + @"""");
@@ -1088,20 +916,16 @@ namespace GAZT.ViewModel.NewViewModel
                         childZakat.Vkont = itemZakat.Vkont;
                         childZakat.Gpart = itemZakat.Gpart;
                         childZakat.Begdaz = itemZakat.Begdaz;
-                        
                         childZakat.Enddaz = itemZakat.Enddaz;
-                        
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
                         {
                             BegDate = childZakat.Cdate;
                         }
-                            
                         //if (itemZakat.Coidt != null)
                         //{
                         //    BegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + itemZakat.Coidt + @"""");
                         //}
-
                         if (itemZakat.Zzfav == "1")
                         {
                             childZakat.IsFav = true;
@@ -1114,13 +938,10 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                         string StartDate = string.Empty;
                         string time = string.Empty;
-
                         if (App.IsArabic)
                         {
                             if (BegDate != null)
                             {
-
-
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 //time= Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
                                 if (childZakat.Ctime != null)
@@ -1135,16 +956,12 @@ namespace GAZT.ViewModel.NewViewModel
                                     string minutes = result[1];
                                     string second= result[2];
                                                                         time=  " "+ hours + ":"+ minutes+ " ";
-                                    
-
                                 }
                                 //16H36M15S
-
                                 //var Tstartdate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = String.Concat(StartDate, time);
                                 //StartDate = StartDate + "  " + time;
                             }
-
                         }
                         else
                         {
@@ -1162,15 +979,12 @@ namespace GAZT.ViewModel.NewViewModel
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes+" ";
                                 }
-
                                 StartDate = StartDate + "  " + time;
                             }
-
                         }
                         childZakat.DateAndTime = StartDate;
                         ZakatCo.Add(childZakat);
                     }
-
                     ListZAKATCorrespondance = ZakatCo;
                 }
                 else
@@ -1180,13 +994,9 @@ namespace GAZT.ViewModel.NewViewModel
                         ZakatCountDisplay = AppResources.ZZZAKAT + "(0)";
                     }
                     IsZakatVisible = false;
-                    
                         IsZakatVisibleLabel = true;
-                    
                 }
-               
                 PopToRootPage();
-
                 // Assigning data in the list
                 if (VATCorres != null && VATCorres.d.results.Count > 0)
                 {
@@ -1198,7 +1008,6 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         CorrespondanceModel childVAT = new CorrespondanceModel();
                         childVAT.Title = itemVAT.Descript;
-
                         childVAT.RefNumber = itemVAT.LetterNum;
                         //if (itemVAT.LetterNum != null)
                         //{
@@ -1206,7 +1015,6 @@ namespace GAZT.ViewModel.NewViewModel
                         //    {
                         //        childVAT.RefNumber = UtilityManager.ConvertNumerals(childVAT.RefNumber);
                         //    }
-                            
                         //}
                           childVAT.Cokey = itemVAT.Cokey;
                         childVAT.Coitm = itemVAT.Coitm;
@@ -1250,7 +1058,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if (BegDate != null)
                             {
-
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 //time = Convert.ToDateTime(BegDate).ToString("hh:mm:ss tt", new CultureInfo("en-US"));
                                 if (childVAT.Ctime != null)
@@ -1265,11 +1072,9 @@ namespace GAZT.ViewModel.NewViewModel
                                     string minutes = result[1];
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
-
                                 }
                                 //var Tstartdate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = String.Concat(StartDate, time);
-
                             }
                         }
                         else
@@ -1283,12 +1088,10 @@ namespace GAZT.ViewModel.NewViewModel
                                     time = childVAT.Ctime;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
                                     string[] result = time.Split(':');
-                                 
                                     string hours = result[0];
                                     string minutes = result[1];
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
-
                                 }
                                 StartDate = StartDate + "  " + time;
                             }
@@ -1305,13 +1108,9 @@ namespace GAZT.ViewModel.NewViewModel
                         VATCountDisplay = AppResources.ZZVAT + "(0)";
                     }
                     IsVATVisible = false;
-                   
                         IsVATVisibleLabel = true;
-                    
                 }
-               
                 PopToRootPage();
-
                 // Assigning data in the list
                 if(ETCorres != null && ETCorres.d.results.Count > 0)
                 {
@@ -1329,7 +1128,6 @@ namespace GAZT.ViewModel.NewViewModel
                         //    {
                         //        childET.RefNumber = UtilityManager.ConvertNumerals(childET.RefNumber);
                         //    }
-                            
                         //}
                         childET.Cokey = itemET.Cokey;
                         childET.Coitm = itemET.Coitm;
@@ -1373,7 +1171,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if (BegDate != null)
                             {
-
                                 StartDate = Convert.ToDateTime(BegDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 if (childET.Ctime != null)
                                 {
@@ -1387,13 +1184,10 @@ namespace GAZT.ViewModel.NewViewModel
                                     string minutes = result[1];
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
-
                                 }
-
                                // var Tstartdate = UtilityManager.ToArabicDate(StartDate);
                                 StartDate = String.Concat(StartDate, time);
                             }
-
                         }
                         else
                         {
@@ -1405,16 +1199,13 @@ namespace GAZT.ViewModel.NewViewModel
                                     time = childET.Ctime;
                                     time = time.Replace("PT", string.Empty).Replace("H", ":").Replace("M", ":").Replace("S", " ");
                                     string[] result = time.Split(':');
-                                    
                                     string hours = result[0];
                                     string minutes = result[1];
                                     string second = result[2];
                                     time = " " + hours + ":" + minutes + " ";
-
                                 }
                                 StartDate = StartDate + time;
                             }
-
                         }
                         childET.DateAndTime = StartDate;
                         ETCo.Add(childET);
@@ -1433,15 +1224,11 @@ namespace GAZT.ViewModel.NewViewModel
                         ETCountDisplay = AppResources.ZZET + "(0)";
                     }
                 }
-               
             }
             catch(Exception ex)
             {
-
             }
-            
         }
-
         //public void OnZAKATClicked()
         //{
         //    try
@@ -1449,14 +1236,11 @@ namespace GAZT.ViewModel.NewViewModel
         //        IsZakatVisible = true;
         //        IsVATVisible = false;
         //        IsETVisible = false;
-
         //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
-
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 3, Filter = AppResources.ZZFavoriteAscending });
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 4, Filter = AppResources.ZZFavoriteDescending });
-
         //        CorresFilter = Filters;
         //        SetSelectedIndex = 4;
         //        if(ListZAKATCorrespondance != null && ListZAKATCorrespondance.Count > 0)
@@ -1470,10 +1254,8 @@ namespace GAZT.ViewModel.NewViewModel
         //    }
         //    catch (Exception ex)
         //    {
-
         //    }
         //}
-
         //public void OnVATLabelClicked()
         //{
         //    try
@@ -1481,11 +1263,9 @@ namespace GAZT.ViewModel.NewViewModel
         //        IsZakatVisible = false;
         //        IsVATVisible = true;
         //        IsETVisible = false;
-
         //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-
         //        CorresFilter = Filters;
         //        SetSelectedIndex = 2;
         //        if (ListVATCorrespondance != null && ListVATCorrespondance.Count > 0)
@@ -1499,10 +1279,8 @@ namespace GAZT.ViewModel.NewViewModel
         //    }
         //    catch (Exception ex)
         //    {
-
         //    }
         //}
-
         //public void OnEtLabelClicked()
         //{
         //    try
@@ -1510,12 +1288,9 @@ namespace GAZT.ViewModel.NewViewModel
         //        IsZakatVisible = false;
         //        IsVATVisible = false;
         //        IsETVisible = true;
-
         //        List<CorrespondenceFiltersModel> Filters = new List<CorrespondenceFiltersModel>();
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 1, Filter = AppResources.ZZDateAscending });
         //        Filters.Add(new CorrespondenceFiltersModel { ID = 2, Filter = AppResources.ZZDateDescending });
-
-
         //        CorresFilter = Filters;
         //        SetSelectedIndex = 2;
         //        if (ListETCorrespondance != null && ListETCorrespondance.Count > 0)
@@ -1529,7 +1304,6 @@ namespace GAZT.ViewModel.NewViewModel
         //    }
         //    catch (Exception ex)
         //    {
-
         //    }
         //}
         #endregion

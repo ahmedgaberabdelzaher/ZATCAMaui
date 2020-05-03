@@ -10,24 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class VATLookupPageViewModel : ViewModelBase
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         bool isMendatoryDataEntered = true;
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
-
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
-
-        
-
         private bool _isTooltipEnableVisible = false;
         public bool IsTooltipEnableVisible
         {
@@ -41,7 +35,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsTooltipEnableVisible");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -55,7 +48,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private string _parameter;
         public string Parameter
         {
@@ -95,7 +87,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("EnteredCaptchaValue");
             }
         }
-
         private string _name = "";
         public string Name
         {
@@ -109,7 +100,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Name");
             }
         }
-
         private string _nameOrNoResultLabel = "";
         public string NameOrNoResultLabel
         {
@@ -123,8 +113,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NameOrNoResultLabel");
             }
         }
-        
-
         private List<VATParameterType> _parameterTypeList;
         public List<VATParameterType> ParameterTypeList
         {
@@ -136,11 +124,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _parameterTypeList = value;
                 RaisePropertyChanged("ParameterTypeList");
-
-
             }
         }
-
         private VATParameterType _selectedParameterType = null;
         public VATParameterType SelectedParameterType
         {
@@ -163,10 +148,8 @@ namespace GAZT.ViewModel.NewViewModel
                     SetPlaceholderText();
                }
                 RaisePropertyChanged("SelectedParameterType");
-              
             }
         }
-
         private VATParameterType _selectedParameterTypePrev = null;
         public VATParameterType SelectedParameterTypePrev
         {
@@ -178,7 +161,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedParameterTypePrev = value;
                 RaisePropertyChanged("SelectedParameterTypePrev");
-
             }
         }
         private string _VATACCOrCRNOOrVATCER = "";// AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
@@ -194,9 +176,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATACCOrCRNOOrVATCER");
             }
         }
-
-       
-
         private string _lookupNumber = "";
         public string LookupNumber
         {
@@ -210,7 +189,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LookupNumber");
             }
         }
-      
         private string _maxDigids = "15";
         public string MaxDigids
         {
@@ -235,7 +213,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _txtSearchParameter = value;
                 RaisePropertyChanged("TxtSearchParameter");
-
             }
         }
         private void SetPlaceholderText()
@@ -244,7 +221,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 VATACCOrCRNOOrVATCER = AppResources.ZPleaseentertheVATAccountNocomposedof15digits;
                 MaxDigids = "15";
-
             }
             else if (SelectedParameterType.id.Equals("2"))
             {
@@ -256,23 +232,19 @@ namespace GAZT.ViewModel.NewViewModel
                 VATACCOrCRNOOrVATCER = AppResources.PleaseentertheVATCertificateNocomposedof15digits;
                 MaxDigids = "15";
             }
-
         }
-
         public VATLookupPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             OnCaptchaRegenerateClicked = new Command(async () =>
             {
                 StringBuilder captcha = GetCaptcha();
@@ -284,37 +256,28 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigationService.NavigateTo(App.SFLandingPageView);
                 }
                 else
-                
                 {
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                 }
-
-                
             });
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();    
             });
-
-
-            
             OnSubmitClicked = new Command(async () =>
             {
              await OnSubmitClick();
             });
         }
-
         public bool ValidateCaptcha()
         {
             bool isValidCaptcha = false;
             if (EnteredCaptchaValue != null)
             {
-               
                 isValidCaptcha = EnteredCaptchaValue.Equals(Captcha);
                 if (EnteredCaptchaValue.Equals(Captcha))
                 {
@@ -323,20 +286,13 @@ namespace GAZT.ViewModel.NewViewModel
                 else
                 {
                     // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
-
                     StringBuilder captcha = GetCaptcha();
                     Captcha = captcha.ToString();
                     isValidCaptcha = false;
                 }
             }
-           
             return isValidCaptcha;
         }
-
-
-
-
-
         public void OnPageLoad()
         {
             try
@@ -351,7 +307,6 @@ namespace GAZT.ViewModel.NewViewModel
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZVATLookupCRNumberType3},
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATLookupIDVatCertificateNumberType2}
             };
-
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
                 ParameterTypeList = new List<VATParameterType>();
@@ -360,11 +315,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch(Exception ex)
             {
-
             }
-
         }
-            
         public StringBuilder GetCaptcha()
         {
             //Device.BeginInvokeOnMainThread(() =>
@@ -388,9 +340,7 @@ namespace GAZT.ViewModel.NewViewModel
                 throw;
             }
             return Captcha;
-
         }
-
         public async Task OnSubmitClick()
         {
             try
@@ -424,16 +374,13 @@ namespace GAZT.ViewModel.NewViewModel
                                     await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                 });
                             }
-
                         }
                         else
                         {
                             Name = vatLookUp.d.results[0].Name;
                             NameOrNoResultLabel = AppResources.Nodataavailable;
                         }
-
                     }
-
                 // IsLoading = true;
             });
                 await Task.Run(() =>
@@ -453,7 +400,6 @@ namespace GAZT.ViewModel.NewViewModel
             Captcha = captcha.ToString();
             EnteredCaptchaValue = string.Empty;
         }
-
         private void ValidateFormData()
         {
            try
@@ -469,46 +415,34 @@ namespace GAZT.ViewModel.NewViewModel
                                 isMendatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                  
                                     _dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
-                                   
                                 });
                                 return;
                             }
-
                         }
                         else if (SelectedParameterType.id.Equals("2"))
                         {
-                           
                             if (LookupNumber.Length != 10)
                             {
                                 isMendatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                   
                                     _dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
-                                 
                                 });
                                 return;
                             }
-
                         }
                         else if (SelectedParameterType.id.Equals("4"))
                         {
-                           
                             if (LookupNumber.Length != 15)
                             {
                                 isMendatoryDataEntered = false;
-
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                  
                                     _dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.Information);
-                                   
                                 });
                                 return;
                             }
-
                         }
                         bool isValiedCaptcha = ValidateCaptcha();
                         if (!isValiedCaptcha)
@@ -516,9 +450,7 @@ namespace GAZT.ViewModel.NewViewModel
                             isMendatoryDataEntered = false;
                             Device.BeginInvokeOnMainThread(() =>
                             {
-                               
                                 _dialogService.ShowMessageBox(AppResources.enteredcaptchacodeisincorrect, AppResources.Information);
-                                
                             });
                             return;
                         }
@@ -530,8 +462,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             isMendatoryDataEntered = false;
                             _dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
-                           
-
                         });
                         return;
                     }
@@ -542,8 +472,6 @@ namespace GAZT.ViewModel.NewViewModel
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         _dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
-                       
-
                     });
                     return;
                 }
@@ -552,10 +480,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 isMendatoryDataEntered = false;
             }
-            
-
             //_dialogService.ShowMessageBox(AppResources.ZVATLookupDialogue, AppResources.Information);
-         
         }
         public void SetSelectedParameterTypeData()
         {

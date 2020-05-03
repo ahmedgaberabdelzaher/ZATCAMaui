@@ -9,7 +9,6 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -20,42 +19,31 @@ namespace GAZT.Views
 		{
             viewModel = App.Locator.pdfView;    
             InitializeComponent();
-
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.pdfUrl = Pdfurl;
             ChangeAeroIcon();
             SetLTR();
-
-
             this.BindingContext = viewModel;
-           
         }
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-          
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
-            
             await viewModel.OnPageLoad();
-            
         }
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
-
             PdfViewForCertificate.Unload();
-
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
             viewModel.StreamForDownloadURL = null;
         }
         private void SetLTR()
         {
-
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
@@ -82,27 +70,21 @@ namespace GAZT.Views
             { 
             }
         }
-
-
         public async Task email()
         {
             try
             {
-
                 await Task.Run(() =>
                 {
                     viewModel.Loading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     try
                     {
-
                         var message = new EmailMessage
                         {
                             Subject = "Attached Form :",
-
                         };
                         if (viewModel.PdfBytes != null)
                         {
@@ -114,11 +96,9 @@ namespace GAZT.Views
                                 Title = Title,
                                 File = new ShareFile(file)
                             });
-
                         }
                         else
                         {
-
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
@@ -128,24 +108,16 @@ namespace GAZT.Views
                     }
                     catch (Exception ex)
                     {
-
                     }
-
                 });
-
                 await Task.Run(() =>
                 {
                     viewModel.Loading = false;
                 });
-
             }
             catch (Exception ex)
             { 
-            
             }
-
-
         }
-
     }
 }

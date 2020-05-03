@@ -9,31 +9,24 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatReturnListPageView : ContentPage
     {
-
         #region Variable
         ZakatReturnListPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
         public static bool AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = false;
-
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public ZakatReturnListPageView()
         {
             InitializeComponent();
@@ -42,7 +35,6 @@ namespace GAZT.Views.NewViews
             ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
             BPicker.Margin = new Thickness(10, 0, 10, 0);
             FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
@@ -55,16 +47,12 @@ namespace GAZT.Views.NewViews
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
-
         #endregion
-
         #region Method
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -80,7 +68,6 @@ namespace GAZT.Views.NewViews
                         ZakatICRListLayout.Padding = new Thickness(40, 0, 40, 0);
                         BPicker.Margin = new Thickness(40, 0, 40, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(40, 0, 40, 5);
-
                         //safeInsets.Left = 80;
                         //safeInsets.Right = 80;
                         //Padding = safeInsets;
@@ -89,15 +76,11 @@ namespace GAZT.Views.NewViews
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         ZakatICRListLayout.Padding = new Thickness(10, 0, 10, 0);
-
                         //ZakatICRList.Margin = new Thickness(10, 5, 0, 0);
                         BPicker.Margin = new Thickness(10, 0, 10, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
-
-
                     }
                 }
-
                 //reconfigure layout
             }
         }
@@ -116,12 +99,10 @@ namespace GAZT.Views.NewViews
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -134,11 +115,8 @@ namespace GAZT.Views.NewViews
         private void onDropdownButtonClicked(object sender, EventArgs e)
         {
             BPicker.Focus();
-
         }
-
         #endregion
-
         private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
@@ -151,12 +129,10 @@ namespace GAZT.Views.NewViews
             viewModel.myZakatReturnsList = new List<Models.EstimatedZakatReturnsResult>();
             await viewModel.OnPageLoad();
         }
-
         private void BPickerButton_Clicked(object sender, EventArgs e)
         {
             BPicker.IsOpen = true;
         }
-
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             ZAKATStatus selectedZakatStatus = (ZAKATStatus)e.NewValue;
@@ -165,7 +141,6 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedICRStatusPrev = selectedZakatStatus;
             viewModel.TxtSelectedStatus = selectedZakatStatus.Value;
         }
-
         private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             //if(AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage)
@@ -190,21 +165,13 @@ namespace GAZT.Views.NewViews
                 }
                 catch (Exception ex)
                 {
-
                 }
-
             }
             else
             {
-
             }
-
-
             //}
-
-
         }
-
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;

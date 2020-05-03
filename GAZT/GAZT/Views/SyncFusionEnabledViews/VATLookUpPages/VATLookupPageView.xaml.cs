@@ -12,14 +12,12 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 using Application = Xamarin.Forms.Application;
 using NavigationPage = Xamarin.Forms.NavigationPage;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -35,7 +33,6 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.VATLookupPageView;
             InitializeComponent();
             MainLayout.Padding = new Thickness(0, 0, 0, 0);
-
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
             //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
@@ -51,8 +48,6 @@ namespace GAZT.Views.NewViews
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             //ToolbarItem toolbarItem1 = new ToolbarItem
             //{
-
-
             //};
             //if (LanguageToolBarCount == 0)
             //{
@@ -91,7 +86,6 @@ namespace GAZT.Views.NewViews
                         MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
-
                 //reconfigure layout
             }
         }
@@ -99,12 +93,10 @@ namespace GAZT.Views.NewViews
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -113,30 +105,24 @@ namespace GAZT.Views.NewViews
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
             }
-
         }
-
         //private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         //{
         //    try
         //    {
         //        if (viewModel.SelectedParameterType != null)
         //        {
-
         //            PPicker.Focus();
         //        }
         //    }
         //    catch(Exception ex)
         //    {
-
         //    }
         //}
-
         private void btn1_Clicked(object sender, EventArgs e)
         {
             // PPicker.IsOpen = true;
         }
-
         private void SelectedParametes_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             VATParameterType vATParameterType = (VATParameterType)e.NewValue;
@@ -148,7 +134,6 @@ namespace GAZT.Views.NewViews
             //viewModel.SelectedSignUpUsing = signUpUsing;
             //viewModel.TxtIDNumber = signUpUsing.SUType;
         }
-
         private async void btnSubmit_Clicked(object sender, EventArgs e)
         {
             try
@@ -162,7 +147,6 @@ namespace GAZT.Views.NewViews
                 {
                     try
                     {
-
                         ValidateFormData();//isMendatoryDataEntered
                         if (isMendatoryDataEntered)
                         {
@@ -187,7 +171,6 @@ namespace GAZT.Views.NewViews
                                             await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                         });
                                     }
-
                                 }
                                 else
                                 {
@@ -196,28 +179,19 @@ namespace GAZT.Views.NewViews
                                 }
                             }
                         }
-
-
                     }
                     catch (InternetException ex)
                     {
-
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             viewModel._dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                             viewModel._navigationService.GoBack();
-
                         });
                         await Task.Run(() =>
                         {
                             viewModel.IsLoading = false;
-
                         });
-
-
                     }
-
-
                     // IsLoading = true;
                 });
                 await Task.Run(() =>
@@ -237,20 +211,14 @@ namespace GAZT.Views.NewViews
                     {
                         viewModel.IsLoading = false;
                     });
-
                 }
                 catch (Exception a)
                 {
-
                 }
-
-
             }
-
         }
         private void ValidateFormData()
         {
-
             try
             {
                 Device.BeginInvokeOnMainThread(() =>
@@ -269,51 +237,38 @@ namespace GAZT.Views.NewViews
                                 isMendatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-
                                 return;
                             }
-
                         }
                         else if (viewModel.SelectedParameterType.id.Equals("2"))
                         {
-
                             if (viewModel.LookupNumber.Length != 10)
                             {
                                 isMendatoryDataEntered = false;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZCRNumberisnotequalto10, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-
                                 return;
                             }
-
                         }
                         else if (viewModel.SelectedParameterType.id.Equals("4"))
                         {
-
                             if (viewModel.LookupNumber.Length != 15)
                             {
                                 isMendatoryDataEntered = false;
-
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-
                                     viewModel._dialogService.ShowMessageBox(AppResources.ZVATNumberisnotequalto15, AppResources.Information);
                                     frmLookupNumner.HasError = true;
                                 });
-
                                 return;
                             }
-
                         }
-
                     }
                     else
                     {
@@ -323,9 +278,7 @@ namespace GAZT.Views.NewViews
                             isMendatoryDataEntered = false;
                             viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
                             frmLookupNumner.HasError = true;
-
                         });
-
                         return;
                     }
                 }
@@ -336,9 +289,7 @@ namespace GAZT.Views.NewViews
                     {
                         viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseselectparametertype, AppResources.Information);
                         //  frmSearchParameter.HasError = true;
-
                     });
-
                     return;
                 }
             }
@@ -346,26 +297,21 @@ namespace GAZT.Views.NewViews
             {
                 isMendatoryDataEntered = false;
             }
-
         }
         public void OnParameterTypeEntryEntryFocussed(object sender, EventArgs args)
         {
             PPicker.IsOpen = true;
         }
-
         private void PPicker_btn_Clicked(object sender, EventArgs e)
         {
             PPicker.IsOpen = true;
         }
-
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
             if (viewModel.SelectedParameterType != null)
             {
                 PopUp popUp = new PopUp();//SetPlaceholderText();
                 popUp.Message = viewModel.VATACCOrCRNOOrVATCER;
-
                 if (App.IsArabic)
                 {
                     popUp.FlowDirections = "RightToLeft";
@@ -374,17 +320,12 @@ namespace GAZT.Views.NewViews
                 {
                     popUp.FlowDirections = "LeftToRight";
                 }
-
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-
         }
-
         private void SfButton_Clicked(object sender, EventArgs e)
         {
-
         }
-
         private async void ScanCode_btn_Clicked(object sender, EventArgs e)
         {
             var scan = new ZXingScannerPage();
@@ -424,7 +365,6 @@ namespace GAZT.Views.NewViews
                                         await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                     });
                                 }
-
                             }
                             else
                             {
@@ -445,21 +385,14 @@ namespace GAZT.Views.NewViews
                             {
                                 viewModel.IsLoading = false;
                             });
-
                         }
                         catch (Exception a)
                         {
-
                         }
-
-
                     }
                 });
-                
             };
-           
         }
-
         private void PPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedParameterType = viewModel.SelectedParameterTypePrev;
@@ -469,7 +402,5 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtSearchParameter = string.Empty;
             }
         }
-
-   
     }
 }

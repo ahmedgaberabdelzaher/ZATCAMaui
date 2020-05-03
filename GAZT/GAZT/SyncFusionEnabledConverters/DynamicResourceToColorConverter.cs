@@ -2,7 +2,6 @@
 using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>
@@ -26,11 +25,9 @@ namespace GAZTeServicesApp.Converters
             {
                 return value;
             }
-
             Application.Current.Resources.TryGetValue(dynamicResource.Key, out var color);
             return (Color)color;
         }
-
         /// <summary>
         /// This method is used to convert the color to DynamicResource.
         /// </summary>

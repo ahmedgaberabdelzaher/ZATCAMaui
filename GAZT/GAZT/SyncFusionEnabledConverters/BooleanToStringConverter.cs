@@ -2,7 +2,6 @@
 using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>
@@ -46,10 +45,8 @@ namespace GAZTeServicesApp.Converters
                     }
                 }
             }
-
             return string.Empty;
         }
-
         /// <summary>
         /// This method is used to convert the string to bool.
         /// </summary>

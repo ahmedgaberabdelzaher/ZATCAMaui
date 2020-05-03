@@ -9,7 +9,6 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel
 {
     public class PdfViewModel : ViewModelBase
@@ -20,7 +19,6 @@ namespace GAZT.ViewModel
         public ICommand GoBackClick { get; set; }
         public string pdfUrl;
         #endregion
-
         #region Property
         private byte[] _pdfBytes = null;
         public byte[] PdfBytes
@@ -35,7 +33,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfBytes");
             }
         }
-
         private bool _isLoading;
         public bool IsLoading
         {
@@ -57,7 +54,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _loading = false;
         public bool Loading
         {
@@ -71,7 +67,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("Loading");
             }
         }
-
         private bool _isVisiblePdfView = false;
         public bool IsVisiblePdfView
         {
@@ -85,7 +80,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsVisiblePdfView");
             }
         }
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -99,7 +93,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
-
         private string _pdfUrl = string.Empty;
         public string PdfUrl
         {
@@ -113,7 +106,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("PdfUrl");
             }
         }
-
         private bool _isShareButtonEnable;
         public bool IsShareButtonEnable
         {
@@ -127,7 +119,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsShareButtonEnable");
             }
         }
-
         private string _DownloadUrl = string.Empty;
         public string DownloadUrl
         {
@@ -141,7 +132,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("DownloadUrl");
             }
         }
-
         private Stream _StreamForDownloadURL = null;
         public Stream StreamForDownloadURL
         {
@@ -151,42 +141,31 @@ namespace GAZT.ViewModel
             }
             set
             {
-
                 _StreamForDownloadURL = value;
-
                 RaisePropertyChanged("StreamForDownloadURL");
             }
         }
         #endregion
-
         #region Constructor
-
         public PdfViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
             _dialogService = dialogService;
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
             });
         }
-
         #endregion
-
         #region Method
-
         public async Task OnPageLoad()
         {
             try
@@ -198,7 +177,6 @@ namespace GAZT.ViewModel
                     {
                         DownloadUrl = pdfUrl;
                         getPdfStream();
-
                     }
                     else
                     {
@@ -211,16 +189,13 @@ namespace GAZT.ViewModel
             }
             catch (Exception ex)
             {
-
             }
         }
-
         public void getPdfStream()
         {
             Stream stream = null;
             try
             {
-
                 HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
                 myReq.Headers.Add("Token", App.Token);
                 WebResponse myResp = myReq.GetResponse();
@@ -237,7 +212,6 @@ namespace GAZT.ViewModel
                                 count = streams.Read(buf, 0, 1024);
                                 ms.Write(buf, 0, count);
                             } while (streams.CanRead && count > 0);
-
                             if (ms != null)
                                 PdfBytes = ms.ToArray();
                         }
@@ -246,7 +220,6 @@ namespace GAZT.ViewModel
                     if (PdfBytes != null && PdfBytes.Length > 0)
                     {
                         strBase64 = Convert.ToBase64String(PdfBytes);
-
                         if (!string.IsNullOrEmpty(strBase64))
                         {
                             try
@@ -282,7 +255,6 @@ namespace GAZT.ViewModel
                                 await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
                             });
                         }
-
                     }
                     else
                     {
@@ -301,14 +273,12 @@ namespace GAZT.ViewModel
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNotAvailableFor, AppResources.Information);
                     });
                 }
-
             }
             catch (Exception ex)
             {
                 IsShareButtonEnable = false;
             }
         }
-
         #endregion
     }
 }

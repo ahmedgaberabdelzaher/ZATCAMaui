@@ -9,7 +9,6 @@
     xmlns:local1="clr-namespace:GAZT"
     BackgroundColor="{DynamicResource Gray-100}"
     NavigationPage.HasNavigationBar="False">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,9 +16,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
-
     <ContentPage.Content>
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
@@ -33,7 +29,6 @@
                 <StackLayout  BackgroundColor="{DynamicResource Gray-100}" Spacing="0" VerticalOptions="FillAndExpand">
                     <!--<StackLayout.HeightRequest>
       <OnIdiom x:TypeArguments="x:Double">
-         
           <OnIdiom.Tablet>
               900
           </OnIdiom.Tablet>
@@ -53,8 +48,6 @@
                     TextColor="{DynamicResource Gray-800}"
                     VerticalOptions="Center"
                     VerticalTextAlignment="Center" />
-
-
                     <!--  Grid for Edit profile label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                         IsVisible="{Binding IsTaxPayerProfileVisible}"
@@ -89,8 +82,6 @@
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}"   IsVisible="{Binding IsTaxPayerProfileVisible}" />
-
-
                     <!--  Grid for Edit profile label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                         IsVisible="{Binding IsCorrespondenceVisible}"
@@ -125,7 +116,6 @@
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}"   IsVisible="{Binding IsCorrespondenceVisible}" />
-
                     <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
@@ -162,7 +152,6 @@
                     <!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
-
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
@@ -199,7 +188,6 @@
                     <!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
-
                     -->
                     <!--  Grid for Change password label and navigation bar icon  -->
                     <!--
@@ -239,9 +227,7 @@
                     <!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />-->
-
                     <!--  Header label for Support setting  -->
-
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
@@ -272,15 +258,11 @@
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
-
-
-
                     <!--<Label
                 Style="{StaticResource LabelStyleFromCommonStyle}"
                     HorizontalOptions="FillAndExpand"
                     Text="{x:Static local:AppResources.ZZZSupport  }"
                     />
-
                     --><!--  Grid for Help label and navigation bar icon  --><!--
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -293,9 +275,6 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        
-                        
-
                         --><!--  help icon  --><!--
                         <Label
                         Grid.Column="0"
@@ -315,8 +294,6 @@
                         Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />-->
-
-
                     <!--  Grid for FAQs label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -347,10 +324,7 @@
                         Style="{StaticResource IconLabelStyle}"
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
-
                     <BoxView Style="{StaticResource SeparatorStyle}" />
-
-
                     <!--  Grid for Terms of service label and navigation bar icon  -->
                     <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -388,7 +362,6 @@
                     <!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />-->
-
                     <!--  Grid for Privacy policy label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -424,7 +397,6 @@
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"
-                
                     RowSpacing="0"
                     Tapped="False">
                         <Grid.ColumnDefinitions>
@@ -445,7 +417,6 @@
                         </Image>
                         <!--  FAQs text label  -->
                         <local1:CustomLabel
-                            
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
                         Text="{Binding TranslateText}" >
@@ -462,9 +433,7 @@
                             <TapGestureRecognizer Tapped="LanguageClicked"></TapGestureRecognizer>
                         </controls:TapAnimationGrid.GestureRecognizers>
                     </controls:TapAnimationGrid>
-
                     <BoxView Style="{StaticResource SeparatorStyle}" />
-
                     <!--  Grid for Privacy policy label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -503,37 +472,25 @@
                         Style="{StaticResource IconLabelStyle}"
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
-
-
-
                 </StackLayout>
             </ScrollView>
             <StackLayout  Grid.Row="1" Margin="0" VerticalOptions="EndAndExpand"
                 Grid.Column="0"   IsVisible="{Binding IsTaxPayerProfileVisible}">
                 <buttons:SfButton
-                
-               
                     Margin="0"
                     VerticalOptions="End"
                 HorizontalOptions="FillAndExpand"
                   BackgroundColor="#D99A29"
-                 
-                   
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="56"
                     CornerRadius="0"
                    Clicked="OnLogoutClicked"
-                    
                     Text="{x:Static local:AppResources.ZLogout}"
                     TextColor="{DynamicResource Gray-White}"
                      />
             </StackLayout>
-
         </Grid>
-
     </ContentPage.Content>
-
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
@@ -547,7 +504,6 @@
                             CornerRadius="4"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource BurgerMenu}"
-                            
                             FontSize="Large"
                              />
                     </controls:TitleView.LeadingView>

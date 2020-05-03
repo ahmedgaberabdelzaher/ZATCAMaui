@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
 {
     public class ReturnsListCountsByStatus
@@ -21,12 +20,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public int SubmittedVATCount;
         public int NonSubmittedVATCount;
         public int OverdueVATCount;
-       
         public string SubmittedZakatWithCount = AppResources.SubmittedReturn + "10";
         private string _submittedZakatWithCountTest = AppResources.SubmittedReturn + "10";
-        
-       
-
         public string SubmittedZakatWithCountTest
         {
             get
@@ -38,8 +33,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 _submittedZakatWithCountTest = value;
             }
         }
-
-
     }
     public class ReturnsPageViewModel : ViewModelBase
     {
@@ -50,14 +43,12 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         private List<ICRListSet> _iCRListVATSubmitted;
         public ICommand GoBackClick { get; set; }
-
         private int _headerCount = 3;
         public int HeaderCount
         {
             get
             {
                 return _headerCount;
-
             }
             set
             {
@@ -65,8 +56,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("HeaderCount");
             }
         }
-
-
         private bool _setNoDataLabelVisibilityVATSubmitted = false;
         public bool SetNoDataLabelVisibilityVATSubmitted
         {
@@ -77,11 +66,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATSubmitted = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmitted");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatSubmitted = false;
         public bool SetNoDataLabelVisibilityZakatSubmitted
         {
@@ -92,11 +79,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatSubmitted = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmitted");
             }
         }
-
         private bool _setNoDataLabelVisibilityVATNonSubmitted = false;
         public bool SetNoDataLabelVisibilityVATNonSubmitted
         {
@@ -107,11 +92,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATNonSubmitted = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmitted");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatNonSubmitted = false;
         public bool SetNoDataLabelVisibilityZakatNonSubmitted
         {
@@ -122,11 +105,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatNonSubmitted = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmitted");
             }
         }
-
         private bool _setNoDataLabelVisibilityVATOverDue = false;
         public bool SetNoDataLabelVisibilityVATOverDue
         {
@@ -137,11 +118,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATOverDue = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDue");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatOverDue = false;
         public bool SetNoDataLabelVisibilityZakatOverDue
         {
@@ -152,11 +131,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatOverDue = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDue");
             }
         }
-
         private bool _setNoDataLabelVisibilityVATSubmittedList = false;
         public bool SetNoDataLabelVisibilityVATSubmittedList
         {
@@ -167,11 +144,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATSubmittedList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATSubmittedList");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatSubmittedList = false;
         public bool SetNoDataLabelVisibilityZakatSubmittedList
         {
@@ -182,11 +157,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatSubmittedList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatSubmittedList");
             }
         }
-
         private bool _setNoDataLabelVisibilityVATNonSubmittedList = false;
         public bool SetNoDataLabelVisibilityVATNonSubmittedList
         {
@@ -197,11 +170,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATNonSubmittedList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATNonSubmittedList");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatNonSubmittedList = false;
         public bool SetNoDataLabelVisibilityZakatNonSubmittedList
         {
@@ -212,11 +183,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatNonSubmittedList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatNonSubmittedList");
             }
         }
-
         private bool _setNoDataLabelVisibilityVATOverDueList = false;
         public bool SetNoDataLabelVisibilityVATOverDueList
         {
@@ -227,11 +196,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityVATOverDueList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityVATOverDueList");
             }
         }
-
         private bool _setNoDataLabelVisibilityZakatOverDueList = false;
         public bool SetNoDataLabelVisibilityZakatOverDueList
         {
@@ -242,12 +209,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _setNoDataLabelVisibilityZakatOverDueList = value;
-
                 RaisePropertyChanged("SetNoDataLabelVisibilityZakatOverDueList");
             }
         }
-
-
         private bool _isVATVisible = false;
         public bool IsVATVisible
         {
@@ -258,11 +222,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _isVATVisible = value;
-
                 RaisePropertyChanged("IsVATVisible");
             }
         }
-
         private bool _isZakatVisible = false;
         public bool IsZakatVisible
         {
@@ -273,11 +235,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _isZakatVisible = value;
-
                 RaisePropertyChanged("IsZakatVisible");
             }
         }
-
         private ReturnsListCountsByStatus _returnsListCountsByStatus;
         public ReturnsListCountsByStatus ReturnsListCountsByStatus
         {
@@ -288,7 +248,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             set
             {
                 _returnsListCountsByStatus = value;
-
                 RaisePropertyChanged("ReturnsListCountsByStatus");
             }
         }
@@ -329,7 +288,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ICRListVATSubmitted");
             }
         }
-
         private List<ICRListSet> _iCRListVATNonSubmitted;
         public List<ICRListSet> ICRListVATNonSubmitted
         {
@@ -343,7 +301,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ICRListVATNonSubmitted");
             }
         }
-
         private List<ICRListSet> _iCRListVATOverDue;
         public List<ICRListSet> ICRListVATOverDue
         {
@@ -357,8 +314,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("ICRListVATOverDue");
             }
         }
-
-
         private ICRListSet _selectedICRVATSubmitted;
         public ICRListSet SelectedICRVATSubmitted
         {
@@ -379,11 +334,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
         }
-
         private EstimatedZakatReturnsResult _selectedZakatReturn;
         public EstimatedZakatReturnsResult SelectedZakatReturn
         {
@@ -395,7 +348,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             {
                 _selectedZakatReturn = value;
                 RaisePropertyChanged("SelectedZakatReturn");
-
                 if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     EstimatedZakatReturnsResult ChidlSelectedICR = new EstimatedZakatReturnsResult();
@@ -418,16 +370,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
-
                     }
                 }
             }
         }
-
-
-
-
-
         private List<EstimatedZakatReturnsResult> _myZakatReturnsSubmitted = null;
         public List<EstimatedZakatReturnsResult> MyZakatReturnsSubmitted
         {
@@ -441,7 +387,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("MyZakatReturnsSubmitted");
             }
         }
-
         private List<EstimatedZakatReturnsResult> _myZakatReturnsNonSubmitted = null;
         public List<EstimatedZakatReturnsResult> MyZakatReturnsNonSubmitted
         {
@@ -455,7 +400,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("MyZakatReturnsNonSubmitted");
             }
         }
-
         private List<EstimatedZakatReturnsResult> _myZakatReturnsOverDue = null;
         public List<EstimatedZakatReturnsResult> MyZakatReturnsOverDue
         {
@@ -469,7 +413,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("MyZakatReturnsOverDue");
             }
         }
-
         private int _tabIndexStatus = 0;
         public int TabIndexStatus
         {
@@ -483,7 +426,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("TabIndexStatus");
             }
         }
-
         private FlowDirection _fDirection = FlowDirection.RightToLeft;
         public FlowDirection FDirection
         {
@@ -497,7 +439,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 RaisePropertyChanged("FDirection");
             }
         }
-
         public ReturnsPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -506,20 +447,14 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
-
         }
         public void PopToRootPage()
         {
@@ -527,7 +462,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -544,7 +478,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 });
             }
         }
-
         public async Task onPageLoad()
         {
             try
@@ -553,7 +486,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 {
                     //  IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     if(App.IsArabic)
@@ -575,19 +507,15 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         {
                             if (ItemType == "05")
                             {
-
                                 IsZakatVisible = true;
                             }
                             if (ItemType == "03" || ItemType == "13")
                             {
                                 IsVATVisible = true;
                             }
-
                         }
                     }
-
                     HeaderCount = 3;
-                    
                     ICR icrList = null;
                     try
                     {
@@ -600,8 +528,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             {
                                 icrList.ICR_LISTSet = icrList.ICR_LISTSet.OrderByDescending(icr => DateTime.Parse(icr.DueDate)).ToList();
                             }
-
-
                             VATDeclaration vATDeclaration = new VATDeclaration();
                             if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                             {
@@ -632,7 +558,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                 {
                                     SetNoDataLabelVisibilityVATNonSubmittedList = false;
                                     SetNoDataLabelVisibilityVATNonSubmitted = true;
-
                                 }
                                 if (ICRListVATOverDue.Count > 0)
                                 {
@@ -644,15 +569,12 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                 {
                                     SetNoDataLabelVisibilityVATOverDueList = false;
                                     SetNoDataLabelVisibilityVATOverDue = true;
-
                                 }
-
                             }
                             else
                             {
                                 _navigationService.GoBack();
                             }
-
                             try
                             {
                                 estimatedZakatReturnsList = await WebServiceManager.GAZTGetEstimateZakatReturnList();
@@ -690,7 +612,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                         {
                                             if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
                                             {
-
                                                 myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
                                                 myZakatReturnsListTemp[i].BorderColour = "#944E22";
                                                 MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
@@ -705,13 +626,11 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                             {
                                                 MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
                                             }
-
                                         }
                                         else
                                         {
                                             if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
                                             {
-
                                                 myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
                                                 myZakatReturnsListTemp[i].BorderColour = "#944E22";
                                                 MyZakatReturnsNonSubmittedChild.Add(myZakatReturnsListTemp[i]);
@@ -721,7 +640,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                                 myZakatReturnsListTemp[i].BorderColour = "#005e4b";
                                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                                                 MyZakatReturnsSubmittedChild.Add(myZakatReturnsListTemp[i]);
-
                                             }
                                             else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
                                             {
@@ -733,12 +651,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                                 MyZakatReturnsOverDueChild.Add(myZakatReturnsListTemp[i]);
                                             }
                                         }
-
                                         //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                                     }
                                 }
-
-
                             }
                             MyZakatReturnsNonSubmitted = MyZakatReturnsNonSubmittedChild;
                             MyZakatReturnsSubmitted = MyZakatReturnsSubmittedChild;
@@ -753,20 +668,17 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             {
                                 SetNoDataLabelVisibilityZakatSubmittedList = false;
                                 SetNoDataLabelVisibilityZakatSubmitted = true;
-
                             }
                             if (MyZakatReturnsNonSubmitted.Count > 0)
                             {
                                 ReturnsListCountsByStatus.NonSubmittedZakatCount = MyZakatReturnsNonSubmitted.Count;
                                 SetNoDataLabelVisibilityZakatNonSubmittedList = true;
                                 SetNoDataLabelVisibilityZakatNonSubmitted = false;
-
                             }
                             else
                             {
                                 SetNoDataLabelVisibilityZakatNonSubmittedList = false;
                                 SetNoDataLabelVisibilityZakatNonSubmitted = true;
-
                             }
                             if (MyZakatReturnsOverDue.Count > 0)
                             {
@@ -778,7 +690,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             {
                                 SetNoDataLabelVisibilityZakatOverDueList = false;
                                 SetNoDataLabelVisibilityZakatOverDue = true;
-
                             }
                         }
                         catch (Exception ex)
@@ -797,22 +708,13 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             // IsLoading = false;
                             _navigationService.GoBack();
-
                         });
-                       
                     }
-
                 });
-
                 await Task.Run(() =>
                 {
-
                     //  IsLoading = false;
                 });
-
-
-
-
                 //int k = 5;
                 //List<ICRStatus> icrStatus = new List<ICRStatus>();
                 //ICRStatusList = new List<ICRStatus>();
@@ -824,18 +726,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 //    m.Spras = "Abc";
                 //    m.Txt04 = "Abc";
                 //    m.Txt30 = "Abc";
-
                 //    icrStatus.Add(m);
                 //}
                 //ICRStatusList = icrStatus;
-
                 //int i = 5;
-
-
-
-
-
-
                 //List<ICRListSet> icrList = new List<ICRListSet>();
                 //ICRList = new List<ICRListSet>();
                 //for (i = 0; i < 6; i++)
@@ -845,10 +739,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 //    m.Txt50 = "100";
                 //    m.DueDt = "12:02:20";
                 //    m.TaxPeriod = "P";
-
                 //    icrList.Add(m);
                 //}
-
                 //int j = 5;
                 ////S MyBills = new List<MyBills>();
                 //for (j = 0; j < 6; j++)
@@ -858,7 +750,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                 //    m.Txt50 = "100";
                 //    m.DueDt = "12:02:20";
                 //    m.TaxPeriod = "P";
-
                 //    icrList.Add(m);
                 //}
                 //ICRList = icrList;
@@ -870,7 +761,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     //  IsLoading = false;
                     _navigationService.GoBack();
-
                 });
             }
         }
@@ -887,18 +777,10 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             {
                 return ICRList;
             }
-
-
         }
-
         public async void GetVATAllReturnsAsync()
         {
-
-
-
             await GetVATAllReturns();
-
-
         }
         public bool isStatusNotValid()
         {
@@ -916,7 +798,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
             {
                 try
                 {
-
                     if (SelectedICRVATSubmitted != null)
                     {
                         if (isStatusNotValid())
@@ -924,17 +805,12 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                             selectedICRForStatus = new ICRListSet();
                             selectedICRForStatus = SelectedICRVATSubmitted;
                             App.ICRStatus = selectedICRForStatus.Status;
-
-
                             //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
                             // the GUID will be different
-
                             String SelectedICRGUID = SelectedICRVATSubmitted.Fbguid;
                             EUser = SelectedICRVATSubmitted.Euser;
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICRVATSubmitted.Fbguid, SelectedICRVATSubmitted.Fbnum, SelectedICRVATSubmitted.Euser, SelectedICRVATSubmitted.Persl);
                             PopToRootPage();
-
-
                             if (_vATDeclaration != null && _vATDeclaration.d != null)
                             {
                                 _vATDeclaration.d.Fbguid = SelectedICRGUID;
@@ -943,17 +819,14 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                                 Result5 result5 = new Result5();
                                 List<Result5> lst = new List<Result5>();
                                 ADRSet _aDRSet = new ADRSet();
-
                                 lst.Add(result5);
                                 vATDeclaration.d = vATDeclarationD;
                                 vATDeclaration.d.ADRSet = _aDRSet;
                                 vATDeclaration.d.ADRSet.results = lst;
-
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
                                 });
-
                             }
                             else
                             {
@@ -973,7 +846,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         // IsLoading = false;
                         _navigationService.GoBack();
-
                     });
                 }
             }
@@ -984,12 +856,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     //  IsLoading = false;
                     _navigationService.GoBack();
-
                 });
-
             }
-
         }
-
     }
 }

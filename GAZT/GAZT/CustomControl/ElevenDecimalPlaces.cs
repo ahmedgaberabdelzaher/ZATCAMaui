@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
@@ -18,13 +17,11 @@ namespace GAZT
             entry.TextChanged += OnEntryTextChanged;
             base.OnAttachedTo(entry);
         }
-
         protected override void OnDetachingFrom(Entry entry)
         {
             entry.TextChanged -= OnEntryTextChanged;
             base.OnDetachingFrom(entry);
         }
-
         private  void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
             ((Entry)sender).TextColor = Color.Black;
@@ -37,7 +34,6 @@ namespace GAZT
                 char[] textValue = args.NewTextValue.ToCharArray();
                 LastChar = textValue[textValue.Length - 1];
             }
-
             //   bool IsStringContainsNegativeSign = ISNumberContainsNegativeSign(args.NewTextValue);
             bool IsStringContainsNegativeSign = args.NewTextValue.Contains("-");
             if (((Entry)sender).Text.Length < Max)
@@ -49,7 +45,6 @@ namespace GAZT
                         if (!string.IsNullOrEmpty(args.NewTextValue))
                             ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();// need to change later
                     }
-
                     foreach (char letter in args.NewTextValue.ToCharArray())
                     {
                         if (!((LastChar >= 46 && LastChar <= 57) || LastChar == 44))
@@ -61,7 +56,6 @@ namespace GAZT
                         ((Entry)sender).Unfocus();
                     //if ((LastChar >= 46 && LastChar <= 57) || LastChar == 44)
                     //{
-
                     //}
                     //else
                     //{
@@ -86,12 +80,10 @@ namespace GAZT
             {
                 if (!string.IsNullOrEmpty(args.NewTextValue))
                 {
-
                     if (args.NewTextValue.Length == Max)
                         ((Entry)sender).Unfocus();
                     ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
                 }
-
             }
              GetCommaSeparatedAmount(((Entry)sender).Text);
             if(!iSValiedNumber)
@@ -102,7 +94,6 @@ namespace GAZT
             {
                 ((Entry)sender).TextColor = Color.Black;
             }
-
         }
         private static void GetDecimalCount(string DecimalNumber)
         {
@@ -114,15 +105,12 @@ namespace GAZT
                 {
                     decimalNumber = DecimalNumber.ToCharArray();
                 }
-
                 for (int i = 0; i < decimalNumber.Length; i++)
                 {
                     if (decimalNumber[i].Equals('.'))
                     {
                         _decimalcount++;
-
                     }
-
                 }
                 decimalCount = _decimalcount;
                 if (decimalCount > 1)
@@ -134,15 +122,10 @@ namespace GAZT
             }
             catch (Exception ex)
             {
-
             }
-
         }
-
         private  void GetCommaSeparatedAmount(string amount)
         {
-
-          
             try
             {
                 if (amount != null && amount.Length < Max && amount.Length > 0)
@@ -151,7 +134,6 @@ namespace GAZT
                     {
                         string[] Amount = new String[2];
                         Amount = amount.Split('.');
-                     
                         if (Amount[0].Length > numberOfDigitBeforDecimal || Amount[1].Length > numberOfDigitAfterDecimal)
                         {
                             iSValiedNumber = false;
@@ -160,9 +142,6 @@ namespace GAZT
                         {
                             iSValiedNumber = true;
                         }
-                       
-
-
                     }
                     else
                     {
@@ -183,7 +162,6 @@ namespace GAZT
             }
             catch (Exception ex)
             {
-
             }
         }
     }

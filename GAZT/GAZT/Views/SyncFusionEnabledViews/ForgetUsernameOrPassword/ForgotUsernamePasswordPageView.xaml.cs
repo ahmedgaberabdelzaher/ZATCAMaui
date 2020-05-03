@@ -5,7 +5,6 @@ using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Xamarin.Forms;
 using GAZT.ViewModel.NewViewModel;
 using GAZT.Manager;
@@ -16,7 +15,6 @@ using System.Globalization;
 using System.Threading;
 using GAZT.Models;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-
 namespace GAZT.Views.NewViews
 {
     public partial class ForgotUsernamePasswordPageView : ContentPage
@@ -55,14 +53,12 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
         }
         protected void OnSelectedTaxPAyerType(object sender, EventArgs e)  { }
         protected void OnSelectedForgetType(object sender, EventArgs e)
         {
         }
-
         protected async void OnUserNameUnFocussed(object sender, EventArgs e)
         {
             try
@@ -79,14 +75,10 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception ex)
             {
-
             }
         }
-
-
         private async void OnIDNumberTextChanged(Object sender, EventArgs e)
        {
-
             if (viewModel.SelectedTaxPayerType != null)
             {
                 string IdNumber = UserName.Text;
@@ -107,10 +99,8 @@ namespace GAZT.Views.NewViews
                         UserName.Unfocus();
                     }
                 }
-                
             }
         }
-
         protected void OnUserNAmeFocused(object sender, EventArgs e)
         {
             if(viewModel.SelectedTaxPayerType != null)
@@ -121,9 +111,7 @@ namespace GAZT.Views.NewViews
             {
                 UserName.Keyboard = Keyboard.Default;
             }
-
         }
-
         public void OnNewPasswordEyeClicked(object sender, EventArgs args)
         {
             viewModel.NewPasswordVisibility = !viewModel.NewPasswordVisibility;
@@ -132,8 +120,6 @@ namespace GAZT.Views.NewViews
         {
             viewModel.ConfirmPasswordVisibility = !viewModel.ConfirmPasswordVisibility;
         }
-
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -145,17 +131,14 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -189,10 +172,8 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
         }
-
         private async void OnOTPEntered(Object sender, EventArgs e)
         {
             string Otp = EnteredOTP.Text;
@@ -207,21 +188,17 @@ namespace GAZT.Views.NewViews
             base.OnDisappearing();
             viewModel.StopTimer = false;
         }
-
         private void btnTxtSelectedUsernameAndPassword_Clicked(object sender, EventArgs e)
         {
             SelectPasswordUserNamePicker.IsOpen = true;
         }
-
         private void btnTxtSelectTaxpayerType_Clicked(object sender, EventArgs e)
         {
             SelectTaxpayerTypePicker.IsOpen = true;
         }
-
         private void btnTxtTIN_Clicked(object sender, EventArgs e)
         {
             SelectedTinIdPicker.IsOpen = true;
-            
         }
         private void SelectedTinIdChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -236,10 +213,7 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception ex)
             {
-
             }
-
-
         }
         private void SelectPasswordUserNamePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -249,12 +223,8 @@ namespace GAZT.Views.NewViews
            // viewModel.SelectedTaxPayerType = selectedforgotType;
             viewModel.SelectedForgotTypePrev = selectedforgotType;
             viewModel.TxtSelectedUsernameAndPassword = selectedforgotType.CredentialType;
-           
             //tSelectedUsernameAndPassword
-
-
         }
-
         private void SelectTaxpayerTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {///////////
             ForgotUserNamePassword selectedTaxPayerType = (ForgotUserNamePassword)e.NewValue;
@@ -262,10 +232,7 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedTaxPayerType = selectedTaxPayerType;
             viewModel.SelectedTaxPayerTypePrev = selectedTaxPayerType;
             viewModel.TxtSelectTaxpayerType = selectedTaxPayerType.TaxPayerType;
-
         }
-
-
         private void OnTaxPayerTypeChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {///////////
             ForgotUserNamePassword selectedTaxPayerType = (ForgotUserNamePassword)e.NewValue;
@@ -273,9 +240,7 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedTaxPayerType = selectedTaxPayerType;
             viewModel.SelectedTaxPayerTypePrev = selectedTaxPayerType;
             viewModel.TxtSelectTaxpayerType = selectedTaxPayerType.TaxPayerType;
-
         }
-
         private void SelectPasswordUserNamePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             SelectPasswordUserNamePicker.SelectedItem = viewModel.SelectedForgotTypePrev;
@@ -285,7 +250,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtSelectedUsernameAndPassword = string.Empty;
             }
         }
-
         private void SelectTaxpayerTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             SelectTaxpayerTypePicker.SelectedItem = viewModel.SelectedTaxPayerTypePrev;
@@ -295,7 +259,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtSelectedUsernameAndPassword = string.Empty;
             }
         }
-
         private void SelectedTinIdPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TIN selectedTIN = (TIN)e.NewValue;
@@ -304,7 +267,6 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedTinIdPrev = selectedTIN;
             viewModel.TxtTIN = selectedTIN.Tin;
         }
-
         private void SelectedTinIdPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             SelectedTinIdPicker.SelectedItem = viewModel.SelectedTinIdPrev;

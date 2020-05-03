@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class CorrespondenceDetailsModel
     {
     }
-
-
     public class CorrespondenceDetailsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class CorrespondenceDetailsResult
     {
         public Metadata __metadata { get; set; }
@@ -31,15 +27,12 @@ namespace GAZT.Models
         public string Tdline { get; set; }
         public string Cokey { get; set; }
     }
-
     public class CorrespondenceDetailsD
     {
         public List<CorrespondenceDetailsResult> results { get; set; }
     }
-
     public class CorrespondenceDetailsRootObject
     {
         public CorrespondenceDetailsD d { get; set; }
     }
-
 }

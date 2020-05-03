@@ -22,7 +22,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -38,9 +37,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
                     <controls:TitleView.TrailingView>
                         <Image Source="{TemplateBinding BindingContext.AddIcon}">
@@ -48,16 +45,12 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.AddButtonClicked}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-
                     </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-    
-    
-    
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_add1.png"  
                 Priority="2" Order="Primary" Clicked="ToolbarItem_Clicked" />
@@ -65,7 +58,6 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-
         <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
             <tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SelectionIndicatorSettings
@@ -78,9 +70,7 @@
                              TitleFontSize="14"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
-                                   
                              TitleFontColor="Gray">
-                   
                     <tabview:SfTabItem.Content>
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10" x:Name="MainLayout">
                             <Grid.RowDefinitions>
@@ -101,31 +91,24 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <cards:SfCardView HasShadow="True" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" Margin="0,6,0,6" CornerRadius="8"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5" >
-                                              
                                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12"  >
                                                                 <Grid ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                                     <Grid.ColumnDefinitions>
                                                                         <ColumnDefinition Width="auto" />
                                                                         <ColumnDefinition Width="auto" />
-
-
                                                                     </Grid.ColumnDefinitions>
                                                                     <Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto" />
                                                                         <RowDefinition Height="auto" />
                                                                         <RowDefinition Height="auto" />
                                                                         <RowDefinition Height="auto" />
-
                                                                     </Grid.RowDefinitions>
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                            >
-
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
@@ -134,10 +117,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
@@ -151,12 +131,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
-
-
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
@@ -170,9 +145,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -186,20 +159,12 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-                                                          
-
-
                                                                 </Grid>
                                                             </StackLayout>
-                                                        
                                             </cards:SfCardView>
                                                 </ViewCell>
                                         <!--
-                                            
-
                                                 <ContentView>
-                                                   
-
                                                 </ContentView>
                                             -->
                                         </DataTemplate>
@@ -208,13 +173,6 @@
                             </StackLayout>
                             <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                             </local1:CustomLabel>
-
-
-
-
-
-
-
                         </Grid>
                     </tabview:SfTabItem.Content>
                 </tabview:SfTabItem>
@@ -246,8 +204,6 @@
                                         <ColumnDefinition Width="34*" />
                                         <ColumnDefinition Width="33*" />
                                     </Grid.ColumnDefinitions>
-
-
                                     <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
                                         -->
                             <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center" >
@@ -256,16 +212,12 @@
                     </Image.GestureRecognizers>
                 </Image>-->
                             <!--
-
                                         <local1:CustomLabel Text="{x:Static local:AppResources.ZTEReportReportOpen}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_ForOpenReports" Command="{Binding OnOpenClicked_Tapped}" />
                                             </Label.GestureRecognizers>
                                         </local1:CustomLabel>
-
-
                                     </StackLayout>
-
                                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
                                         -->
                             <!--<Image Source="ic_checkbox.png" HorizontalOptions="Center">
@@ -280,7 +232,6 @@
                                             </Label.GestureRecognizers>
                                         </local1:CustomLabel>
                                     </StackLayout>
-
                                     -->
                             <!--<StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
                         -->
@@ -299,8 +250,6 @@
                             <!--
                                 </Grid>
                             </StackLayout>-->
-
-
                             <StackLayout  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                 <ListView   IsVisible="{Binding IsCertificateAvailable}" Margin="0,10,0,0" ItemsSource ="{Binding TERListReportbymobnoClosed}" VerticalOptions="Fill" x:Name="CertificateLstClosed" HasUnevenRows="true" ItemTapped="CertificateLstClosed_ItemTapped" SelectedItem="{Binding SelectedTaxEvasionListItem}" BackgroundColor="Transparent" SeparatorVisibility="None">
                                     <x:Arguments>
@@ -309,28 +258,20 @@
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-
                                                 <cards:SfCardView HasShadow="True" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" Margin="0,6,0,6" CornerRadius="8" IndicatorColor="DarkGreen" IndicatorPosition="Left" IndicatorThickness="5" >
-
-
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="12" >
                                                         <Grid ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="auto" />
                                                                 <ColumnDefinition Width="auto" />
-
-
                                                             </Grid.ColumnDefinitions>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
                                                                 <RowDefinition Height="auto" />
-
                                                             </Grid.RowDefinitions>
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
@@ -344,10 +285,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
@@ -361,12 +299,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
-
-
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
@@ -380,9 +313,7 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
                                                             <local1:CustomLabel  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -396,14 +327,9 @@
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
-
-
-
                                                         </Grid>
                                                     </StackLayout>
-
                                                 </cards:SfCardView>
-
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -411,24 +337,13 @@
                             </StackLayout>
                             <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                             </local1:CustomLabel>
-
-
-
-
-
-
-
                         </Grid>
                     </tabview:SfTabItem.Content>
                 </tabview:SfTabItem>
             </tabview:SfTabView.Items>
         </tabview:SfTabView>
-
-
-
 </Grid>
 <Grid Grid.Row="0"  Grid.Column="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7">
-               
                 <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
@@ -445,7 +360,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
             </Grid>
     </ContentPage.Content>
 </ContentPage>

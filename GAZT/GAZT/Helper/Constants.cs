@@ -1,29 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Helper
 {
     public static class Constants
     {
         public static string ContentType = "application/json";
-
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
-
         public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa:443";
         public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
-
         public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa:443";
         public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa:443";
-
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
-
-
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-
         public static string ForgotPasswordServiceName = "ZMB_ZDP_FRGT_USRNM_PWD_SRV";// service name has been used in Metadata in ForgotUserNamePassword Page
         public static string JSONContentType = "application/json";
         public static string GAZTSOAPWebRequestForAuthenticationService = BaseUrlOfAuthentication + "/local~mblgapi/AuthenticatedService";
@@ -44,8 +36,6 @@ namespace GAZT.Helper
         public static string SendUserNameToEmail = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
         public static string ValidateOTP = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
         public static string ChangePassword = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_FRGT_USRNM_PWD_SRV/HeaderSet?saml2=disabled";
-
-
         public static string GetTinStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTIN_STAT_SRV/HeaderSet(Langz='";
         public static string GetVATLookUpDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=disabled&sap-language='";
         public static string GAZTGetAllVATDeclarationReturnData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/HDRSet(Periodkeyz='";
@@ -53,34 +43,27 @@ namespace GAZT.Helper
         public static string SaveVATDeclarationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/HDRSet?saml2=disabled";
         public static string GAZTSaveAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef=";
         public static string GAZTDeteleAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(OutletRef=";
-
-
         public static string GAZTGetVATDeclarationCalculationDataUrl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
         public static string GAZTGetSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_Z_GET_SADAD_SRV/SadadSet?&saml2=disabled&sap-language=’";
         public static string GAZTGetZakatReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZMB_ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
         public static string GAZTGetZakatReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='";
         public static string GAZTSaveEstimatedZaktReturn = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZMB_ZDP_FZ12_SRV/HeaderSet?saml2=disabled&sap-language=";
-
         public static string GAZTVATReturnGetApplicableButtons = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum=";
         public static string GAZTGetEstimatedZAKATSADADNumber = BaseUrlOfODataServices + "/sap/opu/odata/sap/ZMB_ZDP_FZ12_SRV/HeaderSet(Fbnumz='";
         public static string GAZTSaveEstimatedZAKATAttachement = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(RetGuid='";
         public static string GAZTGetIdNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZMB_ZDP_VATR_M_SRV/IDNUMBERSet?$filter=Partner eq '";
         public static string GAZTCheckIBANNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHECK_IBAN_SRV/HEADERSet('";
         public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='";
-
         #region CorrespondenceAPIs
         public static string GAZTGetCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet?$format=json&saml2=disabled&$filter=Gpartz eq ";
         public static string GAZTSetFavCorrespondence = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/Corr_detSet?saml2=disabled";
         public static string GAZTGetCorrespondenceDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/CorrespondanceTextSet?$format=json&saml2=disabled&$filter=Gpart eq ";
         public static string GAZTGetCorrespondenceAttach = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey=";
-
         #endregion
-
         #region FormBundleAPIs
         public static string GAZTGetFormBundleModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/HEADERSet?&$format=json&saml2=disabled&$filter=Lang eq ";
         public static string GAZTGetFormBunleAccountNumberModel = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_RETURN_STATUS_SRV/ItemSet?&$format=json&saml2=disabled&$filter=Lang eq ";
         #endregion
-
         #region SignUp
         public static string GAZTGetCityListForSignUp = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";
         public static string GAZTSiguupValidateIDTypes = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet";
@@ -89,13 +72,9 @@ namespace GAZT.Helper
         public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";
         public static string GAZTSignUpFirstSubmit = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet";
         public static string GAZTSignUpGetGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet?$format=json&$filter=AType eq  '1'";
-
         #endregion
-
         #region NEW DASHBOARD
-
         //Dashboard - get the set of Unpaid Amounts
-
         public static string GetDashboardData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/HEADERSet?$filter=Tin eq '";
         public static string GAZTGetTheSetOfUnpaidAmounts = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq ";
         public static string GAZTGetTheSetOfUnsubmittedReturns = BaseUrlOfODataServices + "sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq ";
@@ -103,11 +82,8 @@ namespace GAZT.Helper
         public static string GAZTGetPaymentOverdueSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq '";
         public static string GAZTGetReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/ICR_LISTSet?$filter=Gpart eq '";
         #endregion
-
         #region TES
         public static string GAZTGetFAQ = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
-
-
         #endregion
     }
 }

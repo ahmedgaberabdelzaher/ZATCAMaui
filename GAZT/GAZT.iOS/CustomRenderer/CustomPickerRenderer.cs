@@ -17,13 +17,11 @@ namespace GAZT.iOS.CustomRenderer
             if (Control != null)
             {
                 this.Control.BackgroundColor = UIColor.White;
-            
                 this.Control.BorderStyle = UITextBorderStyle.None;
                 //if (App.IsArabic)
                 //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
                 //else
                 //    this.Control.Font = UIFont.FromName("SSTArabic-Medium", (float)fontSize);
-
                  element = (CustomPicker)this.Element;
                 //if (this.Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 //{
@@ -31,7 +29,6 @@ namespace GAZT.iOS.CustomRenderer
                 //    Control.RightViewMode = UITextFieldViewMode.Always;
                 //    Control.RightView = new UIImageView(downarrow);
                 //}
-
                 if (App.IsArabic)
                 {
                     Control.TextAlignment = UITextAlignment.Right;
@@ -41,12 +38,8 @@ namespace GAZT.iOS.CustomRenderer
             else
             {
                // SetUIButton(element.DoneButtonText);
-
             }
-
         }
-
-
         public void SetUIButton(string doneButtonText)
         {
             UIToolbar toolbar = new UIToolbar();
@@ -56,7 +49,6 @@ namespace GAZT.iOS.CustomRenderer
             UIBarButtonItem doneButton = new UIBarButtonItem(String.IsNullOrEmpty(doneButtonText) ? "Go Corona" : doneButtonText, UIBarButtonItemStyle.Done, (s, ev) =>
             {
                 Control.ResignFirstResponder();
-
             });
              UIBarButtonItem flexible = new UIBarButtonItem(UIBarButtonSystemItem.FlexibleSpace);
             toolbar.SetItems(new UIBarButtonItem[] { doneButton, flexible }, true);

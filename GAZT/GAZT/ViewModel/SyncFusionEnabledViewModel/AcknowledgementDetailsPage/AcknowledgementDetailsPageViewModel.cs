@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class AcknowledgementDetailsPageViewModel : ViewModelBase
@@ -22,11 +21,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnAcknowlwdgementClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         public ICommand GoHomeClick { get; set; }
-
         #endregion
-
         #region Property
-
         private bool _isLoading;
         public bool IsLoading
         {
@@ -37,11 +33,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isLoading = value;
-
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private string _tPName = "";
         public string TPName
         {
@@ -52,11 +46,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _tPName = value;
-
                 RaisePropertyChanged("TPName");
             }
         }
-
         private string _returnReferenceNumber = "";
         public string ReturnReferenceNumber
         {
@@ -67,11 +59,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _returnReferenceNumber = value;
-
                 RaisePropertyChanged("ReturnReferenceNumber");
             }
         }
-
         private bool _breakdownAmountVisibility = false;
         public bool BreakdownAmountVisibility
         {
@@ -82,13 +72,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _breakdownAmountVisibility = value;
-
                 RaisePropertyChanged("BreakdownAmountVisibility");
             }
         }
-
-        
-
         private string _taxablePeriod = "";
         public string TaxablePeriod
         {
@@ -99,12 +85,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _taxablePeriod = value;
-
                 RaisePropertyChanged("TaxablePeriod");
             }
         }
-
-
         private string _receiptDate = "";
         public string ReceiptDate
         {
@@ -118,7 +101,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ReceiptDate");
             }
         }
-
         private string _sadadNumber = "";
         public string SadadNumber
         {
@@ -132,7 +114,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SadadNumber");
             }
         }
-
         private string _amountPayable = "";
         public string AmountPayable
         {
@@ -146,9 +127,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("AmountPayable");
             }
         }
-
-
-
         private bool _isSadadNoteVisible = true;
         public bool IsSadadNoteVisible
         {
@@ -162,7 +140,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsSadadNoteVisible");
             }
         }
-
         private bool _isSadadNumberVisible = false;
         public bool IsSadadNumberVisible
         {
@@ -175,7 +152,6 @@ namespace GAZT.ViewModel.NewViewModel
                 _isSadadNumberVisible = value;
                 if (_isSadadNumberVisible == true)
                 {
-
                     IsSadadNoteVisible = false;
                     BreakdownAmountVisibility = true;
                 }
@@ -183,12 +159,9 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     BreakdownAmountVisibility = false;
                 }
-
                 RaisePropertyChanged("IsSadadNumberVisible");
             }
         }
-
-
         private bool _isButtonVisible = false;
         public bool IsButtonVisible
         {
@@ -202,7 +175,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsButtonVisible");
             }
         }
-
         private bool _isRefreshButtonVisible = true;
         public bool IsRefreshButtonVisible
         {
@@ -216,8 +188,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsRefreshButtonVisible");
             }
         }
-
-
         private VATDeclaration _vATDeclarationData;
         public VATDeclaration VATDeclarationData
         {
@@ -231,10 +201,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATDeclarationData");
             }
         }
-
-
         #endregion
-
         #region Constructor
         public AcknowledgementDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -244,22 +211,14 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-          
-
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-
                 // Call Sadad number API
             });
-
-
             OnDownloadFormClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
@@ -268,17 +227,13 @@ namespace GAZT.ViewModel.NewViewModel
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='"+ App.TP.Tin+"',Fbnum='"+VATDeclarationData.d.Fbnum+"',Utype='')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
-
-
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-
                 Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='"+ App.TP.Tin+ "',Fbnum='"+VATDeclarationData.d.Fbnum+"')/$value?saml2=disabled";
                 ShowPdf(Url);
             });
-
             GoBackClick = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
@@ -287,13 +242,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
         }
-
-
-
         #endregion
-
         #region Method
         public async void ShowPdf(string pdfUrl)
         {
@@ -330,7 +280,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             //}
         }
-
         public async Task OnRefreshClick()
         {
             try
@@ -358,7 +307,6 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 IsSadadNumberVisible = true;
                             }
-
                             IsButtonVisible = true;
                             IsRefreshButtonVisible = false;
                         }
@@ -373,8 +321,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = false;
                 });
-
-                
             }
             catch (InternetException ex)
             {

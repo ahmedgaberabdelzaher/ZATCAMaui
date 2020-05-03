@@ -11,18 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT
 {
    public class ChangePasswordPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         public ICommand OnChangeEmailSubmitButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         #region Property
-
         private string _NewPasswordForEmail = string.Empty;
         public string NewPasswordForEmail
         {
@@ -57,7 +54,6 @@ namespace GAZT
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _IsEnabledNewPasswordForEmail = false;
         public bool IsEnabledNewPasswordForEmail
         {
@@ -84,7 +80,6 @@ namespace GAZT
                 RaisePropertyChanged("PasswordVisibility");
             }
         }
-
         private string _RetypePasswordForEmail = string.Empty;
         public string RetypePasswordForEmail
         {
@@ -106,7 +101,6 @@ namespace GAZT
                 RaisePropertyChanged("RetypePasswordForEmail");
             }
         }
-
         private string _OldEmail = string.Empty;
         public string OldEmail
         {
@@ -120,7 +114,6 @@ namespace GAZT
                 RaisePropertyChanged("OldEmail");
             }
         }
-
         private string _NewEmail = string.Empty;
         public string NewEmail
         {
@@ -134,8 +127,6 @@ namespace GAZT
                 RaisePropertyChanged("NewEmail");
             }
         }
-
-
         private bool _IsEnabledSubmitForEmail = false;
         public bool IsEnabledSubmitForEmail
         {
@@ -149,7 +140,6 @@ namespace GAZT
                 RaisePropertyChanged("IsEnabledSubmitForEmail");
             }
         }
-
         private bool _IsEnabledRetypePasswordForEmail = false;
         public bool IsEnabledRetypePasswordForEmail
         {
@@ -163,7 +153,6 @@ namespace GAZT
                 RaisePropertyChanged("IsEnabledRetypePasswordForEmail");
             }
         }
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -177,7 +166,6 @@ namespace GAZT
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
-
         private string _CurrentPassword = string.Empty;
         public string CurrentPassword
         {
@@ -191,8 +179,6 @@ namespace GAZT
                 RaisePropertyChanged("CurrentPassword");
             }
         }
-
-
         private bool _passwordVisibilityForNewPassword = true;
         public bool PasswordVisibilityForNewPassword
         {
@@ -206,8 +192,6 @@ namespace GAZT
                 RaisePropertyChanged("PasswordVisibilityForNewPassword");
             }
         }
-
-
         private bool _passwordVisibilityForOldPassword = true;
         public bool PasswordVisibilityForOldPassword
         {
@@ -221,7 +205,6 @@ namespace GAZT
                 RaisePropertyChanged("PasswordVisibilityForOldPassword");
             }
         }
-
         private bool _passwordVisibilityForRetypePassword = true;
         public bool PasswordVisibilityForRetypePassword
         {
@@ -235,8 +218,6 @@ namespace GAZT
                 RaisePropertyChanged("PasswordVisibilityForRetypePassword");
             }
         }
-
-
         private ComingToOTPVerificationScreenFrom _NavigateToOtpForEmailEnum;
         public ComingToOTPVerificationScreenFrom NavigateToOtpForEmailEnum
         {
@@ -250,12 +231,7 @@ namespace GAZT
                 RaisePropertyChanged("NavigateToOtpForEmailEnum");
             }
         }
-
-
-        
-
         #endregion
-
         #region Constructor
         public ChangePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -269,12 +245,10 @@ namespace GAZT
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {
                 Task.Run(() =>
@@ -289,7 +263,6 @@ namespace GAZT
                     if (_isConfirmPasswordandNewPasswordMatch)
                     {
                         bool _isNewPasswordSameAsOldPasswordSame = IsNewPasswordSameAsOldPasswordSame();
-
                         if (!_isNewPasswordSameAsOldPasswordSame)
                         {
                             await ChangePassword();
@@ -315,7 +288,6 @@ namespace GAZT
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.Alerts);
-                       
                     });
                 }
                 Task.Run(() =>
@@ -323,14 +295,9 @@ namespace GAZT
                     IsLoading = false;
                 });
             });
-
-
         }
-
         #endregion
-
         #region Method
-
         private async Task ChangePassword()
         {
             try
@@ -347,7 +314,6 @@ namespace GAZT
                         lang = "AR";
                     try
                     {
-
                         if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
                         {
                             if (!string.IsNullOrEmpty(CurrentPassword))
@@ -378,19 +344,15 @@ namespace GAZT
                                         App.IsComingFromDashboardToLogOff = false;
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
-
                                         });
-
                                     }
                                     else
                                     {
-
                                         String OnInvalidEmail = AppResources.InvalidEmail;
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
                                             await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
                                         });
-
                                     }
                                 }
                                 else
@@ -410,7 +372,6 @@ namespace GAZT
                                     await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.ZError);
                                 });
                             }
-                            
                         }
                         else if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsLogin)//For Default Password Change
                         {
@@ -418,7 +379,6 @@ namespace GAZT
                             {
                                 try
                                 {
-
                                     if (0 == String.Compare(NewPasswordForEmail, RetypePasswordForEmail, true) && !string.IsNullOrEmpty(RetypePasswordForEmail) && !string.IsNullOrEmpty(RetypePasswordForEmail))
                                     {
                                         WebServiceManager.ErrorMessage = string.Empty;
@@ -434,10 +394,8 @@ namespace GAZT
                                             {
                                                 await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                             });
-
                                             App.IsComingFromDashboardToLogOff = false;
                                             var _navigation = Application.Current.MainPage.Navigation;
-
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
                                                 ClearPasswordData();
@@ -461,9 +419,7 @@ namespace GAZT
                                                     await _dialogService.ShowMessageBox(OnInvalidPassword, AppResources.Information);
                                                 });
                                             }
-                                         
                                         }
-
                                     }
                                     else
                                     {
@@ -490,8 +446,6 @@ namespace GAZT
                                     await _dialogService.ShowMessageBox(AppResources.ZZMandatorydatanotentered, AppResources.ZError);
                                 });
                             }
-                          
-
                         }
                     }
                     catch (Exception ex)
@@ -500,7 +454,6 @@ namespace GAZT
                         {
                             string InvalidOTP = AppResources.InvalidOTP + "(" + AppResources.PleaseReVerify + ")";
                             await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
-
                             ClearPasswordDataForEmail();
                             if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
                             {
@@ -508,15 +461,10 @@ namespace GAZT
                                 await _navigation.PopAsync();
                                 await _navigation.PopAsync();
                                 _navigationService.NavigateTo(App.ChangeEmailPageView);
-
-
                             }
-
-
                         });
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -525,14 +473,12 @@ namespace GAZT
             catch(InternetException ex)
             {
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
             }
         }
-
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -551,11 +497,9 @@ namespace GAZT
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-
                 });
             }
         }
-
         public void ClearPasswordData()
         {
             NewPasswordForEmail = string.Empty;
@@ -578,7 +522,6 @@ namespace GAZT
             }
             catch(Exception ex)
             {
-
             }
         }
         public void setPropertyForEmailUpdation(string newEmail)
@@ -587,27 +530,21 @@ namespace GAZT
             NewEmail = string.Empty;
             NewPasswordForEmail = string.Empty;
             RetypePasswordForEmail = string.Empty;
-
         }
-
         public void ClearEmailData()
         {
             NewEmail = string.Empty;
             NewPasswordForEmail = string.Empty;
             CurrentPassword = string.Empty;
             RetypePasswordForEmail = string.Empty;
-            
         }
-
         public void ClearPasswordDataForEmail()
         {
             RetypePasswordForEmail = string.Empty;
             NewPasswordForEmail = string.Empty;
             IsEnabledRetypePasswordForEmail = false;
             IsEnabledNewPasswordForEmail = true;
-
         }
-
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -621,7 +558,6 @@ namespace GAZT
             }
             return IsMandatoryFieldEntered;
         }
-
         private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             bool _isMandatoryFieldEntered = IsMandatoryFieldEntered;
@@ -641,12 +577,8 @@ namespace GAZT
             }
             catch(Exception ex)
             {
-
             }
-            
-
         }
-
         private bool IsNewPasswordSameAsOldPasswordSame()
         {
             if(NewPasswordForEmail.Equals(App.TP.Password))
@@ -658,7 +590,6 @@ namespace GAZT
                 return false;
             }
         }
-
         private bool IsNewPasswordSameAsConfirmPassword()
         {
             if (NewPasswordForEmail.Equals(RetypePasswordForEmail))
@@ -670,7 +601,6 @@ namespace GAZT
                 return false;
             }
         }
-
         #endregion
     }
     }

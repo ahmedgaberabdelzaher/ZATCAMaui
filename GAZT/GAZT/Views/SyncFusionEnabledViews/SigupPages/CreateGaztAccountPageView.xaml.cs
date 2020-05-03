@@ -7,18 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateGaztAccountPageView : ContentPage
     {
         CreateGaztAccountPageViewModel viewModel;
-       
         public CreateGaztAccountPageView(SignUpModelRootObject SignUpModelRootObjectModel)
         {
             InitializeComponent();
@@ -41,10 +38,6 @@ namespace GAZT.Views.NewViews
             EntryCfrmPass.Text = string.Empty;
             CnfrmMob_entry.Text = string.Empty;
             ConfrmEmail_Entry.Text = string.Empty;
-
-
-
-
         }
         public void ChangeAeroIcon()
         {
@@ -59,8 +52,6 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
@@ -80,7 +71,6 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
-
         private void btnSubmit_Clicked(object sender, EventArgs e)
         {
             StringBuilder PopMsg = new StringBuilder();
@@ -95,7 +85,6 @@ namespace GAZT.Views.NewViews
             {
                 frmEmailCode.HasError = false;
             }
-
             if (string.IsNullOrEmpty(viewModel.TxtMobileNumberCode))
             {
                 frmMobileCode.HasError = true;
@@ -146,7 +135,6 @@ namespace GAZT.Views.NewViews
                     else
                     {
                         PopMsg.Append(AppResources.ZZPasswordregulationsforSignup);
-
                     }
                     IsAllValid = false;
                 }
@@ -162,12 +150,10 @@ namespace GAZT.Views.NewViews
                         PopMsg.Append(Environment.NewLine);
                         PopMsg.Append(Environment.NewLine);
                         PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
-                       
                     }
                     else
                     {
                         PopMsg.Append(AppResources.ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup);
-                       
                     }
                     IsAllValid = false;
                 }
@@ -199,10 +185,7 @@ namespace GAZT.Views.NewViews
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 }
             }
-            
-
         }
-
         private void EntryPass_TextChanged(object sender, TextChangedEventArgs e)
         {
             frmPass.HasError = false;

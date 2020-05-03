@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class ReturnInfo
@@ -27,8 +26,6 @@ namespace GAZT.Models
                 _returnTypeProperty = value;
             }
         }
-        
-
     }
     public class BillInfo
     {
@@ -42,7 +39,6 @@ namespace GAZT.Models
             set
             {
                 _billTypeProperty = value;
-
             }
         }
         public string BillTypeName { get; set; }
@@ -70,11 +66,8 @@ namespace GAZT.Models
         public string Incotext { get; set; }
         public string IcrStatus { get; set; }
         public string Sopbel { get; set; }
-
         public bool IsFBNumberExist { get; set; }
-
         public string TaxPeriod { get; set; }
-
         private string _formatedSingleDueDate;
         public string FormatedSingleDueDate
         {
@@ -87,7 +80,6 @@ namespace GAZT.Models
                 _formatedSingleDueDate = value;
             }
         }
-
         private DateTime _dueDateDateTime;
         public DateTime DueDateDateTime
         {
@@ -98,16 +90,12 @@ namespace GAZT.Models
             set
             {
                 _dueDateDateTime = value;
-
             }
         }
-
         public Color ColorCode { get; set; }
-
         public string _dueDT;
         public string DueDt
         {
-
             get
             {
                 return _dueDT;
@@ -121,13 +109,11 @@ namespace GAZT.Models
                     {
                         string[] _dueDate = new String[2];
                         _dueDate = _dueDT.Split('T');
-
                         DueDate = _dueDate[0];
                     }
                 }
             }
         }//DueDate
-
         private string _fbnum;
         public string Fbnum
         {
@@ -138,11 +124,8 @@ namespace GAZT.Models
             set
             {
                 _fbnum = value;
-               
             }
         }
-
-
         public string CalendarTyp { get; set; }
         public string Fbtyp { get; set; }
         public string FbtText { get; set; }
@@ -150,7 +133,6 @@ namespace GAZT.Models
         public string Persl { get; set; }
         public string Amount { get; set; }
         public string Waers { get; set; }
-
         private string _dueDate;
         public string DueDate
         {
@@ -179,9 +161,7 @@ namespace GAZT.Models
                 }
             }
         }
-
         public bool IsPaymentOverdue { get; set; }
-
         private bool _isUnSubmittedReturn;
         public bool IsUnSubmittedReturn
         {
@@ -214,7 +194,6 @@ namespace GAZT.Models
                 }
             }
         }
-
         private string _statusImage;
         public string StatusImage
         {
@@ -246,20 +225,16 @@ namespace GAZT.Models
     public class FAQ
     {
         #region Properties
-
         /// <summary>
         /// Gets or sets the question for FAQ.
         /// </summary>
         [DataMember(Name = "question")]
         public string Question { get; set; }
-
         /// <summary>
         /// Gets or sets the answer for FAQ.
         /// </summary>
         [DataMember(Name = "answer")]
         public List<string> Answer { get; set; }
-
         #endregion
-
     }
 }

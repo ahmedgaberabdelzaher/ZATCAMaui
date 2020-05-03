@@ -36,11 +36,8 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
-
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
@@ -49,7 +46,6 @@
     <ContentPage.Content>
         <!--<ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">-->
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" Padding="0">
-
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -62,7 +58,6 @@
                 </Grid.ColumnDefinitions>
                  <StackLayout Grid.Column="0" Grid.Row="2" Orientation="Vertical" VerticalOptions="End" Padding="0" Margin="0" Grid.ColumnSpan="2">
                    <BoxView  Grid.Row="0" Margin="0,0,0,5"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
-
                     <Grid BackgroundColor="White" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3">
                           <ScrollView VerticalOptions="End">
                         <Grid RowSpacing="3">
@@ -72,40 +67,29 @@
                                  <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
-
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="90*"/>
-
                             </Grid.ColumnDefinitions>
                             <CheckBox x:Name="checkBox" Grid.Row="0" Grid.Column="0"  VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
                             <GAZT:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static local:AppResources.ZZDeclarationText}" VerticalOptions="Start" IsVisible="{Binding DesClaimerVisibility}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></GAZT:CustomLabel>
                             <buttons:SfButton Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
                      Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
-
                                 <buttons:SfButton Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
                      Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding SubmitButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
                      Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Clicked="OnConfirmButtonClicked"   Style="{StaticResource SfButtonStyle}"  IsVisible="{Binding ConfirmButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
                      Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
-
                         </Grid>
-                       
                         </ScrollView>
-
                     </Grid>
-                    
-
                 </StackLayout>
-
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Margin="0,5,0,5"></StackLayout>
                 <GAZT:CustomLabel  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Margin="10,5,10,5"  FontSize="12"><!--Style="{StaticResource MicroGrayLabelStyleNewEn}"-->
-
                     <GAZT:CustomLabel.FormattedText>
                         <FormattedString>
-
                             <Span Text="{x:Static local:AppResources.FiscalYear}" TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                             <Span Text=" " />
                             <Span Text="{Binding Persl}"  TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"/>
@@ -117,31 +101,24 @@
                             <Span Text="{x:Static local:AppResources.ZReturnReferenceNumber}" TextColor="{StaticResource GoldLabelTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/><!--Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"-->
                             <Span Text=" "/>
                             <Span  Text="{Binding Fbnum}" TextColor="{StaticResource DashboardGrayTextColor}" Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"/>
-
                         </FormattedString>
                     </GAZT:CustomLabel.FormattedText>
                 </GAZT:CustomLabel>
                 <!--<ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0,0,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">-->
-
                 <Grid Grid.Row="1" Grid.Column="0" RowSpacing="0"  Grid.ColumnSpan="2" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="48*"/>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="12*"/>
                     </Grid.ColumnDefinitions>
-
                     <BoxView  Grid.Row="0" Margin="0,0,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
-
-
                     <Label Text="{x:Static local:AppResources.ZEstimatedSales}"  Grid.Row="1" Grid.Column="0"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" Style="{StaticResource GAZTGreenLabelStyleForDashboardIcon}" Margin="10,0,10,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
                     <Label  Margin="0,0,0,0"  FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  VerticalTextAlignment="Center" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}" >
                         <Label.FormattedText>
                             <FormattedString>
@@ -170,8 +147,6 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <BoxView  Grid.Row="2" Margin="0,2,0,2"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>
-
-
                     <ListView  x:Name="SalesDetails" 
            ItemsSource="{Binding SalesDetailsList}"
           HorizontalOptions="FillAndExpand"
@@ -181,7 +156,6 @@
                            BackgroundColor="White"
                            SelectedItem="{Binding SelectedSalesDetails}"
                       Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
-          
             >
                        <ListView.ItemTemplate>
                             <DataTemplate>
@@ -200,12 +174,10 @@
                                         </Grid.ColumnDefinitions>
                                         <Label  Text="{Binding SalesType}" Margin="10,0,10,0"  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_BOLD}">
                                         </Label>
-
                                         <GAZT:CustomLabel  Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Margin="10,0,10,0"  Grid.Row="1" Grid.Column="0" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                         </GAZT:CustomLabel>
                                         <Label  Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Margin="10,0,10,0" HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGreenLabelStyleForMicro}" IsVisible="{Binding InformationIconVisibility}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                         </Label>
-                                       
                                         <Label Grid.Column="2" Grid.Row="0" Margin="5,10,5,10" Style="{StaticResource IconLabelStyleVAT}" TextColor="#005e4b" Text="{StaticResource Help}"  IsVisible="{Binding HelpIconVisibility}" HorizontalOptions="Center" VerticalOptions="Center">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnInformationMessageClicked" />
@@ -226,27 +198,16 @@
                 NumberOfTapsRequired="1" />
                                             </Image.GestureRecognizers>
                                         </Image>
-
                                         <BoxView Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" HeightRequest="0.5" BackgroundColor="Black" IsVisible="{Binding SeparatorVisibility}"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
-
-
                 </Grid>
-
-
-
                 <!--</ScrollView>-->
-
                 <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="0,0,10,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-
                 </StackLayout>-->
-
-               
             </Grid>
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
@@ -257,7 +218,6 @@
                          <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
                                        AnimationType="SingleCircle"
-
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
@@ -270,7 +230,6 @@
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->
-
         </Grid>
         <!--</ScrollView>-->
     </ContentPage.Content>

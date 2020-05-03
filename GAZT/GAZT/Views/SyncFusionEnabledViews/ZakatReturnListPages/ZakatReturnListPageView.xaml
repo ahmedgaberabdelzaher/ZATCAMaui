@@ -27,8 +27,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
@@ -42,7 +40,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
-                            
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
@@ -68,9 +65,7 @@
                                        Margin="0,0,0,15"
                                        Padding="10,10,10,10"
                                        CornerRadius="5"
-                                       
                                >
-
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,5" Padding="0" >
                                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
@@ -81,7 +76,6 @@
                                                 <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
-
                                             <Label Text="{x:Static local:AppResources.FiscalYear}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -89,17 +83,14 @@
                                                     Grid.Row="0"
                                    Grid.Column="0"
                                    />
-
                                             <Label Text="{Binding FiscalYear}" 
                                                   Margin="0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
-                                                   
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="1"
                                   />
-
                                             <Label Text="{x:Static local:AppResources.ReturnPeriod}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -107,22 +98,16 @@
                                                     Grid.Row="1"
                                    Grid.Column="0"
                                    />
-
                                             <Label Text="{Binding ReturnPeriod}" 
                                                   Margin="0"
                                    Style="{StaticResource MiniGrayLabelStyle}"
-                                                   
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1"
                                   />
-
-
-
                                         </Grid>
                                     </StackLayout>
-
                                 </Frame>
                             </ContentView>
                         </ViewCell>
@@ -130,16 +115,13 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>-->
-
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0" Padding="0,0,0,10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
-
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="3*" />
@@ -147,28 +129,20 @@
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="18*" />
                     <ColumnDefinition Width="14*" />
-
-
                     <!--<ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="15*" />
                 <ColumnDefinition Width="55*" />-->
-
                 </Grid.ColumnDefinitions>
-
                 <!--<Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
                     <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="0"  VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"    SelectedItem="{Binding SelectedICRStatus}" ItemsSource="{Binding ICRStatusList}" ItemDisplayBinding="{Binding Value}" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0"   Grid.Column="0" Grid.ColumnSpan="7"  ></custom:GAZTBorderlessPicker>
-
                 </Frame>
                 <Image Grid.Row="0"  Grid.Column="6"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
                 </Image>-->
-
-
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,-6"
-  
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtSelectedStatus}" FontSize="Small" FontAttributes="Bold">
@@ -176,23 +150,18 @@
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="BPickerButton" Clicked="BPickerButton_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Margin="10,0,10,0" >
                 </custom:CustomButton>
-
                 <syncfusion:SfPicker 
-                   
                     HeaderHeight="40"
                     ShowHeader="true"
                    HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
                     ShowColumnHeader="False"
                 x:Name="BPicker"
                    BackgroundColor="#EAF7CC"
-                   
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                    
                     HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
-                    
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
@@ -206,23 +175,17 @@
                      OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
                     <!--SelectedItem="{Binding SelectedICRStatus,Mode=TwoWay}"-->
-
                     <syncfusion:SfPicker.Behaviors>
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
-
-
-
                 <StackLayout x:Name="ZakatICRListLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7">
                 <ListView  x:Name="ZakatICRList" 
-                               
            ItemsSource="{Binding MyZakatReturns}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="Fill"
             HasUnevenRows="True"
              BackgroundColor="White"
-
                                ItemTapped="Bills_ItemTapped"
                  SelectedItem="{Binding SelectedZakatReturn}"     
             SeparatorVisibility="None"
@@ -231,17 +194,13 @@
                         <DataTemplate>
                             <ViewCell>
                                 <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="90*" />
                                                 <ColumnDefinition Width="10*" />
-                                           
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                        
                                             </Grid.RowDefinitions>
                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
@@ -251,7 +210,6 @@
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
                                             <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                     FontFamily="{StaticResource SSTArabicMedium}" 
@@ -260,16 +218,11 @@
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                      />
-
-
-
                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                       
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -280,12 +233,10 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                       
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -296,12 +247,10 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -312,12 +261,10 @@
                                                 </Label.FormattedText>
                                             </Label>
                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                 <Label.FormattedText>
                                                     <FormattedString>
@@ -327,19 +274,13 @@
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
-
-
                                             <Image  Grid.Row="0"
                                                                 Grid.Column="1"
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="StartAndExpand"/>
-
-
                                         </Grid>
                                     </StackLayout>
-                                    
-
                                 </cards:SfCardView>
                             </ViewCell>
                         </DataTemplate>
@@ -360,11 +301,9 @@
                     <TapGestureRecognizer Tapped="OnTaxPayerClicked" />
                 </Image.GestureRecognizers>
             </Image>-->
-
                 <local1:CustomLabel Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
                 </local1:CustomLabel>
             </Grid>
-
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -387,8 +326,5 @@
             </Grid>
             <!-- Acticity indicator layout end -->
         </Grid>
-
-
-
     </ContentPage.Content>
 </ContentPage>

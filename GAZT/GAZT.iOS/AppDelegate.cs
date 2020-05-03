@@ -15,7 +15,6 @@ using System.Net;
 using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
-
 namespace GAZT.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -33,9 +32,6 @@ namespace GAZT.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-
-            
-
            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             ServicePointManager
             .ServerCertificateValidationCallback +=
@@ -68,14 +64,9 @@ namespace GAZT.iOS
             Syncfusion.XForms.iOS.Expander.SfExpanderRenderer.Init();
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
-            
-
             Distribute.DontCheckForUpdatesInDebug();
-
             LoadApplication(iosapp);
-
             //Code for PUSH notification
-
             if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());
@@ -87,40 +78,30 @@ namespace GAZT.iOS
                 UIRemoteNotificationType notificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
                 UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationType);
             }
-
             return base.FinishedLaunching(app, options);
         }
-
         //Code for PUSH notification
         //public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         //{
         //    new UIAlertView("Error whie registering for Push Notifications", error.LocalizedDescription, null, "Ok", null).Show();
         //}
-
         //public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         //{
         //    String DeviceToken = deviceToken.Description;
-
         //    if (!String.IsNullOrWhiteSpace(DeviceToken))
         //    {
         //        DeviceToken = DeviceToken.Trim('<').Trim('>');
         //    }
-
         //    Console.WriteLine("Device Token: " + DeviceToken);
         //    NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
         //}
-
         //public override void ReceivedRemoteNotification(UIApplication application, NSDictionary userInfo)
         //{
         //    NSDictionary aps = userInfo.ObjectForKey(new NSString("aps")) as NSDictionary;
-
         //    String alert = string.Empty;
-
         //    if (aps.ContainsKey(new NSString("alert")))
         //        alert = (aps[new NSString("alert")] as NSString).ToString();
-
         //    Console.WriteLine(userInfo);
-
         //    //show alert
         //    if (!string.IsNullOrEmpty(alert))
         //    {

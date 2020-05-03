@@ -5,7 +5,6 @@ namespace GAZT.Models
     //{
     //    public ForgotPasswordOTPResult forgotPasswordOTPResult { get; set; }
     //}
-
     //public class ForgotPasswordOTPResult
     //{
     //    public string Action { get; set; }
@@ -27,14 +26,12 @@ namespace GAZT.Models
     //    public string RdBt { get; set; }
     //    public string Hyperlink { get; set; }
     //}
-
     public class Metadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class D
     {
         // check metadata while calling for sentOTP
@@ -57,10 +54,7 @@ namespace GAZT.Models
         public string CnfPwd { get; set; }
         public string RdBt { get; set; }
         public string Hyperlink { get; set; }
-
-
     }
-
     //public class ValidateOTPD
     //{
     //    // check metadata while calling for sentOTP
@@ -83,14 +77,9 @@ namespace GAZT.Models
     //    public string CnfPwd { get; set; }
     //    public string RdBt { get; set; }
     //    public string Hyperlink { get; set; }
-
-
     //}
-
     public class ForgotPasswordOTP
     {
         public D d { get; set; }
     }
-
-
 }

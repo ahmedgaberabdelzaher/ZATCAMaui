@@ -2,9 +2,7 @@ using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Application = Android.App.Application;
-
 [assembly: ExportRenderer(typeof(GAZTeServicesApp.Controls.BorderlessEntry), typeof(GAZTeServicesApp.Droid.BorderlessEntryRenderer))]
-
 namespace GAZTeServicesApp.Droid
 {
     public class BorderlessEntryRenderer : EntryRenderer
@@ -12,11 +10,9 @@ namespace GAZTeServicesApp.Droid
         public BorderlessEntryRenderer() : base(Application.Context)
         {
         }
-
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
-
             if (this.Control != null)
             {
                 this.Control.SetBackground(null);

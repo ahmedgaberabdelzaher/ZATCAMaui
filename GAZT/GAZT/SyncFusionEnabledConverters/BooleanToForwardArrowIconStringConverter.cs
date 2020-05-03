@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT.SyncFusionEnabledConverters
 {
     class BooleanToForwardArrowIconStringConverter : IValueConverter
@@ -19,7 +18,6 @@ namespace GAZT.SyncFusionEnabledConverters
                 return "\xe71a";
             }
         }
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value;

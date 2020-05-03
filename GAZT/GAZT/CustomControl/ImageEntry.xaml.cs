@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-
 namespace GAZT.CustomControl
 {
     public partial class ImageEntry : ContentView
@@ -74,7 +73,6 @@ namespace GAZT.CustomControl
             get { return (ImageSource)GetValue(LImageSourceProperty); }
             set { SetValue(LImageSourceProperty, value); }
         }
-
         public Color AccentColor
         {
             get
@@ -86,7 +84,6 @@ namespace GAZT.CustomControl
                 SetValue(AccentColorProperty, value);
             }
         }
-
         public Keyboard Keyboard
         {
             get
@@ -98,7 +95,6 @@ namespace GAZT.CustomControl
                 SetValue(KeyboardProperty, value);
             }
         }
-
         public bool IsPassword
         {
             get
@@ -110,7 +106,6 @@ namespace GAZT.CustomControl
                 SetValue(IsPasswordProperty, value);
             }
         }
-
         public string Text
         {
             get
@@ -122,7 +117,6 @@ namespace GAZT.CustomControl
                 SetValue(TextProperty, value);
             }
         }
-
         public string Placeholder
         {
             get
@@ -134,20 +128,17 @@ namespace GAZT.CustomControl
                 SetValue(PlaceholderProperty, value);
             }
         }
-
         public eImageAlignment ImageAlignment
         {
             get => (eImageAlignment)GetValue(ImageAlignmentProperty);
             set => SetValue(ImageAlignmentProperty, value);
         }
         public event EventHandler LeftImageClicked;
-
         public virtual void LeftImageOn_Clicked(object sender, EventArgs e)
         {
             LeftImageClicked?.Invoke(sender, e);
         }
         public event EventHandler RightImageClicked;
-
         public virtual void RightImageOn_Clicked(object sender, EventArgs e)
         {
             RightImageClicked?.Invoke(sender, e);
@@ -166,7 +157,6 @@ namespace GAZT.CustomControl
                 if (string.IsNullOrEmpty(imgEntry.Text))
                 {
                     await Task.WhenAll(
-
                         HiddenBottomBorder.LayoutTo(new Rectangle(BottomBorder.X, BottomBorder.Y, BottomBorder.Width, BottomBorder.Height), 200)
                      );
                     imgEntry.Placeholder = null;
@@ -193,7 +183,6 @@ namespace GAZT.CustomControl
                 }
             };
         }
-
         private static void OnImageAlignmentChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             var control = bindable as ImageEntry;
@@ -217,7 +206,6 @@ namespace GAZT.CustomControl
                     break;
             }
         }
-
         public enum eImageAlignment
         {
             Left,

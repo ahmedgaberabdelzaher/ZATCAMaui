@@ -15,7 +15,6 @@
             </local1:BorderlessEntry>
             <Label x:Name="EntryLabelText" Text="{Binding LabelText, Mode=TwoWay}" Style="{StaticResource TaxPayerSmallMiniWhiteLabelStyle}" Grid.Row="0" Grid.Column="0" Margin="15,-12,15,0" Grid.ColumnSpan="2" HorizontalOptions="Start" VerticalOptions="Start" BackgroundColor="White">
             </Label>
-
         </Grid>
     </ContentView.Content>
 </ContentView>

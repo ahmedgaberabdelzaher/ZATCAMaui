@@ -13,13 +13,11 @@ using GAZT.Manager;
 using Plugin.FilePicker;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OTPPageView : ContentPage
     {
-
         #region Variable
         OTPPageViewModel viewModel;
         private double width = 0;
@@ -28,12 +26,9 @@ namespace GAZT.Views.NewViews
         double DeviceWidth;
         byte[] data;
         #endregion
-
         #region Constructor
-
         public OTPPageView(ComingToOTPVerificationScreenFromAndNavigatingTo _ComingToOTPVerificationScreenFromAndNavigatingTo)
         {
-
             InitializeComponent();
             // TimeZone localZone = TimeZone.CurrentTimeZone;// Got +3
             // string cd = DateTime.Now.ToLocalTime().ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’ ‘zzz’ ");
@@ -53,20 +48,14 @@ namespace GAZT.Views.NewViews
             // currentDate);
             // string DaylightTime = string.Format(dataFmt, "Daylight saving time?",
             // localZone.IsDaylightSavingTime(currentDate));
-
             // DateTime currentUTC =
             //localZone.ToUniversalTime(currentDate);
             // TimeSpan currentOffset =
             //     localZone.GetUtcOffset(currentDate);
             // string CoordinatedUniversalTime = string.Format(timeFmt, "Coordinated Universal Time:",
             //     currentUTC);
-
             // string UTCoffset = string.Format(dataFmt, "UTC offset:", currentOffset);
-
-
-
             //DaylightTime daylight =  localZone.GetDaylightChanges(currentYear);
-
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
@@ -85,18 +74,12 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception ex)
             {
-
             }
-
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
-
             SetLTR();
             viewModel.numberOfSeconds = 120;
             try
             {
-
-
-
                 viewModel.OnPageLoad();
             }
             catch (GAZTException gex)
@@ -108,7 +91,6 @@ namespace GAZT.Views.NewViews
                         await viewModel._dialogService.ShowMessageBox(AppResources.MobileNumberIsMissingForEnteredTIN, AppResources.Alerts);
                         viewModel._navigationService.GoBack();
                     });
-
                     return;
                 }
             }
@@ -126,9 +108,7 @@ namespace GAZT.Views.NewViews
             {
                 DependencyService.Get<IStatusBar>().HideStatusBar();
             }
-
             viewModel.IsComingFrom = _ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom;
-
             if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsMobile)
             {
                 if (App.TP != null)
@@ -143,7 +123,6 @@ namespace GAZT.Views.NewViews
                         MobileNumber = viewModel.OTPSentOnThisMobileNumber.Substring(3, 9);
                         firstDigits = MobileNumber.Substring(0, 2);
                         lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
                         if (Device.RuntimePlatform == Device.iOS)
                         {
                             MobileNumber = "9665" + MobileNumber + "+";
@@ -155,7 +134,6 @@ namespace GAZT.Views.NewViews
                         string _mobileNumber = App.TP.NewMobile.Substring(8, 4);
                         viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
-
                         var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                     }
@@ -171,11 +149,9 @@ namespace GAZT.Views.NewViews
                         string _mobileNumber = App.TP.NewMobile.Substring(9, 4);
                         viewModel.MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                         var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
-
                         var maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                         var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                     }
-
                     if (App.IsArabic)
                     {
                         //if (Device.RuntimePlatform == Device.iOS)
@@ -185,7 +161,6 @@ namespace GAZT.Views.NewViews
                         //else
                         //{
                         //    viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + firstDigits + "***" + lastDigits;
-
                         //}
                     }
                     else
@@ -200,7 +175,6 @@ namespace GAZT.Views.NewViews
                 else
                 {
                     viewModel.AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
-
                 }
             }
             else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsEmail)
@@ -221,8 +195,6 @@ namespace GAZT.Views.NewViews
                 else
                 {
                     viewModel.AccountWillBeBlocked = "سيتم قفل الحساب بعد إدخال" + " " + UtilityManager.ConvertNumerals(App.TP.Attempts.ToString()) + " " + "رموز تحقق خاطئة";
-
-
                 }
             }
             else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsLogin)
@@ -244,7 +216,6 @@ namespace GAZT.Views.NewViews
                     //}
                     //else if(MobileNumber.Substring(0, 2) == "00")
                     //{
-
                     //}
                     //else
                     //{
@@ -254,13 +225,10 @@ namespace GAZT.Views.NewViews
                         MobileNumber = MobileNumber.Substring(MobileNumber.Length - 9);
                     else
                         throw new GAZTMobileNumberInProfileEmptyException();
-
                     // MobileNumber = MobileNumber.Substring(5, 9);
                     var firstDigits = MobileNumber.Substring(0, 2);
                     var lastDigits = MobileNumber.Substring(MobileNumber.Length - 4, 4);
-
                     var requiredMask = new String('*', MobileNumber.Length - firstDigits.Length - lastDigits.Length);
-
                     string maskedString = string.Concat(firstDigits, requiredMask, lastDigits);
                     var maskedCardNumberWithSpaces = Regex.Replace(maskedString, ".{4}", "$0 ");
                     if (App.IsArabic)
@@ -282,27 +250,16 @@ namespace GAZT.Views.NewViews
                 DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();
                 DeviceHeight = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
             }
-
             else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
                 viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
                 viewModel.TesReporterMobileNumber = _ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
                 viewModel.tessentOtptomobile();
-
                 // NumberOfAttemptsText.IsVisible = false;
-
-
-
             }
-
-
         }
-
-
         #endregion
-
         #region Method
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
@@ -332,21 +289,17 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         #endregion
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
             ChangeAeroIcon();
             if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
-
             }
             else
             {
                 App.IsOTPiew = true;
-
                 viewModel.TimerStart(viewModel.numberOfSeconds);
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
                 viewModel.IsResendOTPEnabled = false;
@@ -354,9 +307,7 @@ namespace GAZT.Views.NewViews
                 viewModel.currentAttempts = 0;
                 await Task.Run(() =>
                 {
-
                     Task.Delay(100);
-
                 });
                 EnteredOTP.Focus();
             }
@@ -391,7 +342,6 @@ namespace GAZT.Views.NewViews
             viewModel.ClearData();
             viewModel.StopTimer = false;
             App.IsOTPiew = false;
-
             //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
             //{
             //    Page pg = Navigation.NavigationStack[index];
@@ -406,16 +356,10 @@ namespace GAZT.Views.NewViews
                 //data = fileData.DataArray;
                 //lbl.Text = fileData.FileName;
                 //AttachmentRootOject _attachment =  await WebServiceManager.GAZTSaveVATDeclarationAttachment(data);
-
-
             }
             catch (Exception ex)
             {
-
-
             }
         }
-
-
     }
 }

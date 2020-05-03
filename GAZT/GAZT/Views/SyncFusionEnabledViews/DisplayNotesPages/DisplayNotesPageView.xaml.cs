@@ -5,30 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DisplayNotesPageView : ContentPage
     {
         #region Variable
-
         DisplayNotesPageViewModel viewModel;
-
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public DisplayNotesPageView(VATDeclaration vATDeclaration)
         {
-
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
@@ -37,7 +29,6 @@ namespace GAZT.Views.NewViews
                 this.BindingContext = viewModel;
                 ChangeAeroIcon();
                 SetLTR();
-                
                 if (vATDeclaration!=null && vATDeclaration.d!=null)
                 {
                     if(vATDeclaration.d.NOTESSet.results.Count!=0)
@@ -52,7 +43,6 @@ namespace GAZT.Views.NewViews
                         viewModel.IsNoDataLabelVisible = true;
                     }
                 }
-
                 //viewModel.NoteList = new List<Note>();
                 //for (int i=0;i<=5;i++)
                 //{
@@ -65,17 +55,12 @@ namespace GAZT.Views.NewViews
                 //    viewModel.NoteList.Add(note);
                 //}
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-
             }
             catch(Exception e)
             {
-
             }
-
         }
-
         #endregion
-
         #region Method
         public void ChangeAeroIcon()
         {
@@ -95,10 +80,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         #endregion
-
-
-
     }
 }

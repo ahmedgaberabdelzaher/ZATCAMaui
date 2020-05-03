@@ -2,7 +2,6 @@
 using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>
@@ -26,7 +25,6 @@ namespace GAZTeServicesApp.Converters
             {
                 return Color.Default;
             }
-
             switch (parameter.ToString())
             {
                 case "0" when (bool)value:
@@ -66,7 +64,6 @@ namespace GAZTeServicesApp.Converters
                     return Color.Transparent;
             }
         }
-
         /// <summary>
         /// This method is used to convert the color to bool.
         /// </summary>

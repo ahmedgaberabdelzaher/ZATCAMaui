@@ -18,26 +18,19 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnChangePasswordSubmitClicked { get; set; }
         public ICommand OnResendOTPClicked { get; set; }
         public ICommand OnValidateOTPClicked { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
-
         public ICommand BackButtonClicked { get; set; }
-
         public int currentAttempts = 0;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
         public bool StopTimer = true;
-
         #endregion
         #region Property
-
-
         private bool _isLoading = false;
-
         public bool IsLoading
         {
             get
@@ -50,9 +43,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged(() => IsLoading);
             }
         }
-
         private bool _isOTPEntryEnable = true;
-
         public bool IsOTPEntryEnable
         {
             get
@@ -65,8 +56,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-
-
         private ForgotUserNamePassword _selectedTaxPayerType;
         public ForgotUserNamePassword SelectedTaxPayerType
         {
@@ -82,16 +71,12 @@ namespace GAZT.ViewModel.NewViewModel
                     TxtSelectTaxpayerType = _selectedTaxPayerType.TaxPayerType;
                 }
                 RaisePropertyChanged("SelectedTaxPayerType");
-
                 if (SelectedTaxPayerType != null)
                 {
                     SetLayoutVisibilityForSelectedTaxpayerType();
                 }
-              
             }
         }
-
-
         private ForgotUserNamePassword _selectedTaxPayerTypePrev;
         public ForgotUserNamePassword SelectedTaxPayerTypePrev
         {
@@ -102,13 +87,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedTaxPayerTypePrev = value;
-             
                 RaisePropertyChanged("SelectedTaxPayerTypePrev");
-
-
             }
         }
-
         private List<ForgotCredentialType> _forgotTypeList;
         public List<ForgotCredentialType> ForgotTypeList
         {
@@ -120,11 +101,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _forgotTypeList = value;
                 RaisePropertyChanged("ForgotTypeList");
-
-
             }
         }
-
         private List<TIN> _tINs;
         public List<TIN> TINs
         {
@@ -138,7 +116,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TINs");
             }
         }
-
         private String _txtSelectedUsernameAndPassword;
         public String TxtSelectedUsernameAndPassword
         {
@@ -152,7 +129,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtSelectedUsernameAndPassword");
             }
         }
-
         private String _txtSelectTaxpayerType;
         public String TxtSelectTaxpayerType
         {
@@ -166,8 +142,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtSelectTaxpayerType");
             }
         }
-
-
         private String _txtTIN;
         public String TxtTIN
         {
@@ -181,10 +155,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtTIN");
             }
         }
-
-
-
-
         private TIN _selectedTinId;
         public TIN SelectedTinId
         {
@@ -204,7 +174,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedTinId");
             }
         }
-
         private TIN _selectedTinIdPrev;
         public TIN SelectedTinIdPrev
         {
@@ -215,11 +184,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedTinIdPrev = value;
-              
                 RaisePropertyChanged("SelectedTinIdPrev");
             }
         }
-
         private bool _isVisibleTinIds = false;
         public bool IsVisibleTinIds
         {
@@ -230,12 +197,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _isVisibleTinIds = value;
-
                 RaisePropertyChanged("IsVisibleTinIds");
             }
         }
-
-
         private ForgotCredentialType _selectedForgotType;
         public ForgotCredentialType SelectedForgotType
         {
@@ -258,11 +222,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsTaxPayerTypeEnable = false;
                 }
-
-
             }
         }
-
         private ForgotCredentialType _selectedForgotTypePrev;
         public ForgotCredentialType SelectedForgotTypePrev
         {
@@ -274,13 +235,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedForgotTypePrev = value;
                 RaisePropertyChanged("_selectedForgotTypePrev");
-             
-
-
             }
         }
-
-
         private ForgotUserNamePassword _forgotCredentialType;
         public ForgotUserNamePassword ForgotCredentialType
         {
@@ -294,7 +250,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ForgotCredentialType");
             }
         }
-
         private List<ForgotUserNamePassword> _taxpayerTypeList;
         public List<ForgotUserNamePassword> TaxpayerTypeList
         {
@@ -308,7 +263,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TaxpayerTypeList");
             }
         }
-
         private string _iDNumber;
         public string IDNumber
         {
@@ -322,7 +276,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IDNumber");
             }
         }
-
         private string _enteredCaptchaValue;
         public string EnteredCaptchaValue
         {
@@ -336,7 +289,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("EnteredCaptchaValue");
             }
         }
-
         private string _corporateID;
         public string CorporateID
         {
@@ -350,7 +302,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CorporateID");
             }
         }
-
         private string _mobileNumber;
         public string MobileNumber
         {
@@ -364,7 +315,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MobileNumber");
             }
         }
-
         private string _oTPValidDuration;
         public string OTPValidDuration
         {
@@ -383,13 +333,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-
                 RaisePropertyChanged("OTPValidDuration");
             }
         }
-
-
-
         private string _userName;
         public string UserName
         {
@@ -403,7 +349,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("UserName");
             }
         }
-
         private bool _isForgotUserNameWithIndividual = true;
         public bool IsForgotUserNameWithIndividual
         {
@@ -417,7 +362,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsForgotUserName");
             }
         }
-
         private bool _isForgotUserNameWithCorporate = false;
         public bool IsForgotUserNameWithCorporate
         {
@@ -431,7 +375,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsForgotUserNameWithCorporate");
             }
         }
-
         private bool _isForgotPassword = false;
         public bool IsForgotPassword
         {
@@ -445,7 +388,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsForgotPassword");
             }
         }
-
         private bool _isTaxPayerTypeEnable = false;
         public bool IsTaxPayerTypeEnable
         {
@@ -459,7 +401,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsTaxPayerTypeEnable");
             }
         }
-
         private bool _newPasswordLayoutVisibility = false;
         public bool NewPasswordLayoutVisibility
         {
@@ -473,7 +414,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewPasswordLayoutVisibility");
             }
         }
-
         private bool _mainPageLayoutVisibility = true;
         public bool MainPageLayoutVisibility
         {
@@ -487,8 +427,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MainPageLayoutVisibility");
             }
         }
-
-
         private bool _oTPLayoutVisibility = false;
         public bool OTPLayoutVisibility
         {
@@ -502,7 +440,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("OTPLayoutVisibility");
             }
         }
-
         private bool _navigateToLoginLinkVisibility = false;
         public bool NavigateToLoginLinkVisibility
         {
@@ -516,8 +453,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NavigateToLoginLinkVisibility");
             }
         }
-
-
         private string _newPassword = "";
         public string NewPassword
         {
@@ -531,7 +466,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewPassword");
             }
         }
-
         private string _confirmPassword = "";
         public string ConfirmPassword
         {
@@ -545,9 +479,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ConfirmPassword");
             }
         }
-
-
-
         private string _iDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
         public string IDNumberOrCorporateIDOrUserName
         {
@@ -561,7 +492,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IDNumberOrCorporateIDOrUserName");
             }
         }
-
         private string _captcha;
         public string Captcha
         {
@@ -575,7 +505,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Captcha");
             }
         }
-
         private string _forgotPasswordUserNameChangedMessage;
         public string ForgotPasswordUserNameChangedMessage
         {
@@ -589,7 +518,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ForgotPasswordUserNameChangedMessage");
             }
         }
-
         private string _enteredOTP = "";
         public string EnteredOTP
         {
@@ -603,7 +531,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("EnteredOTP");
             }
         }
-
         private bool _isIDTypeVisible = false;
         public bool IsIDTypeVisible
         {
@@ -617,7 +544,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsIDTypeVisible");
             }
         }
-
         private bool _newPasswordVisibility = false;
         public bool NewPasswordVisibility
         {
@@ -644,9 +570,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ButtonDisableColor");
             }
         }
-
-
-
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
         {
@@ -660,8 +583,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
-
-
         private bool _confirmPasswordVisibility = false;
         public bool ConfirmPasswordVisibility
         {
@@ -675,8 +596,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ConfirmPasswordVisibility");
             }
         }
-
-
         private bool _isSubmitEnabled = false;
         public bool IsSubmitEnabled
         {
@@ -703,8 +622,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SubmitDisableButtonColor");
             }
         }
-
-
         private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
         public Color VerifyButtonDisableColor
         {
@@ -718,7 +635,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
-
         private bool _isVerifyOTPEnabled = true;
         public bool IsVerifyOTPEnabled
         {
@@ -732,9 +648,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
-
         private int _maxChar = 60;
-
         public int MaxChar
         {
             get
@@ -747,9 +661,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MaxChar");
             }
         }
-
         private int _forgotTypeIndex ;
-
         public int ForgotTypeIndex
         {
             get
@@ -762,13 +674,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ForgotTypeIndex");
             }
         }
-
-        
-
         #endregion
-
         #region Constructor
-
         public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -781,12 +688,10 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
             OnSubmitClicked = new Command(async () =>
             {
                 try
@@ -810,7 +715,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 else
                                 {
                                     _dialogService.ShowMessageBox(AppResources.PleaseenterUsername, AppResources.Information);
-
                                 }
                             }
                         }
@@ -829,7 +733,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch(Exception ex)
                 {
-
                 }
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
@@ -838,7 +741,6 @@ namespace GAZT.ViewModel.NewViewModel
                 Captcha = captcha.ToString();
                 EnteredCaptchaValue = string.Empty;
             });
-
             OnChangePasswordSubmitClicked = new Command(async () =>
             {
                 try
@@ -856,31 +758,24 @@ namespace GAZT.ViewModel.NewViewModel
                         //{
                         //    await ShowNewPasswordAndOldPassowrdNotBeSameInformation();
                         //}
-
                     }
                 }
                 catch (Exception ex)
                 {
-
                 }
             });
-
             OnResendOTPClicked = new Command(async () =>
             {
                 await SendOTPToRegisterMobileNumber();
             });
-
             OnValidateOTPClicked = new Command(async () =>
             {
                 await ValidateOTP();
             });
-
             OnLoginPageLinkClicked = new Command(() =>
            {
                _navigationService.GoBack();
            });
-
-
         }
         #endregion Constructor
         #region Method
@@ -896,15 +791,12 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
                 new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
-
             };
                 TaxpayerTypeList = list;
-
                 List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
             {
                 new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
                 new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
-
             };
                 ForgotTypeList = forgotCredentialListlist;
                 if(ForgotTypeList!=null && ForgotTypeList.Count!=0)
@@ -912,25 +804,19 @@ namespace GAZT.ViewModel.NewViewModel
                     SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
                     ForgotTypeIndex = 1;
                 }
-
-               
             }
             catch (Exception ex)
             {
-
             }
             VerifyButtonDisableColor = Color.FromHex("#005e4b");
             IsVerifyOTPEnabled = true;
-
         }
-
         private void SetLayoutVisibilityForSelectedForgotType()
         {
             if (SelectedForgotType.id.Equals("2"))
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.UserName;
                 //Device.BeginInvokeOnMainThread(() => {
-
                 IsTaxPayerTypeEnable = false;
                 SelectedTaxPayerType = null;
                 IsIDTypeVisible = false;
@@ -939,21 +825,17 @@ namespace GAZT.ViewModel.NewViewModel
                 //IsForgotUserNameWithIndividual = false;
                 //IsForgotUserNameWithCorporate = false;
                 //});
-
             }
             else
             {
                 IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
                 IsIDTypeVisible = true;
-
                 //IsTaxPayerTypeEnable = true;
                 //IsForgotPassword = false;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
             }
-
         }
-
         private void SetLayoutVisibilityForSelectedTaxpayerType()
         {
             if (SelectedTaxPayerType.id.Equals("1"))
@@ -971,7 +853,6 @@ namespace GAZT.ViewModel.NewViewModel
                 MaxChar = 60;
             }
         }
-
         private bool ValidateForms()
         {
             bool IsAllDataAvailable = false;
@@ -981,19 +862,16 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     bool IsEmailUserName = false;
                     IsEmailUserName = UtilityManager.IsValidEmailAddress(IDNumber);
-
                     if (IsEmailUserName)
                     {
                         //if (SelectedTinId != null && !string.IsNullOrEmpty(EnteredCaptchaValue))
                         if (SelectedTinId != null)
                         {
                             IsAllDataAvailable = true;
-
                         }
                         else
                         {
                             IsAllDataAvailable = false;
-
                         }
                     }
                     else
@@ -1008,14 +886,11 @@ namespace GAZT.ViewModel.NewViewModel
                         //    IsAllDataAvailable = false; 
                         //}
                     }
-
-
                 }
                 else
                 {
                     IsAllDataAvailable = false;
                 }
-
             }
             else if (SelectedTaxPayerType != null && (SelectedTaxPayerType.id.Equals("1") || SelectedTaxPayerType.id.Equals("2")))
             {
@@ -1037,14 +912,11 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsAllDataAvailable = false;
             }
-
             return IsAllDataAvailable;
         }
-
         public StringBuilder GetCaptcha()
         {
             StringBuilder Captcha;
-
             try
             {
                 Random random = new Random();
@@ -1061,9 +933,7 @@ namespace GAZT.ViewModel.NewViewModel
                 throw;
             }
             return Captcha;
-
         }
-
         public bool ValidateCaptcha()
         {
             bool isValidCaptcha = false;
@@ -1076,12 +946,10 @@ namespace GAZT.ViewModel.NewViewModel
             else
             {
                 // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
-
                 isValidCaptcha = false;
             }
             return isValidCaptcha;
         }
-
         private async Task SendOTPToRegisterMobileNumber()
         {
             try
@@ -1090,7 +958,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     try
@@ -1103,7 +970,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {
-
                                 // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
                                 MainPageLayoutVisibility = false;
                                 OTPLayoutVisibility = true;
@@ -1114,10 +980,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-
                                 TimerStart();
                             });
-
                         }
                         else
                         {
@@ -1129,15 +993,8 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     catch (Exception ex)
                     {
-
                     }
-
-
-
                 });
-
-
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1151,9 +1008,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-
         }
-
         private async Task ValidateOTP()
         {
             try
@@ -1162,7 +1017,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     if (!string.IsNullOrEmpty(EnteredOTP))
@@ -1172,9 +1026,7 @@ namespace GAZT.ViewModel.NewViewModel
                         string lang = UtilityManager.GetLanguageParameter();
                         string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-
                         string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/"+Constants.ForgotPasswordServiceName+"/HeaderSet(Tin=";
-
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
                         string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -1182,7 +1034,6 @@ namespace GAZT.ViewModel.NewViewModel
                         metadata.id = id;
                         metadata.uri = uri;
                         metadata.type = type;
-
                         D d = new D();
                         d.__metadata = metadata;
                         if (currentAttempts < 3)
@@ -1193,7 +1044,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             d.Action = "42";
                         }
-
                         d.Tin = idNumber;
                         d.Langu = UtilityManager.GetLanguageParameter();
                         d.CurrAttmps = currentAttempts;
@@ -1220,7 +1070,6 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 await _dialogService.ShowMessageBox(AppResources.Pleasechangepassword, AppResources.Information);
                             });
-
                             OTPLayoutVisibility = false;
                             NewPasswordLayoutVisibility = true;
                             MobileNumber = forgotPassword.d.MobileNo;
@@ -1265,7 +1114,6 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1279,12 +1127,7 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-
-
-
         }
-
-
         private async Task SendUserNameToRegidteredEmail()
         {
             try
@@ -1296,13 +1139,10 @@ namespace GAZT.ViewModel.NewViewModel
                 });
                 await Task.Run(async () =>
                 {
-
                     string lang = UtilityManager.GetLanguageParameter();
                     string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                     string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
-
                     string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-
                     string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "1" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
                     string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                     ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -1310,7 +1150,6 @@ namespace GAZT.ViewModel.NewViewModel
                     metadata.id = id;
                     metadata.uri = uri;
                     metadata.type = type;
-
                     D d = new D();
                     d.__metadata = metadata;
                     d.Action = "40";
@@ -1334,7 +1173,6 @@ namespace GAZT.ViewModel.NewViewModel
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
                     if (forgotPassword.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                     {
                         Device.BeginInvokeOnMainThread(async () =>
@@ -1353,15 +1191,11 @@ namespace GAZT.ViewModel.NewViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
-
                         });
                     }
                 });
-
-
                 await Task.Run(async () =>
                 {
-
                     IsLoading = false;
                 });
             }
@@ -1374,18 +1208,14 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         private async Task ChangePassword()
         {
-
             try
             {
-
                 await Task.Run(() =>
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     currentAttempts = 0;
@@ -1397,9 +1227,7 @@ namespace GAZT.ViewModel.NewViewModel
                         string lang = UtilityManager.GetLanguageParameter();
                         string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
-
                         string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
-
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
                         string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -1407,7 +1235,6 @@ namespace GAZT.ViewModel.NewViewModel
                         metadata.id = id;
                         metadata.uri = uri;
                         metadata.type = type;
-
                         D d = new D();
                         d.__metadata = metadata;
                         d.Action = "40";
@@ -1436,12 +1263,10 @@ namespace GAZT.ViewModel.NewViewModel
                             if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
                             {
                                 // await _dialogService.ShowMessageBox(AppResources.YourPasswordhasbeenChangedsuccessfully, AppResources.Information);
-
                                 NewPasswordLayoutVisibility = false;
                                 OTPLayoutVisibility = false;
                                 NavigateToLoginLinkVisibility = true;
                                 ForgotPasswordUserNameChangedMessage = AppResources.ZZYourPasswordhasbeenChangedsuccessfully;
-
                                 //  _navigationService.GoBack();
                             }
                             else
@@ -1468,7 +1293,6 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1482,28 +1306,13 @@ namespace GAZT.ViewModel.NewViewModel
                     IsLoading = false;
                 });
             }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -1517,11 +1326,9 @@ namespace GAZT.ViewModel.NewViewModel
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-
                 });
             }
         }
-
         public async Task SetTinsListLayoutVisibility(bool IsEmailUserName)
         {
             await Task.Run(() =>
@@ -1533,13 +1340,10 @@ namespace GAZT.ViewModel.NewViewModel
                 if (IsEmailUserName)
                 {
                     TINs = new List<TIN>();
-
                     try
                     {
                         try
                         {
-
-
                             TINs = await WebServiceManager.GAZTGetAllTins(IDNumber);
                             if (TINs.Count != 0 && SelectedTinId == null)
                             {
@@ -1572,7 +1376,6 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 IsLoading = false;
                             });
-
                         }
                     }
                     catch (InternetException ex)
@@ -1583,9 +1386,6 @@ namespace GAZT.ViewModel.NewViewModel
                             IsLoading = false;
                         });
                     }
-
-
-
                 }
                 else
                 {
@@ -1596,10 +1396,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 IsLoading = false;
             });
-
-
         }
-
         private string GetTinId()
         {
             string tinId = "";
@@ -1614,19 +1411,11 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return tinId;
         }
-
-
-
-
-
         private void TimerStart()
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
-
             int TotalSec = 120;
-
             CancellationTokenSource CTS = _CancellationTokenSource;
-
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
                 if (CTS.IsCancellationRequested)
@@ -1653,7 +1442,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
         }
-
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -1667,7 +1455,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return IsMandatoryFieldEntered;
         }
-
         private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             if (!IsMandatoryFieldEntered)
@@ -1682,15 +1469,11 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                 });
             }
-
         }
-
         //private async Task ShowNewPasswordAndOldPassowrdNotBeSameInformation()
         //{
-
         //        Device.BeginInvokeOnMainThread(async () =>
         //        {
-
         //            await _dialogService.ShowMessageBox(AppResources.ZZThenewpasswordmustnotmatchtheexistingpassword, AppResources.Alerts);
         //            await Task.Run(() =>
         //            {
@@ -1698,7 +1481,6 @@ namespace GAZT.ViewModel.NewViewModel
         //            });
         //        });
         //}
-
         //private bool IsNewPasswordSameAsOldPasswordSame()
         //{
         //    //if (NewPassword.Equals(App.TP.Password))
@@ -1711,7 +1493,6 @@ namespace GAZT.ViewModel.NewViewModel
         //    //}
         //    ret
         //}
-
         #endregion
     }
 }

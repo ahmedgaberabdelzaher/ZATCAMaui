@@ -12,7 +12,6 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,14 +22,12 @@ namespace GAZT.Views
         private double height = 0;
         public MyBillsView(BillInfo billInfo = null)
         {
-
             //Resources["searchBarStyleForAll"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForUnPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForPartiallyPaid"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             InitializeComponent();
             ParentContainer.Margin = new Thickness(0, 0, 0, 5);
-
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
@@ -40,45 +37,34 @@ namespace GAZT.Views
                 SetLTR();
                 this.BindingContext = viewModel;
                 GetBillsReturnsAsync(billInfo);
-
-
-
             }
             catch (Exception ex)
             {
-
             }
-
             Bills.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
-
             BillsPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
             BillsPartiallyPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
             BillsUnPaid.ItemTapped += (object sender, ItemTappedEventArgs e) =>
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
-
         }
         protected override void OnSizeAllocated(double width, double height)
         {
@@ -93,16 +79,13 @@ namespace GAZT.Views
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         ParentContainer.Margin = new Thickness(40, 0, 40, 5);
-
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         ParentContainer.Margin = new Thickness(0, 0, 0, 5);
-
                     }
                 }
-
                 //reconfigure layout
             }
         }
@@ -117,25 +100,18 @@ namespace GAZT.Views
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         public void GetBillsReturnsAsync(BillInfo billInfo)
         {
-
-
             //Task.Run(() =>
             //{
             //    viewModel.IsLoading = true;
             //});
-
              viewModel.onPageLoad(billInfo);
-
-
             //Task.Run(() =>
             // {
             //     viewModel.IsLoading = false;
             // });
         }
-
         void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
             SKImageInfo info = args.Info;
@@ -165,8 +141,6 @@ namespace GAZT.Views
             }
             float Radius = deviceHeight + YPoint;
             path.AddCircle(XPoint, -YPoint, Radius);
-
-
             SKPaint paint = new SKPaint()
             {
                 Style = SKPaintStyle.StrokeAndFill,
@@ -181,7 +155,6 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-       
         private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var dataItem = e.Item as MyBills;
@@ -191,26 +164,19 @@ namespace GAZT.Views
                 var text = await Clipboard.GetTextAsync();
                 //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
                 viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
-
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
             }
         }
-
         private void Chart_AnnotationClicked(object sender, Syncfusion.SfChart.XForms.ChartAnnotationClickedEventArgs e)
         {
-
         }
-
         private void Chart_LegendItemClicked(object sender, Syncfusion.SfChart.XForms.ChartLegendItemClickedEventArgs e)
         {
-
         }
-
         private void Chart_SelectionChanged(object sender, Syncfusion.SfChart.XForms.ChartSelectionEventArgs e)
         {
             SfChart SfChartM = sender as SfChart;
             //MyBillsChartModel KeywordSelect = (MyBillsChartModel)SfChartM.BindingContext;
-
             if (e.SelectedDataPointIndex > -1)
             {
                 IList items = e.SelectedSeries.ItemsSource as IList;
@@ -233,20 +199,13 @@ namespace GAZT.Views
             else
             {
                 viewModel.MyBills = viewModel.MyBillsOriginal;
-
             }
-
-
         }
-
         private void ShowSelectedBillsType()
         {
-
         }
-
         private void simTab_SelectionChanged(object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
         {
-
         }
     }
 }

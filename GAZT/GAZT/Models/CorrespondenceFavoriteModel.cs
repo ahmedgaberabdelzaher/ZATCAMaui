@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class CorrespondenceFavoriteModel
@@ -13,5 +12,5 @@ namespace GAZT.Models
         public string Begdaz { get; set; }
         public string Enddaz { get; set; }
         public string Zzfav { get; set; }
-}
+    }
 }

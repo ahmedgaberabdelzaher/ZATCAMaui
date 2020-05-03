@@ -20,7 +20,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -36,24 +35,19 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                         </controls:TitleView.LeadingView>
-
                     </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
                 </StackLayout>
             </ControlTemplate>
         </ContentPage.ControlTemplate>
-   
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,0,0,0" RowSpacing="10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75*" />
                     <RowDefinition Height="auto" />
-
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -73,32 +67,25 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-
                         <custom:CustomLabel Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
-
                                     <Span  Text="{x:Static local:AppResources.ZZPasswordregulationsforSignup}" Style="{StaticResource MandatoryRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </custom:CustomLabel>
-                     
                         <inputLayout:SfTextInputLayout   x:Name="frmPass"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Password}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Entry Text="{Binding TxtPassword}" TextChanged="EntryPass_TextChanged"  x:Name="EntryPass"  FontSize="Small" IsPassword="True">
-                               
                             </Entry>
                         </inputLayout:SfTextInputLayout>
-
-
                         <inputLayout:SfTextInputLayout   x:Name="frmCfrmPass"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZConfirmpassword}" HelperText="{x:Static local:AppResources.ZZZRequired}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Entry TextChanged="EntryCfrmPass_TextChanged" Text="{Binding TxtConfirmPassword}" IsPassword="True"  x:Name="EntryCfrmPass"  FontSize="Small">
-                          
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
@@ -106,11 +93,8 @@
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtEmailAddress}"  IsEnabled="False" FontSize="Small">
-                           
                             </Entry>
                         </inputLayout:SfTextInputLayout>
-
-
                         <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" x:Name="frmEmailCode"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZConfirmationcodesenttoemailaddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
@@ -121,13 +105,11 @@
                                 </Entry.Behaviors>
                             </Entry>
                         </inputLayout:SfTextInputLayout>
-
                         <inputLayout:SfTextInputLayout  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZMobileNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Entry  Text="{Binding TxtMobileNumber}"  IsEnabled="False" FontSize="Small">
-
                             </Entry>
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Grid.Row="6" Grid.Column="0" x:Name="frmMobileCode"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
@@ -140,10 +122,7 @@
                                 </Entry.Behaviors>
                             </Entry>
                         </inputLayout:SfTextInputLayout>
-
-
                         <!--ZZZVerificationsCode-->
-
                         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand"  Margin="10,0,10,0">
                             <Label.FormattedText>
                                 <FormattedString>
@@ -152,14 +131,11 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label> <!--ZZResendtheverificationcode-->
-                        
                     </Grid>
                 </ScrollView>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,0,0,0"  BackgroundColor="White" Orientation="Vertical">
                     <Button Text="{x:Static local:AppResources.ZZResendtheverificationcode}" HeightRequest="56"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand" Margin="0" CornerRadius="0"   BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}" FontAttributes="Bold" Opacity="0.7" TextColor="{Binding ButtonDisableTextColor}"></Button>
-
                     <Button x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="End" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"     BackgroundColor="{Binding VerifyButtonDisableColor}" Opacity="0.7"  FontAttributes="Bold" TextColor="{Binding VerifyButtonDisableTextColor}" />
-
                 </StackLayout>
             </Grid>
         </StackLayout>

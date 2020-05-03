@@ -13,10 +13,8 @@
              x:Class="GAZT.Views.NewViews.TaxPayerProfilePageView"
              Title="{x:Static local:AppResources.TaxpayerProfile}"
              BackgroundColor="White"
-            
               NavigationPage.HasNavigationBar="False"
      >
-
     <!--  Style="{StaticResource ContentPageStyle}"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
@@ -32,7 +30,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <!--<ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
@@ -47,8 +44,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
-                            
-                            
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
@@ -56,7 +51,6 @@
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>-->
-
     <ContentPage.Content>
         <Grid x:Name="ParentGrid" Padding="0,15,0,0">
             <custom:CustomLabel
@@ -67,7 +61,6 @@
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#ffffff"
                         Text="{DynamicResource StyleReverseBack}"
-               
                 >
                 <custom:CustomLabel.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
@@ -110,34 +103,21 @@
                     <Frame Grid.Row="1" Style="{StaticResource GAZTFrameStyleForEntry}"   Grid.Column="0" Grid.ColumnSpan="2">
                     </Frame>-->
                     <!--<custom:GAZTBorderlessEntry Placeholder="{Binding Name}" PlaceholderColor= "#7D858D"  IsEnabled="False" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
-
-
                         <Label Text="{x:Static local:AppResources.TaxpayerProfile}" TextColor="#ffffff" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-
-                    
-
-                   
-
                     <!--<Label Text="{x:Static local:AppResources.TIN}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
                     <Frame Grid.Row="3" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                     </Frame>
                     <custom:GAZTBorderlessEntry Placeholder="{Binding Tin}" PlaceholderColor= "#7D858D"  IsEnabled="False" Grid.Row="3"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}"></custom:GAZTBorderlessEntry>-->
                     <!--<Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
-
-
                     <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerTIN"   Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
    Hint="{x:Static local:AppResources.TIN}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TTIN" FontSize="Small"  Text="{Binding Tin}" TextColor= "#ffffff"  IsReadOnly="True">
-                          
                         </custom:GAZTBorderlessEntry>
-                        
                     </inputLayout:SfTextInputLayout>
                     <!--<Image Source="ic_TIN_Status.png" Margin="13,2,13,1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand"/>-->
-
-
                     <!--<Label Text="{x:Static local:AppResources.MobileNumber}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
                     <Frame Grid.Row="5" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -148,17 +128,12 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeMobileNumberClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
-
                     <inputLayout:SfTextInputLayout x:Name="LayoutTaxpayerMobileNumber"   Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
       Hint="{x:Static local:AppResources.MobileNumber}"
-
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TMobileNumber" FontSize="Small"  Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentMobile}" TextColor="White"  IsReadOnly="True">
-             
                         </custom:GAZTBorderlessEntry>
-
                     </inputLayout:SfTextInputLayout>
                     <custom:CustomLabel
                        Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
@@ -171,15 +146,11 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeMobileNumberClicked}"></TapGestureRecognizer>
                         </custom:CustomLabel.GestureRecognizers>
                     </custom:CustomLabel>
-
                     <!--<Image Source="ic_edit.png" Margin="13,2,13,1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeMobileNumberClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
-
-
                     <!--<Label Text="{x:Static local:AppResources.Email}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
                     <Frame Grid.Row="7" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -190,19 +161,13 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
-
                     <inputLayout:SfTextInputLayout x:Name="LayoutEmail"   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
         Hint="{x:Static local:AppResources.Email}"
-    
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  x:Name="TEmail" FontSize="Small"  Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OldEmail}" TextColor= "#ffffff" IsReadOnly="True" >
-                    
                         </custom:GAZTBorderlessEntry>
-
                     </inputLayout:SfTextInputLayout>
-
                     <custom:CustomLabel
                       Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="End" VerticalOptions="CenterAndExpand"
@@ -214,13 +179,11 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailClicked}"></TapGestureRecognizer>
                         </custom:CustomLabel.GestureRecognizers>
                     </custom:CustomLabel>
-
                     <!--<Image Source="ic_edit.png" Margin="13,2,13,1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangeEmailClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
                     <!--<Label Text="{x:Static local:AppResources.Password}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" >
                     </Label>
                     <Frame Grid.Row="9" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -231,16 +194,13 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
                     <inputLayout:SfTextInputLayout x:Name="LayoutPassword"   Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Password}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry IsReadOnly="True" x:Name="Password" IsPassword="True" FontSize="Small"   Text="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.CurrentPassword}" TextColor= "#ffffff" >
                         </custom:GAZTBorderlessEntry>
-
                     </inputLayout:SfTextInputLayout>
-
                     <custom:CustomLabel
                      Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                         HorizontalOptions="End" VerticalOptions="CenterAndExpand"
@@ -252,14 +212,11 @@
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}"></TapGestureRecognizer>
                         </custom:CustomLabel.GestureRecognizers>
                     </custom:CustomLabel>
-
                     <!--<Image Source="ic_edit.png" Margin="13,2,13,1" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="End" VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Source={x:Reference Name=ParentGrid},Path=BindingContext.OnChangePasswordClicked}" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
-
                 </Grid>
             </ScrollView>
             </StackLayout>

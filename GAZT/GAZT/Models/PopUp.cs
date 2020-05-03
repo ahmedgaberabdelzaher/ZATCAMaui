@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class PopUp
@@ -15,12 +14,10 @@ namespace GAZT.Models
         public string FlowDirections { get; set; }
         public bool isFontSet { get; set; }
     }
-
     public class ForPdfJs
     {
         public string Url { get; set; }
         public bool IsUrl { get; set; }
-
         public string Base64 { get; set; }
     }
 }

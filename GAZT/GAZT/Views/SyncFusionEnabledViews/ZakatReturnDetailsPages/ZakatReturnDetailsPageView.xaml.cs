@@ -6,24 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ZakatReturnDetailsPageView : ContentPage
     {
-
         #region Variable
         ZakatReturnDetailsPageViewModel viewModel;
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
         string Fbguid = "";
         public ZakatReturnDetailsPageView(string fbguid)
@@ -41,15 +36,10 @@ namespace GAZT.Views.NewViews
             }
                 catch(Exception ex)
             {
-
             }
-
         }
-
         #endregion
-
         #region Method
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -67,7 +57,6 @@ namespace GAZT.Views.NewViews
             ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage = true;
           await viewModel.OnPageLoad(Fbguid);
             date.Text = viewModel.Abrzu;
-
         }
         private void SetLTR()
         {
@@ -76,7 +65,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         protected async void OnBillsButtonClicked(object sender, EventArgs e)
         {
             ZakatReturnDetailsPageViewModel.IsAmendButtonClicked = false;
@@ -93,7 +81,6 @@ namespace GAZT.Views.NewViews
                 await viewModel.OnReleaseOrBillsClicked();
             }
         }
-
         private void OnInformationMessageClickedOne(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -139,7 +126,6 @@ namespace GAZT.Views.NewViews
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
-
         private void OnInformationMessageClickedFour(object sender, EventArgs e)
         {
             PopUp popUp = new PopUp();
@@ -156,6 +142,5 @@ namespace GAZT.Views.NewViews
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         #endregion
-
     }
 }

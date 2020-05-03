@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -14,9 +13,7 @@ using GAZT.CustomControl;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 [assembly: ExportRenderer(typeof(GAZTBorderlessPicker), typeof(GAZTBorderlessPickerRenderer))]
-
 namespace GAZT.Droid.CustomRenderer
 {
     public class GAZTBorderlessPickerRenderer: PickerRenderer
@@ -28,7 +25,6 @@ namespace GAZT.Droid.CustomRenderer
             if (e.OldElement == null)
             {
                 Control.Background = null;
-
                 var layoutParams = new MarginLayoutParams(Control.LayoutParameters);
                 layoutParams.SetMargins(0, 0, 0, 0);
                 LayoutParameters = layoutParams;

@@ -10,10 +10,8 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-
 namespace GAZT.Manager
 {
-
     public static class UtilityManager
     {
         #region variable
@@ -25,11 +23,7 @@ namespace GAZT.Manager
         public static string IBANValidator = @"^[S][A]\d{22}$";
         public static string TPTaxAvalable = string.Empty;
         public static string IsZakatAvailable = string.Empty;
-
-
-
         #endregion
-
         #region Method
         public static bool IsValidEmailAddress(string EmailAddress)
         {
@@ -43,7 +37,6 @@ namespace GAZT.Manager
                 return false;
             }
         }
-
         public static bool IsIBANValid(string IBAN)
         {
             Match emailMatch = Regex.Match(IBAN, IBANValidator);
@@ -56,7 +49,6 @@ namespace GAZT.Manager
                 return false;
             }
         }
-
         public static string GetLanguageParameter()
         {
             if (App.IsArabic)
@@ -67,9 +59,7 @@ namespace GAZT.Manager
             {
                 return "EN";
             }
-
         }
-
         public static bool IsPasswordValid(string password)
         {
             Match mobileMatch = Regex.Match(password, passwordValidation);
@@ -81,9 +71,7 @@ namespace GAZT.Manager
             {
                 return false;
             }
-
         }
-
         public static bool IsMobileNumberValidValid(string mobilenumber)
         {
             Match mobileMatch = Regex.Match(mobilenumber, mobileNumberValidation);
@@ -95,9 +83,7 @@ namespace GAZT.Manager
             {
                 return false;
             }
-
         }
-
         public static bool IsOTPNumberValid(string OTP)
         {
             Match mobileMatch = Regex.Match(OTP, numberRegex);
@@ -109,9 +95,7 @@ namespace GAZT.Manager
             {
                 return false;
             }
-
         }
-
         public static bool IsUserNameValid(string userName)
         {
             bool isCorrectUserName = false;
@@ -125,7 +109,6 @@ namespace GAZT.Manager
                 {
                     isCorrectUserName = false;
                 }
-
             }
             Match UserNameMatch = Regex.Match(userName, EnglishString);
             if (UserNameMatch.Success)
@@ -136,21 +119,16 @@ namespace GAZT.Manager
             {
                 return false;
             }
-
         }
-
         public static string ReverseString(string s)
         {
             char[] arr = s.ToCharArray();
             Array.Reverse(arr);
             return new string(arr);
         }
-
         public static string SingleDateConversion(string Date)
         {
-
             String StartDate = Date;
-
             if (!string.IsNullOrEmpty(StartDate))
             {
                 if (App.IsArabic)
@@ -174,22 +152,17 @@ namespace GAZT.Manager
             }
             return StartDate;
         }
-
         public static string dateConversion(string Date)
         {
             String FullDate = string.Empty;
             String StartDate = string.Empty;
             String EndDate = string.Empty;
-
             if (!string.IsNullOrEmpty(Date))
             {
                 string[] _dueDate = new String[2];
                 _dueDate = Date.Split('-');
-
                 StartDate = _dueDate[0];
                 EndDate = _dueDate[1];
-
-
                 if (App.IsArabic)
                 {
                     if (StartDate != null)
@@ -210,13 +183,11 @@ namespace GAZT.Manager
                 }
                 else
                 {
-
                     if (StartDate != null)
                     {
                         string trimStartDate = StartDate.Trim();
                         string dateStart = FormatAccordingToDeviceForVAT(trimStartDate);
                         StartDate = dateStart;
-
                     }
                     if (EndDate != null)
                     {
@@ -225,33 +196,26 @@ namespace GAZT.Manager
                         EndDate = dateEnd;
                     }
                     FullDate = StartDate + " - " + EndDate;
-
                 }
             }
             return FullDate;
         }
-
         public static string englishDateConversion(string Date)
         {
             String FullDate = string.Empty;
             String StartDate = string.Empty;
             String EndDate = string.Empty;
-
             if (!string.IsNullOrEmpty(Date))
             {
                 string[] _dueDate = new String[2];
                 _dueDate = Date.Split('-');
-
                 StartDate = _dueDate[0];
                 EndDate = _dueDate[1];
-
-
                 if (StartDate != null)
                 {
                     string trimStartDate = StartDate.Trim();
                     string dateStart = FormatAccordingToDeviceForVAT(trimStartDate);
                     StartDate = dateStart;
-
                 }
                 if (EndDate != null)
                 {
@@ -263,9 +227,6 @@ namespace GAZT.Manager
             }
             return FullDate;
         }
-
-
-
         public static bool IsEnglishNumber(String arText)
         {
             bool isAllNumeric = true;
@@ -278,7 +239,6 @@ namespace GAZT.Manager
             }
             return isAllNumeric;
         }
-
         public static bool IsEnglishNumberWithMinus(String arText)
         {
             bool isAllNumeric = true;
@@ -291,7 +251,6 @@ namespace GAZT.Manager
             }
             return isAllNumeric;
         }
-
         public static string ToArabicDate(string Date)
         {
             string[] SplitDate = Date.Split('-');
@@ -350,13 +309,11 @@ namespace GAZT.Manager
             FinalDate = Day + "-" + Month + "-" + Year;
             return FinalDate;
         }
-
         public static string getNumberAndConvert(string value)
         {
             String msg = RemoveDigits(value);
             return msg;
         }
-
         public static DateTime ConvertTiktoDate(string TikDate)
         {
             DateTime date = new DateTime();
@@ -372,18 +329,15 @@ namespace GAZT.Manager
             }
             return date;
         }
-
         public static string RemoveDigits(string key)
         {
             string CValue = ConvertNumerals(key);
             return Regex.Replace(key, @"\d", CValue);
         }
-
         public static string ConvertNumerals(this string input)
         {
             if (!string.IsNullOrEmpty(input))
             {
-
                 return input.Replace('0', '\u0660')
                   .Replace('1', '\u0661')
                   .Replace('2', '\u0662')
@@ -394,15 +348,12 @@ namespace GAZT.Manager
                   .Replace('7', '\u0667')
                   .Replace('8', '\u0668')
                   .Replace('9', '\u0669');
-
-
             }
             else
             {
                 return input;
             }
         }
-
         public static string GetTaxPeriodDate(string PeriodDate)
         {
             string Date = "";
@@ -413,13 +364,10 @@ namespace GAZT.Manager
                 Date = ConvertNumerals(date[0]) + " " + AppResources.To + " " + ConvertNumerals(date[1]);
            }
             return Date;
-           
         }
-
         public static string DownloadDataFromLink(string url)
         {
             string Base64String = string.Empty;
-
             using (System.Net.WebClient client = new System.Net.WebClient())
             {
                 try
@@ -433,7 +381,6 @@ namespace GAZT.Manager
                         {
                             HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(Url);
                             WebResponse myResp = myReq.GetResponse();
-
                             using (Stream streams = myResp.GetResponseStream())
                             using (MemoryStream ms = new MemoryStream())
                             {
@@ -443,14 +390,9 @@ namespace GAZT.Manager
                                     byte[] buf = new byte[1024];
                                     count = streams.Read(buf, 0, 1024);
                                     ms.Write(buf, 0, count);
-
                                 } while (streams.CanRead && count > 0);
-
                                 Base64String = Convert.ToBase64String(ms.ToArray());
                                 byte[] bytes = System.Convert.FromBase64String(Base64String);
-
-
-
                                 File.WriteAllBytes(folderPath, bytes);
                             }
                         }
@@ -460,7 +402,6 @@ namespace GAZT.Manager
                 {
                     throw new InvalidDataException();
                 }
-
                 return Base64String;
             }
         }
@@ -491,9 +432,7 @@ namespace GAZT.Manager
                 }
             }
             return dt;
-
         }
-
         public static string FormatAccordingToDeviceHijriArabic(string Date)
         {
             string dt = string.Empty;
@@ -521,9 +460,7 @@ namespace GAZT.Manager
                 }
             }
             return dt;
-
         }
-
         public static string FormatAccordingToDeviceHijriEnglish(string Date)
         {
             string dt = string.Empty;
@@ -539,7 +476,6 @@ namespace GAZT.Manager
             }
             if (dts != null)
             {
-
                 if (sysFormat == "MM-dd-yyyy" || sysFormat == "MMM-dd-yyyy" || sysFormat == "MM-dd-yy" ||
                sysFormat == "MM/dd/yyyy" || sysFormat == "MMM/dd/yyyy" || sysFormat == "MM/dd/yy" ||
                sysFormat == "M/d/yyyy" || sysFormat == "M-d-yyyy")
@@ -552,13 +488,10 @@ namespace GAZT.Manager
                 }
             }
             return dt;
-
         }
-
         public static string FormatAccordingToDeviceForVAT(string Date)
         {
             string dt = string.Empty;
-
             string[] dts = null;
             if (Date.Contains("/"))
             {
@@ -570,15 +503,10 @@ namespace GAZT.Manager
             }
             if (dts != null)
             {
-
-
                 dt = dts[0] + "-" + GetMonthName(dts[1]) + "-" + dts[2];
             }
-
             return dt;
-
         }
-
         public static string GetContentType(String Extention)
         {
             if (Extention.ToLower() == "doc")
@@ -637,12 +565,9 @@ namespace GAZT.Manager
             {
                 return null;
             }
-
         }
-
         public static string GetMonthName(string Month)
         {
-           
             if (Month == "01" || Month == "1")
             {
                 Month = "January";
@@ -691,13 +616,10 @@ namespace GAZT.Manager
             {
                 Month = "December";
             }
-           
             return Month;
         }
-
         public static string GetMonthNameHijri(string Month)
         {
-
             if (Month == "جمادى الأولى")
             {
                 Month = "Jumada I";
@@ -746,14 +668,10 @@ namespace GAZT.Manager
             {
                 Month = "Rabi II";
             }
-
             return Month;
         }
-
-
         public static string GetMonthNameHijriArabic(string Month)
         {
-
             if (Month == "جمادى الأولى")
             {
                 Month = "جمادى أول";
@@ -770,13 +688,10 @@ namespace GAZT.Manager
             {
                 Month = "ربيع ثاني";
             }
-
             return Month;
         }
-
         public static string GetCommaSeparatedAmount(string amount)
         {
-
             string amountWithComma = "";
             try
             {
@@ -792,14 +707,10 @@ namespace GAZT.Manager
             }
             catch (Exception ex)
             {
-
             }
-           
             return amountWithComma;
         }
-
         #endregion
-
     }
     public enum ArButtons
     {

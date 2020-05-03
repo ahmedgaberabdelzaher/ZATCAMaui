@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class ICRListSet
@@ -11,7 +10,6 @@ namespace GAZT.Models
         public string Incotext { get; set; }//VATReturnForm
         public string Persl { get; set; }//TaxPeriodCode
         public string Euser { get; set; }
-        
         public string _TaxPeriod;
         public string TaxPeriod
         {
@@ -36,9 +34,7 @@ namespace GAZT.Models
                 }
             }
         }//TaxPeriodDescription
-
         public string FormatTaxPeriod { get; set; }
-
         public string _Fbnum;
         public string Fbnum { 
             get
@@ -59,9 +55,7 @@ namespace GAZT.Models
                 //    }
             }
         }
-
         public string FormBundleNumber { get; set; }
-
         private string _txt50;
         public string Txt50 {
             get
@@ -77,7 +71,6 @@ namespace GAZT.Models
                 }
             }
         }//ReturnPeriod
-
         private string _formatedDate;
         public string FormatedDate
         {
@@ -90,8 +83,6 @@ namespace GAZT.Models
                 _formatedDate = value;
             }
         }
-
-
         private string _formatedSingleDueDate;
         public string FormatedSingleDueDate
         {
@@ -104,7 +95,6 @@ namespace GAZT.Models
                 _formatedSingleDueDate = value;
             }
         }
-
         private string _dueDate;
         public string DueDate
         {
@@ -143,13 +133,10 @@ namespace GAZT.Models
             set
             {
                 _dueDateDateTime = value;
-               
             }
         }
-
         public string _dueDT;
         public string DueDt {
-           
             get
             {
                 return _dueDT;
@@ -163,13 +150,11 @@ namespace GAZT.Models
                     {
                         string[] _dueDate = new String[2];
                         _dueDate = _dueDT.Split('T');
-
                         DueDate = _dueDate[0];
                     }
                 }
             }
        }//DueDate
-
         private string _status;//StatusCode
         public string Status {
             get
@@ -181,7 +166,6 @@ namespace GAZT.Models
                 _status = value;
                 if(!string.IsNullOrEmpty(_status))
                 {
-                    
                         //For Border Colour
                         if (string.Equals(_status, "E0001") || string.Equals(_status, "E0013") || string.Equals(_status, "E0056"))
                         {
@@ -197,7 +181,6 @@ namespace GAZT.Models
                             BorderColour = "#c49b2d";
                             StatusImage = "ic_Check_golden.png";
                         }
-
                         //For Image
                         if (string.Equals(_status, "E0001"))
                         {
@@ -211,13 +194,9 @@ namespace GAZT.Models
                         {
                             StatusImage = "ic_save_golden.png";
                         }
-
-
-                   
                 }
             }
      }
-
         private string _statusTxt;
         public string StatusTxt
         {
@@ -228,8 +207,6 @@ namespace GAZT.Models
             set
             {
                 _statusTxt = value;
-
-
                 //if (!string.IsNullOrEmpty(_statusTxt))
                 //{
                 //    //For Border Colour
@@ -247,7 +224,6 @@ namespace GAZT.Models
                 //        BorderColour = "#c49b2d";
                 //        StatusImage = "ic_Check_golden.png";
                 //    }
-
                 //    //For Image
                 //    if (string.Equals(_statusTxt, "To be filled"))
                 //    {
@@ -261,18 +237,11 @@ namespace GAZT.Models
                 //    {
                 //        StatusImage = "ic_save_golden.png";
                 //    }
-
-
                 //}
-
-
-
             }
         }
         //StatusDescription
-
         public string Fbguid { get; set; }//Fbguidto get information about ICR
-
         private string _borderColour;
         public string BorderColour
         {
@@ -285,7 +254,6 @@ namespace GAZT.Models
                 _borderColour = value;
             }
         }
-
         private string _statusImage;
         public string StatusImage
         {
@@ -298,11 +266,7 @@ namespace GAZT.Models
                 _statusImage = value;
             }
         }
-
-
     }
-
-
     public class ICR
     {
         public Metadata __metadata { get; set; }
@@ -326,26 +290,20 @@ namespace GAZT.Models
         public string Fbguid { get; set; }
         public List<ICRListSet> ICR_LISTSet { get; set; }
         public List<ICRStatus> ICR_STATUSSet { get; set; }
-
         public ICR()
         {
             ICR_LISTSet = new List<ICRListSet>();
             ICR_STATUSSet = new List<ICRStatus>();
         }
     }
-
-
     public class ICRStatus
     {
         public Metadata __metadata { get; set; }
-
         public string Stsma { get; set; }
         public string Estat { get; set; }
         public string Spras { get; set; }
         public string Txt04 { get; set; }
         public string Txt30 { get; set; }
         public string Ltext { get; set; }
-
     }
-
 }

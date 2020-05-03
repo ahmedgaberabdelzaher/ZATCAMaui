@@ -41,7 +41,6 @@
                 </custom:GAZTBorderlessEditor>
                 <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesSaveandClose}" HeightRequest="56" Command="{Binding OnAddButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" Margin="0" Padding="0" CornerRadius="0"></buttons:SfButton>
                 <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesClearandClose}" HeightRequest="56" Command="{Binding OnClearButtonClicked}" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" Margin="0" Padding="0" CornerRadius="0">
-
                 </buttons:SfButton>
             </Grid>
         </ScrollView>

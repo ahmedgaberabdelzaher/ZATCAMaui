@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ZakatReturnListPageViewModel : ViewModelBase
@@ -19,16 +18,13 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
-
         public EstimatedZakatReturns estimatedZakatReturnsList { get; set; }
         public List<EstimatedZakatReturnsResult> myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
         public static String ReturnPeriod = "";
         public static int  SelectedICRStatusWhileGoingToZAKATDetails =13;
         #endregion
-
         #region Property
         private string _txtSelectedStatus = string.Empty;
         public string TxtSelectedStatus
@@ -56,7 +52,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ICRStatusList");
             }
         }
-
         private ZAKATStatus _selectedICRStatus;
         public ZAKATStatus SelectedICRStatus
         {
@@ -75,7 +70,6 @@ namespace GAZT.ViewModel.NewViewModel
              RaisePropertyChanged("SelectedICR");
             }
         }
-
         private ZAKATStatus _selectedICRStatusPrev;
         public ZAKATStatus SelectedICRStatusPrev
         {
@@ -89,8 +83,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedICRPrev");
             }
         }
-
-
         private ZAKATStatus _previousSelectedICRStatus;
         public ZAKATStatus PreviousSelectedICRStatus
         {
@@ -101,11 +93,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _previousSelectedICRStatus = value;
-                
                 RaisePropertyChanged("PreviousSelectedICRStatus");
             }
         }
-
         private EstimatedZakatReturnsResult _selectedZakatReturn;
         public EstimatedZakatReturnsResult SelectedZakatReturn
         {
@@ -117,7 +107,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedZakatReturn = value;
                 RaisePropertyChanged("SelectedZakatReturn");
-
                 if (SelectedZakatReturn != null)// FZ12 to check that the selected return belongs to Form 12 return
                 {
                     if(SelectedZakatReturn.Fbtyp.Equals("FZ12"))
@@ -137,11 +126,9 @@ namespace GAZT.ViewModel.NewViewModel
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
-                 
                 }
             }
         }
-
         private List<EstimatedZakatReturnsResult> _myZakatReturns;
         public List<EstimatedZakatReturnsResult> MyZakatReturns
         {
@@ -159,7 +146,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MyZakatReturns");
             }
         }
-
         private List<ZakatReturnStatus> _zakatReturnStatus;
         public List<ZakatReturnStatus> ZakatReturnStatus
         {
@@ -173,7 +159,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnStatus");
             }
         }
-
         private ZakatReturnStatus _selectedZakatStatus;
         public ZakatReturnStatus SelectedZakatStatus
         {
@@ -184,7 +169,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedZakatStatus = value;
-              
                 RaisePropertyChanged("SelectedZakatStatus");
             }
         }
@@ -201,7 +185,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private int _selectedIndex ;
         public int SelectedIndex
         {
@@ -215,9 +198,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedIndex");
             }
         }
-
         private bool _setNoDataLabelVisibility = false;
-
         public bool SetNoDataLabelVisibility
         {
             get
@@ -230,9 +211,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SetNoDataLabelVisibility");
             }
         }
-
         #endregion
-
         #region Constructor
         public ZakatReturnListPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -242,9 +221,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -253,23 +229,15 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
-            
         }
         #endregion
-
         #region Method
-
-
         public async Task OnPageLoad()
         {
-          
-          
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -291,7 +259,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 // MyZakatReturns = estimatedZakatReturnsList.d.listSet.results ;
             });
-
             //MyZakatReturns = new List<ZakatReturns>();
             //for(int i=0;i<=5;i++)
             //{
@@ -304,19 +271,15 @@ namespace GAZT.ViewModel.NewViewModel
             //    MyZakatReturns.Add(returns1);
             //}
             //ZakatReturnStatus = new List<ZakatReturnStatus>();
-
             //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 1, Value = "ABC1" });
             //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 2, Value = "ABC2" });
             //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 3, Value = "ABC3" });
             //ZakatReturnStatus.Add(new Models.ZakatReturnStatus { ID = 4, Value = "ABC4" });
-
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
-
         }
-
         public void GetZAKATICRStatusList()
         {
             List<ZAKATStatus> ZAKATStatusListEn = new List<ZAKATStatus>()
@@ -335,9 +298,7 @@ namespace GAZT.ViewModel.NewViewModel
                    new ZAKATStatus{ Key ="E0089", Value = "GSTC – Escalation In Process",index = 11},
                    new ZAKATStatus{ Key ="E0090", Value = "GSTC – Escalation Completed",index = 12},
                  new ZAKATStatus{ Key ="ALL", Value = "All",index = 13},
-                   
             };
-
             List<ZAKATStatus> ZAKATStatusListAr = new List<ZAKATStatus>()
             {
                 new ZAKATStatus{ Key ="IP011", Value = "تم تقديمه",index = 0},
@@ -354,9 +315,7 @@ namespace GAZT.ViewModel.NewViewModel
                    new ZAKATStatus{ Key ="E0089", Value = "الأمانة –قيد التصعيد",index = 11},
                    new ZAKATStatus{ Key ="E0090", Value = "الأمانة – انتهاء التصعيد",index = 12},
                  new ZAKATStatus{ Key ="ALL", Value = "الجميع",index = 13},
-
             };
-
             if(App.IsArabic)
             {
                 ICRStatusList = ZAKATStatusListAr;
@@ -366,7 +325,6 @@ namespace GAZT.ViewModel.NewViewModel
                 ICRStatusList = ZAKATStatusListEn;
             }
         }
-
         public void GetFilteredZAKATICRList(ZAKATStatus selectedICR)
         {
             try
@@ -381,7 +339,6 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-
                         for (int i = 0; i < myZakatReturnsList.Count; i++)
                         {
                             if(string.IsNullOrEmpty(myZakatReturnsList[i].Statfg))
@@ -398,21 +355,16 @@ namespace GAZT.ViewModel.NewViewModel
                                     FilteredCRStatusList.Add(myZakatReturnsList[i]);
                                 }
                             }
-                            
                         }
                         MyZakatReturns = FilteredCRStatusList;
                         HandleNoDataMessageVisibility(FilteredCRStatusList);
-
                     }
-
                 }
             }
             catch(Exception ex)
             {
-
             }
         }
-
         private void UpdateICRList()
         {
             try
@@ -438,7 +390,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((string.Equals(myZakatReturnsListTemp[i].Stat, "IP011")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
                             {
-
                                 myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
                                 myZakatReturnsListTemp[i].BorderColour = "#944E22";
                             }
@@ -472,7 +423,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             if ((string.Equals(myZakatReturnsListTemp[i].Statfg, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
                             {
-
                                 myZakatReturnsListTemp[i].StatusImage = "ic_unsubmitted.png";
                                 myZakatReturnsListTemp[i].BorderColour = "#944E22";
                             }
@@ -497,14 +447,12 @@ namespace GAZT.ViewModel.NewViewModel
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                         }
-                       
                         if (myZakatReturnsListTemp[i].Fbtyp.Equals("FZ12") || myZakatReturnsListTemp[i].Fbtyp.Equals("ZKTE") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("H-05-A-I") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A") || myZakatReturnsListTemp[i].Incotyp.Equals("G-05-A-I"))
                         {
                             myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                         }
                      //  myZakatReturnsList.Add(myZakatReturnsListTemp[i]);
                     }
-
                     MyZakatReturns = myZakatReturnsList;
                     if(ZakatReturnListPageView.AreYouUsingFilterFirstTimeAfterComingFromZAKATDetailsPage)
                     {
@@ -525,13 +473,11 @@ namespace GAZT.ViewModel.NewViewModel
                             SelectedICRStatus = ICRStatusList[SelectedIndex];
                             GetFilteredZAKATICRList(SelectedICRStatus);
                         }
-
                     }
                     else
                     {
                         SelectedIndex = 13;
                     }
-
                 }
                 else
                 {
@@ -540,17 +486,14 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch(Exception ex)
             {
-
             }
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -567,7 +510,6 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         public void HandleNoDataMessageVisibility(List<EstimatedZakatReturnsResult> filteredCRStatusList)
         {
             if(filteredCRStatusList != null && filteredCRStatusList.Count > 0)
@@ -578,25 +520,20 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 ShowNoDataMessage();
             }
-         
         }
-
         private void ShowNoDataMessage()
         {
             SetNoDataLabelVisibility = true;
         }
-
         private void HideNoDataMessage()
         {
             SetNoDataLabelVisibility = false;
         }
-
         public void ClearData()
         {
                MyZakatReturns = new List<EstimatedZakatReturnsResult>();
             myZakatReturnsList = new List<EstimatedZakatReturnsResult>();
         }
-
         public IEnumerable<EstimatedZakatReturnsResult> GetSortedList(IList<EstimatedZakatReturnsResult> ICRList)
         {
             try
@@ -610,13 +547,9 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 return ICRList;
             }
-
-          
         }
-
         public void SetCurrentIndex()
         {
-
         }
         #endregion
     }

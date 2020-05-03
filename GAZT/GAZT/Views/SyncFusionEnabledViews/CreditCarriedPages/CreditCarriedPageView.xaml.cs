@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -44,11 +42,9 @@ namespace GAZT.Views.NewViews
                         viewModel.IsNoDataLabelVisible = true;
                     }
                 }
-               
             }
             catch(Exception e)
             {
-
             }
         }
         public void ChangeAeroIcon()
@@ -62,7 +58,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (!App.IsArabic)

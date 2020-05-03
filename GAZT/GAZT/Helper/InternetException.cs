@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Helper
 {
     [Serializable]
@@ -12,13 +11,10 @@ namespace GAZT.Helper
         public readonly IDialogService _dialogService;
         public InternetException()
         {
-
         }
         public InternetException(string ExceptionMessage)
             : base(ExceptionMessage)
         {
-
         }
-
     }
 }

@@ -1,14 +1,11 @@
-﻿
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using GAZT;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 [assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
-
 namespace GAZT
 {
     public class CustomButtonRenderer : ButtonRenderer
@@ -16,9 +13,7 @@ namespace GAZT
         public CustomButtonRenderer(Context context) : base(context)
         {
         }
-
         #region Method
-
         protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
         {
             base.OnElementChanged(e);
@@ -39,15 +34,12 @@ namespace GAZT
                 //    Control.Typeface = font1;
                 //}
             }
-
         }
-
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             base.OnElementPropertyChanged(sender, args);
             if (args.PropertyName == nameof(Button.IsEnabled)) SetColors();
         }
-
         private void SetColors()
         {
             Control.SetTextColor(Element.IsEnabled ? Element.TextColor.ToAndroid() : Android.Graphics.Color.Gray);

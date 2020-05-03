@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -75,7 +73,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             }
             catch (Exception ex)
             {
-
             }
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -97,13 +94,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             //            ZakatICRListOverDue.Margin = new Thickness(0, 5, 60, 0);
             //            ZakatICRListNonSubmitted.Margin = new Thickness(0, 5, 60, 0);
             //            ICRListOver.Margin = new Thickness(0, 5, 60, 0);
-
-                        
-
             //            //BPicker.Margin = new Thickness(20, 0, 60, 0);
             //            //FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
-
-
             //            //safeInsets.Left = 80;
             //            //safeInsets.Right = 80;
             //           // Padding = safeInsets;
@@ -117,12 +109,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             //            ZakatICRListOverDue.Margin = new Thickness(0, 5, 0, 0);
             //            ZakatICRListNonSubmitted.Margin = new Thickness(0, 5, 0, 0);
             //            ICRListOver.Margin = new Thickness(0, 5, 0, 0);
-
-
-
             //        }
             //    }
-
             //    //reconfigure layout
             //}
         }
@@ -134,8 +122,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
                 {
                     viewModel.IsLoading = true;
                 });
-
-
                 await Task.Run(async () =>
                 {
                     await viewModel.onPageLoad();
@@ -147,12 +133,10 @@ namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
             }
             catch(Exception ex)
             {
-
             }
         }
         private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
         }
         //protected override void OnDisappearing()
         //{

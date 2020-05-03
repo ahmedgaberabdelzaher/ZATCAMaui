@@ -1,7 +1,6 @@
 ﻿using System;
 using GAZT.Manager;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public class CaptchaValidatorBehaviour : Behavior<Entry>
@@ -11,13 +10,11 @@ namespace GAZT
             entry.TextChanged += OnEntryTextChanged;
             base.OnAttachedTo(entry);
         }
-
         protected override void OnDetachingFrom(Entry entry)
         {
             entry.TextChanged -= OnEntryTextChanged;
             base.OnDetachingFrom(entry);
         }
-
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
             bool isValidNumber = false;

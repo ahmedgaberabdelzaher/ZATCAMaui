@@ -4,7 +4,6 @@ using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using GAZTeServicesApp.Controls;
-
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>
@@ -27,13 +26,10 @@ namespace GAZTeServicesApp.Converters
             {
                 return false;
             }
-
             var isFocused = (bool)value;
             var isInvalidEmail = !isFocused && !CheckValidEmail(email.Text);
-
             return !isFocused && isInvalidEmail;
         }
-
         /// <summary>
         /// This method is used to convert the boolean to string.
         /// </summary>
@@ -46,7 +42,6 @@ namespace GAZTeServicesApp.Converters
         {
             return true;
         }
-
         /// <summary>
         /// Validates the email.
         /// </summary>
@@ -55,7 +50,6 @@ namespace GAZTeServicesApp.Converters
         private static bool CheckValidEmail(string email)
         {
             bool isNumber;
-
             if (string.IsNullOrEmpty(email))
             {
                 return true;
@@ -64,7 +58,6 @@ namespace GAZTeServicesApp.Converters
             {
                 isNumber = IsEnglishNumber(email);
             }
-
             if (!isNumber)
             {
                 var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
@@ -76,7 +69,6 @@ namespace GAZTeServicesApp.Converters
             }
             return true;
         }
-
         public static bool IsEnglishNumber(String arText)
         {
             bool isAllNumeric = true;

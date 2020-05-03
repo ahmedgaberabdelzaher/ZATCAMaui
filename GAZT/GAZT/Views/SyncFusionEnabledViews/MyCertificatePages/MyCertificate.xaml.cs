@@ -6,13 +6,11 @@ using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-
 namespace GAZT.Views
 {
     public partial class MyCertificate : ContentPage
     {
         // ObservableCollection<String> Items = new ObservableCollection<String>();
-
         MyCertificateViewModel viewModel;
         private double width = 0;
         private double height = 0;
@@ -28,19 +26,13 @@ namespace GAZT.Views
                 viewModel = App.Locator.MyCertificate;
                 ChangeAeroIcon();
                 SetLTR();
-
                 this.BindingContext = viewModel;
             }catch(Exception ex)
             {
-
             }
             //string str = "abc";
             //Items.Add(str);
             // CardView.ItemsSource = Items;
-
-
-
-
             viewModel.OnPageLoad();
             if (viewModel.allCertificate != null)
             {
@@ -59,7 +51,6 @@ namespace GAZT.Views
                 else if (viewModel.allCertificate.ExciseSet != null && viewModel.allCertificate.ExciseSet.results != null && viewModel.allCertificate.ExciseSet.results.Count > 0)
                 {
                     Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-
                     Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                     Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                 }
@@ -70,16 +61,10 @@ namespace GAZT.Views
                 Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
                 Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             }
-
-
-
-
-
             //EXISECertificateList.ItemSelected += (sender, e) =>
             //{
             //    if (e.SelectedItem == null)
             //    {
-
             //        return;
             //    } ((ListView)sender).SelectedItem = null;
             //};
@@ -119,8 +104,6 @@ namespace GAZT.Views
             //    } ((ListView)sender).SelectedItem = null;
             //};
         }
-
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -134,16 +117,13 @@ namespace GAZT.Views
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         MainLayout.Margin = new Thickness(40, 0, 40, 5);
-
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                         MainLayout.Margin = new Thickness(0, 0, 0, 5);
-
                     }
                 }
-
                 //reconfigure layout
             }
         }
@@ -170,9 +150,7 @@ namespace GAZT.Views
         //    SKImageInfo info = args.Info;
         //    SKSurface surface = args.Surface;
         //    SKCanvas canvas = surface.Canvas;
-
         //    canvas.Clear();
-
         //    SKPoint center = new SKPoint(info.Width / 2, info.Height / 2);
         //    float radius = Math.Min(info.Width, info.Height) / 4;
         //    SKPath path = new SKPath
@@ -203,43 +181,27 @@ namespace GAZT.Views
         //    };
         //    canvas.DrawPath(path, paint);
         //}
-
         //protected void OnTaxPayerClicked(object sender, EventArgs e)
         //{
         //    viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
-
         //}
-
-
         private void ClickGestureRecognizer_ClickedForExcise(object sender, EventArgs e)
         {
-
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
-
         private void ClickGestureRecognizer_ClickedForZakat(object sender, EventArgs e)
         {
-
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
-
         private void ClickGestureRecognizer_ClickedForVAT(object sender, EventArgs e)
         {
-
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             Resources["searchBarStyleForExcise"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
-
-
             Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
         }
-
     }
 }

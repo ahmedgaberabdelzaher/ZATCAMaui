@@ -9,18 +9,15 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ICRListPageView : ContentPage
     {
-
         #region Variable
         ICRListPageViewModel viewModel;
         public static bool AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
@@ -28,17 +25,13 @@ namespace GAZT.Views.NewViews
         private double width = 0;
         private double height = 0;
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public ICRListPageView()
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
             viewModel = App.Locator.ICRListPageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
@@ -54,21 +47,12 @@ namespace GAZT.Views.NewViews
             {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
-
-
-
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
-
         #endregion
-
         #region Method
-
-
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -85,14 +69,11 @@ namespace GAZT.Views.NewViews
                         BPicker.Margin = new Thickness(8, 0, 8, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
                         ListLayout.Padding = new Thickness(40, 0, 40, 5);
-
                         // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
                         // var safeInsets = On<iOS>().SafeAreaInsets();
                         //ICRList.Margin = new Thickness(0, 5, 60, 0);
                         // BPicker.Margin = new Thickness(20, 0, 60, 0);
                         // FrmLicenseIssuedBy.Margin = new Thickness(20, 0, 80, 5);
-
-
                         //safeInsets.Left = 80;
                         //safeInsets.Right = 80;
                         //Padding = safeInsets;
@@ -104,14 +85,11 @@ namespace GAZT.Views.NewViews
                         BPicker.Margin = new Thickness(8, 0, 8, 0);
                         FrmLicenseIssuedBy.Margin = new Thickness(8, 0, 8, 5);
                         ListLayout.Padding = new Thickness(0, 0, 0, 5);
-
                     }
                 }
-               
                 //reconfigure layout
             }
         }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -135,10 +113,8 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception e)
             {
-
             }
         }
-
         private void SelectedICR(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
@@ -163,7 +139,6 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
         }
             public async Task IntialiseAsyncForPreviousSelectedFilter()
@@ -182,25 +157,20 @@ namespace GAZT.Views.NewViews
                         AreYouUsingFilterFirstTimeAfterComingFromVATReturnPage = false;
                     }
                     // BPicker.SelectedIndex = indexofPreviousSelectedFilter;
-
                 }
             }
             catch (Exception e)
             {
-
             }
         }
-
         private void SetLTR()
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -210,9 +180,7 @@ namespace GAZT.Views.NewViews
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-
         #endregion
-
         protected async override void OnAppearing()
         {
             try
@@ -221,7 +189,6 @@ namespace GAZT.Views.NewViews
                 //var safeInsets = On().SafeAreaInsets();
                 //safeInsets.Left = 24;
                 //this.Padding = safeInsets;
-               
                 AttachmentPageViewModel.AttachmentUploadedSize = 0;
                 AttachmentPageViewModel.attachmentSizeVisibility = false;
                 if (Count != 1)
@@ -242,21 +209,16 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
         }
-
         private void onDropdownButtonClicked(object sender, EventArgs e)
         {
             BPicker.Focus();
-           
         }
-
         private void BPickerButton_Clicked(object sender, EventArgs e)
         {
             BPicker.IsOpen = true;
         }
-
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             ICRStatus selectedfbtyp = (ICRStatus)e.NewValue;
@@ -265,7 +227,6 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedICRStatusPrev = selectedfbtyp;
             viewModel.TxtSelectedStatus = selectedfbtyp.Txt30;
         }
-
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;

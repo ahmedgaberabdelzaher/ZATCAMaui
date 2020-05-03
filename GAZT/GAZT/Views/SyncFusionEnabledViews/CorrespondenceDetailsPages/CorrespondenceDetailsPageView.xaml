@@ -19,7 +19,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -35,9 +34,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
                     <controls:TitleView.TrailingView>
                         <Image Source="{TemplateBinding BindingContext.FavIcon}">
@@ -45,16 +42,13 @@
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnFavClicked}"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
-
                     </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
     <ContentPage.Content>
-        
        <StackLayout VerticalOptions="FillAndExpand">
             <Grid  RowSpacing="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
@@ -72,10 +66,6 @@
                 <StackLayout BackgroundColor="Blue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0">
                        <WebView x:Name="CorWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
-  
-
-
-
                 <Frame Grid.Row="2" Grid.Column="0"    VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
                     </Frame>
                 <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" IsEnabled="{Binding IsAttachmentEnable}">
@@ -83,7 +73,6 @@
                         <TapGestureRecognizer Command="{Binding OnAttachmentClick}" ></TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -2,29 +2,22 @@
 using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SalesDetailsPageView : ContentPage
     {
-
         #region Variable
         SalesDetailsPageViewModel viewModel;
         ZakatReturnDetailsD ZakatReturnDetail = null;
         int selectedIndex = -1;
-       
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public SalesDetailsPageView(ZakatReturnDetails ZakatReturnDetail)
         {
             InitializeComponent();
@@ -35,7 +28,6 @@ namespace GAZT.Views.NewViews
                 viewModel.zakatReturnDetailsD = ZakatReturnDetail;
                 viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
                 SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
-             
                // AmendSalesDetailsPageViewModel.SelectedSalesDetails = new SalesDetails();
                 //viewModel.EstimatedZAKATSADADNumber.ObjectionInvoiceVisibility = false;
                 //viewModel.EstimatedZAKATSADADNumber.AmendInvoiceVisibility = false;
@@ -48,22 +40,16 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
-            
             this.BindingContext = viewModel;
           //  viewModel.HideInvoicePopUp();
-           
             SalesDetails.ItemTapped += (object sender, ItemTappedEventArgs e) => {
                 // don't do anything if we just de-selected the row.
                 if (e.Item == null) return;
-
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
         }
-
         #endregion
-
         #region Method
         public void ChangeAeroIcon()
         {
@@ -83,7 +69,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -102,13 +87,8 @@ namespace GAZT.Views.NewViews
             }
             catch(Exception ex)
             {
-
             }
-            
-            
-
         }
-
         private void SetUpdatedDataToObject()
         {
             try
@@ -137,7 +117,6 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 1;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("3"))
                 {
@@ -150,7 +129,6 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 2;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("4"))
                 {
@@ -175,7 +153,6 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 4;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("6"))
                 {
@@ -188,7 +165,6 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 5;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("7"))
                 {
@@ -201,7 +177,6 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 6;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                 }
                 else if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.SelectedEditFieldId.Equals("8"))
                 {
@@ -213,47 +188,37 @@ namespace GAZT.Views.NewViews
                     selectedIndex = 7;
                     //IsChangeReasonEntered(index);
                     //IsAttachmentAttached(index);
-
                     // Missing need to check and assign the value
                     ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                 }
             }
             catch (Exception ex)
             {
-
             }
-            
-
         }
         protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)
         {
             viewModel.CheckBoxStatus = checkBox.IsChecked;
         }
-
         //protected async void OnRefreshButtonClicked(Object sender, EventArgs e)
         //{
         //    //  viewModel.CheckBoxStatus = checkBox.IsChecked;
         //   // await viewModel.GetSADADNumber();
         //}
-
         protected async void OnCloseButtonClicked(Object sender, EventArgs e)
          {
             viewModel.InvoicePopUpVisibility = false;
             viewModel._navigationService.GoBack();
         }
-
-        
         protected async void OnOnInvoiceClicked(Object sender, EventArgs e)
         {
             //viewModel.InvoicePopUpVisibility = false;
             //viewModel._navigationService.GoBack();
         }
-
         protected async void OnEditImageClicked(Object sender, EventArgs e)
         {
             Image EditImage = sender as Image;
             SalesDetails selectedSalesDetails = (SalesDetails)EditImage.BindingContext;
-
             if (!viewModel.ConfirmButtonVisibility)
             {
                 double d = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI);
@@ -266,7 +231,6 @@ namespace GAZT.Views.NewViews
                         if (selectedSalesDetails.SalesType.Equals("Total VAT Sales") || selectedSalesDetails.SalesType.Equals("إجمالي مبيعات القيمة المضافة"))
                         {
                             viewModel._navigationService.NavigateTo(App.AmendSalesDetailsPageView, selectedSalesDetails);
-
                         }
                     }
                 }
@@ -285,11 +249,7 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.ShowOnlyInfoIcon();
             }
-
         }
-
-
-
         protected async void OnConfirmButtonClicked(Object sender, EventArgs e)
         {
             if(viewModel.IsCurrentZAKATTaxLess)
@@ -305,7 +265,6 @@ namespace GAZT.Views.NewViews
                 await viewModel.OnConfirmClicked("I");
             }
         }
-
         private void OnInformationMessageClicked(object sender, EventArgs e)
         {
             Label InfoImage = sender as Label;
@@ -324,7 +283,6 @@ namespace GAZT.Views.NewViews
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
-
         private void OnEstmatedSalesInfoMessageClicked(object sender, EventArgs e)
         {
             string informationMessage = AppResources.ZZEstimatedSalesInformationText;
@@ -341,8 +299,6 @@ namespace GAZT.Views.NewViews
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
-        
-
         private bool IsOldValueChanged(int index)
         {
             if(viewModel.SalesDetailsList[index].InformationFromPartie.Equals(viewModel.SalesDetailsDataList[index].InformationFromPartieToCompare))
@@ -354,9 +310,7 @@ namespace GAZT.Views.NewViews
                 return true;
             }
         }
-
         #endregion
-
         //public void IsChangeReasonEntered(int SalesDetailIndex)
         //{
         //    if(AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsReasonRequird)
@@ -365,7 +319,6 @@ namespace GAZT.Views.NewViews
         //            AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsReasonRequird = false;
         //    }
         //}
-
         //public void IsAttachmentAttached(int SalesDetailIndex)
         //{
         //    if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsAttachmentRequired)
@@ -374,7 +327,6 @@ namespace GAZT.Views.NewViews
         //        AmendSalesDetailsPageViewModel.SelectedSalesDetails.IsAttachmentRequired = false;
         //    }
         //}
-
         private string GetInformationMessage(int selectedId)
         {
             string informationMessage = "";
@@ -413,7 +365,6 @@ namespace GAZT.Views.NewViews
                 case 7:
                     {
                         informationMessage = AppResources.ZZPurchasesvaluex115;
-
                         break;
                     }
                 case 8:
@@ -424,7 +375,6 @@ namespace GAZT.Views.NewViews
             }
             return informationMessage;
         }
-
         private void UpdateTheAttachmentPostData()
         {
             if (AmendSalesDetailsPageViewModel.SelectedSalesDetails.estimateZakatAttachment.Count > 0)

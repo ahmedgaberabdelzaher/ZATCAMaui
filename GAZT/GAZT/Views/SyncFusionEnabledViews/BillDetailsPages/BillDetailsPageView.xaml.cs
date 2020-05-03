@@ -10,19 +10,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using NavigationPage = Xamarin.Forms.NavigationPage;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BillDetailsPageView : ContentPage
     {
-
         #region Variable
         BillDetailsPageViewModel viewModel;
         #endregion
-
-       
-
         #region Constructor
         public BillDetailsPageView(ZakatReturnDetailsD ZakatReturnDetail)
         {
@@ -39,7 +34,6 @@ namespace GAZT.Views.NewViews
             NavigationPage.SetBackButtonTitle(this, "");
             ToolbarItem Refresh = new ToolbarItem
             {
-                
                 Order = ToolbarItemOrder.Primary,
                 Priority = 1,
                 Command = new Command(async() =>
@@ -49,7 +43,6 @@ namespace GAZT.Views.NewViews
                 })
             };
             this.ToolbarItems.Add(Refresh);
-
             ToolbarItem Download = new ToolbarItem
             {
                 Icon = "ic_download.png",
@@ -62,13 +55,9 @@ namespace GAZT.Views.NewViews
                 })
             };
             this.ToolbarItems.Add(Download);
-
          Refresh.SetBinding(ToolbarItem.IconImageSourceProperty, new Binding("RefreshIconImageSource"));
-
-
         }
         #endregion
-
         #region Method
         protected async Task OnRefreshButtonClicked()
         {
@@ -81,7 +70,6 @@ namespace GAZT.Views.NewViews
            // put Mesage already latest SADADID available
             }
         }
-
         protected  void OnDownLoadInvoiceClicked()
         {
          viewModel.GetPdfUrl();
@@ -104,7 +92,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -121,11 +108,7 @@ namespace GAZT.Views.NewViews
                         break;
                 }
             }
-
         }
-
-        
-
         public async void OnCopySadadNumberButtonClicked(object sender, EventArgs args)
         {
             await Clipboard.SetTextAsync(viewModel.EstimatedZAKATSADADNumber.Sopbel);
@@ -134,12 +117,9 @@ namespace GAZT.Views.NewViews
                 var text = await Clipboard.GetTextAsync();
                 //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
                await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
-
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
             }
         }
-
         #endregion
-
     }
 }

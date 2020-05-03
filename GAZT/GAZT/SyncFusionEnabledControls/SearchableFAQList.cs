@@ -4,7 +4,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using GAZTeServicesBusinessLibrary;
 using GAZT.Models;
-
 namespace GAZTeServicesApp.Controls
 {
     /// <summary>
@@ -14,7 +13,6 @@ namespace GAZTeServicesApp.Controls
     public class SearchableFAQList : SearchableListView
     {      
         #region Method
-
         /// <summary>
         /// Filtering the list view items based on the search text.
         /// </summary>
@@ -25,19 +23,15 @@ namespace GAZTeServicesApp.Controls
             if (base.FilterContacts(obj))
             {
                 var taskInfo = obj as FAQ;
-                
                 if (taskInfo == null || string.IsNullOrEmpty(taskInfo.Question))
                 {
                     return false;
                 }
-
                 return taskInfo.Question.ToUpperInvariant().Contains(SearchText.ToUpperInvariant()) ||
                     taskInfo.Answer.Exists(item => item.ToUpperInvariant().Contains(SearchText.ToUpperInvariant()));
             }
-
             return false;
         }
-        
         #endregion
     }
 }
