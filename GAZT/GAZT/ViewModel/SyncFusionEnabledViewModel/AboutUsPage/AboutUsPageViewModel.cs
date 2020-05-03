@@ -1,10 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
 {
     public class AboutUsPageViewModel : ViewModelBase
@@ -14,9 +11,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
-
         #region Property
-
         private string _webUrl = string.Empty;
         public string WebUrl
         {
@@ -30,12 +25,8 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
                 RaisePropertyChanged("WebUrl");
             }
         }
-
-
         #endregion
-
         #region Constructor
-
         public AboutUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -48,18 +39,13 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             GoBackClick = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
         }
-
         #endregion
-
         #region Method
         #endregion
-
-
     }
 }
