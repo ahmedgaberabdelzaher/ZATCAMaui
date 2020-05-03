@@ -31,24 +31,13 @@ namespace GAZT
         //SYNCFUSION INTEGRATION
 
 
-        public static string LoginView = "LoginView";
-        public static string OTPView = "OTPView";
-        public static string DashboardView = "DashboardView";
         public static string MyCertificate = "MyCertificate";
-        public static string TaxPayerProfileView = "TaxPayerProfileView";
         public static string PdfView = "PdfView";
         public static string UpdateEmailAddress = "UpdateEmailAddress";
         public static string ForgotUsernamePassword = "ForgotUsernamePassword";
 
-        public static string TPProfileView = "TPProfileView";
-        public static string VerifyEmailAddressView = "VerifyEmailAddressView";
-        public static string ChangeMobileNumberView = "ChangeMobileNumberView";
-        public static string ChangePasswordView = "ChangePasswordView";
         public static string MyBillsView = "MyBillsView";
-        public static string PdfiOSView = "PdfiOSView";
 
-        public static string LogInPageView = "LogInPageView";
-        public static string DashboardPageView = "DashboardPageView";
         public static string TaxPayerProfilePageView = "TaxPayerProfilePageView";
         public static string ChangeMobileNumberPageView = "ChangeMobileNumberPageView";
         public static string ChangeEmailPageView = "ChangeEmailPageView";
@@ -64,7 +53,6 @@ namespace GAZT
         public static string ICRListPageView = "ICRListPageView";
         public static string CheckTINStatusPageView = "CheckTINStatusPageView";
         public static string VATReturnsPageView = "VATReturnsPageView";
-        public static string ZakatBillDetailsPageView = "ZakatBillDetailsPageView";
         public static string AAcknowledgementView = "AAcknowledgementView";
         public static string AcknowledgementDetailsPageView = "AcknowledgementDetailsPageView";
         public static string DisplayNotesPageView = "DisplayNotesPageView";
@@ -81,7 +69,6 @@ namespace GAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportMobilePageView = "TaxEvasionReportMobilePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
-        public static string TaxEvasionReportFormAttachmentPageView = "TaxEvasionReportFormAttachmentPageView";
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";

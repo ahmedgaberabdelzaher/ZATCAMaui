@@ -161,10 +161,10 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.NavigateTo(App.ChangePasswordPageView, ComingToOTPVerificationScreenFrom.IsLogin);
             });
-            OnHomeClick = new Xamarin.Forms.Command(() =>
-            {
-                _navigationService.NavigateTo(App.DashboardPageView);
-            });
+            //OnHomeClick = new Xamarin.Forms.Command(() =>
+            //{
+            //    _navigationService.NavigateTo(App.DashboardPageView);
+            //});
 
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {

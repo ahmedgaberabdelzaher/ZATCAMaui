@@ -181,12 +181,7 @@ namespace GAZT.Views
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-        protected void OnTaxPayerClicked(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.TaxPayerProfileView);
-
-        }
-
+       
         private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var dataItem = e.Item as MyBills;

@@ -65,6 +65,7 @@
     <Folder Include="Connected Services\" />
     <Folder Include="Effect\" />
     <Folder Include="SyncFusionEnabledBehaviors\" />
+    <Folder Include="ViewModel\NewViewModel\" />
     <Folder Include="Views\SyncFusionEnabledViews\Common\" />
   </ItemGroup>
   <ItemGroup>
@@ -113,34 +114,25 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SyncfusionControl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ChangeMobileNumberView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AccountCreatedPages\AccountCreatedPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ChangePasswordView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AcknowledgementDetailsPages\AcknowledgementDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AAcknowledgement.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AccountCreatedPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AddNotePages\AddNotePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AcknowledgementDetailsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AddPopPages\AddPopPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AddNotePageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AmendSalesDetailsPages\AmendSalesDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AddPopPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\AttachmentPages\AttachmentPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AmendSalesDetailsPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\AttachmentPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\BillDetailsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\BillDetailsPages\BillDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\AboutUsPages\AboutUsPageView.xaml">
@@ -155,31 +147,25 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\ChangePasswordPages\ChangePasswordPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\CheckTINStatusPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\CheckTINStatusPages\CheckTINStatusPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\CorrespondancePageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\CorrespondancePages\CorrespondancePageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\CorrespondenceDetailsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\CorrespondenceDetailsPages\CorrespondenceDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\CreditCarriedPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\CreditCarriedPages\CreditCarriedPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\DashboardPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\DisplayNotesPages\DisplayNotesPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\DisplayNotesPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\FormBundleStatusPages\FormBundleStatusPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\FormBundleStatusPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\ICRListPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\LogInPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ICRListPages\ICRListPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MyBillsView.xaml">
@@ -191,10 +177,7 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\OtpPages\OTPPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\SalesDetailsPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\TaxEvasionReportFormAttachmentPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\SalesDetailsPages\SalesDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\PrivacyAndPolicyPages\PrivacyAndPolicyPageView.xaml">
@@ -212,25 +195,16 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATDeclarationPages\VATReturnsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\ZakatBillDetailsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ZakatReturnDetailsPages\ZakatReturnDetailsPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\ZakatReturnDetailsPageView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\ZakatReturnListPages\ZakatReturnListPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewViews\ZakatReturnListPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PdfView.xaml">
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\PdfViewPages\PdfView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\ReturnsPages\ReturnsPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\TPProfileView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\VerifyEmailAddressView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
