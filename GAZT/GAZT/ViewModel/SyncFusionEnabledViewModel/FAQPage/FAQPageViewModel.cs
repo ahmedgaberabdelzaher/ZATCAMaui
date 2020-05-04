@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
@@ -11,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel
 {
     public class FAQPageViewModel : ViewModelBase
     {

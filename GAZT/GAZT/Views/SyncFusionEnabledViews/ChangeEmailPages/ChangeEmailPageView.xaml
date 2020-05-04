@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
               xmlns:custom="clr-namespace:GAZT"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
@@ -13,7 +13,7 @@
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:local1="clr-namespace:GAZT.SyncFusionEnabledConverters"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="GAZT.Views.NewViews.ChangeEmailPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.ChangeEmail.ChangeEmailPageView"
              Title="{x:Static local:AppResources.ChangeEmail}"
               NavigationPage.HasNavigationBar="False"
              >

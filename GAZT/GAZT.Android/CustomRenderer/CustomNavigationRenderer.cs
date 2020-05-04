@@ -9,6 +9,8 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using Android.Content.Res;
 using Support = Android.Support.V7.Widget;
+using EGAZT;
+
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace GAZT.Droid.CustomRenderer
 {

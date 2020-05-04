@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel
 {
     public class CorrespondenceDetailsPageViewModel : ViewModelBase
     {

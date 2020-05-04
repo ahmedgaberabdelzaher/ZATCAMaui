@@ -5,7 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
@@ -13,7 +13,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
-             x:Class="GAZT.Views.NewViews.SignUpFormPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount.SignUpFormPageView"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

@@ -1,16 +1,11 @@
-﻿using GAZT.Helper;
-using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Resources;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
+using Foundation;
+using GAZT.Helper;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-using Foundation;
-namespace GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
+
+namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
 {
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]

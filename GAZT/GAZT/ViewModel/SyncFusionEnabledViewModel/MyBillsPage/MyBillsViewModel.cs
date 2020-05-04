@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -13,7 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
 {
     public class MyBillsViewModel : ViewModelBase
     {

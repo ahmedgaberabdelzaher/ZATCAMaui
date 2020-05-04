@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
+using EGAZT;
+
 namespace GAZT
 {
     public partial class MainPage : ContentPage

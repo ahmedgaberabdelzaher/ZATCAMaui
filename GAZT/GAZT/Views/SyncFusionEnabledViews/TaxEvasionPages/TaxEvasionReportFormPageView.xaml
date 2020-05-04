@@ -8,7 +8,7 @@ xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
               xmlns:local1="clr-namespace:GAZT"
-               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+               xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              NavigationPage.HasNavigationBar="False"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
@@ -16,7 +16,7 @@ xmlns:custom="clr-namespace:GAZT"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="GAZT.Views.NewViews.TaxEvasionReportFormPageView" BackgroundColor="White" >
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm.TaxEvasionReportFormPageView" BackgroundColor="White" >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />

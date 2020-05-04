@@ -5,13 +5,11 @@ using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel
 {
     public class CreateGaztAccountPageViewModel : ViewModelBase
     {

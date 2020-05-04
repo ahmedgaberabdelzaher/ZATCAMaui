@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT;
+using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using GAZT.Manager;
@@ -16,7 +18,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-namespace GAZTeServicesApp.ViewModels.LandingPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel
 {
     /// <summary>
     /// ViewModel for article list page.

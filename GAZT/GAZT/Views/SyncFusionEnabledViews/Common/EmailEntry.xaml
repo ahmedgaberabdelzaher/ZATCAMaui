@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
-    x:Class="GAZTeServicesApp.Views.Common.EmailEntry"
+    x:Class="EGAZT.Views.SyncFusionEnabledViews.EmailEntry.EmailEntry"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-    xmlns:localres="clr-namespace:GAZT;assembly:GAZT"
+    xmlns:localres="clr-namespace:EGAZT;assembly:GAZT"
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
      xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:custom="clr-namespace:GAZT"

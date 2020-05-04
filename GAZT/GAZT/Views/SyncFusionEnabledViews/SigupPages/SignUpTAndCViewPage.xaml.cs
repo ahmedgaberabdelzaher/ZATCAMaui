@@ -1,15 +1,11 @@
-﻿using GAZT.ViewModel;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpTAndCViewPage : ContentPage

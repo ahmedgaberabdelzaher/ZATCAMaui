@@ -1,16 +1,13 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails
 {
     public interface IBaseUrl { string Get(); }
     [XamlCompilation(XamlCompilationOptions.Compile)]

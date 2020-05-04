@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
                 FlowDirection="RightToLeft"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
-             x:Class="GAZT.Views.NewViews.AccountCreatedPageView">
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AccountCreated.AccountCreatedPageView">
     <ContentPage.Content>
         <StackLayout x:Name="Mainstack" VerticalOptions="Center" HorizontalOptions="Center">
             <Image  Source="ic_check_circle_24px" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"></Image>

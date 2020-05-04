@@ -1,16 +1,14 @@
-﻿using GAZT.Manager;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Manager;
 using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CreateGaztAccountPageView : ContentPage

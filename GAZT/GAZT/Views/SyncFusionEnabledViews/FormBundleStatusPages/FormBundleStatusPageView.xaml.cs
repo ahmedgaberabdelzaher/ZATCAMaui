@@ -1,19 +1,15 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewModel;
+using GAZT.Models;
 using Syncfusion.SfPicker.XForms;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
 using System.Resources;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FormBundleStatusPageView : ContentPage

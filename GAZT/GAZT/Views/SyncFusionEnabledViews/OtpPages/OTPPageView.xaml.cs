@@ -1,19 +1,16 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Manager;
-using Plugin.FilePicker;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using System;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-namespace GAZT.Views.NewViews
+using Xamarin.Forms.Xaml;
+namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OTPPageView : ContentPage

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-                xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-                xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
-                mc:Ignorable="d"
-                Title="{x:Static local:AppResources.Returns}"
-              xmlns:local="clr-namespace:GAZT"
-                xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
-                xmlns:custom="clr-namespace:GAZT"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:local="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+              xmlns:custom2="clr-namespace:EGAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Accordion;assembly=Syncfusion.Expander.XForms;clr-namespace:Syncfusion.XForms.Expander"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.ReturnsPages.ReturnsPageView"
+             xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             mc:Ignorable="d"
+             Title="{x:Static custom2:AppResources.Returns}"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.ReturnsPage.ReturnsPageView"
              NavigationPage.HasNavigationBar="False"
              FlowDirection="RightToLeft"
              >
@@ -41,7 +41,7 @@
                     StrokeThickness="2"/>
                 </tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SfTabView.Items>
-                    <tabview:SfTabItem Title="{x:Static local:AppResources.Submitted}"
+                    <tabview:SfTabItem Title="{x:Static custom2:AppResources.Submitted}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
@@ -52,7 +52,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -89,7 +89,7 @@
                                                                                     <RowDefinition Height="Auto" />
                                                                                     <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
-                                                                                <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                                                <Label Text="{x:Static custom2:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
@@ -125,7 +125,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZTaxPeriod}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
                                                                                         </FormattedString>
@@ -139,7 +139,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
                                                                                         </FormattedString>
@@ -153,7 +153,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReturnPeriod}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
                                                                                         </FormattedString>
@@ -167,7 +167,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
                                                                                         </FormattedString>
@@ -182,7 +182,7 @@
                                                         </ListView.ItemTemplate>
                                                     </ListView>
                                                 </StackLayout>
-                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATSubmitted}">
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATSubmitted}">
                                                 </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
@@ -190,7 +190,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -248,7 +248,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ReturnPeriod}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
                                                                                     </FormattedString>
@@ -262,7 +262,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
                                                                                     </FormattedString>
@@ -276,7 +276,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
                                                                                     </FormattedString>
@@ -290,7 +290,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReferenceNumber}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
                                                                                     </FormattedString>
@@ -308,7 +308,7 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
-                                                <custom:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatSubmitted}">
+                                                <custom:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatSubmitted}">
                                                 </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
@@ -317,7 +317,7 @@
                             </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Title="{x:Static local:AppResources.UnSubmitted}"
+                    <tabview:SfTabItem Title="{x:Static custom2:AppResources.UnSubmitted}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
@@ -328,7 +328,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -365,7 +365,7 @@
                                                                                     <RowDefinition Height="Auto" />
                                                                                     <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
-                                                                                <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                                                <Label Text="{x:Static custom2:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
@@ -401,7 +401,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZTaxPeriod}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
                                                                                         </FormattedString>
@@ -415,7 +415,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
                                                                                         </FormattedString>
@@ -429,7 +429,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReturnPeriod}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
                                                                                         </FormattedString>
@@ -443,7 +443,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
                                                                                         </FormattedString>
@@ -458,7 +458,7 @@
                                                         </ListView.ItemTemplate>
                                                     </ListView>
                                                 </StackLayout>
-                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATNonSubmitted}">
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATNonSubmitted}">
                                                 </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
@@ -466,7 +466,7 @@
                                     <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                         <syncfusion:SfExpander.Header>
                                             <Grid>
-                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                             </Grid>
                                         </syncfusion:SfExpander.Header>
                                         <syncfusion:SfExpander.Content>
@@ -524,7 +524,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ReturnPeriod}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
                                                                                     </FormattedString>
@@ -538,7 +538,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
                                                                                     </FormattedString>
@@ -552,7 +552,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
                                                                                     </FormattedString>
@@ -566,7 +566,7 @@
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
-                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
+                                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReferenceNumber}"></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
                                                                                     </FormattedString>
@@ -584,7 +584,7 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
-                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatNonSubmitted}">
+                                                <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatNonSubmitted}">
                                                 </custom:CustomLabel>
                                             </Grid>
                                         </syncfusion:SfExpander.Content>
@@ -593,7 +593,7 @@
                             </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
-                    <tabview:SfTabItem Title="{x:Static local:AppResources.OverDue}"
+                    <tabview:SfTabItem Title="{x:Static custom2:AppResources.OverDue}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
@@ -605,7 +605,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.VatReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -642,7 +642,7 @@
                                                                                         <RowDefinition Height="Auto" />
                                                                                         <RowDefinition Height="Auto" />
                                                                                     </Grid.RowDefinitions>
-                                                                                    <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                                                    <Label Text="{x:Static custom2:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
@@ -678,7 +678,7 @@
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
-                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZTaxPeriod}"></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatTaxPeriod}"></Span>
                                                                                             </FormattedString>
@@ -692,7 +692,7 @@
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
-                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusTxt}"></Span>
                                                                                             </FormattedString>
@@ -706,7 +706,7 @@
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
-                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReturnPeriod}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReturnPeriod}"></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedDate}"></Span>
                                                                                             </FormattedString>
@@ -720,7 +720,7 @@
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
-                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding FormatedSingleDueDate}"></Span>
                                                                                             </FormattedString>
@@ -736,7 +736,7 @@
                                                             </ListView.ItemTemplate>
                                                         </ListView>
                                                     </StackLayout>
-                                                    <custom:CustomLabel  Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATOverDue}">
+                                                    <custom:CustomLabel  Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVATOverDue}">
                                                     </custom:CustomLabel>
                                                 </Grid>
                                             </syncfusion:SfExpander.Content>
@@ -744,7 +744,7 @@
                                         <syncfusion:SfExpander IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}">
                                             <syncfusion:SfExpander.Header>
                                                 <Grid>
-                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static local:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
+                                                    <local:CustomLabel FlowDirection="{Binding FDirection}" TextColor="#495F6E" Margin="10,0,10,0"  Text="{x:Static custom2:AppResources.ZAKATReturns}"  HeightRequest="50" VerticalTextAlignment="Center" />
                                                 </Grid>
                                             </syncfusion:SfExpander.Header>
                                             <syncfusion:SfExpander.Content>
@@ -802,7 +802,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ReturnPeriod}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ReturnPeriod}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Period}"></Span>
                                                                                         </FormattedString>
@@ -816,7 +816,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.DueDate}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.DueDate}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DueDtC}"></Span>
                                                                                         </FormattedString>
@@ -830,7 +830,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Status}"></Span>
                                                                                         </FormattedString>
@@ -844,7 +844,7 @@
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
-                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZReferenceNumber}"></Span>
+                                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZReferenceNumber}"></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
                                                                                         </FormattedString>
@@ -857,7 +857,7 @@
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
                                                     </ListView>
-                                                    <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatOverDue}">
+                                                    <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatOverDue}">
                                                     </custom:CustomLabel>
                                                 </Grid>
                                             </syncfusion:SfExpander.Content>
@@ -881,7 +881,7 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                        Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
@@ -893,7 +893,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.Returns}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static custom2:AppResources.Returns}"  FontSize="14" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

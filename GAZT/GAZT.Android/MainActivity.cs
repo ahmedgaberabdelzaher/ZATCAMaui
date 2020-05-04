@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
+using EGAZT;
 using Microsoft.AppCenter.Distribute;
 using Plugin.Permissions;
 using Tavant.XToolkit;
@@ -42,6 +43,14 @@ namespace GAZT.Droid
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.Camera) != (int)Permission.Granted)
             {
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.Camera }, 0);
+            }
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessFineLocation) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessFineLocation }, 0);
+            }
+            if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.AccessCoarseLocation) != (int)Permission.Granted)
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation }, 0);
             }
             PackageInfo info = this.PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;

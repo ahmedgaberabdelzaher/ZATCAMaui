@@ -1,6 +1,7 @@
-﻿using System;
+﻿using EGAZT.Models;
+using System;
 using System.Collections.Generic;
-namespace GAZT.Models
+namespace EGAZT.Models
 {
     public class ZakatReturnDetails
     {

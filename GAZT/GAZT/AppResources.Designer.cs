@@ -7,8 +7,11 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-namespace GAZT {
+
+namespace EGAZT {
     using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -20,11 +23,15 @@ namespace GAZT {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class AppResources {
+        
         private static global::System.Resources.ResourceManager resourceMan;
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal AppResources() {
         }
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
@@ -32,12 +39,13 @@ namespace GAZT {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GAZT.AppResources", typeof(AppResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("EGAZT.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
@@ -51,6 +59,7 @@ namespace GAZT {
                 resourceCulture = value;
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Acknowledgement.
         /// </summary>
@@ -59,6 +68,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Acknowlwdgement", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
@@ -67,6 +77,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ActivityIndicatorTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Alerts.
         /// </summary>
@@ -75,6 +86,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Alerts", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
@@ -83,6 +95,7 @@ namespace GAZT {
                 return ResourceManager.GetString("All", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Dear taxpayer, when calculating the amendments, found that your
         ///amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal.
@@ -92,6 +105,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendmentsDoNotMatchText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amend return.
         /// </summary>
@@ -100,6 +114,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amend The Return.
         /// </summary>
@@ -108,6 +123,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmendTheReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amount details and SADAD number payment.
         /// </summary>
@@ -116,6 +132,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amount not objected.
         /// </summary>
@@ -124,6 +141,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AmountNotObjected", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to App Version.
         /// </summary>
@@ -132,6 +150,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AppVersion", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
@@ -140,6 +159,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Attachment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
@@ -148,6 +168,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Attachments", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Auditing.
         /// </summary>
@@ -156,6 +177,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Auditing", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Average number of employment.
         /// </summary>
@@ -164,6 +186,7 @@ namespace GAZT {
                 return ResourceManager.GetString("AverageNumOfEmployment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
@@ -172,6 +195,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Back", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Bill.
         /// </summary>
@@ -180,6 +204,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Bill", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Bill Details.
         /// </summary>
@@ -188,6 +213,7 @@ namespace GAZT {
                 return ResourceManager.GetString("BillDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Billed number.
         /// </summary>
@@ -196,6 +222,7 @@ namespace GAZT {
                 return ResourceManager.GetString("BilledNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Bills.
         /// </summary>
@@ -204,6 +231,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Bills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Both the password fields should match.
         /// </summary>
@@ -212,6 +240,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Boththepasswordfieldsshouldmatch", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You will receive a detailed breakdown of payable amount on your registered email and in correspondence section of your account on GAZT portal.
         /// </summary>
@@ -220,6 +249,7 @@ namespace GAZT {
                 return ResourceManager.GetString("BreakDownLabel", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
@@ -228,6 +258,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CancelText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Capital.
         /// </summary>
@@ -236,6 +267,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Capital", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Captcha.
         /// </summary>
@@ -244,6 +276,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Captcha", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change Email.
         /// </summary>
@@ -252,6 +285,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ChangeEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change Mobile Number.
         /// </summary>
@@ -260,6 +294,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ChangeMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
@@ -268,6 +303,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ChangePassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Chatting.
         /// </summary>
@@ -276,6 +312,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Chatting", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
@@ -284,6 +321,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Clickhereforlogin", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Corporate.
         /// </summary>
@@ -292,6 +330,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Company", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
@@ -300,6 +339,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Confirm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Contracts to be approved.
         /// </summary>
@@ -308,6 +348,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ContractsToBeApproved", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Copied.
         /// </summary>
@@ -316,6 +357,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Copied", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD payment number copied.
         /// </summary>
@@ -324,6 +366,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CopiedSADADPaymentNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Copy SADAD number.
         /// </summary>
@@ -332,6 +375,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CopySADADNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Copy SADAD payment number.
         /// </summary>
@@ -340,6 +384,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CopySADADPaymentNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Corporate ID.
         /// </summary>
@@ -348,6 +393,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CorportaeID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
@@ -356,6 +402,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Correspondance", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer, 
         ///Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
@@ -368,6 +415,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CreditReturnMsg", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Current Password.
         /// </summary>
@@ -376,6 +424,7 @@ namespace GAZT {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
@@ -384,6 +433,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Home Page.
         /// </summary>
@@ -392,6 +442,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Dashoboard", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Data available to GAZT.
         /// </summary>
@@ -400,6 +451,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DataAvailableToGAZT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date.
         /// </summary>
@@ -408,6 +460,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Date", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date ( Hijri).
         /// </summary>
@@ -416,6 +469,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DateHijri", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Details changed successfully.
         /// </summary>
@@ -424,6 +478,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DetailsChangedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Details of SADAD bill.
         /// </summary>
@@ -432,6 +487,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DetailsOfSADADBill", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Download Acknowledgement.
         /// </summary>
@@ -440,6 +496,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DownloadAcknowlwdgement", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form Saved successfully{0}.
         /// </summary>
@@ -448,6 +505,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DraftSaved", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Due amount.
         /// </summary>
@@ -456,6 +514,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DueAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Due date.
         /// </summary>
@@ -464,6 +523,7 @@ namespace GAZT {
                 return ResourceManager.GetString("DueDate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
@@ -472,6 +532,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Email", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
@@ -480,6 +541,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EmailSent", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Email verification code sent successfully..
         /// </summary>
@@ -488,6 +550,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Emailverificationcodesentsuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter captcha.
         /// </summary>
@@ -496,6 +559,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Entercaptcha", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter confirm password.
         /// </summary>
@@ -504,6 +568,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterConfirmpassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Entered captcha code is incorrect. Please try again.
         /// </summary>
@@ -512,6 +577,7 @@ namespace GAZT {
                 return ResourceManager.GetString("enteredcaptchacodeisincorrect", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Id.
         /// </summary>
@@ -520,6 +586,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterId", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter your 8 digit mobile number.
         /// </summary>
@@ -528,6 +595,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterNewMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter new password.
         /// </summary>
@@ -536,6 +604,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterNewpassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter OTP.
         /// </summary>
@@ -544,6 +613,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterOTP", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter username.
         /// </summary>
@@ -552,6 +622,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Enterusername", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter valid mobile number.
         /// </summary>
@@ -560,6 +631,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter verification code received on mobile.
         /// </summary>
@@ -568,6 +640,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterVerificationCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter verification code received on email.
         /// </summary>
@@ -576,6 +649,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterVerificationCodeForEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Verification Code.
         /// </summary>
@@ -584,6 +658,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Entity type.
         /// </summary>
@@ -592,6 +667,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EntityType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to E-Services.
         /// </summary>
@@ -600,6 +676,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EServices", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimated Sales for the Fiscal Year.
         /// </summary>
@@ -608,6 +685,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EstimateSalesForFiscalYear", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimated Zakat.
         /// </summary>
@@ -616,6 +694,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EstimateZakat", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimate.
         /// </summary>
@@ -624,6 +703,7 @@ namespace GAZT {
                 return ResourceManager.GetString("EstimateZakatReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ET Returns.
         /// </summary>
@@ -632,6 +712,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ETReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to EXCISE TAX.
         /// </summary>
@@ -640,6 +721,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ExciseCertificates", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Excise Tax Returns.
         /// </summary>
@@ -648,6 +730,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ExciseTaxReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
@@ -656,6 +739,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ExportValue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Financial Period From.
         /// </summary>
@@ -664,6 +748,7 @@ namespace GAZT {
                 return ResourceManager.GetString("FinancialPeriodFrom", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Fiscal year.
         /// </summary>
@@ -672,6 +757,7 @@ namespace GAZT {
                 return ResourceManager.GetString("FiscalYear", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forgot password.
         /// </summary>
@@ -680,6 +766,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ForgotPassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forgot Username or Password?.
         /// </summary>
@@ -688,6 +775,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ForgotPasswordORUseName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forgot Username or Password.
         /// </summary>
@@ -696,6 +784,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ForgotPasswordOrUserName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forgot username.
         /// </summary>
@@ -704,6 +793,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ForgotUsername", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Hello,.
         /// </summary>
@@ -712,6 +802,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Hi", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ID Number.
         /// </summary>
@@ -720,6 +811,7 @@ namespace GAZT {
                 return ResourceManager.GetString("IDNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer Type.
         /// </summary>
@@ -728,6 +820,7 @@ namespace GAZT {
                 return ResourceManager.GetString("IDType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Import value.
         /// </summary>
@@ -736,6 +829,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ImportValue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Individual/Personal business.
         /// </summary>
@@ -744,6 +838,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Individual", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
@@ -752,6 +847,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Information", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid email.
         /// </summary>
@@ -760,6 +856,7 @@ namespace GAZT {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The entered code is incorrect.
         /// </summary>
@@ -768,6 +865,7 @@ namespace GAZT {
                 return ResourceManager.GetString("InvalidOTP", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid password.
         /// </summary>
@@ -776,6 +874,7 @@ namespace GAZT {
                 return ResourceManager.GetString("InvalidPassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid verification code entered.
         /// </summary>
@@ -784,6 +883,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Invalidverificationcodeentered", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid captcha.
         /// </summary>
@@ -792,6 +892,7 @@ namespace GAZT {
                 return ResourceManager.GetString("InvaliedCaptcha", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You have paid {} SAR for current fiscal year.
         /// </summary>
@@ -800,6 +901,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ItHasPaidNumberForCurrentFiscalYear", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Log in.
         /// </summary>
@@ -808,6 +910,7 @@ namespace GAZT {
                 return ResourceManager.GetString("LogIn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Login successful.
         /// </summary>
@@ -816,6 +919,7 @@ namespace GAZT {
                 return ResourceManager.GetString("LoginSuccessful", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to log off?.
         /// </summary>
@@ -824,6 +928,7 @@ namespace GAZT {
                 return ResourceManager.GetString("LogoutConfirmationMessage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to If you are changing the Email ID, it is mandatory to change the Password.
         /// </summary>
@@ -832,6 +937,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MandatoryPasswordForEmailUpdatation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number.
         /// </summary>
@@ -840,6 +946,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number is missing for the entered TIN.
         /// </summary>
@@ -848,6 +955,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MobileNumberIsMissingForEnteredTIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile Number  has been changed  successfully.
         /// </summary>
@@ -856,6 +964,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MobileNumberUpdatedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number verification code sent successfully..
         /// </summary>
@@ -864,6 +973,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MobileNumberVerificationSuccessful", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Bills.
         /// </summary>
@@ -872,6 +982,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MyBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Bills.
         /// </summary>
@@ -880,6 +991,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MyBillsInvoices", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Certificate.
         /// </summary>
@@ -888,6 +1000,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MyCertificate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Certificates.
         /// </summary>
@@ -896,6 +1009,7 @@ namespace GAZT {
                 return ResourceManager.GetString("MyCertificates", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer Name.
         /// </summary>
@@ -904,6 +1018,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Name", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID.
         /// </summary>
@@ -912,6 +1027,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NationaID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
@@ -920,6 +1036,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New email.
         /// </summary>
@@ -928,6 +1045,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NewEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New Email field and Retype Email field must match.
         /// </summary>
@@ -936,6 +1054,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NewEmailandRetypeEmailNotMatch", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New mobile number.
         /// </summary>
@@ -944,6 +1063,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NewMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
@@ -952,6 +1072,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NewPassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
@@ -960,6 +1081,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NewPasswordandRetypePasswordNotMatch", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No Upcoming Commitments.
         /// </summary>
@@ -968,6 +1090,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NoAppointmentText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No invoices available.
         /// </summary>
@@ -976,6 +1099,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NoBillsAvailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No certificate available.
         /// </summary>
@@ -984,6 +1108,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Nocertificateavailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No data available.
         /// </summary>
@@ -992,6 +1117,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Nodataavailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Non Submitted.
         /// </summary>
@@ -1000,6 +1126,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NonSubmitted", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No TIN linked with the entered Email address.
         /// </summary>
@@ -1008,6 +1135,7 @@ namespace GAZT {
                 return ResourceManager.GetString("NoTINsAvailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Number.
         /// </summary>
@@ -1016,6 +1144,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Number", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to of.
         /// </summary>
@@ -1024,6 +1153,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OfText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
@@ -1032,6 +1162,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OKText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Old email.
         /// </summary>
@@ -1040,6 +1171,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OldEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Old Value.
         /// </summary>
@@ -1048,6 +1180,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OldValue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Overdue.
         /// </summary>
@@ -1056,6 +1189,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OverDue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Overdue return.
         /// </summary>
@@ -1064,6 +1198,7 @@ namespace GAZT {
                 return ResourceManager.GetString("OverdueReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Paid.
         /// </summary>
@@ -1072,6 +1207,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Paid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Partial.
         /// </summary>
@@ -1080,6 +1216,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Partial", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Partially Paid.
         /// </summary>
@@ -1088,6 +1225,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PartiallyPaid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password .
         /// </summary>
@@ -1096,6 +1234,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Password", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password has been changed  successfully.
         /// </summary>
@@ -1104,6 +1243,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PassWordChangedSucessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password did not updated as it does not match password format.
         /// </summary>
@@ -1112,6 +1252,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PasswordGuidelineText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character..
         /// </summary>
@@ -1120,6 +1261,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PasswordValidationMesseg", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Pay by MADA.
         /// </summary>
@@ -1128,6 +1270,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Payment number.
         /// </summary>
@@ -1136,6 +1279,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PaymentNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to  PDF Not Available.
         /// </summary>
@@ -1144,6 +1288,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PdfIsNotAvailableFor", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No certificate available.
         /// </summary>
@@ -1152,6 +1297,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please change password.
         /// </summary>
@@ -1160,6 +1306,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter OTP.
         /// </summary>
@@ -1168,6 +1315,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseenterOTP", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the VAT Certificate No. composed of 15 digits.
         /// </summary>
@@ -1176,6 +1324,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseentertheVATCertificateNocomposedof15digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter username.
         /// </summary>
@@ -1184,6 +1333,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseenterUsername", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter verification code received on mobile to Enter GAZT eServices App.
         /// </summary>
@@ -1192,6 +1342,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseEnterverificationcodereceivedonmobiletoEnterGAZTPortal", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter your login information.
         /// </summary>
@@ -1200,6 +1351,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Pleaseenteryourlogininformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please re-verify.
         /// </summary>
@@ -1208,6 +1360,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PleaseReVerify", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please review the calculation and submit again.
         /// </summary>
@@ -1216,6 +1369,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Pleasereviewthecalculationandsubmitagain", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
@@ -1224,6 +1378,7 @@ namespace GAZT {
                 return ResourceManager.GetString("PurchaseValue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reason for chatting.
         /// </summary>
@@ -1232,6 +1387,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ReasonForChatting", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reason of amend.
         /// </summary>
@@ -1240,6 +1396,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ReasonOfAmend", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Registration certificate.
         /// </summary>
@@ -1248,6 +1405,7 @@ namespace GAZT {
                 return ResourceManager.GetString("RegistrationCertificate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Registration is pending.
         /// </summary>
@@ -1256,6 +1414,7 @@ namespace GAZT {
                 return ResourceManager.GetString("RegistrationIsPending", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Release.
         /// </summary>
@@ -1264,6 +1423,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Release", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Remember me.
         /// </summary>
@@ -1272,6 +1432,7 @@ namespace GAZT {
                 return ResourceManager.GetString("RememberMe", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Resend OTP.
         /// </summary>
@@ -1280,6 +1441,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ResendOTP", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Resend verification code.
         /// </summary>
@@ -1288,6 +1450,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ResendVerificationCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return period.
         /// </summary>
@@ -1296,6 +1459,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ReturnPeriod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Returns.
         /// </summary>
@@ -1304,6 +1468,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Returns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Retype email.
         /// </summary>
@@ -1312,6 +1477,7 @@ namespace GAZT {
                 return ResourceManager.GetString("RetypeEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Retype password.
         /// </summary>
@@ -1320,6 +1486,7 @@ namespace GAZT {
                 return ResourceManager.GetString("RetypePassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD.
         /// </summary>
@@ -1328,6 +1495,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Sadad", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD number.
         /// </summary>
@@ -1336,6 +1504,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SADADNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD payment number.
         /// </summary>
@@ -1344,6 +1513,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SADADPaymentNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sadad payment number.
         /// </summary>
@@ -1352,6 +1522,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SadadPaymentNumberForBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sales details.
         /// </summary>
@@ -1360,6 +1531,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SalesDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sales not sales points.
         /// </summary>
@@ -1368,6 +1540,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SalesNotSalesPoints", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
@@ -1376,6 +1549,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Select password/username.
         /// </summary>
@@ -1384,6 +1558,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SelectPasswordUserName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Something went wrong, Please try again.
         /// </summary>
@@ -1392,6 +1567,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Somethingwentwrong", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Start chatting.
         /// </summary>
@@ -1400,6 +1576,7 @@ namespace GAZT {
                 return ResourceManager.GetString("StartChatting", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
@@ -1408,6 +1585,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Submit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submitted.
         /// </summary>
@@ -1416,6 +1594,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Submitted", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submitted return.
         /// </summary>
@@ -1424,6 +1603,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SubmittedReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat Calculation Summary.
         /// </summary>
@@ -1432,6 +1612,7 @@ namespace GAZT {
                 return ResourceManager.GetString("SummaryOfZakatCalculation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer profile.
         /// </summary>
@@ -1440,6 +1621,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TaxpayerProfile", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Tax type.
         /// </summary>
@@ -1448,6 +1630,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TaxType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The account will be locked after 3 failed verification code attempt.
         /// </summary>
@@ -1456,6 +1639,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TheAccountWillBeLockedAfterThreeAttempts", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The account will be locked after 3 failed verification code attempts.
         /// </summary>
@@ -1464,6 +1648,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TheaccountwillbelockedafterThreefailedverificationcodeattempts", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The code will be expired within .
         /// </summary>
@@ -1472,6 +1657,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TheAccountwillbelockedwithinTwomin", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN .
         /// </summary>
@@ -1480,6 +1666,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN or Email ID.
         /// </summary>
@@ -1488,6 +1675,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TinEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Tin Number.
         /// </summary>
@@ -1496,6 +1684,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TINS", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to To.
         /// </summary>
@@ -1504,6 +1693,7 @@ namespace GAZT {
                 return ResourceManager.GetString("To", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total amount.
         /// </summary>
@@ -1512,6 +1702,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total non submitted returns.
         /// </summary>
@@ -1520,6 +1711,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalNonSubmittedReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total no of returns.
         /// </summary>
@@ -1528,6 +1720,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalNoofReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total unpaid-bill amount SAR:.
         /// </summary>
@@ -1536,6 +1729,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalOfBillsUnpaid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total over due returns.
         /// </summary>
@@ -1544,6 +1738,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalOverDueReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total paid bills.
         /// </summary>
@@ -1552,6 +1747,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPaidBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total paid bills amount.
         /// </summary>
@@ -1560,6 +1756,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPaidBillsAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total paid returns.
         /// </summary>
@@ -1568,6 +1765,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPaidReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total partially paid bills.
         /// </summary>
@@ -1576,6 +1774,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPartiallyPaidBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total partially paid returns.
         /// </summary>
@@ -1584,6 +1783,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPartiallyPaidReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total partial paid bills amount.
         /// </summary>
@@ -1592,6 +1792,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalPartialPaidBillsAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total required to be paid.
         /// </summary>
@@ -1600,6 +1801,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalRequiredToBePaid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total submitted returns.
         /// </summary>
@@ -1608,6 +1810,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalSubmittedReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total unpaid bills.
         /// </summary>
@@ -1616,6 +1819,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalUnpaidBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total unpaid bills amount.
         /// </summary>
@@ -1624,6 +1828,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalUnpaidBillsAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total unpaid returns.
         /// </summary>
@@ -1632,6 +1837,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TotalUnpaidReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to 25% from  objected amount.
         /// </summary>
@@ -1640,6 +1846,7 @@ namespace GAZT {
                 return ResourceManager.GetString("TwentyFivePercentageObjectedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Unpaid.
         /// </summary>
@@ -1648,6 +1855,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UnPaid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Unsubmitted.
         /// </summary>
@@ -1656,6 +1864,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UnSubmitted", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User account locked.
         /// </summary>
@@ -1664,6 +1873,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UserAccountLocked", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User authentication failed.
         /// </summary>
@@ -1672,6 +1882,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UserAuthenticationFailed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User does not exist.
         /// </summary>
@@ -1680,6 +1891,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UserDoesNotExist", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User ID.
         /// </summary>
@@ -1688,6 +1900,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UserID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User name.
         /// </summary>
@@ -1696,6 +1909,7 @@ namespace GAZT {
                 return ResourceManager.GetString("UserName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Username has been sent to registered mobile number and email Id.
         /// </summary>
@@ -1704,6 +1918,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Usernamehasbeensenttoregisteredmobilenumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Verification code.
         /// </summary>
@@ -1712,6 +1927,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VarificationCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT.
         /// </summary>
@@ -1720,6 +1936,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VATCertificates", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
@@ -1728,6 +1945,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VATDeclaration", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
@@ -1736,6 +1954,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VATLookup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT registration certificate.
         /// </summary>
@@ -1744,6 +1963,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VATRegistrationCertificate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Returns.
         /// </summary>
@@ -1752,6 +1972,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VatReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Verification code.
         /// </summary>
@@ -1760,6 +1981,7 @@ namespace GAZT {
                 return ResourceManager.GetString("VerificationCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Verify.
         /// </summary>
@@ -1768,6 +1990,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Verify", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to WHT Returns.
         /// </summary>
@@ -1776,6 +1999,7 @@ namespace GAZT {
                 return ResourceManager.GetString("WHTreturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password has been changed successfully.
         /// </summary>
@@ -1784,6 +2008,7 @@ namespace GAZT {
                 return ResourceManager.GetString("YourPasswordhasbeenChangedsuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to 25% of Disputed Amount.
         /// </summary>
@@ -1792,6 +2017,7 @@ namespace GAZT {
                 return ResourceManager.GetString("Z25ofDisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Accept Return.
         /// </summary>
@@ -1800,6 +2026,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAcceptReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User account locked.
         /// </summary>
@@ -1808,6 +2035,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAccountLocked", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat amount.
         /// </summary>
@@ -1816,6 +2044,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat base.
         /// </summary>
@@ -1824,6 +2053,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatBase", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ZAKAT / CIT.
         /// </summary>
@@ -1832,6 +2062,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatCertificates", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ZAKAT Returns.
         /// </summary>
@@ -1840,6 +2071,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAKATReturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to An appeal will not be filed only in case pay for amount not objected plus 25% from objected amount. In case accepted in whole or in part objection. It will refunded to the amount objected.
         /// </summary>
@@ -1848,6 +2080,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat.
         /// </summary>
@@ -1856,6 +2089,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZakatTaxTypeForBills", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amend Sales Details.
         /// </summary>
@@ -1864,6 +2098,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAmendSalesDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
@@ -1872,6 +2107,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amount Payable (including penalties).
         /// </summary>
@@ -1880,6 +2116,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZAmountPayable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations. Paying the invoice means you confirm the correctness of the return information..
         /// </summary>
@@ -1888,6 +2125,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZBillDeatilsInfo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Bill Details.
         /// </summary>
@@ -1896,6 +2134,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZBillDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Disclaimer.
         /// </summary>
@@ -1904,6 +2143,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZBillDetailsDisclaimer", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change Reason.
         /// </summary>
@@ -1912,6 +2152,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZChangeReason", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Choose only file with extension Doc,Docx,Jpg,Pdf,Xlsx,Xls,Png,Ppt,gif,txt..
         /// </summary>
@@ -1920,6 +2161,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZChooseonlyfilewithextension", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
@@ -1928,6 +2170,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZClose", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR Name.
         /// </summary>
@@ -1936,6 +2179,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR No..
         /// </summary>
@@ -1944,6 +2188,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRNo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR Number.
         /// </summary>
@@ -1952,6 +2197,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ID Number has to be 10 digits long.
         /// </summary>
@@ -1960,6 +2206,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRNumberisnotequalto10", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR Status.
         /// </summary>
@@ -1968,6 +2215,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCRStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Current Email.
         /// </summary>
@@ -1976,6 +2224,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCurrentEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Current Mobile Number.
         /// </summary>
@@ -1984,6 +2233,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZCurrentMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Data available to GAZT.
         /// </summary>
@@ -1992,6 +2242,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDataavailabletoGAZT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Dear taxpayer, the return is under GAZT review and cannot be amended..
         /// </summary>
@@ -2000,6 +2251,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Declarations.
         /// </summary>
@@ -2008,6 +2260,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDeclaration", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
@@ -2016,6 +2269,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDescription", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Download Form.
         /// </summary>
@@ -2024,6 +2278,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZDownloadForm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Email address has been changed  successfully.
         /// </summary>
@@ -2032,6 +2287,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEmailUpdatedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter valid user id.
         /// </summary>
@@ -2040,6 +2296,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEntertherequiredfield", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
@@ -2048,6 +2305,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZError", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimated Sales.
         /// </summary>
@@ -2056,6 +2314,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEstimatedSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimate Sales.
         /// </summary>
@@ -2064,6 +2323,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZEstimateSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Fical Year.
         /// </summary>
@@ -2072,6 +2332,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZFicalYear", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File size should not be more than 20 MB..
         /// </summary>
@@ -2080,6 +2341,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan20MB", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File size should not be more than 5MB.
         /// </summary>
@@ -2088,6 +2350,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZFilesizeshouldnotbemorethan5MB", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Financial Period From.
         /// </summary>
@@ -2096,6 +2359,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZFinancialPeriodFrom", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forget Username or Password.
         /// </summary>
@@ -2104,6 +2368,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZForgetUsernameorPassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Commercial Registration ID.
         /// </summary>
@@ -2112,6 +2377,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZIBANCommercialRegistrationID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Company ID.
         /// </summary>
@@ -2120,6 +2386,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZIBANCompanyID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID/ Iqama ID.
         /// </summary>
@@ -2128,6 +2395,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZIBANNationalID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ICR.
         /// </summary>
@@ -2136,6 +2404,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZICR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Information from related parties.
         /// </summary>
@@ -2144,6 +2413,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZInformationfromrelatedparties", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Instructions.
         /// </summary>
@@ -2152,6 +2422,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid Mobile Number.
         /// </summary>
@@ -2160,6 +2431,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZInvalidMobileNoError", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid TIN.
         /// </summary>
@@ -2168,6 +2440,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZInvalidTinNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid VAT Number.
         /// </summary>
@@ -2176,6 +2449,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZInvalidVatNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Last Update.
         /// </summary>
@@ -2184,6 +2458,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLastUpdate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to [Link].
         /// </summary>
@@ -2192,6 +2467,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLink", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Log off.
         /// </summary>
@@ -2200,6 +2476,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLogoff", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Logout.
         /// </summary>
@@ -2208,6 +2485,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZLogout", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Maximum no. of 5 attachments can be uploaded..
         /// </summary>
@@ -2216,6 +2494,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZMaximumnoof5attachmentscanbeuploaded", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Maximum no. of allowed attachments are 40..
         /// </summary>
@@ -2224,6 +2503,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZMaximumnoofallowedattachmentsare40", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to N/A.
         /// </summary>
@@ -2232,6 +2512,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNA", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Negative.
         /// </summary>
@@ -2240,6 +2521,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNegative", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New Value.
         /// </summary>
@@ -2248,6 +2530,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNewValue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
@@ -2256,6 +2539,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No data found.
         /// </summary>
@@ -2264,6 +2548,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNoDataAvailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No ICRs available.
         /// </summary>
@@ -2272,6 +2557,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNoICRAvailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Note.
         /// </summary>
@@ -2280,6 +2566,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Note: Your current tax return number is under processing and please allow up to 30 minutes to receive your SADAD bill number..
         /// </summary>
@@ -2289,6 +2576,7 @@ namespace GAZT {
                         "iveyourSADADbillnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
@@ -2298,6 +2586,7 @@ namespace GAZT {
                         "sputedamount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to OR.
         /// </summary>
@@ -2306,6 +2595,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZOR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to OTP for mobile verification is :{0}.
         /// </summary>
@@ -2314,6 +2604,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZOTPformobileverificationis", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Authentication failed. Password locked.
         /// </summary>
@@ -2322,6 +2613,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPasswordLocked", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The entered information does not exist in the system.
         /// </summary>
@@ -2330,6 +2622,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseEnterAValidUserID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter lookup number.
         /// </summary>
@@ -2338,6 +2631,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseenterlookupnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the corresponding number.
         /// </summary>
@@ -2346,6 +2640,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseenterthecorrespondingnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the CR composed of 10 digits.
         /// </summary>
@@ -2354,6 +2649,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseentertheCRcomposedof10digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the VAT Account No. composed of 15 digits.
         /// </summary>
@@ -2362,6 +2658,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseentertheVATAccountNocomposedof15digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select the ID Type value.
         /// </summary>
@@ -2370,6 +2667,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZPleaseselectparametertype", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to QR Scanner.
         /// </summary>
@@ -2378,6 +2676,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZQRScanner", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Reference Number.
         /// </summary>
@@ -2386,6 +2685,34 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReferenceNumber", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZReportStatusClose {
+            get {
+                return ResourceManager.GetString("ZReportStatusClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In progress.
+        /// </summary>
+        public static string ZReportStatusInprogress {
+            get {
+                return ResourceManager.GetString("ZReportStatusInprogress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string ZReportStatusNew {
+            get {
+                return ResourceManager.GetString("ZReportStatusNew", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return period.
         /// </summary>
@@ -2394,6 +2721,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReturnPeriod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Reference Number.
         /// </summary>
@@ -2402,6 +2730,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReturnReferenceNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Status.
         /// </summary>
@@ -2410,6 +2739,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZReturnStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD Bill Details.
         /// </summary>
@@ -2418,6 +2748,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSADADBillDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD GAZT Id.
         /// </summary>
@@ -2426,6 +2757,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSADADGAZTId", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD invoice number.
         /// </summary>
@@ -2434,6 +2766,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSadadInvoiceNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sadad Number.
         /// </summary>
@@ -2442,6 +2775,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSadadNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sales Details.
         /// </summary>
@@ -2450,6 +2784,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSalesDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SAR.
         /// </summary>
@@ -2458,6 +2793,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
@@ -2466,6 +2802,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSearch", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Search Parameter.
         /// </summary>
@@ -2474,6 +2811,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSearchParameter", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Select ICR status.
         /// </summary>
@@ -2482,6 +2820,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSelectICRStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Select Taxpayer Type.
         /// </summary>
@@ -2490,6 +2829,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSelectTaxpayerType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Show less details.
         /// </summary>
@@ -2498,6 +2838,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZShowlessdetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Show more details.
         /// </summary>
@@ -2506,6 +2847,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZShowmoredetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Status.
         /// </summary>
@@ -2514,6 +2856,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step 1: Select your search parameter (VAT Account Number or CR or VAT Certificate No.).
         /// </summary>
@@ -2522,6 +2865,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepOne", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to To perform the search, you should follow the 3 steps:.
         /// </summary>
@@ -2530,6 +2874,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepsTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to To perform the search, you can scan QR code:.
         /// </summary>
@@ -2538,6 +2883,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepsTitleScan", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step 3: Click on “Search” button to obtain the results.
         /// </summary>
@@ -2546,6 +2892,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepThree", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step 2: Enter the exact parameter number in the search field.
         /// </summary>
@@ -2554,6 +2901,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZStepTwo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
@@ -2562,6 +2910,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSummary", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat Calculation Summary.
         /// </summary>
@@ -2570,6 +2919,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZSummaryofZakatcalculation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TaxPayerDetails.
         /// </summary>
@@ -2578,6 +2928,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTaxPayerDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer Information.
         /// </summary>
@@ -2586,6 +2937,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTaxpayerInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Tax period.
         /// </summary>
@@ -2594,6 +2946,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTaxPeriod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please choose Report Category.
         /// </summary>
@@ -2602,6 +2955,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERChooseReportCategory", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
@@ -2610,6 +2964,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportCategoryNextBtn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
@@ -2618,6 +2973,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportCategorySubmitBtn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Company Name.
         /// </summary>
@@ -2626,6 +2982,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportCompanyName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Closed.
         /// </summary>
@@ -2634,6 +2991,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportClosed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Date.
         /// </summary>
@@ -2642,6 +3000,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportDate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Number.
         /// </summary>
@@ -2650,6 +3009,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Opened.
         /// </summary>
@@ -2658,6 +3018,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportOpen", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Tax Evasion Reports.
         /// </summary>
@@ -2666,6 +3027,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportScreenTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Status.
         /// </summary>
@@ -2674,6 +3036,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number), you will receive GAZT response within 5 working days.
         /// </summary>
@@ -2682,6 +3045,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportSuccessResponsep1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please fill all the report details before submit.
         /// </summary>
@@ -2690,6 +3054,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTEReportReportSuccessResponsep2", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxation by an unregistered Enterprise.
         /// </summary>
@@ -2698,6 +3063,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategory1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to An invoice that does not meet the tax Specifications.
         /// </summary>
@@ -2706,6 +3072,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategory2", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Incorrect tax amount .
         /// </summary>
@@ -2714,6 +3081,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategory3", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Imposition and collection of Tax before its entry into force.
         /// </summary>
@@ -2722,6 +3090,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategory4", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Fraud and tax evasion.
         /// </summary>
@@ -2730,6 +3099,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategory5", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Category.
         /// </summary>
@@ -2738,6 +3108,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportCategoryPageTittle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
@@ -2746,6 +3117,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailAttachment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
@@ -2754,6 +3126,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCity", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Public Joint Company.
         /// </summary>
@@ -2762,6 +3135,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Other Taxable Income from Sources in KSA.
         /// </summary>
@@ -2770,6 +3144,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType10", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Permanent Establishment.
         /// </summary>
@@ -2778,6 +3153,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType11", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Professional Company.
         /// </summary>
@@ -2786,6 +3162,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType12", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Limited Liability Company.
         /// </summary>
@@ -2794,6 +3171,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType2", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Company Limited by Shares.
         /// </summary>
@@ -2802,6 +3180,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType3", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Solidarity Company.
         /// </summary>
@@ -2810,6 +3189,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType4", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Joint Venture.
         /// </summary>
@@ -2818,6 +3198,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType5", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Limited Partnership in Shares.
         /// </summary>
@@ -2826,6 +3207,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType6", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Company with variable capital.
         /// </summary>
@@ -2834,6 +3216,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType7", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Co-operative company.
         /// </summary>
@@ -2842,6 +3225,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType8", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Private Joint Company.
         /// </summary>
@@ -2850,6 +3234,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailCompanyType9", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reporter Email.
         /// </summary>
@@ -2858,6 +3243,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailEMail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Email.
         /// </summary>
@@ -2866,6 +3252,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFacilityEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Mobile Number.
         /// </summary>
@@ -2874,6 +3261,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFacilityMobNo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Name.
         /// </summary>
@@ -2882,6 +3270,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFacilityName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Owner Name.
         /// </summary>
@@ -2890,6 +3279,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFacilityOwnerName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Type.
         /// </summary>
@@ -2898,6 +3288,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFacilityType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility District Address.
         /// </summary>
@@ -2906,6 +3297,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFDAddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Street Address.
         /// </summary>
@@ -2914,6 +3306,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFSAddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Facility Work Type.
         /// </summary>
@@ -2922,6 +3315,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailFWType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ID.
         /// </summary>
@@ -2930,6 +3324,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reporter Name.
         /// </summary>
@@ -2938,6 +3333,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile Number.
         /// </summary>
@@ -2946,6 +3342,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Region.
         /// </summary>
@@ -2954,6 +3351,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailRegion", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Location .
         /// </summary>
@@ -2962,6 +3360,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailReportDetailRLocation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Details.
         /// </summary>
@@ -2970,6 +3369,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailReportDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN.
         /// </summary>
@@ -2978,6 +3378,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailTIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Number.
         /// </summary>
@@ -2986,6 +3387,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportDetailVATNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter TIN number.
         /// </summary>
@@ -2994,6 +3396,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnter TINno", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter City.
         /// </summary>
@@ -3002,6 +3405,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterCity", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter District Address.
         /// </summary>
@@ -3010,6 +3414,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterDA", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Facility Name.
         /// </summary>
@@ -3018,6 +3423,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterFN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Facility Work Type.
         /// </summary>
@@ -3026,6 +3432,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterFWT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Report Details.
         /// </summary>
@@ -3034,6 +3441,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterRD", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Region.
         /// </summary>
@@ -3042,6 +3450,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterRegion", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter Street Address.
         /// </summary>
@@ -3050,6 +3459,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterSA", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Enter VAT Number.
         /// </summary>
@@ -3058,6 +3468,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormEnterVATno", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Report Details.
         /// </summary>
@@ -3066,6 +3477,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportFormPageTittle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to To Avoid punishments, Please do not Send false Report or Information to GAZT.
         /// </summary>
@@ -3074,6 +3486,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTERReportPageHeadingText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The Disputed Amount.
         /// </summary>
@@ -3082,6 +3495,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTheDisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The Undisputed Amount.
         /// </summary>
@@ -3090,6 +3504,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTheUndisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN Status.
         /// </summary>
@@ -3098,6 +3513,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTINStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
         /// </summary>
@@ -3106,6 +3522,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipCorrectionsfrompreviousperiod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of credit in your VAT account from previous returns that have not been used to offset any subsequent liabilities or not been refunded. This amount will be used to offset the VAT liability (if any) for this return..
         /// </summary>
@@ -3114,6 +3531,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipcreditcarriedforwardfrompreviousperiod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • The total amount made on exempt supplies sold in KSA .
         ///• For example,  Return of exempted goods, bad debt write-off.
@@ -3123,6 +3541,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExemptAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services supplied during the current period that were exempted and sold in KSA
         ///• Please refer to the below FAQ URL for the list of exempted goods and services..
@@ -3132,6 +3551,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExemptAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments made to goods and services purchased during previous reporting periods that were exempted and either bought in KSA or imported from a country outside of KSA
         ///• For example: return of exempt purchases to suppliers.
@@ -3141,6 +3561,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExemptpurchasesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services purchased during the current period that were exempted and either bought in KSA or imported from a country outside of KSA
         ///• Please refer to the below FAQ URL for a list of zero rated goods and services..
@@ -3150,6 +3571,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExemptpurchasesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of adjustments on supplies related to all goods and services (to be subject to zero rate) exported to GCC VAT implementing countries or countries outside GCC during the previous reporting periods.
         ///• For example,write off of bad debt on exports reveivables..
@@ -3159,6 +3581,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExportsAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries outside GCC.
         ///• Please refer to the below FAQ URL for exported goods and services..
@@ -3168,6 +3591,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipExportsAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated and imported and reverse charged..
         /// </summary>
@@ -3176,6 +3600,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
         ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
@@ -3186,6 +3611,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Under VAT amount display the following:
         ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
@@ -3197,6 +3623,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedVatAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports..
         /// </summary>
@@ -3205,6 +3632,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
         ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
@@ -3214,6 +3642,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • The total amount of VAT liability or credit for the current return. Any negative amount is VAT credit that can either be refunded or carried forward to offset VAT liability for the subsequent periods..
         /// </summary>
@@ -3222,6 +3651,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipNetVATdue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to &apos;Total adjustments to standard rated supplies that were made to Saudi citizens in private healthcare and private education in previous tax periods. Please note that VAT will be borne by the state on these supplies as per Royal Order.
         /// </summary>
@@ -3230,6 +3660,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipPrivateHealthcareAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total amount of standard rated supplies made to Saudi citizens in private healthcare and private education. Please note that VAT will be borne by the state on these supplies as per Royal Order.
         /// </summary>
@@ -3238,6 +3669,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipPrivateHealthcareAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA
         ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.
@@ -3247,6 +3679,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
         ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
@@ -3256,6 +3689,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
         ///• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.
@@ -3265,6 +3699,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
         ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
@@ -3274,6 +3709,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments made to previous reporting periods supplies that were zero rated and sold in KSA
         ///• For example, returned zero rates sales in Saudi Arabia, write off of bad debt on zero rated domestic receivables.
@@ -3283,6 +3719,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of all goods and services supplied during the current period that were zero rated and sold in KSA
         ///• Please refer to the below FAQ URL for zero rated goods and services..
@@ -3292,6 +3729,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipZerorateddomesticsalesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased during previous reporting periods that were either,
         /// – Zero rated and purchased in KSA or,
@@ -3303,6 +3741,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipZeroratedpurchasesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were either,
         /// – Zero rated and purchased in KSA or,
@@ -3314,6 +3753,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZToolTipZeroratedpurchasesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total file sizes should not be more than 300 MB..
         /// </summary>
@@ -3322,6 +3762,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTotalFilesizeshouldnotbemorethan300MB", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total paid amount.
         /// </summary>
@@ -3330,6 +3771,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTotalPaidAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total unpaid amount.
         /// </summary>
@@ -3338,6 +3780,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTotalUnPaidAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT.
         /// </summary>
@@ -3346,6 +3789,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTotalVat", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT Sales.
         /// </summary>
@@ -3354,6 +3798,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTotalVATSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TPDetails.
         /// </summary>
@@ -3362,6 +3807,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZTPDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Update Email.
         /// </summary>
@@ -3370,6 +3816,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUpdateEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Update Mobile.
         /// </summary>
@@ -3378,6 +3825,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUpdateMobile", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User name or password is incorrect.
         /// </summary>
@@ -3386,6 +3834,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUserNameIncorrect", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to User is not currently valid.
         /// </summary>
@@ -3394,6 +3843,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZUserNotValid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Account Number.
         /// </summary>
@@ -3402,6 +3852,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAccountNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Acknowledgement.
         /// </summary>
@@ -3410,6 +3861,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAcknowledgment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to For further information, please contact helpdesk - 19993
         ///GAZT reserves the right to investigate your return form further..
@@ -3419,6 +3871,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAcknowledgmentHelpText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to GAZT acknowledges the receipt of your tax return successfully for.
         /// </summary>
@@ -3427,6 +3880,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAcknowledgmentReceiptText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Note your current tax return is under processing and please allow up to 30 minutes to receive your SADAD bill number.
         /// </summary>
@@ -3435,6 +3889,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAcknowledgmentWaitingText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Add New Movement Activity.
         /// </summary>
@@ -3443,6 +3898,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAddNewMovementActivityButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
@@ -3451,6 +3907,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Adjustment (SAR).
         /// </summary>
@@ -3459,6 +3916,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAdjustmentWithSAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amount (SAR).
         /// </summary>
@@ -3467,6 +3925,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAmountWithSAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Application Download for Inspector.
         /// </summary>
@@ -3475,6 +3934,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATApplicationDownloadforInspectorButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Approve.
         /// </summary>
@@ -3483,6 +3943,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATApproveButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Assign Inspector.
         /// </summary>
@@ -3491,6 +3952,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAssignInspectorButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Assign Officer.
         /// </summary>
@@ -3499,6 +3961,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAssignOfficerButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Assign to me.
         /// </summary>
@@ -3507,6 +3970,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAssigntomeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attach Bank Guarantee.
         /// </summary>
@@ -3515,6 +3979,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAttachBankGuaranteeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Maximum no. of allowed attachments are 40..
         /// </summary>
@@ -3523,6 +3988,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAttachmentMaxSizeNotfication", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attachments.
         /// </summary>
@@ -3531,6 +3997,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAttachments", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File size should not be more than 20 MB..
         /// </summary>
@@ -3539,6 +4006,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAttachmentSizeNotfication", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls, png, ppt, gif, txt..
         /// </summary>
@@ -3547,6 +4015,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatAttachmentTypeNotfication", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attach Unloading Document.
         /// </summary>
@@ -3555,6 +4024,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATAttachUnloadingDocumentButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Calendar.
         /// </summary>
@@ -3563,6 +4033,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCalendarButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel Declaration.
         /// </summary>
@@ -3571,6 +4042,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCancelDeclarationButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel Movement Activity.
         /// </summary>
@@ -3579,6 +4051,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCancelMovementActivityButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel Return.
         /// </summary>
@@ -3587,6 +4060,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCancelReturnButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid VAT number provided.
         /// </summary>
@@ -3595,6 +4069,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCerNumberisnotequalto15", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Certificate Number.
         /// </summary>
@@ -3603,6 +4078,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCertificateNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to I certify that the information given in this return is, to the best of my knowledge, true, correct, and complete in every respect. I am the person who is required to file this return or I am authorized to sign on behalf of that person. I also understand that I will be charged heavy penalties for submitting incorrect information.
         /// </summary>
@@ -3611,6 +4087,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatCertifyInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
@@ -3619,6 +4096,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATChangeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Change from estimate to accounting.
         /// </summary>
@@ -3627,6 +4105,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATChangefromestimatetoaccountingButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Clear Document.
         /// </summary>
@@ -3635,6 +4114,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATClearDocumentButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Click here to open FAQ URL.
         /// </summary>
@@ -3643,6 +4123,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatClickFaqInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Click here for details.
         /// </summary>
@@ -3651,6 +4132,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatClickForMoreDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Compliance And History.
         /// </summary>
@@ -3659,6 +4141,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATComplianceAndHistoryButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Kindly confirm that the above information is correct before proceeding..
         /// </summary>
@@ -3667,6 +4150,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatConfirmMessage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Corrections from previous period ( between SAR ±).
         /// </summary>
@@ -3675,6 +4159,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatCorrectionsfrompreviousperiod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
@@ -3683,6 +4168,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATCreateNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT credit carried forward from previous period(s).
         /// </summary>
@@ -3691,6 +4177,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatcreditcarriedforward", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayers should ensure that their existing taxpayer details are complete and up to date before filing their VAT returns..
         /// </summary>
@@ -3699,6 +4186,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDateInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to I declare that I have read and understood the above instructions..
         /// </summary>
@@ -3707,6 +4195,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDeclarationInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit/Display Return.
         /// </summary>
@@ -3715,6 +4204,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDeclarationTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Document Number.
         /// </summary>
@@ -3723,6 +4213,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDocumentNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Download Acknowledgment.
         /// </summary>
@@ -3731,6 +4222,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDownloadAcknowledgment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Download Form.
         /// </summary>
@@ -3739,6 +4231,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatDownloadForm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Edita Movement Activity.
         /// </summary>
@@ -3747,6 +4240,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATEditaMovementActivityButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Exempt purchases.
         /// </summary>
@@ -3755,6 +4249,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatExemptPurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Exempt sales.
         /// </summary>
@@ -3763,6 +4258,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatExemptsales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Exports.
         /// </summary>
@@ -3771,6 +4267,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatExports", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Extend Approval Time.
         /// </summary>
@@ -3779,6 +4276,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATExtendApprovalTimeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Extend.
         /// </summary>
@@ -3787,6 +4285,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATExtendButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Extend Due Date.
         /// </summary>
@@ -3795,6 +4294,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATExtendDueDateButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please refer to the FAQ section before filling out the return form..
         /// </summary>
@@ -3803,6 +4303,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatFaqSectionInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please fill the requested information for each step..
         /// </summary>
@@ -3811,6 +4312,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatFillInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Forward.
         /// </summary>
@@ -3819,6 +4321,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATForwardButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Identification Number.
         /// </summary>
@@ -3827,6 +4330,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatIdentificationNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Imports subject to VAT accounted for through the reverse charge mechanism.
         /// </summary>
@@ -3835,6 +4339,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatImportsSubjectToVatAccounted", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Imports subject to VAT paid at customs.
         /// </summary>
@@ -3843,6 +4348,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatImportsVatPaidatcustoms", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Inspector Submit.
         /// </summary>
@@ -3851,6 +4357,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATInspectorSubmitButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invoice.
         /// </summary>
@@ -3859,6 +4366,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATInvoiceButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Commercial Registration Number.
         /// </summary>
@@ -3867,6 +4375,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATLookupCRNumberType3", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Search result.
         /// </summary>
@@ -3875,6 +4384,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATLookupDialogue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Account Number.
         /// </summary>
@@ -3883,6 +4393,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATLookupIDTaxpayerTinType1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Certificate Number.
         /// </summary>
@@ -3891,6 +4402,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATLookupIDVatCertificateNumberType2", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Net VAT due (or reclaimed).
         /// </summary>
@@ -3899,6 +4411,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNetdue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No data.
         /// </summary>
@@ -3907,6 +4420,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNoData", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Note.
         /// </summary>
@@ -3915,6 +4429,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to In case you don&apos;t agree with above information, click on this link and confirm.
         /// </summary>
@@ -3923,6 +4438,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNoteDetail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
@@ -3931,6 +4447,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNotes", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Clear &amp; Close.
         /// </summary>
@@ -3939,6 +4456,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNotesClearandClose", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Notes for ER.
         /// </summary>
@@ -3947,6 +4465,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATNotesforERButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save &amp; Close.
         /// </summary>
@@ -3955,6 +4474,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatNotesSaveandClose", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ID Number has to be 15 digits long.
         /// </summary>
@@ -3963,6 +4483,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATNumberisnotequalto15", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT on Purchases.
         /// </summary>
@@ -3971,6 +4492,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatOnPurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT on Sales.
         /// </summary>
@@ -3979,6 +4501,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatOnSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Period From.
         /// </summary>
@@ -3987,6 +4510,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatPeriodFrom", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Period To.
         /// </summary>
@@ -3995,6 +4519,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatPeriodTo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Previous.
         /// </summary>
@@ -4003,6 +4528,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATPreviousButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to PrintSD Release Letter.
         /// </summary>
@@ -4011,6 +4537,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATPrintSDReleaseLetterButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Private Healthcare / Private Education.
         /// </summary>
@@ -4019,6 +4546,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatPrivateHealthcare", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Kindly read the below instructions before completing return form:.
         /// </summary>
@@ -4027,6 +4555,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReadInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Receipt Date.
         /// </summary>
@@ -4035,6 +4564,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReceiptDate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
@@ -4043,6 +4573,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefresh", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Refund Information.
         /// </summary>
@@ -4051,6 +4582,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to If you wish to request a refund towards a different IBAN, please select the check box &amp; kindly enter above.
         /// </summary>
@@ -4059,6 +4591,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationCheckBoxInfo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Note: In case the ID information of the selected IBAN is missing or not match with the IBAN information, please update your registration information.
         /// </summary>
@@ -4067,6 +4600,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationIBANIDNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to If you wish to request a refund, kindly click here:.
         /// </summary>
@@ -4075,6 +4609,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationNoteClick", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your return form information indicate that you are in a credit position, your credit amount will be carried forward for next filing..
         /// </summary>
@@ -4083,6 +4618,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationNoteOne", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Select the prefered IBAN from the available list.
         /// </summary>
@@ -4091,6 +4627,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationSelectIBAN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select the IBAN ID Type linked to the selected IBAN.
         /// </summary>
@@ -4099,6 +4636,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationSelectIBANID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select the IBAN ID Number linked to the selected IBAN.
         /// </summary>
@@ -4107,6 +4645,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatRefundInformationSelectIBANIDNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reject.
         /// </summary>
@@ -4115,6 +4654,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATRejectButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Release Bank Guarantee.
         /// </summary>
@@ -4123,6 +4663,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATReleaseBankGuaranteeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Request Additional Information.
         /// </summary>
@@ -4131,6 +4672,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATRequestAdditionalInformationButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
@@ -4139,6 +4681,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT return form.
         /// </summary>
@@ -4147,6 +4690,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATReturnForm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Reference No..
         /// </summary>
@@ -4155,6 +4699,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReturnReferenceNo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Reference Number.
         /// </summary>
@@ -4163,6 +4708,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReturnReferenceNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Type.
         /// </summary>
@@ -4171,6 +4717,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatReturnType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reviewed.
         /// </summary>
@@ -4179,6 +4726,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATReviewed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Revise Down Payment.
         /// </summary>
@@ -4187,6 +4735,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATReviseDownPaymentButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Revoke.
         /// </summary>
@@ -4195,6 +4744,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATRevokeButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sales details.
         /// </summary>
@@ -4203,6 +4753,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSalesdetailsButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save the Declaration.
         /// </summary>
@@ -4211,6 +4762,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSavetheDeclarationButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Send Back.
         /// </summary>
@@ -4219,6 +4771,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSendBackButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Send for Audit.
         /// </summary>
@@ -4227,6 +4780,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSendforAuditButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Send for Inspection.
         /// </summary>
@@ -4235,6 +4789,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSendforInspectionButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Send to Director.
         /// </summary>
@@ -4243,6 +4798,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSendtoDirectorButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Send to Taxpayer.
         /// </summary>
@@ -4251,6 +4807,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSendtoTaxpayerButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to S. No..
         /// </summary>
@@ -4259,6 +4816,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatSerialNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Standard rated domestic purchases.
         /// </summary>
@@ -4267,6 +4825,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatStandardrateddomesticpurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Standard rated sales.
         /// </summary>
@@ -4275,6 +4834,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatStandardRatedSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step 4.
         /// </summary>
@@ -4283,6 +4843,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatStepFour", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step 3.
         /// </summary>
@@ -4291,6 +4852,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatStepThree", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Step2.
         /// </summary>
@@ -4299,6 +4861,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatStepTwo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit Inspector.
         /// </summary>
@@ -4307,6 +4870,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSubmitInspectorButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The application cannot be successfully submitted until all of the mandatory fields have been completed..
         /// </summary>
@@ -4315,6 +4879,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatSubmittedInstructions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit the Declaration.
         /// </summary>
@@ -4323,6 +4888,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSubmittheDeclarationButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form is cancelled. Please initiate the process again to file VAT Return.
         /// </summary>
@@ -4331,6 +4897,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatSuccessfulVoid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
@@ -4339,6 +4906,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatSummary", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Summary Details.
         /// </summary>
@@ -4347,6 +4915,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVATSummaryDetailsButton", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to After submission of this form, and if the taxpayer finds that they need to do a correction, a self - amendment form should be submitted if the amount of the correction is equal to or more than SAR 5000.00 or equal to or less than SAR -5000.00 ..
         /// </summary>
@@ -4355,6 +4924,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTandCfour", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete..
         /// </summary>
@@ -4363,6 +4933,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTandCone", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to GAZT holds the right to open an audit case in order to verify this return form and any previous forms to a maximum of 5 years past which may result in levy of fines as per the Kingdom of Saudi Arabia’s VAT Law and Regulations..
         /// </summary>
@@ -4371,6 +4942,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTandCthree", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to GAZT holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this return..
         /// </summary>
@@ -4379,6 +4951,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTandCtwo", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxable Period.
         /// </summary>
@@ -4387,6 +4960,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTaxablePeriod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer&apos;s Name.
         /// </summary>
@@ -4395,6 +4969,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTaxpayersName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Tax Return Details.
         /// </summary>
@@ -4403,6 +4978,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTaxReturnDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Terms &amp; Conditions.
         /// </summary>
@@ -4411,6 +4987,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTermsAndConditions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Adjustment.
         /// </summary>
@@ -4419,6 +4996,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTotalAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total purchases.
         /// </summary>
@@ -4427,6 +5005,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTotalPurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Sales.
         /// </summary>
@@ -4435,6 +5014,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTotalSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT due for current period.
         /// </summary>
@@ -4443,6 +5023,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatTotalVATdueforcurrentperiod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Amount (SAR).
         /// </summary>
@@ -4451,6 +5032,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatVATAmountWithSAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zero rated domestic sales.
         /// </summary>
@@ -4459,6 +5041,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatZerorateddomesticsales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zero rated purchases.
         /// </summary>
@@ -4467,6 +5050,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZVatZeroRatedPurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
@@ -4475,6 +5059,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYes", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You have {0} remaining attempt then the account will be locked.
         /// </summary>
@@ -4483,6 +5068,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYouhaveoneremainingattemptthentheaccountwillbelocked", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Login attempt failed because of entering {0} wrong verification codes.
         /// </summary>
@@ -4491,6 +5077,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYouraccounthasbeenlockedPleasecontactourcallcenter", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your Session has expired, Please Login again.
         /// </summary>
@@ -4499,6 +5086,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZYourSessionhasexpiredPleaseLoginagain", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to 25% of the Disputed Amount.
         /// </summary>
@@ -4507,6 +5095,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZ25oftheDisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New Account Created Successfully.
         /// </summary>
@@ -4515,6 +5104,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAccountCreatedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat Return Details.
         /// </summary>
@@ -4523,6 +5113,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZakatReturnDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Returns Of Zakat\Income Tax.
         /// </summary>
@@ -4531,6 +5122,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZakatReturnListing", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Already have TIN.
         /// </summary>
@@ -4539,6 +5131,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAlreadyhaveTIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Amend.
         /// </summary>
@@ -4547,6 +5140,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAmend", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to An exception was raised.
         /// </summary>
@@ -4555,6 +5149,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAnexceptionwasraised", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Attachment.
         /// </summary>
@@ -4563,6 +5158,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAttachment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The average number of labor ×6000 SAR.
         /// </summary>
@@ -4571,6 +5167,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAveragenumberoflaborsx6000SAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Average number of labour.
         /// </summary>
@@ -4579,6 +5176,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZAveragenumberoflabour", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Back.
         /// </summary>
@@ -4587,6 +5185,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZBack", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
@@ -4595,6 +5194,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCancel", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Capital Amount.
         /// </summary>
@@ -4603,6 +5203,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCapitalamount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Capital amount as per MCI records, MOMRA records, or any other source that assist to identify the capital amount..
         /// </summary>
@@ -4612,6 +5213,7 @@ namespace GAZT {
                         "capitalamount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx..
         /// </summary>
@@ -4620,6 +5222,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZChooseonlyfilewithextensionForZAKAT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Clear &amp; Closed.
         /// </summary>
@@ -4628,6 +5231,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZClearAndClosed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
@@ -4636,6 +5240,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZClose", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Commercial Reiteration Number consists of numbers only.
         /// </summary>
@@ -4644,6 +5249,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCommercialReiterationNumberconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Commercial Reiteration Number should be 10 digits.
         /// </summary>
@@ -4652,6 +5258,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCommercialReiterationNumbershouddbe10digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Confirmation?.
         /// </summary>
@@ -4660,6 +5267,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZConfirmation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Confirmation code sent to email address.
         /// </summary>
@@ -4668,6 +5276,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZConfirmationcodesenttoemailaddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Confirmation code sent to Mobile Number.
         /// </summary>
@@ -4676,6 +5285,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZConfirmationcodesenttoMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Confirm password.
         /// </summary>
@@ -4684,6 +5294,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZConfirmpassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Contracts from ETIMAD system.
         /// </summary>
@@ -4692,6 +5303,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZContractsformETIMADsystem", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
@@ -4700,6 +5312,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCorrespondence", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Correspondence Details.
         /// </summary>
@@ -4708,6 +5321,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCorrespondenceDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to +9665.
         /// </summary>
@@ -4716,6 +5330,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCountryCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Create Notes.
         /// </summary>
@@ -4724,6 +5339,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCreateNotes", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Create Your GAZT Account.
         /// </summary>
@@ -4732,6 +5348,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCreateYourGAZTAccount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR Name.
         /// </summary>
@@ -4740,6 +5357,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCRName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to CR Number.
         /// </summary>
@@ -4748,6 +5366,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCRNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Currently, the app supports individual Tax Payer registration.
         /// </summary>
@@ -4756,6 +5375,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZCurrentlytheappsupportsindividualTaxPayerregistration", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date and Time.
         /// </summary>
@@ -4764,6 +5384,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDateandTime", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date(Ascending).
         /// </summary>
@@ -4772,6 +5393,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDateAscending", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date(Descending).
         /// </summary>
@@ -4780,6 +5402,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDateDescending", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date of Birth.
         /// </summary>
@@ -4788,6 +5411,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDateofBirth", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Date of Birth does not match with value in Ministry of Commerce.
         /// </summary>
@@ -4796,6 +5420,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDateofBirthdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Dear taxpayer, based on the submitted amendments system found that your amendments do not match what was calculated by GAZT, if you wish to continue, an objection request will be created in GAZT.
         /// </summary>
@@ -4804,6 +5429,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDeartaxpayerbasedonthesubmittedamendments", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to I acknowledge that the information provided in this return is accurate, correct and complete with the attached documents, and that i am the athorized person to complete return or authorized to sign on behalf of the taxpayer, and i assure full responsibility if proven otherwise..
         /// </summary>
@@ -4812,6 +5438,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDeclarationText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to delete .
         /// </summary>
@@ -4820,6 +5447,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDeleteAttachmentConfirmationText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to DELETE FILE.
         /// </summary>
@@ -4828,6 +5456,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDELETEFILE", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
@@ -4836,6 +5465,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDescriptionForFormBundle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Display Notes.
         /// </summary>
@@ -4844,6 +5474,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDisplayNotes", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Do you want to release the retrun?.
         /// </summary>
@@ -4852,6 +5483,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZDoyouwanttoreleasethedeclaration", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
@@ -4860,6 +5492,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZEmailAddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Email Address does not match with value in Ministry of Commerce.
         /// </summary>
@@ -4868,6 +5501,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to e-Services.
         /// </summary>
@@ -4876,6 +5510,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZeServices", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimated Sales for Fiscal Year.
         /// </summary>
@@ -4884,6 +5519,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZEstimatedSalesForFiscalYear", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TP estimated sales are calculated based on:
         ///- VAT Sales if the TP has sales in his VAT returns.
@@ -4898,6 +5534,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZEstimatedSalesInformationText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ET.
         /// </summary>
@@ -4906,6 +5543,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZET", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Exports value.
         /// </summary>
@@ -4914,6 +5552,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZExportsvalue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Favorite(Ascending).
         /// </summary>
@@ -4922,6 +5561,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFavoriteAscending", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Favorite(Descending).
         /// </summary>
@@ -4930,6 +5570,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFavoriteDescending", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File size must be less than 5 MB.
         /// </summary>
@@ -4938,6 +5579,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFilesizemustbelessthan5MB", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File with the same name already exists .
         /// </summary>
@@ -4946,6 +5588,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFileWithTheSameNameAlreadyExists", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Application Status.
         /// </summary>
@@ -4954,6 +5597,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFormBundleStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please visit GAZT portal to open the selected return..
         /// </summary>
@@ -4962,6 +5606,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZFormFiveTappedMessage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to GCC ID.
         /// </summary>
@@ -4970,6 +5615,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGCCID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to GCC ID should not start with 0.
         /// </summary>
@@ -4978,6 +5624,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGCCIDdonotstartwith0", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to All the information filled in the form will be lost. Please confirm if you still want to cancel form..
         /// </summary>
@@ -4986,6 +5633,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Click here for details.
         /// </summary>
@@ -4994,6 +5642,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_ClickHereForDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to File with the same name already exists.
         /// </summary>
@@ -5002,6 +5651,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_FileWithTheSameNameAlreadyExists", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Form will be restored to the values &amp; status of previous Billed return.
         /// </summary>
@@ -5010,6 +5660,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_FormWillBeRestoredToPreviousBilledValuesAndStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please click here to get Acknowledgement.
         /// </summary>
@@ -5018,6 +5669,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_GetAcknowledgement", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Kindly submit a self-amendment form for corrections &gt;= {0} SAR or &lt;= {1} SAR.
         /// </summary>
@@ -5027,6 +5679,7 @@ namespace GAZT {
                         "e", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
         /// </summary>
@@ -5035,6 +5688,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Not allowed to submit amendment if there is no change compared to previous version.
         /// </summary>
@@ -5043,6 +5697,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_NotAllowedToSubmitAmmendmentWithNoChange", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Penalties from this return is higher than Net VAT reclaimed. Hence you are not allowed to claim refund.
         /// </summary>
@@ -5051,6 +5706,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_PenaltiesHigherThanNetVATReclaimed", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Penalty can not be greater than 999,999,999.99.
         /// </summary>
@@ -5059,6 +5715,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_PenaltyCannotBeGreaterThan999999999999Dot99", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please complete the highlighted fields as guided to proceed further.
         /// </summary>
@@ -5067,6 +5724,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_PleaseCompleteHighlightedField", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please correct the highlighted fields.
         /// </summary>
@@ -5075,6 +5733,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_PleaseCorrectHighlightedFields", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Range of value allowed is 0 to 999,999,999,999.99.
         /// </summary>
@@ -5083,6 +5742,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_RangeValueAllowedBetween0To999999999999Dot99", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form successfully restored to the last billed version.
         /// </summary>
@@ -5091,6 +5751,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return under review with GAZT.
         /// </summary>
@@ -5099,6 +5760,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_ReturnUnderReviewWithGAZT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please note that the corrections amount must be at least equal to the amount of tax due and at most can be three times the value of goods or services for which tax evasion took place.
         ///Click &quot;Ok&quot; to submit re-assessment or &quot;No&quot; to review the correction penalty before submitting re-assessment.
@@ -5108,6 +5770,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total of (Net VAT due for current period &amp; correction from previous period) can not be greater than 99,999,999,999.99.
         /// </summary>
@@ -5116,6 +5779,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_TotalCannotBeGreaterThan999999999999Dot99", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Upload files with allowed extensions only.
         /// </summary>
@@ -5124,6 +5788,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Value in highlighted display field has exceeded permittable range 0 to 999,999,999,999.99.
         /// </summary>
@@ -5132,6 +5797,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_ValueExceededPermittableRange", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form is cancelled. Please initiate the process again to file VAT Return.
         /// </summary>
@@ -5140,6 +5806,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormCancelled", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form Saved successfully.
         /// </summary>
@@ -5148,6 +5815,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSavedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form Submitted successfully, Form Bundle number{0}.
         /// </summary>
@@ -5156,6 +5824,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You cannot amend this tax return because it exceeds the permissible amendment period.
         /// </summary>
@@ -5164,6 +5833,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessage_YouCannotAmendThisTaxReturnExceedingPermissibleAmendmentPeriod", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Current VAT Return form if already saved will be Voided before opening Change of Registration Form. Please confirm..
         /// </summary>
@@ -5172,6 +5842,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Greater value of ( {(Estimated Sales ÷ 8) + (Estimated Sales ×
         ///15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } ).
@@ -5181,6 +5852,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGreatervalueofEstimatedSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID consists of numbers only.
         /// </summary>
@@ -5189,6 +5861,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit.
         /// </summary>
@@ -5197,6 +5870,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID starts with 0.
         /// </summary>
@@ -5205,6 +5879,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZGulfCooperationCouncilGCCIDstartswith0", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period.
         /// </summary>
@@ -5213,6 +5888,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIacknowledgethattheabovebankaccount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to I agree on terms &amp; conditions.
         /// </summary>
@@ -5221,6 +5897,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIagreeontermsAndconditions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to IBAN is incorrect.
         /// </summary>
@@ -5229,6 +5906,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIBANisincorrect", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ID Type.
         /// </summary>
@@ -5237,6 +5915,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIDType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Imports value.
         /// </summary>
@@ -5245,6 +5924,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZImportsvalue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Imports value × 115%.
         /// </summary>
@@ -5253,6 +5933,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZImportsvaluex115", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Instruction.
         /// </summary>
@@ -5261,6 +5942,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInstruction", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No internet connection.
         /// </summary>
@@ -5269,6 +5951,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInternetConnectionMessage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid commercial registration expiry date.
         /// </summary>
@@ -5277,6 +5960,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInvalidcommercialregistrationexpirydate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Invalid License Number.
         /// </summary>
@@ -5285,6 +5969,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZInvalidLicenseNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Iqama ID.
         /// </summary>
@@ -5293,6 +5978,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIqamaID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Iqama ID consists of numbers only.
         /// </summary>
@@ -5301,6 +5987,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIqamaIDconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Iqama ID length is 10 digit.
         /// </summary>
@@ -5309,6 +5996,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIqamaIDlengthis10digit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Iqama ID starts with 2.
         /// </summary>
@@ -5317,6 +6005,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIqamaIDstartswith2", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Issuing City.
         /// </summary>
@@ -5325,6 +6014,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIssuingCity", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to It has copied SADAD payment number.
         /// </summary>
@@ -5333,6 +6023,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZIthascopiedsadadpaymentnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to License Number.
         /// </summary>
@@ -5341,6 +6032,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZLicenseNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to License number consists of numbers only.
         /// </summary>
@@ -5349,6 +6041,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZLicensenumberconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to License Number Issued By.
         /// </summary>
@@ -5357,6 +6050,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZLicenseNumberIssuedBy", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mandatory data not entered.
         /// </summary>
@@ -5365,6 +6059,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMandatorydatanotentered", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile Number.
         /// </summary>
@@ -5373,6 +6068,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number consists of numbers only.
         /// </summary>
@@ -5381,6 +6077,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMobilenumberconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number has to start with number 05.
         /// </summary>
@@ -5389,6 +6086,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber05", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number has to start with number 5.
         /// </summary>
@@ -5397,6 +6095,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMobilenumberhastostartwithnumber5", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Mobile number length cannot be less than 9 digits.
         /// </summary>
@@ -5405,6 +6104,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMobilenumberlengthcannotbelessthan9digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Commitments.
         /// </summary>
@@ -5413,6 +6113,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMyCommitments", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Upcoming Commitments.
         /// </summary>
@@ -5421,6 +6122,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZMyUpcomingCommitments", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
@@ -5429,6 +6131,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Name cannot be in non-alphabet characters.
         /// </summary>
@@ -5437,6 +6140,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNamecannotbeinnonalphabetcharacters", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID.
         /// </summary>
@@ -5445,6 +6149,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNationalID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID consists of numbers only.
         /// </summary>
@@ -5453,6 +6158,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNationalIDconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID length is 10 digit.
         /// </summary>
@@ -5461,6 +6167,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNationalIDlengthis10digit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National ID starts with 1.
         /// </summary>
@@ -5469,6 +6176,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNationalIDstartswith1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to National/IQAMA ID {0} is not valid..
         /// </summary>
@@ -5477,6 +6185,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNationalIQAMAIDisnotvalid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New password and confirm password does not match.
         /// </summary>
@@ -5485,6 +6194,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNewpasswordandconfirmpassworddoesnotmatch", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New password field and confirm Password field should match up.
         /// </summary>
@@ -5493,6 +6203,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
@@ -5501,6 +6212,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNext", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No changes made, Form cannot be submitted.
         /// </summary>
@@ -5509,6 +6221,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNochangesmadeFormcannotbesubmitted", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to No commercial registrations linked to the TIN.
         /// </summary>
@@ -5517,6 +6230,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZNocommercialregistrationslinkedtotheTIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
@@ -5526,6 +6240,7 @@ namespace GAZT {
                         "hedisputedamount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category..
         /// </summary>
@@ -5534,6 +6249,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotapartofthezerorated", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
         /// </summary>
@@ -5542,6 +6258,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZOurrecordsindicatethatyouarenotmainly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password cannot have &apos;&quot;&apos; character in the password.
         /// </summary>
@@ -5550,6 +6267,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPasswordcannothavecharacterinthepassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password is locked.Invalid attempts.
         /// </summary>
@@ -5558,6 +6276,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPasswordislockedInvalidattempts", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Password has to contain one uppercase, one lower case, one symbol and one numeric and it should be between 8-16 digits.
         /// </summary>
@@ -5566,6 +6285,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPasswordregulationsforSignup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Phone Number.
         /// </summary>
@@ -5574,6 +6294,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPhoneNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Phone number consists of numbers only.
         /// </summary>
@@ -5582,6 +6303,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPhonenumberconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Phone number has to start with number 1.
         /// </summary>
@@ -5590,6 +6312,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPhonenumberhastostartwithnumber1", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Phone number length cannot be less than 9 digits.
         /// </summary>
@@ -5598,6 +6321,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPhonenumberlengthcannotbelessthan9digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter access Code..
         /// </summary>
@@ -5606,6 +6330,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteraccessCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Company ID.
         /// </summary>
@@ -5614,6 +6339,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidCompanyID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Email Address.
         /// </summary>
@@ -5622,6 +6348,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidEmailAddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Gulf Cooperation Council (GCC) ID.
         /// </summary>
@@ -5630,6 +6357,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidGulfCooperationCouncilGCCID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid ID.
         /// </summary>
@@ -5638,6 +6366,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Iqama ID.
         /// </summary>
@@ -5646,6 +6375,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidIqamaID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid License Number.
         /// </summary>
@@ -5654,6 +6384,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidLicenseNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Mobile Number.
         /// </summary>
@@ -5662,6 +6393,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid National ID.
         /// </summary>
@@ -5670,6 +6402,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidNationalID", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Phone Number.
         /// </summary>
@@ -5678,6 +6411,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenteravalidPhoneNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter &quot;Company ID in your country&quot; or &quot;TIN in your country&quot;.
         /// </summary>
@@ -5686,6 +6420,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterCompanyIDinyourcountryorTINinyourcountry", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter confirmation code sent to your email address.
         /// </summary>
@@ -5694,6 +6429,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyouremailaddress", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter confirmation code sent to your mobile number.
         /// </summary>
@@ -5702,6 +6438,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterconfirmationcodesenttoyourmobilenumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the Birth Date.
         /// </summary>
@@ -5710,6 +6447,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentertheBirthDate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the commercial registration expiry date.
         /// </summary>
@@ -5718,6 +6456,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterthecommercialregistrationexpirydate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the Commercial Reiteration Number.
         /// </summary>
@@ -5726,6 +6465,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentertheCommercialReiterationNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the corresponding number.
         /// </summary>
@@ -5734,6 +6474,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterthecorrespondingnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the Name.
         /// </summary>
@@ -5742,6 +6483,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentertheName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the Organization Name.
         /// </summary>
@@ -5750,6 +6492,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentertheOrganizationName", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter the TIN Number.
         /// </summary>
@@ -5758,6 +6501,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentertheTINNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter TIN in your country.
         /// </summary>
@@ -5766,6 +6510,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseenterTINinyourcountry", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter valid CR number.
         /// </summary>
@@ -5774,6 +6519,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseentervalidCRnumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid ID.
         /// </summary>
@@ -5782,6 +6528,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseEnterValidId", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please fill all the mandatory fields.
         /// </summary>
@@ -5790,6 +6537,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleasefillallthemandatoryfields", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please fill the mandatory fields..
         /// </summary>
@@ -5798,6 +6546,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleasefillthemandatoryfields", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please fill the requested information for each step..
         /// </summary>
@@ -5806,6 +6555,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleasefilltherequestedinformationforeachstep", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to (Please retain this number for future reference and communucation).
         /// </summary>
@@ -5814,6 +6564,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseretainthisnumberforfuturereferenceandcommunucation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select Form Bundle Number.
         /// </summary>
@@ -5822,6 +6573,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselectFormBundleNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select Form Bundle Type.
         /// </summary>
@@ -5830,6 +6582,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselectFormBundleType", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select license issuer.
         /// </summary>
@@ -5838,6 +6591,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselectlicenseissuer", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please agree terms and conditions..
         /// </summary>
@@ -5846,6 +6600,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselecttermsandconditions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select the City.
         /// </summary>
@@ -5854,6 +6609,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselecttheCity", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please select the disclaimer checkbox before submit..
         /// </summary>
@@ -5862,6 +6618,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseselectthedisclaimercheckboxbeforesubmit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You have to enter the modifications reasons and attach the supported documents.
         /// </summary>
@@ -5870,6 +6627,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseuploadtheRequiredDocumentandChangereason", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please use the OTP to activate the new mobile number.
         /// </summary>
@@ -5878,6 +6636,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Portal user already registered.
         /// </summary>
@@ -5886,6 +6645,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPortaluseralreadyregistered", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Proceed to individual Signup.
         /// </summary>
@@ -5894,6 +6654,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZProceedtoindividualSignup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Proceed to indivisual Signup.
         /// </summary>
@@ -5902,6 +6663,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZProceedtoindivisualSignup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Purchases value x 115%.
         /// </summary>
@@ -5910,6 +6672,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPurchasesvaluex115", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
@@ -5918,6 +6681,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZPurchasevalue", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reference Number.
         /// </summary>
@@ -5926,6 +6690,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZReferenceNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
@@ -5934,6 +6699,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZRefresh", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Released Successfully..
         /// </summary>
@@ -5942,6 +6708,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZReleasedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Resend the verification code.
         /// </summary>
@@ -5950,6 +6717,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZResendtheverificationcode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
@@ -5958,6 +6726,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZReset", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Status.
         /// </summary>
@@ -5966,6 +6735,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZReturnStatus", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return Submitted Successfully.
         /// </summary>
@@ -5974,6 +6744,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZReturnSubmittedSuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD Bill Details:.
         /// </summary>
@@ -5982,6 +6753,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSADADBillDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SADAD Invoice Number.
         /// </summary>
@@ -5990,6 +6762,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSADADInvoiceNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sales from point of sales.
         /// </summary>
@@ -5998,6 +6771,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSalesformpointofsales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save &amp; Close.
         /// </summary>
@@ -6006,6 +6780,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSavAndClose", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Save as Draft.
         /// </summary>
@@ -6014,6 +6789,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSaveAsDraft", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Select at least one of the fields (Commercial Registration Number or Licence) below.
         /// </summary>
@@ -6022,6 +6798,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sign Up.
         /// </summary>
@@ -6030,6 +6807,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSignup", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Something went wrong.
         /// </summary>
@@ -6038,6 +6816,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSomethingwentwrong", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sort.
         /// </summary>
@@ -6046,6 +6825,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSort", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
@@ -6054,6 +6834,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSubmit", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to SUCCESS.
         /// </summary>
@@ -6062,6 +6843,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSUCCESS", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Summary.
         /// </summary>
@@ -6070,6 +6852,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZSummary", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TaxPayer Details.
         /// </summary>
@@ -6078,6 +6861,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTaxPayerDetails", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Terms &amp; Conditions.
         /// </summary>
@@ -6086,6 +6870,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTermsAndConditions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The account is locked for 60 minutes after the last login attempt.
         /// </summary>
@@ -6094,6 +6879,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheaccountislockedfor60minutesafterthelastloginattempt", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The code will be expired within.
         /// </summary>
@@ -6102,6 +6888,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThecodewillbeexpiredwithin", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The entered commercial registration number is not related to the entered ID number as per the values from Ministry of Commerce.
         /// </summary>
@@ -6111,6 +6898,7 @@ namespace GAZT {
                         "aluesfromMinistryofCommerce", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The entered values of Entity type and Taxpayer Type does not match the values from Ministry of Commerce.
         /// </summary>
@@ -6120,6 +6908,7 @@ namespace GAZT {
                         "ommerce", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The file is still loading.
         /// </summary>
@@ -6128,6 +6917,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThefileisstillloading", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The new email must not match the existing email.
         /// </summary>
@@ -6136,6 +6926,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheNewEmailMustNotMatchtheexistingEmail", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The New Mobile Number should not be same as the Old Mobile Number.
         /// </summary>
@@ -6144,6 +6935,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New Password can’t be same as Old Password..
         /// </summary>
@@ -6152,6 +6944,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThenewpasswordmustnotmatchtheexistingpassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The selected service is not available to you.
         /// </summary>
@@ -6160,6 +6953,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheselectedserviceisnotavailabletoyou", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports).
         /// </summary>
@@ -6168,6 +6962,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZThesumofsalesthroughpointsofsalecontractsinETIMADplatformthevalueofexports", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The Undisputed Amount.
         /// </summary>
@@ -6176,6 +6971,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTheUndisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN.
         /// </summary>
@@ -6184,6 +6980,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTIN", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN number consists of numbers only.
         /// </summary>
@@ -6192,6 +6989,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTINnumberconsistsofnumbersonly", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN number has to start with number 3.
         /// </summary>
@@ -6200,6 +6998,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTINnumberhastostartwithnumber3", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN number length cannot be less than 10 digits.
         /// </summary>
@@ -6208,6 +7007,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTINnumberlengthcannotbelessthan10digits", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
@@ -6216,6 +7016,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Amount:.
         /// </summary>
@@ -6224,6 +7025,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTotalAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Disputed Amount.
         /// </summary>
@@ -6232,6 +7034,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTotaldisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties).
         /// </summary>
@@ -6240,6 +7043,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTotalsalesinVATreturns", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Undisputed Amount.
         /// </summary>
@@ -6248,6 +7052,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTotalUndisputedAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT Sales.
         /// </summary>
@@ -6256,6 +7061,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZTotalVATSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Validate.
         /// </summary>
@@ -6264,6 +7070,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidate", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of domestic standard-rated sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6272,6 +7079,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6280,6 +7088,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of sales to citizens (private healthcare, private education). Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6288,6 +7097,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You have entered an adjustment amount without entering a sales amount. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6296,6 +7106,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not a part of the zero-rated industry and you reported non zero sales in this category..
         /// </summary>
@@ -6304,6 +7115,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage05_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of zero rated domestic sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6312,6 +7124,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not mainly an exporter and you reported non-zero sales in exports..
         /// </summary>
@@ -6320,6 +7133,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage07_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of zero rated exports. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6328,6 +7142,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Our records indicate that you are not mainly an exempted industry but you reported non-zero exempted sales..
         /// </summary>
@@ -6336,6 +7151,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of exempt sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6344,6 +7160,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the total amount of sales. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6352,6 +7169,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage11_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your standard-rated domestic purchases are greater than your total reported sales for the period. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6360,6 +7178,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of standard rated domestic purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6368,6 +7187,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT paid at Customs. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6376,6 +7196,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Imports subject to VAT accounted for through reverse charge mechanism. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6384,6 +7205,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of Zero rated purchase. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6392,6 +7214,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of exempt purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6400,6 +7223,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The amount of your purchases for the current period is much more than the amount of sales for the same period. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6408,6 +7232,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage18_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The adjustment amount entered is more than {0}% larger than the amount of total purchases. Please verify the amount entered in the return or continue if the amount entered is correct..
         /// </summary>
@@ -6416,6 +7241,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage19_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The total VAT correction entered is larger than the total VAT for the period. Please verify the correction entered in the return or continue if the correction entered is correct..
         /// </summary>
@@ -6424,6 +7250,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZValidationMessage20_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT.
         /// </summary>
@@ -6432,6 +7259,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVAT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Amount.
         /// </summary>
@@ -6440,6 +7268,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVATAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return Form.
         /// </summary>
@@ -6448,6 +7277,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVATReturnForm", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Verifications Code.
         /// </summary>
@@ -6456,6 +7286,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVerificationsCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Void.
         /// </summary>
@@ -6464,6 +7295,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZVoid", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Withholding.
         /// </summary>
@@ -6472,6 +7304,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZWithholding", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Wrong password.
         /// </summary>
@@ -6480,6 +7313,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZWrongpassword", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to You can not upload more than 5 attachment.
         /// </summary>
@@ -6488,6 +7322,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYoucannotuploadmorethan5attachment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your Entity type is Individual.
         /// </summary>
@@ -6496,6 +7331,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYourEntitytypeisIndividual", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your new Email and SMS Validation Code has been resent to you.
         /// </summary>
@@ -6504,6 +7340,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYournewEmailandSMSValidationCodehasbeenresenttoyou", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Your password has been changed successfully.
         /// </summary>
@@ -6512,6 +7349,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYourPasswordhasbeenChangedsuccessfully", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to There already exists an account associated with this information, please signup as a new user.
         /// </summary>
@@ -6520,6 +7358,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZYoushouldsignupasnewuser", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to About Us.
         /// </summary>
@@ -6528,6 +7367,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZAboutUs", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to ZAKAT.
         /// </summary>
@@ -6536,6 +7376,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZAKAT", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Zakat Base × 2.5% , and with a lower bound of 500 SAR.
         /// </summary>
@@ -6544,6 +7385,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZakatBaseandwithalowerboundof500SAR", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Application Status.
         /// </summary>
@@ -6552,6 +7394,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZApplicationStatusTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Business Information.
         /// </summary>
@@ -6560,6 +7403,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZBusinessInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to change of registration form..
         /// </summary>
@@ -6568,6 +7412,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZChageOfRegistration", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to If you do not agree with the above information, please visit GAZT portal to change the registration type.
         /// </summary>
@@ -6576,6 +7421,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZChangeRegistationNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Contact Information.
         /// </summary>
@@ -6584,6 +7430,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZContactInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to General Authority of Zakat and Income - All Rights Reserved © 2020.
         /// </summary>
@@ -6592,6 +7439,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZCopyrightText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Correspondence.
         /// </summary>
@@ -6600,6 +7448,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZCorrespondenceTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
@@ -6608,6 +7457,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZDontHaveAccount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
@@ -6616,6 +7466,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZEditProfile", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to e-Services.
         /// </summary>
@@ -6624,6 +7475,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZEServices", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Estimated Zakat.
         /// </summary>
@@ -6632,6 +7484,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZEstimatedZakatTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to FAQs.
         /// </summary>
@@ -6640,6 +7493,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZFaq", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
@@ -6648,6 +7502,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZHelp", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Individual Information.
         /// </summary>
@@ -6656,6 +7511,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZIndividualInformation", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter a valid Email Address.
         /// </summary>
@@ -6664,6 +7520,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZInvalidEmailAddressMessage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please use your GAZT account to log in or create a new account.
         /// </summary>
@@ -6672,6 +7529,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZLandingCreateAccountNote", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to General Authority Of Zakat And Tax.
         /// </summary>
@@ -6680,6 +7538,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZLandingPageTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
@@ -6688,6 +7547,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZLanguage", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please Enter Your Credentials to Login.
         /// </summary>
@@ -6696,6 +7556,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZLoginLabel", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Bills.
         /// </summary>
@@ -6704,6 +7565,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZMyBillsTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Certificate.
         /// </summary>
@@ -6712,6 +7574,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZMyCertificateTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My commitments.
         /// </summary>
@@ -6720,6 +7583,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZMyCommitment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to My Profile.
         /// </summary>
@@ -6728,6 +7592,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZMyProfile", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
@@ -6736,6 +7601,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZOptions", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to New password field and confirm password field must match.
         /// </summary>
@@ -6744,6 +7610,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZPasswordNotMatched", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Please enter your mobile number to proceed further.
         /// </summary>
@@ -6752,6 +7619,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZPleaseenteryourmobilenumbertoproceedfurther", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Privacy and Policy.
         /// </summary>
@@ -6760,6 +7628,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZPrivacyandPolicy", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Required *.
         /// </summary>
@@ -6768,6 +7637,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZRequired", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Returns Not Found.
         /// </summary>
@@ -6776,6 +7646,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZReturnsNotFound", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return under review with GAZT.
         /// </summary>
@@ -6784,6 +7655,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to The selected service is not available.
         /// </summary>
@@ -6792,6 +7664,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZselectedserviceisnotavailable", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to عربي.
         /// </summary>
@@ -6800,6 +7673,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSetLanguageText", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Set To Arabic.
         /// </summary>
@@ -6808,6 +7682,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSetToArabic", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Set To English.
         /// </summary>
@@ -6816,6 +7691,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSetToEnglish", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Sign Up.
         /// </summary>
@@ -6824,6 +7700,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSignUpTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Submitted Report.
         /// </summary>
@@ -6832,6 +7709,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSubmittedReport", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Support.
         /// </summary>
@@ -6840,6 +7718,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZSupport", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Taxpayer&apos;s Services.
         /// </summary>
@@ -6848,6 +7727,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTaxpayerServices", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Terms and Service.
         /// </summary>
@@ -6856,6 +7736,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTermsAndService", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to TIN Status.
         /// </summary>
@@ -6864,6 +7745,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTINStatusTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Purchases Adjustment.
         /// </summary>
@@ -6872,6 +7754,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalPurchasesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Purchases Amount.
         /// </summary>
@@ -6880,6 +7763,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalPurchasesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Sales Adjustment.
         /// </summary>
@@ -6888,6 +7772,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalSalesAdjustment", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total Sales Amount.
         /// </summary>
@@ -6896,6 +7781,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalSalesAmount", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT Taxable Amount on Purchases.
         /// </summary>
@@ -6904,6 +7790,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalVATTaxableAmountonPurchases", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Total VAT Taxable Amount on Sales.
         /// </summary>
@@ -6912,6 +7799,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZTotalVATTaxableAmountonSales", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Registration Lookup.
         /// </summary>
@@ -6920,6 +7808,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATLookupTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
@@ -6928,6 +7817,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATReturn", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
@@ -6936,6 +7826,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATReturnTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to VAT Tax Evasion Reports.
         /// </summary>
@@ -6944,6 +7835,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVATTax EvasionReportsTitle", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Verifications Code.
         /// </summary>
@@ -6952,6 +7844,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZVerificationsCode", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
@@ -6960,6 +7853,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZWelcome", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
@@ -6968,6 +7862,7 @@ namespace GAZT {
                 return ResourceManager.GetString("ZZZWelcomeOnLanding", resourceCulture);
             }
         }
+        
         /// <summary>
         ///   Looks up a localized string similar to Wrong entering for the TIN or the Email.
         /// </summary>

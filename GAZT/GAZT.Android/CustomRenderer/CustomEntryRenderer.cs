@@ -1,6 +1,7 @@
 ﻿using Android.Content;
 using Android.Graphics;
 using Android.Views.InputMethods;
+using EGAZT;
 using GAZT;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;

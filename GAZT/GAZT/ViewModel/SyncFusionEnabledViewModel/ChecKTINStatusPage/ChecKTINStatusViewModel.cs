@@ -13,7 +13,7 @@ using System.Globalization;
 using Newtonsoft.Json;
 using GAZT.Helper;
 using System.Linq;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
 {
     public class ChecKTINStatusViewModel : ViewModelBase
     {

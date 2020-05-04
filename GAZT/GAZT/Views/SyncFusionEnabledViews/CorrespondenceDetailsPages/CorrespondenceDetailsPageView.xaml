@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{x:Static local:AppResources.ZZCorrespondence}"
-             x:Class="GAZT.Views.NewViews.CorrespondenceDetailsPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails.CorrespondenceDetailsPageView"
              NavigationPage.HasNavigationBar="False"
              >
     <!--<ContentPage.ToolbarItems>

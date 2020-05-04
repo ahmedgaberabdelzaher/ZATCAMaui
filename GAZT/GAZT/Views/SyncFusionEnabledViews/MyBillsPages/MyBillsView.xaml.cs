@@ -1,5 +1,6 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
+using GAZT.Models;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Syncfusion.DataSource.Extensions;
@@ -7,12 +8,11 @@ using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views
+namespace EGAZT.Views.SyncFusionEnabledViews.MyBillsView
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyBillsView : ContentPage

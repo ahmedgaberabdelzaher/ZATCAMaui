@@ -4,7 +4,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms.Internals;
-namespace GAZTeServicesApp.ViewModels.LoginPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLogin_ViewModel
 {
     /// <summary>
     /// ViewModel for login page.

@@ -1,6 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
-namespace GAZT
+namespace EGAZT
 {
     public class ElevenDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
     {

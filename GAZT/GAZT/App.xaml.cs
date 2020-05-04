@@ -1,21 +1,21 @@
 ﻿using CommonServiceLocator;
+using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Models;
-using GAZTeServicesApp.Views.LandingPage;
-using System;
-using System.Globalization;
-using System.Net.Http;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
+using System;
+using System.Globalization;
+using System.Net.Http;
 using System.Threading.Tasks;
-using GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace GAZT
+namespace EGAZT
 {
     public partial class App : Application
     {

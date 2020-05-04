@@ -1,23 +1,25 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using MobileCoreServices;
+using Newtonsoft.Json;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Collections.ObjectModel;
-using GAZT.Helper;
-using Newtonsoft.Json;
-using System.Globalization;
-using Rg.Plugins.Popup.Services;
-using GAZT.Views.NewViews;
-using MobileCoreServices;
-namespace GAZT.ViewModel.NewViewModel
+
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
 {
     public class VATReturnsPageViewModel : ViewModelBase
     {

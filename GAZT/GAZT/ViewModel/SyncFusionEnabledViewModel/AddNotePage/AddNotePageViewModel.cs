@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel
 {
     public class AddNotePageViewModel : ViewModelBase
     {

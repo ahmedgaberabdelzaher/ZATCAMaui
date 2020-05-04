@@ -1,7 +1,8 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
+using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,13 +11,12 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AttachmentPageView : ContentPage

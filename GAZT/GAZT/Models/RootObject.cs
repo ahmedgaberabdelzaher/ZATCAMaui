@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EGAZT.Models;
+using System;
 namespace GAZT.Models
 {
     public class RootObject

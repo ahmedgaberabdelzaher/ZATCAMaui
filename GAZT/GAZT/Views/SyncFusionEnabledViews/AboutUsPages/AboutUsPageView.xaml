@@ -6,9 +6,9 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              NavigationPage.HasNavigationBar="False"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

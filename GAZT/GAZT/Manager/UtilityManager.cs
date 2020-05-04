@@ -1,4 +1,5 @@
-﻿using GAZT.Models;
+﻿using EGAZT;
+using GAZT.Models;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using System;

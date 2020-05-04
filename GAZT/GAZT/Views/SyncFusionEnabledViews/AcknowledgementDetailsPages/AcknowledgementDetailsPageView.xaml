@@ -5,13 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              mc:Ignorable="d"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
               xmlns:custom="clr-namespace:GAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="GAZT.Views.NewViews.AcknowledgementDetailsPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails.AcknowledgementDetailsPageView"
              NavigationPage.HasNavigationBar="False"
             >
     <!--<ContentPage.ToolbarItems>

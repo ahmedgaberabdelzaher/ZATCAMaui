@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -11,7 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
 {
     public class OTPPageViewModel : ViewModelBase
     {

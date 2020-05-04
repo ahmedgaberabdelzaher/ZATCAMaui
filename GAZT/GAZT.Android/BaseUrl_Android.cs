@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Xamarin.Forms;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+﻿using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using GAZT.Droid;
-using GAZT.Views.NewViews;
+using Xamarin.Forms;
 [assembly: Dependency(typeof(BaseUrl_Android))]
 namespace GAZT.Droid
 {

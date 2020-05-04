@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-namespace GAZT.Models
+namespace EGAZT.Models
 {
     //public class Metadata
     //{

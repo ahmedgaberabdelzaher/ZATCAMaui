@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
-namespace GAZT
+namespace EGAZT
 {
     public class NavigationService : INavigationService
     {

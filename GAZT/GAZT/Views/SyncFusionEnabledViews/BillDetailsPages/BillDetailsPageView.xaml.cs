@@ -1,16 +1,14 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using NavigationPage = Xamarin.Forms.NavigationPage;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.BillDetails
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BillDetailsPageView : ContentPage

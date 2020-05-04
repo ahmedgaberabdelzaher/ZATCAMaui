@@ -1,25 +1,28 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using EGAZT.Views.SyncFusionEnabledViews.ICRList;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using Syncfusion.XForms.TabView;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Entry = Xamarin.Forms.Entry;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATReturnsPageView : ContentPage

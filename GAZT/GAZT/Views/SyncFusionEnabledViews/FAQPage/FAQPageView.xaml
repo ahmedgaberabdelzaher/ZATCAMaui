@@ -10,10 +10,10 @@
              xmlns:controls1="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              mc:Ignorable="d"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.FAQPage.FAQPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.FAQPage.FAQPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<ResourceDictionary>

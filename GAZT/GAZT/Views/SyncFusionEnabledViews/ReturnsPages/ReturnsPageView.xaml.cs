@@ -1,14 +1,9 @@
-﻿using GAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsPageViewModels;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.SyncFusionEnabledViews.ReturnsPages
+namespace EGAZT.Views.SyncFusionEnabledViews.ReturnsPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReturnsPageView : ContentPage

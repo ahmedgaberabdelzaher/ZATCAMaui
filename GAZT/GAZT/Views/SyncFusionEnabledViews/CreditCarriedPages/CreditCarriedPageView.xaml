@@ -6,12 +6,12 @@
              xmlns:local1="clr-namespace:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              mc:Ignorable="d"
-             x:Class="GAZT.Views.NewViews.CreditCarriedPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CreditCarried.CreditCarriedPageView"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

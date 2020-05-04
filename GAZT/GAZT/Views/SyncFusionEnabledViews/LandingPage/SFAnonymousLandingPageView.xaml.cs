@@ -1,8 +1,7 @@
-﻿using GAZT;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Models;
-using GAZTeServicesApp.ViewModels.LandingPage;
-using Syncfusion.XForms.Border;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -11,7 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZTeServicesApp.Views.LandingPage
+namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 {
     /// <summary>
     /// Page to show the article tile

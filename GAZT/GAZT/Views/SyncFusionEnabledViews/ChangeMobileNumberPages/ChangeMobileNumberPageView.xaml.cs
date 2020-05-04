@@ -1,14 +1,8 @@
-﻿using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeMobileNumberPageView : ContentPage

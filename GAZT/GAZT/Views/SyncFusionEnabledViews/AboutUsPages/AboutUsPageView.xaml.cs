@@ -1,15 +1,11 @@
-﻿using GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
-using GAZT.Views.NewViews;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
+using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
+namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutUsPageView : ContentPage
