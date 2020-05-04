@@ -113,7 +113,7 @@ namespace GAZT
         public App()
         {
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjIzNTEwQDMxMzcyZTM0MmUzMEJUZG1sRWtvcDRKQTJYUkpTdm5lcXFHbzAzenUvNS81RTZ3SlBwdlN1Njg9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
             AppResources.Culture = CultureInfo.CurrentUICulture;
 
