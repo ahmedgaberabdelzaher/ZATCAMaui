@@ -868,11 +868,7 @@ namespace GAZT.ViewModel.NewViewModel
                             //_navigationService.GoBack();
                             NoInternetGoBack();
                         }
-                        //});
-                        //await Task.Run(() =>
-                        //{
-                        //    IsLoading = true;
-                        //});
+                       
                     }
                     catch (InternetException ex)
                     {

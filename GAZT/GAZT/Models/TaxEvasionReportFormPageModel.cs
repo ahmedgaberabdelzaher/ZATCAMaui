@@ -113,7 +113,7 @@ namespace GAZT.Models
                 if (App.IsArabic)
                 {
 
-                    if (String.Compare("1", ReportStatusMessage) == 0)
+                    if (String.Compare("1", ReportStatus) == 0)
                     {
                         return AppResources.ZReportStatusNew;
                     }
