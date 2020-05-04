@@ -775,7 +775,7 @@
     <value>الرقم الضريبي</value>
   </data>
   <data name="ZVATCerNumberisnotequalto15" xml:space="preserve">
-    <value>Invalid VAT number provided</value>
+    <value>الرقم الخاص بضريبة القيمة المضافة غير صالح</value>
   </data>
   <data name="ZVATCertificateNumber" xml:space="preserve">
     <value>رقم شهادة ضريبة القيمة المضافة</value>
