@@ -37,7 +37,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _selectedTaxEvasionListItem = value;
                     if (_selectedTaxEvasionListItem != null)
                     {
-                        passSelectedTaxEvasionItem();
+                        passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
                     }
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
@@ -207,31 +207,41 @@ namespace GAZT.ViewModel.NewViewModel
                 }
             });
         }
-        public void passSelectedTaxEvasionItem()
+        public async Task passSelectedTaxEvasionItem(TaxEvasionReport SelectedTaxEvasionReport)
         {
-            //Task.Run(() =>
-            //{
-            //    IsLoading = true;
-            //});
-            //await Task.Run(() =>
-            //{
-            //    try
-            //    {
-                _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionListItem);
-                //});
-            //}
-            //catch (Exception ex)
-            //    {
-            //    }
-            //});
-            //Task.Run(() =>
-            //    {
-            //        IsLoading = false;
-            //    });
+            try
+            {
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+               {
+                        IsLoading = true;
+                    });
+
+                });
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                 {
+                        _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
+                    });
+
+
+                });
+                await Task.Run(() =>
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = false;
+                    });
+                });
             }
+            catch (Exception ex)
+            { 
+            
+            
+            }
+        }
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

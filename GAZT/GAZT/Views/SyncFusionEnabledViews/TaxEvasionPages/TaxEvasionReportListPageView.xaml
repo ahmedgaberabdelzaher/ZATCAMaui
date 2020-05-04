@@ -155,7 +155,7 @@
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessage}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -323,7 +323,7 @@
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessage}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>

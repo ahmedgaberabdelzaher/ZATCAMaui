@@ -90,12 +90,12 @@ namespace GAZT.Views.NewViews
                 RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
-                    viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
-                    viewModel.onSelectedTaxEvasionRegion();
-                    if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.CityCode))
-                    {
-                        viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
-                    }
+                    //viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
+                    //viewModel.onSelectedTaxEvasionRegion();
+                    //if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.CityCode))
+                    //{
+                    //    viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
+                    //}
                 }
                 if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
                 {
@@ -646,8 +646,35 @@ namespace GAZT.Views.NewViews
                 //viewModel.SelectedTaxEvasionRegion = null;
                 //viewModel.SelectLCType = null;
                 //viewModel.UploadedDocumentsListObj = null;
-                viewModel.CList.Clear();
-                viewModel.RList.Clear();
+                if (viewModel.CList != null)
+                {
+                    try {
+                        viewModel.CList.Clear();
+                    }
+                    catch(Exception ex)
+                    {
+                        
+                    }
+                    
+                }
+                if (viewModel.RList != null)
+                {
+
+                    try
+                    {
+                        viewModel.RList.Clear();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+          
+                
+                }
+
+                
+                
                 viewModel.AttachmentCount = 0;
                 viewModel.TxtReportDetailCity = string.Empty;
                 viewModel.TxtReportDetailRegion = string.Empty;

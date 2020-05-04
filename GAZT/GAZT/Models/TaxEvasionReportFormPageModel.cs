@@ -106,6 +106,33 @@ namespace GAZT.Models
         public string ReportNumber { get; set; }
         public string ReportStatus { get; set; }
         public string ReportStatusMessage { get; set; }
+        public string ReportStatusMessageNewTObIND
+        {
+            get
+            {
+                if (App.IsArabic)
+                {
+
+                    if (String.Compare("1", ReportStatusMessage) == 0)
+                    {
+                        return AppResources.ZReportStatusNew;
+                    }
+                    else if (String.Compare("2", ReportStatus) == 0)
+                    {
+                        return AppResources.ZReportStatusInprogress;
+                    }
+                    else if (String.Compare("3", ReportStatus) == 0)
+                    {
+                        return AppResources.ZReportStatusClose;
+                    }
+                    else
+                    {
+                        return ReportStatusMessage;
+                    }
+                }
+                return ReportStatusMessage;
+            }
+        }
         public string ReportSubCategoryCode { get; set; }
         public string ReportSubCategoryGuid { get; set; }
         public string ReportSubCategoryNameAr { get; set; }
