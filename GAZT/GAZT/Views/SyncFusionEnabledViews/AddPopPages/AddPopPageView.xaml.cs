@@ -7,27 +7,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPopPageView : PopupPage
     {
-
         AddPopPageViewModel viewModel;
         public AddPopPageView(PopUp objPopUP)
         {
-           
             try
             {
                 viewModel = App.Locator.AddPopPageView;
                 this.BindingContext = viewModel;
                 InitializeComponent();
                 SetLTR();
-
                 if (objPopUP.isFontSet)
                 {
                     if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
@@ -38,7 +33,6 @@ namespace GAZT.Views.NewViews
                     {
                         Message_label.FontFamily = "SSTArabic-Bold";
                     }
-                    
                     //Msglabel.FontFamily = "SSTArBold";
                 }
                 viewModel.PopMessage = objPopUP.Message;
@@ -62,8 +56,6 @@ namespace GAZT.Views.NewViews
                     viewModel.IsRed = "#7D858D";
                 }
                 viewModel.FlowDirections = objPopUP.FlowDirections;
-
-               
             }
             catch (Exception e)
             {
@@ -93,8 +85,6 @@ namespace GAZT.Views.NewViews
         }
         private void SetLTR()
         {
-
-
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
@@ -104,7 +94,6 @@ namespace GAZT.Views.NewViews
         {
             PopupNavigation.Instance.PopAsync();
         }
-
         private void CloseImage_Tapped(object sender, EventArgs e)
         {
             viewModel.IsBold = "Bold";

@@ -11,7 +11,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using static System.Net.Mime.MediaTypeNames;
-
 namespace GAZTeServicesApp.Views.Common
 {
     /// <summary>
@@ -22,8 +21,6 @@ namespace GAZTeServicesApp.Views.Common
     public partial class EmailEntry
     {
         SFLoginPageViewModel viewModel;
-        
-                
         /// <summary>
         /// Initializes a new instance of the <see cref="EmailEntry" /> class.
         /// </summary>
@@ -33,7 +30,6 @@ namespace GAZTeServicesApp.Views.Common
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
             SetLTR();
         }
-
         //protected  override void OnAppearing()
         //{
         //    base.OnAppearing();
@@ -43,12 +39,10 @@ namespace GAZTeServicesApp.Views.Common
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -58,12 +52,10 @@ namespace GAZTeServicesApp.Views.Common
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-
         private void TINs_Clicked(object sender, System.EventArgs e)
         {
             TinsPicker.IsOpen = true;
         }
-
         private void Email_UnFocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
             bool isNumber = false;
@@ -81,7 +73,6 @@ namespace GAZTeServicesApp.Views.Common
                 {
                     EmailInputLayout.HasError = false;
                     MessagingCenter.Send("TinList", "TinList");
-
                     //EmailInputLayout.ShowHint = false;
                 }
             }
@@ -90,9 +81,7 @@ namespace GAZTeServicesApp.Views.Common
                 EmailInputLayout.HasError = false;
                 //EmailInputLayout.ShowHint = false;
             }
-
         }
-
         private static bool CheckValidEmail(string email)
         {
             bool isEmailValid = false;
@@ -103,7 +92,6 @@ namespace GAZTeServicesApp.Views.Common
             }
             return isEmailValid;
         }
-
         public static bool IsEnglishNumber(String arText)
         {
             bool isAllNumeric = true;
@@ -119,21 +107,15 @@ namespace GAZTeServicesApp.Views.Common
             }
             return isAllNumeric;
         }
-
         private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
             TIN selectedtin = (TIN)e.NewValue;
             TinsPicker.SelectedItem = selectedtin;//TINID
             viewModel.SelectedTinId = selectedtin;//selectedregion
             viewModel.TINID = selectedtin.Tin;
-
-
         }
-
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
         }
     }
 }

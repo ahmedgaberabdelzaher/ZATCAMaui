@@ -3,31 +3,26 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-
 namespace GAZT.Models
 {
-
     //public class Metadata
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-   
     public class VATDeclarationsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Metadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Note
     {
         public Metadata2 __metadata { get; set; }
@@ -54,19 +49,16 @@ namespace GAZT.Models
         public string Strtime { get; set; } //time
         public string Strline { get; set; }   //note
      }
-
     public class NOTESSet
     {
         public List<Note> results { get; set; }
     }
-
     public class Metadata3
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Result2
     {
         public Metadata3 __metadata { get; set; }
@@ -74,21 +66,16 @@ namespace GAZT.Models
         public string Bkvid { get; set; }
         public string Iban { get; set; }
     }
-
-    
-
     public class IBANSet
     {
         public List<Result2> results { get; set; }
     }
-
     public class Metadata4
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Result3
     {
         public Metadata4 __metadata { get; set; }
@@ -99,22 +86,18 @@ namespace GAZT.Models
         public string Currency { get; set; }
         public string ReturnId { get; set; }
     }
-
     public class CFSet
     {
         public List<Result3> results { get; set; }
     }
-
     public class Metadata5
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Attachment
     {
-
         public Metadata5 __metadata { get; set; }
         public string RetGuid { get; set; }
         public string Seqno { get; set; }
@@ -137,19 +120,16 @@ namespace GAZT.Models
         public string Visedit { get; set; }
         public string Visdel { get; set; }
     }
-
     public class ATTACHSet
     {
         public List<Attachment> results { get; set; }
     }
-
     public class Metadata6
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class Result5
     {
         public Metadata6 __metadata { get; set; }
@@ -168,12 +148,10 @@ namespace GAZT.Models
         public string Region { get; set; }
         public string SizUn { get; set; }
     }
-
     public class ADRSet
     {
         public List<Result5> results { get; set; }
     }
-
     public class VATRMSGSet
     {
         public List<object> results { get; set; }
@@ -210,9 +188,7 @@ namespace GAZT.Models
         //    }
         //}
         public string EstimatedFg { get; set; }
-
         public string TotalsalesAdj { get; set; }
-
         //public string _totalsalesAdj;
         //public string TotalsalesAdj
         //{
@@ -226,10 +202,8 @@ namespace GAZT.Models
         //        OnPropertyChanged("TotalsalesAdj");
         //    }
         //}
-
         public string Fbust { get; set; }
         public string TotalpurchaseAmt { get; set; }
-
         //public string _totalpurchaseAmt;
         //public string TotalpurchaseAmt
         //{
@@ -243,8 +217,6 @@ namespace GAZT.Models
         //        OnPropertyChanged("TotalpurchaseAmt");
         //    }
         //}
-
-
         public string TotalpurchaseAdj { get; set; }
         //public string _totalpurchaseAdj;
         //public string TotalpurchaseAdj
@@ -259,7 +231,6 @@ namespace GAZT.Models
         //        OnPropertyChanged("TotalpurchaseAdj");
         //    }
         //}
-
         public string TpregFg { get; set; }
         public string CreditVatRef { get; set; }
         public string VatPost { get; set; }
@@ -298,7 +269,6 @@ namespace GAZT.Models
         public string StdsalesAmt { get; set; }
         public string StdsalesAdj { get; set; }
         public string StdsalesVat { get; set; }
-
         //public string _stdsalesVat;
         //public string StdsalesVat
         //{
@@ -312,7 +282,6 @@ namespace GAZT.Models
         //        OnPropertyChanged("StdsalesVat");
         //    }
         //}
-
         public string SalesGccAmt { get; set; }
         public string SalesGccAdj { get; set; }
         public string ZerosalesAmt { get; set; }
@@ -322,7 +291,6 @@ namespace GAZT.Models
         public string ExemptsalesAmt { get; set; }
         public string ExemptsalesAdj { get; set; }
         public string TotalsalesVat { get; set; }
-
         //public string _totalsalesVat;
         //public string TotalsalesVat
         //{
@@ -336,11 +304,9 @@ namespace GAZT.Models
         //        OnPropertyChanged("TotalsalesVat");
         //    }
         //}
-
         public string StdpurchaseAmt { get; set; }
         public string StdpurchaseAdj { get; set; }
         public string StdpurchasesVat { get; set; }
-
         //public string _stdpurchasesVat;
         //public string StdpurchasesVat
         //{
@@ -354,11 +320,9 @@ namespace GAZT.Models
         //        OnPropertyChanged("StdpurchasesVat");
         //    }
         //}
-
         public string ImportspaidAmt { get; set; }
         public string ImportspaidAdj { get; set; }
         public string ImportspaidVat { get; set; }
-
         //public string _importspaidVat;
         //public string ImportspaidVat
         //{
@@ -372,8 +336,6 @@ namespace GAZT.Models
         //        OnPropertyChanged("ImportspaidVat");
         //    }
         //}
-
-
         public string ImportsaccAmt { get; set; }
         public string ImportsaccAdj { get; set; }
         public string ImportsaccVat { get; set; }
@@ -382,7 +344,6 @@ namespace GAZT.Models
         public string ExemptpurchaseAmt { get; set; }
         public string ExemptpurchaseAdj { get; set; }
         public string TotalpurchaseVat { get; set; }
-
         //public string _totalpurchaseVat;
         //public string TotalpurchaseVat
         //{
@@ -396,7 +357,6 @@ namespace GAZT.Models
         //        OnPropertyChanged("TotalpurchaseVat");
         //    }
         //}
-
         public string Preperiodcorr { get; set; }
         public string CreditVat { get; set; }
         public string NetdueVat { get; set; }
@@ -426,7 +386,6 @@ namespace GAZT.Models
         public ATTACHSet ATTACHSet { get; set; }
         public ADRSet ADRSet { get; set; }
         public VATRMSGSet VATR_MSGSet { get; set; }
-
         //protected void OnPropertyChanged(string propertyName)
         //{
         //    var handler = PropertyChanged;
@@ -445,7 +404,6 @@ namespace GAZT.Models
         public string SerialNumber { get; set; }
         public string ReturnReferenceNumber { get; set; }
         public string DocumentNumber { get; set; }
-
         public string Amount { get; set; }
     }
     public class VATDeclaration
@@ -454,24 +412,14 @@ namespace GAZT.Models
     }
     public class VATDeclarationTabbedPageName : INotifyPropertyChanged
     {
-
         Color textColor = Color.FromHex("#FFFFFF");
-
         Font _font = Font.Default;
-
         Font fontnew;
-
-
         //public VATDeclarationTabbedPageName()
         //{
-
-
         //    //_font.FontFamily=
         //}
-
-
         public string pageName { get; set; }
-
         public Color TextColor
         {
             set
@@ -479,7 +427,6 @@ namespace GAZT.Models
                 if (textColor != value)
                 {
                     textColor = value;
-
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("TextColor"));
@@ -491,7 +438,6 @@ namespace GAZT.Models
                 return textColor;
             }
         }
-
         public Font Font
         {
             set
@@ -499,7 +445,6 @@ namespace GAZT.Models
                 if (_font != value)
                 {
                     _font = value;
-
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this, new PropertyChangedEventArgs("Font"));
@@ -513,7 +458,6 @@ namespace GAZT.Models
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }
-    
     public class ApplicableButton
     {
         public string Fbtyp { get; set; }
@@ -521,8 +465,6 @@ namespace GAZT.Models
         public string Button { get; set; }
         public string TransactionType { get; set; }
         public string UserTyp { get; set; }
-        
         public Buttons buttonEnumId = Buttons.None;
     }
-
 }

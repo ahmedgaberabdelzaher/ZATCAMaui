@@ -21,7 +21,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -37,11 +36,8 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
-
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
@@ -53,15 +49,12 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="88*"/>
                     <RowDefinition Height="12*"/>
- 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
-
                 </Grid.ColumnDefinitions>
                 <!--<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">-->
                     <ScrollView BackgroundColor="White" Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-
                         <Grid BackgroundColor="White">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -83,14 +76,10 @@
                                 <ColumnDefinition Width="86*"/>
                                 <ColumnDefinition Width="14*"/>
                             </Grid.ColumnDefinitions>
-
                             <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="30" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" >
                                                            <Label x:Name="SalesType"  Text="{Binding SalesType}" Grid.Row="0" Grid.Column="0" IsEnabled="False"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand"  VerticalTextAlignment="Center" Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" >
-
                             </Label>
                                 </StackLayout>
- 
-
                             <!--<Label Text="{x:Static local:AppResources.OldValue}" IsEnabled="False" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="2" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -100,7 +89,6 @@
                                     <custom:AlphaNumericValidatorBehaviour/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>-->
-
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.OldValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -111,32 +99,24 @@
                                     </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-
-
                             <!--<Label  Text="{x:Static local:AppResources.ZNewValue}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="4" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
                             <custom:GAZTBorderlessEntry x:Name="NewValue" Grid.Row="4" Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"  Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                             </custom:GAZTBorderlessEntry>-->
-                          
-                           
                             <!--<Image Grid.Row="1"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_TIN_Status.png"  >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForOldPassword" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.ZNewValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"     Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SSTArabicMedium}">
-                                  
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-
-
                             <!--<Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -151,7 +131,6 @@
                             <TapGestureRecognizer Tapped="OnPasswordVisibilityClickedForNewPassword" />
                         </Image.GestureRecognizers>
                     </Image>-->
-
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.ZChangeReason}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -162,29 +141,22 @@
                                     </custom:GAZTBorderlessEntry.Behaviors>
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-
-
-
                             <Label Text="{x:Static local:AppResources.Attachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" >
                             </Label>
                             <!--<Frame Grid.Row="12" Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="8" Margin="20,0,20,0"  Grid.Column="0" Grid.ColumnSpan="2">
                             </Frame>
                             <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsEnabled="False" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}">
-
                             </custom:GAZTBorderlessEntry>
                             <Image Grid.Row="12"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                                 </Image.GestureRecognizers>
                             </Image>-->
-
-
                              <inputLayout:SfTextInputLayout    Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
         Hint="{x:Static local:AppResources.ZZAttachment}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
-
                             </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                              <Image Grid.Row="12"  Grid.Column="1"   Margin="13,2,13,1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
@@ -192,19 +164,12 @@
                                     <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                                 </Image.GestureRecognizers>
                             </Image>
-                   
-
                             <Label Text="{x:Static local:AppResources.ZNote}" Grid.Row="8"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0"  Style="{StaticResource GAZTGoldLabelStyleForSmallFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
                             <Label Text="{x:Static local:AppResources.ZFilesizeshouldnotbemorethan5MB}"  Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="10" Grid.Column="0"  Grid.ColumnSpan="2">
                                 <custom:CustomLabel Text="{x:Static local:AppResources.ZZChooseonlyfilewithextensionForZAKAT}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                             </StackLayout>
-
                             <Label Text="{x:Static local:AppResources.ZMaximumnoof5attachmentscanbeuploaded}"  Grid.Row="11" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="Start"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
-
                             <!--<Label Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="Start" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" >
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -218,9 +183,6 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>-->
-
-
-
                             <!--<StackLayout HorizontalOptions="FillAndExpand" IsVisible="True" VerticalOptions="FillAndExpand" Grid.Row="8"  Margin="0,0,0,0" Grid.Column="0" Grid.ColumnSpan="2" >
                                 <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
@@ -235,12 +197,6 @@
                                             <ColumnDefinition Width="86*"/>
                                             <ColumnDefinition Width="14*"/>
                                         </Grid.ColumnDefinitions>-->
-
-
-
-
-
-
                             <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,0,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill"  >
                                 <ListView  x:Name="Attachmentlist" 
            ItemsSource="{Binding ZakatReturnAttachmentsList}"
@@ -257,9 +213,7 @@
                                             <ViewCell>
                                                 <ContentView>
                                                     <cards1:SfCardView HasShadow="True" Margin="10,10,10,0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
-
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
-
                                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0">
                                                                 <!--<Grid.RowDefinitions>
                                                                         <RowDefinition Height="auto"/>
@@ -275,9 +229,6 @@
                                                                     <RowDefinition Height="30" />
                                                                     <RowDefinition Height="30" />
                                                                 </Grid.RowDefinitions>
-
-
-
                                                                 <!--<Label Text="{Binding aa}" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -286,7 +237,6 @@
                                    Grid.Column="0" 
                                    />-->
                                                                 <Label Text="{Binding Filename}" 
-                                                                    
                                    Style="{StaticResource MiniGrayLabelStyle}"
   FontFamily="{StaticResource SSTArabicMedium}"
                                                    HorizontalOptions="StartAndExpand"
@@ -296,9 +246,6 @@
                                    Grid.Column="0"
                                                                           Grid.ColumnSpan="2"
                                    />
-
-                                                              
-
                                                                 <Label Text="{Binding UploadededDateToShow}" 
                                                                        Margin="0,0,0,0"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
@@ -306,12 +253,10 @@
                                                                         HorizontalOptions="StartAndExpand"
                                                                          VerticalOptions="CenterAndExpand"
                                                                          LineBreakMode="CharacterWrap"
-                                                                          
                                                                            Grid.Row="1"
                                                                            Grid.Column="0"
                                                                            Grid.ColumnSpan="2"
                                    />
-
                                                                   <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                                 <Image.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
@@ -325,7 +270,6 @@
                                                                     </Image.GestureRecognizers>
                                                                 </Image>
                                                             </Grid>
-
                                                         </StackLayout>
                                                     </cards1:SfCardView>
                                                 </ContentView>
@@ -337,7 +281,6 @@
                         </Grid>
                     </ScrollView>
                 <!--</Grid>-->
-
                 <buttons:SfButton Text="{x:Static local:AppResources.Save}" FontAttributes="Bold" TextColor="White"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56"  IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}" Opacity="0.7">
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup x:Name="CommonStates">
@@ -354,10 +297,8 @@
                         </VisualStateGroup>
                     </VisualStateManager.VisualStateGroups>
                 </buttons:SfButton>
-            
             </Grid>
             <!-- Acticity indicator layout start -->
-
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                 </StackLayout>
@@ -366,7 +307,6 @@
 <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
                                        AnimationType="SingleCircle"
-
                                            HorizontalOptions="CenterAndExpand"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
@@ -379,7 +319,6 @@
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->
-               
         </Grid>
     </ContentPage.Content>
 </ContentPage>

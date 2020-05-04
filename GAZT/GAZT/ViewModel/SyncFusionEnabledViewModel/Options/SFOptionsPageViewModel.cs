@@ -12,7 +12,6 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.ViewModels.Options
 {
     /// <summary>
@@ -21,13 +20,10 @@ namespace GAZTeServicesApp.ViewModels.Options
     [Preserve(AllMembers = true)]
     public class SFOptionsPageViewModel : ViewModelBase
     {
-
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         private DateTime lastTapped;
-
         #region Constructor
-
         /// <summary>
         /// Initializes a new instance of the <see cref="OptionsPageViewModel" /> class
         /// </summary>
@@ -39,12 +35,10 @@ namespace GAZTeServicesApp.ViewModels.Options
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
             this.BackButtonCommand = new Command(this.BackButtonClicked);
             this.EditProfileCommand = new Command(this.EditProfileClicked);
             this.ChangePasswordCommand = new Command(this.ChangePasswordClicked);
@@ -54,33 +48,21 @@ namespace GAZTeServicesApp.ViewModels.Options
             this.PolicyCommand = new Command(this.PrivacyPolicyClicked);
             this.FAQCommand = new Command(this.FAQClicked);
             this.CloseButtonClicked = new Command(this.CloseClicked);
-
-
-
             this.MyProfileCommand = new Command(this.MyProfileCommandClicked);
             this.EditMobileNumberCommand = new Command(this.EditMobileNumberClicked);
             this.EditPasswordCommand = new Command(this.EditPasswordClicked);
             this.EditEmailCommand = new Command(this.EditEmailClicked);
             this.AboutCommand = new Command(this.AboutUsClicked);
             this.CorrespondenceCommand = new Command(this.CorrespondenceClicked);
-
-
-
         }
-
         #endregion
-
         #region Commands
-
         public Command MyProfileCommand { get; set; }
         public Command CorrespondenceCommand { get; set; }
-        
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
         public Command EditEmailCommand { get; set; }
         public Command AboutCommand { get; set; }
-
-
         private string _appVersion = App.AppVersion;
         public string AppVersion
         {
@@ -94,7 +76,6 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("AppVersion");
             }
         }
-
         private string _translateText;
         public string TranslateText
         {
@@ -108,7 +89,6 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("TranslateText");
             }
         }
-
         private bool _isTaxPayerProfileVisible;
         public bool IsTaxPayerProfileVisible
         {
@@ -122,7 +102,6 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("_isTaxPayerProfileVisible");
             }
         }
-
         private bool _isCorrespondenceVisible;
         public bool IsCorrespondenceVisible
         {
@@ -136,8 +115,6 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("IsCorrespondenceVisible");
             }
         }
-
-
         private ComingToOptionScreenFrom _isComingFrom;
         public ComingToOptionScreenFrom IsComingFrom
         {
@@ -151,55 +128,41 @@ namespace GAZTeServicesApp.ViewModels.Options
                 RaisePropertyChanged("IsComingFrom");
             }
         }
-
-
-
         /// <summary>
         /// Gets or sets the command is executed when the favourite button is clicked.
         /// </summary>
         public Command BackButtonCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the edit profile option is clicked.
         /// </summary>
         public Command EditProfileCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the change password option is clicked.
         /// </summary>
         public Command ChangePasswordCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the account link option is clicked.
         /// </summary>
         public Command LinkAccountCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the help option is clicked.
         /// </summary>
         public Command HelpCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the terms of service option is clicked.
         /// </summary>
         public Command TermsCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the privacy policy option is clicked.
         /// </summary>
         public Command PolicyCommand { get; set; }
-
         /// <summary>
         /// Gets or sets the command is executed when the FAQ option is clicked.
         /// </summary>
         public Command FAQCommand { get; set; }
-
         public Command CloseButtonClicked { get; set; }
-
         #endregion
-
         #region Methods
-
         /// <summary>
         /// Invoked when the back button clicked
         /// </summary>
@@ -216,7 +179,6 @@ namespace GAZTeServicesApp.ViewModels.Options
             }
             // Do something
         }
-
         /// <summary>
         /// Invoked when the edit profile option clicked
         /// </summary>
@@ -225,7 +187,6 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             // Do something
         }
-
         /// <summary>
         /// Invoked when the change password clicked
         /// </summary>
@@ -234,7 +195,6 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             // Do something
         }
-
         /// <summary>
         /// Invoked when the account link clicked
         /// </summary>
@@ -243,7 +203,6 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             // Do something
         }
-
         /// <summary>
         /// Invoked when the terms of service clicked
         /// </summary>
@@ -252,7 +211,6 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             // Do something
         }
-
         /// <summary>
         /// Invoked when the privacy and policy clicked
         /// </summary>
@@ -261,25 +219,21 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             _navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
         }
-
         /// <summary>
         /// Invoked when the FAQ clicked
         /// </summary>
         /// <param name="obj">The object</param>
         /// 
-
         private void FAQClicked(object obj)
         {
             _navigationService.NavigateTo(App.FAQPageView);
             // Do something
         }
-
         private void CloseClicked(object obj)
         {
             _navigationService.NavigateTo(App.SFLandingPageView);
             // Do something
         }
-
         /// <summary>
         /// Invoked when the help option is clicked
         /// </summary>
@@ -288,58 +242,42 @@ namespace GAZTeServicesApp.ViewModels.Options
         {
             // Do something
         }
-
-
         private void MyProfileCommandClicked(object obj)
         {
             if (lastTapped < DateTime.Now.AddSeconds(-2))
             {
                 lastTapped = DateTime.Now;
-              
                 _navigationService.NavigateTo(App.TaxPayerProfilePageView);
             }
         }
-
         private void CorrespondenceClicked(object obj)
         {
             if (lastTapped < DateTime.Now.AddSeconds(-2))
             {
                 lastTapped = DateTime.Now;
-
                 _navigationService.NavigateTo(App.CorrespondancePageView);
             }
         }
-
-        
-
-
         private void EditMobileNumberClicked(object obj)
         {
             // Do something
         }
-
         private void EditPasswordClicked(object obj)
         {
             // Do something
         }
-
         private void EditEmailClicked(object obj)
         {
             // Do something
         }
-
         private void AboutUsClicked(object obj)
         {
             _navigationService.NavigateTo(App.AboutUsPageView);
         }
-
-
-
         public void LogOut()
         {
             if(App.TP!=null)
                 App.TP = null;
-
             if (App.PreviousIsArabic)
             {
                 String langName = "ar-AE";
@@ -350,7 +288,6 @@ namespace GAZTeServicesApp.ViewModels.Options
                 String langName = "en-US";
                 AppResources.Culture = new CultureInfo(langName);
             }
-
             var _navigation = Application.Current.MainPage.Navigation; 
             foreach (var item in _navigation.NavigationStack)
             {
@@ -362,14 +299,9 @@ namespace GAZTeServicesApp.ViewModels.Options
             }
             _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
             _navigation.NavigationStack.ToList().Clear();
-
             //var _navigation = Application.Current.MainPage.Navigation;
             //_navigation.PopToRootAsync();
         }
-
-
-
-      
         #endregion
     }
 }

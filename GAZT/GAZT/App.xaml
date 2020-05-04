@@ -3,16 +3,11 @@
              xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT">
     <Application.Resources>
         <ResourceDictionary>
-
-
             <!--SYNCFUSION INTEGRATION-->
-            
             <ResourceDictionary.MergedDictionaries>
                 <themes:LightTheme />
             </ResourceDictionary.MergedDictionaries >
-            
             <!--SYNCFUSION INTEGRATION-->
-            
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
             <Color x:Key="GrayTextColor">#c7c7c7</Color>
             <Color x:Key="DashboardGrayTextColor">#717171</Color>
@@ -25,91 +20,64 @@
              <Color x:Key="ForgotPasswordGrayTextColor">#7D858D</Color>
              <Color x:Key="EntryTextColor">#5D6770</Color>
             <Color x:Key="LightGreenColor">#CCE0DC</Color>
-
             <x:String x:Key="Back">&#xe709;</x:String>
             <x:String x:Key="ReverseBack">&#xe71a;</x:String>
-
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
-
                 <On Platform="iOS" Value="SSTArabic-Bold" />
             </OnPlatform>
-
             <!-- SST Arabic Light.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArLight">
                 <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic" />
-
                 <On Platform="iOS" Value="SSTArabic-Light" />
             </OnPlatform>
-
               <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Light">
                 <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
                    <On Platform="iOS" Value="GE_SS_Two_Light" />
             </OnPlatform>
-
                <OnPlatform x:TypeArguments="x:String" x:Key="GE_SS_Bold">
                    <On Platform="iOS" Value="GE SS Two" />
             </OnPlatform>
-
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
                 <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
-
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
-
             <!--<OnPlatform x:TypeArguments="x:String" x:Key="GAZT_FONT_BOLD">
                 <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-
                 <On Platform="iOS" Value="GE_SS_Two_Bold" />
             </OnPlatform>-->
-
-
             <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
                     </Setter.Value>
-
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <Setter Property="FontAttributes" Value="Bold" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-
             <Style x:Key="MiniNewGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
                     </Setter.Value>
-
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicLight}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
             </Style>
-
-
-
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
                     </Setter.Value>
                 </Setter>
-
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-
             </Style>
-
             <Style x:Key="ForgotPasswordTextColor" x:Name="ForgotPasswordTextColor" TargetType="Entry">
-               
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                  <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -119,23 +87,16 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-
             </Style>
-
-            
-
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="12" Tablet="16" />
                     </Setter.Value>
                 </Setter>
-
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
-
             </Style>
-
             <Style x:Key="MicroGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -144,8 +105,6 @@
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-            
-
             <Style x:Key="SmallGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -162,7 +121,6 @@
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-
             <Style x:Key="DashboardChartStatusGrayLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -172,7 +130,6 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource DashboardChartStatusGrayTextColor}" />
             </Style>
-
             <Style x:Key="InformationRedColorLabel" x:Name="InformationRedColorLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -182,7 +139,6 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
-
             <Style x:Key="MandatoryRedColorLabel" x:Name="MandatoryRedColorLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -192,8 +148,6 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
-
-
             <Style x:Key="InformationGrayColorLabel" x:Name="InformationGrayColorLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -203,11 +157,6 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
             </Style>
-
-            
-
-
-
             <Style x:Key="MediumWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -251,7 +200,6 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-
             <Style x:Key="SmallMiniWhiteLabelStyle" x:Name="SmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -259,10 +207,8 @@
                     </Setter.Value>
                 </Setter>
                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-
             <Style x:Key="TPPfofileSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -270,11 +216,8 @@
                     </Setter.Value>
                 </Setter>
                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-
-
             <Style x:Key="MyBillsSmallMiniWhiteLabelStyle" x:Name="MyBillsSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -282,13 +225,8 @@
                     </Setter.Value>
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
-
-                
-
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-
-
             <Style x:Key="MyBillsMediumMiniWhiteLabelStyle" x:Name="MyBillsMediumMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -296,30 +234,22 @@
                     </Setter.Value>
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
-                
-
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-
             <Style x:Key="TaxPayerSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
                     </Setter.Value>
                 </Setter>
-
                 <Setter Property="Margin">
                     <Setter.Value>
                         <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
                     </Setter.Value>
                 </Setter>
-
  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-
              <Style x:Key="MyCertificateSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -327,7 +257,6 @@
                     </Setter.Value>
                 </Setter>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             <Style x:Key="SmallMiniWhiteLabelStyleTwo" TargetType="Label">
@@ -357,7 +286,6 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
-
             <Style x:Key="DashboardMiniGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -367,7 +295,6 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
-
             <Style x:Key="DashboardMiniGrayBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -377,7 +304,6 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
-
             <Style x:Key="MiniGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -394,7 +320,6 @@
                     </Setter.Value>
                 </Setter>
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-
                 <Setter Property="TextColor" Value="{DynamicResource MaroonLabelTextColor}" />
             </Style>
             <Style x:Key="FrameStyle" TargetType="Frame">
@@ -403,7 +328,6 @@
                         <OnIdiom x:TypeArguments="x:Double" Phone="14.5" Tablet="14.5" />
                     </Setter.Value>
                 </Setter>-->
-                
                 <Setter Property="CornerRadius" Value="0"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
@@ -418,7 +342,6 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
-            
             <Style x:Key="SmallBlackLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -428,7 +351,6 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
-
             <Style x:Key="PickerStyle" x:Name="PickerStyle" TargetType="Picker">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -438,11 +360,7 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
-
-            
             <!--/For New Design/-->
-
-
             <Style x:Key="GAZTSmallGreenLabelStyle" x:Name="GAZTSmallGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
@@ -451,7 +369,6 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
-
             <Style x:Key="GAZTWhiteLabelStyleForButton" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -459,9 +376,6 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
-
-
-
             <Style x:Key="GAZTSmallGoldLabelStyle" x:Name="GAZTSmallGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -469,9 +383,7 @@
                 <Setter Property="Margin" Value="10,0,10,0"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-
             </Style>
-
             <!--<Style x:Key="GAZTSmallGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
@@ -479,9 +391,7 @@
                 <Setter Property="Margin" Value="1,1,1,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-
             </Style>-->
-
             <Style x:Key="GAZTSmallBlackLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
@@ -490,10 +400,7 @@
                 <Setter Property="Padding" Value="0,0,0,-5"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-
             </Style>
-
-
             <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -501,7 +408,6 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="10,2,10,1"/>
             </Style>
-
             <Style x:Key="GAZTFrameStyleForEntryValidationRed" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -509,7 +415,6 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="10,2,10,1"/>
             </Style>
-
             <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -517,7 +422,6 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="10,2,10,1"/>
             </Style>
-
             <Style x:Key="GAZTFrameStyleForButton" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="4"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
@@ -525,15 +429,11 @@
                 <Setter Property="Margin" Value="10,10,10,1"/>
                 <Setter Property="Padding" Value="0,22,0,22"></Setter>
             </Style>
-
             <Style x:Key="GAZTImageStyleForEntry" TargetType="Image">
-
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
                 <Setter Property="Margin" Value="13,0,13,0"/>
-
             </Style>
-
             <Style x:Key="GAZTTextBoxStyleForEntry" x:Name="GAZTTextBoxStyleForEntry" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -544,8 +444,6 @@
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
-
-
             <Style x:Key="GAZTTextBoxStyleForVATReturnEditor" TargetType="Editor">
                 <Setter Property="Margin" Value="15,0,15,0"/>
                 <Setter Property="FontSize" Value="Small"/>
@@ -554,28 +452,19 @@
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
-
-
             <Style x:Key="GAZTPickerStyle" TargetType="Picker">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
-
-
-
             <Style x:Key="GAZTGreenLabelStyleForDashboardIcon" x:Name="GAZTGreenLabelStyleForDashboardIcon" TargetType="Label">
-
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Caption" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-
             </Style>
-
             <Style x:Key="GAZTCaptionGreenLabelStyle" x:Name="GAZTCaptionGreenLabelStyle" TargetType="Label">
-
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="FontAttributes" Value="Bold" />
@@ -583,14 +472,7 @@
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="Margin" Value="10,0,10,1"/>
-
             </Style>
-
-
-
-
-
-
             <Style x:Key="GAZTVerifyButton" x:Name="GAZTVerifyButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="CornerRadius" Value="9"/>
@@ -600,36 +482,27 @@
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
             <Style x:Key="GAZTGreenLabelStyleForEservicesIcon" x:Name="GAZTGreenLabelStyleForEservicesIcon" TargetType="Label">
-
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="FontAttributes" Value="Bold" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-
             </Style>
-
             <Style x:Key="GAZTGreenLabelStyleForMicro" x:Name="GAZTGreenLabelStyleForMicro" TargetType="Label">
-
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
                 <Setter Property="FontSize" Value="Micro" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-
             </Style>
-
-
             <Style x:Key="GAZTGoldLabelStyleForBillsItem" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-
-
             <Style x:Key="GAZTGoldLabelStyleForSmallFont" x:Name="GAZTGoldLabelStyleForSmallFont" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -638,7 +511,6 @@
                 <Setter Property="Padding" Value="0,0,0,-5"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
             </Style>
-
             <Style x:Key="GAZTGoldLabelStyleForCaptionFont" x:Name="GAZTGoldLabelStyleForCaptionFont" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -646,9 +518,7 @@
                 <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
-
             </Style>
-
             <Style x:Key="GAZTGrayLabelStyleForSmallFont" x:Name="GAZTGrayLabelStyleForSmallFont" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
@@ -657,7 +527,6 @@
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <Setter Property="FontAttributes" Value="Bold" />
             </Style>
-
             <Style x:Key="GAZTGrayLabelStyleForCaptionFont" x:Name="GAZTGrayLabelStyleForCaptionFont" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
@@ -666,7 +535,6 @@
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />--><!-- commented as we are provideing bold font family inline -->
             </Style>
-
             <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="#E6EFED" />
@@ -677,7 +545,6 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             </Style>
-
             <Style x:Key="GAZTBoxViewStyle" TargetType="BoxView">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
@@ -685,17 +552,13 @@
                 <Setter Property="HeightRequest" Value="1"></Setter>
                 <Setter Property="Color" Value="Black"></Setter>
             </Style>
-
-
             <Style x:Key="GAZTDropdownStyle" x:Name="GAZTDropdownStyle" TargetType="Picker">
                 <Setter Property="FontSize" Value="Small" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="Margin" Value="15,5,15,5" />
                  <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
             </Style>
-
             <Style x:Key="GAZTFrameGridStyleForEntry" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="2"></Setter>
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
@@ -703,7 +566,6 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="Margin" Value="0"/>
             </Style>
-
             <Style x:Key="GAZTSmallGreenLabelStyleForSteps" x:Name="GAZTSmallGreenLabelStyleForSteps" TargetType="Label">
                 <Setter Property="FontSize" Value="Micro"/>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
@@ -712,32 +574,24 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
-
             <Style x:Key="GAZTGreyLabelStyleForOptionMenu" x:Name="GAZTGreyLabelStyleForOptionMenu" TargetType="Label">
                 <Setter Property="FontSize" Value="Caption"/>
                 <Setter Property="TextColor" Value="{DynamicResource EntryTextColor}" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
-                
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
-
-
             <Style x:Key="TabbedPageSmallMiniWhiteLabelStyle" x:Name="TabbedPageSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Caption"/>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-
             <Style x:Key="TabbedPageMediumMiniGoldLabelStyle" x:Name="TabbedPageMediumMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Caption"/>
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-
-            
             <!-- new styles -->
-
             <Style x:Key="MicroGrayLabelStyleNew" x:Name="MicroGrayLabelStyleNew" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -745,11 +599,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-               
             </Style>
-
-
-            
             <Style x:Key="MicroGrayLabelValue" x:Name="MicroGrayLabelValue" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -757,10 +607,7 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
-               
             </Style>
-
-
             <Style x:Key="MicroGrayLabelStyleNewEn" x:Name="MicroGrayLabelStyleNewEn" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -768,40 +615,24 @@
                     </Setter.Value>
                 </Setter>
                                                 <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_REGULAR}" />
-
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
-              
             </Style>
-
             <Style x:Key="PickerEntryStyle" x:Name="PickerEntryStyle" TargetType="Entry">
                 <Setter Property="FontAttributes" Value="Bold">
-                  
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
-
             </Style>
-
-
             <!-- new styles -->
-
-
-
             <Style x:Key="forBoldLabel" x:Name="forBoldLabel" TargetType="Label">
-               
             </Style>
             <Style x:Key="forLightLabel" x:Name="forLightLabel" TargetType="Label">
-
             </Style>
-
             <Style x:Key="StyleCheckBoxValidatorRed" TargetType="CheckBox">
                 <Setter Property="Color" Value="Red"/>
-               
             </Style>
             <Style x:Key="StyleCheckBoxValidatorGreen" TargetType="CheckBox">
                 <Setter Property="Color" Value="Green"/>
-
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

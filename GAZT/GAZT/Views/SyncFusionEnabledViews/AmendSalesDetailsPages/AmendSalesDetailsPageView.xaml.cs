@@ -12,7 +12,6 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,10 +20,8 @@ namespace GAZT.Views.NewViews
         #region Variable
         AmendSalesDetailsPageViewModel viewModel;
         #endregion
-
         #region Property
         #endregion
-     
         #region Constructor
         public AmendSalesDetailsPageView(SalesDetails SelectedSalesDetails)
         {
@@ -43,20 +40,15 @@ namespace GAZT.Views.NewViews
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 SetDynamicBehaviour();
                 ChangeAeroIcon();
-
             }
             catch (Exception ex)
             {
-           
             }
         }
         #endregion
-
         #region Method
-
         private void SetDynamicBehaviour()
         {
-
             if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
             {
                 NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
@@ -65,7 +57,6 @@ namespace GAZT.Views.NewViews
             {
                 NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
-
         }
         private void SetLTR()
         {
@@ -78,9 +69,7 @@ namespace GAZT.Views.NewViews
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
             Image DownloadImage = sender as Image;
-
             ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
-
             //attachment.DocUrl;
             if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
@@ -95,14 +84,11 @@ namespace GAZT.Views.NewViews
             {
                 await email(attachment.Doguid, attachment);
             }
-
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-
         }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
-
             ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
             //attachment.DocUrl;
             if (attachment.Filename.Contains(".")) ;
@@ -118,11 +104,8 @@ namespace GAZT.Views.NewViews
             {
                 await email(attachment.Doguid, attachment);
             }
-
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-
         }
-
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
             Image deleteImage = sender as Image;
@@ -136,7 +119,6 @@ namespace GAZT.Views.NewViews
                 }
                 else
                 {
-
                 }
             }
         }
@@ -166,17 +148,13 @@ namespace GAZT.Views.NewViews
                         } while (streams.CanRead && count > 0);
                         PdfBytes = Ms.ToArray();
                     }
-
                     var message = new EmailMessage
                     {
                         Subject = "Attached Form :",
-
                     };
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
-
                     File.WriteAllBytes(file, PdfBytes);
-
                     await Share.RequestAsync(new ShareFileRequest
                     {
                         Title = Title,
@@ -185,7 +163,6 @@ namespace GAZT.Views.NewViews
                 }
                 catch (Exception ex)
                 {
-
                 }
             });
             await Task.Run(() =>
@@ -199,7 +176,6 @@ namespace GAZT.Views.NewViews
             AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue = viewModel.NewValue;
             AmendSalesDetailsPageViewModel.SelectedSalesDetails.ChangeReason = viewModel.ChangeReason;
         }
-
         public void OnEntryUnFocussed(object sender, EventArgs args)
         {
             if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
@@ -209,12 +185,9 @@ namespace GAZT.Views.NewViews
             }
             else
             {
-               
                 // UserName.TextColor = Color.Black;
             }
         }
-
-
         public void OnEntryFocussed(object sender, EventArgs args)
         {
             if (NewValue.Text.Contains(","))

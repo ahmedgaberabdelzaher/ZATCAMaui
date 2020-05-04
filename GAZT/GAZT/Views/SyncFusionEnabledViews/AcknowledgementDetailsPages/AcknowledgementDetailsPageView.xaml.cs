@@ -8,26 +8,20 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AcknowledgementDetailsPageView : ContentPage
     {
-
         #region Variable
         AcknowledgementDetailsPageViewModel viewModel;
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public AcknowledgementDetailsPageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
@@ -82,7 +76,6 @@ namespace GAZT.Views.NewViews
                             {
                                 viewModel.IsRefreshButtonVisible = true;
                             }
-
                         }
                     }
                     if (viewModel.VATDeclarationData.d.RefundFg == "1")
@@ -92,12 +85,7 @@ namespace GAZT.Views.NewViews
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
                     }
-
-
-
-
                     viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                     //if (App.IsArabic)
                     //{
                     //    ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
@@ -108,36 +96,25 @@ namespace GAZT.Views.NewViews
                     //    viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     //}
                 }
-
-
             }
             catch (Exception ex)
             {
-
             }
         }
-
         #endregion
-
         #region Method
-
-
         public async void RefreshForSadad()
         {
             try
             {
-
                 Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-
-
                 await Task.Run(async () =>
                 {
                     await viewModel.OnRefreshClick();
                 });
-
                 Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
@@ -151,7 +128,6 @@ namespace GAZT.Views.NewViews
                 });
             }
         }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -176,15 +152,10 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         protected async void OnVATRefreshButtonClicked(Object sender, EventArgs e)
         {
             await viewModel.OnRefreshClick();
         }
         #endregion
-
-
-
-
     }
 }

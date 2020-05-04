@@ -6,7 +6,6 @@ using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
-
 namespace GAZT.Droid.CustomRenderer
 {
     public class BorderlessEntryRenderer : EntryRenderer
@@ -14,10 +13,8 @@ namespace GAZT.Droid.CustomRenderer
 		public BorderlessEntryRenderer(Context context) : base(context)
 		{
 		}
-
 		public static void Init() { }
 		double fontSize;
-
 		protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
 		{
 			base.OnElementChanged(e);
@@ -37,13 +34,10 @@ namespace GAZT.Droid.CustomRenderer
                 {
                     Control.Gravity = Android.Views.GravityFlags.CenterVertical;
                 }
-
                 if (App.IsArabic)
 				{
                     Control.TextDirection = Android.Views.TextDirection.Rtl;
                     Control.Gravity = Android.Views.GravityFlags.CenterVertical;
-                    
-
                 }
                 if (App.IsOTPiew)
                 {

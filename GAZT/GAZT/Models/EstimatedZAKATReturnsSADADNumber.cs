@@ -1,37 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class EstimatedZAKATReturnsSADADNumber
     {
         public EstimatedZAKATReturnsSADADNumberD d { get; set; }
     }
-
-   
-
     public class EstimatedZAKATReturnsSADADNumberDeferred
     {
         public string uri { get; set; }
     }
-
     public class EstimatedZAKATReturnsSADADNumberDeferredReasonSet
     {
         public EstimatedZAKATReturnsSADADNumberDeferred __deferred { get; set; }
     }
-
     public class EstimatedZAKATReturnsSADADNumberDeferred2
     {
         public string uri { get; set; }
     }
-
     public class EstimatedZAKATReturnsSADADNumberAttachSet
     {
         public EstimatedZAKATReturnsSADADNumberDeferred2 __deferred { get; set; }
     }
-
-   
-
     public class EstimatedZAKATReturnsSADADNumberResult
     {
         public Metadata2 __metadata { get; set; }
@@ -46,26 +36,19 @@ namespace GAZT.Models
         public bool ObjectionInvoiceVisibility { get; set; } = false;
         public bool AmendInvoiceVisibility { get; set; } = false;
         public bool InvoiceVisibility { get; set; } = false;
-
-
-
     }
-
     public class EstimatedZAKATReturnsSADADNumberInvoiceSet
     {
         public List<EstimatedZAKATReturnsSADADNumberResult> results { get; set; }
     }
-
     public class Deferred3
     {
         public string uri { get; set; }
     }
-
     public class EstimatedZAKATReturnsSADADNumberThresholdSet
     {
         public Deferred3 __deferred { get; set; }
     }
-
     public class EstimatedZAKATReturnsSADADNumberD
     {
         public Metadata __metadata { get; set; }
@@ -146,7 +129,6 @@ namespace GAZT.Models
         public EstimatedZAKATReturnsSADADNumberInvoiceSet InvoiceSet { get; set; }
         public EstimatedZAKATReturnsSADADNumberThresholdSet ThresholdSet { get; set; }
     }
-
     //public class RootObject
     //{
     //    public EstimatedZAKATReturnsSADADNumberD d { get; set; }

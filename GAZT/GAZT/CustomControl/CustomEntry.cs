@@ -15,7 +15,6 @@ namespace GAZT
             //Device.GetNamedSize(NamedSize.Medium, this),
             //Device.GetNamedSize(NamedSize.Medium, this)
             //);
-           
         }
     }
 }

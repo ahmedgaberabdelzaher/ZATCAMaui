@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-
 namespace pdfjs.Interfaces
 {
     public interface ILocalFileProvider

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
    public class CreditCarriedPageViewModel : ViewModelBase
@@ -14,7 +13,6 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
-
         private List<Result3> _creditCarriedsList;
         public List<Result3> CreditCarriedsList
         {
@@ -28,7 +26,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CreditCarriedsList");
             }
         }
-
         private VATDeclaration _vATDeclarationData;
         public VATDeclaration VATDeclarationData
         {
@@ -42,7 +39,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATDeclarationData");
             }
         }
-
         private bool _isNoDataLabelVisible;
         public bool IsNoDataLabelVisible
         {
@@ -56,7 +52,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-
         private bool _isListViewVisible;
         public bool IsListViewVisible
         {
@@ -70,17 +65,13 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsListViewVisible");
             }
         }
-
         public CreditCarriedPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             _dialogService = dialogService;
             _navigationService = navigationService;
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
         }
     }

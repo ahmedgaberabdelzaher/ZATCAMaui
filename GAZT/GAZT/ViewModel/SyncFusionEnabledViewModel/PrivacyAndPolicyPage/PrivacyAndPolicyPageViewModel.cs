@@ -3,7 +3,6 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
 {
     public class PrivacyAndPolicyPageViewModel : ViewModelBase
@@ -12,7 +11,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         #endregion
-
         #region Property
         private string _webUrl = string.Empty;
         public string WebUrl
@@ -28,7 +26,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
             }
         }
         #endregion
-
         #region Constructor
         public PrivacyAndPolicyPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -44,7 +41,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
             _dialogService = dialogService;
         }
         #endregion
-
         #region Method
         #endregion
     }

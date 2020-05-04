@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class FormBundleStatusPageViewModel : ViewModelBase
@@ -27,7 +26,6 @@ namespace GAZT.ViewModel.NewViewModel
         private FormBundleResult _selectedFormBindleFbtypCancel = null;
         private List<FbnumDetailList> _fbnumDetailList;
         public ICommand BackButtonClicked { get; set; }
-
         private string _txtFBtype = string.Empty;
         public string TxtFBtype
         {
@@ -54,14 +52,12 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtFBnum");
             }
         }
-
         public FormBundleStatusPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
@@ -72,12 +68,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _navigationService.GoBack();
             });
-
         }
-
-
-
-
         public List<FormBundleResult> FormBundleList
         {
             get
@@ -90,8 +81,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("FormBundleList");
             }
         }
-
-
         public bool IsCPickerEnable
         {
             get
@@ -104,11 +93,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsCPickerEnable");
             }
         }
-
-
-
-
-
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnum
         {
             get
@@ -126,7 +110,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedFormBindleFbnum");
             }
         }
-
         public FormBundleApplicationNumberModelResult SelectedFormBindleFbnumPrev
         {
             get
@@ -136,13 +119,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFormBindleFbnumPrev = value;
-              
                 RaisePropertyChanged("SelectedFormBindleFbnumPrev");
             }
         }
-
-
-
         public string Fbnumdetail
         {
             get
@@ -152,12 +131,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _fbnumdetail = value;
-
                 RaisePropertyChanged("Fbnumdetail");
             }
         }
-
-
         public List<FormBundleApplicationNumberModelResult> FormBundleApplicatioNumberList
         {
             get
@@ -170,8 +146,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("FormBundleApplicatioNumberList");
             }
         }
-
-
         public FormBundleResult SelectedFormBindleFbtyp
         {
             get
@@ -194,15 +168,11 @@ namespace GAZT.ViewModel.NewViewModel
                     catch (Exception ex)
                     {
                     }
-
-
-
                 }
                 ListFormBudles = null;
                 RaisePropertyChanged("SelectedFormBindleFbtyp");
             }
         }
-
         public FormBundleResult SelectedFormBindleFbtypCancel
         {
             get
@@ -212,18 +182,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedFormBindleFbtypCancel = value;
-
-
-
-
-
-
                 RaisePropertyChanged("SelectedFormBindleFbtypCancel");
             }
         }
-
-
-
         public List<FbnumDetailList> FbnumDetailList
         {
             get
@@ -236,11 +197,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("FbnumDetailList");
             }
         }
-
-
-
         private List<FbnumDetailList> _listFormBudles = null;
-
         public List<FbnumDetailList> ListFormBudles
         {
             get
@@ -253,7 +210,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ListFormBudles");
             }
         }
-
         private bool _isLoading;
         public bool IsLoading
         {
@@ -267,8 +223,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-
         public async Task onPageLoad()
         {
             try
@@ -277,7 +231,6 @@ namespace GAZT.ViewModel.NewViewModel
                 string lang = UtilityManager.GetLanguageParameter();
                 formbundleList = await WebServiceManager.GAZTGetFormBundleModel();
                 PopToRootPage();
-
                 if (formbundleList != null && formbundleList.d != null)
                 {
                     List<FormBundleResult> FormBundleResultList = GetUpdatedFormBundleTypeList(formbundleList.d.results);
@@ -287,7 +240,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     // provide data not available message
                 }
-
                 //      FormBundleList = formbundleList.d.results;
             }
             catch (InternetException ex)
@@ -297,9 +249,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
-
         public async void onSelectedFormBindleFbtyp()
         {
             try
@@ -308,18 +258,14 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
                     formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
-
                     PopToRootPage();
-
                     if(formbundleApplicationNumberList!=null)
                         FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x => x.Fbnum).ToList();
                 });
-
                 Task.Run(() =>
                 {
                     IsLoading = false;
@@ -332,7 +278,6 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
         public void PopToRootPage()
         {
@@ -340,7 +285,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -357,13 +301,11 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         private List<FormBundleResult> GetUpdatedFormBundleTypeList(List<FormBundleResult> FormBundleTypeList)
         {
             try
             {
                 List<FormBundleResult> list = new List<FormBundleResult>();
-
                 if (App.IsArabic)
                 {
                     foreach (FormBundleResult Object in FormBundleTypeList)
@@ -376,7 +318,6 @@ namespace GAZT.ViewModel.NewViewModel
                         {
                             Object.Txt50 = Object.Txt50;
                         }
-
                         list.Add(Object);
                     }
                 }
@@ -384,20 +325,16 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     return FormBundleTypeList;
                 }
-
-
                 return list;
             }
             catch (Exception ex)
             {
                 return null;
             }
-
         }
         public void populate()
         {
             TxtFBnum = _selectedFormBindleFbnum.Fbnum;
-
             Fbnumdetail = _selectedFormBindleFbnum.Fbsta;
             List<FormBundleApplicationNumberModelResult> Formbundle = FormBundleApplicatioNumberList.Where(a => a.Fbnum == _selectedFormBindleFbnum.Fbnum).ToList();
             List<FbnumDetailList> Child = new List<FbnumDetailList>();
@@ -412,6 +349,5 @@ namespace GAZT.ViewModel.NewViewModel
             }
             ListFormBudles = Child;
         }
-
     }
 }

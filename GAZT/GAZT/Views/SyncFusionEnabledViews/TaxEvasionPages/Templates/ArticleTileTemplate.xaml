@@ -6,7 +6,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     x:Name="articleTileTemplate">
-
     <Grid.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,21 +14,17 @@
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
         </ResourceDictionary>
     </Grid.Resources>
-
     <Grid RowSpacing="0">
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-
         <!--  Article Image  -->
         <Image
             Grid.Row="0"
@@ -45,7 +40,6 @@
                     Uri="{Binding ImagePath}" />
             </Image.Source>
         </Image>
-
         <!--  Label for Article name  -->
         <Label
             Grid.Row="1"
@@ -60,7 +54,6 @@
             MaxLines="2"
             Text="{Binding Name}"
             TextColor="{DynamicResource Gray-900}" />
-
         <!--  Label for Article author  -->
         <Label
             Grid.Row="2"
@@ -73,7 +66,6 @@
                                     Android=1.25}"
             Text="{Binding Author}"
             TextColor="{DynamicResource Gray-900}" />
-
         <!--  Label for Article date  -->
         <Label
             Grid.Row="3"
@@ -94,7 +86,6 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-
         <!--  Bookmark Button  -->
         <buttons:SfButton
             Grid.Row="3"

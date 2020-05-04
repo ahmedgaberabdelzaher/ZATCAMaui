@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -17,14 +15,10 @@ namespace GAZT.Views.NewViews
     {
         #region Variable
         AddNotePageViewModel viewModel;
-        
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public AddNotePageView(VATDeclaration vATDeclaration)
         {
             InitializeComponent();
@@ -43,7 +37,6 @@ namespace GAZT.Views.NewViews
                 if (vATDeclaration != null && vATDeclaration != null)
                 {
                     viewModel.VATDeclarationData = vATDeclaration;
-
                     if (App.ICRStatus == "E0001" && AddNotePageViewModel.NoteCount == 0)
                     {
                         viewModel.NoteText = string.Empty;
@@ -60,7 +53,6 @@ namespace GAZT.Views.NewViews
                             }
                         }
                     }
-
                     if (App.ICRStatus == "E0013" || App.ICRStatus == "E0056" || App.ICRStatus == "E0057" || App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
                     {
                         if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
@@ -69,7 +61,6 @@ namespace GAZT.Views.NewViews
                             viewModel.PreviousNoteText = viewModel.NoteText;
                         }
                     }
-
                     //if(App.ICRStatus=="E0045" && AddNotePageViewModel.NoteCount == 0)
                     //{
                     //    viewModel.NoteText = string.Empty;
@@ -86,8 +77,6 @@ namespace GAZT.Views.NewViews
                     //        }
                     //    }
                     //}
-
-
                     //if (App.ICRStatus == "E0006" && AddNotePageViewModel.NoteCount == 0)
                     //{
                     //    viewModel.NoteText = string.Empty;
@@ -105,18 +94,13 @@ namespace GAZT.Views.NewViews
                     //    }
                     //}
                 }
-
             }
             catch (Exception e)
             {
-
             }
         }
-
         #endregion
-
         #region Method
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -128,7 +112,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -136,8 +119,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         #endregion
-
     }
 }

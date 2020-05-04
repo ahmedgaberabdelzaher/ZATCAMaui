@@ -7,25 +7,18 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
 namespace GAZT {
     using System;
     using System.Reflection;
-    
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class SyncfusionControl {
-        
         private static System.Resources.ResourceManager resourceMan;
-        
         private static System.Globalization.CultureInfo resourceCulture;
-        
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal SyncfusionControl() {
         }
-        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public static System.Resources.ResourceManager ResourceManager {
             get {
@@ -36,7 +29,6 @@ namespace GAZT {
                 return resourceMan;
             }
         }
-        
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public static System.Globalization.CultureInfo Culture {
             get {
@@ -46,19 +38,16 @@ namespace GAZT {
                 resourceCulture = value;
             }
         }
-        
         public static string CancelText {
             get {
                 return ResourceManager.GetString("CancelText", resourceCulture);
             }
         }
-        
         public static string NoAppointmentText {
             get {
                 return ResourceManager.GetString("NoAppointmentText", resourceCulture);
             }
         }
-        
         public static string OKText {
             get {
                 return ResourceManager.GetString("OKText", resourceCulture);

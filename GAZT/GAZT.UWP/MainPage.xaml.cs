@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
 namespace GAZT.UWP
 {
     public sealed partial class MainPage
@@ -20,7 +19,6 @@ namespace GAZT.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
             LoadApplication(new GAZT.App());
         }
     }

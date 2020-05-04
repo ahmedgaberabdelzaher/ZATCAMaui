@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class TaxEvasionReportMobilePageViewModel : ViewModelBase
@@ -17,7 +16,6 @@ namespace GAZT.ViewModel.NewViewModel
         public readonly IDialogService _dialogService;
         public ICommand VerifyCommand { get; set; }
         //VerifyCommand
-
         private bool _isVerifyEnable = false;
         public bool IsVerifyEnable
         {
@@ -31,7 +29,6 @@ namespace GAZT.ViewModel.NewViewModel
                 this.RaisePropertyChanged("IsVerifyEnable");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -52,27 +49,18 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 return _mobileNumber;
             }
-
             set
             {
                 _mobileNumber = value;         
-                 
-
                 this.RaisePropertyChanged("MobileNumber");
             }
         }
-
-
-
-
         public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
-
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             _navigationService = navigationService;
             if (dialogService == null)
             {
@@ -81,9 +69,6 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             this.BackButtonClicked = new Command(this.BackButtonClick);
             this.VerifyCommand = new Command(this.VerifyCommandClick);
-
-            
-
         }
         public void BackButtonClick()
         {
@@ -100,16 +85,8 @@ namespace GAZT.ViewModel.NewViewModel
                 tesmobnoscreen.MobileNumber = MobileNumber;
                 _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
                // WebServiceManager.GetOtpVerification();
-
-
-
             }
-                
-            
-
 //_navigationService.NavigateTo();
         }
-
     }
-         
 }

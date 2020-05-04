@@ -12,23 +12,18 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-            
              xmlns:local1="clr-namespace:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.VATLookup}"
               x:Class="GAZT.Views.NewViews.VATLookupPageView"
-            
               NavigationPage.HasNavigationBar="False">
-
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
-      
             <ControlTemplate>
                 <StackLayout Spacing="0">
                     <!--  Title View  -->
@@ -42,8 +37,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
-                           
-                           
                              />
                         </controls:TitleView.LeadingView>
                     </controls:TitleView>
@@ -57,10 +50,7 @@
                 <RowDefinition Height="90*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-
-
             <StackLayout VerticalOptions="FillAndExpand" Grid.Row="0" Spacing="0" BackgroundColor="White">
-
                 <ScrollView BackgroundColor="White" >
                     <Grid  RowSpacing="5" Padding="0,5,0,0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
@@ -73,7 +63,6 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
-
                         </Grid.ColumnDefinitions>
                         <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <custom:CustomLabel.FormattedText>
@@ -88,16 +77,12 @@
                  CornerRadius="0"
                             x:Name="ScanCode_btn"
                             Clicked="ScanCode_btn_Clicked"
-
                             Grid.Row="1" Grid.Column="0"
                     HeightRequest="56"
                     HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
                     Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
                   Text="{x:Static local:AppResources.ZQRScanner}"
-                   
                    />
-
-
                         <!--<Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                         <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="2" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <custom:CustomLabel.FormattedText>
@@ -115,10 +100,6 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-
-
-
-
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZSearchParameter}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined"  Grid.Row="3" Grid.Column="0"  UnfocusedColor="#B1B1B1" x:Name="frmSearchParameter"
@@ -140,11 +121,8 @@
                                     OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC"
                                              BackgroundColor="#EAF7CC"
-                                             
-
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                            
                                      OKButtonTextColor="#006450"      
                                              CancelButtonTextColor="#006450"
                                 SelectedItemFontSize="12"               
@@ -158,17 +136,13 @@
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
-                      
-
                         <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
                             <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
                                 <Entry.Behaviors>
-
                                     <custom1:OnlyNumericValuesBehaviour/>
-
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.HintLabelStyle>
@@ -178,7 +152,6 @@
                             <inputLayout:SfTextInputLayout.TrailingView>
                                 <Label IsEnabled="{Binding IsTooltipEnableVisible}"
                                            IsVisible="{Binding IsTooltipEnableVisible}"
-                       
                         Margin="0,0,0,2"
                         Style="{StaticResource IconLabelStyleVAT}"
                          TextColor="#005e4b"
@@ -189,13 +162,10 @@
                                 </Label>
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
-
                         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Start" Grid.Row="5" Grid.Column="0"  Orientation="Horizontal" HeightRequest="50" Padding="0,10,0,0">
-
                             <Grid Grid.Row="0" Grid.Column="0" RowSpacing="5" Padding="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
-
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="50*"/>
@@ -204,19 +174,12 @@
                                 <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNew}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
                                 </Label>
                                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
-
                             </Grid>
-
                         </StackLayout>
-
                     </Grid>
-
-
                 </ScrollView>
             </StackLayout>
             <!--</ScrollView>-->
-
-
             <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
             <!--<Button  Text="{x:Static local:AppResources.ZZProceedtoindivisualSignup}"  IsEnabled="{Binding IsButtonEnabled}" HeightRequest="56" Command="{Binding OnSubmitClicked}"  Style="{StaticResource GAZTVerifyButton}" BackgroundColor="{Binding VerifyButtonDisableColor}" VerticalOptions="EndAndExpand" Margin="0" CornerRadius="0"></Button>-->
             <StackLayout Grid.Row="1" HeightRequest="56" VerticalOptions="FillAndExpand"  WidthRequest="1000" BackgroundColor="White">
@@ -227,13 +190,9 @@
                     HorizontalOptions="End"
                     Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
                     Text="{x:Static local:AppResources.ZSearch}"
-                    
                                 x:Name="btnSubmit" 
                                 Clicked="btnSubmit_Clicked"
-                   
-  
                      />
-
             </StackLayout>
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
@@ -254,13 +213,10 @@
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
-
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
             <!-- Acticity indicator layout end -->
         </Grid>
-        
     </ContentPage.Content>
 </ContentPage>

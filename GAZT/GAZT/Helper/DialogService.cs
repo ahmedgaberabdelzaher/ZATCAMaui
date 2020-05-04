@@ -9,14 +9,11 @@ namespace GAZT
     public class DialogService: IDialogService
     {
  private Page _dialogPage;
-
         public void Initialize(Page dialogPage)
         {
             _dialogPage = dialogPage;
         }
-
         #region IDialogService implementation
-
         public async Task ShowError(string message,
             string title,
             string buttonText,
@@ -26,13 +23,11 @@ namespace GAZT
                 title,
                 message,
                 buttonText);
-
             if (afterHideCallback != null)
             {
                 afterHideCallback();
             }
         }
-
         public async Task ShowError(
             Exception error,
             string title,
@@ -43,13 +38,11 @@ namespace GAZT
                 title,
                 error.Message,
                 buttonText);
-
             if (afterHideCallback != null)
             {
                 afterHideCallback();
             }
         }
-
         public async Task ShowMessage(
             string message,
             string title)
@@ -59,7 +52,6 @@ namespace GAZT
                 message,
                 AppResources.OKText);
         }
-
         public async Task ShowMessage(
             string message,
             string title,
@@ -70,13 +62,11 @@ namespace GAZT
                 title,
                 message,
                 buttonText);
-
             if (afterHideCallback != null)
             {
                 afterHideCallback();
             }
         }
-
         public async Task<bool> ShowMessage(
             string message,
             string title,
@@ -89,15 +79,12 @@ namespace GAZT
                 message,
                 buttonConfirmText,
                 buttonCancelText);
-
             if (afterHideCallback != null)
             {
                 afterHideCallback(result);
             }
-
             return result;
         }
-
         public async Task ShowMessageBox(
             string message,
             string title)
@@ -107,7 +94,6 @@ namespace GAZT
                 message,
                AppResources.OKText);
         }
-
         #endregion
     }
 }

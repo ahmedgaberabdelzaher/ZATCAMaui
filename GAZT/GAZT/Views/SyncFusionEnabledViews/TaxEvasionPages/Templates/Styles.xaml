@@ -8,12 +8,10 @@
     xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters">
-
     <Color x:Key="Gold">#fcbc0f</Color>
     <x:String x:Key="Rating">&#xe70c;</x:String>
     <x:String x:Key="ArrowRight">&#xe728;</x:String>
     <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
-
     <!--  Common style for Navigation bar SfButton  -->
     <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
@@ -25,7 +23,6 @@
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
     <!--  Common style for Navigation bar SfButton  -->
     <Style x:Key="BookmarkIconStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
@@ -35,7 +32,6 @@
         <Setter Property="BorderWidth" Value="0" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
     <!--  Common style for sfBorder  -->
     <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
@@ -44,7 +40,6 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
-
     <!--  Common style for labels  -->
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
@@ -55,14 +50,12 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
-
     <rating:SfRatingSettings
         x:Key="RatingSettings"
         RatedFill="{StaticResource Gold}"
         RatedStroke="{StaticResource Gold}"
         UnRatedStroke="{DynamicResource Gray-600}"
         UnRatedStrokeWidth="1" />
-
     <!--  Common style for SfRating  -->
     <Style x:Key="SfRatingStyle" TargetType="rating:SfRating">
         <Setter Property="ItemCount" Value="5" />
@@ -72,7 +65,6 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
-
     <!--  Common style for favourite button  -->
     <Style x:Key="FavouriteButtonStyle" TargetType="Button">
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -83,7 +75,6 @@
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="WidthRequest" Value="32" />
     </Style>
-
     <!--  Common style for rating label  -->
     <Style x:Key="RatingLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
@@ -92,7 +83,6 @@
         <Setter Property="Text" Value="{StaticResource Rating}" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
     <!--  Common style for SfComboBox  -->
     <Style x:Key="SfComboBoxStyle" TargetType="combobox:SfComboBox">
         <Setter Property="DropDownTextColor" Value="{DynamicResource Gray-900}" />
@@ -102,7 +92,6 @@
         <Setter Property="FontFamily" Value="Montserrat-Regular" />
         <Setter Property="DropDownItemFontFamily" Value="Montserrat-Regular" />
     </Style>
-
     <Style
         x:Key="CartComboBoxStyle"
         BasedOn="{StaticResource SfComboBoxStyle}"
@@ -110,7 +99,6 @@
         <Setter Property="WidthRequest" Value="84" />
         <Setter Property="HeightRequest" Value="32" />
     </Style>
-
     <!--  Common style for arrow label  -->
     <Style x:Key="RightArrowLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource Gray-600}" />
@@ -119,7 +107,6 @@
         <Setter Property="Text" Value="{StaticResource ArrowRight}" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
     <!--  Common style for labels  -->
     <Style x:Key="CommonLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
@@ -131,7 +118,6 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
-
     <!--  Common style for SfButtons  -->
     <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -139,8 +125,4 @@
         <Setter Property="FontFamily" Value="Montserrat-Regular" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-
-    
-
-
 </ResourceDictionary>

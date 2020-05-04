@@ -18,26 +18,22 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
             <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                 <StackLayout  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
                     <StackLayout Orientation="Horizontal"  BackgroundColor="White"  VerticalOptions="Center">
                         <Label Margin="0,0,0,0" Text="{x:Static local:AppResources.ZInstructions}"     HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
-
                         <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-
                     <local1:CustomLabel x:Name="Message_label" Margin="0,0,0,0"  Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontAttributes="{Binding IsBold}" TextColor="{Binding IsRed}"  FlowDirection="{Binding FlowDirections}" />
                     <Label  x:Name="xyz" FlowDirection="{Binding FlowDirections}"  Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding onLinkClicked}"></TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-
                 </StackLayout>
             </Frame>
         </Grid>

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
-
     public class TERRegion
     {
         public string RegionCode { get; set; }
@@ -12,15 +10,12 @@ namespace GAZT.Models
         public string RegionNameEN { get; set; }
         public string RegionNameAR { get; set; }
     }
-
     public class TERFRegionRootObject
     {
         public List<TERRegion> RegionList { get; set; }
         public List<object> RegionResultErrorList { get; set; }
         public bool RegionSuccess { get; set; }
     }
-
-
     public class TERCity
     {
         public string CityCode { get; set; }
@@ -34,14 +29,12 @@ namespace GAZT.Models
         public string RegionNameAr { get; set; }
         public string RegionNameEn { get; set; }
     }
-
     public class TERFCityRetrieveRootObject
     {
         public List<TERCity> CityList { get; set; }
         public List<object> CityResultErrorList { get; set; }
         public bool CitySuccess { get; set; }
     }
-
     public class TERFAQ
     {
         public string AnswerAR { get; set; }
@@ -50,27 +43,22 @@ namespace GAZT.Models
         public string QuestionAR { get; set; }
         public string QuestionEN { get; set; }
     }
-
     public class TERTERFAQRootObject
     {
         public List<TERFAQ> FAQList { get; set; }
         public List<object> FAQResultErrorList { get; set; }
         public bool FAQSuccess { get; set; }
     }
-
     public class TERFAQs
     {
         public List<TERFAQ> FAQList { get; set; }
         public List<object> FAQResultErrorList { get; set; }
         public bool Success { get; set; }
     }
-
-
     public class RegionPost
     {
         public string WSUserName { get; set; }/*: "GAZT@CRM",*/
         public string WSPassword { get; set; } /*"gazt@123"*/
-
     }
     public class CityPost
     {
@@ -78,13 +66,11 @@ namespace GAZT.Models
         public string WSPassword { get; set; } /*"gazt@123"*/
         public string RegionCode { get; set; }
     }
-
     public class FAQPost
     {
         public string WSUserName { get; set; }/*: "GAZT@CRM",*/
         public string WSPassword { get; set; } /*"gazt@123"*/
         public string Channel { get; set; }
-
     }
     public class ReportRetriveByMobileNumberPost
     {
@@ -143,27 +129,19 @@ namespace GAZT.Models
         public string ViolationDate { get; set; }
         public string ViolationType { get; set; }
         public string WorkType { get; set; }
-        
-
-       
     }
-
-
-
     public class ReportRetriveByMobNoRootObject
     {
         public List<object> ResultErrorList { get; set; }
         public bool Success { get; set; }
         public List<TaxEvasionReport> TaxEvasionReportList { get; set; }
     }
-
     public class UploadedDocumentsList
     {
         public string DocBinaryInBase64 { get; set; }
         public string FileNameWithExtension { get; set; }
         public string MimeType { get; set; }
     }
-
     public class TaxEvasionReportTobeUsedToSubmit
     {
         public string Channel { get; set; }
@@ -194,20 +172,17 @@ namespace GAZT.Models
         public string WSPassword { get; set; }
         public string WorkType { get; set; }
     }
-
     public class FacilityCompanyType
     {
         public string Name { get; set; }
         public string Id { get; set; }
     }
-
     public class ResultErrorList
     {
         public string ErrorCode { get; set; }
         public string ErrorDescription { get; set; }
         public string ErrorField { get; set; }
     }
-
     public class TEReportResponsePostRootObject
     {
         public List<object> AttachmentsIds { get; set; }
@@ -216,5 +191,4 @@ namespace GAZT.Models
         public string TaxEvasionGuid { get; set; }
         public string TaxEvasionNumber { get; set; }
     }
-
 }

@@ -9,7 +9,6 @@ using BorderlessEntry = GAZTeServicesApp.Controls.BorderlessEntry;
 using GAZT.ViewModel;
 using GAZTeServicesApp.ViewModels.LoginPage;
 using GAZT.Manager;
-
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>
@@ -23,7 +22,6 @@ namespace GAZTeServicesApp.Converters
         /// Identifies the simple and gradient login pages.
         /// </summary>
         public string PageVariantParameter { get; set; }
-
         /// <summary>
         /// This method is used to convert the bool to color.
         /// </summary>
@@ -38,43 +36,32 @@ namespace GAZTeServicesApp.Converters
             if (PageVariantParameter == "0")
             {
                 var emailEntry = parameter as BorderlessEntry;
-
                 if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext))
                 {
                     return Color.Transparent;
                 }
-
                 var isFocused = (bool)value;
                 bindingContext.IsInvalidEmail = !isFocused && !CheckValidEmail(bindingContext.Email);
-
                 if (isFocused)
                 {
                     return Color.FromRgba(255, 255, 255, 0.6);
                 }
-
                 return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.Transparent;
-
             }
             // For Simple login page
             else
             {
                 var emailEntry = parameter as BorderlessEntry;
-
                 if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext)) return Color.FromHex("#ced2d9");
-
                 var isFocused1 = (bool)value;
                 bindingContext.IsInvalidEmail = !isFocused1 && !CheckValidEmail(bindingContext.Email);
-
                 if (isFocused1)
                 {
                     return Color.FromHex("#959eac");
                 }
-
                 return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.FromHex("#ced2d9");
-
             }
         }
-
         /// <summary>
         /// This method is used to convert the color to bool.
         /// </summary>
@@ -87,7 +74,6 @@ namespace GAZTeServicesApp.Converters
         {
             return null;
         }
-
         /// <summary>
         /// Validates the email.
         /// </summary>
@@ -95,9 +81,7 @@ namespace GAZTeServicesApp.Converters
         /// <returns>Returns the boolean value.</returns>
         private static bool CheckValidEmail(string email)
         {
-
             bool isNumber;
-
             if (string.IsNullOrEmpty(email))
             {
                 return true;
@@ -106,7 +90,6 @@ namespace GAZTeServicesApp.Converters
             {
                isNumber = IsEnglishNumber(email);
             }
-
             if (!isNumber)
             {
                 var regex = new Regex(@"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*");
@@ -118,7 +101,6 @@ namespace GAZTeServicesApp.Converters
             }
             return true;
         }
-
         public static bool IsEnglishNumber(String arText)
         {
             bool isAllNumeric = true;

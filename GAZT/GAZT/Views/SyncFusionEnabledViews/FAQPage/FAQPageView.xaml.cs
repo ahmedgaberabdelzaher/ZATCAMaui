@@ -5,11 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,18 +17,14 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         public FAQPageView()
         {
             InitializeComponent();
-
             viewModel = App.Locator.FAQPageView;
             //viewModel.IsLoading = true;
-
             // ParentContainer.RaiseChild(busyindicator);
-
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
             SetLTR();
             onPageLoad();
-
             //List<string> AnswerList = new List<string>();
             //AnswerList.Add("TestAnswer");
             //FAQ faq = new FAQ();
@@ -39,7 +33,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
             //viewModel.Questions = new System.Collections.ObjectModel.ObservableCollection<FAQ>();
             //viewModel.Questions.Add(faq);
         }
-
         /// <summary>
         /// Invoked when view size is changed.
         /// </summary>
@@ -48,7 +41,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //protected override void OnSizeAllocated(double width, double height)
         //{
         //    base.OnSizeAllocated(width, height);
-
         //    if (width > height)
         //    {
         //        if (Search.IsVisible)
@@ -57,19 +49,14 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //        }
         //    }
         //}
-
-
         public async void onPageLoad()
         {
             try
             {
-
                 Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-
-
                 await Task.Run(async () =>
                 {
                     await viewModel.OnPageLoad();
@@ -82,10 +69,7 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
                 Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
-                   
                 });
-
-                
             }
             catch(Exception ex)
             {
@@ -125,11 +109,9 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //    this.Search.IsVisible = true;
         //    this.Title.IsVisible = false;
         //    this.SearchButton.IsVisible = false;
-
         //    if (this.TitleView != null)
         //    {
         //        double opacity;
-
         //        // Animating Width of the search box, from 0 to full width when it added to the view.
         //        var expandAnimation = new Animation(
         //            property =>
@@ -140,10 +122,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //            }, 0, TitleView.Width, Easing.Linear);
         //        expandAnimation.Commit(Search, "Expand", 16, 250, Easing.Linear);
         //    }
-
         //    SearchEntry.Focus();
         //}
-
         ///// <summary>
         ///// Invoked when back to title button is clicked.
         ///// </summary>
@@ -155,7 +135,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //    if (this.TitleView != null)
         //    {
         //        double opacity;
-
         //        // Animating Width of the search box, from full width to 0 before it removed from view.
         //        var shrinkAnimation = new Animation(property =>
         //        {
@@ -166,10 +145,8 @@ namespace GAZT.Views.SyncFusionEnabledViews.FAQPage
         //        TitleView.Width, 0, Easing.Linear);
         //        shrinkAnimation.Commit(Search, "Shrink", 16, 250, Easing.Linear, (p, q) => this.SearchBoxAnimationCompleted());
         //    }
-
         //    SearchEntry.Text = string.Empty;
         //}
-
         ///// <summary>
         ///// Invokes when search box Animation completed.
         ///// </summary>

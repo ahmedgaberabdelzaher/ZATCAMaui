@@ -23,14 +23,12 @@
             <ResourceDictionary Source="..\Common\Styles.xaml" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
                 <controls:TitleView Title="{x:Static local:AppResources.ZTERReportCategoryPageTittle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
-
                         <buttons:SfButton
                             x:Name="backButton"
                             Clicked="BackButtonClicked"
@@ -39,7 +37,6 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
                     </controls:TitleView.LeadingView>
                 </controls:TitleView>
@@ -47,13 +44,9 @@
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
-
     <ContentPage.Content>
-
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <Grid Grid.Row="0" x:Name="MainLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-         
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Grid.Row="0"  Margin="0" Padding="0,10,0,0"  RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="10*" />
@@ -64,13 +57,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-
                 <!--<Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center">
                 </Label>
                 <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                 </Frame>
                 <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />-->
-
                 <ScrollView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
                     <Grid   Margin="0" Padding="5" HorizontalOptions="FillAndExpand" RowSpacing="0" >
                         <Grid.RowDefinitions>
@@ -90,13 +81,11 @@
                             <ColumnDefinition Width="80*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory1}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"  VerticalOptions="Center" Margin="0,5,0,5" >
                             <!--<Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                             </Label.GestureRecognizers>-->
                         </Label>
-                        
                         <Image Grid.Row="0"  Grid.Column="1"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec1}" />
                         <ContentView HorizontalOptions="FillAndExpand"
              VerticalOptions="FillAndExpand"
@@ -107,7 +96,6 @@ Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                             </ContentView.GestureRecognizers>
                         </ContentView>
                         <!--category 1-->
-
                         <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label  Text="{x:Static local:AppResources.ZTERReportCategory2}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                             <!--<Label.GestureRecognizers>
@@ -137,8 +125,6 @@ Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" Command="{Binding onCategory3Clicked}"/>
                             </ContentView.GestureRecognizers>
                         </ContentView>
-
-
                         <BoxView BackgroundColor="Gray" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory4}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
                             <!--<Label.GestureRecognizers>
@@ -153,7 +139,6 @@ Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"  NumberOfTapsRequired="1" Command="{Binding onCategory4Clicked}"/>
                             </ContentView.GestureRecognizers>
                         </ContentView>
-
                         <BoxView BackgroundColor="Gray" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <Label Text="{x:Static local:AppResources.ZTERReportCategory5}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
                             <!--<Label.GestureRecognizers>
@@ -168,30 +153,11 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" Command="{Binding onCategory5Clicked}" NumberOfTapsRequired="1"/>
                             </ContentView.GestureRecognizers>
                         </ContentView>
-
                         <BoxView BackgroundColor="Gray" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
-                        
-
-
-
                     </Grid>
-
-
-
-
-
-
-
-
-
                 </ScrollView>
-
-
-  
-
                 <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
                     <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnNextClicked}" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
-
                 </StackLayout>
                 <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
                 </Label>
@@ -199,12 +165,8 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                 </Frame>
                 <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
             </Grid>
-          
-            
         </Grid>
-
 <Grid Grid.Row="0"  Grid.Column="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7">
-               
                 <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
@@ -221,8 +183,6 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
 </Grid>
     </ContentPage.Content>
-
 </ContentPage>

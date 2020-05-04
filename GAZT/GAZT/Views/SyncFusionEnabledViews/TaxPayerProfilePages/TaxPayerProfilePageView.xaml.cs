@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,7 +17,6 @@ namespace GAZT.Views.NewViews
         private double width = 0;
       private double height = 0;
         #endregion
-
         #region Constructor
         public TaxPayerProfilePageView()
         {
@@ -31,14 +28,9 @@ namespace GAZT.Views.NewViews
             SetLTR();
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
-
         }
         #endregion
-
         #region Method
-
-
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
@@ -68,7 +60,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -76,7 +67,6 @@ namespace GAZT.Views.NewViews
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
         protected async override void OnAppearing()
         {
             base.OnAppearing();
@@ -87,13 +77,11 @@ namespace GAZT.Views.NewViews
             //{
             //    await viewModel._dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
             //}
-
             //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
             //{
             //    Page pg = Navigation.NavigationStack[index];
             //    Navigation.RemovePage(pg);
             //}
-
             for (int index = 0; index < Navigation.NavigationStack.Count; index++)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[index];
@@ -102,23 +90,19 @@ namespace GAZT.Views.NewViews
                     Navigation.RemovePage(pg);
                 }
             }
-
         }
         //public void OnPasswordVisibilityClicked(object sender, EventArgs args)
         //{
         //    viewModel.PasswordVisibility = !viewModel.PasswordVisibility;
         //}
-
         //public void OnPasswordFocused(object sender, EventArgs args)
         //{
         //    Password.Unfocus();
         //}
-        
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
         }
-
         #endregion
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Xamarin.Forms;
-
 namespace GAZT
 { 
     public class RoundCornersEffect : RoutingEffect
@@ -9,7 +8,6 @@ namespace GAZT
         public RoundCornersEffect() : base("MyCompany.RoundCornersEffect")
         {
         }
-
         public static readonly BindableProperty CornerRadiusProperty =
             BindableProperty.CreateAttached(
                 "CornerRadius",
@@ -17,24 +15,18 @@ namespace GAZT
                 typeof(RoundCornersEffect),
                 0,
                 propertyChanged: OnCornerRadiusChanged);
-
         public static int GetCornerRadius(BindableObject view) =>
             (int)view.GetValue(CornerRadiusProperty);
-
         public static void SetCornerRadius(BindableObject view, int value) =>
             view.SetValue(CornerRadiusProperty, value);
-
         private static void OnCornerRadiusChanged(BindableObject bindable, object oldValue, object newValue)
         {
             if (!(bindable is View view))
                 return;
-
             var cornerRadius = (int)newValue;
             var effect = view.Effects.OfType<RoundCornersEffect>().FirstOrDefault();
-
             if (cornerRadius > 0 && effect == null)
                 view.Effects.Add(new RoundCornersEffect());
-
             if (cornerRadius == 0 && effect != null)
                 view.Effects.Remove(effect);
         }

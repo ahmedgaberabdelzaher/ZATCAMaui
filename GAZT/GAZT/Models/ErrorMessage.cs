@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT
 {
     public class ErrorMessage
@@ -10,7 +9,6 @@ namespace GAZT
 			public string lang { get; set; }
 			public string value { get; set; }
 		}
-
 		public class Application
 		{
 			public string component_id { get; set; }
@@ -18,13 +16,11 @@ namespace GAZT
 			public string service_id { get; set; }
 			public string service_version { get; set; }
 		}
-
 		public class ErrorResolution
 		{
 			public string SAP_Transaction { get; set; }
 			public string SAP_Note { get; set; }
 		}
-
 		public class Errordetail
 		{
 			public string code { get; set; }
@@ -33,7 +29,6 @@ namespace GAZT
 			public string severity { get; set; }
 			public string target { get; set; }
 		}
-
 		public class Innererror
 		{
 			public Application application { get; set; }
@@ -42,14 +37,12 @@ namespace GAZT
 			public ErrorResolution Error_Resolution { get; set; }
 			public List<Errordetail> errordetails { get; set; }
 		}
-
 		public class Error
 		{
 			public string code { get; set; }
 			public Message message { get; set; }
 			public Innererror innererror { get; set; }
 		}
-
 		public class ErrorObj
 		{
 			public Error error { get; set; }

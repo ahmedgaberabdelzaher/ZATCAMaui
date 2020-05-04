@@ -5,18 +5,15 @@ using GAZT;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
-
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRenderer))]
 namespace GAZT.Droid.CustomRenderer
 {
     public class CustomEntryRenderer : EntryRenderer
     {
         double fs;
-
         public CustomEntryRenderer(Context context) : base(context)
         {
         }
-
         protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
         {
             base.OnElementChanged(e);
@@ -28,7 +25,6 @@ namespace GAZT.Droid.CustomRenderer
                 Control.TextSize = (float)fs;//for android size is  float 
                 Control.SetTextColor(global::Android.Graphics.Color.Black);
                 Control.ImeOptions = (ImeAction)ImeFlags.NoExtractUi;
-
                 if (App.IsArabic)
                 {
                     Typeface font1 = Typeface.CreateFromAsset(Forms.Context.Assets, "Cairo-Regular.ttf");

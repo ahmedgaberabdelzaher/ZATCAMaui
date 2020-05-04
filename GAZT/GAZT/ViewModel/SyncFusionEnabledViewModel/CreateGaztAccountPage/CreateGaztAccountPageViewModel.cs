@@ -11,7 +11,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class CreateGaztAccountPageViewModel : ViewModelBase
@@ -25,10 +24,8 @@ namespace GAZT.ViewModel.NewViewModel
         int TotalSec;
         public bool StopTimer = false;
         #endregion
-
         #region Properties
         private bool _isOTPEntryEnable = true;
-
         public bool IsOTPEntryEnable
         {
             get
@@ -61,11 +58,9 @@ namespace GAZT.ViewModel.NewViewModel
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                 }
-
                 RaisePropertyChanged("OTPValidDuration");
             }
         }
-
         private bool _isResendOTPEnabled = false;
         public bool IsResendOTPEnabled
         {
@@ -79,7 +74,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
-
         private bool _isVerifyOTPEnabled = true;
         public bool IsVerifyOTPEnabled
         {
@@ -93,7 +87,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
-
         private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
         public Color ButtonDisableColor
         {
@@ -107,7 +100,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ButtonDisableColor");
             }
         }
-
         private Color _buttonDisableTextColor = Color.Gray;
         public Color ButtonDisableTextColor
         {
@@ -121,8 +113,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ButtonDisableTextColor");
             }
         }
-
-
         private Color _verifybuttonDisableColor = Color.FromHex("#006450");
         public Color VerifyButtonDisableColor
         {
@@ -136,8 +126,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
-
-
         private Color _verifybuttonDisableTextColor = Color.White;
         public Color VerifyButtonDisableTextColor
         {
@@ -151,7 +139,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VerifyButtonDisableTextColor");
             }
         }
-
         private string _txtEmailAddress = string.Empty;
         public string TxtEmailAddress
         {
@@ -165,7 +152,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtEmailAddress");
             }
         }
-
         private string _txtEmailCode = string.Empty;
         public string TxtEmailCode
         {
@@ -179,7 +165,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtEmailCode");
             }
         }
-
         private string _txtMobileNumber = string.Empty;
         public string TxtMobileNumber
         {
@@ -193,7 +178,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtMobileNumber");
             }
         }
-
         private string _txtMobileNumberCode = string.Empty;
         public string TxtMobileNumberCode
         {
@@ -220,7 +204,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtPassword");
             }
         }
-
         private string _txtConfirmPassword = string.Empty;
         public string TxtConfirmPassword
         {
@@ -234,9 +217,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtConfirmPassword");
             }
         }
-
         private SignUpModelRootObject _signUpModelRootObjectM = null;
-
         public SignUpModelRootObject SignUpModelRootObjectM
         {
             get
@@ -249,9 +230,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SignUpModelRootObjectM");
             }
         }
-
         #endregion
-
         #region Constructor
         public CreateGaztAccountPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -259,8 +238,6 @@ namespace GAZT.ViewModel.NewViewModel
             _dialogService = dialogService;
             try
             {
-
-              
                 OnResendOTPClicked = new Command(async () =>
                 {
                     await SendOTPToRegisterMobileNumberToLogIn();
@@ -268,18 +245,13 @@ namespace GAZT.ViewModel.NewViewModel
                 GoBackClick = new Command(async () =>
                 {
                     _navigationService.GoBack();
-
-
                 });
-
             }
             catch (Exception ex)
             {
-
             }
         }
         #endregion
-
         #region Methods
         public void OnPageLoad()
         {
@@ -293,14 +265,8 @@ namespace GAZT.ViewModel.NewViewModel
         {
             try
             {
-
-
-
-
                 await Task.Run(async () =>
                 {
-
-
                     try
                     {
                         SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
@@ -324,7 +290,6 @@ namespace GAZT.ViewModel.NewViewModel
                         CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
                         string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(CreateModel);
                         SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-
                         if (ResultFirstSubmitModel.d == null)
                         {
                             SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
@@ -332,7 +297,6 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
                             });
-
                         }
                         else
                         {
@@ -349,9 +313,7 @@ namespace GAZT.ViewModel.NewViewModel
                             IsOTPEntryEnable = true;
                             numberOfSeconds = 120;
                             TimerStart(numberOfSeconds);
-                           
                         }
-
                     }
                     catch (InternetException ex)
                     {
@@ -361,27 +323,21 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
             }
             catch (InternetException ex)
             {
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-
             }
         }
         public void TimerStart(int Seconds)
         {
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
-
             TotalSec = Seconds;
-
             CancellationTokenSource CTS = _CancellationTokenSource;
-
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
                 if (App.IsComingFromSleepMode)
                 {
-
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
@@ -395,8 +351,6 @@ namespace GAZT.ViewModel.NewViewModel
                         StopTimer = true;
                         // TimerStart(TotalSec);
                     }
-
-
                 }
                 if (CTS.IsCancellationRequested)
                 {
@@ -414,9 +368,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     else
                     {
-
                     }
-
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
@@ -428,7 +380,6 @@ namespace GAZT.ViewModel.NewViewModel
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
                         return false;
-
                     }
                     //else if(TotalSec <0)
                     //{
@@ -437,7 +388,6 @@ namespace GAZT.ViewModel.NewViewModel
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
                     TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
@@ -474,18 +424,14 @@ namespace GAZT.ViewModel.NewViewModel
                 CreateModel.AEmailCode = TxtEmailCode;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
-                
                 string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
-
                 if (ResultFirstSubmit != null)
                 {
                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-
                     if (ResultFirstSubmitModel.d == null)
                     {
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                         _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-
                     }
                     else
                     {
@@ -500,7 +446,6 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
         #endregion
     }

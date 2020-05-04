@@ -5,17 +5,14 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
               xmlns:tt="clr-namespace:TouchTracking"
                             xmlns:cv="clr-namespace:CardView;assembly=CardView"
-
                xmlns:cardView="clr-namespace:CardView;assembly=CardView"
              x:Class="GAZT.MainPage" FlowDirection="RightToLeft" BackgroundColor="White">
-             
        <!-- <StackLayout Orientation="Horizontal">
             Button Text="{local:Translate ButtonA}"></Button>
             <Button Text="{x:Static local:AppResources.ButtonA}"></Button>
             <Button Text="Button 2"></Button>
             <Button Text="Button 3"></Button>
         </StackLayout>
-
         <Button Text="Change Direction" Clicked="Button_Clicked"></Button>
 -->
 <!--    gray outlinecolor with shadow-->
@@ -37,7 +34,6 @@
             </cardView:CardView>
         </StackLayout>
     </ScrollView>-->
-    
    <!-- CardView InnerFrame OutlineColor Example-->
    <!-- <ScrollView>
         <StackLayout Padding="20" Margin="5">
@@ -68,7 +64,6 @@
             </cardView:CardView>
         </StackLayout>
     </ScrollView>-->
-   
    <!--CardView OutlineColor Example-->
     <!--<StackLayout Padding="20" Margin="5">
         <cardView:CardView CardViewHeightRequest="100" CardViewOutlineColor="Black" CardViewOutlineColorThickness="2">
@@ -112,8 +107,6 @@
             </cv:CardView.CardViewContent>
         </cv:CardView>
     </StackLayout>-->
-    
-    
    <!-- <ScrollView>
         <StackLayout Padding="20" Margin="5">
             <cardView:CardView CardViewHeightRequest="100" CardViewOutlineColor="Gray" CardViewOutlineColorThickness="2" CardViewHasShadow="True">

@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class SignUpFormPageViewModel : ViewModelBase
@@ -25,8 +24,6 @@ namespace GAZT.ViewModel.NewViewModel
         public int DefaultMonth;
         public ICommand GoBackClick { get; set; }
         #endregion
-
-
         #region Properties 
         private bool _isCRChecked = false;
         public bool IsCRChecked
@@ -83,7 +80,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IDTypeIndex");
             }
         }
-
         private ObservableCollection<object> _todayDate;
         public ObservableCollection<object> TodayDate
         {
@@ -97,8 +93,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TodayDate");
             }
         }
-
-        
         private int _selectedLOrC = 1;
         public int SelectedLOrC
         {
@@ -109,7 +103,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedLOrC = value;
-               
                 RaisePropertyChanged("SelectedLOrC");
             }
         }
@@ -137,15 +130,8 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 _selectedSignUpUsingSetForCancle = value;
                 RaisePropertyChanged("SelectedSignUpUsingSetForCancle");
-
             }
-
-
-
         }
-
-
-
         private SignUpUsing _selectedSignUpUsing = null;
         public SignUpUsing SelectedSignUpUsing
         {
@@ -176,9 +162,7 @@ namespace GAZT.ViewModel.NewViewModel
                     }
                     catch(Exception Ex)
                     {
-
                     }
-                    
                 }
                 RaisePropertyChanged("SelectedSignUpUsing");
             }
@@ -196,7 +180,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SignUpUsingList");
             }
         }
-
         private LicenseOrCRModel _SelectedLCType = null;
         public LicenseOrCRModel SelectLCType
         {
@@ -224,7 +207,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectLCType");
             }
         }
-
         private List<LicenseOrCRModel> _lcTypeList = null;
         public List<LicenseOrCRModel> LcTypeList
         {
@@ -235,12 +217,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _lcTypeList = value;
-              
                 RaisePropertyChanged("LcTypeList");
             }
         }
-
-
         private SignupCityResult _selectCityList = null;
         public SignupCityResult SelectCityList
         {
@@ -258,7 +237,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectCityList");
             }
         }
-
         private SignupCityResult _selectCityListPrev = null;
         public SignupCityResult SelectCityListPrev
         {
@@ -269,11 +247,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectCityListPrev = value;
-             
                 RaisePropertyChanged("SelectCityListPrev");
             }
         }
-
         private List<SignupCityResult> _cityList = null;
         public List<SignupCityResult> CityList
         {
@@ -287,7 +263,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CityList");
             }
         }
-
         private bool _isCRVisible = false;
         public bool IsCRVisible
         {
@@ -301,7 +276,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsCRVisible");
             }
         }
-
         private bool _isLicenseVisible = false;
         public bool IsLicenseVisible
         {
@@ -378,7 +352,6 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _selectedIssuedByPrev = value;
-               
                 RaisePropertyChanged("SelectedIssuedByPrev");
             }
         }
@@ -395,7 +368,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IssuedByList");
             }
         }
-
         private string _txtTIN = string.Empty;
         public string TxtTIN
         {
@@ -409,7 +381,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtTIN");
             }
         }
-
         private string _txtIDNumber = string.Empty;
         public string TxtIDNumber
         {
@@ -423,7 +394,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtIDNumber");
             }
         }
-
         private string _txtName = string.Empty;
         public string TxtName
         {
@@ -437,7 +407,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtName");
             }
         }
-
         private string _txtCRNumber = string.Empty;
         public string TxtCRNumber
         {
@@ -451,7 +420,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtCRNumber");
             }
         }
-
         private string _txtLicenseNumber = string.Empty;
         public string TxtLicenseNumber
         {
@@ -465,7 +433,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtLicenseNumber");
             }
         }
-
         private string _txtEmailAddress = string.Empty;
         public string TxtEmailAddress
         {
@@ -479,7 +446,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtEmailAddress");
             }
         }
-
         private string _txtMobileNumber = string.Empty;
         public string TxtMobileNumber
         {
@@ -493,7 +459,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtMobileNumber");
             }
         }
-
         private string _txtPhoneNumber = string.Empty;
         public string TxtPhoneNumber
         {
@@ -507,7 +472,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtPhoneNumber");
             }
         }
-
         //private string _enteredCaptchaValue = string.Empty;
         //public string EnteredCaptchaValue
         //{
@@ -521,7 +485,6 @@ namespace GAZT.ViewModel.NewViewModel
         //        RaisePropertyChanged("EnteredCaptchaValue");
         //    }
         //}
-
         //private string _captcha = string.Empty;
         //public string Captcha
         //{
@@ -535,9 +498,7 @@ namespace GAZT.ViewModel.NewViewModel
         //        RaisePropertyChanged("Captcha");
         //    }
         //}
-
         private string _pkrDBO = string.Empty;
-
         public string PkrDBO {
             get
             {
@@ -549,9 +510,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PkrDBO");
             }
         }
-
         private string _pkrDBOPrev = string.Empty;
-
         public string PkrDBOPrev
         {
             get
@@ -564,7 +523,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PkrDBOPrev");
             }
         }
-
         private int _maxLengthID = 10;
         public int MaxLengthID
         {
@@ -578,7 +536,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MaxLengthID");
             }
         }
-
         private IDTypeModelRootObject _iDTypeModelRootObject = null;
         public IDTypeModelRootObject IDTypeModelRootObject
         {
@@ -592,7 +549,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IDTypeModelRootObject");
             }
         }
-
         private SignUpModelRootObject _signUpFirstSubmitModel = null;
         public SignUpModelRootObject SignUpFirstSubmitModel
         {
@@ -606,7 +562,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SignUpFirstSubmitModel");
             }
         }
-
         private DateTime _maximumxD = DateTime.Now;
         public DateTime MaximumxD
         {
@@ -620,7 +575,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MaximumxD");
             }
         }
-
         private string _txtIDType = string.Empty;
         public string TxtIDType
         {
@@ -634,7 +588,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtIDType");
             }
         }
-
         private string _txtLOrC = string.Empty;
         public string TxtLOrC
         {
@@ -648,7 +601,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtLOrC");
             }
         }
-
         private string _txtLOrCIssuedBy = string.Empty;
         public string TxtLOrCIssuedBy
         {
@@ -676,7 +628,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         #endregion
-
         #region Constructor
         public SignUpFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -688,9 +639,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 _navigationService = navigationService;
                 _dialogService = dialogService;
-
-
-
                 if (dialogService == null)
                 {
                     throw new ArgumentNullException("dialogService");
@@ -698,37 +646,24 @@ namespace GAZT.ViewModel.NewViewModel
                 GoBackClick = new Command(async () =>
                 {
                     _navigationService.GoBack();
-
-
                 });
-
                 //OnCaptchaRegenerateClicked = new Xamarin.Forms.Command(() =>
                 //{
-
                 //        StringBuilder captcha = GetCaptcha();
                 //        Captcha = captcha.ToString();
                 //        EnteredCaptchaValue = string.Empty;
-
-
                 //});
-
                 OnNextClicked = new Xamarin.Forms.Command(() =>
                 {
                     _navigationService.NavigateTo(App.CreateGaztAccountPageView);
-
                 });
-
-
             }
             catch (Exception ex)
             {
-
             }
         }
         #endregion
-
         #region Methods 
-
         //public bool ValidateCaptcha()
         //{
         //    bool isValidCaptcha = false;
@@ -741,7 +676,6 @@ namespace GAZT.ViewModel.NewViewModel
         //    else
         //    {
         //        // _dialogService.ShowMessageBox(AppResources.InvaliedCaptcha, AppResources.Information);
-
         //        isValidCaptcha = false;
         //    }
         //    return isValidCaptcha;
@@ -749,7 +683,6 @@ namespace GAZT.ViewModel.NewViewModel
         //public StringBuilder GetCaptcha()
         //{
         //    StringBuilder Captcha;
-
         //    try
         //    {
         //        Random random = new Random();
@@ -766,11 +699,9 @@ namespace GAZT.ViewModel.NewViewModel
         //        throw;
         //    }
         //    return Captcha;
-
         //}
         public async Task OnPageLoad()
         {
-           
             try
             {
                 await Task.Run(() =>
@@ -809,14 +740,10 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch(Exception ex)
                 {
-
                 }
-
-               
                // PkrDBO = null;
                 await Task.Run(() =>
                 {
-
                     IsLoading = false;
                 });
             }
@@ -826,16 +753,13 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     await Task.Run(() =>
                     {
-
                         IsLoading = false;
                     });
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
-
         }
-
         public async Task SetIssueIdList()
         {
             try
@@ -847,10 +771,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch (Exception ex)
             {
-
             }
         }
-
         public async Task SetCityList()
         {
             try
@@ -859,35 +781,27 @@ namespace GAZT.ViewModel.NewViewModel
                 SignupCityRootObject CityListSignup = await WebServiceManager.GAZTGetCityListForSignup();
                 List<SignupCityResult> CityR = new List<SignupCityResult>();
                 IsCRChecked = true;
-
                 IsLNChecked = false;
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }
             catch(Exception ex)
             {
-
             }
-           
         }
-
         public void SetDefaultDate()
         {
-
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
-
             //Select today dates
             if (DateTime.Now.Date.Month < 10)
                 todaycollection.Add("0" + DateTime.Now.Date.Month);
             else
                 todaycollection.Add(DateTime.Now.Date.Month.ToString());
-          
             if (DateTime.Now.Date.Day < 10)
                 todaycollection.Add("0" + DateTime.Now.Date.Day);
             else
                 todaycollection.Add(DateTime.Now.Date.Day.ToString());
             todaycollection.Add(DateTime.Now.Date.Year.ToString());
-
             TodayDate = todaycollection;
             DefaultMonth = DateTime.Now.Date.Month;
         }

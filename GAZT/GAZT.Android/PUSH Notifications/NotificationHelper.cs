@@ -8,18 +8,14 @@ using GAZT.PUSH_Notification;
 using Org.Json;
 using System;
 using Xamarin.Forms;
-
 [assembly:Dependency(typeof(NotificationHelper))]
 namespace GAZT.PUSH_Notification
 {
-    
     class NotificationHelper : INotification
     {
         private Context mContext;
         private NotificationCompat.Builder mBuilder;
         public static string NOTIFICATION_CHANNEL_ID = "10023";
-       
-
         public NotificationHelper()
         {
             mContext = global::Android.App.Application.Context;
@@ -29,12 +25,9 @@ namespace GAZT.PUSH_Notification
             try
             {
                 mBuilder = new NotificationCompat.Builder(mContext);
-                
                 mBuilder.SetSmallIcon(Resource.Drawable.icon);
-
                 var notificationResponse = new NotificationResponse();
                 var intent = new Intent(mContext, typeof(MainActivity));
-
                 //Prerequistics of action buttons
                 var actionintent1 = new Intent();
                 actionintent1.SetAction("Cancel");
@@ -42,7 +35,6 @@ namespace GAZT.PUSH_Notification
                 var actionintent2 = new Intent();
                 actionintent2.SetAction("Okay");
                 var pintent2 = PendingIntent.GetBroadcast(mContext, 0, actionintent2, PendingIntentFlags.UpdateCurrent);
-
                 //Notification Building
                 mBuilder.SetSmallIcon(Resource.Drawable.notification_icon_background);
                 var pendingIntent = PendingIntent.GetActivity(mContext, 0, intent, PendingIntentFlags.OneShot);
@@ -63,7 +55,6 @@ namespace GAZT.PUSH_Notification
                 intentFilter.AddAction("Cancel");
                 intentFilter.AddAction("Okay");
                 mContext.RegisterReceiver(notificationResponse, intentFilter);
-
                 NotificationManager notificationManager = (NotificationManager)mContext.GetSystemService(Context.NotificationService);
                 if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.O)
                 {

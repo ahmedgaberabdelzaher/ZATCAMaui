@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     class IDTypeModel
     {
     }
-
     public class IDTypeModelMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class IDTypeModelD
     {
         public IDTypeModelMetadata __metadata { get; set; }
@@ -61,7 +58,6 @@ namespace GAZT.Models
         public string BpkindDesc { get; set; }
         public string RegionDesc { get; set; }
     }
-
     public class IDTypeModelRootObject
     {
         public IDTypeModelD d { get; set; }

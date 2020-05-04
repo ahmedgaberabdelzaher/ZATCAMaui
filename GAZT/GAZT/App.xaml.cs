@@ -8,36 +8,28 @@ using System.Globalization;
 using System.Net.Http;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using System.Threading.Tasks;
 using GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
-
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace GAZT
 {
     public partial class App : Application
     {
         //SYNCFUSION INTEGRATION
-
         public static string SFLandingPageView = "SFLandingPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
         public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView"; 
-
         //SYNCFUSION INTEGRATION
-
-
         public static string MyCertificate = "MyCertificate";
         public static string PdfView = "PdfView";
         public static string UpdateEmailAddress = "UpdateEmailAddress";
         public static string ForgotUsernamePassword = "ForgotUsernamePassword";
-
         public static string MyBillsView = "MyBillsView";
-
         public static string TaxPayerProfilePageView = "TaxPayerProfilePageView";
         public static string ChangeMobileNumberPageView = "ChangeMobileNumberPageView";
         public static string ChangeEmailPageView = "ChangeEmailPageView";
@@ -76,16 +68,11 @@ namespace GAZT
         public static string AboutUsPageView = "AboutUsPageView";
         public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
         public static string MyReturnsPageView = "MyReturnsPageView";
-
-
-
-
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
-
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = false;//true
         public static bool IsArabic = false;//true
@@ -96,18 +83,14 @@ namespace GAZT
         public static string Otp = String.Empty;
         public static bool IsSessionExpired = false;
         public static string AppVersion { get; set; }
-
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;
-
         public static App appObj;
         public static DateTime TimeAtSleep { get; set; }
         public static DateTime TimeAtResume { get; set; }
         public static double TimeDifference { get; set; }
         public static bool IsComingFromSleepMode { get; set; } = false;
-
         public static bool IsComingFromDashboardToLogOff = false;
-
         //HttpClientHandlerForSSL Certificate Issue
         public static HttpClientHandler httpClientHandler = null;
         public App()
@@ -116,11 +99,8 @@ namespace GAZT
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
             AppResources.Culture = CultureInfo.CurrentUICulture;
-
             InitializeComponent();
-
             onFontFamilyChanged();
-
             try
             {
                 httpClientHandler = new HttpClientHandler();
@@ -128,25 +108,17 @@ namespace GAZT
             }
             catch (Exception ex)
             {
-
             }
-
             VATDeclaration vAT = null;
-
           //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportMobilePageView()) { BarTextColor = Color.White };
            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
-
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
-            
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
-
-
             MainPage = navigationPage;
         }
-
         private static ViewModelLocator _locator;
         public static ViewModelLocator Locator
         {
@@ -165,11 +137,9 @@ namespace GAZT
         public static void changeFontFamily(App app)
         {
             PreviousIsArabic = App.IsArabic;
-
             app.onFontFamilyChanged();
             App.IsArabic = PreviousIsArabic;
         }
-
         public void onFontFamilyChanged()
         {
             if (PreviousIsArabic)
@@ -201,7 +171,6 @@ namespace GAZT
                         fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
                         break;
                 }
-
             }
             else
             {
@@ -218,14 +187,11 @@ namespace GAZT
                         fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
                         fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
-
                         break;
                 }
             }
-
             GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "SSTArabic-Bold" });
             GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-
             MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             InformationRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
@@ -258,17 +224,14 @@ namespace GAZT
             MicroGrayLabelStyleNew.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
             MicroGrayLabelStyleNewEn.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
             //SYNCFUSION INTEGRATION
-
             if (App.IsArabic)
             {
                 //if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
                 //{
                 //    Application.Current.Resources["LargeLabelTest"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-
                 //    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
                 //    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
                 //    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-
                 //}
                 //else
                 //{
@@ -276,35 +239,24 @@ namespace GAZT
                     Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
                     Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
                 //}
-
             }
             else
             {
                 Application.Current.Resources["LargeLabelTest"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
-
                 Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_English_FONT_BOLD"];
                 Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_English_FONT_MEDIUM"];
                 Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_English_FONT_REGULAR"];
             }
-
-
-
             //SYNCFUSION INTEGRATION
-
         }
-
         protected override void OnStart()
         {
             Distribute.ReleaseAvailable = OnReleaseAvailable;
-
             // Handle when your app starts
             AppCenter.Start("ios=e91bd801-4e1c-4f62-8075-4732d2a1240a;" +
                   "uwp={Your UWP App secret here};" +
                   "android=c4abea0b-7d25-4680-9354-b0c3e4b2fb7a",
                   typeof(Analytics), typeof(Crashes), typeof(Distribute));
-
-         
-
             try
             {
                 Crashes.GenerateTestCrash();
@@ -313,9 +265,7 @@ namespace GAZT
             {
                 Crashes.TrackError(exception);
             }
-
         }
-
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
         {
             // Look at releaseDetails public properties to get version information, release notes text or release notes URL
@@ -323,11 +273,9 @@ namespace GAZT
             string versionCodeOrBuildNumber = releaseDetails.Version;
             string releaseNotes = releaseDetails.ReleaseNotes;
             Uri releaseNotesUrl = releaseDetails.ReleaseNotesUrl;
-
             // custom dialog
             var title = "Version " + versionName + " available!";
             Task answer;
-
             // On mandatory update, user cannot postpone
             if (releaseDetails.MandatoryUpdate)
             {
@@ -352,25 +300,20 @@ namespace GAZT
                     Distribute.NotifyUpdateAction(UpdateAction.Postpone);
                 }
             });
-
             // Return true if you are using your own dialog, false otherwise
             return true;
         }
-
         protected override void OnSleep()
         {
             TimeAtSleep = DateTime.Now;
-
             //TimeAtSleep = dt.ToLongTimeString();
             // Handle when your app sleeps
         }
-
         protected override void OnResume()
         {
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
         }
-
     }
 }

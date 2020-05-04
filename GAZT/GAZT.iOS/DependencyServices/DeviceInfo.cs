@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Foundation;
 using UIKit;
 using GAZT.Helper;
@@ -19,7 +18,6 @@ namespace GAZT.iOS.DependencyServices
             height = (double)UIScreen.MainScreen.Bounds.Height;
             return height;
         }
-
         public double GetDeviceWidth()
         {
             double width = 0;

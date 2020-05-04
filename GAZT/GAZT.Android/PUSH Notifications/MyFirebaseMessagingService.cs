@@ -5,7 +5,6 @@ using Firebase.Iid;
 using Firebase.Messaging;
 using Newtonsoft.Json;
 using Org.Json;
-
 namespace GAZT.PUSH_Notification
 {
     [Service]
@@ -15,11 +14,9 @@ namespace GAZT.PUSH_Notification
         public MyFirebaseMessagingService()
         {
         }
-
         public override void OnMessageReceived(RemoteMessage message)
         {
             var refreshedToken = FirebaseInstanceId.Instance.Token;
-
             base.OnMessageReceived(message);
             var title = message.Data["Title"];
             var body = message.Data["Body"];
@@ -27,6 +24,5 @@ namespace GAZT.PUSH_Notification
             //new NotificationHelper().CreateNotification(jsonObject);
             new NotificationHelper().CreateNotification(title,body);
         }
-
     }
 }

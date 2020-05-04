@@ -23,7 +23,6 @@ using GAZTeServicesApp.ViewModels.Options;
 using GAZTeServicesApp.Views.LandingPage;
 using GAZTeServicesApp.Views.LoginPage;
 using GAZTeServicesApp.Views.Options;
-
 namespace GAZT
 {
     public class ViewModelLocator
@@ -34,24 +33,15 @@ namespace GAZT
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
-
             //SYNCFUSION INTEGRATION
-
             SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
             SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
-            
             //SYNCFUSION INTEGRATION
-
-
-          
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
-
-            
             SimpleIoc.Default.Register<MyBillsViewModel>();
-
             SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
             SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
             SimpleIoc.Default.Register<ChangeEmailPageViewModel>();
@@ -83,22 +73,13 @@ namespace GAZT
             SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportListPageViewModel>();
-            
-
             SimpleIoc.Default.Register<AccountCreatedPageViewModel>();
             SimpleIoc.Default.Register<ReturnsPageViewModel>();
             SimpleIoc.Default.Register<FAQPageViewModel>();
             SimpleIoc.Default.Register<AboutUsPageViewModel>();
             SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
-
-
-
         }
-
-      
-
-     
         public PdfViewModel pdfView
         {
             get
@@ -113,8 +94,6 @@ namespace GAZT
                 }
             }
         }
-
-       
         /// <summary>
         /// Returns the current instance of MyCertificateViewModel
         /// </summary>
@@ -132,23 +111,9 @@ namespace GAZT
                 }
             }
         }
-
         /// <summary>
         /// Returns the current instance of TaxPayerProfileViewModel
         /// </summary>
-        
-
-       
-
-
-       
-
-       
-
-       
-
-    
-
         public MyBillsViewModel MyBillsView
         {
             get
@@ -163,13 +128,6 @@ namespace GAZT
                 }
             }
         }
-
-
-    
-
-
-       
-
         public TaxPayerProfilePageViewModel TaxPayerProfilePageView
         {
             get
@@ -184,8 +142,6 @@ namespace GAZT
                 }
             }
         }
-
-
         public ChangeMobileNumberPageViewModel ChangeMobileNumberPageView
         {
             get
@@ -200,7 +156,6 @@ namespace GAZT
                 }
             }
         }
-
         public ChangeEmailPageViewModel ChangeEmailPageView
         {
             get
@@ -215,7 +170,6 @@ namespace GAZT
                 }
             }
         }
-
         public ChangePasswordPageViewModel ChangePasswordPageView
         {
             get
@@ -230,7 +184,6 @@ namespace GAZT
                 }
             }
         }
-
         public OTPPageViewModel OTPPageView
         {
             get
@@ -245,12 +198,9 @@ namespace GAZT
                 }
             }
         }
-
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
-     
-
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
@@ -282,7 +232,6 @@ namespace GAZT
                 }
             }
         }
-
         public ZakatReturnListPageViewModel ZakatReturnListPageView
         {
             get
@@ -297,7 +246,6 @@ namespace GAZT
                 }
             }
         }
-
         public ZakatReturnDetailsPageViewModel ZakatReturnDetailsPageView
         {
             get
@@ -312,7 +260,6 @@ namespace GAZT
                 }
             }
         }
-
         public BillDetailsPageViewModel BillDetailsPageView
         {
             get
@@ -327,8 +274,6 @@ namespace GAZT
                 }
             }
         }
-
-
         public SalesDetailsPageViewModel SalesDetailsPageView
         {
             get
@@ -343,8 +288,6 @@ namespace GAZT
                 }
             }
         }
-
-
         public AmendSalesDetailsPageViewModel AmendSalesDetailsPageView
         {
             get
@@ -359,7 +302,6 @@ namespace GAZT
                 }
             }
         }
-
         public ChecKTINStatusViewModel CheckTINStatusPageView
         {
             get
@@ -374,7 +316,6 @@ namespace GAZT
                 }
             }
         }
-
         public ICRListPageViewModel ICRListPageView
         {
             get
@@ -389,7 +330,6 @@ namespace GAZT
                 }
             }
         }
-
         public VATReturnsPageViewModel VATReturnsPageView
         {
             get
@@ -404,9 +344,6 @@ namespace GAZT
                 }
             }
         }
-
-       
-
         public AcknowledgementDetailsPageViewModel AcknowledgementDetailsPageView
         {
             get
@@ -421,7 +358,6 @@ namespace GAZT
                 }
             }
         }
-
         public DisplayNotesPageViewModel DisplayNotesPageView
         {
             get
@@ -436,7 +372,6 @@ namespace GAZT
                 }
             }
         }
-
         public AttachmentPageViewModel AttachmentPageView
         {
             get
@@ -451,7 +386,6 @@ namespace GAZT
                 }
             }
         }
-
         public AddNotePageViewModel AddNotePageView
         {
             get
@@ -466,7 +400,6 @@ namespace GAZT
                 }
             }
         }
-
         public CreditCarriedPageViewModel CreditCarriedPageView
         {
             get
@@ -481,7 +414,6 @@ namespace GAZT
                 }
             }
         }
-
         public AddPopPageViewModel AddPopPageView
         {
             get
@@ -496,7 +428,6 @@ namespace GAZT
                 }
             }
         }
-
         public CorrespondancePageViewModel CorrespondancePageView
         {
             get
@@ -540,9 +471,6 @@ namespace GAZT
                 }
             }
         }
-
-
-
         public TaxEvasionReportTypePageViewModel TaxEvasionReportTypePageView
         {
             get
@@ -557,7 +485,6 @@ namespace GAZT
                 }
             }
         }
-     
         public TaxEvasionReportFormPageViewModel TaxEvasionReportFormPageView
         {
             get
@@ -586,7 +513,6 @@ namespace GAZT
                 }
             }
         }
-
         public SignUpTAndCPageViewModel SignUpTAndCPageView
         {
             get
@@ -601,7 +527,6 @@ namespace GAZT
                 }
             }
         }
-
         public SignUpFormPageViewModel SignUpFormPageView
         {
             get
@@ -644,7 +569,6 @@ namespace GAZT
                 }
             }
         }
-
         public AccountCreatedPageViewModel AccountCreatedPageView
         {
             get
@@ -659,10 +583,7 @@ namespace GAZT
                 }
             }
         }
-
-
         //SYNC FUSION INTEGRATION
-
         public SFLandingPageViewModel SFLandingPageView
         {
             get
@@ -677,7 +598,6 @@ namespace GAZT
                 }
             }
         }
-
         public SFOptionsPageViewModel OptionsPageView
         {
             get
@@ -692,7 +612,6 @@ namespace GAZT
                 }
             }
         }
-
         public SFLoginPageViewModel SFLoginPageView
         {
             get
@@ -707,7 +626,6 @@ namespace GAZT
                 }
             }
         }
-
         public ReturnsPageViewModel ReturnsPageView
         {
             get
@@ -722,7 +640,6 @@ namespace GAZT
                 }
             }
         }
-
         public SFAnonymousLandingPageViewModel SFAnonymousLandingPageView
         {
             get
@@ -737,7 +654,6 @@ namespace GAZT
                 }
             }
         }
-
         public FAQPageViewModel FAQPageView
         {
             get
@@ -752,7 +668,6 @@ namespace GAZT
                 }
             }
         }
-
         public AboutUsPageViewModel AboutUsPageView
         {
             get
@@ -767,7 +682,6 @@ namespace GAZT
                 }
             }
         }
-
         public PrivacyAndPolicyPageViewModel PrivacyAndPolicyPageView
         {
             get
@@ -782,7 +696,6 @@ namespace GAZT
                 }
             }
         }
-
         public MyReturnsPageViewModel MyReturnsPageView
         {
             get
@@ -797,33 +710,20 @@ namespace GAZT
                 }
             }
         }
-
         //SYNC FUSION INTEGRATION
-
-
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
-
             //SYNCFUSION INTEGRATION
-
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
             navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView)); 
-
             //SYNCFUSION INTEGRATION
-
-
-           
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
          //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
-
-
             navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
-
-
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
             navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
             navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
@@ -863,10 +763,7 @@ namespace GAZT
             navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
             navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
             navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
-
-
             return navigationService;
         }
-
     }
 }

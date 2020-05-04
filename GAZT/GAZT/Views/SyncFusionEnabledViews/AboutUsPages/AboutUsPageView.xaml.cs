@@ -6,31 +6,23 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AboutUsPageView : ContentPage
     {
-
         #region Variable
         AboutUsPageViewModel viewModel;
         #endregion
-
         #region Property
         #endregion
-
         #region Constructor
-
         public AboutUsPageView()
         {try
             { 
-            
-            
             InitializeComponent();
             viewModel = App.Locator.AboutUsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -41,7 +33,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
             {
                 string baseUrl = DependencyService.Get<IBaseUrl>().Get();
                 string path = DependencyService.Get<IBaseUrl>().Get();
-
                 if (!App.IsArabic)
                 {
                     string url = Path.Combine(path, "About_EN.html");
@@ -51,7 +42,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
                 {
                     string url = Path.Combine(path, "About_AR.html");
                     viewModel.WebUrl = url;
-
                 }
             }
             else
@@ -63,22 +53,15 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
                 else
                 {
                     viewModel.WebUrl = "file:///android_asset/About_AR.html";
-
                 }
             }
-
             }
             catch(Exception ex)
             { 
-            
             }
-
         }
-
         #endregion
-
         #region Method
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -97,10 +80,6 @@ namespace GAZT.Views.SyncFusionEnabledViews.AboutUs
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
-
-
-       
-
         private void BackButtonClicked(object sender, EventArgs e)
         {
             if(AboutUsWebView.CanGoBack)

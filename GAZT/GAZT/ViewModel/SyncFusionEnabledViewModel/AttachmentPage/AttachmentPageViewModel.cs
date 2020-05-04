@@ -14,13 +14,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class AttachmentPageViewModel : ViewModelBase
     {
         #region Variable
-
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
@@ -31,10 +29,7 @@ namespace GAZT.ViewModel.NewViewModel
         byte[] attachment;
         public int NumberOfAttachmentComingFromServer = 0;
         #endregion
-
         #region Property
-
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -61,9 +56,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("AttachmentSizeVisibility");
             }
         }
-
-
-
         private VATDeclaration _vATDeclarationDataForAttch;
         public VATDeclaration VATDeclarationDataForAttch
         {
@@ -77,7 +69,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("VATDeclarationDataForAttch");
             }
         }
-
         private string _dateSubmitted;
         public string DateSubmitted
         {
@@ -91,7 +82,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("DateSubmitted");
             }
         }
-
         private string _attachmentName = "";
         public string AttachmentName
         {
@@ -102,13 +92,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _attachmentName = value;
-
                 RaisePropertyChanged("AttachmentName");
             }
         }
-
         public decimal _attachmentSize = 0;
-
         public decimal AttachmentSize
         {
             get
@@ -118,14 +105,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _attachmentSize = value;
-
                 RaisePropertyChanged("AttachmentSize");
-
             }
         }
-
         public decimal _totalAttachmentSize = 0;
-
         public decimal TotalAttachmentSize
         {
             get
@@ -135,15 +118,10 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _totalAttachmentSize = value;
-
                 RaisePropertyChanged("TotalAttachmentSize");
-
             }
         }
-
-
         public int _attachmentCount = 0;
-
         public int AttachmentCount
         {
             get
@@ -153,9 +131,7 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _attachmentCount = value;
-
                 RaisePropertyChanged("AttachmentCount");
-
             }
         }
         private ObservableCollection<Attachment> _vatAttachmentsList;
@@ -172,7 +148,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         private bool _isShowAttachmentButton = true;
-
         public bool IsShowAttachmentButton
         {
             get
@@ -185,10 +160,7 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsShowAttachmentButton");
             }
         }
-
-
         #endregion
-
         #region Constructor
         public AttachmentPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -198,9 +170,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -208,40 +177,28 @@ namespace GAZT.ViewModel.NewViewModel
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
-
-
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 await AddAttachment();
             });
         }
         #endregion
-
         #region Method
-
         public async Task AddAttachment()
         {
             try
             {
-
-
-
                 if (AttachmentCount <= 40)
                 {
                     string[] filetypes;
                     if (Device.RuntimePlatform == Device.iOS)
                     {
                         filetypes = new string[] {
-
                 UTType.PDF,
                 "org.openxmlformats.wordprocessingml.document",
                 "com.microsoft.word.doc",
@@ -254,21 +211,14 @@ namespace GAZT.ViewModel.NewViewModel
                 "com.microsoft.powerpoint.​ppt",
                  UTType.Text
                             };
-
-
                     }
                     else
                     {
                         filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
-
                     }
-
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-
                     if (fileData != null && fileData.DataArray!=null && fileData.DataArray.Length > 0)
                     {
-
-
                         attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
                         if (fileData.FileName.Contains("."))
@@ -279,7 +229,6 @@ namespace GAZT.ViewModel.NewViewModel
                                 if (TotalAttachmentSize <= 300)
                                 {
                                     AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
-
                                     if (Convert.ToDecimal(AttachmentSize) <= 20)
                                     {
                                         if (Convert.ToDecimal(AttachmentSize) > 0)
@@ -317,9 +266,6 @@ namespace GAZT.ViewModel.NewViewModel
                                                     VatAttachmentsList = myCollection;
                                                     foreach (var item in VatAttachmentsList)
                                                     {
-                                                       
-                                                        
-
                                                         try
                                                         {
                                                             if (App.IsArabic)
@@ -327,9 +273,7 @@ namespace GAZT.ViewModel.NewViewModel
                                                                 if (item.Erfdt != null)
                                                                 {
                                                                     //item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                                                                     //item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                                                                     item.Erfdt = item.Erfdt;
                                                                 }
                                                             }
@@ -338,18 +282,14 @@ namespace GAZT.ViewModel.NewViewModel
                                                                 if (item.Erfdt != null)
                                                                 {
                                                                     item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                                                                     item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                                                 }
                                                             }
-
                                                         }
                                                         catch (Exception ex)
                                                         {
-
                                                         }
                                                     }
-
                                                     AttachmentCount++;
                                                     // TotalAttachmentSize += AttachmentSize;
                                                     AttachmentName = string.Empty;
@@ -358,38 +298,31 @@ namespace GAZT.ViewModel.NewViewModel
                                                 {
                                                     AttachmentName = string.Empty;
                                                     _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
                                                 _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
-
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
                                             _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-
                                         }
-
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
                                         _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
-
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
                                     _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
-
                                 }
-
                             }
                             else
                             {
@@ -408,10 +341,7 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     AttachmentName = string.Empty;
                     _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
-
                 }
-
-
             }
             catch (InternetException ex)
             {
@@ -420,9 +350,7 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-
         }
-
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
         {
             AttachmentRootOject _attachment = null;
@@ -434,9 +362,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-
                     AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0", contentType);
-
                     if (attachment != null && attachment.d != null)
                     {
                         attachmentSizeVisibility = true;
@@ -450,13 +376,11 @@ namespace GAZT.ViewModel.NewViewModel
                     {
                         _attachment = null;
                     }
-
                 }
                 catch (Exception ex)
                 {
                     //  return null;
                 }
-
             });
             await Task.Run(() =>
             {
@@ -529,7 +453,6 @@ namespace GAZT.ViewModel.NewViewModel
                 IsShowAttachmentButton = true;
             }
         }
-
         public decimal GetAttachMentSize(List<decimal> SizeList)
         {
             decimal TotalSize = 0;
@@ -539,7 +462,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return TotalSize;
         }
-
         public int GetDeletedAttachmentIndex(Attachment attachment)
         {
             int indexToDelete = -1;
@@ -553,7 +475,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return indexToDelete;
         }
-
         public void ReduceTotalAttachmentSize(int indexToReduceTheSize)
         {
             if (indexToReduceTheSize > NumberOfAttachmentComingFromServer - 1)
@@ -565,7 +486,6 @@ namespace GAZT.ViewModel.NewViewModel
                     AttachmentUploadedSize = GetAttachMentSize(SizeList);
                     TotalAttachmentSize = AttachmentUploadedSize;
                 }
-
             }
             else
             {
@@ -573,8 +493,6 @@ namespace GAZT.ViewModel.NewViewModel
                 ICRListPageViewModel.numberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer - 1;
             }
         }
-
-
         #endregion
     }
 }

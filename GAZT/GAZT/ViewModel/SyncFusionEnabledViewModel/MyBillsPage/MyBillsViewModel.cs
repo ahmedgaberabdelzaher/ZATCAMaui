@@ -13,7 +13,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel
 {
     public class MyBillsViewModel : ViewModelBase
@@ -25,10 +24,8 @@ namespace GAZT.ViewModel
         public ICommand onUnpaidLabelClicked { get; set; }
         public ICommand onPartiallyPaidLabelClicked { get; set; }
         public ICommand OnHomeIconClicked { get; set; }
-
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
-
         private ChartColorCollection _colors = null;
         public ChartColorCollection Colors
         {
@@ -42,10 +39,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("Colors");
             }
         }
-        
-
-
-
         private bool _setNoDataLabelVisibilityALLList = true;
         public bool SetNoDataLabelVisibilityALLList
         {
@@ -57,10 +50,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityALLList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityALLList");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityALL = true;
         public bool SetNoDataLabelVisibilityALL
         {
@@ -72,10 +63,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityALL = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityALL");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityPAID = true;
         public bool SetNoDataLabelVisibilityPAID
         {
@@ -87,10 +76,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityPAID = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPAID");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityPAIDList = true;
         public bool SetNoDataLabelVisibilityPAIDList
         {
@@ -102,10 +89,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityPAIDList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPAIDList");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityUNPAIDList = true;
         public bool SetNoDataLabelVisibilityUNPAIDList
         {
@@ -117,10 +102,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityUNPAIDList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityUNPAIDList");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityUNPAID = true;
         public bool SetNoDataLabelVisibilityUNPAID
         {
@@ -132,11 +115,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityUNPAID = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityUNPAID");
-
             }
         }
-
-
         private bool _setNoDataLabelVisibilityPPAID = true;
         public bool SetNoDataLabelVisibilityPPAID
         {
@@ -148,10 +128,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityPPAID = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPPAID");
-
             }
         }
-
         private bool _setNoDataLabelVisibilityPPAIDList = true;
         public bool SetNoDataLabelVisibilityPPAIDList
         {
@@ -163,11 +141,8 @@ namespace GAZT.ViewModel
             {
                 _setNoDataLabelVisibilityPPAIDList = value;
                 RaisePropertyChanged("SetNoDataLabelVisibilityPPAIDList");
-
             }
         }
-
-
         private int _groupValue = 0;
         public int GroupValue
         {
@@ -181,7 +156,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("GroupValue");
             }
         }
-
         private ObservableCollection<MyBillsChartModel> _listMyBillsChaetModel = null;
         public ObservableCollection<MyBillsChartModel> ListMyBillsChartModel
         {
@@ -195,8 +169,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("ListMyBillsChartModel");
             }
         }
-
-
         private MyBills _myBillsObj;
         public MyBills MyBillsObj
         {
@@ -210,8 +182,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsObj");
             }
         }
-
-
         private ObservableCollection<MyBills> _myBills;
         public ObservableCollection<MyBills> MyBills
         {
@@ -225,7 +195,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBills");
             }
         }
-
         private List<MyBills> _myBillsPaid;
         public List<MyBills> MyBillsPaid
         {
@@ -239,7 +208,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsPaid");
             }
         }
-
         private List<MyBills> _myBillsUnPaid;
         public List<MyBills> MyBillsUnPaid
         {
@@ -253,7 +221,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsUnPaid");
             }
         }
-
         private List<MyBills> _myBillsPartiallyPaid;
         public List<MyBills> MyBillsPartiallyPaid
         {
@@ -267,8 +234,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsPartiallyPaid");
             }
         }
-
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -282,9 +247,7 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _setNoDataLabelVisibility = false;
-
         public bool SetNoDataLabelVisibility
         {
             get
@@ -297,7 +260,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("SetNoDataLabelVisibility");
             }
         }
-
         private ObservableCollection<MyBills> _myBillsOriginal;
         public ObservableCollection<MyBills> MyBillsOriginal
         {
@@ -311,7 +273,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("MyBillsOriginal");
             }
         }
-
         private string _isUnderlineForAll = "Underline";
         public string IsUnderlineForAll
         {
@@ -351,7 +312,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsUnderlineForPaid");
             }
         }
-
         private int _selcectedBillsIndex = 0;
         public int SelcectedBillsIndex
         {
@@ -365,8 +325,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("SelcectedBillsIndex");
             }
         }
-
-
         private string _isUnderlineForUnPaid = "None";
         public string IsUnderlineForUnPaid
         {
@@ -380,7 +338,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("IsUnderlineForUnPaid");
             }
         }
-
         private string _statusImage;
         public string StatusImage
         {
@@ -394,7 +351,6 @@ namespace GAZT.ViewModel
                 RaisePropertyChanged("StatusImage");
             }
         }
-
         public MyBillsViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -403,7 +359,6 @@ namespace GAZT.ViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
             OnHomeIconClicked = new Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
@@ -412,21 +367,15 @@ namespace GAZT.ViewModel
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
-            
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }            
         }
-
-
         public void  onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
@@ -439,30 +388,23 @@ namespace GAZT.ViewModel
             {
                 try
                 {
-
                     string lang = UtilityManager.GetLanguageParameter();
                     myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
                      PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
                     if (myBills != null && myBills.Count != 0)
                     {
                         SetNoDataLabelVisibilityALL = false;
                         SetNoDataLabelVisibilityALLList = true;
                         myBills = UpdateDueAmount(myBills);
                         MyBills = new ObservableCollection<MyBills>();
-
                         MyBills = myBills;
                         MyBillsOriginal = myBills;
                         MyBillsPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList();
                         MyBillsUnPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList();
                         MyBillsPartiallyPaid = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList();
-
                         ObservableCollection<MyBillsChartModel> myBillsChartModels = new ObservableCollection<MyBillsChartModel>();
-
                         GroupValue = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count + MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count;
-
                         int iBillsCount = -1;
-
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
@@ -476,7 +418,6 @@ namespace GAZT.ViewModel
                             SetNoDataLabelVisibilityPAID = true;
                             SetNoDataLabelVisibilityPAIDList = false;
                         }
-
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
@@ -490,7 +431,6 @@ namespace GAZT.ViewModel
                             SetNoDataLabelVisibilityUNPAID = true;
                             SetNoDataLabelVisibilityUNPAIDList = false;
                         }
-
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
@@ -506,11 +446,9 @@ namespace GAZT.ViewModel
                         }
                         Colors = ColorsChild;
                         ListMyBillsChartModel = myBillsChartModels;
-
                         SelcectedBillsIndex = 0;
                         int milliseconds = 1000;
                         Thread.Sleep(milliseconds);
-                        
                         if (billInfo != null)
                         {
                             if (billInfo.BillTypeName == AppResources.Paid)
@@ -525,7 +463,6 @@ namespace GAZT.ViewModel
                             {
                                 SelcectedBillsIndex = 3;
                             }
-
                         }
                     }
                     else
@@ -547,37 +484,28 @@ namespace GAZT.ViewModel
                         await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
-
                     IsLoading = false;
-                    
                 }
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
-                
                 IsLoading = false;
-                
             }
             IsLoading = false;
         }
-
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   
-
                     if (App.TP != null)
                         App.TP = null;
-
                     if (App.PreviousIsArabic)
                     {
                         String langName = "ar-AE";
@@ -588,7 +516,6 @@ namespace GAZT.ViewModel
                         String langName = "en-US";
                         AppResources.Culture = new CultureInfo(langName);
                     }
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -603,7 +530,6 @@ namespace GAZT.ViewModel
                 });
             }
         }
-
         private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
         {
             for (int i = 0; i < myBills.Count; i++)
@@ -623,7 +549,6 @@ namespace GAZT.ViewModel
                     string _testDueAmount = testDueAmount.ToString("#,##0");
                     myBills[i].TestDueAmount = _testDueAmount;
                 }
-
                 if (myBills[i].FAEDN.Contains("T"))
                 {
                     string[] _dueDate = new String[2];
@@ -638,10 +563,8 @@ namespace GAZT.ViewModel
                         myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     }
                 }
-
             }
             return myBills;
         }
-
     }
 }

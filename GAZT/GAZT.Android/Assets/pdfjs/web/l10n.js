@@ -26,10 +26,8 @@
     - Removes window._ assignment.
     - Remove compatibility code for OldIE.
 */
-
 /*jshint browser: true, devel: true, es5: true, globalstrict: true */
 'use strict';
-
 document.webL10n = (function(window, document, undefined) {
   var gL10nData = {};
   var gTextData = '';
@@ -37,8 +35,6 @@ document.webL10n = (function(window, document, undefined) {
   var gLanguage = '';
   var gMacros = {};
   var gReadyState = 'loading';
-
-
   /**
    * Synchronously loading l10n resources significantly minimizes flickering
    * from displaying the app with non-localized strings and then updating the
@@ -50,35 +46,27 @@ document.webL10n = (function(window, document, undefined) {
    * just in case... and applications using this library should hide their
    * content until the `localized' event happens.
    */
-
   var gAsyncResourceLoading = true; // read-only
-
-
   /**
    * DOM helpers for the so-called "HTML API".
    *
    * These functions are written for modern browsers. For old versions of IE,
    * they're overridden in the 'startup' section at the end of this file.
    */
-
   function getL10nResourceLinks() {
     return document.querySelectorAll('link[type="application/l10n"]');
   }
-
   function getL10nDictionary() {
     var script = document.querySelector('script[type="application/l10n"]');
     // TODO: support multiple and external JSON dictionaries
     return script ? JSON.parse(script.innerHTML) : null;
   }
-
   function getTranslatableChildren(element) {
     return element ? element.querySelectorAll('*[data-l10n-id]') : [];
   }
-
   function getL10nAttributes(element) {
     if (!element)
       return {};
-
     var l10nId = element.getAttribute('data-l10n-id');
     var l10nArgs = element.getAttribute('data-l10n-args');
     var args = {};
@@ -91,20 +79,17 @@ document.webL10n = (function(window, document, undefined) {
     }
     return { id: l10nId, args: args };
   }
-
   function fireL10nReadyEvent(lang) {
     var evtObject = document.createEvent('Event');
     evtObject.initEvent('localized', true, false);
     evtObject.language = lang;
     document.dispatchEvent(evtObject);
   }
-
   function xhrLoadText(url, onSuccess, onFailure) {
     onSuccess = onSuccess || function _onSuccess(data) {};
     onFailure = onFailure || function _onFailure() {
       console.warn(url + ' not found.');
     };
-
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, gAsyncResourceLoading);
     if (xhr.overrideMimeType) {
@@ -121,7 +106,6 @@ document.webL10n = (function(window, document, undefined) {
     };
     xhr.onerror = onFailure;
     xhr.ontimeout = onFailure;
-
     // in Firefox OS with the app:// protocol, trying to XHR a non-existing
     // URL will raise an exception here -- hence this ugly try...catch.
     try {
@@ -130,8 +114,6 @@ document.webL10n = (function(window, document, undefined) {
       onFailure();
     }
   }
-
-
   /**
    * l10n resource parser:
    *  - reads (async XHR) the l10n resource matching `lang';
@@ -154,10 +136,8 @@ document.webL10n = (function(window, document, undefined) {
    * @return {void}
    *    uses the following global variables: gL10nData, gTextData, gTextProp.
    */
-
   function parseResource(href, lang, successCallback, failureCallback) {
     var baseURL = href.replace(/[^\/]*$/, '') || './';
-
     // handle escaped characters (backslashes) in a string
     function evalString(text) {
       if (text.lastIndexOf('\\') < 0)
@@ -173,20 +153,17 @@ document.webL10n = (function(window, document, undefined) {
                  .replace(/\\"/g, '"')
                  .replace(/\\'/g, "'");
     }
-
     // parse *.properties text data into an l10n dictionary
     // If gAsyncResourceLoading is false, then the callback will be called
     // synchronously. Otherwise it is called asynchronously.
     function parseProperties(text, parsedPropertiesCallback) {
       var dictionary = {};
-
       // token expressions
       var reBlank = /^\s*|\s*$/;
       var reComment = /^\s*#|^\s*$/;
       var reSection = /^\s*\[(.*)\]\s*$/;
       var reImport = /^\s*@import\s+url\((.*)\)\s*$/i;
       var reSplit = /^([^=\s]*)\s*=\s*(.+)$/; // TODO: escape EOLs with '\'
-
       // parse the *.properties file into an associative array
       function parseRawLines(rawText, extendedSyntax, parsedRawLinesCallback) {
         var entries = rawText.replace(reBlank, '').split(/[\r\n]+/);
@@ -194,7 +171,6 @@ document.webL10n = (function(window, document, undefined) {
         var genericLang = lang.split('-', 1)[0];
         var skipLang = false;
         var match = '';
-
         function nextEntry() {
           // Use infinite loop instead of recursion to avoid reaching the
           // maximum recursion limit for content with many lines.
@@ -204,18 +180,15 @@ document.webL10n = (function(window, document, undefined) {
               return;
             }
             var line = entries.shift();
-
             // comment or blank line?
             if (reComment.test(line))
               continue;
-
             // the extended syntax supports [lang] sections and @import rules
             if (extendedSyntax) {
               match = reSection.exec(line);
               if (match) { // section start?
                 // RFC 4646, section 4.4, "All comparisons MUST be performed
                 // in a case-insensitive manner."
-
                 currentLang = match[1].toLowerCase();
                 skipLang = (currentLang !== '*') &&
                     (currentLang !== lang) && (currentLang !== genericLang);
@@ -229,7 +202,6 @@ document.webL10n = (function(window, document, undefined) {
                 return;
               }
             }
-
             // key-value pair
             var tmp = line.match(reSplit);
             if (tmp && tmp.length == 3) {
@@ -239,27 +211,22 @@ document.webL10n = (function(window, document, undefined) {
         }
         nextEntry();
       }
-
       // import another *.properties file
       function loadImport(url, callback) {
         xhrLoadText(url, function(content) {
           parseRawLines(content, false, callback); // don't allow recursive imports
         }, null);
       }
-
       // fill the dictionary
       parseRawLines(text, true, function() {
         parsedPropertiesCallback(dictionary);
       });
     }
-
     // load and parse l10n data (warning: global variables are used here)
     xhrLoadText(href, function(response) {
       gTextData += response; // mostly for debug
-
       // parse *.properties text data into an l10n dictionary
       parseProperties(response, function(data) {
-
         // find attribute descriptions, if any
         for (var key in data) {
           var id, prop, index = key.lastIndexOf('.');
@@ -275,7 +242,6 @@ document.webL10n = (function(window, document, undefined) {
           }
           gL10nData[id][prop] = data[key];
         }
-
         // trigger callback
         if (successCallback) {
           successCallback();
@@ -283,7 +249,6 @@ document.webL10n = (function(window, document, undefined) {
       });
     }, failureCallback);
   }
-
   // load and parse all resources for the specified locale
   function loadLocale(lang, callback) {
     // RFC 4646, section 2.1 states that language tags have to be treated as
@@ -291,12 +256,9 @@ document.webL10n = (function(window, document, undefined) {
     if (lang) {
       lang = lang.toLowerCase();
     }
-
     callback = callback || function _callback() {};
-
     clear();
     gLanguage = lang;
-
     // check all <link type="application/l10n" href="..." /> nodes
     // and load the resource files
     var langLinks = getL10nResourceLinks();
@@ -328,7 +290,6 @@ document.webL10n = (function(window, document, undefined) {
       gReadyState = 'complete';
       return;
     }
-
     // start the callback when all resources are loaded
     var onResourceLoaded = null;
     var gResourceCount = 0;
@@ -340,7 +301,6 @@ document.webL10n = (function(window, document, undefined) {
         gReadyState = 'complete';
       }
     };
-
     // load all resource files
     function L10nResourceLink(link) {
       var href = link.href;
@@ -357,13 +317,11 @@ document.webL10n = (function(window, document, undefined) {
         });
       };
     }
-
     for (var i = 0; i < langCount; i++) {
       var resource = new L10nResourceLink(langLinks[i]);
       resource.load(lang, onResourceLoaded);
     }
   }
-
   // clear all l10n data
   function clear() {
     gL10nData = {};
@@ -372,8 +330,6 @@ document.webL10n = (function(window, document, undefined) {
     // TODO: clear all non predefined macros.
     // There's no such macro /yet/ but we're planning to have some...
   }
-
-
   /**
    * Get rules for plural forms (shared with JetPack), see:
    * http://unicode.org/repos/cldr-tmp/trunk/diff/supplemental/language_plural_rules.html
@@ -389,7 +345,6 @@ document.webL10n = (function(window, document, undefined) {
    *       fun(0)    -> 'other'
    *       fun(1000) -> 'other'.
    */
-
   function getPluralRules(lang) {
     var locales2rules = {
       'af': 3,
@@ -563,7 +518,6 @@ document.webL10n = (function(window, document, undefined) {
       'zh': 0,
       'zu': 3
     };
-
     // utility functions for plural rules methods
     function isIn(n, list) {
       return list.indexOf(n) !== -1;
@@ -571,7 +525,6 @@ document.webL10n = (function(window, document, undefined) {
     function isBetween(n, start, end) {
       return start <= n && n <= end;
     }
-
     // list of all plural rules methods:
     // map an integer to the plural form name to use
     var pluralRules = {
@@ -775,7 +728,6 @@ document.webL10n = (function(window, document, undefined) {
         return 'other';
       }
     };
-
     // return a function that gives the plural form name for a given integer
     var index = locales2rules[lang.replace(/-.*$/, '')];
     if (!(index in pluralRules)) {
@@ -784,23 +736,19 @@ document.webL10n = (function(window, document, undefined) {
     }
     return pluralRules[index];
   }
-
   // pre-defined 'plural' macro
   gMacros.plural = function(str, param, key, prop) {
     var n = parseFloat(param);
     if (isNaN(n))
       return str;
-
     // TODO: support other properties (l20n still doesn't...)
     if (prop != gTextProp)
       return str;
-
     // initialize _pluralRules
     if (!gMacros._pluralRules) {
       gMacros._pluralRules = getPluralRules(gLanguage);
     }
     var index = '[' + gMacros._pluralRules(n) + ']';
-
     // try to find a [zero|one|two] key if it's defined
     if (n === 0 && (key + '[zero]') in gL10nData) {
       str = gL10nData[key + '[zero]'][prop];
@@ -813,15 +761,11 @@ document.webL10n = (function(window, document, undefined) {
     } else if ((key + '[other]') in gL10nData) {
       str = gL10nData[key + '[other]'][prop];
     }
-
     return str;
   };
-
-
   /**
    * l10n dictionary functions
    */
-
   // fetch an l10n object, warn if not found, apply `args' if possible
   function getL10nData(key, args, fallback) {
     var data = gL10nData[key];
@@ -832,7 +776,6 @@ document.webL10n = (function(window, document, undefined) {
       }
       data = fallback;
     }
-
     /** This is where l10n expressions should be processed.
       * The plan is to support C-style expressions from the l20n project;
       * until then, only two kinds of simple expressions are supported:
@@ -847,14 +790,12 @@ document.webL10n = (function(window, document, undefined) {
     }
     return rv;
   }
-
   // replace {[macros]} with their values
   function substIndexes(str, args, key, prop) {
     var reIndex = /\{\[\s*([a-zA-Z]+)\(([a-zA-Z]+)\)\s*\]\}/;
     var reMatch = reIndex.exec(str);
     if (!reMatch || !reMatch.length)
       return str;
-
     // an index/macro has been found
     // Note: at the moment, only one parameter is supported
     var macroName = reMatch[1];
@@ -865,7 +806,6 @@ document.webL10n = (function(window, document, undefined) {
     } else if (paramName in gL10nData) {
       param = gL10nData[paramName];
     }
-
     // there's no macro parser yet: it has to be defined in gMacros
     if (macroName in gMacros) {
       var macro = gMacros[macroName];
@@ -873,7 +813,6 @@ document.webL10n = (function(window, document, undefined) {
     }
     return str;
   }
-
   // replace {{arguments}} with their values
   function substArguments(str, args, key) {
     var reArgs = /\{\{\s*(.+?)\s*\}\}/g;
@@ -888,20 +827,17 @@ document.webL10n = (function(window, document, undefined) {
       return matched_text;
     });
   }
-
   // translate an HTML element
   function translateElement(element) {
     var l10n = getL10nAttributes(element);
     if (!l10n.id)
       return;
-
     // get the related l10n object
     var data = getL10nData(l10n.id, l10n.args);
     if (!data) {
       console.warn('#' + l10n.id + ' is undefined.');
       return;
     }
-
     // translate element (TODO: security checks?)
     if (data[gTextProp]) { // XXX
       if (getChildElementCount(element) === 0) {
@@ -930,12 +866,10 @@ document.webL10n = (function(window, document, undefined) {
       }
       delete data[gTextProp];
     }
-
     for (var k in data) {
       element[k] = data[k];
     }
   }
-
   // webkit browsers don't currently support 'children' on SVG elements...
   function getChildElementCount(element) {
     if (element.children) {
@@ -950,22 +884,18 @@ document.webL10n = (function(window, document, undefined) {
     }
     return count;
   }
-
   // translate an HTML subtree
   function translateFragment(element) {
     element = element || document.documentElement;
-
     // check all translatable children (= w/ a `data-l10n-id' attribute)
     var children = getTranslatableChildren(element);
     var elementCount = children.length;
     for (var i = 0; i < elementCount; i++) {
       translateElement(children[i]);
     }
-
     // translate element itself if necessary
     translateElement(element);
   }
-
   return {
     // get a localized string
     get: function(key, args, fallbackString) {
@@ -986,11 +916,9 @@ document.webL10n = (function(window, document, undefined) {
       }
       return '{{' + key + '}}';
     },
-
     // debug
     getData: function() { return gL10nData; },
     getText: function() { return gTextData; },
-
     // get|set the document language
     getLanguage: function() { return gLanguage; },
     setLanguage: function(lang, callback) {
@@ -1000,7 +928,6 @@ document.webL10n = (function(window, document, undefined) {
         translateFragment();
       });
     },
-
     // get the direction (ltr|rtl) of the current language
     getDirection: function() {
       // http://www.w3.org/International/questions/qa-scripts
@@ -1009,10 +936,8 @@ document.webL10n = (function(window, document, undefined) {
       var shortCode = gLanguage.split('-', 1)[0];
       return (rtlList.indexOf(shortCode) >= 0) ? 'rtl' : 'ltr';
     },
-
     // translate an element or document fragment
     translate: translateFragment,
-
     // this can be used to prevent race conditions
     getReadyState: function() { return gReadyState; },
     ready: function(callback) {

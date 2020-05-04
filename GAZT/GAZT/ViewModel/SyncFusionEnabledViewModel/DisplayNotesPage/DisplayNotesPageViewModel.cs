@@ -6,24 +6,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class DisplayNotesPageViewModel : ViewModelBase
     {
         #region Variable
-
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
-
         // public ICommand OnSubmitClicked { get; set; }
-
         #endregion
-
         #region Property
-
-
         private List<Note> _noteList ;
         public List<Note> NoteList
         {
@@ -37,7 +30,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NoteList");
             }
         }
-
         private bool _isNoDataLabelVisible;
         public bool IsNoDataLabelVisible
         {
@@ -51,7 +43,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-
         private bool _isDisplayNoteVisible;
         public bool IsDisplayNoteVisible
         {
@@ -65,11 +56,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsDisplayNoteVisible");
             }
         }
-
         #endregion
-
         #region Constructor
-
         public DisplayNotesPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -82,17 +70,12 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
         }
-
         #endregion
-
         #region Method
         #endregion
     }

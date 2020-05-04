@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class Result
@@ -13,7 +12,6 @@ namespace GAZT.Models
         public string UserTin { get; set; }
         public string Pdfurl { get; set; }
     }
-
     public class ZakatSet
     {
         public List<Result> results { get; set; }
@@ -26,13 +24,10 @@ namespace GAZT.Models
     {
         public List<Result> results { get; set; }
     }
-
     public class AllCertificate
     {
         public ZakatSet ZakatSet { get; set; }
         public VATSet VATSet { get; set; }
         public ExciseSet ExciseSet { get; set; }
     }
-
-  
 }

@@ -6,25 +6,19 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangePasswordPageView : ContentPage
     {
-
         #region Variable
-
-
         ChangePasswordPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
         #endregion
-
         #region Constructor
         public ChangePasswordPageView(ComingToOTPVerificationScreenFrom navigateTo)
         {
@@ -37,10 +31,8 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;           
             viewModel.NavigateToOtpForEmailEnum = navigateTo;
             viewModel.OnPageLoad();
-
         }
         #endregion
-
         #region Method
         protected override void OnSizeAllocated(double width, double height)
         {
@@ -60,8 +52,6 @@ namespace GAZT.Views.NewViews
                 }
             }
         }
-
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -73,7 +63,6 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -101,23 +90,18 @@ namespace GAZT.Views.NewViews
         {
             viewModel.PasswordVisibilityForNewPassword = !viewModel.PasswordVisibilityForNewPassword;
         }
-
         public void OnPasswordVisibilityClickedForOldPassword(object sender, EventArgs args)
         {
             viewModel.PasswordVisibilityForOldPassword = !viewModel.PasswordVisibilityForOldPassword;
         }
-        
         public void OnPasswordVisibilityClickedForRetypePassword(object sender, EventArgs args)
         {
             viewModel.PasswordVisibilityForRetypePassword = !viewModel.PasswordVisibilityForRetypePassword;
         }
-
         public void OnPasswordFocused(object sender, EventArgs args)
         {
           //  Password.Unfocus();
         }
         #endregion
-
-
     }
 }

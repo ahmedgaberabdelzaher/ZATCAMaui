@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class IDTypeValidationModel
@@ -12,7 +11,6 @@ namespace GAZT.Models
         public string lang { get; set; }
         public string value { get; set; }
     }
-
     public class IDNumberApplication
     {
         public string component_id { get; set; }
@@ -20,13 +18,11 @@ namespace GAZT.Models
         public string service_id { get; set; }
         public string service_version { get; set; }
     }
-
     public class IDTypeValidateErrorResolution
     {
         public string SAP_Transaction { get; set; }
         public string SAP_Note { get; set; }
     }
-
     public class IDTypeValidateErrordetail
     {
         public string code { get; set; }
@@ -35,7 +31,6 @@ namespace GAZT.Models
         public string severity { get; set; }
         public string target { get; set; }
     }
-
     public class IDTypeValidateInnererror
     {
         public IDNumberApplication application { get; set; }
@@ -44,7 +39,6 @@ namespace GAZT.Models
         public IDTypeValidateErrorResolution Error_Resolution { get; set; }
         public List<IDTypeValidateErrordetail> errordetails { get; set; }
     }
-
     public class IDTypeValidateError
     {
         public string code { get; set; }
@@ -55,6 +49,4 @@ namespace GAZT.Models
     {
         public IDTypeValidateError error { get; set; }
     }
-
-
 }

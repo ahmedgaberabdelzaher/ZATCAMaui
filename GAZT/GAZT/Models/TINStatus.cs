@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
-  
-
     public class ConsumerRegisteration
     {
-      
         public string Actnm { get; set; }
         public string Tin { get; set; }
         public string Caltyp { get; set; }
@@ -21,7 +17,6 @@ namespace GAZT.Models
     {
         public List<ConsumerRegisteration> results { get; set; }
     }
-
     public class CheckTINStatus
     {
         public Metadata __metadata { get; set; }

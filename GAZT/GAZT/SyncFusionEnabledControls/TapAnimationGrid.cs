@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Controls
 {
     /// <summary>
@@ -15,41 +14,31 @@ namespace GAZTeServicesApp.Controls
     public class TapAnimationGrid : Grid
     {
         #region Fields
-
         /// <summary>
         /// Gets or sets the CommandProperty, and it is a bindable property.
         /// </summary>
         public static readonly BindableProperty CommandProperty =
            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(TapAnimationGrid), null);
-
         /// <summary>
         /// Gets or sets the CommandParameterProperty, and it is a bindable property.
         /// </summary>
         public static readonly BindableProperty CommandParameterProperty =
             BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(TapAnimationGrid), null);
-
         /// <summary>
         /// Gets or sets the TappedProperty, and it is a bindable property.
         /// </summary>
         public static readonly BindableProperty TappedProperty =
             BindableProperty.Create(nameof(Tapped), typeof(bool), typeof(TapAnimationGrid), false, BindingMode.TwoWay,
                 null, propertyChanged: OnTapped);
-
         ICommand tappedCommand;
-
         #endregion
-
         #region constructor
-
         /// <summary>
         /// Initializes a new instance of the <see cref="TapAnimationGrid" /> class.
         /// </summary>
         public TapAnimationGrid () => Initialize();
-
         #endregion
-
         #region Properties
-
         /// <summary>
         /// Gets or sets the command value.
         /// </summary>
@@ -58,7 +47,6 @@ namespace GAZTeServicesApp.Controls
             get => (ICommand)GetValue(CommandProperty);
             set => SetValue(CommandProperty, value);
         }
-
         /// <summary>
         /// Gets or sets the command parameter value.
         /// </summary>
@@ -67,7 +55,6 @@ namespace GAZTeServicesApp.Controls
             get => GetValue(CommandParameterProperty);
             set => SetValue(CommandParameterProperty, value);
         }
-
         /// <summary>
         /// Gets or sets the tapped value.
         /// </summary>
@@ -76,7 +63,6 @@ namespace GAZTeServicesApp.Controls
             get => (bool)GetValue(TappedProperty);
             set => SetValue(TappedProperty, value);
         }
-
         /// <summary>
         /// Gets or sets the tapped command.
         /// </summary>
@@ -96,11 +82,8 @@ namespace GAZTeServicesApp.Controls
                         Command.Execute(CommandParameter);
                     }
                 }) );
-
         #endregion
-
         #region Methods
-
         /// <summary>
         /// Invoked when control is initialized.
         /// </summary>
@@ -119,7 +102,6 @@ namespace GAZTeServicesApp.Controls
             var grid = (TapAnimationGrid)bindable;
             Application.Current.Resources.TryGetValue("Gray-100", out var retVal);
             grid.BackgroundColor = (Color)retVal;
-
             // To make the selected item color changes for 100 milliseconds.
             await Task.Delay(100);
             Application.Current.Resources.TryGetValue("Gray-White", out var retValue);

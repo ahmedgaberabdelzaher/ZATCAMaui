@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public class NineDotTwoDecimalPlacesAndNoNegativeValue : Behavior<Entry>
@@ -11,13 +10,11 @@ namespace GAZT
             entry.TextChanged += OnEntryTextChanged;
             base.OnAttachedTo(entry);
         }
-
         protected override void OnDetachingFrom(Entry entry)
         {
             entry.TextChanged -= OnEntryTextChanged;
             base.OnDetachingFrom(entry);
         }
-
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
             if (Device.RuntimePlatform == Device.iOS)
@@ -29,16 +26,12 @@ namespace GAZT
                     char[] textValue = args.NewTextValue.ToCharArray();
                     LastChar = textValue[textValue.Length - 1];
                 }
-
                 if (LastChar >= 46 && LastChar <= 57)
                 {
-
-
                     if (NineDotTwoDecimalPlacesAndNoNegativeValue.decimalCount < 2)
                     {
                         if (!string.IsNullOrEmpty(args.NewTextValue))
                         {
-
                             if (args.NewTextValue.Substring(args.NewTextValue.Length - 1) != ".")
                             {
                                 if (args.NewTextValue.Contains("."))
@@ -46,17 +39,14 @@ namespace GAZT
                                     string[] SplitByDecimal = args.NewTextValue.Split('.');
                                     string BeforeDecimal = string.Empty;
                                     string AfterDecimal = string.Empty;
-
                                     if (SplitByDecimal[0].Length > 9)
                                     {
-
                                         BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
                                         if (BeforeDecimal.Contains("-"))
                                         {
                                             BeforeDecimal = (Convert.ToInt32(BeforeDecimal) * -1).ToString();
                                         }
                                         ((Entry)sender).Text = Math.Round(Convert.ToDecimal(BeforeDecimal + AfterDecimal), 2).ToString();
-
                                     }
                                     else
                                     {
@@ -72,8 +62,6 @@ namespace GAZT
                                 }
                                 else
                                 {
-
-
                                     if (args.NewTextValue.Length > 9)
                                     {
                                         if (args.NewTextValue.Contains("-"))
@@ -84,8 +72,6 @@ namespace GAZT
                                         {
                                             ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                                         }
-
-
                                     }
                                     else
                                     {
@@ -115,10 +101,8 @@ namespace GAZT
                         char[] textValue = args.NewTextValue.ToCharArray();
                         LastChar = textValue[textValue.Length - 1];
                     }
-
                     if (LastChar >= 46 && LastChar <= 57)
                     {
-
                         if (args.NewTextValue.Substring(args.NewTextValue.Length - 1) != ".")
                         {
                             if (args.NewTextValue.Contains("."))
@@ -126,17 +110,14 @@ namespace GAZT
                                 string[] SplitByDecimal = args.NewTextValue.Split('.');
                                 string BeforeDecimal = string.Empty;
                                 string AfterDecimal = string.Empty;
-
                                 if (SplitByDecimal[0].Length > 9)
                                 {
-
                                     BeforeDecimal = SplitByDecimal[0].Remove(SplitByDecimal[0].Length - 1);
                                     if (BeforeDecimal.Contains("-"))
                                     {
                                         BeforeDecimal = (Convert.ToInt32(BeforeDecimal) * -1).ToString();
                                     }
                                     ((Entry)sender).Text = Math.Round(Convert.ToDecimal(BeforeDecimal + AfterDecimal), 2).ToString();
-
                                 }
                                 else
                                 {
@@ -152,8 +133,6 @@ namespace GAZT
                             }
                             else
                             {
-
-
                                 if (args.NewTextValue.Length > 9)
                                 {
                                     if (args.NewTextValue.Contains("-"))
@@ -164,8 +143,6 @@ namespace GAZT
                                     {
                                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                                     }
-
-
                                 }
                                 else
                                 {
@@ -182,14 +159,9 @@ namespace GAZT
                         if (!string.IsNullOrEmpty(args.NewTextValue))
                             ((Entry)sender).Text = args.NewTextValue.Substring(0, args.NewTextValue.Length - 1).ToString();
                     }
-
                 }
-
             }
-
-
         }
-
         private static void GetDecimalCount(string DecimalNumber)
         {
             int _decimalcount = 0;
@@ -200,15 +172,12 @@ namespace GAZT
                 {
                     decimalNumber = DecimalNumber.ToCharArray();
                 }
-
                 for (int i = 0; i < decimalNumber.Length; i++)
                 {
                     if (decimalNumber[i].Equals('.'))
                     {
                         _decimalcount++;
-
                     }
-
                 }
                 decimalCount = _decimalcount;
                 if (decimalCount > 1)
@@ -218,9 +187,7 @@ namespace GAZT
             }
             catch (Exception ex)
             {
-
             }
-
         }
     }
 }

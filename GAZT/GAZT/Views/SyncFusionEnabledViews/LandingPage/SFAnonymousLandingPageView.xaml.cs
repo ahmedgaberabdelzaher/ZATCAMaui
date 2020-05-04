@@ -10,7 +10,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Views.LandingPage
 {
     /// <summary>
@@ -31,7 +30,6 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -40,14 +38,11 @@ namespace GAZTeServicesApp.Views.LandingPage
                 LoadData();
                 SetLTR();
               //  DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
-
             }
             catch (Exception ex)
             {
             }
         }
-     
-
         //void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
         //{
         //    // Process changes
@@ -67,7 +62,6 @@ namespace GAZTeServicesApp.Views.LandingPage
                 border.CornerRadius = new Thickness(0,0,40,0);
             }
         }
-
         private void LoadDate()
         {
             String Year = DateTime.Now.Year.ToString();
@@ -79,13 +73,11 @@ namespace GAZTeServicesApp.Views.LandingPage
             try
             {
                 viewModel.PopulateeServicesApplicableToTheTaxPayer();
-             
             }
             catch (Exception ex)
             {
             }
         }
-
         protected async override void OnAppearing()
         {
             try
@@ -98,20 +90,15 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 else
                 {
-
                 }
                 SetLTR();
                 Changecornerradious();
                 InitializeComponent();
-               
             }
             catch (Exception ex)
             {
-
             }
         }
-
-
         private void SetLTR()
         {
             if (App.IsArabic)
@@ -122,18 +109,14 @@ namespace GAZTeServicesApp.Views.LandingPage
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
-
         }
-
         private void SignIn_Clicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
         }
-      
         private void OnTappedeService(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
-
             if (controltype == "Xamarin.Forms.Image")
             {
                 Image arrowImage = sender as Image;
@@ -142,32 +125,26 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.ICRListPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.EstimateZakat)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.MyCertificate)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZTINStatus)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZZCorrespondence)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.MyBills)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
@@ -176,12 +153,10 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 //}
-
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-
                 if (BModel.eServiceName == AppResources.VATLookup)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
@@ -195,65 +170,53 @@ namespace GAZTeServicesApp.Views.LandingPage
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ICRListPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.EstimateZakat)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.ZakatReturnListPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZZFormBundleStatus)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.FormBundleStatusPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.MyCertificate)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyCertificate);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZTINStatus)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CheckTINStatusPageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZZCorrespondence)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.CorrespondancePageView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.MyBills)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.MyBillsView);
                 //}
-
                 //if (BModel.eServiceName == AppResources.ZZZTaxpayerServices)
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 //}
-
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-
                 if (BModel.eServiceName == AppResources.VATLookup)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }
             }
         }
-
         private void OptionMenuClicked(object sender, EventArgs e)
         {
             ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
             viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
         }
-
         private void SignUP_Clicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
         }
-
         private void OnGaztLinkClicked(object sender, EventArgs e)
         {
             if (App.IsArabic)

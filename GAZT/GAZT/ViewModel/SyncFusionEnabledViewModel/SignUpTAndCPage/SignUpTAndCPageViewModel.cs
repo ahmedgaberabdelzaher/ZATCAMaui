@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class SignUpTAndCPageViewModel : ViewModelBase
@@ -19,7 +18,6 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnSubmitClicked { get; set; }
         public ICommand GoBackClick { get; set; }
         #endregion
-
         #region Properties
         private bool _ischkTAndC = false;
         public bool IschkTAndC
@@ -44,7 +42,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IschkTAndC");
             }
         }
-
         private bool _isButtonEnabled = false;
         public bool IsButtonEnabled
         {
@@ -58,7 +55,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsButtonEnabled");
             }
         }
-
         private Color _verifybuttonDisableColor = Color.FromHex("#9EA4A9");
         public Color VerifyButtonDisableColor
         {
@@ -73,7 +69,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         #endregion
-
         #region Constructor
         public SignUpTAndCPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -109,27 +104,15 @@ namespace GAZT.ViewModel.NewViewModel
                             popUp.FlowDirections = "LeftToRight";
                         }
                         await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-
-
-
                     }
-
-
                 }
                 catch (Exception ex)
                 { 
-                
                 }
-                
-                
-             
-
             });
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
         }
         #endregion

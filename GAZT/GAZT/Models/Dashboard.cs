@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class Dashboard
@@ -13,7 +12,6 @@ namespace GAZT.Models
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class DashboardResult
     {
         public DashboardMetadata __metadata { get; set; }
@@ -43,8 +41,6 @@ namespace GAZT.Models
         public string PrbillsTot { get; set; }
         public string PrbillsBetrw { get; set; }
     }
-
-
     public class BillReturn
     {
         private ReturnType _returnTypeProperty;
@@ -57,7 +53,7 @@ namespace GAZT.Models
             set
             {
                 _returnTypeProperty = value;
-                if(_returnTypeProperty == ReturnType.RtnTot)
+                if (_returnTypeProperty == ReturnType.RtnTot)
                 {
                     ImagePath = "ic_Check_Mark.png";
                     ReturnTypeName = AppResources.Submitted;
@@ -93,7 +89,6 @@ namespace GAZT.Models
         public string ReturnCount { get; set; }
         public string ImagePath { get; set; }
     }
-
     //public enum ReturnType
     //{
     //    RtnTot = 0,
@@ -103,14 +98,12 @@ namespace GAZT.Models
     //    PprtnTot = 4,
     //    DueIcr = 5
     //}
-
     //public enum BillType
     //{
     //    PbillsTot = 0,
     //    UpbillsTot = 1,
     //    PrbillsTot = 2,
     //}
-
     public class BillPaid
     {
         private BillType _billTypeProperty;
@@ -138,8 +131,6 @@ namespace GAZT.Models
                     ImagePath = "ic_money.png";
                     BillTypeName = AppResources.UnPaid;
                 }
-               
-               
             }
         }
         public string BillTypeName { get; set; }
@@ -147,12 +138,8 @@ namespace GAZT.Models
         public string ImagePath { get; set; }
         public string BillAmount { get; set; }
     }
-
     //public class D
     //{
     //    public List<DashboardResult> results { get; set; }
     //}
-
-
-
 }

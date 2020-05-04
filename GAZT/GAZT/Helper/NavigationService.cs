@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT
 {
     public class NavigationService : INavigationService
@@ -13,26 +12,18 @@ namespace GAZT
         private readonly Dictionary<string, Type> _pagesByKey = new Dictionary<string, Type>();
         private NavigationPage _navigation;
         #region INavigationService implementation
-
         public void PopToRootPage()
         {
             _navigation.PopToRootAsync();
         }
-
         public void GoBack()
         {
             _navigation.PopAsync();
         }
-
         public void NavigateTo(string pageKey)
         {
             NavigateTo(pageKey, null);
         }
-
-      
-
-
-
         public void NavigateTo(string pageKey,object parameter)
         {
             lock (_pagesByKey)
@@ -42,13 +33,11 @@ namespace GAZT
                     var type = _pagesByKey[pageKey];
                     ConstructorInfo constructor;
                     object[] parameters;
-
                     if (parameter == null)
                     {
                         constructor = type.GetTypeInfo()
                             .DeclaredConstructors
                             .FirstOrDefault(c => !c.GetParameters().Any());
-
                         parameters = new object[]
                         {
                         };
@@ -64,19 +53,16 @@ namespace GAZT
                                     return p.Count() == 1
                                         && p[0].ParameterType == parameter.GetType();
                                 });
-
                         parameters = new[]
                         {
                             parameter
                         };
                     }
-
                     if (constructor == null)
                     {
                         throw new InvalidOperationException(
                             "No suitable constructor found for page " + pageKey);
                     }
-
                     var page = constructor.Invoke(parameters) as Page;  
                     _navigation.PushAsync(page);
                 }
@@ -90,7 +76,6 @@ namespace GAZT
                 }
             }
         }
-
         public string CurrentPageKey
         {
             get
@@ -101,18 +86,14 @@ namespace GAZT
                     {
                         return null;
                     }
-
                     var pageType = _navigation.CurrentPage.GetType();
-
                     return _pagesByKey.ContainsValue(pageType)
                         ? _pagesByKey.First(p => p.Value == pageType).Key
                             : null;
                 }
             }
         }
-
         #endregion
-
         public void Configure(string pageKey, Type pageType)
         {
             lock (_pagesByKey)
@@ -127,12 +108,10 @@ namespace GAZT
                 }
             }
         }
-
         public void Initialize(NavigationPage navigation)
         {
             _navigation = navigation;
         }
-
         public NavigationService()
         {
         }

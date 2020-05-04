@@ -10,25 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class TaxPayerProfilePageViewModel : ViewModelBase
     {
-
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnChangeMobileNumberClicked { get; set; }
         public ICommand OnChangeEmailClicked { get; set; }
         public ICommand OnChangePasswordClicked { get; set; }
-
         public ICommand OnHomeClick { get; set; }
-
         public ICommand BackButtonClicked { get; set; }
-
         public bool IscomingFromOTPViewViaEmail = false;
         #region Property
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -55,7 +49,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PasswordVisibility");
             }
         }
-
         private bool _tPProfileVisibility = true;
         public bool TPProfileVisibility
         {
@@ -69,7 +62,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TPProfileVisibility");
             }
         }
-
         private string _CurrentMobile = string.Empty;
         public string CurrentMobile
         {
@@ -83,7 +75,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CurrentMobile");
             }
         }
-
         private string _CurrentPassword = string.Empty;
         public string CurrentPassword
         {
@@ -97,8 +88,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CurrentPassword");
             }
         }
-
-
         private string _OldEmail = string.Empty;
         public string OldEmail
         {
@@ -112,7 +101,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("OldEmail");
             }
         }
-
         private string _CurrentPasswordForEmail = string.Empty;
         public string CurrentPasswordForEmail
         {
@@ -126,13 +114,8 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CurrentPasswordForEmail");
             }
         }
-
-
         #endregion
-
-
         #region Constructor
-
         public TaxPayerProfilePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -145,17 +128,13 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             OnChangeMobileNumberClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.ChangeMobileNumberPageView);
-
             });
             OnChangeEmailClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.ChangeEmailPageView);
-
-
             });
             OnChangePasswordClicked = new Xamarin.Forms.Command(() =>
             {
@@ -165,19 +144,12 @@ namespace GAZT.ViewModel.NewViewModel
             //{
             //    _navigationService.NavigateTo(App.DashboardPageView);
             //});
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
-
-            
-
-
         }
-
         #endregion
-
         #region Method
         public  void PopToRootPage()
         {
@@ -185,7 +157,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -200,7 +171,6 @@ namespace GAZT.ViewModel.NewViewModel
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
                 });
-
             }
         }
         public void OnPageLoad()
@@ -209,7 +179,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 TaxPayerProfile = App.TP;
                 TPProfileVisibility = true;
-
                 CurrentMobile = TaxPayerProfile.Mobile;
                 CurrentPassword = TaxPayerProfile.Password;
                 OldEmail = TaxPayerProfile.Email;
@@ -217,11 +186,8 @@ namespace GAZT.ViewModel.NewViewModel
             }
             catch(Exception ex)
             {
-
             }
-
         }
-
         public async void SetTP()
         {
             try
@@ -258,15 +224,10 @@ namespace GAZT.ViewModel.NewViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
-
         public void ClearData()
         {
-           
             CurrentPasswordForEmail = string.Empty;
-          
         }
-       
-
         #endregion
     }
 }

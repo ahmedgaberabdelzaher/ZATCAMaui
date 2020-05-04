@@ -4,7 +4,6 @@ using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Themes
 {
     [Preserve(AllMembers = true)]
@@ -14,13 +13,10 @@ namespace GAZTeServicesApp.Themes
         public static string strGAZTFontBold = string.Empty;
         public static string strGAZTFontMedium = string.Empty;
         public static string strGAZTFontRegular = string.Empty;
-
         public LightTheme()
         {
             InitializeComponent();
-          
         }
-
         public void OnToggleENAR()
         {
             if (App.IsArabic)
@@ -33,7 +29,6 @@ namespace GAZTeServicesApp.Themes
                 String langName = "en-US";//"en-US";// "ar-AE";
                 AppResources.Culture = new CultureInfo(langName);
             }
-
             if (App.IsArabic)
             {
                 switch (Device.RuntimePlatform)
@@ -47,10 +42,8 @@ namespace GAZTeServicesApp.Themes
                         strGAZTFontBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
                         strGAZTFontMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         strGAZTFontRegular = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
-
                         break;
                 }
-
             }
             else
             {
@@ -65,15 +58,12 @@ namespace GAZTeServicesApp.Themes
                         strGAZTFontBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
                         strGAZTFontMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
                         strGAZTFontRegular = "SSTArabic-Light.ttf#SSTArabic-Light";
-
                         break;
                 }
             }
-
             //GAZTFontBold.Setters.Add(new Setter { Property = Label.FontFamilyProperty, Value = strGAZTFontBold });
             //GAZTFontMedium.Setters.Add(new Setter { Property = Label.FontFamilyProperty, Value = strGAZTFontMedium });
             //GAZTFontRegular.Setters.Add(new Setter { Property = Label.FontFamilyProperty, Value = strGAZTFontRegular });
-
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Views.Templates
 {
     /// <summary>

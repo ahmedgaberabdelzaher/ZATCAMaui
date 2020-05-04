@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
 namespace GAZT.Models
 {
     public class EstimatedZakatReturns
     {
         public EstimatedZakatReturnsD d { get; set; }
     }
-
     public class EstimatedZakatReturnsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class EstimatedZakatReturnsMetadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class EstimatedZakatReturnsResult : INotifyPropertyChanged
     {
         public Metadata2 __metadata { get; set; }
@@ -87,11 +83,9 @@ namespace GAZT.Models
                 _dueDate = value;
             }
         }
-
         public string _dueDT;
         public string DueDt
         {
-
             get
             {
                 return _dueDT;
@@ -105,13 +99,11 @@ namespace GAZT.Models
                     {
                         string[] _dueDate = new String[2];
                         _dueDate = _dueDT.Split('T');
-
                         DueDate = _dueDate[0];
                     }
                 }
             }
         }//DueDate
-
         //private string _statusImage;
         public string StatusImage { get; set; }
         //{
@@ -136,8 +128,6 @@ namespace GAZT.Models
         //        _borderColour = value;
         //    }
         //}
-
-
         //private string _status;//StatusCode
         //public string Status
         //{
@@ -151,11 +141,9 @@ namespace GAZT.Models
         //        OnPropertyChanged(nameof(Status));
         //        if (!string.IsNullOrEmpty(_status))
         //        {
-
         //            //For Border Colour
         //            if ((string.Equals(_status, "U")))//UnSubmitted_status, "IP011") || string.Equals(_status, "IP014") || 
         //            {
-                        
         //                    StatusImage = "ic_attachment.png";
         //                BorderColour = "#944E22";
         //            }
@@ -174,7 +162,6 @@ namespace GAZT.Models
         //                BorderColour = "#005e4b";
         //                StatusImage = "ic_Paid.png";
         //            }
-
         //            //For Image
         //            if (string.Equals(_status, "ZP017") || string.Equals(_status, "E0089") || string.Equals(_status, "E0090") || string.Equals(_status, "C0021") || string.Equals(_status, "ALL"))
         //            {
@@ -191,21 +178,16 @@ namespace GAZT.Models
         //        }
         //    }
         //}
-
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         public void OnPropertyChanged(string propertyname)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname));
         }
     }
-
     public class ListSet
     {
         public List<EstimatedZakatReturnsResult> results { get; set; }
     }
-
     public class EstimatedZakatReturnsD
     {
         public Metadata __metadata { get; set; }
@@ -277,7 +259,6 @@ namespace GAZT.Models
         public string CallServ { get; set; }
         public ListSet listSet { get; set; }
     }
-
     public class ZAKATStatus
     {
         public string Key { get; set; }

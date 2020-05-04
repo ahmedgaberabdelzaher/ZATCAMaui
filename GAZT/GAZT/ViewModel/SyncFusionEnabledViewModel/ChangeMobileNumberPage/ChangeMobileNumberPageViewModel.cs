@@ -10,21 +10,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ChangeMobileNumberPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
-
-
         #region Property
-
-
         private string _NewMobile = string.Empty;
         public string NewMobile
         {
@@ -35,14 +29,12 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _NewMobile = value;
-
                 if (!String.IsNullOrWhiteSpace(_NewMobile) || !String.IsNullOrEmpty(_NewMobile))
                     if (_NewMobile.Length == 14)
                         IsVerifyEnabled = true;
                 RaisePropertyChanged("NewMobile");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -56,7 +48,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private TaxPayerProfile _TaxPayerProfile = App.TP;
         public TaxPayerProfile TaxPayerProfile
         {
@@ -70,7 +61,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TaxPayerProfile");
             }
         }
-
         private bool _IsVerifyEnabled = false;
         public bool IsVerifyEnabled
         {
@@ -84,7 +74,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVerifyEnabled");
             }
         }
-
         private string _CurrentMobile = string.Empty;
         public string CurrentMobile
         {
@@ -98,7 +87,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("CurrentMobile");
             }
         }
-
         private bool _newMobileNumberArabicLayout = false;
         public bool NewMobileNumberArabicLayout
         {
@@ -112,7 +100,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewMobileNumberArabicLayout");
             }
         }
-
         private bool _newMobileNumberEnglishLayout = false;
         public bool NewMobileNumberEnglishLayout
         {
@@ -126,7 +113,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("NewMobileNumberEnglishLayout");
             }
         }
-
         private string _countryCode = "";
         public string CountryCode
         {
@@ -137,19 +123,11 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _countryCode = value;
-
                 RaisePropertyChanged("CountryCode");
             }
         }
-
-
-
-
-
         #endregion
-
         #region Constructor
-
         public ChangeMobileNumberPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -162,41 +140,28 @@ namespace GAZT.ViewModel.NewViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
-
             OnVerifyButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-
                 Task.Run(() =>
                 {
                     IsLoading = true;
                 });
-
-
                 await Task.Run(async () =>
                 {
                     await VarifyMobileNumber();
-
                 });
                 Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-
-
             });
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
         }
-
-
         #endregion
-
         #region Method
-
         private async Task VarifyMobileNumber()
         {
             try
@@ -248,7 +213,6 @@ namespace GAZT.ViewModel.NewViewModel
                             {
                                 await ShowNewMobileNumberNotSameAsOldMobileNumberInformation();
                             }
-
                         }
                         else
                         {
@@ -271,7 +235,6 @@ namespace GAZT.ViewModel.NewViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo() { _ComingToOTPVerificationScreenFrom = NavigatingFromMobile, NavigateToThisService = String.Empty });
-
                               //  _navigationService.NavigateTo(App.OTPPageView, NavigatingFromMobile);
                             });
                         }
@@ -284,12 +247,10 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-
             }
             catch(InternetException ex)
             {
@@ -321,7 +282,6 @@ namespace GAZT.ViewModel.NewViewModel
             CurrentMobile = TaxPayerProfile.Mobile;
             SetNewMobileNumberLayoutVisibility();
         }
-
         private void SetNewMobileNumberLayoutVisibility()
         {
             if(App.IsArabic)
@@ -335,8 +295,6 @@ namespace GAZT.ViewModel.NewViewModel
                 NewMobileNumberArabicLayout = false;
             }
        }
-
-       
         public bool IsValidMobileNumber(string mobileNumber)
         {
             if (!string.IsNullOrEmpty(mobileNumber)  && mobileNumber.Length == 8)
@@ -348,7 +306,6 @@ namespace GAZT.ViewModel.NewViewModel
                 return false;
             }
         }
-
         public async Task PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -364,11 +321,9 @@ namespace GAZT.ViewModel.NewViewModel
                         }
                     }
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-
                 });
             }
         }
@@ -376,9 +331,7 @@ namespace GAZT.ViewModel.NewViewModel
         {
            // NewMobile = "";
               NewMobile = string.Empty;
-
         }
-
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
@@ -392,7 +345,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             return IsMandatoryFieldEntered;
         }
-
         private async Task ShowMandatoryFieldNotEnteredInformation(bool IsMandatoryFieldEntered)
         {
             if (!IsMandatoryFieldEntered)
@@ -406,15 +358,11 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                 });
             }
-
         }
-
         private async Task ShowNewMobileNumberNotSameAsOldMobileNumberInformation()
         {
-
             Device.BeginInvokeOnMainThread(async () =>
             {
-
                 await _dialogService.ShowMessageBox(AppResources.ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber, AppResources.Alerts);
                 await Task.Run(() =>
                 {
@@ -422,7 +370,6 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             });
         }
-
         private bool IsNewMobileNumberSameAsOldMobileNumber(string newMobileNumber)
         {
             if (newMobileNumber.Equals(App.TP.Mobile))
@@ -434,7 +381,6 @@ namespace GAZT.ViewModel.NewViewModel
                 return false;
             }
         }
-
         #endregion
     }
     }

@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class MyBills
     {
         public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
-
-
         private string _BETRW = string.Empty;
-
         public string BETRW { 
             get
             {
@@ -24,19 +20,13 @@ namespace GAZT.Models
                 if (!string.IsNullOrEmpty(_BETRW))
                 {
                     string format = "$#,##0.00;-$#,##0.00;Zero";
-
-
                     decimal d = Convert.ToDecimal(_BETRW);
                     decimal positiveMoney = d;
                     positiveMoney.ToString(format);  //will return $24,508,975.94
                     TestDueAmount = positiveMoney.ToString();
                 }
-
-
             } 
         } //DueAmount
-
-
         public string _TestDueAmount = String.Empty;
         public string TestDueAmount
         {
@@ -46,18 +36,13 @@ namespace GAZT.Models
             }
             set
             {
-
-
                 _TestDueAmount = value;
-
             }
-
         }
         public string Txt30 { get; set; }
         public string FAEDN { get; set; } //DueDate
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
-
         private string _status = string.Empty;
         public string Status {
             get
@@ -84,10 +69,5 @@ namespace GAZT.Models
                 }
             }
         }
-
-
-       
-
-            
     }
 }

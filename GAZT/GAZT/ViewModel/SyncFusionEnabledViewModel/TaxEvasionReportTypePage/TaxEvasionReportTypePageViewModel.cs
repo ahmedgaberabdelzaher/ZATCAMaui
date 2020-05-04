@@ -7,19 +7,16 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class TaxEvasionReportTypePageViewModel : ViewModelBase
     {
         #region Variable
-       
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
        // public ICommand OnNextClicked { get; set; }
         public ICommand OnNextClicked{ get;  set; }
-
         #endregion
         private TaxEvasionReport _taxEvasionListobj = null;
         public TaxEvasionReport TaxEvasionListobj
@@ -27,14 +24,12 @@ namespace GAZT.ViewModel.NewViewModel
             get
             {
                 return _taxEvasionListobj;
-
             }
             set
             {
                 _taxEvasionListobj = value;
                 //if (_selectedTaxEvasionListItem != null)
                 //{ passSelectedTaxEvasionItem(); }
-
                 RaisePropertyChanged("TaxEvasionListobj");
             }
         }
@@ -52,7 +47,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("MobileNumber");
             }
         }
-
         private string _categorySelected_Index = "0";
         public string CategorySelected_Index
         {
@@ -80,8 +74,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
-
         private bool _isimgVisiblec1 = false;
         public bool IsimgVisiblec1
         {
@@ -95,7 +87,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsimgVisiblec1");
             }
         }
-
         private bool _isimgVisiblec2 = false;
         public bool IsimgVisiblec2
         {
@@ -148,11 +139,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsimgVisiblec5");
             }
         }
-
-
-
-
-
         public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             try
@@ -161,7 +147,6 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     throw new ArgumentNullException("navigationService");
                 }
-
                 _navigationService = navigationService;
                 if (dialogService == null)
                 {
@@ -178,46 +163,34 @@ namespace GAZT.ViewModel.NewViewModel
                         });
                     }
                 });
-
                 //Device.BeginInvokeOnMainThread(async () =>
                 //{
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 //});
-
                 OnNextClicked = new Command(async() =>
                 {
                     try
                     {
                           await  navigateToFormPage();
-
                     }
                     catch (Exception ex)
                     {
-
                     }
-
                 });
             }
             catch(Exception ex)
             {
-
             }
-        
-
     }
-
-
         public async Task navigateToFormPage()
         {
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
-
             await Task.Run(() =>
             {
                 CategorySelected_Index = "0";
-
                 if (IsimgVisiblec1 == true)
                 {
                     CategorySelected_Index = "1";
@@ -238,23 +211,17 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     CategorySelected_Index = "5";
                 }
-
                 if (CategorySelected_Index != "0")
                 {
-
-
                     TaxEvasionListobj = new TaxEvasionReport();
                     TaxEvasionListobj.ViolationType = CategorySelected_Index;
                     if (!string.IsNullOrEmpty(MobileNumber))
                     {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
                         TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
-
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
                         });
-
-
                     }
                 }
                 else
@@ -262,17 +229,11 @@ namespace GAZT.ViewModel.NewViewModel
                     //IsLoading = false;
                 }
             });
-
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
-
-
-            
-
         }
-
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -284,16 +245,5 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
-
-
-
-
     }
-
-
-
-
-
-
 }

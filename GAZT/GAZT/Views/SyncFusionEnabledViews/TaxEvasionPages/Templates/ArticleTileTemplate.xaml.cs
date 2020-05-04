@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
-
 namespace GAZTeServicesApp.Views.Templates
 {
     /// <summary>
@@ -22,7 +21,6 @@ namespace GAZTeServicesApp.Views.Templates
         public static BindableProperty ParentBindingContextProperty =
          BindableProperty.Create(nameof(ParentBindingContext), typeof(object),
          typeof(ArticleTileTemplate), null);
-
         /// <summary>
         /// Gets or sets the parent bindingcontext.
         /// </summary>
@@ -31,7 +29,6 @@ namespace GAZTeServicesApp.Views.Templates
             get { return GetValue(ParentBindingContextProperty); }
             set { SetValue(ParentBindingContextProperty, value); }
         }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ArticleTileTemplate"/> class.
         /// </summary>

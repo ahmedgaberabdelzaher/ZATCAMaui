@@ -1,7 +1,6 @@
 ﻿using Syncfusion.ListView.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-
 namespace GAZTeServicesApp.Controls
 {
     /// <summary>
@@ -11,22 +10,17 @@ namespace GAZTeServicesApp.Controls
     public class SearchableListView : SfListView
     {
         #region Field
-
         /// <summary>
         /// Gets or sets the text value used to search.
         /// </summary>
         public static readonly BindableProperty SearchTextProperty = 
             BindableProperty.Create(nameof(SearchText), typeof(string), typeof(SearchableListView), null, BindingMode.Default, null, OnSearchTextChanged);
-
         /// <summary>
         /// Gets or sets the text value used to search.
         /// </summary>
         private string searchText;
-
         #endregion
-        
         #region Property
-
         /// <summary>
         /// Gets or sets the text value used to search.
         /// </summary>
@@ -35,11 +29,8 @@ namespace GAZTeServicesApp.Controls
             get { return (string)GetValue(SearchTextProperty); }
             set { this.SetValue(SearchTextProperty, value); }
         }
-
         #endregion
-
         #region Method
-
         /// <summary>
         /// Invoked when the search text is changed.
         /// </summary>
@@ -55,10 +46,8 @@ namespace GAZTeServicesApp.Controls
                 listView.DataSource.Filter = listView.FilterContacts;
                 listView.DataSource.RefreshFilter();
             }
-
             listView.RefreshView();
         }
-        
         /// <summary>
         /// Filtering the list view items based on the search text.
         /// </summary>
@@ -70,10 +59,8 @@ namespace GAZTeServicesApp.Controls
             {
                 return false;
             }
-
             return true;
         }
-
         #endregion
     }
 }

@@ -10,11 +10,9 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -28,7 +26,6 @@ namespace GAZT.Views.NewViews
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
             ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
-
             viewModel.FormBundleList = null;
             viewModel.FormBundleApplicatioNumberList = null;
             viewModel.SelectedFormBindleFbtyp = null;
@@ -41,16 +38,12 @@ namespace GAZT.Views.NewViews
             OnPageLoad();
             //CPicker_imgtap.IsEnabled = false;
             //tapImg.Tapped += Gesture_Tapped;
-
             //void Gesture_Tapped(object sender, EventArgs e)
             //{
             //    tapImg.Tapped -= Gesture_Tapped;
             //}
-
-
             SetLTR();
         }
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
@@ -71,11 +64,9 @@ namespace GAZT.Views.NewViews
                         ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
-
                 //reconfigure layout
             }
         }
-
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -93,19 +84,15 @@ namespace GAZT.Views.NewViews
             {
                 viewModel.IsLoading = true;
             });
-
-
             await Task.Run(async () =>
             {
                 await viewModel.onPageLoad();
-                
             });
             Task.Run(() =>
             {
                 viewModel.IsLoading = false;
             });
         }
-
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             DDlIDType.IsOpen = true;
@@ -115,20 +102,16 @@ namespace GAZT.Views.NewViews
             }
             catch (Exception ex)
             {
-
             }
             //BPicker.Focus();
         }
-
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {if (viewModel.SelectedFormBindleFbtyp != null)
             {
                CPicker.IsOpen = true;
                 //CPicker.Focus();
             }
-            
         }
-
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
@@ -137,12 +120,10 @@ namespace GAZT.Views.NewViews
         {
             if (App.IsArabic)
             {
-
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
                 PickerResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
-
             }
             else
             {
@@ -152,19 +133,12 @@ namespace GAZT.Views.NewViews
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            
             //EntryIDNumber.IsEnabled = true;
-            
-          
         }
-
         private void CPicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-          
-
         }
         protected override void OnAppearing()
         {
@@ -174,25 +148,18 @@ namespace GAZT.Views.NewViews
             viewModel.SelectedFormBindleFbtyp = null;
             viewModel.TxtFBnum = string.Empty;
             viewModel.TxtFBtype = string.Empty;
-
         }
-
         private void CPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {//SelectedFormBindleFbnum
-
             FormBundleApplicationNumberModelResult selectedfbnum = (FormBundleApplicationNumberModelResult)e.NewValue;
             CPicker.SelectedItem = selectedfbnum;//Fbnum
             viewModel.SelectedFormBindleFbnum = selectedfbnum;
             viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
             viewModel.TxtFBnum = selectedfbnum.Fbnum;
-
             //var item = sender as Picker;
             //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
             viewModel.populate();
-
-
         }
-
         private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             DDlIDType.SelectedItem = viewModel.SelectedFormBindleFbtypCancel;
@@ -202,7 +169,6 @@ namespace GAZT.Views.NewViews
                 viewModel.TxtFBtype = string.Empty;
             }
         }
-
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {//SelectedFormBindleFbtyp
             FormBundleResult selectedfbtyp = (FormBundleResult)e.NewValue;
@@ -210,9 +176,7 @@ namespace GAZT.Views.NewViews
              viewModel.SelectedFormBindleFbnumPrev=null;
             viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
             viewModel.TxtFBtype = selectedfbtyp.Txt50;
-             
         }
-
         private void CPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedFormBindleFbnum = viewModel.SelectedFormBindleFbnumPrev;

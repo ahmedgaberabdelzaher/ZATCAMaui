@@ -8,17 +8,13 @@
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
     xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
-
     <Color x:Key="EntryPlaceholderColor">#A0FFFFFF</Color>
     <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
     <Color x:Key="GradientStartColor">#012E8B</Color>
     <Color x:Key="GradientEndColor">#3F0041</Color>
     <Color x:Key="FacebookBlue">#4267B2</Color>
-    
     <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
     <x:String x:Key="AvatarIcon">&#xe723;</x:String>
-
-
     <Color x:Key="OrangeyYellow">#fcbc0f</Color>
     <Color x:Key="Transparent">Transparent</Color>
     <x:String x:Key="Cart">&#xe708;</x:String>
@@ -37,7 +33,6 @@
     <x:String x:Key="Edit">&#xe727;</x:String>
     <x:String x:Key="Menu">&#xe72e;</x:String>
     <x:String x:Key="DownLoad">&#xe711;</x:String>
-    
     <x:String x:Key="More">&#xe719;</x:String>
     <x:String x:Key="Show">&#xe711;</x:String>
     <x:String x:Key="More2">&#xe715;</x:String>
@@ -46,10 +41,7 @@
     <x:String x:Key="Viewd">&#xe71b;</x:String>
     <x:String x:Key="ReverseBack">&#xe71a;</x:String>
     <x:String x:Key="Home">&#xe706;</x:String>
-
     <Color x:Key="Green">#7ed321</Color>
-
-
     <!-- Common style for navigation bar buttons -->
     <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
@@ -64,7 +56,6 @@
         <Setter Property="BorderWidth" Value="0" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
     <!-- Common style for search entries -->
     <Style x:Key="SearchEntryStyle" TargetType="control:BorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
@@ -74,7 +65,6 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="ReturnType" Value="Done" />
     </Style>
-
     <!--  Common style for  FAQLabelStyle  -->
     <Style x:Key="FAQLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
@@ -85,7 +75,6 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Gray-White}" />
         <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
     </Style>
-
     <!--  Common style for Header Label  -->
     <Style x:Key="FAQHeaderLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
@@ -98,22 +87,17 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
-
     <!--  Common style for separator BoxView  -->
     <Style x:Key="SeparatorStyle" TargetType="BoxView">
         <Setter Property="HeightRequest" Value="1" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-200}" />
     </Style>
-
-
-
     <Style x:Key="IconImageStyle" TargetType="Image">
         <Setter Property="Margin" Value="5,8" />
         <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
-
     <!--  Common style for content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
         <Setter Property="BackgroundImageSource">
@@ -123,7 +107,6 @@
                 WinPhone="sf_LoginBackground.png" 
                 iOS="sf_LoginBackground.png"
                 />
-         
         </Setter>
     </Style>
     <!--  Common style for icon label  -->
@@ -161,8 +144,6 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-
-
     <!--  Common style for  Label  -->
     <Style x:Key="LabelStyleFromCommonStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
@@ -176,7 +157,6 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
-
     <Style x:Key="LabelStyleFromCommonGreenStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
         <Setter Property="FontSize" Value="16" />
@@ -189,37 +169,30 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
-
     <Style x:Key="LabelStyleFromCommonGrayStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
         <Setter Property="Margin" Value="1,5"/>
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />
     </Style>
-
     <Style x:Key="LabelStyleFromCommonGreenStyleDashboard" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
         <Setter Property="TextColor" Value="#005e4b" />
         <Setter Property="Margin" Value="1,5"/>
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />
     </Style>
-
-    
     <!--  Common style for labels  -->
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="LineHeight" Value="1.25" />
-
     </Style>
-
     <!--  Common style for labels  -->
     <Style x:Key="CommonLabelStyle" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="LineHeight" Value="1.25" />
     </Style>
-
     <!--  Common style for entries  -->
     <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
@@ -231,8 +204,6 @@
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="ReturnType" Value="Done" />
     </Style>
-
-
     <!--  Common style for buttons  -->
     <Style x:Key="CommonSfButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundGradient">
@@ -254,7 +225,6 @@
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="BackgroundColor" Value="#005e4b" />
     </Style>
-
     <!--  Common style for buttons  -->
     <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
         <!--<Setter Property="BackgroundGradient">
@@ -275,7 +245,6 @@
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
     </Style>
-
     <!--  Common style for flat buttons  -->
     <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -284,7 +253,6 @@
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
     </Style>
-
     <!--  Common style for borders  -->
     <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
@@ -292,7 +260,6 @@
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
     </Style>
-
     <!--  Common style for gradient view  -->
     <Style x:Key="SfGradientViewStyle" TargetType="graphics:SfGradientView">
         <Setter Property="Opacity" Value="0" />
@@ -309,14 +276,12 @@
             </Setter.Value>
         </Setter>
     </Style>
-
     <Style x:Key="HeaderLabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="LineHeight" Value="1.5"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
     </Style>
-
     <Style x:Key="FormBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
         <Setter Property="CornerRadius" Value="4"/>
@@ -324,27 +289,23 @@
         <Setter Property="Margin" Value="0,8"/>
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
     </Style>
-
     <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
         <Setter Property="BorderColor" Value="{DynamicResource Gray-300}"/>
         <Setter Property="CornerRadius" Value="4"/>
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}"/>
     </Style>
-
     <Style x:Key="EntryTextStyle" TargetType="control:BorderlessEntry">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
         <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}"/>
     </Style>
-
     <Style x:Key="DatePickerStyle" TargetType="DatePicker">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}"/>
     </Style>
-
     <Style x:Key="ComboBoxStyle" TargetType="combobox:SfComboBox">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="TextSize" Value="16"/>
@@ -354,7 +315,6 @@
         <Setter Property="Margin" Value="8,0"/>
         <Setter Property="HeightRequest" Value="40"/>
     </Style>
-
     <Style x:Key="EntryTextBoxStyle" TargetType="control:BorderlessEntry">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}"/>
         <Setter Property="FontSize" Value="16"/>
@@ -363,5 +323,4 @@
         <Setter Property="Margin" Value="12,0"/>
         <Setter Property="HeightRequest" Value="40"/>
     </Style>
-
 </ResourceDictionary>

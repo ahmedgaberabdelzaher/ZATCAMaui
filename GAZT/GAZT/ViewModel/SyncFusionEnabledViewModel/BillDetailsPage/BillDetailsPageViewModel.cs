@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class BillDetailsPageViewModel : ViewModelBase
@@ -28,11 +27,8 @@ namespace GAZT.ViewModel.NewViewModel
         string Cotyp = "";
         public bool IsrefreshEnabled = false;
         public ICommand GoBackClick { get; set; }
-
         #endregion
-
         #region Property
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -46,7 +42,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _isMainGridVisble = false;
         public bool IsMainGridVisble
         {
@@ -60,8 +55,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsMainGridVisble");
             }
         }
-
-
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -75,7 +68,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ZakatReturnDetail");
             }
         }
-
         private EstimatedZAKATReturnsSADADNumberResult _estimatedZAKATSADADNumber;
         public EstimatedZAKATReturnsSADADNumberResult EstimatedZAKATSADADNumber
         {
@@ -89,7 +81,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("EstimatedZAKATSADADNumber");
             }
         }
-
         private string _refreshIconImageSource = "ic_refresh.png";
         public string RefreshIconImageSource
         {
@@ -100,12 +91,9 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _refreshIconImageSource = value;
-
                 RaisePropertyChanged("RefreshIconImageSource");
             }
         }
-
-
         //private string _sopbel;
         //public string Sopbel
         //{
@@ -119,7 +107,6 @@ namespace GAZT.ViewModel.NewViewModel
         //        RaisePropertyChanged("Sopbel");
         //    }
         //}
-
         //private string _sadadid;
         //public string Sadadid
         //{
@@ -133,7 +120,6 @@ namespace GAZT.ViewModel.NewViewModel
         //        RaisePropertyChanged("Sadadid");
         //    }
         //}
-
         //private string _stotamt;
         //public string Stotamt
         //{
@@ -147,11 +133,7 @@ namespace GAZT.ViewModel.NewViewModel
         //        RaisePropertyChanged("Stotamt");
         //    }
         //}
-
-
-
         #endregion
-
         #region Constructor
         public BillDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -161,9 +143,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
@@ -171,41 +150,30 @@ namespace GAZT.ViewModel.NewViewModel
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
-
-
             });
             DowmoadForm = new Command(async () =>
             {
                 GetPdfUrl();
-
-
             });
-
             OnCopySadadNumberButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-
                 await Clipboard.SetTextAsync(EstimatedZAKATSADADNumber.Sopbel);
                 if (Clipboard.HasText)
                 {
                     var text = await Clipboard.GetTextAsync();
                     await _dialogService.ShowMessageBox(AppResources.ZZIthascopiedsadadpaymentnumber + Environment.NewLine + " " + text, AppResources.Information);
-
                     //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
                 }
                 //await _dialogService.ShowMessage(AppResources.ZZIthascopiedsadadpaymentnumber, AppResources.Information);
             });
-
-
         }
         #endregion
-
         public async Task OnPageLoad()
         {
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
-
             await Task.Run(async () =>
             {
                 try
@@ -227,7 +195,6 @@ namespace GAZT.ViewModel.NewViewModel
                             //  RefreshIconImageSource = "ic_refresh.png";
                             //else
                             //    IsrefreshEnabled = false;
-
                         }
                         else
                         {
@@ -250,12 +217,10 @@ namespace GAZT.ViewModel.NewViewModel
                             await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
-
                         IsLoading = false;
                         estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].ObjectionInvoiceVisibility = true;
                         estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0].InvoiceVisibility = false;
                     }
-
                 }
                 catch (InternetException ex)
                 {
@@ -265,12 +230,10 @@ namespace GAZT.ViewModel.NewViewModel
                     });
                 }
             });
-
             await Task.Run(() =>
             {
                 IsLoading = false;
             });
-
         }
         #region Method
         public void PopToRootPage()
@@ -279,7 +242,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -296,14 +258,12 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         public void GetPdfUrl()
         {
             String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=disabled";
             // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
         }
-
         public async void ShowPdf(string pdfUrl)
         {
             //if (Device.RuntimePlatform == Device.iOS)
@@ -339,16 +299,13 @@ namespace GAZT.ViewModel.NewViewModel
             }
             //}
         }
-
         public void ClearData()
         {
             IsrefreshEnabled = false;
             IsMainGridVisble = false;
         }
-
         private void GetUpdatedDataAfterAddingComma()
         {
-
             if (EstimatedZAKATSADADNumber != null)
             {
                 try
@@ -364,11 +321,8 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     // Handle Exception
                 }
-
             }
-
         }
-
         #endregion
     }
 }

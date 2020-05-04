@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 'use strict';
-
 var FontInspector = (function FontInspectorClosure() {
   var fonts;
   var active = false;
@@ -71,7 +69,6 @@ var FontInspector = (function FontInspectorClosure() {
       tmp.addEventListener('click', resetSelection);
       tmp.textContent = 'Refresh';
       panel.appendChild(tmp);
-
       fonts = document.createElement('div');
       panel.appendChild(fonts);
     },
@@ -157,9 +154,7 @@ var FontInspector = (function FontInspectorClosure() {
     }
   };
 })();
-
 var opMap;
-
 // Manages all the page steppers.
 var StepperManager = (function StepperManagerClosure() {
   var steppers = [];
@@ -188,7 +183,6 @@ var StepperManager = (function StepperManagerClosure() {
       if (sessionStorage.getItem('pdfjsBreakPoints')) {
         breakPoints = JSON.parse(sessionStorage.getItem('pdfjsBreakPoints'));
       }
-
       opMap = Object.create(null);
       for (var key in pdfjsLib.OPS) {
         opMap[pdfjsLib.OPS[key]] = key;
@@ -246,7 +240,6 @@ var StepperManager = (function StepperManagerClosure() {
     }
   };
 })();
-
 // The stepper for each page's IRQueue.
 var Stepper = (function StepperClosure() {
   // Shorter way to create element and optionally set textContent.
@@ -257,7 +250,6 @@ var Stepper = (function StepperClosure() {
     }
     return d;
   }
-
   function simplifyArgs(args) {
     if (typeof args === 'string') {
       var MAX_STRING_LENGTH = 75;
@@ -284,7 +276,6 @@ var Stepper = (function StepperClosure() {
     }
     return simpleObj;
   }
-
   function Stepper(panel, pageIndex, initialBreakPoints) {
     this.panel = panel;
     this.breakPoint = 0;
@@ -313,7 +304,6 @@ var Stepper = (function StepperClosure() {
     },
     updateOperatorList: function updateOperatorList(operatorList) {
       var self = this;
-
       function cboxOnClick() {
         var x = +this.dataset.idx;
         if (this.checked) {
@@ -323,12 +313,10 @@ var Stepper = (function StepperClosure() {
         }
         StepperManager.saveBreakPoints(self.pageIndex, self.breakPoints);
       }
-
       var MAX_OPERATORS_COUNT = 15000;
       if (this.operatorListIdx > MAX_OPERATORS_COUNT) {
         return;
       }
-
       var chunk = document.createDocumentFragment();
       var operatorsToDisplay = Math.min(MAX_OPERATORS_COUNT,
                                         operatorList.fnArray.length);
@@ -339,7 +327,6 @@ var Stepper = (function StepperClosure() {
         chunk.appendChild(line);
         var checked = this.breakPoints.indexOf(i) !== -1;
         var args = operatorList.argsArray[i] || [];
-
         var breakCell = c('td');
         var cbox = c('input');
         cbox.type = 'checkbox';
@@ -347,7 +334,6 @@ var Stepper = (function StepperClosure() {
         cbox.checked = checked;
         cbox.dataset.idx = i;
         cbox.onclick = cboxOnClick;
-
         breakCell.appendChild(cbox);
         line.appendChild(breakCell);
         line.appendChild(c('td', i.toString()));
@@ -435,7 +421,6 @@ var Stepper = (function StepperClosure() {
   };
   return Stepper;
 })();
-
 var Stats = (function Stats() {
   var stats = [];
   function clear(node) {
@@ -496,13 +481,11 @@ var Stats = (function Stats() {
     }
   };
 })();
-
 // Manages all the debugging tools.
 var PDFBug = (function PDFBugClosure() {
   var panelWidth = 300;
   var buttons = [];
   var activePanel = null;
-
   return {
     tools: [
       FontInspector,
@@ -543,18 +526,14 @@ var PDFBug = (function PDFBugClosure() {
        */
       var ui = document.createElement('div');
       ui.id = 'PDFBug';
-
       var controls = document.createElement('div');
       controls.setAttribute('class', 'controls');
       ui.appendChild(controls);
-
       var panels = document.createElement('div');
       panels.setAttribute('class', 'panels');
       ui.appendChild(panels);
-
       container.appendChild(ui);
       container.style.right = panelWidth + 'px';
-
       // Initialize all the debugging tools.
       var tools = this.tools;
       var self = this;

@@ -3,9 +3,7 @@
     x:Class="GAZTeServicesApp.Themes.LightTheme"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
     <Color x:Key="GAZTPrimaryColor">#D99A29</Color>
-
     <Color x:Key="PrimaryColor">#F36C21</Color>
     <Color x:Key="PrimaryDarkColor">#d0424f</Color>
     <Color x:Key="PrimaryDarkenColor">#ab3641</Color>
@@ -19,7 +17,6 @@
     <Color x:Key="Orange">#ff844a</Color>
     <Color x:Key="Blue">#4acaff</Color>
     <Color x:Key="HyperLink">#567cd7</Color>
-
     <Color x:Key="Gray-100">#f6f7f8</Color>
     <Color x:Key="Gray-200">#ebecef</Color>
     <Color x:Key="Gray-300">#ced2d9</Color>
@@ -31,13 +28,10 @@
     <Color x:Key="Gray-900">#333942</Color>
     <Color x:Key="Gray-Black">#000000</Color>
     <Color x:Key="Gray-White">#ffffff</Color>
-
     <x:String x:Key="LargeLabelTest"></x:String>
-
     <Style x:Key="DummyStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{DynamicResource LargeLabelTest}"/>
     </Style>
-    
     <OnPlatform x:Key="FontIcons" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="UIFontIcons.ttf#UIFontIcons" />
@@ -45,7 +39,6 @@
             <On Platform="UWP" Value="Assets/UIFontIcons.ttf#UIFontIcons" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold"/>
@@ -53,7 +46,6 @@
             <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Regular" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
@@ -61,7 +53,6 @@
             <On Platform="UWP" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Medium" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#SSTArabic-Medium" />
@@ -69,7 +60,6 @@
             <On Platform="UWP" Value="GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Bold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
@@ -77,8 +67,6 @@
             <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
-
     <OnPlatform x:Key="Montserrat-SemiBold-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
@@ -86,7 +74,6 @@
             <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Regular-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
@@ -94,7 +81,6 @@
             <On Platform="UWP" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Medium-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic-Medium" />
@@ -102,7 +88,6 @@
             <On Platform="UWP" Value="SSTArabic-Medium#SSTArabic-Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Bold-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
@@ -110,7 +95,6 @@
             <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-SemiBold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
@@ -118,7 +102,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Regular-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
@@ -126,7 +109,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#Montserrat-Regular" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Medium-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
@@ -134,7 +116,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="Montserrat-Bold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
@@ -142,7 +123,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
@@ -150,7 +130,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="GAZT_English_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
@@ -158,7 +137,6 @@
             <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="GAZT_English_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic-Medium" />
@@ -166,7 +144,6 @@
             <On Platform="UWP" Value="SSTArabic-Medium#SSTArabic-Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    
     <OnPlatform x:Key="GAZT_Arabic_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
@@ -174,7 +151,6 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="GAZT_English_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
@@ -182,7 +158,6 @@
             <On Platform="UWP" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
@@ -190,9 +165,7 @@
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-
     <Style x:Key="GAZT_FONT_BOLD" TargetType="Label"></Style>
     <Style x:Key="GAZT_FONT_MEDIUM" TargetType="Label"></Style>
     <Style x:Key="GAZT_FONT_REGULAR" TargetType="Label"></Style>
-
 </ResourceDictionary>

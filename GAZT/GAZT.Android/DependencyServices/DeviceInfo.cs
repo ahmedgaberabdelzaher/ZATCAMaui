@@ -1,5 +1,4 @@
-﻿
-using GAZT.Droid.DependencyServices;
+﻿using GAZT.Droid.DependencyServices;
 using Xamarin.Forms;
 using GAZT.Helper;
 [assembly: Dependency(typeof(DeviceInfo))]
@@ -13,12 +12,10 @@ namespace GAZT.Droid.DependencyServices
             height = (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.HeightPixels / (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.Density;
             return height;
         }
-
         public double GetDeviceWidth()
         {
             double width = 0;
             width = (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.WidthPixels / (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.Density;
-
             return width;
         }
     }

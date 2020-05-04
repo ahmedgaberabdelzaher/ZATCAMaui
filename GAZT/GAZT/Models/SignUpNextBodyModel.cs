@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class SignUpNextBodyModel
@@ -24,6 +23,5 @@ namespace GAZT.Models
         public string ATin { get; set; }
         public string ALicenceNo { get; set; }
         public string ACityCode { get; set; }
-
     }
 }

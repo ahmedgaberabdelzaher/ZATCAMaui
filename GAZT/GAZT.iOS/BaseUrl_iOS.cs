@@ -7,7 +7,6 @@ using Foundation;
 using UIKit;
 using GAZT.Views.NewViews;
 using GAZT.iOS;
-
 [assembly: Dependency(typeof(BaseUrl_iOS))]
 namespace GAZT.iOS
 {

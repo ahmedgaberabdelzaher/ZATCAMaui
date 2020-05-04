@@ -7,9 +7,7 @@
              mc:Ignorable="d"
               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
               xmlns:local1="clr-namespace:GAZT"
-             
               xmlns:custom="clr-namespace:GAZT"
-            
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
@@ -41,9 +39,7 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
                     <controls:TitleView.TrailingView>
                         <buttons:SfButton
@@ -54,19 +50,13 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource Home}"
-                            
                              />
-
                     </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
-
-
-
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForChangeMobileNumber" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid.RowDefinitions>
@@ -78,40 +68,20 @@
             <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="White">
                 <ScrollView BackgroundColor="White">
                     <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White">
-
-
                         <StackLayout  VerticalOptions="FillAndExpand" BackgroundColor="White">
-
-
                             <Label Text="{x:Static local:AppResources.ZVatAcknowledgmentReceiptText}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
                             <Label Text="{x:Static local:AppResources.ZZName}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"></Label>
-
                             <Label Text="{Binding TPName}"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
                             <Label Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
-
                             <Label Text="{Binding ReturnReferenceNumber}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
                             <Label Text="{x:Static local:AppResources.ZZPleaseretainthisnumberforfuturereferenceandcommunucation}"     HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
                             <Label Text="{x:Static local:AppResources.ZVatTaxablePeriod}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
-
                             <Label Text="{Binding TaxablePeriod}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
                             <Label Text="{x:Static local:AppResources.ZVatReceiptDate}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"/>
-
                             <Label Text="{Binding ReceiptDate}" FlowDirection="LeftToRight"  FontFamily="{StaticResource SSTArabicMedium}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
                             <Label Text="{x:Static local:AppResources.ZSadadNumber}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
-
                             <Label Text="{Binding SadadNumber}" FontFamily="{StaticResource SSTArabicMedium}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
-
                             <Label Text="{x:Static local:AppResources.ZAmountPayable}" FontFamily="{StaticResource SSTArabicMedium}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}"/>
-
                             <local1:CustomLabel  Grid.Row="14"  HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="CenterAndExpand" Padding="0" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNumberVisible}">
                                 <local1:CustomLabel.FormattedText>
                                     <FormattedString>
@@ -121,20 +91,9 @@
                                     </FormattedString>
                                 </local1:CustomLabel.FormattedText>
                             </local1:CustomLabel>
-
                             <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentWaitingText}" FontFamily="{StaticResource SSTArabicMedium}"   HorizontalOptions="StartAndExpand" Padding="0" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding IsSadadNoteVisible}"/>
-
-
-
-
                             <local1:CustomLabel Text="{x:Static local:AppResources.BreakDownLabel}"    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" IsVisible="{Binding BreakdownAmountVisibility}"/>
-
                             <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAcknowledgmentHelpText}" Padding="0" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-
-
-
-
-
                             <!--<Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" Grid.ColumnSpan="2">
                         <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                         </StackLayout>
@@ -146,7 +105,6 @@
                         </StackLayout>
                     </Grid>-->
                         </StackLayout>
-
                         <StackLayout VerticalOptions="EndAndExpand">
                             <buttons:SfButton Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Clicked="OnVATRefreshButtonClicked" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
                             <buttons:SfButton Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
@@ -154,7 +112,6 @@
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>
-
             </StackLayout>
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
@@ -176,10 +133,5 @@
                 </StackLayout>
             </Grid>
         </Grid>
-        
     </ContentPage.Content>
-
-
-
-
 </ContentPage>

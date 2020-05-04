@@ -13,7 +13,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class ICRListPageViewModel : ViewModelBase
@@ -26,11 +25,8 @@ namespace GAZT.ViewModel.NewViewModel
         public ICommand OnHomeButtonClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         public int SelectedPickerIndex { get; set; }
-
         #endregion
-
         #region Property
-
         private string _txtSelectedStatus = string.Empty;
         public string TxtSelectedStatus
         {
@@ -44,7 +40,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("TxtSelectedStatus");
             }
         }
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -58,7 +53,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         private bool _isNoDataLabelVisible = false;
         public bool IsNoDataLabelVisible
         {
@@ -72,7 +66,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-
         private bool _isICRListVisible = false;
         public bool IsICRListVisible
         {
@@ -86,7 +79,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsICRListVisible");
             }
         }
-
         private ICRStatus _previousSelectedICRStatus;
         public ICRStatus PreviousSelectedICRStatus
         {
@@ -100,10 +92,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PreviousSelectedICRStatus");
             }
         }
-
-
-
-
         private ICRStatus _selectedICRStatus;
         public ICRStatus SelectedICRStatus
         {
@@ -117,8 +105,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedICRStatus");
             }
         }
-
-
         private ICRStatus _selectedICRStatusPrev;
         public ICRStatus SelectedICRStatusPrev
         {
@@ -132,7 +118,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("SelectedICRStatusPrev");
             }
         }
-
         private int _sCRSelectedIndex;
         public int ICRSelectedIndex
         {
@@ -146,8 +131,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ICRSelectedIndex");
             }
         }
-
-
         private List<ICRStatus> _iCRStatusList;
         public List<ICRStatus> ICRStatusList
         {
@@ -161,7 +144,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("ICRStatusList");
             }
         }
-
         private ICRListSet _selectedICR;
         public ICRListSet SelectedICR
         {
@@ -183,12 +165,9 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (Exception ex)
                 {
-
                 }
             }
         }
-
-
         private List<ICRListSet> _iCRDummyList;
         public List<ICRListSet> ICRDummyList
         {
@@ -199,12 +178,8 @@ namespace GAZT.ViewModel.NewViewModel
             set
             {
                 _iCRDummyList = value;
-
             }
         }
-
-
-
         private List<ICRListSet> _iCRList;
         public List<ICRListSet> ICRList
         {
@@ -231,42 +206,30 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         #endregion
-
         #region Constructor
-
         public ICRListPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
             }
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
             OnHomeButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
-
             BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
-
-
         }
-
         #endregion
-
         #region Method
-
         public async Task onPageLoad()
         {
             try
@@ -275,25 +238,21 @@ namespace GAZT.ViewModel.NewViewModel
                 {
                     IsLoading = true;
                 });
-
                 await Task.Run(async () =>
                 {
                     ICRList = null;
-
                     ICR icrList = null;
                     try
                     {
                         string lang = UtilityManager.GetLanguageParameter();
                         icrList = WebServiceManager.GAZTGetICRs(App.TP.Tin, lang);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
                         if (icrList != null && icrList.ICR_STATUSSet != null && icrList.ICR_STATUSSet.Count != 0)
                         {
                             ICRStatusList = new List<ICRStatus>();
                             ICRStatusList = icrList.ICR_STATUSSet;
                             if (App.IsArabic)
                             {
-
                                 //foreach (var item in ICRStatusList)
                                 //{
                                 //    if(item.Txt30== "All")
@@ -305,10 +264,8 @@ namespace GAZT.ViewModel.NewViewModel
                                 //        item.Txt30 = "جاهز للتعبئة والحفظ كمسودة";
                                 //    }
                                 //}
-
                                 //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("All"))].Txt30 = "الجميع";
                                 //ICRStatusList[ICRStatusList.FindIndex(ind => ind.Equals("To be filled & In draft"))].Txt30 = "جاهز للتعبئة والحفظ كمسودة";
-
                                 //  ICRStatusList.Where(p => p.Txt30 == "All").();
                             }
                             if (string.IsNullOrEmpty(App.ICRStatus))
@@ -316,19 +273,14 @@ namespace GAZT.ViewModel.NewViewModel
                                 SelectedICRStatus = ICRStatusList.Where(x => x.Estat == "E01TP").FirstOrDefault();
                             }
                         }
-
                         VATDeclaration vATDeclaration = new VATDeclaration();
                         //  vATDeclaration.
                         // VATDeclaration _vATDeclaration  =   await WebServiceManager.GAZTGetVATReturns();
-
                         if (icrList != null && icrList.ICR_LISTSet != null && icrList.ICR_LISTSet.Count != 0)
                         {
                             ICRList = new List<ICRListSet>();
                             ICRList = icrList.ICR_LISTSet.OrderByDescending(x => x.DueDateDateTime).ToList();
                             ICRDummyList = ICRList;
-
-
-
                         }
                         else
                         {
@@ -344,25 +296,16 @@ namespace GAZT.ViewModel.NewViewModel
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;
                             _navigationService.GoBack();
-
                         });
                         //   await Task.Run(() =>
                         //   {
-
                         //  });
                     }
-
                 });
-
                 await Task.Run(() =>
                 {
-
                     IsLoading = false;
                 });
-
-
-
-
                 //int k = 5;
                 //List<ICRStatus> icrStatus = new List<ICRStatus>();
                 //ICRStatusList = new List<ICRStatus>();
@@ -374,18 +317,10 @@ namespace GAZT.ViewModel.NewViewModel
                 //    m.Spras = "Abc";
                 //    m.Txt04 = "Abc";
                 //    m.Txt30 = "Abc";
-
                 //    icrStatus.Add(m);
                 //}
                 //ICRStatusList = icrStatus;
-
                 //int i = 5;
-
-
-
-
-
-
                 //List<ICRListSet> icrList = new List<ICRListSet>();
                 //ICRList = new List<ICRListSet>();
                 //for (i = 0; i < 6; i++)
@@ -395,10 +330,8 @@ namespace GAZT.ViewModel.NewViewModel
                 //    m.Txt50 = "100";
                 //    m.DueDt = "12:02:20";
                 //    m.TaxPeriod = "P";
-
                 //    icrList.Add(m);
                 //}
-
                 //int j = 5;
                 ////S MyBills = new List<MyBills>();
                 //for (j = 0; j < 6; j++)
@@ -408,7 +341,6 @@ namespace GAZT.ViewModel.NewViewModel
                 //    m.Txt50 = "100";
                 //    m.DueDt = "12:02:20";
                 //    m.TaxPeriod = "P";
-
                 //    icrList.Add(m);
                 //}
                 //ICRList = icrList;
@@ -420,21 +352,16 @@ namespace GAZT.ViewModel.NewViewModel
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     IsLoading = false;
                     _navigationService.GoBack();
-
                 });
             }
         }
-
         public async void GetVATAllReturnsAsync()
         {
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = true;
             });
-
             await GetVATAllReturns();
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 IsLoading = false;
@@ -447,7 +374,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 try
                 {
-
                     if (SelectedICR != null)
                     {
                         if (isStatusNotValid())
@@ -455,17 +381,12 @@ namespace GAZT.ViewModel.NewViewModel
                             selectedICRForStatus = new ICRListSet();
                             selectedICRForStatus = SelectedICR;
                             App.ICRStatus = selectedICRForStatus.Status;
-
-
                             //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
                             // the GUID will be different
-
                             String SelectedICRGUID = SelectedICR.Fbguid;
                             EUser = SelectedICR.Euser;
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
                             PopToRootPage();
-
-
                             if (_vATDeclaration != null && _vATDeclaration.d != null)
                             {
                                 PreviousSelectedICRStatus = _selectedICRStatus;
@@ -477,17 +398,14 @@ namespace GAZT.ViewModel.NewViewModel
                                 Result5 result5 = new Result5();
                                 List<Result5> lst = new List<Result5>();
                                 ADRSet _aDRSet = new ADRSet();
-
                                 lst.Add(result5);
                                 vATDeclaration.d = vATDeclarationD;
                                 vATDeclaration.d.ADRSet = _aDRSet;
                                 vATDeclaration.d.ADRSet.results = lst;
-
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
                                 });
-
                             }
                             else
                             {
@@ -507,7 +425,6 @@ namespace GAZT.ViewModel.NewViewModel
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         // IsLoading = false;
                         _navigationService.GoBack();
-
                     });
                 }
             }
@@ -518,13 +435,9 @@ namespace GAZT.ViewModel.NewViewModel
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     //  IsLoading = false;
                     _navigationService.GoBack();
-
                 });
-
             }
-
         }
-
         public bool isStatusNotValid()
         {
             bool isValid = true;
@@ -540,7 +453,6 @@ namespace GAZT.ViewModel.NewViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
                     {
@@ -557,7 +469,6 @@ namespace GAZT.ViewModel.NewViewModel
                 });
             }
         }
-
         public void SetICRListData(ICRStatus selectedICRStat)
         {
             if (selectedICRStat != null)
@@ -583,7 +494,6 @@ namespace GAZT.ViewModel.NewViewModel
                 }
                 catch (Exception ex)
                 {
-
                 }
                 TxtSelectedStatus = selectedICRStat.Txt30;
             }

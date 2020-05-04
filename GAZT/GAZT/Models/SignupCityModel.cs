@@ -1,49 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class SignupCityModel
     {
     }
-
-
-
     public class SignupCityMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class SignupCityDeferred
     {
         public string uri { get; set; }
     }
-
     public class SignupCityCountryDropdownSet
     {
         public SignupCityDeferred __deferred { get; set; }
     }
-
     public class SignupCityDeferred2
     {
         public string uri { get; set; }
     }
-
     public class SignupCityStateDropdownSet
     {
         public SignupCityDeferred2 __deferred { get; set; }
     }
-
     public class SignupCityMetadata2
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class SignupCityResult
     {
         public Metadata2 __metadata { get; set; }
@@ -53,12 +43,10 @@ namespace GAZT.Models
         public string Region { get; set; }
         public string CityName { get; set; }
     }
-
     public class SignupCityDropdownSet
     {
         public List<SignupCityResult> results { get; set; }
     }
-
     public class SignupCityD
     {
         public Metadata __metadata { get; set; }
@@ -70,7 +58,6 @@ namespace GAZT.Models
         public SignupCityStateDropdownSet State_dropdownSet { get; set; }
         public SignupCityDropdownSet city_dropdownSet { get; set; }
     }
-
     public class SignupCityRootObject
     {
         public SignupCityD d { get; set; }

@@ -11,30 +11,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
 {
     public class FAQPageViewModel : ViewModelBase
     {
-
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
-
         #region Properties
-
         /// <summary>
         /// Gets or sets a collection of values to be displayed in the FAQ page.
         /// </summary>
         [DataMember(Name = "questions")]
         public ObservableCollection<FAQ> Questions { get; set; }
-
         public ObservableCollection<FAQ> DummyQuestions { get; set; }
-
-
-
         private TERFAQs _tERFFAQRoot;
         public TERFAQs TERFFAQRoot
         {
@@ -48,7 +40,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 RaisePropertyChanged("TERFFAQRoot");
             }
         }
-
         private bool _isNoDataLabelVisible;
         public bool IsNoDataLabelVisible
         {
@@ -62,10 +53,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 RaisePropertyChanged("IsNoDataLabelVisible");
             }
         }
-
-
-
-
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -79,9 +66,7 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         #endregion
-
         public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) 
         {
             if (navigationService == null)
@@ -94,15 +79,12 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-
             GoBackClick = new Command(async () =>
             {
                 _navigationService.GoBack();
             });
         }
-
         #region Method
-
         public async Task OnPageLoad()
         {
             try
@@ -142,7 +124,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                     }
                     Questions = DummyQuestions;
                 }
-                
                 if (Questions==null)
                 {
                     IsNoDataLabelVisible = true;
@@ -158,7 +139,6 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                         IsNoDataLabelVisible = false;
                     }
                 }
-               
             }
             catch(Exception ex)
             {
@@ -189,11 +169,9 @@ namespace GAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage
                     _navigation.NavigationStack.ToList().Clear();
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
-
                 });
             }
         }
         #endregion
-
     }
 }

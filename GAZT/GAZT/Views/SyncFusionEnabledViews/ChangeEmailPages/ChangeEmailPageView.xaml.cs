@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 namespace GAZT.Views.NewViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -18,9 +17,7 @@ namespace GAZT.Views.NewViews
         ChangeEmailPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
-
         #endregion
-
         #region Constructor
         public ChangeEmailPageView()
         {
@@ -33,14 +30,9 @@ namespace GAZT.Views.NewViews
             this.BindingContext = viewModel;
             viewModel.OnPageLoad();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            
-
         }
         #endregion
-
         #region Method
-
-
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height);
@@ -70,13 +62,11 @@ namespace GAZT.Views.NewViews
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
             ChangeAeroIcon();
         }
-
             private void SetLTR()
         {
             if (!App.IsArabic)

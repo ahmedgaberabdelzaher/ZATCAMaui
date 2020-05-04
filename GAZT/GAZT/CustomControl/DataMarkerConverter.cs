@@ -5,15 +5,12 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT.CustomControl
 {
     public class DataMarkerConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            
-                  
                 if (parameter != null && parameter.ToString() == "Label")
                 {
                     if (value is List<object>)
@@ -42,13 +39,8 @@ namespace GAZT.CustomControl
                         }
                     }
                 }
-                
-            
-
-
             return null;
         }
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return value;

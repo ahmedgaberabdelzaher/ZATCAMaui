@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT.CustomControl
 {
     public class SfPickerBehavior : Behavior<Syncfusion.SfPicker.XForms.SfPicker>

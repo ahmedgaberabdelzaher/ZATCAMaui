@@ -9,7 +9,6 @@
                        HorizontalOptions="Start" 
                        HeightRequest="25"
                        WidthRequest="25"/>
-
                 <local1:MyEntry x:Name="imgEntry" 
                                        PlaceholderColor="Red" 
                                        Text="{Binding Text, Mode=TwoWay}" 

@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
-
 namespace GAZT.CustomControl
 {
     // class AlphabetandArabicCharacters
     public class AlphabetandArabicCharacters : Behavior<Entry>
     {
-
         protected override void OnAttachedTo(Entry entry)
         {
             entry.TextChanged += OnEntryTextChanged;
             base.OnAttachedTo(entry);
         }
-
         protected override void OnDetachingFrom(Entry entry)
         {
             entry.TextChanged -= OnEntryTextChanged;
             base.OnDetachingFrom(entry);
         }
-
-
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
             if (!string.IsNullOrEmpty(args.NewTextValue))
@@ -37,7 +32,6 @@ namespace GAZT.CustomControl
                     {
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
                     }
-
                 }
                 //if (!isValidNumber)
                 //    {
@@ -46,7 +40,5 @@ namespace GAZT.CustomControl
                 //}
             }
         }
-
-
     }
 }

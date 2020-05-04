@@ -5,7 +5,6 @@ namespace GAZT.Models
     {
         public ValidateOTPResponse d { get; set; }
     }
-
     public class ValidateOTPResponse
     {
         public Metadata __metadata { get; set; }
@@ -23,5 +22,4 @@ namespace GAZT.Models
         public string Mobile { get; set; }
         public string Otp { get; set; }
     }
-
 }

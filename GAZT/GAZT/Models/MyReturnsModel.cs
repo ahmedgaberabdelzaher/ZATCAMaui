@@ -2,20 +2,17 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-
 namespace GAZT.Models
 {
     public class MyReturnsModel
     {
     }
-
     public class MyReturnsMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     public class MyReturnsResult
     {
         public Metadata __metadata { get; set; }
@@ -35,7 +32,6 @@ namespace GAZT.Models
         public string StatusTxt { get; set; }
         public string Incotyp { get; set; }
         public string Incotext { get; set; }
-
         private DateTime _abrzu;
         public DateTime Abrzu
         {
@@ -49,11 +45,9 @@ namespace GAZT.Models
                 if (_abrzu != null)
                 {
                     FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                 }
             }
         }
-
         private DateTime _abrzo;
         public DateTime Abrzo
         {
@@ -67,11 +61,9 @@ namespace GAZT.Models
                 if (_abrzo != null)
                 {
                     FormatedAbrzo = _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-
                 }
             }
         }
-       
         public string SadadDoc1 { get; set; }
         public string SadadDoc2 { get; set; }
         private DateTime _dueDt;
@@ -87,9 +79,7 @@ namespace GAZT.Models
                 if (_dueDt != null)
                 {
                     FormatedSingleDueDate = _dueDt.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                   
                 }
-
             }
         }
         public string Stat { get; set; }
@@ -100,7 +90,6 @@ namespace GAZT.Models
         public string TaxType { get; set; }
         public string Fbnum { get; set; }
         public string Fbguid { get; set; }
-
         private string _formatedSingleDueDate;
         public string FormatedSingleDueDate
         {
@@ -113,7 +102,6 @@ namespace GAZT.Models
                 _formatedSingleDueDate = value;
             }
         }
-
         private string _formatedAbrzu;
         public string FormatedAbrzu
         {
@@ -126,7 +114,6 @@ namespace GAZT.Models
                 _formatedAbrzu = value;
             }
         }
-
         private string _formatedAbrzo;
         public string FormatedAbrzo
         {
@@ -140,12 +127,10 @@ namespace GAZT.Models
             }
         }
     }
-
     public class MyReturnsD
     {
         public List<MyReturnsResult> results { get; set; }
     }
-
     public class MyReturnsRootObject
     {
         public MyReturnsD d { get; set; }

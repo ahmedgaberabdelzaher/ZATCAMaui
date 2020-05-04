@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-
 namespace GAZT.ViewModel.NewViewModel
 {
     public class AddPopPageViewModel : ViewModelBase
@@ -13,10 +12,8 @@ namespace GAZT.ViewModel.NewViewModel
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-
        public ICommand onLinkClicked { get; set; }
         #endregion
-
         #region Property
         private String _popMessage;
         public String PopMessage
@@ -31,7 +28,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("PopMessage");
             }
         }
-
         private bool _isVisibleLink;
         public bool IsVisibleLink
         {
@@ -45,7 +41,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsVisibleLink");
             }
         }
-
         private string _link;
         public string Link
         {
@@ -59,7 +54,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("Link");
             }
         }
-
         private string _linkMessage;
         public string LinkMessage
         {
@@ -73,7 +67,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("LinkMessage");
             }
         }
-
         private string _iSBold = "Bold";
         public string IsBold
         {
@@ -87,7 +80,6 @@ namespace GAZT.ViewModel.NewViewModel
                 RaisePropertyChanged("IsBold");
             }
         }
-
         private string _iSRed = "#7D858D";
         public string IsRed
         {
@@ -115,7 +107,6 @@ namespace GAZT.ViewModel.NewViewModel
             }
         }
         #endregion
-
         #region Constructor
         public AddPopPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -125,23 +116,16 @@ namespace GAZT.ViewModel.NewViewModel
             }
             _navigationService = navigationService;
             _dialogService = dialogService;
-
-
-
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
             }
-
-
             onLinkClicked = new Xamarin.Forms.Command(async () =>
             {
                 Device.OpenUri(new Uri(Link));
             });
-
         }
         #endregion
-
         #region Method
         #endregion
     }

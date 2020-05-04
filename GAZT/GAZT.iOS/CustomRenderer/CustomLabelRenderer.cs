@@ -5,7 +5,6 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-
 [assembly: ExportRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
@@ -14,7 +13,6 @@ namespace GAZT.iOS.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
             base.OnElementChanged(e);
-
             if (Control != null)
             {
                 if (App.IsArabic)
@@ -26,13 +24,9 @@ namespace GAZT.iOS.CustomRenderer
                     Control.TextAlignment = UITextAlignment.Left;
                 }
                 //    Control.Font = UIFont.GetPreferredFontForTextStyle(new NSString("UICTFontTextStyleBody"));
-
                 //    if (e.NewElement != null)
                 //    {
                 //        string StyleId = e.NewElement.StyleId;
-
-
-
                 //        if (!string.IsNullOrEmpty(StyleId))
                 //        {
                 //            if (StyleId.Equals("Medium"))
@@ -50,13 +44,11 @@ namespace GAZT.iOS.CustomRenderer
                 //                    this.Control.Font = UIFont.FromName("Cairo-Regular", (float)fontSize);
                 //                else
                 //                    this.Control.Font = UIFont.FromName("Helvetica-Normal", (float)fontSize);
-
                 //            }
                 //            else if (StyleId.Equals("TwoLineText"))
                 //            {
                 //                this.Control.Lines = 2;
                 //                this.Control.LineBreakMode = UILineBreakMode.TailTruncation;
-
                 //                var fontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
                 //                if (App.IsArabic)
                 //                    this.Control.Font = UIFont.FromName("Cairo-Light", (float)fontSize);
@@ -79,17 +71,13 @@ namespace GAZT.iOS.CustomRenderer
                 //                    else
                 //                        this.Control.Lines = 8;
                 //                }
-
-
                 //                this.Control.LineBreakMode = UILineBreakMode.TailTruncation;
                 //                var fontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
                 //                if (App.IsArabic)
                 //                    this.Control.Font = UIFont.FromName("Cairo-Light", (float)fontSize);
                 //                else
                 //                    this.Control.Font = UIFont.FromName("HelvLight", (float)fontSize);
-
                 //            }
-
                 //            else if (StyleId.Equals("Micro"))
                 //            {
                 //                var fontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
@@ -120,14 +108,10 @@ namespace GAZT.iOS.CustomRenderer
                 //                    fontSize = 11;
                 //                    this.Control.Font = UIFont.FromName("Cairo-Light", (float)fontSize);
                 //                }
-
-
                 //            }
-
                 //            else
                 //            {
                 //                var fontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-
                 //                if (App.IsArabic)
                 //                {
                 //                    this.Control.Font = UIFont.FromName("Cairo-Light", (float)fontSize);
@@ -136,12 +120,10 @@ namespace GAZT.iOS.CustomRenderer
                 //                else
                 //                    this.Control.Font = UIFont.FromName("HelvLight", (float)fontSize);
                 //            }
-
                 //        }
                 //        else
                 //        {
                 //            var fontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
-
                 //            if (App.IsArabic)
                 //            {
                 //                this.Control.Font = UIFont.FromName("Cairo-Light", (float)fontSize);
@@ -151,7 +133,6 @@ namespace GAZT.iOS.CustomRenderer
                 //                this.Control.Font = UIFont.FromName("HelvLight", (float)fontSize);
                 //        }
                 //    }
-
             }
         }
     }

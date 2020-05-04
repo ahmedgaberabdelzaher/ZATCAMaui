@@ -13,7 +13,6 @@
     xmlns:custom="clr-namespace:GAZT"
     FlowDirection="RightToLeft"
     >
-
     <ContentView.Resources>
         <ResourceDictionary>
             <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
@@ -23,7 +22,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentView.Resources>
-
     <ContentView.Content>
         <StackLayout>
             <Grid  Margin="0,11,0,0">
@@ -31,7 +29,6 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1" 
@@ -39,11 +36,8 @@
                     <custom:GAZTBorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" >
                     </custom:GAZTBorderlessEntry>
                     <!--<control:GAZTBorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" FontSize="Small" Text="{Binding Password}" TextColor="White" PlaceholderColor="Gray">
-                          
                         </control:GAZTBorderlessEntry>-->
-
                 </inputLayout:SfTextInputLayout>
-
                 <!--<Label
                         Margin="15,0"
                         FontFamily="{StaticResource FontIcons}"
@@ -54,9 +48,7 @@
                         Text="&#xe707;"
                         TextColor="{DynamicResource Red}"
                         VerticalOptions="Center" />-->
-
             </Grid>
-
             <Label
                 x:Name="ValidationLabel"
                 Margin="15,-5,0,0"
@@ -68,8 +60,6 @@
                 Text="{x:Static localres:AppResources.ZZPleaseenteravalidEmailAddress}"
                 TextColor="{DynamicResource Red}"
                 VerticalOptions="FillAndExpand" />
-
-
             <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0,11,0,0"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -81,9 +71,6 @@
                     <ColumnDefinition Width="80*"/>
                     <ColumnDefinition Width="20*"/>
                 </Grid.ColumnDefinitions>
-
-
-
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
                                                   Hint="{x:Static localres:AppResources.TINS}" 
                                                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
@@ -91,16 +78,11 @@
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
                     <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" FontAttributes="Bold">
-
                     </custom:GAZTBorderlessEntry>
                 </inputLayout:SfTextInputLayout>
-
-                
                 <custom:CustomButton x:Name="TinsButton" FontSize="Small" IsVisible="{Binding IsVisibleTinIds}" Clicked="TINs_Clicked" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Margin="10,0,10,0" TextColor="White">
                 </custom:CustomButton>
-
                 <syncfusion:SfPicker x:Name="TinsPicker"
-                                         
                     HeaderHeight="40"
                     ShowHeader="true"
                     HeaderText="{x:Static localres:AppResources.TINS}"
@@ -111,7 +93,6 @@
                                     OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"              
                    ItemHeight="40"
                    DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
-                  
                     PickerWidth="270"
                                      PickerHeight="200"
                                      HeaderBackgroundColor="#006450"
@@ -126,11 +107,7 @@
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
                 <!--SelectedItem="{Binding SelectedTinId,Mode=TwoWay}"-->
-
             </Grid>
-
-
-
         </StackLayout>
     </ContentView.Content>
 </ContentView>

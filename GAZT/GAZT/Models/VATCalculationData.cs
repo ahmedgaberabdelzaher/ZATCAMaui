@@ -1,39 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace GAZT.Models
 {
     public class VATCalculationData
     {
         public VATCalculationDataD d { get; set; }
     }
-
     public class VATRateDataWithStringDateType
     {
         public string StartDate { get; set; }
         public string EndDate { get; set; }
     }
-
     public class VATRateDataWithDateType
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
-
     public class VATCalculationDataDMetadata
     {
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
-
     //public class Metadata2
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
     public class ITUDSetResult
     {
         public Metadata2 __metadata { get; set; }
@@ -44,17 +38,14 @@ namespace GAZT.Models
         public string SourceFg { get; set; }
         public string UrlPortal { get; set; }
     }
-
     public class ITUDSet
     {
         public List<ITUDSetResult> results { get; set; }
     }
-
     public class VATRSet
     {
         public List<VATCalculationDataVATRSet> results { get; set; }
     }
-
     public class VATCalculationDataVATRSet
     {
         public Metadata3 __metadata { get; set; }
@@ -65,7 +56,6 @@ namespace GAZT.Models
         public DateTime Begda { get; set; }
         public DateTime Endda { get; set; }
     }
-
     public class VATCalculationDataVTTHSet
     {
         public Metadata5 __metadata { get; set; }
@@ -78,14 +68,12 @@ namespace GAZT.Models
         public string Currency { get; set; }
         public string Description { get; set; }
     }
-
     //public class Metadata3
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
     public class IBANSetResult
     {
         public Metadata3 __metadata { get; set; }
@@ -93,19 +81,16 @@ namespace GAZT.Models
         public string Bkvid { get; set; }
         public string Iban { get; set; }
     }
-
     public class VATCalculationDataIBANSet
     {
         public List<IBANSetResult> results { get; set; }
     }
-
     //public class Metadata4
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
     public class IGRTSetResult
     {
         public Metadata4 __metadata { get; set; }
@@ -113,19 +98,16 @@ namespace GAZT.Models
         public string GrpNo { get; set; }
         public string RateTrtmt { get; set; }
     }
-
     public class IGRTSet
     {
         public List<IGRTSetResult> results { get; set; }
     }
-
     //public class Metadata5
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
     public class VTTHSetResult
     {
         public Metadata5 __metadata { get; set; }
@@ -138,19 +120,16 @@ namespace GAZT.Models
         public string Currency { get; set; }
         public string Description { get; set; }
     }
-
     public class VTTHSet
     {
         public List<VTTHSetResult> results { get; set; }
     }
-
     //public class Metadata6
     //{
     //    public string id { get; set; }
     //    public string uri { get; set; }
     //    public string type { get; set; }
     //}
-
     public class UIBTNSetResult
     {
         public Metadata6 __metadata { get; set; }
@@ -161,12 +140,10 @@ namespace GAZT.Models
         public string TransactionType { get; set; }
         public string UserTyp { get; set; }
     }
-
     public class UIBTNSet
     {
         public List<Result5> results { get; set; }
     }
-
     public class VATCalculationDataD
     {
         public Metadata __metadata { get; set; }
@@ -202,7 +179,4 @@ namespace GAZT.Models
         public VTTHSet VTTHSet { get; set; }
         public UIBTNSet UI_BTNSet { get; set; }
     }
-
-   
-
 }

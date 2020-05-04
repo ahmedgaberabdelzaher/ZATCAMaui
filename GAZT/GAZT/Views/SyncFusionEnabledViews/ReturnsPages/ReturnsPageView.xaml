@@ -23,10 +23,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
-    
     <ContentPage.Content>
         <Grid x:Name="ParentContainerForOTP">
             <Grid.RowDefinitions>
@@ -35,14 +33,11 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-
             <tabview:SfTabView  Margin="0,0,0,2" Grid.Row="0" Grid.Column="0" x:Name="simTab" VisibleHeaderCount="{Binding HeaderCount}" SelectedIndex="{Binding TabIndexStatus}" >
-                
                 <tabview:SfTabView.SelectionIndicatorSettings>
                     <tabview:SelectionIndicatorSettings
                     Color="DarkGreen"
                     Position="Bottom"
-                        
                     StrokeThickness="2"/>
                 </tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SfTabView.Items>
@@ -50,9 +45,7 @@
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
-
                                 TitleFontColor="Gray">
-
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
@@ -71,9 +64,7 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-
                                 BackgroundColor="White"
-
             SeparatorVisibility="None"
             >
                                                         <x:Arguments>
@@ -83,8 +74,6 @@
                                                             <DataTemplate>
                                                                 <ViewCell>
                                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-
-
                                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                                                             <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                 <Grid.ColumnDefinitions>
@@ -100,32 +89,22 @@
                                                                                     <RowDefinition Height="Auto" />
                                                                                     <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
-
-
                                                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
-
-
-
                                                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
                                                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
@@ -135,19 +114,14 @@
                                                                                         <DataTrigger TargetType="Label"
                                                                              Binding="{Binding FormBundleNumber}" Value="">
                                                                                             <Setter Property="IsVisible" Value="False"></Setter>
-
                                                                                         </DataTrigger>
                                                                                     </Label.Triggers>
                                                                                 </Label>
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -157,18 +131,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -178,17 +145,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -198,18 +159,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -219,13 +173,9 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
                                                                                 <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
                                                                             </Grid>
                                                                         </StackLayout>
-
                                                                     </cards1:SfCardView>
                                                                 </ViewCell>
                                                             </DataTemplate>
@@ -252,9 +202,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                 BackgroundColor="White"
-
                                 ItemTapped="Bills_ItemTapped"
-
             SeparatorVisibility="None"
             >
                                                     <x:Arguments>
@@ -264,14 +212,11 @@
                                                         <DataTemplate>
                                                             <ViewCell>
                                                                 <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-
                                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
                                                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                                                             <Grid.ColumnDefinitions>
                                                                                 <ColumnDefinition Width="90*" />
                                                                                 <ColumnDefinition Width="10*" />
-
                                                                             </Grid.ColumnDefinitions>
                                                                             <Grid.RowDefinitions>
                                                                                 <RowDefinition Height="Auto" />
@@ -283,31 +228,23 @@
                                                                             </Grid.RowDefinitions>
                                                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
                                                                             <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
-
-
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -318,12 +255,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -334,12 +269,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -350,12 +283,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -365,21 +296,13 @@
                                                                                     </FormattedString>
                                                                                 </Label.FormattedText>
                                                                             </Label>
-
-
                                                                             <Image  Grid.Row="0"
                                                                 Grid.Column="1"
-                                                                
-                                                               
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="StartAndExpand"/>
-
-
                                                                         </Grid>
                                                                     </StackLayout>
-
-
                                                                 </cards1:SfCardView>
                                                             </ViewCell>
                                                         </DataTemplate>
@@ -392,18 +315,13 @@
                                     </syncfusion:SfExpander>
                                 </StackLayout>
                             </ScrollView>
-
-
-
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.UnSubmitted}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
-
                                 TitleFontColor="Gray">
-
                         <tabview:SfTabItem.Content>
                             <ScrollView>
                                 <StackLayout>
@@ -422,9 +340,7 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-
                                 BackgroundColor="White"
-
             SeparatorVisibility="None"
             >
                                                         <x:Arguments>
@@ -434,8 +350,6 @@
                                                             <DataTemplate>
                                                                 <ViewCell>
                                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-
-
                                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                                                             <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                 <Grid.ColumnDefinitions>
@@ -451,31 +365,22 @@
                                                                                     <RowDefinition Height="Auto" />
                                                                                     <RowDefinition Height="Auto" />
                                                                                 </Grid.RowDefinitions>
-                                                 
-
                                                                                 <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
-
                                                                                 <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
-
                                                                                 <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
@@ -485,18 +390,14 @@
                                                                                         <DataTrigger TargetType="Label"
                                                                              Binding="{Binding FormBundleNumber}" Value="">
                                                                                             <Setter Property="IsVisible" Value="False"></Setter>
-
                                                                                         </DataTrigger>
                                                                                     </Label.Triggers>
                                                                                 </Label>
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -506,17 +407,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-                                                                   
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -526,16 +421,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -545,19 +435,11 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -567,13 +449,9 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
                                                                                 <Image  Grid.Row="0"  Grid.Column="1"    Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
                                                                             </Grid>
                                                                         </StackLayout>
-
                                                                     </cards1:SfCardView>
                                                                 </ViewCell>
                                                             </DataTemplate>
@@ -600,9 +478,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                 BackgroundColor="White"
-
                                 ItemTapped="Bills_ItemTapped"
-
             SeparatorVisibility="None"
             >
                                                     <x:Arguments>
@@ -612,14 +488,11 @@
                                                         <DataTemplate>
                                                             <ViewCell>
                                                                 <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-
                                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
                                                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                                                             <Grid.ColumnDefinitions>
                                                                                 <ColumnDefinition Width="90*" />
                                                                                 <ColumnDefinition Width="10*" />
-
                                                                             </Grid.ColumnDefinitions>
                                                                             <Grid.RowDefinitions>
                                                                                 <RowDefinition Height="Auto" />
@@ -631,31 +504,23 @@
                                                                             </Grid.RowDefinitions>
                                                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
                                                                             <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
-
-
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -666,12 +531,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -682,12 +545,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -698,12 +559,10 @@
                                                                                 </Label.FormattedText>
                                                                             </Label>
                                                                             <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -713,21 +572,13 @@
                                                                                     </FormattedString>
                                                                                 </Label.FormattedText>
                                                                             </Label>
-
-
                                                                             <Image  Grid.Row="0"
                                                                 Grid.Column="1"
-                                                                
-                                                              
                                                                 Source="{Binding StatusImage}"
                                                                 HorizontalOptions="CenterAndExpand"
                                                                 VerticalOptions="StartAndExpand"/>
-
-
                                                                         </Grid>
                                                                     </StackLayout>
-
-
                                                                 </cards1:SfCardView>
                                                             </ViewCell>
                                                         </DataTemplate>
@@ -740,16 +591,13 @@
                                     </syncfusion:SfExpander>
                                 </StackLayout>
                             </ScrollView>
-
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.OverDue}"
                                 TitleFontSize="14"
                             SelectionColor="DarkGreen"
                                 FontIconFontColor="#FF00AFF0"
-
                                 TitleFontColor="Gray">
-
                         <tabview:SfTabItem.Content>
                             <StackLayout>
                                 <ScrollView>
@@ -769,9 +617,7 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-
                                 BackgroundColor="White"
-
             SeparatorVisibility="None"
             >
                                                             <x:Arguments>
@@ -781,8 +627,6 @@
                                                                 <DataTemplate>
                                                                     <ViewCell>
                                                                         <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-
-
                                                                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                                                                 <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                                     <Grid.ColumnDefinitions>
@@ -798,31 +642,22 @@
                                                                                         <RowDefinition Height="Auto" />
                                                                                         <RowDefinition Height="Auto" />
                                                                                     </Grid.RowDefinitions>
-                                                   
-
                                                                                     <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
-
-
                                                                                     <Label Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
                                                                                     <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
@@ -832,20 +667,14 @@
                                                                                             <DataTrigger TargetType="Label"
                                                                              Binding="{Binding FormBundleNumber}" Value="">
                                                                                                 <Setter Property="IsVisible" Value="False"></Setter>
-
                                                                                             </DataTrigger>
                                                                                         </Label.Triggers>
                                                                                     </Label>
-
-                                                          
-
                                                                                     <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
@@ -855,16 +684,11 @@
                                                                                             </FormattedString>
                                                                                         </Label.FormattedText>
                                                                                     </Label>
-
-
-
                                                                                     <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
@@ -874,18 +698,11 @@
                                                                                             </FormattedString>
                                                                                         </Label.FormattedText>
                                                                                     </Label>
-
-
-
-                                         
-
                                                                                     <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
@@ -895,16 +712,11 @@
                                                                                             </FormattedString>
                                                                                         </Label.FormattedText>
                                                                                     </Label>
-
-
-
                                                                                     <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                         <Label.FormattedText>
                                                                                             <FormattedString>
@@ -914,14 +726,10 @@
                                                                                             </FormattedString>
                                                                                         </Label.FormattedText>
                                                                                     </Label>
-
-
                                                                                     <!--<StackLayout Grid.Row="1"  BackgroundColor="AliceBlue" Grid.Column="3"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></StackLayout>-->
                                                                                     <Image  Grid.Row="0"  Grid.Column="1"   Source="{Binding StatusImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
-
                                                                                 </Grid>
                                                                             </StackLayout>
-
                                                                         </cards1:SfCardView>
                                                                     </ViewCell>
                                                                 </DataTemplate>
@@ -948,9 +756,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                 BackgroundColor="White"
-
                                 ItemTapped="Bills_ItemTapped"
-
             SeparatorVisibility="None"
             >
                                                         <x:Arguments>
@@ -960,14 +766,11 @@
                                                             <DataTemplate>
                                                                 <ViewCell>
                                                                     <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-
                                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
-
                                                                             <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                                                                 <Grid.ColumnDefinitions>
                                                                                     <ColumnDefinition Width="90*" />
                                                                                     <ColumnDefinition Width="10*" />
-
                                                                                 </Grid.ColumnDefinitions>
                                                                                 <Grid.RowDefinitions>
                                                                                     <RowDefinition Height="Auto" />
@@ -979,31 +782,23 @@
                                                                                 </Grid.RowDefinitions>
                                                                                 <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
                                                        Grid.Column="0"
                                                        />
-
                                                                                 <Label Text="{Binding TaxPeriod}"  Margin="0" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                     
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                        />
-
-
-
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -1014,12 +809,10 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -1030,12 +823,10 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -1046,12 +837,10 @@
                                                                                     </Label.FormattedText>
                                                                                 </Label>
                                                                                 <Label  Margin="0" 
-                                  
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="5"
                                    Grid.Column="0"
-                                                                        
                                                            >
                                                                                     <Label.FormattedText>
                                                                                         <FormattedString>
@@ -1061,20 +850,13 @@
                                                                                         </FormattedString>
                                                                                     </Label.FormattedText>
                                                                                 </Label>
-
-
-
-
                                                                             </Grid>
                                                                         </StackLayout>
-
-
                                                                     </cards1:SfCardView>
                                                                 </ViewCell>
                                                             </DataTemplate>
                                                         </ListView.ItemTemplate>
                                                     </ListView>
-
                                                     <custom:CustomLabel Margin="0,20,0,0" Grid.Row="0"  Grid.Column="0" Text="{x:Static local:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakatOverDue}">
                                                     </custom:CustomLabel>
                                                 </Grid>
@@ -1082,7 +864,6 @@
                                         </syncfusion:SfExpander>
                                     </StackLayout>
                                 </ScrollView>
-
                             </StackLayout>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
@@ -1107,7 +888,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
         </Grid>
     </ContentPage.Content>
     <ContentPage.ControlTemplate>
@@ -1123,15 +903,10 @@
                             TextColor="#006450"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
-                            
                              />
-
                     </controls:TitleView.LeadingView>
-
                 </controls:TitleView>
-               
                     <ContentPresenter  VerticalOptions="FillAndExpand" />
-            
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
