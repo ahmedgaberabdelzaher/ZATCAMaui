@@ -831,41 +831,71 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         public async Task OnPageLoad()
         {
             try
-             {
-                //await Task.Run(async() =>
-                //{
-                    //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
-                    TERFRegionRootObject regionlist = new TERFRegionRootObject();
-                    regionlist = await WebServiceManager.GAZTTESFormGetRegion();
-                    if (regionlist != null && regionlist.RegionList.Count != 0)
-                    {
-                        if (CList != null && CList.Count > 0)
-                        {
-                            CList.Clear();
-                        TxtReportDetailCity = string.Empty;
-                        }
-                        RList = regionlist.RegionList;
-                    }
-                    else
-                    {
-                        //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                        //_navigationService.GoBack();
-                        NoInternetGoBack();
-                    }
-                //});
-                //await Task.Run(() =>
-                //{
-                //    IsLoading = true;
-                //});
-            }
-            catch (InternetException ex)
             {
+
+
+                if (!string.IsNullOrEmpty(selectedtaxEList.ReportNumber))
+                {
+
+                }
+                else
+                {
+
+                    try
+                    {
+                        //await Task.Run(async() =>
+                        //{
+
+
+                        //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
+                        TERFRegionRootObject regionlist = new TERFRegionRootObject();
+
+
+
+                        regionlist = await WebServiceManager.GAZTTESFormGetRegion();
+                        if (regionlist != null && regionlist.RegionList.Count != 0)
+                        {
+                            if (CList != null && CList.Count > 0)
+                            {
+                                CList.Clear();
+                                TxtReportDetailCity = string.Empty;
+                            }
+                            RList = regionlist.RegionList;
+                        }
+                        else
+                        {
+                            //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                            //_navigationService.GoBack();
+                            NoInternetGoBack();
+                        }
+                       
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
+                    }
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
                 });
-                            }
+            }
+
+
+
+
+
         }
         public async  void NoInternetGoBack()
         {
@@ -950,7 +980,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
-                    _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
+                    await _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
                     var _navigation = Application.Current.MainPage.Navigation;
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();
                     //Remove last page

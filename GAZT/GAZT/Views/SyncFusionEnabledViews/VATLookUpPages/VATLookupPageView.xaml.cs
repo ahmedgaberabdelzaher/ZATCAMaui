@@ -167,7 +167,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                                         viewModel.Name = "";
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
-                                            await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                            if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+                                            {
+                                                // await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                                // await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                                await viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.ZError);
+                                            }
+                                            else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters") == 0)
+                                            {
+                                                await viewModel._dialogService.ShowMessageBox(AppResources.ZNoDataAvailable, AppResources.ZError);
+                                            }
+                                               // await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                         });
                                     }
                                 }

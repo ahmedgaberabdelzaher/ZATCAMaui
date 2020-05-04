@@ -2687,6 +2687,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string ZReportStatusClose {
+            get {
+                return ResourceManager.GetString("ZReportStatusClose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In progress.
+        /// </summary>
+        public static string ZReportStatusInprogress {
+            get {
+                return ResourceManager.GetString("ZReportStatusInprogress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string ZReportStatusNew {
+            get {
+                return ResourceManager.GetString("ZReportStatusNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return period.
         /// </summary>
         public static string ZReturnPeriod {
