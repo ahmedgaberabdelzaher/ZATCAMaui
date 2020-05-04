@@ -4,11 +4,11 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy.PrivacyAndPolicyPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy.PrivacyAndPolicyPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

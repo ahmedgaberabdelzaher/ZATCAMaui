@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="GAZTeServicesApp.Views.Options.SFOptionsPageView"
+    x:Class="EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage.SFOptionsPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-     xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+     xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
     xmlns:local1="clr-namespace:GAZT"
     BackgroundColor="{DynamicResource Gray-100}"
     NavigationPage.HasNavigationBar="False">

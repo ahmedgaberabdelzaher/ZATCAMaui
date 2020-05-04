@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics;
+using EGAZT;
 using GAZT;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;

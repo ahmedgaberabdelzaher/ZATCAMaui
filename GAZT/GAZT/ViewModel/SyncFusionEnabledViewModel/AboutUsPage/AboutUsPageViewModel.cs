@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Windows.Input;
-namespace GAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage
 {
     public class AboutUsPageViewModel : ViewModelBase
     {

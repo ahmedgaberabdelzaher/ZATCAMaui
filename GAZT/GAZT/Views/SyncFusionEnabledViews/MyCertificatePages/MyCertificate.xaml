@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GAZT"
+             xmlns:custom2="clr-namespace:EGAZT"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:local2="clr-namespace:GAZT.CustomControl"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
-             x:Class="GAZT.Views.MyCertificate" FlowDirection="RightToLeft"
-             Title="{x:Static local:AppResources.MyCertificate}"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.MyCertificate.MyCertificate" FlowDirection="RightToLeft"
+             Title="{x:Static custom2:AppResources.MyCertificate}"
               NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,7 +23,7 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.MyCertificate}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static custom2:AppResources.MyCertificate}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -48,7 +49,7 @@
                     Position="Bottom"
                     StrokeThickness="2"/>
             </tabView:SfTabView.SelectionIndicatorSettings>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ZakatCertificates}" IsVisible="{Binding IsCertificateAvailableZakatTab}"
+            <tabView:SfTabItem Title="{x:Static custom2:AppResources.ZakatCertificates}" IsVisible="{Binding IsCertificateAvailableZakatTab}"
                                 TitleFontSize="12"
                             SelectionColor="DarkGreen"
                                FontIconFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
@@ -76,12 +77,12 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0"  Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
+                        <local:CustomLabel Margin="0,20,0,0"  Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.VATCertificates}" IsVisible="{Binding IsCertificateAvailableVATTab}"
+            <tabView:SfTabItem Title="{x:Static custom2:AppResources.VATCertificates}" IsVisible="{Binding IsCertificateAvailableVATTab}"
                                 TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
@@ -109,12 +110,12 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
+                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>
             </tabView:SfTabItem>
-            <tabView:SfTabItem Title="{x:Static local:AppResources.ExciseCertificates}" IsVisible="{Binding IsCertificateAvailableETTab}"
+            <tabView:SfTabItem Title="{x:Static custom2:AppResources.ExciseCertificates}" IsVisible="{Binding IsCertificateAvailableETTab}"
                                 TitleFontSize="12"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
@@ -142,7 +143,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static local:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
+                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>
@@ -170,21 +171,21 @@
                         <ColumnDefinition Width="33*" />
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                       <local:CustomLabel Text="{x:Static local:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                       <local:CustomLabel Text="{x:Static custom2:AppResources.ZakatCertificates}" Style="{DynamicResource searchBarStyleForZakat}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForZakat" Command="{Binding OnZakatCertificateClicked}" />
                             </Label.GestureRecognizers>
                         </local:CustomLabel>
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                        <local:CustomLabel  Text="{x:Static local:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local:CustomLabel  Text="{x:Static custom2:AppResources.VATCertificates}" Style="{DynamicResource searchBarStyleForVAT}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ClickGestureRecognizer_ClickedForVAT" Command="{Binding OnVATCertificateClicked}" />
                             </Label.GestureRecognizers>
                         </local:CustomLabel>
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Spacing="0">
-                        <local:CustomLabel  Text="{x:Static local:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
+                        <local:CustomLabel  Text="{x:Static custom2:AppResources.ExciseCertificates}" Style="{DynamicResource searchBarStyleForExcise}"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" VerticalTextAlignment="Start">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer  Tapped="ClickGestureRecognizer_ClickedForExcise" Command="{Binding OnExciseCertificateClicked}" />
                             </Label.GestureRecognizers>

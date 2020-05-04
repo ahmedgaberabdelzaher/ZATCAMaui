@@ -6,14 +6,14 @@
              mc:Ignorable="d"
                xmlns:custom="clr-namespace:GAZT"
                 FlowDirection="RightToLeft"
-               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+               xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
               xmlns:local1="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-             x:Class="GAZT.Views.NewViews.CreateGaztAccountPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount.CreateGaztAccountPageView"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

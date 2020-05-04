@@ -1,17 +1,14 @@
-﻿using GAZT.CustomControl;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
-using System.Net.Mail;
 using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -20,7 +17,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpFormPageView : ContentPage

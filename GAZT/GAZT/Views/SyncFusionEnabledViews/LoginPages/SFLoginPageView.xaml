@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="GAZTeServicesApp.Views.LoginPage.SFLoginPageView"
+    x:Class="EGAZT.Views.SyncFusionEnabledViews.SFLogin.SFLoginPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:local2="clr-namespace:EGAZT.Views.SyncFusionEnabledViews.EmailEntry"
+    xmlns:local1="clr-namespace:EGAZT;assembly:GAZT"
+    xmlns:custom="clr-namespace:GAZT"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
-    xmlns:local="clr-namespace:GAZTeServicesApp.Views.Common"
-    xmlns:local1="clr-namespace:GAZT;assembly:GAZT"
-    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-    xmlns:custom1="clr-namespace:GAZT.CustomControl"
-    FlowDirection="RightToLeft"
-     xmlns:localres="clr-namespace:GAZT;assembly:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:custom="clr-namespace:GAZT"
+    FlowDirection="RightToLeft"
     NavigationPage.HasNavigationBar="False"
    >
     <!--BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
@@ -101,7 +95,7 @@
                             Style="{StaticResource LabelStyle}"
                             Text="{x:Static local1:AppResources.ZZZLoginLabel}" />
                         <!--  Label to display the title of this page  -->
-                                                <local:EmailEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,0" />
+                                                <local2:EmailEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,0" />
                       <!--  <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"

@@ -9,7 +9,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
 {
     public class PdfViewModel : ViewModelBase
     {

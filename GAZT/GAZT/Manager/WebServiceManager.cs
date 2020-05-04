@@ -1,4 +1,6 @@
-﻿using GAZT.Helper;
+﻿using EGAZT;
+using EGAZT.Models;
+using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
@@ -17,7 +19,6 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Xamarin.Forms;
 using static GAZT.ErrorMessage;
 namespace GAZT.Manager
 {

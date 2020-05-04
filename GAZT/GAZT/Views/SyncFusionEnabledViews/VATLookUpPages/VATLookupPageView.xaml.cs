@@ -1,15 +1,14 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -18,7 +17,7 @@ using Xamarin.Forms.Xaml;
 using ZXing.Net.Mobile.Forms;
 using Application = Xamarin.Forms.Application;
 using NavigationPage = Xamarin.Forms.NavigationPage;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VATLookupPageView : ContentPage

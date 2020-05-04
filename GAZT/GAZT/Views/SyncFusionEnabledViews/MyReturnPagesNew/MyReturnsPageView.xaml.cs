@@ -1,19 +1,14 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
-using GAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using GAZT.Models;
 using Syncfusion.ListView.XForms;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.SyncFusionEnabledViews.MyReturnPagesNew
+namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyReturnsPageView : ContentPage

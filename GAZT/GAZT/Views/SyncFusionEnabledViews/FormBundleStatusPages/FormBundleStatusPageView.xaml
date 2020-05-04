@@ -7,16 +7,17 @@
                xmlns:custom="clr-namespace:GAZT"
                xmlns:local1="clr-namespace:GAZT"
                xmlns:local="clr-namespace:GAZT"
+              xmlns:custom2="clr-namespace:EGAZT"
                xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             Title="{x:Static local:AppResources.ZZFormBundleStatus}"
+             Title="{x:Static custom2:AppResources.ZZFormBundleStatus}"
                           xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="GAZT.Views.NewViews.FormBundleStatusPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus.FormBundleStatusPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />
@@ -26,7 +27,7 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZZFormBundleStatus}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static custom2:AppResources.ZZFormBundleStatus}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -65,7 +66,7 @@
                         </Grid.ColumnDefinitions>
                         <!--SelectedIndex="{Binding IDTypeIndex}" Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Padding="10,20,10,0"-->
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
-    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
+    Hint="{x:Static custom2:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
@@ -76,7 +77,7 @@
                         <syncfusion:SfPicker x:Name="DDlIDType"
                     HeaderHeight="50"
                     ShowHeader="true"
-                    HeaderText="{x:Static local:AppResources.ZZPleaseselectFormBundleType}"
+                    HeaderText="{x:Static custom2:AppResources.ZZPleaseselectFormBundleType}"
                     ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
@@ -104,7 +105,7 @@
                         <!--pickere 1 new-->
                         <!--<Frame Grid.Row="0"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"    >
                     </Frame>
-                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" Title="{x:Static local:AppResources.ZZPleaseselectFormBundleType}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   ItemsSource="{Binding FormBundleList}" ItemDisplayBinding="{Binding Txt50}"   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" SelectedItem="{Binding SelectedFormBindleFbtyp }" ></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker x:Name="BPicker" Margin="10,13,10,0" Title="{x:Static custom2:AppResources.ZZPleaseselectFormBundleType}" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"  IsEnabled="true"   ItemsSource="{Binding FormBundleList}" ItemDisplayBinding="{Binding Txt50}"   Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" SelectedItem="{Binding SelectedFormBindleFbtyp }" ></custom:GAZTBorderlessPicker>
                     <Image Grid.Row="0"  Grid.Column="6"  x:Name="BPicker_imgtap" Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
@@ -112,7 +113,7 @@
                     </Image>-->
                         <!--HDHBHFBDBV-->
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
-    Hint="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
+    Hint="{x:Static custom2:AppResources.ZZPleaseselectFormBundleNumber}"  Grid.Row="1" Grid.Column="0" 
     ContainerType="Outlined" x:Name="FrmIDType1"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBnum}" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
@@ -123,7 +124,7 @@
                         <syncfusion:SfPicker x:Name="CPicker"
                     HeaderHeight="40"
                     ShowHeader="true"
-                    HeaderText="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}"
+                    HeaderText="{x:Static custom2:AppResources.ZZPleaseselectFormBundleNumber}"
                     ShowColumnHeader="False"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
@@ -146,7 +147,7 @@
                         <!--SelectedItem="{Binding SelectedFormBindleFbnum}"-->
                         <!--<Frame Grid.Row="1"  Margin="10,13,10,0" Padding="13" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="7"  Style="{StaticResource GAZTFrameStyleForEntry}"   >
                     </Frame>
-                    <custom:GAZTBorderlessPicker x:Name="CPicker" Title="{x:Static local:AppResources.ZZPleaseselectFormBundleNumber}" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"  ItemsSource="{Binding FormBundleApplicatioNumberList}" ItemDisplayBinding="{Binding Fbnum}"  SelectedItem="{Binding SelectedFormBindleFbnum}" IsEnabled="{Binding IsCPickerEnable}"></custom:GAZTBorderlessPicker>
+                    <custom:GAZTBorderlessPicker x:Name="CPicker" Title="{x:Static custom2:AppResources.ZZPleaseselectFormBundleNumber}" Margin="10,13,10,0" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTDropdownStyle}"   Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5"  ItemsSource="{Binding FormBundleApplicatioNumberList}" ItemDisplayBinding="{Binding Fbnum}"  SelectedItem="{Binding SelectedFormBindleFbnum}" IsEnabled="{Binding IsCPickerEnable}"></custom:GAZTBorderlessPicker>
                     <Image Grid.Row="1"  Grid.Column="6"  x:Name="CPicker_imgtap"  Margin="0,13,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Source="ic_dropdownOne.png" >
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer  Tapped="TapGestureRecognizer_Tapped_1" />
@@ -202,13 +203,13 @@
                                                            >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZStatus}"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FbStatus}"></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
                                                     </Label>
-                                                    <!--<Label Text="{x:Static local:AppResources.ZStatus}" Margin="0" 
+                                                    <!--<Label Text="{x:Static custom2:AppResources.ZStatus}" Margin="0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
@@ -231,7 +232,7 @@
                                                            >
                                                         <Label.FormattedText>
                                                             <FormattedString>
-                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.ZZDescriptionForFormBundle}"></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"       Text="{Binding FbDesc}"></Span>
                                                             </FormattedString>
@@ -244,7 +245,7 @@
                                    Grid.Row="2"
                                    Grid.Column="0"
                                                         Grid.ColumnSpan="4"
-                                                         Text="{x:Static local:AppResources.ZZDescriptionForFormBundle}"
+                                                         Text="{x:Static custom2:AppResources.ZZDescriptionForFormBundle}"
                                    >
                                                         </Label>
                                                                 <Label Text="{Binding FbDesc}" 
@@ -277,7 +278,7 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                        Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
                                        TextColor="#006450"/>

@@ -1,13 +1,8 @@
-﻿using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CheckTINStatusPageView : ContentPage

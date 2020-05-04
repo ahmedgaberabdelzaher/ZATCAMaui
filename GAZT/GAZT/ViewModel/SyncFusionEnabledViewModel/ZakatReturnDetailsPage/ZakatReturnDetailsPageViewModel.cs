@@ -1,20 +1,17 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel
 {
-   public class ZakatReturnDetailsPageViewModel: ViewModelBase
+    public class ZakatReturnDetailsPageViewModel: ViewModelBase
     {
         #region Variable
         public readonly INavigationService _navigationService;

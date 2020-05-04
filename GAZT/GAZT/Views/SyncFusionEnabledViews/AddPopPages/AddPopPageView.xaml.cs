@@ -1,15 +1,11 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel;
+using GAZT.Models;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPopPageView : PopupPage

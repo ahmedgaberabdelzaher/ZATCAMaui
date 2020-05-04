@@ -1,14 +1,12 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
-using GAZT.Views.NewViews;
 using Rg.Plugins.Popup.Services;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel
 {
     public class SignUpTAndCPageViewModel : ViewModelBase
     {

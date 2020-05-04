@@ -1,19 +1,18 @@
-﻿using GAZT;
-using GAZTeServicesApp.ViewModels.LandingPage;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
+using GAZT.Models;
+using Microsoft.AppCenter.Analytics;
 using Syncfusion.SfCalendar.XForms;
-using GAZTeServicesBusinessLibrary;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Resources;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.Xaml;
-using GAZT.Models;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-using Microsoft.AppCenter.Analytics;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Resources;
-using System.Linq;
-namespace GAZTeServicesApp.Views.LandingPage
+using Xamarin.Forms.Xaml;
+
+namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
 {
     /// <summary>
     /// Page to show the article tile

@@ -3,7 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
-namespace GAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel
 {
     public class PrivacyAndPolicyPageViewModel : ViewModelBase
     {

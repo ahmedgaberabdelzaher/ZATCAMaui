@@ -1,5 +1,5 @@
 ﻿using System;
-namespace GAZT.Models
+namespace EGAZT.Models
 {
     //public class ForgotPasswordOTP
     //{

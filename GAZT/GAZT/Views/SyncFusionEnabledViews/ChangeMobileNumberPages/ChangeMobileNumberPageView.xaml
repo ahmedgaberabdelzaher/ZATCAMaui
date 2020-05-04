@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
@@ -13,7 +13,7 @@
              xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="GAZT.Views.NewViews.ChangeMobileNumberPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber.ChangeMobileNumberPageView"
              Title="{x:Static local:AppResources.ChangeMobileNumber}"
              NavigationPage.HasNavigationBar="False"
 >

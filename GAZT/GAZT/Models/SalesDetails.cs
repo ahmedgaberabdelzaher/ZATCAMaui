@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
-namespace GAZT.Models
+namespace EGAZT.Models
 {
     public class SalesDetails : INotifyPropertyChanged
     {

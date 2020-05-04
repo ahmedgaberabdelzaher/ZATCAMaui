@@ -1,4 +1,5 @@
-﻿using GAZT;
+﻿using EGAZT;
+using GAZT;
 using System;
 using System.Collections.Generic;
 using System.Net;

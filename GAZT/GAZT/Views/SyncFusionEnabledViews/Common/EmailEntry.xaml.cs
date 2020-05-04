@@ -1,6 +1,5 @@
-﻿using GAZT;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using GAZT.Models;
-using GAZTeServicesApp.ViewModels.LoginPage;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
@@ -10,8 +9,7 @@ using System.Threading;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
-using static System.Net.Mime.MediaTypeNames;
-namespace GAZTeServicesApp.Views.Common
+namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
 {
     /// <summary>
     /// View used to show the email entry with validation status.

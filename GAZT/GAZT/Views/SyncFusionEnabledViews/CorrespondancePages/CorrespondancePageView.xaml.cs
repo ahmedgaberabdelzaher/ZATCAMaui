@@ -1,20 +1,15 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
+using GAZT.Helper;
 using GAZT.Models;
-using GAZT.ViewModel;
-using GAZT.ViewModel.NewViewModel;
 using Syncfusion.SfPicker.XForms;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Resources;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CorrespondancePageView : ContentPage

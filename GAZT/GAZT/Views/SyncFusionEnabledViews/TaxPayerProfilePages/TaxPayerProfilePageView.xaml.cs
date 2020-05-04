@@ -1,13 +1,10 @@
-﻿using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxPayerProfilePageView : ContentPage

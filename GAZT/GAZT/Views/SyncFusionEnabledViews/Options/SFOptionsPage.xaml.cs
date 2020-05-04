@@ -1,18 +1,13 @@
-﻿using GAZT;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using GAZT.Models;
-using GAZTeServicesApp.ViewModels.LandingPage;
-using GAZTeServicesApp.ViewModels.Options;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZTeServicesApp.Views.Options
+namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
 {
     /// <summary>
     /// Page to show the setting.

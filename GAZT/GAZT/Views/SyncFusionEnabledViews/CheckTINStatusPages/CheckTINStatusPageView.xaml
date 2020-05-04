@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:local1="clr-namespace:GAZT"
                xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
@@ -15,7 +15,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{x:Static local:AppResources.ZTINStatus}"
-             x:Class="GAZT.Views.NewViews.CheckTINStatusPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus.CheckTINStatusPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />

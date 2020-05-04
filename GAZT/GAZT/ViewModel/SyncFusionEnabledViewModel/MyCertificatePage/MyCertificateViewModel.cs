@@ -15,7 +15,7 @@ using pdfjs.Interfaces;
 using System.IO;
 using System.Collections.Generic;
 using GAZT.Helper;
-namespace GAZT
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
 {
     public class MyCertificateViewModel : ViewModelBase
     {

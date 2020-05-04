@@ -1,7 +1,6 @@
-﻿using GAZT;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Models;
-using GAZTeServicesApp.ViewModels.LoginPage;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
@@ -12,7 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZTeServicesApp.Views.LoginPage
+namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 {
     /// <summary>
     /// Page to login with user name and password

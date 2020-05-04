@@ -1,14 +1,10 @@
-﻿using System;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using GAZTeServicesApp.Controls;
-using GAZT;
 using BorderlessEntry = GAZTeServicesApp.Controls.BorderlessEntry;
-using GAZT.ViewModel;
-using GAZTeServicesApp.ViewModels.LoginPage;
-using GAZT.Manager;
 namespace GAZTeServicesApp.Converters
 {
     /// <summary>

@@ -1,19 +1,17 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using GAZT.Views.NewViews;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel
 {
-   public class ChangePasswordPageViewModel : ViewModelBase
+    public class ChangePasswordPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;

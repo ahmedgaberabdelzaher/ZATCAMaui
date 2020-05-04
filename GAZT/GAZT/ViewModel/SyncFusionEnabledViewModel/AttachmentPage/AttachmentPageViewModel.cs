@@ -1,8 +1,10 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
-using GAZT.Models;
 using MobileCoreServices;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
@@ -10,11 +12,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-namespace GAZT.ViewModel.NewViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
 {
     public class AttachmentPageViewModel : ViewModelBase
     {

@@ -5,11 +5,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              FlowDirection="RightToLeft"
-              xmlns:local="clr-namespace:GAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:local1="clr-namespace:GAZT"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
-             x:Class="GAZT.Views.NewViews.SignUpTAndCViewPage"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC.SignUpTAndCViewPage"
               NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

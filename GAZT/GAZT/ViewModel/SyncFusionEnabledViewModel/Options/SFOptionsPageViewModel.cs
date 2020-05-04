@@ -1,18 +1,13 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT;
 using GAZT.Models;
-using GAZTeServicesApp.Views.Options;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-namespace GAZTeServicesApp.ViewModels.Options
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
 {
     /// <summary>
     /// ViewModel for Setting page 

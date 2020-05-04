@@ -1,5 +1,6 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -15,7 +16,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionReportFormPageView : ContentPage

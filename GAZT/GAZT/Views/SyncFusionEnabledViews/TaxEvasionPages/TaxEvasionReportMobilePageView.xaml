@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-              xmlns:local1="clr-namespace:GAZT;assembly:GAZT"
+              xmlns:local1="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:control="clr-namespace:GAZTeServicesApp.Controls" xmlns:local="clr-namespace:GAZTeServicesApp.Views.Common" 
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms" 
              xmlns:custom="clr-namespace:GAZT" 
@@ -15,7 +15,7 @@
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
     FlowDirection="LeftToRight"
     NavigationPage.HasNavigationBar="False"
-             x:Class="GAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionReportMobilePageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile.TaxEvasionReportMobilePageView">
     <!-- Style="{StaticResource ContentPageStyle}"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,

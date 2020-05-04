@@ -1,5 +1,6 @@
-﻿using GalaSoft.MvvmLight.Views;
-using GAZT;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLogin_ViewModel;
+using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-namespace GAZTeServicesApp.ViewModels.LoginPage
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 {
     /// <summary>
     /// ViewModel for login page.

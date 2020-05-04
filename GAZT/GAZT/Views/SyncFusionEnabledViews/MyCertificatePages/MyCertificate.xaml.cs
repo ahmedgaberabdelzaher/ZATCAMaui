@@ -1,12 +1,9 @@
-﻿using System;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-namespace GAZT.Views
+namespace EGAZT.Views.SyncFusionEnabledViews.MyCertificate
 {
     public partial class MyCertificate : ContentPage
     {

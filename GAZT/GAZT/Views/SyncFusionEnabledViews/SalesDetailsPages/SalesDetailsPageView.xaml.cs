@@ -1,11 +1,14 @@
-﻿using GAZT.Models;
-using GAZT.ViewModel.NewViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SalesDetailsPageView : ContentPage

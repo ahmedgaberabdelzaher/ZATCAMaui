@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-               xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:custom2="clr-namespace:EGAZT"
              xmlns:local1="clr-namespace:GAZT"
-                xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             x:Class="GAZT.Views.NewViews.AttachmentPageView"
-            xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             mc:Ignorable="d"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AttachmentPage.AttachmentPageView"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -45,11 +45,11 @@
                         </Grid.ColumnDefinitions>
                         <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                         </Frame>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                         </local1:CustomLabel>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                        <local1:CustomLabel  Text="{x:Static local:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel  Text="{x:Static custom2:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                         <!--<Frame Grid.Row="4" IsVisible="{Binding AttachmentSizeVisibility}" CornerRadius="8" Margin="20,0,20,0" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>-->
                         <local1:CustomLabel  IsVisible="{Binding AttachmentSizeVisibility}" FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="10,0,10,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="Start" HorizontalTextAlignment="Start">
@@ -57,20 +57,20 @@
                                 <FormattedString>
                                     <Span Text="{Binding TotalAttachmentSize}"  />
                                     <Span Text="     "/>
-                                    <Span Text="{x:Static local:AppResources.OfText}"/>
+                                    <Span Text="{x:Static custom2:AppResources.OfText}"/>
                                     <Span Text="     "/>
                                     <Span Text="300 MB"/>
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
-                        <local1:CustomLabel Text="{x:Static local:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachments}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
                         </local1:CustomLabel>
                         <!--<Frame Grid.Row="6" Style="{StaticResource GAZTFrameStyleForEntry}" CornerRadius="8" Margin="10,0,10,0"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
                         <custom:GAZTBorderlessEntry  Grid.Row="6" Text="{Binding AttachmentName}" Margin="20,0,20,0"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
                         </custom:GAZTBorderlessEntry>-->
                          <inputLayout:SfTextInputLayout    Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
-        Hint="{x:Static local:AppResources.ZZAttachment}"
+        Hint="{x:Static custom2:AppResources.ZZAttachment}"
       IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -165,7 +165,7 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                       Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
+                                       Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>

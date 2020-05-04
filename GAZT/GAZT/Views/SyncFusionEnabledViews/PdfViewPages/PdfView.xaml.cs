@@ -1,17 +1,14 @@
-﻿using GAZT.ViewModel;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views
+namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class PdfView : ContentPage
 	{
         PdfViewModel viewModel ;

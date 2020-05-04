@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              Title="{x:Static local:AppResources.VATDeclaration}"
              xmlns:local1="clr-namespace:GAZT"
@@ -16,7 +16,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="GAZT.Views.NewViews.ICRListPageView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.ICRList.ICRListPageView"
              NavigationPage.HasNavigationBar="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="true">
     <ContentPage.Resources>

@@ -1,21 +1,16 @@
-﻿using GAZT.ViewModel;
-using SkiaSharp;
-using SkiaSharp.Views.Forms;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel;
+using GAZT.CustomControl;
+using GAZT.Manager;
+using GAZT.Models;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.ObjectModel;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using Xamarin.Forms;
-using GAZT.ViewModel.NewViewModel;
-using GAZT.Manager;
-using GAZT.CustomControl;
-using Syncfusion.SfPicker.XForms;
-using System.Resources;
 using System.Globalization;
+using System.Resources;
 using System.Threading;
-using GAZT.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
 {
     public partial class ForgotUsernamePasswordPageView : ContentPage
     {

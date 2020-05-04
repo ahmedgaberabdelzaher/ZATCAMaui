@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EGAZT;
+using System;
 using System.Collections.Generic;
 namespace GAZT.Models
 {

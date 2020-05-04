@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="GAZTeServicesApp.Views.LandingPage.SFLandingPageView"
+    x:Class="EGAZT.Views.SyncFusionEnabledViews.SFLanding.SFLandingPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:GAZT;assembly:GAZT"
+    xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
     xmlns:local1="clr-namespace:GAZT"
     xmlns:behavior="clr-namespace:GAZTeServicesApp.Behaviors"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"

@@ -1,14 +1,8 @@
-﻿using GAZT.ViewModel.NewViewModel;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
-namespace GAZT.Views.NewViews
+namespace EGAZT.Views.SyncFusionEnabledViews.ChangeEmail
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChangeEmailPageView : ContentPage

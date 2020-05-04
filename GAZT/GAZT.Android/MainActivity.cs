@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
+using EGAZT;
 using Microsoft.AppCenter.Distribute;
 using Plugin.Permissions;
 using Tavant.XToolkit;
