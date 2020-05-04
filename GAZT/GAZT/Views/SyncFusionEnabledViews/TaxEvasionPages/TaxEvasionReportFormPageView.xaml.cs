@@ -40,8 +40,13 @@ namespace GAZT.Views.NewViews
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 ClearFields();
                 viewModel.CreateCompanyTypeList();
-                SetDataToUI();
+                
                 GetRegionList();
+                if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+                {
+                    SetLocationToMap();
+                }
+                SetDataToUI();
             }
             catch (Exception ex)
             {
@@ -720,7 +725,7 @@ namespace GAZT.Views.NewViews
             });
             await Task.Run(async() =>
             {
-                await SetLocationToMap();
+                
                 await viewModel.OnPageLoad();//TaxEvasionReport
             });
             await Task.Run(() =>
@@ -728,7 +733,7 @@ namespace GAZT.Views.NewViews
                 viewModel.IsLoading = false;
             });
         }
-        private async  Task SetLocationToMap()
+        private async  void SetLocationToMap()
         {
             try
             {

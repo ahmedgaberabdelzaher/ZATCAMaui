@@ -834,7 +834,7 @@ namespace GAZT.ViewModel.NewViewModel
             {
 
 
-                if (string.IsNullOrEmpty(selectedtaxEList.ReportNumber))
+                if (!string.IsNullOrEmpty(selectedtaxEList.ReportNumber))
                 {
 
                 }
@@ -980,7 +980,7 @@ namespace GAZT.ViewModel.NewViewModel
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
-                    _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
+                    await _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
                     var _navigation = Application.Current.MainPage.Navigation;
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();
                     //Remove last page
