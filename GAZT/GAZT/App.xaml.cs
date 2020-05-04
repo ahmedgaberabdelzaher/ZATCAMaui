@@ -82,6 +82,7 @@ namespace GAZT
         public static string Token = String.Empty;
         public static string Otp = String.Empty;
         public static bool IsSessionExpired = false;
+        public static bool IsLogOut = false;
         public static string AppVersion { get; set; }
         public static double NavigationBarHeightt = 0;
         public static CultureInfo ci;

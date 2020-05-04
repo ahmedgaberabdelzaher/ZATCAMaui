@@ -5,6 +5,7 @@ using GAZTeServicesApp.ViewModels.LandingPage;
 using Syncfusion.XForms.Border;
 using System;
 using System.Globalization;
+using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -90,6 +91,21 @@ namespace GAZTeServicesApp.Views.LandingPage
                 }
                 else
                 {
+                }
+                if (App.IsLogOut)
+                {
+                    App.IsLogOut = false;
+                    var existingPages = Navigation.NavigationStack.ToList();
+                    bool IsAnonymousTwo = false;
+                    foreach (var page in existingPages)
+                    {
+                        if (page.GetType().Name != App.SFAnonymousLandingPageView)
+                        {
+                            Navigation.RemovePage(page);
+
+                        }
+
+                    }
                 }
                 SetLTR();
                 Changecornerradious();

@@ -297,6 +297,7 @@ namespace GAZTeServicesApp.ViewModels.Options
                     break; 
                 }
             }
+            App.IsLogOut = true;
             _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
             _navigation.NavigationStack.ToList().Clear();
             //var _navigation = Application.Current.MainPage.Navigation;

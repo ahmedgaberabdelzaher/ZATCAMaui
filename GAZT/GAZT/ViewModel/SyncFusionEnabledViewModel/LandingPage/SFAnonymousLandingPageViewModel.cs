@@ -141,6 +141,9 @@ namespace GAZTeServicesApp.ViewModels.LandingPage
             {
                 _navigationService.NavigateTo(App.MyCertificate);
             });
+            
+           
+
         }
         #endregion
         #region Public Properties
