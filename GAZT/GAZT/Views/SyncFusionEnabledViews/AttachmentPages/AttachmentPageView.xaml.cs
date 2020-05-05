@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
@@ -95,13 +96,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                Image arrowImage = sender as Image;
-                Attachment attachment = (Attachment)arrowImage.BindingContext;
-                if (attachment != null)
+                if(!App.ICRStatus.Equals("E0045"))
                 {
-                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
-                    DeleteAttachment(result, attachment);
+                    Image arrowImage = sender as Image;
+                    Attachment attachment = (Attachment)arrowImage.BindingContext;
+                    if (attachment != null)
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                        DeleteAttachment(result, attachment);
+                    }
                 }
+                else
+                {
+                   // Some message
+                }
+                
             }
             catch (InternetException ex)
             {
@@ -260,11 +269,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
                     File.WriteAllBytes(file, PdfBytes);
-                    await Share.RequestAsync(new ShareFileRequest
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Title = Title,
-                        File = new ShareFile(file)
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
                     });
+                  
                 }
                 catch (Exception ex)
                 {

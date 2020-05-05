@@ -5,6 +5,8 @@ using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using EGAZT;
+
 [assembly: ExportRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
