@@ -5,8 +5,9 @@ using System.Text;
 using Xamarin.Forms;
 using Foundation;
 using UIKit;
-using GAZT.Views.NewViews;
 using GAZT.iOS;
+using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
+
 [assembly: Dependency(typeof(BaseUrl_iOS))]
 namespace GAZT.iOS
 {

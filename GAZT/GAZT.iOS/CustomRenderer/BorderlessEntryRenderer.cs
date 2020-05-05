@@ -4,6 +4,8 @@ using Xamarin.Forms.Platform.iOS;
 using System.ComponentModel;
 using GAZT.iOS.CustomRenderer;
 using GAZT;
+using EGAZT;
+
 [assembly: ExportRenderer(typeof(BorderlessEntry), typeof(BorderlessEntryRenderer))]
 namespace GAZT
 {

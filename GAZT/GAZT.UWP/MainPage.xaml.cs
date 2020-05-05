@@ -19,7 +19,7 @@ namespace GAZT.UWP
         public MainPage()
         {
             this.InitializeComponent();
-            LoadApplication(new GAZT.App());
+            LoadApplication(new EGAZT.App());
         }
     }
 }

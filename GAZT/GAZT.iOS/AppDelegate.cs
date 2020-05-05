@@ -1,3 +1,4 @@
+using EGAZT;
 using Foundation;
 using Microsoft.AppCenter.Distribute;
 using Syncfusion.ListView.XForms.iOS;
