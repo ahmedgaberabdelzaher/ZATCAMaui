@@ -5,6 +5,8 @@ using UIKit;
 using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using CoreGraphics;
+using EGAZT;
+
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {

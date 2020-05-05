@@ -1,4 +1,5 @@
 ﻿using System;
+using EGAZT;
 using GAZT;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
