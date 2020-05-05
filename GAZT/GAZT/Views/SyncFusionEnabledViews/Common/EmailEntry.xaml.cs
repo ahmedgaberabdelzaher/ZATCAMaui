@@ -110,10 +110,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
             TIN selectedtin = (TIN)e.NewValue;
             TinsPicker.SelectedItem = selectedtin;//TINID
             viewModel.SelectedTinId = selectedtin;//selectedregion
+            viewModel.SelectedTinIdPrev = selectedtin;//selectedregion
             viewModel.TINID = selectedtin.Tin;
         }
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            TinsPicker.SelectedItem = viewModel.SelectedTinIdPrev;//TINID
+            viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;//selectedregion
+            if (viewModel.SelectedTinIdPrev == null)
+            {
+                viewModel.TINID = string.Empty;
+            }
         }
     }
 }

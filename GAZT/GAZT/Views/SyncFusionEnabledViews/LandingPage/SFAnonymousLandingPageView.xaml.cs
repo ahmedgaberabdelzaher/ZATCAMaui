@@ -3,6 +3,9 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewMode
 using GAZT.Helper;
 using GAZT.Models;
 using System;
+using System.Globalization;
+using System.Linq;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -87,6 +90,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
                 else
                 {
+                }
+                if (App.IsLogOut)
+                {
+                    App.IsLogOut = false;
+                    var existingPages = Navigation.NavigationStack.ToList();
+                    bool IsAnonymousTwo = false;
+                    foreach (var page in existingPages)
+                    {
+                        if (page.GetType().Name != App.SFAnonymousLandingPageView)
+                        {
+                            Navigation.RemovePage(page);
+
+                        }
+
+                    }
                 }
                 SetLTR();
                 Changecornerradious();

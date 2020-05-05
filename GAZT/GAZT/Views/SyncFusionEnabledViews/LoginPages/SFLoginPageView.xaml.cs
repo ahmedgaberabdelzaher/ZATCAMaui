@@ -118,6 +118,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     viewModel.IsVisibleTinIds = true;
                 });
                 ChangeAeroIcon();
+                viewModel.Password = string.Empty;
+                viewModel.Email = string.Empty;
+
                 App.TP = null;
                 viewModel.CurrentAttempt = 0;
                 if (App.CurrentDropdownTIN != null)

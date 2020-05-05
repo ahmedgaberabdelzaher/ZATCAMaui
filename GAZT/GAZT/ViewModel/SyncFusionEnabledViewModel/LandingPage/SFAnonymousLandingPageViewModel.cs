@@ -143,6 +143,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
             {
                 _navigationService.NavigateTo(App.MyCertificate);
             });
+            
+           
+
         }
         #endregion
         #region Public Properties

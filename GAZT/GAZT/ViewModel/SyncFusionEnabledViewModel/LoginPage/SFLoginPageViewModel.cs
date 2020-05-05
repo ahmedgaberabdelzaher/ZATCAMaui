@@ -139,10 +139,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
-                if (this.password == value)
-                {
-                    return;
-                }
+                //if (this.password == value)
+                //{
+                //    return;
+                //}
                 this.password = value;
                 this.RaisePropertyChanged("Password");
             }
@@ -155,10 +155,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             }
             set
             {
-                if (this.email == value)
-                {
-                    return;
-                }
+                //if (this.email == value)
+                //{
+                //    return;
+                //}
                 PreviousUserName = Email;
                 this.email = value;
                 if (PreviousUserName != this.email)

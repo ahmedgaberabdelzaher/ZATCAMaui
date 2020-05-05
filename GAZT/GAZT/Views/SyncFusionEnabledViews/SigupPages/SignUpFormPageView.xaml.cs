@@ -1528,39 +1528,66 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
-                if (viewModel.SelectedSignUpUsing.ID == 1)
+                if (viewModel.SelectedSignUpUsing == null)
                 {
-                    if (EntryIDNumber.Text.Substring(0, 1) != "1")
+                    if (viewModel.SelectedSignUpUsing.ID == 1)
                     {
-                        popUp.Message = AppResources.ZZNationalIDstartswith1;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
+                        if (EntryIDNumber.Text.Substring(0, 1) != "1")
                         {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            FrmIDNumber.HasError = true;
+                            EntryName.Text = string.Empty;
+                            //ZZPleaseenteravalidNationalID
                         }
                         else
                         {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.HasError = true;
-                        EntryName.Text = string.Empty;
-                        //ZZPleaseenteravalidNationalID
-                    }
-                    else
-                    {
-                        if (EntryIDNumber.Text.Length != 10)
-                        {
+                            if (EntryIDNumber.Text.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
                             if (Messages.Length > 0)
                             {
-                                Messages.Append(Environment.NewLine);
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                             }
-                            Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            else
+                            {
+                                FrmIDNumber.HasError = false;
+                            }
                         }
-                        if (Messages.Length > 0)
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 2)
+                    {
+                        if (EntryIDNumber.Text.Substring(0, 1) != "2")
                         {
-                            popUp.Message = Messages.ToString();
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
                             popUp.IsLinkAvailable = false;
                             if (App.IsArabic)
                             {
@@ -1577,42 +1604,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         }
                         else
                         {
-                            FrmIDNumber.HasError = false;
-                        }
-                    }
-                }
-                else if (viewModel.SelectedSignUpUsing.ID == 2)
-                {
-                    if (EntryIDNumber.Text.Substring(0, 1) != "2")
-                    {
-                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.HasError = true;
-                        EntryName.Text = string.Empty;
-                    }
-                    else
-                    {
-                        if (EntryIDNumber.Text.Length != 10)
-                        {
+                            if (EntryIDNumber.Text.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            }
                             if (Messages.Length > 0)
                             {
-                                Messages.Append(Environment.NewLine);
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                FrmIDNumber.HasError = true;
+                                EntryName.Text = string.Empty;
                             }
-                            Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            else
+                            {
+                                FrmIDNumber.HasError = false;
+                            }
                         }
-                        if (Messages.Length > 0)
+                    }
+                    else if (viewModel.SelectedSignUpUsing.ID == 3)
+                    {
+                        if (EntryIDNumber.Text.Substring(0, 1) == "0")
                         {
-                            popUp.Message = Messages.ToString();
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
                             popUp.IsLinkAvailable = false;
                             if (App.IsArabic)
                             {
@@ -1627,54 +1655,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             FrmIDNumber.HasError = true;
                             EntryName.Text = string.Empty;
                         }
-                        else
+                        else if (!(EntryIDNumber.Text.Length <= 15 && EntryIDNumber.Text.Length >= 7))
                         {
-                            FrmIDNumber.HasError = false;
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            FrmIDNumber.HasError = true;
+                            EntryName.Text = string.Empty;
+                            // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
                     }
-                }
-                else if (viewModel.SelectedSignUpUsing.ID == 3)
-                {
-                    if (EntryIDNumber.Text.Substring(0, 1) == "0")
+                    else
                     {
-                        //Have to change to neww error message
-                        popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.HasError = true;
-                        EntryName.Text = string.Empty;
+                        FrmIDNumber.HasError = false;
                     }
-                    else if (!(EntryIDNumber.Text.Length <= 15 && EntryIDNumber.Text.Length >= 7))
-                    {
-                        popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmIDNumber.HasError = true;
-                        EntryName.Text = string.Empty;
-                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
-                    }
-                }
-                else
-                {
-                    FrmIDNumber.HasError = false;
                 }
             }
             else

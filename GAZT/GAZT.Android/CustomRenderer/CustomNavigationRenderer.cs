@@ -52,14 +52,14 @@ namespace GAZT.Droid.CustomRenderer
                 _toolbar.ChildViewAdded += Toolbar_ChildViewAdded;
             }
         }
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (disposing)
-            {
-                _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
-            }
-        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    base.Dispose(disposing);
+        //    if (disposing)
+        //    {
+        //        _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
+        //    }
+        //}
         private void Toolbar_ChildViewAdded(object sender, ChildViewAddedEventArgs e)
         {
             var view = e.Child.GetType(); 
