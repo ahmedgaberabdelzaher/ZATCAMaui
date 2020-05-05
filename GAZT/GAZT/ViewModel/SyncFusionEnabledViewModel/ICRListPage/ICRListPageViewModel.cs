@@ -383,10 +383,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                             selectedICRForStatus = new ICRListSet();
                             selectedICRForStatus = SelectedICR;
                             App.ICRStatus = selectedICRForStatus.Status;
+                            App.EUser = selectedICRForStatus.Euser;
+                            App.Fbguid= selectedICRForStatus.Fbguid;
                             //as per discussion with Vinay - the GUID is dynamic and will remain active and attched to ICR in a session. if the list of ICR' sis refreshed; meaning if the API is called again
                             // the GUID will be different
                             String SelectedICRGUID = SelectedICR.Fbguid;
                             EUser = SelectedICR.Euser;
+
                             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedICR.Fbguid, SelectedICR.Fbnum, SelectedICR.Euser, SelectedICR.Persl);
                             PopToRootPage();
                             if (_vATDeclaration != null && _vATDeclaration.d != null)
