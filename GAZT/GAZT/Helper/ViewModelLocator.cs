@@ -22,6 +22,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
@@ -66,6 +67,7 @@ using EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
 using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
+using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
@@ -146,6 +148,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<AboutUsPageViewModel>();
             SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
+            SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -777,6 +780,20 @@ namespace EGAZT
                 }
             }
         }
+        public MyCommitmentsPageViewModel MyCommitmentsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyCommitmentsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -830,6 +847,7 @@ namespace EGAZT
             navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
             navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
             navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
+            navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
             return navigationService;
         }
     }
