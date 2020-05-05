@@ -1356,7 +1356,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = MessageWithPercent;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if(App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
+            
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1422,7 +1430,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1454,7 +1469,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipExportsAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1501,7 +1523,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1518,7 +1547,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1550,7 +1586,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1567,7 +1610,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1629,7 +1679,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipExemptAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
@@ -1661,7 +1718,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            popUp.Link = "https://www.vat.gov.sa/en/introduction-to-vat/faq/general-faqs";
+            if (App.IsArabic)
+            {
+                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+            }
+            else
+            {
+                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+            }
             if (App.IsArabic)
             {
                 popUp.FlowDirections = "RightToLeft";
