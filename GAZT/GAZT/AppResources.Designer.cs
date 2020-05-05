@@ -7405,6 +7405,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ZZZCancelText {
+            get {
+                return ResourceManager.GetString("ZZZCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to change of registration form..
         /// </summary>
         public static string ZZZChageOfRegistration {
@@ -7594,6 +7603,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ZZZOkayText {
+            get {
+                return ResourceManager.GetString("ZZZOkayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string ZZZOptions {
@@ -7626,6 +7644,15 @@ namespace EGAZT {
         public static string ZZZPrivacyandPolicy {
             get {
                 return ResourceManager.GetString("ZZZPrivacyandPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration..
+        /// </summary>
+        public static string ZZZRefundEnableMessage {
+            get {
+                return ResourceManager.GetString("ZZZRefundEnableMessage", resourceCulture);
             }
         }
         

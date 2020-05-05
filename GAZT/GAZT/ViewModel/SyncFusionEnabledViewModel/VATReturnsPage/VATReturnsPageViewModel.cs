@@ -1409,6 +1409,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 RaisePropertyChanged("FullAddress");
             }
         }
+
+      
+
+        private bool _isRefundEnableCheckforRefundMsg =false;
+        public bool IsRefundEnableCheckforRefundMsg
+        {
+            get
+            {
+                return _isRefundEnableCheckforRefundMsg;
+            }
+            set
+            {
+                _isRefundEnableCheckforRefundMsg = value;
+                RaisePropertyChanged("IsRefundEnableCheckforRefundMsg");
+            }
+        }
+
         private bool _iSSwichButtonEnable = false;
         public bool IsSwichButtonEnable
         {
@@ -1421,9 +1438,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 _iSSwichButtonEnable = value;
                 if (_iSSwichButtonEnable == true)
                 {
+                   // await showInfoMessageForRefund();
                     IsVisibleDropdownForRefund = true;
                     IsDropdownVisibleForIban = true;
                     IsVisiblechkRefundDeclaration = true;
+                  
                 }
                 else
                 {
@@ -1721,14 +1740,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             set
             {
                 _selectedIBANType = value;
-                //if (_selectedIBANType != null)
-                //{
-                //    SetIBANIdNumber();
-                //    TxtSelectedIBANType = _selectedIBANType.Text;
-                //}
-                //else
-                //{
-                //}
+                if (_selectedIBANType != null)
+                {
+                    SetIBANIdNumber();
+                    TxtSelectedIBANType = _selectedIBANType.Text;
+                }
+                else
+                {
+                }
                 RaisePropertyChanged("SelectedIBANType");
             }
         }
@@ -1804,10 +1823,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             set
             {
                 _selectedIBANIDNumber = value;
-                //if (_selectedIBANIDNumber != null)
-                //{
-                //    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
-                //}
+                if (_selectedIBANIDNumber != null)
+                {
+                    TxtSelectedIBANIDNumber = _selectedIBANIDNumber.Idnumber;
+                }
                 RaisePropertyChanged("SelectedIBANIDNumber");
             }
         }
@@ -1934,7 +1953,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             {
                 if (ButtonName == AppResources.ZVatStepTwo)
                 {
-                    TaxpayerDetailsClicked();
+                    //TaxpayerDetailsClicked();
                     SelectedIndex = 1;
                     PageSelectedItem = VatTabbledPageList[1];
                     //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
@@ -2550,7 +2569,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                                     SelectedIBANType = IBANTypesList.Where(x => x.key == VATDeclarationData.d.Idtype).FirstOrDefault();
                                     if (SelectedIBANType != null)
                                     {
-                                        SetIBANIdNumber();
+                                        await SetIBANIdNumber();
                                     }
                                 }
                                 if (!string.IsNullOrEmpty(VATDeclarationData.d.Idnum))
@@ -2698,6 +2717,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 {
                     IsCheckedRefund = false;
                 }
+
+                
+
             }
             catch(Exception ex)
             {
@@ -2722,6 +2744,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 });
             }
         }
+
+
         public bool IsReturnIsBilledOrAmend()
         {
             bool result = false;
@@ -3252,6 +3276,37 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 IsLoading = false;
             });
         }
+
+        //public async void showInfoMessageForRefund()
+        //{
+        //    try
+        //    {
+        //        Device.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            if (IsVisibleDropdownForRefund == false)
+        //            {
+        //                var result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
+
+        //                if (result)
+        //                {
+
+        //                }
+        //                else
+        //                {
+        //                    IsSwichButtonEnable = false;
+        //                }
+        //            }
+
+        //        });
+        //    }
+        //    catch(Exception ex)
+        //    {
+
+        //    }
+
+            
+        //}
+
         public void VATReturnDeleteAttachment()
         {
             _navigationService.NavigateTo("ICRListPageView");
@@ -4077,6 +4132,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             }
             else if (VATDeclarationData.d.StepNumber == "04" || VATDeclarationData.d.StepNumber == "4")
             {
+                if (VATDeclarationData.d.RefundFg == "1")
+                {
+                    IsRefundEnableCheckforRefundMsg = true;
+                }
+                else
+                {
+                    IsRefundEnableCheckforRefundMsg = false;
+                }
+
+
                 //SummaryClicked();
                 SelectedIndex = 3;
                 PageSelectedItem = VatTabbledPageList[3];
