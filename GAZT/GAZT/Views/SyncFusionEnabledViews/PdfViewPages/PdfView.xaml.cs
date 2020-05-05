@@ -88,11 +88,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                             var fn = "GAZT" + viewModel.TaxPayerProfile + ".pdf";
                             var file = Path.Combine(FileSystem.CacheDirectory, fn);
                             File.WriteAllBytes(file, viewModel.PdfBytes);
-                            await Share.RequestAsync(new ShareFileRequest
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                Title = Title,
-                                File = new ShareFile(file)
+                                await Share.RequestAsync(new ShareFileRequest
+                                {
+                                    Title = Title,
+                                    File = new ShareFile(file)
+                                });
                             });
+                           
                         }
                         else
                         {
