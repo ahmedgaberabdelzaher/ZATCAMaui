@@ -1,5 +1,6 @@
 ﻿using CommonServiceLocator;
 using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
@@ -68,6 +69,7 @@ namespace EGAZT
         public static string AboutUsPageView = "AboutUsPageView";
         public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
         public static string MyReturnsPageView = "MyReturnsPageView";
+        public static string MyCommitmentsPageView = "MyCommitmentsPageView";
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -111,7 +113,7 @@ namespace EGAZT
             {
             }
             VATDeclaration vAT = null;
-          //CustomNavigation navigationPage = new CustomNavigation(new TaxEvasionReportMobilePageView()) { BarTextColor = Color.White };
+          
            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
