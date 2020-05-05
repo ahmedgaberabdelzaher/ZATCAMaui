@@ -3099,8 +3099,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
                     PopToRootPage();
                     var res = await SaveReturnAndGetReturnAndSetButtons();
+
+                   
+
                     if (res != null && res.d != null && response != null)
                     {
+
+                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(App.Fbguid, VATDeclarationData.d.Fbnumz, App.EUser, "");
+                        PopToRootPage();
+                        if (_vATDeclaration != null && _vATDeclaration.d != null)
+                        {
+                            VATDeclarationData = _vATDeclaration;
+                            ResponseVATDeclarationD = VATDeclarationData.d;
+                            SetCommasforAll();
+                            if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
+                            {
+                                VATDeclarationData.d.ATTACHSet.results = DummyATTACHSetsList;
+                            }
+                            //SetData();
+                        }
+
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await ManageEnabledAsyncProperty(false);
+                        });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
