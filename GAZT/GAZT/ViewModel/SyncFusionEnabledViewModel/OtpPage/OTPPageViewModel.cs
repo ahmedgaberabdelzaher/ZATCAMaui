@@ -435,6 +435,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                     {
                         _navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
                     }
+                    else
+                    {
+                        EnteredOTP = string.Empty;
+                        _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.Information);
+                    }
                 }
                 else
                 {
