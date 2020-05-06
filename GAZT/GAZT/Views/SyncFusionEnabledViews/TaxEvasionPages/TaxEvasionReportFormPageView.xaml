@@ -491,7 +491,7 @@ ItemHeight="45" ShowFooter="True"
                                                  SeparatorVisibility="None"-->
                         <!--<StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand"  Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start">-->
                         <listView:SfListView  AutoFitMode="DynamicHeight" 
-           ItemsSource="{Binding UploadedDocumentsListObj}"
+           ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Start"
                                                    Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2"
@@ -501,13 +501,15 @@ ItemHeight="45" ShowFooter="True"
                                 <DataTemplate>
                                     <ViewCell>
                                         <ContentView>
-                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
+                                            <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Margin="10,0,10,0" Padding="0,0,0,10" Spacing="10"  BackgroundColor="White">
                                                 <StackLayout local1:RoundCornersEffect.CornerRadius="10" HorizontalOptions="Fill" VerticalOptions="Start" Padding="1" Spacing="10"  BackgroundColor="#BEC2C6">
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="1,1,1,1" Padding="0,0,0,0" BackgroundColor="White" local1:RoundCornersEffect.CornerRadius="10">
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,5" Padding="0" >
                                                             <Grid ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="auto" />
+                                                                    <ColumnDefinition Width="80*" />
+                                                                    <ColumnDefinition Width="20*" />
+                                                                    
                                                                 </Grid.ColumnDefinitions>
                                                                 <Grid.RowDefinitions>
                                                                     <RowDefinition Height="auto" />
@@ -528,6 +530,11 @@ ItemHeight="45" ShowFooter="True"
                                    Grid.Row="1"
                                    Grid.Column="0"
                                                            />
+                                                                <Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"   >
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
                                                             </Grid>
                                                         </StackLayout>
                                                     </StackLayout>
