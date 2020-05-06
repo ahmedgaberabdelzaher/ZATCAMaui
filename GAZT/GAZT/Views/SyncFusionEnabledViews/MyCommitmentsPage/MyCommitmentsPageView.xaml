@@ -29,19 +29,19 @@
         <ContentPage.Content>
             <Grid x:Name="ParentContainer" RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition  Height="30*"/>
-                    <RowDefinition  Height="70*"/>
+                    <RowDefinition  Height="100*"/>
+                    <!--<RowDefinition  Height="70*"/>-->
                 </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
             </Grid.ColumnDefinitions>
-            <ScrollView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                 <StackLayout Padding="5">
 
                     <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
 
-                    <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="2" HeightRequest="240" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
+                    <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="5" HeightRequest="400" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 
                         <syncfusionCalendar:SfCalendar.MonthViewSettings >
 
@@ -89,7 +89,7 @@
 
                
 
-                <Grid Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                <Grid Grid.Row="0"   Grid.Column="0" IsVisible="{Binding IsLoading}">
                     <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                     </StackLayout>
                     <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
