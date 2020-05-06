@@ -152,11 +152,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
                     File.WriteAllBytes(file, PdfBytes);
-                    await Share.RequestAsync(new ShareFileRequest
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Title = Title,
-                        File = new ShareFile(file)
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
                     });
+                   
                 }
                 catch (Exception ex)
                 {

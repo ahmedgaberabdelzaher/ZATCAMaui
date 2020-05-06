@@ -66,6 +66,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                 viewModel.IsVisibleDropdownForRefund = false;
                 viewModel.IsFirstSubmission = true;
                 viewModel.IsMoreButtonEnabled = true;
+                viewModel.IsRefundEnableCheckforRefundMsg = false;
+                viewModel.IsSwichButtonEnable = false;
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
                 viewModel.SelectedIndex = 0;
@@ -257,6 +259,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         //    Attachment attachment = (Attachment)arrowImage.BindingContext;
         //    var results =   WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename,  viewModel.VATDeclarationData.d.ReturnIdz);
         //}
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.IsSwichButtonEnable = false;
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -4334,15 +4342,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             viewModel._dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
         }
-        private void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (viewModel.IsVisibleSummary == true)
             {
                 if (viewModel.IsVisibleDropdownForRefund == true)
                 {
                     ValidationsForVATRefund();
+
+                   
                 }
-            }
+                if (viewModel.IsRefundEnableCheckforRefundMsg && viewModel.IsSwichButtonEnable == false)
+                {
+                    viewModel.IsRefundEnableCheckforRefundMsg = false;
+                }
+            }         
         }
         private async void BPicker1_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -4415,6 +4429,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             if (viewModel.SelectedIBANPrev == null)
             {
                 viewModel.TxtSelectedIBAN = string.Empty;
+            }
+        }
+
+        private async void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+           
+            if ((viewModel.IsSwichButtonEnable && viewModel.IsRefundEnableCheckforRefundMsg==false))
+            {
+                var result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
+                if (result)
+                {
+                    //
+                }
+                else
+                {
+                    viewModel.IsSwichButtonEnable = false;
+                }
+            }
+            else
+            {
+
+               
+
             }
         }
     }

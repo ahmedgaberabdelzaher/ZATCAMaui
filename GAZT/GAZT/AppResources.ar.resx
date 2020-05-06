@@ -3087,4 +3087,14 @@
     <value>جديد</value>
     <comment>Tax Evasion Service</comment>
   </data>
+  <data name="ZZZCancelText" xml:space="preserve">
+    <value>الغاء</value>
+  </data>
+  <data name="ZZZOkayText" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="ZZZRefundEnableMessage" xml:space="preserve">
+    <value>أتعهد بأن اقوم بسداد جميع التزاماتي المالية وتقديم جميع الاقرارات المستحقة لدى الهيئة قبل تقديم طلب الإسترداد وأني قد فوضت الهيئة بخصم أي مستحقات قائمة من رصيدي لدى الهيئة قبل الإسترداد. ويحق للهيئة برفض الطلب عند وجود أي إقرارات متأخرة لم أقم بتقديمها.</value>
+    <comment>VAT Declaration</comment>
+  </data>
 </root>
