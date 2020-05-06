@@ -1047,7 +1047,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private  void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            UploadedDocumentsList attachment = (UploadedDocumentsList)arrowImage.BindingContext;
+            viewModel.UploadedDocumentsListObj.Remove(attachment);
+            viewModel.AttachmentCount = viewModel.AttachmentCount - 1;
+            viewModel.AttachmentName = string.Empty;
+
+        }
+            private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;
             try
