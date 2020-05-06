@@ -180,7 +180,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 _navigationService.GoBack();
             });
             GoBackClick = new Command(async () =>
-            {
+            { 
                 _navigationService.GoBack();
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
