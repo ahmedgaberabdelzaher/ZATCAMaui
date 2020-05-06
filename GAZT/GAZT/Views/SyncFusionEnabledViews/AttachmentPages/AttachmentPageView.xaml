@@ -83,8 +83,8 @@
                             </Image.GestureRecognizers>
                         </Image>
                         <StackLayout Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                            <ListView  x:Name="Attachmentlist" 
-           ItemsSource="{Binding VatAttachmentsList}"
+                            <ListView  x:Name="AttachmentList" 
+           ItemsSource="{Binding AttachmentList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
@@ -125,7 +125,7 @@
                                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
                                                                 </Image.GestureRecognizers>
                                                             </Image>
-                                                            <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                            <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="{Binding DeleteImageSource}"   >
                                                                 <Image.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
                                                                 </Image.GestureRecognizers>

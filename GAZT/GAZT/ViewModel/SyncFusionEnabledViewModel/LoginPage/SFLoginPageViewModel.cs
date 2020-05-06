@@ -498,8 +498,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                             bool isValidTIN = UtilityManager.IsOTPNumberValid(Email);
                             if (isValidTIN == true)
                             {
-                                Email = "3102285896";
-                                Password = "Test@123";
+                                //Email = "3102285896";
+                                //Password = "Test@123";
                                 response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
 
                                 UserId = Email;
