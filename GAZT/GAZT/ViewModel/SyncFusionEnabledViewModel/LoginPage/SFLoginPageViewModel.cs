@@ -549,7 +549,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                         {
                                             IsLoading = false;
                                         });
-                                        if (0 == String.Compare("", response, true))
+                                        if (string.IsNullOrEmpty(response))
                                         {
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
