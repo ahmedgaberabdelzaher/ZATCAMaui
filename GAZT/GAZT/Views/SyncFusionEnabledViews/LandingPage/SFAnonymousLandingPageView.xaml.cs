@@ -8,6 +8,7 @@ using System.Linq;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
@@ -83,6 +84,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 base.OnAppearing();
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Top = 20;
+                Padding = safeInsets;
+
                 if (App.IsSessionExpired)
                 {
                     await viewModel._dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);

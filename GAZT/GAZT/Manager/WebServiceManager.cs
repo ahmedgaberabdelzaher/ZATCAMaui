@@ -2811,10 +2811,33 @@ namespace GAZT.Manager
                     }
                     return SignupCityList;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -2860,10 +2883,32 @@ namespace GAZT.Manager
                     }
                     return SignupIssuedByList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -2907,10 +2952,32 @@ namespace GAZT.Manager
                     }
                     return IsIDTypeValidList;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -3124,10 +3191,31 @@ namespace GAZT.Manager
                     }
                     return GaztGuidModel;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {

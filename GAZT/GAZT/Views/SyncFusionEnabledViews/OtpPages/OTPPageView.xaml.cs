@@ -299,7 +299,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                 App.IsOTPiew = true;
                 viewModel.TimerStart(viewModel.numberOfSeconds);
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-                viewModel.IsResendOTPEnabled = false;
+                viewModel.IsResendOTPEnabled = false; 
                 viewModel.IsOTPEntryEnable = true;
                 viewModel.currentAttempts = 0;
                 await Task.Run(() =>

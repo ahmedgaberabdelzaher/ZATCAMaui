@@ -3,6 +3,7 @@ using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfPicker.XForms;
@@ -371,6 +372,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                 //}
                             }
+
+                            catch (GAZTException gex)
+                            {
+                                // Handle the GAZT custom exception.
+                                string MessageForTheUser = gex.Message;
+
+                                if (gex is GAZTNetworkConnectivityIssueException)
+                                {
+                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                                }
+                                else if (gex is GAZTInternetException)
+                                {
+                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                                }
+                                else if (gex is GAZTSessionExpiredException)
+                                {
+                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                                }
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    viewModel._navigationService.GoBack();
+                                });
+                            }
+
+
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -469,6 +499,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
                             }
+
+                            catch (GAZTException gex)
+                            {
+                                // Handle the GAZT custom exception.
+                                string MessageForTheUser = gex.Message;
+
+                                if (gex is GAZTNetworkConnectivityIssueException)
+                                {
+                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                                }
+                                else if (gex is GAZTInternetException)
+                                {
+                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                                }
+                                else if (gex is GAZTSessionExpiredException)
+                                {
+                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                                }
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    viewModel._navigationService.GoBack();
+                                });
+                            }
+
+
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -482,6 +541,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         //{
                         //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                         //}
+                    }
+                    catch (GAZTException gex)
+                    {
+                        // Handle the GAZT custom exception.
+                        string MessageForTheUser = gex.Message;
+
+                        if (gex is GAZTNetworkConnectivityIssueException)
+                        {
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                        }
+                        else if (gex is GAZTInternetException)
+                        {
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
                     }
                     catch (InternetException ex)
                     {
@@ -594,6 +679,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                             //}
                         }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
                         catch (InternetException ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -687,6 +798,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                             }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
                         }
                         catch (InternetException ex)
                         {
@@ -805,6 +942,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
                                 //}
                             }
+
+                              catch(GAZTException gex)
+                    {
+                        // Handle the GAZT custom exception.
+                        string MessageForTheUser = gex.Message;
+
+                        if (gex is GAZTNetworkConnectivityIssueException)
+                        {
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                        }
+                        else if (gex is GAZTInternetException)
+                        {
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
+                    }
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -902,6 +1066,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 {
                                     viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
+                            }
+                            catch (GAZTException gex)
+                            {
+                                // Handle the GAZT custom exception.
+                                string MessageForTheUser = gex.Message;
+
+                                if (gex is GAZTNetworkConnectivityIssueException)
+                                {
+                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                                }
+                                else if (gex is GAZTInternetException)
+                                {
+                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                                }
+                                else if (gex is GAZTSessionExpiredException)
+                                {
+                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                                }
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    viewModel.IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    viewModel._navigationService.GoBack();
+                                });
                             }
                             catch (InternetException ex)
                             {
@@ -1010,6 +1200,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                                     }
                                                 }
                                             }
+                                            catch (GAZTException gex)
+                                            {
+                                                // Handle the GAZT custom exception.
+                                                string MessageForTheUser = gex.Message;
+
+                                                if (gex is GAZTNetworkConnectivityIssueException)
+                                                {
+                                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                                                }
+                                                else if (gex is GAZTInternetException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                                                }
+                                                else if (gex is GAZTSessionExpiredException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                                                }
+
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    viewModel.IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    viewModel._navigationService.GoBack();
+                                                });
+                                            }
                                             catch (InternetException ex)
                                             {
                                                 Device.BeginInvokeOnMainThread(async () =>
@@ -1087,6 +1303,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                                     }
                                                 }
                                             }
+                                            catch (GAZTException gex)
+                                            {
+                                                // Handle the GAZT custom exception.
+                                                string MessageForTheUser = gex.Message;
+
+                                                if (gex is GAZTNetworkConnectivityIssueException)
+                                                {
+                                                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                                                }
+                                                else if (gex is GAZTInternetException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                                                }
+                                                else if (gex is GAZTSessionExpiredException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                                                }
+
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    viewModel.IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    viewModel._navigationService.GoBack();
+                                                });
+                                            }
                                             catch (InternetException ex)
                                             {
                                                 Device.BeginInvokeOnMainThread(async () =>
@@ -1104,6 +1346,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             }
                         }
                     }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
                 }
                 catch (InternetException ex)
                 {
@@ -1210,6 +1478,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
+                        }
                         catch (InternetException ex)
                         {
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1270,6 +1564,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 FrmIDNumber.HasError = false;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
+                        }
+                        catch (GAZTException gex)
+                        {
+                            // Handle the GAZT custom exception.
+                            string MessageForTheUser = gex.Message;
+
+                            if (gex is GAZTNetworkConnectivityIssueException)
+                            {
+                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            }
+                            else if (gex is GAZTInternetException)
+                            {
+                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            }
+                            else if (gex is GAZTSessionExpiredException)
+                            {
+                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            }
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                viewModel._navigationService.GoBack();
+                            });
                         }
                         catch (InternetException ex)
                         {

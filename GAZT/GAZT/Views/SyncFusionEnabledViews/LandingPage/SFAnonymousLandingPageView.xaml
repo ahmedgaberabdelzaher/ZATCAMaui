@@ -12,9 +12,9 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-    BackgroundColor="{DynamicResource Gray-White}"
+  
     NavigationPage.HasNavigationBar="False"
-    >
+     BackgroundColor="#005e4b">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -102,7 +102,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid x:Name="ParentContainer">
+        <Grid x:Name="ParentContainer" BackgroundColor="White" >
             <Grid.RowDefinitions>
                 <RowDefinition  Height="35*"/>
                 <RowDefinition  Height="65*"/>
