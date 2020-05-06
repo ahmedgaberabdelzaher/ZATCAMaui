@@ -17,7 +17,7 @@ namespace GAZT.iOS
                 UIApplication.Main(args, null, "AppDelegate");
             }
             catch (Exception ex)
-             {
+            {
             }
         }
     }

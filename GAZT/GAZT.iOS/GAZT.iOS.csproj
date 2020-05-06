@@ -140,6 +140,9 @@
     <BundleResource Include="Resources\sf_Estimated_Zakat_Returns%402x.png" />
     <Compile Include="DependencyServices\StatusBarImplementation.cs" />
     <BundleResource Include="Resources\GE_SS_Two_Light.otf" />
+    <BundleResource Include="Resources\ic_Delete_disabled.png" />
+    <BundleResource Include="Resources\ic_Delete_disabled%402x.png" />
+    <BundleResource Include="Resources\ic_Delete_disabled%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
