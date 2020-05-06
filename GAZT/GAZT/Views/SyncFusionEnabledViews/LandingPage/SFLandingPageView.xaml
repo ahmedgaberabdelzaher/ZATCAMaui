@@ -13,6 +13,7 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:local11="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     x:Name="LandingPage"
     BackgroundColor="{DynamicResource Gray-White}"
     NavigationPage.HasNavigationBar="False"
@@ -156,7 +157,7 @@
                                                             </FormattedString>
                                                         </local1:CustomLabel.FormattedText>
                                                     </local1:CustomLabel>
-                                                     <local1:CustomLabel 
+                                                    <local1:CustomLabel 
                                                       FontFamily="{StaticResource SSTArLight}"
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
@@ -308,7 +309,7 @@
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
-                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}">
+                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Title" >
                                                     </local1:CustomLabel>
                                                 </StackLayout>
                                                 <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
@@ -387,7 +388,22 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="0" Grid.Column="0" BackgroundColor="White" Grid.RowSpan="3" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>
+                <!--<Image Grid.Row="0" Grid.Column="0" BackgroundColor="White" Grid.RowSpan="3" Aspect="AspectFill" Source="sf_BannerImage.png" Margin="0,-5,0,0" ></Image>-->
+                <border:SfBorder x:Name="border" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="4"    BorderWidth="0">
+                    <Grid Grid.Row="0" Grid.Column="0"  Grid.RowSpan="4">
+                        <gradient:SfGradientView>
+                            <gradient:SfGradientView.BackgroundBrush>
+                                <gradient:SfLinearGradientBrush>
+                                    <gradient:SfLinearGradientBrush.GradientStops>
+                                        <gradient:SfGradientStop Color="#003228" Offset="0.0" />
+                                        <gradient:SfGradientStop Color="#006450" Offset="1.0" />
+                                    </gradient:SfLinearGradientBrush.GradientStops>
+                                </gradient:SfLinearGradientBrush>
+                            </gradient:SfGradientView.BackgroundBrush>
+                        </gradient:SfGradientView>
+                    </Grid>
+                </border:SfBorder>
+
                 <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
                 <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
                     <Label.GestureRecognizers>
