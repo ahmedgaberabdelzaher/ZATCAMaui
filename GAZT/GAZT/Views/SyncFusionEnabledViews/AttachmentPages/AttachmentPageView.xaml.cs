@@ -96,19 +96,47 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                if(!App.ICRStatus.Equals("E0045"))
+                if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == false))
+                {
+                    //Show some message
+
+                    //Image arrowImage = sender as Image;
+                    //Attachment attachment = (Attachment)arrowImage.BindingContext;
+                    //if (attachment != null)
+                    //{
+                    //    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                    //    DeleteAttachment(result, attachment);
+                    //}
+                }
+                else if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == true))
                 {
                     Image arrowImage = sender as Image;
                     Attachment attachment = (Attachment)arrowImage.BindingContext;
-                    if (attachment != null)
+                    int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                    if(indexToReduceTheSize > viewModel.NumberOfAttachmentComingFromServer - 1)
                     {
-                        var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
-                        DeleteAttachment(result, attachment);
+                        if (attachment != null)
+                        {
+                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                            DeleteAttachment(result, attachment);
+                        }
                     }
+                    else
+                    {
+                        // Show Some message
+                    }
+                    
                 }
-                else
+                else 
                 {
-                   // Some message
+                    Image arrowImage = sender as Image;
+                    Attachment attachment = (Attachment)arrowImage.BindingContext;
+                    
+                        if (attachment != null)
+                        {
+                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                            DeleteAttachment(result, attachment);
+                        }
                 }
                 
             }
