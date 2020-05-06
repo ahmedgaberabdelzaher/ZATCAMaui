@@ -403,7 +403,7 @@
     <value>اشعار</value>
   </data>
   <data name="OKText" xml:space="preserve">
-    <value>Ok</value>
+    <value>موافق</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>فشلت مصادقة المستخدم</value>
