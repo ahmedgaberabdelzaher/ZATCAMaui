@@ -137,7 +137,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                         {
                             if (attachment != null)
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                                 DeleteAttachment(result, attachment);
                             }
                         }
@@ -162,7 +162,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
                         if (attachment != null)
                         {
-                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                             DeleteAttachment(result, attachment);
                         }
                     }

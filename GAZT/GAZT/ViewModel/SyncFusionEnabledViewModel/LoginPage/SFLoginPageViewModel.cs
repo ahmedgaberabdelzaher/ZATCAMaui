@@ -549,10 +549,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                         {
                                             IsLoading = false;
                                         });
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        if (0 == String.Compare("", response, true))
                                         {
-                                            await _dialogService.ShowMessageBox(response, AppResources.Information);
-                                        });
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                            });
+                                        }
+                                        else
+                                        {
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                            });
+                                        }
                                     }
                                 }
                                 catch (GAZTInternetException)
