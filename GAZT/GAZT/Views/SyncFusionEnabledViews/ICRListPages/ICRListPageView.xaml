@@ -148,7 +148,7 @@
                                                        TextColor="#005e4b"
                                    Grid.Row="0"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>-->
-                                                <Label Text="{x:Static local:AppResources.ZVATReturnForm}" 
+                                                <local1:CustomLabel Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        FontFamily="{StaticResource SSTArabicMedium}"
                                                        HorizontalOptions="StartAndExpand"
@@ -163,7 +163,7 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="1"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-                                                <Label Text="{Binding Incotext}" 
+                                                <local1:CustomLabel Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                                                          FontFamily="{StaticResource SSTArabicMedium}"
                                                        HorizontalOptions="StartAndExpand"
@@ -185,7 +185,7 @@
                                                                 </DataTrigger>
                                                             </Label.Triggers>
                                                         </Label>-->
-                                                <Label Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
+                                                <local1:CustomLabel Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
  FontFamily="{StaticResource SSTArabicMedium}"                                                       HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
@@ -198,7 +198,7 @@
                                                             <Setter Property="IsVisible" Value="False"></Setter>
                                                         </DataTrigger>
                                                     </Label.Triggers>
-                                                </Label>
+                                                </local1:CustomLabel>
                                                 <!--<Label 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -214,20 +214,20 @@
                                                                 </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>-->
-                                                <Label  Margin="0" 
+                                                <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
                                    Grid.Column="0"
                                                            >
-                                                    <Label.FormattedText>
+                                                    <local1:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FormatTaxPeriod}"></Span>
                                                         </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
                                                 <!--<Label Text="{Binding FormatTaxPeriod}" 
                                   Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
@@ -249,20 +249,20 @@
                                                    VerticalOptions="CenterAndExpand"
                                    Grid.Row="6"
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
-                                                <Label  Margin="0" 
+                                                <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
                                    Grid.Column="0"
                                                            >
-                                                    <Label.FormattedText>
+                                                    <local1:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding StatusTxt}"></Span>
                                                         </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
+                                                    </local1:CustomLabel.FormattedText>
+                                                </local1:CustomLabel>
                                                 <!--<Label Text="{x:Static local:AppResources.ZReturnPeriod}" Margin="8,0,8,0" 
                                    Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
@@ -278,28 +278,32 @@
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
                                                 <StackLayout  Margin="0" 
                                                                      Grid.Row="5"
+                                                              Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
-                                                    <Label
+                                                    <local1:CustomLabel
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
                                                           >
-                                                        <Label.FormattedText>
+                                                        <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZReturnPeriod}" ></Span>
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
                                                             </FormattedString>
-                                                        </Label.FormattedText>
-                                                    </Label>
-                                                    <Label
+                                                        </local1:CustomLabel.FormattedText>
+                                                    </local1:CustomLabel>
+                                                    <local1:CustomLabel
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="FillAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedDate}"
                                                           >
-                                                    </Label>
+                                                    </local1:CustomLabel>
                                                 </StackLayout>
                                                 <!--<Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
@@ -331,7 +335,7 @@
                                                 <StackLayout  Margin="0" 
                                                   Grid.Row="6"
                                    Grid.Column="0" Orientation="Horizontal">
-                                                    <Label
+                                                    <local1:CustomLabel
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
                                                           >
@@ -341,8 +345,8 @@
                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text=" : " ></Span>
                                                             </FormattedString>
                                                         </Label.FormattedText>
-                                                    </Label>
-                                                    <Label
+                                                    </local1:CustomLabel>
+                                                    <local1:CustomLabel
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                      FontFamily="{StaticResource SSTArabicMedium}" 
                                                    VerticalOptions="CenterAndExpand"
@@ -350,7 +354,7 @@
                                                     FlowDirection="LeftToRight"
                                                  Text="{Binding FormatedSingleDueDate}"
                                                           >
-                                                    </Label>
+                                                    </local1:CustomLabel>
                                                 </StackLayout>
                                                 <!--<Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
