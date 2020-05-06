@@ -890,6 +890,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
         }
         public void TimerStart(int Seconds)
         {
+            IsVerifyOTPEnabled = true;
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
             TotalSec = Seconds;
             CancellationTokenSource CTS = _CancellationTokenSource;

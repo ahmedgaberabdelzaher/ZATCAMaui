@@ -32,10 +32,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             InitializeComponent();
             SetLTR();
+            double ht =  DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = (ht * 45)/100;
+            AttachmentList.HeightRequest = ht;
             ChangeAeroIcon();
+            List.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
+
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
@@ -74,6 +84,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                             //    }
                             //}
                         }
+                        if(App.ICRStatus.Equals("E0045"))
+                        {
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        }
+                        else
+                        {
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        }
                     }
                 }
                 viewModel.OnPageLoad();
@@ -96,19 +114,63 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                if(!App.ICRStatus.Equals("E0045"))
+                if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == false))
                 {
-                    Image arrowImage = sender as Image;
-                    Attachment attachment = (Attachment)arrowImage.BindingContext;
-                    if (attachment != null)
-                    {
-                        var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
-                        DeleteAttachment(result, attachment);
-                    }
+                    //Show some message
+
+                    //Image arrowImage = sender as Image;
+                    //Attachment attachment = (Attachment)arrowImage.BindingContext;
+                    //if (attachment != null)
+                    //{
+                    //    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                    //    DeleteAttachment(result, attachment);
+                    //}
                 }
-                else
+                else if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == true))
                 {
-                   // Some message
+                    try
+                    {
+                        Image arrowImage = sender as Image;
+                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                        if (indexToReduceTheSize > viewModel.NumberOfAttachmentComingFromServer - 1)
+                        {
+                            if (attachment != null)
+                            {
+                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                DeleteAttachment(result, attachment);
+                            }
+                        }
+                        else
+                        {
+                            // Show Some message
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+
+                    }
+                   
+                    
+                }
+                else 
+                {
+                    try
+                    {
+                        Image arrowImage = sender as Image;
+                        VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+
+                        if (attachment != null)
+                        {
+                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                            DeleteAttachment(result, attachment);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 }
                 
             }
@@ -120,7 +182,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 });
             }
         }
-        public async Task DeleteAttachment(bool result, Attachment attachment)
+        public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
             try
             {
@@ -141,7 +203,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                                                    where itm.Doguid == attachment.Doguid.ToString()
                                                    select itm)
                                             .FirstOrDefault<Attachment>();
+
+                            VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
+                                                         where itm.Doguid == attachment.Doguid.ToString()
+                                                   select itm)
+                                            .FirstOrDefault<VATAttachment>();
+
                             viewModel.VatAttachmentsList.Remove(listitem);
+                            viewModel.AttachmentList.Remove(listitemTwo);
                             viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
                             if (indexToReduceTheSize != -1)
                                 viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
@@ -172,7 +241,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
             Image arrowImage = sender as Image;
-            Attachment attachment = (Attachment)arrowImage.BindingContext;
+            VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
             //attachment.DocUrl;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
@@ -219,7 +288,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
-            Attachment attachment = (Attachment)Document.SelectedItem;
+            VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
             if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
@@ -236,7 +305,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
-        public async Task email(string doguid, Attachment attachment)
+        public async Task email(string doguid, VATAttachment attachment)
         {
             await Task.Run(async () =>
             {

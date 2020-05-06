@@ -293,13 +293,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             ChangeAeroIcon();
             if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
+                //App.IsOTPiew = true;
+                //viewModel.TimerStart(viewModel.numberOfSeconds);
+                //viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                //viewModel.IsResendOTPEnabled = false;
+                //viewModel.IsOTPEntryEnable = true;
+                //viewModel.currentAttempts = 0;
+                //await Task.Run(() =>
+                //{
+                //    Task.Delay(100);
+                //});
+                //EnteredOTP.Focus(); 
             }
             else
             {
                 App.IsOTPiew = true;
                 viewModel.TimerStart(viewModel.numberOfSeconds);
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-                viewModel.IsResendOTPEnabled = false;
+                viewModel.IsResendOTPEnabled = false; 
                 viewModel.IsOTPEntryEnable = true;
                 viewModel.currentAttempts = 0;
                 await Task.Run(() =>

@@ -13,7 +13,8 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AttachmentPage.AttachmentPageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+           BackgroundColor="White" >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,13 +25,19 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <StackLayout HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"   Margin="0,0,0,0"  Grid.Row="0">
-                <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+                <ScrollView  x:Name="ScrollViewContainer"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="White" >
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
+ <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100*"/>
+                        </Grid.ColumnDefinitions>
+                                           
+                    <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -82,12 +89,16 @@
                                 <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <StackLayout Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                            <ListView  x:Name="Attachmentlist" 
-           ItemsSource="{Binding VatAttachmentsList}"
+                     
+                        </Grid>
+
+                                               <StackLayout x:Name="AttachmentList" Grid.Row="1"  Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Start"  >
+                            <ListView   
+           ItemsSource="{Binding AttachmentList}"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
+                                x:Name="List"
                                     BackgroundColor="White"
             ItemTapped="Attachmentlist_ItemTapped"
             SeparatorVisibility="None"
@@ -125,7 +136,7 @@
                                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
                                                                 </Image.GestureRecognizers>
                                                             </Image>
-                                                            <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                            <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="{Binding DeleteImageSource}"   >
                                                                 <Image.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
                                                                 </Image.GestureRecognizers>
@@ -149,6 +160,7 @@
                                 </ListView.ItemTemplate>
                             </ListView>
                         </StackLayout>
+
                     </Grid>
                 </ScrollView>
             </StackLayout>

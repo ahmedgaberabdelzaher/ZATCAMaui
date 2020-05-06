@@ -5,6 +5,7 @@ using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -47,6 +48,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+           
+            viewModel.TimerStart(viewModel.numberOfSeconds);
+            viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+            viewModel.ButtonDisableTextColor = Color.Gray;
+            viewModel.VerifyButtonDisableColor = Color.FromHex("#006450");
+            viewModel.VerifyButtonDisableTextColor = Color.White;
+            viewModel.IsResendOTPEnabled = false;
+            viewModel.IsOTPEntryEnable = true;
+
+            await Task.Run(() =>
+            {
+                Task.Delay(100);
+            });
+
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+           
+            viewModel.StopTimer = false;
+           
+            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
+            //{
+            //    Page pg = Navigation.NavigationStack[index];
+            //    Navigation.RemovePage(pg);
+            //}
         }
         private void SetLTR()
         {

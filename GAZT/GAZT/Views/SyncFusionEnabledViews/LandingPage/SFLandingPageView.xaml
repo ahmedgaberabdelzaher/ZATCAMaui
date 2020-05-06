@@ -410,7 +410,7 @@
                     </Label.FormattedText>
                 </Label>
             </Grid>
-            <Grid Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" IsVisible="{Binding IsLoading}">
+            <Grid Grid.Row="0"  Grid.RowSpan="3" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">

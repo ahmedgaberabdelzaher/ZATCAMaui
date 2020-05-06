@@ -19,7 +19,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
     public class SFLoginPageViewModel : SFLoginViewModel
     {
         #region Fields
-        //public string password = "Init@123";
+        //public string password = "Test@123";
+        //private string email = "3102285896";
+
         //private string email = "3101593128";
         //private string password = "Test@123";
         //private string email = "3102290567";
@@ -496,7 +498,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                             bool isValidTIN = UtilityManager.IsOTPNumberValid(Email);
                             if (isValidTIN == true)
                             {
+                                //Email = "3102285896";
+                                //Password = "Test@123";
                                 response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
+
                                 UserId = Email;
                             }
                             else
@@ -544,10 +549,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                         {
                                             IsLoading = false;
                                         });
-                                        Device.BeginInvokeOnMainThread(async () =>
+                                        if (0 == String.Compare("", response, true))
                                         {
-                                            await _dialogService.ShowMessageBox(response, AppResources.Information);
-                                        });
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                            });
+                                        }
+                                        else
+                                        {
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                await _dialogService.ShowMessageBox(response, AppResources.Information);
+                                            });
+                                        }
                                     }
                                 }
                                 catch (GAZTInternetException)

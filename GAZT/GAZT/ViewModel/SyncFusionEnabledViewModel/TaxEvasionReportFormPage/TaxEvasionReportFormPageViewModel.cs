@@ -55,6 +55,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("AttachmentSize");
             }
         }
+        public bool _isVisibleForReportDisplay = false;
+        public bool IsVisibleForReportDisplay
+        {
+            get
+            {
+                return _isVisibleForReportDisplay;
+            }
+            set
+            {
+                _isVisibleForReportDisplay = value;
+                RaisePropertyChanged("IsVisibleForReportDisplay");
+            }
+        }
+
+
         public decimal _totalAttachmentSize = 0;
         public decimal TotalAttachmentSize
         {
@@ -823,6 +838,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                                     }
                                 }
                             }
+                        }
+                        else
+                        {
+                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                         }
                     }
                 }

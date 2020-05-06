@@ -1369,8 +1369,7 @@ namespace GAZT.Manager
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
-                                App.IsSessionExpired = true;
-                                return null;
+                                throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
@@ -1379,14 +1378,30 @@ namespace GAZT.Manager
                     }
                     return vATLookUp;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    throw new InternetException(AppResources.ZZSomethingwentwrong);
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         //done internet exception handling
@@ -1421,8 +1436,9 @@ namespace GAZT.Manager
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
-                                return null;
+                                throw new GAZTSessionExpiredException();
                             }
+
                             App.Token = NewToken;
                         }
                         String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;
@@ -2732,9 +2748,25 @@ namespace GAZT.Manager
                     }
                     return ReturnFormBundleList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -2779,10 +2811,33 @@ namespace GAZT.Manager
                     }
                     return SignupCityList;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -2828,10 +2883,32 @@ namespace GAZT.Manager
                     }
                     return SignupIssuedByList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -2875,10 +2952,32 @@ namespace GAZT.Manager
                     }
                     return IsIDTypeValidList;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {
@@ -3010,7 +3109,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static string GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
+        public async static Task<string> GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3025,7 +3124,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     if (res != null && res.Content != null)
                     {
                         FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
@@ -3092,10 +3191,31 @@ namespace GAZT.Manager
                     }
                     return GaztGuidModel;// tINStatus;
                 }
-                catch (Exception ex)
+
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
                 }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
             }
             else
             {

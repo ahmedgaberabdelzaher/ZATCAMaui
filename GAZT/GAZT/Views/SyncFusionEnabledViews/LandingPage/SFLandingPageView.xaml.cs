@@ -38,6 +38,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 //  ParentContainer.RaiseChild(BusyIndicator);
              //   calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();
+
                 viewModel.TaxPayerProfile = App.TP;
             }
             catch (Exception gex)
@@ -421,26 +422,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 viewModel.IsLoading = true;
             });
             string controltype = sender.GetType().ToString();
-                if (controltype == "Xamarin.Forms.StackLayout")
+            if (controltype == "Xamarin.Forms.StackLayout")
+            {
+                StackLayout arrowImage = sender as StackLayout;
+                ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
+                if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    StackLayout arrowImage = sender as StackLayout;
-                    ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
-                    if (BModel.ReturnTypeName == AppResources.Submitted)
-                    {
-                        Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 0);
-                    }
-                    if (BModel.ReturnTypeName == AppResources.UnSubmitted)
-                    {
-                        Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
-                    }
-                    if (BModel.ReturnTypeName == AppResources.OverDue)
-                    {
-                        Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
-                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
-                    }
                 }
+                if (BModel.ReturnTypeName == AppResources.UnSubmitted)
+                {
+                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                }
+                if (BModel.ReturnTypeName == AppResources.OverDue)
+                {
+                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                }
+            }
             if (controltype == "Xamarin.Forms.Label")
             {
                 Label arrowImage = sender as Label;

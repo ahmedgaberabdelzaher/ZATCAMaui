@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -769,9 +770,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = IssuedBy.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
             }
-            catch (Exception ex)
+            catch (GAZTException gex)
             {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                   // IsLoading = false;
+
+                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
             }
+            //catch (Exception ex)
+            //{
+            //}
         }
         public async Task SetCityList()
         {
@@ -785,9 +812,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 CityR = CityListSignup.d.city_dropdownSet.results;
                 CityList = CityR;
             }
-            catch(Exception ex)
+            catch (GAZTException gex)
             {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //_navigationService.GoBack();
+                });
             }
+            //catch(Exception ex)
+            //{
+            //}
         }
         public void SetDefaultDate()
         {

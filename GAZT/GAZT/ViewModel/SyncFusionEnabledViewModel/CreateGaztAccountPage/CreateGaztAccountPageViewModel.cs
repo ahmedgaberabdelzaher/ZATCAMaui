@@ -23,6 +23,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
         public bool StopTimer = false;
         #endregion
         #region Properties
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
         {
@@ -254,8 +269,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
         public void OnPageLoad()
         {
             StopTimer = true;
-            numberOfSeconds = 120;
-            TimerStart(numberOfSeconds);
+          //numberOfSeconds = 120;
+          //TimerStart(numberOfSeconds);
             IsResendOTPEnabled = false;
             IsVerifyOTPEnabled = true;
         }
@@ -329,6 +344,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
         }
         public void TimerStart(int Seconds)
         {
+            IsVerifyOTPEnabled = true;
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
             TotalSec = Seconds;
             CancellationTokenSource CTS = _CancellationTokenSource;
@@ -394,10 +410,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 }
             });
         }
-        public void CreateGaZTAccount()
+        public async void CreateGaZTAccount()
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
                 CreateModel.ABirthdt = SignUpModelRootObjectM.d.ABirthdt;
                 CreateModel.ACity = SignUpModelRootObjectM.d.ACity;
@@ -422,17 +442,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 CreateModel.AEmailCode = TxtEmailCode;
                 CreateModel.ASubmit = "X";
                 CreateModel.Fbnum = SignUpModelRootObjectM.d.Fbnum;
-                string ResultFirstSubmit = WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
+                string ResultFirstSubmit = await WebServiceManager.GAZTCreateAccountSubmit(CreateModel);
                 if (ResultFirstSubmit != null)
                 {
                     SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                     if (ResultFirstSubmitModel.d == null)
                     {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
                         _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                       
                     }
                     else
                     {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         _navigationService.NavigateTo(App.AccountCreatedPageView);
                     }
                 }

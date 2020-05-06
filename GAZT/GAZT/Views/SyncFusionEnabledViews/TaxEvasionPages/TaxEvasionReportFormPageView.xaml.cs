@@ -70,6 +70,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameEn;
                     viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameEn;
                 }
+                viewModel.IsVisibleForReportDisplay = false;
                 FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                 btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
@@ -652,6 +653,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 //viewModel.SelectedTaxEvasionRegion = null;
                 //viewModel.SelectLCType = null;
                 //viewModel.UploadedDocumentsListObj = null;
+                viewModel.IsVisibleForReportDisplay = true;
                 if (viewModel.CList != null)
                 {
                     try {
@@ -1045,7 +1047,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 DpDbo.SelectedItem = todaycollection;
             }
         }
-        private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private  void OnDeleteAttachmentClicked(object sender, EventArgs e)
+        {
+            Image arrowImage = sender as Image;
+            UploadedDocumentsList attachment = (UploadedDocumentsList)arrowImage.BindingContext;
+            viewModel.UploadedDocumentsListObj.Remove(attachment);
+            viewModel.AttachmentCount = viewModel.AttachmentCount - 1;
+            viewModel.AttachmentName = string.Empty;
+
+        }
+            private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;
             try

@@ -3108,4 +3108,8 @@
 3.المشتريات الخاضعة لضريبة القيمة المضافة (5%, رسوم عكسية)"</value>
     <comment>VAT Declaration</comment>
   </data>
+  <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
+    <value>الموافقة على الشروط والأحكام</value>
+    <comment>Signup</comment>
+  </data>
 </root>

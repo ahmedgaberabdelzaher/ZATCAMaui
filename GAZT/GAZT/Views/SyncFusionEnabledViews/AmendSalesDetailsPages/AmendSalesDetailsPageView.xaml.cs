@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
+using GAZT.Helper;
 using GAZT.Manager;
 using System;
 using System.IO;
@@ -24,6 +25,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            double ht = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = (ht * 35) / 100;
+            Attachmentlist.HeightRequest = ht;
             try
             {
                 viewModel = App.Locator.AmendSalesDetailsPageView;
@@ -109,7 +113,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if(estimateZakatAttachment != null) 
             {
-                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                 if (result)
                 {
                  await   viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
@@ -152,11 +156,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                     var fn = attachment.Filename;
                     var file = Path.Combine(FileSystem.CacheDirectory, fn);
                     File.WriteAllBytes(file, PdfBytes);
-                    await Share.RequestAsync(new ShareFileRequest
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        Title = Title,
-                        File = new ShareFile(file)
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
                     });
+                   
                 }
                 catch (Exception ex)
                 {

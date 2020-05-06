@@ -148,6 +148,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 RaisePropertyChanged("VatAttachmentsList");
             }
         }
+
+        private ObservableCollection<VATAttachment> _attachmentList;
+        public ObservableCollection<VATAttachment> AttachmentList
+        {
+            get
+            {
+                return _attachmentList;
+            }
+            set
+            {
+                _attachmentList = value;
+                RaisePropertyChanged("AttachmentList");
+            }
+        }
+
         private bool _isShowAttachmentButton = true;
         public bool IsShowAttachmentButton
         {
@@ -180,7 +195,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 _navigationService.GoBack();
             });
             GoBackClick = new Command(async () =>
-            {
+            { 
                 _navigationService.GoBack();
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
@@ -263,6 +278,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                                                     Device.BeginInvokeOnMainThread(async () =>
                                                     {
                                                         VatAttachmentsList = myCollection;
+                                                       
                                                     });
                                                     VatAttachmentsList = myCollection;
                                                     foreach (var item in VatAttachmentsList)
@@ -292,6 +308,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                                                         }
                                                     }
                                                     AttachmentCount++;
+                                                    CloneAttachmentList(VatAttachmentsList);
                                                     // TotalAttachmentSize += AttachmentSize;
                                                     AttachmentName = string.Empty;
                                                 }
@@ -463,7 +480,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
             }
             return TotalSize;
         }
-        public int GetDeletedAttachmentIndex(Attachment attachment)
+        public int GetDeletedAttachmentIndex(VATAttachment attachment)
         {
             int indexToDelete = -1;
             for (int i = 0; i < VatAttachmentsList.Count; i++)
@@ -494,6 +511,58 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 ICRListPageViewModel.numberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer - 1;
             }
         }
+
+
+        public void CloneAttachmentList(ObservableCollection<Attachment> attachmentList)
+        {
+            ObservableCollection<VATAttachment> list = new ObservableCollection<VATAttachment>();
+            for (int i = 0; i < attachmentList.Count; i++)
+            {
+                VATAttachment vATAttachment = new VATAttachment();
+
+                vATAttachment.RetGuid = attachmentList[i].RetGuid;
+                vATAttachment.Seqno = attachmentList[i].Seqno;
+                vATAttachment.SchGuid = attachmentList[i].SchGuid;
+                vATAttachment.Dotyp = attachmentList[i].Dotyp;
+                vATAttachment.Srno = attachmentList[i].Srno;
+                vATAttachment.Doguid = attachmentList[i].Doguid;
+                vATAttachment.AttBy = attachmentList[i].AttBy;
+                vATAttachment.Filename = attachmentList[i].Filename;
+                vATAttachment.FileExtn = attachmentList[i].FileExtn;
+                vATAttachment.Mimetype = attachmentList[i].Mimetype;
+                vATAttachment.ByPusr = attachmentList[i].ByPusr;
+                vATAttachment.Erfdt = attachmentList[i].Erfdt;
+                vATAttachment.Erftm = attachmentList[i].Erftm;
+                vATAttachment.DataVersion = attachmentList[i].DataVersion;
+                vATAttachment.DocUrl = attachmentList[i].DocUrl;
+                vATAttachment.OutletRef = attachmentList[i].OutletRef;
+                vATAttachment.Enbedit = attachmentList[i].Enbedit;
+                vATAttachment.Enbdele = attachmentList[i].Enbdele;
+                vATAttachment.Visedit = attachmentList[i].Enbdele;
+                vATAttachment.Visdel = attachmentList[i].Enbdele;
+                if(App.ICRStatus.Equals("E0045"))
+                {
+                    if(NumberOfAttachmentComingFromServer > 0 && i < NumberOfAttachmentComingFromServer)
+                    {
+                        vATAttachment.DeleteImageSource = "ic_Delete_disabled.png";
+                    }
+                    else
+                    {
+                        vATAttachment.DeleteImageSource = "ic_delete.png";
+                    }
+                }
+                else
+                {
+                    vATAttachment.DeleteImageSource = "ic_delete.png";
+                }
+
+                list.Add(vATAttachment);
+            }
+            AttachmentList = list;
+
+
+    }
+       
         #endregion
     }
 }
