@@ -403,7 +403,7 @@
     <value>اشعار</value>
   </data>
   <data name="OKText" xml:space="preserve">
-    <value>Ok</value>
+    <value>موافق</value>
   </data>
   <data name="UserAuthenticationFailed" xml:space="preserve">
     <value>فشلت مصادقة المستخدم</value>
@@ -3096,5 +3096,9 @@
   <data name="ZZZRefundEnableMessage" xml:space="preserve">
     <value>أتعهد بأن اقوم بسداد جميع التزاماتي المالية وتقديم جميع الاقرارات المستحقة لدى الهيئة قبل تقديم طلب الإسترداد وأني قد فوضت الهيئة بخصم أي مستحقات قائمة من رصيدي لدى الهيئة قبل الإسترداد. ويحق للهيئة برفض الطلب عند وجود أي إقرارات متأخرة لم أقم بتقديمها.</value>
     <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
+    <value>الموافقة على الشروط والأحكام</value>
+    <comment>Signup</comment>
   </data>
 </root>
