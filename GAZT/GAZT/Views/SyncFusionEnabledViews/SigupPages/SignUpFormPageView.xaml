@@ -169,6 +169,7 @@
                                      HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"
+                                
 								ShowFooter="True"
 								 ShowColumnHeader="True"
                                              ColumnHeaderBackgroundColor="#EAF7CC"

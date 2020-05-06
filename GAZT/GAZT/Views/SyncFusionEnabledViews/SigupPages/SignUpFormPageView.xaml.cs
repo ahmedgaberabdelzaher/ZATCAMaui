@@ -1848,7 +1848,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
-                if (viewModel.SelectedSignUpUsing == null)
+                if (viewModel.SelectedSignUpUsing != null)
                 {
                     if (viewModel.SelectedSignUpUsing.ID == 1)
                     {

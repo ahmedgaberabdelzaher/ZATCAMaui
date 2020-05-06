@@ -50,7 +50,7 @@ namespace EGAZT
             await _dialogPage.DisplayAlert(
                 title,
                 message,
-                AppResources.OKText);
+                AppResources.ZZZOkayText);
         }
         public async Task ShowMessage(
             string message,
@@ -92,7 +92,7 @@ namespace EGAZT
             await _dialogPage.DisplayAlert(
                 title,
                 message,
-               AppResources.OKText);
+               AppResources.ZZZOkayText);
         }
         #endregion
     }

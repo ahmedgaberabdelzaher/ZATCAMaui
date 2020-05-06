@@ -3109,7 +3109,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static string GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
+        public async static Task<string> GAZTCreateAccountSubmit(CreateGaztAccountModel SignUpModel)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -3124,7 +3124,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     if (res != null && res.Content != null)
                     {
                         FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
