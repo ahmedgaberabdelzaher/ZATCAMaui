@@ -66,7 +66,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                 viewModel.IsVisibleDropdownForRefund = false;
                 viewModel.IsFirstSubmission = true;
                 viewModel.IsMoreButtonEnabled = true;
-                viewModel.IsRefundEnableCheckforRefundMsg = false;
+                viewModel.IsRefundNoMsgDisplayed = false;
+                viewModel.IsRefundYesMsgDisplayed = false;
                 viewModel.IsSwichButtonEnable = false;
                 viewModel.IBANList = null;
                 viewModel.IBANIDNumberList = null;
@@ -4352,10 +4353,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
 
                    
                 }
-                if (viewModel.IsRefundEnableCheckforRefundMsg && viewModel.IsSwichButtonEnable == false)
-                {
-                    viewModel.IsRefundEnableCheckforRefundMsg = false;
-                }
+                
             }         
         }
         private async void BPicker1_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -4432,15 +4430,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             }
         }
 
-        private async void Switch_Toggled(object sender, ToggledEventArgs e)
+     
+
+      
+
+        private async void btnSwitch_Clicked(object sender, EventArgs e)
         {
-           
-            if ((viewModel.IsSwichButtonEnable && viewModel.IsRefundEnableCheckforRefundMsg==false))
+            if (!viewModel.IsSwichButtonEnable)
             {
                 var result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
                 if (result)
                 {
-                    //
+                    viewModel.IsSwichButtonEnable = true;
                 }
                 else
                 {
@@ -4449,10 +4450,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             }
             else
             {
-
-               
-
+                viewModel.IsSwichButtonEnable = false;
             }
+        }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
