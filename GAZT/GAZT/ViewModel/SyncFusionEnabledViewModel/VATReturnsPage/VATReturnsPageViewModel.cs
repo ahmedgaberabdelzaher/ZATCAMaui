@@ -73,6 +73,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 RaisePropertyChanged("FirstSubmissionCount");
             }
         }
+
         private int _selectedIndex = 0;
         public int SelectedIndex
         {
@@ -151,6 +152,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 RaisePropertyChanged("IsFirstSubmission");
             }
         }
+
+        private bool _isRefundNoMsgDisplayed = false;
+        public bool IsRefundNoMsgDisplayed
+        {
+            get
+            {
+                return _isRefundNoMsgDisplayed;
+            }
+            set
+            {
+                _isRefundNoMsgDisplayed = value;
+                RaisePropertyChanged("IsRefundNoMsgDisplayed");
+            }
+        }
+
+        private bool _isRefundYesMsgDisplayed = false;
+        public bool IsRefundYesMsgDisplayed
+        {
+            get
+            {
+                return _isRefundYesMsgDisplayed;
+            }
+            set
+            {
+                _isRefundYesMsgDisplayed = value;
+                RaisePropertyChanged("IsRefundYesMsgDisplayed");
+            }
+        }
+
         private bool _isSwitchToggled = false;
         public bool IsSwitchToggled
         {
@@ -1412,19 +1442,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
 
       
 
-        private bool _isRefundEnableCheckforRefundMsg =false;
-        public bool IsRefundEnableCheckforRefundMsg
-        {
-            get
-            {
-                return _isRefundEnableCheckforRefundMsg;
-            }
-            set
-            {
-                _isRefundEnableCheckforRefundMsg = value;
-                RaisePropertyChanged("IsRefundEnableCheckforRefundMsg");
-            }
-        }
+       
 
         private bool _iSSwichButtonEnable = false;
         public bool IsSwichButtonEnable
@@ -1967,20 +1985,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 }
                 else if (ButtonName == AppResources.ZVatStepFour)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
-                    await SummaryClicked();
-                    ShowMsgs();
-                    SelectedIndex = 3;
-                    PageSelectedItem = VatTabbledPageList[3];
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = false;
-                    });
-                }
-                else if (ButtonName == AppResources.Submit)
+                        try
+                        {
+                            Task.Run(() =>
+                            {
+                                IsLoading = true;
+                            });
+                            //    Device.BeginInvokeOnMainThread(() =>
+                            //{
+                            //    IsLoading = true;
+                            //});
+                            await SummaryClicked();
+                            ShowMsgs();
+                            SelectedIndex = 3;
+                            PageSelectedItem = VatTabbledPageList[3];
+                            //Device.BeginInvokeOnMainThread(() =>
+                            //{
+                            //    IsLoading = false;
+                            //});
+
+                            Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+                        }
+                        catch(Exception ex)
+                        {
+
+                        }
+                    }
+                    else if (ButtonName == AppResources.Submit)
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -2313,7 +2347,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -2521,6 +2555,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 bool value = false;
                 ClearPage();
                 DisableForRefund();
+                IsVisibleSummary = true;
+                SelectedIndex = 3;
                 //  IsFirstSubmission = true;
                 if (!string.IsNullOrEmpty(TotalpurchaseAmt) && !string.IsNullOrEmpty(TotalsalesAmt))
                 {
@@ -2599,8 +2635,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         IsVisiblechkRefundDeclaration = false;
                     }
                 }
-                IsVisibleSummary = true;
-                SelectedIndex = 3;
+                
                 if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058") && IsAmendClicked == false)
                 {
                     IsTextBoxEnableForIban = false;
@@ -2789,6 +2824,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 //    CreateDataForPost();
                 //}
                 //IsVisibleAcknowledgment = true;
+                if (IsVisibleDropdownForRefund)
+                {
+                    if (IsCheckedRefundOfSubmitForYes() && (IsRefundYesMsgDisplayed == false))
+                    {
+                        IsFirstSubmission = true;
+                    }
+                }
+                else
+                {
+                    if (IsCheckedRefundForSubmit() && (IsRefundNoMsgDisplayed == false))
+                    {
+                        IsFirstSubmission = true;
+                    }
+                }
+
+
+                    
+
                 ButtonName = AppResources.Submit;
                 if (!IsFirstSubmission)
                 {
@@ -2798,8 +2851,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     //IsVisibleAcknowledgment = true;
                     string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
                                             //   VATDeclarationData.d.StepNumberz = "04";
-                    //VATDeclarationData.d.StepNumber = "00";
-                   // VATDeclarationData.d.Fbguid = string.Empty;
+                                            //VATDeclarationData.d.StepNumber = "00";
+                                            // VATDeclarationData.d.Fbguid = string.Empty;
                     VATDeclarationData.d.StepNumberz = "04";
                     VATDeclarationData.d.UserTypz = "TP";
                     VATDeclarationData.d.Operationz = operation;
@@ -2809,7 +2862,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     //{
                     //   _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
                     //});
-                    if (res != null && res.d!=null)
+                    if (res != null && res.d != null)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -2831,16 +2884,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
                                 await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
-                               // _navigationService.GoBack();
+                                // _navigationService.GoBack();
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
                         }
@@ -2849,10 +2904,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 }
                 else
                 {
-                    IsFirstSubmission = false;
-                    VATDeclaration resNew = null;
-                    //if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
-                    //{
+                    bool IsCheckIfRefundCheckIsNotSelected=false;
+                    if (IsVisibleDropdownForRefund)
+                    {
+                        
+                        IsCheckIfRefundCheckIsNotSelected = await IsCheckedRefundGetorNotForYesMessage();
+                    }
+                    else
+                    {
+                      
+                        IsCheckIfRefundCheckIsNotSelected = await IsCheckedRefundGetorNot();
+                    }
+                  
+                    if (IsCheckIfRefundCheckIsNotSelected)
+                    {
+                        IsFirstSubmission = false;
+                        VATDeclaration resNew = null;
+                        //if (String.IsNullOrEmpty(VATDeclarationData.d.Fbnum) || App.ICRStatus == "E0045")
+                        //{
                         CreateDataForPost();
                         FirstSubmissionCount = 1;
                         string operation = "01";
@@ -2864,83 +2933,86 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         //PopToRootPage();
                         IsLoading = false;
                         resNew = await SaveReturnAndGetReturnAndSetButtons();
-                    // }
-                    if (resNew != null && resNew.d!=null)
-                    {
-                        decimal FourteenA = 0;
-                        if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
+                        // }
+                        if (resNew != null && resNew.d != null)
                         {
-                            FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
-                        }
-                        if ((IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
-                        {
-                            StringBuilder Masseges = new StringBuilder();
-                            Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
-                            Masseges.Append(Environment.NewLine);
-                            Masseges.Append(Environment.NewLine);
-                            Masseges.Append(Environment.NewLine);
-                            Masseges.Append(AppResources.CreditReturnMsg);
-                            PopUp Pop = new PopUp();
-                            Pop.IsLinkAvailable = false;
-                            Pop.IsRed = "#ff0000";
-                            Pop.IsBold = "Bold";
-                            Pop.Message = Masseges.ToString();
-                            PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
-                            SelectedIndex = 2;
-                            PageSelectedItem = VatTabbledPageList[2];
-                        }
-                        else
-                        {
-                            if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
+                            decimal FourteenA = 0;
+                            if (!string.IsNullOrEmpty(TotaldueVat) && !string.IsNullOrEmpty(Preperiodcorr))
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await ManageEnabledAsyncProperty(false);
-                                    IsMainButtonVisible = false;
-                                    IsSwichButtonEnableToTap = false;
-                                    IsEnableIBAN = false;
-                                    IsEnableCheckedRefund = false;
-                                    IsEnableIBANType = false;
-                                    IsEnableIBANIdNumber = false;
-                                    IsGetAcknowledgementClicked = true;
-                                    IsMoreButtonEnabled = false;
-                                });
-                                //ManageEnabledProperty(false);
-                                _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                                FourteenA = Convert.ToDecimal(TotaldueVat) + Convert.ToDecimal(Preperiodcorr);
                             }
-                            else
+                            if ((IsSwichButtonEnable == false && FourteenA < 5000 && Convert.ToDecimal(NetdueVat) < 0) || (IsSwichButtonEnable == true && FourteenA < 100000 && Convert.ToDecimal(CreditVat) > 0))
                             {
-                                await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                                VATReturnFormClicked();
+                                StringBuilder Masseges = new StringBuilder();
+                                Masseges.Append(AppResources.Pleasereviewthecalculationandsubmitagain);
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(Environment.NewLine);
+                                Masseges.Append(AppResources.CreditReturnMsg);
+                                PopUp Pop = new PopUp();
+                                Pop.IsLinkAvailable = false;
+                                Pop.IsRed = "#ff0000";
+                                Pop.IsBold = "Bold";
+                                Pop.Message = Masseges.ToString();
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
                                 SelectedIndex = 2;
                                 PageSelectedItem = VatTabbledPageList[2];
                             }
-                        }
-                        //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
-                        //VATReturnFormClicked();
-                        //PageSelectedItem = VatTabbledPageList[2];
-                    }
-                    else
-                    {
-                        IsFirstSubmission = true;
-                        FirstSubmissionCount = 0;
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
-                        {
-                            Device.BeginInvokeOnMainThread(async () => {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
+                            else
+                            {
+                                if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await ManageEnabledAsyncProperty(false);
+                                        IsMainButtonVisible = false;
+                                        IsSwichButtonEnableToTap = false;
+                                        IsEnableIBAN = false;
+                                        IsEnableCheckedRefund = false;
+                                        IsEnableIBANType = false;
+                                        IsEnableIBANIdNumber = false;
+                                        IsGetAcknowledgementClicked = true;
+                                        IsMoreButtonEnabled = false;
+                                    });
+                                    //ManageEnabledProperty(false);
+                                    _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                                    VATReturnFormClicked();
+                                    SelectedIndex = 2;
+                                    PageSelectedItem = VatTabbledPageList[2];
+                                }
+                            }
+                            //await _dialogService.ShowMessage(AppResources.Pleasereviewthecalculationandsubmitagain, AppResources.Information);
+                            //VATReturnFormClicked();
+                            //PageSelectedItem = VatTabbledPageList[2];
                         }
                         else
                         {
-                                Device.BeginInvokeOnMainThread(async () => {
-                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
-                                        //_navigationService.GoBack();
-                                        WebServiceManager.ErrorMessageForVAT = string.Empty;
+                            IsFirstSubmission = true;
+                            FirstSubmissionCount = 0;
+                            IsLoading = false;
+                            if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
                                 });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                    WebServiceManager.ErrorMessageForVAT = string.Empty;
+                                });
+                            }
+                            //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         }
-                      //  await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     }
                 }
                 // });
@@ -2954,6 +3026,106 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
             }
         }
+
+        public bool IsCheckedRefundForSubmit()
+        {
+            bool result = false;
+            string netVATdue = string.Empty;
+            if (!String.IsNullOrEmpty(NetdueVat))
+            {
+                netVATdue = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", "");
+            }
+
+            if (Convert.ToDouble(netVATdue) <= 0 && IsVisibleDropdownForRefund == false && IsRefundVisible == true)
+            {
+                result = true;
+            }
+            return result;
+       }
+
+        public bool IsCheckedRefundOfSubmitForYes()
+        {
+            bool result = false;
+            string netVATdue = string.Empty;
+            if (!String.IsNullOrEmpty(NetdueVat))
+            {
+                netVATdue = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", "");
+            }
+
+            if (Convert.ToDouble(netVATdue) <= 0 && IsVisibleDropdownForRefund == true && IsRefundVisible == true)
+            {
+                result = true;
+            }
+            return result;
+        }
+
+
+        public async Task<bool> IsCheckedRefundGetorNot()
+        {
+            bool returnResult = false;
+            string NetVAT = string.Empty;
+            if (!String.IsNullOrEmpty(NetdueVat))
+            {
+                NetVAT = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", "");
+            }
+            if (Convert.ToDouble(NetVAT) <= 0 && IsVisibleDropdownForRefund==false && IsRefundVisible==true)
+            {
+                var result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg, AppResources.Confirm,AppResources.ZZCancel);
+                if (result)
+                {
+                    returnResult = true;
+                    IsRefundNoMsgDisplayed = true;
+                    IsRefundYesMsgDisplayed = false;
+                }
+                else
+                {
+                    returnResult = false;
+                }
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+            }
+            else
+            {
+                returnResult = true;
+            }
+           return returnResult;
+        }
+
+        public async Task<bool> IsCheckedRefundGetorNotForYesMessage()
+        {
+            bool returnResult = false;
+            string NetVAT = string.Empty;
+            if (!String.IsNullOrEmpty(NetdueVat))
+            {
+                NetVAT = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", "");
+            }
+            if (Convert.ToDouble(NetVAT) <= 0 && IsVisibleDropdownForRefund == true && IsRefundVisible == true)
+            {
+                var result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                if (result)
+                {
+                    returnResult = true;
+                    IsRefundYesMsgDisplayed = true;
+                    IsRefundNoMsgDisplayed = false;
+                }
+                else
+                {
+                    returnResult = false;
+                }
+                Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+            }
+            else
+            {
+                returnResult = true;
+            }
+            return returnResult;
+        }
+
         //public async void ShowPdf(string pdfUrl)
         //{
         //    if (Device.RuntimePlatform == Device.iOS)
@@ -3893,91 +4065,91 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
         }
         public VATDeclarationD SetRemainingData(VATDeclarationD vATDeclarationD)
         {
-            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt) && vATDeclarationD.StdsalesAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt))
             {
                 vATDeclarationD.StdsalesAmt = vATDeclarationD.StdsalesAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAdj) && vATDeclarationD.StdsalesAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAdj))
             {
                 vATDeclarationD.StdsalesAdj = vATDeclarationD.StdsalesAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.SalesGccAmt) && vATDeclarationD.SalesGccAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.SalesGccAmt))
             {
                 vATDeclarationD.SalesGccAmt = vATDeclarationD.SalesGccAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.SalesGccAdj) && vATDeclarationD.SalesGccAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.SalesGccAdj))
             {
                 vATDeclarationD.SalesGccAdj = vATDeclarationD.SalesGccAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ZerosalesAmt) && vATDeclarationD.ZerosalesAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ZerosalesAmt))
             {
                 vATDeclarationD.ZerosalesAmt = vATDeclarationD.ZerosalesAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ZerosalesAdj) && vATDeclarationD.ZerosalesAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ZerosalesAdj))
             {
                 vATDeclarationD.ZerosalesAdj = vATDeclarationD.ZerosalesAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExportsAmt) && vATDeclarationD.ExportsAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExportsAmt))
             {
                 vATDeclarationD.ExportsAmt = vATDeclarationD.ExportsAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExportsAdj) && vATDeclarationD.ExportsAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExportsAdj))
             {
                 vATDeclarationD.ExportsAdj = vATDeclarationD.ExportsAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptsalesAmt) && vATDeclarationD.ExemptsalesAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptsalesAmt))
             {
                 vATDeclarationD.ExemptsalesAmt = vATDeclarationD.ExemptsalesAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptsalesAdj) && vATDeclarationD.ExemptsalesAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptsalesAdj))
             {
                 vATDeclarationD.ExemptsalesAdj = vATDeclarationD.ExemptsalesAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.StdpurchaseAmt) && vATDeclarationD.StdpurchaseAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdpurchaseAmt))
             {
                 vATDeclarationD.StdpurchaseAmt = vATDeclarationD.StdpurchaseAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.StdpurchaseAdj) && vATDeclarationD.StdpurchaseAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdpurchaseAdj))
             {
                 vATDeclarationD.StdpurchaseAdj = vATDeclarationD.StdpurchaseAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ImportspaidAmt) && vATDeclarationD.ImportspaidAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ImportspaidAmt))
             {
                 vATDeclarationD.ImportspaidAmt = vATDeclarationD.ImportspaidAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ImportspaidAdj) && vATDeclarationD.ImportspaidAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ImportspaidAdj))
             {
                 vATDeclarationD.ImportspaidAdj = vATDeclarationD.ImportspaidAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ImportsaccAmt) && vATDeclarationD.ImportsaccAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ImportsaccAmt))
             {
                 vATDeclarationD.ImportsaccAmt = vATDeclarationD.ImportsaccAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ImportsaccAdj) && vATDeclarationD.ImportsaccAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ImportsaccAdj))
             {
                 vATDeclarationD.ImportsaccAdj = vATDeclarationD.ImportsaccAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ZeropurchaseAmt) && vATDeclarationD.ZeropurchaseAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ZeropurchaseAmt))
             {
                 vATDeclarationD.ZeropurchaseAmt = vATDeclarationD.ZeropurchaseAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ZeropurchaseAdj) && vATDeclarationD.ZeropurchaseAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ZeropurchaseAdj))
             {
                 vATDeclarationD.ZeropurchaseAdj = vATDeclarationD.ZeropurchaseAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptpurchaseAmt) && vATDeclarationD.ExemptpurchaseAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptpurchaseAmt))
             {
                 vATDeclarationD.ExemptpurchaseAmt = vATDeclarationD.ExemptpurchaseAmt.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptpurchaseAdj) && vATDeclarationD.ExemptpurchaseAdj.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.ExemptpurchaseAdj))
             {
                 vATDeclarationD.ExemptpurchaseAdj = vATDeclarationD.ExemptpurchaseAdj.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.Preperiodcorr) && vATDeclarationD.Preperiodcorr.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.Preperiodcorr))
             {
                 vATDeclarationD.Preperiodcorr = vATDeclarationD.Preperiodcorr.Replace(",", "");
             }
-            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt) && vATDeclarationD.StdsalesAmt.Contains(","))
+            if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt))
             {
                 vATDeclarationD.StdsalesAmt = vATDeclarationD.StdsalesAmt.Replace(",", "");
             }
@@ -3987,47 +4159,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
         {
             try
             {
-                if (!String.IsNullOrEmpty(TotalsalesAmt) && TotalsalesAmt.Contains(","))
+                if (!String.IsNullOrEmpty(TotalsalesAmt))
                 {
                     vATDeclarationD.TotalsalesAmt = !TotalsalesAmt.Contains(",") ? TotalsalesAmt : TotalsalesAmt.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(TotalsalesAdj) && TotalsalesAdj.Contains(","))
+                if (!String.IsNullOrEmpty(TotalsalesAdj))
                 {
                     vATDeclarationD.TotalsalesAdj = !TotalsalesAdj.Contains(",") ? TotalsalesAdj : TotalsalesAdj.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(TotalpurchaseAmt) && TotalpurchaseAmt.Contains(","))
+                if (!String.IsNullOrEmpty(TotalpurchaseAmt))
                 {
                     vATDeclarationD.TotalpurchaseAmt = !TotalpurchaseAmt.Contains(",") ? TotalpurchaseAmt : TotalpurchaseAmt.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(TotalpurchaseAdj) && TotalpurchaseAdj.Contains(","))
+                if (!String.IsNullOrEmpty(TotalpurchaseAdj))
                 {
                     vATDeclarationD.TotalpurchaseAdj = !TotalpurchaseAdj.Contains(",") ? TotalpurchaseAdj : TotalpurchaseAdj.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(StdsalesVat) && StdsalesVat.Contains(","))
+                if (!String.IsNullOrEmpty(StdsalesVat))
                 {
                     vATDeclarationD.StdsalesVat = !StdsalesVat.Contains(",") ? StdsalesVat : StdsalesVat.Replace(",", ""); 
                 }
-                if (!String.IsNullOrEmpty(TotalsalesVat) && TotalsalesVat.Contains(","))
+                if (!String.IsNullOrEmpty(TotalsalesVat))
                 {
                     vATDeclarationD.TotalsalesVat = !TotalsalesVat.Contains(",") ? TotalsalesVat : TotalsalesVat.Replace(",", ""); 
                 }
-                if (!String.IsNullOrEmpty(StdpurchasesVat) && StdpurchasesVat.Contains(","))
+                if (!String.IsNullOrEmpty(StdpurchasesVat))
                 {
                     vATDeclarationD.StdpurchasesVat = !StdpurchasesVat.Contains(",") ? StdpurchasesVat : StdpurchasesVat.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(ImportspaidVat) && ImportspaidVat.Contains(","))
+                if (!String.IsNullOrEmpty(ImportspaidVat))
                 {
                     vATDeclarationD.ImportspaidVat = !ImportspaidVat.Contains(",") ? ImportspaidVat : ImportspaidVat.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(ImportsaccVat) && ImportsaccVat.Contains(","))
+                if (!String.IsNullOrEmpty(ImportsaccVat))
                 {
                     vATDeclarationD.ImportsaccVat = !ImportsaccVat.Contains(",") ? ImportsaccVat : ImportsaccVat.Replace(",", "");
                 }
-                if (!String.IsNullOrEmpty(TotalpurchaseVat) && TotalpurchaseVat.Contains(","))
+                if (!String.IsNullOrEmpty(TotalpurchaseVat))
                 {
                     vATDeclarationD.TotalpurchaseVat = !TotalpurchaseVat.Contains(",") ? TotalpurchaseVat : TotalpurchaseVat.Replace(",", ""); 
                 }
-                if (!String.IsNullOrEmpty(TotaldueVat) && TotaldueVat.Contains(","))
+                if (!String.IsNullOrEmpty(TotaldueVat))
                 {
                     vATDeclarationD.TotaldueVat = !TotaldueVat.Contains(",") ? TotaldueVat : TotaldueVat.Replace(",", ""); 
                 }
@@ -4039,7 +4211,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 {
                     vATDeclarationD.CreditVat = !CreditVat.Contains(",") ? CreditVat : CreditVat.Replace(",", ""); 
                 }
-                if (!String.IsNullOrEmpty(NetdueVat) && NetdueVat.Contains(","))
+                if (!String.IsNullOrEmpty(NetdueVat))
                 {
                     vATDeclarationD.NetdueVat = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", ""); 
                 }
@@ -4132,14 +4304,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             }
             else if (VATDeclarationData.d.StepNumber == "04" || VATDeclarationData.d.StepNumber == "4")
             {
-                if (VATDeclarationData.d.RefundFg == "1")
-                {
-                    IsRefundEnableCheckforRefundMsg = true;
-                }
-                else
-                {
-                    IsRefundEnableCheckforRefundMsg = false;
-                }
+               
 
 
                 //SummaryClicked();

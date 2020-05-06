@@ -7657,6 +7657,27 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, if you did not submit the refund request for the return’s credit balance you will not be able to refund it again. You can request to refund your all total credit balance from the Ad-hoc Refund Request..
+        /// </summary>
+        public static string ZZZRefundNoMsg {
+            get {
+                return ResourceManager.GetString("ZZZRefundNoMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
+        ///1. Trail balance for the return period 
+        ///2. Sales list subject to VAT (0%-5%-Exempt) 
+        ///3. Purchased list subject to VAT (5%, reverse charge)&quot;.
+        /// </summary>
+        public static string ZZZRefundYesMsg {
+            get {
+                return ResourceManager.GetString("ZZZRefundYesMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required *.
         /// </summary>
         public static string ZZZRequired {
