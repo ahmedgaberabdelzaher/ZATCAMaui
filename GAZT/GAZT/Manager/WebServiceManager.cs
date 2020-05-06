@@ -1369,8 +1369,7 @@ namespace GAZT.Manager
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
                             {
-                                App.IsSessionExpired = true;
-                                return null;
+                                throw new GAZTSessionExpiredException();
                             }
                             App.Token = NewToken;
                         }
@@ -1379,14 +1378,30 @@ namespace GAZT.Manager
                     }
                     return vATLookUp;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    throw new InternetException(AppResources.ZZSomethingwentwrong);
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         //done internet exception handling
@@ -1421,8 +1436,9 @@ namespace GAZT.Manager
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")) || (0 == String.Compare(NewToken, "")))
                             {
                                 App.IsSessionExpired = true;
-                                return null;
+                                throw new GAZTSessionExpiredException();
                             }
+
                             App.Token = NewToken;
                         }
                         String VATReturn = GAZTVATReturnStatus.Content.ReadAsStringAsync().Result;

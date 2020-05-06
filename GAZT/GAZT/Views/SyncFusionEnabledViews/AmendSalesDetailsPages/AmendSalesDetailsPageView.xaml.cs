@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
+using GAZT.Helper;
 using GAZT.Manager;
 using System;
 using System.IO;
@@ -24,6 +25,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         {
             InitializeComponent();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            double ht = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = (ht * 35) / 100;
+            Attachmentlist.HeightRequest = ht;
             try
             {
                 viewModel = App.Locator.AmendSalesDetailsPageView;
