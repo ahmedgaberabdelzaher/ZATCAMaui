@@ -68,7 +68,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
             ZakatReturnDetailsPageViewModel.IsAmendButtonClicked = false;
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {
-                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.OKText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
                 if (result)
                 {
                     await viewModel.OnReleaseOrBillsClicked();

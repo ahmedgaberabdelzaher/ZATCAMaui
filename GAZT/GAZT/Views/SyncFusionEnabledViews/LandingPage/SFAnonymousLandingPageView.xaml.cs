@@ -101,7 +101,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 {
                     App.IsLogOut = false;
                     var existingPages = Navigation.NavigationStack.ToList();
-                    bool IsAnonymousTwo = false;
+                
                     foreach (var page in existingPages)
                     {
                         if (page.GetType().Name != App.SFAnonymousLandingPageView)

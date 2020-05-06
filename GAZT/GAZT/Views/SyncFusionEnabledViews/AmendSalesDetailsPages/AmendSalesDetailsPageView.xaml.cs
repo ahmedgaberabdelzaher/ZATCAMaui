@@ -113,7 +113,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if(estimateZakatAttachment != null) 
             {
-                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.OKText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                 if (result)
                 {
                  await   viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
