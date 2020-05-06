@@ -33,6 +33,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
+                Changecornerradious();
                 LoadDuesData();
                 LoadData();
                 //  ParentContainer.RaiseChild(BusyIndicator);
@@ -107,12 +108,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 base.OnAppearing();
                 App.IsComingFromSleepMode = false;
                 SetLTR();
+                Changecornerradious();
                 viewModel.TaxPayerProfile = App.TP;
-                //await viewModel.LoadDashboardData();
-                //viewModel.PopulateReturnsInformation();
-                //viewModel.PopulateBillsInformation();
-                //viewModel.PopulateBillsAndReturnsSchedule();
-                //viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch(Exception ex)
             {
@@ -468,5 +465,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             });
         }
         protected override bool OnBackButtonPressed() => true;
+
+        private void Changecornerradious()
+        {
+            if (App.IsArabic)
+            {
+                border.CornerRadius = new Thickness(0, 0, 0, 40);
+            }
+            else
+            {
+                border.CornerRadius = new Thickness(0, 0, 40, 0);
+            }
+        }
+
     }
 }
