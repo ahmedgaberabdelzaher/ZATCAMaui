@@ -77,7 +77,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdate"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdate" FlowDirection="LeftToRight" HorizontalOptions="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdate" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                                 <!--<local1:GAZTBorderlessEntry FlowDirection="LeftToRight" x:Name="entryLastUpdate" IsReadOnly="True"  HorizontalOptions="Start"  Text="{Binding LastUpdate}"   TextColor="#7D858D"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">-->
                             </local1:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>

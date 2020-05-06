@@ -32,10 +32,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             InitializeComponent();
             SetLTR();
+            double ht =  DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = (ht * 45)/100;
+            AttachmentList.HeightRequest = ht;
             ChangeAeroIcon();
+            List.ItemTapped += (object sender, ItemTappedEventArgs e) =>
+            {
+                // don't do anything if we just de-selected the row.
+                if (e.Item == null) return;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            };
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             try
             {
+
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
                 viewModel.VatAttachmentsList = null;
@@ -231,7 +241,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
             Image arrowImage = sender as Image;
-            Attachment attachment = (Attachment)arrowImage.BindingContext;
+            VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
             //attachment.DocUrl;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
@@ -278,7 +288,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
-            Attachment attachment = (Attachment)Document.SelectedItem;
+            VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
             if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
@@ -295,7 +305,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
         }
-        public async Task email(string doguid, Attachment attachment)
+        public async Task email(string doguid, VATAttachment attachment)
         {
             await Task.Run(async () =>
             {
