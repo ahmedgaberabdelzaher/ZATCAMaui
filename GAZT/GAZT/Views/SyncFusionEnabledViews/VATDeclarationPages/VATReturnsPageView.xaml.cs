@@ -2075,6 +2075,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                     {
                         isArabicChecked = isCheckArabicWithMinus(senderObj.Text);
                     }
+                    else
+                    {
+                        viewModel.IsSwitchToggled = false;
+                    }
                     if (isArabicChecked)
                     {
                         CheckMandetoryFields();
