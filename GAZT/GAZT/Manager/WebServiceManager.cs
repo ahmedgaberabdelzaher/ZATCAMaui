@@ -2732,9 +2732,25 @@ namespace GAZT.Manager
                     }
                     return ReturnFormBundleList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (JsonReaderException ex)
                 {
-                    return null;
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
