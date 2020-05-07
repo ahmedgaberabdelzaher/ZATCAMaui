@@ -61,6 +61,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
                 RaisePropertyChanged("Parameter");
             }
         }
+
+        private Thickness _navigationCornerRadius;
+        public Thickness NavigationCornerRadius
+        {
+            get
+            {
+                return _navigationCornerRadius;
+            }
+            set
+            {
+                _navigationCornerRadius = value;
+                RaisePropertyChanged("NavigationCornerRadius");
+            }
+        }
+
+        
         private string _captcha;
         public string Captcha
         {
