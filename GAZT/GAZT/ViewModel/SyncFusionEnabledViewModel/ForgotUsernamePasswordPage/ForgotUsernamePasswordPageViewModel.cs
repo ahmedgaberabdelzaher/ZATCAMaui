@@ -23,11 +23,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         public ICommand OnSubmitClicked { get; set; }
         public ICommand OnCaptchaRegenerateClicked { get; set; }
         public ICommand OnChangePasswordSubmitClicked { get; set; }
-        public ICommand OnResendOTPClicked { get; set; }
-        public ICommand OnValidateOTPClicked { get; set; }
+        public Command OnResendOTPClicked { get; set; }
+        public Command OnValidateOTPClicked { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         public int currentAttempts = 0;
+        int TotalSec;
+        public int numberOfSeconds = 120;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
         public bool StopTimer = true;
         #endregion
@@ -582,6 +584,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             set
             {
                 _isResendOTPEnabled = value;
+                OnResendOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
@@ -647,6 +650,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             set
             {
                 _isVerifyOTPEnabled = value;
+                OnValidateOTPClicked.ChangeCanExecute();
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
@@ -766,14 +770,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 {
                 }
             });
-            OnResendOTPClicked = new Command(async () =>
-            {
-                await SendOTPToRegisterMobileNumber();
-            });
-            OnValidateOTPClicked = new Command(async () =>
-            {
-                await ValidateOTP();
-            });
+            //OnResendOTPClicked = new Command(async () =>
+            //{
+            //    await SendOTPToRegisterMobileNumber();
+            //});
+            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
+            //OnValidateOTPClicked = new Command(async () =>
+            //{
+            //    await ValidateOTP();
+            //});
+            OnValidateOTPClicked = new Command(ExecuteSubmitClickCommand, CanExecuteSubmitClickCommand);
             OnLoginPageLinkClicked = new Command(() =>
            {
                _navigationService.GoBack();
@@ -781,6 +787,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         }
         #endregion Constructor
         #region Method
+        bool CanExecuteSubmitClickCommand(object arg)
+        {
+            return _isVerifyOTPEnabled;
+        }
+        public async void ExecuteSubmitClickCommand(object obj)
+        {
+            await ValidateOTP();
+        }
+        bool CanExecuteResendOTPClickCommand(object arg)
+        {
+            return _isResendOTPEnabled;
+        }
+        public async void ExecuteResendOTPClickCommand(object obj)
+        {
+            await SendOTPToRegisterMobileNumber();
+        }
         public async Task OnPageLoad()
         {
             IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
@@ -982,7 +1004,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 IsOTPEntryEnable = true;
                                 string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
                                 MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                                TimerStart();
+                                numberOfSeconds = 120;
+                                TimerStart(numberOfSeconds);
                             });
                         }
                         else
@@ -1413,13 +1436,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             }
             return tinId;
         }
-        private void TimerStart()
+
+        public void TimerStart(int Seconds)
         {
+            IsVerifyOTPEnabled = true;
             CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
-            int TotalSec = 120;
+            TotalSec = Seconds;
             CancellationTokenSource CTS = _CancellationTokenSource;
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
+                if (App.IsComingFromSleepMode)
+                {
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                        // StopTimer = true;
+                    }
+                    else
+                    {
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        App.IsComingFromSleepMode = false;
+                        StopTimer = true;
+                        // TimerStart(TotalSec);
+                    }
+                }
                 if (CTS.IsCancellationRequested)
                 {
                     return false;
@@ -1428,22 +1469,69 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 {
                     if (TotalSec == 0)
                     {
+                        IsVerifyOTPEnabled = false;
                         return false;
                     }
                     else if (!StopTimer)
                     {
+                        IsVerifyOTPEnabled = false;
                         return false;
                     }
+                    else
+                    {
+                    }
+                    if (TotalSec < 0)
+                    {
+                        OTPValidDuration = " 0:00";
+                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        IsResendOTPEnabled = true;
+                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        IsVerifyOTPEnabled = false;
+                        IsOTPEntryEnable = false;
+                        return false;
+                    }
+                    TotalSec = TotalSec - 1;
+                    numberOfSeconds = TotalSec;
+                    TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        TotalSec = TotalSec - 1;
-                        TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
                         OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     });
                     return true;
                 }
             });
         }
+        //private void TimerStart()
+        //{
+        //    CancellationTokenSource _CancellationTokenSource = new CancellationTokenSource();
+        //    int TotalSec = 120;
+        //    CancellationTokenSource CTS = _CancellationTokenSource;
+        //    Device.StartTimer(new TimeSpan(0, 0, 1), () =>
+        //    {
+        //        if (CTS.IsCancellationRequested)
+        //        {
+        //            return false;
+        //        }
+        //        else
+        //        {
+        //            if (TotalSec == 0)
+        //            {
+        //                return false;
+        //            }
+        //            else if (!StopTimer)
+        //            {
+        //                return false;
+        //            }
+        //            Device.BeginInvokeOnMainThread(() =>
+        //            {
+        //                TotalSec = TotalSec - 1;
+        //                TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
+        //                OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+        //            });
+        //            return true;
+        //        }
+        //    });
+        //}
         private bool IsMandatoryFieldEntered()
         {
             bool IsMandatoryFieldEntered = false;
