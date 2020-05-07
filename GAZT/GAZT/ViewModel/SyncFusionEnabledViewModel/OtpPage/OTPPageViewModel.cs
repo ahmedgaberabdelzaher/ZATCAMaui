@@ -882,8 +882,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             catch (Exception ex)
             {
             }
-            numberOfSeconds = 120;
-            TimerStart(numberOfSeconds);
+            //numberOfSeconds = 120;
+            //TimerStart(numberOfSeconds);
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {

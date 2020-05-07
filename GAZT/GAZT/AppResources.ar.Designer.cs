@@ -5232,6 +5232,18 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZZRefundNoMsg {
+            get {
+                return ResourceManager.GetString("ZZZRefundNoMsg", resourceCulture);
+            }
+        }
+        
+        public static string ZZZRefundYesMsg {
+            get {
+                return ResourceManager.GetString("ZZZRefundYesMsg", resourceCulture);
+            }
+        }
+        
         public static string ZZPleaseselecttermsandconditions {
             get {
                 return ResourceManager.GetString("ZZPleaseselecttermsandconditions", resourceCulture);

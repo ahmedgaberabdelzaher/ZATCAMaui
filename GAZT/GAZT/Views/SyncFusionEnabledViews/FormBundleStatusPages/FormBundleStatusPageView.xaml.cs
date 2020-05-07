@@ -147,40 +147,69 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus
         }
         private void CPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {//SelectedFormBindleFbnum
-            FormBundleApplicationNumberModelResult selectedfbnum = (FormBundleApplicationNumberModelResult)e.NewValue;
-            CPicker.SelectedItem = selectedfbnum;//Fbnum
-            viewModel.SelectedFormBindleFbnum = selectedfbnum;
-            viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
-            viewModel.TxtFBnum = selectedfbnum.Fbnum;
-            //var item = sender as Picker;
-            //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
-            viewModel.populate();
-        }
+            try
+            {
+
+                FormBundleApplicationNumberModelResult selectedfbnum = (FormBundleApplicationNumberModelResult)e.NewValue;
+                CPicker.SelectedItem = selectedfbnum;//Fbnum
+                viewModel.SelectedFormBindleFbnum = selectedfbnum;
+                viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
+                viewModel.TxtFBnum = selectedfbnum.Fbnum;
+                //var item = sender as Picker;
+                //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
+                viewModel.populate();
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            }
         private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
+        {try
+            { 
             DDlIDType.SelectedItem = viewModel.SelectedFormBindleFbtypCancel;
             viewModel.SelectedFormBindleFbtyp = viewModel.SelectedFormBindleFbtypCancel;
             if (viewModel.SelectedFormBindleFbtypCancel == null)
             {
                 viewModel.TxtFBtype = string.Empty;
             }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {//SelectedFormBindleFbtyp
-            FormBundleResult selectedfbtyp = (FormBundleResult)e.NewValue;
-            DDlIDType.SelectedItem = selectedfbtyp;
-             viewModel.SelectedFormBindleFbnumPrev=null;
-            viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
-            viewModel.TxtFBtype = selectedfbtyp.Txt50;
+            try
+            {
+                FormBundleResult selectedfbtyp = (FormBundleResult)e.NewValue;
+                DDlIDType.SelectedItem = selectedfbtyp;
+                viewModel.SelectedFormBindleFbnumPrev = null;
+                viewModel.SelectedFormBindleFbtyp = selectedfbtyp;
+                viewModel.TxtFBtype = selectedfbtyp.Txt50;
+
+            }
+            catch (Exception ex)
+            { 
+            
+            }
         }
         private void CPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.SelectedFormBindleFbnum = viewModel.SelectedFormBindleFbnumPrev;
-            CPicker.SelectedItem = viewModel.SelectedFormBindleFbnumPrev;
-            if(viewModel.SelectedFormBindleFbnumPrev == null)
+            try
             {
-                viewModel.TxtFBnum = string.Empty;
+                viewModel.SelectedFormBindleFbnum = viewModel.SelectedFormBindleFbnumPrev;
+                CPicker.SelectedItem = viewModel.SelectedFormBindleFbnumPrev;
+                if (viewModel.SelectedFormBindleFbnumPrev == null)
+                {
+                    viewModel.TxtFBnum = string.Empty;
+                }
             }
-        }
+            catch (Exception ex)
+            { 
+            
+            }
+}
     }
 }

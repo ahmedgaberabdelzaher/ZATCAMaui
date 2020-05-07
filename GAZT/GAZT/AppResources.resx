@@ -3119,4 +3119,8 @@ Should we require further information, we would be in contact.</value>
 3. Purchased list subject to VAT (5%, reverse charge)"</value>
     <comment>VAT Declaration</comment>
   </data>
+  <data name="InvalidEmailFormat" xml:space="preserve">
+    <value>Invalid Email Format</value>
+    <comment>Tax Evasion</comment>
+  </data>
 </root>
