@@ -85,9 +85,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             {
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Top = 20;
-                Padding = safeInsets;
+                //var safeInsets = On<iOS>().SafeAreaInsets();
+                //safeInsets.Top = 20;
+                //Padding = safeInsets;
 
                 if (App.IsSessionExpired)
                 {
