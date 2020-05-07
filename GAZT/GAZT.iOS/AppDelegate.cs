@@ -68,13 +68,7 @@ namespace GAZT.iOS
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
-            UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
-            if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
-            {
-                statusBar.BackgroundColor = UIColor.Clear;// Color.FromHex("#7f6550").ToUIColor(); // change to your desired color 
-                                                          // statusBar.TintColor = UIColor.Yellow;
 
-            }
             LoadApplication(iosapp);
             //Code for PUSH notification
             //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
