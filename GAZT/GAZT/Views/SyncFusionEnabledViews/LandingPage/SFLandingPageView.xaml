@@ -238,7 +238,7 @@
                                                         </Image>
                                                         <!--<Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
                                                     </Image>-->
-                                                        <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center" HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                                        <local1:CustomLabel TextColor="#5d6770"  LineHeight="{OnPlatform Android=1.25, Default=-1}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Start" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                             <Label.FormattedText >
                                                                 <FormattedString>
                                                                     <Span  Text="{Binding BillTypeName}" />
