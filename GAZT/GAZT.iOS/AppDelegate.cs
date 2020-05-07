@@ -44,7 +44,7 @@ namespace GAZT.iOS
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init();
             IQKeyboardManager.SharedManager.Enable = true;
-            UINavigationBar.Appearance.TintColor = UIColor.Red;
+          //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
             App iosapp = new App();
             App.appObj = iosapp;
@@ -68,6 +68,7 @@ namespace GAZT.iOS
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
+
             LoadApplication(iosapp);
             //Code for PUSH notification
             //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;

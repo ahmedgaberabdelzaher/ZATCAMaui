@@ -216,7 +216,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.FDirection = FlowDirection.RightToLeft;
-                viewModel.IsArabic = true;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    viewModel.IsArabic = false;
+                }
+                else
+                {
+                    viewModel.IsArabic = true;
+                }
             }
         }
         protected override void OnAppearing()

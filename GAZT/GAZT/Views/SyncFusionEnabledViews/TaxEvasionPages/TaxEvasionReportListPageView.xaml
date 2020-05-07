@@ -139,7 +139,7 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span  Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
+                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportCompanyName}"></Span>
                                                                         <Span  Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>

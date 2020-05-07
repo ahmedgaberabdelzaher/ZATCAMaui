@@ -280,6 +280,7 @@
                                                                      Grid.Row="5"
                                                               Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
+
                                                     <local1:CustomLabel
                                     FontFamily="{StaticResource SSTArabicMedium}"
                                                         LineBreakMode="CharacterWrap"

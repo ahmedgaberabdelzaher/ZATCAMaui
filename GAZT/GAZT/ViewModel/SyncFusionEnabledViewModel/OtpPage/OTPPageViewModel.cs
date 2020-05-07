@@ -430,16 +430,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             {
                 if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
                 {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
+
                     string tesEnteredotp = EnteredOTP;
                     if (TesGeneratedOtpCode == tesEnteredotp)
                     {
-                        _navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
+                        await navigateToListPage();
+                        //_navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
                     }
                     else
                     {
                         EnteredOTP = string.Empty;
                         _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.Information);
                     }
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
                 }
                 else
                 {
@@ -459,6 +470,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                 // FrmColour = "#B1B1B1";
             }
         }
+        public async Task navigateToListPage()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            _navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
+        }
+
+
         public async void ExecuteResendOTPClickCommand(object obj)
         {
             if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
@@ -1118,3 +1140,4 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
         #endregion
     }
 }
+ 
