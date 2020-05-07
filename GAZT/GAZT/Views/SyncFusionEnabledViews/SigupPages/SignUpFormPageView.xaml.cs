@@ -1022,9 +1022,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 {
                                     SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
                                     SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
-                                    SiguupModel.ACity = viewModel.SelectCityList.CityName;
-                                    SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
-                                    SiguupModel.ACommId = "";
+                                    try
+                                    {
+                                        if (viewModel.SelectCityList!= null && viewModel.SelectCityList.CityName != null)
+                                        {
+                                            SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                                            SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                                        }
+                                        else
+                                        {
+                                            SiguupModel.ACity = string.Empty;
+                                            SiguupModel.ACityCode = string.Empty;
+
+                                        }
+
+
+
+
+
+                                        SiguupModel.ACommId = "";
+                                    }
+                                    catch (Exception ex)
+                                    { 
+                                    }
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
