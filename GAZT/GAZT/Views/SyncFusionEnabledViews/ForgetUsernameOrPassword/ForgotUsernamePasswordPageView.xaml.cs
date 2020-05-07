@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Resources;
 using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
@@ -45,6 +46,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                 catch (Exception ex)
                 {
                 }
+
+                viewModel.IsLoading = false;
+                viewModel.NewPassword = "";
+                viewModel.ConfirmPassword = "";
+                viewModel.EnteredOTP = "";
+                viewModel.IDNumber = "";
+                viewModel.NewPasswordLayoutVisibility = false;
+                viewModel.OTPLayoutVisibility = false;
+                viewModel.NavigateToLoginLinkVisibility = false;
+                viewModel.EnteredCaptchaValue = "";
+                viewModel.IsVisibleTinIds = false;
+                viewModel.IsIDTypeVisible = false;
+                viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                viewModel.IsResendOTPEnabled = false;
+                viewModel.IsOTPEntryEnable = true;
+                viewModel.StopTimer = true;
+                viewModel.ForgotPasswordUserNameChangedMessage = "";
             }
             catch(Exception ex)
             {
@@ -143,27 +161,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             try
             {
                 base.OnAppearing();
-                viewModel.IsLoading = false;
-                viewModel.NewPassword = "";
-                viewModel.ConfirmPassword = "";
-                viewModel.EnteredOTP = "";
-                viewModel.IDNumber = "";
-                viewModel.NewPasswordLayoutVisibility = false;
-                viewModel.OTPLayoutVisibility = false;
-                viewModel.NavigateToLoginLinkVisibility = false;
-                viewModel.EnteredCaptchaValue = "";
-                viewModel.IsVisibleTinIds = false;
-                viewModel.IsIDTypeVisible = false;
-                viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
-                viewModel.IsResendOTPEnabled = false;
-                viewModel.IsOTPEntryEnable = true;
-                viewModel.StopTimer = true;
-                viewModel.ForgotPasswordUserNameChangedMessage = "";
+                if (viewModel.OTPLayoutVisibility == true)
+                {
+                    viewModel.TimerStart(viewModel.numberOfSeconds);
+                    viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                    viewModel.IsResendOTPEnabled = false;
+                    viewModel.IsOTPEntryEnable = true;
+                    viewModel.currentAttempts = 0;
+                    await Task.Run(() =>
+                    {
+                        Task.Delay(100);
+                    });
+                    EnteredOTP.Focus();
+                }
             }
             catch(Exception ex)
             {
@@ -183,6 +198,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
             base.OnDisappearing();
             viewModel.StopTimer = false;
         }
+   
         private void btnTxtSelectedUsernameAndPassword_Clicked(object sender, EventArgs e)
         {
             SelectPasswordUserNamePicker.IsOpen = true;
