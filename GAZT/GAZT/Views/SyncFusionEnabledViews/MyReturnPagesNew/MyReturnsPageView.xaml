@@ -105,11 +105,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView   HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -169,13 +169,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -188,6 +190,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -196,6 +199,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -204,6 +208,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -211,7 +216,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -285,11 +290,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -349,13 +354,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -368,6 +375,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -376,6 +384,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -384,6 +393,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -391,7 +401,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -465,11 +475,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -529,13 +539,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -548,6 +560,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -556,6 +569,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -564,6 +578,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -571,7 +586,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -645,11 +660,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#006450" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -709,13 +724,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -728,6 +745,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -736,6 +754,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -744,6 +763,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -751,7 +771,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -837,11 +857,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -901,13 +921,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -920,6 +942,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -928,6 +951,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -936,6 +960,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -943,7 +968,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1017,11 +1042,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1081,13 +1106,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -1100,6 +1127,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -1108,6 +1136,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -1116,6 +1145,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -1123,7 +1153,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1197,11 +1227,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1261,13 +1291,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -1280,6 +1312,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -1288,6 +1321,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -1296,6 +1330,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -1303,7 +1338,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1377,11 +1412,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1441,13 +1476,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -1460,6 +1497,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -1468,6 +1506,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -1476,6 +1515,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -1483,7 +1523,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1569,11 +1609,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1633,13 +1673,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -1652,6 +1694,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -1660,6 +1703,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -1668,6 +1712,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -1675,7 +1720,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1749,11 +1794,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1813,13 +1858,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -1832,6 +1879,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -1840,6 +1888,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -1848,6 +1897,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -1855,7 +1905,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -1929,11 +1979,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -1993,13 +2043,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -2012,6 +2064,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -2020,6 +2073,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -2028,6 +2082,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -2035,7 +2090,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
@@ -2109,11 +2164,11 @@
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
-                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                                                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,10,0,10" Padding="10" >
                                                                     <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                                         <Grid.ColumnDefinitions>
-                                                                            <ColumnDefinition Width="90*" />
-                                                                            <ColumnDefinition Width="10*" />
+                                                                            <ColumnDefinition Width="100*" />
+
                                                                         </Grid.ColumnDefinitions>
                                                                         <Grid.RowDefinitions>
                                                                             <RowDefinition Height="Auto" />
@@ -2173,13 +2228,15 @@
                                                                                 </FormattedString>
                                                                             </Label.FormattedText>
                                                                         </Label>
-                                                                        <StackLayout  Margin="0" 
-                                                                     Grid.Row="4"
+                                                                        <StackLayout  Margin="0"
+                                                                     Grid.Row="4" Grid.ColumnSpan="2"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
                                     FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                HorizontalOptions="Start" HorizontalTextAlignment="Start" LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
+
                                                           >
                                                                                 <Label.FormattedText>
                                                                                     <FormattedString>
@@ -2192,6 +2249,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
+                                                                                HorizontalOptions="Start"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text="{Binding FormatedAbrzu}"
@@ -2200,6 +2258,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="0,0,0,0"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
                                                  Text=" - "
@@ -2208,6 +2267,7 @@
                                                                             <Label
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
+                                                                                 HorizontalOptions="Start"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
@@ -2215,7 +2275,7 @@
                                                           >
                                                                             </Label>
                                                                         </StackLayout>
-                                                                        <StackLayout  Margin="0" 
+                                                                        <StackLayout  Margin="0"
                                                                      Grid.Row="5"
                                    Grid.Column="0" Orientation="Horizontal">
                                                                             <Label
