@@ -142,7 +142,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                     this.FlowDirection = FlowDirection.RightToLeft;
                    // calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
                   //  calendar.FlowDirection = FlowDirection.RightToLeft;
-                    CalendarResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+                    CalendarResourceManager.Manager = new ResourceManager("EGAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
                 else
                 {
