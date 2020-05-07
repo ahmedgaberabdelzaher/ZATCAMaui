@@ -31,7 +31,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             try
             {
                 InitializeComponent();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+               // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 Changecornerradious();
                 LoadDuesData();
@@ -142,7 +142,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                     this.FlowDirection = FlowDirection.RightToLeft;
                    // calendar.Locale = new System.Globalization.CultureInfo("ar-AE");
                   //  calendar.FlowDirection = FlowDirection.RightToLeft;
-                    CalendarResourceManager.Manager = new ResourceManager("GAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+                    CalendarResourceManager.Manager = new ResourceManager("EGAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
                 else
                 {
