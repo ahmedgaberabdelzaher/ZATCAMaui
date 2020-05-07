@@ -457,7 +457,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
+                    popUp.Message = AppResources.InvalidEmailFormat;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {
@@ -503,7 +503,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;
+                    popUp.Message = AppResources.InvalidEmailFormat;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {

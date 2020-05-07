@@ -858,6 +858,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Email Format.
+        /// </summary>
+        public static string InvalidEmailFormat {
+            get {
+                return ResourceManager.GetString("InvalidEmailFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entered code is incorrect.
         /// </summary>
         public static string InvalidOTP {

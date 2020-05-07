@@ -175,7 +175,7 @@
     <value>التاريخ المتوفر للهيئة</value>
   </data>
   <data name="Date" xml:space="preserve">
-    <value>محرم</value>
+    <value>التاريخ</value>
   </data>
   <data name="DateHijri" xml:space="preserve">
     <value>التاريخ بالهجري</value>
@@ -2587,15 +2587,15 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityEmail" xml:space="preserve">
-    <value>البريد اإللكتروني للمنشأة</value>
+    <value>البريد الإلكتروني للمنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityMobNo" xml:space="preserve">
-    <value>هاتف الجوال للمنشأة</value>
+    <value>رقم جوال المنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityOwnerName" xml:space="preserve">
-    <value>أسم مالك المنشأة</value>
+    <value>اسم صاحب المنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityType" xml:space="preserve">
@@ -3111,5 +3111,12 @@
   <data name="ZZPleaseselecttermsandconditions" xml:space="preserve">
     <value>الموافقة على الشروط والأحكام</value>
     <comment>Signup</comment>
+  </data>
+  <data name="InvalidEmailFormat" xml:space="preserve">
+    <value>البريد الإلكتروني غير صحيح</value>
+    <comment>Tax Evasion</comment>
+  </data>
+  <data name="ZTERReportDetailID" xml:space="preserve">
+    <value>الهوية</value>
   </data>
 </root>
