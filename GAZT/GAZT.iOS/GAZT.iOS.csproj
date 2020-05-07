@@ -1143,4 +1143,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Overdue_Returns_Commitments%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_Dashboard%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_Dashboard%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_logo_Dashboard.png" />
+  </ItemGroup>
 </Project>
