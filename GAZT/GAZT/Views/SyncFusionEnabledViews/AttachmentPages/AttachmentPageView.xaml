@@ -28,8 +28,8 @@
                 <ScrollView  x:Name="ScrollViewContainer"  HorizontalOptions="FillAndExpand" VerticalOptions="Fill" BackgroundColor="White" >
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0">
  <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="40*"/>
+                            <RowDefinition Height="50*"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>

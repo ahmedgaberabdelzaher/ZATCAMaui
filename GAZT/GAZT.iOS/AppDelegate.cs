@@ -16,6 +16,8 @@ using System.Net;
 using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
+using Xamarin.Forms;
+
 namespace GAZT.iOS
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -68,6 +70,12 @@ namespace GAZT.iOS
             Distribute.DontCheckForUpdatesInDebug();
             LoadApplication(iosapp);
             //Code for PUSH notification
+            //UIView statusBar = UIApplication.SharedApplication.ValueForKey(new NSString("statusBar")) as UIView;
+            //if (statusBar != null && statusBar.RespondsToSelector(new ObjCRuntime.Selector("setBackgroundColor:")))
+            //{
+            //    statusBar.BackgroundColor = UIColor.Green;// //Color.FromHex("#7f6550").ToUIColor(); // change to your desired color 
+            //}
+
             if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
                 var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, new NSSet());

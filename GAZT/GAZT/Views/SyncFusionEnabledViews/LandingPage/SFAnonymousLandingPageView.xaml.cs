@@ -30,7 +30,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 InitializeComponent();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+               On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -85,9 +85,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             {
                 base.OnAppearing();
 
-                var safeInsets = On<iOS>().SafeAreaInsets();
-                safeInsets.Top = 20;
-                Padding = safeInsets;
+                //var safeInsets = On<iOS>().SafeAreaInsets();
+                //safeInsets.Top = 20;
+                //Padding = safeInsets;
 
                 if (App.IsSessionExpired)
                 {
