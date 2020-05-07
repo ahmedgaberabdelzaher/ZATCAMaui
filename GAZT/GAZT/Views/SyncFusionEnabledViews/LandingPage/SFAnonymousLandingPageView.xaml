@@ -14,7 +14,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
   
     NavigationPage.HasNavigationBar="False"
-     BackgroundColor="#003228">
+    >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

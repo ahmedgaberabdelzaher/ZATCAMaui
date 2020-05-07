@@ -20,8 +20,8 @@ namespace GAZT.iOS.CustomRenderer
             var height = NavigationBar.Bounds.Height;
             App.NavigationBarHeightt = height;
             UIFont ft;
-            //this.NavigationBar.TintColor = UIColor.Yellow;
-            // this.NavigationBar.BarTintColor = UIColor.Green;
+            this.NavigationBar.TintColor = UIColor.Yellow;
+            //this.NavigationBar.BarTintColor = UIColor.Green;
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
                 Font = UIFont.FromName("GE SS Two", 16),
