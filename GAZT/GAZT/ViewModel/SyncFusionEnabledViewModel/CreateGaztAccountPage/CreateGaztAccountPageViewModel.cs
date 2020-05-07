@@ -253,7 +253,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
             {
                 OnResendOTPClicked = new Command(async () =>
                 {
-                    await SendOTPToRegisterMobileNumberToLogIn();
+                    try
+                    {
+                        await SendOTPToRegisterMobileNumberToLogIn();
+                    }
+                    catch (Exception ex)
+                    { 
+                    
+                    }
+                    
                 });
                 GoBackClick = new Command(async () =>
                 {
