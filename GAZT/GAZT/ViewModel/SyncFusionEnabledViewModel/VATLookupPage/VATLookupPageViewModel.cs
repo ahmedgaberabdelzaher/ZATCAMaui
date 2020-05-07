@@ -216,7 +216,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
             }
         }
         private void SetPlaceholderText()
-        {
+         {
             IsTooltipEnableVisible = true;
             if (SelectedParameterType.id.Equals("3"))
             {
