@@ -74,7 +74,7 @@
                                     <chart:PieSeries ItemsSource="{Binding ListMyBillsChartModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
                                 </chart:SfChart.Series>
                             </chart:SfChart>-->
-                                <syncfusion:SfExpander IsExpanded="True">
+                                <syncfusion:SfExpander IsExpanded="True" IsVisible="{Binding SetNoDataLabelVisibilityALLList}">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <Label TextColor="#495F6E" Margin="10,0,10,0"  Text=""  HeightRequest="50" VerticalTextAlignment="Center" />
@@ -134,8 +134,8 @@
                                                     </chart:PieSeries>
                                                 </chart:SfChart.Series>
                                             </chart:SfChart>
-                                            <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
-                                            </local1:CustomLabel>
+                                            <!--<local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
+                                            </local1:CustomLabel>-->
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
