@@ -1,6 +1,8 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Syncfusion.DataSource.Extensions;
@@ -8,6 +10,7 @@ using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections;
 using System.Linq;
+using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -157,15 +160,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyBillsView
         }
         private async void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = true;
+            });
             var dataItem = e.Item as MyBills;
             await Clipboard.SetTextAsync(dataItem.VTRE2);
             if (Clipboard.HasText)
             {
                 var text = await Clipboard.GetTextAsync();
                 //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
-                viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
+                //   viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
+                PopUp popUp = new PopUp();
+                StringBuilder SB = new StringBuilder();
+                SB.Append(AppResources.ZSadadInvoiceNumber);
+                SB.Append(Environment.NewLine);
+                SB.Append(text);
+                popUp.Message = SB.ToString();
+                popUp.IsLinkAvailable = true;
+              
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
         private void Chart_AnnotationClicked(object sender, Syncfusion.SfChart.XForms.ChartAnnotationClickedEventArgs e)
         {
