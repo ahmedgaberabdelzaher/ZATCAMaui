@@ -31,7 +31,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             try
             {
                 InitializeComponent();
-                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+               // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 Changecornerradious();
                 LoadDuesData();

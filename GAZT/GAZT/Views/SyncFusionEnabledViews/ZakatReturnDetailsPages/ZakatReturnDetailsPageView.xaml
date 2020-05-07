@@ -99,7 +99,7 @@
                                     <FormattedString>
                                       <Span Text="{Binding Estsl}"/>
                                           <Span Text=" "/>
-                                        <!--<Span Text="{x:Static local:AppResources.ZSAR}"/>-->
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
@@ -126,7 +126,7 @@
                                     <FormattedString>
                                       <Span Text="{Binding Cpamt}" />
                                           <Span Text=" "/>
-                                        <!--<Span Text="{x:Static local:AppResources.ZSAR}"/>-->
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
@@ -153,7 +153,7 @@
                                     <FormattedString>
                                       <Span Text="{Binding Zbamt}"/>
                                           <Span Text=" "/>
-                                        <!--<Span Text="{x:Static local:AppResources.ZSAR}"/>-->
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>
@@ -180,7 +180,7 @@
                                     <FormattedString>
                                       <Span Text="{Binding Zkamt}"/>
                                           <Span Text=" "/>
-                                        <!--<Span Text="{x:Static local:AppResources.ZSAR}"/>-->
+                                        <Span Text="{x:Static local:AppResources.ZSAR}"/>
                                     </FormattedString>
                                 </Label.FormattedText>
                     </Label>

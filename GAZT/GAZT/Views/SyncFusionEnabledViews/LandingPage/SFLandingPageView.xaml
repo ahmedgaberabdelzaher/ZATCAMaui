@@ -16,7 +16,7 @@
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     x:Name="LandingPage"
    
-    BackgroundColor="#003228"
+
     NavigationPage.HasNavigationBar="False"
     NavigationPage.HasBackButton="False">
     <ContentPage.Resources>
@@ -406,7 +406,7 @@
                 </border:SfBorder>
 
                 <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
-                <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
+                <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" Padding="4,15,0,0">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowOptionsCommand}" >
                         </TapGestureRecognizer>

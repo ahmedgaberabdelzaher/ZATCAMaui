@@ -274,6 +274,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
             SalesDetails estimateZakatAttachment = (SalesDetails)InfoImage.BindingContext;
           string informationMessage =   GetInformationMessage(Convert.ToInt32(estimateZakatAttachment.SelectedEditFieldId));
             PopUp popUp = new PopUp();
+            popUp.isFontSet = true;
             popUp.Message = informationMessage;// "Total sales in VAT returns after adjustment during the financial year (excluding any amount under objection, reassessed value but still in the legal period for objection, or penalties";
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
