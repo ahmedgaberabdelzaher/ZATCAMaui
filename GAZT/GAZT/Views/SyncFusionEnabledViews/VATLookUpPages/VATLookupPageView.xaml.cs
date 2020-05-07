@@ -35,11 +35,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             ChangeAeroIcon();
+            viewModel.IsTooltipEnableVisible = false;
             viewModel.TxtSearchParameter = string.Empty;
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
-            viewModel.IsTooltipEnableVisible = false;
+            
             NavigationPage.SetBackButtonTitle(this, "");
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();

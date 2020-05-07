@@ -430,26 +430,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             {
                 if (IsComingFrom == ComingToOTPVerificationScreenFrom.IsTes)
                 {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = true;
-                    });
 
-                    string tesEnteredotp = EnteredOTP;
-                    if (TesGeneratedOtpCode == tesEnteredotp)
-                    {
-                        await navigateToListPage();
-                        //_navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
-                    }
-                    else
-                    {
-                        EnteredOTP = string.Empty;
-                        _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.Information);
-                    }
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                    //   IsLoading = true;
+                    await navigateToListPage();
+
+                    //string tesEnteredotp = EnteredOTP;
+                    //if (TesGeneratedOtpCode == tesEnteredotp)
+                    //{
+                    //    await navigateToListPage();
+                    //    //_navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
+                    //}
+                    //else
+                    //{
+                    //    EnteredOTP = string.Empty;
+                    //    _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.Information);
+                    //}
+                    //await Task.Run(() =>
+                    //{
+                    //    IsLoading = false;
+                    //});
 
                 }
                 else
@@ -472,12 +471,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
         }
         public async Task navigateToListPage()
         {
-            await Task.Run(() =>
+            await  Task.Run(() =>
             {
                 IsLoading = true;
             });
+            await Task.Run(() =>
+            {
+            string tesEnteredotp = EnteredOTP;
+            if (TesGeneratedOtpCode == tesEnteredotp)
+            {
 
-            _navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
+                
+                    Device.BeginInvokeOnMainThread(() =>
+               {
+                   _navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
+               });
+              
+            }
+            else
+            {
+                EnteredOTP = string.Empty;
+                _dialogService.ShowMessageBox(AppResources.InvalidOTP, AppResources.Information);
+            }
+
+            });
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
+
+            //_navigationService.NavigateTo(App.TaxEvasionReportListPageView, TesReporterMobileNumber);
         }
 
 
