@@ -169,6 +169,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 //});
                 OnNextClicked = new Command(async() =>
                 {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
                     try
                     {
                           await  navigateToFormPage();
@@ -176,6 +180,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                     catch (Exception ex)
                     {
                     }
+                   
+
                 });
             }
             catch(Exception ex)
@@ -220,19 +226,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                         TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                       
                             _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+
+                            
+                                IsLoading = false;
+                           
                         });
                     }
                 }
                 else
-                {
+                { IsLoading = false;
+                 
                     //IsLoading = false;
                 }
             });
-            await Task.Run(() =>
-            {
-                IsLoading = false;
-            });
+           
         }
         public void PopToRootPage()
         {
