@@ -123,9 +123,6 @@
     <Compile Include="CustomRenderer\Main.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
     <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
-    <BundleResource Include="Resources\sf_BannerImage.png" />
-    <BundleResource Include="Resources\sf_BannerImage%402x.png" />
-    <BundleResource Include="Resources\sf_BannerImage%403x.png" />
     <BundleResource Include="Resources\sf_Tax_Evasion.png" />
     <BundleResource Include="Resources\sf_Tax_Evasion%402x.png" />
     <BundleResource Include="Resources\sf_Tax_Evasion%403x.png" />
@@ -397,44 +394,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_Logo_GAZT_color%402x.png" />
-    <BundleResource Include="Resources\ic_Dashboard_User.png" />
-    <BundleResource Include="Resources\ic_Dashboard_User%402x.png" />
-    <BundleResource Include="Resources\ic_Dashboard_User%403x.png" />
-    <BundleResource Include="Resources\ic_check_circle_24px.png" />
-    <BundleResource Include="Resources\ic_check_circle_24px%402x.png" />
-    <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
-    <BundleResource Include="Resources\ic_certificate.png" />
-    <BundleResource Include="Resources\ic_certificate%402x.png" />
-    <BundleResource Include="Resources\ic_certificate%403x.png" />
-    <BundleResource Include="Resources\ic_correspondance_1.png" />
-    <BundleResource Include="Resources\ic_correspondance_1%402x.png" />
-    <BundleResource Include="Resources\ic_correspondance_1%403x.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat%402x.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat%403x.png" />
-    <BundleResource Include="Resources\ic_Mybills.png" />
-    <BundleResource Include="Resources\ic_Mybills%402x.png" />
-    <BundleResource Include="Resources\ic_Mybills%403x.png" />
-    <BundleResource Include="Resources\ic_tax_evasion_1.png" />
-    <BundleResource Include="Resources\ic_tax_evasion_1%402x.png" />
-    <BundleResource Include="Resources\ic_tax_evasion_1%403x.png" />
-    <BundleResource Include="Resources\ic_vat_declaration_1.png" />
-    <BundleResource Include="Resources\ic_vat_declaration_1%402x.png" />
-    <BundleResource Include="Resources\ic_vat_declaration_1%403x.png" />
-    <BundleResource Include="Resources\ic_vat_lookup_1.png" />
-    <BundleResource Include="Resources\ic_vat_lookup_1%402x.png" />
-    <BundleResource Include="Resources\ic_vat_lookup_1%403x.png" />
-    <BundleResource Include="Resources\Login_button.png" />
-    <BundleResource Include="Resources\Login_button%402x.png" />
-    <BundleResource Include="Resources\Login_button%403x.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat1.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat1%402x.png" />
-    <BundleResource Include="Resources\ic_Estimate_zakat1%403x.png" />
     <BundleResource Include="Resources\public.jpeg" />
-    <BundleResource Include="Resources\ic_qr_code.png" />
-    <BundleResource Include="Resources\ic_qr_code%402x.png" />
-    <BundleResource Include="Resources\ic_qr_code%403x.png" />
     <BundleResource Include="Resources\ic_unsubmitted.png" />
     <BundleResource Include="Resources\ic_unsubmitted%402x.png" />
     <BundleResource Include="Resources\ic_unsubmitted%403x.png" />
@@ -455,98 +415,38 @@
     <BundleResource Include="Resources\ic_refresh%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_bell.png" />
-    <BundleResource Include="Resources\ic_bell%402x.png" />
-    <BundleResource Include="Resources\ic_bell%403x.png" />
-    <BundleResource Include="Resources\ic_checkbox.png" />
-    <BundleResource Include="Resources\ic_checkbox%402x.png" />
-    <BundleResource Include="Resources\ic_checkbox%403x.png" />
-    <BundleResource Include="Resources\ic_dropdown.png" />
-    <BundleResource Include="Resources\ic_dropdown%402x.png" />
-    <BundleResource Include="Resources\ic_dropdown%403x.png" />
     <BundleResource Include="Resources\ic_home_selected.png" />
     <BundleResource Include="Resources\ic_home_selected%402x.png" />
     <BundleResource Include="Resources\ic_home_selected%403x.png" />
     <BundleResource Include="Resources\ic_language.png" />
     <BundleResource Include="Resources\ic_language%402x.png" />
     <BundleResource Include="Resources\ic_language%403x.png" />
-    <BundleResource Include="Resources\ic_password.png" />
-    <BundleResource Include="Resources\ic_password%402x.png" />
-    <BundleResource Include="Resources\ic_password%403x.png" />
-    <BundleResource Include="Resources\ic_question_selected.png" />
-    <BundleResource Include="Resources\ic_question_selected%402x.png" />
-    <BundleResource Include="Resources\ic_question_selected%403x.png" />
-    <BundleResource Include="Resources\ic_question.png" />
-    <BundleResource Include="Resources\ic_question%402x.png" />
-    <BundleResource Include="Resources\ic_question%403x.png" />
-    <BundleResource Include="Resources\ic_user_2_selected.png" />
-    <BundleResource Include="Resources\ic_user_2_selected%402x.png" />
-    <BundleResource Include="Resources\ic_user_2_selected%403x.png" />
-    <BundleResource Include="Resources\ic_user_2.png" />
-    <BundleResource Include="Resources\ic_user_2%402x.png" />
-    <BundleResource Include="Resources\ic_user_2%403x.png" />
-    <BundleResource Include="Resources\ic_user.png" />
-    <BundleResource Include="Resources\ic_user%402x.png" />
-    <BundleResource Include="Resources\ic_user%403x.png" />
     <BundleResource Include="Resources\check-mark.png" />
     <BundleResource Include="Resources\check-mark%402x.png" />
     <BundleResource Include="Resources\check-mark%403x.png" />
-    <BundleResource Include="Resources\ic_certeficate.png" />
-    <BundleResource Include="Resources\ic_certeficate%402x.png" />
-    <BundleResource Include="Resources\ic_certeficate%403x.png" />
     <BundleResource Include="Resources\ic_check_circle.png" />
     <BundleResource Include="Resources\ic_check_circle%402x.png" />
     <BundleResource Include="Resources\ic_check_circle%403x.png" />
-    <BundleResource Include="Resources\ic_file.png" />
-    <BundleResource Include="Resources\ic_file%402x.png" />
-    <BundleResource Include="Resources\ic_file%403x.png" />
     <BundleResource Include="Resources\ic_loading.png" />
     <BundleResource Include="Resources\ic_loading%402x.png" />
     <BundleResource Include="Resources\ic_loading%403x.png" />
-    <BundleResource Include="Resources\ic_logo.png" />
-    <BundleResource Include="Resources\ic_logo%402x.png" />
-    <BundleResource Include="Resources\ic_logo%403x.png" />
     <BundleResource Include="Resources\money.png" />
     <BundleResource Include="Resources\money%402x.png" />
     <BundleResource Include="Resources\money%403x.png" />
-    <BundleResource Include="Resources\ic_paperpin.png" />
-    <BundleResource Include="Resources\ic_paperpin%402x.png" />
-    <BundleResource Include="Resources\ic_paperpin%403x.png" />
-    <BundleResource Include="Resources\ic_rectangle_sm.png" />
-    <BundleResource Include="Resources\ic_rectangle_sm%402x.png" />
-    <BundleResource Include="Resources\ic_rectangle_sm%403x.png" />
     <BundleResource Include="Resources\ic_money.png" />
     <BundleResource Include="Resources\ic_money%402x.png" />
     <BundleResource Include="Resources\ic_money%403x.png" />
-    <BundleResource Include="Resources\ic_check_box_outline_blank.png" />
-    <BundleResource Include="Resources\ic_check_box_outline_blank%402x.png" />
-    <BundleResource Include="Resources\ic_check_box_outline_blank%403x.png" />
-    <BundleResource Include="Resources\ic_home.png" />
-    <BundleResource Include="Resources\ic_home%402x.png" />
-    <BundleResource Include="Resources\ic_home%403x.png" />
     <BundleResource Include="Resources\file.png" />
     <BundleResource Include="Resources\file%402x.png" />
     <BundleResource Include="Resources\file%403x.png" />
     <BundleResource Include="Resources\ic_bg_green_full_big.png" />
     <BundleResource Include="Resources\abc.png" />
-    <BundleResource Include="Resources\ic_envelop_selected.png" />
-    <BundleResource Include="Resources\ic_envelop_selected%402x.png" />
-    <BundleResource Include="Resources\ic_envelop_selected%403x.png" />
     <BundleResource Include="Resources\ic_envelop.png" />
     <BundleResource Include="Resources\ic_envelop%402x.png" />
     <BundleResource Include="Resources\ic_envelop%403x.png" />
-    <BundleResource Include="Resources\ic_OTP_Rectangle.png" />
-    <BundleResource Include="Resources\ic_OTP_Rectangle%402x.png" />
-    <BundleResource Include="Resources\ic_OTP_Rectangle%403x.png" />
-    <BundleResource Include="Resources\Rectangle.png" />
-    <BundleResource Include="Resources\Rectangle%402x.png" />
-    <BundleResource Include="Resources\Rectangle%403x.png" />
     <BundleResource Include="Resources\ic_location.png" />
     <BundleResource Include="Resources\ic_location%402x.png" />
     <BundleResource Include="Resources\ic_location%403x.png" />
-    <BundleResource Include="Resources\ic_edit.png" />
-    <BundleResource Include="Resources\ic_edit%402x.png" />
-    <BundleResource Include="Resources\ic_edit%403x.png" />
     <BundleResource Include="Resources\fa-brands-400.ttf" />
     <BundleResource Include="Resources\Mada-Regular.ttf" />
     <BundleResource Include="Resources\SST Arabic Bold.ttf" />
@@ -555,18 +455,12 @@
     <BundleResource Include="Resources\SSTArabic-Bold.ttf" />
     <BundleResource Include="Resources\SSTArabic-Light.ttf" />
     <BundleResource Include="Resources\SSTArabic-Medium.ttf" />
-    <BundleResource Include="Resources\ic_TIN_Status.png" />
-    <BundleResource Include="Resources\ic_TIN_Status%402x.png" />
-    <BundleResource Include="Resources\ic_TIN_Status%403x.png" />
     <BundleResource Include="Resources\ic_pdf.png" />
     <BundleResource Include="Resources\ic_pdf%402x.png" />
     <BundleResource Include="Resources\ic_pdf%403x.png" />
     <BundleResource Include="Resources\ic_dropdownOne.png" />
     <BundleResource Include="Resources\ic_dropdownOne%402x.png" />
     <BundleResource Include="Resources\ic_dropdownOne%403x.png" />
-    <BundleResource Include="Resources\ic_sync_captcha.png" />
-    <BundleResource Include="Resources\ic_sync_captcha%402x.png" />
-    <BundleResource Include="Resources\ic_sync_captcha%403x.png" />
     <BundleResource Include="Resources\user.png" />
   </ItemGroup>
   <ItemGroup>
@@ -577,21 +471,6 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_Logo_GAZT_color%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Logo_GAZT_color.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Dashboard_User.png.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Dashboard_User.png%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_Dashboard_User.png%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Mark.png" />
   </ItemGroup>
   <ItemGroup>
@@ -599,42 +478,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_Check_Mark.png%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_help%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_social.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_social%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_social%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_chat.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_chat%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_chat%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_help%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_footer_img.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_footer_img%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_footer_img%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\non_submitted%403x.png" />
@@ -664,30 +507,6 @@
     <BundleResource Include="Resources\non_submitted%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\My_bills_circle1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\My_bills_circle1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\My_bills_circle1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\My_cirteficte_circle1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\My_cirteficte_circle1%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\My_cirteficte_circle1%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_Evasion%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_Evasion%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_vatlookup.png" />
   </ItemGroup>
   <ItemGroup>
@@ -695,27 +514,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_vatlookup%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_correspondance.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_correspondance%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_correspondance%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_tax_Evasion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_logout.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_logout%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_logout%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_attachment%402x.png" />
@@ -772,15 +570,6 @@
     <BundleResource Include="Resources\ic_save_golden.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_info%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_info%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_info.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_delete%403x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -799,51 +588,6 @@
     <BundleResource Include="Resources\ic_delete%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_more_options%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_more_options%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_more_options.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_validation%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_note.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_note%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_note%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_save%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_save%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_toolattachment.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_toolattachment%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_toolattachment%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_validation.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_validation%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_close.png" />
   </ItemGroup>
   <ItemGroup>
@@ -851,24 +595,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_close%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_share.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_share%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_share%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_add%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_add%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_add.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_star.png" />
@@ -931,18 +657,6 @@
     <BundleResource Include="Resources\ic_bg_green_full_new.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_correspondance_1 copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Correspondence.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Correspondence%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Correspondence%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\sf_Form_Bundle_Status.png" />
   </ItemGroup>
   <ItemGroup>
@@ -950,24 +664,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_Form_Bundle_Status%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Dashboard_Logo_White%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Menu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Menu%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_ic_Menu%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_ic_Overdue_Returns_White.png" />
@@ -1051,15 +747,6 @@
     <BundleResource Include="Resources\sf_VAT_Declaration%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Bg_image %402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Bg_image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Bg_image%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\sf_LoginBackground.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1090,15 +777,6 @@
     <BundleResource Include="Resources\About_AR.html" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\sf_Eservices%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Eservices%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_Eservices.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\logo_gazt%403x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1106,15 +784,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo_gazt%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_BgImage_Gradient%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_BgImage_Gradient%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\sf_BgImage_Gradient.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sf_LoginBackgroundLand.png" />
