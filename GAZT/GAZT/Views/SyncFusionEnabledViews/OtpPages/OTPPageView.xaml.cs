@@ -153,7 +153,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     {
                         //if (Device.RuntimePlatform == Device.iOS)
                         //{
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ lastDigits + "***" + firstDigits+"5";
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ lastDigits + "***" + firstDigits;
                         //}
                         //else
                         //{
