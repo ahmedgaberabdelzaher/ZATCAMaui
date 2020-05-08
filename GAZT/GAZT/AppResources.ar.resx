@@ -673,7 +673,7 @@
     <value>سيتم حجب الحساب في حال إدخال رمز التحقق أكثر من 3 مرات بشكل خاطئ</value>
   </data>
   <data name="PasswordGuidelineText" xml:space="preserve">
-    <value>لم يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
+    <value>كلمة المرور يجب أن لا تقل عن 8 خانات ولا تتجاوز 16 خانة و تحتوي على حروف إنجليزية كبيرة و صغيرة وأرقام بالإضافة إلى الرموز</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
     <value>تغيير البريد الالكتروني</value>

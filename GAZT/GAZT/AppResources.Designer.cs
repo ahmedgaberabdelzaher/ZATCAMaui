@@ -1254,7 +1254,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password did not updated as it does not match password format.
+        ///   Looks up a localized string similar to Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character..
         /// </summary>
         public static string PasswordGuidelineText {
             get {
