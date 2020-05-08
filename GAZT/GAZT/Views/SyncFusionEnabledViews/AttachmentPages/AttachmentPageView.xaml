@@ -78,10 +78,9 @@
                         </custom:GAZTBorderlessEntry>-->
                          <inputLayout:SfTextInputLayout    Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
         Hint="{x:Static custom2:AppResources.ZZAttachment}"
-      IsHintAlwaysFloated="True"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry   Text="{Binding AttachmentName}" Margin="20,0,20,0"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
+                            <custom:GAZTBorderlessEntry   Text="{Binding AttachmentName}" Margin="20,0,20,0"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True">
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="20,0,20,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png" IsVisible="{Binding IsShowAttachmentButton}" >
