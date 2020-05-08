@@ -163,7 +163,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                        HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                                    Margin="5,0,5,0"
+                                                    Margin="5,0,5,5"
                                                     FontSize="Micro"
                                                   IsVisible="{Binding IsPaymentOverdue}"
                                    Grid.Row="1"
@@ -229,7 +229,7 @@
                                     <cards:SfCardView CornerRadius="2" BorderWidth=".25" BorderColor="#5d6770" HasShadow="True" ShadowColor="#5d6770" BackgroundColor="White">
                                         <cards:SfCardView.Content>
                                             <Grid>
-                                                <StackLayout Margin="5,0,5,0" Spacing="0" >
+                                                <StackLayout Margin="5,0,5,5" Spacing="0" >
                                                     <StackLayout Orientation="Horizontal" HeightRequest="40">
                                                         <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start">
                                                             <Image.GestureRecognizers>
@@ -305,12 +305,12 @@
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                 </StackLayout.GestureRecognizers>
-                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center">
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" >
                                                     <StackLayout.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
-                                                    <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start"></Image>
-                                                    <local1:CustomLabel Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Title" >
+                                                    <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start" VerticalOptions="Center"></Image>
+                                                    <local1:CustomLabel Margin="0,-8,0,0" Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Title" VerticalOptions="CenterAndExpand" VerticalTextAlignment="ce">
                                                     </local1:CustomLabel>
                                                 </StackLayout>
                                                 <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
@@ -421,8 +421,8 @@
                             <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
                             <Span Text="{Binding Name}" TextColor="White"  FontFamily="{StaticResource SSTArBold}"/>
                             <Span Text="&#10;"/>
-                            <Span Text="{Binding Email}" TextColor="White"/>
-                            <Span Text="&#10;"/>
+                            <!--<Span Text="{Binding Email}" TextColor="White"/>
+                            <Span Text="&#10;"/>-->
                             <Span Text="{Binding Tin}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
                         </FormattedString>
                     </Label.FormattedText>
