@@ -73,7 +73,7 @@
                         </custom:CustomLabel>
                         <!--<Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   Margin="10,5,10,5" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0"  />-->
                         <buttons:SfButton
-                    Margin="10,5,10,5"
+                    Margin="10,5,10,0"
                  CornerRadius="0"
                             x:Name="ScanCode_btn"
                             Clicked="ScanCode_btn_Clicked"
@@ -87,16 +87,15 @@
                         <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="2" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZOR}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <Span Text="{x:Static local:AppResources.ZOR}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                     <Span Text="&#10;"/>
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                     <Span Text="&#10;"/>
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitle}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <Span Text="{x:Static local:AppResources.ZStepOne}" Style="{StaticResource MicroGrayLabelStyleNewEn}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                     <Span Text="&#10;"/>
-                                    <Span Text="{x:Static local:AppResources.ZStepOne}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
+                                    <Span Text="{x:Static local:AppResources.ZStepTwo}" Style="{StaticResource MicroGrayLabelStyleNewEn}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                     <Span Text="&#10;"/>
-                                    <Span Text="{x:Static local:AppResources.ZStepTwo}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="{x:Static local:AppResources.ZStepThree}" Style="{StaticResource MicroGrayLabelStyleNewEn}"></Span>
+                                    <Span Text="{x:Static local:AppResources.ZStepThree}" Style="{StaticResource MicroGrayLabelStyleNewEn}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>

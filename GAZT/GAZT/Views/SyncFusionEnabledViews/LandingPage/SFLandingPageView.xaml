@@ -29,9 +29,9 @@
     <ContentPage.Content>
         <Grid x:Name="ParentContainer" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="30*"/>
+                <RowDefinition  Height="35*"/>
                 <RowDefinition  Height="2*"/>
-                <RowDefinition  Height="68*"/>
+                <RowDefinition  Height="63*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
@@ -380,7 +380,7 @@
                     </listView:SfListView>
                 </StackLayout>
             </ScrollView>
-            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" BackgroundColor="White">
+            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" BackgroundColor="White" Margin="0,-50,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="50*"/>
                     <RowDefinition  Height="30*"/>
@@ -406,26 +406,42 @@
                 </border:SfBorder>
 
                 <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
-                <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" Padding="4,15,0,0">
+                <local1:CustomLabel Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" Padding="4,80,0,0">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowOptionsCommand}" >
                         </TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </local1:CustomLabel>
                 <!--</controls:TapAnimationGrid>-->
-                <Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="ic_logo_Dashboard.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" ></Image>
-                <Label  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}">
+                 <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Padding="0,50,0,0">
+                    <Image  Aspect="AspectFit" Source="ic_logo_Dashboard.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>
+                     <Label   VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}" Margin="0,0,0,0">
                     <Label.FormattedText >
                         <FormattedString>
                             <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
                             <Span Text="{Binding Name}" TextColor="White"  FontFamily="{StaticResource SSTArBold}"/>
-                            <!--<Span Text="&#10;"/>
-                            <Span Text="{Binding Email}" TextColor="White"/>-->
+                            <Span Text="&#10;"/>
+                            <Span Text="{Binding Email}" TextColor="White"/>
                             <Span Text="&#10;"/>
                             <Span Text="{Binding Tin}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                     <!--<local1:CustomLabel  TextColor="White" Text="{x:Static local:AppResources.ZZZLandingPageTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource LabelStyleFromCommonStyle}" ></local1:CustomLabel>-->
+                </StackLayout>
+                <!--<Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="ic_logo_Dashboard.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,80,0,0" ></Image>
+                <Label  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}" Margin="0,80,0,0">
+                    <Label.FormattedText >
+                        <FormattedString>
+                            <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
+                            <Span Text="{Binding Name}" TextColor="White"  FontFamily="{StaticResource SSTArBold}"/>
+                            <Span Text="&#10;"/>
+                            <Span Text="{Binding Email}" TextColor="White"/>
+                            <Span Text="&#10;"/>
+                            <Span Text="{Binding Tin}" TextColor="White" FontFamily="{StaticResource SSTArBold}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
             </Grid>
             <Grid Grid.Row="0"  Grid.RowSpan="3" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0"  Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">

@@ -172,7 +172,7 @@
                     </Label>
                 </StackLayout>
             </ScrollView>
-            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0">
+            <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" Margin="0,-50,0,0">
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="50*"/>
                     <RowDefinition  Height="30*"/>
@@ -209,13 +209,13 @@
                     </gradient:SfGradientView>
                 </StackLayout>-->
                 <!--<controls:TapAnimationGrid  Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}" RowSpacing="0" Tapped="False" x:Name="burgerMenu_tapGrid" BackgroundColor="Transparent" VerticalOptions="Start"  HorizontalOptions="Start" >-->
-                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Padding="4,20,0,0"  Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Padding="4,80,0,0"  Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowOptionsCommand}"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                 </Label>
                 <!--</controls:TapAnimationGrid>-->
-                <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
+                <StackLayout Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Padding="0,50,0,0">
                     <Image  Aspect="AspectFit" Source="logo_gazt.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>
                     <!--<local1:CustomLabel  TextColor="White" Text="{x:Static local:AppResources.ZZZLandingPageTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource LabelStyleFromCommonStyle}" ></local1:CustomLabel>-->
                 </StackLayout>
