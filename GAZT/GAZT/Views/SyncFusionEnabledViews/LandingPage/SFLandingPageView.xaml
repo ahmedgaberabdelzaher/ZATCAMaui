@@ -310,7 +310,7 @@
                                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                                                     </StackLayout.GestureRecognizers>
                                                     <Image Aspect="AspectFit"  Source="{Binding iConImagePath}" HorizontalOptions="Start" VerticalOptions="Center"></Image>
-                                                    <local1:CustomLabel Margin="0,-8,0,0" Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Title" VerticalOptions="CenterAndExpand" VerticalTextAlignment="ce">
+                                                    <local1:CustomLabel Margin="0,-8,0,0" Text="{Binding ReturnCount}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Title" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center">
                                                     </local1:CustomLabel>
                                                 </StackLayout>
                                                 <local1:CustomLabel Text="{Binding ReturnTypeName}" TextColor="{DynamicResource Gray-White}" Style="{StaticResource MicroGrayLabelValue}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
