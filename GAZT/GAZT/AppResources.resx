@@ -671,7 +671,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>The account will be locked after 3 failed verification code attempt</value>
   </data>
   <data name="PasswordGuidelineText" xml:space="preserve">
-    <value>Password did not updated as it does not match password format</value>
+    <value>Password should be minimum 8 characters and maximum 16. The Password should contain letters and numeric and special character.</value>
   </data>
   <data name="ChangeEmail" xml:space="preserve">
     <value>Change Email</value>
