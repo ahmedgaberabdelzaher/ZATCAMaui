@@ -31,7 +31,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             try
             {
                 InitializeComponent();
-               // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    LandingGreenScreen.Margin = new Thickness(0,0,0,0);
+                    LandingHamberMenu.Padding = new Thickness(0,0,0,0);
+                    LandingStackLayout.Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    LandingGreenScreen.Margin = new Thickness(0,-50,0,0);
+                    LandingHamberMenu.Padding = new Thickness(4,80,0,0);
+                    LandingStackLayout.Padding = new Thickness(0, 50, 0, 0);
+                }
+
+                // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 Changecornerradious();
                 LoadDuesData();
