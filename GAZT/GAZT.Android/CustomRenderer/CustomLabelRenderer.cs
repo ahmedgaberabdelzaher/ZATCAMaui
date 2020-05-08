@@ -37,8 +37,8 @@ namespace GAZT.Droid.CustomRenderer
              //   Control.Typeface = font;
                 //Control.TextAlignment = Android.Views.TextAlignment.TextEnd;
                 //Control.Gravity = Android.Views.GravityFlags.Right;
-                Control.TextDirection = Android.Views.TextDirection.Rtl;
-                Control.Gravity = Android.Views.GravityFlags.Right;
+                //Control.TextDirection = Android.Views.TextDirection.Rtl;
+                //Control.Gravity = Android.Views.GravityFlags.Right;
             }
             else
             {

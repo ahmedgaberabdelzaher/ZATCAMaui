@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using EGAZT;
 using GAZT;
 using GAZT.CustomControl;
 using GAZT.Droid.CustomRenderer;
@@ -29,6 +30,20 @@ namespace GAZT.Droid.CustomRenderer
             if (e.OldElement == null)
             {
                 Control.Background = null;
+            }
+            if (App.IsArabic)
+            {
+                //  Typeface font = Typeface.CreateFromAsset(_context.Assets, "SSTArabic-Light.ttf");
+                //   Control.Typeface = font;
+                //Control.TextAlignment = Android.Views.TextAlignment.TextEnd;
+                //Control.Gravity = Android.Views.GravityFlags.Right;
+                Control.TextDirection = Android.Views.TextDirection.Rtl;
+                Control.Gravity = Android.Views.GravityFlags.Right;
+            }
+            else
+            {
+                //  Typeface font = Typeface.CreateFromAsset(_context.Assets, "SSTArabic-Light.ttf");
+                //  Control.Typeface = font;
             }
         }
     }
