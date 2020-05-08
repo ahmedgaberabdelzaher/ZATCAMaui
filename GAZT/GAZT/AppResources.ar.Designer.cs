@@ -5249,5 +5249,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZPleaseselecttermsandconditions", resourceCulture);
             }
         }
+        
+        public static string InvalidEmailFormat {
+            get {
+                return ResourceManager.GetString("InvalidEmailFormat", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailID {
+            get {
+                return ResourceManager.GetString("ZTERReportDetailID", resourceCulture);
+            }
+        }
     }
 }

@@ -30,7 +30,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 InitializeComponent();
-              // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    GreenHeader.Margin = new Thickness(0, 0, 0, 0);
+                    HamberLabel.Padding = new Thickness(4,0,0,0);
+                    LogoStackLayout.Padding = new Thickness(0, 0, 0, 0);
+                }
+                else
+                {
+                    GreenHeader.Margin = new Thickness(0,-50, 0, 0);
+                    HamberLabel.Padding = new Thickness(4,80, 0, 0);
+                    LogoStackLayout.Padding = new Thickness(0,50, 0, 0);
+                }
+
+
+                // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
