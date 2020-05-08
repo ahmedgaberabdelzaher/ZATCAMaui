@@ -96,7 +96,7 @@
     Hint="{x:Static local:AppResources.ZZTIN}"  
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:BorderlessEntry TextChanged="EntryTIN_TextChanged" IsSpellCheckEnabled="False" x:Name="EntryTIN" FontSize="Small"  MaxLength="10" Unfocused="EntryTIN_Unfocused">
+                                <custom:BorderlessEntry TextChanged="EntryTIN_TextChanged" IsSpellCheckEnabled="False" x:Name="EntryTIN" Text="{Binding TxtTIN}" FontSize="Small"  MaxLength="10" Unfocused="EntryTIN_Unfocused">
                                         <custom:BorderlessEntry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
                                         </custom:BorderlessEntry.Behaviors>

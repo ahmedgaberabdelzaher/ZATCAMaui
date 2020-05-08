@@ -1765,6 +1765,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
+            FrmTIN.HasError = false;
             if (!string.IsNullOrEmpty(EntryTIN.Text))
             {
                 if (EntryTIN.Text.Substring(0, 1) != "3")
