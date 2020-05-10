@@ -1398,7 +1398,9 @@ namespace GAZT.Manager
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
+
             }
+            
             else
             {
                 throw new GAZTInternetException();
