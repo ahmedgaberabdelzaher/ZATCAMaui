@@ -1364,6 +1364,7 @@ namespace GAZT.Manager
                         if (headers.TryGetValues("token", out values))
                         {
                             NewToken = values.First();
+
                         }
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {

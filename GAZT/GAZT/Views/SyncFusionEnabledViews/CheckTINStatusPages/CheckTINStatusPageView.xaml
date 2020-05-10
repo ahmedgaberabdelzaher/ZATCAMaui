@@ -62,22 +62,25 @@
                             <ColumnDefinition Width="50*" />
                             <ColumnDefinition Width="50*" />
                         </Grid.ColumnDefinitions>
+                        
                         <inputLayout:SfTextInputLayout x:Name="FrmentryTIN"    Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.TIN}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="entryTIN" Text="{Binding TIN}"  IsReadOnly="True" FontSize="Small" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
+
                         <inputLayout:SfTextInputLayout x:Name="FrmentryTINStatus"    Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZTINStatus}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small" IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
+
                         <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdate"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdate" FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdate" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsEnabled="False" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                                 <!--<local1:GAZTBorderlessEntry FlowDirection="LeftToRight" x:Name="entryLastUpdate" IsReadOnly="True"  HorizontalOptions="Start"  Text="{Binding LastUpdate}"   TextColor="#7D858D"    Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">-->
                                 
                             </local1:GAZTBorderlessEntry>
