@@ -21,6 +21,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
+            ManageAndroidiOSLayout();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -68,6 +69,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
+        }
+
+        private void ManageAndroidiOSLayout()
+        {
+            FrmentryLastUpdateForiOS.IsVisible = false;
+            FrmentryLastUpdateForAndroid.IsVisible = false;
+            entryLastUpdateiOS.IsVisible = false;
+            entryLastUpdateAndroid.IsVisible = false;
+
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                FrmentryLastUpdateForiOS.IsVisible = true;
+                FrmentryLastUpdateForAndroid.IsVisible = false;
+                entryLastUpdateiOS.IsVisible = true;
+                entryLastUpdateAndroid.IsVisible = false;
+            }
+            else
+            {
+                entryLastUpdateAndroid.HorizontalOptions = LayoutOptions.StartAndExpand;
+               FrmentryLastUpdateForiOS.IsVisible = false;
+                FrmentryLastUpdateForAndroid.IsVisible = true;
+                entryLastUpdateiOS.IsVisible = false;
+                entryLastUpdateAndroid.IsVisible = true;
+            }
         }
     }
 }
