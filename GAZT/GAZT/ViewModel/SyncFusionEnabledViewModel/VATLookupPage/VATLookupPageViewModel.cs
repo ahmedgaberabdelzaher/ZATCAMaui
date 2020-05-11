@@ -329,6 +329,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
                 ParameterTypeList = new List<VATParameterType>();
                 ParameterTypeList = VATParameterList;
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
+                SelectedParameterTypePrev = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
             catch(Exception ex)
             {

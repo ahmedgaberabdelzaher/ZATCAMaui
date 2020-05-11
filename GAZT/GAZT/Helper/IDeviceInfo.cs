@@ -5,5 +5,12 @@ namespace GAZT.Helper
     {
         double GetDeviceHeight();
         double GetDeviceWidth();
+        string[] GetAttachmentTypeString();
+
+        string[] GetAttachmentTypeStringForZakat();
+
+        string[] GetAttachmentTypeStringForAll();
+
+        string[] GetAttachmentTypeStringForTaxEvasion();
     }
 }

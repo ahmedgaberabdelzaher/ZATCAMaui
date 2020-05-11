@@ -7,6 +7,8 @@ using UIKit;
 using GAZT.Helper;
 using GAZT.iOS.DependencyServices;
 using Xamarin.Forms;
+using MobileCoreServices;
+
 [assembly: Dependency(typeof(DeviceInfo))]
 namespace GAZT.iOS.DependencyServices
 {
@@ -24,5 +26,72 @@ namespace GAZT.iOS.DependencyServices
             width = (double)UIScreen.MainScreen.Bounds.Width;
             return width;
         }
+
+        public string[] GetAttachmentTypeString()
+        {
+            string[] filetypes;
+            filetypes = new string[] {
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
+                UTType.JPEG,
+                UTType.PNG,
+                UTType.GIF,
+                "com.microsoft.excel.xls",
+                "com.microsoft.powerpoint.​ppt",
+                 UTType.PlainText
+                            };
+
+            return filetypes;
+
+        }
+
+        public string[] GetAttachmentTypeStringForAll()
+        {
+            string[] filetypesForAll = new string[] {
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+    "org.openxmlformats.presentationml.presentation",
+                UTType.JPEG,
+                UTType.PNG,
+                UTType.GIF,
+                "com.microsoft.excel.xls",
+                "com.microsoft.powerpoint.​ppt",
+                 UTType.Text
+                            };
+
+            return filetypesForAll;
+        }
+
+        public string[] GetAttachmentTypeStringForTaxEvasion()
+        {
+            string[] filetypesForTaxEvasion = new string[] {
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+                UTType.JPEG,
+                 UTType.Text
+                            };
+
+            return filetypesForTaxEvasion;
+        }
+
+            public string[] GetAttachmentTypeStringForZakat()
+        {
+            string[]  filetypesforZakat = new string[] {
+                UTType.PDF,
+                "org.openxmlformats.wordprocessingml.document",
+                "com.microsoft.word.doc",
+    "org.openxmlformats.spreadsheetml.sheet",
+                UTType.JPEG,
+                "com.microsoft.excel.xls",
+                            };
+            return filetypesforZakat;
+        }
+
     }
 }

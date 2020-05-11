@@ -57,7 +57,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.4.0</string>
+	<string>2.0.4.4</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -74,18 +74,18 @@
 		</dict>
 	</array>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.4.0</string>
+	<string>2.0.4.4</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>  UIViewControllerBasedStatusBarAppearance</key>
 	<string>false</string>
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
+	<key>Custom Property2</key>
+	<string></string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>gamekit</string>
 	</array>
-	<key>Custom Property2</key>
-	<string></string>
 </dict>
 </plist>

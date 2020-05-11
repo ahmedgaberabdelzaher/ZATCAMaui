@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
-using MobileCoreServices;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
 using System;
@@ -212,26 +211,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 if (AttachmentCount <= 40)
                 {
                     string[] filetypes;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        filetypes = new string[] {
-                UTType.PDF,
-                "org.openxmlformats.wordprocessingml.document",
-                "com.microsoft.word.doc",
-    "org.openxmlformats.spreadsheetml.sheet",
-    "org.openxmlformats.presentationml.presentation",
-                UTType.JPEG,
-                UTType.PNG,
-                UTType.GIF,
-                "com.microsoft.excel.xls",
-                "com.microsoft.powerpoint.​ppt",
-                 UTType.Text
-                            };
-                    }
-                    else
-                    {
-                        filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
-                    }
+
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
+
+    //                if (Device.RuntimePlatform == Device.iOS)
+    //                {
+    //                    filetypes = new string[] {
+    ////            UTType.PDF,
+    ////            "org.openxmlformats.wordprocessingml.document",
+    ////            "com.microsoft.word.doc",
+    ////"org.openxmlformats.spreadsheetml.sheet",
+    ////"org.openxmlformats.presentationml.presentation",
+    ////            UTType.JPEG,
+    ////            UTType.PNG,
+    ////            UTType.GIF,
+    ////            "com.microsoft.excel.xls",
+    ////            "com.microsoft.powerpoint.​ppt",
+    ////             UTType.Text
+    //                        };
+    //                }
+    //                else
+    //                {
+    //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+    //                }
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     if (fileData != null && fileData.DataArray!=null && fileData.DataArray.Length > 0)
                     {
@@ -454,6 +456,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 });
             }
         }
+
+        public void ClearData()
+        {
+            if(AttachmentList != null && AttachmentList.Count > 0)
+            {
+                AttachmentList.Clear();
+            }
+          
+        }
+
         public void OnPageLoad()
         {
             AttachmentName = string.Empty;

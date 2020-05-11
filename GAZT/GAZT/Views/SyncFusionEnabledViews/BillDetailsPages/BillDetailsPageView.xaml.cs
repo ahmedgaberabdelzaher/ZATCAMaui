@@ -118,17 +118,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.BillDetails
             {
                 var text = await Clipboard.GetTextAsync();
                 //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
-               //await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
+               await viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber  + " " + text, AppResources.Copied);
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
-                PopUp popUp = new PopUp();
-                StringBuilder SB = new StringBuilder();
-                SB.Append(AppResources.ZSadadInvoiceNumber);
-                SB.Append(Environment.NewLine);
-                SB.Append(text);
-                popUp.Message = SB.ToString();
-                popUp.IsLinkAvailable = true;
+                //PopUp popUp = new PopUp();
+                //StringBuilder SB = new StringBuilder();
+                //SB.Append(AppResources.ZSadadInvoiceNumber);
+                //SB.Append(Environment.NewLine);
+                //SB.Append(text);
+                //popUp.Message = SB.ToString();
+                //popUp.IsLinkAvailable = true;
 
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
         #endregion
