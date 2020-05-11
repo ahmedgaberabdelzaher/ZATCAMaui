@@ -77,23 +77,25 @@
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
-                        <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdateForAndroid"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
+                        <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdateForAndroid"  IsVisible="{Binding IsAndroid}"  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                                        
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdateAndroid" FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="45" VerticalTextAlignment="Center">
+                            <controls:BorderlessEntry   x:Name="entryLastUpdateAndroid" IsVisible="{Binding IsAndroid}" FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="45" VerticalTextAlignment="Center">
                                
-                            </local1:GAZTBorderlessEntry>
+                            </controls:BorderlessEntry>
                           
                             </inputLayout:SfTextInputLayout>
-
-                         <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdateForiOS"    Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
+                        <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdateForiOS"  IsVisible="{Binding Isios}"  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdateiOS" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
-                                
+                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdateiOS" IsVisible="{Binding Isios}" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+
                             </local1:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
+
+
+
 
                         <!--//@Divya Jannapureddy adding line number 100 to 103
                         //Added below control below control-->

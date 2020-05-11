@@ -13,15 +13,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
         public CheckTINStatusPageView()
         {
             InitializeComponent();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CheckTINStatusPageView;
             this.BindingContext = viewModel;
+            viewModel.IsAndroid = false;
+            viewModel.Isios = true;
             ChangeAeroIcon();
             MainLayout.Margin = new Thickness(0, 0, 0, 5);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
-            ManageAndroidiOSLayout();
+            manageDeviceVisibility();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -47,6 +50,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
                 //reconfigure layout
             }
         }
+        public void manageDeviceVisibility()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                viewModel.Isios = true;
+                viewModel.IsAndroid = false;
+            }
+            else
+            {
+                viewModel.Isios = false;
+                viewModel.IsAndroid = true;
+            }
+            
+        }
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -69,30 +86,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
-        }
-
-        private void ManageAndroidiOSLayout()
-        {
-            FrmentryLastUpdateForiOS.IsVisible = false;
-            FrmentryLastUpdateForAndroid.IsVisible = false;
-            entryLastUpdateiOS.IsVisible = false;
-            entryLastUpdateAndroid.IsVisible = false;
-
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                FrmentryLastUpdateForiOS.IsVisible = true;
-                FrmentryLastUpdateForAndroid.IsVisible = false;
-                entryLastUpdateiOS.IsVisible = true;
-                entryLastUpdateAndroid.IsVisible = false;
-            }
-            else
-            {
-                entryLastUpdateAndroid.HorizontalOptions = LayoutOptions.StartAndExpand;
-               FrmentryLastUpdateForiOS.IsVisible = false;
-                FrmentryLastUpdateForAndroid.IsVisible = true;
-                entryLastUpdateiOS.IsVisible = false;
-                entryLastUpdateAndroid.IsVisible = true;
-            }
         }
     }
 }
