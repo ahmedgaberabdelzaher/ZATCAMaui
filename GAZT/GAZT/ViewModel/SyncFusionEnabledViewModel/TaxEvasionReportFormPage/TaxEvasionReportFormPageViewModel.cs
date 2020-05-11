@@ -3,13 +3,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using MobileCoreServices;
 using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -780,26 +778,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             if (AttachmentCount < 3)
             {
                 string[] filetypes;
-                if (Device.RuntimePlatform == Device.iOS)
-                {
-                    filetypes = new string[] {
-                UTType.PDF,
-                "org.openxmlformats.wordprocessingml.document",
-                "com.microsoft.word.doc",
-    "org.openxmlformats.spreadsheetml.sheet",
-    "org.openxmlformats.presentationml.presentation",
-                UTType.JPEG,
-                UTType.PNG,
-                UTType.GIF,
-                "com.microsoft.excel.xls",
-                "com.microsoft.powerpoint.​ppt",
-                 UTType.Text
-                            };
-                }
-                else
-                {
-                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
-                }
+
+                filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
+
+    //            if (Device.RuntimePlatform == Device.iOS)
+    //            {
+    //                filetypes = new string[] {
+    ////            UTType.PDF,
+    ////            "org.openxmlformats.wordprocessingml.document",
+    ////            "com.microsoft.word.doc",
+    ////"org.openxmlformats.spreadsheetml.sheet",
+    ////"org.openxmlformats.presentationml.presentation",
+    ////            UTType.JPEG,
+    ////            UTType.PNG,
+    ////            UTType.GIF,
+    ////            "com.microsoft.excel.xls",
+    ////            "com.microsoft.powerpoint.​ppt",
+    ////             UTType.Text
+    //                        };
+    //            }
+    //            else
+    //            {
+    //                filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+    //            }
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                 //if (AttachmentSize < 10)
                 //{

@@ -18,5 +18,31 @@ namespace GAZT.Droid.DependencyServices
             width = (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.WidthPixels / (double)Xamarin.Forms.Forms.Context.Resources.DisplayMetrics.Density;
             return width;
         }
+
+        public string[] GetAttachmentTypeString()
+        {
+            string[] filetypes;
+            filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+            return filetypes;
+        }
+
+        public string[] GetAttachmentTypeStringForAll()
+        {
+            string[] filetypesForAll = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+            return filetypesForAll;
+        }
+
+
+        public string[] GetAttachmentTypeStringForTaxEvasion()
+        {
+            string[] filetypesForTaxEvasion = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "text/plain" };
+            return filetypesForTaxEvasion;
+        }
+
+            public string[] GetAttachmentTypeStringForZakat()
+        {
+            string[] filetypesforZakat = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
+            return filetypesforZakat;
+        }
     }
 }

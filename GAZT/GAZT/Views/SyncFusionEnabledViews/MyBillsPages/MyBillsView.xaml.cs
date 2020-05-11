@@ -9,6 +9,7 @@ using Syncfusion.DataSource.Extensions;
 using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Xamarin.Essentials;
@@ -170,17 +171,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyBillsView
             {
                 var text = await Clipboard.GetTextAsync();
                 //viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " "+ text, "Copied");
-                //   viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.Copied);
+                   viewModel._dialogService.ShowMessageBox(AppResources.ZSadadInvoiceNumber + " " + text, AppResources.Copied);
                 //DisplayAlert("Success", string.Format("Your copied text is({0})", text), "OK");
-                PopUp popUp = new PopUp();
-                StringBuilder SB = new StringBuilder();
-                SB.Append(AppResources.ZSadadInvoiceNumber);
-                SB.Append(Environment.NewLine);
-                SB.Append(text);
-                popUp.Message = SB.ToString();
-                popUp.IsLinkAvailable = true;
-              
-                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                //if (App.IsArabic)
+                //{
+                //    CultureInfo culture = CultureInfo.CreateSpecificCulture("ar-AE");
+                //    PopUp popUp = new PopUp();
+                //    StringBuilder SB = new StringBuilder();
+                //    // SB.Append(AppResources.ZSadadInvoiceNumber);
+                //    //SB.Append(Environment.NewLine);
+                //    // SB.AppendFormat(culture, AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text);
+                //    // AlertDialog dialog = new RightJustifyAlertDialog(this);
+                //    this.DisplayAlert(AppResources.Copied, AppResources.ZSadadInvoiceNumber + Environment.NewLine + " " + text, AppResources.CancelText);
+
+                //    // viewModel._dialogService.ShowMessageBox(SB.ToString(), AppResources.Copied);
+                //}
+
+
+                //popUp.Message = SB.ToString();
+                //popUp.IsLinkAvailable = true;
+
+                //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
             Device.BeginInvokeOnMainThread(() =>
             {

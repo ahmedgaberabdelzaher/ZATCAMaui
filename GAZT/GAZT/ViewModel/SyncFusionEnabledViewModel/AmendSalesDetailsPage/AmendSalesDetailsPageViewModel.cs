@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
-using MobileCoreServices;
 using Plugin.FilePicker;
 using System;
 using System.Collections.ObjectModel;
@@ -241,21 +240,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 try
                 {
                     string[] filetypes;
-                    if (Device.RuntimePlatform == Device.iOS)
-                    {
-                        filetypes = new string[] {
-                UTType.PDF,
-                "org.openxmlformats.wordprocessingml.document",
-                "com.microsoft.word.doc",
-    "org.openxmlformats.spreadsheetml.sheet",
-                UTType.JPEG,
-                "com.microsoft.excel.xls",
-                            };
-                    }
-                    else
-                    {
-                        filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
-                    }
+
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForZakat();
+
+    //                if (Device.RuntimePlatform == Device.iOS)
+    //                {
+    //                    filetypes = new string[] {
+    ////            UTType.PDF,
+    ////            "org.openxmlformats.wordprocessingml.document",
+    ////            "com.microsoft.word.doc",
+    ////"org.openxmlformats.spreadsheetml.sheet",
+    ////            UTType.JPEG,
+    ////            "com.microsoft.excel.xls",
+    //                        };
+    //                }
+    //                else
+    //                {
+    //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
+    //                }
                     var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                     attachment = fileData.DataArray;
                     await Task.Run(() =>
