@@ -149,14 +149,36 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                                     viewModel.Name = "";
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+
+                                        if (string.Compare(vatLookUp.d.results[0].Description, "Vat number is not equal to 15") == 0)
                                         {
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.ZError);
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZVatnumberisnotequalto15, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZInvalidVATnumberprovided, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Tin is not Active") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZTinisnotActive, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid TIN") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZInvalidTinNumber, AppResources.ZError);
                                         }
                                         else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters") == 0)
                                         {
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZNoDataAvailable, AppResources.ZError);
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZNoDatafoundagainstgivenparameters, AppResources.ZError);
+                                        } 
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "No VAT Certificate Found") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZNoVATCertificateFound, AppResources.ZError);
                                         }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Account is deregistered") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZAccountisderegistered, AppResources.ZError);
+                                        }
+
                                         else
                                         {
                                             await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
@@ -379,18 +401,42 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
 
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+
+                                        if (string.Compare(vatLookUp.d.results[0].Description, "Vat number is not equal to 15") == 0)
                                         {
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZVATCerNumberisnotequalto15, AppResources.ZError);
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZVatnumberisnotequalto15, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZInvalidVATnumberprovided, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Tin is not Active") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZTinisnotActive, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Invalid TIN") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZInvalidTinNumber, AppResources.ZError);
                                         }
                                         else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters") == 0)
                                         {
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZNoDataAvailable, AppResources.ZError);
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZNoDatafoundagainstgivenparameters, AppResources.ZError);
                                         }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "No VAT Certificate Found") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZNoVATCertificateFound, AppResources.ZError);
+                                        }
+                                        else if (string.Compare(vatLookUp.d.results[0].Description, "Account is deregistered") == 0)
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZZAccountisderegistered, AppResources.ZError);
+                                        }
+
                                         else
                                         {
                                             await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                         }
+
+
                                     });
                                 }
                             }
