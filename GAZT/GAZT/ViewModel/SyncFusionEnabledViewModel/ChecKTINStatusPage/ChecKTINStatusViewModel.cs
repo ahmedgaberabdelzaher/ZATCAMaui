@@ -23,6 +23,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
         public ICommand OnCloseClick { get; set; }
         public ICommand OnClickLessOrMore { get; set; }
         public DateTime lastTapped;
+        private bool _isios = false;
+        public bool Isios
+        {
+            get
+            {
+                return _isios;
+            }
+            set
+            {
+                _isios = value;
+                RaisePropertyChanged("Isios");
+            }
+        }
+        private bool _isAndroid = false;
+        public bool IsAndroid
+        {
+            get
+            {
+                return _isAndroid;
+            }
+            set
+            {
+                _isAndroid = value;
+                RaisePropertyChanged("IsAndroid");
+            }
+        }
         private string _TIN = string.Empty;
         public string TIN
         {
@@ -281,3 +307,4 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
         }
     }
 }
+ 

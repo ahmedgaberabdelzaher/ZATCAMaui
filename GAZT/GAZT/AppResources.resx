@@ -1127,8 +1127,8 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZAcceptReturn" xml:space="preserve">
     <value>Accept Return</value>
   </data>
-  <data name="ZBillDeatilsInfo" xml:space="preserve">
-    <value>By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations. Paying the invoice means you confirm the correctness of the return information.</value>
+  <data name="ZBillDeatilsInfo1" xml:space="preserve">
+    <value>By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations.</value>
   </data>
   <data name="ZChangeReason" xml:space="preserve">
     <value>Change Reason</value>
@@ -3122,5 +3122,8 @@ Should we require further information, we would be in contact.</value>
   <data name="InvalidEmailFormat" xml:space="preserve">
     <value>Invalid Email Format</value>
     <comment>Tax Evasion</comment>
+  </data>
+  <data name="ZBillDeatilsInfo2" xml:space="preserve">
+    <value>Paying the invoice means you confirm the correctness of the return information.</value>
   </data>
 </root>

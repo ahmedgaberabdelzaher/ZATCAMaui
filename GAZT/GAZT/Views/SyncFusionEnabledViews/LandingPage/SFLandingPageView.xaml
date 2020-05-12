@@ -406,14 +406,7 @@
                     </Grid>
                 </border:SfBorder>
 
-                <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
-                <local1:CustomLabel x:Name="LandingHamberMenu" Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ShowOptionsCommand}" >
-                        </TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </local1:CustomLabel>
-                <!--</controls:TapAnimationGrid>-->
+
                  <StackLayout x:Name="LandingStackLayout" Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" >
                     <Image  Aspect="AspectFit" Source="ic_logo_Dashboard.png" HorizontalOptions="Center" VerticalOptions="Center"  Margin="0,0,0,0" ></Image>
                      <Label   VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}" Margin="0,0,0,0">
@@ -430,6 +423,15 @@
                 </Label>
                      <!--<local1:CustomLabel  TextColor="White" Text="{x:Static local:AppResources.ZZZLandingPageTitle}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource LabelStyleFromCommonStyle}" ></local1:CustomLabel>-->
                 </StackLayout>
+                                <!--<controls:TapAnimationGrid Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" ColumnSpacing="0" Command="{Binding ShowOptionsCommand}"  RowSpacing="0" Tapped="False" VerticalOptions="Start" BackgroundColor="Transparent" HorizontalOptions="Start">-->
+                <local1:CustomLabel x:Name="LandingHamberMenu" Grid.Row="0" Grid.Column="0" Style="{StaticResource IconLabelStyle}" Text="{StaticResource BurgerMenu}" TextColor="White" HorizontalOptions="Start" VerticalOptions="Start" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowOptionsCommand}" >
+                        </TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </local1:CustomLabel>
+                <!--</controls:TapAnimationGrid>-->
+
                 <!--<Image Grid.Row="0" Grid.Column="0" Aspect="AspectFit" Source="ic_logo_Dashboard.png" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,80,0,0" ></Image>
                 <Label  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}" Margin="0,80,0,0">
                     <Label.FormattedText >

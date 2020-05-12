@@ -48,6 +48,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
+                viewModel.ClearData();
                 viewModel.VatAttachmentsList = null;
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;

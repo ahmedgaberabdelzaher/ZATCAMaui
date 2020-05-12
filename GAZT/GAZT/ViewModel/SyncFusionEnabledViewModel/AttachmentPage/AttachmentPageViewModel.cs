@@ -456,6 +456,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 });
             }
         }
+
+        public void ClearData()
+        {
+            if(AttachmentList != null && AttachmentList.Count > 0)
+            {
+                AttachmentList.Clear();
+            }
+          
+        }
+
         public void OnPageLoad()
         {
             AttachmentName = string.Empty;

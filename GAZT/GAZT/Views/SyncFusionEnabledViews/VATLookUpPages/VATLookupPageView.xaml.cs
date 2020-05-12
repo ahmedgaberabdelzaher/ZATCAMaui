@@ -41,7 +41,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
-            
+
             NavigationPage.SetBackButtonTitle(this, "");
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
@@ -105,7 +105,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
             }
         }
-       
+
         private void SelectedParametes_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             VATParameterType vATParameterType = (VATParameterType)e.NewValue;
@@ -125,7 +125,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
 
             await Task.Run(async () =>
             {
-                string MessageForTheUser = string.Empty;
                 try
                 {
                     ValidateFormData();
@@ -158,6 +157,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                                         {
                                             await viewModel._dialogService.ShowMessageBox(AppResources.ZNoDataAvailable, AppResources.ZError);
                                         }
+                                        else
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                                        }
+                                        
                                     });
                                 }
                             }
@@ -172,7 +176,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                 catch (GAZTException gex)
                 {
                     // Handle the GAZT custom exception.
-                   MessageForTheUser = gex.Message;
+                    string MessageForTheUser = gex.Message;
 
                     if (gex is GAZTNetworkConnectivityIssueException)
                     {
@@ -187,24 +191,39 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                         MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                     }
 
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        viewModel._navigationService.GoBack();
+                    });
                 }
                 catch (HttpRequestException ex)
                 {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
+
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //  viewModel._navigationService.GoBack();
+                    });
                 }
                 catch (Exception ex)
                 {
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel.IsLoading = false;
 
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //  viewModel._navigationService.GoBack();
+                    });
                 }
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = false;
 
-                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    viewModel._navigationService.GoBack();
-                });
+
+
             });
 
             await Task.Run(() =>
@@ -270,14 +289,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                     else
                     {
                         isMandatoryDataEntered = false;
-                        
+
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             isMandatoryDataEntered = false;
                             viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
                             frmLookupNumner.HasError = true;
                         });
-                        
+
                         return;
                     }
                 }
@@ -322,17 +341,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                 PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
-     
+
         private async void ScanCode_btn_Clicked(object sender, EventArgs e)
         {
-            string MessageForTheUser = string.Empty;
-          var scan = new ZXingScannerPage();
-            
-             Navigation.PushAsync(scan);
+            var scan = new ZXingScannerPage();
+
+            Navigation.PushAsync(scan);
 
             string id = string.Empty;
             string _language = "A";
-            
+
             scan.OnScanResult += (result) =>
             {
                 Device.BeginInvokeOnMainThread(async () =>
@@ -358,7 +376,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                                 {
                                     viewModel.NameOrNoResultLabel = "";
                                     viewModel.Name = "";
-                                    
+
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         if (string.Compare(vatLookUp.d.results[0].Description, "Invalid VAT number provided") == 0)
@@ -368,6 +386,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                                         else if (string.Compare(vatLookUp.d.results[0].Description, "No Data found against given parameters") == 0)
                                         {
                                             await viewModel._dialogService.ShowMessageBox(AppResources.ZNoDataAvailable, AppResources.ZError);
+                                        }
+                                        else
+                                        {
+                                            await viewModel._dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
                                         }
                                     });
                                 }
@@ -382,7 +404,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                     catch (GAZTException gex)
                     {
                         // Handle the GAZT custom exception.
-                        MessageForTheUser = gex.Message;
+                        string MessageForTheUser = gex.Message;
 
                         if (gex is GAZTNetworkConnectivityIssueException)
                         {
@@ -397,24 +419,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                             MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
                         }
 
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            viewModel._navigationService.GoBack();
+                        });
                     }
                     catch (HttpRequestException ex)
                     {
-                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //  viewModel._navigationService.GoBack();
+                        });
                     }
                     catch (Exception ex)
                     {
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel.IsLoading = false;
 
-                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //  viewModel._navigationService.GoBack();
+                        });
 
                     }
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        viewModel.IsLoading = false;
 
-                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        viewModel._navigationService.GoBack();
-                    });
                 });
             };
         }

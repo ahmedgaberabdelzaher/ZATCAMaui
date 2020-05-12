@@ -36,6 +36,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 this.BindingContext = viewModel = App.Locator.SFLoginPageView;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
+                GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
                 if (App.IsArabic)
                 {
@@ -208,6 +209,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTinId = viewModel.SelectedTinIdPrev;
+        }
+
+       
+        private void GetDeviceID()
+        {
+            string deviceId = System.Guid.NewGuid().ToString();
+            viewModel.DeviceId = deviceId;
         }
     }
 }

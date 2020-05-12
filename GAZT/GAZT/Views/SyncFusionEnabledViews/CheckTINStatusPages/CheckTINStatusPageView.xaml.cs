@@ -13,14 +13,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
         public CheckTINStatusPageView()
         {
             InitializeComponent();
+
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel = App.Locator.CheckTINStatusPageView;
             this.BindingContext = viewModel;
+            viewModel.IsAndroid = false;
+            viewModel.Isios = true;
             ChangeAeroIcon();
             MainLayout.Margin = new Thickness(0, 0, 0, 5);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.OnPageLoad();
             SetLTR();
+            manageDeviceVisibility();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -45,6 +49,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus
                 }
                 //reconfigure layout
             }
+        }
+        public void manageDeviceVisibility()
+        {
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                viewModel.Isios = true;
+                viewModel.IsAndroid = false;
+            }
+            else
+            {
+                viewModel.Isios = false;
+                viewModel.IsAndroid = true;
+            }
+            
         }
         public void ChangeAeroIcon()
         {
