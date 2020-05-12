@@ -2127,11 +2127,20 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations. Paying the invoice means you confirm the correctness of the return information..
+        ///   Looks up a localized string similar to By paying the invoice, GAZT Zakat certificate will be issued to you automatically in case there are no other outstanding obligations..
         /// </summary>
-        public static string ZBillDeatilsInfo {
+        public static string ZBillDeatilsInfo1 {
             get {
-                return ResourceManager.GetString("ZBillDeatilsInfo", resourceCulture);
+                return ResourceManager.GetString("ZBillDeatilsInfo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paying the invoice means you confirm the correctness of the return information..
+        /// </summary>
+        public static string ZBillDeatilsInfo2 {
+            get {
+                return ResourceManager.GetString("ZBillDeatilsInfo2", resourceCulture);
             }
         }
         

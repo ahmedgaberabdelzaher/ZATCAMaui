@@ -901,8 +901,8 @@
   <data name="ZAcceptReturn" xml:space="preserve">
     <value>قبول الإقرار</value>
   </data>
-  <data name="ZBillDeatilsInfo" xml:space="preserve">
-    <value>بسدادكم للفاتورة من خلال نظام سداد سوف يتم إصدار شهادة الزكاة لكم آليًا في حال عدم وجود التزامات أخرى. إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
+  <data name="ZBillDeatilsInfo1" xml:space="preserve">
+    <value>بسدادكم للفاتورة من خلال نظام سداد سوف يتم إصدار شهادة الزكاة لكم آلياً في حال عدم وجود التزامات أخرى.</value>
   </data>
   <data name="ZChangeReason" xml:space="preserve">
     <value>سبب التعديل</value>
@@ -3118,5 +3118,8 @@
   </data>
   <data name="ZTERReportDetailID" xml:space="preserve">
     <value>الهوية</value>
+  </data>
+  <data name="ZBillDeatilsInfo2" xml:space="preserve">
+    <value>إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
   </data>
 </root>
