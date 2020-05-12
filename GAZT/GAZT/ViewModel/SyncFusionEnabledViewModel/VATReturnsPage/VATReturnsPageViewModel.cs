@@ -2849,6 +2849,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     FirstSubmissionCount = 0;
                     //ClearPage();
                     //IsVisibleAcknowledgment = true;
+                    await Task.Delay(2000);
+                    //Check the fbnumber created or not
+                    if (string.IsNullOrEmpty(VATDeclarationData.d.Fbnum))
+                    {
+                        
+                        VATDeclaration _vATDeclarationForGet = await WebServiceManager.GAZTGetVATReturns(App.Fbguid, VATDeclarationData.d.Fbnumz, App.EUser, "");
+                        PopToRootPage();
+                        if (_vATDeclarationForGet != null && _vATDeclarationForGet.d != null)
+                        {
+                            if (!string.IsNullOrEmpty(_vATDeclarationForGet.d.Fbnum))
+                            {
+                                //
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                    _navigationService.GoBack();
+                                });
+                            }
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
+                        }
+                    }
+
                     string operation = "01";// Passed operation "01" to submit the VAT Declaration Data
                                             //   VATDeclarationData.d.StepNumberz = "04";
                                             //VATDeclarationData.d.StepNumber = "00";
