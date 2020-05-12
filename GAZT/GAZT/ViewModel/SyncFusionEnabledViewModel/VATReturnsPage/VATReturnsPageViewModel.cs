@@ -4739,10 +4739,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.ZZDisplayNotes);
             }
-            else if (ButtonName == "Validate")
-            {
-                DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
-            }
+            //else if (ButtonName == "Validate")
+            //{
+            //    DummyListOfActionButtonsApplicable.Add(AppResources.ZZValidate);
+            //}
             else if (ButtonName == "Attachments")
             {
                 DummyListOfActionButtonsApplicable.Add(AppResources.Attachments);
