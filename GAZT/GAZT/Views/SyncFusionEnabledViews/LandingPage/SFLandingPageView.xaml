@@ -29,9 +29,9 @@
     <ContentPage.Content>
         <Grid x:Name="ParentContainer" RowSpacing="0" BackgroundColor="White">
             <Grid.RowDefinitions>
-                <RowDefinition  Height="35*"/>
+                <RowDefinition  Height="26*"/>
                 <RowDefinition  Height="2*"/>
-                <RowDefinition  Height="63*"/>
+                <RowDefinition  Height="72*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
