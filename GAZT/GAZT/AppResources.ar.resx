@@ -3122,4 +3122,27 @@
   <data name="ZBillDeatilsInfo2" xml:space="preserve">
     <value>إن سداد الفاتورة يعتبر إقرار بصحة معلومات الإقرار.</value>
   </data>
+  <data name="ZZZAccountisderegistered" xml:space="preserve">
+    <value>تم إلغاء تسجيل الحساب</value>
+  </data>
+  <data name="ZZZInvalidVATnumberprovided" xml:space="preserve">
+    <value>رقم ضريبة القيمة المضافة غير متاح</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZNoDatafoundagainstgivenparameters" xml:space="preserve">
+    <value>لا يوجد بيانات مرتبطة بالقيمة المدخلة</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZNoVATCertificateFound" xml:space="preserve">
+    <value>لم يتم العثور على شهادة ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZTinisnotActive" xml:space="preserve">
+    <value>الرقم المميز غير مفعل</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
+    <value>رقم ضريبة القيمة المضافة يجب أن يساوي 15 خانة</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
 </root>
