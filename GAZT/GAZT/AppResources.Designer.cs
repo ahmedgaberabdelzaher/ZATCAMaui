@@ -7387,6 +7387,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account is deregistered.
+        /// </summary>
+        public static string ZZZAccountisderegistered {
+            get {
+                return ResourceManager.GetString("ZZZAccountisderegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZAKAT.
         /// </summary>
         public static string ZZZAKAT {
@@ -7549,6 +7558,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid VAT number provided.
+        /// </summary>
+        public static string ZZZInvalidVATnumberprovided {
+            get {
+                return ResourceManager.GetString("ZZZInvalidVATnumberprovided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please use your GAZT account to log in or create a new account.
         /// </summary>
         public static string ZZZLandingCreateAccountNote {
@@ -7617,6 +7635,24 @@ namespace EGAZT {
         public static string ZZZMyProfile {
             get {
                 return ResourceManager.GetString("ZZZMyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Data found against given parameters.
+        /// </summary>
+        public static string ZZZNoDatafoundagainstgivenparameters {
+            get {
+                return ResourceManager.GetString("ZZZNoDatafoundagainstgivenparameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No VAT Certificate Found.
+        /// </summary>
+        public static string ZZZNoVATCertificateFound {
+            get {
+                return ResourceManager.GetString("ZZZNoVATCertificateFound", resourceCulture);
             }
         }
         
@@ -7804,6 +7840,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tin is not Active.
+        /// </summary>
+        public static string ZZZTinisnotActive {
+            get {
+                return ResourceManager.GetString("ZZZTinisnotActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TIN Status.
         /// </summary>
         public static string ZZZTINStatusTitle {
@@ -7872,6 +7917,15 @@ namespace EGAZT {
         public static string ZZZVATLookupTitle {
             get {
                 return ResourceManager.GetString("ZZZVATLookupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vat number is not equal to 15.
+        /// </summary>
+        public static string ZZZVatnumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZZZVatnumberisnotequalto15", resourceCulture);
             }
         }
         

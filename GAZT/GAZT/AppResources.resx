@@ -3126,4 +3126,28 @@ Should we require further information, we would be in contact.</value>
   <data name="ZBillDeatilsInfo2" xml:space="preserve">
     <value>Paying the invoice means you confirm the correctness of the return information.</value>
   </data>
+  <data name="ZZZAccountisderegistered" xml:space="preserve">
+    <value>Account is deregistered</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZInvalidVATnumberprovided" xml:space="preserve">
+    <value>Invalid VAT number provided</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZNoDatafoundagainstgivenparameters" xml:space="preserve">
+    <value>No Data found against given parameters</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZNoVATCertificateFound" xml:space="preserve">
+    <value>No VAT Certificate Found</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZTinisnotActive" xml:space="preserve">
+    <value>Tin is not Active</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
+    <value>Vat number is not equal to 15</value>
+    <comment>Vat Lookup Error Message</comment>
+  </data>
 </root>
