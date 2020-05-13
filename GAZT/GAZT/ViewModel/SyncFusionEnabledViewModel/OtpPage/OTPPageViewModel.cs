@@ -789,7 +789,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                         currentAttempts++;
                         if (currentAttempts <= App.TP.Attempts)
                         {
-                            _dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessageBox(AppResources.MandatoryPasswordForEmailUpdatation, AppResources.Information);
+                            });
                             String OTP = string.Empty;
                             OTP = EnteredOTP;
                             if (!string.IsNullOrEmpty(OTP))

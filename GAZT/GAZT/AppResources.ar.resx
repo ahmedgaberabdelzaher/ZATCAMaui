@@ -418,7 +418,7 @@
     <value>الرجاء إعادة التحقق</value>
   </data>
   <data name="MandatoryPasswordForEmailUpdatation" xml:space="preserve">
-    <value>في حال تغيير البريد الإلكتروني يجب تغيير كلمة المرور</value>
+    <value>في حال تغيير البريد اإللكتروني يجب تغيير كلمة المرور</value>
   </data>
   <data name="TINS" xml:space="preserve">
     <value>الرقم المميز</value>

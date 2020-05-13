@@ -241,7 +241,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
                                 String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
+                                   // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
                                     _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
                                    // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
                                 });
