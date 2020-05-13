@@ -542,7 +542,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please change password</value>
   </data>
   <data name="Invalidverificationcodeentered" xml:space="preserve">
-    <value>Invalid verification code entered</value>
+    <value>Wrong verification code</value>
   </data>
   <data name="PleaseenterOTP" xml:space="preserve">
     <value>Please enter OTP</value>
@@ -3149,5 +3149,10 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
     <value>Vat number is not equal to 15</value>
     <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
+    <value>Password did not updated as it does not match
+password format</value>
+    <comment>Change Password</comment>
   </data>
 </root>

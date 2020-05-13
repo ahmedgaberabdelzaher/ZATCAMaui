@@ -547,7 +547,7 @@
     <value>الرجاء تغيير كلمة المرور</value>
   </data>
   <data name="Invalidverificationcodeentered" xml:space="preserve">
-    <value>قمت بإدخال رمز التحقق بشكل خاطئ</value>
+    <value>رمز التحقق غير صحيح</value>
   </data>
   <data name="PleaseenterOTP" xml:space="preserve">
     <value>الرجاء ادخال رمز التحقق</value>
@@ -3144,5 +3144,9 @@
   <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
     <value>رقم ضريبة القيمة المضافة يجب أن يساوي 15 خانة</value>
     <comment>Vat Lookup Error Message</comment>
+  </data>
+  <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
+    <value>م يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
+    <comment>Change Password</comment>
   </data>
 </root>

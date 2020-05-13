@@ -615,7 +615,7 @@ namespace GAZT.Manager
                             }
                             else
                             {
-                                throw new ArgumentException(AppResources.PasswordGuidelineText);
+                                throw new ArgumentException(AppResources.ZZPasswordGuideLineTextNew);
                             }
                         }
                     }

@@ -885,7 +885,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid verification code entered.
+        ///   Looks up a localized string similar to Wrong verification code.
         /// </summary>
         public static string Invalidverificationcodeentered {
             get {
@@ -6283,6 +6283,16 @@ namespace EGAZT {
         public static string ZZPasswordcannothavecharacterinthepassword {
             get {
                 return ResourceManager.GetString("ZZPasswordcannothavecharacterinthepassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password did not updated as it does not match
+        ///password format.
+        /// </summary>
+        public static string ZZPasswordGuideLineTextNew {
+            get {
+                return ResourceManager.GetString("ZZPasswordGuideLineTextNew", resourceCulture);
             }
         }
         
