@@ -666,7 +666,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                         }
                         else if (gex is GAZTUserAccountLockedException)
                         {
-                            MessageForTheUser = AppResources.ZAccountLocked;
+                            MessageForTheUser = AppResources.UserAccountLocked;
                         }
                         else if (gex is GAZTPasswordIsLockedDueToInvalidAttemptsException)
                         {
