@@ -3150,4 +3150,8 @@ Should we require further information, we would be in contact.</value>
     <value>Vat number is not equal to 15</value>
     <comment>Vat Lookup Error Message</comment>
   </data>
+  <data name="ZZZWrongverificationcode" xml:space="preserve">
+    <value>Wrong verification code</value>
+    <comment>Forgot Password</comment>
+  </data>
 </root>

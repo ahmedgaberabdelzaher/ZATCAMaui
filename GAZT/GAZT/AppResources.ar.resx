@@ -3145,4 +3145,8 @@
     <value>رقم ضريبة القيمة المضافة يجب أن يساوي 15 خانة</value>
     <comment>Vat Lookup Error Message</comment>
   </data>
+  <data name="ZZZWrongverificationcode" xml:space="preserve">
+    <value>رمز التحقق غير صحيح</value>
+    <comment>Forgot Password</comment>
+  </data>
 </root>

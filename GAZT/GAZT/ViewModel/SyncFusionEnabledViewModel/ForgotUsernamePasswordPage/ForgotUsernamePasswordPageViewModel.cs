@@ -1114,7 +1114,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 //Invalied user name
                                 Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
+                                        //await _dialogService.ShowMessageBox(AppResources.Invalidverificationcodeentered, AppResources.ZError);
+                                        await _dialogService.ShowMessageBox(AppResources.ZZZWrongverificationcode, AppResources.ZError);
                                     });
                             }
                             else if (currentAttempts == 2)
@@ -1122,7 +1123,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 // You have one remaining attaampt
                                 Device.BeginInvokeOnMainThread(async () =>
                                     {
-                                        await _dialogService.ShowMessageBox(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, AppResources.ZError);
+                                        String message = String.Format(AppResources.ZYouhaveoneremainingattemptthentheaccountwillbelocked, "1");
+                                        await _dialogService.ShowMessageBox(message, AppResources.ZError);
                                     });
                             }
                             else
