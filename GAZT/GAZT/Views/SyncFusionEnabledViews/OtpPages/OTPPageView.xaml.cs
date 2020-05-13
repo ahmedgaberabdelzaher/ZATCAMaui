@@ -153,7 +153,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     {
                         //if (Device.RuntimePlatform == Device.iOS)
                         //{
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ lastDigits + "***" + firstDigits;
+                        //viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ lastDigits + "***" + firstDigits;
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ lastDigits + "*****" ;
                         //}
                         //else
                         //{
@@ -162,7 +163,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     }
                     else
                     {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ "5"+firstDigits + "***" + lastDigits;
+                        //viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+ "5"+firstDigits + "***" + lastDigits;
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode +" "+  "*****" + lastDigits;
                     }
                 }
                 if (!App.IsArabic)
@@ -232,7 +234,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     {
                         //if (Device.RuntimePlatform == Device.iOS)
                         //{
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                        //viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "***" + firstDigits;
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + lastDigits + "*****" ;
                         //}
                         //else
                         //{
@@ -241,7 +244,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                     }
                     else
                     {
-                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                       // viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : " + firstDigits + "***" + lastDigits;
+                        viewModel.OTPSentOnThisText = AppResources.EnterVerificationCode + " : "+ "*****" + lastDigits;
                     }
                 }
                 DeviceWidth = DependencyService.Get<IDeviceInfo>().GetDeviceWidth();

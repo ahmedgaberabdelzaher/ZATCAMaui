@@ -8001,5 +8001,14 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZWrongEnterTin", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong verification code.
+        /// </summary>
+        public static string ZZZWrongverificationcode {
+            get {
+                return ResourceManager.GetString("ZZZWrongverificationcode", resourceCulture);
+            }
+        }
     }
 }
