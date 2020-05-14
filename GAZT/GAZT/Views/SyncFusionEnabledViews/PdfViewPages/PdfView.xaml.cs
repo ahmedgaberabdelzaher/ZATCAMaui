@@ -25,7 +25,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("search", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("save", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("bookmark", false);
-                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("edited-annotation", false);
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("annotation", false);
 
                 SetLTR();
                 this.BindingContext = viewModel;

@@ -193,7 +193,7 @@
     <value>البريد الإلكتروني</value>
   </data>
   <data name="EnterVerificationCode" xml:space="preserve">
-    <value>الرجاء ادخال رمز التحقق المرسل عل الجوال رقم</value>
+    <value>الرجاء ادخال رمز التحقق المرسل على الجوال رقم</value>
   </data>
   <data name="EstimateSalesForFiscalYear" xml:space="preserve">
     <value>المبيعات المقدرة للسنة المالية</value>
