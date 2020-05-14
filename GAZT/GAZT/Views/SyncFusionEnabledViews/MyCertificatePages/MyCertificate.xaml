@@ -10,7 +10,8 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyCertificate.MyCertificate" FlowDirection="RightToLeft"
              Title="{x:Static custom2:AppResources.MyCertificate}"
-              NavigationPage.HasNavigationBar="False">
+              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local2:DataMarkerConverter x:Key="converter" />
