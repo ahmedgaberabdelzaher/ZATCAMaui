@@ -15,7 +15,8 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{x:Static local:AppResources.ZTINStatus}"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus.CheckTINStatusPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus.CheckTINStatusPageView"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />
@@ -73,7 +74,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryTINStatus"    Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZTINStatus}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small" IsReadOnly="True" TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="False">
+                            <custom:BorderlessEntry  x:Name="entryTINStatus" Text="{Binding TINStatus}"  FontSize="Small"  TextColor="#7D858D"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsReadOnly="True">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
 
@@ -81,7 +82,7 @@
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                                        
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <controls:BorderlessEntry   x:Name="entryLastUpdateAndroid" IsVisible="{Binding IsAndroid}" FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="45" VerticalTextAlignment="Center">
+                            <controls:BorderlessEntry   x:Name="entryLastUpdateAndroid" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsVisible="{Binding IsAndroid}" FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="45" VerticalTextAlignment="Center">
                                
                             </controls:BorderlessEntry>
                           
@@ -89,7 +90,7 @@
                         <inputLayout:SfTextInputLayout x:Name="FrmentryLastUpdateForiOS"  IsVisible="{Binding Isios}"  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Hint="{x:Static local:AppResources.ZLastUpdate}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdateiOS" IsVisible="{Binding Isios}" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                            <local1:GAZTBorderlessEntry   x:Name="entryLastUpdateiOS" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsVisible="{Binding Isios}" FlowDirection="LeftToRight" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Text="{Binding LastUpdate}"  FontSize="Small" IsReadOnly="True" TextColor="Black"    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
 
                             </local1:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
