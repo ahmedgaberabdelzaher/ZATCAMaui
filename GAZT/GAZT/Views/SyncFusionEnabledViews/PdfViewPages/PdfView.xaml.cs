@@ -14,14 +14,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
         PdfViewModel viewModel ;
 		public PdfView (string Pdfurl)
 		{
-            viewModel = App.Locator.pdfView;    
-            InitializeComponent();
-            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            viewModel.pdfUrl = Pdfurl;
-            ChangeAeroIcon();
-            SetLTR();
-            this.BindingContext = viewModel;
+            try
+            {
+                viewModel = App.Locator.pdfView;
+                InitializeComponent();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                viewModel.pdfUrl = Pdfurl;
+                ChangeAeroIcon();
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("search", false);
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("save", false);
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("bookmark", false);
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("edited-annotation", false);
+
+                SetLTR();
+                this.BindingContext = viewModel;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         protected async override void OnAppearing()
         {
