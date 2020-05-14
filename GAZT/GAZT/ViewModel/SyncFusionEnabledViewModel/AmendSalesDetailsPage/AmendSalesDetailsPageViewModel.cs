@@ -91,7 +91,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 _newValue = value;
                 IsValueChanged();
                 SetSaveButtonVisibility();
-                if (!string.IsNullOrEmpty(NewValue))
+                if (!string.IsNullOrEmpty(NewValue) && ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber == true)
                 {
                     SelectedSalesDetails.NewValue = NewValue;
                 }
@@ -420,6 +420,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
             IsLoading = false;
             AttachmentName = "";
             ZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
+            ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber = true;
         }
         public void OnLoad()
         {
@@ -627,6 +628,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                     {
                         ButtonBackgroundColor = Color.FromHex("#006450");
                         IsSaveButtonEnable = true;
+                    }
+                    //else if(NewValue.Length)
+
+
+                    if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber == false)
+                    {
+                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        IsSaveButtonEnable = false;
                     }
                 });
             }

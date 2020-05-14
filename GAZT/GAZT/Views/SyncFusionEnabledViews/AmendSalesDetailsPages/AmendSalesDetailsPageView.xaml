@@ -114,7 +114,7 @@
     Hint="{x:Static local:AppResources.ZNewValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric"     Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SSTArabicMedium}">
+                                <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric" TextChanged="OnNewValueTextChanged"    Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SSTArabicMedium}">
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                             <!--<Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >

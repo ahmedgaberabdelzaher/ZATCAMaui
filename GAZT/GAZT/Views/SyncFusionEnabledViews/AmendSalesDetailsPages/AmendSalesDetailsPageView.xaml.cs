@@ -201,6 +201,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 NewValue.TextColor = Color.Black;
             }
         }
+
+        public void OnNewValueTextChanged(object sender, EventArgs args)
+        {
+            if (NewValue.Text.Contains(","))
+            {
+                NewValue.Text = NewValue.Text.Replace(",", "");
+                NewValue.TextColor = Color.Black;
+            }
+        }
+
+        
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
