@@ -22,7 +22,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.pdfUrl = Pdfurl;
                 ChangeAeroIcon();
-                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("search", false);
+                //PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("search", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("save", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("bookmark", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("annotation", false);
