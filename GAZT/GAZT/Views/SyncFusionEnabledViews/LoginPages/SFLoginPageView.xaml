@@ -13,11 +13,10 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     FlowDirection="RightToLeft"
     NavigationPage.HasNavigationBar="False"
+                 xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+
    >
-    <!--BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
-                                                                  iOSPhoneLandscape=sf_LoginBackground-Landscape.png,
-                                                                  iOSTabletLandscape=sf_LoginBackground-Landscape.png}"-->
-    <!--Style="{StaticResource ContentPageStyle}"-->
+  
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -26,46 +25,47 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.ControlTemplate >
+        <ControlTemplate >
+            <StackLayout Spacing="0" BackgroundColor="Transparent">
+               
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            HorizontalOptions="Start"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                             />
+                  
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
     <ContentPage.Content>
-        <Grid>
+        <Grid VerticalOptions="FillAndExpand"  RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <custom:CustomLabel
-                x:Name="BackLabel"
-                       VerticalOptions="Start"
-                HorizontalOptions="Start"
-                        Margin="8,10,8,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#ffffff"
-                        Text="{DynamicResource StyleReverseBack}"
-                >
-                <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding BackButtonClicked}"></TapGestureRecognizer>
-                </custom:CustomLabel.GestureRecognizers>
-            </custom:CustomLabel>
-            <gradient:SfGradientView Style="{StaticResource SfGradientViewStyle}" />
-            <ScrollView HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
-                <ScrollView.VerticalOptions>
+           
+            <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                <!--<ScrollView.VerticalOptions>
                     <OnIdiom
                         x:TypeArguments="LayoutOptions"
-                        Default="CenterAndExpand"
+                        Default="FillAndExpand"
                         Phone="FillAndExpand" />
-                </ScrollView.VerticalOptions>
-                    <!--Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
-                                                                 PhoneLandscape='150,32',
-                                                                 TabletPortrait='200,50',
-                                                                 TabletLandscape='300,50',
-                                                                 Desktop='30'}"-->
-                    <StackLayout
+                </ScrollView.VerticalOptions>-->
+                        <StackLayout
                     Spacing="0"
-                    VerticalOptions="FillAndExpand"
-                    WidthRequest="{OnPlatform Default='-1',
-                                              UWP='350'}">
+                    VerticalOptions="Center"
+                  >
                     <Grid RowSpacing="0" VerticalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -96,54 +96,7 @@
                             Text="{x:Static local1:AppResources.ZZZLoginLabel}" />
                         <!--  Label to display the title of this page  -->
                                                 <local2:EmailEntry Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,0,0,0" />
-                      <!--  <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"
-    Hint="{x:Static localres:AppResources.TinEmail}" 
-    ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
-                    <control:BorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start">
-                    </control:BorderlessEntry>
-                </inputLayout:SfTextInputLayout>
-                         <Label
-                             Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-                x:Name="ValidationLabel"
-                Margin="15,-5,0,0"
-                FontSize="12"
-                IsVisible="False"
-                Text="{x:Static localres:AppResources.ZZPleaseenteravalidEmailAddress}"
-                TextColor="{DynamicResource Red}"
-                VerticalOptions="FillAndExpand" />
-                         <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.ColumnSpan="2"
-                                                  Hint="{x:Static localres:AppResources.TINS}" 
-                                                  Grid.Row="3" Grid.Column="0" 
-   IsVisible="{Binding IsVisibleTinIds}"
-    ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
-                    <custom:BorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="Red" FontSize="Small">
-                    </custom:BorderlessEntry>
-                </inputLayout:SfTextInputLayout>
-                <custom:CustomButton x:Name="TinsButton" FontSize="Small" IsVisible="{Binding IsVisibleTinIds}" Clicked="TINs_Clicked" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Margin="10,0,10,0" TextColor="White">
-                </custom:CustomButton>
-                <syncfusion:SfPicker x:Name="TinsPicker"
-                       Grid.Row="3" Grid.Column="0"          
-                    HeaderHeight="40"
-                    ShowHeader="true"
-                    HeaderText="{x:Static localres:AppResources.TINS}"
-                    ShowColumnHeader="False"
-                    SelectedIndex="{Binding TINIndex}"
-                    ColumnHeaderHeight="46"
-                    PickerMode="Dialog"
-                   ItemHeight="40"
-                    SelectedItem="{Binding SelectedTinId,Mode=TwoWay}" DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
-                    PickerWidth="270"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
-                    BorderColor="Black"
-                                             BackgroundColor="#EAF7CC"
-                    ShowFooter="False" FooterHeight="46">
-                    <syncfusion:SfPicker.Behaviors>
-                        <custom1:SfPickerBehavior />
-                    </syncfusion:SfPicker.Behaviors>
-                </syncfusion:SfPicker>-->
+                     
                         <!--  Entry to get password from user  -->
                         <inputLayout:SfTextInputLayout EnablePasswordVisibilityToggle="True"  Margin="10,-6,10,-6" 
    Grid.Row="4" Grid.ColumnSpan="2" Hint="{x:Static local1:AppResources.Password}" 
@@ -154,18 +107,7 @@
                               <custom:GAZTBorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" FontSize="Small" Text="{Binding Password}" TextColor="White" PlaceholderColor="Gray">
                         </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <!--<border:SfBorder
-                            Grid.Row="3"
-                            BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}"
-                            Style="{StaticResource SfBorderStyle}">
-                            <control:BorderlessEntry
-                                x:Name="PasswordEntry"
-                                IsPassword="True"
-                                IsFocused="{Binding IsFocused}"
-                                Placeholder="Password"
-                                Style="{StaticResource EntryStyle}"
-                                Text="{Binding Password}" />
-                        </border:SfBorder>-->
+                      
                         <!--  Forgot password link  -->
                         <Label
                             x:Name="ForgotPasswordLabel"
@@ -198,9 +140,7 @@
                         Orientation="Horizontal"
                         Spacing="1"
                         VerticalOptions="End">
-                        <!--<StackLayout.Padding>
-                            <OnIdiom x:DataType="Thickness" Default="0, 48, 0, 0" Phone="0" />
-                        </StackLayout.Padding>-->
+
                         <Label IsVisible="False"
                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                             HorizontalOptions="CenterAndExpand"
@@ -221,13 +161,8 @@
                         </StackLayout>
                 </StackLayout>
             </ScrollView>
-            </StackLayout>
-            <!--<busyindicator:SfBusyIndicator x:Name="BusyIndicator" 
-                                       AnimationType="HorizontalPulsingBox" 
-                                       ViewBoxWidth = "150" 
-                                       ViewBoxHeight="150" 
-                                       TextColor="DarkGreen" 
-                                       IsBusy="{Binding IsLoading}"/>-->
+         
+         
             <!-- Acticity indicator layout start -->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
