@@ -315,7 +315,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             isMandatoryDataEntered = false;
-                            viewModel._dialogService.ShowMessageBox(AppResources.ZPleaseenterthecorrespondingnumber, AppResources.Information);
+                            viewModel._dialogService.ShowMessageBox(AppResources.ZZZPleaseentertheIDNumbervalue, AppResources.Information);
                             frmLookupNumner.HasError = true;
                         });
 
