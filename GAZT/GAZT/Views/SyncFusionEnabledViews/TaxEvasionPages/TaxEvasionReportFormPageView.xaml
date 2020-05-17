@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"  
 xmlns:custom="clr-namespace:GAZT"
+
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
               xmlns:local1="clr-namespace:GAZT"
@@ -466,7 +467,7 @@ ItemHeight="45" ShowFooter="True"
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
-                        <Frame  Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
+                        <Frame  Grid.Row="20" BackgroundColor="White"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
                             <maps:Map Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                         </Frame>
                         <!--Attachment-->

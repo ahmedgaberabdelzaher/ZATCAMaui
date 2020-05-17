@@ -13,7 +13,7 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.DisplayNotes.DisplayNotesPageView"
                NavigationPage.HasNavigationBar="False"
            FlowDirection="RightToLeft"
-             >
+            BackgroundColor="White" >
     <ContentPage.Resources>
         <ResourceDictionary>
             <custom1:DataMarkerConverter x:Key="converter" />
