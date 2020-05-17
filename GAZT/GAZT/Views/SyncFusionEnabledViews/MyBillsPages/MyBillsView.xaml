@@ -14,7 +14,8 @@
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.MyBills}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyBillsView.MyBillsView"
-              NavigationPage.HasNavigationBar="False">
+              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
     </ContentPage.ToolbarItems>-->

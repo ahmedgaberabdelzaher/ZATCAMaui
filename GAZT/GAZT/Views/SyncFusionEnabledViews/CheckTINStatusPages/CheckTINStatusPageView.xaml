@@ -16,7 +16,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              Title="{x:Static local:AppResources.ZTINStatus}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus.CheckTINStatusPageView"
-             BackgroundColor="White">
+             BackgroundColor="White"
+             >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />

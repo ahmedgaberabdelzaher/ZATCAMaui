@@ -15,7 +15,8 @@
              xmlns:local1="clr-namespace:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static local:AppResources.VATLookup}"
               x:Class="EGAZT.Views.SyncFusionEnabledViews.VATLookup.VATLookupPageView"
-              NavigationPage.HasNavigationBar="False">
+              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

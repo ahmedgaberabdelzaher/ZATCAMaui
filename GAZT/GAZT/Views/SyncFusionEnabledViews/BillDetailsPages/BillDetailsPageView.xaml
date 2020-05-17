@@ -13,7 +13,8 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.BillDetails.BillDetailsPageView"
              Title="{x:Static custom2:AppResources.ZBillDetails}"
              FlowDirection="RightToLeft"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
