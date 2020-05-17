@@ -23,7 +23,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         //private string email = "3102285896";
 
         //private string email = "3101593128";
-        //private string password = "Test@123";
+        //private string password = "TeUserAccountLockedst@123";
         //private string email = "3102290567";
         //private string email = "3102289204";
         // public string email = "3102292043";
@@ -31,6 +31,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         public string email;
         public int CurrentAttempt = 0;
         public ICommand BackButtonClicked { get; set; }
+        public ICommand GoBackClick { get; set; }
         private DateTime lastTapped;
         #endregion
         #region ConstructorF
@@ -113,6 +114,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
+            GoBackClick = new Command(async () =>
+            {
+                _navigationService.GoBack();
+            });
+
+
         }
         #endregion
         #region property
@@ -498,8 +505,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                             bool isValidTIN = UtilityManager.IsOTPNumberValid(Email);
                             if (isValidTIN == true)
                             {
-                                //Email = "3102285896";
-                                //Password = "Test@123";
+                                Email = "3102292043";
+                                Password = "Init@123";
                                 response = WebServiceManager.SFGAZTAuthenticateTIN(Email, Password, DeviceId, _currentAttempts, languag);
 
                                 UserId = Email;
@@ -735,6 +742,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             {
                 IsLoading = false;
             });
+
         }
         /// <summary>
         /// Invoked when the Sign Up button is clicked.

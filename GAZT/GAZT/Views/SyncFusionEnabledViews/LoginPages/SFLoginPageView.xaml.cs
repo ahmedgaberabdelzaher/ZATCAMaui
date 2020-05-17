@@ -53,6 +53,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
                 DependencyService.Get<IStatusBar>().HideStatusBar();
+                Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
                 viewModel.TINIndex = 0;
             }
             catch (Exception ex)
