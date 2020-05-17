@@ -3159,4 +3159,13 @@ Should we require further information, we would be in contact.</value>
 password format</value>
     <comment>Change Password</comment>
   </data>
+       <data name="ChangeEmailDiscardSave" xml:space="preserve">
+    <value>Are you sure you want to discard the changes in this page?</value>
+  </data>
+         <data name="ZZZYesText" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+     <data name="ZZZNoText" xml:space="preserve">
+    <value>No</value>
+  </data>
 </root>

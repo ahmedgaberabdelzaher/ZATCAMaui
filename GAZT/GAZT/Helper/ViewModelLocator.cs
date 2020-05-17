@@ -7,6 +7,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
@@ -53,6 +54,7 @@ using EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails;
 using EGAZT.Views.SyncFusionEnabledViews.AttachmentPage;
 using EGAZT.Views.SyncFusionEnabledViews.BillDetails;
 using EGAZT.Views.SyncFusionEnabledViews.ChangeEmail;
+using EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages;
 using EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber;
 using EGAZT.Views.SyncFusionEnabledViews.ChangePassword;
 using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
@@ -114,6 +116,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxPayerProfilePageViewModel>();
             SimpleIoc.Default.Register<ChangeMobileNumberPageViewModel>();
             SimpleIoc.Default.Register<ChangeEmailPageViewModel>();
+            SimpleIoc.Default.Register<UpdateEmailVerificationPageViewModel>();
             SimpleIoc.Default.Register<ChangePasswordPageViewModel>();
             SimpleIoc.Default.Register<OTPPageViewModel>();
             SimpleIoc.Default.Register<ForgotUsernamePasswordPageViewModel>();
@@ -247,6 +250,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ChangePasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public UpdateEmailVerificationPageViewModel UpdateEmailVerificationPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UpdateEmailVerificationPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -811,6 +828,8 @@ namespace EGAZT
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
             navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
             navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
+            navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
+
             navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
             navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
             navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));

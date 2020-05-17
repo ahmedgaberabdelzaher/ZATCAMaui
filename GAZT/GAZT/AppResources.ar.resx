@@ -3153,4 +3153,13 @@
     <value>م يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
     <comment>Change Password</comment>
   </data>
+  <data name="ChangeEmailDiscardSave" xml:space="preserve">
+    <value>هل أنت متأكد من الخروج من الصفحة وإلغاء التغييرات فيها؟</value>
+  </data>
+             <data name="ZZZYesText" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+     <data name="ZZZNoText" xml:space="preserve">
+    <value>لا</value>
+  </data>
 </root>

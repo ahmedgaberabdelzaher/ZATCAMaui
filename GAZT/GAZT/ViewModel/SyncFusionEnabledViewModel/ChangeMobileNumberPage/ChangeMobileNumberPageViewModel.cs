@@ -154,9 +154,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_View
                     IsLoading = false;
                 });
             });
-            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            BackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.GoBack();
+                bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
+
+                if (_isMandatoryFieldEntered)
+                {
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.Alerts, AppResources.ChangeEmailDiscardSave, AppResources.ZZZYesText, AppResources.ZZZNoText);
+                    if (result == true)
+                    {
+
+                        _navigationService.GoBack();
+
+                    }
+                    else // if it's equal to NO
+                    {
+                        return; // just return to the page and do nothing.
+                    }
+                }
+                else
+                {
+                    _navigationService.GoBack();
+
+                }
+
             });
         }
         #endregion

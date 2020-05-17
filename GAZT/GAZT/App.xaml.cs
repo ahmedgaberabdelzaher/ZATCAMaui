@@ -34,6 +34,7 @@ namespace EGAZT
         public static string TaxPayerProfilePageView = "TaxPayerProfilePageView";
         public static string ChangeMobileNumberPageView = "ChangeMobileNumberPageView";
         public static string ChangeEmailPageView = "ChangeEmailPageView";
+        public static string UpdateEmailVerificationPage = "UpdateEmailVerificationPage";
         public static string ChangePasswordPageView = "ChangePasswordPageView";
         public static string OTPPageView = "OTPPageView";
         public static string ForgotUsernamePasswordPageView = "ForgotUsernamePasswordPageView";

@@ -1607,9 +1607,9 @@ namespace EGAZT {
             }
         }
         
-        public static string ZBillDeatilsInfo {
+        public static string ZBillDeatilsInfo1 {
             get {
-                return ResourceManager.GetString("ZBillDeatilsInfo", resourceCulture);
+                return ResourceManager.GetString("ZBillDeatilsInfo1", resourceCulture);
             }
         }
         
@@ -5259,6 +5259,78 @@ namespace EGAZT {
         public static string ZTERReportDetailID {
             get {
                 return ResourceManager.GetString("ZTERReportDetailID", resourceCulture);
+            }
+        }
+        
+        public static string ZBillDeatilsInfo2 {
+            get {
+                return ResourceManager.GetString("ZBillDeatilsInfo2", resourceCulture);
+            }
+        }
+        
+        public static string ZZZAccountisderegistered {
+            get {
+                return ResourceManager.GetString("ZZZAccountisderegistered", resourceCulture);
+            }
+        }
+        
+        public static string ZZZInvalidVATnumberprovided {
+            get {
+                return ResourceManager.GetString("ZZZInvalidVATnumberprovided", resourceCulture);
+            }
+        }
+        
+        public static string ZZZNoDatafoundagainstgivenparameters {
+            get {
+                return ResourceManager.GetString("ZZZNoDatafoundagainstgivenparameters", resourceCulture);
+            }
+        }
+        
+        public static string ZZZNoVATCertificateFound {
+            get {
+                return ResourceManager.GetString("ZZZNoVATCertificateFound", resourceCulture);
+            }
+        }
+        
+        public static string ZZZTinisnotActive {
+            get {
+                return ResourceManager.GetString("ZZZTinisnotActive", resourceCulture);
+            }
+        }
+        
+        public static string ZZZVatnumberisnotequalto15 {
+            get {
+                return ResourceManager.GetString("ZZZVatnumberisnotequalto15", resourceCulture);
+            }
+        }
+        
+        public static string ZZZWrongverificationcode {
+            get {
+                return ResourceManager.GetString("ZZZWrongverificationcode", resourceCulture);
+            }
+        }
+        
+        public static string ZZPasswordGuideLineTextNew {
+            get {
+                return ResourceManager.GetString("ZZPasswordGuideLineTextNew", resourceCulture);
+            }
+        }
+        
+        public static string ChangeEmailDiscardSave {
+            get {
+                return ResourceManager.GetString("ChangeEmailDiscardSave", resourceCulture);
+            }
+        }
+        
+        public static string ZZZYesText {
+            get {
+                return ResourceManager.GetString("ZZZYesText", resourceCulture);
+            }
+        }
+        
+        public static string ZZZNoText {
+            get {
+                return ResourceManager.GetString("ZZZNoText", resourceCulture);
             }
         }
     }

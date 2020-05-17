@@ -243,9 +243,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewMode
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            BackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.GoBack();
+                if (!string.IsNullOrEmpty(CurrentPassword) ||
+                  !string.IsNullOrEmpty(NewPasswordForEmail) || !string.IsNullOrEmpty(RetypePasswordForEmail)
+  )
+                {
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.Alerts, AppResources.ChangeEmailDiscardSave, AppResources.ZZZYesText, AppResources.ZZZNoText);
+                    if (result == true)
+                    {
+
+                        _navigationService.GoBack();
+
+                    }
+                    else // if it's equal to NO
+                    {
+                        return; // just return to the page and do nothing.
+                    }
+                }
+                else
+                {
+                    _navigationService.GoBack();
+
+                    return;
+                }
+
             });
             OnChangeEmailSubmitButtonClicked = new Xamarin.Forms.Command(async () =>
             {

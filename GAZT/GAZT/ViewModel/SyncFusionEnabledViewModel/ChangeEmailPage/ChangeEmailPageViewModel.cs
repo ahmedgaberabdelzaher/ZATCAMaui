@@ -169,7 +169,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
             _dialogService = dialogService;
             BackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.GoBack();
+                if (!string.IsNullOrEmpty(NewEmail) || !string.IsNullOrEmpty(RetypeEmail))
+                {
+                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
+                        AppResources.ZZZYesText, AppResources.ZZZNoText);
+                    if (result == true)
+                    {
+
+                        _navigationService.GoBack();
+
+                    }
+                    else // if it's equal to NO
+                    {
+                        return; // just return to the page and do nothing.
+                    }
+                }
+                else
+                {
+                    _navigationService.GoBack();
+
+                    return;
+                }
+
             });
                 OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
@@ -241,9 +262,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
                                 String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                   // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
-                                    _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
-                                   // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
+                                    // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
+                                    //  _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
+                                      _navigationService.NavigateTo(App.UpdateEmailVerificationPage, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
+
+                                    // _navigationService.NavigateTo(App.OTPPageView, NavigatingFromEmail);
                                 });
                             }
                         }
