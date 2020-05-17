@@ -784,7 +784,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>عدد األرقام في رمز المعرف يجب أن يكون 15 رقم</value>
+    <value>عدد الأرقام في رمز المعرف يحبأن يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>أهلا:</value>
@@ -3142,7 +3142,7 @@
     <comment>Vat Lookup Error Message</comment>
   </data>
   <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
-    <value>عدد الأرقام يجب أن يكون 15 رقم</value>
+    <value>رقم ضريبة القيمة المضافة يجب أن يساوي 15 خانة</value>
     <comment>Vat Lookup Error Message</comment>
   </data>
   <data name="ZZZWrongverificationcode" xml:space="preserve">
@@ -3161,5 +3161,9 @@
   </data>
   <data name="ZZZNoText" xml:space="preserve">
     <value>لا</value>
+  </data>
+  <data name="ZZZPleaseentertheIDNumbervalue" xml:space="preserve">
+    <value>الرجاء إدخال رمز المعرف</value>
+    <comment>Vat Look Up error </comment>
   </data>
 </root>

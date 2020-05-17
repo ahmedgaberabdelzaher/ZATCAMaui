@@ -155,7 +155,7 @@ xmlns:custom="clr-namespace:GAZT"
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout  HelperText="{x:Static local:AppResources.ZZZRequired}" Margin="10,-6,10,-6"
+                        <!--<inputLayout:SfTextInputLayout  HelperText="{x:Static local:AppResources.ZZZRequired}" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityType}"
     ContainerType="Outlined" x:Name="FrmFType" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -189,7 +189,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>
+                        </syncfusion:SfPicker>-->
                         <!--SelectedItem="{Binding SelectedTaxEvasionCompanyType}"-->
                         <StackLayout HorizontalOptions="FillAndExpand" x:Name="facilityMobileStackLayout" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
@@ -403,7 +403,7 @@ xmlns:custom="clr-namespace:GAZT"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  Grid.Row="14"  Grid.Column="0"  Grid.ColumnSpan="2"  Text="{Binding TID}" x:Name="TID"  Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                        <!--<inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}" IsVisible="{Binding IsVisibleForReportDisplay}"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -435,7 +435,7 @@ ItemHeight="45" ShowFooter="True"
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
-                        </custom1:CustomDatePicker>
+                        </custom1:CustomDatePicker>-->
                         <inputLayout:SfTextInputLayout x:Name="FrmVAT"   Grid.Row="16"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailVATNumber}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
