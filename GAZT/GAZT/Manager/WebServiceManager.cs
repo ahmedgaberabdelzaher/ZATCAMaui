@@ -2022,10 +2022,18 @@ namespace GAZT.Manager
                     {
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
+                        try
                         {
-                            NewToken = values.First();
+                            if (headers.TryGetValues("token", out values))
+                            {
+                                NewToken = values.First();
+                            }
                         }
+                        catch(Exception ex)
+                        {
+
+                        }
+                       
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
