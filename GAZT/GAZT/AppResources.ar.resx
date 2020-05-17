@@ -3142,7 +3142,7 @@
     <comment>Vat Lookup Error Message</comment>
   </data>
   <data name="ZZZVatnumberisnotequalto15" xml:space="preserve">
-    <value>رقم ضريبة القيمة المضافة يجب أن يساوي 15 خانة</value>
+    <value>عدد الأرقام يجب أن يكون 15 رقم</value>
     <comment>Vat Lookup Error Message</comment>
   </data>
   <data name="ZZZWrongverificationcode" xml:space="preserve">
