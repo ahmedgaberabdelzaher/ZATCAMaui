@@ -2844,7 +2844,8 @@ namespace GAZT.Manager
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                //throw new GAZTNetworkConnectivityIssueException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         public static async Task<List<IssuedByResponse>> GAZTGetIssuedByList()
@@ -2915,7 +2916,8 @@ namespace GAZT.Manager
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+              //  throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         public async static Task<string> GAZTValidateIDTypes(string IDType, string IDNumber, string DBO)
