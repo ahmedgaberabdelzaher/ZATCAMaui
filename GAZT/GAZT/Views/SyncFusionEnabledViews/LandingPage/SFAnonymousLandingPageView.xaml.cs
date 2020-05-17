@@ -40,7 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 else
                 {
                     GreenHeader.Margin = new Thickness(0,-50, 0, 0);
-                    HamberLabel.Padding = new Thickness(4,80, 0, 0);
+                    HamberLabel.Padding = new Thickness(5,80, 5, 0);
                     LogoStackLayout.Padding = new Thickness(0,50, 0, 0);
                 }
 
