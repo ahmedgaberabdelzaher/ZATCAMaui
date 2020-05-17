@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
      xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
     xmlns:local1="clr-namespace:GAZT"
-    BackgroundColor="{DynamicResource Gray-100}"
+ BackgroundColor="White"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

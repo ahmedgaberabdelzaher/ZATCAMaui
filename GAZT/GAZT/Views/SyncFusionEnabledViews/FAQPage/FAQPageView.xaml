@@ -13,7 +13,8 @@
               xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.FAQPage.FAQPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.FAQPage.FAQPageView"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<ResourceDictionary>

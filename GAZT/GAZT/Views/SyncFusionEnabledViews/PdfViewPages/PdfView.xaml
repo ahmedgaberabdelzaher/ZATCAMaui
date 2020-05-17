@@ -8,7 +8,8 @@
               xmlns:local1="clr-namespace:EGAZT"
                xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
               xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl">
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             BackgroundColor="White">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_share.png" x:Name="ICvalidation1" 
                 Priority="1" Order="Primary" Clicked="Share_Clicked"  />

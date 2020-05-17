@@ -14,7 +14,7 @@
     FlowDirection="RightToLeft"
     NavigationPage.HasNavigationBar="False"
                  xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-
+    BackgroundColor="White"
    >
   
     <ContentPage.Resources>

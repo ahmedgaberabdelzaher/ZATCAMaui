@@ -15,7 +15,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber.ChangeMobileNumberPageView"
              Title="{x:Static local:AppResources.ChangeMobileNumber}"
-             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasNavigationBar="False" BackgroundColor="White"
 >
     <!--   Style="{StaticResource ContentPageStyle}"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,

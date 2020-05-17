@@ -14,7 +14,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:local11="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
     x:Name="MyComitments"
-    BackgroundColor="{DynamicResource Gray-White}"
+        BackgroundColor="White"
     NavigationPage.HasNavigationBar="False"
     NavigationPage.HasBackButton="False">
         <ContentPage.Resources>

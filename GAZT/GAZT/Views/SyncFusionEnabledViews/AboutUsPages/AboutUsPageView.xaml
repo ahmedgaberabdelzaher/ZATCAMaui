@@ -8,7 +8,8 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

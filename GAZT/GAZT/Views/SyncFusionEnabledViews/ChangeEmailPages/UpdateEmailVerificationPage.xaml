@@ -15,7 +15,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     x:Class="EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages.UpdateEmailVerificationPage"
     Title="{x:Static local:AppResources.EnterVerificationCodeTitle}"
-    NavigationPage.HasNavigationBar="False"
+    NavigationPage.HasNavigationBar="False" BackgroundColor="White"
    >
     <ContentPage.Resources>
         <ResourceDictionary>

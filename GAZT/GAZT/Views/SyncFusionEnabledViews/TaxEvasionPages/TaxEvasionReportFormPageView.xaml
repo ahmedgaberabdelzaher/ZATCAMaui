@@ -100,7 +100,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                             <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
@@ -126,7 +126,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry x:Name="TmobcountrycodeAr" FontSize="Small"  Keyboard="Telephone"  Text="9665+" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry x:Name="TmobcountrycodeAr" FontSize="Small"  Keyboard="Telephone"  Text="9665+" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmEmail"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
@@ -196,7 +196,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                             <inputLayout:SfTextInputLayout x:Name="FrmFMobNo"  HorizontalOptions="FillAndExpand"     Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
@@ -223,7 +223,7 @@ xmlns:custom="clr-namespace:GAZT"
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry x:Name="FmobcountrycodeAr" FontSize="Small" Keyboard="Telephone"  Text="9665+" IsEnabled="False" IsSpellCheckEnabled="False"/>
+                                <Entry x:Name="FmobcountrycodeAr" FontSize="Small" Keyboard="Telephone"  Text="9665+" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <inputLayout:SfTextInputLayout x:Name="FrmFEmail"   Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
@@ -481,7 +481,7 @@ ItemHeight="45" ShowFooter="True"
                         </local1:CustomLabel>
                         <Frame Grid.Row="22"  x:Name="Attachment_Frm" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>
-                        <custom:GAZTBorderlessEntry  Grid.Row="22" Text="{Binding AttachmentName}"  x:Name="Attachment_Entry"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="False">
+                        <custom:GAZTBorderlessEntry  Grid.Row="22" Text="{Binding AttachmentName}"  x:Name="Attachment_Entry"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True">
                         </custom:GAZTBorderlessEntry>
                         <Image x:Name="Attachment_Tmg" Grid.Row="22"  Grid.Column="1"  Margin="0,0,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png" IsVisible="{Binding IsShowAttachmentButton}" >
                             <Image.GestureRecognizers>
