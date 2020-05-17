@@ -12,7 +12,7 @@
      xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:custom="clr-namespace:GAZT"
     FlowDirection="RightToLeft"
-    BackgroundColor="White">
+>
     <ContentView.Resources>
         <ResourceDictionary>
             <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
