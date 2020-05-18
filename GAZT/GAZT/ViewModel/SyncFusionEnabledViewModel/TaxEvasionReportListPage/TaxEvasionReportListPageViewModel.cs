@@ -256,6 +256,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         }
         public void OnPageLoad()
         {
+
             try
             {
                 //string test = App.TP.Mobile;
