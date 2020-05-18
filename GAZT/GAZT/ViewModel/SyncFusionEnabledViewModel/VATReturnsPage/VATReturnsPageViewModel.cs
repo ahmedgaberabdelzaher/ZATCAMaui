@@ -1044,6 +1044,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                 RaisePropertyChanged("IsControlEnabled");
             }
         }
+
+        private bool _isControlEnabledForEntry = false;
+        public bool IsControlEnabledForEntry
+        {
+            get
+            {
+                return _isControlEnabledForEntry;
+            }
+            set
+            {
+                _isControlEnabledForEntry = value;
+                RaisePropertyChanged("IsControlEnabledForEntry");
+            }
+        }
         private bool _isDeclarationCheckEnabled = false;
         public bool IsDeclarationCheckEnabled
         {
@@ -2354,6 +2368,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
         public void ManageEnabledProperty(bool value)
         {
             IsControlEnabled = value;
+            IsControlEnabledForEntry = !IsControlEnabled;
             IsDeclarationCheckEnabled = value;
             IsTaxPayerCheckEnabled = value;
             IsMainButtonEnabled = value;
@@ -2361,6 +2376,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
         public async Task ManageEnabledAsyncProperty(bool value)
         {
             IsControlEnabled = value;
+            IsControlEnabledForEntry = !IsControlEnabled;
             IsDeclarationCheckEnabled = value;
             IsTaxPayerCheckEnabled = value;
             IsMainButtonEnabled = value;
