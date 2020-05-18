@@ -2022,10 +2022,18 @@ namespace GAZT.Manager
                     {
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
+                        try
                         {
-                            NewToken = values.First();
+                            if (headers.TryGetValues("token", out values))
+                            {
+                                NewToken = values.First();
+                            }
                         }
+                        catch(Exception ex)
+                        {
+
+                        }
+                       
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
@@ -2844,7 +2852,8 @@ namespace GAZT.Manager
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                //throw new GAZTNetworkConnectivityIssueException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         public static async Task<List<IssuedByResponse>> GAZTGetIssuedByList()
@@ -2915,7 +2924,8 @@ namespace GAZT.Manager
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+              //  throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
             }
         }
         public async static Task<string> GAZTValidateIDTypes(string IDType, string IDNumber, string DBO)

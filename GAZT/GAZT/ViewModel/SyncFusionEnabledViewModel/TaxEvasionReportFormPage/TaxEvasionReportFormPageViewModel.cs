@@ -968,7 +968,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 date = DatePick;
                 TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 TaxEvasionReportTobeUsedToSubmit.ReceivedDate = date;
-                TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
+                //TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
+                TaxEvasionReportTobeUsedToSubmit.CompanyType = "0";
                 TaxEvasionReportTobeUsedToSubmit.ViolationType = _selectedCategory;
                 TaxEvasionReportTobeUsedToSubmit.Channel = "2";
                 TaxEvasionReportTobeUsedToSubmit.WSPassword = "gazt@123";

@@ -12,7 +12,8 @@
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.CreditCarried.CreditCarriedPageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <custom1:DataMarkerConverter x:Key="converter" />

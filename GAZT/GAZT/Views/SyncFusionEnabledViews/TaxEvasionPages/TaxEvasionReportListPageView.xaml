@@ -16,7 +16,7 @@
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
                NavigationPage.HasNavigationBar="False"
-            ><!--NavigationPage.HasNavigationBar="False"-->
+            BackgroundColor="White"><!--NavigationPage.HasNavigationBar="False"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

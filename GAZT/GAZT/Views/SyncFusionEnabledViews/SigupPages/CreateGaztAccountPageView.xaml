@@ -15,7 +15,8 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount.CreateGaztAccountPageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

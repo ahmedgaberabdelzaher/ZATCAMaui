@@ -10,7 +10,8 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              Title="{x:Static local:AppResources.ZVatTermsAndConditions}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC.SignUpTAndCViewPage"
-              NavigationPage.HasNavigationBar="False">
+              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

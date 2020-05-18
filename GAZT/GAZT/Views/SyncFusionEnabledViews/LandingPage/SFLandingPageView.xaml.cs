@@ -41,7 +41,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 else
                 {
                     LandingGreenScreen.Margin = new Thickness(0,-50,0,0);
-                    LandingHamberMenu.Padding = new Thickness(4,80,0,0);
+                    LandingHamberMenu.Padding = new Thickness(5,80,5,0);
                     LandingStackLayout.Padding = new Thickness(0, 50, 0, 0);
                 }
 

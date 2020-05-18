@@ -13,7 +13,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails.AcknowledgementDetailsPageView"
              NavigationPage.HasNavigationBar="False"
-            >
+           BackgroundColor="White" >
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="ic_home.png"  
                 Priority="0" Order="Primary" Command="{Binding OnHomeClick}" />

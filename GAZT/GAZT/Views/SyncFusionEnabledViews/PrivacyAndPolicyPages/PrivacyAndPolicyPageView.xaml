@@ -8,7 +8,8 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy.PrivacyAndPolicyPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy.PrivacyAndPolicyPageView"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

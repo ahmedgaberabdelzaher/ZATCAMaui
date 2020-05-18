@@ -751,7 +751,7 @@
     <value>رقم السجل التجاري</value>
   </data>
   <data name="ZCRNumberisnotequalto10" xml:space="preserve">
-    <value>عدد األرقام في رمز المعرف يجب أن يكون 10 رقم</value>
+    <value>عدد الأرقام في رمز المعرف يجب أن يكون 10 أرقام</value>
   </data>
   <data name="ZPleaseenterlookupnumber" xml:space="preserve">
     <value>Please enter lookup number</value>
@@ -784,7 +784,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>عدد األرقام في رمز المعرف يجب أن يكون 15 رقم</value>
+    <value>عدد الأرقام في رمز المعرف يحبأن يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>أهلا:</value>
@@ -3156,10 +3156,14 @@
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
     <value>هل أنت متأكد من الخروج من الصفحة وإلغاء التغييرات فيها؟</value>
   </data>
-             <data name="ZZZYesText" xml:space="preserve">
+  <data name="ZZZYesText" xml:space="preserve">
     <value>نعم</value>
   </data>
-     <data name="ZZZNoText" xml:space="preserve">
+  <data name="ZZZNoText" xml:space="preserve">
     <value>لا</value>
+  </data>
+  <data name="ZZZPleaseentertheIDNumbervalue" xml:space="preserve">
+    <value>الرجاء إدخال رمز المعرف</value>
+    <comment>Vat Look Up error </comment>
   </data>
 </root>

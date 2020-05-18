@@ -16,7 +16,8 @@
              xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              Title="{x:Static custom2:AppResources.ZZCorrespondence}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.Correspondance.CorrespondancePageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />

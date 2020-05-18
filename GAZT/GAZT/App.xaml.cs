@@ -77,7 +77,7 @@ namespace EGAZT
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = false;//true
+        public static bool PreviousIsArabic = true;//true
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
@@ -105,18 +105,18 @@ namespace EGAZT
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
             AppResources.Culture = CultureInfo.CurrentUICulture;
-            //if (PreviousIsArabic)
-            //{
-            //    String langName = "ar-AE";//"en-US";// "ar-AE";
-            //    ci = new CultureInfo(langName);
-            //    AppResources.Culture = ci;
-            //}
+            if (PreviousIsArabic)
+            {
+                String langName = "ar-AE";//"en-US";// "ar-AE";
+                ci = new CultureInfo(langName);
+                AppResources.Culture = ci;
+            }
             InitializeComponent();
             onFontFamilyChanged();
-            //if (PreviousIsArabic)
-            //{
-            //    IsArabic = true;
-            //}
+            if (PreviousIsArabic)
+            {
+                IsArabic = true;
+            }
             try
             {
                 httpClientHandler = new HttpClientHandler();

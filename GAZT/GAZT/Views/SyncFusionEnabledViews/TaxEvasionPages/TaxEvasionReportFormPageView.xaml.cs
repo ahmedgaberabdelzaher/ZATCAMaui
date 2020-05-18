@@ -59,7 +59,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
             {
-                btn4.IsEnabled = false;
+                //btn4.IsEnabled = false;
                 if (App.IsArabic)
                 {
                     viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameAr;
@@ -71,7 +71,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameEn;
                 }
                 viewModel.IsVisibleForReportDisplay = false;
-                FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
+                //FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
                 btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
                 CityPickerAR.IsEnabled = false;
@@ -94,7 +94,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsSubmitButtonEnable = false; submit_btnmane.IsEnabled = false; submit_btnmane.BackgroundColor = Color.Gray;
                 viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
-                RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; btnFacilityType.IsEnabled = false;
+                RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; //btnFacilityType.IsEnabled = false;
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
                     //viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
@@ -274,8 +274,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
                 else if (string.IsNullOrEmpty(TFaciName.Text))
                 { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(FacilityType_entry.Text))
-                { flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
+                //else if (string.IsNullOrEmpty(FacilityType_entry.Text))
+                //{ flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFDAdress.Text))
                 { flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(TFSAddress.Text))
@@ -311,11 +311,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         CityPicker.IsOpen = true;
                     }
                 }
-                else if (string.IsNullOrEmpty(Date_entry.Text))
-                {
-                    showFillFeildsMessage();
-                    flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
-                }
+                //else if (string.IsNullOrEmpty(Date_entry.Text))
+                //{
+                //    showFillFeildsMessage();
+                //    flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
+                //}
                 else
                 {
                     if (flag == true)
@@ -688,8 +688,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.TxtReportDetailRegion = string.Empty;
                 viewModel.UploadedDocumentsListObj.Clear();
                 Attachment_Entry.Text = string.Empty;
-                FacilityType_entry.Text = string.Empty;
-                Date_entry.Text = string.Empty;
+                //FacilityType_entry.Text = string.Empty;
+                //Date_entry.Text = string.Empty;
                 City_entry.Text = string.Empty;
                 Region_entry.Text = string.Empty;
                 TName.Text = string.Empty;
@@ -834,10 +834,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             { 
             }
         }
-        private void btnFacilityType_Clicked(object sender, EventArgs e)
-        {
-            ddlFacilityType.IsOpen = true;
-        }
+        //private void btnFacilityType_Clicked(object sender, EventArgs e)
+        //{
+        //    ddlFacilityType.IsOpen = true;
+        //}
         private void btnTxtReportDetailRegion_Clicked(object sender, EventArgs e)
         {
             if (App.IsArabic)
@@ -874,31 +874,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
             }
         }
-        private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-            string month = selectedItem[0].ToString();
-            string day = selectedItem[1].ToString();
-            string year = selectedItem[2].ToString();
-            viewModel.DatePick = day + "/" + month + "/" + year;
-            viewModel.DatePickPrev = day + "/" + month + "/" + year;
-        }
-        private void btn4_Clicked(object sender, EventArgs e)
-        {
-            DpDbo.IsOpen = true;
-        }
+        //private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+        //    string month = selectedItem[0].ToString();
+        //    string day = selectedItem[1].ToString();
+        //    string year = selectedItem[2].ToString();
+        //    viewModel.DatePick = day + "/" + month + "/" + year;
+        //    viewModel.DatePickPrev = day + "/" + month + "/" + year;
+        //}
+        //private void btn4_Clicked(object sender, EventArgs e)
+        //{
+        //    DpDbo.IsOpen = true;
+        //}
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
         }
-        private void ddlFacilityType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            FacilityCompanyType selectedcompanytyp = (FacilityCompanyType)e.NewValue;
-            ddlFacilityType.SelectedItem = selectedcompanytyp;
-            viewModel.SelectedTaxEvasionCompanyType = selectedcompanytyp;
-            viewModel.SelectedTaxEvasionCompanyTypePrev = selectedcompanytyp;
-            viewModel.TxtFType = selectedcompanytyp.Name;
-            FrmFType.HasError = false;
-        }
+        //private void ddlFacilityType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    FacilityCompanyType selectedcompanytyp = (FacilityCompanyType)e.NewValue;
+        //    ddlFacilityType.SelectedItem = selectedcompanytyp;
+        //    viewModel.SelectedTaxEvasionCompanyType = selectedcompanytyp;
+        //    viewModel.SelectedTaxEvasionCompanyTypePrev = selectedcompanytyp;
+        //    viewModel.TxtFType = selectedcompanytyp.Name;
+        //    FrmFType.HasError = false;
+        //}
         private void RegionPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TERRegion selectedregion = (TERRegion)e.NewValue;
@@ -947,21 +947,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 FrmFName.HasError = false;
             }
         }
-        private void Date_entry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(Date_entry.Text))
-            {
-                FrmDBO.HasError = false;
-            }
-        }
-        private void DpDbo_Closed(object sender, EventArgs e)
-        {
-            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-            string month = selectedItem[0].ToString();
-            string day = selectedItem[1].ToString();
-            string year = selectedItem[2].ToString();
-            viewModel.DatePick = day + "/" + month + "/" + year;
-        }
+        //private void Date_entry_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(Date_entry.Text))
+        //    {
+        //        FrmDBO.HasError = false;
+        //    }
+        //}
+        //private void DpDbo_Closed(object sender, EventArgs e)
+        //{
+        //    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+        //    string month = selectedItem[0].ToString();
+        //    string day = selectedItem[1].ToString();
+        //    string year = selectedItem[2].ToString();
+        //    viewModel.DatePick = day + "/" + month + "/" + year;
+        //}
         private void showFillFeildsMessage()
         {
             PopUp popUp = new PopUp();
@@ -988,15 +988,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-        private void ddlFacilityType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            viewModel.SelectedTaxEvasionCompanyType = viewModel.SelectedTaxEvasionCompanyTypePrev;
-            ddlFacilityType.SelectedItem = viewModel.SelectedTaxEvasionCompanyTypePrev;
-            if (viewModel.SelectedTaxEvasionCompanyTypePrev == null)
-            {
-                viewModel.TxtFType = string.Empty;
-            }
-        }
+        //private void ddlFacilityType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    viewModel.SelectedTaxEvasionCompanyType = viewModel.SelectedTaxEvasionCompanyTypePrev;
+        //    ddlFacilityType.SelectedItem = viewModel.SelectedTaxEvasionCompanyTypePrev;
+        //    if (viewModel.SelectedTaxEvasionCompanyTypePrev == null)
+        //    {
+        //        viewModel.TxtFType = string.Empty;
+        //    }
+        //}
         private void RegionPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectedTaxEvasionRegion = viewModel.SelectedTaxEvasionRegionPrev;
@@ -1044,7 +1044,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 todaycollection.Add(Date[1]);
                 todaycollection.Add(Date[2]);
                 todaycollection.Add(Date[0]);
-                DpDbo.SelectedItem = todaycollection;
+                //DpDbo.SelectedItem = todaycollection;
             }
         }
         private  void OnDeleteAttachmentClicked(object sender, EventArgs e)
@@ -1056,20 +1056,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             viewModel.AttachmentName = string.Empty;
 
         }
-            private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-        {
-            FrmDBO.HasError = false;
-            try
-            {
-                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[0].ToString();
-                string day = selectedItem[1].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.DatePick = day + "/" + month + "/" + year;
-            }
-            catch (Exception ex)
-            {
-            }
-        }
+        //    private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        //{
+        //    FrmDBO.HasError = false;
+        //    try
+        //    {
+        //        var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+        //        string month = selectedItem[0].ToString();
+        //        string day = selectedItem[1].ToString();
+        //        string year = selectedItem[2].ToString();
+        //        viewModel.DatePick = day + "/" + month + "/" + year;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //    }
+        //}
     }
 }

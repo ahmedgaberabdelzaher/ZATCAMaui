@@ -6,7 +6,8 @@
              mc:Ignorable="d"
                 FlowDirection="RightToLeft"
               xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.AccountCreated.AccountCreatedPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.AccountCreated.AccountCreatedPageView"
+             BackgroundColor="White">
     <ContentPage.Content>
         <StackLayout x:Name="Mainstack" VerticalOptions="Center" HorizontalOptions="Center">
             <Image  Source="ic_check_circle_24px" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"></Image>

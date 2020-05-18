@@ -15,7 +15,8 @@
     xmlns:custom1="clr-namespace:GAZT.CustomControl"
     FlowDirection="LeftToRight"
     NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile.TaxEvasionReportMobilePageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile.TaxEvasionReportMobilePageView"
+             BackgroundColor="White">
     <!-- Style="{StaticResource ContentPageStyle}"
     BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=sf_LoginBackground.png,
                                                                   iOSPhoneLandscape=sf_LoginBackground-Landscape.png,

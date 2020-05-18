@@ -126,6 +126,11 @@ namespace GAZT.Models
                     {
                         return AppResources.ZReportStatusClose;
                     }
+                    else if (String.Compare("0", ReportStatus) == 0)
+                    {
+                        return AppResources.ZReportStatusInprogress;
+                    }
+
                     else
                     {
                         return ReportStatusMessage;

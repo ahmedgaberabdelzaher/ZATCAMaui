@@ -17,7 +17,8 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus.FormBundleStatusPageView">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus.FormBundleStatusPageView"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />

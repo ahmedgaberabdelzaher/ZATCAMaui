@@ -17,7 +17,8 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.ReturnsPage.ReturnsPageView"
              NavigationPage.HasNavigationBar="False"
              FlowDirection="RightToLeft"
-             >
+
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

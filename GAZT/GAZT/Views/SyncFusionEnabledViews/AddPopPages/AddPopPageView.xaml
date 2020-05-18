@@ -9,8 +9,9 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:local1="clr-namespace:GAZT"
              FlowDirection="{Binding FlowDirections}" 
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AddPop.AddPopPageView">
-    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <Grid>
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                BackgroundColor="White">
+        <Grid BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
@@ -18,8 +19,8 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
-                <StackLayout  BackgroundColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+            <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="White">
+                <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="White">
                     <StackLayout Orientation="Horizontal"  BackgroundColor="White"  VerticalOptions="Center">
                         <Label Margin="0,0,0,0" Text="{x:Static local:AppResources.ZInstructions}"  FontFamily="{StaticResource SSTArabicMedium}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
                         <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">

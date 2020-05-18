@@ -14,7 +14,8 @@
              mc:Ignorable="d"
              Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount.SignUpFormPageView"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

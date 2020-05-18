@@ -15,7 +15,7 @@
     xmlns:local11="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     x:Name="LandingPage"
-   
+   BackgroundColor="White"
 
     NavigationPage.HasNavigationBar="False"
     NavigationPage.HasBackButton="False">

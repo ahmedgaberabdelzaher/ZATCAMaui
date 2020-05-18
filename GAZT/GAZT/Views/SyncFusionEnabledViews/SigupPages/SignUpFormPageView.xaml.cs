@@ -10,6 +10,7 @@ using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Net.Http;
 using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -417,6 +418,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     viewModel._navigationService.GoBack();
                                 });
                             }
+                            catch (HttpRequestException ex)
+                            {
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
 
 
                             catch (InternetException ex)
@@ -426,6 +439,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 });
                             }
+                            catch (Exception ex)
+                            {
+
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    
+                                });
+                            }
+
+
+
                         }
                         else
                         {
@@ -564,11 +592,36 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             }
 
 
+
                             catch (InternetException ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                                });
+                            }
+                            catch (HttpRequestException ex)
+                            {
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await  viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
                                 });
                             }
                         }
@@ -609,6 +662,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        });
+                    }
+                    catch (HttpRequestException ex)
+                    {
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            // IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //_navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+
+                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            // IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //_navigationService.GoBack();
                         });
                     }
                 }
@@ -766,6 +843,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                             });
                         }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
                     }
                     else
                     {
@@ -902,6 +1003,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            });
+                        }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
                             });
                         }
                     }
@@ -1066,6 +1191,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 });
                             }
+                            catch (HttpRequestException ex)
+                            {
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
                         }
                         else
                         {
@@ -1205,6 +1354,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 });
                             }
+                            catch (HttpRequestException ex)
+                            {
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+
+                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    // IsLoading = false;
+
+                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                    //_navigationService.GoBack();
+                                });
+                            }
                         }
                     }
                     catch (InternetException ex)
@@ -1338,6 +1511,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                                 });
                                             }
+                                            catch (HttpRequestException ex)
+                                            {
+                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    // IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    //_navigationService.GoBack();
+                                                });
+                                            }
+                                            catch (Exception ex)
+                                            {
+
+                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    // IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    //_navigationService.GoBack();
+                                                });
+                                            }
                                         }
                                     }
                                 }
@@ -1441,6 +1638,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                                     viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                                                 });
                                             }
+                                            catch (HttpRequestException ex)
+                                            {
+                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    // IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    //_navigationService.GoBack();
+                                                });
+                                            }
+                                            catch (Exception ex)
+                                            {
+
+                                                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    // IsLoading = false;
+
+                                                    await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                                    //_navigationService.GoBack();
+                                                });
+                                            }
                                         }
                                     }
                                 }
@@ -1483,6 +1704,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+                catch (HttpRequestException ex)
+                {
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        // IsLoading = false;
+
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //_navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        // IsLoading = false;
+
+                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //_navigationService.GoBack();
                     });
                 }
             }
@@ -1620,6 +1865,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 });
                             });
                         }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
                     }
                 }
             }
@@ -1707,6 +1976,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 });
                             });
                         }
+                        catch (HttpRequestException ex)
+                        {
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+
+                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                // IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                //_navigationService.GoBack();
+                            });
+                        }
                     }
                 }
             }
@@ -1724,22 +2017,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
                 if (EntryCRNumber.Text.Length == 10)
                 {
-                    FrmCR.HasError = false;
-                    CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
-                    if (Result != null)
+                    try
                     {
-                        if (Result.d != null)
+                        FrmCR.HasError = false;
+                        CRValidationModelRootObject Result = WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
+                        if (Result != null)
                         {
-                            if (Result.d.NotFound == "X")
+                            if (Result.d != null)
                             {
-                                FrmCR.HasError = true;
-                                viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
-                            }
-                            else
-                            {
-                                FrmCR.HasError = false;
+                                if (Result.d.NotFound == "X")
+                                {
+                                    FrmCR.HasError = true;
+                                    viewModel._dialogService.ShowMessage(AppResources.ZZPleaseentervalidCRnumber, AppResources.Information);
+                                }
+                                else
+                                {
+                                    FrmCR.HasError = false;
+                                }
                             }
                         }
+                    }
+                    catch (InternetException ex)
+                    {
+                        viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     }
                 }
                 else
