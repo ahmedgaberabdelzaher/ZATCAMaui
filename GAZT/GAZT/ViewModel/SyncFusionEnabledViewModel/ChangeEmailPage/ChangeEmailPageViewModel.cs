@@ -194,10 +194,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
             });
                 OnVerifyEmailButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+               // Task.Run(() =>
+                //{
+                  //  IsLoading = true;
+                //});
                 bool _isMandatoryFieldEntered = IsMandatoryFieldEntered();
                 bool IsNewEmailAndRetypeEmaiEqual = CompareNewEmailAndRetedEmail(NewEmail, RetypeEmail);
                 bool _isNEwEmailAndOldEmailSame = IsNewEmailSameAsOldEmailSame();
@@ -223,10 +223,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
                 {
                     await ShowMandatoryFieldNotEnteredInformation(_isMandatoryFieldEntered);
                 }
-                Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                //Task.Run(() =>
+               // {
+                 //   IsLoading = false;
+                //});
             });
         }
         #endregion
@@ -262,7 +262,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
                                 String OnSuccessfulAuthentication = AppResources.EnterVerificationCodeForEmail;
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
-                                    // await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
+                                     await _dialogService.ShowMessageBox(OnAuthenticationSuccess + " " + OnSuccessfulAuthentication, AppResources.Information);
                                     //  _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
                                       _navigationService.NavigateTo(App.UpdateEmailVerificationPage, new ComingToOTPVerificationScreenFromAndNavigatingTo { _ComingToOTPVerificationScreenFrom = NavigatingFromEmail, NavigateToThisService = String.Empty });
 

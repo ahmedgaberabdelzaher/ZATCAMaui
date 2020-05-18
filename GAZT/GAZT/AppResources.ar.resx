@@ -3153,6 +3153,9 @@
     <value>م يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
     <comment>Change Password</comment>
   </data>
+      <data name="ChangeEmailVerification" xml:space="preserve">
+    <value>في حال تغيير البريد الإلكتروني يجب تغيير كلمة المرور</value>
+  </data>
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
     <value>هل أنت متأكد من الخروج من الصفحة وإلغاء التغييرات فيها؟</value>
   </data>

@@ -133,8 +133,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewMod
             {
                 _navigationService.NavigateTo(App.ChangeMobileNumberPageView);
             });
-            OnChangeEmailClicked = new Xamarin.Forms.Command(() =>
+            OnChangeEmailClicked = new Xamarin.Forms.Command(async () =>
             {
+                await _dialogService.ShowMessage(AppResources.ChangeEmailVerification, "Information");
+
                 _navigationService.NavigateTo(App.ChangeEmailPageView);
             });
             OnChangePasswordClicked = new Xamarin.Forms.Command(() =>

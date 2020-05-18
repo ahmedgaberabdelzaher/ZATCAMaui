@@ -676,6 +676,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ChangeEmail" xml:space="preserve">
     <value>Change Email</value>
   </data>
+   <data name="ChangeEmailVerification" xml:space="preserve">
+    <value>If you are changing the Email ID, it is mandatory to change password</value>
+  </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
     <value>Change Mobile Number</value>
   </data>
