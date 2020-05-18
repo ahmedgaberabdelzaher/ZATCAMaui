@@ -158,19 +158,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             });
             GoBackClick = new Command(async () =>
             {
-                if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
-                {
-                    _navigationService.GoBack();
-                }
-                else
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    var _lastPage = _navigation.NavigationStack.LastOrDefault();
-                    //Remove last page
-                    _navigation.RemovePage(_lastPage);
-                    //Go back 
-                    _navigation.PopAsync();
-                }
+                _navigationService.GoBack();
+
+                //if (App.TP != null && !string.IsNullOrEmpty(App.TP.Mobile))
+                //{
+                //                //}
+                //else
+                //{
+                //    var _navigation = Application.Current.MainPage.Navigation;
+                //    var _lastPage = _navigation.NavigationStack.LastOrDefault();
+                //    //Remove last page
+                //    _navigation.RemovePage(_lastPage);
+                //    //Go back 
+                //    _navigation.PopAsync();
+                //}
             });
             OnCloseClicked_Tapped = new RelayCommand(async () =>
             {

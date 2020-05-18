@@ -22,7 +22,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
             this.CertificateLst.SelectedItem = null;
             this.CertificateLstClosed.SelectedItem = null;
             viewModel.AddIcon = "ic_add1.png";
-      //      Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+            var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.OTPPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+            //      Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             SetLTR();
             if (!string.IsNullOrEmpty(mobno))
             {

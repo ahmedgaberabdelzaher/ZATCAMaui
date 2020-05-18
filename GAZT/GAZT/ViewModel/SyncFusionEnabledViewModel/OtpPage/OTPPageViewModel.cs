@@ -1094,6 +1094,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                     //String strtemp = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;// "You have {0} remaining attempt then the account will be locked";
                     //String strSumberOfAttemptsRemaining = strtemp; // String.Empty;
                     //str = String.Format(strSumberOfAttemptsRemaining, WebServiceManager.NumberOfValiedAttempts);
+
                     str = " Login attempt failed because of entering " + WebServiceManager.NumberOfValiedAttempts + " wrong verification codes";
                 }
                 //str = "You have " + remainingAttempts + "remaining attempt then the account will be locked";
@@ -1119,8 +1120,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                  //   تم مرات لإدخال رمز التحقق3 إلغاء محاولة الدخول بسبب الفشل
                   //  str = " مرات لإدخال رمز التح " + WebServiceManager.NumberOfValiedAttempts + " تم إلغاء محاولة الدخول بسبب الفشل ";
                    // str = " إلغاء محاولة الدخول بسبب الفشل " + WebServiceManager.NumberOfValiedAttempts + "تم  مرات لإدخال رمز التحقق";
-                    str = " تم  مرات لإدخال رمز التحقق " + WebServiceManager.NumberOfValiedAttempts + "إلغاء محاولة الدخول بسبب الفشل";
-
+                    //str = " تم  مرات لإدخال رمز التحقق " + WebServiceManager.NumberOfValiedAttempts + "إلغاء محاولة الدخول بسبب الفشل";
+                    string str1 = "تم إلغاء الدخول مؤقتاً، لقد استنفذت 3 محاولات خاطئة لإدخال رمز التحقق";
+                    str = str1.Replace("3", WebServiceManager.NumberOfValiedAttempts);
                 }
             }
             return str;

@@ -272,19 +272,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
                     }
                 }
-                else if (string.IsNullOrEmpty(TFaciName.Text))
+                else if (string.IsNullOrEmpty(TFaciName.Text.Trim()))
                 { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
                 //else if (string.IsNullOrEmpty(FacilityType_entry.Text))
                 //{ flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFDAdress.Text))
+                else if (string.IsNullOrEmpty(TFDAdress.Text.Trim()))
                 { flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFSAddress.Text))
+                else if (string.IsNullOrEmpty(TFSAddress.Text.Trim()))
                 { flag = false; FrmFSAddress.HasError = true; showFillFeildsMessage(); TFSAddress.Focus(); }
-                else if (string.IsNullOrEmpty(TxtTIN.Text) && checkBox.IsChecked == true)
+                else if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
                 {  flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TReportDetail.Text))
+                else if (string.IsNullOrEmpty(TReportDetail.Text.Trim()))
                 { flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFWType.Text))
+                else if (string.IsNullOrEmpty(TFWType.Text.Trim()))
                 { flag = false; FrmTFW.HasError = true; TFWType.Focus(); showFillFeildsMessage(); }
                 else if (string.IsNullOrEmpty(Region_entry.Text))
                 {
