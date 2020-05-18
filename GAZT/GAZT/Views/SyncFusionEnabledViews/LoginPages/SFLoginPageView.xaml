@@ -55,7 +55,6 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
            
-            <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                 <!--<ScrollView.VerticalOptions>
                     <OnIdiom
                         x:TypeArguments="LayoutOptions"
@@ -160,7 +159,6 @@
                             </buttons:SfButton>
                         </StackLayout>
                 </StackLayout>
-            </ScrollView>
          
          
             <!-- Acticity indicator layout start -->
