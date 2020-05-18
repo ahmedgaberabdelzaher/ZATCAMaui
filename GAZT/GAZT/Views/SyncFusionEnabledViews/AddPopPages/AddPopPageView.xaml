@@ -10,8 +10,8 @@
              FlowDirection="{Binding FlowDirections}" 
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AddPop.AddPopPageView">
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                BackgroundColor="White">
-        <Grid BackgroundColor="White">
+               >
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
