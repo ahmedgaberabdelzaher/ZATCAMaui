@@ -633,7 +633,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception(AppResources.PasswordGuidelineText);
+                        throw new Exception(AppResources.ZZPasswordGuideLineTextNew);
                     }
                 }
             }
@@ -1027,7 +1027,7 @@ namespace GAZT.Manager
                             }
                             else
                             {
-                                throw new Exception(AppResources.InvalidOTP);
+                                throw new Exception(AppResources.Invalidverificationcodeentered);
                             }
                         }
                         else
@@ -1038,7 +1038,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    if (string.Equals(ex.Message, AppResources.InvalidOTP))
+                    if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))
                     {
                         throw new Exception(AppResources.InvalidEmail);
                     }

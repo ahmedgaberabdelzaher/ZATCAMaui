@@ -677,7 +677,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                             if (!string.IsNullOrEmpty(OTP))
                             {
                                 App.Otp = OTP;
-                                //App.Otp = "0234";
                             }
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -729,6 +728,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                 {
                     TaxPayerProfile TP = null;
                     String lang = "EN";
+
                     if (App.IsArabic == true)
                         lang = "AR";
                     try
@@ -773,6 +773,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                                         {
                                             await _dialogService.ShowMessageBox(OnInvalidEmail, AppResources.Information);
                                         });
+
                                     }
                                 }
                                 else
@@ -799,15 +800,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            string InvalidOTP = AppResources.InvalidOTP + "(" + AppResources.PleaseReVerify + ")";
-                            await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Information);
-                            ClearPasswordDataForEmail();
-                            if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
-                            {
-                                var _navigation = Application.Current.MainPage.Navigation;
-                                await _navigation.PopAsync();
-                                _navigationService.NavigateTo(App.ChangeEmailPageView);
-                            }
+                            string InvalidOTP = AppResources.Invalidverificationcodeentered;// + "(" + AppResources.PleaseReVerify + ")";
+                            await _dialogService.ShowMessageBox(InvalidOTP, AppResources.Alerts);
+
+                            Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    if (currentAttempts == App.TP.Attempts)
+                                    {
+                                        App.TP = null;
+                                        ClearData();
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            var _navigation = Application.Current.MainPage.Navigation;
+                                            await _navigation.PopToRootAsync();
+                                        });
+                                    }
+                                    
+                                    ClearData();
+                                    ClearPasswordDataForEmail();
+                                });
+                           
+                            //ClearPasswordDataForEmail();
+                            //if (NavigateToOtpForEmailEnum == ComingToOTPVerificationScreenFrom.IsEmail)
+                            // {
+                            //var _navigation = Application.Current.MainPage.Navigation;
+                            // await _navigation.PopAsync();
+                            // _navigationService.NavigateTo(App.ChangeEmailPageView);
+                            //}
                         });
                     }
                 });
