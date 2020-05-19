@@ -2981,6 +2981,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         FirstSubmissionCount = 1;
                         string operation = "01";
                         VATDeclarationData.d.StepNumber = "04";
+                        VATDeclarationData.d.StepNumberz = "04";
                         VATDeclarationData.d.UserTypz = "TP";
                         VATDeclarationData.d.Operationz = operation;
                         VATDeclaration response = new VATDeclaration();
