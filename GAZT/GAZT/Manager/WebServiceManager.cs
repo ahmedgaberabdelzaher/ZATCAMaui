@@ -633,7 +633,7 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        throw new Exception(AppResources.PasswordGuidelineText);
+                        throw new Exception(AppResources.ZZPasswordGuideLineTextNew);
                     }
                 }
             }
