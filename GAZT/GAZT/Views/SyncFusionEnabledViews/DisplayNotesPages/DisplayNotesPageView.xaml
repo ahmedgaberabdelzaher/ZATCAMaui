@@ -44,7 +44,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout Margin="10,10,10,0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <StackLayout Margin="10,10,10,0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
                 <ListView  x:Name="DisplayNotes" 
            ItemsSource="{Binding NoteList}"
           HorizontalOptions="FillAndExpand"
@@ -52,6 +52,7 @@
             HasUnevenRows="True"
                       IsVisible="{Binding IsDisplayNoteVisible}"
             SeparatorVisibility="None"
+                           BackgroundColor="White"
             >
                     <ListView.ItemTemplate>
                         <DataTemplate>

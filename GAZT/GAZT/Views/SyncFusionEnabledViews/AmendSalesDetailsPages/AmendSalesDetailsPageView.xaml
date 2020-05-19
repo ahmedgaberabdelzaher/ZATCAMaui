@@ -157,7 +157,7 @@
         Hint="{x:Static local:AppResources.ZZAttachment}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" TextColor="Black" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                              <Image Grid.Row="12"  Grid.Column="1"   Margin="13,2,13,1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
@@ -243,12 +243,14 @@
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                                            LineBreakMode="WordWrap"
+                                                                       TextColor="Black"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                                           Grid.ColumnSpan="2"
                                    />
                                                                 <Label Text="{Binding UploadededDateToShow}" 
                                                                        Margin="0,0,0,0"
+                                                                       TextColor="Black"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
                                                                          FontFamily="{StaticResource SSTArabicMedium}"
                                                                         HorizontalOptions="StartAndExpand"

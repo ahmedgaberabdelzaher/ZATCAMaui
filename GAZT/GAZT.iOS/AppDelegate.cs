@@ -34,7 +34,7 @@ namespace GAZT.iOS
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
-        {
+        { 
            ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             ServicePointManager
             .ServerCertificateValidationCallback +=
@@ -43,7 +43,7 @@ namespace GAZT.iOS
             Xamarin.Forms.Forms.Init();
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init();
-            IQKeyboardManager.SharedManager.Enable = true;
+          IQKeyboardManager.SharedManager.Enable = true;
           //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
             App iosapp = new App();
