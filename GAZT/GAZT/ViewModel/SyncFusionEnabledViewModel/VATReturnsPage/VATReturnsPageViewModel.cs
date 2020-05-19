@@ -1523,10 +1523,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             set
             {
                 _selectedIBAN = value;
-                //if (_selectedIBAN != null)
-                //{
-                //    TxtSelectedIBAN = _selectedIBAN.Iban;
-                //}
+                if (_selectedIBAN != null)
+                {
+                    TxtSelectedIBAN = _selectedIBAN.Iban;
+                }
                 RaisePropertyChanged("SelectedIBAN");
             }
         }
@@ -2029,15 +2029,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     }
                     else if (ButtonName == AppResources.Submit)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = true;
-                    });
-                    await SubmitClicked();
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        IsLoading = false;
-                    });
+                        try
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                IsLoading = true;
+                            });
+                            await SubmitClicked();
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                IsLoading = false;
+                            });
+                        }
+                        catch(Exception ex)
+                        {
+                            IsLoading = false;
+                        }
                 }
                 //else if(ButtonName == AppResources.ZVatDownloadForm)
                 //{
@@ -2979,7 +2986,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         VATDeclaration response = new VATDeclaration();
                         //response = WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                         //PopToRootPage();
-                        IsLoading = false;
+                       // IsLoading = false;
                         resNew = await SaveReturnAndGetReturnAndSetButtons();
                         // }
                         if (resNew != null && resNew.d != null)
@@ -3072,6 +3079,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             catch (InternetException ex)
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                IsLoading = false;
             }
         }
 

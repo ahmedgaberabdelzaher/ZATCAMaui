@@ -264,7 +264,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            viewModel.IsSwichButtonEnable = false;
+            //comment because main button remains enabled
+          //  viewModel.IsSwichButtonEnable = false;
         }
         protected override void OnAppearing()
         {
