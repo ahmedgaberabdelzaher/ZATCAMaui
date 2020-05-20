@@ -638,7 +638,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             if (string.IsNullOrEmpty(TFWType.Text))
             {
                 FrmTFW.HasError = true;
-                TFWType.Focus();
+                //TFWType.Focus();
             }
             else
             {
