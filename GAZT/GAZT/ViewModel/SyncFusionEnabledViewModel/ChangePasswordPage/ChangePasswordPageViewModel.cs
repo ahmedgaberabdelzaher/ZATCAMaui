@@ -5,6 +5,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -249,17 +250,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewMode
                   !string.IsNullOrEmpty(NewPasswordForEmail) || !string.IsNullOrEmpty(RetypePasswordForEmail)
   )
                 {
-                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.Alerts, AppResources.ChangeEmailDiscardSave, AppResources.ZZZYesText, AppResources.ZZZNoText);
-                    if (result == true)
+                    var result = false;
+                   
+
+                    if (App.IsArabic)
                     {
 
-                        _navigationService.GoBack();
+                        result  = await Application.Current.MainPage.DisplayAlert
+                                            (AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
+                                                AppResources.ZZZNoText, AppResources.ZZZYesText);
+                        if (result == true)
+                        {
+                            return;
 
+                        }
+                        else // if it's equal to YES
+                        {
+                            _navigationService.GoBack();
+
+                           
+                        }
                     }
-                    else // if it's equal to NO
+                    else
                     {
-                        return; // just return to the page and do nothing.
+
+                        result = await Application.Current.MainPage.DisplayAlert
+                                            (AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
+                                                AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+
+                        
+                        if (result == true)
+                        {
+
+                            _navigationService.GoBack();
+
+                        }
+                        else // if it's equal to NO
+                        {
+                            return; // just return to the page and do nothing.
+                        }
                     }
+               
                 }
                 else
                 {

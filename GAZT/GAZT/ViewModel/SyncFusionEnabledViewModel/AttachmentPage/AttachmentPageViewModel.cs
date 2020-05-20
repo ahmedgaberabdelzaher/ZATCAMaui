@@ -588,7 +588,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 vATAttachment.Enbdele = attachmentList[i].Enbdele;
                 vATAttachment.Visedit = attachmentList[i].Enbdele;
                 vATAttachment.Visdel = attachmentList[i].Enbdele;
-                if(App.ICRStatus.Equals("E0045"))
+                if(App.ICRStatus.Equals("E0045") || App.ICRStatus.Equals("E0006") || App.ICRStatus.Equals("E0056"))
                 {
                     if(NumberOfAttachmentComingFromServer > 0 && i < NumberOfAttachmentComingFromServer)
                     {

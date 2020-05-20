@@ -153,7 +153,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
                 RaisePropertyChanged("IsEnabledNewEmail");
             }
         }
+     
         #endregion
+
         #region Constructor
         public ChangeEmailPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
@@ -171,17 +173,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel
             {
                 if (!string.IsNullOrEmpty(NewEmail) || !string.IsNullOrEmpty(RetypeEmail))
                 {
-                    var result = await Application.Current.MainPage.DisplayAlert(AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
-                        AppResources.ZZZYesText, AppResources.ZZZNoText);
-                    if (result == true)
+                    var result = false;
+                    if (App.IsArabic)
                     {
 
-                        _navigationService.GoBack();
+                        result = await Application.Current.MainPage.DisplayAlert
+                                            (AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
+                                                AppResources.ZZZNoText, AppResources.ZZZYesText);
+                        if (result == true)
+                        {
+                            return;
+                        }
+                        else // if it's equal to YES
+                        {
+                            _navigationService.GoBack();
 
+                        }
                     }
-                    else // if it's equal to NO
+                    else
                     {
-                        return; // just return to the page and do nothing.
+
+                        result = await Application.Current.MainPage.DisplayAlert
+                                            (AppResources.Alerts, AppResources.ChangeEmailDiscardSave,
+                                                AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                        if (result == true)
+                        {
+                            _navigationService.GoBack();
+                        }
+                        else // if it's equal to NO
+                        {
+                            return; // just return to the page and do nothing.
+                        }
                     }
                 }
                 else

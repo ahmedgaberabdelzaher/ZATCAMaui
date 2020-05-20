@@ -790,8 +790,11 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>ID Number has to be 15 digits long</value>
   </data>
-  <data name="Hi" xml:space="preserve">
+  <!--<data name="Hi" xml:space="preserve">
     <value>Hello,</value>
+  </data>-->
+    <data name="Hi" xml:space="preserve">
+    <value>Welcome,</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>Enter Verification Code</value>
@@ -1068,13 +1071,13 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Standard rated sales</value>
   </data>
   <data name="ZVatStepFour" xml:space="preserve">
-    <value>Step 4</value>
+    <value>Move to Step 4</value>
   </data>
   <data name="ZVatStepThree" xml:space="preserve">
-    <value>Step 3</value>
+    <value>Move to Step 3</value>
   </data>
   <data name="ZVatStepTwo" xml:space="preserve">
-    <value>Step2</value>
+    <value>Move to Step 2</value>
   </data>
   <data name="ZVatSubmittedInstructions" xml:space="preserve">
     <value>The application cannot be successfully submitted until all of the mandatory fields have been completed.</value>
@@ -3178,5 +3181,9 @@ password format</value>
   <data name="Certificates" xml:space="preserve">
     <value>Certificates</value>
     <comment>Dashboard</comment>
+  </data>
+  <data name="ZZZVATAmoutWithSAR" xml:space="preserve">
+    <value>VAT Amount(SAR)</value>
+    <comment>VAT</comment>
   </data>
 </root>
