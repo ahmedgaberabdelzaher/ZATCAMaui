@@ -786,8 +786,11 @@
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>عدد الأرقام في رمز المعرف يحبأن يكون 15 رقم</value>
   </data>
-  <data name="Hi" xml:space="preserve">
+  <!--<data name="Hi" xml:space="preserve">
     <value>أهلا:</value>
+  </data>-->
+     <data name="Hi" xml:space="preserve">
+    <value>اهلاً</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>ادخل رمز التحقق</value>

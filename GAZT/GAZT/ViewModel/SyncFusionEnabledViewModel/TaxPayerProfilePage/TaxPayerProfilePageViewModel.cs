@@ -135,7 +135,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewMod
             });
             OnChangeEmailClicked = new Xamarin.Forms.Command(async () =>
             {
-                await _dialogService.ShowMessage(AppResources.ChangeEmailVerification, "Information");
+            
+                await _dialogService.ShowMessage(AppResources.ChangeEmailVerification,AppResources.Information);
 
                 _navigationService.NavigateTo(App.ChangeEmailPageView);
             });
