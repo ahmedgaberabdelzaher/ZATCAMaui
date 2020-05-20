@@ -4881,7 +4881,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 4.
+        ///   Looks up a localized string similar to Move to Step 4.
         /// </summary>
         public static string ZVatStepFour {
             get {
@@ -4890,7 +4890,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step 3.
+        ///   Looks up a localized string similar to Move to Step 3.
         /// </summary>
         public static string ZVatStepThree {
             get {
@@ -4899,7 +4899,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Step2.
+        ///   Looks up a localized string similar to Move to Step 2.
         /// </summary>
         public static string ZVatStepTwo {
             get {
@@ -7963,6 +7963,15 @@ namespace EGAZT {
         public static string ZZZTotalVATTaxableAmountonSales {
             get {
                 return ResourceManager.GetString("ZZZTotalVATTaxableAmountonSales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Amount(SAR).
+        /// </summary>
+        public static string ZZZVATAmoutWithSAR {
+            get {
+                return ResourceManager.GetString("ZZZVATAmoutWithSAR", resourceCulture);
             }
         }
         

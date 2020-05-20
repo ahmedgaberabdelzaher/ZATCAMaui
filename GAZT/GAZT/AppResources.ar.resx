@@ -1113,13 +1113,13 @@
     <value>المبيعات الخاضعة للنسبة الأساسية</value>
   </data>
   <data name="ZVatStepFour" xml:space="preserve">
-    <value>الخطوة4</value>
+    <value>الانتقال الى الخطوة ٤</value>
   </data>
   <data name="ZVatStepThree" xml:space="preserve">
-    <value>الخطوة3</value>
+    <value>الانتقال الى الخطوة ٣</value>
   </data>
   <data name="ZVatStepTwo" xml:space="preserve">
-    <value>الخطوة 2</value>
+    <value>الانتقال الى الخطوة ٢</value>
   </data>
   <data name="ZVatSubmittedInstructions" xml:space="preserve">
     <value>لايمكن تقديم الطلب بنجاح حتى يتم إكمال جميع الحقول الإلزامية</value>
@@ -3172,5 +3172,9 @@
   <data name="Certificates" xml:space="preserve">
     <value>الشهادات</value>
     <comment>Dashboard</comment>
+  </data>
+  <data name="ZZZVATAmoutWithSAR" xml:space="preserve">
+    <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
+    <comment>VAT</comment>
   </data>
 </root>
