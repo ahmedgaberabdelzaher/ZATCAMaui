@@ -2280,14 +2280,14 @@
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
-                                        <CheckBox x:Name="chkDeclarationForSummary" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkDeclarationForSummary_CheckedChanged" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="11" Margin="10,0,10,0" Grid.Column="0">
+                                        <CheckBox x:Name="chkDeclarationForSummary" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkDeclarationForSummary_CheckedChanged" IsChecked="{Binding IsDeclarationCheckedForSummary}" VerticalOptions="Start" Grid.Row="11" Margin="10,7,10,0" Grid.Column="0">
                                             <CheckBox.Triggers>
                                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkDeclarationForSummary}, Path=IsChecked}" Value="false">
                                                     <Setter Property="Color" Value="#ff0000" />
                                                 </DataTrigger>
                                             </CheckBox.Triggers>
                                         </CheckBox>
-                                        <local1:CustomLabel  Grid.Row="11" Grid.Column="1" Padding="0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                        <local1:CustomLabel  Grid.Row="11" Grid.Column="1" Padding="0" Margin="10,7,10,0"  HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static custom2:AppResources.ZVatCertifyInformation}"/>
