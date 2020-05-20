@@ -3572,6 +3572,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryVatAmount.Text=="0.00")
+                {
+                    EntryVatAmount.Text = string.Empty;
+                }
                 if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
@@ -3604,6 +3608,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryVatAdjustmentWithSAR.Text=="0.00")
+                {
+                    EntryVatAdjustmentWithSAR.Text = string.Empty;
+                }
                 if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
@@ -3622,6 +3630,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntrySalesGccAmt.Text=="0.00")
+                {
+                    EntrySalesGccAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
                 {
                     EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
@@ -3640,6 +3653,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntrySalesGccAdj.Text=="0.00")
+                {
+                    EntrySalesGccAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
                 {
                     EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
@@ -3658,6 +3676,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryZerosalesAmt.Text=="0.00")
+                {
+                    EntryZerosalesAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
                 {
                     EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
@@ -3676,6 +3699,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryZerosalesAdj.Text=="0.00")
+                {
+                    EntryZerosalesAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
                 {
                     EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
@@ -3694,6 +3722,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryExportsAmt.Text=="0.00")
+                {
+                    EntryExportsAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
                 {
                     EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
@@ -3712,6 +3745,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryExportsAdj.Text=="0.00")
+                {
+                    EntryExportsAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
                 {
                     EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
@@ -3730,6 +3768,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryExemptsalesAmt.Text=="0.00")
+                {
+                    EntryExemptsalesAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
                 {
                     EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
@@ -3792,6 +3835,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryStdpurchaseAmt.Text=="0.00")
+                {
+                    EntryStdpurchaseAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
@@ -3806,6 +3854,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryStdpurchaseAdj.Text=="0.00")
+                {
+                    EntryStdpurchaseAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
@@ -3820,6 +3873,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryZVatAmountWithSAR.Text=="0.00")
+                {
+                    EntryZVatAmountWithSAR.Text = String.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
@@ -3834,6 +3892,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryImportspaidAdj.Text=="0.00")
+                {
+                    EntryImportspaidAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                 {
                     EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
@@ -3848,6 +3911,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryImportsaccAmt.Text=="0.00")
+                {
+                    EntryImportsaccAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                 {
                     EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
@@ -3862,6 +3930,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryImportsaccAdj.Text=="0.00")
+                {
+                    EntryImportsaccAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                 {
                     EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
@@ -3876,6 +3949,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryZeropurchaseAmt.Text=="0.00")
+                {
+                    EntryZeropurchaseAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
                 {
                     EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
@@ -3890,6 +3968,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+
+                if(EntryZeropurchaseAdj.Text=="0.00")
+                {
+                    EntryZeropurchaseAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
                 {
                     EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
@@ -3904,6 +3988,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryExemptpurchaseAmt.Text=="0.00")
+                {
+                    EntryExemptpurchaseAmt.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
                 {
                     EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
@@ -3918,6 +4007,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryExemptpurchaseAdj.Text=="0.00")
+                {
+                    EntryExemptpurchaseAdj.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
                 {
                     EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
@@ -3932,6 +4026,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         {
             try
             {
+                if(EntryPreperiodcorr.Text=="0.00" || EntryPreperiodcorr.Text=="-0.00")
+                {
+                    EntryPreperiodcorr.Text = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
                 {
                     EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
@@ -4462,6 +4561,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
 
+        }
+
+        private void EntryExemptsalesAdjFocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryExemptsalesAdj.Text == "0.00")
+                {
+                    EntryExemptsalesAdj.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
+                {
+                    EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
+                    EntryExemptsalesAdj.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
