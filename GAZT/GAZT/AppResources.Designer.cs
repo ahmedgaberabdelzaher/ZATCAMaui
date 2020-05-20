@@ -5512,7 +5512,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you want to release the retrun?.
+        ///   Looks up a localized string similar to Do you want to release the return?.
         /// </summary>
         public static string ZZDoyouwanttoreleasethedeclaration {
             get {

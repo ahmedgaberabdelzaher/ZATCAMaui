@@ -1667,7 +1667,7 @@ Click "Ok" to submit re-assessment or "No" to review the correction penalty befo
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
-    <value>Do you want to release the retrun?</value>
+    <value>Do you want to release the return?</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZExportsvalue" xml:space="preserve">
