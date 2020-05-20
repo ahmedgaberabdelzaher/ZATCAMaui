@@ -3175,4 +3175,8 @@ password format</value>
     <value>Please enter the ID Number value</value>
     <comment>Vat Look Up error </comment>
   </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Certificates</value>
+    <comment>Dashboard</comment>
+  </data>
 </root>
