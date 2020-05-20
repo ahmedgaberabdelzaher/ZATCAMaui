@@ -188,6 +188,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                 //safeInsets.Left = 24;
                 //this.Padding = safeInsets;
                 AttachmentPageViewModel.AttachmentUploadedSize = 0;
+                AttachmentPageViewModel.IsToBeFilled = true;
                 AttachmentPageViewModel.attachmentSizeVisibility = false;
                 if (Count != 1)
                 {

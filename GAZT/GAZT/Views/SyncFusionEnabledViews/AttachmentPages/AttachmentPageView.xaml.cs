@@ -48,8 +48,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
-                viewModel.ClearData();
+               
                 viewModel.VatAttachmentsList = null;
+                viewModel.ClearData();
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
@@ -60,13 +61,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
+                        int AttachmentCount = 0;
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
-                            if (item.Erfdt != null)
+                            if (!App.ICRStatus.Equals("E0001"))
                             {
-                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                if(AttachmentCount < ICRListPageViewModel.numberOfAttachmentComingFromServer)
+                                {
+                                    AttachmentCount++;
+                                        if (item.Erfdt != null)
+                                    {
+                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    }
+                                }
+                                    
                             }
+
                             //if (App.IsArabic)
                             //{
                             //    if (item.Erfdt != null)

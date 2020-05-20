@@ -24,6 +24,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
         public ICommand OnAttachmentClick { get; set; }
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
+        public static bool IsToBeFilled = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
@@ -459,11 +460,44 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
 
         public void ClearData()
         {
-            if(AttachmentList != null && AttachmentList.Count > 0)
+            try
             {
-                AttachmentList.Clear();
+                if (AttachmentList != null)
+                {
+                    if (AttachmentList.Count > 0)
+                    {
+                        if (App.ICRStatus.Equals("E0001"))
+                        {
+                            if (AttachmentPageViewModel.IsToBeFilled == true)
+                            {
+                                AttachmentPageViewModel.IsToBeFilled = false;
+                                AttachmentList.Clear();
+                            }
+
+                        }
+                        else
+                        {
+                            AttachmentPageViewModel.IsToBeFilled = false;
+                            AttachmentList.Clear();
+                        }
+                    }
+                }
+                else
+                {
+                    if (App.ICRStatus.Equals("E0001"))
+                    {
+                        if (AttachmentPageViewModel.IsToBeFilled == true)
+                        {
+                            AttachmentPageViewModel.IsToBeFilled = false;
+                        }
+                    }
+
+                }
             }
-          
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void OnPageLoad()
