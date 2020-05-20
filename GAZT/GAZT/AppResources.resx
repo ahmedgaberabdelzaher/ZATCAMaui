@@ -676,7 +676,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ChangeEmail" xml:space="preserve">
     <value>Change Email</value>
   </data>
-   <data name="ChangeEmailVerification" xml:space="preserve">
+  <data name="ChangeEmailVerification" xml:space="preserve">
     <value>If you are changing the Email ID, it is mandatory to change password</value>
   </data>
   <data name="ChangeMobileNumber" xml:space="preserve">
@@ -3116,10 +3116,10 @@ Should we require further information, we would be in contact.</value>
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZZRefundYesMsg" xml:space="preserve">
-    <value>"Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
+    <value>Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
 1. Trail balance for the return period 
 2. Sales list subject to VAT (0%-5%-Exempt) 
-3. Purchased list subject to VAT (5%, reverse charge)"</value>
+3. Purchased list subject to VAT (5%, reverse charge)</value>
     <comment>VAT Declaration</comment>
   </data>
   <data name="InvalidEmailFormat" xml:space="preserve">
