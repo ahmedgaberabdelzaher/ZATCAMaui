@@ -3153,7 +3153,7 @@
     <value>م يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
     <comment>Change Password</comment>
   </data>
-      <data name="ChangeEmailVerification" xml:space="preserve">
+  <data name="ChangeEmailVerification" xml:space="preserve">
     <value>في حال تغيير البريد الإلكتروني يجب تغيير كلمة المرور</value>
   </data>
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
@@ -3168,5 +3168,9 @@
   <data name="ZZZPleaseentertheIDNumbervalue" xml:space="preserve">
     <value>الرجاء إدخال رمز المعرف</value>
     <comment>Vat Look Up error </comment>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>الشهادات</value>
+    <comment>Dashboard</comment>
   </data>
 </root>
