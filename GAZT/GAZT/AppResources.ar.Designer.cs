@@ -5333,5 +5333,12 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZNoText", resourceCulture);
             }
         }
+        public static string ZZZContactus
+        {
+            get
+            {
+                return ResourceManager.GetString("ZZZContactus", resourceCulture);
+            }
+        }
     }
 }
