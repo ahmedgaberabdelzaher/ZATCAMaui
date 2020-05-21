@@ -792,6 +792,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                                 if (CheckMandetoryFields())
                                 {
                                     await viewModel.OnSaveDraftClicked();
+                                    if(viewModel.IsVisibleSummary)
+                                    {
+                                        ValidationsForVATRefund();
+                                        if (viewModel.IschkRefundDeclaration == false || viewModel.IsDeclarationCheckedForSummary == false)
+                                        {
+                                            viewModel.IsMainButtonEnabled = false;
+                                        }
+                                    }
                                 }
                                 else
                                 {
@@ -839,6 +847,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                                 if (CheckMandetoryFields())
                                 {
                                     await viewModel.OnSaveDraftClicked();
+                                    if (viewModel.IsVisibleSummary)
+                                    {
+                                        ValidationsForVATRefund();
+                                        if(viewModel.IschkRefundDeclaration==false || viewModel.IsDeclarationCheckedForSummary == false)
+                                        {
+                                            viewModel.IsMainButtonEnabled = false;
+                                        }
+                                    }
                                 }
                                 else
                                 {

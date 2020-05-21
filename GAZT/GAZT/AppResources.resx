@@ -790,10 +790,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
     <value>ID Number has to be 15 digits long</value>
   </data>
-  <!--<data name="Hi" xml:space="preserve">
-    <value>Hello,</value>
-  </data>-->
-    <data name="Hi" xml:space="preserve">
+  <data name="Hi" xml:space="preserve">
     <value>Welcome,</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
@@ -3161,8 +3158,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Forgot Password</comment>
   </data>
   <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
-    <value>Password did not updated as it does not match
-password format</value>
+    <value>Password did not updated as it does not match password format</value>
     <comment>Change Password</comment>
   </data>
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
@@ -3185,5 +3181,9 @@ password format</value>
   <data name="ZZZVATAmoutWithSAR" xml:space="preserve">
     <value>VAT Amount(SAR)</value>
     <comment>VAT</comment>
+  </data>
+  <data name="ZZZChangetoLanguage" xml:space="preserve">
+    <value>انتقل للغة العربية</value>
+    <comment>option </comment>
   </data>
 </root>

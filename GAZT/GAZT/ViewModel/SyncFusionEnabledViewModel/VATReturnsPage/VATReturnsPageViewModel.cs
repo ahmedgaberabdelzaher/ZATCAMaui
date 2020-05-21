@@ -2423,6 +2423,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
+                            if(IsVisibleInstrunction)
+                            {
+                                if(IsDeclarationCheckedForInstruction==false)
+                                {
+                                    IsMainButtonEnabled = false;
+                                }
+                            }
+                            else if(IsVisibleTaxPayerDetails)
+                            {
+                                if (IsCheckedTaxPayerDetailsInfo == false)
+                                {
+                                    IsMainButtonEnabled = false;
+                                }
+                            }
                             await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                         // await _dialogService.ShowMessage(AppResources.DraftSaved + res.d.Fbnum, AppResources.Information);
                     });
@@ -3276,6 +3290,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await ManageEnabledAsyncProperty(false);
+                                IsMainButtonVisible = false;
+                                IsSwichButtonEnableToTap = false;
+                                IsEnableIBAN = false;
+                                IsEnableCheckedRefund = false;
+                                IsEnableIBANType = false;
+                                IsEnableIBANIdNumber = false;
                             });
                            // ManageEnabledProperty(false);
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3376,6 +3396,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
+                            IsMainButtonVisible = false;
+                            IsSwichButtonEnableToTap = false;
+                            IsEnableIBAN = false;
+                            IsEnableCheckedRefund = false;
+                            IsEnableIBANType = false;
+                            IsEnableIBANIdNumber = false;
                         });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
