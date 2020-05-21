@@ -356,6 +356,33 @@
                         Text="{StaticResource Next}" />-->
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
+                    <!--Contact us-->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding ContactusCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Privacy policy icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource More}" />
+                        <!--  Privacy policy text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        Text="{x:Static local:AppResources.ZZZContactus}" />
+                    </controls:TapAnimationGrid>
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
+
                     <!--  Grid for Terms of service label and navigation bar icon  -->
                     <!--<controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"

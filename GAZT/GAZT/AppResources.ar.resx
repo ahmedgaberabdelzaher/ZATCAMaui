@@ -3181,4 +3181,8 @@
     <value>Change to English</value>
     <comment>option </comment>
   </data>
+  <data name="ZZZContactus" xml:space="preserve">
+    <value>اﻻتصال بنا</value>
+    <comment>Option</comment>
+  </data>
 </root>

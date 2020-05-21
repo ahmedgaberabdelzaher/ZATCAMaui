@@ -12,6 +12,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondenceDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewModel;
@@ -58,6 +59,7 @@ using EGAZT.Views.SyncFusionEnabledViews.ChangeEmailPages;
 using EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber;
 using EGAZT.Views.SyncFusionEnabledViews.ChangePassword;
 using EGAZT.Views.SyncFusionEnabledViews.CheckTINStatus;
+using EGAZT.Views.SyncFusionEnabledViews.ContactUsPage;
 using EGAZT.Views.SyncFusionEnabledViews.Correspondance;
 using EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails;
 using EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount;
@@ -152,6 +154,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<PrivacyAndPolicyPageViewModel>();
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
+            SimpleIoc.Default.Register<ContactUsPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -811,6 +814,20 @@ namespace EGAZT
                 }
             }
         }
+        public ContactUsPageViewModel ContactUsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ContactUsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -867,6 +884,7 @@ namespace EGAZT
             navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
             navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
             navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
+            navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
             return navigationService;
         }
     }

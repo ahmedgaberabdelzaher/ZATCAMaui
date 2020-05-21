@@ -49,10 +49,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             this.EditEmailCommand = new Command(this.EditEmailClicked);
             this.AboutCommand = new Command(this.AboutUsClicked);
             this.CorrespondenceCommand = new Command(this.CorrespondenceClicked);
+            this.ContactusCommand = new Command(this.ContactusClicked);
         }
         #endregion
         #region Commands
         public Command MyProfileCommand { get; set; }
+        public Command ContactusCommand { get; set; }
         public Command CorrespondenceCommand { get; set; }
         public Command EditMobileNumberCommand { get; set; }
         public Command EditPasswordCommand { get; set; }
@@ -251,6 +253,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             {
                 lastTapped = DateTime.Now;
                 _navigationService.NavigateTo(App.CorrespondancePageView);
+            }
+        }
+        private void ContactusClicked(object obj)
+        {
+            if (lastTapped < DateTime.Now.AddSeconds(-2))
+            {
+                lastTapped = DateTime.Now;
+                _navigationService.NavigateTo(App.ContactUsPageView);
             }
         }
         private void EditMobileNumberClicked(object obj)

@@ -71,6 +71,7 @@ namespace EGAZT
         public static string PrivacyAndPolicyPageView = "PrivacyAndPolicyPageView";
         public static string MyReturnsPageView = "MyReturnsPageView";
         public static string MyCommitmentsPageView = "MyCommitmentsPageView";
+        public static string ContactUsPageView = "ContactUsPageView";
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;

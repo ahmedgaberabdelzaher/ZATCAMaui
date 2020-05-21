@@ -63,7 +63,7 @@
                 </Frame>
                 <Label Text="{Binding CorrespondenceTitle}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" >
                 </Label>
-                <StackLayout BackgroundColor="Blue" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0">
+                <StackLayout BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0">
                        <WebView x:Name="CorWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
                 <Frame Grid.Row="2" Grid.Column="0"    VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
