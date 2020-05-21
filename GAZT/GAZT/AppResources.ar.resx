@@ -243,8 +243,12 @@
   <data name="OverdueReturn" xml:space="preserve">
     <value>إقرارات متأخرة</value>
   </data>
-  <data name="Password" xml:space="preserve">
+  <!--<data name="Password" xml:space="preserve">
     <value>كلمة السر</value>
+  </data>-->
+    
+    <data name="Password" xml:space="preserve">
+    <value>كلمة المرور</value>
   </data>
   <data name="PayByMADA" xml:space="preserve">
     <value>السداد من خلال مدى</value>
@@ -507,8 +511,11 @@
   <data name="UserName" xml:space="preserve">
     <value>اسم المستخدم</value>
   </data>
-  <data name="ForgotPasswordOrUserName" xml:space="preserve">
+  <!--<data name="ForgotPasswordOrUserName" xml:space="preserve">
     <value>استرجاع أسم المستخدم أو كلمة السر</value>
+  </data>-->
+      <data name="ForgotPasswordOrUserName" xml:space="preserve">
+     <value>المرورجاع أسم المستخدم أو كلمة السر</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value>كلمة التحقق غير صالحة</value>
