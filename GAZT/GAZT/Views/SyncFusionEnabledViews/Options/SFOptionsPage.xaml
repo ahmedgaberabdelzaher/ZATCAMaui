@@ -294,6 +294,37 @@
                         Text="{StaticResource Next}" />--><!--
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />-->
+                    <controls:TapAnimationGrid
+                    BackgroundColor="{DynamicResource Gray-White}"
+                    ColumnSpacing="0"
+                    Command="{Binding PolicyCommand}"
+                    RowSpacing="0"
+                    Tapped="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <!--  Privacy policy icon  -->
+                        <Label
+                        Grid.Column="0"
+                        Margin="16,0,16,0"
+                        Style="{StaticResource IconLabelStyle}"
+                         TextColor="#005e4b"
+                        Text="{StaticResource More}" />
+                        <!--  Privacy policy text label  -->
+                        <Label
+                        Grid.Column="1"
+                        Style="{StaticResource LabelStyleFromCommonStyle}"
+                        Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}" />
+                        <!--  Navigation icon  -->
+                        <!--<Label
+                        Grid.Column="2"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />-->
+                    </controls:TapAnimationGrid>
+                    <BoxView Style="{StaticResource SeparatorStyle}" />
+
                     <!--  Grid for FAQs label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
@@ -363,37 +394,7 @@
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />-->
                     <!--  Grid for Privacy policy label and navigation bar icon  -->
-                    <controls:TapAnimationGrid
-                    BackgroundColor="{DynamicResource Gray-White}"
-                    ColumnSpacing="0"
-                    Command="{Binding PolicyCommand}"
-                    RowSpacing="0"
-                    Tapped="False">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <!--  Privacy policy icon  -->
-                        <Label
-                        Grid.Column="0"
-                        Margin="16,0,16,0"
-                        Style="{StaticResource IconLabelStyle}"
-                         TextColor="#005e4b"
-                        Text="{StaticResource More}" />
-                        <!--  Privacy policy text label  -->
-                        <Label
-                        Grid.Column="1"
-                        Style="{StaticResource LabelStyleFromCommonStyle}"
-                        Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}" />
-                        <!--  Navigation icon  -->
-                        <!--<Label
-                        Grid.Column="2"
-                        Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />-->
-                    </controls:TapAnimationGrid>
-                    <BoxView Style="{StaticResource SeparatorStyle}" />
-                    <!--  Grid for FAQs label and navigation bar icon  -->
+                                        <!--  Grid for FAQs label and navigation bar icon  -->
                     <controls:TapAnimationGrid
                     BackgroundColor="{DynamicResource Gray-White}"
                     ColumnSpacing="0"

@@ -29,11 +29,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
             VisibleTaxPayerProfile();
             if (App.IsArabic)
             {
-                viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+               // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
             }
             else
             {
-                viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+               // viewModel.TranslateText = AppResources.ZZZSetLanguageText;
+                viewModel.TranslateText = AppResources.ZZZChangetoLanguage;
             }
             //if (Device.Idiom == TargetIdiom.Tablet)
             //{
