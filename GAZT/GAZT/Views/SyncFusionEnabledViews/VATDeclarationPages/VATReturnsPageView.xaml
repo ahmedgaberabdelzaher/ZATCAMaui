@@ -1881,7 +1881,7 @@
                             </Frame>-->
                                             <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal" Grid.Row="5" Grid.Column="0"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchVisible}">
                                                 <local1:CustomLabel  Text="{x:Static custom2:AppResources.ZNegative}"  Style="{StaticResource GAZTCaptionGreenLabelStyle}"  />
-                                                <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}"  />
+                                                <Switch    HorizontalOptions="Start" VerticalOptions="LayoutOptions.CenterAndExpand" IsToggled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsSwitchToggled}" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  />
                                             </StackLayout>
                                             <!--<custom:GAZTBorderlessEntry x:Name="EntryPreperiodcorr" Focused="EntryPreperiodcorrFocused" PropertyChanged="EntryPreperiodcorr_PropertyChanged" Unfocused="EntryPreperiodcorr_Unfocused" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" TextChanged="EntryPreperiodcorr_TextChanged" Grid.Row="6" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.Preperiodcorr}"    Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric" >
                                 -->

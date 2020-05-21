@@ -144,19 +144,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     {
                         Image arrowImage = sender as Image;
                         VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                        int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
-                        if (indexToReduceTheSize > viewModel.NumberOfAttachmentComingFromServer - 1)
+                        if(!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
-                            if (attachment != null)
+                            int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
+                            if (indexToReduceTheSize > viewModel.NumberOfAttachmentComingFromServer - 1)
                             {
-                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                DeleteAttachment(result, attachment);
+                                if (attachment != null)
+                                {
+                                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                    DeleteAttachment(result, attachment);
+                                }
                             }
                         }
-                        else
-                        {
-                            // Show Some message
-                        }
+                       
+                        
                     }
                     catch(Exception ex)
                     {
@@ -172,11 +173,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                         Image arrowImage = sender as Image;
                         VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
 
-                        if (attachment != null)
+                        if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
-                            var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                            DeleteAttachment(result, attachment);
+                            if (attachment != null)
+                            {
+                                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                DeleteAttachment(result, attachment);
+                            }
                         }
+                        //if (attachment != null)
+                        //{
+                        //    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                        //    DeleteAttachment(result, attachment);
+                        //}
                     }
                     catch (Exception ex)
                     {
