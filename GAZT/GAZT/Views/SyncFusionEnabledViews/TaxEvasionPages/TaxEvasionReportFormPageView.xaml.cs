@@ -258,69 +258,113 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             else
             {
                 bool flag = true;
+                bool showMessage = false;
                 if (string.IsNullOrEmpty(TName.Text))
                 {
-                    flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
+                    showMessage = true;
+                    FrmName.HasError = true;
+                    flag = false;
+
+                    //flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
                 }
-                else if ( string.IsNullOrEmpty(viewModel.TMobNumber))
+                if ( string.IsNullOrEmpty(viewModel.TMobNumber))
                 {
                     flag = false;
                     if (App.IsArabic)
-                    { TMobNumberAr.Focus(); FrmNumberAr.HasError = true; showFillFeildsMessage(); }
-                    else
                     {
-                        TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
-                    }
-                }
-                else if (string.IsNullOrEmpty(TFaciName.Text.Trim()))
-                { flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage(); }
-                //else if (string.IsNullOrEmpty(FacilityType_entry.Text))
-                //{ flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFDAdress.Text.Trim()))
-                { flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFSAddress.Text.Trim()))
-                { flag = false; FrmFSAddress.HasError = true; showFillFeildsMessage(); TFSAddress.Focus(); }
-                else if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
-                {  flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TReportDetail.Text.Trim()))
-                { flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(TFWType.Text.Trim()))
-                { flag = false; FrmTFW.HasError = true; TFWType.Focus(); showFillFeildsMessage(); }
-                else if (string.IsNullOrEmpty(Region_entry.Text))
-                {
-                    flag = false; frmRegionPicker.HasError = true;
-                    if (App.IsArabic)
-                    {
-                        RegionPickerAR.IsOpen = true;
+                        showMessage = true;
+                        FrmNumberAr.HasError = true;
+                        //TMobNumberAr.Focus(); FrmNumberAr.HasError = true; showFillFeildsMessage();
                     }
                     else
-                    {
-                        RegionPicker.IsOpen = true;
+                        {
+                            showMessage = true;
+                            FrmNumber.HasError = true;
+                            //   TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
+                        }
                     }
-                }
-                else if (string.IsNullOrEmpty(City_entry.Text))
-                {
-                    flag = false; FrmCity.HasError = true;
+                     if (string.IsNullOrEmpty(TFaciName.Text.Trim()))
+                    {
+                        flag = false;
+                        FrmFName.HasError = true;
+                        showMessage = true;
+                        //flag = false; TFaciName.Focus(); FrmFName.HasError = true; showFillFeildsMessage();
+                    }
+                    //else if (string.IsNullOrEmpty(FacilityType_entry.Text))
+                    //{ flag = false; FrmFType.HasError = true; ddlFacilityType.IsOpen = true; showFillFeildsMessage(); }
+                    if (string.IsNullOrEmpty(TFDAdress.Text.Trim()))
+                    { /*flag = false; FrmFDAddress.HasError = true; TFDAdress.Focus(); showFillFeildsMessage(); }*/
+                        flag = false;
+                        FrmFDAddress.HasError = true;
+                        showMessage = true;
+                    }//else
+                    if (string.IsNullOrEmpty(TFSAddress.Text.Trim()))
+                    {
+                        //flag = false; FrmFSAddress.HasError = true; showFillFeildsMessage(); TFSAddress.Focus(); 
+                        flag = false;
+                        FrmFSAddress.HasError = true;
+                        showMessage = true;
+                    }
+                     if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
+                    {
+                        //flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage();
+                        flag = false; TxtTIN.Focus();
+                        FrmTIN.HasError = true;
+                        showMessage = true;
+                    }
+                    if (string.IsNullOrEmpty(TReportDetail.Text.Trim()))
+                    {
+                        //flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); 
+                        flag = false; FrmReportDetail.HasError = true; showMessage = true;
+                    }
+                    if (string.IsNullOrEmpty(TFWType.Text.Trim()))
+                    {
+                        //flag = false; FrmTFW.HasError = true; TFWType.Focus(); showFillFeildsMessage(); 
+                        flag = false; FrmTFW.HasError = true; showMessage = true;
+                    }
+                    if (string.IsNullOrEmpty(Region_entry.Text))
+                    {
+                        flag = false;
+                        frmRegionPicker.HasError = true;
+                        showMessage = true;
+                        //if (App.IsArabic)
+                        //{
+                        //    RegionPickerAR.IsOpen = true;
+                        //}
+                        //else
+                        //{
+                        //    RegionPicker.IsOpen = true;
+                        //}
+                    }
+                     if (string.IsNullOrEmpty(City_entry.Text))
+                    {
+                        flag = false;
+                        FrmCity.HasError = true;
+                        showMessage = true;
+                        // showFillFeildsMessage();
+                        //if (App.IsArabic)
+                        //{
+                        //    CityPickerAR.IsOpen = true;
+                        //}
+                        //else
+                        //{
+                        //    CityPicker.IsOpen = true;
+                        //}
+                    }
+                    //else if (string.IsNullOrEmpty(Date_entry.Text))
+                    //{
+                    //    showFillFeildsMessage();
+                    //    flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
+                    //}
+                    if (showMessage == true)
+                    {
                     showFillFeildsMessage();
-                    if (App.IsArabic)
-                    {
-                        CityPickerAR.IsOpen = true;
-                    }
-                    else
-                    {
-                        CityPicker.IsOpen = true;
-                    }
                 }
-                //else if (string.IsNullOrEmpty(Date_entry.Text))
-                //{
-                //    showFillFeildsMessage();
-                //    flag = false; FrmDBO.HasError = true; DpDbo.IsOpen = true;
-                //}
-                else
-                {
-                    if (flag == true)
-                    { await viewModel.SubmitCreatedReport(); }
-                }
+                    //else
+                    //{
+                        if (flag == true)
+                        { await viewModel.SubmitCreatedReport(); }
+                    //}
             }
         }
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
