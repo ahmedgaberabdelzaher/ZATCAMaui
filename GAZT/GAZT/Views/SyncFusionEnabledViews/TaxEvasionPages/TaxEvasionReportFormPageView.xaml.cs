@@ -308,7 +308,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                      if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
                     {
                         //flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage();
-                        flag = false; TxtTIN.Focus();
+                        flag = false;
                         FrmTIN.HasError = true;
                         showMessage = true;
                     }
@@ -952,6 +952,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
             frmRegionPicker.HasError = false;
             viewModel.SelectLCTypePrev = null;
+            viewModel.SelectLCType = null;
+            viewModel.TxtReportDetailCity = string.Empty;
             //SelectedTaxEvasionRegion
         }
         private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -963,6 +965,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
             frmRegionPicker.HasError = false;
             viewModel.SelectLCTypePrev = null;
+            viewModel.SelectLCType = null;
+            viewModel.TxtReportDetailCity = string.Empty;
         }
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -972,6 +976,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
             FrmCity.HasError = false;
+            
         }
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -1058,6 +1063,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 viewModel.TxtReportDetailRegion = string.Empty;
             }
+            
         }
         private void CityPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
