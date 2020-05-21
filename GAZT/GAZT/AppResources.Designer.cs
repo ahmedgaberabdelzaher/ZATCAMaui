@@ -7495,6 +7495,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to انتقل للغة العربية.
+        /// </summary>
+        public static string ZZZChangetoLanguage {
+            get {
+                return ResourceManager.GetString("ZZZChangetoLanguage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Information.
         /// </summary>
         public static string ZZZContactInformation {
