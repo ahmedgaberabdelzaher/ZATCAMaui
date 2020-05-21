@@ -3290,6 +3290,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await ManageEnabledAsyncProperty(false);
+                                IsMainButtonVisible = false;
+                                IsSwichButtonEnableToTap = false;
+                                IsEnableIBAN = false;
+                                IsEnableCheckedRefund = false;
+                                IsEnableIBANType = false;
+                                IsEnableIBANIdNumber = false;
                             });
                            // ManageEnabledProperty(false);
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3390,6 +3396,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
+                            IsMainButtonVisible = false;
+                            IsSwichButtonEnableToTap = false;
+                            IsEnableIBAN = false;
+                            IsEnableCheckedRefund = false;
+                            IsEnableIBANType = false;
+                            IsEnableIBANIdNumber = false;
                         });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
