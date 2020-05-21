@@ -53,6 +53,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Mono.Android.Export" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter">
@@ -207,6 +208,7 @@
     <Compile Include="CustomRenderer\BorderlessEntryRenderer.cs" />
     <Compile Include="CustomRenderer\RoundCornersEffectDroid.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
+    <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />

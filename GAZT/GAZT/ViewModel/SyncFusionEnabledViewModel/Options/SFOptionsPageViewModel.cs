@@ -1,10 +1,12 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
@@ -269,7 +271,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
         {
             _navigationService.NavigateTo(App.AboutUsPageView);
         }
-        public void LogOut()
+        public async Task LogOut()
         {
             if(App.TP!=null)
                 App.TP = null;
@@ -283,6 +285,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
                 String langName = "en-US";
                 AppResources.Culture = new CultureInfo(langName);
             }
+
+            await WebServiceManager.GAZTLogOff();
+
             var _navigation = Application.Current.MainPage.Navigation; 
             foreach (var item in _navigation.NavigationStack)
             {
@@ -292,7 +297,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
                     break; 
                 }
             }
+
             App.IsLogOut = true;
+            App.IsLoginCalled = false;
+            App.IsSamlApiCalledAndroid = false;
+
             _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
             _navigation.NavigationStack.ToList().Clear();
             //var _navigation = Application.Current.MainPage.Navigation;
