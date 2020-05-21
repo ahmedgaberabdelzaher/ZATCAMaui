@@ -2423,6 +2423,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
+                            if(IsVisibleInstrunction)
+                            {
+                                if(IsDeclarationCheckedForInstruction==false)
+                                {
+                                    IsMainButtonEnabled = false;
+                                }
+                            }
+                            else if(IsVisibleTaxPayerDetails)
+                            {
+                                if (IsCheckedTaxPayerDetailsInfo == false)
+                                {
+                                    IsMainButtonEnabled = false;
+                                }
+                            }
                             await _dialogService.ShowMessage(string.Format(AppResources.DraftSaved, "  " + res.d.Fbnum), AppResources.Information);
                         // await _dialogService.ShowMessage(AppResources.DraftSaved + res.d.Fbnum, AppResources.Information);
                     });
