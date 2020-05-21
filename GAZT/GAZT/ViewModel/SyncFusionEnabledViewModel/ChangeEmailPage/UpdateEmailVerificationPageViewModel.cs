@@ -816,8 +816,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                                         });
                                     }
                                     
-                                    ClearData();
-                                    ClearPasswordDataForEmail();
+                                   // ClearData();
+                                    //ClearPasswordDataForEmail();
                                 });
                            
                             //ClearPasswordDataForEmail();

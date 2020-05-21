@@ -40,7 +40,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         /// </summary>
         public SFLoginPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            this.LoginCommand = new Command(async() =>
+            if (App.IsSAMLLoginEnabled == true)
+            {
+                IsSAMLLoginEnabled = true;
+                IsOldLoginHidden = false;
+            }
+            else
+            {
+                IsSAMLLoginEnabled = false;
+                IsOldLoginHidden = true;
+            }
+            this.LoginCommand = new Command(async () =>
             {
                 //Task LoginClickedTask = Task.Run(async () =>
                 //{
@@ -55,11 +65,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     {
                         IsLoading = true;
                     });
-                    await Task.Run(async() =>
+                    await Task.Run(async () =>
                     {
                         Task LoginClickedTask = Task.Run(async () =>
                         {
-                                await this.LoginClicked();
+                            await this.LoginClicked();
                         });
                         LoginClickedTask.Wait();
                     });
@@ -156,7 +166,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 this.RaisePropertyChanged("Password");
             }
         }
-        public string Email 
+        public string Email
         {
             get
             {
@@ -185,7 +195,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     IsLoginEnabled = true;
                 }
                 RaisePropertyChanged("Email");
-            }   
+            }
+        }
+        private bool _IsSAMLLoginEnabled;
+        public bool IsSAMLLoginEnabled
+        {
+            get
+            {
+                return _IsSAMLLoginEnabled;
+            }
+            set
+            {
+                RaisePropertyChanged("IsSAMLLoginEnabled");
+            }
+        }
+        private bool _IsOldLoginHidden;
+        public bool IsOldLoginHidden
+        {
+            get
+            {
+                return _IsOldLoginHidden;
+            }
+            set
+            {
+                RaisePropertyChanged("IsOldLoginHidden");
+            }
         }
         private bool _IsFocused = false;
         public bool IsFocused
@@ -524,7 +558,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                 {
                                     throw new GAZTRegistrationPendingException();
                                 }
-                                  App.TP = new TaxPayerProfile();
+                                App.TP = new TaxPayerProfile();
                                 TPProfile.Tin = Email;
                                 TPProfile.Userid = UserId;
                                 App.TP = TPProfile;
@@ -544,10 +578,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                                         ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
-                                            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()       
-                                            { 
-                                                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin , NavigateToThisService = NavigateToThisService});
+                                            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()
+                                            {
+                                                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin,
+                                                NavigateToThisService = NavigateToThisService
                                             });
+                                        });
                                     }
                                     else
                                     {
@@ -776,6 +812,112 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         {
             _navigationService.GoBack();
         }
+        #endregion
+        #region New Authentication
+
+        public string CreateLoginURL(string lang)
+        {
+            return WebServiceManager.CreateSAMLLoginURL("", "", "", "", lang);
+        }
+
+        public async Task LoginCompletedInWebView()
+        {
+            string response = string.Empty;
+            string UserId = App.LoginDataRetrieved.TIN;
+
+            String lang = "E";
+            string language = UtilityManager.GetLanguageParameter();
+
+            if (App.IsArabic == true)
+                lang = "AR";
+
+            string _currentAttempts = CurrentAttempt.ToString();
+            string languag = UtilityManager.GetLanguageParameter();
+
+            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+
+            if (TPProfile != null)
+            {
+                if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                {
+                    throw new GAZTRegistrationPendingException();
+                }
+
+                App.TP = new TaxPayerProfile();
+                TPProfile.Tin = Email;
+                App.TP = TPProfile;
+            }
+
+            String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+            String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+                    string currentAttempts = "1";
+                    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                    IsLoading = false;
+
+                    App.IsLoginCalled = false;
+                    App.ArePreLoginLangCookiesSet = false;
+
+                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    {
+
+                        App.TP.Userid = UserId;
+                        App.TP.Password = Password;
+
+                        ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()
+                            {
+                                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin,
+                                NavigateToThisService = NavigateToThisService
+                            });
+                        });
+                    }
+                    else
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessageBox(response, AppResources.Information);
+                        });
+                    }
+                }
+                catch (GAZTInternetException)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+
+
+                }
+                catch (Exception)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+
+            });
+
+        }
+
+        public async Task Logout()
+        {
+            await WebServiceManager.GAZTLogOff();
+            App.IsLogOut = true;
+        }
+
         #endregion
     }
 }

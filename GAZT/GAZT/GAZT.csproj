@@ -87,9 +87,6 @@
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
       <DependentUpon>SFLandingPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\SyncFusionEnabledViews\LoginPages\SFLoginPageView.xaml.cs">
-      <DependentUpon>SFLoginPageView.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
       <DependentUpon>SFOptionsPage.xaml</DependentUpon>
     </Compile>

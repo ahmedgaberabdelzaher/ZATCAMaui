@@ -313,11 +313,13 @@ namespace GAZT.Manager
                     string otp = "";
                     string _language = "EN";
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='" + "',CurrAttmps=" + currentAttempts + ")?&saml2=disabled&sap-" + "language='" + _language + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";
-                                                                                                                                                                                                                                    //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='E',Userid='',Otp='34455',CurrAttmps=1)?&saml2=disabled&sap-language='EN'&$format=xml
+                    String url = Constants.GAZTSendAndReceiveOTP + Lang + "',Userid='" + UserId + "',Otp='" + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + _language + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";
+                                                                                                                                                                                                                                   //  https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_USRLOGIN_OTP_SRV/HEADERSet(Langz='E',Userid='',Otp='34455',CurrAttmps=1)?&saml2=disabled&sap-language='EN'&$format=xml
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTSendAndReceiveOTPResponse = await client.GetAsync(uri);
+
+
                     if (GAZTSendAndReceiveOTPResponse != null)
                     {
                         HttpHeaders headers = GAZTSendAndReceiveOTPResponse.Headers;
@@ -368,15 +370,22 @@ namespace GAZT.Manager
                     {
                         lang = "E";
                     }
+
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSendAndReceiveOTP + lang + "',Userid='" + UserId + "',Otp='" + OTP + "',CurrAttmps=" + currentAttempts + ")?&saml2=disabled&sap-" + "language='" + Lang + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
+                    String url = Constants.GAZTSendAndReceiveOTP + lang + "',Userid='" + UserId + "',Otp='" + OTP + "',CurrAttmps=" + currentAttempts + ")?&saml2=enabled&sap-" + "language='" + Lang + "" + "'" + "&$format=json"; //)?&saml2=disabled&$format=json";Constants.GAZTValidateOTP + Lang + "',Userid='" + UserId + "',Otp='" + OTP + "')?&saml2=disabled&$format=json";
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         if (GAZTValidateOTPResponse.Headers != null)
                         {
+
                             HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                             IEnumerable<string> values;
                             if (headers.TryGetValues("token", out values))
@@ -397,7 +406,7 @@ namespace GAZT.Manager
                             {
                                 GAZTValidateOTPResponseJSON = JObject.Parse(GAZTValidateOTPResponseJSON)["d"].ToString();
                                 JToken GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"];
-                                 TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);                               
+                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
                             }
                         }
                     }
@@ -438,12 +447,18 @@ namespace GAZT.Manager
                     NewMobileNumber = "00" + NewMobileNumber;
                     CurrentMobileNumber = "00" + CurrentMobileNumber;
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateOTPForMobile + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -507,12 +522,18 @@ namespace GAZT.Manager
                     CurrentMobileNumber = CurrentMobileNumber.Replace("+", "");
                     NewMobileNumber = "00" + NewMobileNumber;
                     CurrentMobileNumber = "00" + CurrentMobileNumber;
-                    String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
                     if (GAZTValidateMobileNumberResponse != null)
                     {
+                        if (GAZTValidateMobileNumberResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return false;
+                        }
+
                         HttpHeaders headers = GAZTValidateMobileNumberResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -579,12 +600,18 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateAndChangePassword + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
+                        if (GAZTValidateAndChangePasswordResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return false;
+                        }
+
                         HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -657,7 +684,7 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // String url = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_IT_CORRES_MOB_NEW_SRV/Corr_detSet?$filter=Gpartz  eq  '3300057436'  and Langz   eq 'EN'  and  Begdaz eq   datetime'2007-01-01T00:00'  and Enddaz eq datetime'2019-10-13T11:12'  and  ObligFlagz eq 'I'  and  Auditor  eq  ''   and  TaxtpFg  eq  'VAT'  and  UserTin   eq  ''&$format=json";
-                    String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&saml2=disabled&$format=json";
+                    String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&saml2=enabled&$format=json";
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
@@ -707,12 +734,17 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=disabled&$format=json&sap-language=" + lang;
+                    String url = Constants.GetMyBills + "Fbguid eq '" + "'and Euser eq '" + Tin + "'" + "&saml2=enabled&$format=json&sap-language=" + lang;
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyBillsResponse = client.GetAsync(uri).Result;
                     if (GAZTMyBillsResponse != null)
                     {
+                        if (GAZTMyBillsResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTMyBillsResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -776,12 +808,17 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='" + Tin + "',Fbguid='" + "',UserTin='" + "'" + ")?&saml2=disabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
+                    String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='" + Tin + "',Fbguid='" + "',UserTin='" + "'" + ")?&saml2=enabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyICRsResponse = client.GetAsync(uri).Result;
                     if (GAZTMyICRsResponse != null)
                     {
+                        if (GAZTMyICRsResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTMyICRsResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -856,12 +893,17 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
+                    String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
                     if (GAZTValidateAndChangePasswordResponse != null)
                     {
+                        if (GAZTValidateAndChangePasswordResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTValidateAndChangePasswordResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -925,12 +967,17 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return false;
+                        }
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -996,11 +1043,17 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
+                    String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1023,31 +1076,7 @@ namespace GAZT.Manager
                             string GAZTValidateOTPResponseJToken = JObject.Parse(GAZTValidateOTPResponseJSON)["Result"].ToString();
                             if (GAZTValidateOTPResponseJToken == "Details Changed Successfully" || GAZTValidateOTPResponseJToken.ToString() == "تم تغيير التفاصيل بنجاح")
                             {
-                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);
-                            }
-                            else
-                            {
-                                throw new Exception(AppResources.Invalidverificationcodeentered);
-                            }
-                        }
-                        else
-                        {
-                        }
-                    }
-                    return TP;
-                }
-                catch (Exception ex)
-                {
-                    if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))
-                    {
-                        throw new Exception(AppResources.InvalidEmail);
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.NetworkConnectivityIssue);
-                    }
-                }
-            }
+                                TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTValidateOTPResponseJSON);                             }                             else                             {                                 throw new Exception(AppResources.Invalidverificationcodeentered);                             }                         }                         else                         {                         }                     }                     return TP;                 }                 catch (Exception ex)                 {                     if (string.Equals(ex.Message, AppResources.Invalidverificationcodeentered))                     {                         throw new Exception(AppResources.InvalidEmail);                     }                     else                     {                         throw new Exception(AppResources.NetworkConnectivityIssue);                     }                 }             }
             else
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
@@ -1069,7 +1098,7 @@ namespace GAZT.Manager
                     // Tin = "3300014611";
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     //String url = Constants.GAZTGetPdf + "Gpartz eq'" + Tin + "'and Langz eq'" + Lang + "'and  Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and  ObligFlagz eq'" + "I" + "'and  Auditor  eq'" + "" + "'and  TaxtpFg  eq '" + "VAT" + "'and  UserTin   eq'" + "" + "'&$format=json";
-                    string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=disabled&$format=json";
+                    string ZakatURL = Constants.GAZTZakatGetPdf + Tin + "'and Langz eq'" + Lang + "'and UserTin eq'" + "" + "'and Begdaz eq datetime'" + "2007-01-01T00:00" + "'and Enddaz eq datetime'" + currentDate + "'and ObligFlagz eq'" + "" + "'and Auditor eq '" + "" + "'&sap-client=100&sap-language='" + Lang + "'&saml2=enabled&$format=json";
                     var uri = new Uri(ZakatURL);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
@@ -1125,11 +1154,17 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // string uri = "https://10.50.15.51:8080/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/headerSet(Gpartz='" + Tin +"'" + ",Langz='"+ Lang + "'" + ",Begdaz=datetime'2007-01-01T00%3A00%3A00',Enddaz=datetime'2019-11-19T00%3A00%3A00')?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
-                    string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'" + "2007-01-01T00%3A00%3A00'" + ",Enddaz=datetime'" + currentDate + "'" + ")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=disabled&$format=json";
+                    string uri = Constants.GetAllCertificate + Tin + "'" + ",Langz='" + Lang + "'" + ",Begdaz=datetime'" + "2007-01-01T00%3A00%3A00'" + ",Enddaz=datetime'" + currentDate + "'" + ")?&$expand=ZakatSet,VATSet,ExciseSet&saml2=enabled&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     HttpResponseMessage GAZTGetAllCertificateResponse = client.GetAsync(uri).Result;
                     if (GAZTGetAllCertificateResponse != null)
                     {
+                        if (GAZTGetAllCertificateResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTGetAllCertificateResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1176,7 +1211,7 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // string uri = "https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/ZDP_FRGT_USRNM_PWD_SRV/HeaderSet(Tin='3102164652',EmailId='',TpType='',MobileNo='',SubType='',Idnumber='',Otp='',NewPwd='',RdBt='P',Dob=datetime'2015-07-05T15:13:49',Langu='E')?Saml2=disabled&$format=json";
-                    string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=disabled&$format=json";
+                    string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
                     HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await client.GetAsync(uri);
                     if (GAZTFogotPasswordSendOTPResponse != null)
                     {
@@ -1301,12 +1336,18 @@ namespace GAZT.Manager
                     else
                         _language = "E";
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=disabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
+                    String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=enabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
                     if (GAZTTinStatus != null)
                     {
+                        if (GAZTTinStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTTinStatus.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1359,6 +1400,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
                     if (GAZTVATLookUp != null)
                     {
+                        if (GAZTVATLookUp.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTVATLookUp.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1401,7 +1447,7 @@ namespace GAZT.Manager
                 }
 
             }
-            
+
             else
             {
                 throw new GAZTInternetException();
@@ -1419,15 +1465,20 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     String Lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
+                    // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/    ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "',SrcAppz='MB'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
-                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATReturnStatus = await client.GetAsync(uri);
                     if (GAZTVATReturnStatus != null)
                     {
+                        if (GAZTVATReturnStatus.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            throw new GAZTSessionExpiredException();
+                        }
                         HttpHeaders headers = GAZTVATReturnStatus.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1508,6 +1559,8 @@ namespace GAZT.Manager
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);
                         client.DefaultRequestHeaders.Add("Token", App.Token);
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                         client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                         client.DefaultRequestHeaders.Add("Accept", "application/json");
                         var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
@@ -1595,6 +1648,12 @@ namespace GAZT.Manager
                 HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
                 if (GAZTVATLookUp != null)
                 {
+                    if (GAZTVATLookUp.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        App.IsSessionExpired = true;
+                        return null;
+                    }
+
                     HttpHeaders headers = GAZTVATLookUp.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
@@ -1633,11 +1692,17 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
-                    String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=disabled&sap-langauge='" + lang + "'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1687,11 +1752,16 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
-                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=disabled&sap-langauge=" + lang + "&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1748,11 +1818,17 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     //String url = Constants.GAZTValidateOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + OTP + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + CurrentPassword + "',NewPwd='" + NewPassword + "')?$format=json&saml2=disabled&sap-language=" + Lang;
-                    String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
+                    String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";//https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='',Lang='E',Operation='',Gpart='3100032587',Status='E0001',TxnTp='VTR_ASMT',Formproc='',Periodkey='18JU')?saml2=disabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -1799,7 +1875,7 @@ namespace GAZT.Manager
                     AttachmentRootOject _attachment = new AttachmentRootOject();
                     char LangZ = GetLangZParameter();
                     string AttBy = "TP";
-                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet"; 
+                    String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1837,8 +1913,8 @@ namespace GAZT.Manager
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=disabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                                                                                                                                                                                                                                                                                    // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                                                                                                                                                                                                                                                                                   // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1911,12 +1987,18 @@ namespace GAZT.Manager
                 {
                     string _language = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=disabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
+                    String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=enabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
                     if (GAZTEstimateZakatReturnList != null)
                     {
+                        if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2015,11 +2097,17 @@ namespace GAZT.Manager
                     char lang = GetLangZParameter();// "E";
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=disabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         try
@@ -2029,11 +2117,11 @@ namespace GAZT.Manager
                                 NewToken = values.First();
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
 
                         }
-                       
+
                         if ((!string.IsNullOrEmpty(NewToken)))
                         {
                             if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
@@ -2083,9 +2171,12 @@ namespace GAZT.Manager
                     String url = Constants.GAZTSaveEstimatedZaktReturn + LangZ;
                     // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                     var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
@@ -2126,12 +2217,17 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     // https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_VATR_UH_SRV/UI_HDRSet(Fbnum='65000004030',Lang='E',Operation='',Gpart='3000493862',Status='E0045',TxnTp='VTR_AMDT',Formproc='',Periodkey='18JA')?&$expand=UI_BTNSet&$format=json	
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=disabled&$expand=UI_BTNSet,IGRTSet&$format=json";
+                    String url = Constants.GAZTVATReturnGetApplicableButtons + "'" + Fbnum + "'" + ",Lang='" + LangZ + "'" + ",Operation='" + Operation + "'," + "Gpart=" + "'" + Gpart + "',Status='" + Status + "',TxnTp='" + TxnTp + "',Formproc='',Periodkey='" + PeriodKey + "'" + ")?saml2=enabled&$expand=UI_BTNSet,IGRTSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage ApplicableButtonsResponse = await client.GetAsync(uri);
                     if (ApplicableButtonsResponse != null)
                     {
+                        if (ApplicableButtonsResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         string NewToken = string.Empty;
                         HttpHeaders headers = ApplicableButtonsResponse.Headers;
                         IEnumerable<string> values;
@@ -2195,6 +2291,12 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
+                        if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTValidateOTPResponse.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2238,7 +2340,7 @@ namespace GAZT.Manager
                     //string Dotyp = "VTA0";
                     string AttBy = "TP";
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=disabled";
+                    string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -2281,7 +2383,7 @@ namespace GAZT.Manager
                     String url;
                     //if (InvFlag.Equals("I"))
                     //{
-                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
+                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
                     //}
                     //else
                     //{
@@ -2292,6 +2394,12 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
                     if (GAZTEstimateZakatReturnList != null)
                     {
+                        if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2331,12 +2439,17 @@ namespace GAZT.Manager
             {
                 string lang = UtilityManager.GetLanguageParameter();
                 HttpClient client = new HttpClient(App.httpClientHandler);
-                String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=disabled&$expand=InvoiceSet";
+                String url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='00000000000000000000'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='I',Fsource='TP')?saml2=enabled&$expand=InvoiceSet";
                 client.DefaultRequestHeaders.Add("Token", App.Token);
                 var uri = new Uri(url);
                 HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
                 if (GAZTEstimateZakatReturnList != null)
                 {
+                    if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
+                    {
+                        App.IsSessionExpired = true;
+                        return null;
+                    }
                     HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
                     IEnumerable<string> values;
                     if (headers.TryGetValues("token", out values))
@@ -2376,7 +2489,7 @@ namespace GAZT.Manager
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url1 = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=disabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url1 = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                     string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(RetGuid='',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + DocumentID + "',AttBy='TP',OutletRef='')/$value?saml2=disbaled";                                                                                                                                                                                                                                                          // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
@@ -2420,12 +2533,17 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef='',RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
-                    String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=disabled";
+                    String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=enabled";
                     client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
                     if (GAZTEstimateZakatReturnList != null)
                     {
+                        if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTEstimateZakatReturnList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2474,6 +2592,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTZakatCorresList = client.GetAsync(uri).Result;
                     if (GAZTZakatCorresList != null)
                     {
+                        if (GAZTZakatCorresList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTZakatCorresList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2522,6 +2645,12 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTZakatCorresList = client.GetAsync(uri).Result;
                     if (GAZTZakatCorresList != null)
                     {
+                        if (GAZTZakatCorresList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTZakatCorresList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2570,6 +2699,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTETCorresList = client.GetAsync(uri).Result;
                     if (GAZTETCorresList != null)
                     {
+                        if (GAZTETCorresList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTETCorresList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2618,6 +2752,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTCorresDList = client.GetAsync(uri).Result;
                     if (GAZTCorresDList != null)
                     {
+                        if (GAZTCorresDList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTCorresDList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2692,6 +2831,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
                     if (GAZTFormBundleList != null)
                     {
+                        if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTFormBundleList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2739,6 +2883,12 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTFormBundleList = await client.GetAsync(uri);
                     if (GAZTFormBundleList != null)
                     {
+                        if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+
                         HttpHeaders headers = GAZTFormBundleList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2794,7 +2944,7 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='" + lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=disabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -2866,7 +3016,7 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=disabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -2874,6 +3024,10 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
                     if (GAZTSignupIssuedByList != null)
                     {
+                        if (GAZTSignupIssuedByList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
                         HttpHeaders headers = GAZTSignupIssuedByList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -2924,7 +3078,7 @@ namespace GAZT.Manager
             }
             else
             {
-              //  throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                //  throw new InternetException(AppResources.ZZInternetConnectionMessage);
                 throw new GAZTInternetException();
             }
         }
@@ -2938,14 +3092,19 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&Saml2=disabled";
+                    HttpClient client = new HttpClient();
+                    String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=disabled";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
                     if (SignupIsIDTypeValidList != null)
                     {
+                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = SignupIsIDTypeValidList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -3007,7 +3166,7 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     String url = Constants.GAZTSiguupValidateCR + "(Crnum='" + CRNumber + "')?sap-language=" + lang + "&$format=json&saml2=disabled";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -3015,6 +3174,11 @@ namespace GAZT.Manager
                     HttpResponseMessage CRValidationModelList = client.GetAsync(uri).Result;
                     if (CRValidationModelList != null)
                     {
+                        if (CRValidationModelList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = CRValidationModelList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -3056,13 +3220,18 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=disabled";
+                    String url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
                     var uri = new Uri(url);
                     HttpResponseMessage ValidateDuplicateList = client.GetAsync(uri).Result;
                     if (ValidateDuplicateList != null)
                     {
+                        if (ValidateDuplicateList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = ValidateDuplicateList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -3102,9 +3271,11 @@ namespace GAZT.Manager
                     string FirstSignupSubmit = string.Empty;
                     string url = Constants.GAZTSignUpFirstSubmit;
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
@@ -3176,7 +3347,7 @@ namespace GAZT.Manager
                 try
                 {
                     char lang = GetLangZParameter();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClient client = new HttpClient();
                     String url = Constants.GAZTSignUpGetGuid;
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -3184,6 +3355,11 @@ namespace GAZT.Manager
                     HttpResponseMessage GAZTGuidList = client.GetAsync(uri).Result;
                     if (GAZTGuidList != null)
                     {
+                        if (GAZTGuidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
                         HttpHeaders headers = GAZTGuidList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -3235,7 +3411,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<TERFRegionRootObject>  GAZTTESFormGetRegion()
+        public static async Task<TERFRegionRootObject> GAZTTESFormGetRegion()
         {
             RegionPost Cred = new RegionPost();
             Cred.WSUserName = "GAZT@CRM";
@@ -3252,12 +3428,12 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res =await client.PostAsync(uri, contentPost);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3267,7 +3443,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async Task<TERFCityRetrieveRootObject>  GAZTTESFormGetCity(string regioncode)
+        public static async Task<TERFCityRetrieveRootObject> GAZTTESFormGetCity(string regioncode)
         {
             CityPost Cred = new CityPost();
             Cred.WSUserName = "GAZT@CRM";
@@ -3285,7 +3461,7 @@ namespace GAZT.Manager
                     client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res =await client.PostAsync(uri, contentPost);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var response = res.Content.ReadAsStringAsync().Result;
                     terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
                     return terfcity;
@@ -3419,10 +3595,15 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    string uri = Constants.GetDashboardData + TIN + "'" + "&saml2=disabled" + "&$format=json";
+                    string uri = Constants.GetDashboardData + TIN + "'" + "&saml2=enabled" + "&$format=json";
                     HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
                     if (GAZTGetDashboardResponse != null)
                     {
+                        if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTGetDashboardResponse.Headers;
                         IEnumerable<string> values = null;
                         if (headers.TryGetValues("token", out values))
@@ -3487,10 +3668,15 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=disabled&$format=json";
+                    string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetDashboardResponse = client.GetAsync(uri).Result;
                     if (GAZTGetDashboardResponse != null)
                     {
+                        if (GAZTGetDashboardResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTGetDashboardResponse.Headers;
                         IEnumerable<string> values = null;
                         if (headers.TryGetValues("token", out values))
@@ -3555,10 +3741,15 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    string uri = Constants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+                    string uri = Constants.GAZTGetTheSetOfUnpaidAmounts + "'" + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetTheSetOfUnpaidAmountsResponse = client.GetAsync(uri).Result;
                     if (GAZTGetTheSetOfUnpaidAmountsResponse != null)
                     {
+                        if (GAZTGetTheSetOfUnpaidAmountsResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTGetTheSetOfUnpaidAmountsResponse.Headers;
                         IEnumerable<string> values = null;
                         if (headers.TryGetValues("token", out values))
@@ -3622,10 +3813,15 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+                    string uri = Constants.GAZTGetUnSubmittedReturnSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetUnSubmittedReturnSetResponse = await client.GetAsync(uri);
                     if (GAZTGetUnSubmittedReturnSetResponse != null)
                     {
+                        if (GAZTGetUnSubmittedReturnSetResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTGetUnSubmittedReturnSetResponse.Headers;
                         IEnumerable<string> values = null;
                         if (headers.TryGetValues("token", out values))
@@ -3687,10 +3883,14 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=disabled&$format=json";
+                    string uri = Constants.GAZTGetPaymentOverdueSetForDashboard + lang + "'" + " and Gpartz eq '" + TIN + "'" + "&sap-language=" + lang + "&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetPaymentOverdueSetResponse = await client.GetAsync(uri);
                     if (GAZTGetPaymentOverdueSetResponse != null)
                     {
+                        if (GAZTGetPaymentOverdueSetResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
                         HttpHeaders headers = GAZTGetPaymentOverdueSetResponse.Headers;
                         IEnumerable<string> values = null;
                         if (headers.TryGetValues("token", out values))
@@ -3863,6 +4063,141 @@ namespace GAZT.Manager
                 throw new GAZTInternetException("Network Issue");
             }
         }
+
+        public static string CreateSAMLLoginURL(string Euser, string DeviceId, string FcmId, string DeviceTyp, string Language)
+        {
+            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + "'" + DeviceId + ",FcmId='" +
+                FcmId + "'" + ",DeviceTyp='" + DeviceTyp + "')?sap-language=" + Language + "&$format=json";
+            return FullUrl;
+        }
+
+        public static LoginModel SFGAZTGetLoginData(string url)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                String GAZTGetTINsResponseResult = String.Empty;
+                List<TIN> TINs = null;
+                string NewToken = string.Empty;
+                try
+                {
+                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
+                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    CookieContainer cookieContainer = new CookieContainer();
+
+                    try
+                    {
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+                            cookie.Domain = ".gazt.gov.sa";
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    Uri uri = new Uri(url);
+                    LoginModel loginModel = new LoginModel();
+
+                    HttpResponseMessage GAZTGetLoginDataResponseJSON = client.GetAsync(uri).Result;
+                    Console.WriteLine(GAZTGetLoginDataResponseJSON);
+
+                    if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.OK)
+                    {
+                        if (GAZTGetLoginDataResponseJSON != null)
+                        {
+                            if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.Unauthorized)
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+
+                            HttpHeaders headers = GAZTGetLoginDataResponseJSON.Headers;
+                            IEnumerable<string> values;
+
+                            if (headers.TryGetValues("token", out values))
+                            {
+                                NewToken = values.First();
+                            }
+
+                            if ((!string.IsNullOrEmpty(NewToken)))
+                            {
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                                {
+                                    throw new GAZTSessionExpiredException(string.Empty);
+                                }
+                                App.Token = NewToken;
+                            }
+
+                            String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
+                            if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
+                            {
+                                GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
+                                loginModel = JsonConvert.DeserializeObject<LoginModel>(GAZTGetTaxPayerProfileResponseJSONString);
+                                NumberOfValiedAttempts = "3";
+
+                                App.LoginDataRetrieved = loginModel;
+                                App.Token = App.LoginDataRetrieved.DeviceToken;
+
+                                if (loginModel == null)
+                                    throw new GAZTTaxPayerProfileDataException();
+                                else
+                                    return loginModel;
+                            }
+                            else
+                            {
+                                throw new GAZTTaxPayerProfileDataException();
+                            }
+                        }
+                        else
+                            throw new GAZTTaxPayerProfileDataException();
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException(String.Empty);
+            }
+        }
+
+
         public static List<TIN> SFGAZTGetAllTINs(string UserName)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -3912,6 +4247,44 @@ namespace GAZT.Manager
                 throw new GAZTInternetException(String.Empty);
             }
         }
+        public static async Task GAZTLogOff()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                String GAZTGetLogoffResponseResult = String.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165";
+
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage GAZTLogOffResponse = await client.GetAsync(uri);
+                    App.LoginCookiesRetrieved = null;
+                    App.httpClientHandler = new HttpClientHandler();
+
+                    if (GAZTLogOffResponse != null)
+                    {
+                        GAZTGetLogoffResponseResult = GAZTLogOffResponse.Content.ReadAsStringAsync().Result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
+                    {
+                        throw new Exception(AppResources.NoTINsAvailable);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
         public static TaxPayerProfile SFGAZTGetTaxPayerProfile(string TIN, string Lang)
         {
             TaxPayerProfile profile = null;
@@ -3922,13 +4295,51 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
+                    CookieContainer cookieContainer = new CookieContainer();
+
+                    try
+                    {
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+                            cookie.Domain = ".gazt.gov.sa";
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=disabled&$format=json";
-                    client.DefaultRequestHeaders.Add("Token", App.Token);
+
+
+
+                    // String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
+                    //client.DefaultRequestHeaders.Add("Token", App.Token);
+                    String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
+
+                    client.DefaultRequestHeaders.Add("Token", App.LoginDataRetrieved.DeviceToken);
+
                     Uri uri = new Uri(url);
                     HttpResponseMessage GAZTGetTaxPayerProfileResponseJSON = client.GetAsync(uri).Result;
                     if (GAZTGetTaxPayerProfileResponseJSON != null)
                     {
+                        if (GAZTGetTaxPayerProfileResponseJSON.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            throw new GAZTSessionExpiredException();
+                        }
+
                         HttpHeaders headers = GAZTGetTaxPayerProfileResponseJSON.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
@@ -3962,6 +4373,10 @@ namespace GAZT.Manager
                 catch (JsonReaderException ex)
                 {
                     throw new GAZTInvalidDataException();
+                }
+                catch (GAZTSessionExpiredException ex)
+                {
+                    throw ex;
                 }
                 catch (HttpRequestException ex)
                 {

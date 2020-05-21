@@ -1,0 +1,72 @@
+﻿using System;
+using Newtonsoft.Json;
+
+namespace GAZT.Models
+{
+    public partial class LoginModel
+    {
+        public string token { get; set; }
+        public string message { get; set; }
+        public int failedAttempts { get; set; }
+        public int invalidAttempts { get; set; }
+        public string otpAttempts { get; set; }
+
+        [JsonProperty("__metadata")]
+        public LoginMetadata Metadata { get; set; }
+
+        [JsonProperty("Euser")]
+        public string Euser { get; set; }
+
+        [JsonProperty("DeviceFlag")]
+        public string DeviceFlag { get; set; }
+
+        [JsonProperty("ExeDate")]
+        public DateTimeOffset ExeDate { get; set; }
+
+        [JsonProperty("DeviceId")]
+        public string DeviceId { get; set; }
+
+        [JsonProperty("Gpart")]
+        public string TIN { get; set; }
+
+        [JsonProperty("FcmId")]
+        public string FcmId { get; set; }
+
+        [JsonProperty("DeviceTyp")]
+        public string DeviceTyp { get; set; }
+
+        [JsonProperty("DeviceToken")]
+        public string DeviceToken { get; set; }
+
+        [JsonProperty("Msgtitle")]
+        public string MsgTitle { get; set; }
+
+        [JsonProperty("Appmsg")]
+        public string AppMsg { get; set; }
+
+        public string ResponseStatusMessage { get; set; }
+
+        public string ResponseStatusCode { get; set; }
+    }
+
+    public partial class LoginMetadata
+    {
+        [JsonProperty("id")]
+        public Uri Id { get; set; }
+
+        [JsonProperty("uri")]
+        public Uri Uri { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+    }
+
+    public class LoginParametersModel
+    {
+        public string userId { get; set; }
+        public string lang { get; set; }
+        public string password { get; set; }
+        public string deviceId { get; set; }
+        public string count { get; set; }
+    }
+}

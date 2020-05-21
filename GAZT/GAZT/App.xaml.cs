@@ -10,6 +10,7 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace EGAZT
         public static string SFLandingPageView = "SFLandingPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
-        public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView"; 
+        public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView";
         //SYNCFUSION INTEGRATION
         public static string MyCertificate = "MyCertificate";
         public static string PdfView = "PdfView";
@@ -79,6 +80,7 @@ namespace EGAZT
         public static TIN CurrentDropdownTIN;
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
+        //public static bool PreviousIsArabic = false;
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
@@ -98,26 +100,27 @@ namespace EGAZT
         public static double TimeDifference { get; set; }
         public static bool IsComingFromSleepMode { get; set; } = false;
         public static bool IsComingFromDashboardToLogOff = false;
+
+        public static bool IsLoginCalled = false;
+        public static bool IsSamlApiCalledAndroid = false;
+
+        public static bool ArePreLoginLangCookiesSet = false;
+        public static List<CookieModel> LoginCookiesRetrieved { get; set; }
+        public static LoginModel LoginDataRetrieved { get; set; }
+
+        public static bool IsSAMLLoginEnabled = true;
+        public static bool IsUserLoggedIn = false;
         //HttpClientHandlerForSSL Certificate Issue
+
+        public static string IncomingChannel = string.Empty;
+
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
-            AppResources.Culture = CultureInfo.CurrentUICulture;
-            if (PreviousIsArabic)
-            {
-                String langName = "ar-AE";//"en-US";// "ar-AE";
-                ci = new CultureInfo(langName);
-                AppResources.Culture = ci;
-            }
-            InitializeComponent();
-            onFontFamilyChanged();
-            if (PreviousIsArabic)
-            {
-                IsArabic = true;
-            }
+            AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }             InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
             {
                 httpClientHandler = new HttpClientHandler();
@@ -126,9 +129,24 @@ namespace EGAZT
             catch (Exception ex)
             {
             }
+
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.Android:
+                    {
+                        IncomingChannel = "241";
+                    }
+                    break;
+                case Xamarin.Forms.Device.iOS:
+                    {
+                        IncomingChannel = "242";
+                    }
+                    break;
+            }
+
             VATDeclaration vAT = null;
-          
-           CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
+
+            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
@@ -252,9 +270,9 @@ namespace EGAZT
                 //}
                 //else
                 //{
-                    Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
-                    Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
-                    Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
+                Application.Current.Resources["GAZT_FONT_BOLD"] = Application.Current.Resources["GAZT_Arabic_FONT_BOLD"];
+                Application.Current.Resources["GAZT_FONT_MEDIUM"] = Application.Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
+                Application.Current.Resources["GAZT_FONT_REGULAR"] = Application.Current.Resources["GAZT_Arabic_FONT_REGULAR"];
                 //}
             }
             else
@@ -281,6 +299,7 @@ namespace EGAZT
             catch (Exception exception)
             {
                 Crashes.TrackError(exception);
+                //}
             }
         }
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)

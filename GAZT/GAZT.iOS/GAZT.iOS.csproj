@@ -50,13 +50,13 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer: ghazi alanzi (NMD3JCYGR3)</CodesignKey>
+    <CodesignKey>iPhone Developer: Parag Bihade (XTS6299Y8J)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--interpreter</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
-    <CodesignProvision>eGAZT Development Profile</CodesignProvision>
+    <CodesignProvision>GAZT Developer Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -66,9 +66,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignProvision>GAZT Distribution KSA</CodesignProvision>
     <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
@@ -140,6 +140,7 @@
     <BundleResource Include="Resources\ic_Delete_disabled.png" />
     <BundleResource Include="Resources\ic_Delete_disabled%402x.png" />
     <BundleResource Include="Resources\ic_Delete_disabled%403x.png" />
+    <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
