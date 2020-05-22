@@ -253,7 +253,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
+                        if (BModel != null && BModel.eServiceName == AppResources.Certificates)
                         {
                             Analytics.TrackEvent(App.MyCertificate + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyCertificate);
@@ -268,7 +268,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.MyBills)
+                        if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
@@ -316,7 +316,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
+                        if (BModel != null && BModel.eServiceName == AppResources.Certificates)
                         {
                             Analytics.TrackEvent(App.MyCertificate + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyCertificate);
@@ -331,7 +331,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.MyBills)
+                        if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
