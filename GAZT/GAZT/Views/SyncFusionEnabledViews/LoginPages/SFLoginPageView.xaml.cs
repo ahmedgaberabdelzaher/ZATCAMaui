@@ -191,6 +191,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 if (hybridWebView != null)
                     loginGrid.Children.Remove(hybridWebView);
 
+                try
+                {
+                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
                 hybridWebView = new HybridWebView();
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
