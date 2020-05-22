@@ -311,6 +311,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             App.IsLogOut = true;
             App.IsLoginCalled = false;
             App.IsSamlApiCalledAndroid = false;
+            App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
 
             _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
             _navigation.NavigationStack.ToList().Clear();

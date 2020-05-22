@@ -386,8 +386,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewMode
                                         String OnAuthenticationSuccess = AppResources.ZEmailUpdatedSuccessfully;
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
+
                                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                             Device.BeginInvokeOnMainThread(async () => {
+
+                                                App.IsLogOut = true;
+                                                App.IsLoginCalled = false;
+                                                App.IsSamlApiCalledAndroid = false;
+                                                await WebServiceManager.GAZTLogOff();
+
                                                 var _navigation = Application.Current.MainPage.Navigation;
                                                 await _navigation.PopToRootAsync();
                                             });
@@ -446,10 +453,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewMode
                                             {
                                                 await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                             });
+
+
                                             App.IsComingFromDashboardToLogOff = false;
+                                          
+
                                             var _navigation = Application.Current.MainPage.Navigation;
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
+                                                App.IsLogOut = true;
+                                                App.IsLoginCalled = false;
+                                                App.IsSamlApiCalledAndroid = false;
+                                                await WebServiceManager.GAZTLogOff();
+
                                                 ClearPasswordData();
                                                 await _navigation.PopToRootAsync();
                                             });

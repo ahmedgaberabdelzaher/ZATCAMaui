@@ -860,7 +860,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     IsLoading = false;
 
                     App.IsLoginCalled = false;
-                    App.ArePreLoginLangCookiesSet = false;
+                       App.ArePreLoginLangCookiesSet = false;
 
                     if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
                     {
@@ -916,6 +916,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         {
             await WebServiceManager.GAZTLogOff();
             App.IsLogOut = true;
+            App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
         }
 
         #endregion

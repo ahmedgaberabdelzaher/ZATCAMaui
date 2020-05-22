@@ -125,6 +125,7 @@ namespace EGAZT
             {
                 httpClientHandler = new HttpClientHandler();
                 httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                httpClientHandler.CookieContainer = new System.Net.CookieContainer();
             }
             catch (Exception ex)
             {

@@ -158,7 +158,7 @@ namespace GAZT.iOS.CustomRenderer
 
                 Task.Run(async () =>
                 {
-                    await tempElement.FadeTo(1, 3000);
+                    //await tempElement.FadeTo(1, 3000);
                 });
 
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
@@ -301,7 +301,7 @@ namespace GAZT.iOS.CustomRenderer
                             }
 
                             App.LoginDataRetrieved = new LoginModel();
-                            App.LoginDataRetrieved = WebServiceManager.SFGAZTGetLoginData(url.ToString());
+                            App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());
 
                             //rohith changes
                             if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.ResponseStatusMessage == null)

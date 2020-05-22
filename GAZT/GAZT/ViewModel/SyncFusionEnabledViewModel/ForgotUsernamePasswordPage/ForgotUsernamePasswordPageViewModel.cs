@@ -1089,7 +1089,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         forgotPassword.d = d;
                         forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
+
+
+                        if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -1099,7 +1101,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                             NewPasswordLayoutVisibility = true;
                             MobileNumber = forgotPassword.d.MobileNo;
                         }
-                        else if (forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
+                        else if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("42"))
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
