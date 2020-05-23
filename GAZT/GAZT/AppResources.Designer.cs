@@ -253,7 +253,7 @@ namespace EGAZT {
         
         public static string MyBills {
             get {
-                return ResourceManager.GetString("MyBills", resourceCulture);
+                return ResourceManager.GetString("Bills", resourceCulture);
             }
         }
         
@@ -265,7 +265,7 @@ namespace EGAZT {
         
         public static string MyCertificate {
             get {
-                return ResourceManager.GetString("MyCertificate", resourceCulture);
+                return ResourceManager.GetString("Certificates", resourceCulture);
             }
         }
         

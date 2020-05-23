@@ -5,6 +5,7 @@ using GAZT.Models;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
+using System.Net;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -203,6 +204,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 hybridWebView = new HybridWebView();
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
+
+
+                //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+
+                Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
+                CookieContainer loginWebViewCookieContainer = new CookieContainer();
+                loginWebViewCookieContainer.Add(langCookie);
+                hybridWebView.Cookies = loginWebViewCookieContainer;
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
                 hybridWebView.RegisterAction(async (data) =>
