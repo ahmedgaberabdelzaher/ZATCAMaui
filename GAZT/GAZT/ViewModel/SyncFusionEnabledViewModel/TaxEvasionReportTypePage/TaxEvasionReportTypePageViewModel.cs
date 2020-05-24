@@ -33,6 +33,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 RaisePropertyChanged("TaxEvasionListobj");
             }
         }
+        private Color _nextbuttonDisableColor = Color.FromHex("#005e4b");
+        public Color NextbuttonDisableColor
+        {
+            get
+            {
+                return _nextbuttonDisableColor;
+            }
+            set
+            {
+                _nextbuttonDisableColor = value;
+                RaisePropertyChanged("NextbuttonDisableColor");
+            }
+        }
+        private bool _isnextbuttonEnable = false;
+        public bool IsnextbuttonEnable
+        {
+            get
+            {
+                return _isnextbuttonEnable;
+            }
+            set
+            {
+                _isnextbuttonEnable = value;
+                RaisePropertyChanged("IsnextbuttonEnable");
+            }
+        }
         //MobileNumber
         private string _mobileNumber = string.Empty;
         public string MobileNumber
@@ -169,18 +195,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 //});
                 OnNextClicked = new Command(async() =>
                 {
-                    await Task.Run(() =>
+                    if (IsnextbuttonEnable == true)
                     {
-                        IsLoading = true;
-                    });
-                    try
-                    {
-                          await  navigateToFormPage();
+                        await Task.Run(() =>
+                        {
+                            IsLoading = true;
+                        });
+                        try
+                        {
+                            await navigateToFormPage();
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+
+
                     }
-                    catch (Exception ex)
-                    {
-                    }
-                   
+
 
                 });
             }
