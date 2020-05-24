@@ -31,6 +31,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.CategorySelected_Index = "0";
             viewModel.MobileNumber = MobileNumber;
             SetLTR();
+            viewModel.IsnextbuttonEnable = false;
             //viewModel.onPageLoad();
         }
         protected override void OnSizeAllocated(double width, double height)
@@ -65,6 +66,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = false;
             viewModel.CategorySelected_Index = "0";
+            viewModel.NextbuttonDisableColor= Color.FromHex("#9EA4A9");
+            viewModel.IsnextbuttonEnable = false;
         }
         private void SetLTR()
         {
@@ -100,6 +103,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec3 = false;
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = false;
+            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            viewModel.IsnextbuttonEnable = true;
         }
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
@@ -108,6 +113,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec3 = false;
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = false;
+            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            viewModel.IsnextbuttonEnable = true;
         }
         private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
         {
@@ -116,6 +123,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec3 = true;
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = false;
+            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            viewModel.IsnextbuttonEnable = true;
         }
         private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
         {
@@ -124,6 +133,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec3 = false;
             viewModel.IsimgVisiblec4 = true;
             viewModel.IsimgVisiblec5 = false;
+            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            viewModel.IsnextbuttonEnable = true;
         }
         private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
         {
@@ -132,6 +143,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             viewModel.IsimgVisiblec3 = false;
             viewModel.IsimgVisiblec4 = false;
             viewModel.IsimgVisiblec5 = true;
+            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            viewModel.IsnextbuttonEnable = true;
         }
         public void ChangeAeroIcon()
         {
