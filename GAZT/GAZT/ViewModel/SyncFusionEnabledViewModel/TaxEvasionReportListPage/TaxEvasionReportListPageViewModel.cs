@@ -22,7 +22,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         public ICommand GoBackClick { get; set; }
         public ICommand AddButtonClicked { get; set; }
         public ICommand OnOpenClicked_Tapped { get; set; }
-        private bool _setNoDataLabelVisibility = false;//SelectedTaxEvasionListItem
+        private bool _setNoDataLabelVisibilityforOpen = false;//SelectedTaxEvasionListItem
         private TaxEvasionReport _selectedTaxEvasionListItem;
         public TaxEvasionReport SelectedTaxEvasionListItem
         {
@@ -85,16 +85,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 RaisePropertyChanged("AddIcon");
             }
         }
-        public bool SetNoDataLabelVisibility
+        public bool SetNoDataLabelVisibilityforOpen
         {
             get
             {
-                return _setNoDataLabelVisibility;
+                return _setNoDataLabelVisibilityforOpen;
             }
             set
             {
-                _setNoDataLabelVisibility = value;
-                RaisePropertyChanged("SetNoDataLabelVisibility");
+                _setNoDataLabelVisibilityforOpen = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityforOpen");
+            }
+        }
+        private bool _setNoDataLabelVisibilityforClose=false;
+        public bool SetNoDataLabelVisibilityforClose
+        {
+            get
+            {
+                return _setNoDataLabelVisibilityforClose;
+            }
+            set
+            {
+                _setNoDataLabelVisibilityforClose = value;
+                RaisePropertyChanged("SetNoDataLabelVisibilityforClose");
             }
         }
         private List<TaxEvasionReport> _taxEvasionReportList;
@@ -180,10 +193,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
                     TERListReportbymobnoClosed.Clear();
                     TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                    if (TERListReportbymobnoClosed == null)
-                    {
-                        SetNoDataLabelVisibility = true;
-                    }
+                    //if (TERListReportbymobnoClosed == null)
+                    //{
+                    //    SetNoDataLabelVisibility = true;
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -194,14 +207,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 try
                 {
                     TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
-                    if (TERListReportbymobno != null)
-                    {
-                        SetNoDataLabelVisibility = false;
-                    }
-                    else
-                    {
-                        SetNoDataLabelVisibility = true;
-                    }
+                    //if (TERListReportbymobno != null)
+                    //{
+                    //    SetNoDataLabelVisibility = false;
+                    //}
+                    //else
+                    //{
+                    //    SetNoDataLabelVisibility = true;
+                    //}
                 }
                 catch (Exception ex)
                 {
@@ -259,6 +272,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
 
             try
             {
+                SetNoDataLabelVisibilityforOpen = true;
+                SetNoDataLabelVisibilityforClose = true;
                 //string test = App.TP.Mobile;
                 ReportRetriveByMobNoRootObject rootObject = new ReportRetriveByMobNoRootObject();
                 rootObject = WebServiceManager.GAZTTESReportByMobNo(MobileNumber);
@@ -267,32 +282,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 {
                     if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
                     {
-                        SetNoDataLabelVisibility = false;
+                        SetNoDataLabelVisibilityforOpen = false;
                         TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
                         TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
                         if (TERListReportbymobno != null)
-                        { SetNoDataLabelVisibility = false; }
+                        {
+                            if (TERListReportbymobno.Count > 0)
+                            {
+                                SetNoDataLabelVisibilityforOpen = false;
+                            }
+                            
+                        }
                         TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                        if (TERListReportbymobnoClosed != null )
+                        {
+                            if (TERListReportbymobnoClosed.Count > 0)
+                            {
+                                SetNoDataLabelVisibilityforClose = false;
+                            }
+                            
+                        }
+
                     }
                     else
                     {
-                        SetNoDataLabelViewVisibility();
+                        SetNoDataLabelVisibilityforOpen = true;
+                        SetNoDataLabelVisibilityforClose = true;
                     }
                 }
                 else
                 {
-                    SetNoDataLabelVisibility = true;
+                    SetNoDataLabelVisibilityforOpen = true;
+                    SetNoDataLabelVisibilityforClose = true;
                 }
             }
             catch (Exception ex)
             {
-                SetNoDataLabelVisibility = true;
+                SetNoDataLabelVisibilityforOpen = true;
+                SetNoDataLabelVisibilityforClose = true;
                 _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
             }
         }
-        private void SetNoDataLabelViewVisibility()
-        {
-            SetNoDataLabelVisibility = true;
-        }
+      
     }
 }
