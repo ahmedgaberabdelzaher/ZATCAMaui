@@ -3652,7 +3652,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static ReportRetriveByMobNoRootObject GAZTTESReportByMobNo(string TPmobno)
+        public static async  Task<ReportRetriveByMobNoRootObject>  GAZTTESReportByMobNo(string TPmobno)
         {
             ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
             Cred.WSUserName = "GAZT@CRM";
@@ -3677,8 +3677,8 @@ namespace GAZT.Manager
                     //client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
-                    var response = res.Content.ReadAsStringAsync().Result;
+                      HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                     var response = await res.Content.ReadAsStringAsync();
                     terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
                     return terfreport;
                 }

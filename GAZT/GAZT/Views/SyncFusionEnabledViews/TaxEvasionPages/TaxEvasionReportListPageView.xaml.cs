@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewModel;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -47,7 +48,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
             };
             Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
             this.BindingContext = viewModel;
-            viewModel.OnPageLoad();
+            //viewModel.OnPageLoad();
         }
         //protected override void OnSizeAllocated(double width, double height)
         //{
@@ -93,27 +94,52 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
                 //reconfigure layout
             }
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            viewModel.OnPageLoad();
+
             // this.Content = null;
-            try
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                foreach (var item in _navigation.NavigationStack)
+                await Task.Run(() =>
                 {
-                    if (item.GetType().Name == App.OTPPageView)
+                    viewModel.IsLoading = true;
+                });
+            });
+             viewModel.IsLoading = true;
+                    await viewModel.OnPageLoad();
+                
+                    try
                     {
-                        _navigation.RemovePage(item);
-                        break;
+                        var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                        foreach (var item in _navigation.NavigationStack)
+                        {
+                            if (item.GetType().Name == App.OTPPageView)
+                            {
+                                _navigation.RemovePage(item);
+                                break;
+                            }
+                        }
                     }
-                }
-            }
-            catch (Exception ex)
+                    catch (Exception ex)
+                    {
+                    }
+            Device.BeginInvokeOnMainThread(async () =>
             {
-            }
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            });
+
+
+
+
+
+
+
+
         }
         private void SetLTR()
         {
