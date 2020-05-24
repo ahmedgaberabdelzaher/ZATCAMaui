@@ -171,7 +171,7 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                            <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforOpen}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
@@ -335,7 +335,7 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                            <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
