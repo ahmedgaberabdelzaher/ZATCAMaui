@@ -106,7 +106,7 @@ namespace EGAZT.Droid.CustomRenderer
             }
 
             string cookieValue = lang;
-            string cookieDomain = GAZT.Helper.Constants.AndroidDomainUrlForCookies;
+            string cookieDomain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
             string cookieName = GAZT.Helper.Constants.LanguageCookieNameForLogin;
 
             cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
@@ -353,7 +353,7 @@ namespace EGAZT.Droid.CustomRenderer
             }
 
             string cookieValue = lang;
-            string cookieDomain = GAZT.Helper.Constants.AndroidDomainUrlForCookies;
+            string cookieDomain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
             string cookieName = GAZT.Helper.Constants.LanguageCookieNameForLogin;
 
             cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
