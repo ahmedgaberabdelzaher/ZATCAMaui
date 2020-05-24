@@ -225,14 +225,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage_
                 String Url = string.Empty;
                 // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='"+ App.TP.Tin+"',Fbnum='"+VATDeclarationData.d.Fbnum+"',Utype='')/$value?saml2=disabled";
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_MOB_SRV/cover_formSet(Euser='"+ App.TP.Tin+"',Fbnum='"+VATDeclarationData.d.Fbnum+"',Utype='')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
                 String Url = string.Empty;
                // Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData.d.Fbnum + "')/$value?saml2=disabled";
-                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='"+ App.TP.Tin+ "',Fbnum='"+VATDeclarationData.d.Fbnum+"')/$value?saml2=disabled";
+                Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_MOB_SRV/Ack_letterSet(Euser='"+ App.TP.Tin+ "',Fbnum='"+VATDeclarationData.d.Fbnum+"')/$value?saml2=enabled";
                 ShowPdf(Url);
             });
             GoBackClick = new Xamarin.Forms.Command(() =>

@@ -2029,9 +2029,9 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
                     String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
-                    HttpClient client = new HttpClient();
+                    HttpClient client = new HttpClient(App.httpClientHandler);
                     var uri = new Uri(url);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("Token","123");
                     var response = await client.GetAsync(url);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
