@@ -2873,9 +2873,10 @@ namespace GAZT.Manager
                     string url = Constants.GAZTSetFavCorrespondence;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
                     var serilized = JsonConvert.SerializeObject(FavoriteCorrespondence);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
@@ -3104,7 +3105,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=enabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
-                    // //client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
                     if (GAZTSignupIssuedByList != null)
@@ -4187,7 +4188,7 @@ namespace GAZT.Manager
             return FullUrl;
         }
 
-        public static async Task<LoginModel> SFGAZTGetLoginData(string url)
+        public static LoginModel SFGAZTGetLoginDataAndroid(string url)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -4230,6 +4231,133 @@ namespace GAZT.Manager
                     LoginModel loginModel = new LoginModel();
 
                     HttpResponseMessage GAZTGetLoginDataResponseJSON = client.GetAsync(uri).Result;
+                    Console.WriteLine(GAZTGetLoginDataResponseJSON);
+
+                    if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.OK)
+                    {
+                        if (GAZTGetLoginDataResponseJSON != null)
+                        {
+                            if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.Unauthorized)
+                            {
+                                throw new GAZTSessionExpiredException();
+                            }
+
+                            HttpHeaders headers = GAZTGetLoginDataResponseJSON.Headers;
+                            IEnumerable<string> values;
+
+                            if (headers.TryGetValues("token", out values))
+                            {
+                                NewToken = values.First();
+                            }
+
+                            if ((!string.IsNullOrEmpty(NewToken)))
+                            {
+                                if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                                {
+                                    throw new GAZTSessionExpiredException(string.Empty);
+                                }
+                                App.Token = NewToken;
+                            }
+
+                            String GAZTGetTaxPayerProfileResponseJSONString = GAZTGetLoginDataResponseJSON.Content.ReadAsStringAsync().Result;
+                            if (!string.IsNullOrEmpty(GAZTGetTaxPayerProfileResponseJSONString))
+                            {
+                                GAZTGetTaxPayerProfileResponseJSONString = JObject.Parse(GAZTGetTaxPayerProfileResponseJSONString)["d"].ToString();
+                                loginModel = JsonConvert.DeserializeObject<LoginModel>(GAZTGetTaxPayerProfileResponseJSONString);
+                                NumberOfValiedAttempts = "3";
+
+                                App.LoginDataRetrieved = loginModel;
+                                App.Token = App.LoginDataRetrieved.DeviceToken;
+
+                                if (loginModel == null)
+                                    throw new GAZTTaxPayerProfileDataException();
+                                else
+                                    return loginModel;
+                            }
+                            else
+                            {
+                                throw new GAZTTaxPayerProfileDataException();
+                            }
+                        }
+                        else
+                            throw new GAZTTaxPayerProfileDataException();
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                }
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTInternetException(String.Empty);
+            }
+        }
+
+
+        public static async Task<LoginModel> SFGAZTGetLoginData(string url)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                String GAZTGetTINsResponseResult = String.Empty;
+                List<TIN> TINs = null;
+                string NewToken = string.Empty;
+                try
+                {
+                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
+                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    CookieContainer cookieContainer = new CookieContainer();
+
+                    try
+                    {
+                        foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                        {
+                            Cookie cookie = new Cookie();
+                            cookie.Domain = ".gazt.gov.sa";
+                            cookie.Comment = cookieModel.Comment;
+                            cookie.Version = cookieModel.Version;
+                            cookie.HttpOnly = cookieModel.IsHttpOnly;
+                            cookie.Path = cookieModel.Path;
+                            cookie.Name = cookieModel.CName;
+                            cookie.Value = cookieModel.CValue;
+                            cookie.Secure = cookieModel.Secure;
+                            cookieContainer.Add(cookie);
+                        }
+
+                        App.httpClientHandler.CookieContainer = cookieContainer;
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    Uri uri = new Uri(url);
+                    LoginModel loginModel = new LoginModel();
+
+                    HttpResponseMessage GAZTGetLoginDataResponseJSON = await client.GetAsync(uri);
                     Console.WriteLine(GAZTGetLoginDataResponseJSON);
 
                     if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.OK)
