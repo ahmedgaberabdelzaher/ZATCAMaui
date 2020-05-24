@@ -27,7 +27,7 @@ namespace GAZT
             {
                 var customWebView = Element as CustomWebView;
                 //string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", customWebView.Uri));
-                string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode("https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='005056B1F8FB1EDA87CF9DE76C046AEF',Cotyp='ZC05')/$value?saml2=disabled")));
+                string fileName = Path.Combine(NSBundle.MainBundle.BundlePath, string.Format("Content/{0}", WebUtility.UrlEncode("https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='005056B1F8FB1EDA87CF9DE76C046AEF',Cotyp='ZC05')/$value?saml2=enabled")));
                 Control.LoadRequest(new NSUrlRequest(new NSUrl(fileName, false)));
                 //Control.LoadRequest (new NSUrlRequest(new NSUrl(customWebView.Uri, false)));
                 Control.ScalesPageToFit = true;

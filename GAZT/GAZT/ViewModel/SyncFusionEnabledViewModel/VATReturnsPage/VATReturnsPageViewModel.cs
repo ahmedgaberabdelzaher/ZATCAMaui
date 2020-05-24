@@ -2087,7 +2087,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             });
             OnAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=disabled";
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum='" + VATDeclarationData + "')/$value?saml2=enabled";
                 _navigationService.NavigateTo(App.AAcknowledgementView, url);
             });
             onFaqSectionClicked = new Xamarin.Forms.Command(async () =>
@@ -2103,7 +2103,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             });
             OnDownloadAcknowlwdgementClicked = new Xamarin.Forms.Command(async () =>
             {
-                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData + "',Utype='')/$value?saml2=disabled";
+                string url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData + "',Utype='')/$value?saml2=enabled";
                 _navigationService.NavigateTo(App.AAcknowledgementView, url);
             });
             OnVATRefreshButtonClicked = new Xamarin.Forms.Command(async () =>

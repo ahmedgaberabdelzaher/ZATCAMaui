@@ -258,7 +258,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel
         }
         public void GetPdfUrl()
         {
-            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=disabled";
+            String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='" + Cotyp + "')/$value?saml2=enabled";
             // string url =  await  WebServiceManager.GAZTEstimatedZAKATReturnInvoicePdf(Cokey);
             ShowPdf(url);
         }

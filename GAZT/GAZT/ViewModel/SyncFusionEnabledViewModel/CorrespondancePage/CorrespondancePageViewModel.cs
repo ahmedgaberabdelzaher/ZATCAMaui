@@ -682,12 +682,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
         }
         public void ShowVATPDF(CorrespondanceModel CorrespondenceD)
         {
-            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
+            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=enabled";
             ShowPdf(Url);
         }
         public void ShowETPDF(CorrespondanceModel CorrespondenceD)
         {
-            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=disabled";
+            string Url = Constants.GAZTGetCorrespondenceAttach + "'" + CorrespondenceD.Cokey + "',Cotyp='" + CorrespondenceD.Cotype + "')/$value?saml2=enabled";
             ShowPdf(Url);
         }
         public async void ShowPdf(string pdfUrl)

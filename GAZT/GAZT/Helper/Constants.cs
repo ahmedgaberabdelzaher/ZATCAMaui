@@ -31,7 +31,7 @@ namespace GAZT.Helper
 
         public static string LanguageCookieNameForLogin = "ume.logon.locale";
         public static string DomainUrlForCookies = QADomainForCookies;
-        public static string AndroidDomainUrlForCookies = ".gazt.gov.sa";
+        public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;

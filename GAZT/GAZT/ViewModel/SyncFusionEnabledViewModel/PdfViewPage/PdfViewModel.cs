@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using pdfjs.Interfaces;
@@ -175,7 +176,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     IsLoading = true;
                     if (!string.IsNullOrEmpty(pdfUrl))
                     {
-                        DownloadUrl = pdfUrl;
+                        DownloadUrl = pdfUrl.Replace("saml2=disabled", "saml2=enabled"); ;
                         getPdfStream();
                     }
                     else
@@ -189,16 +190,49 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
             }
             catch (Exception ex)
             {
+
             }
         }
-        public void getPdfStream()
+        public async void getPdfStream()
         {
             Stream stream = null;
             try
             {
                 HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(DownloadUrl);
-                myReq.Headers.Add("Token", App.Token);
-                WebResponse myResp = myReq.GetResponse();
+                CookieContainer cookieContainer = new CookieContainer();
+
+                try
+                {
+                    foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
+                    {
+                        Cookie cookie = new Cookie();
+                        cookie.Domain = ".gazt.gov.sa";
+                        cookie.Comment = cookieModel.Comment;
+                        cookie.Version = cookieModel.Version;
+                        cookie.HttpOnly = cookieModel.IsHttpOnly;
+                        cookie.Path = cookieModel.Path;
+                        cookie.Name = cookieModel.CName;
+                        cookie.Value = cookieModel.CValue;
+                        cookie.Secure = cookieModel.Secure;
+                        cookieContainer.Add(cookie);
+                    }
+
+                    myReq.CookieContainer = cookieContainer;
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+                //myReq.Headers.Add("Token", App.Token);
+                WebResponse myResp = null;
+
+                await Task.Run(() =>
+                {
+                    myResp = myReq.GetResponse();
+                });
+
                 if (myResp != null)
                 {
                     using (Stream streams = myResp.GetResponseStream())
