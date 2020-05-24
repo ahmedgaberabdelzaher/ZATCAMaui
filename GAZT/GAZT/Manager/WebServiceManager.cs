@@ -1535,12 +1535,9 @@ namespace GAZT.Manager
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/    ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "',SrcAppz='MB'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
-                    //String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
 
-                    String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'"  + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
-
-
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    //String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'"  + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
 
                     var uri = new Uri(url);
@@ -1631,11 +1628,13 @@ namespace GAZT.Manager
                         // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?&saml2=disabled";// Constants.SaveVATDeclarationData;
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);
-                        ////client.DefaultRequestHeaders.Add("Token", App.Token);
-                        //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
-                        //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                        //client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
                         var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
                         HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                         HttpResponseMessage res = await client.PostAsync(uri, contentPost);
