@@ -1286,10 +1286,11 @@ namespace GAZT.Manager
                     {
 
                     }
-                    
                     HttpClient client = new HttpClient(App.httpClientHandler);
+
                     //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     //client.DefaultRequestHeaders.Add("Accept", "application/json");
+
                     var serilized = JsonConvert.SerializeObject(ValidateOTP);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
@@ -1326,8 +1327,10 @@ namespace GAZT.Manager
 
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
+
                     //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     //client.DefaultRequestHeaders.Add("Accept", "application/json");
+
                     var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
@@ -1949,10 +1952,11 @@ namespace GAZT.Manager
                     string AttBy = "TP";
                     String url = Constants.GAZTSaveAttachment + "'" + "'" + ",RetGuid='" + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient();
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(contentType))
                         baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
@@ -1989,9 +1993,11 @@ namespace GAZT.Manager
                                                                                                                                                                                                                                                                                    // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                     HttpResponseMessage res = client.DeleteAsync(url).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
@@ -2249,12 +2255,12 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var serilized = JsonConvert.SerializeObject(zakatReturnDetailsD);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
 
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
@@ -2419,10 +2425,12 @@ namespace GAZT.Manager
                     string url = Constants.GAZTSaveEstimatedZAKATAttachement + RetGuid + "',Flag='N',Dotyp='Z12L',SchGuid='',Srno=1,Doguid='',AttBy='TP',OutletRef='')/AttachMedSet?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
-                    //   client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", ContentType);
+
                     //MultipartFormDataContent content = new MultipartFormDataContent();
                     ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
                     if (!string.IsNullOrEmpty(ContentType))
@@ -2569,9 +2577,11 @@ namespace GAZT.Manager
                     string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachMedSet(RetGuid='',Flag='N',Dotyp='',SchGuid='',Srno=1,Doguid='" + DocumentID + "',AttBy='TP',OutletRef='')/$value?saml2=disbaled";                                                                                                                                                                                                                                                          // lang + "'" + "&$filter=Idtype eq " + IdType + ",RetGuid='" + RetGuid + "'" +
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", fileName);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("slug", fileName);
+
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                     HttpResponseMessage res = client.DeleteAsync(url).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
