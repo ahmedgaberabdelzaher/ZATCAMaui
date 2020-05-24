@@ -1090,7 +1090,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         forgotPassword = await WebServiceManager.GAZTForgotPasswordValidateOTP(forgotPassword);
                         await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-
                         if (forgotPassword != null && forgotPassword.d != null && forgotPassword.d.Action.Equals("01"))
                         {
                             Device.BeginInvokeOnMainThread(async () =>
