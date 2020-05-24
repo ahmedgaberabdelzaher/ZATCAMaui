@@ -530,7 +530,7 @@ namespace EGAZT.Droid.CustomRenderer
 
                 try
                 {
-                    App.LoginDataRetrieved = WebServiceManager.SFGAZTGetLoginData(url);
+                    App.LoginDataRetrieved = WebServiceManager.SFGAZTGetLoginDataAndroid(url);
                 }
                 catch(Exception ex)
                 {
