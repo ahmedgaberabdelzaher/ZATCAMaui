@@ -458,7 +458,7 @@
             </Style>
             <Style x:Key="GAZTGreenLabelStyleForDashboardIcon" x:Name="GAZTGreenLabelStyleForDashboardIcon" TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
-                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontSize" Value="12" /><!-- Caption font size is 12-->
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>-->
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
@@ -530,7 +530,7 @@
             <Style x:Key="GAZTGrayLabelStyleForCaptionFont" x:Name="GAZTGrayLabelStyleForCaptionFont" TargetType="Label">
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}"/>-->
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
-                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontSize" Value="12" /><!--Caption font size is 12  >-->
                 <Setter Property="Margin" Value="10,0,10,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />--><!-- commented as we are provideing bold font family inline -->
@@ -614,7 +614,7 @@
                         <OnIdiom x:TypeArguments="x:Double" Phone="10.75" Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                                                <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_REGULAR}" />
+                                                <!--<Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_REGULAR}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
             <Style x:Key="PickerEntryStyle" x:Name="PickerEntryStyle" TargetType="Entry">
