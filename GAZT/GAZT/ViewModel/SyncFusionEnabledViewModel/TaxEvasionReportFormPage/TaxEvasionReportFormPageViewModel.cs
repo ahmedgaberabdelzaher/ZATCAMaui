@@ -819,23 +819,52 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                             if (TotalAttachmentSize <= 30)
                             {
                                 AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
+                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
                                 if (Convert.ToDecimal(AttachmentSize) <= 10)
                                 {
-                                    try
+                                    if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                     {
-                                        UploadedDocumentsList a = new UploadedDocumentsList();
-                                        a.FileNameWithExtension = AttachmentName;
-                                        a.DocBinaryInBase64 = base64String;
-                                        AttachmentCount++;
-                                        string attachmentType = UtilityManager.GetContentType(Extention);
-                                        //UploadedDocumentsList.DocBinaryInBase64 = base64String;
-                                        //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
-                                        a.MimeType = attachmentType;
-                                        //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
-                                        UploadedDocumentsListObj.Add(a);
+                                        bool isAttachmentexixt = false;
+
+                                        try
+                                        {
+                                            UploadedDocumentsList a = new UploadedDocumentsList();
+                                            a.FileNameWithExtension = AttachmentName;
+                                            a.DocBinaryInBase64 = base64String;
+                                            
+                                            string attachmentType = UtilityManager.GetContentType(Extention);
+                                            //UploadedDocumentsList.DocBinaryInBase64 = base64String;
+                                            //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
+                                            a.MimeType = attachmentType;
+                                            foreach (UploadedDocumentsList ItemA in UploadedDocumentsListObj)
+                                            {
+                                                if (AttachmentName == ItemA.FileNameWithExtension)
+                                                {
+                                                    isAttachmentexixt = true;
+                                                }
+                                            }
+                                            if (isAttachmentexixt == false)
+                                            {
+                                                UploadedDocumentsListObj.Add(a);
+                                                AttachmentCount++;
+                                                AttachmentName = string.Empty;
+                                            }
+                                            else
+                                            {
+                                                AttachmentName = string.Empty;
+                                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                            }
+                                            //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
+
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                        }
                                     }
-                                    catch (Exception ex)
+                                    else
                                     {
+                                        AttachmentName = string.Empty;
+                                        _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                     }
                                 }
                             }
