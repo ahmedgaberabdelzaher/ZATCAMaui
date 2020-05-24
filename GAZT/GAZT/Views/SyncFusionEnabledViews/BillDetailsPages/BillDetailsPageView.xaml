@@ -156,7 +156,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span  Text="{Binding Totamt}"  />
-                                </FormattedString>
+                                </FormattedString>  
                             </Label.FormattedText>
                         </local1:CustomLabel>
                         <local1:CustomLabel Text="{x:Static custom2:AppResources.ZZSADADBillDetails}" Grid.Row="7"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" IsVisible="{Binding ObjectionInvoiceVisibility}"/>
