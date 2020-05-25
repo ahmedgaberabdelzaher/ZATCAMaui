@@ -228,6 +228,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
         {
             try
             {
+                SelectedFormBindleFbnumPrev = null;
+                SelectedFormBindleFbtypCancel = null;
+                
                 FormBundleModel formbundleList = new FormBundleModel();
                 string lang = UtilityManager.GetLanguageParameter();
                 formbundleList = await WebServiceManager.GAZTGetFormBundleModel();
