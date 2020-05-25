@@ -795,7 +795,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                                     if(viewModel.IsVisibleSummary)
                                     {
                                         ValidationsForVATRefund();
-                                        if (viewModel.IschkRefundDeclaration == false || viewModel.IsDeclarationCheckedForSummary == false)
+                                        if(viewModel.IsDeclarationCheckedForSummary == false)
                                         {
                                             viewModel.IsMainButtonEnabled = false;
                                         }
