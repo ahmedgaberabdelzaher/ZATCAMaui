@@ -4581,6 +4581,7 @@ namespace GAZT.Manager
 
                     // String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    ///
                     String url = Constants.GAZTGetTP + "='" + TIN + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
 
                     ////client.DefaultRequestHeaders.Add("Token", App.LoginDataRetrieved.DeviceToken);

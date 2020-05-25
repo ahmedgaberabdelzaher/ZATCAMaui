@@ -71,7 +71,7 @@ namespace EGAZT.Droid.CustomRenderer
                 tempElement.RefreshCommand = () =>
                 {
                     string apiUrl = ((HybridWebView)Element).Url;
-                    //ResetCookies();
+                    ResetCookies();
 
                     string lang = "en";
                     if (App.IsArabic == true)
@@ -89,7 +89,7 @@ namespace EGAZT.Droid.CustomRenderer
                     tempElement.FadeTo(1, 1000);
                 };
 
-                //ResetCookies();
+                ResetCookies();
 
                 string lang = "en";
                 if (App.IsArabic == true)
@@ -108,24 +108,24 @@ namespace EGAZT.Droid.CustomRenderer
             }
         }
 
-        //private void ResetCookies()
-        //{
-        //    CookieManager.Instance.RemoveAllCookie();
-        //    CookieManager.Instance.RemoveSessionCookie();
-        //    var cookieManager = CookieManager.Instance;
+        private void ResetCookies()
+        {
+            CookieManager.Instance.RemoveAllCookie();
+            CookieManager.Instance.RemoveSessionCookie();
+            var cookieManager = CookieManager.Instance;
 
-        //    string lang = "en";
-        //    if (App.IsArabic == true)
-        //    {
-        //        lang = "ar";
-        //    }
+            string lang = "en";
+            if (App.IsArabic == true)
+            {
+                lang = "ar";
+            }
 
-        //    string cookieValue = lang;
-        //    string cookieDomain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
-        //    string cookieName = GAZT.Helper.Constants.LanguageCookieNameForLogin;
+            string cookieValue = lang;
+            string cookieDomain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
+            string cookieName = GAZT.Helper.Constants.LanguageCookieNameForLogin;
 
-        //    cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
-        //}
+            cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
+        }
     }
 
     public class JavascriptWebViewClient : FormsWebViewClient

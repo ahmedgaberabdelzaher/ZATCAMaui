@@ -13,6 +13,7 @@ using Foundation;
 using GAZT.iOS.CustomRenderer;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ObjCRuntime;
@@ -110,15 +111,6 @@ namespace GAZT.iOS.CustomRenderer
 
                         Control.LoadRequest(portalReq);
 
-                        wKHttpCookieStore.GetAllCookies(async (cookies) =>
-                        {
-
-                            if (cookies.Length > 0)
-                            {
-                                Console.WriteLine(cookies);
-                            }
-                        });
-
                         //NSUrlRequest nSUrlRequest = new NSUrlRequest(new NSUrl(Element.Url));
                         //NSMutableDictionary cookieDictionary = new NSMutableDictionary();
                         //NSString url = (NSString)Element.Url.ToString();
@@ -156,19 +148,6 @@ namespace GAZT.iOS.CustomRenderer
                         langVal = "ar";
                     }
 
-                    //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-                    //wKHttpCookieStore.SetCookie(langCookieTemp, () =>
-                    //{
-                    //    wKHttpCookieStore.GetAllCookies(async (cookies) =>
-                    //    {
-
-                    //        if (cookies.Length > 0)
-                    //        {
-                    //            Console.WriteLine(cookies);
-                    //        }
-                    //    });
-                    //});
-
                     NSUrl portalLogin = new NSUrl(Element.Url);
                     NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
 
@@ -177,19 +156,6 @@ namespace GAZT.iOS.CustomRenderer
                     portalReq.Headers = dic; 
 
                     Control.LoadRequest(portalReq);
-
-                    //NSUrlRequest nSUrlRequest = new NSUrlRequest(new NSUrl(Element.Url));
-                    //NSMutableDictionary cookieDictionary = new NSMutableDictionary();
-                    //NSString url = (NSString)Element.Url.ToString();
-                    //cookieDictionary.Add(NSHttpCookie.KeyName, new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin));
-                    //cookieDictionary.Add(NSHttpCookie.KeyValue, new NSString(langVal));
-                    //cookieDictionary.Add(NSHttpCookie.KeyDomain, new NSString(GAZT.Helper.Constants.DomainUrlForCookies));
-                    //cookieDictionary.Add(NSHttpCookie.KeyPath, new NSString("/"));
-
-                    //var myCookie = new NSHttpCookie(cookieDictionary);
-                    //NSHttpCookieStorage.SharedStorage.AcceptPolicy = NSHttpCookieAcceptPolicy.Always;
-                    //NSHttpCookieStorage.SharedStorage.SetCookie(myCookie);
-
                 });
 
                 App.ArePreLoginLangCookiesSet = true;
@@ -201,8 +167,6 @@ namespace GAZT.iOS.CustomRenderer
 
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
                 SetNativeControl(_wkWebView);
-
-                //rohith changes
             }
         }
     }
@@ -229,11 +193,6 @@ namespace GAZT.iOS.CustomRenderer
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
-                //Task task = new Task(()=>{
-                //    ClearCookies(webView);
-                //});
-                //task.RunSynchronously();
-
                 element.InvokeAction("displayLoadingIndicator");
             }
 
@@ -247,7 +206,6 @@ namespace GAZT.iOS.CustomRenderer
                 App.IsLoginCalled = true;
             }
 
-            //rohith changes
             if (App.IsLoginCalled == true && IsError == false)
             {
                 try
@@ -266,7 +224,6 @@ namespace GAZT.iOS.CustomRenderer
             {
                 //element.InvokeAction("displayLoadingIndicator");
             }
-            //rohith changes
 
             //base.DidStartProvisionalNavigation(webView, navigation);
         }
@@ -294,15 +251,15 @@ namespace GAZT.iOS.CustomRenderer
                         if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true)
                         {
 
-                            WebClient wc = new WebClient();
-                            using (Stream st = wc.OpenRead(url.ToString()))
-                            {
-                                using (StreamReader sr = new StreamReader(st, Encoding.UTF8))
-                                {
-                                    string html = sr.ReadToEnd();
-                                    Console.Write(html);
-                                }
-                            }
+                            //WebClient wc = new WebClient();
+                            //using (Stream st = wc.OpenRead(url.ToString()))
+                            //{
+                            //    using (StreamReader sr = new StreamReader(st, Encoding.UTF8))
+                            //    {
+                            //        string html = sr.ReadToEnd();
+                            //        Console.Write(html);
+                            //    }
+                            //}
 
                             //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
                             //App.LoginDataRetrieved = new LoginModel();
@@ -341,7 +298,6 @@ namespace GAZT.iOS.CustomRenderer
                             App.LoginDataRetrieved = new LoginModel();
                             App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());
 
-                            //rohith changes
                             if (App.LoginDataRetrieved != null && App.LoginDataRetrieved.ResponseStatusMessage == null)
                             {
                                 if (App.LoginDataRetrieved.MsgTitle != null && App.LoginDataRetrieved.MsgTitle.Length >= 2)
@@ -364,13 +320,22 @@ namespace GAZT.iOS.CustomRenderer
                                 App.LoginDataRetrieved.ResponseStatusMessage = "errorGeneric";
                                 element.InvokeAction("errorGeneric");
                             }
-                            //rohith changes
                         }
                     }
                 }
+                catch (GAZTInvalidDataException ex)
+                {
+                    IsError = true;
+                    App.IsLoginCalled = false;
+                    App.LoginDataRetrieved.ResponseStatusMessage = "error";
+                    element.InvokeAction("error");
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    IsError = true;
+                    App.IsLoginCalled = false;
+                    App.LoginDataRetrieved.ResponseStatusMessage = "error";
+                    element.InvokeAction("error");
                 }
             });
 
