@@ -465,7 +465,7 @@ ItemHeight="45" ShowFooter="True"
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <!--Report Location-->
-                        <local1:CustomLabel Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetailRLocation}"  />
@@ -476,7 +476,7 @@ ItemHeight="45" ShowFooter="True"
                             <maps:Map Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                         </Frame>
                         <!--Attachment-->
-                        <local1:CustomLabel Grid.Row="21" x:Name="Attachment_Label"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel Grid.Row="21" x:Name="Attachment_Label"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
@@ -522,13 +522,13 @@ ItemHeight="45" ShowFooter="True"
                                                                     <RowDefinition Height="auto" />
                                                                 </Grid.RowDefinitions>
                                                                 <local1:CustomLabel Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Style="{StaticResource MiniGoldLabelStyle}"  FontFamily="{StaticResource SSTArabicMedium}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                            />
-                                                                <local1:CustomLabel Text="{Binding FileNameWithExtension}" 
+                                                                    <local1:CustomLabel Text="{Binding FileNameWithExtension}" FontFamily="{StaticResource SSTArabicMedium}" 
                                   Margin="0" TextColor="Black"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
