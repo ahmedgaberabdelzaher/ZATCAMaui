@@ -111,7 +111,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
                 else
                 {
+
                 }
+
+
                 if (App.IsLogOut)
                 {
                     App.IsLogOut = false;
@@ -127,6 +130,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
                     }
                 }
+
                 SetLTR();
                 Changecornerradious();
                 InitializeComponent();

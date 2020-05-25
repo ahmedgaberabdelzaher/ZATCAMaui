@@ -921,7 +921,9 @@ namespace GAZT.Manager
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    client.DefaultRequestHeaders.Add("Token", App.Token);
+                    
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
                     if (GAZTValidateAndChangePasswordResponse != null)
@@ -4508,13 +4510,14 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = "https://sapgatewayqa.gazt.gov.sa/sap/public/bc/icf/logoff?keepMYSAPSSO2Cookie=true&dsmguid=1588829910165";
+                    String url = Constants.GAZTSAMLLogoutService;
 
                     var uri = new Uri(url);
 
                     HttpResponseMessage GAZTLogOffResponse = await client.GetAsync(uri);
                     App.LoginCookiesRetrieved = null;
-                    App.httpClientHandler = new HttpClientHandler();
+
+                    App.CreateClientHandler();
 
                     if (GAZTLogOffResponse != null)
                     {
