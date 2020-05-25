@@ -69,10 +69,10 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <custom:CustomLabel Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                        <custom:CustomLabel Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span  Text="{x:Static local:AppResources.ZZPasswordregulationsforSignup}" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    <Span  Text="{x:Static local:AppResources.ZZPasswordregulationsforSignup}" FontSize="14" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MandatoryRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </custom:CustomLabel>
@@ -128,8 +128,8 @@
                         <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand"  Margin="10,0,10,0">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span  Text="{x:Static local:AppResources.ZZThecodewillbeexpiredwithin}"  Style="{StaticResource InformationGrayColorLabel}"   />
-                                    <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource InformationRedColorLabel}" />
+                                    <Span  Text="{x:Static local:AppResources.ZZThecodewillbeexpiredwithin}"  FontSize="10" FontFamily="{StaticResource GAZT_FONT_BOLD}" Style="{StaticResource InformationGrayColorLabel}"   />
+                                    <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}"  FontSize="10" Style="{StaticResource InformationRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label> <!--ZZResendtheverificationcode-->
