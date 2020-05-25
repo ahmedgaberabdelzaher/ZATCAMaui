@@ -350,5 +350,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
             }
             ListFormBudles = Child;
         }
+
+        public void ClearData()
+        {
+            FormBundleList = null;
+            FormBundleApplicatioNumberList = null;
+           SelectedFormBindleFbtyp = null;
+            SelectedFormBindleFbnum = null;
+           ListFormBudles = null;
+        }
     }
 }

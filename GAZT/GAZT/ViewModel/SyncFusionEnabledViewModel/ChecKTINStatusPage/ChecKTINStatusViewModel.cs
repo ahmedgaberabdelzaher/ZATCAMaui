@@ -206,7 +206,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
                 ShowLessOrMore = AppResources.ZShowmoredetails;
                 IsVisibleListItems = false;
                 string Lang = UtilityManager.GetLanguageParameter();
-                if (lastTapped < DateTime.Now.AddSeconds(-4))
+                if (lastTapped <DateTime.Now.AddSeconds(-4))
                 {
                     if (CrossConnectivity.Current.IsConnected)
                     {

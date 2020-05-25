@@ -22,14 +22,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus
             viewModel = App.Locator.FormBundleStatusPageView;
             InitializeComponent();
             ParentContainerForOTP.Padding = new Thickness(0, 0, 0, 0);
-            viewModel.FormBundleList = null;
-            viewModel.FormBundleApplicatioNumberList = null;
-            viewModel.SelectedFormBindleFbtyp = null;
-            viewModel.SelectedFormBindleFbnum = null;
-            viewModel.ListFormBudles = null;
+           
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
+            viewModel.ClearData();
             ChangeAeroIcon();
             OnPageLoad();
             //CPicker_imgtap.IsEnabled = false;
@@ -211,5 +208,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus
             
             }
 }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.ClearData();
+        }
+
     }
 }
