@@ -274,53 +274,77 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                 string Extention = AttachmentName.Split('.')[1];
                                 string ContentType = UtilityManager.GetContentType(Extention);
                                 bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
-                            if(!isFileAlreayUploaded)
-                            {
-                                if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"  || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
+                                decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
+
+                                if(Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                 {
-                                    if (attachment.Length < 5242880)
+                                    if (!isFileAlreayUploaded)
                                     {
-                                        if (ZakatReturnAttachmentsList.Count < 5)
+                                        if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                         {
-                                            AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
-                                            PopToRootPage();
-                                            if (_attachment != null && _attachment.d != null)
+                                            if (attachment.Length < 5242880)
                                             {
-                                                AttachmentName = string.Empty;
-                                                EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
-                                                _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
-                                                _estimateZakatAttachment.Seqno = string.Empty;
-                                                _estimateZakatAttachment.SchGuid = string.Empty;
-                                                _estimateZakatAttachment.AttBy = string.Empty;// DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
-                                                _estimateZakatAttachment.FileExtn = string.Empty;
-                                                _estimateZakatAttachment.ByPusr = string.Empty;
-                                                _estimateZakatAttachment.OutletRef = string.Empty;
-                                                _estimateZakatAttachment.Filename = _attachment.d.Filename;
-                                                _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
-                                                _estimateZakatAttachment.Dotyp = "FZ01";
-                                                _estimateZakatAttachment.Mimetype = string.Empty;
-                                                _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
-                                                _estimateZakatAttachment.DataVersion = string.Empty;
-                                                DateTime currentDate = DateTime.Now.ToLocalTime();
-                                                long ticks = currentDate.Ticks;
-                                                    //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
-                                                    TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-                                                    string unixTime = span.TotalSeconds.ToString("N0");
-                                                    unixTime = unixTime.Replace(",","");
-                                                    _estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
+                                                if (ZakatReturnAttachmentsList.Count < 5)
+                                                {
+                                                    AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveEstimatedZAKATAttachment(attachment, AttachmentName, SalesDetailsPageViewModel.RetGuid, "Z12L", ContentType);
+                                                    PopToRootPage();
+                                                    if (_attachment != null && _attachment.d != null)
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        EstimateZakatAttachment _estimateZakatAttachment = new EstimateZakatAttachment();
+                                                        _estimateZakatAttachment.Doguid = _attachment.d.Doguid;
+                                                        _estimateZakatAttachment.Seqno = string.Empty;
+                                                        _estimateZakatAttachment.SchGuid = string.Empty;
+                                                        _estimateZakatAttachment.AttBy = string.Empty;// DateTime.Now.ToString("ddd, dd MMM yyy HH’:’mm’:’ss ‘GMT’");// string.Empty;
+                                                        _estimateZakatAttachment.FileExtn = string.Empty;
+                                                        _estimateZakatAttachment.ByPusr = string.Empty;
+                                                        _estimateZakatAttachment.OutletRef = string.Empty;
+                                                        _estimateZakatAttachment.Filename = _attachment.d.Filename;
+                                                        _estimateZakatAttachment.RetGuid = _attachment.d.RetGuid;
+                                                        _estimateZakatAttachment.Dotyp = "FZ01";
+                                                        _estimateZakatAttachment.Mimetype = string.Empty;
+                                                        _estimateZakatAttachment.DocUrl = _attachment.d.DocUrl;
+                                                        _estimateZakatAttachment.DataVersion = string.Empty;
+                                                        DateTime currentDate = DateTime.Now.ToLocalTime();
+                                                        long ticks = currentDate.Ticks;
+                                                        //_estimateZakatAttachment.UploadedDate = currentDate.ToString();
+                                                        TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                                                        string unixTime = span.TotalSeconds.ToString("N0");
+                                                        unixTime = unixTime.Replace(",", "");
+                                                        _estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
                                                                                                                     //_estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
-                                                    SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
-                                                    ZakatReturnAttachmentsList =  CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
-                                                    IsValueChanged();// 1584987294.32348//1584987210.06955
-                                                    // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                                        SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
+                                                        ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
+                                                        IsValueChanged();// 1584987294.32348//1584987210.06955
+                                                                         // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
+                                                    }
                                                 }
+                                                else
+                                                {
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        AttachmentName = string.Empty;
+                                                        await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
+                                                        IsLoading = false;
+                                                    });
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    AttachmentName = string.Empty;
+                                                    await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
+                                                    IsLoading = false;
+                                                });
+                                            }
                                         }
                                         else
                                         {
                                             Device.BeginInvokeOnMainThread(async () =>
                                             {
                                                 AttachmentName = string.Empty;
-                                                await _dialogService.ShowMessage(AppResources.ZZYoucannotuploadmorethan5attachment, AppResources.Alerts);
+                                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                                 IsLoading = false;
                                             });
                                         }
@@ -329,31 +353,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                     {
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
-                                            AttachmentName = string.Empty;
-                                            await _dialogService.ShowMessage(AppResources.ZZFilesizemustbelessthan5MB, AppResources.Alerts);
+                                            await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
                                             IsLoading = false;
+                                            AttachmentName = string.Empty;
                                         });
                                     }
                                 }
                                 else
                                 {
-                                    Device.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        AttachmentName = string.Empty;
-                                      await  _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
-                                        IsLoading = false;
-                                    });
-                                }
-                            }
-                            else
-                            {
-                                Device.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessage(AppResources.ZZFileWithTheSameNameAlreadyExists, AppResources.Alerts);
-                                    IsLoading = false;
                                     AttachmentName = string.Empty;
-                                });
-                            }
+                                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+
+                                }
+
                             }
                             else
                             {
