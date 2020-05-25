@@ -123,9 +123,7 @@ namespace EGAZT
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }             InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
             {
-                httpClientHandler = new HttpClientHandler();
-                httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                CreateClientHandler();
             }
             catch (Exception ex)
             {
@@ -155,6 +153,14 @@ namespace EGAZT
             dialogService.Initialize(navigationPage);
             MainPage = navigationPage;
         }
+
+        public static void CreateClientHandler()
+        {
+            httpClientHandler = new HttpClientHandler();
+            httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+            httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+        }
+
         private static ViewModelLocator _locator;
         public static ViewModelLocator Locator
         {

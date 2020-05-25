@@ -466,8 +466,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewMode
                                                 App.IsSamlApiCalledAndroid = false;
                                                 await WebServiceManager.GAZTLogOff();
 
+                                                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
                                                 ClearPasswordData();
-                                                await _navigation.PopToRootAsync();
+
+                                                if (App.PreviousIsArabic)
+                                                {
+                                                    String langName = "ar-AE";
+                                                    AppResources.Culture = new CultureInfo(langName);
+                                                }
+                                                else
+                                                {
+                                                    String langName = "en-US";
+                                                    AppResources.Culture = new CultureInfo(langName);
+                                                }
+
+                                                foreach (var item in _navigation.NavigationStack)
+                                                {
+                                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                                    {
+                                                        _navigation.RemovePage(item);
+                                                        break;
+                                                    }
+                                                }
+
+                                                App.IsLogOut = true;
+                                                App.IsLoginCalled = false;
+                                                App.IsSamlApiCalledAndroid = false;
+
+                                                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                                _navigation.NavigationStack.ToList().Clear();
                                             });
                                         }
                                         else

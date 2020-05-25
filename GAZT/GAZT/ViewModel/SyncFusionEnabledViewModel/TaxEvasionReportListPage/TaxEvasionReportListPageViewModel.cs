@@ -267,22 +267,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 });
             }
         }
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
-
+            SetNoDataLabelVisibilityforOpen = true;
+            SetNoDataLabelVisibilityforClose = true;
             try
             {
-                SetNoDataLabelVisibilityforOpen = true;
-                SetNoDataLabelVisibilityforClose = true;
                 //string test = App.TP.Mobile;
                 ReportRetriveByMobNoRootObject rootObject = new ReportRetriveByMobNoRootObject();
-                rootObject = WebServiceManager.GAZTTESReportByMobNo(MobileNumber);
+                 rootObject = await WebServiceManager.GAZTTESReportByMobNo(MobileNumber);
                 PopToRootPage();
                 if (rootObject != null)
                 {
                     if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
                     {
-                        SetNoDataLabelVisibilityforOpen = false;
+                       
                         TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
                         TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
                         if (TERListReportbymobno != null)

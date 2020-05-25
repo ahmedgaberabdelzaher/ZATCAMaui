@@ -143,9 +143,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
             {
                 _navigationService.NavigateTo(App.MyCertificate);
             });
-            
-           
-
         }
         #endregion
         #region Public Properties
@@ -299,13 +296,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
         //        RaisePropertyChanged("SelectedBillsType");
         //    }
         //}
-#endregion
-#region Methods
-/// <summary>
-/// Invoked when the menu button is clicked.
-/// </summary>
-/// <param name="obj">The Object</param>
-private void ShowOptionsCommandClicked(object obj)
+        #endregion
+        #region Methods
+        /// <summary>
+        /// Invoked when the menu button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void ShowOptionsCommandClicked(object obj)
         {
              ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
             _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);

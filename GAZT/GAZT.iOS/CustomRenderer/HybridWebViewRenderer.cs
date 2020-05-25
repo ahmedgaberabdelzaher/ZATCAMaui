@@ -42,6 +42,14 @@ namespace GAZT.iOS.CustomRenderer
                 _wkWebView = new WKWebView(Frame, config);
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
 
+                var source = "var meta = document.createElement('meta');" +
+                 "meta.name = 'viewport';" +
+                 "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+                 "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+
+                var script = new WKUserScript(new NSString(source), WKUserScriptInjectionTime.AtDocumentEnd, true);
+                _wkWebView.Configuration.UserContentController.AddUserScript(script);
+
                 SetNativeControl(_wkWebView);
             }
 

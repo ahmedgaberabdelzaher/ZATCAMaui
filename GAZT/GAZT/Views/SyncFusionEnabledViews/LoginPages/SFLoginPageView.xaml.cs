@@ -211,6 +211,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
                 CookieContainer loginWebViewCookieContainer = new CookieContainer();
                 loginWebViewCookieContainer.Add(langCookie);
+
                 hybridWebView.Cookies = loginWebViewCookieContainer;
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
