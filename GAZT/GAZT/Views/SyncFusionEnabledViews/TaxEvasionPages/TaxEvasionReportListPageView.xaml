@@ -70,6 +70,7 @@
                              TitleFontSize="14"
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
+                                    TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                              TitleFontColor="Gray">
                     <tabview:SfTabItem.Content>
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10" x:Name="MainLayout">
@@ -111,9 +112,13 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+  Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+ Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -125,9 +130,13 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  Text="{Binding ReceivedDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM }"
+  Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+ Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReceivedDate}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -139,9 +148,13 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
-                                                                        <Span  Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CompanyName}"></Span>
+                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}" 
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+  Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
+                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}" 
+ FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+ Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -153,9 +166,9 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -171,7 +184,7 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforOpen}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforOpen}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
@@ -180,6 +193,7 @@
                              TitleFontSize="14"
                              SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
+                                   TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                               TitleFontColor="Gray">
                     <tabview:SfTabItem.Content>
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0" RowSpacing="10">
@@ -335,7 +349,7 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
