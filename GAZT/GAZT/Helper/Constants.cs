@@ -29,7 +29,7 @@ namespace GAZT.Helper
         public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
         public static string ProdDomainForCookies = "login.gazt.gov.sa";
 
-        public static string LanguageCookieNameForLogin = "ume.logon.locale";
+        public static string LanguageCookieNameForLogin = "langMobile";
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion

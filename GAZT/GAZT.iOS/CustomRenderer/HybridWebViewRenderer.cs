@@ -58,6 +58,14 @@ namespace GAZT.iOS.CustomRenderer
                 var tempElement = (HybridWebView)e.NewElement;
                 WKHttpCookieStore wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
 
+                //wKHttpCookieStore.GetAllCookies(async (cookies) =>
+                //{
+                //    if (cookies.Length > 0)
+                //    {
+                //     Console.WriteLine(cookies);
+                //    }
+                //});
+
                 string lang = "en";
                 string domain = string.Empty;
 
@@ -78,11 +86,37 @@ namespace GAZT.iOS.CustomRenderer
                             langVal = "ar";
                         }
 
-                        NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+                        //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
 
-                        wKHttpCookieStore.SetCookie(langCookieTemp, () =>
+                        //wKHttpCookieStore.SetCookie(langCookieTemp, () =>
+                        //{
+                        //    wKHttpCookieStore.GetAllCookies(async (cookies) =>
+                        //    {
+
+                        //        if (cookies.Length > 0)
+                        //        {
+                        //            Console.WriteLine(cookies);
+                        //        }
+                        //    });
+                         
+                        //});
+
+                        NSUrl portalLogin = new NSUrl(Element.Url);
+                        NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
+
+                        NSMutableDictionary dic = new NSMutableDictionary();
+                        dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
+                        portalReq.Headers = dic;
+
+                        Control.LoadRequest(portalReq);
+
+                        wKHttpCookieStore.GetAllCookies(async (cookies) =>
                         {
-                            Control.LoadRequest(new NSUrlRequest(new NSUrl(Element.Url)));
+
+                            if (cookies.Length > 0)
+                            {
+                                Console.WriteLine(cookies);
+                            }
                         });
 
                         //NSUrlRequest nSUrlRequest = new NSUrlRequest(new NSUrl(Element.Url));
@@ -122,11 +156,27 @@ namespace GAZT.iOS.CustomRenderer
                         langVal = "ar";
                     }
 
-                    NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-                    wKHttpCookieStore.SetCookie(langCookieTemp, () =>
-                    {
-                        Control.LoadRequest(new NSUrlRequest(new NSUrl(Element.Url)));
-                    });
+                    //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+                    //wKHttpCookieStore.SetCookie(langCookieTemp, () =>
+                    //{
+                    //    wKHttpCookieStore.GetAllCookies(async (cookies) =>
+                    //    {
+
+                    //        if (cookies.Length > 0)
+                    //        {
+                    //            Console.WriteLine(cookies);
+                    //        }
+                    //    });
+                    //});
+
+                    NSUrl portalLogin = new NSUrl(Element.Url);
+                    NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
+
+                    NSMutableDictionary dic = new NSMutableDictionary();
+                    dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
+                    portalReq.Headers = dic; 
+
+                    Control.LoadRequest(portalReq);
 
                     //NSUrlRequest nSUrlRequest = new NSUrlRequest(new NSUrl(Element.Url));
                     //NSMutableDictionary cookieDictionary = new NSMutableDictionary();
@@ -176,21 +226,6 @@ namespace GAZT.iOS.CustomRenderer
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
             Uri apiUrl = webView.Url;
-
-            string langVal = "en";
-
-            if (App.IsArabic == true)
-            {
-                langVal = "ar";
-            }
-
-            NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-
-            WKHttpCookieStore wKHttpCookieStore = webView.Configuration.WebsiteDataStore.HttpCookieStore;
-            wKHttpCookieStore.SetCookie(langCookieTemp, () =>
-            {
-               
-            });
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
