@@ -293,9 +293,9 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontSize="12" Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -307,9 +307,9 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  Text="{Binding ReceivedDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12"   Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReceivedDate}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -321,9 +321,9 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CompanyName}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -335,9 +335,9 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
