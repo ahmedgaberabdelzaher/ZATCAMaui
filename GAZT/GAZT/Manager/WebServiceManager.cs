@@ -1694,6 +1694,8 @@ namespace GAZT.Manager
                             {
                                 ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
                                 ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString=ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForVAT = WithReplacedString;
                                 //ErrorMessageForVAT
                             }
                         }
