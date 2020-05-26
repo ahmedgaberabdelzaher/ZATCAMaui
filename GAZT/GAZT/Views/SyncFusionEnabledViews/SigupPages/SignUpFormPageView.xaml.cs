@@ -72,6 +72,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             await viewModel.OnPageLoad();
             await viewModel.SetIssueIdList();
             await viewModel.SetCityList();
+            viewModel.SetDefaultDate();
             viewModel.TxtLOrCIssuedBy = string.Empty;
         }
         public void ClearFields()
@@ -107,6 +108,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
+            
             //viewModel.PkrDBO = string.Empty;
             // DpDbo.Format = "        ";
         }
