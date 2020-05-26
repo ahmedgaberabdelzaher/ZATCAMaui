@@ -61,14 +61,14 @@
                 </Grid.ColumnDefinitions>
                 <Frame Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
                 </Frame>
-                <Label Text="{Binding CorrespondenceTitle}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" >
+                <Label Text="{Binding CorrespondenceTitle}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                 </Label>
                 <StackLayout BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0">
                        <WebView x:Name="CorWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </StackLayout>
                 <Frame Grid.Row="2" Grid.Column="0"    VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
                     </Frame>
-                <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" IsEnabled="{Binding IsAttachmentEnable}">
+                <Label Text="{x:Static local:AppResources.Attachment}" x:Name="Attachment_Label"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="2" Grid.Column="0" IsEnabled="{Binding IsAttachmentEnable}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                         <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding OnAttachmentClick}" ></TapGestureRecognizer>
                         </Label.GestureRecognizers>

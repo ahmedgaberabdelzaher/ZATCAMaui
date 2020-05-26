@@ -68,12 +68,15 @@
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
+
                         Text="{StaticResource Account}" />
                         <!--  Edit profile label  -->
                         <Label
                               IsVisible="{Binding IsTaxPayerProfileVisible}"
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+
                         Text="{x:Static local:AppResources.ZZZMyProfile}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -108,6 +111,8 @@
                               IsVisible="{Binding IsCorrespondenceVisible}"
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+
                         Text="{x:Static local:AppResources.ZZCorrespondence}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -250,7 +255,9 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
-                        Text="{x:Static local:AppResources.ZZZAboutUs}" />
+                        Text="{x:Static local:AppResources.ZZZAboutUs}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+/>
                         <!--  Navigation icon  -->
                         <!--<Label
                         Grid.Column="2"
@@ -316,6 +323,8 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+
                         Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -348,6 +357,8 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+
                         Text="{x:Static local:AppResources.ZZZFaq}" />
                         <!--  Navigation icon  -->
                         <!--<Label
@@ -379,6 +390,8 @@
                         <Label
                         Grid.Column="1"
                         Style="{StaticResource LabelStyleFromCommonStyle}"
+                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+
                         Text="{x:Static local:AppResources.ZZZContactus}" />
                     </controls:TapAnimationGrid>
                     <BoxView Style="{StaticResource SeparatorStyle}" />
@@ -488,9 +501,11 @@
                             <!--AppVersion-->
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.AppVersion}"/>
+                                    <Span Text="{x:Static local:AppResources.AppVersion}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="16"
+/>
                                     <Span Text="&#160;&#160;"/>
-                                    <Span  Text="{Binding AppVersion}"/>
+                                    <Span  Text="{Binding AppVersion}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="16"
+/>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>

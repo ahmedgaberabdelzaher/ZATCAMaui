@@ -188,9 +188,9 @@
                                                            >
                                                                     <local:CustomLabel.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding RefNumber}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
                                                                 </local:CustomLabel>
@@ -220,8 +220,8 @@
                                                           >
                                                                         <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZDateandTime}"  ></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZDateandTime}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                                             </FormattedString>
                                                                         </local:CustomLabel.FormattedText>
                                                                     </local:CustomLabel>
@@ -231,6 +231,7 @@
                                                     FlowDirection="LeftToRight"
                                                         Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    Text="{Binding DateAndTime}"
+ FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                                     </Label>
                                                                 </StackLayout>
@@ -260,7 +261,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsZakatVisibleLabel}">
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsZakatVisibleLabel}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                     </local:CustomLabel>
                                 </StackLayout>
                             </Grid>
@@ -368,9 +369,11 @@
                                                            >
                                                                     <local:CustomLabel.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZTitle}"></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Title}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZTitle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Title}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
                                                                 </local:CustomLabel>
@@ -398,9 +401,9 @@
                                                            >
                                                                     <local:CustomLabel.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}" FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
                                                                 </local:CustomLabel>
@@ -429,8 +432,8 @@
                                                           >
                                                                         <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}"   Text="{x:Static custom2:AppResources.ZZDateandTime}" ></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " ></Span>
+                                                                                <Span  Style="{StaticResource MicroGrayLabelStyleNew}"   Text="{x:Static custom2:AppResources.ZZDateandTime}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                                             </FormattedString>
                                                                         </local:CustomLabel.FormattedText>
                                                                     </local:CustomLabel>
@@ -440,6 +443,7 @@
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                    Text="{Binding DateAndTime}"
+                                                                         FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                                     </Label>
                                                                 </StackLayout>
@@ -468,7 +472,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVATVisibleLabel}">
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVATVisibleLabel}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                     </local:CustomLabel>
                                 </StackLayout>
                             </Grid>
@@ -576,9 +580,9 @@
                                                            >
                                                                     <local:CustomLabel.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZTitle}"></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Title}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZTitle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Title}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
                                                                 </local:CustomLabel>
@@ -606,9 +610,9 @@
                                                            >
                                                                     <local:CustomLabel.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZReferenceNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding RefNumber}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                                         </FormattedString>
                                                                     </local:CustomLabel.FormattedText>
                                                                 </local:CustomLabel>
@@ -638,8 +642,8 @@
                                                           >
                                                                         <local:CustomLabel.FormattedText>
                                                                             <FormattedString>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZDateandTime}" FontSize="Micro"></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static custom2:AppResources.ZZDateandTime}" FontSize="Micro"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="Micro"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                                             </FormattedString>
                                                                         </local:CustomLabel.FormattedText>
                                                                     </local:CustomLabel>
@@ -650,7 +654,7 @@
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                    Text="{Binding DateAndTime}"
-                                  FontFamily="{StaticResource SSTArLight}"
+                                  FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                                     </Label>
                                                                 </StackLayout>
@@ -679,7 +683,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsETVisibleLabel}">
+                                    <local:CustomLabel  Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static custom2:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsETVisibleLabel}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                     </local:CustomLabel>
                                 </StackLayout>
                             </Grid>
@@ -718,7 +722,7 @@
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->
-            <local:CustomLabel  Text="{x:Static custom2:AppResources.ZNoDataAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}">
+            <local:CustomLabel  Text="{x:Static custom2:AppResources.ZNoDataAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibility}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
             </local:CustomLabel>
         </Grid>
     </ContentPage.Content>

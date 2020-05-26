@@ -97,9 +97,10 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatSerialNumber}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding LineNo}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatSerialNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding LineNo}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="11"  
+></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -126,9 +127,10 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -154,9 +156,10 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatDocumentNumber}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DocNo}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatDocumentNumber}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DocNo}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -182,9 +185,10 @@
                                                            >
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZAmount}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CreditAmt}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZAmount}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span >
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CreditAmt}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

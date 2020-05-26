@@ -81,6 +81,7 @@
                                    Style="{StaticResource GAZTCaptionGreenLabelStyle}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
+                                                        FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                    Grid.Row="0"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding Strline}" 
@@ -88,6 +89,7 @@
                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
+                                                          FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                    Grid.Row="1"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <Label Text="{Binding Namez}" 
@@ -95,19 +97,21 @@
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
+                                                         FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                    Grid.Row="2"
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <Label 
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
+                                                   
                                    Grid.Row="3"
                                    Grid.Column="0">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding Strdt}" />
+                                                            <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SSTArBold}"/>
                                                             <Span Text="  "/>
-                                                            <Span Text="{Binding Strtime}" />
+                                                            <Span Text="{Binding Strtime}" FontFamily="{StaticResource SSTArBold}"/>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>
@@ -119,7 +123,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <local1:CustomLabel Text="{x:Static local:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+                <local1:CustomLabel Text="{x:Static local:AppResources.Nodataavailable}" IsVisible="{Binding IsNoDataLabelVisible}" Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                 </local1:CustomLabel>
             </StackLayout>
         </StackLayout>

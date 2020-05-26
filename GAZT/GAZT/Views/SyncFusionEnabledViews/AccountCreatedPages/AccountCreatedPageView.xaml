@@ -11,9 +11,9 @@
     <ContentPage.Content>
         <StackLayout x:Name="Mainstack" VerticalOptions="Center" HorizontalOptions="Center">
             <Image  Source="ic_check_circle_24px" HorizontalOptions="Center" VerticalOptions="Center" Margin="10"></Image>
-            <Label    Text="{x:Static local:AppResources.ZZAccountCreatedSuccessfully}"  Style="{StaticResource ForgotPasswordTextColor}"    HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            <Label    Text="{x:Static local:AppResources.ZZAccountCreatedSuccessfully}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource ForgotPasswordTextColor}"    HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
             </Label>
-            <Label  Text="{x:Static local:AppResources.Clickhereforlogin}"   Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="FillAndExpand"   HorizontalTextAlignment="Center" VerticalTextAlignment="Start" >
+            <Label  Text="{x:Static local:AppResources.Clickhereforlogin}"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="FillAndExpand"   HorizontalTextAlignment="Center" VerticalTextAlignment="Start" >
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Checked" Command="{Binding Source={x:Reference Name=Mainstack}, Path=BindingContext.OnLoginPageLinkClicked}"/>
                 </Label.GestureRecognizers>

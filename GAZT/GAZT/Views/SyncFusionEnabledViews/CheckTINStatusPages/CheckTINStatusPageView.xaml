@@ -144,8 +144,8 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZCRNo}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZCRNo}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Idnumber}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
@@ -158,8 +158,8 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZCRStatus}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZCRStatus}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding StatusText}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
@@ -172,8 +172,8 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZCRName}"></Span>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZZCRName}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Actnm}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
@@ -189,7 +189,7 @@
                               </StackLayout>
                         <!--//@Divya Jannapureddy adding line number 204
                         //Added below control below control-->
-                        <Label Text="{x:Static local:AppResources.ZZNocommercialregistrationslinkedtotheTIN}" VerticalOptions="CenterAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0"  HorizontalOptions="CenterAndExpand" Style="{StaticResource MicroGrayLabelStyleNew}" IsVisible="{Binding IsLabelVisible}"></Label>
+                        <Label Text="{x:Static local:AppResources.ZZNocommercialregistrationslinkedtotheTIN}" VerticalOptions="CenterAndExpand" Grid.Row="5"  Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0"  HorizontalOptions="CenterAndExpand" Style="{StaticResource MicroGrayLabelStyleNew}" IsVisible="{Binding IsLabelVisible}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
                         <!--//@Divya Jannapureddy adding line number 204
                         //Added Above control-->
                     </Grid>
