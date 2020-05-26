@@ -513,11 +513,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmEmail.HasError = true;
+                    TEmail.Text = string.Empty;
+
                 }
                 else
                 {
                     FrmEmail.HasError = false;
                 }
+            }
+            else
+            {
+                FrmEmail.HasError = false;
             }
         }
         public bool IsValid(string emailaddress)
