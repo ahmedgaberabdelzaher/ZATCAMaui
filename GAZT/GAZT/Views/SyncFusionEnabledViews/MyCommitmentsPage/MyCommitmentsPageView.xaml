@@ -39,7 +39,8 @@
 
                 <StackLayout Padding="5">
 
-                    <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"></local1:CustomLabel>
+                    <local1:CustomLabel  Padding="5" TextColor="#006450" Text="{x:Static local:AppResources.ZZMyCommitments}"  Style="{StaticResource LabelStyleFromCommonGreenStyleDashboard}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+></local1:CustomLabel>
 
                     <syncfusionCalendar:SfCalendar Margin="0" Opacity="1" x:Name="calendar" ViewMode="MonthView" ShowInlineEvents="True" MaximumEventIndicatorCount="1" DataSource="{Binding BillsAndReturnsSchedule}" NumberOfWeeksInView="5" HeightRequest="400" InlineViewMode="Agenda" AgendaViewHeight="80" FirstDayofWeek="0" FlowDirection="LeftToRight">
 

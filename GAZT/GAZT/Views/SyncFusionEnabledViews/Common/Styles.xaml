@@ -176,7 +176,7 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />
     </Style>
     <Style x:Key="LabelStyleFromCommonGreenStyleDashboard" TargetType="Label">
-        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
+        <!--<Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />-->
         <Setter Property="TextColor" Value="#005e4b" />
         <Setter Property="Margin" Value="1,5"/>
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />

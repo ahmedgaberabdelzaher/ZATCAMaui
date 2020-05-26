@@ -182,7 +182,8 @@
                     </controls1:SearchableFAQList.ItemTemplate>
                 </controls1:SearchableFAQList>
             </StackLayout>
-            <controls:CustomLabel Grid.Row="0"  Grid.RowSpan="2" Text="{x:Static local:AppResources.ZNoDataAvailable}" IsVisible="{Binding IsNoDataLabelVisible}"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center" >
+            <controls:CustomLabel Grid.Row="0"  Grid.RowSpan="2" Text="{x:Static local:AppResources.ZNoDataAvailable}" IsVisible="{Binding IsNoDataLabelVisible}"  Style="{StaticResource GAZTGrayLabelStyleForSmallFont}"  HorizontalOptions="Center" VerticalOptions="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+>
             </controls:CustomLabel>
             <Grid Grid.Row="0"  Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">

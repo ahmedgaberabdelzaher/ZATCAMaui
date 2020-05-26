@@ -134,7 +134,7 @@
                                     <ViewCell>
                                         <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="DarkGreen" IndicatorPosition="Left" IndicatorThickness="5" >
                                             <StackLayout Orientation="Horizontal">
-                                                <local:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
+                                                <local:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start" FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                 </local:CustomLabel>
                                                 <Image Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
                                                 </Image>
