@@ -228,6 +228,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
         {
             try
             {
+                SelectedFormBindleFbnumPrev = null;
+                SelectedFormBindleFbtypCancel = null;
+                
                 FormBundleModel formbundleList = new FormBundleModel();
                 string lang = UtilityManager.GetLanguageParameter();
                 formbundleList = await WebServiceManager.GAZTGetFormBundleModel();
@@ -349,6 +352,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                 Child.Add(Item);
             }
             ListFormBudles = Child;
+        }
+
+        public void ClearData()
+        {
+            FormBundleList = null;
+            FormBundleApplicatioNumberList = null;
+           SelectedFormBindleFbtyp = null;
+            SelectedFormBindleFbnum = null;
+           ListFormBudles = null;
         }
     }
 }

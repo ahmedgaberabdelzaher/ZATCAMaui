@@ -57,11 +57,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <!--<Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center">
-                </Label>
-                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
-                </Frame>
-                <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />-->
+
                 <ScrollView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
                     <Grid   Margin="0" Padding="5" HorizontalOptions="FillAndExpand" RowSpacing="0" >
                         <Grid.RowDefinitions>
@@ -81,11 +77,8 @@
                             <ColumnDefinition Width="80*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="{x:Static local:AppResources.ZTERReportCategory1}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"  VerticalOptions="Center" Margin="0,5,0,5" >
-                            <!--<Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Label.GestureRecognizers>-->
-                        </Label>
+                            <Label Text="{x:Static local:AppResources.ZTERReportCategory1}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="StartAndExpand" Grid.Row="0" Grid.Column="0"  VerticalOptions="Center" Margin="0,5,0,5" >
+                            </Label>
                         <Image Grid.Row="0"  Grid.Column="1"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec1}" />
                         <ContentView HorizontalOptions="FillAndExpand"
              VerticalOptions="FillAndExpand"
@@ -97,10 +90,8 @@ Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                         </ContentView>
                         <!--category 1-->
                         <BoxView BackgroundColor="Gray" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
-                        <Label  Text="{x:Static local:AppResources.ZTERReportCategory2}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <!--<Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" NumberOfTapsRequired="1" Command="{Binding onCategory3Clicked}"/>
-                            </Label.GestureRecognizers>-->
+                            <Label  Text="{x:Static local:AppResources.ZTERReportCategory2}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
                         </Label>
                         <Image Grid.Row="2"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec2}"/>
                         <ContentView HorizontalOptions="FillAndExpand"
@@ -113,10 +104,8 @@ Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                         <BoxView BackgroundColor="Gray" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
                         <!--category3-->
                         <Image Grid.Row="4"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec3}" />
-                        <Label Text="{x:Static local:AppResources.ZTERReportCategory3}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <!--<Label.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2" Command="{Binding onCategory3Clicked}"/>
-                            </Label.GestureRecognizers>-->
+                            <Label Text="{x:Static local:AppResources.ZTERReportCategory3}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="4" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+
                         </Label>
                         <ContentView HorizontalOptions="FillAndExpand"
              VerticalOptions="FillAndExpand"
@@ -126,10 +115,8 @@ Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                             </ContentView.GestureRecognizers>
                         </ContentView>
                         <BoxView BackgroundColor="Gray" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
-                        <Label Text="{x:Static local:AppResources.ZTERReportCategory4}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
-                            <!--<Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3"  NumberOfTapsRequired="1" Command="{Binding onCategory4Clicked}"/>
-                            </Label.GestureRecognizers>-->
+                            <Label Text="{x:Static local:AppResources.ZTERReportCategory4}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="6" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                          
                         </Label>
                         <Image Grid.Row="6"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec4}"/>
                         <ContentView HorizontalOptions="FillAndExpand"
@@ -140,10 +127,8 @@ Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
                             </ContentView.GestureRecognizers>
                         </ContentView>
                         <BoxView BackgroundColor="Gray" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
-                        <Label Text="{x:Static local:AppResources.ZTERReportCategory5}"     Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
-                            <!--<Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" Command="{Binding onCategory5Clicked}" NumberOfTapsRequired="1"/>
-                            </Label.GestureRecognizers>-->
+                            <Label Text="{x:Static local:AppResources.ZTERReportCategory5}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="8" Grid.Column="0" HorizontalOptions="StartAndExpand" VerticalOptions="Center" >
+                            
                         </Label>
                         <Image Grid.Row="8"  Grid.Column="1"  Margin="0,0,10,0"  HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_Check_Golden_TES.png" IsVisible="{Binding IsimgVisiblec5}" />
                         <ContentView HorizontalOptions="FillAndExpand"
@@ -160,11 +145,11 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                         <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" VerticalOptions="EndAndExpand" Margin="0" HeightRequest="56" CornerRadius="0" Command="{Binding OnNextClicked}"  IsEnabled="{Binding IsnextbuttonEnable}"  BackgroundColor="{Binding NextbuttonDisableColor}" Style="{StaticResource SfButtonStyle}"  Opacity="0.7" ></buttons:SfButton>
                 </StackLayout>
                     <!--BackgroundColor="#006450"-->
-                    <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
+                    <Label Text="{x:Static local:AppResources.ZTERReportPageHeadingText}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" BackgroundColor="White">
                 </Label>
                 <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                 </Frame>
-                <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
             </Grid>
         </Grid>
 <Grid Grid.Row="0"  Grid.Column="0" IsVisible="{Binding IsLoading}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.7">

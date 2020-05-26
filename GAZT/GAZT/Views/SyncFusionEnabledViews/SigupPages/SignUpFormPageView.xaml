@@ -80,10 +80,10 @@
                             <!--heading-->
                             <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                             </Frame>
-                            <Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="{x:Static local:AppResources.ZZZIndividualInformation}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                             <!--heading-->
                             <buttons:SfCheckBox x:Name="checkBox" HorizontalOptions="StartAndExpand" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,3,10,3"/>
-                        <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
+                    <Label Text="{x:Static local:AppResources.ZZYourEntitytypeisIndividual}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  Margin="10,0,10,0" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Style="{StaticResource GAZTSmallGreenLabelStyle}" >
                         </Label>
                         <StackLayout Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
@@ -205,9 +205,9 @@
                             <!--heading-->
                             <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                             </Frame>
-                            <Label Text="{x:Static local:AppResources.ZZZBusinessInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="{x:Static local:AppResources.ZZZBusinessInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
                             <!--heading-->
-                            <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                    <Label Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}"  />
@@ -341,7 +341,7 @@
                             <!--heading-->
                             <Frame Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                             </Frame>
-                            <Label Text="{x:Static local:AppResources.ZZZContactInformation}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" />
+                    <Label Text="{x:Static local:AppResources.ZZZContactInformation}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" />
                             <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HelperText="{x:Static local:AppResources.ZZZRequired}"
     Hint="{x:Static local:AppResources.ZZEmailAddress}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
