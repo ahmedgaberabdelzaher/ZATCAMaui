@@ -3296,6 +3296,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                                 IsEnableCheckedRefund = false;
                                 IsEnableIBANType = false;
                                 IsEnableIBANIdNumber = false;
+                                IsMoreButtonEnabled = false;
                             });
                            // ManageEnabledProperty(false);
                             Device.BeginInvokeOnMainThread(async () =>
@@ -3402,6 +3403,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                             IsEnableCheckedRefund = false;
                             IsEnableIBANType = false;
                             IsEnableIBANIdNumber = false;
+                            IsMoreButtonEnabled = false;
                         });
                         Device.BeginInvokeOnMainThread(async () =>
                         {
