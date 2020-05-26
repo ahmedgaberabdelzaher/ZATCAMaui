@@ -298,7 +298,7 @@
                                                     <local1:CustomLabel
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
                                                    VerticalOptions="CenterAndExpand"
-                                                        HorizontalOptions="FillAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
