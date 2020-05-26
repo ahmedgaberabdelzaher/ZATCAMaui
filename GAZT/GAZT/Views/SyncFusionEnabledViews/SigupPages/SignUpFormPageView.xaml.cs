@@ -32,11 +32,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 viewModel = App.Locator.SignUpFormPageView;
                 InitializeComponent();
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                viewModel.SetDefaultDate();
+               // viewModel.SetDefaultDate();
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
                 this.BindingContext = viewModel;
-                ClearFields();
+               // ClearFields();
                 //  viewModel.OnPageLoad();
                 //  DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
@@ -68,11 +68,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
+           await viewModel.SetDefaultDate();
             ClearFields();
             await viewModel.OnPageLoad();
-            await viewModel.SetIssueIdList();
-            await viewModel.SetCityList();
-            viewModel.SetDefaultDate();
+           await  viewModel.SetIssueIdList();
+           await  viewModel.SetCityList();
+             
+            viewModel.PkrDBO = string.Empty;
             viewModel.TxtLOrCIssuedBy = string.Empty;
         }
         public void ClearFields()
@@ -100,7 +103,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             viewModel.TxtEmailAddress = string.Empty;
             viewModel.TxtMobileNumber = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
-            viewModel.PkrDBO = string.Empty;
+           
             //viewModel.EnteredCaptchaValue = string.Empty;
             //viewModel.Captcha = string.Empty;
             // DpDbo.Date = NullableDateProperty;
@@ -108,7 +111,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
-            
+          //   DpDbo.SelectedItem = null;
+          
             //viewModel.PkrDBO = string.Empty;
             // DpDbo.Format = "        ";
         }
@@ -2523,11 +2527,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             FrmDBO.HasError = false;
             try
             {
-                var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                string month = selectedItem[0].ToString();
-                string day = selectedItem[1].ToString();
-                string year = selectedItem[2].ToString();
-                viewModel.PkrDBO = year + "/" + month + "/" + day;
+                if (DpDbo.SelectedItem != null)
+                {
+                    var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+                    string month = selectedItem[0].ToString();
+                    string day = selectedItem[1].ToString();
+                    string year = selectedItem[2].ToString();
+                    viewModel.PkrDBO = year + "/" + month + "/" + day;
+                }
+
             }
             catch (Exception ex)
             {

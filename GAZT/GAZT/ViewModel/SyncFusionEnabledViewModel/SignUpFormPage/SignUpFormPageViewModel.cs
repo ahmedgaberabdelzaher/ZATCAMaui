@@ -508,7 +508,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             set
             {
-                _pkrDBO = value;
+                 _pkrDBO = value;
                 RaisePropertyChanged("PkrDBO");
             }
         }
@@ -890,7 +890,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 //{
                 //}
             }
-        public void SetDefaultDate()
+        public async Task  SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
             //Select today dates
