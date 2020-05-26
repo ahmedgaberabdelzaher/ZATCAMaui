@@ -184,7 +184,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewMod
                 TaxPayerProfile = App.TP;
                 TPProfileVisibility = true;
                 CurrentMobile = TaxPayerProfile.Mobile;
-                CurrentPassword = TaxPayerProfile.Password;
+                // CurrentPassword = TaxPayerProfile.Password;
+                CurrentPassword = "********";
                 OldEmail = TaxPayerProfile.Email;
                 CurrentPasswordForEmail = TaxPayerProfile.Password;
             }
@@ -219,8 +220,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewMod
                     TaxPayerProfile.Mobile = MobileNo;
                     App.TP.NewMobile = string.Empty;
                     TaxPayerProfile.NewMobile = string.Empty;
-                    CurrentPassword = TaxPayerProfile.Password;
-                }
+                     CurrentPassword = "********";
+
+                        // CurrentPassword = TaxPayerProfile.Password;
+                    }
                 }
             }
             catch (InternetException ex)
