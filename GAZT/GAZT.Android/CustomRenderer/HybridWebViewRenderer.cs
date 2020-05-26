@@ -73,18 +73,18 @@ namespace EGAZT.Droid.CustomRenderer
                     string apiUrl = ((HybridWebView)Element).Url;
                     ResetCookies();
 
-                    string lang = "en";
+                    string langTemp = "en";
                     if (App.IsArabic == true)
                     {
-                        lang = "ar";
+                        langTemp = "ar";
                     }
 
-                    Dictionary<string, string> headers = new Dictionary<string, string>
+                    Dictionary<string, string> headersTemp = new Dictionary<string, string>
                     {
-                        [GAZT.Helper.Constants.LanguageCookieNameForLogin] = lang,
+                        [GAZT.Helper.Constants.LanguageCookieNameForLogin] = langTemp,
                     };
 
-                    Control.LoadUrl(apiUrl, headers);
+                    Control.LoadUrl(apiUrl, headersTemp);
                     App.ArePreLoginLangCookiesSet = true;
                     tempElement.FadeTo(1, 1000);
                 };
