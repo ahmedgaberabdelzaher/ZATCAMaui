@@ -3190,4 +3190,7 @@ Should we require further information, we would be in contact.</value>
     <value>Contact us</value>
     <comment>Option</comment>
   </data>
+  <data name="ZZZCopyrightTextNew" xml:space="preserve">
+    <value> All Rights Reserved © 2020</value>
+  </data>
 </root>
