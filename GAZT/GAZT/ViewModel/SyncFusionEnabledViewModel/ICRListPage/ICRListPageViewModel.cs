@@ -364,10 +364,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                 IsLoading = true;
             });
             await GetVATAllReturns();
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                IsLoading = false;
-            });
+            //Device.BeginInvokeOnMainThread(() =>
+            //{
+            //    IsLoading = false;
+            //});
         }
         private async Task GetVATAllReturns()
         {
