@@ -362,8 +362,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                  await  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    IsLoading = false;
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                    });
 
+                                  
                                 }
 
                             }
@@ -379,6 +384,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                         }
                         catch (InternetException ex)
                         {
+                            IsLoading = false;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
