@@ -22,12 +22,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ContactUsPage
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
             SetLTR();
+            SetUrl();
             this.BindingContext = viewModel;
-            //ContactWebView.Source= "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
-            //"https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
-            viewModel.WebUrl = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+        }
+        public void SetUrl()
+        {
+            if (App.IsArabic)
+            {
+                viewModel.WebUrl = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+            }
+            else
+            {
+                viewModel.WebUrl = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+            }
 
         }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

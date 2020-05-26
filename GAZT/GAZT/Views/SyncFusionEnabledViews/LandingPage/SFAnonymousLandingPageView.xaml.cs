@@ -81,7 +81,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         private void LoadDate()
         {
             String Year = DateTime.Now.Year.ToString();
-            String textWithDate = AppResources.ZZZCopyrightText.Replace("2020", Year);
+            //String textWithDate = AppResources.ZZZCopyrightText.Replace("2020", Year);
+            String textWithDate = AppResources.ZZZCopyrightTextNew.Replace("2020", Year);
             viewModel.CopyRightText = textWithDate;
         }
         private void LoadData()

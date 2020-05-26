@@ -41,6 +41,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
             }
         }
 
+ 
 
         public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
