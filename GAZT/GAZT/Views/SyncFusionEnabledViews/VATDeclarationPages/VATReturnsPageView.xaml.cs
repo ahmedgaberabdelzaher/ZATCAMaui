@@ -4195,7 +4195,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                     {
                         viewModel.VATReturnFormClicked();
                         //   setColor(previous, current);
-                        EntryVatAmount.Focus();
+                        if (viewModel.IsFirstSubmission)
+                        {
+                            EntryVatAmount.Focus();
+                        }
+                        else
+                        {
+                            TabVatReturn.ScrollToAsync(TabVatReturn,ScrollToPosition.Start, true);
+                        }
                         //  NewSetColor(senderObject, current);
                     }
                     else
