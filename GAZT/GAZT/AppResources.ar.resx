@@ -2783,7 +2783,7 @@
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZWelcome" xml:space="preserve">
-    <value>أهلا</value>
+    <value>مرحباً</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZPleaseEnterValidId" xml:space="preserve">
@@ -3009,7 +3009,7 @@
     <value>يمكنك تسجيل الدخول عن طريق حسابك المسجل في الهيئة أو انشاء حساب جديد</value>
   </data>
   <data name="ZZZWelcomeOnLanding" xml:space="preserve">
-    <value>مرحبا</value>
+    <value>مرحباً</value>
   </data>
   <data name="ZZTheaccountislockedfor60minutesafterthelastloginattempt" xml:space="preserve">
     <value>الحساب معلق لمدة 60 دقيقة من أخر محاولة للدخول</value>
