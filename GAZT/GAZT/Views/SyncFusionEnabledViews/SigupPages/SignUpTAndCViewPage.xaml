@@ -75,7 +75,7 @@
                 <!--<buttons:SfCheckBox x:Name="checkBox"  VerticalOptions="Center" IsChecked="{Binding IschkTAndC}" LineBreakMode="WordWrap" Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />-->
                 <CheckBox x:Name="chkTAndC"   IsChecked="{Binding IschkTAndC}"  Margin="10,0,0,0" VerticalOptions="Center">
                     </CheckBox>
-                <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"  HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
+                <local1:CustomLabel Text="{x:Static local:AppResources.ZZIagreeontermsAndconditions}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Start" VerticalOptions="Center"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Margin="0,0,10,0"/>
                 </StackLayout>
             <StackLayout BackgroundColor="White" HeightRequest="56" WidthRequest="1000">
                 <!--<Button Text="" Command="{Binding OnSubmitClicked}" Style="{StaticResource GAZTVerifyButton}"  IsEnabled="{Binding IsButtonEnabled}" VerticalOptions="CenterAndExpand" ></Button>-->
@@ -88,7 +88,8 @@
                     Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
                     Text="{x:Static local:AppResources.ZZProceedtoindividualSignup}"
                     IsEnabled="{Binding IsButtonEnabled}"
-                    Command="{Binding OnSubmitClicked}"  
+                    Command="{Binding OnSubmitClicked}" 
+                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                      />
             </StackLayout>
         </StackLayout>

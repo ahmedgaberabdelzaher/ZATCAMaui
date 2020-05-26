@@ -55,7 +55,10 @@ xmlns:custom="clr-namespace:GAZT"
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                    <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  BackgroundColor="White" Margin="0" Padding="0,10,0,10" >
+                    <Grid>
+                        
+                 
+                    <Grid Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  BackgroundColor="White" Margin="0" Padding="0,10,0,10" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -462,7 +465,7 @@ ItemHeight="45" ShowFooter="True"
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <!--Report Location-->
-                        <local1:CustomLabel Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel Grid.Row="19"  Grid.Column="0" Grid.ColumnSpan="2"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetailRLocation}"  />
@@ -473,7 +476,7 @@ ItemHeight="45" ShowFooter="True"
                             <maps:Map Grid.Row="20"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                         </Frame>
                         <!--Attachment-->
-                        <local1:CustomLabel Grid.Row="21" x:Name="Attachment_Label"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                            <local1:CustomLabel Grid.Row="21" x:Name="Attachment_Label"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
@@ -519,13 +522,13 @@ ItemHeight="45" ShowFooter="True"
                                                                     <RowDefinition Height="auto" />
                                                                 </Grid.RowDefinitions>
                                                                 <local1:CustomLabel Text="{x:Static local:AppResources.ZTERReportDetailAttachment}" Margin="0" 
-                                   Style="{StaticResource MiniGoldLabelStyle}"
+                                   Style="{StaticResource MiniGoldLabelStyle}"  FontFamily="{StaticResource SSTArabicMedium}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                            />
-                                                                <local1:CustomLabel Text="{Binding FileNameWithExtension}" 
+                                                                    <local1:CustomLabel Text="{Binding FileNameWithExtension}" FontFamily="{StaticResource SSTArabicMedium}" 
                                   Margin="0" TextColor="Black"
                                    Style="{StaticResource MiniGrayLabelStyle}"
                                                    HorizontalOptions="StartAndExpand"
@@ -682,6 +685,32 @@ ItemHeight="45" ShowFooter="True"
                         </Frame>
                         <custom:GAZTBorderlessEntry  Grid.Row="28"  Grid.Column="0" HeightRequest="100"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TxtIDNumber}"></custom:GAZTBorderlessEntry>
                         <BoxView  Grid.Row="29" Grid.Column="0" Grid.ColumnSpan="2" Margin="0" BackgroundColor="Gray"   HeightRequest="1" />-->
+                    </Grid>
+                        <!--Activity indicator-->
+                        <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                                    <!--<busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>-->
+                                </StackLayout>
+                                <!--<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>-->
+                            </StackLayout>
+                        </Grid>
+                        <!--Activity indicator-->
                     </Grid>
                 </ScrollView>
                 <!--<Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"  >
