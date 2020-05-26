@@ -75,12 +75,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage
         }
         private async void OnLogoutClicked(Object sender, EventArgs e)
         {
-            var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-            if (result)
+            if (App.IsArabic)
             {
-                App.TP = null;
-                viewModel.LogOut();
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage,  AppResources.ZNo, AppResources.ZYes);
+                if (!result)
+                {
+                    App.TP = null;
+                    viewModel.LogOut();
+                }
+
             }
+            else
+            {
+                var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                if (result)
+                {
+                    App.TP = null;
+                    viewModel.LogOut();
+                }
+
+            }
+
         }
         public void SetRTLDirection()
         {

@@ -355,7 +355,7 @@
     <value>تم التحقق من رقم الجوال بنجاح</value>
   </data>
   <data name="PassWordChangedSucessfully" xml:space="preserve">
-    <value>تم تحديث كلمة السر بنجاح</value>
+    <value>تم تحديث كلمة المرور بنجاح</value>
   </data>
   <data name="PdfIsNoteAvailable" xml:space="preserve">
     <value>لا يوجد شهادات</value>
@@ -508,7 +508,7 @@
     <value>اسم المستخدم</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>المرورجاع أسم المستخدم أو كلمة السر</value>
+    <value>المرورجاع أسم المستخدم أو كلمة المرور</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value>كلمة التحقق غير صالحة</value>
@@ -556,7 +556,7 @@
     <value>تم إرسال اسم المستخدم إلى رقم الجوال والبريد الالكترونى المسجل للمكلف</value>
   </data>
   <data name="YourPasswordhasbeenChangedsuccessfully" xml:space="preserve">
-    <value>تم تحديث كلمة السر بنجاح</value>
+    <value>تم تحديث كلمة المرور بنجاح</value>
   </data>
   <data name="Boththepasswordfieldsshouldmatch" xml:space="preserve">
     <value>كلمة المرور الجديدة و"تأكيد كلمة المرور الجديدة" غير متطابقة</value>
@@ -802,7 +802,7 @@
     <value>البيانات الإلزامية غير مدخلة</value>
   </data>
   <data name="ZZThenewpasswordmustnotmatchtheexistingpassword" xml:space="preserve">
-    <value>كلمة السر الجديدة لا يمكن أن تكون كلمة السر الحالية</value>
+    <value>كلمة المرور الجديدة لا يمكن أن تكون كلمة المرور الحالية</value>
   </data>
   <data name="ZZPleaseusetheOTPtoactivatethenewnobilenumber" xml:space="preserve">
     <value>يمكنك استخدام رمز التالي للتفعيل رقم الجوال الجديد</value>
@@ -1230,7 +1230,7 @@
     <value>رقم الجوال الحالي</value>
   </data>
   <data name="ZForgetUsernameorPassword" xml:space="preserve">
-    <value>استرجاع أسم المستخدم أو كلمة السر</value>
+    <value>استرجاع أسم المستخدم أو كلمة المرور</value>
   </data>
   <data name="ZUpdateEmail" xml:space="preserve">
     <value>تحديث البريد الإلكتروني</value>
@@ -2183,7 +2183,7 @@
     <comment>Sign up</comment>
   </data>
   <data name="ZZConfirmpassword" xml:space="preserve">
-    <value>تأكيد كلمة السر</value>
+    <value>تأكيد كلمة المرور</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZGCCID" xml:space="preserve">
@@ -2203,7 +2203,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordregulationsforSignup" xml:space="preserve">
-    <value>كلمة السر يجب أن تحتوي على حرف كبير، حرف صغير، رمز واحد، ورقم واحد على الأقل ويجب أن يكون عدد الحروف بين 8 الى 16 حرف</value>
+    <value>كلمة المرور يجب أن تحتوي على حرف كبير، حرف صغير، رمز واحد، ورقم واحد على الأقل ويجب أن يكون عدد الحروف بين 8 الى 16 حرف</value>
     <comment>Sign up</comment>
   </data>
   <data name="ZZResendtheverificationcode" xml:space="preserve">
@@ -2295,11 +2295,11 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordandconfirmpassworddoesnotmatch" xml:space="preserve">
-    <value>كلمة السر الجديدة لا تتطابق مع تأكيد كلمة السر</value>
+    <value>كلمة المرور الجديدة لا تتطابق مع تأكيد كلمة المرور</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPasswordcannothavecharacterinthepassword" xml:space="preserve">
-    <value>كلمة السر لا يمكن أن تحتوي على حرف '"'</value>
+    <value>كلمة المرور لا يمكن أن تحتوي على حرف '"'</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPhonenumberconsistsofnumbersonly" xml:space="preserve">
@@ -2563,7 +2563,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZNewpasswordfieldandconfirmPasswordfieldshouldmatchup" xml:space="preserve">
-    <value>حقل كلمة السر وحقل تأكيد كلمة السر غير متطابقين</value>
+    <value>حقل كلمة المرور وحقل تأكيد كلمة المرور غير متطابقين</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZPleaseenterconfirmationcodesenttoyouremailaddress" xml:space="preserve">
@@ -2737,7 +2737,7 @@
     <value>لا توجد اقرارات</value>
   </data>
   <data name="ZZZPasswordNotMatched" xml:space="preserve">
-    <value>يجب تطابق حقل كلمة السر مع حقل تأكيد كلمة السر</value>
+    <value>يجب تطابق حقل كلمة المرور مع حقل تأكيد كلمة المرور</value>
   </data>
   <data name="OfText" xml:space="preserve">
     <value>من</value>
@@ -2779,7 +2779,7 @@
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZLoginLabel" xml:space="preserve">
-    <value>الرجاء إدخال أسم المستخدم وكلمة السر للدخول</value>
+    <value>الرجاء إدخال أسم المستخدم وكلمة المرور للدخول</value>
     <comment>SynfusionUILabel</comment>
   </data>
   <data name="ZZZWelcome" xml:space="preserve">
@@ -3150,7 +3150,7 @@
     <comment>Forgot Password</comment>
   </data>
   <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
-    <value>م يتم تحديث كلمة السر لعدم توافقها مع المعايير</value>
+    <value>م يتم تحديث كلمة المرور لعدم توافقها مع المعايير</value>
     <comment>Change Password</comment>
   </data>
   <data name="ChangeEmailVerification" xml:space="preserve">
