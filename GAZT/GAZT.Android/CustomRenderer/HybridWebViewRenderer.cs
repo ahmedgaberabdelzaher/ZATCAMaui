@@ -65,33 +65,48 @@ namespace EGAZT.Droid.CustomRenderer
                 Control.Settings.JavaScriptCanOpenWindowsAutomatically = true;
 
                 Control.Settings.MixedContentMode = MixedContentHandling.AlwaysAllow;
-
                 Control.SetWebViewClient(new HybridWebViewClient((HybridWebView)Element));
 
                 var tempElement = (HybridWebView)e.NewElement;
-
-                //rohith changes
-
                 tempElement.RefreshCommand = () =>
                 {
                     string apiUrl = ((HybridWebView)Element).Url;
                     ResetCookies();
 
-                    Control.LoadUrl(apiUrl);
+                    string langTemp = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langTemp = "ar";
+                    }
+
+                    Dictionary<string, string> headersTemp = new Dictionary<string, string>
+                    {
+                        [GAZT.Helper.Constants.LanguageCookieNameForLogin] = langTemp,
+                    };
+
+                    Control.LoadUrl(apiUrl, headersTemp);
                     App.ArePreLoginLangCookiesSet = true;
-                    Control?.Reload();
                     tempElement.FadeTo(1, 1000);
                 };
-                //rohith changes
 
                 ResetCookies();
-                Control.LoadUrl(((HybridWebView)Element).Url);
+
+                string lang = "en";
+                if (App.IsArabic == true)
+                {
+                    lang = "ar";
+                }
+
+                Dictionary<string, string> headers = new Dictionary<string, string>
+                {
+                    [GAZT.Helper.Constants.LanguageCookieNameForLogin] = lang,
+                };
+
+                Control.LoadUrl(((HybridWebView)Element).Url, headers);
                 //Control.SetWebViewClient(new JavascriptWebViewClient(this, $"javascript: {JavascriptFunction}"));
                 Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
             }
         }
-
-        //rohith changes
 
         private void ResetCookies()
         {
@@ -111,9 +126,6 @@ namespace EGAZT.Droid.CustomRenderer
 
             cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
         }
-
-        //rohith changes
-
     }
 
     public class JavascriptWebViewClient : FormsWebViewClient
@@ -164,51 +176,6 @@ namespace EGAZT.Droid.CustomRenderer
             Console.WriteLine(message);
         }
 
-        //    public override void onReceivedSslError(final WebView view, final SslErrorHandler handler, SslError error)
-        //    {
-        //        Log.d("CHECK", "onReceivedSslError");
-        //        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //        AlertDialog alertDialog = builder.create();
-        //        String message = "Certificate error.";
-        //        switch (error.getPrimaryError())
-        //        {
-        //            case SslError.SSL_UNTRUSTED:
-        //                message = "The certificate authority is not trusted.";
-        //                break;
-        //            case SslError.SSL_EXPIRED:
-        //                message = "The certificate has expired.";
-        //                break;
-        //            case SslError.SSL_IDMISMATCH:
-        //                message = "The certificate Hostname mismatch.";
-        //                break;
-        //            case SslError.SSL_NOTYETVALID:
-        //                message = "The certificate is not yet valid.";
-        //                break;
-        //        }
-        //        message += " Do you want to continue anyway?";
-        //        alertDialog.setTitle("SSL Certificate Error");
-        //        alertDialog.setMessage(message);
-        //        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new OnClickListener() {
-        //    @Override
-        //    public void onClick(DialogInterface dialog, int which)
-        //        {
-        //            Log.d("CHECK", "Button ok pressed");
-        //            // Ignore SSL certificate errors
-        //            handler.proceed();
-        //        }
-        //    });
-        //alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new OnClickListener()
-        //    {
-        //        @Override
-        //    public void onClick(DialogInterface dialog, int which)
-        //        {
-        //            Log.d("CHECK", "Button cancel pressed");
-        //            handler.cancel();
-        //        }
-        //    });
-        //alertDialog.show();
-        //}
-
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
         {
             base.OnPageFinished(view, url);
@@ -217,85 +184,6 @@ namespace EGAZT.Droid.CustomRenderer
             {
                 var cookieHeader = CookieManager.Instance.GetCookie(url);
                 App.LoginCookiesRetrieved = new List<CookieModel>();
-
-                //var cookiePairs = cookieHeader.Split(';');
-                //foreach (var cookiePair in cookiePairs)
-                //{
-                //    if(!cookiePair.Contains("sap-usercontext"))
-                //    {
-                //        try
-                //        {
-                //            var cookiePieces = cookiePair.Split('=');
-
-                //            if (cookiePieces[0].Contains(":"))
-                //            {
-                //                cookiePieces[0] = cookiePieces[0].Substring(0, cookiePieces[0].IndexOf(":"));
-                //            }
-
-                //            var tempName = "";
-
-                //            if (cookiePieces[0].Contains("_ga"))
-                //            {
-                //                tempName = "ga";
-                //            }
-                //            else if (cookiePieces[0].Contains("_gid"))
-                //            {
-                //                tempName = "gid";  
-                //            }
-                //            else
-                //            {
-                //                tempName = cookiePieces[0];
-                //            }
-
-                //            //                public string CName { get; set; }
-                //            //public string CValue { get; set; }
-                //            //public string Comment { get; set; }
-                //            //public string Domain { get; set; }
-                //            //public string HttpOnly { get; set; }
-                //            //public string Path { get; set; }
-                //            //public bool Secure { get; set; }
-                //            //public int Version { get; set; }
-                //            //public bool IsHttpOnly { get; set; }
-
-
-
-                //            //App.LoginCookiesRetrieved.Add(new CookieModel
-                //            //{
-                //            //    CName = tempName,
-                //            //    CValue = cookiePieces[1],
-                //            //    Path = "/",
-                //            //    Domain = new Uri(url).DnsSafeHost
-                //            //});
-                //        }
-
-                //        catch (Exception ex)
-                //        {
-                //            Console.WriteLine(ex.Message);
-                //        }
-                //    }
-
-
-                //}
-
-                //foreach (Cookie cookie in cookies)
-                //{
-                //    CookieModel cookieModel = new CookieModel();
-                //    cookieModel.CName = cookie.Name;
-                //    cookieModel.CValue = cookie.Value;
-                //    cookieModel.Comment = cookie.Comment;
-                //    cookieModel.IsHttpOnly = cookie.HttpOnly;
-                //    cookieModel.Path = cookie.Comment;
-                //    cookieModel.Secure = cookie.Secure;
-                //    cookieModel.Comment = cookie.Comment;
-                //    cookieModel.Version = (int)cookie.Version;
-                //    cookieModel.Domain = cookie.Domain;
-
-                //    App.LoginCookiesRetrieved.Add(cookieModel);
-
-                //    Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
-                //    Console.WriteLine("FinishNav: Cookie Value: " + cookieModel.CValue);
-                //}
-
                 view.EvaluateJavascript(_javascript, null);
             }
             catch (System.Exception ex)
@@ -340,64 +228,8 @@ namespace EGAZT.Droid.CustomRenderer
             cookieManager.SetAcceptCookie(true);
         }
 
-        private void ResetCookies()
-        {
-            CookieManager.Instance.RemoveAllCookie();
-            CookieManager.Instance.RemoveSessionCookie();
-            var cookieManager = CookieManager.Instance;
-
-            string lang = "en";
-            if (App.IsArabic == true)
-            {
-                lang = "ar";
-            }
-
-            string cookieValue = lang;
-            string cookieDomain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
-            string cookieName = GAZT.Helper.Constants.LanguageCookieNameForLogin;
-
-            cookieManager.SetCookie(cookieDomain, cookieName + "=" + cookieValue);
-        }
-
         public override void OnPageStarted(global::Android.Webkit.WebView view, string url, Bitmap favicon)
         {
-            //Uri apiUrl = webView.Url;
-
-            //if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
-            //{
-            //    //Task task = new Task(()=>{
-            //    //    ClearCookies(webView);
-            //    //});
-
-            //    //task.RunSynchronously();
-
-            //    element.InvokeAction("displayLoadingIndicator");
-            //}
-
-            //if (apiUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
-            //{
-            //    App.IsLoginCalled = true;
-            //}
-
-            //if (App.IsLoginCalled == true)
-            //{
-            //    try
-            //    {
-            //        if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart))
-            //        {
-            //            element.InvokeAction("displayLoginLoadingIndicator");
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //    }
-            //}
-            //else
-            //{
-            //    //element.InvokeAction("displayLoadingIndicator");
-            //}
-
             if (url.ToString().Contains("IsFGTCK=Y"))
             {
                 _hybridWebView.InvokeAction("navigateToForgotUsernamePage");
@@ -466,6 +298,13 @@ namespace EGAZT.Droid.CustomRenderer
             Console.WriteLine(message);
         }
 
+        [Obsolete]
+        public override WebResourceResponse ShouldInterceptRequest(Android.Webkit.WebView view, string url)
+        {
+            Console.WriteLine(url);
+            return base.ShouldInterceptRequest(view, url);
+        }
+
         public override void OnReceivedHttpError(Android.Webkit.WebView view, IWebResourceRequest request, WebResourceResponse errorResponse)
         {
             base.OnReceivedHttpError(view, request, errorResponse);
@@ -496,8 +335,7 @@ namespace EGAZT.Droid.CustomRenderer
                 _hybridWebView.InvokeAction("hideLoadingIndicator");
             }
 
-            //rohith changes
-
+            //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet(Euser='',DeviceId='',FcmId='',DeviceTyp='')?sap-language=EN&$format=json
             if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true && App.IsSamlApiCalledAndroid == true)
             {
                 //view.LoadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');")

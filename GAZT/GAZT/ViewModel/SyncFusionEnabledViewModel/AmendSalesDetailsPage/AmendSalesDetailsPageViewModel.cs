@@ -362,7 +362,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                  await  _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
 
                                 }
 
