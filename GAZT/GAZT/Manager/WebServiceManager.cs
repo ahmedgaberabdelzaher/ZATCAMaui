@@ -551,7 +551,12 @@ namespace GAZT.Manager
                     CurrentMobileNumber = "00" + CurrentMobileNumber;
                     String url = Constants.GaZTVerifyMobileNumber + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + "" + "',NewEmail='" + "" + "',CurrMobile='" + CurrentMobileNumber + "',NewMobile='" + NewMobileNumber + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
                     HttpResponseMessage GAZTValidateMobileNumberResponse = await client.GetAsync(uri);
                     if (GAZTValidateMobileNumberResponse != null)
                     {
@@ -998,7 +1003,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetOTPForEmail + "Langz='" + Lang + "',Tin='" + Tin + "',Otp='" + "" + "',CurrEmail='" + CurrentEmail + "',NewEmail='" + NewEmail + "',CurrMobile='" + "" + "',NewMobile='" + "" + "',CurrPwd='" + "" + "',NewPwd='" + "')?$format=json&saml2=enabled&sap-language=" + Lang;
                     var uri = new Uri(url);
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    //client.DefaultRequestHeaders.Add("Token", "123");
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
                     {
@@ -1317,21 +1322,18 @@ namespace GAZT.Manager
             {
                 try
                 {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
                     ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
                     string url = Constants.SendUserNameToEmail;
                     var uri = new Uri(url);
-                    try
-                    {
-                        App.httpClientHandler.CookieContainer = null;
-                    }
-                    catch (Exception ex)
-                    {
+                    
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
-                    }
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("Token", "123");
 
                     var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);

@@ -211,90 +211,88 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
                 CookieContainer loginWebViewCookieContainer = new CookieContainer();
                 loginWebViewCookieContainer.Add(langCookie);
-
                 hybridWebView.Cookies = loginWebViewCookieContainer;
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = true;
+                    hybridWebView.Opacity = 0;
+                });
+
                 hybridWebView.RegisterAction(async (data) =>
                 {
-                    try
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        if (data == "displayLoginLoadingIndicator")
+                        try
                         {
-                            viewModel.IsLoading = true;
-                            hybridWebView.Opacity = 0;
-                            await hybridWebView.FadeTo(0, 2000);
-                        }
+                            if (data == "displayLoginLoadingIndicator")
+                            {
 
-                        if (data == "displayLoadingIndicator")
-                        {
-                            viewModel.IsLoading = true;
-                        }
+                                hybridWebView.Opacity = 0;
+                                viewModel.IsLoading = true;
+                            }
 
-                        if (data == "hideLoadingIndicator")
-                        {
-                            viewModel.IsLoading = false;
-                        }
+                            if (data == "displayLoadingIndicator")
+                            {
+                                viewModel.IsLoading = true;
+                            }
 
-                        if (data == "hideLoginLoadingIndicator")
-                        {
-                            viewModel.IsLoading = false;
-                        }
+                            if (data == "hideLoadingIndicator")
+                            {
+                                hybridWebView.Opacity = 1;
+                                viewModel.IsLoading = false;
+                            }
 
-                        if (data == "requestTimedOut")
-                        {
-                            viewModel.IsLoading = false;
-                            viewModel._navigationService.GoBack();
-                        }
+                            if (data == "hideLoginLoadingIndicator")
+                            {
+                                viewModel.IsLoading = false;
+                            }
 
-                        if (data == "success")
-                        {
-                            App.IsUserLoggedIn = true;
-                            await viewModel.LoginCompletedInWebView();
-                        }
+                            if (data == "requestTimedOut")
+                            {
+                                viewModel.IsLoading = false;
+                                viewModel._navigationService.GoBack();
+                            }
 
-                        if (data == "navigateToForgotUsernamePage")
-                        {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            if (data == "success")
+                            {
+                                App.IsUserLoggedIn = true;
+                                await viewModel.LoginCompletedInWebView();
+                            }
+
+                            if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
-                            });
-                        }
+                            }
 
-                        //rohith changes
-                        if (data == "error")
-                        {
-                            viewModel.IsLoading = false;
-
-                            Device.BeginInvokeOnMainThread(async () =>
+                            if (data == "error")
                             {
+                                viewModel.IsLoading = false;
+
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                            });
 
-                            hybridWebView.Opacity = 0;
-                            hybridWebView.RefreshCommand();
-                        }
+                                hybridWebView.Opacity = 0;
+                                hybridWebView.RefreshCommand();
+                            }
 
-                        if (data == "errorGeneric")
-                        {
-                            viewModel.IsLoading = false;
-
-                            Device.BeginInvokeOnMainThread(async () =>
+                            if (data == "errorGeneric")
                             {
+                                viewModel.IsLoading = false;
+
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                            });
 
-                            hybridWebView.Opacity = 0;
-                            hybridWebView.RefreshCommand();
+                                hybridWebView.Opacity = 0;
+                                hybridWebView.RefreshCommand();
+                            }
                         }
-                        //rohith changes
-                    }
 
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                    }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        });
                 });
                 hybridWebView.Opacity = 1;
 

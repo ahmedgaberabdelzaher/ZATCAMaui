@@ -7,6 +7,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -741,7 +742,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                     string showmessage = AppResources.MobileNumberUpdatedSuccessfully;
                                     await _dialogService.ShowMessageBox(showmessage, AppResources.Information);
                                     //_navigationService.NavigateTo(App.DashboardPageView);
-                                    _navigationService.NavigateTo(App.SFLandingPageView);
+                                    IsLoading = true;
+                                    await WebServiceManager.GAZTLogOff();
+                                    IsLoading = false;
+                                    var _navigation = Application.Current.MainPage.Navigation;
+                                    foreach (var item in _navigation.NavigationStack)
+                                    {
+                                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                        {
+                                            _navigation.RemovePage(item);
+                                            break;
+                                        }
+                                    }
+
+                                    App.IsLogOut = true;
+                                    App.IsLoginCalled = false;
+                                    App.IsSamlApiCalledAndroid = false;
+                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                    _navigation.NavigationStack.ToList().Clear();
                                 });
                             }
                             else
@@ -755,8 +775,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                         ClearData();
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
+                                            await WebServiceManager.GAZTLogOff();
+                                            IsLoading = false;
                                             var _navigation = Application.Current.MainPage.Navigation;
-                                            await _navigation.PopToRootAsync();
+                                            foreach (var item in _navigation.NavigationStack)
+                                            {
+                                                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                                {
+                                                    _navigation.RemovePage(item);
+                                                    break;
+                                                }
+                                            }
+
+                                            App.IsLogOut = true;
+                                            App.IsLoginCalled = false;
+                                            App.IsSamlApiCalledAndroid = false;
+                                            App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                                            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                            _navigation.NavigationStack.ToList().Clear();
                                         });
                                     }
                                     string isInvalidOtp = AppResources.InvalidOTP;
@@ -774,10 +811,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                 {
                                     App.TP = null;
                                     ClearData();
+
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
+                                        await WebServiceManager.GAZTLogOff();
+                                        IsLoading = false;
                                         var _navigation = Application.Current.MainPage.Navigation;
-                                        await _navigation.PopToRootAsync();
+                                        foreach (var item in _navigation.NavigationStack)
+                                        {
+                                            if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                            {
+                                                _navigation.RemovePage(item);
+                                                break;
+                                            }
+                                        }
+
+                                        App.IsLogOut = true;
+                                        App.IsLoginCalled = false;
+                                        App.IsSamlApiCalledAndroid = false;
+                                        App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                                        _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                        _navigation.NavigationStack.ToList().Clear();
                                     });
                                 }
                                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
