@@ -32,7 +32,7 @@ namespace GAZT.Helper
         public static string LanguageCookieNameForLogin = "langMobile";
         //public static string DomainUrlForCookies = QADomainForCookies;
 
-        public static string DomainUrlForCookies = QADomainForCookies;
+        public static string DomainUrlForCookies = PreprodDomainForCookies;
 
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
@@ -40,8 +40,8 @@ namespace GAZT.Helper
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
