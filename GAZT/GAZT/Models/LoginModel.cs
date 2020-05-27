@@ -14,6 +14,9 @@ namespace GAZT.Models
         [JsonProperty("__metadata")]
         public LoginMetadata Metadata { get; set; }
 
+        [JsonProperty("Guid")]
+        public string FbGuid { get; set; }
+
         [JsonProperty("Euser")]
         public string Euser { get; set; }
 

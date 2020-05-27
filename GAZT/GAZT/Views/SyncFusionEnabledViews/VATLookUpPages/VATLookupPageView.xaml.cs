@@ -53,12 +53,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             //    LanguageToolBarCount = 1;
             //    this.ToolbarItems.Add(toolbarItem1);
             //}
-
-            //ColumnHeaderFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
-            //                            HeaderFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
-            //                            SelectedItemFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
-            //                            UnSelectedItemFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
-
             try
             {
                 switch (Xamarin.Forms.Device.RuntimePlatform)
