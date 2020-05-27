@@ -43,11 +43,85 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 //ddlLIssuedBy.SelectedIndex = -1;
                 ChangeAeroIcon();
                 SetLTR();
+                SetPickerFont();
+                //DDlIDType
             }
             catch (Exception ex)
             {
             }
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                DDlIDType.HeaderFontFamily = "GE SS Two";
+                                DDlIDType.ColumnHeaderFontFamily = "GE SS Two";
+                                DDlIDType.SelectedItemFontFamily = "GE SS Two";
+                                DDlIDType.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedBy
+
+                                ddlLIssuedBy.HeaderFontFamily = "GE SS Two";
+                                ddlLIssuedBy.ColumnHeaderFontFamily = "GE SS Two";
+                                ddlLIssuedBy.SelectedItemFontFamily = "GE SS Two";
+                                ddlLIssuedBy.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedByCity
+
+                                ddlLIssuedByCity.HeaderFontFamily = "GE SS Two";
+                                ddlLIssuedByCity.ColumnHeaderFontFamily = "GE SS Two";
+                                ddlLIssuedByCity.SelectedItemFontFamily = "GE SS Two";
+                                ddlLIssuedByCity.UnSelectedItemFontFamily = "GE SS Two";//ddlLIssuedByCity
+                            }
+                            else
+                            {
+                                DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                                DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+
+                                ddlLIssuedBy.HeaderFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedBy.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedBy.SelectedItemFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedBy.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedByCity
+
+
+                                ddlLIssuedByCity.HeaderFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedByCity.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedByCity.SelectedItemFontFamily = "SSTArabic-Medium";
+                                ddlLIssuedByCity.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedByCity
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+                        ddlLIssuedBy.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedBy.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedBy.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedBy.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+
+
+                        ddlLIssuedByCity.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedByCity.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedByCity.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        ddlLIssuedByCity.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

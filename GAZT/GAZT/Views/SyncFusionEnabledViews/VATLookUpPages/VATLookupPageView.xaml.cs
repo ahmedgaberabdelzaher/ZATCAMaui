@@ -41,18 +41,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             SetLTR();
-
+            SetPickerFont();
             NavigationPage.SetBackButtonTitle(this, "");
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             PPicker.SelectedItem = viewModel.ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
-            //ToolbarItem toolbarItem1 = new ToolbarItem
-            //{
-            //};
-            //if (LanguageToolBarCount == 0)
-            //{
-            //    LanguageToolBarCount = 1;
-            //    this.ToolbarItems.Add(toolbarItem1);
-            //}
+            
+        }
+        public void SetPickerFont()
+        {
             try
             {
                 switch (Xamarin.Forms.Device.RuntimePlatform)
@@ -89,13 +85,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             {
 
             }
-            
-
-             //< On Platform = "Android" Value = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
-   
-             //  < On Platform = "iOS" Value = "GE SS Two" />
-      
-             //     < On Platform = "UWP" Value = "Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
 
         }
         public void ChangeAeroIcon()

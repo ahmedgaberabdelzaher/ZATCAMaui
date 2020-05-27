@@ -27,16 +27,67 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             this.BindingContext = viewModel;
             viewModel.ClearData();
+            SetPickerFont();
             ChangeAeroIcon();
             OnPageLoad();
-            //CPicker_imgtap.IsEnabled = false;
-            //tapImg.Tapped += Gesture_Tapped;
-            //void Gesture_Tapped(object sender, EventArgs e)
-            //{
-            //    tapImg.Tapped -= Gesture_Tapped;
-            //}
+            //DDlIDType
             SetLTR();
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                                DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//CPicker
+
+                                CPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                CPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                CPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                CPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//CPicker
+                            }
+                            else
+                            {
+                                DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
+                                DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//CPicker
+
+                                CPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                CPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                CPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                CPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//CPicker
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CPicker
+
+                        CPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CPicker
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called

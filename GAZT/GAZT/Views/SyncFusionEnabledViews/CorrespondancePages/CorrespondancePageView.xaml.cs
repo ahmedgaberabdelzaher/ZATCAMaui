@@ -47,33 +47,62 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
                 {
 
                     case Xamarin.Forms.Device.iOS:
-                        FPickerZakat.HeaderFontFamily = "GE SS Two";
-                        FPickerVAT.HeaderFontFamily = "GE SS Two";
-                        FPickerET.HeaderFontFamily = "GE SS Two";
-                        FPickerZakat.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerZakat.SelectedItemFontFamily = "GE SS Two";
-                        FPickerZakat.UnSelectedItemFontFamily = "GE SS Two";
-                        FPickerVAT.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerVAT.SelectedItemFontFamily = "GE SS Two";
-                        FPickerVAT.UnSelectedItemFontFamily = "GE SS Two";
-                        FPickerET.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerET.SelectedItemFontFamily = "GE SS Two";
-                        FPickerET.UnSelectedItemFontFamily = "GE SS Two";
+                        {
+                            if (App.IsArabic)
+                            {
+                                FPickerZakat.HeaderFontFamily = "GE SS Two";
+                                FPickerZakat.ColumnHeaderFontFamily = "GE SS Two";
+                                FPickerZakat.SelectedItemFontFamily = "GE SS Two";
+                                FPickerZakat.UnSelectedItemFontFamily = "GE SS Two";//FPickerVAT
 
+                                FPickerVAT.HeaderFontFamily = "GE SS Two";
+                                FPickerVAT.ColumnHeaderFontFamily = "GE SS Two";
+                                FPickerVAT.SelectedItemFontFamily = "GE SS Two";
+                                FPickerVAT.UnSelectedItemFontFamily = "GE SS Two";//FPickerET
+
+                                FPickerET.HeaderFontFamily = "GE SS Two";
+                                FPickerET.ColumnHeaderFontFamily = "GE SS Two";
+                                FPickerET.SelectedItemFontFamily = "GE SS Two";
+                                FPickerET.UnSelectedItemFontFamily = "GE SS Two";
+                            }
+                            else
+                            {
+                                FPickerZakat.HeaderFontFamily = "SSTArabic-Medium";
+                                FPickerZakat.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                FPickerZakat.SelectedItemFontFamily = "SSTArabic-Medium";
+                                FPickerZakat.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                                FPickerVAT.HeaderFontFamily = "SSTArabic-Medium";
+                                FPickerVAT.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                FPickerVAT.SelectedItemFontFamily = "SSTArabic-Medium";
+                                FPickerVAT.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+                                FPickerET.HeaderFontFamily = "SSTArabic-Medium";
+                                FPickerET.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                FPickerET.SelectedItemFontFamily = "SSTArabic-Medium";
+                                FPickerET.UnSelectedItemFontFamily = "SSTArabic-Medium";
+
+
+                            }
+                        }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        FPickerZakat.HeaderFontFamily = "GE SS Two";
-                        FPickerVAT.HeaderFontFamily = "GE SS Two";
-                        FPickerET.HeaderFontFamily = "GE SS Two";
-                        FPickerZakat.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerZakat.SelectedItemFontFamily = "GE SS Two";
-                        FPickerZakat.UnSelectedItemFontFamily = "GE SS Two";
-                        FPickerVAT.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerVAT.SelectedItemFontFamily = "GE SS Two";
-                        FPickerVAT.UnSelectedItemFontFamily = "GE SS Two";
-                        FPickerET.ColumnHeaderFontFamily = "GE SS Two";
-                        FPickerET.SelectedItemFontFamily = "GE SS Two";
-                        FPickerET.UnSelectedItemFontFamily = "GE SS Two";
+                        FPickerZakat.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerZakat.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerZakat.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerZakat.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium"; FPickerVAT
+
+                        FPickerVAT.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerVAT.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerVAT.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerVAT.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//FPickerET
+
+                        FPickerET.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerET.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerET.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        FPickerET.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";//FPickerET
+
+
                         break;
                 }
             }
@@ -81,7 +110,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
             {
 
             }
+
         }
+
         protected override void OnSizeAllocated(double width, double height)
         {
             base.OnSizeAllocated(width, height); //must be called
