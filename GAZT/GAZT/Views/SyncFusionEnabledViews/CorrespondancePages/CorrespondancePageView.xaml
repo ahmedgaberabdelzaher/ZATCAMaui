@@ -85,11 +85,8 @@
                                 </local:CustomButton>
                                 <syncfusion:SfPicker 
                    HeaderText="{x:Static custom2:AppResources.ZZSort}"
-  ColumnHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        SelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        UnSelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                     HeaderHeight="40"
+                                    HeaderTextColor="White"
                     ShowHeader="true"
                     ShowColumnHeader="False"
                 x:Name="FPickerZakat"
@@ -294,10 +291,7 @@
                                 <local:CustomButton x:Name="BPickerButtonVAT" Clicked="BPickerButtonVAT_Clicked" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                                 </local:CustomButton>
                                 <syncfusion:SfPicker
-                                      ColumnHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        SelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        UnSelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                    HeaderTextColor="White"
                     HeaderHeight="40"
                     ShowHeader="true"
                     ShowColumnHeader="False"
@@ -510,11 +504,8 @@
                                 </local:CustomButton>
                                 <syncfusion:SfPicker 
                     HeaderHeight="40"
-                                      ColumnHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        SelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        UnSelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                     ShowHeader="true"
+                                    HeaderTextColor="White"
                     ShowColumnHeader="False"
                 x:Name="FPickerET"
                    BackgroundColor="#EAF7CC"
