@@ -155,10 +155,7 @@
                     HeaderHeight="40"
                     ShowHeader="true"
                    HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
-                                        ColumnHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        SelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-                                        UnSelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+   HeaderTextColor="White"
              
                     ShowColumnHeader="False"
                 x:Name="BPicker"

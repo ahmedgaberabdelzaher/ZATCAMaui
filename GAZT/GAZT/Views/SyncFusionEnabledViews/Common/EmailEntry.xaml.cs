@@ -26,8 +26,41 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
         {
             InitializeComponent();
             this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+            SetPickerFont();
             SetLTR();
+            //TinsPicker
+
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        TinsPicker.HeaderFontFamily = "GE SS Two";
+                        TinsPicker.ColumnHeaderFontFamily = "GE SS Two";
+                        TinsPicker.SelectedItemFontFamily = "GE SS Two";
+                        TinsPicker.UnSelectedItemFontFamily = "GE SS Two";
+
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        TinsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TinsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TinsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+
+                        TinsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
         //protected  override void OnAppearing()
         //{
         //    base.OnAppearing();

@@ -32,11 +32,55 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
                 this.BindingContext = viewModel;
                 ChangeAeroIcon();
                 //  viewModel.onPageLoad();
+                SetPickerFont();
             }
             catch(Exception ex)
             {
             }
             SetLTR();
+        }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        FPickerZakat.HeaderFontFamily = "GE SS Two";
+                        FPickerVAT.HeaderFontFamily = "GE SS Two";
+                        FPickerET.HeaderFontFamily = "GE SS Two";
+                        FPickerZakat.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerZakat.SelectedItemFontFamily = "GE SS Two";
+                        FPickerZakat.UnSelectedItemFontFamily = "GE SS Two";
+                        FPickerVAT.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerVAT.SelectedItemFontFamily = "GE SS Two";
+                        FPickerVAT.UnSelectedItemFontFamily = "GE SS Two";
+                        FPickerET.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerET.SelectedItemFontFamily = "GE SS Two";
+                        FPickerET.UnSelectedItemFontFamily = "GE SS Two";
+
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        FPickerZakat.HeaderFontFamily = "GE SS Two";
+                        FPickerVAT.HeaderFontFamily = "GE SS Two";
+                        FPickerET.HeaderFontFamily = "GE SS Two";
+                        FPickerZakat.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerZakat.SelectedItemFontFamily = "GE SS Two";
+                        FPickerZakat.UnSelectedItemFontFamily = "GE SS Two";
+                        FPickerVAT.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerVAT.SelectedItemFontFamily = "GE SS Two";
+                        FPickerVAT.UnSelectedItemFontFamily = "GE SS Two";
+                        FPickerET.ColumnHeaderFontFamily = "GE SS Two";
+                        FPickerET.SelectedItemFontFamily = "GE SS Two";
+                        FPickerET.UnSelectedItemFontFamily = "GE SS Two";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         protected override void OnSizeAllocated(double width, double height)
         {
