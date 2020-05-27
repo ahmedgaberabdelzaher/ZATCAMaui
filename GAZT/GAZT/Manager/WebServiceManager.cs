@@ -59,7 +59,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                   throw new Exception(AppResources.NetworkConnectivityIssue);
+                    throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
             }
             else
@@ -840,7 +840,7 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='" + Tin + "',Fbguid='" + "',UserTin='" + "'" + ")?&saml2=enabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
+                    String url = Constants.GetMyICRs + lang + "',Gpart='',Euser='',Fbguid='" + App.LoginDataRetrieved.FbGuid + "',UserTin='" + "'" + ")?&saml2=enabled" + "&$expand=ICR_LISTSet,ICR_STATUSSet&sap-language=" + lang + "&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTMyICRsResponse = client.GetAsync(uri).Result;
@@ -928,7 +928,7 @@ namespace GAZT.Manager
                     String url = Constants.GAZTGetTP + "='" + Tin + "',Langz='" + Lang + "')" + "?&$expand=TPOC_LIST&saml2=enabled&$format=json";
 
                     client.DefaultRequestHeaders.Add("Token", App.Token);
-                    
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateAndChangePasswordResponse = await client.GetAsync(uri);
                     if (GAZTValidateAndChangePasswordResponse != null)
@@ -1289,7 +1289,7 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                     }
@@ -1328,7 +1328,7 @@ namespace GAZT.Manager
                     ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
                     string url = Constants.SendUserNameToEmail;
                     var uri = new Uri(url);
-                    
+
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -1410,7 +1410,7 @@ namespace GAZT.Manager
 
                     ////client.DefaultRequestHeaders.Add("Token", App.Token);
 
-                   // client.DefaultRequestHeaders.Add("Token", App.Token);
+                    // client.DefaultRequestHeaders.Add("Token", App.Token);
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTTinStatus = await client.GetAsync(uri);
@@ -1533,6 +1533,7 @@ namespace GAZT.Manager
             if (CrossConnectivity.Current.IsConnected)
             {
                 string NewToken = string.Empty;
+                string FbGuid = App.LoginDataRetrieved.FbGuid;
                 try
                 {
                     VATDeclaration _vATDeclaration = new VATDeclaration();
@@ -1542,7 +1543,9 @@ namespace GAZT.Manager
                     // String url = "https://sapgatewayqa.gazt.gov.sa:443/sap/opu/odata/SAP/    ZDP_VATR_M_SRV/HDRSet(Periodkeyz='',Fbnumz='',Langz='E',Officerz='',Gpartz='3100032587',Euser='3100032587',Fbguid='005056B1F8FB1EEA8EEEAA379984A7B3')?saml2=disabled&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "',SrcAppz='MB'" + ")?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     // String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "MB" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "')?saml2=disabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+
                     String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'" + ",Officerz='" + "" + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
+
 
                     //String url = Constants.GAZTGetAllVATDeclarationReturnData + "" + "'" + ",Fbnumz='" + "" + "'" + ",Langz='" + Lang + "'"  + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + EUser + "'" + ",Fbguid='" + Fbguid + "'" + ")?saml2=enabled&sap-language=" + Lang + "&$expand=ADRSet,ATTACHSet,CFSet,IBANSet,NOTESSet,VATR_MSGSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
@@ -1695,9 +1698,8 @@ namespace GAZT.Manager
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                                ErrorMessageForVAT += "\u0020";
                                 ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString=ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                                 //ErrorMessageForVAT
                             }
@@ -2044,7 +2046,7 @@ namespace GAZT.Manager
                     String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var uri = new Uri(url);
-                    client.DefaultRequestHeaders.Add("Token","123");
+                    client.DefaultRequestHeaders.Add("Token", "123");
                     var response = await client.GetAsync(url);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
@@ -2186,7 +2188,10 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", "123");
 
-                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                    // String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+
+                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
                     if (GAZTValidateOTPResponse != null)
@@ -2474,7 +2479,9 @@ namespace GAZT.Manager
                     String url;
                     //if (InvFlag.Equals("I"))
                     //{
-                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                    //url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+
                     //}
                     //else
                     //{
@@ -3669,7 +3676,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static async  Task<ReportRetriveByMobNoRootObject>  GAZTTESReportByMobNo(string TPmobno)
+        public static async Task<ReportRetriveByMobNoRootObject> GAZTTESReportByMobNo(string TPmobno)
         {
             ReportRetriveByMobileNumberPost Cred = new ReportRetriveByMobileNumberPost();
             Cred.WSUserName = "GAZT@CRM";
@@ -3694,8 +3701,8 @@ namespace GAZT.Manager
                     //client.DefaultRequestHeaders.Add("Accept", "application/json");//
                     var serilized = JsonConvert.SerializeObject(Cred);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                      HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                     var response = await res.Content.ReadAsStringAsync();
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var response = await res.Content.ReadAsStringAsync();
                     terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
                     return terfreport;
                 }
@@ -4411,6 +4418,8 @@ namespace GAZT.Manager
 
                                 App.LoginDataRetrieved = loginModel;
                                 App.Token = App.LoginDataRetrieved.DeviceToken;
+
+
 
                                 if (loginModel == null)
                                     throw new GAZTTaxPayerProfileDataException();
