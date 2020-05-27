@@ -122,7 +122,9 @@
                         <syncfusion:SfPicker x:Name="PPicker"
                     HeaderHeight="40"
                     ShowHeader="true"
+                                             HeaderTextColor="White"
                     HeaderText="{x:Static local:AppResources.ZSearchParameter}"
+                                       
                    HeaderBackgroundColor="#006450"
                     SelectedItemTextColor="#006450"
                     BorderColor="Black"

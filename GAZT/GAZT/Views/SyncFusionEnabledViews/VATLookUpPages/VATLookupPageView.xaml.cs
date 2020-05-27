@@ -53,6 +53,45 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
             //    LanguageToolBarCount = 1;
             //    this.ToolbarItems.Add(toolbarItem1);
             //}
+
+            //ColumnHeaderFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
+            //                            HeaderFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
+            //                            SelectedItemFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
+            //                            UnSelectedItemFontFamily = "{StaticResource GAZT_FONT_MEDIUM}"
+
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        PPicker.HeaderFontFamily = "GE SS Two";
+                        PPicker.ColumnHeaderFontFamily = "GE SS Two";
+                        PPicker.SelectedItemFontFamily = "GE SS Two";
+                        PPicker.UnSelectedItemFontFamily = "GE SS Two";
+
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        PPicker.HeaderFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.ColumnHeaderFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.SelectedItemFontFamily = "GE SS Two";//"GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+
+                        PPicker.UnSelectedItemFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            
+
+             //< On Platform = "Android" Value = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
+   
+             //  < On Platform = "iOS" Value = "GE SS Two" />
+      
+             //     < On Platform = "UWP" Value = "Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
+
         }
         public void ChangeAeroIcon()
         {
