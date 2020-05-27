@@ -133,10 +133,10 @@ namespace GAZT.iOS.CustomRenderer
                     //    Console.WriteLine(Element.Url.ToString());
                     //});
 
-                    await Task.Run(async () =>
-                    {
-                        await tempElement.FadeTo(1, 3000);
-                    });
+                    //await Task.Run(async () =>
+                    //{
+                    //    await tempElement.FadeTo(1, 3000);
+                    //});
                 };
 
                 Task.Run(async () =>
@@ -160,10 +160,10 @@ namespace GAZT.iOS.CustomRenderer
 
                 App.ArePreLoginLangCookiesSet = true;
 
-                Task.Run(async () =>
-                {
-                    //await tempElement.FadeTo(1, 3000);
-                });
+                //Task.Run(async () =>
+                //{
+                //    //await tempElement.FadeTo(1, 3000);
+                //});
 
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
                 SetNativeControl(_wkWebView);

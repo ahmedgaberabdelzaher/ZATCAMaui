@@ -330,13 +330,13 @@ namespace EGAZT.Droid.CustomRenderer
             //Hide element by class name
             //view.LoadUrl("javascript:document.getElementById('taxTypes_items').style.display = 'none'; void(0);");
 
-            if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies) && App.IsSamlApiCalledAndroid == false)
+            if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
                 _hybridWebView.InvokeAction("hideLoadingIndicator");
             }
 
             //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet(Euser='',DeviceId='',FcmId='',DeviceTyp='')?sap-language=EN&$format=json
-            if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true && App.IsSamlApiCalledAndroid == true)
+            if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true)
             {
                 //view.LoadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');")
 

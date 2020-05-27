@@ -10,6 +10,7 @@ using GAZT.Models;
 using System.Threading;
 using Xamarin.Forms;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using System.Linq;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
 {
@@ -690,8 +691,27 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                             ClearData();
                             Device.BeginInvokeOnMainThread(async () =>
                             {
+                                await WebServiceManager.GAZTLogOff();
+                                IsLoading = false;
+
                                 var _navigation = Application.Current.MainPage.Navigation;
-                                await _navigation.PopToRootAsync();
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                    {
+                                        _navigation.RemovePage(item);
+                                        break;
+                                    }
+                                }
+
+                                App.IsLogOut = true;
+                                App.IsLoginCalled = false;
+                                App.IsSamlApiCalledAndroid = false;
+                                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                _navigation.NavigationStack.ToList().Clear();
+
                             });
                         }
                     }
