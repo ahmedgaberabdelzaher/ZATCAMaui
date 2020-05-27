@@ -59,11 +59,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                 {
 
                     case Xamarin.Forms.Device.iOS:
-                        PPicker.HeaderFontFamily = "GE SS Two";
-                        PPicker.ColumnHeaderFontFamily = "GE SS Two";
-                        PPicker.SelectedItemFontFamily = "GE SS Two";
-                        PPicker.UnSelectedItemFontFamily = "GE SS Two";
-
+                        {
+                            if (App.IsArabic)
+                            {
+                                PPicker.HeaderFontFamily = "GE SS Two";
+                                PPicker.ColumnHeaderFontFamily = "GE SS Two";
+                                PPicker.SelectedItemFontFamily = "GE SS Two";
+                                PPicker.UnSelectedItemFontFamily = "GE SS Two";
+                            }
+                            else
+                            {
+                                PPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                PPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                PPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                PPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            }
+                        }
                         break;
                     case Xamarin.Forms.Device.Android:
                         PPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
