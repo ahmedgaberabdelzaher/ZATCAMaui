@@ -2925,7 +2925,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
                     VATDeclarationData.d.StepNumberz = "04";
                     VATDeclarationData.d.UserTypz = "TP";
                     VATDeclarationData.d.Operationz = operation;
-                    IsLoading = false;
+                    //IsLoading = false;
                     var res = await SaveReturnAndGetReturnAndSetButtons();
                     //Device.BeginInvokeOnMainThread(async () =>
                     //{
