@@ -2714,7 +2714,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to QR Scanner.
+        ///   Looks up a localized string similar to Scan QR Code.
         /// </summary>
         public static string ZQRScanner {
             get {
