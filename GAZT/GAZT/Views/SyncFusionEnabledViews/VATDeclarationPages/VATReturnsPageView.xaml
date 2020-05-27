@@ -263,8 +263,8 @@
     Hint="{x:Static local:AppResources.ZVatPeriodFrom}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <local1:GAZTBorderlessEntry  Grid.Row="6"   HorizontalOptions="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
-                                            </local1:GAZTBorderlessEntry>
+                                            <controls:BorderlessEntry  Grid.Row="6" FlowDirection="LeftToRight"   HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodFromDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
+                                            </controls:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
                                         <!--<Label Text="{x:Static custom2:AppResources.ZVatPeriodTo}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" >
                         </Label>
@@ -278,8 +278,8 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <!--<custom:GAZTBorderlessEntry  Grid.Row="7"  IsReadOnly="True"  TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>-->
-                                            <local1:GAZTBorderlessEntry  Grid.Row="7"   HorizontalOptions="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
-                                            </local1:GAZTBorderlessEntry>
+                                            <controls:BorderlessEntry  Grid.Row="7"  FlowDirection="LeftToRight" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TaxpayerPeriodToDate}"    Grid.Column="0"  Grid.ColumnSpan="2" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True"    >
+                                            </controls:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
                                         <Frame Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                                         </Frame>

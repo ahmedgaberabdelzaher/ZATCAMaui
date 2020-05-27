@@ -415,11 +415,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                             else
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsLoading = false;
+                                });
                             }
                         }
                         else
                         {
                             await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                IsLoading = false;
+                            });
                         }
                     }
                 }
@@ -428,7 +436,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        // IsLoading = false;
+                         IsLoading = false;
                         _navigationService.GoBack();
                     });
                 }
@@ -438,7 +446,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //  IsLoading = false;
+                      IsLoading = false;
                     _navigationService.GoBack();
                 });
             }
