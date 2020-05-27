@@ -614,9 +614,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
                     TxtTIN.Focus();
-                    FrmTIN.HasError = true;
-                    TxtTIN.Text = string.Empty;
-                    TxtTIN.Focus();
                 }
                 else
                 { 
@@ -631,6 +628,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 if (TID.Text.Length < 10)
                 {
                     FrmID.HasError = true;
+                    TID.Text = string.Empty;
                     TID.Focus();
                 }
                 else
