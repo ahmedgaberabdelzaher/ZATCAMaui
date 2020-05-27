@@ -82,6 +82,10 @@
                 </custom:CustomButton>
                 <syncfusion:SfPicker 
                     HeaderText="{x:Static local:AppResources.ZZReturnStatus}"
+                      ColumnHeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                        HeaderFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                        SelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                        UnSelectedItemFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                     HeaderHeight="40"
                     ShowHeader="true"
                     SelectedIndex="{Binding ICRSelectedIndex}"
