@@ -72,11 +72,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
 
                         break;
                     case Xamarin.Forms.Device.Android:
-                        PPicker.HeaderFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PPicker.ColumnHeaderFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PPicker.SelectedItemFontFamily = "GE SS Two";//"GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
 
-                        PPicker.UnSelectedItemFontFamily = "GE SS Two";// "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        PPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         break;
                 }
             }

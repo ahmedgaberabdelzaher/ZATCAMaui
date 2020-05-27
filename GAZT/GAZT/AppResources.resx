@@ -2964,7 +2964,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Vat Look Up</comment>
   </data>
   <data name="ZQRScanner" xml:space="preserve">
-    <value>QR Scanner</value>
+    <value>Scan QR Code</value>
     <comment>vat Look up</comment>
   </data>
   <data name="ZStepsTitleScan" xml:space="preserve">

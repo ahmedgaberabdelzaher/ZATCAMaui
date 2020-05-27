@@ -2954,7 +2954,7 @@
     <comment>Vat Look Up</comment>
   </data>
   <data name="ZQRScanner" xml:space="preserve">
-    <value>ماسح QR</value>
+    <value>مسح الرمز (QR)</value>
     <comment>vat Look up</comment>
   </data>
   <data name="ZStepsTitleScan" xml:space="preserve">
