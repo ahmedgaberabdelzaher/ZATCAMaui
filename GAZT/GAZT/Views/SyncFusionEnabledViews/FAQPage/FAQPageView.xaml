@@ -47,12 +47,54 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid RowSpacing="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Source="{Binding WebUrl}"-->
+            <WebView x:Name="ContactWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" />
+            <Grid Grid.Row="0"    Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center"
+                                           IsBusy="{Binding IsLoading}"
+                                       ViewBoxWidth = "70" 
+                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--<ContentPage.Content>
+        
+        
+        --><!--<Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="64" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <!--  Title view  -->
+            --><!--  Title view  -->
             <!--<StackLayout  x:Name="TitleView"
                 Padding="16,8"
                 Grid.Row="0"
@@ -119,9 +161,9 @@
                     Clicked="SearchButton_Clicked"
                     Style="{StaticResource IconButtonStyle }"
                     Text="{StaticResource Search}" />
-            </StackLayout>-->
+            </StackLayout>--><!--
             <StackLayout Grid.Row="0" Spacing="0" Grid.RowSpan="2" BackgroundColor="{DynamicResource Gray-100}">
-                <!--  Header label Top Questions -->
+                --><!--  Header label Top Questions -->
                 <!--<Label  Margin ="0,24,0,24"
                     FontFamily="{StaticResource Montserrat-SemiBold}"
                     BackgroundColor="{DynamicResource Gray-100}"
@@ -133,7 +175,7 @@
                     Text="Top Questions"
                     TextColor="{DynamicResource Gray-900}"
                     HorizontalOptions="FillAndExpand" 
-                    VerticalOptions="Center"/>-->
+                    VerticalOptions="Center"/>--><!--
                 <controls1:SearchableFAQList  x:Name="Questions"
                     Padding="0"
                     VerticalOptions="FillAndExpand"                                          
@@ -143,7 +185,7 @@
                     SelectionMode="None" 
                     AutoFitMode="DynamicHeight"  
                     SearchText="{Binding SearchText}">
-                    <!-- View of each card item -->
+                    --><!-- View of each card item --><!--
                     <controls1:SearchableFAQList.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -151,21 +193,21 @@
                                     <syncfusion:SfExpander Margin="16, 0"
                                         x:Name="expander" HeaderIconPosition="End" IconColor="{DynamicResource Gray-600}"
                                         HeaderBackgroundColor="{DynamicResource Gray-White}">
-                                        <!--Header -->
+                                        --><!--Header --><!--
                                         <syncfusion:SfExpander.Header>
                                             <StackLayout Padding="0, 12">
-                                                <!--Label for Question -->
+                                                --><!--Label for Question --><!--
                                                 <Label  Style="{StaticResource FAQHeaderLabelStyle}"
                                                     Text="{Binding Question}" FontFamily="{StaticResource GAZT_FONT_BOLD}" LineBreakMode="NoWrap"/>
                                             </StackLayout>
                                         </syncfusion:SfExpander.Header>
-                                        <!--Content -->
+                                        --><!--Content --><!--
                                         <syncfusion:SfExpander.Content>
                                             <StackLayout  BackgroundColor="{DynamicResource Gray-White}"  Spacing="8" Padding="0,0,0,15"
                                                   BindableLayout.ItemsSource="{Binding Answer}">
                                                 <BindableLayout.ItemTemplate >
                                                     <DataTemplate>
-                                                        <!-- Label for Answers -->
+                                                        --><!-- Label for Answers --><!--
                                                         <Label LineHeight="{OnPlatform Default=-1,
                                                                                        Android=1.25}"   
                                                                Style="{StaticResource FAQLabelStyle}"
@@ -204,6 +246,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-        </Grid>
-    </ContentPage.Content>
+        </Grid--><!-->
+    </ContentPage.Content>-->
 </ContentPage>
