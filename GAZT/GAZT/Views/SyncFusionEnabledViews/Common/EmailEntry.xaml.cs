@@ -39,17 +39,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
                 {
 
                     case Xamarin.Forms.Device.iOS:
-                        TinsPicker.HeaderFontFamily = "GE SS Two";
-                        TinsPicker.ColumnHeaderFontFamily = "GE SS Two";
-                        TinsPicker.SelectedItemFontFamily = "GE SS Two";
-                        TinsPicker.UnSelectedItemFontFamily = "GE SS Two";
-
+                        {
+                            if (App.IsArabic)
+                            {
+                                TinsPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                TinsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";// "GE SS Two";
+                                TinsPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                TinsPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            }
+                            else
+                            {
+                                TinsPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                TinsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                TinsPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                TinsPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            }
+                        }
                         break;
                     case Xamarin.Forms.Device.Android:
                         TinsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         TinsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         TinsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-
                         TinsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                         break;
                 }
@@ -58,6 +68,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
             {
 
             }
+
         }
 
 

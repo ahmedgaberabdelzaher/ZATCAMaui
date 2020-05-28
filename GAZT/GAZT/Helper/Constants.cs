@@ -31,6 +31,8 @@ namespace GAZT.Helper
 
         public static string LanguageCookieNameForLogin = "langMobile";
         public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string DomainUrlForCookies = QADomainForCookies;
+
 
        // public static string DomainUrlForCookies = PreprodDomainForCookies;
 

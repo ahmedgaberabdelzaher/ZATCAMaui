@@ -48,12 +48,101 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     SetLocationToMap();
                 }
                 SetDataToUI();
+                SetPickerFont();
+                //RegionPicker
             }
             catch (Exception ex)
             {
             }
             // viewModel.SelectedCategory = SelectedCat;
         }
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                RegionPicker.HeaderFontFamily = "GE SS Two";
+                                RegionPicker.ColumnHeaderFontFamily = "GE SS Two";
+                                RegionPicker.SelectedItemFontFamily = "GE SS Two";
+                                RegionPicker.UnSelectedItemFontFamily = "GE SS Two";//RegionPickerAR
+
+                                RegionPickerAR.HeaderFontFamily = "GE SS Two";
+                                RegionPickerAR.ColumnHeaderFontFamily = "GE SS Two";
+                                RegionPickerAR.SelectedItemFontFamily = "GE SS Two";
+                                RegionPickerAR.UnSelectedItemFontFamily = "GE SS Two";//CityPicker
+
+                                CityPicker.HeaderFontFamily = "GE SS Two";
+                                CityPicker.ColumnHeaderFontFamily = "GE SS Two";
+                                CityPicker.SelectedItemFontFamily = "GE SS Two";
+                                CityPicker.UnSelectedItemFontFamily = "GE SS Two";//CityPickerAR
+
+                                CityPickerAR.HeaderFontFamily = "GE SS Two";
+                                CityPickerAR.ColumnHeaderFontFamily = "GE SS Two";
+                                CityPickerAR.SelectedItemFontFamily = "GE SS Two";
+                                CityPickerAR.UnSelectedItemFontFamily = "GE SS Two";//CityPickerAR
+                            }
+                            else
+                            {
+                                RegionPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                RegionPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                RegionPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                RegionPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//RegionPickerAR
+
+                                RegionPickerAR.HeaderFontFamily = "SSTArabic-Medium";
+                                RegionPickerAR.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                RegionPickerAR.SelectedItemFontFamily = "SSTArabic-Medium";
+                                RegionPickerAR.UnSelectedItemFontFamily = "SSTArabic-Medium";//RegionPickerAR
+
+                                CityPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                CityPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                CityPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                CityPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//CityPickerAR
+
+                                CityPickerAR.HeaderFontFamily = "SSTArabic-Medium";
+                                CityPickerAR.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                CityPickerAR.SelectedItemFontFamily = "SSTArabic-Medium";
+                                CityPickerAR.UnSelectedItemFontFamily = "SSTArabic-Medium";//CityPickerAR.HeaderFontFamily = "SSTArabic-Medium";
+                                
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+
+                        RegionPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        RegionPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPicker
+
+                        CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
+
+                        CityPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CityPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+
         private void SetDataToUI()
         {
             viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;

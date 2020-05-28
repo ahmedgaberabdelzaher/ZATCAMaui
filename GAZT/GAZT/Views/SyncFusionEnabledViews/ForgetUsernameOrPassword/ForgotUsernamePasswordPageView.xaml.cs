@@ -32,6 +32,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                 viewModel.currentAttempts = 0;
                 viewModel.OTPValidDuration = "00:00";
                 SetLTR();
+                SetPickerFont();
                 string str = "abc";
                 Items.Add(str);
                 //  NavigationPage.SetBackButtonTitle(this, "Forgot");
@@ -68,6 +69,80 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
             {
             }
         }
+
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                SelectPasswordUserNamePicker.HeaderFontFamily = "GE SS Two";
+                                SelectPasswordUserNamePicker.ColumnHeaderFontFamily = "GE SS Two";
+                                SelectPasswordUserNamePicker.SelectedItemFontFamily = "GE SS Two";
+                                SelectPasswordUserNamePicker.UnSelectedItemFontFamily = "GE SS Two";//SelectTaxpayerTypePicker
+
+                                SelectTaxpayerTypePicker.HeaderFontFamily = "GE SS Two";
+                                SelectTaxpayerTypePicker.ColumnHeaderFontFamily = "GE SS Two";
+                                SelectTaxpayerTypePicker.SelectedItemFontFamily = "GE SS Two";
+                                SelectTaxpayerTypePicker.UnSelectedItemFontFamily = "GE SS Two";//SelectedTinIdPicker
+
+
+                                SelectedTinIdPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//SelectedTinIdPicker
+                            }
+                            else
+                            {
+                                SelectTaxpayerTypePicker.HeaderFontFamily = "SSTArabic-Medium";
+                                SelectTaxpayerTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                SelectTaxpayerTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                SelectTaxpayerTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//SelectTaxpayerTypePicker
+
+                                SelectPasswordUserNamePicker.HeaderFontFamily = "SSTArabic-Medium";
+                                SelectPasswordUserNamePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                SelectPasswordUserNamePicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                SelectPasswordUserNamePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//SelectedTinIdPicker
+
+                                SelectedTinIdPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                SelectedTinIdPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//SelectedTinIdPicker
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        SelectPasswordUserNamePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectPasswordUserNamePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectPasswordUserNamePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectPasswordUserNamePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//SelectTaxpayerTypePicker
+
+                        SelectTaxpayerTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectTaxpayerTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectTaxpayerTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectTaxpayerTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//SelectTaxpayerTypePicker
+
+
+                        SelectedTinIdPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectedTinIdPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectedTinIdPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        SelectedTinIdPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+
         protected void OnSelectedTaxPAyerType(object sender, EventArgs e)  { }
         protected void OnSelectedForgetType(object sender, EventArgs e)
         {

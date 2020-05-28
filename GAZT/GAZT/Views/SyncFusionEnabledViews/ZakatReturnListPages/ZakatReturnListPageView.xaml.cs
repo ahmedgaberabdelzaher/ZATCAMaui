@@ -33,6 +33,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
             FrmLicenseIssuedBy.Margin = new Thickness(10, 0, 10, 5);
             ChangeAeroIcon();
             SetLTR();
+            SetPickerFont();
             this.BindingContext = viewModel;
             viewModel.ClearData();
             viewModel.GetZAKATICRStatusList();
@@ -46,6 +47,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                 if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             };
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+
         }
         #endregion
         #region Method
@@ -113,6 +115,47 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
             BPicker.Focus();
         }
         #endregion
+        public void SetPickerFont()
+        {
+            try
+            {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        {
+                            if (App.IsArabic)
+                            {
+                                BPicker.HeaderFontFamily = "GE SS Two";
+                                BPicker.ColumnHeaderFontFamily = "GE SS Two";
+                                BPicker.SelectedItemFontFamily = "GE SS Two";
+                                BPicker.UnSelectedItemFontFamily = "GE SS Two";
+                            }
+                            else
+                            {
+                                BPicker.HeaderFontFamily = "SSTArabic-Medium";
+                                BPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                BPicker.SelectedItemFontFamily = "SSTArabic-Medium";
+                                BPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            }
+                        }
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        BPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        BPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+
+                        BPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
         private void Bills_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
