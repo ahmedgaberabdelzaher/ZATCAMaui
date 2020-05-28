@@ -2754,10 +2754,10 @@
     <value>Edit Profile</value>
   </data>
   <data name="ZZZMyProfile" xml:space="preserve">
-    <value>الملف الشخصي</value>
+    <value>ملﻔﻲ الشخصﻲ</value>
   </data>
   <data name="ZZZFaq" xml:space="preserve">
-    <value>اسئلة متداولة</value>
+    <value>اﻷسئلة الشائعة</value>
   </data>
   <data name="ZZZHelp" xml:space="preserve">
     <value>المساعدة</value>
@@ -2984,7 +2984,7 @@
     <comment>Tax Evasion Service</comment>
   </data>
   <data name="AppVersion" xml:space="preserve">
-    <value>إصدار التطبيق</value>
+    <value>نسخة التطبيق</value>
     <comment>Option</comment>
   </data>
   <data name="ExciseTaxReturns" xml:space="preserve">
