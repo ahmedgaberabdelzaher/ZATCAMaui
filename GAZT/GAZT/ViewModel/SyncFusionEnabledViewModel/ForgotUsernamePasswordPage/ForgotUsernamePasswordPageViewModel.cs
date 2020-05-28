@@ -677,9 +677,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             set
             {
                 _forgotTypeIndex = value;
+                if (_forgotTypeIndex == 0)
+                {
+                   // SelectedTaxPayerTypeIndex = 0;
+                   if(TaxpayerTypeList != null && TaxpayerTypeList.Count > 0)
+                    {
+                        SelectedTaxPayerType = TaxpayerTypeList[0];
+                    }
+                }
+                
                 RaisePropertyChanged("ForgotTypeIndex");
             }
         }
+
+        private int _selectedTaxPayerTypeIndex;
+        public int SelectedTaxPayerTypeIndex
+        {
+            get
+            {
+                return _selectedTaxPayerTypeIndex;
+            }
+            set
+            {
+                _selectedTaxPayerTypeIndex = value;
+                RaisePropertyChanged("SelectedTaxPayerTypeIndex");
+            }
+        }
+
         #endregion
         #region Constructor
         public ForgotUsernamePasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -1586,6 +1610,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         //    //}
         //    ret
         //}
+
+        public void ClearData()
+        {
+            SelectedTaxPayerType = null;
+        }
         #endregion
     }
 }
