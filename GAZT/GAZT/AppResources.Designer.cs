@@ -7414,7 +7414,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About Us.
+        ///   Looks up a localized string similar to About GAZT.
         /// </summary>
         public static string ZZZAboutUs {
             get {

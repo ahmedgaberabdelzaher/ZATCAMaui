@@ -2927,7 +2927,7 @@ Should we require further information, we would be in contact.</value>
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZZAboutUs" xml:space="preserve">
-    <value>About Us</value>
+    <value>About GAZT</value>
   </data>
   <data name="PdfIsNotAvailableFor" xml:space="preserve">
     <value> PDF Not Available</value>
