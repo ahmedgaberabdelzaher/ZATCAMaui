@@ -413,7 +413,7 @@
                      <Label   VerticalTextAlignment="Start" LineBreakMode="WordWrap"  HorizontalTextAlignment="Center" Padding="5,0,5,0"  TextColor="White" BindingContext="{Binding TaxPayerProfile}" LineHeight="{OnPlatform iOS=.7, Android=1}" Margin="0,0,0,0">
                     <Label.FormattedText >
                         <FormattedString>
-                            <Span Text="{x:Static local:AppResources.Hi}" FontFamily="{StaticResource SSTArBold}"/>
+                                <Span Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" FontFamily="{StaticResource SSTArBold}"/>
                             <Span Text="{Binding Name}" TextColor="White"  FontFamily="{StaticResource SSTArBold}"/>
                             <Span Text="&#10;"/>
                             <!--<Span Text="{Binding Email}" TextColor="White"/>
