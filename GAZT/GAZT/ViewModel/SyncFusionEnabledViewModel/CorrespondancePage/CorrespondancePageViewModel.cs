@@ -372,7 +372,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListZAKATCorrespondance;
                                 ListZAKATCorrespondance = null;
-                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+                            //var SortedList = CorreTosort.OrderBy(x => x.StartDate); Customer.OrderBy(c => c.LastName).ThenBy(c => c.FirstName)
+                            var SortedList = CorreTosort.OrderBy(x => x.StartDate).ThenBy(x => x.Ctime);
                                 ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                         }
                     }
@@ -385,7 +386,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 ListZAKATCorrespondance = null;
                                 if (CorreTosort != null)
                                 {
-                                    var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
+                                
+                                var SortedList = CorreTosort.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime); 
+                                    //var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
                                     ListZAKATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
@@ -447,7 +450,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListVATCorrespondance;
                                 ListVATCorrespondance = null;
-                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+                                //var SortedList = CorreTosort.OrderBy(x => x.StartDate);
+                                var SortedList = CorreTosort.OrderBy(x => x.StartDate).ThenBy(x => x.Ctime); 
                                 ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
                     }
@@ -460,8 +464,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 ListVATCorrespondance = null;
                                 if (CorreTosort != null)
                                 {
-                                    var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
-                                    ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                                    var SortedList = CorreTosort.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime);
+                                ListVATCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
                     }
@@ -522,8 +526,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 List<CorrespondanceModel> CorreTosort = new List<CorrespondanceModel>();
                                 CorreTosort = ListETCorrespondance;
                                 ListETCorrespondance = null;
-                                var SortedList = CorreTosort.OrderBy(x => x.StartDate);
-                                ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                                var SortedList = CorreTosort.OrderBy(x => x.StartDate).ThenBy(x => x.Ctime);
+                            ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                             }
                     }
                     if (_selectedFilterET.ID == 2)
@@ -535,8 +539,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CorrespondancePage_ViewMode
                                 ListETCorrespondance = null;
                                 if (CorreTosort != null)
                                 {
-                                    var SortedList = CorreTosort.OrderByDescending(x => x.StartDate);
-                                    ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
+                                    var SortedList = CorreTosort.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime);
+                                ListETCorrespondance = SortedList.ToList<CorrespondanceModel>();
                                 }
                             }
                     }
