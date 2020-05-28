@@ -155,7 +155,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                         LandingCreateAccountNote.LineHeight = 1.25;
                         break;
                 }
-                LandingCreateAccountNote.LineHeight = 2;
+                
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
