@@ -26,6 +26,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
+                viewModel.ClearData();
+                UserName.Keyboard = Keyboard.Default;
                 viewModel.MainPageLayoutVisibility = true;
                 viewModel.NewPasswordVisibility = true;
                 viewModel.ConfirmPasswordVisibility = true;
@@ -187,11 +189,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                         UserName.Unfocus();
                     }
                 }
+
+             
             }
         }
         protected void OnUserNAmeFocused(object sender, EventArgs e)
         {
-            if(viewModel.SelectedTaxPayerType != null)
+            if (viewModel.ForgotTypeIndex == 1)
+            {
+                viewModel.SelectedTaxPayerType = null;
+                UserName.Keyboard = Keyboard.Default;
+            }
+
+
+            if (viewModel.ForgotTypeIndex == 0 && viewModel.SelectedTaxPayerType != null)
             {
                 UserName.Keyboard = Keyboard.Numeric;
             }
@@ -199,6 +210,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
             {
                 UserName.Keyboard = Keyboard.Default;
             }
+
+           
         }
         public void OnNewPasswordEyeClicked(object sender, EventArgs args)
         {
