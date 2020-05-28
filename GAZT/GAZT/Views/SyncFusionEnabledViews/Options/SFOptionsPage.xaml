@@ -537,8 +537,8 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZZZOptions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <!--  Title View  ZZZOptions ZZZMenu-->
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZMenu}" FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"

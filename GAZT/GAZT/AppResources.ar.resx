@@ -3188,4 +3188,32 @@
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
     <value> جميع الحقوق محفوظة © 2020</value>
   </data>
+  <data name="ZZZMenu" xml:space="preserve">
+    <value>القائمة</value>
+    <comment>Option</comment>
+  </data>
+  <data name="ZZZStepOneNew" xml:space="preserve">
+    <value>الرقم الضريبي</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepsTitleNew" xml:space="preserve">
+    <value>ادخل احد المعلومات التالية:</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepThreeNew" xml:space="preserve">
+    <value>رقم شهادة ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepTwoNew" xml:space="preserve">
+    <value>رقم السجل التجاري</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZTaxRegistrationNumber" xml:space="preserve">
+    <value>الرقم الضريبي</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZVatLookUpTitleTextNew" xml:space="preserve">
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
 </root>
