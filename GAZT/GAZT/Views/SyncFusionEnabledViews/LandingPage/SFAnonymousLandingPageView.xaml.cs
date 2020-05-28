@@ -59,6 +59,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             {
             }
         }
+
         //void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
         //{
         //    // Process changes
@@ -144,6 +145,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         {
             if (App.IsArabic)
             {
+                switch (Xamarin.Forms.Device.RuntimePlatform)
+                {
+
+                    case Xamarin.Forms.Device.iOS:
+                        LandingCreateAccountNote.LineHeight = .6;
+                        break;
+                    case Xamarin.Forms.Device.Android:
+                        LandingCreateAccountNote.LineHeight = 1.25;
+                        break;
+                }
+                LandingCreateAccountNote.LineHeight = 2;
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
