@@ -154,6 +154,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         public void ClearFields()
         {
+            viewModel.TxtLOrCIssuedByCity = string.Empty;
             viewModel.IDTypeIndex = 0;
             viewModel.SelectedLOrC = 1;
             viewModel.IsLoading = false;

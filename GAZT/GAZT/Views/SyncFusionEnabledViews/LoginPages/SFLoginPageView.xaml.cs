@@ -202,9 +202,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
 
                 hybridWebView = new HybridWebView();
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = true;
+                    hybridWebView.Opacity = 0;
+                });
+
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
-
 
                 //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
 
@@ -212,13 +218,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 CookieContainer loginWebViewCookieContainer = new CookieContainer();
                 loginWebViewCookieContainer.Add(langCookie);
                 hybridWebView.Cookies = loginWebViewCookieContainer;
-                hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel.IsLoading = true;
-                    hybridWebView.Opacity = 0;
-                });
+                hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
                 hybridWebView.RegisterAction(async (data) =>
                 {
@@ -228,7 +229,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         {
                             if (data == "displayLoginLoadingIndicator")
                             {
-
                                 hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = true;
                             }
