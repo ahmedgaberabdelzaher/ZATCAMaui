@@ -106,6 +106,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition  Height="26*"/>
                 <RowDefinition  Height="74*"/>
+                     
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100*"/>
@@ -113,8 +114,7 @@
             <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Padding="5">
                     <local1:CustomLabel  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></local1:CustomLabel>
-                    <local1:CustomLabel  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" LineHeight="{OnPlatform iOS=.7,
-                                                                                       Android=1.25}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></local1:CustomLabel>
+                    <local1:CustomLabel  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" LineHeight="{OnPlatform iOS=.6, Android=.6}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></local1:CustomLabel>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
                         <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>
                     </StackLayout>
