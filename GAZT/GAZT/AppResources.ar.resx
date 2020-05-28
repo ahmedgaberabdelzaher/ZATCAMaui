@@ -508,7 +508,7 @@
     <value>اسم المستخدم</value>
   </data>
   <data name="ForgotPasswordOrUserName" xml:space="preserve">
-    <value>المرورجاع أسم المستخدم أو كلمة المرور</value>
+    <value>نسيت اسم المستخدم أو كلمة المرور</value>
   </data>
   <data name="InvaliedCaptcha" xml:space="preserve">
     <value>كلمة التحقق غير صالحة</value>
