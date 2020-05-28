@@ -67,6 +67,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+
+
+        private string _webUrl = string.Empty;
+        public string WebUrl
+        {
+            get
+            {
+                return _webUrl;
+            }
+            set
+            {
+                _webUrl = value;
+                RaisePropertyChanged("WebUrl");
+            }
+        }
+
         #endregion
         public FAQPageViewModel(INavigationService navigationService, IDialogService dialogService) 
         {

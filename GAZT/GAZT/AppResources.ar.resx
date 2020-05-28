@@ -1113,13 +1113,13 @@
     <value>المبيعات الخاضعة للنسبة الأساسية</value>
   </data>
   <data name="ZVatStepFour" xml:space="preserve">
-    <value>الانتقال الى الخطوة ٤</value>
+    <value>الانتقال الى الخطوة 4</value>
   </data>
   <data name="ZVatStepThree" xml:space="preserve">
-    <value>الانتقال الى الخطوة ٣</value>
+    <value>الانتقال الى الخطوة 3</value>
   </data>
   <data name="ZVatStepTwo" xml:space="preserve">
-    <value>الانتقال الى الخطوة ٢</value>
+    <value>الانتقال الى الخطوة 2</value>
   </data>
   <data name="ZVatSubmittedInstructions" xml:space="preserve">
     <value>لايمكن تقديم الطلب بنجاح حتى يتم إكمال جميع الحقول الإلزامية</value>

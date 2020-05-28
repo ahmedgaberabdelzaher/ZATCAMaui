@@ -20,7 +20,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
             SetLTR();
-            onPageLoad();
+            SetUrl();
+          //  onPageLoad();
             //List<string> AnswerList = new List<string>();
             //AnswerList.Add("TestAnswer");
             //FAQ faq = new FAQ();
@@ -28,6 +29,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
             //faq.Answer = AnswerList;
             //viewModel.Questions = new System.Collections.ObjectModel.ObservableCollection<FAQ>();
             //viewModel.Questions.Add(faq);
+        }
+
+        public void SetUrl()
+        {
+            if (App.IsArabic)
+            {
+               // viewModel.WebUrl = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                viewModel.WebUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+            }
+            else
+            {
+                viewModel.WebUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+            }
+
         }
         /// <summary>
         /// Invoked when view size is changed.
@@ -45,38 +60,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
         //        }
         //    }
         //}
-        public async void onPageLoad()
-        {
-            try
-            {
-                Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.OnPageLoad();
-                    viewModel.IsLoading = false;
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Questions.ItemsSource = viewModel.Questions;
-                    });
-                });
-                Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            }
-            catch(Exception ex)
-            {
-                Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                    viewModel._navigationService.GoBack();
-                });
-            }
-           // InitializeComponent();
-        }
+        //public async void onPageLoad()
+        //{
+        //    try
+        //    {
+        //        Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = true;
+        //        });
+        //        await Task.Run(async () =>
+        //        {
+        //            await viewModel.OnPageLoad();
+        //            viewModel.IsLoading = false;
+        //            Device.BeginInvokeOnMainThread(() =>
+        //            {
+        //                Questions.ItemsSource = viewModel.Questions;
+        //            });
+        //        });
+        //        Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = false;
+        //        });
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = false;
+        //            viewModel._navigationService.GoBack();
+        //        });
+        //    }
+        //   // InitializeComponent();
+        //}
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -151,5 +166,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
         //    this.Search.IsVisible = false;
         //    this.Title.IsVisible = true;
         //}
+        private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        {
+            viewModel.IsLoading = true;
+        }
+
+        private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)
+        {
+            viewModel.IsLoading = false;
+        }
     }
 }

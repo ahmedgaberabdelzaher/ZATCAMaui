@@ -53,10 +53,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             //     currentUTC);
             // string UTCoffset = string.Format(dataFmt, "UTC offset:", currentOffset);
             //DaylightTime daylight =  localZone.GetDaylightChanges(currentYear);
+            viewModel = App.Locator.OTPPageView;
+            this.BindingContext = viewModel;
+            viewModel.numberOfSeconds = 120;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             ChangeAeroIcon();
-            viewModel = App.Locator.OTPPageView;
+          
             viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo = _ComingToOTPVerificationScreenFromAndNavigatingTo;
             try
             {
@@ -74,7 +77,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             }
             NumberOfAttemptsText.Text = viewModel.ShowAccountWIllBeLockedMessage();
             SetLTR();
-            viewModel.numberOfSeconds = 120;
+         
             try
             {
                 viewModel.OnPageLoad();
@@ -100,7 +103,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
                 });
                 return;
             }
-            this.BindingContext = viewModel;
+       
             if (Device.RuntimePlatform == Device.Android)
             {
                 DependencyService.Get<IStatusBar>().HideStatusBar();
