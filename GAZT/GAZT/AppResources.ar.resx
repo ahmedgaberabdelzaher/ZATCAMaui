@@ -2754,10 +2754,10 @@
     <value>Edit Profile</value>
   </data>
   <data name="ZZZMyProfile" xml:space="preserve">
-    <value>ملﻔﻲ الشخصﻲ</value>
+    <value>ملفي الشخصي</value>
   </data>
   <data name="ZZZFaq" xml:space="preserve">
-    <value>اﻷسئلة الشائعة</value>
+    <value>الأسئلة الشائعة</value>
   </data>
   <data name="ZZZHelp" xml:space="preserve">
     <value>المساعدة</value>
@@ -2917,7 +2917,7 @@
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZZAboutUs" xml:space="preserve">
-    <value>​​​​نبذة عن الهيئة​</value>
+    <value>نبذة عن الهيئة</value>
   </data>
   <data name="PdfIsNotAvailableFor" xml:space="preserve">
     <value>ملف PDF غير موجود</value>
@@ -3182,7 +3182,7 @@
     <comment>option </comment>
   </data>
   <data name="ZZZContactus" xml:space="preserve">
-    <value>اﻻتصال بنا</value>
+    <value>الاتصال بنا</value>
     <comment>Option</comment>
   </data>
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
