@@ -1980,89 +1980,121 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
            // OnStepButtonClicked = new Command(ExecuteStepBtnClickCommand, CanExecuteStepBtnClickCommand);
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-            if (!string.IsNullOrEmpty(ButtonName))
-            {
-                if (ButtonName == AppResources.ZVatStepTwo)
+                try
                 {
-                    //TaxpayerDetailsClicked();
-                    SelectedIndex = 1;
-                    PageSelectedItem = VatTabbledPageList[1];
-                    //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
-                    //  _dialogService.ShowMessage(AppResources.ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm, AppResources.Information);
-                }
-                else if (ButtonName == AppResources.ZVatStepThree)
-                {
-                    VATReturnFormClicked();
-                    SelectedIndex = 2;
-                    PageSelectedItem = VatTabbledPageList[2];
-                }
-                else if (ButtonName == AppResources.ZVatStepFour)
-                {
-                        try
+                    if (!string.IsNullOrEmpty(ButtonName))
+                    {
+                        if (ButtonName == AppResources.ZVatStepTwo)
                         {
-                            Task.Run(() =>
+                            //TaxpayerDetailsClicked();
+                            SelectedIndex = 1;
+                            PageSelectedItem = VatTabbledPageList[1];
+                            //  VATTabbedPageReturnCollectionView.SelectedItems.Add((this.VATTabbedPageReturnCollectionView.ItemsSource as List<VATDeclarationTabbedPageName>)[0]);
+                            //  _dialogService.ShowMessage(AppResources.ZZGeneralMessageformVoidedBeforeChangeOfRegistrationForm, AppResources.Information);
+                        }
+                        else if (ButtonName == AppResources.ZVatStepThree)
+                        {
+                            VATReturnFormClicked();
+                            SelectedIndex = 2;
+                            PageSelectedItem = VatTabbledPageList[2];
+                        }
+                        else if (ButtonName == AppResources.ZVatStepFour)
+                        {
+                            try
                             {
-                                IsLoading = true;
-                            });
-                            //    Device.BeginInvokeOnMainThread(() =>
-                            //{
-                            //    IsLoading = true;
-                            //});
-                            await SummaryClicked();
-                            ShowMsgs();
-                            SelectedIndex = 3;
-                            PageSelectedItem = VatTabbledPageList[3];
-                            //Device.BeginInvokeOnMainThread(() =>
-                            //{
-                            //    IsLoading = false;
-                            //});
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = true;
+                                    });
 
-                            Task.Run(() =>
+                                    await SummaryClicked();
+                                    ShowMsgs();
+                                    SelectedIndex = 3;
+                                    PageSelectedItem = VatTabbledPageList[3];
+
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
+                                });
+                                //    Device.BeginInvokeOnMainThread(() =>
+                                //{
+                                //    IsLoading = true;
+                                //});
+
+                                //var t = Task.Run(() =>
+                                // {
+                                //// Do some work on a background thread, allowing the UI to remain responsive
+                                //Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                //     {
+                                //         SummaryClicked();
+                                //     });
+                                // });
+
+
+                                // await SummaryClicked();
+                                //ShowMsgs();
+                                //SelectedIndex = 3;
+                                //PageSelectedItem = VatTabbledPageList[3];
+                                //Device.BeginInvokeOnMainThread(() =>
+                                //{
+                                //    IsLoading = false;
+                                //});
+
+                                //Task.Run(() =>
+                                //{
+                                //    IsLoading = false;
+                                //});
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                        else if (ButtonName == AppResources.Submit)
+                        {
+                            try
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsLoading = true;
+                                });
+                                await SubmitClicked();
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    IsLoading = false;
+                                });
+                            }
+                            catch (Exception ex)
                             {
                                 IsLoading = false;
-                            });
+                            }
                         }
-                        catch(Exception ex)
+                        //else if(ButtonName == AppResources.ZVatDownloadForm)
+                        //{
+                        //    String Url = string.Empty;
+                        //   // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
+                        //     Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
+                        //   ShowPdf(Url);
+                        //}
+                        else if (ButtonName == AppResources.ZNote)
                         {
-
+                            SetNoteData();
+                        }
+                        else if (ButtonName == "Go to ICR List")
+                        {
+                            _navigationService.GoBack();
+                            _navigationService.NavigateTo(App.ICRListPageView);
                         }
                     }
-                    else if (ButtonName == AppResources.Submit)
-                {
-                        try
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                IsLoading = true;
-                            });
-                            await SubmitClicked();
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                IsLoading = false;
-                            });
-                        }
-                        catch(Exception ex)
-                        {
-                            IsLoading = false;
-                        }
+                   
                 }
-                //else if(ButtonName == AppResources.ZVatDownloadForm)
-                //{
-                //    String Url = string.Empty;
-                //   // Url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=%2765000178937%27)/$value?saml2=disabled";
-                //     Url = Constants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVERFORM_SRV/cover_formSet(Fbnum='" + VATDeclarationData.d.Fbnum + "',Utype='')/$value?saml2=disabled";
-                //   ShowPdf(Url);
-                //}
-                else if (ButtonName == AppResources.ZNote)
+                catch(Exception ex)
                 {
-                    SetNoteData();
+
                 }
-                else if (ButtonName == "Go to ICR List")
-                {
-                    _navigationService.GoBack();
-                    _navigationService.NavigateTo(App.ICRListPageView);
-                }
-            }
             });
             onStandardRatedSalesVatAmountTapped = new Xamarin.Forms.Command(() =>
             {
@@ -2587,6 +2619,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
         }
         public async Task SummaryClicked()
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
             try
             {
                 bool value = false;
@@ -2796,6 +2832,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel
             catch(Exception ex)
             {
             }
+           await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
         public void CreditCarriedClicked()
         {
