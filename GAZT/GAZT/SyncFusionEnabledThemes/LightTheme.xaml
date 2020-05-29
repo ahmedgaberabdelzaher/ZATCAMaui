@@ -126,7 +126,8 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE SS Two" />
+            <!--<On Platform="iOS" Value="GE SS Two" />-->
+              <On Platform="iOS" Value="SSTArabic-Bold" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -140,14 +141,16 @@
     <OnPlatform x:Key="GAZT_English_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic-Medium" />
-            <On Platform="iOS" Value="SSTArabic-Medium" />
+            <!--<On Platform="iOS" Value="SSTArabic-Medium" />-->
+               <On Platform="iOS" Value="SSTArabic-Medium" />
             <On Platform="UWP" Value="SSTArabic-Medium#SSTArabic-Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_Arabic_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
-            <On Platform="iOS" Value="GE SS Two" />
+            <!--<On Platform="iOS" Value="GE SS Two" />-->
+            <On Platform="iOS" Value="SSTArabic-Medium" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -161,7 +164,8 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE SS Two" />
+            <!--<On Platform="iOS" Value="GE SS Two" />-->
+            <On Platform="iOS" Value="SSTArabic-Light" />
             <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
         </OnPlatform.Platforms>
     </OnPlatform>

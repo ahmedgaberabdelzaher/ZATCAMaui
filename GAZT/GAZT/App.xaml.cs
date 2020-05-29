@@ -81,7 +81,7 @@ namespace EGAZT
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         //public static bool PreviousIsArabic = false;
-        public static bool IsArabic = true;//true
+        public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
         public static string EUser = String.Empty;
@@ -233,7 +233,7 @@ namespace EGAZT
                         break;
                 }
             }
-            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "SSTArabic-Bold" });
             GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
             MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });

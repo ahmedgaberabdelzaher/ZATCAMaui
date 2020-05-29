@@ -145,16 +145,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         {
             if (App.IsArabic)
             {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
-                {
+                //switch (Xamarin.Forms.Device.RuntimePlatform)
+                //{
 
-                    case Xamarin.Forms.Device.iOS:
-                        LandingCreateAccountNote.LineHeight = .6;
-                        break;
-                    case Xamarin.Forms.Device.Android:
-                        LandingCreateAccountNote.LineHeight = 1.25;
-                        break;
-                }
+                //    case Xamarin.Forms.Device.iOS:
+                //        LandingCreateAccountNote.LineHeight = .6;
+                //        break;
+                //    case Xamarin.Forms.Device.Android:
+                //        LandingCreateAccountNote.LineHeight = 1.25;
+                //        break;
+                //}
                 
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
