@@ -319,8 +319,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
                 Name = string.Empty;
                 VATACCOrCRNOOrVATCER = string.Empty;
              List<VATParameterType> VATParameterList = new List<VATParameterType>
-            {
-               new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATLookupIDTaxpayerTinType1},
+            {//ZZZTaxRegistrationNumber
+               //new VATParameterType{ id = "3" , ParameterType = AppResources.ZVATLookupIDTaxpayerTinType1},
+               new VATParameterType{ id = "3" , ParameterType = AppResources.ZZZTaxRegistrationNumber},
                 new VATParameterType{ id = "2" , ParameterType = AppResources.ZVATLookupCRNumberType3},
                 new VATParameterType{ id = "4" , ParameterType = AppResources.ZVATLookupIDVatCertificateNumberType2}
             };

@@ -3193,4 +3193,32 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
     <value> All Rights Reserved © 2020</value>
   </data>
+  <data name="ZZZMenu" xml:space="preserve">
+    <value>Menu</value>
+    <comment>Option</comment>
+  </data>
+  <data name="ZZZStepOneNew" xml:space="preserve">
+    <value>Tax Registration Number</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepsTitleNew" xml:space="preserve">
+    <value>Enter one of the following information:</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepThreeNew" xml:space="preserve">
+    <value>VAT Certificate Number</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepTwoNew" xml:space="preserve">
+    <value>Commercial Registration Number</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZTaxRegistrationNumber" xml:space="preserve">
+    <value>Tax Registration Number</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZVatLookUpTitleTextNew" xml:space="preserve">
+    <value>VAT Registration Verification Service</value>
+    <comment>Vat Lookup</comment>
+  </data>
 </root>

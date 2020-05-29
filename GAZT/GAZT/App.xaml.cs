@@ -120,7 +120,8 @@ namespace EGAZT
 
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
-            AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }             InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+            AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
+                         InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
             {
                 CreateClientHandler();

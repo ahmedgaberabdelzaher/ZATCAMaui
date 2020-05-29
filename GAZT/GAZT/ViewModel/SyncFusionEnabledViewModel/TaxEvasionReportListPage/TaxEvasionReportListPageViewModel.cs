@@ -269,8 +269,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         }
         public async Task OnPageLoad()
         {
-            SetNoDataLabelVisibilityforOpen = true;
-            SetNoDataLabelVisibilityforClose = true;
+            SetNoDataLabelVisibilityforOpen = false;
+            SetNoDataLabelVisibilityforClose = false;
             try
             {
                 //string test = App.TP.Mobile;
@@ -290,6 +290,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                             {
                                 SetNoDataLabelVisibilityforOpen = false;
                             }
+                            else
+                            {
+                                SetNoDataLabelVisibilityforOpen = true;
+
+                            }
                             
                         }
                         TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
@@ -298,6 +303,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                             if (TERListReportbymobnoClosed.Count > 0)
                             {
                                 SetNoDataLabelVisibilityforClose = false;
+                            }
+                            else
+                            {
+                                SetNoDataLabelVisibilityforClose = true;
                             }
                             
                         }

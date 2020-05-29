@@ -7666,6 +7666,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu.
+        /// </summary>
+        public static string ZZZMenu {
+            get {
+                return ResourceManager.GetString("ZZZMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My Bills.
         /// </summary>
         public static string ZZZMyBillsTitle {
@@ -7885,6 +7894,42 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tax Registration Number.
+        /// </summary>
+        public static string ZZZStepOneNew {
+            get {
+                return ResourceManager.GetString("ZZZStepOneNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter one of the following information:.
+        /// </summary>
+        public static string ZZZStepsTitleNew {
+            get {
+                return ResourceManager.GetString("ZZZStepsTitleNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Certificate Number.
+        /// </summary>
+        public static string ZZZStepThreeNew {
+            get {
+                return ResourceManager.GetString("ZZZStepThreeNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commercial Registration Number.
+        /// </summary>
+        public static string ZZZStepTwoNew {
+            get {
+                return ResourceManager.GetString("ZZZStepTwoNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submitted Report.
         /// </summary>
         public static string ZZZSubmittedReport {
@@ -7908,6 +7953,15 @@ namespace EGAZT {
         public static string ZZZTaxpayerServices {
             get {
                 return ResourceManager.GetString("ZZZTaxpayerServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tax Registration Number.
+        /// </summary>
+        public static string ZZZTaxRegistrationNumber {
+            get {
+                return ResourceManager.GetString("ZZZTaxRegistrationNumber", resourceCulture);
             }
         }
         
@@ -8007,6 +8061,15 @@ namespace EGAZT {
         public static string ZZZVATLookupTitle {
             get {
                 return ResourceManager.GetString("ZZZVATLookupTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Verification Service.
+        /// </summary>
+        public static string ZZZVatLookUpTitleTextNew {
+            get {
+                return ResourceManager.GetString("ZZZVatLookUpTitleTextNew", resourceCulture);
             }
         }
         
