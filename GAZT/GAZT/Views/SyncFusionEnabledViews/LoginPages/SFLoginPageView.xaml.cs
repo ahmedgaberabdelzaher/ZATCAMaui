@@ -6,6 +6,7 @@ using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
 using System.Net;
+using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -269,22 +270,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                             if (data == "error")
                             {
+                                hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                try
+                                {
+                                    App.httpClientHandler = new HttpClientHandler();
+                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                }
+                                catch (Exception ex)
+                                {
+                                    Console.WriteLine(ex.Message);
+                                }
 
-                                hybridWebView.Opacity = 0;
-                                hybridWebView.RefreshCommand();
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                viewModel._navigationService.GoBack();
                             }
 
                             if (data == "errorGeneric")
                             {
+                                hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
 
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-
-                                hybridWebView.Opacity = 0;
-                                hybridWebView.RefreshCommand();
+                                viewModel._navigationService.GoBack();
                             }
                         }
 

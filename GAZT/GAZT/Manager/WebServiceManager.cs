@@ -1468,7 +1468,11 @@ namespace GAZT.Manager
                 try
                 {
                     VATLookUp vATLookUp = new VATLookUp();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
@@ -3051,6 +3055,7 @@ namespace GAZT.Manager
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
                     String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='" + lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=enabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // //client.DefaultRequestHeaders.Add("Token", App.Token);

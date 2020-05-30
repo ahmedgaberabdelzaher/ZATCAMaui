@@ -2,6 +2,7 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Models;
+using Plugin.Connectivity;
 using System;
 using System.Globalization;
 using System.Linq;
@@ -163,10 +164,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
         private void SignIn_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
         }
+
         private void OnTappedeService(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
