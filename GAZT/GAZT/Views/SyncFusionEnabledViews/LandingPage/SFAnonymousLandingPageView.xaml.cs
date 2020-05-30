@@ -6,6 +6,7 @@ using Plugin.Connectivity;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;

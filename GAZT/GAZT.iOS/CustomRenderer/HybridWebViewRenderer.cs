@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace GAZT.iOS.CustomRenderer
             {
                 var tempElement = (HybridWebView)e.NewElement;
                 WKHttpCookieStore wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
-
+                
                 //wKHttpCookieStore.GetAllCookies(async (cookies) =>
                 //{
                 //    if (cookies.Length > 0)
@@ -154,7 +155,6 @@ namespace GAZT.iOS.CustomRenderer
                     NSMutableDictionary dic = new NSMutableDictionary();
                     dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
                     portalReq.Headers = dic; 
-
                     Control.LoadRequest(portalReq);
                 });
 
@@ -293,6 +293,17 @@ namespace GAZT.iOS.CustomRenderer
 
                                 App.LoginCookiesRetrieved.Add(cookieModel);
                                 Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
+                            }
+
+                            try
+                            {
+                                App.httpClientHandler = new HttpClientHandler();
+                                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                            }
+                            catch(Exception ex)
+                            {
+
                             }
 
                             App.LoginDataRetrieved = new LoginModel();

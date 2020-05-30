@@ -2,6 +2,7 @@
 using GAZT;
 using GAZT.Helper;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
@@ -195,9 +196,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 try
                 {
-                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                    App.httpClientHandler = new HttpClientHandler();
+                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
@@ -277,7 +279,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 {
                                     App.httpClientHandler = new HttpClientHandler();
                                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                }
+                                catch(GAZTInvalidDataException ex)
+                                {
+
                                 }
                                 catch (Exception ex)
                                 {
