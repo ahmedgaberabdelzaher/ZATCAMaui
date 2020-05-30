@@ -210,7 +210,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-                if (BModel.eServiceName == AppResources.VATLookup)
+              //  if (BModel.eServiceName == AppResources.VATLookup)
+                if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }
@@ -255,7 +256,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-                if (BModel.eServiceName == AppResources.VATLookup)
+                //if (BModel.eServiceName == AppResources.VATLookup)
+                if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }

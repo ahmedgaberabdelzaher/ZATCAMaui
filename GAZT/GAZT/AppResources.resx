@@ -3221,4 +3221,8 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Registration Verification Service</value>
     <comment>Vat Lookup</comment>
   </data>
+  <data name="ZStepsTitleScanNew" xml:space="preserve">
+    <value>Verify entity registration in Value Added Tax by:</value>
+    <comment>vat look up</comment>
+  </data>
 </root>
