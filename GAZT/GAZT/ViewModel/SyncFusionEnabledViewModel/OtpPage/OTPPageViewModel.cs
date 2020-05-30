@@ -8,6 +8,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -758,8 +759,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                     App.IsLogOut = true;
                                     App.IsLoginCalled = false;
                                     App.IsSamlApiCalledAndroid = false;
-                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
 
+                                    try
+                                    {
+                                        App.httpClientHandler = new HttpClientHandler();
+                                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                    }
+                                    catch(Exception ex)
+                                    {
+
+                                    }
+                                    
                                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                                     _navigation.NavigationStack.ToList().Clear();
                                 });
@@ -790,7 +800,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                             App.IsLogOut = true;
                                             App.IsLoginCalled = false;
                                             App.IsSamlApiCalledAndroid = false;
-                                            App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                                            try
+                                            {
+                                                App.httpClientHandler = new HttpClientHandler();
+                                                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                            }
+                                            catch (Exception ex)
+                                            {
+
+                                            }
 
                                             _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                                             _navigation.NavigationStack.ToList().Clear();
