@@ -68,7 +68,8 @@
                         <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <!--<Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>-->
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScanNew}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>

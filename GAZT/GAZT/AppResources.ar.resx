@@ -3216,4 +3216,8 @@
     <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
     <comment>Vat Lookup</comment>
   </data>
+  <data name="ZStepsTitleScanNew" xml:space="preserve">
+    <value>تحقق من تسجيل المنشأة في ضريبة القيمة المضافة باستخدام:</value>
+    <comment>vat look up</comment>
+  </data>
 </root>

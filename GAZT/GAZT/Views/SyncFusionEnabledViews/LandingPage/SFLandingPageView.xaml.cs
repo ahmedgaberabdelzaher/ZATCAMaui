@@ -285,7 +285,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         }
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                       // if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                         {
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
@@ -348,7 +349,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                        //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                         {
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
@@ -411,7 +413,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                        //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                         {
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);

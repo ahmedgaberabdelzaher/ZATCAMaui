@@ -380,7 +380,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 else if (ButtonStatus.Equals("E0011"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = false;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing

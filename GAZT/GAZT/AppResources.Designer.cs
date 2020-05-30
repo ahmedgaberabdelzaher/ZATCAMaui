@@ -2930,6 +2930,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Verify entity registration in Value Added Tax by:.
+        /// </summary>
+        public static string ZStepsTitleScanNew {
+            get {
+                return ResourceManager.GetString("ZStepsTitleScanNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Step 3: Click on “Search” button to obtain the results.
         /// </summary>
         public static string ZStepThree {
