@@ -145,7 +145,7 @@
                                                         <TapGestureRecognizer Tapped="OnTappedeService"></TapGestureRecognizer>
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label HorizontalTextAlignment="Center" TextColor="#006450" LineHeight="{OnPlatform Android=1.1, Default = 1.25}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="9" >
+                                                <Label HorizontalTextAlignment="Center" TextColor="#006450"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="8.5" >
                                                     <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding eServiceName}" />

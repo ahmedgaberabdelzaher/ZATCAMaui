@@ -45,7 +45,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
 
 
-                // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
