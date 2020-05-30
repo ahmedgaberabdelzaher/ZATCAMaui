@@ -385,7 +385,7 @@
                         Margin="16,0,16,0"
                         Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
-                        Text="{StaticResource More}" />
+                        Text="{StaticResource ContactUS}" />
                         <!--  Privacy policy text label  -->
                         <Label
                         Grid.Column="1"

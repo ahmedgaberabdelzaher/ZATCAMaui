@@ -116,10 +116,10 @@
                     <local1:CustomLabel  Margin="7,13,7,13" Padding="0" TextColor="#006450"  Text="{x:Static local:AppResources.ZZZWelcomeOnLanding}" Style="{StaticResource LabelStyleFromCommonGreenStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></local1:CustomLabel>
                     <local1:CustomLabel  Margin="7,0,7,5" HorizontalOptions="StartAndExpand"    TextColor="#5D6770" HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZZZLandingCreateAccountNote}" x:Name="LandingCreateAccountNote"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"></local1:CustomLabel>
                     <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
-                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0"/>
+                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
-                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"/>
+                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
                     <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=250, Tablet=320, Desktop=320}"
@@ -148,7 +148,7 @@
                                                 <Label HorizontalTextAlignment="Center" TextColor="#006450" LineHeight="{OnPlatform Android=1.1, Default = 1.25}" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="9" >
                                                     <Label.FormattedText >
                                                         <FormattedString>
-                                                            <Span Text="{Binding eServiceName}"/>
+                                                            <Span Text="{Binding eServiceName}" />
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                     <Label.GestureRecognizers>
