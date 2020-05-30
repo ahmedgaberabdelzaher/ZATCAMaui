@@ -36,13 +36,13 @@ namespace GAZT.iOS.CustomRenderer
         protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
         {
             base.OnElementChanged(e);
-            
 
             if (Control == null)
             {
                 var config = new WKWebViewConfiguration();
                 _wkWebView = new WKWebView(Frame, config);
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
+                //WKWebViewConfiguration* config = [[WKWebViewConfiguration alloc] init];
 
                 var source = "var meta = document.createElement('meta');" +
                  "meta.name = 'viewport';" +
@@ -59,7 +59,9 @@ namespace GAZT.iOS.CustomRenderer
             {
                 var tempElement = (HybridWebView)e.NewElement;
                 WKHttpCookieStore wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
-                
+
+
+
                 //wKHttpCookieStore.GetAllCookies(async (cookies) =>
                 //{
                 //    if (cookies.Length > 0)
@@ -78,6 +80,7 @@ namespace GAZT.iOS.CustomRenderer
 
                 tempElement.RefreshCommand = async () =>
                 {
+
                     wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
                     await Task.Run(() =>
                     {
@@ -199,6 +202,7 @@ namespace GAZT.iOS.CustomRenderer
             if(apiUrl.ToString().Contains("IsFGTCK=Y"))
             {
                 element.InvokeAction("navigateToForgotUsernamePage");
+
             }
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))

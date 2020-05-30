@@ -118,7 +118,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
                 }
 
-
                 if (App.IsLogOut)
                 {
                     App.IsLogOut = false;

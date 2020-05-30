@@ -4228,8 +4228,15 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
-                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
                     CookieContainer cookieContainer = new CookieContainer();
 
@@ -4355,8 +4362,15 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
-                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
                     CookieContainer cookieContainer = new CookieContainer();
 
@@ -4426,8 +4440,6 @@ namespace GAZT.Manager
 
                                 App.LoginDataRetrieved = loginModel;
                                 App.Token = App.LoginDataRetrieved.DeviceToken;
-
-
 
                                 if (loginModel == null)
                                     throw new GAZTTaxPayerProfileDataException();
