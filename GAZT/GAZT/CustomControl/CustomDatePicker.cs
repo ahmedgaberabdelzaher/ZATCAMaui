@@ -35,14 +35,16 @@ namespace GAZT.CustomControl
             {
                 if (!App.IsArabic)
                 {
-                    Headers.Add("MONTH");
+                    
                     Headers.Add("DAY");
+                    Headers.Add("MONTH");
                     Headers.Add("YEAR");
                 }
                 else
                 {
-                    Headers.Add("شهر");
+                    
                     Headers.Add("يوم");
+                    Headers.Add("شهر");//month
                     Headers.Add("عام");
                 }
             }
@@ -50,14 +52,16 @@ namespace GAZT.CustomControl
             {
                 if (!App.IsArabic)
                 {
-                    Headers.Add("Month");
+                    
                     Headers.Add("Day");
+                    Headers.Add("Month");
                     Headers.Add("Year");
                 }
                 else
                 {
-                    Headers.Add("شهر");
+                    
                     Headers.Add("يوم");
+                    Headers.Add("شهر");//Month
                     Headers.Add("عام");
                 }
             }
@@ -81,7 +85,7 @@ namespace GAZT.CustomControl
                         bool isupdate = false;
                         if (e.OldValue != null && e.NewValue != null && (e.OldValue as ObservableCollection<object>).Count == 3 && (e.NewValue as ObservableCollection<object>).Count == 3)
                         {
-                            if (!object.Equals((e.OldValue as IList)[0], (e.NewValue as IList)[0]))
+                            if (!object.Equals((e.OldValue as IList)[1], (e.NewValue as IList)[1]))
                             {
                                 isupdate = true;
                             }
@@ -94,7 +98,7 @@ namespace GAZT.CustomControl
                         if (isupdate)
                         {
                             ObservableCollection<object> days = new ObservableCollection<object>();
-                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[0].ToString()], "MM", CultureInfo.InvariantCulture).Month;
+                            int month = DateTime.ParseExact(months[(e.NewValue as IList)[1].ToString()], "MM", CultureInfo.InvariantCulture).Month;
                             int year = int.Parse((e.NewValue as IList)[2].ToString());
                             months.Clear();
                             days.Clear();
@@ -168,16 +172,16 @@ namespace GAZT.CustomControl
                             }
                             if (days.Count > 0)
                             {
-                                Date.RemoveAt(1);
-                                Date.Insert(1, days);
+                                Date.RemoveAt(0);
+                                Date.Insert(0, days);
                             }
-                            if ((Date[1] as IList).Contains(oldvalue[1]))
+                            if ((Date[0] as IList).Contains(oldvalue[0]))
                             {
                                 this.SelectedItem = oldvalue;
                             }
                             else
                             {
-                                oldvalue[1] = (Date[1] as IList)[(Date[1] as IList).Count - 1];
+                                oldvalue[0] = (Date[0] as IList)[(Date[0] as IList).Count - 1];
                                 this.SelectedItem = oldvalue;
                             }
                         }
@@ -226,8 +230,9 @@ namespace GAZT.CustomControl
                 else
                     Day.Add(i.ToString());
             }
-            Date.Add(Month);
             Date.Add(Day);
+            Date.Add(Month);
+            
             Date.Add(Year);
         }
         // @Divya Jannapureddy replace this method
