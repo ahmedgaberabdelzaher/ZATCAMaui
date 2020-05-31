@@ -36,7 +36,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
                 this.BindingContext = viewModel;
-               // ClearFields();
+                loadPageData();
+                // ClearFields();
                 //  viewModel.OnPageLoad();
                 //  DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
@@ -50,6 +51,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
             }
         }
+        public async Task loadPageData()
+        {
+
+            await viewModel.SetDefaultDate();
+            ClearFields();
+            await viewModel.OnPageLoad();
+            await viewModel.SetIssueIdList();
+            await viewModel.SetCityList();
+
+
+        }
+
         public void SetPickerFont()
         {
             try
@@ -143,17 +156,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         {
             base.OnAppearing();
 
-           await viewModel.SetDefaultDate();
-            ClearFields();
-            await viewModel.OnPageLoad();
-           await  viewModel.SetIssueIdList();
-           await  viewModel.SetCityList();
+           //await viewModel.SetDefaultDate();
+           // ClearFields();
+           // await viewModel.OnPageLoad();
+           //await  viewModel.SetIssueIdList();
+           //await  viewModel.SetCityList();
              
-            viewModel.PkrDBO = string.Empty;
-            viewModel.TxtLOrCIssuedBy = string.Empty;
+           // viewModel.PkrDBO = string.Empty;
+           // viewModel.TxtLOrCIssuedBy = string.Empty;
         }
         public void ClearFields()
         {
+            viewModel.PkrDBO = string.Empty;
+            viewModel.TxtLOrCIssuedBy = string.Empty;
             viewModel.TxtLOrCIssuedByCity = string.Empty;
             viewModel.IDTypeIndex = 0;
             viewModel.SelectedLOrC = 1;
