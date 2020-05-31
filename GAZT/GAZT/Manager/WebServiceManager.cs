@@ -3382,6 +3382,41 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        public async static Task<string> GAZTSignUpFirstSubmitCGZTAcc(SignUpNextBodyModel SignUpModel)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string FirstSignupSubmit = string.Empty;
+                    string url = Constants.GAZTSignUpFirstSubmit;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    var serilized = JsonConvert.SerializeObject(SignUpModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res =await  client.PostAsync(uri, contentPost);
+                    FirstSignupSubmit =await  res.Content.ReadAsStringAsync();
+                    // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
+                    return FirstSignupSubmit;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+
+
         public static string GAZTSignUpFirstSubmit(SignUpNextBodyModel SignUpModel)
         {
             if (CrossConnectivity.Current.IsConnected)
