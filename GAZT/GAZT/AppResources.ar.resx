@@ -3220,4 +3220,13 @@
     <value>تحقق من تسجيل المنشأة في ضريبة القيمة المضافة باستخدام:</value>
     <comment>vat look up</comment>
   </data>
+  <data name="ChangeFromEstimateToAccountingBasis" xml:space="preserve">
+    <value>التحويل من تقديري الى حسابات</value>
+    <comment>ZAKAT Details</comment>
+  </data>
+       <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
+    <value>الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
+    <comment>ZAKAT Details</comment>
+  </data>
+    
 </root>
