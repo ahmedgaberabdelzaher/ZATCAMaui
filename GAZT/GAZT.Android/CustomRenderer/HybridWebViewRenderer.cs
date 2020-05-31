@@ -275,7 +275,6 @@ namespace EGAZT.Droid.CustomRenderer
         {
             base.OnReceivedSslError(view, handler, error);
             System.String message = "Certificate error.";
-            _hybridWebView.InvokeAction("error");
 
             switch (error.PrimaryError)
             {
