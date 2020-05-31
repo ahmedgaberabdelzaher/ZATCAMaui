@@ -702,7 +702,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmTIN.HasError = true;
                     TxtTIN.Text = string.Empty;
-                    TxtTIN.Focus();
+                   // TxtTIN.Focus();
                 }
                 else
                 { 
@@ -718,7 +718,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 {
                     FrmID.HasError = true;
                     TID.Text = string.Empty;
-                    TID.Focus();
+                    //TID.Focus();
                 }
                 else
                 {
