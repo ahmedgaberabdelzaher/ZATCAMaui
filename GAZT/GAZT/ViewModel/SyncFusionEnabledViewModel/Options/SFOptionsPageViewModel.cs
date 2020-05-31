@@ -263,7 +263,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             if (lastTapped < DateTime.Now.AddSeconds(-2))
             {
                 lastTapped = DateTime.Now;
-                _navigationService.NavigateTo(App.AccountCreatedPageView);
+                _navigationService.NavigateTo(App.ContactUsPageView);
             }
         }
         private void EditMobileNumberClicked(object obj)
