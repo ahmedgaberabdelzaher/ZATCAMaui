@@ -83,7 +83,7 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
-                                            <chart:SfChart x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"  HeightRequest="210">
+                                            <chart:SfChart  x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"  HeightRequest="210">
                                                 <chart:SfChart.Title>
                                                     <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                 </chart:SfChart.Title>
@@ -97,7 +97,7 @@
                                                     <chart:ChartLegend IconHeight="14" IconWidth="14" OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False" />
                                                 </chart:SfChart.Legend>
                                                 <chart:SfChart.Series>
-                                                    <chart:PieSeries x:Name="pieSeries" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChartModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
+                                                    <chart:PieSeries x:Name="pieSeries" EnableSmartLabels="True" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChartModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
                                                         <chart:PieSeries.ColorModel>
                                                             <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
                                                             </chart:ChartColorModel>
