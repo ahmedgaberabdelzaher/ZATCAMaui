@@ -48,6 +48,7 @@ namespace EGAZT
         public static string ICRListPageView = "ICRListPageView";
         public static string CheckTINStatusPageView = "CheckTINStatusPageView";
         public static string VATReturnsPageView = "VATReturnsPageView";
+        public static string VATReturnsPageViewEX = "VATReturnsPageViewEX";
         public static string AAcknowledgementView = "AAcknowledgementView";
         public static string AcknowledgementDetailsPageView = "AcknowledgementDetailsPageView";
         public static string DisplayNotesPageView = "DisplayNotesPageView";
