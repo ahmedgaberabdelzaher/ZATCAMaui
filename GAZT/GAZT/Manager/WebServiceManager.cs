@@ -3406,8 +3406,11 @@ namespace GAZT.Manager
             {
                 try
                 {
+                    string LangZ = GetLangZParameterAREN();
                     string FirstSignupSubmit = string.Empty;
-                    string url = Constants.GAZTSignUpFirstSubmit;
+                    string url = Constants.GAZTSignUpFirstSubmit + LangZ;
+                    //string FirstSignupSubmit = string.Empty;
+                    //string url = Constants.GAZTSignUpFirstSubmit;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -3441,8 +3444,13 @@ namespace GAZT.Manager
             {
                 try
                 {
+                 
+
+                    //string FirstSignupSubmit = string.Empty;
+                    //string url = Constants.GAZTSignUpFirstSubmit;
+                    string LangZ = GetLangZParameterAREN();
                     string FirstSignupSubmit = string.Empty;
-                    string url = Constants.GAZTSignUpFirstSubmit;
+                    string url = Constants.GAZTSignUpFirstSubmit + LangZ;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
