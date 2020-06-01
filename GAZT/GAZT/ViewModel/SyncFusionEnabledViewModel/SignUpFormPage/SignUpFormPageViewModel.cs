@@ -769,7 +769,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 IssuedByList = null;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
-                IssuedByList = IssuedBy.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
+                IssuedByList = new List<IssuedByResponse>(IssuedBy);
             }
             catch (GAZTException gex)
             {

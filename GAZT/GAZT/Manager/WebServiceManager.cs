@@ -3163,6 +3163,24 @@ namespace GAZT.Manager
                         String IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
                         SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
                         SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
+                        var sortedIssuedByList = SignupIssuedByList.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
+
+                        try
+                        {
+                            IEnumerable<IssuedByResponse> otherValueList = from otherVal in sortedIssuedByList
+                                                                           where otherVal.elementCode == "90718"
+                                                                           select otherVal;
+
+                            IssuedByResponse otherObj = otherValueList.FirstOrDefault();
+                            sortedIssuedByList.Remove(otherObj);
+                            sortedIssuedByList.Add(otherObj);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Unable to Find Other Value");
+                        }
+
+                        SignupIssuedByList = new List<IssuedByResponse>(sortedIssuedByList);
                     }
                     return SignupIssuedByList;// tINStatus;
                 }
