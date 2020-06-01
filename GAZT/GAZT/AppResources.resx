@@ -3159,7 +3159,7 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
     <value>Password did not updated as it does not match password format</value>
-    <comment>Change Password</comment>
+    <comment>Change Password.</comment>
   </data>
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
     <value>Are you sure you want to discard the changes in this page?</value>
@@ -3313,10 +3313,16 @@ Should we require further information, we would be in contact.</value>
 • Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
     <comment>VAT Declaration</comment>
   </data>
+  <data name="ChangeFromEstimateToAccountingBasis" xml:space="preserve">
+    <value>Change From Estimate To Accounting Basis</value>
+    <comment>ZAKAT Details</comment>
   <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15" xml:space="preserve">
     <value>Imports subject to VAT accounted for through the reverse charge mechanism (15%)</value>
     <comment>VAT Declaration</comment>
   </data>
+  <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
+    <value>Please visit GAZT portal to change the registration type</value>
+    <comment>ZAKAT Details</comment>
   <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5" xml:space="preserve">
     <value>Imports subject to VAT accounted for through the reverse charge mechanism (5%)</value>
     <comment>VAT Declaration</comment>

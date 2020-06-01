@@ -3150,7 +3150,7 @@
     <comment>Forgot Password</comment>
   </data>
   <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
-    <value>م يتم تحديث كلمة المرور لعدم توافقها مع المعايير</value>
+    <value>لم يتم تحديث كلمة المرور لعدم توافقها مع المعايير</value>
     <comment>Change Password</comment>
   </data>
   <data name="ChangeEmailVerification" xml:space="preserve">
@@ -3224,7 +3224,7 @@
     <value>التحويل من تقديري الى حسابات</value>
     <comment>ZAKAT Details</comment>
   </data>
-       <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
+  <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
     <value>الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
     <comment>ZAKAT Details</comment>
   </data>
