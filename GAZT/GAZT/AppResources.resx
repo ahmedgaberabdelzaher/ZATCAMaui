@@ -3159,7 +3159,7 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZPasswordGuideLineTextNew" xml:space="preserve">
     <value>Password did not updated as it does not match password format</value>
-    <comment>Change Password</comment>
+    <comment>Change Password.</comment>
   </data>
   <data name="ChangeEmailDiscardSave" xml:space="preserve">
     <value>Are you sure you want to discard the changes in this page?</value>
@@ -3225,18 +3225,12 @@ Should we require further information, we would be in contact.</value>
     <value>Verify entity registration in Value Added Tax by:</value>
     <comment>vat look up</comment>
   </data>
-   
-   <data name="ChangeFromEstimateToAccountingBasis" xml:space="preserve">
+  <data name="ChangeFromEstimateToAccountingBasis" xml:space="preserve">
     <value>Change From Estimate To Accounting Basis</value>
     <comment>ZAKAT Details</comment>
   </data>
-    
-     <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
+  <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
     <value>Please visit GAZT portal to change the registration type</value>
     <comment>ZAKAT Details</comment>
   </data>
-    
-    
-   
-
 </root>
