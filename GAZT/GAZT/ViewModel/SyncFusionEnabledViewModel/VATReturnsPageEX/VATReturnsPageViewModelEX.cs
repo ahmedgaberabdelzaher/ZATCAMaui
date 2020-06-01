@@ -2096,27 +2096,51 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     {
                         try
                         {
-                            Task.Run(() =>
+                            Device.BeginInvokeOnMainThread(async () =>
                             {
-                                IsLoading = true;
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = true;
+                                });
+
+                                await SummaryClicked();
+                                ShowMsgs();
+                                SelectedIndex = 3;
+                                PageSelectedItem = VatTabbledPageList[3];
+
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
                             });
                             //    Device.BeginInvokeOnMainThread(() =>
                             //{
                             //    IsLoading = true;
                             //});
-                            await SummaryClicked();
-                            ShowMsgs();
-                            SelectedIndex = 3;
-                            PageSelectedItem = VatTabbledPageList[3];
+
+                            //var t = Task.Run(() =>
+                            // {
+                            //// Do some work on a background thread, allowing the UI to remain responsive
+                            //Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                            //     {
+                            //         SummaryClicked();
+                            //     });
+                            // });
+
+
+                            // await SummaryClicked();
+                            //ShowMsgs();
+                            //SelectedIndex = 3;
+                            //PageSelectedItem = VatTabbledPageList[3];
                             //Device.BeginInvokeOnMainThread(() =>
                             //{
                             //    IsLoading = false;
                             //});
 
-                            Task.Run(() =>
-                            {
-                                IsLoading = false;
-                            });
+                            //Task.Run(() =>
+                            //{
+                            //    IsLoading = false;
+                            //});
                         }
                         catch (Exception ex)
                         {
@@ -2683,6 +2707,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         }
         public async Task SummaryClicked()
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
             try
             {
                 bool value = false;
@@ -2892,6 +2920,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             catch (Exception ex)
             {
             }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
         }
         public void CreditCarriedClicked()
         {
