@@ -24,10 +24,17 @@ namespace GAZT.CustomControl
                 bool isValidNumber = false;// = UtilityManager.IsUserNameValid(args.NewTextValue);
                 foreach (char letter in args.NewTextValue.ToCharArray())
                 {
-                    //if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8) || (letter == 32) || (letter >= 1536 && letter <= 1791))
-                    if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8) || (letter == 32) || (letter >= 1569 && letter <= 1621) || (letter >= 1569 && letter <= 1610))
+                    if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122) || (letter == 127) || (letter == 8) || (letter == 32) || (letter >= 1536 && letter <= 1791))
                     {
-                        isValidNumber = true;
+                        if ((letter >= 1542 && letter <= 1545) || (letter >= 1642 && letter <= 1645) || (letter >= 1776 && letter <= 1785) || (letter >= 1632 && letter <= 1641) || (letter >= 1537 && letter <= 1539) || (letter == 1548) || (letter == 1563) || (letter == 1567) || (letter == 1547))
+                        {
+                            ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
+                        }
+                        else
+                        {
+                            isValidNumber = true;
+                        }
+                        
                     }
                     else
                     {
