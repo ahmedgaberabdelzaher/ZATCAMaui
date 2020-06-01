@@ -4142,6 +4142,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         {
             try
             {
+                //New code for VAT 15% Change
+
+                if (IsYesChecked == true)
+                {
+                    VATDeclarationData.d.Yesno = "X";
+                }
+                else
+                {
+                    VATDeclarationData.d.Yesno = string.Empty;
+                }
+
+
+
+
                 if (IsDeclarationCheckedForSummary == true)
                 {
                     VATDeclarationData.d.DecFg = "1";

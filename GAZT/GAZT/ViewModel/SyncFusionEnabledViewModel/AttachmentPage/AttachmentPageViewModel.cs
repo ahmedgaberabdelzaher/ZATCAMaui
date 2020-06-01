@@ -506,7 +506,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
             AttachmentName = string.Empty;
             if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
             {
-                if (VATReturnsPageViewModel.IsAmend == true)
+                if (VATReturnsPageViewModelEX.IsAmend == true)
                 {
                     IsShowAttachmentButton = true;
                 }

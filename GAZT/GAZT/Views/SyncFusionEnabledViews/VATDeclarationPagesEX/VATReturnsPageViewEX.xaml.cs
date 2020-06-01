@@ -59,8 +59,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
                 //New logic
-                viewModel.IsNewReturn = true;
-                ShowHideContent(viewModel.IsNewReturn);
+
+                checkNewFormorOld();
+               
                 //New logic
 
 
@@ -98,6 +99,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         #endregion
         #region Method
 
+        public void checkNewFormorOld()
+        {
+            if (viewModel.VATDeclarationData.d.GoliveFg == "X")
+            {
+                viewModel.IsNewReturn = true;
+                ShowHideContent(viewModel.IsNewReturn);
+            }
+            else
+            {
+                viewModel.IsNewReturn = false;
+                ShowHideContent(viewModel.IsNewReturn);
+            }
+            
+        }
+
         public void ShowHideContent(bool IsNewReturn)
         {
             //Test Checked In VAT15Change
@@ -105,8 +121,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 viewModel.IsPrevReturn = false;
                 viewModel.IsNewReturn = true;
-                viewModel.IsFifteenPersenctVisible = true;
-                viewModel.IsFivePersenctVisible = false;
+                if (viewModel.VATDeclarationData.d.Yesno == "X")
+                {
+                    viewModel.IsFifteenPersenctVisible = true;
+                    viewModel.IsFivePersenctVisible = true;
+                    viewModel.IsYesChecked = true;
+                }
+                else
+                {
+                    viewModel.IsFifteenPersenctVisible = true;
+                    viewModel.IsFivePersenctVisible = false;
+                    viewModel.IsNoChecked = true;
+                }
             }
             else
             {

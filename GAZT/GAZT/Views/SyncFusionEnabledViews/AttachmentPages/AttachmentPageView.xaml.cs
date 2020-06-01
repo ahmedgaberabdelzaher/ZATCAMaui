@@ -127,7 +127,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == false))
+                if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModelEX.IsAmend == false))
                 {
                     //Show some message
 
@@ -139,7 +139,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     //    DeleteAttachment(result, attachment);
                     //}
                 }
-                else if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == true))
+                else if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModelEX.IsAmend == true))
                 {
                     try
                     {

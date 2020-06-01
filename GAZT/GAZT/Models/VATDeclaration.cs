@@ -48,7 +48,7 @@ namespace EGAZT.Models
         public string Strdt { get; set; } //date
         public string Strtime { get; set; } //time
         public string Strline { get; set; }   //note
-     }
+    }
     public class NOTESSet
     {
         public List<Note> results { get; set; }
@@ -191,6 +191,9 @@ namespace EGAZT.Models
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public VATDeclarationsMetadata __metadata { get; set; }
+
+        public string GoliveFg { get; set; }
+        public string Yesno { get; set; }
         public string TcFlg { get; set; }
         public string Idtype { get; set; }
         public string Betrh { get; set; }
@@ -407,6 +410,7 @@ namespace EGAZT.Models
         public string DmodeFlg { get; set; }
         public string Block { get; set; }
         public string FldNm { get; set; }
+        public VATPERITEMSet VATPERITEMSet { get; set; }
         public NOTESSet NOTESSet { get; set; }
         public IBANSet IBANSet { get; set; }
         public CFSet CFSet { get; set; }
@@ -494,4 +498,43 @@ namespace EGAZT.Models
         public string UserTyp { get; set; }
         public Buttons buttonEnumId = Buttons.None;
     }
+
+
+    #region New Added models for VAT 15%change
+    public class VATPERITEMSet
+    {
+        public List<Result6> results { get; set; }
+    }
+
+
+    public class Result6
+    {
+        public VATDeclarationsMetadata __metadata { get; set; }
+        public string FormGuid { get; set; }
+        public string Type { get; set; }
+        public string DataVersion { get; set; }
+        public int LineNo { get; set; }
+        public string RankingOrder { get; set; }
+        public string Rate { get; set; }
+        public string StdsalesAmt { get; set; }
+        public string StdsalesAdj { get; set; }
+        public string StdsalesVat { get; set; }
+        public string StdpurchaseAmt { get; set; }
+        public string StdpurchaseAdj { get; set; }
+        public string StdpurchasesVat { get; set; }
+        public string ImportspaidAmt { get; set; }
+        public string ImportspaidAdj { get; set; }
+        public string ImportspaidVat { get; set; }
+        public string ImportsaccAmt { get; set; }
+        public string ImportsaccAdj { get; set; }
+        public string ImportsaccVat { get; set; }
+        public string ReturnId { get; set; }
+        public object TimestampCr { get; set; }
+        public object TimestampCh { get; set; }
+        public string Waers { get; set; }
+    }
+
+    #endregion
+
+
 }

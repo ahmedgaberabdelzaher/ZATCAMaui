@@ -409,7 +409,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                                 vATDeclaration.d.ADRSet.results = lst;
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    _navigationService.NavigateTo(App.VATReturnsPageView, _vATDeclaration);
+                                    _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
                                 });
                             }
                             else
