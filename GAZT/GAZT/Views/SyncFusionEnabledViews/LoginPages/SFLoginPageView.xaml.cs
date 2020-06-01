@@ -1,11 +1,15 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using GAZT;
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Syncfusion.SfPicker.XForms;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -191,34 +195,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 if (hybridWebView != null)
                     loginGrid.Children.Remove(hybridWebView);
-
-                try
-                {
-                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-
+              
                 hybridWebView = new HybridWebView();
-                hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
-                hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
-
-
-                //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-
-                Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
-                CookieContainer loginWebViewCookieContainer = new CookieContainer();
-                loginWebViewCookieContainer.Add(langCookie);
-                hybridWebView.Cookies = loginWebViewCookieContainer;
-                hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsLoading = true;
                     hybridWebView.Opacity = 0;
                 });
+
+                hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
+                hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
+
+                //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
+                //Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
+                //CookieContainer loginWebViewCookieContainer = new CookieContainer();
+                //loginWebViewCookieContainer.Add(langCookie);
+                //hybridWebView.Cookies = loginWebViewCookieContainer;
+
+                hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
                 hybridWebView.RegisterAction(async (data) =>
                 {
@@ -228,7 +223,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         {
                             if (data == "displayLoginLoadingIndicator")
                             {
-
                                 hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = true;
                             }
@@ -269,22 +263,114 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                             if (data == "error")
                             {
+                                hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
 
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //hybridWebView.RefreshCommand();
 
-                                hybridWebView.Opacity = 0;
-                                hybridWebView.RefreshCommand();
+                                viewModel.IsLoading = true;
+
+                                if (App.TP != null)
+                                    App.TP = null;
+                                if (App.PreviousIsArabic)
+                                {
+                                    String langName = "ar-AE";
+                                    AppResources.Culture = new CultureInfo(langName);
+                                }
+                                else
+                                {
+                                    String langName = "en-US";
+                                    AppResources.Culture = new CultureInfo(langName);
+                                }
+
+                                await WebServiceManager.GAZTLogOff();
+
+                                viewModel.IsLoading = false;
+
+                                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                    {
+                                        _navigation.RemovePage(item);
+                                        break;
+                                    }
+                                }
+
+                                App.IsLogOut = true;
+                                App.IsLoginCalled = false;
+                                App.IsSamlApiCalledAndroid = false;
+
+                                try
+                                {
+                                    App.httpClientHandler = new HttpClientHandler();
+                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+
+                                viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                _navigation.NavigationStack.ToList().Clear();
+
                             }
 
                             if (data == "errorGeneric")
                             {
+                                hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
 
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                viewModel.IsLoading = true;
 
-                                hybridWebView.Opacity = 0;
-                                hybridWebView.RefreshCommand();
+                                if (App.TP != null)
+                                    App.TP = null;
+                                if (App.PreviousIsArabic)
+                                {
+                                    String langName = "ar-AE";
+                                    AppResources.Culture = new CultureInfo(langName);
+                                }
+                                else
+                                {
+                                    String langName = "en-US";
+                                    AppResources.Culture = new CultureInfo(langName);
+                                }
+
+                                await WebServiceManager.GAZTLogOff();
+
+                                viewModel.IsLoading = false;
+
+                                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                    {
+                                        _navigation.RemovePage(item);
+                                        break;
+                                    }
+                                }
+
+                                App.IsLogOut = true;
+                                App.IsLoginCalled = false;
+                                App.IsSamlApiCalledAndroid = false;
+
+                                try
+                                {
+                                    App.httpClientHandler = new HttpClientHandler();
+                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                }
+                                catch (Exception ex)
+                                {
+
+                                }
+
+                                viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                _navigation.NavigationStack.ToList().Clear();
+
                             }
                         }
 
@@ -294,7 +380,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         }
                         });
                 });
-                hybridWebView.Opacity = 1;
 
                 loginGrid.Children.Add(hybridWebView, 0, 0);
                 loginGrid.LowerChild(hybridWebView);

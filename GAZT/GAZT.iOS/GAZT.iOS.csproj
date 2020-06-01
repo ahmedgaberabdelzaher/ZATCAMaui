@@ -822,4 +822,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_logo_Dashboard.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_check_circle_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_check_circle_24px%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
+  </ItemGroup>
 </Project>

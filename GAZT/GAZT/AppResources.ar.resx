@@ -2754,10 +2754,10 @@
     <value>Edit Profile</value>
   </data>
   <data name="ZZZMyProfile" xml:space="preserve">
-    <value>ملﻔﻲ الشخصﻲ</value>
+    <value>ملفي الشخصي</value>
   </data>
   <data name="ZZZFaq" xml:space="preserve">
-    <value>اﻷسئلة الشائعة</value>
+    <value>الأسئلة الشائعة</value>
   </data>
   <data name="ZZZHelp" xml:space="preserve">
     <value>المساعدة</value>
@@ -2917,7 +2917,7 @@
     <comment>VAT Declaration</comment>
   </data>
   <data name="ZZZAboutUs" xml:space="preserve">
-    <value>​​​​نبذة عن الهيئة​</value>
+    <value>نبذة عن الهيئة</value>
   </data>
   <data name="PdfIsNotAvailableFor" xml:space="preserve">
     <value>ملف PDF غير موجود</value>
@@ -3182,12 +3182,53 @@
     <comment>option </comment>
   </data>
   <data name="ZZZContactus" xml:space="preserve">
-    <value>اﻻتصال بنا</value>
+    <value>الاتصال بنا</value>
     <comment>Option</comment>
   </data>
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
     <value> جميع الحقوق محفوظة © 2020</value>
   </data>
+  <data name="ZZZMenu" xml:space="preserve">
+    <value>القائمة</value>
+    <comment>Option</comment>
+  </data>
+  <data name="ZZZStepOneNew" xml:space="preserve">
+    <value>الرقم الضريبي</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepsTitleNew" xml:space="preserve">
+    <value>ادخل احد المعلومات التالية:</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepThreeNew" xml:space="preserve">
+    <value>رقم شهادة ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZStepTwoNew" xml:space="preserve">
+    <value>رقم السجل التجاري</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZTaxRegistrationNumber" xml:space="preserve">
+    <value>الرقم الضريبي</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZZZVatLookUpTitleTextNew" xml:space="preserve">
+    <value>التحقق من التسجيل في ضريبة القيمة المضافة</value>
+    <comment>Vat Lookup</comment>
+  </data>
+  <data name="ZStepsTitleScanNew" xml:space="preserve">
+    <value>تحقق من تسجيل المنشأة في ضريبة القيمة المضافة باستخدام:</value>
+    <comment>vat look up</comment>
+  </data>
+  <data name="ChangeFromEstimateToAccountingBasis" xml:space="preserve">
+    <value>التحويل من تقديري الى حسابات</value>
+    <comment>ZAKAT Details</comment>
+  </data>
+       <data name="PleaseVisitGAZTPortalToChangeTheRegistrationType" xml:space="preserve">
+    <value>الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
+    <comment>ZAKAT Details</comment>
+  </data>
+    
   <data name="ZZZDoyouhavesalesorpurchasessubjectto5VAT" xml:space="preserve">
     <value>هل لديك مبيعات او مشتريات خاضعة لنسبة ٥٪؜ وفقاً للأحكام الانتقالية او مبيعات او مشتريات او استيرادات او تعديلاتها خاضعة لنسبة ٥٪؜ وتود الإقرار عنها خلال هذه الفترة؟</value>
     <comment>VAT Declarartion</comment>

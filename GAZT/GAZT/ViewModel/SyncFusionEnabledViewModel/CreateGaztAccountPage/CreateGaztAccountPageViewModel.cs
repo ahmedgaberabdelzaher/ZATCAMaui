@@ -309,7 +309,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                         CreateModel.ATinExist = SignUpModelRootObjectM.d.ATinExist;
                         CreateModel.AType = SignUpModelRootObjectM.d.AType;
                         CreateModel.CaseGuid = SignUpModelRootObjectM.d.CaseGuid;
-                        string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(CreateModel);
+                        string ResultFirstSubmit =await  WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
                         SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                         if (ResultFirstSubmitModel.d == null)
                         {

@@ -36,7 +36,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 //CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                 //PickerResourceManager.Manager = new ResourceManager("GAZT.Resources.Syncfusion.SfPicker.XForms", Application.Current.GetType().Assembly);
                 this.BindingContext = viewModel;
-               // ClearFields();
+                loadPageData();
+                // ClearFields();
                 //  viewModel.OnPageLoad();
                 //  DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
@@ -50,6 +51,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
             }
         }
+        public async Task loadPageData()
+        {
+
+            await viewModel.SetDefaultDate();
+            ClearFields();
+            await viewModel.OnPageLoad();
+            await viewModel.SetIssueIdList();
+            await viewModel.SetCityList();
+
+
+        }
+
         public void SetPickerFont()
         {
             try
@@ -143,17 +156,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         {
             base.OnAppearing();
 
-           await viewModel.SetDefaultDate();
-            ClearFields();
-            await viewModel.OnPageLoad();
-           await  viewModel.SetIssueIdList();
-           await  viewModel.SetCityList();
+           //await viewModel.SetDefaultDate();
+           // ClearFields();
+           // await viewModel.OnPageLoad();
+           //await  viewModel.SetIssueIdList();
+           //await  viewModel.SetCityList();
              
-            viewModel.PkrDBO = string.Empty;
-            viewModel.TxtLOrCIssuedBy = string.Empty;
+           // viewModel.PkrDBO = string.Empty;
+           // viewModel.TxtLOrCIssuedBy = string.Empty;
         }
         public void ClearFields()
         {
+            viewModel.PkrDBO = string.Empty;
+            viewModel.TxtLOrCIssuedBy = string.Empty;
+            viewModel.TxtLOrCIssuedByCity = string.Empty;
             viewModel.IDTypeIndex = 0;
             viewModel.SelectedLOrC = 1;
             viewModel.IsLoading = false;
@@ -373,8 +389,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     SiguupModel.ALang = "E";
                                 }
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[0].ToString();
-                                string day = selectedItem[1].ToString();
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 SiguupModel.AType = "1";
@@ -550,8 +566,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     SiguupModel.ALang = "E";
                                 }
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[0].ToString();
-                                string day = selectedItem[1].ToString();
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 SiguupModel.AType = "1";
@@ -792,8 +808,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 SiguupModel.ALang = "E";
                             }
                             var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                            string month = selectedItem[0].ToString();
-                            string day = selectedItem[1].ToString();
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
                             string year = selectedItem[2].ToString();
                             SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                             SiguupModel.AType = "1";
@@ -963,8 +979,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 SiguupModel.ALang = "E";
                             }
                             var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                            string month = selectedItem[0].ToString();
-                            string day = selectedItem[1].ToString();
+                            string month = selectedItem[1].ToString();
+                            string day = selectedItem[0].ToString();
                             string year = selectedItem[2].ToString();
                             SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                             SiguupModel.AType = "1";
@@ -1139,8 +1155,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     SiguupModel.ALang = "E";
                                 }
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[0].ToString();
-                                string day = selectedItem[1].ToString();
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 SiguupModel.AType = "1";
@@ -1311,8 +1327,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     SiguupModel.ALang = "E";
                                 }
                                 var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                                string month = selectedItem[0].ToString();
-                                string day = selectedItem[1].ToString();
+                                string month = selectedItem[1].ToString();
+                                string day = selectedItem[0].ToString();
                                 string year = selectedItem[2].ToString();
                                 SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
                                 SiguupModel.AType = "1";
@@ -1482,8 +1498,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                     if (selectedItem != null && selectedItem[0] != null)
                     {
                         // int a = DateTime.Compare(viewModel.TodayDate, selecteDate);
-                        string month = selectedItem[0].ToString();
-                        string day = selectedItem[1].ToString();
+                        string month = selectedItem[1].ToString();
+                        string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         string _month = DateTime.Now.Month.ToString();
                         string _day = DateTime.Now.Day.ToString();
@@ -1854,8 +1870,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 });
             });
             var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-            string month = selectedItem[0].ToString();
-            string day = selectedItem[1].ToString();
+            string month = selectedItem[1].ToString();
+            string day = selectedItem[0].ToString();
             string year = selectedItem[2].ToString();
             viewModel.PkrDBO = year + "/" + month + "/" + day;
             string DBO = year + month + day;
@@ -2604,8 +2620,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 if (DpDbo.SelectedItem != null)
                 {
                     var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
-                    string month = selectedItem[0].ToString();
-                    string day = selectedItem[1].ToString();
+                    string month = selectedItem[1].ToString();
+                    string day = selectedItem[0].ToString();
                     string year = selectedItem[2].ToString();
                     viewModel.PkrDBO = year + "/" + month + "/" + day;
                 }
@@ -2758,9 +2774,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 string[] Date = viewModel.PkrDBOPrev.Split('/');
                 ObservableCollection<object> todaycollection = new ObservableCollection<object>();
                 //Select today dates
-                todaycollection.Add(Date[1]);
                 todaycollection.Add(Date[2]);
+                todaycollection.Add(Date[1]);//day
                 todaycollection.Add(Date[0]);
+                
                 DpDbo.SelectedItem = todaycollection;
             }
         }

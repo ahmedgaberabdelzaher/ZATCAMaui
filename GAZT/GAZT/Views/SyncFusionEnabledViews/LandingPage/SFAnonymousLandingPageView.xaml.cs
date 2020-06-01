@@ -2,9 +2,11 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Models;
+using Plugin.Connectivity;
 using System;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -45,7 +47,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
 
 
-                // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -59,6 +61,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             {
             }
         }
+
         //void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
         //{
         //    // Process changes
@@ -115,7 +118,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
                 }
 
-
                 if (App.IsLogOut)
                 {
                     App.IsLogOut = false;
@@ -144,6 +146,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         {
             if (App.IsArabic)
             {
+                //switch (Xamarin.Forms.Device.RuntimePlatform)
+                //{
+
+                //    case Xamarin.Forms.Device.iOS:
+                //        LandingCreateAccountNote.LineHeight = .6;
+                //        break;
+                //    case Xamarin.Forms.Device.Android:
+                //        LandingCreateAccountNote.LineHeight = 1.25;
+                //        break;
+                //}
+                
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
@@ -151,10 +164,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
         private void SignIn_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                });
+            }
         }
+
         private void OnTappedeService(object sender, EventArgs e)
         {
             string controltype = sender.GetType().ToString();
@@ -198,7 +223,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-                if (BModel.eServiceName == AppResources.VATLookup)
+              //  if (BModel.eServiceName == AppResources.VATLookup)
+                if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }
@@ -243,7 +269,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-                if (BModel.eServiceName == AppResources.VATLookup)
+                //if (BModel.eServiceName == AppResources.VATLookup)
+                if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                 }

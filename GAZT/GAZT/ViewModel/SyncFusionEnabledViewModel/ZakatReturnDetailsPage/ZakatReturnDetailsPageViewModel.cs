@@ -20,6 +20,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
         public ICommand GoBackClick { get; set; }
         public ICommand OnSalesDetailsClicked { get; set; }
         public ICommand OnAmendReturnButtonClicked { get; set; }
+        public ICommand OnChangeFromEstimateToAccountingBasisButtonClicked { get; set; }
+
+        
         public static bool IsAmendButtonClicked = false;
         // string ReturnStatus = "2";
         public static bool IsAmendButtonPressed = false;
@@ -131,6 +134,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 RaisePropertyChanged("AmedmentButtonVisibility");
             }
         }
+
+        private bool _changeFromEstimateTAccountringBasisButtonVisibility = false;
+        public bool ChangeFromEstimateTAccountringBasisButtonVisibility
+        {
+            get
+            {
+                return _changeFromEstimateTAccountringBasisButtonVisibility;
+            }
+            set
+            {
+                _changeFromEstimateTAccountringBasisButtonVisibility = value;
+                RaisePropertyChanged("ChangeFromEstimateTAccountringBasisButtonVisibility");
+            }
+        }
+
+        
         #endregion
         #region Constructor
         public ZakatReturnDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -179,6 +198,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 {
                 }
             });
+
+            OnChangeFromEstimateToAccountingBasisButtonClicked = new Xamarin.Forms.Command(async () =>
+            {
+                try
+                {
+                    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
+
+                }
+                catch (Exception ex)
+                {
+                }
+            });
+            
         }
         #endregion
         #region Method
@@ -236,6 +268,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                         ZakatReturnDetail = zakatReturnDetails.d;
                         GetUpdatedDataAfterAddingComma();
                         SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+
                         Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
                         //if (zakatReturnDetails.d.Abrzu != null && zakatReturnDetails.d.Abrzo != null)
                         //{
@@ -380,7 +414,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 else if (ButtonStatus.Equals("E0011"))//In Processing
                 {
                     SalesDetailsAndReleaseButtonVisibility = true;
-                    AmedmentButtonVisibility = false;
+                    AmedmentButtonVisibility = true;
                     ReleaseOrBillDetailsButtonText = AppResources.BillDetails;
                 }
                 else if (ButtonStatus.Equals(""))//In Processing
@@ -507,6 +541,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 ZakatReturnDetails.d.Cpamt = ZakatReturnDetails.d.Cpamt.Replace(",", "");
                 ZakatReturnDetails.d.Zbamt = ZakatReturnDetails.d.Zbamt.Replace(",", "");
                 ZakatReturnDetails.d.Zkamt = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+            }
+        }
+
+        public void SetChangeFromEstimateTAccountringBasisButtonVisibility(string ButtonStatus)
+        {
+            if (ButtonStatus.Equals("E0001") || ButtonStatus.Equals("E0002") || ButtonStatus.Equals("E0003") || ButtonStatus.Equals("E0004"))
+            {
+                ChangeFromEstimateTAccountringBasisButtonVisibility = true;
+            }
+            else
+            {
+                ChangeFromEstimateTAccountringBasisButtonVisibility = false;
             }
         }
         #endregion

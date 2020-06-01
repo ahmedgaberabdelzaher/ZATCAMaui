@@ -275,7 +275,6 @@ namespace EGAZT.Droid.CustomRenderer
         {
             base.OnReceivedSslError(view, handler, error);
             System.String message = "Certificate error.";
-            _hybridWebView.InvokeAction("error");
 
             switch (error.PrimaryError)
             {
@@ -362,6 +361,16 @@ namespace EGAZT.Droid.CustomRenderer
                     {
 
                     }
+                }
+
+                try
+                {
+                    App.httpClientHandler = new System.Net.Http.HttpClientHandler();
+                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                }
+                catch (Exception ex)
+                {
+
                 }
 
                 App.LoginDataRetrieved = new LoginModel();

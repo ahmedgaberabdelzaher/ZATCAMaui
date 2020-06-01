@@ -1295,8 +1295,8 @@ namespace GAZT.Manager
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     var serilized = JsonConvert.SerializeObject(ValidateOTP);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
@@ -1372,8 +1372,8 @@ namespace GAZT.Manager
 
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(forgotUserOTP);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
@@ -1468,7 +1468,11 @@ namespace GAZT.Manager
                 try
                 {
                     VATLookUp vATLookUp = new VATLookUp();
-                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
@@ -2190,7 +2194,7 @@ namespace GAZT.Manager
 
                     // String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Userid + "'" + ",Euser='" + App.TP.Userid + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
 
-                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
+                    String url = Constants.GAZTGetZakatReturn + "'" + ",Langz='" + lang + "'" + ",Gpartz='"+ App.TP.Tin +"'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + fbguid + "'" + ",Invflg='" + "'" + ",Fsource='" + "TP" + "'" + ")?saml2=enabled&sap-language='" + lang + "'&$expand=ReasonSet,AttachSet,ThresholdSet,InvoiceSet&$format=json";
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTValidateOTPResponse = await client.GetAsync(uri);
@@ -2480,14 +2484,15 @@ namespace GAZT.Manager
                     //if (InvFlag.Equals("I"))
                     //{
                     //url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
-                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                    //url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
+                    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + App.TP.Tin + "'" + ",Euser='" + App.TP.Tin + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='',Fsource='TP')?saml2=enabled&$expand=InvoiceSet&$format=json";
 
                     //}
                     //else
                     //{
                     //    url = Constants.GAZTGetEstimatedZAKATSADADNumber + FBNumber + "'" + ",Langz='" + lang + "'" + ",Gpartz='" + "'" + ",Euser='" + "0000000000" + App.TP.Userid + "'" + ",Fbguid='" + FBGuid + "'" + ",Invflg='S',Fsource='TP')?saml2=disabled&$expand=InvoiceSet&$format=json";
                     //}
-                    ////client.DefaultRequestHeaders.Add("Token", App.Token);
+                    client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTEstimateZakatReturnList = await client.GetAsync(uri);
                     if (GAZTEstimateZakatReturnList != null)
@@ -3050,6 +3055,7 @@ namespace GAZT.Manager
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
                     String url = Constants.GAZTGetCityListForSignUp + "dropdown_headerSet(Spras='" + lang + "',Land1='SA',Bland='',Cityc='')?&$expand=city_dropdownSet&saml2=enabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     // //client.DefaultRequestHeaders.Add("Token", App.Token);
@@ -3126,8 +3132,10 @@ namespace GAZT.Manager
                     crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
 
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-                    String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"Vinay\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=enabled&$format=json";
+                    String url = Constants.GAZTSiguupIssuedByList + "'[{\"Lang\":\"" + lang + "\",\"Portal_usr\":\"1\",\"Process\":\"Trans\",\"Procs_Type\":\"PUSR1\"}]'&sap-language=EN&saml2=enabled&$format=json";
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
+
+
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTSignupIssuedByList = await client.GetAsync(uri);
@@ -3155,6 +3163,24 @@ namespace GAZT.Manager
                         String IssuedByList = await GAZTSignupIssuedByList.Content.ReadAsStringAsync();
                         SignupIssuedByListRoot = JsonConvert.DeserializeObject<IssuedByRootObject>(IssuedByList);
                         SignupIssuedByList = JsonConvert.DeserializeObject<List<IssuedByResponse>>(SignupIssuedByListRoot.d.results[0].Response);
+                        var sortedIssuedByList = SignupIssuedByList.OrderBy(a => a.txt50).ToList<IssuedByResponse>();
+
+                        try
+                        {
+                            IEnumerable<IssuedByResponse> otherValueList = from otherVal in sortedIssuedByList
+                                                                           where otherVal.elementCode == "90718"
+                                                                           select otherVal;
+
+                            IssuedByResponse otherObj = otherValueList.FirstOrDefault();
+                            sortedIssuedByList.Remove(otherObj);
+                            sortedIssuedByList.Add(otherObj);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Unable to Find Other Value");
+                        }
+
+                        SignupIssuedByList = new List<IssuedByResponse>(sortedIssuedByList);
                     }
                     return SignupIssuedByList;// tINStatus;
                 }
@@ -3374,6 +3400,41 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        public async static Task<string> GAZTSignUpFirstSubmitCGZTAcc(SignUpNextBodyModel SignUpModel)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string FirstSignupSubmit = string.Empty;
+                    string url = Constants.GAZTSignUpFirstSubmit;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient();
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    var serilized = JsonConvert.SerializeObject(SignUpModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res =await  client.PostAsync(uri, contentPost);
+                    FirstSignupSubmit =await  res.Content.ReadAsStringAsync();
+                    // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
+                    return FirstSignupSubmit;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+
+
         public static string GAZTSignUpFirstSubmit(SignUpNextBodyModel SignUpModel)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -4220,8 +4281,15 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
-                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
                     CookieContainer cookieContainer = new CookieContainer();
 
@@ -4347,8 +4415,15 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClientHandler tempClientHandler = new HttpClientHandler();
-                    //tempClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    try
+                    {
+                        App.httpClientHandler = new HttpClientHandler();
+                        App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
                     CookieContainer cookieContainer = new CookieContainer();
 
@@ -4418,8 +4493,6 @@ namespace GAZT.Manager
 
                                 App.LoginDataRetrieved = loginModel;
                                 App.Token = App.LoginDataRetrieved.DeviceToken;
-
-
 
                                 if (loginModel == null)
                                     throw new GAZTTaxPayerProfileDataException();

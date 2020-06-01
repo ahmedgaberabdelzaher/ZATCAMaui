@@ -168,10 +168,12 @@
                     UnSelectedItemTextColor="#006450"
                              SelectedItemFontSize="14"     
                    ItemHeight="40"
-                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                 
                   SelectionChanged="ICRStatusChnaged" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Value" SelectedIndex="{Binding SelectedIndex}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="200"
                     PickerWidth="270"
+                    OKButtonTextColor="#006450"
+                    CancelButtonTextColor="#006450"
                                     OkButtonClicked="BPicker_OkButtonClicked"
                     CancelButtonClicked="BPicker_CancelButtonClicked"
                      ShowFooter="True"

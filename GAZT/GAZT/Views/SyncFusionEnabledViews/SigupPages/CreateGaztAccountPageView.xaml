@@ -46,7 +46,7 @@
         </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <StackLayout Spacing="0">
-            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   Margin="0" Padding="0,0,0,0" RowSpacing="10" >
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"    Margin="0" Padding="0,0,0,0" RowSpacing="10" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="75*" />
                     <RowDefinition Height="auto" />
@@ -54,7 +54,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White" >
+                <ScrollView Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White"  >
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="15"  Margin="0" Padding="0,10,0,10" BackgroundColor="White">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -132,26 +132,50 @@
                                     <Span  Text="{Binding OTPValidDuration}" FontFamily="{StaticResource SSTArBold}"  FontSize="10" Style="{StaticResource InformationRedColorLabel}" />
                                 </FormattedString>
                             </Label.FormattedText>
-                        </Label> <!--ZZResendtheverificationcode-->
+                        </Label>
+                        <!--ZZResendtheverificationcode-->
                     </Grid>
                 </ScrollView>
+                <Grid Grid.Row="0"    Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <!--<ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />-->
+                            <!--<busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>-->
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="End"  Margin="0,0,0,0"  BackgroundColor="White" Orientation="Vertical">
                     <Button Text="{x:Static local:AppResources.ZZResendtheverificationcode}" HeightRequest="56"  Command="{Binding OnResendOTPClicked}" VerticalOptions="StartAndExpand" Margin="0" CornerRadius="0"   BackgroundColor="{Binding ButtonDisableColor}" IsEnabled="{Binding IsResendOTPEnabled}" FontAttributes="Bold" Opacity="0.7" TextColor="{Binding ButtonDisableTextColor}"></Button>
                     <Button x:Name="btnSubmitNext" Text="{x:Static local:AppResources.ZZSubmit}" CornerRadius="0" HeightRequest="56" Clicked="btnSubmit_Clicked" VerticalOptions="End" IsEnabled="{Binding IsVerifyOTPEnabled}"  Margin="0" FontSize="15"     BackgroundColor="{Binding VerifyButtonDisableColor}" Opacity="0.7"  FontAttributes="Bold" TextColor="{Binding VerifyButtonDisableTextColor}" />
                 </StackLayout>
                 <Grid Grid.Row="0" Grid.RowSpan="2"   Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
-                    <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
                     </StackLayout>
-                    <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                            <!--<ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
+                        <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />-->
                             <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
                                            EnableAnimation="True"
                                        AnimationType="SingleCircle"
                                            HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="Center"
-                                           IsBusy="{Binding IsLoading}"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>

@@ -27,8 +27,8 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0" BackgroundColor="White">
-                <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.VATLookup}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="Transparent">
+                <!--  Title View VATLookup ZZZVatLookUpTitleTextNew-->
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZVatLookUpTitleTextNew}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="Transparent">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -46,13 +46,13 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content >
-        <Grid BackgroundColor="White"  x:Name="MainLayout" >
+        <Grid BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" x:Name="MainLayout" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackLayout VerticalOptions="FillAndExpand" Grid.Row="0" Spacing="0" BackgroundColor="White">
-                <ScrollView BackgroundColor="White" >
+                <ScrollView BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                     <Grid  RowSpacing="5" Padding="0,5,0,0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
@@ -68,7 +68,8 @@
                         <custom:CustomLabel  Margin="10,5,10,5" Grid.Row="0" Grid.Column="0"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <!--<Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>-->
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScanNew}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -96,8 +97,28 @@
                             <custom:CustomLabel  Margin="10,5,10,5"   HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <!--<Span Text="{x:Static local:AppResources.ZOR}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>-->
-                                        <!--<Span Text="&#10;"/>-->
+                                        
+                            <!--<Span Text="{x:Static local:AppResources.ZOR}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>-->
+                            
+
+                                        <Span Text="{x:Static local:AppResources.ZZZStepsTitleNew}" FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="&#10;"/>
+                                        <Span Text="1. " Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="{x:Static local:AppResources.ZZZStepOneNew}" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="&#10;"/>
+                                        <Span Text="2. " Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="{x:Static local:AppResources.ZZZStepTwoNew}" FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelStyleNewEn}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="&#10;"/>
+                                        <Span Text="3. " Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                        <Span Text="{x:Static local:AppResources.ZZZStepThreeNew}" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <!--<custom:CustomLabel  Margin="10,5,10,5"   HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        --><!--<Span Text="{x:Static local:AppResources.ZOR}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>-->
+                                        <!--<Span Text="&#10;"/>--><!--
                                         <Span Text="{x:Static local:AppResources.ZStepsTitle}" FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource MicroGrayLabelStyleNew}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                         <Span Text="&#10;"/>
                                         <Span Text="{x:Static local:AppResources.ZStepOne}" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
@@ -107,7 +128,7 @@
                                         <Span Text="{x:Static local:AppResources.ZStepThree}" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource SSTArabicMedium}" LineHeight="{OnPlatform Android=1.25, Default = 1.25}"></Span>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                            </custom:CustomLabel>-->
 
                         </StackLayout>
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,0" 
