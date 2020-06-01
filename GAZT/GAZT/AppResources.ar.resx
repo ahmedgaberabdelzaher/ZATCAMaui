@@ -784,7 +784,7 @@
     <value>Search result</value>
   </data>
   <data name="ZVATNumberisnotequalto15" xml:space="preserve">
-    <value>عدد الأرقام في رمز المعرف يحبأن يكون 15 رقم</value>
+    <value>عدد الأرقام في رمز المعرف يجب أن يكون 15 رقم</value>
   </data>
   <data name="Hi" xml:space="preserve">
     <value>مرحباً</value>
@@ -3228,7 +3228,6 @@
     <value>الرجاء الذهاب الى بوابة الهيئة لتغيير التسجيل</value>
     <comment>ZAKAT Details</comment>
   </data>
-    
   <data name="ZZZDoyouhavesalesorpurchasessubjectto5VAT" xml:space="preserve">
     <value>هل لديك مبيعات او مشتريات خاضعة لنسبة ٥٪؜ وفقاً للأحكام الانتقالية او مبيعات او مشتريات او استيرادات او تعديلاتها خاضعة لنسبة ٥٪؜ وتود الإقرار عنها خلال هذه الفترة؟</value>
     <comment>VAT Declarartion</comment>
