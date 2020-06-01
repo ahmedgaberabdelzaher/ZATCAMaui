@@ -44,6 +44,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
@@ -88,6 +89,7 @@ using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
 using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
+using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
 using EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
@@ -131,6 +133,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ICRListPageViewModel>();
             SimpleIoc.Default.Register<ChecKTINStatusViewModel>();
             SimpleIoc.Default.Register<VATReturnsPageViewModel>();
+            SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
             SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
             SimpleIoc.Default.Register<DisplayNotesPageViewModel>();
             SimpleIoc.Default.Register<AttachmentPageViewModel>();
@@ -427,6 +430,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<VATReturnsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public VATReturnsPageViewModelEX VATReturnsPageViewEX
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
                 }
                 catch (Exception ex)
                 {
@@ -859,6 +877,7 @@ namespace EGAZT
             navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
             navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
             navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
+            navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
             navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
             navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
             navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));

@@ -3188,4 +3188,132 @@
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
     <value> جميع الحقوق محفوظة © 2020</value>
   </data>
+  <data name="ZZZDoyouhavesalesorpurchasessubjectto5VAT" xml:space="preserve">
+    <value>هل لديك مبيعات او مشتريات خاضعة لنسبة ٥٪؜ وفقاً للأحكام الانتقالية او مبيعات او مشتريات او استيرادات او تعديلاتها خاضعة لنسبة ٥٪؜ وتود الإقرار عنها خلال هذه الفترة؟</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZImportssubjecttoVATpaidatcustoms15" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZImportssubjecttoVATpaidatcustoms5" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZPurchasessubjecttoVATat5" xml:space="preserve">
+    <value>المشتريات الخاضعة لنسبة (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZSalessubjecttoVATat5" xml:space="preserve">
+    <value>المبيعات الخاضعة لنسبة (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZVatStandardrateddomesticpurchases15" xml:space="preserve">
+    <value>المشتريات الخاضعة للنسبة الأساسية (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZVatStandardRatedSales15" xml:space="preserve">
+    <value>المبيعات الخاضعة للنسبة الأساسية (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAdjustment15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة ) الخدمات المستوردة والخاضعة للضريبة بالنسبة الأساسية والمحتسبة وفقاً لآلية الاحتساب العكسي .</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAdjustment5" xml:space="preserve">
+    <value>المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة ) الخدمات المستوردة والخاضعة للضريبة بنسبة 5% والمحتسبة وفقاً لآلية الاحتساب العكسي.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAmount15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للخدمات (غير شامل لضريبة القيمة المضافة) المستوردة والخاضعة للضريبة بالنسبة الأساسية والمحتسبة وفقاً لآلية الاحتساب العكسي والتي تم شراؤها خلال الفترة الحالية.
+• يتم استخدام آلية الاحتساب العكسي عندما يكون مستلم السلع والخدمات الخاضع للضريبة مسؤولاً عن أي ضريبة قيمة مضافة مستحقة بدلاً من المورد الخاضع للضريبة. يكون العميل بمثابة المورد والمستلم لأغراض ضريبة القيمة المضافة ويقيّم ذاتياً أي ضريبة قيمة مضافة مستحقة.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAmount5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للخدمات (غير شامل لضريبة القيمة المضافة) المستوردة والخاضعة للضريبة بنسبة 5% والمحتسبة وفقاً لآلية الاحتساب العكسي والتي تم شراؤها خلال الفترة الحالية.
+• يتم استخدام آلية الاحتساب العكسي عندما يكون مستلم السلع والخدمات الخاضع للضريبة مسؤولاً عن أي ضريبة قيمة مضافة مستحقة بدلاً من المورد الخاضع للضريبة. يكون العميل بمثابة المورد والمستلم لأغراض ضريبة القيمة المضافة ويقيّم ذاتياً أي ضريبة قيمة مضافة مستحقة.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedVatAmount15" xml:space="preserve">
+    <value>يشمل هذا المبلغ الضريبي التالي :
+• 100 % من ضريبة المدخلات على استيرادات الاحتساب العكسي يمكن المطالبة بها فقط عندما تكون ضريبة المدخلات المرتبطة بالمطالبة مستخدمة لتوريدات السلع والخدمات الخاضعة للضريبة.
+• لايمكن المطالبة بضريبة المدخلات لنسبة من استيرادات الاحتساب العكسي المستخدمة في انتاج السلع والخدمات المعفاة من الضريبة او لغير النشاط الاقتصادي.
+• في حال استخدام استيرادات الاحتساب العكسي لانتاج توريدات خاضعة للضريبة يجب أن تخصم ضريبة المدخلات المناسبة من المطالبة.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedVatAmount5" xml:space="preserve">
+    <value>يشمل هذا المبلغ الضريبي التالي :
+• 100 % من ضريبة المدخلات على استيرادات الاحتساب العكسي يمكن المطالبة بها فقط عندما تكون ضريبة المدخلات المرتبطة بالمطالبة مستخدمة لتوريدات السلع والخدمات الخاضعة للضريبة.
+• لايمكن المطالبة بضريبة المدخلات لنسبة من استيرادات الاحتساب العكسي المستخدمة في انتاج السلع والخدمات المعفاة من الضريبة او لغير النشاط الاقتصادي.
+• في حال استخدام استيرادات الاحتساب العكسي لانتاج توريدات خاضعة للضريبة يجب أن تخصم ضريبة المدخلات المناسبة من المطالبة.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة ) السلع الخاضعة للضريبة بالنسبة الأساسية والتي تم استيرادها خلال الفترة السابقة. يجب على المستوردين المعنيين تحديد وارداتهم الخاضعة للضريبة بالنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة ) السلع الخاضعة للضريبة بنسبة 5% والتي تم استيرادها خلال الفترة السابقة. يجب على المستوردين المعنيين تحديد وارداتهم الخاضعة للضريبة بنسبة 5%.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAmount15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للسلع (غير شامل ضريبة القيمة المضافة) المستوردة والخاضعة للضريبة بالنسبة الأساسية والتي تم شراؤها خلال الفترة الحالية. يجب على المستوردين المعنيين تحديد وارداتهم الخاضعة للضريبة بالنسبة الأساسية.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAmount5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للسلع (غير شامل ضريبة القيمة المضافة) المستوردة والخاضعة للضريبة بنسبة 5% والتي تم شراؤها خلال الفترات السابقة. يجب على المستوردين المعنيين تحديد وارداتهم الخاضعة للضريبة بنسبة 5%.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAdjustment15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة المدفوعة) السلع والخدمات الخاضعة للنسبة الأساسية والتي تم شراؤها في المملكة العربية السعودية.
+• على سبيل المثال: مردودات المشتريات الخاضعة للضريبة إلى الموردين، تعديل خصم ضريبة المدخلات من خلال تخصيص المدخلات للتوريدات الخاضعة للضريبة والمعفاة</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAdjustment5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على مشتريات (غير شامل ضريبة القيمة المضافة المدفوعة) السلع والخدمات الخاضعة لنسبة 5% والتي تم شراؤها في المملكة العربية السعودية.
+• على سبيل المثال: مردودات المشتريات الخاضعة للضريبة بنسبة 5% إلى الموردين، تعديل خصم ضريبة المدخلات من خلال تخصيص المدخلات للتوريدات الخاضعة للضريبة والمعفاة</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAmount15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للسلع والخدمات (غير شامل ضريبة القيمة المضافة) التي تم شراؤها في المملكة العربية السعودية خلال الفترة الحالية والخاضعة للضريبة بالنسبة الأساسية.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAmount5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للسلع والخدمات (غير شامل ضريبة القيمة المضافة) التي تم شراؤها في المملكة العربية السعودية خلال الفترة الحالية والخاضعة للضريبة بنسبة 5%
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الأسفل للاطلاع على قائمة السلع والخدمات الخاضعة للنسبة الأساسية.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment15" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات (غير شامل ضريبة القيمة المضافة ) المباعة في المملكة العربية السعودية خلال الفترات الضريبية السابقة بالإضافة إلى : - التوريدات المفترضة. - التوريدات الخاضعة لطريقة هامش الربح
+• على سبيل المثال، إرجاع العملاء للسلع والخدمات التي استحقت عنها ضريبة القيمة المضافة للهيئة العامة للزكاة والدخل، شطب الديون المعدومة على الذمم المدينة الخاضعة للضريبة بالنسبة الأساسية</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment5" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات الخاضعة لنسبة 5% (غير شامل ضريبة القيمة المضافة ) المباعة في المملكة العربية السعودية خلال الفترات الضريبية السابقة بالإضافة إلى : - التوريدات المفترضة. - التوريدات الخاضعة لطريقة هامش الربح
+• على سبيل المثال، إرجاع العملاء للسلع والخدمات التي استحقت عنها ضريبة القيمة المضافة للهيئة العامة للزكاة والدخل، شطب الديون المعدومة على الذمم المدينة الخاضعة للضريبة بالنسبة الأساسية</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAmount15" xml:space="preserve">
+    <value>• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بالنسبة الأساسية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية (5%).</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAmount5" xml:space="preserve">
+    <value>• المبلغ الإجمالي لتوريدات السلع والخدمات الخاضعة للضريبة بنسبة 5% وفقاً للأحكام الإنتقالية (غير شامل ضريبة القيمة المضافة ) التي تم توريدها خلال الفترة الحالية والتي بيعت في المملكة العربية السعودية بالإضافة إلى : - التوريدات المفترضة. -التوريدات الخاضعة لطريقة هامش الربح.
+• يرجى الرجوع إلى رابط الأسئلة الشائعة في الاسفل لمعرفة المزيد حول السلع والخدمات الخاضعة للنسبة الأساسية (5%)</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي (15%)</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5" xml:space="preserve">
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي (5%)</value>
+    <comment>VAT Declaration</comment>
+  </data>
 </root>

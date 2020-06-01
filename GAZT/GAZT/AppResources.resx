@@ -3193,4 +3193,132 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZCopyrightTextNew" xml:space="preserve">
     <value> All Rights Reserved © 2020</value>
   </data>
+  <data name="ZZZDoyouhavesalesorpurchasessubjectto5VAT" xml:space="preserve">
+    <value>Do you have sales or purchases subject to 5% VAT as per the transitional provisions or sales, purchases, imports and adjustments subject to 5% VAT that you would like to declare in this period?</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZImportssubjecttoVATpaidatcustoms15" xml:space="preserve">
+    <value>Imports subject to VAT paid at customs (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZImportssubjecttoVATpaidatcustoms5" xml:space="preserve">
+    <value>Imports subject to VAT paid at customs (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZPurchasessubjecttoVATat5" xml:space="preserve">
+    <value>Purchases subject to VAT at (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZSalessubjecttoVATat5" xml:space="preserve">
+    <value>Sales subject to VAT at (5%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZVatStandardrateddomesticpurchases15" xml:space="preserve">
+    <value>Standard rated domestic purchases (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZZZVatStandardRatedSales15" xml:space="preserve">
+    <value>Standard rated sales (15%)</value>
+    <comment>VAT Declarartion</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAdjustment15" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated and imported and reverse charged.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAdjustment5" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated at 5% and imported and reverse charged.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAmount15" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
+• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedAmount5" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and imported and reverse charged.
+• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedVatAmount15" xml:space="preserve">
+    <value>Under VAT amount display the following:
+• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATaccountedVatAmount5" xml:space="preserve">
+    <value>Under VAT amount display the following:
+• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5" xml:space="preserve">
+    <value>Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated at 5% and imported. Designated importers must specify their standard rated imports &amp;003b%.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAmount15" xml:space="preserve">
+    <value>• Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipImportssubjecttoVATpaidatcustomsAmount5" xml:space="preserve">
+    <value>• Total amount of goods (excluding VAT paid) purchased during the previous periods that were standard rated at 5% and imported. Designated importers must specify their standard rated imports.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAdjustment15" xml:space="preserve">
+    <value>• Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA.
+• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAdjustment5" xml:space="preserve">
+    <value>• Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated at 5% and bought in KSA.
+• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAmount15" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardrateddomesticpurchasesAmount5" xml:space="preserve">
+    <value>• Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and bought in KSA.
+• Please refer to the below FAQ URL for the list of standard rates goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment15" xml:space="preserve">
+    <value>• Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment5" xml:space="preserve">
+    <value>• Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAmount15" xml:space="preserve">
+    <value>• Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+• Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAmount5" xml:space="preserve">
+    <value>• Total supplies amount of goods and services subject to 5% VAT rate as per the transitional provisions (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+• Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15" xml:space="preserve">
+    <value>Imports subject to VAT accounted for through the reverse charge mechanism (15%)</value>
+    <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5" xml:space="preserve">
+    <value>Imports subject to VAT accounted for through the reverse charge mechanism (5%)</value>
+    <comment>VAT Declaration</comment>
+  </data>
 </root>

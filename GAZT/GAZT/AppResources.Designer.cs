@@ -3647,6 +3647,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated and imported and reverse charged..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAdjustment15 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAdjustment15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to services purchased during previous reporting periods that were standard rated at 5% and imported and reverse charged..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAdjustment5 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAdjustment5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
         ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
         ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
@@ -3654,6 +3672,28 @@ namespace EGAZT {
         public static string ZToolTipImportssubjecttoVATaccountedAmount {
             get {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
+        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAmount15 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and imported and reverse charged.
+        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedAmount5 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedAmount5", resourceCulture);
             }
         }
         
@@ -3670,11 +3710,53 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Under VAT amount display the following:
+        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedVatAmount15 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedVatAmount15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Under VAT amount display the following:
+        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATaccountedVatAmount5 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATaccountedVatAmount5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATpaidatcustomsAdjustment {
             get {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated and imported. Designated importers must specify their standard rated imports..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount of purchases adjustments (excluding VAT paid) made to goods purchased during previous reporting periods that were standard rated at 5% and imported. Designated importers must specify their standard rated imports &amp;003b%..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5", resourceCulture);
             }
         }
         
@@ -3685,6 +3767,26 @@ namespace EGAZT {
         public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount {
             get {
                 return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount15 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the previous periods that were standard rated at 5% and imported. Designated importers must specify their standard rated imports.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount5 {
+            get {
+                return ResourceManager.GetString("ZToolTipImportssubjecttoVATpaidatcustomsAmount5", resourceCulture);
             }
         }
         
@@ -3726,12 +3828,52 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA.
+        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAdjustment15 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAdjustment15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated at 5% and bought in KSA.
+        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAdjustment5 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAdjustment5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
         ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAmount {
             get {
                 return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAmount15 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and bought in KSA.
+        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        /// </summary>
+        public static string ZToolTipStandardrateddomesticpurchasesAmount5 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardrateddomesticpurchasesAmount5", resourceCulture);
             }
         }
         
@@ -3746,12 +3888,52 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to • Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables..
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAdjustment15 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables..
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAdjustment5 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
         ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount {
             get {
                 return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAmount15 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to • Total supplies amount of goods and services subject to 5% VAT rate as per the transitional provisions (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        /// </summary>
+        public static string ZToolTipStandardRatedSalesAmount5 {
+            get {
+                return ResourceManager.GetString("ZToolTipStandardRatedSalesAmount5", resourceCulture);
             }
         }
         
@@ -5962,6 +6144,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT accounted for through the reverse charge mechanism (15%).
+        /// </summary>
+        public static string ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15 {
+            get {
+                return ResourceManager.GetString("ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT accounted for through the reverse charge mechanism (5%).
+        /// </summary>
+        public static string ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5 {
+            get {
+                return ResourceManager.GetString("ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Imports value.
         /// </summary>
         public static string ZZImportsvalue {
@@ -7558,6 +7758,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have sales or purchases subject to 5% VAT as per the transitional provisions or sales, purchases, imports and adjustments subject to 5% VAT that you would like to declare in this period?.
+        /// </summary>
+        public static string ZZZDoyouhavesalesorpurchasessubjectto5VAT {
+            get {
+                return ResourceManager.GetString("ZZZDoyouhavesalesorpurchasessubjectto5VAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Profile.
         /// </summary>
         public static string ZZZEditProfile {
@@ -7599,6 +7808,24 @@ namespace EGAZT {
         public static string ZZZHelp {
             get {
                 return ResourceManager.GetString("ZZZHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT paid at customs (15%).
+        /// </summary>
+        public static string ZZZImportssubjecttoVATpaidatcustoms15 {
+            get {
+                return ResourceManager.GetString("ZZZImportssubjecttoVATpaidatcustoms15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports subject to VAT paid at customs (5%).
+        /// </summary>
+        public static string ZZZImportssubjecttoVATpaidatcustoms5 {
+            get {
+                return ResourceManager.GetString("ZZZImportssubjecttoVATpaidatcustoms5", resourceCulture);
             }
         }
         
@@ -7783,6 +8010,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchases subject to VAT at (5%).
+        /// </summary>
+        public static string ZZZPurchasessubjecttoVATat5 {
+            get {
+                return ResourceManager.GetString("ZZZPurchasessubjecttoVATat5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I hereby confirm that I will pay any outstanding liabilities and submit all due returns in GAZT before submitting the refund request or GAZT will offset the outstanding liabilities from my VAT credit balance before the refund paid. GAZT have also the right to reject my refund request if I have any overdue declaration..
         /// </summary>
         public static string ZZZRefundEnableMessage {
@@ -7836,6 +8072,15 @@ namespace EGAZT {
         public static string ZZZReturnUnderReview {
             get {
                 return ResourceManager.GetString("ZZZReturnUnderReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sales subject to VAT at (5%).
+        /// </summary>
+        public static string ZZZSalessubjecttoVATat5 {
+            get {
+                return ResourceManager.GetString("ZZZSalessubjecttoVATat5", resourceCulture);
             }
         }
         
@@ -8034,6 +8279,24 @@ namespace EGAZT {
         public static string ZZZVATReturnTitle {
             get {
                 return ResourceManager.GetString("ZZZVATReturnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard rated domestic purchases (15%).
+        /// </summary>
+        public static string ZZZVatStandardrateddomesticpurchases15 {
+            get {
+                return ResourceManager.GetString("ZZZVatStandardrateddomesticpurchases15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Standard rated sales (15%).
+        /// </summary>
+        public static string ZZZVatStandardRatedSales15 {
+            get {
+                return ResourceManager.GetString("ZZZVatStandardRatedSales15", resourceCulture);
             }
         }
         

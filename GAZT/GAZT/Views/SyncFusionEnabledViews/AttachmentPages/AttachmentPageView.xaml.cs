@@ -2,6 +2,7 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
