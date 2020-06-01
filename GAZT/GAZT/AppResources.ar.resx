@@ -3178,8 +3178,8 @@
     <comment>VAT</comment>
   </data>
   <data name="ZZZChangetoLanguage" xml:space="preserve">
-    <value>Change to English</value>
-    <comment>option </comment>
+    <value>English version</value>
+    <comment>option  Change to English</comment>
   </data>
   <data name="ZZZContactus" xml:space="preserve">
     <value>الاتصال بنا</value>
