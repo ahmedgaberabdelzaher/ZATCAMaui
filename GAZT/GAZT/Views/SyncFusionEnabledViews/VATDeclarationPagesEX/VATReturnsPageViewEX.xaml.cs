@@ -100,6 +100,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         public void ShowHideContent(bool IsNewReturn)
         {
+            //Test Checked In VAT15Change
             if(IsNewReturn==true)
             {
                 viewModel.IsPrevReturn = false;
