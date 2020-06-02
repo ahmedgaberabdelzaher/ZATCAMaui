@@ -186,9 +186,9 @@
                                 <Label HorizontalOptions="End" IsEnabled="{Binding IsTooltipEnableVisible}"
                                            IsVisible="{Binding IsTooltipEnableVisible}"
                         Margin="0,0,0,2"
-                        Style="{StaticResource IconLabelStyleVAT}"
+                       Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
-                        Text="{StaticResource Help}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                        Text="{StaticResource Help}"  >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                     </Label.GestureRecognizers>

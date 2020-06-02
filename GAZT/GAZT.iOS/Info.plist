@@ -56,8 +56,6 @@
 	<string>Picking Media</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
-	<key>CFBundleVersion</key>
-	<string>2.0.4.9</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -93,6 +91,8 @@
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.4.9</string>
+	<string>0.0.0.4</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.0.4</string>
 </dict>
 </plist>
