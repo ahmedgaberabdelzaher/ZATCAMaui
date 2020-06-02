@@ -103,7 +103,7 @@
       <Version>18.1.0.54</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
-      <Version>18.1.0.54</Version>
+      <Version>18.1.0.48</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>18.1.0.42</Version>
