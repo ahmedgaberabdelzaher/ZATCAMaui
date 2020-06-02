@@ -409,8 +409,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             //    {
             //    }
             //});
-            BackButtonClicked = new Command(() =>
-            {
+            BackButtonClicked = new Command(async() =>
+            {   
                 App.IsUserLoggedIn = false;
                 _navigationService.GoBack();
             });

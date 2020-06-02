@@ -297,7 +297,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
                 AppResources.Culture = new CultureInfo(langName);
             }
 
-            await WebServiceManager.GAZTLogOff();
+            try
+            {
+                await WebServiceManager.GAZTLogOff();
+            }
+            catch
+            {
+
+            }
 
             var _navigation = Application.Current.MainPage.Navigation; 
             foreach (var item in _navigation.NavigationStack)
@@ -312,7 +319,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             App.IsLogOut = true;
             App.IsLoginCalled = false;
             App.IsSamlApiCalledAndroid = false;
-
 
             try
             {
