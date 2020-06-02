@@ -492,7 +492,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -664,7 +667,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -731,7 +737,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                     {
                         // Handle the GAZT custom exception.
                         string MessageForTheUser = gex.Message;
-
+                        if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        }
                         if (gex is GAZTNetworkConnectivityIssueException)
                         {
                             MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -910,7 +919,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1072,7 +1084,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1421,7 +1436,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1578,7 +1596,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                             {
                                                 // Handle the GAZT custom exception.
                                                 string MessageForTheUser = gex.Message;
-
+                                                if (gex is GAZTInvalidDataException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                }
                                                 if (gex is GAZTNetworkConnectivityIssueException)
                                                 {
                                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1705,7 +1726,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                             {
                                                 // Handle the GAZT custom exception.
                                                 string MessageForTheUser = gex.Message;
-
+                                                if (gex is GAZTInvalidDataException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                }
                                                 if (gex is GAZTNetworkConnectivityIssueException)
                                                 {
                                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1773,7 +1797,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     // Handle the GAZT custom exception.
                     string MessageForTheUser = gex.Message;
-
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
                     if (gex is GAZTNetworkConnectivityIssueException)
                     {
                         MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1928,7 +1955,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -2039,7 +2069,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
