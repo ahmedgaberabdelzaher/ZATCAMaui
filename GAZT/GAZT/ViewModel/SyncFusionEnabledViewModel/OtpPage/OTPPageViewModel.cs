@@ -410,40 +410,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             //    }
             //});
             BackButtonClicked = new Command(async() =>
-            {
+            {   
                 App.IsUserLoggedIn = false;
-                IsLoading = true;
-
-                App.IsLogOut = true;
-                App.IsLoginCalled = false;
-                App.IsSamlApiCalledAndroid = false;
-
-                try
-                {
-                    await WebServiceManager.GAZTLogOff();
-                }
-                catch(Exception ex) 
-                {
-                    IsLoading = false;
-                }
-
-                try
-                {
-                    App.httpClientHandler = new HttpClientHandler();
-                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                }
-                catch (Exception ex)
-                {
-                    IsLoading = false;
-                }
-
-                IsLoading = false;
-
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    _navigationService.GoBack();
-                });
+                _navigationService.GoBack();
             });
         }
         /// <summary>
