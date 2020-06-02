@@ -44,11 +44,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageViewEX;
                 viewModel.SelectedIndex = 0;
-                this.BindingContext = viewModel;
+               this.BindingContext = viewModel;
                 SetLTR();
                 if (_vATDeclarationInfo.d != null)
                 {
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
+                   
                 }
                 if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
                 {
@@ -224,6 +225,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             await Task.Run(async () =>
             {
                 await viewModel.pageLoad();
+                //EntryVatAmount15.BindingContext = viewModel.ResponseVATDeclarationD.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault().StdsalesAmt; //(Entry.TextProperty, new Binding(viewModel.ResponseVATDeclarationD.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault().StdsalesAmt));
                 try
                 {
                     if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006" || App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
@@ -1884,242 +1886,245 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             bool IsAllEntered = true;
             try
             {
-                if ((TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked != true) || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
+                if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg != "X")
                 {
-                    if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
+                    if ((TabVatReturn.IsVisible == true && viewModel.IsGetAcknowledgementClicked != true) || viewModel.IsVATReturnFieldCheckForSaveAsDraft)
                     {
-                        IsAllEntered = false;
-                        EntryVatAmountFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAmountFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryVatAdjustmentWithSARFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAdjustmentWithSARFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (string.IsNullOrEmpty(EntrySalesGccAmt.Text) || EntrySalesGccAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntrySalesGccAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntrySalesGccAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntrySalesGccAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntrySalesGccAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZerosalesAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZerosalesAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZerosalesAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZerosalesAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExportsAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExportsAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExportsAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExportsAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptsalesAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptsalesAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptsalesAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptsalesAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryStdpurchaseAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryStdpurchaseAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryStdpurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryStdpurchaseAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) || EntryZVatAmountWithSAR.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZVatAmountWithSARFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZVatAmountWithSARFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportspaidAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportspaidAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportsaccAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportsaccAmtFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportsaccAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportsaccAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZeropurchaseAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZeropurchaseAmtFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZeropurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZeropurchaseAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptpurchaseAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptpurchaseAmtFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptpurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptpurchaseAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryPreperiodcorrFrame.HasError = true;
-                    }
-                    else
-                    {
-                        if (viewModel.IsGreaterThanFiveT == false)
+                        if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
                         {
-                            EntryPreperiodcorrFrame.HasError = false;
+                            IsAllEntered = false;
+                            EntryVatAmountFrame.HasError = true;
                         }
                         else
                         {
+                            EntryVatAmountFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryVatAdjustmentWithSARFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryVatAdjustmentWithSARFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                        }
+                        if (string.IsNullOrEmpty(EntrySalesGccAmt.Text) || EntrySalesGccAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntrySalesGccAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntrySalesGccAmtFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntrySalesGccAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntrySalesGccAdjFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryZerosalesAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryZerosalesAmtFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryZerosalesAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryZerosalesAdjFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExportsAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExportsAmtFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExportsAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExportsAdjFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExemptsalesAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExemptsalesAmtFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExemptsalesAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExemptsalesAdjFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryStdpurchaseAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryStdpurchaseAmtFrame.HasError = false; ;
+                        }
+                        if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryStdpurchaseAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryStdpurchaseAdjFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) || EntryZVatAmountWithSAR.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryZVatAmountWithSARFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryZVatAmountWithSARFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryImportspaidAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryImportspaidAdjFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryImportsaccAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryImportsaccAmtFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryImportsaccAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryImportsaccAdjFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryZeropurchaseAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryZeropurchaseAmtFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryZeropurchaseAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryZeropurchaseAdjFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExemptpurchaseAmtFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExemptpurchaseAmtFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                            EntryExemptpurchaseAdjFrame.HasError = true;
+                        }
+                        else
+                        {
+                            EntryExemptpurchaseAdjFrame.HasError = false;
+                        }
+                        if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
                             EntryPreperiodcorrFrame.HasError = true;
                         }
-                    }
-                    if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (viewModel.IsGreaterThanFiveT == true)
-                    {
-                        IsAllEntered = false;
-                    }
-                    //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
-                    //{
-                    //    IsAllEntered = false;
-                    //}
-                    if (IsAllEntered == false)
-                    {
-                        viewModel.IsMainButtonEnabled = false;
-                        // BtnNextStep.IsEnabled = false;
-                    }
-                    else
-                    {
-                        // viewModel.IsDeclarationCheckedForInstruction = false;
-                        viewModel.IsMainButtonEnabled = true;
-                        //  BtnNextStep.IsEnabled = true;
+                        else
+                        {
+                            if (viewModel.IsGreaterThanFiveT == false)
+                            {
+                                EntryPreperiodcorrFrame.HasError = false;
+                            }
+                            else
+                            {
+                                EntryPreperiodcorrFrame.HasError = true;
+                            }
+                        }
+                        if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
+                        {
+                            IsAllEntered = false;
+                        }
+                        if (viewModel.IsGreaterThanFiveT == true)
+                        {
+                            IsAllEntered = false;
+                        }
+                        //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+                        //{
+                        //    IsAllEntered = false;
+                        //}
+                        if (IsAllEntered == false)
+                        {
+                            viewModel.IsMainButtonEnabled = false;
+                            // BtnNextStep.IsEnabled = false;
+                        }
+                        else
+                        {
+                            // viewModel.IsDeclarationCheckedForInstruction = false;
+                            viewModel.IsMainButtonEnabled = true;
+                            //  BtnNextStep.IsEnabled = true;
+                        }
                     }
                 }
             }

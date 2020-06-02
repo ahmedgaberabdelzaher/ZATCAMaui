@@ -2029,7 +2029,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
         //New Properties for VAT 15% Change
 
-        StdsalesAmt
+        private Result6 _vATNewModelFor15Percent;
+        public Result6 VATNewModelFor15Percent
+        {
+            get
+            {
+                return _vATNewModelFor15Percent;
+            }
+            set
+            {
+                _vATNewModelFor15Percent = value;
+                RaisePropertyChanged("VATNewModelFor15Percent");
+            }
+        }
+       
 
 
 
@@ -4017,6 +4030,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     if (VATDeclarationData.d != null)
                     {
                         ResponseVATDeclarationD = VATDeclarationData.d;
+                        if (ResponseVATDeclarationD.GoliveFg == "X")
+                        {
+                            VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
+                        }
                         SetData();
                         SetCommasforAll();
                     }
@@ -4247,6 +4264,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         {
             try
             {
+                Result6 result = VATNewModelFor15Percent;
                 VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
                 vATDeclarationD = SetRemainingData(vATDeclarationD);
                 VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;

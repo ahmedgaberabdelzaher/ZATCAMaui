@@ -583,7 +583,7 @@
     Hint="{x:Static local:AppResources.ZVatAmountWithSAR}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" x:Name="EntryVatAmountFrame15"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                            <custom:GAZTBorderlessEntry x:Name="EntryVatAmount15" PropertyChanged="EntryVatAmount_PropertyChanged"   Focused="EntryVatAmountFocused"  Unfocused="EntryVatAmount_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static custom2:AppResources.ZVatAmountWithSAR}"  Text="{Binding StdsalesAmt}"     Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                            <custom:GAZTBorderlessEntry x:Name="EntryVatAmount15" PropertyChanged="EntryVatAmount_PropertyChanged"   Focused="EntryVatAmountFocused"  Unfocused="EntryVatAmount_Unfocused" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabledForEntry}" Keyboard="Numeric" TextChanged="ClickGestureRecognizer_ClickedForVatAmount" Placeholder="{x:Static custom2:AppResources.ZVatAmountWithSAR}"  Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.VATNewModelFor15Percent.StdsalesAmt}"     Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
