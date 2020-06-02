@@ -1030,7 +1030,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 { //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
                     var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
-                    await _dialogService.ShowMessage(newrm, AppResources.ZZZSubmittedReport);
+                    var newReplacedMsg = newrm.Replace("5","10");
+                    
+                    await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
                     var _navigation = Application.Current.MainPage.Navigation;
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();
                     //Remove last page
