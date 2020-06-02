@@ -42,6 +42,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageView;
+                viewModel.SelectedIndex = 0;
                 this.BindingContext = viewModel;
                 SetLTR();
                 if (_vATDeclarationInfo.d != null)
@@ -178,6 +179,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             viewModel.ManageEnabledAsyncProperty(false);
+                            viewModel.SelectedIndex = 0;
+                            viewModel.PageSelectedItem = viewModel.VatTabbledPageList[0];
                             //   viewModel.ManageEnabledProperty(false);
                             viewModel.IsCheckedTaxPayerDetailsInfo = true;
                             viewModel.IsDeclarationCheckedForSummary = true;
@@ -4304,6 +4307,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                                 }
                                 else
                                 {
+                                    viewModel.IsVisibleSummary = true;
+                                    viewModel.ClearPage();
                                     viewModel.SummaryClicked();
                                     // setColor(previous, current);
                                     //   NewSetColor(senderObject, current);
@@ -4311,6 +4316,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
                                 //Add because it will  not navigate in tobefilled and draft mode
                                 if (App.ICRStatus == "E0001" || value1)
                                 {
+                                    viewModel.IsVisibleSummary = true;
+                                    viewModel.ClearPage();
                                     viewModel.SummaryClicked();
                                     //  setColor(previous, current);
                                     //   NewSetColor(senderObject, current);
@@ -4604,6 +4611,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage
             catch (Exception ex)
             {
             }
+        }
+
+        private void chkRefundDeclaration_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ValidationsForVATRefund();
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)
