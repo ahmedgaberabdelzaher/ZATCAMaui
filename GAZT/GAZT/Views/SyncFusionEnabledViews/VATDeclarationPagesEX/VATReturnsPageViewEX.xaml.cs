@@ -43,6 +43,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageViewEX;
+                viewModel.SelectedIndex = 0;
                 this.BindingContext = viewModel;
                 SetLTR();
                 if (_vATDeclarationInfo.d != null)
@@ -4356,6 +4357,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 }
                                 else
                                 {
+                                    viewModel.IsVisibleSummary = true;
+                                    viewModel.ClearPage();
                                     viewModel.SummaryClicked();
                                     // setColor(previous, current);
                                     //   NewSetColor(senderObject, current);
@@ -4363,6 +4366,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 //Add because it will  not navigate in tobefilled and draft mode
                                 if (App.ICRStatus == "E0001" || value1)
                                 {
+                                    viewModel.IsVisibleSummary = true;
+                                    viewModel.ClearPage();
                                     viewModel.SummaryClicked();
                                     //  setColor(previous, current);
                                     //   NewSetColor(senderObject, current);
@@ -5022,6 +5027,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 popUp.FlowDirections = "LeftToRight";
             }
             PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        }
+        private void chkRefundDeclaration_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            ValidationsForVATRefund();
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)

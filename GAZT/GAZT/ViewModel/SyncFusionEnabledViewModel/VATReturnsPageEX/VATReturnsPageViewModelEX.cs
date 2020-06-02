@@ -2026,6 +2026,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 RaisePropertyChanged("IsEnableCheckedRefund");
             }
         }
+
+        //New Properties for VAT 15% Change
+
+        StdsalesAmt
+
+
+
         #region  Color Property
         private Color _entryVatAmountTextColor;
         public Color EntryVatAmountTextColor

@@ -2388,7 +2388,7 @@ HeaderTextColor="White"
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
-                                        <CheckBox x:Name="chkRefundDeclaration" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" CheckedChanged="chkRefundDeclaration_CheckedChanged" IsChecked="{Binding IschkRefundDeclaration}" IsVisible="{Binding IsVisiblechkRefundDeclaration}" VerticalOptions="Start" Grid.Row="12" Margin="10,0,10,0" Grid.Column="0">
+                                        <CheckBox x:Name="chkRefundDeclaration" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}"  PropertyChanged="chkRefundDeclaration_PropertyChanged" IsChecked="{Binding IschkRefundDeclaration}" IsVisible="{Binding IsVisiblechkRefundDeclaration}" VerticalOptions="Start" Grid.Row="12" Margin="10,0,10,0" Grid.Column="0">
                                             <CheckBox.Triggers>
                                                 <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkRefundDeclaration}, Path=IsChecked}" Value="false">
                                                     <Setter Property="Color" Value="#ff0000" />
