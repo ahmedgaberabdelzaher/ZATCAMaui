@@ -232,7 +232,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                 {
                     // Handle the GAZT custom exception.
                     string MessageForTheUser = gex.Message;
-
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
                     if (gex is GAZTNetworkConnectivityIssueException)
                     {
                         MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -251,7 +254,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                         viewModel.IsLoading = false;
 
                         await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        viewModel._navigationService.GoBack();
+                        //viewModel._navigationService.GoBack();
                     });
                 }
                 catch (HttpRequestException ex)
@@ -484,7 +487,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                     {
                         // Handle the GAZT custom exception.
                         string MessageForTheUser = gex.Message;
-
+                        if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        }
                         if (gex is GAZTNetworkConnectivityIssueException)
                         {
                             MessageForTheUser = AppResources.NetworkConnectivityIssue;

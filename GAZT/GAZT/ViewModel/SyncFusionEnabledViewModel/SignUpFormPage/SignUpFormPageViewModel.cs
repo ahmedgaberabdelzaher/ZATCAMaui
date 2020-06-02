@@ -775,7 +775,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             {
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
-
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
                 if (gex is GAZTNetworkConnectivityIssueException)
                 {
                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -840,7 +843,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             {
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
-
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
                 if (gex is GAZTNetworkConnectivityIssueException)
                 {
                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
