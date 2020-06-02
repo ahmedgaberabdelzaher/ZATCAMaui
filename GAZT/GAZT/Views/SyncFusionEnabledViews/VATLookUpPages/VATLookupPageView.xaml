@@ -69,7 +69,7 @@
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <!--<Span Text="{x:Static local:AppResources.ZStepsTitleScan}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>-->
-                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScanNew}" Style="{StaticResource MicroGrayLabelStyleNew}"></Span>
+                                    <Span Text="{x:Static local:AppResources.ZStepsTitleScanNew}" Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
@@ -186,9 +186,9 @@
                                 <Label HorizontalOptions="End" IsEnabled="{Binding IsTooltipEnableVisible}"
                                            IsVisible="{Binding IsTooltipEnableVisible}"
                         Margin="0,0,0,2"
-                        Style="{StaticResource IconLabelStyleVAT}"
+                       Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
-                        Text="{StaticResource Help}" >
+                        Text="{StaticResource Help}"  >
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                                     </Label.GestureRecognizers>
@@ -204,9 +204,9 @@
                                     <ColumnDefinition Width="50*"/>
                                     <ColumnDefinition Width="50*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNew}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.Name}"  Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNew}"  HorizontalOptions="Start" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                 </Label>
-                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" Style="{StaticResource GAZTSmallGreenLabelStyleForSteps}"  x:Name="lbResult"  Margin="10,0,10,0" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                             </Grid>
                         </StackLayout>
                     </Grid>

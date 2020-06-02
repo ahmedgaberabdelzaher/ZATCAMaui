@@ -31,7 +31,8 @@ namespace GAZT.Helper
 
         public static string LanguageCookieNameForLogin = "langMobile";
 
-        public static string DomainUrlForCookies = PreprodDomainForCookies;
+    public static string DomainUrlForCookies = PreprodDomainForCookies;
+
         //public static string DomainUrlForCookies = PreprodDomainForCookies;
 
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
@@ -39,7 +40,7 @@ namespace GAZT.Helper
 
         public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-
+         
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
 
