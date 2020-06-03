@@ -200,6 +200,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
                 viewModel.SelectedTaxPayerType = null;
                 UserName.Keyboard = Keyboard.Default;
                 viewModel.IsVisibleTinIds = false;
+                viewModel.MaxChar = 256;
             }
 
 

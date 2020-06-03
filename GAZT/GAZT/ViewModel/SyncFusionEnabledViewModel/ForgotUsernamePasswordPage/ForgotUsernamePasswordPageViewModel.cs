@@ -892,6 +892,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 {
                     IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
                 }
+
                 MaxChar = 10;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
