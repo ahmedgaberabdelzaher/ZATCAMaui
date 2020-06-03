@@ -68,14 +68,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ContactUsPage
             }
         }
 
-        private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
-        {
-            viewModel.IsLoading = true;
-        }
+        //private void ContactWebView_Navigating(object sender, WebNavigatingEventArgs e)
+        //{
+        //    viewModel.IsLoading = true;
+        //}
 
-        private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)
-        {
-            viewModel.IsLoading = false;
-        }
+        //private void ContactWebView_Navigated(object sender, WebNavigatedEventArgs e)
+        //{
+        //    viewModel.IsLoading = false;
+        //}
     }
 }
