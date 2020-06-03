@@ -46,7 +46,7 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--Source="{Binding WebUrl}"-->
-            <WebView x:Name="ContactWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" />
+            <WebView x:Name="ContactWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0"   Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" />
             <Grid Grid.Row="0"    Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
                 <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>

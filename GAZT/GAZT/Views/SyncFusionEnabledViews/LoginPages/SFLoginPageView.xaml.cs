@@ -14,7 +14,6 @@ using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -204,6 +203,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     hybridWebView.Opacity = 0;
                 });
 
+                //try
+                //{
+                //    await WebServiceManager.GAZTLogOff();
+                //}
+                //catch(Exception ex)
+                //{
+
+                //}
+
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
 
@@ -265,6 +273,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
+
+                                if(App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                                {
+                                    App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
+                                }
+
+                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                                {
+                                    App.LoginDataRetrieved.MsgTitle = AppResources.Information;
+                                }
 
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
                                 //hybridWebView.RefreshCommand();

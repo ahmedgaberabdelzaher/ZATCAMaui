@@ -199,6 +199,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
             {
                 viewModel.SelectedTaxPayerType = null;
                 UserName.Keyboard = Keyboard.Default;
+                viewModel.IsVisibleTinIds = false;
+                viewModel.MaxChar = 256;
             }
 
 
@@ -360,11 +362,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword
         }
         private void SelectedTinIdPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TIN selectedTIN = (TIN)e.NewValue;
-            SelectedTinIdPicker.SelectedItem = selectedTIN;
-            viewModel.SelectedTinId = selectedTIN;
-            viewModel.SelectedTinIdPrev = selectedTIN;
-            viewModel.TxtTIN = selectedTIN.Tin;
+            try
+            {
+                TIN selectedTIN = (TIN)e.NewValue;
+                if (selectedTIN != null)
+                {
+                    SelectedTinIdPicker.SelectedItem = selectedTIN;
+                    viewModel.SelectedTinId = selectedTIN;
+                    viewModel.SelectedTinIdPrev = selectedTIN;
+                    viewModel.TxtTIN = selectedTIN.Tin;
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
+          
         }
         private void SelectedTinIdPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

@@ -229,7 +229,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATLookup
                     }
                 }
                 catch (GAZTException gex)
-                {
+                {                  
                     // Handle the GAZT custom exception.
                     string MessageForTheUser = gex.Message;
                     if (gex is GAZTInvalidDataException)
