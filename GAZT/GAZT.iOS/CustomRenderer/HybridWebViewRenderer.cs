@@ -33,10 +33,12 @@ namespace GAZT.iOS.CustomRenderer
         WKUserContentController userController;
 
         WKWebView _wkWebView;
+
+
+
         protected override void OnElementChanged(ElementChangedEventArgs<HybridWebView> e)
         {
             base.OnElementChanged(e);
-
             if (Control == null)
             {
                 var config = new WKWebViewConfiguration();
@@ -60,7 +62,52 @@ namespace GAZT.iOS.CustomRenderer
                 var tempElement = (HybridWebView)e.NewElement;
                 WKHttpCookieStore wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
 
+                /*WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                print("[WebCacheCleaner] Record \(record) deleted")
+            }
+                }
+                 *
+                 */
 
+                NSArray allCache = new NSArray();
+
+                Task task = new Task(() =>
+                {
+                    WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray allCookies) =>
+                    {
+
+                        for (uint i = 0; i < allCookies.Count; i++)
+                        {
+                            WKWebsiteDataRecord wKWebsiteDataRecord = allCookies.GetItem<WKWebsiteDataRecord>(i);
+
+                            WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
+                            currRecord.Append(wKWebsiteDataRecord);
+                        }
+
+                        allCache = allCookies;
+
+                        Console.WriteLine(allCookies);
+                    });
+                });
+
+                task.RunSynchronously();
+
+                Task task2 = new Task(() =>
+                {
+                    for (uint i = 0; i < allCache.Count; i++)
+                    {
+                        WKWebsiteDataRecord wKWebsiteDataRecord = allCache.GetItem<WKWebsiteDataRecord>(i);
+
+                        WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
+                        currRecord.Append(wKWebsiteDataRecord);
+
+                        WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(wKWebsiteDataRecord.DataTypes, currRecord, null);
+                    }
+                });
+
+                task2.RunSynchronously();
 
                 //wKHttpCookieStore.GetAllCookies(async (cookies) =>
                 //{
@@ -170,6 +217,10 @@ namespace GAZT.iOS.CustomRenderer
 
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
                 SetNativeControl(_wkWebView);
+
+
+
+               
             }
         }
     }
@@ -193,6 +244,7 @@ namespace GAZT.iOS.CustomRenderer
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
             Uri apiUrl = webView.Url;
+            
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {

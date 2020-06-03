@@ -204,6 +204,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     hybridWebView.Opacity = 0;
                 });
 
+                try
+                {
+                    await WebServiceManager.GAZTLogOff();
+                }
+                catch(Exception ex)
+                {
+
+                }
+
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
 
