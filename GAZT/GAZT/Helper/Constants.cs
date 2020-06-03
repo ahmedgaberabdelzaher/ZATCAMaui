@@ -35,7 +35,7 @@ namespace GAZT.Helper
 
         public static string DomainUrlForCookies = PreprodDomainForCookies;
 
-        //public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
+        public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
         public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
