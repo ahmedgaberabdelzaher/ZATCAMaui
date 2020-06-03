@@ -63,51 +63,13 @@ namespace GAZT.iOS.CustomRenderer
                 WKHttpCookieStore wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
 
                 /*WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
-            records.forEach { record in
-                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
-                print("[WebCacheCleaner] Record \(record) deleted")
-            }
+                records.forEach { record in
+                    WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+                    print("[WebCacheCleaner] Record \(record) deleted")
                 }
+                    }
                  *
                  */
-
-                NSArray allCache = new NSArray();
-
-                Task task = new Task(() =>
-                {
-                    WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray allCookies) =>
-                    {
-
-                        for (uint i = 0; i < allCookies.Count; i++)
-                        {
-                            WKWebsiteDataRecord wKWebsiteDataRecord = allCookies.GetItem<WKWebsiteDataRecord>(i);
-
-                            WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
-                            currRecord.Append(wKWebsiteDataRecord);
-                        }
-
-                        allCache = allCookies;
-
-                        Console.WriteLine(allCookies);
-                    });
-                });
-
-                task.RunSynchronously();
-
-                Task task2 = new Task(() =>
-                {
-                    for (uint i = 0; i < allCache.Count; i++)
-                    {
-                        WKWebsiteDataRecord wKWebsiteDataRecord = allCache.GetItem<WKWebsiteDataRecord>(i);
-
-                        WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
-                        currRecord.Append(wKWebsiteDataRecord);
-
-                        WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(wKWebsiteDataRecord.DataTypes, currRecord, null);
-                    }
-                });
-
-                task2.RunSynchronously();
 
                 //wKHttpCookieStore.GetAllCookies(async (cookies) =>
                 //{
@@ -127,7 +89,6 @@ namespace GAZT.iOS.CustomRenderer
 
                 tempElement.RefreshCommand = async () =>
                 {
-
                     wKHttpCookieStore = Control.Configuration.WebsiteDataStore.HttpCookieStore;
                     await Task.Run(() =>
                     {
@@ -150,7 +111,7 @@ namespace GAZT.iOS.CustomRenderer
                         //            Console.WriteLine(cookies);
                         //        }
                         //    });
-                         
+
                         //});
 
                         NSUrl portalLogin = new NSUrl(Element.Url);
@@ -190,6 +151,133 @@ namespace GAZT.iOS.CustomRenderer
                     //});
                 };
 
+                //NSArray allCache = new NSArray();
+
+                //Task task2 = new Task(() =>
+                //{
+                //    for (uint i = 0; i < allCache.Count; i++)
+                //    {
+                //        WKWebsiteDataRecord wKWebsiteDataRecord = allCache.GetItem<WKWebsiteDataRecord>(i);
+
+                //        WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
+                //        currRecord.Append(wKWebsiteDataRecord);
+
+                //        WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(wKWebsiteDataRecord.DataTypes, currRecord, null);
+                //    }
+                //});
+
+                //Task.Run(async () =>
+                //{
+                //    WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray allCookies) =>
+                //    {
+
+                //        for (uint i = 0; i < allCookies.Count; i++)
+                //        {
+                //            WKWebsiteDataRecord wKWebsiteDataRecord = allCookies.GetItem<WKWebsiteDataRecord>(i);
+
+                //            WKWebsiteDataRecord[] currRecord = new WKWebsiteDataRecord[5];
+                //            currRecord.Append(wKWebsiteDataRecord);
+                //        }
+
+                //        allCache = allCookies;
+
+                //        Console.WriteLine(allCookies);
+                //        task2.Start();
+                //    });
+                //});
+
+
+                /*
+                 * let websiteDataTypes = NSSet(array: [WKWebsiteDataTypeDiskCache, WKWebsiteDataTypeMemoryCache])
+                    let date = Date(timeIntervalSince1970: 0)
+                    WKWebsiteDataStore.default().removeData(ofTypes: websiteDataTypes as! Set<String>, modifiedSince: date, completionHandler:{ })
+                 */
+
+                //NSMutableArray nSArray = new NSMutableArray();
+                //nSArray.Add(WKWebsiteDataType.DiskCache);
+                //nSArray.Add(WKWebsiteDataType.MemoryCache);
+
+                //NSString[] nSString = new NSString[2];
+                //nSString.Append(WKWebsiteDataType.DiskCache);
+                //nSString.Append(WKWebsiteDataType.MemoryCache);
+
+                //NSArray nSStrings = NSArray.FromObjects(WKWebsiteDataType.DiskCache, WKWebsiteDataType.MemoryCache);
+
+                //NSDate date = NSDate.FromTimeIntervalSince1970(0);
+                //NSSet<NSString> set = WKWebsiteDataStore.AllWebsiteDataTypes;
+
+                //NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
+                //CookieStorage.RemoveCookiesSinceDate(date);
+                //NSUserDefaults.StandardUserDefaults.Synchronize();
+
+                //NSHttpCookie[] allcCookies = new NSHttpCookie[100];
+
+                //Task task3 = new Task(() =>
+                //{
+                //    string langVal = "en";
+
+                //    if (App.IsArabic == true)
+                //    {
+                //        langVal = "ar";
+                //    }
+
+                //    NSUrl portalLogin = new NSUrl(Element.Url);
+                //    NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
+
+                //    NSMutableDictionary dic = new NSMutableDictionary();
+                //    dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
+                //    portalReq.Headers = dic;
+                //    Control.LoadRequest(portalReq);
+                //});
+
+                //Task task1 = new Task(() =>
+                //{
+                //    foreach (NSHttpCookie nSHttpCookie in allcCookies)
+                //    {
+                //        WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.DeleteCookie(nSHttpCookie, () =>
+                //        {
+                //            Console.WriteLine("Deleted");
+                //        });
+                //    }
+
+                //    task3.RunSynchronously();
+                //});
+
+                //Task task2 = new Task(() =>
+                //{
+                //    WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.GetAllCookies(async (cookies) =>
+                //    {
+                //        try
+                //        {
+                //            if (cookies.Length > 0)
+                //            {
+                //                allcCookies = cookies;
+                //                task1.RunSynchronously();
+                //            }
+                //        }
+                //        catch (Exception ex)
+                //        {
+
+                //        }
+                //    });
+                //});
+
+                //task2.RunSynchronously();
+
+                //WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(new NSSet<NSString>(nSString), date, null);
+                //try
+                //{
+                //    WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(set, date, () =>
+                //    {
+
+
+                //    });
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex.Message);
+                //}
+
                 Task.Run(async () =>
                 {
                     string langVal = "en";
@@ -199,12 +287,15 @@ namespace GAZT.iOS.CustomRenderer
                         langVal = "ar";
                     }
 
+                    //NSString encodedUrl = (NSString)Element.Url;
+                    //encodedUrl = encodedUrl.CreateStringByAddingPercentEncoding(null);
+
                     NSUrl portalLogin = new NSUrl(Element.Url);
                     NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
 
                     NSMutableDictionary dic = new NSMutableDictionary();
                     dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
-                    portalReq.Headers = dic; 
+                    portalReq.Headers = dic;
                     Control.LoadRequest(portalReq);
                 });
 
@@ -217,10 +308,6 @@ namespace GAZT.iOS.CustomRenderer
 
                 _wkWebView.NavigationDelegate = new DisplayLinkWebViewDelegate(Element);
                 SetNativeControl(_wkWebView);
-
-
-
-               
             }
         }
     }
@@ -244,7 +331,6 @@ namespace GAZT.iOS.CustomRenderer
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
             Uri apiUrl = webView.Url;
-            
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
@@ -254,7 +340,6 @@ namespace GAZT.iOS.CustomRenderer
             if(apiUrl.ToString().Contains("IsFGTCK=Y"))
             {
                 element.InvokeAction("navigateToForgotUsernamePage");
-
             }
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
@@ -285,7 +370,7 @@ namespace GAZT.iOS.CustomRenderer
         }
 
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
-        {
+        {   
             Console.WriteLine("DidFinishNavigation");
             WKHttpCookieStore wKHttpCookieStore = webView.Configuration.WebsiteDataStore.HttpCookieStore;
 
@@ -351,16 +436,69 @@ namespace GAZT.iOS.CustomRenderer
                                 Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
                             }
 
+                            //Task task1 = new Task(() =>
+                            //{
+                            //    foreach (NSHttpCookie nSHttpCookie in allCookies)
+                            //    {
+                            //        WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.DeleteCookie(nSHttpCookie, () =>
+                            //        {
+                            //            Console.WriteLine("Deleted");
+                            //        });
+                            //    }
+                            //});
+
+                            //Task task2 = new Task(() =>
+                            //{
+                            //    WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.GetAllCookies(async (cookiesTemp) =>
+                            //    {
+                            //        try
+                            //        {
+                            //            if (cookiesTemp.Length > 0)
+                            //            {
+                            //                allCookies = cookiesTemp;
+                            //                task1.RunSynchronously();
+                            //            }
+                            //        }
+                            //        catch (Exception ex)
+                            //        {
+
+                            //        }
+                            //    });
+                            //});
+
+                            //task2.RunSynchronously();
+
+                            //NSDate date = NSDate.FromTimeIntervalSince1970(0);
+                            //NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
+                            //CookieStorage.RemoveCookiesSinceDate(date);
+                            //NSUserDefaults.StandardUserDefaults.Synchronize();
+
+                            //NSSet<NSString> set = WKWebsiteDataStore.AllWebsiteDataTypes;
+                            //try
+                            //{
+                            //    WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(set, date, () =>
+                            //    {
+                            //        Console.WriteLine(set);
+                            //    });
+                            //}
+                            //catch (Exception ex)
+                            //{
+                            //    Console.WriteLine(ex.Message);
+                            //}
+
                             try
                             {
                                 App.httpClientHandler = new HttpClientHandler();
                                 App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
                             }
                             catch(Exception ex)
                             {
 
                             }
+
+                            //NSUrlSession.SharedSession.Reset(()=> {
+                            //    Console.WriteLine("NSUrlSession.SharedSession.Reset");
+                            //});
 
                             App.LoginDataRetrieved = new LoginModel();
                             App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());
