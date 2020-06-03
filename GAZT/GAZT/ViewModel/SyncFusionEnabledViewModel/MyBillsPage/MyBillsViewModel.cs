@@ -434,8 +434,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         }
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
+                            //ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
                             SetNoDataLabelVisibilityPPAID = false;
                             SetNoDataLabelVisibilityPPAIDList = true;
                         }

@@ -75,15 +75,16 @@
                                     <chart:PieSeries ItemsSource="{Binding ListMyBillsChartModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
                                 </chart:SfChart.Series>
                             </chart:SfChart>-->
-                                <syncfusion:SfExpander IsExpanded="True" IsVisible="{Binding SetNoDataLabelVisibilityALLList}">
+                                <syncfusion:SfExpander IsExpanded="True"  IsVisible="{Binding SetNoDataLabelVisibilityALLList}">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <Label TextColor="#495F6E" Margin="10,0,10,0"  Text=""  HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
-                                        <StackLayout Padding="0,0,0,20">
-                                            <chart:SfChart   x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="260">
+                                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <chart:SfChart ChartPadding="30"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="260">
                                                 <!--<chart:SfChart.Title>
                                                     <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                 </chart:SfChart.Title>-->
@@ -121,9 +122,9 @@
                                                             <chart:ChartDataMarker >
                                                                 <chart:ChartDataMarker.LabelTemplate>
                                                                     <DataTemplate>
-                                                                        <StackLayout Orientation="Vertical">
-                                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
-                                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
+                                                                        <StackLayout Orientation="Vertical"  >
+                                                                            <Label FontSize="12" TextColor="Black" BackgroundColor="White" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
+                                                                            <Label FontSize="12" BackgroundColor="White" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
                                                                         </StackLayout>
                                                                     </DataTemplate>
                                                                 </chart:ChartDataMarker.LabelTemplate>
@@ -137,7 +138,8 @@
                                             </chart:SfChart>
                                             <!--<local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
                                             </local1:CustomLabel>-->
-                                        </StackLayout>
+                                            </StackLayout>
+                                        </ScrollView>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                                 <ListView  x:Name="Bills" 
