@@ -105,11 +105,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             if (viewModel.VATDeclarationData.d.GoliveFg == "X")
             {
+                viewModel.IsFifteenPercentChange = true;
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
             }
             else
             {
+                viewModel.IsFifteenPercentChange = false;
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
             }
@@ -2127,14 +2129,503 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         }
                     }
                 }
+                else
+                {
+                    if(viewModel.IsFifteenPercentChange)
+                    {
+                        bool check=CheckMandetoryFieldsFor15PercentView();
+                        if(!check)
+                        {
+                            IsAllEntered = false;
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
             }
             return IsAllEntered;
         }
-        //Test    
-        private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
+
+        public bool CheckMandetoryFieldsFor15PercentView()
+        {
+            bool IsAllEntered = true;
+            try
+            {
+                    if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryVatAmountFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryVatAmountFrame.HasError = false;
+                    }
+
+                    if (string.IsNullOrEmpty(EntryVatAmount15.Text) || EntryVatAmount15.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryVatAmountFrame15.HasError = true;
+                    }
+                    else
+                    {
+                        EntryVatAmountFrame15.HasError = false;
+                    }
+                    if (string.IsNullOrEmpty(EntryVatAmount5.Text) || EntryVatAmount5.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryVatAmountFrame5.HasError = true;
+                    }
+                    else
+                    {
+                        EntryVatAmountFrame5.HasError = false;
+                    }
+
+
+                
+
+
+                if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryVatAdjustmentWithSARFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryVatAdjustmentWithSARFrame.HasError = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) || EntryVatAdjustmentWithSAR15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryVatAdjustmentWithSARFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryVatAdjustmentWithSARFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) || EntryVatAdjustmentWithSAR5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryVatAdjustmentWithSARFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryVatAdjustmentWithSARFrame5.HasError = false;
+                }
+
+                
+
+                    if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryStdsalesVat15.Text) || EntryStdsalesVat15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+
+                if (string.IsNullOrEmpty(EntrySalesGccAmt.Text) || EntrySalesGccAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntrySalesGccAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntrySalesGccAmtFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntrySalesGccAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntrySalesGccAdjFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryZerosalesAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryZerosalesAmtFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryZerosalesAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryZerosalesAdjFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExportsAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExportsAmtFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExportsAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExportsAdjFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExemptsalesAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExemptsalesAmtFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExemptsalesAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExemptsalesAdjFrame.HasError = false; ;
+                    }
+                    if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryStdpurchaseAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryStdpurchaseAmtFrame.HasError = false; ;
+                    }
+
+                if (string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) || EntryStdpurchaseAmt15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAmtFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAmtFrame15.HasError = false; ;
+                }
+
+                if (string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) || EntryStdpurchaseAmt5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAmtFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAmtFrame5.HasError = false; ;
+                }
+
+                
+
+
+
+                    if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryStdpurchaseAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryStdpurchaseAdjFrame.HasError = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) || EntryStdpurchaseAdj15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAdjFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAdjFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) || EntryStdpurchaseAdj5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAdjFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAdjFrame5.HasError = false;
+                }
+
+
+                    if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat15.Text) || EntryStdpurchasesVat15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat5.Text) || EntryStdpurchasesVat5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+                
+
+
+                if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) || EntryZVatAmountWithSAR.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryZVatAmountWithSARFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryZVatAmountWithSARFrame.HasError = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) || EntryZVatAmountWithSAR15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZVatAmountWithSARFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryZVatAmountWithSARFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) || EntryZVatAmountWithSAR5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZVatAmountWithSARFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryZVatAmountWithSARFrame5.HasError = false;
+                }
+
+
+                    if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryImportspaidAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryImportspaidAdjFrame.HasError = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryImportspaidAdj15.Text) || EntryImportspaidAdj15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportspaidAdjFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryImportspaidAdjFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryImportspaidAdj5.Text) || EntryImportspaidAdj5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportspaidAdjFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryImportspaidAdjFrame5.HasError = false;
+                }
+
+                
+
+
+                    if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                    }
+                if (string.IsNullOrEmpty(EntryImportspaidVat15.Text) || EntryImportspaidVat15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportspaidVat5.Text) || EntryImportspaidVat5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+
+
+               
+
+                    if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryImportsaccAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryImportsaccAmtFrame.HasError = false;
+                    }
+
+
+                if (string.IsNullOrEmpty(EntryImportsaccAmt15.Text) || EntryImportsaccAmt15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAmtFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAmtFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryImportsaccAmt5.Text) || EntryImportsaccAmt5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAmtFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAmtFrame5.HasError = false;
+                }
+
+
+
+                    if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryImportsaccAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryImportsaccAdjFrame.HasError = false;
+                    }
+
+                if (string.IsNullOrEmpty(EntryImportsaccAdj15.Text) || EntryImportsaccAdj15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAdjFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAdjFrame15.HasError = false;
+                }
+
+                if (string.IsNullOrEmpty(EntryImportsaccAdj5.Text) || EntryImportsaccAdj5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAdjFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAdjFrame5.HasError = false;
+                }
+
+
+                    if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                    }
+                if (string.IsNullOrEmpty(EntryImportsaccVat15.Text) || EntryImportsaccVat15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+                if (string.IsNullOrEmpty(EntryImportsaccVat5.Text) || EntryImportsaccVat5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+
+
+                
+
+                    if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryZeropurchaseAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryZeropurchaseAmtFrame.HasError = false;
+                    }
+                    if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryZeropurchaseAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryZeropurchaseAdjFrame.HasError = false;
+                    }
+                    if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExemptpurchaseAmtFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExemptpurchaseAmtFrame.HasError = false;
+                    }
+                    if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryExemptpurchaseAdjFrame.HasError = true;
+                    }
+                    else
+                    {
+                        EntryExemptpurchaseAdjFrame.HasError = false;
+                    }
+                    if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                        EntryPreperiodcorrFrame.HasError = true;
+                    }
+                    else
+                    {
+                        if (viewModel.IsGreaterThanFiveT == false)
+                        {
+                            EntryPreperiodcorrFrame.HasError = false;
+                        }
+                        else
+                        {
+                            EntryPreperiodcorrFrame.HasError = true;
+                        }
+                    }
+                    if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
+                    {
+                        IsAllEntered = false;
+                    }
+                    if (viewModel.IsGreaterThanFiveT == true)
+                    {
+                        IsAllEntered = false;
+                    }
+                    //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+                    //{
+                    //    IsAllEntered = false;
+                    //}
+                    if (IsAllEntered == false)
+                    {
+                        viewModel.IsMainButtonEnabled = false;
+                        // BtnNextStep.IsEnabled = false;
+                    }
+                    else
+                    {
+                        // viewModel.IsDeclarationCheckedForInstruction = false;
+                        viewModel.IsMainButtonEnabled = true;
+                        //  BtnNextStep.IsEnabled = true;
+                    }
+            }
+            catch(Exception e)
+            {
+
+            }
+            return IsAllEntered;
+        }
+
+            //Test    
+            private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
@@ -5036,6 +5527,872 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         private void chkRefundDeclaration_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             ValidationsForVATRefund();
+        }
+
+        private void EntryVatAmount15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryVatAdjustmentWithSAR15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryVatAmount15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryVatAmount15.Text == "0.00")
+                {
+                    EntryVatAmount15.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatAmount15.Text) && EntryVatAmount15.Text.Contains(","))
+                {
+                    EntryVatAmount15.Text = EntryVatAmount15.Text.Replace(",", "");
+                    EntryVatAmount15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryVatAdjustment15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryVatAdjustmentWithSAR15.Text == "0.00")
+                {
+                    EntryVatAdjustmentWithSAR15.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAdjustmentWithSAR15.Text.Contains(","))
+                {
+                    EntryVatAdjustmentWithSAR15.Text = EntryVatAdjustmentWithSAR15.Text.Replace(",", "");
+                    EntryVatAdjustmentWithSAR15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            
+        }
+
+        private void EntryVatAmount15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsVisibleVatReturnForm == true)
+                {
+                    if (!string.IsNullOrEmpty(EntryVatAmount15.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAmount15.Text != "." && EntryVatAdjustmentWithSAR15.Text != "." && EntryVatAmount15.Text != "," && EntryVatAdjustmentWithSAR15.Text != ",")
+                    {
+                        //CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                    }
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount15.Text);
+                    EntryVatAmount15.Text = ValueWithComma;
+                    EntryVatAmount15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryVatAdjustmentWithSAR15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(EntryVatAmount15.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAmount15.Text != "." && EntryVatAdjustmentWithSAR15.Text != "." && EntryVatAmount15.Text != "," && EntryVatAdjustmentWithSAR15.Text != ",")
+                {
+                    CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR15.Text));
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR15.Text);
+                    EntryVatAdjustmentWithSAR15.Text = ValueWithComma;
+                    EntryVatAdjustmentWithSAR15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatAmount15(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void EntryVatAmount5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryVatAmount5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryVatAmount5.Text == "0.00")
+                {
+                    EntryVatAmount5.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatAmount5.Text) && EntryVatAmount5.Text.Contains(","))
+                {
+                    EntryVatAmount5.Text = EntryVatAmount5.Text.Replace(",", "");
+                    EntryVatAmount5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryVatAmount5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (viewModel.IsVisibleVatReturnForm == true)
+                {
+                    if (!string.IsNullOrEmpty(EntryVatAmount5.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAmount5.Text != "." && EntryVatAdjustmentWithSAR5.Text != "." && EntryVatAmount5.Text != "," && EntryVatAdjustmentWithSAR5.Text != ",")
+                    {
+                        //CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                    }
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount5.Text);
+                    EntryVatAmount5.Text = ValueWithComma;
+                    EntryVatAmount5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryVatAdjustmentWithSAR5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryVatAdjustment5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryVatAdjustmentWithSAR5.Text == "0.00")
+                {
+                    EntryVatAdjustmentWithSAR5.Text = string.Empty;
+                }
+                if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAdjustmentWithSAR5.Text.Contains(","))
+                {
+                    EntryVatAdjustmentWithSAR5.Text = EntryVatAdjustmentWithSAR5.Text.Replace(",", "");
+                    EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+        }
+
+        private void EntryVatAdjustmentWithSAR5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(EntryVatAmount5.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAmount5.Text != "." && EntryVatAdjustmentWithSAR5.Text != "." && EntryVatAmount5.Text != "," && EntryVatAdjustmentWithSAR5.Text != ",")
+                {
+                    CheckOneaOneb(Convert.ToDecimal(EntryVatAmount5.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR5.Text));
+                }
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR5.Text);
+                    EntryVatAdjustmentWithSAR5.Text = ValueWithComma;
+                    EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAmt15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryStdpurchaseAmt15.Text == "0.00")
+                {
+                    EntryStdpurchaseAmt15.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && EntryStdpurchaseAmt15.Text.Contains(","))
+                {
+                    EntryStdpurchaseAmt15.Text = EntryStdpurchaseAmt15.Text.Replace(",", "");
+                    EntryStdpurchaseAmt15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAdj15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryStdpurchaseAdj15.Text == "0.00")
+                {
+                    EntryStdpurchaseAdj15.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) && EntryStdpurchaseAdj15.Text.Contains(","))
+                {
+                    EntryStdpurchaseAdj15.Text = EntryStdpurchaseAdj15.Text.Replace(",", "");
+                    EntryStdpurchaseAdj15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAmt15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryStdpurchaseAdj15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryStdpurchaseAmt15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
+                //{
+                //    CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
+                //}
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+                //{
+                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt15.Text);
+                    EntryStdpurchaseAmt15.Text = ValueWithComma;
+                    EntryStdpurchaseAmt15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAdj15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+                //{
+                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj15.Text);
+                    EntryStdpurchaseAdj15.Text = ValueWithComma;
+                    EntryStdpurchaseAdj15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAmt5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryStdpurchaseAmt5.Text == "0.00")
+                {
+                    EntryStdpurchaseAmt5.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && EntryStdpurchaseAmt5.Text.Contains(","))
+                {
+                    EntryStdpurchaseAmt5.Text = EntryStdpurchaseAmt5.Text.Replace(",", "");
+                    EntryStdpurchaseAmt5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAmt5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryStdpurchaseAmt5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
+                //{
+                //    CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
+                //}
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+                //{
+                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt5.Text);
+                    EntryStdpurchaseAmt5.Text = ValueWithComma;
+                    EntryStdpurchaseAmt5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAdj5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryStdpurchaseAdj5.Text == "0.00")
+                {
+                    EntryStdpurchaseAdj5.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) && EntryStdpurchaseAdj5.Text.Contains(","))
+                {
+                    EntryStdpurchaseAdj5.Text = EntryStdpurchaseAdj5.Text.Replace(",", "");
+                    EntryStdpurchaseAdj5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryStdpurchaseAdj5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryStdpurchaseAdj5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
+                //{
+                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj5.Text);
+                    EntryStdpurchaseAdj5.Text = ValueWithComma;
+                    EntryStdpurchaseAdj5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryZVatAmountWithSAR15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryZVatAmountWithSAR15.Text == "0.00")
+                {
+                    EntryZVatAmountWithSAR15.Text = String.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) && EntryZVatAmountWithSAR15.Text.Contains(","))
+                {
+                    EntryZVatAmountWithSAR15.Text = EntryZVatAmountWithSAR15.Text.Replace(",", "");
+                    EntryZVatAmountWithSAR15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryZVatAmountWithSAR15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryZVatAmountWithSAR15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+                //{
+                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR15.Text);
+                    EntryZVatAmountWithSAR15.Text = ValueWithComma;
+                    EntryZVatAmountWithSAR15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportspaidAdj15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportspaidAdj15.Text == "0.00")
+                {
+                    EntryImportspaidAdj15.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportspaidAdj15.Text) && EntryImportspaidAdj15.Text.Contains(","))
+                {
+                    EntryImportspaidAdj15.Text = EntryImportspaidAdj15.Text.Replace(",", "");
+                    EntryImportspaidAdj15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportspaidAdj15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportspaidAdj15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+                //{
+                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj15.Text);
+                    EntryImportspaidAdj15.Text = ValueWithComma;
+                    EntryImportspaidAdj15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryZVatAmountWithSAR5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryZVatAmountWithSAR5.Text == "0.00")
+                {
+                    EntryZVatAmountWithSAR5.Text = String.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) && EntryZVatAmountWithSAR5.Text.Contains(","))
+                {
+                    EntryZVatAmountWithSAR5.Text = EntryZVatAmountWithSAR5.Text.Replace(",", "");
+                    EntryZVatAmountWithSAR5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryZVatAmountWithSAR5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryZVatAmountWithSAR5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+                //{
+                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR5.Text);
+                    EntryZVatAmountWithSAR5.Text = ValueWithComma;
+                    EntryZVatAmountWithSAR5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportspaidAdj5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportspaidAdj5.Text == "0.00")
+                {
+                    EntryImportspaidAdj5.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportspaidAdj5.Text) && EntryImportspaidAdj5.Text.Contains(","))
+                {
+                    EntryImportspaidAdj5.Text = EntryImportspaidAdj5.Text.Replace(",", "");
+                    EntryImportspaidAdj5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportspaidAdj5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportspaidAdj5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
+                //{
+                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj5.Text);
+                    EntryImportspaidAdj5.Text = ValueWithComma;
+                    EntryImportspaidAdj5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAmt15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportsaccAmt15.Text == "0.00")
+                {
+                    EntryImportsaccAmt15.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt15.Text) && EntryImportsaccAmt15.Text.Contains(","))
+                {
+                    EntryImportsaccAmt15.Text = EntryImportsaccAmt15.Text.Replace(",", "");
+                    EntryImportsaccAmt15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAmt15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAmt15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
+                //{
+                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt15.Text);
+                    EntryImportsaccAmt15.Text = ValueWithComma;
+                    EntryImportsaccAmt15.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAdj15Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportsaccAdj15.Text == "0.00")
+                {
+                    EntryImportsaccAdj15.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportsaccAdj15.Text) && EntryImportsaccAdj15.Text.Contains(","))
+                {
+                    EntryImportsaccAdj15.Text = EntryImportsaccAdj15.Text.Replace(",", "");
+                    EntryImportsaccAdj15.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAdj15_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAdj15_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
+                //{
+                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
+                    EntryImportsaccAdj.Text = ValueWithComma;
+                    EntryImportsaccAdj.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAmt5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportsaccAmt5.Text == "0.00")
+                {
+                    EntryImportsaccAmt5.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt5.Text) && EntryImportsaccAmt5.Text.Contains(","))
+                {
+                    EntryImportsaccAmt5.Text = EntryImportsaccAmt5.Text.Replace(",", "");
+                    EntryImportsaccAmt5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAmt5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAmt5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
+                //{
+                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt5.Text);
+                    EntryImportsaccAmt5.Text = ValueWithComma;
+                    EntryImportsaccAmt5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAdj5Focused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                if (EntryImportsaccAdj5.Text == "0.00")
+                {
+                    EntryImportsaccAdj5.Text = string.Empty;
+                }
+
+                if (!string.IsNullOrEmpty(EntryImportsaccAdj5.Text) && EntryImportsaccAdj5.Text.Contains(","))
+                {
+                    EntryImportsaccAdj5.Text = EntryImportsaccAdj5.Text.Replace(",", "");
+                    EntryImportsaccAdj5.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void EntryImportsaccAdj5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            CheckMandetoryFields();
+        }
+
+        private void EntryImportsaccAdj5_Unfocused(object sender, FocusEventArgs e)
+        {
+            try
+            {
+                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
+                //{
+                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
+                //}
+                if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj5.Text);
+                    EntryImportsaccAdj5.Text = ValueWithComma;
+                    EntryImportsaccAdj5.TextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.IsUnFocusedTextBox = true;
+                    viewModel.IsMainButtonEnabled = false;
+                    CheckMandetoryFields();
+                    // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
     //private void ICvalidation_Clicked(object sender, EventArgs e)

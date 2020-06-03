@@ -75,6 +75,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         }
 
 
+        private bool _isFifteenPercentChange = false;
+        public bool IsFifteenPercentChange
+        {
+            get
+            {
+                return _isFifteenPercentChange;
+            }
+            set
+            {
+                _isFifteenPercentChange = value;
+                RaisePropertyChanged("IsFifteenPercentChange");
+            }
+        }
+
+
         private bool _isFivePersenctVisible = false;
         public bool IsFivePersenctVisible
         {
@@ -2042,7 +2057,138 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 RaisePropertyChanged("VATNewModelFor15Percent");
             }
         }
-       
+
+
+        private Result6 _vATNewModelFor5Percent;
+        public Result6 VATNewModelFor5Percent
+        {
+            get
+            {
+                return _vATNewModelFor5Percent;
+            }
+            set
+            {
+                _vATNewModelFor5Percent = value;
+                RaisePropertyChanged("VATNewModelFor5Percent");
+            }
+        }
+
+
+        public string _stdsalesVat15 = "0.00";
+        public string StdsalesVat15
+        {
+            get
+            {
+                return _stdsalesVat15;
+            }
+            set
+            {
+                _stdsalesVat15 = value;
+                RaisePropertyChanged("StdsalesVat15");
+            }
+        }
+
+        public string _stdsalesVat5 = "0.00";
+        public string StdsalesVat5
+        {
+            get
+            {
+                return _stdsalesVat5;
+            }
+            set
+            {
+                _stdsalesVat5 = value;
+                RaisePropertyChanged("StdsalesVat5");
+            }
+        }
+
+
+        public string _stdpurchasesVat15 = "0.00";
+        public string StdpurchasesVat15
+        {
+            get
+            {
+                return _stdpurchasesVat15;
+            }
+            set
+            {
+                _stdpurchasesVat15 = value;
+                RaisePropertyChanged("StdpurchasesVat15");
+            }
+        }
+
+        public string _stdpurchasesVat5 = "0.00";
+        public string StdpurchasesVat5
+        {
+            get
+            {
+                return _stdpurchasesVat5;
+            }
+            set
+            {
+                _stdpurchasesVat5 = value;
+                RaisePropertyChanged("StdpurchasesVat5");
+            }
+        }
+
+
+        public string _importspaidVat15 = "0.00";
+        public string ImportspaidVat15
+        {
+            get
+            {
+                return _importspaidVat15;
+            }
+            set
+            {
+                _importspaidVat15 = value;
+                RaisePropertyChanged("ImportspaidVat15");
+            }
+        }
+
+
+        public string _importspaidVat5 = "0.00";
+        public string ImportspaidVat5
+        {
+            get
+            {
+                return _importspaidVat5;
+            }
+            set
+            {
+                _importspaidVat5 = value;
+                RaisePropertyChanged("ImportspaidVat5");
+            }
+        }
+
+
+        public string _importsaccVat15 = "0.00";
+        public string ImportsaccVat15
+        {
+            get
+            {
+                return _importsaccVat15;
+            }
+            set
+            {
+                _importsaccVat15 = value;
+                RaisePropertyChanged("ImportsaccVat15");
+            }
+        }
+
+        public string _importsaccVat5 = "0.00";
+        public string ImportsaccVat5
+        {
+            get
+            {
+                return _importsaccVat5;
+            }
+            set
+            {
+                _importsaccVat5 = value;
+                RaisePropertyChanged("ImportsaccVat5");
+            }
+        }
 
 
 
@@ -4033,6 +4179,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         if (ResponseVATDeclarationD.GoliveFg == "X")
                         {
                             VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
+                            VATNewModelFor5Percent= VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
                         }
                         SetData();
                         SetCommasforAll();
