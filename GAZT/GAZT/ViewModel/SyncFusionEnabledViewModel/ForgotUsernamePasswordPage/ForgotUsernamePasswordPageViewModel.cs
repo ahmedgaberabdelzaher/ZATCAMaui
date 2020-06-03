@@ -888,7 +888,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         {
             if (SelectedTaxPayerType.id.Equals("1"))
             {
-                IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                if (!(SelectedForgotType.id.Equals("2")))
+                {
+                    IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                }
                 MaxChar = 10;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
