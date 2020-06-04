@@ -141,6 +141,12 @@
   <data name="Verify" xml:space="preserve">
     <value>تحقق</value>
   </data>
+  <data name="VersonCheckErrorTitle" xml:space="preserve">
+    <value>New Version Available</value>
+  </data>
+  <data name="VersonCheckErrorMsg" xml:space="preserve">
+    <value>Please update your App to the Latest Version to Continue.</value>
+  </data>
   <data name="AverageNumOfEmployment" xml:space="preserve">
     <value>متوسط عدد العمالة</value>
   </data>

@@ -892,6 +892,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 {
                     IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
                 }
+
                 MaxChar = 10;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
@@ -1395,12 +1396,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 if (IsEmailUserName)
                 {
                     TINs = new List<TIN>();
+                    List<TIN> Tins = new List<TIN>();
                     try
                     {
                         try
                         {
-                            TINs = await WebServiceManager.GAZTGetAllTins(IDNumber);
-                            if (TINs.Count != 0 && SelectedTinId == null)
+                            SelectedTinId = null;
+                            Tins = await WebServiceManager.GAZTGetAllTins(IDNumber);
+                            TINs = Tins;
+                            if (Tins.Count != 0 && SelectedTinId == null)
                             {
                                 IsVisibleTinIds = true;
                                 SelectedTinId = TINs[0];
