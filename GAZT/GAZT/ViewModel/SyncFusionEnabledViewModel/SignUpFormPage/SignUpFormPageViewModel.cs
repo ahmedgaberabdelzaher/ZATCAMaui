@@ -912,8 +912,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             {
                 IsLoading = false;
 
-               // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-               //_navigationService.GoBack();
             });
         }
         public async Task  SetDefaultDate()

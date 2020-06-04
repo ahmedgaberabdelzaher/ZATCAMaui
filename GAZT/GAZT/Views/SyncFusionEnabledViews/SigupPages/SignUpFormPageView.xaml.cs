@@ -2641,12 +2641,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
-            ddlLIssuedByCity.SelectedItem = selectedcity;
-            viewModel.SelectCityList = selectedcity;
-            viewModel.SelectCityListPrev = selectedcity;
-            viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
-        }
+            if ((SignupCityResult)e.NewValue != null)
+            {
+                SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+                ddlLIssuedByCity.SelectedItem = selectedcity;
+                viewModel.SelectCityList = selectedcity;
+                viewModel.SelectCityListPrev = selectedcity;
+                viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
+            }
+            }
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;
