@@ -130,6 +130,7 @@ namespace EGAZT
             {
                 if (amount != null && amount.Length < Max && amount.Length > 0)
                 {
+                    amount = amount.Replace(",", "");
                     if (amount.Contains("."))
                     {
                         string[] Amount = new String[2];
