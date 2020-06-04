@@ -64,7 +64,7 @@ namespace GAZT.iOS.CustomRenderer
             else
             {
                 var transition = CATransition.CreateAnimation();
-                transition.Duration = 0.5f;
+                transition.Duration = 0.9f;
                 transition.Type = CAAnimation.TransitionPush;
 
                 switch (_transitionType)
@@ -114,7 +114,7 @@ namespace GAZT.iOS.CustomRenderer
             else
             {
                 var transition = CATransition.CreateAnimation();
-                transition.Duration = 0.5f;
+                transition.Duration = 0.9f; 
                 transition.Type = CAAnimation.TransitionPush;
 
                 switch (_transitionType)
