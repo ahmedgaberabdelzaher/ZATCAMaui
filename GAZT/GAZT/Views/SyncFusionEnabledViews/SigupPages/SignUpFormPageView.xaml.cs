@@ -2630,21 +2630,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //SelectedIssuedBy
+            if ((IssuedByResponse)e.NewValue != null)
+            { 
             IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
             ddlLIssuedBy.SelectedItem = issuedByResponse;
             viewModel.SelectedIssuedBy = issuedByResponse;
             viewModel.SelectedIssuedByPrev = issuedByResponse;
             viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
+            }
         }
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
-            ddlLIssuedByCity.SelectedItem = selectedcity;
-            viewModel.SelectCityList = selectedcity;
-            viewModel.SelectCityListPrev = selectedcity;
-            viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
-        }
+            if ((SignupCityResult)e.NewValue != null)
+            {
+                SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+                ddlLIssuedByCity.SelectedItem = selectedcity;
+                viewModel.SelectCityList = selectedcity;
+                viewModel.SelectCityListPrev = selectedcity;
+                viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
+            }
+            }
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;

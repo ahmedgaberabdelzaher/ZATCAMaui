@@ -203,14 +203,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     hybridWebView.Opacity = 0;
                 });
 
-                //try
-                //{
-                //    await WebServiceManager.GAZTLogOff();
-                //}
-                //catch(Exception ex)
-                //{
+                try
+                {
+                    await WebServiceManager.GAZTLogOff();
+                }
+                catch (Exception ex)
+                {
 
-                //}
+                }
 
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
@@ -261,6 +261,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 App.IsUserLoggedIn = true;
                                 await viewModel.LoginCompletedInWebView();
+
+                                //if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                //{
+                                //    App.IsUserLoggedIn = true;
+                                //    await viewModel.LoginCompletedInWebView();
+                                //}
+                                //else
+                                //{
+                                //    hybridWebView.Opacity = 0;
+                                //    viewModel.IsLoading = false;
+
+                                //    await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                //    LogoffUser();
+                                //}
                             }
 
                             if (data == "navigateToForgotUsernamePage")
@@ -287,53 +301,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
                                 //hybridWebView.RefreshCommand();
 
-                                viewModel.IsLoading = true;
-
-                                if (App.TP != null)
-                                    App.TP = null;
-                                if (App.PreviousIsArabic)
-                                {
-                                    String langName = "ar-AE";
-                                    AppResources.Culture = new CultureInfo(langName);
-                                }
-                                else
-                                {
-                                    String langName = "en-US";
-                                    AppResources.Culture = new CultureInfo(langName);
-                                }
-
-                                await WebServiceManager.GAZTLogOff();
-
-                                viewModel.IsLoading = false;
-
-                                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                                foreach (var item in _navigation.NavigationStack)
-                                {
-                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                                    {
-                                        _navigation.RemovePage(item);
-                                        break;
-                                    }
-                                }
-
-                                App.IsLogOut = true;
-                                App.IsLoginCalled = false;
-                                App.IsSamlApiCalledAndroid = false;
-
-                                try
-                                {
-                                    App.httpClientHandler = new HttpClientHandler();
-                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                                }
-                                catch (Exception ex)
-                                {
-
-                                }
-
-                                viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                                _navigation.NavigationStack.ToList().Clear();
-
+                                LogoffUser();
                             }
 
                             if (data == "errorGeneric")
@@ -406,6 +374,57 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             {
 
             }
+        }
+
+        private async void LogoffUser()
+        {
+            viewModel.IsLoading = true;
+
+            if (App.TP != null)
+                App.TP = null;
+            if (App.PreviousIsArabic)
+            {
+                String langName = "ar-AE";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+            else
+            {
+                String langName = "en-US";
+                AppResources.Culture = new CultureInfo(langName);
+            }
+
+            await WebServiceManager.GAZTLogOff();
+
+            viewModel.IsLoading = false;
+
+            var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+            foreach (var item in _navigation.NavigationStack)
+            {
+                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                {
+                    _navigation.RemovePage(item);
+                    break;
+                }
+            }
+
+            App.IsLogOut = true;
+            App.IsLoginCalled = false;
+            App.IsSamlApiCalledAndroid = false;
+
+            try
+            {
+                App.httpClientHandler = new HttpClientHandler();
+                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            _navigation.NavigationStack.ToList().Clear();
+
         }
 
         private async void LoadWebView(bool isComingFromOnAppearing)
