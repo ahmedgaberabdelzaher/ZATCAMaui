@@ -2630,12 +2630,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //SelectedIssuedBy
+            if ((IssuedByResponse)e.NewValue != null)
+            { 
             IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
             ddlLIssuedBy.SelectedItem = issuedByResponse;
             viewModel.SelectedIssuedBy = issuedByResponse;
             viewModel.SelectedIssuedByPrev = issuedByResponse;
             viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
+            }
         }
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

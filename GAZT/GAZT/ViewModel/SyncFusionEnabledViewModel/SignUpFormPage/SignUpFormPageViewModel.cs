@@ -764,12 +764,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
         }
         public async Task SetIssueIdList()
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
             try
             {
                 IssuedByList = null;
                 List<IssuedByResponse> IssuedByResponseList = new List<IssuedByResponse>();
                 var IssuedBy = await WebServiceManager.GAZTGetIssuedByList();
                 IssuedByList = new List<IssuedByResponse>(IssuedBy);
+               
             }
             catch (GAZTException gex)
             {
@@ -794,7 +799,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // IsLoading = false;
+                    IsLoading = false;
 
                      await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     //_navigationService.GoBack();
@@ -807,7 +812,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
+                    IsLoading = false;
 
                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     //_navigationService.GoBack();
@@ -819,16 +824,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
+                     IsLoading = false;
 
                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     //_navigationService.GoBack();
                 });
             }
+            await Task.Run(() =>
+            {
+                IsLoading = false;
+            });
 
         }
         public async Task SetCityList()
         {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                IsLoading = true;
+
+            });
+
             try
             {
                 CityList = null;
@@ -841,6 +856,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             catch (GAZTException gex)
             {
+                
                 // Handle the GAZT custom exception.
                 string MessageForTheUser = gex.Message;
                 if (gex is GAZTInvalidDataException)
@@ -874,7 +890,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
+                    IsLoading = false;
 
                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     //_navigationService.GoBack();
@@ -886,16 +902,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    // IsLoading = false;
+                    IsLoading = false;
 
                     await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
                     //_navigationService.GoBack();
                 });
             }
-                //catch(Exception ex)
-                //{
-                //}
-            }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                IsLoading = false;
+
+               // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+               //_navigationService.GoBack();
+            });
+        }
         public async Task  SetDefaultDate()
         {
             ObservableCollection<object> todaycollection = new ObservableCollection<object>();
