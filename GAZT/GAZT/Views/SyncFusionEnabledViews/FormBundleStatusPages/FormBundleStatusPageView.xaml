@@ -93,8 +93,11 @@ HeaderTextColor="White"
                                            
                    ItemHeight="40"
                      DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
-                   PickerHeight="200"
-                    PickerWidth="270"
+                    PickerHeight="250"
+                    PickerWidth="340"
+                                              HeaderFontSize="14"
+
+
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
                         ShowFooter="True"
@@ -144,8 +147,11 @@ HeaderTextColor="White"
                     SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked" CancelButtonClicked="CPicker_CancelButtonClicked"
                     IsEnabled="True"
                     ShowFooter="True"
-                                              PickerHeight="200"
-                    PickerWidth="270"
+                                                PickerHeight="250"
+                    PickerWidth="340"
+                                              HeaderFontSize="14"
+
+
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
                                     OKButtonBackgroundColor="#EAF7CC"

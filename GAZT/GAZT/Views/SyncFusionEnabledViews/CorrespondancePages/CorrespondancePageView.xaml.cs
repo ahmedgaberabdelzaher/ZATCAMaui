@@ -215,11 +215,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
             //Resources["searchBarStyleForVAT"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForET"] = App.Current.Resources["MyBillsSmallMiniWhiteLabelStyle"];
             //Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
-          await  viewModel.onPageLoad();
-            viewModel.SetData();
-            viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;
-            viewModel.SelectedFilterVAT = viewModel.SelectedFilterVATPrev;
-            viewModel.SelectedFilterET = viewModel.SelectedFilterETPrev;
+
+            try
+            {
+                await viewModel.onPageLoad();
+                viewModel.SetData();
+                viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;
+                viewModel.SelectedFilterVAT = viewModel.SelectedFilterVATPrev;
+                viewModel.SelectedFilterET = viewModel.SelectedFilterETPrev;
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         //private void ZakatActions_Clicked(object sender, EventArgs e)
         //{
@@ -272,12 +282,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
         }
         private void FPickerZakat_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            FPickerZakat.SelectedItem = viewModel.SelectedFilterZakatPrev;
-            viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;//selectedregion
-            if (viewModel.SelectedFilterZakatPrev == null)
+            try
             {
-                viewModel.TxtSelectedStatusZakat = string.Empty;
+                FPickerZakat.SelectedItem = viewModel.SelectedFilterZakatPrev;
+                viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;//selectedregion
+                if (viewModel.SelectedFilterZakatPrev == null)
+                {
+                    viewModel.TxtSelectedStatusZakat = string.Empty;
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
         private void FPickerVAT_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

@@ -68,8 +68,8 @@
                         <tabView:SfTabItem.Content>
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGridZakat"  ColumnSpacing="10" RowSpacing="10" Margin="0,5,0,0" Padding="0,0,0,0" >
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="12*" />
+                                    <RowDefinition Height="88*" />
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
