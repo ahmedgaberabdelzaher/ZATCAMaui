@@ -553,16 +553,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 }
                 if (myBills[i].FAEDN.Contains("T"))
                 {
+                    try { 
                     string[] _dueDate = new String[2];
                     _dueDate = myBills[i].FAEDN.Split('T');
-                    if (App.IsArabic)
-                    {
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                       // myBills[i].FAEDN = UtilityManager.ToArabicDate(myBills[i].FAEDN);
+                    
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+                        string dt = string.Empty;
+                        string[] dts = null;
+                        
+                            dts = myBills[i].FAEDN.Split('/');
+                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    myBills[i].FAEDN = dt;
                     }
-                    else
+                    catch(Exception ex)
                     {
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+
                     }
                 }
             }

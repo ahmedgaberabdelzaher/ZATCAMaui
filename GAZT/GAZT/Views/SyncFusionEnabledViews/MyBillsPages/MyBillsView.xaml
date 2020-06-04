@@ -231,7 +231,7 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -245,8 +245,39 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
+                                                                </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+    Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        Grid.ColumnSpan="2"
+                                    Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
                                                                 </local1:CustomLabel>
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+                                                            <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                             </Grid>
                                                         </StackLayout>
@@ -357,7 +388,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -371,7 +402,39 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                   Grid.Row="4"
+                                   
+                                                                        Grid.ColumnSpan="2"
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>
@@ -483,7 +546,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -497,7 +560,40 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                                                                                      Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        Grid.ColumnSpan="2"
+                                   Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>
@@ -603,7 +699,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -617,7 +713,40 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                                                                                        Grid.Row="4"
+                                   
+                                                                        Grid.ColumnSpan="2"
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>

@@ -41,7 +41,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.GAZT.KSA</string>
+	<string>com.gazt.egazt</string>
 	<key>CFBundleName</key>
 	<string>E-GAZT</string>
 	<key>XSAppIconAssets</key>

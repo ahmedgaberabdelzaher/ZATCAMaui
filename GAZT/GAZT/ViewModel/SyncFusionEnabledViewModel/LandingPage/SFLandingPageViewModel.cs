@@ -1,4 +1,5 @@
 ﻿using EGAZT;
+using EGAZT.Enums;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -509,9 +510,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         /// <param name="obj">The Object</param>
         private void ShowOptionsCommandClicked(object obj)
         {
-            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
-            _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
-        }
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (App.IsArabic)
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromRight);
+                }
+                else
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromLeft);
+
+                }
+            }
+            else
+            {
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.None);
+                }
+                else
+                {
+                    ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+                    _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
+                }
+            }
+                   }
         /// <summary>
         /// Invoked when an item is selected.
         /// </summary>

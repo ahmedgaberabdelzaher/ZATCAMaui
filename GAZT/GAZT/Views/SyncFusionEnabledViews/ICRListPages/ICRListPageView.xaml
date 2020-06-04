@@ -72,7 +72,7 @@
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="25,0,20,5"
+                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,-6"
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False"  Text="{Binding TxtSelectedStatus}" FontSize="Small">
@@ -131,7 +131,8 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+                                    <!--Margin="10"-->
+                                    <cards:SfCardView HasShadow="True"  Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                             <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                         <Grid.ColumnDefinitions>
