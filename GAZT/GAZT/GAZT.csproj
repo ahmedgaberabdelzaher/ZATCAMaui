@@ -63,6 +63,7 @@
     <Folder Include="Effect\" />
     <Folder Include="SyncFusionEnabledBehaviors\" />
     <Folder Include="Views\SyncFusionEnabledViews\Common\" />
+    <Folder Include="Enums\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

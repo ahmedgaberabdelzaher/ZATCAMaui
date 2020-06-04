@@ -1,4 +1,7 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
+﻿using EGAZT.Enums;
+using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
+using GAZT.CustomControl;
 using GAZT.Models;
 using Microsoft.AppCenter.Analytics;
 using Syncfusion.SfCalendar.XForms;
@@ -120,6 +123,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             try
             {
                 base.OnAppearing();
+                int transitionCount = 0;
+                try
+                {
+
+                    MessagingCenter.Subscribe<SFLandingPageViewModel, TransitionType>(this, AppSettings.TransitionMessage, (sender, arg) =>
+                    {
+                        if (transitionCount == 0)
+                        {
+                            transitionCount++;
+                            var transitionType = (TransitionType)arg;
+                            var transitionNavigationPage = Parent as CustomNavigation;
+
+                            if (transitionNavigationPage != null)
+                            {
+                                transitionNavigationPage.TransitionType = transitionType;
+                                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+                                viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
+                            }
+                        }
+                        else
+                        {
+
+                        }
+
+                    });
+                }
+                catch (Exception ex)
+                {
+
+                }
                 App.IsComingFromSleepMode = false;
                 SetLTR();
                 Changecornerradious();

@@ -1,12 +1,4 @@
 ﻿using System;
-using Xamarin.Forms.Platform.iOS;
-using Xamarin.Forms;
-using UIKit;
-using GAZT.CustomControl;
-using GAZT.iOS.CustomRenderer;
-using CoreGraphics;
-using EGAZT;
-using System;
 using System.ComponentModel;
 using CoreAnimation;
 using CoreGraphics;
@@ -16,13 +8,11 @@ using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
-
-[assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
+[assembly: ExportRenderer(typeof(TransitionNavigationPage), typeof(TransitionNavigationPageRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
-    public class CustomNavigationRenderer: NavigationRenderer
+    public class TransitionNavigationPageRenderer : NavigationRenderer
     {
-
         private TransitionType _transitionType = TransitionType.Default;
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
@@ -141,13 +131,13 @@ namespace GAZT.iOS.CustomRenderer
 
         private void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == CustomNavigation.TransitionTypeProperty.PropertyName)
+            if (e.PropertyName == EGAZT.CustomControl.TransitionNavigationPage.TransitionTypeProperty.PropertyName)
                 UpdateTransitionType();
         }
 
         private void UpdateTransitionType()
         {
-            var transitionNavigationPage = (CustomNavigation)Element;
+            var transitionNavigationPage = (EGAZT.CustomControl.TransitionNavigationPage)Element;
             _transitionType = transitionNavigationPage.TransitionType;
         }
 
@@ -201,22 +191,5 @@ namespace GAZT.iOS.CustomRenderer
                 null
             );
         }
-        //public override void ViewDidLoad()
-        //{
-        //    base.ViewDidLoad();
-        //    this.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-        //    this.NavigationBar.ShadowImage = new UIImage();
-        //    var height = NavigationBar.Bounds.Height;
-        //    App.NavigationBarHeightt = height;
-        //    UIFont ft;
-        //    this.NavigationBar.TintColor = UIColor.Yellow;
-        //    //this.NavigationBar.BarTintColor = UIColor.Green;
-        //    UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
-        //    {
-        //        Font = UIFont.FromName("GE SS Two", 16),
-        //        TextColor = UIColor.White
-        //    });
-
-        //}
     }
 }

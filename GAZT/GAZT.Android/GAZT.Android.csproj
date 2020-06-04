@@ -210,6 +210,7 @@
     <Compile Include="CustomRenderer\RoundCornersEffectDroid.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
     <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
+    <Compile Include="CustomRenderer\TransitionNavigationPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />
