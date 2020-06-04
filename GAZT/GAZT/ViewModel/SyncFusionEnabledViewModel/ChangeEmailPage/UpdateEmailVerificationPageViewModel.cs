@@ -777,7 +777,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                                             await _dialogService.ShowMessageBox(OnAuthenticationSuccess, AppResources.Information);
                                             Device.BeginInvokeOnMainThread(async () => {
                                                 var _navigation = Application.Current.MainPage.Navigation;
-                                                await _navigation.PopToRootAsync();
+                                                //await _navigation.PopToRootAsync();
+                                                foreach (var item in _navigation.NavigationStack)
+                                                {
+                                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                                    {
+                                                        _navigation.RemovePage(item);
+                                                        break;
+                                                    }
+                                                }
+                                                _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                                _navigation.NavigationStack.ToList().Clear();
                                             });
                                         });
                                         ClearEmailData();
@@ -831,8 +841,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                                         ClearData();
                                         Device.BeginInvokeOnMainThread(async () =>
                                         {
+                                           // var _navigation = Application.Current.MainPage.Navigation;
+                                            //await _navigation.PopToRootAsync();
                                             var _navigation = Application.Current.MainPage.Navigation;
-                                            await _navigation.PopToRootAsync();
+                                            foreach (var item in _navigation.NavigationStack)
+                                            {
+                                                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                                {
+                                                    _navigation.RemovePage(item);
+                                                    break;
+                                                }
+                                            }
+                                            _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                                            _navigation.NavigationStack.ToList().Clear();
                                         });
                                     }
                                     
@@ -969,7 +990,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
-                    await _navigation.PopToRootAsync();
+                    //await _navigation.PopToRootAsync();
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
                 });
             }
         }
