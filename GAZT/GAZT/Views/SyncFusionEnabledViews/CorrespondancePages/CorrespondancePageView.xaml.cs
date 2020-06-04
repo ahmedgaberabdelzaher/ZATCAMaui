@@ -217,6 +217,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.Correspondance
             //Resources["searchBarStyleForZakat"] = App.Current.Resources["MyBillsMediumMiniWhiteLabelStyle"];
           await  viewModel.onPageLoad();
             viewModel.SetData();
+            viewModel.SelectedFilterZakat = viewModel.SelectedFilterZakatPrev;
+            viewModel.SelectedFilterVAT = viewModel.SelectedFilterVATPrev;
+            viewModel.SelectedFilterET = viewModel.SelectedFilterETPrev;
         }
         //private void ZakatActions_Clicked(object sender, EventArgs e)
         //{
