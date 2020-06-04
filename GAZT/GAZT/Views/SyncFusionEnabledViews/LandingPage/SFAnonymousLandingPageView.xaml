@@ -121,14 +121,15 @@
                     <StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
                         <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
-                    <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
+                    <!--<Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>-->
                     <!--AutoFitMode="Height" WidthRequest="{OnIdiom Phone=250, Tablet=320, Desktop=320}"-->
-                    <listView:SfListView x:Name="SfListView" AutoFitMode="Height" SelectionMode="None" Margin="0" Padding="0" 
-                                         ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="FillAndExpand"  VerticalOptions="Center">
+                    <!--<BoxView BackgroundColor="#006450" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="6,6,6,0"></BoxView>-->
+                    <listView:SfListView x:Name="SfListView" AutoFitMode="Height" SelectionMode="None" Margin="0,6,0,0" Padding="0" 
+                                         ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="FillAndExpand"  VerticalOptions="EndAndExpand">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <!--HeightRequest="100" WidthRequest="100"-->
-                                <cards:SfCardView CornerRadius="8" VerticalOptions="Center" Margin="1"   HorizontalOptions="CenterAndExpand"  BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
+                                <!--HeightRequest="100" WidthRequest="100" BorderWidth=".5"-->
+                                <cards:SfCardView CornerRadius="8" VerticalOptions="CenterAndExpand" Margin="1,0,1,0"   HorizontalOptions="CenterAndExpand"  BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
                                     <cards:SfCardView.Content>
                                         <Grid>
                                             <!--<gradient:SfGradientView>

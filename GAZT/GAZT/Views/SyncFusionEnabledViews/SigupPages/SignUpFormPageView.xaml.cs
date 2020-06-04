@@ -225,6 +225,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+            });
             bool IsNextValid = true;
             if (viewModel.IsTIN == true)
             {
@@ -1503,6 +1510,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                     }
                 }
             }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            });
         }
         private async void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {

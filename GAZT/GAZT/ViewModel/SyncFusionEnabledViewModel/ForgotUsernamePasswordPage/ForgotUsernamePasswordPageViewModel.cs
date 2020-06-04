@@ -1132,7 +1132,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                                string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
+                                if (!App.IsArabic)
+                                {
+                                    messagefordialogue = messagefordialogue.Replace("{0}", "3");
+                                }
+                                else
+                                {
+                                    messagefordialogue = messagefordialogue.Replace("}0{", "3");
+                                }
+                                
+                                await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
