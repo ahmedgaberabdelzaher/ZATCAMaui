@@ -198,7 +198,8 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+                                    <!--Margin="10"-->
+                                    <cards:SfCardView HasShadow="True"  Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
