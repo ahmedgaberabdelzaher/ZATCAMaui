@@ -66,9 +66,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>appcenter-${7ada2f7d-1509-41b7-b948-899a7acb8783}</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>UIRequiresFullScreen</key>
@@ -91,8 +89,8 @@
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>0.0.0.4</string>
+	<string>0.0.0.5</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.0.4</string>
+	<string>0.0.0.5</string>
 </dict>
 </plist>
