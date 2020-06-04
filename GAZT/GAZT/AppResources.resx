@@ -335,6 +335,12 @@
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
     <value>VAT registration certificate</value>
+  </data> 
+  <data name="VersonCheckErrorTitle" xml:space="preserve">
+    <value>New Version Available</value>
+  </data>
+  <data name="VersonCheckErrorMsg" xml:space="preserve">
+    <value>Please update your App to the Latest Version to Continue.</value>
   </data>
   <data name="ZakatAmount" xml:space="preserve">
     <value>Zakat amount</value>
