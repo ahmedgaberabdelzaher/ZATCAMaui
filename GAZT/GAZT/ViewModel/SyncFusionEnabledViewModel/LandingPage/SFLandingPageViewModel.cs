@@ -512,7 +512,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         {
             if (Device.RuntimePlatform == Device.iOS)
             {
-                MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.None);
+                if (App.IsArabic)
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromRight);
+                }
+                else
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromLeft);
+
+                }
             }
             else
             {
