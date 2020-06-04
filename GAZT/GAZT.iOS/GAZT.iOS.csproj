@@ -141,7 +141,11 @@
     <BundleResource Include="Resources\ic_Delete_disabled%402x.png" />
     <BundleResource Include="Resources\ic_Delete_disabled%403x.png" />
     <Compile Include="CustomRenderer\HybridWebViewRenderer.cs" />
+<<<<<<< HEAD
     <Compile Include="CustomRenderer\TransitionNavigationPageRenderer.cs" />
+=======
+    <Compile Include="CustomRenderer\HybridCustomWebViewRenderer.cs" />
+>>>>>>> 17b94cc67b47c2865903b0b6ecfa369307820190
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
