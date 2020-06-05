@@ -101,6 +101,7 @@ namespace EGAZT
         public static double TimeDifference { get; set; }
         public static bool IsComingFromSleepMode { get; set; } = false;
         public static bool IsComingFromDashboardToLogOff = false;
+        public static bool IsZakatLoadingFromMyReturns = false;
 
         public static bool IsLoginCalled = false;
         public static bool IsSamlApiCalledAndroid = false;

@@ -65,6 +65,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                     ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) +" - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
                     });
                 }
@@ -87,6 +88,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                     ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
                     });
                 }
@@ -109,6 +111,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                     ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedItem.Fbguid);
                     });
                 }

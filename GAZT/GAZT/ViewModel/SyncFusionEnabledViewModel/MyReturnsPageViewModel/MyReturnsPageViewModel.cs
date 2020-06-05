@@ -115,6 +115,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                 {
                     if (SelectedZakatReturnSubmitted.Fbtyp.Equals("FZ12"))
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnSubmitted.Fbguid);
                     }
                     else
@@ -141,6 +142,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                 {
                     if (SelectedZakatReturnNonSubmitted.Fbtyp.Equals("FZ12"))
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnNonSubmitted.Fbguid);
                     }
                     else
@@ -167,6 +169,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                 {
                     if (SelectedZakatReturnOverDue.Fbtyp.Equals("FZ12"))
                     {
+                        App.IsZakatLoadingFromMyReturns = true;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturnOverDue.Fbguid);
                     }
                     else

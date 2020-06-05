@@ -117,7 +117,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                         {
                             SelectedIndex = 13;
                         }
-                        //  ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
+
+                        App.IsZakatLoadingFromMyReturns = false;
+                        //ReturnPeriod =UtilityManager.GetTaxPeriodDate(ReturnPeriod);
                          _navigationService.NavigateTo(App.ZakatReturnDetailsPageView, SelectedZakatReturn.Fbguid);
                     }
                     else

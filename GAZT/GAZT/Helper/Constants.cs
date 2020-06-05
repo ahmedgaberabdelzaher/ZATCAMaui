@@ -89,6 +89,7 @@ namespace GAZT.Helper
         public static string GAZTCheckIBANNumber = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_CHECK_IBAN_SRV/HEADERSet('";
         public static string GAZTGetEstimatedZAKATReturnInvoicePdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='";
 
+        //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_TAX01RET_WI_SRV/HeaderSet(Bpnum='3300088482',Auditor='',Lang='EN',UserTin='330088482')?saml2=disabled&sap-language='EN'&$expand=listSet
         //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_TP_PROFILE_DEMO_SRV/TPFL_HEADERSet(Taxpayerz='3102289241',Langz='E')?&$expand=TPOC_LIST&saml2=enabled&$format=json
 
         #region CorrespondenceAPIs
