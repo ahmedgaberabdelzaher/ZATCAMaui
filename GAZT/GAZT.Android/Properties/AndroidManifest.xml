@@ -22,7 +22,7 @@
 	<application android:label="E-GAZT" android:supportsRtl="true" android:hardwareAccelerated="false" android:largeHeap="true" android:icon="@drawable/Ellipse">
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 		<uses-library android:name="org.apache.http.legacy" android:required="false" />
-		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAmBDjaPecC_ZB1c4tjrFJ9k7tNhQmp45o" />
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBPiNAyWZbs1gGcT3PolpRFvjNJCk-Xbdk" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
