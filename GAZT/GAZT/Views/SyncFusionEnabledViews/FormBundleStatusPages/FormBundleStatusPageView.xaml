@@ -94,7 +94,7 @@ HeaderTextColor="White"
                    ItemHeight="40"
                      DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
                     PickerHeight="250"
-                    PickerWidth="340"
+                    PickerWidth="300"
                                               HeaderFontSize="14"
 
 
@@ -148,7 +148,7 @@ HeaderTextColor="White"
                     IsEnabled="True"
                     ShowFooter="True"
                                                 PickerHeight="250"
-                    PickerWidth="340"
+                    PickerWidth="300"
                                               HeaderFontSize="14"
 
 
