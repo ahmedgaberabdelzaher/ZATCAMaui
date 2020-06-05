@@ -259,22 +259,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                             if (data == "success")
                             {
-                                App.IsUserLoggedIn = true;
-                                await viewModel.LoginCompletedInWebView();
+                                //App.IsUserLoggedIn = true;
+                                //await viewModel.LoginCompletedInWebView();
 
-                                //if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
-                                //{
-                                //    App.IsUserLoggedIn = true;
-                                //    await viewModel.LoginCompletedInWebView();
-                                //}
-                                //else
-                                //{
-                                //    hybridWebView.Opacity = 0;
-                                //    viewModel.IsLoading = false;
+                                if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                {
+                                    App.IsUserLoggedIn = true;
+                                    await viewModel.LoginCompletedInWebView();
+                                }
+                                else
+                                {
+                                    hybridWebView.Opacity = 0;
+                                    viewModel.IsLoading = false;
 
-                                //    await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                //    LogoffUser();
-                                //}
+                                    await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                    LogoffUser();
+                                }
                             }
 
                             if (data == "navigateToForgotUsernamePage")

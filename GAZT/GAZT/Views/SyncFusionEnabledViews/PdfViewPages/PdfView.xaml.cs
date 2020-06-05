@@ -37,9 +37,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
-            viewModel.StreamForDownloadURL = null;
+
+            if (viewModel.StreamForDownloadURL != null)
+            {
+                viewModel.StreamForDownloadURL.Flush();
+
+                if(viewModel.StreamForDownloadURL != null)
+                    viewModel.StreamForDownloadURL.Close();
+            }
+
             await viewModel.OnPageLoad();
         }
         protected async override void OnDisappearing()
@@ -48,7 +57,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
             PdfViewForCertificate.Unload();
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
-            viewModel.StreamForDownloadURL = null;
+           // viewModel.StreamForDownloadURL = null;
         }
         private void SetLTR()
         {
