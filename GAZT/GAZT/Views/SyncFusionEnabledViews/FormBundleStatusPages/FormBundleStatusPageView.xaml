@@ -54,9 +54,9 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Row="0" Grid.Column="0">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White"  RowSpacing="0">
                     <!--Padding="10,20,10,0"-->
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"    Margin="0" Padding="10,20,10,10" >
+                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"    Margin="0"  Padding="0,5,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                             <RowDefinition Height="auto" />
@@ -66,7 +66,7 @@
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
                         <!--SelectedIndex="{Binding IDTypeIndex}" Margin="10,-6,10,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Padding="10,20,10,0"-->
-                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"  
+                        <inputLayout:SfTextInputLayout  Margin="10,0,10,-6"  
     Hint="{x:Static custom2:AppResources.ZZPleaseselectFormBundleType}"  Grid.Row="0" Grid.Column="0"
     ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -93,11 +93,8 @@ HeaderTextColor="White"
                                            
                    ItemHeight="40"
                      DisplayMemberPath="Txt50" ItemsSource="{Binding FormBundleList}"   OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" SelectionChanged="DDlIDType_SelectionChanged" 
-                    PickerHeight="250"
-                    PickerWidth="300"
-                                              HeaderFontSize="14"
-
-
+                   PickerHeight="200"
+                    PickerWidth="270"
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
                         ShowFooter="True"
@@ -147,11 +144,8 @@ HeaderTextColor="White"
                     SelectionChanged="CPicker_SelectionChanged" OkButtonClicked="CPicker_OkButtonClicked" CancelButtonClicked="CPicker_CancelButtonClicked"
                     IsEnabled="True"
                     ShowFooter="True"
-                                                PickerHeight="250"
-                    PickerWidth="300"
-                                              HeaderFontSize="14"
-
-
+                                              PickerHeight="200"
+                    PickerWidth="270"
                     OKButtonTextColor="#006450"
                     CancelButtonTextColor="#006450"
                                     OKButtonBackgroundColor="#EAF7CC"

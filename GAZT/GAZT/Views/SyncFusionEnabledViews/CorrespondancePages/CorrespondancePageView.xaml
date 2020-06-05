@@ -74,7 +74,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"   Margin="20,5,20,0"
+                                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0"   Margin="10,5,10,0"
     Hint="{x:Static custom2:AppResources.ZZSort}"
     ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
