@@ -650,7 +650,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                 }
                 else
                 {
-                   // SetNoDataLabelVisibility = true;
+                    SetNoDataLabelVisibilityET = true;
+                    SetNoDataLabelVisibilityVAT = true;
+                    SetNoDataLabelVisibilityZakat = true;
+                    
                     //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
                     // _navigationService.GoBack();
                 }
