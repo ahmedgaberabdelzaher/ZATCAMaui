@@ -40,7 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
 
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
-
+            viewModel.StreamForDownloadURL = null;
             if (viewModel.StreamForDownloadURL != null)
             {
                 viewModel.StreamForDownloadURL.Flush();
@@ -57,7 +57,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
             PdfViewForCertificate.Unload();
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
-           // viewModel.StreamForDownloadURL = null;
+            viewModel.StreamForDownloadURL = null;
         }
         private void SetLTR()
         {
