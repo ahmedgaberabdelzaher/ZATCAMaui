@@ -40,7 +40,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
 
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
-            viewModel.StreamForDownloadURL = null;
             if (viewModel.StreamForDownloadURL != null)
             {
                 viewModel.StreamForDownloadURL.Flush();
@@ -49,6 +48,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                     viewModel.StreamForDownloadURL.Close();
             }
 
+            viewModel.StreamForDownloadURL = null;
             await viewModel.OnPageLoad();
         }
         protected async override void OnDisappearing()
