@@ -25,6 +25,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
             {
                 viewModel = App.Locator.ZakatReturnDetailsPageView;
                 InitializeComponent();
+                viewModel.ClearData();
                 Fbguid = fbguid;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 SetLTR();
