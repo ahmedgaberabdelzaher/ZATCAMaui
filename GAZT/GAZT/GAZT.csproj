@@ -50,7 +50,7 @@
     <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.1.0.54" />
     <PackageReference Include="ZXing.Net.Mobile" Version="2.4.1" />
     <PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.48" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="LogInView.cs" />

@@ -178,7 +178,7 @@
       <Version>2.4.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
-      <Version>18.1.0.55</Version>
+      <Version>18.1.0.48</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
