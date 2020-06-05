@@ -9,11 +9,11 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PdfView : ContentPage
-	{
-        PdfViewModel viewModel ;
-		public PdfView (string Pdfurl)
-		{
+    public partial class PdfView : ContentPage
+    {
+        PdfViewModel viewModel;
+        public PdfView(string Pdfurl)
+        {
             try
             {
                 viewModel = App.Locator.pdfView;
@@ -37,14 +37,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
             viewModel.DownloadUrl = string.Empty;
             viewModel.PdfUrl = string.Empty;
+
             if (viewModel.StreamForDownloadURL != null)
             {
                 viewModel.StreamForDownloadURL.Flush();
 
-                if(viewModel.StreamForDownloadURL != null)
+                if (viewModel.StreamForDownloadURL != null)
                     viewModel.StreamForDownloadURL.Close();
             }
 
@@ -84,7 +84,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 await email();
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
         public async Task email()
@@ -116,7 +116,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                                     File = new ShareFile(file)
                                 });
                             });
-                           
+
                         }
                         else
                         {
@@ -137,7 +137,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 });
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
     }

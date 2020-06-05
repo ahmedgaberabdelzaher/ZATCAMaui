@@ -102,9 +102,6 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>18.1.0.54</Version>
     </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
-      <Version>18.1.0.48</Version>
-    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>18.1.0.42</Version>
     </PackageReference>
@@ -179,6 +176,9 @@
     </PackageReference>
     <PackageReference Include="ZXing.Net.Mobile.Forms">
       <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
+      <Version>18.1.0.55</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
