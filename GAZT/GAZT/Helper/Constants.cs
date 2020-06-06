@@ -23,6 +23,8 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
+        
+
         #region Cookie Info
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
         public static string QADomainForCookies = "loginqa.gazt.gov.sa";
@@ -33,13 +35,17 @@ namespace GAZT.Helper
 
         //public static string DomainUrlForCookies = QADomainForCookies;
 
-        public static string DomainUrlForCookies = ProdDomainForCookies;
-
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        //This constant is to make a shift in the API for prod only
+        //as the systems are not in sync for the security changes for the below two methods
+        //GAZTGetZAKATReturn
+        //GAZTGetEstimatedZakatReturnSADADNumber
+        public static bool IsProductionRelease = false;
+        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = PreprodDomainForCookies;
 
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
