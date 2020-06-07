@@ -24,7 +24,7 @@ namespace GAZT.Droid
         {
             base.OnCreate(savedInstanceState);
             //   await Task.Delay(4000);
-            var refreshedToken = FirebaseInstanceId.Instance.Token;
+           // var refreshedToken = FirebaseInstanceId.Instance.Token;
             StartActivity(typeof(MainActivity));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

@@ -268,7 +268,9 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2048-x1536-1.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
