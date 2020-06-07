@@ -119,7 +119,6 @@
     <Compile Include="CustomRenderer\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderer\RoundCornersEffectIOS.cs" />
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
-    <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <Compile Include="CustomRenderer\Main.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
