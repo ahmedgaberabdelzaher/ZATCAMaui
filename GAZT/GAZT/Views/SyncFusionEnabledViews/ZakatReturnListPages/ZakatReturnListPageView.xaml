@@ -184,7 +184,7 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
-                <StackLayout x:Name="ZakatICRListLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Margin="0,-10,0,0">
+                <StackLayout x:Name="ZakatICRListLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Margin="0,-2,0,0">
                 <ListView  x:Name="ZakatICRList" 
            ItemsSource="{Binding MyZakatReturns}"
           HorizontalOptions="FillAndExpand"
