@@ -3391,20 +3391,33 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        public static DuplicateSignUpModelRootObject GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country)
+        public static DuplicateSignUpModelRootObject GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 DuplicateSignUpModelRootObject ValidateDuplicate = new DuplicateSignUpModelRootObject();
                 string IsIDTypeValidList = string.Empty;
+                String url = string.Empty;
                 string NewToken = string.Empty;
                 try
                 {
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient();
-                    String url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
+
                     //String url = Constants.GAZTGetFormBunleAccountNumberModel;E' and Gpart eq '3300088513' and Fbtyp eq 'ZI10'&saml2=disabled
                     //client.DefaultRequestHeaders.Add("Token", App.Token);
+
+                    if (!string.IsNullOrEmpty(crNum))
+                    {
+
+                        // hard coded string for CRNumber in the Institute parameter;
+                        url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + "90702" + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
+                    }
+                    else
+                    {
+                        url = Constants.GAZTSiguupCheckDuplicate + "(Partner='',Type='" + IDType + "',Idnumber='" + IDNum + "',Institute='" + Institude + "',Country='" + Country + "',City='',StartDt='')?$format=json&Saml2=enabled";
+                    }
+
                     var uri = new Uri(url);
                     HttpResponseMessage ValidateDuplicateList = client.GetAsync(uri).Result;
                     if (ValidateDuplicateList != null)
@@ -3444,6 +3457,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
         public async static Task<string> GAZTSignUpFirstSubmitCGZTAcc(SignUpNextBodyModel SignUpModel)
         {
             if (CrossConnectivity.Current.IsConnected)

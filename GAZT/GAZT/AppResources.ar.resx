@@ -3362,4 +3362,9 @@
     <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي (5%)</value>
     <comment>VAT Declaration</comment>
   </data>
+    <data name="ZZZCRValidateMessg" xml:space="preserve">
+    <value>الرجاء ملاحظة ان رقم السجل التجاري او الرخصة او العقد مستخدم من قبل مكلف أخر في الهيئة . او تاريخ الترخيص اصغر من تاريخ إيقاف التسجيل الرجاءقم بالتصحيح.</value>
+    <comment>CRValidation</comment>
+  </data>
+    
 </root>

@@ -5615,5 +5615,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZVatLookUpTitleTextNew", resourceCulture);
             }
         }
+        
+        public static string ZZZCRValidateMessg {
+            get {
+                return ResourceManager.GetString("ZZZCRValidateMessg", resourceCulture);
+            }
+        }
     }
 }

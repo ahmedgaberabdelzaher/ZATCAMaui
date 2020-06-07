@@ -3367,4 +3367,11 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Registration Verification Service</value>
     <comment>Vat Lookup</comment>
   </data>
+         <data name="ZZZCRValidateMessg" xml:space="preserve">
+    <value>Please note that this CR/Licence/Contract is already registered with another taxpayer in GAZT, 
+            please correct the ID if wrongly input or proceed further with this Licence Number. 
+            Note that your registration application will
+        remain pending until the previous CR/Licence/Contract is not deregistered Do you want you continue?</value>
+    <comment>CRValidation</comment>
+  </data>
 </root>
