@@ -298,9 +298,9 @@ namespace EGAZT
         {
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts
-            AppCenter.Start("ios=28c1eb85-5020-475d-a6d7-a1d18a3e88ec;" +
+            AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
                   "uwp={Your UWP App secret here};" +
-                  "android=c0d241c6-d325-40f5-ac5d-99e46c94c8a7",
+                  "android=138974d9-a5ae-4afa-b7b3-13ff660d8421",
                   typeof(Analytics), typeof(Crashes), typeof(Distribute));
             try
             {

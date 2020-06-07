@@ -28,7 +28,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
+    <CodesignProvision>GAZT App store provisioning provile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -92,8 +93,8 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>Automatic:AppStore</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>GAZT Distribution KSA</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Parallel Minds Technology Solutions Pvt. Ltd. (XNSLL5A27V)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
@@ -187,9 +188,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242-x-2688.png">
       <Visible>false</Visible>
     </ImageAsset>
@@ -271,6 +269,7 @@
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2048-x1536-1.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App_icon_1024.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -465,10 +464,6 @@
     <BundleResource Include="Resources\ic_dropdownOne%402x.png" />
     <BundleResource Include="Resources\ic_dropdownOne%403x.png" />
     <BundleResource Include="Resources\user.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -832,5 +827,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_check_circle_24px%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
   </ItemGroup>
 </Project>
