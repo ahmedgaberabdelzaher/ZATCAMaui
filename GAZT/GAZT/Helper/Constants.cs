@@ -42,7 +42,7 @@ namespace GAZT.Helper
         //as the systems are not in sync for the security changes for the below two methods
         //GAZTGetZAKATReturn
         //GAZTGetEstimatedZakatReturnSADADNumber
-        public static bool IsProductionRelease = false;
+        public static bool IsProductionRelease = true;
 
 
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
