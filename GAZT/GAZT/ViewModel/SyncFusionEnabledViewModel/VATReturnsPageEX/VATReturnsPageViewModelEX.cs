@@ -4440,9 +4440,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         {
             try
             {
-                Result6 result = VATNewModelFor15Percent;
+                Result6 VAT15percentmodel = VATNewModelFor15Percent;
+                Result6 VAT5percentmodel = VATNewModelFor5Percent;
                 VATDeclarationD vATDeclarationD = SetDataForPost(ResponseVATDeclarationD);
                 vATDeclarationD = SetRemainingData(vATDeclarationD);
+
+                //new Vat15% code
+                if (IsFifteenPercentChange)
+                {
+                    vATDeclarationD = Set15PercentChangeData(vATDeclarationD);
+                    vATDeclarationD = Set5PercentChangeData(vATDeclarationD);
+                }
+
                 VATDeclarationData.d.TotalsalesAmt = vATDeclarationD.TotalsalesAmt;
                 VATDeclarationData.d.TotalsalesAdj = vATDeclarationD.TotalsalesAdj;
                 VATDeclarationData.d.TotalpurchaseAmt = vATDeclarationD.TotalpurchaseAmt;
@@ -4491,6 +4500,96 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             {
             }
         }
+        public VATDeclarationD Set15PercentChangeData(VATDeclarationD vATDeclarationD)
+        {
+            try
+            {
+                if (VATNewModelFor15Percent != null && vATDeclarationD != null)
+                {
+
+                    foreach (var vat15model in vATDeclarationD.VATPERITEMSet.results)
+                    {
+                        if (vat15model.Type == "002")
+                        {
+                            vat15model.DataVersion = VATNewModelFor15Percent.DataVersion;
+                            vat15model.FormGuid = VATNewModelFor15Percent.FormGuid;
+                            vat15model.ImportsaccAdj = VATNewModelFor15Percent.ImportsaccAdj.Replace(",", "");
+                            vat15model.ImportsaccAmt = VATNewModelFor15Percent.ImportsaccAmt.Replace(",", "");
+                            vat15model.ImportsaccVat = ImportsaccVat15.Replace(",", "");
+                            vat15model.ImportspaidAdj = VATNewModelFor15Percent.ImportspaidAdj.Replace(",", "");
+                            vat15model.ImportspaidAmt = VATNewModelFor15Percent.ImportspaidAmt.Replace(",", "");
+                            vat15model.ImportspaidVat = ImportspaidVat15.Replace(",", "");
+                            vat15model.LineNo = VATNewModelFor15Percent.LineNo;
+                            vat15model.RankingOrder = VATNewModelFor15Percent.RankingOrder;
+                            vat15model.Rate = VATNewModelFor15Percent.Rate;
+                            vat15model.ReturnId = VATNewModelFor15Percent.ReturnId;
+                            vat15model.StdpurchaseAdj = VATNewModelFor15Percent.StdpurchaseAdj.Replace(",", "");
+                            vat15model.StdpurchaseAmt = VATNewModelFor15Percent.StdpurchaseAmt.Replace(",", "");
+                            vat15model.StdpurchasesVat = StdpurchasesVat15.Replace(",", "");
+                            vat15model.StdsalesAdj = VATNewModelFor15Percent.StdsalesAdj.Replace(",", "");
+                            vat15model.StdsalesAmt = VATNewModelFor15Percent.StdsalesAmt.Replace(",", "");
+                            vat15model.StdsalesVat = StdsalesVat15.Replace(",", "");
+                            vat15model.TimestampCh = VATNewModelFor15Percent.TimestampCh;
+                            vat15model.TimestampCr = VATNewModelFor15Percent.TimestampCr;
+                            vat15model.Type = VATNewModelFor15Percent.Type;
+                            vat15model.Waers = VATNewModelFor15Percent.Waers;
+                            vat15model.__metadata = VATNewModelFor15Percent.__metadata;
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return vATDeclarationD;
+        }
+
+        public VATDeclarationD Set5PercentChangeData(VATDeclarationD vATDeclarationD)
+        {
+            try
+            {
+                if (VATNewModelFor5Percent != null && vATDeclarationD != null)
+                {
+
+                    foreach (var vat15model in vATDeclarationD.VATPERITEMSet.results)
+                    {
+                        if (vat15model.Type == "003")
+                        {
+                            vat15model.DataVersion = VATNewModelFor5Percent.DataVersion;
+                            vat15model.FormGuid = VATNewModelFor5Percent.FormGuid;
+                            vat15model.ImportsaccAdj = VATNewModelFor5Percent.ImportsaccAdj.Replace(",", "");
+                            vat15model.ImportsaccAmt = VATNewModelFor5Percent.ImportsaccAmt.Replace(",", "");
+                            vat15model.ImportsaccVat = ImportsaccVat5.Replace(",", "");
+                            vat15model.ImportspaidAdj = VATNewModelFor5Percent.ImportspaidAdj.Replace(",", "");
+                            vat15model.ImportspaidAmt = VATNewModelFor5Percent.ImportspaidAmt.Replace(",", "");
+                            vat15model.ImportspaidVat = ImportspaidVat5.Replace(",", "");
+                            vat15model.LineNo = VATNewModelFor5Percent.LineNo;
+                            vat15model.RankingOrder = VATNewModelFor5Percent.RankingOrder;
+                            vat15model.Rate = VATNewModelFor5Percent.Rate;
+                            vat15model.ReturnId = VATNewModelFor5Percent.ReturnId;
+                            vat15model.StdpurchaseAdj = VATNewModelFor5Percent.StdpurchaseAdj.Replace(",", "");
+                            vat15model.StdpurchaseAmt = VATNewModelFor5Percent.StdpurchaseAmt.Replace(",", "");
+                            vat15model.StdpurchasesVat = StdpurchasesVat5.Replace(",", "");
+                            vat15model.StdsalesAdj = VATNewModelFor5Percent.StdsalesAdj.Replace(",", "");
+                            vat15model.StdsalesAmt = VATNewModelFor5Percent.StdsalesAmt.Replace(",", "");
+                            vat15model.StdsalesVat = StdsalesVat5.Replace(",", "");
+                            vat15model.TimestampCh = VATNewModelFor5Percent.TimestampCh;
+                            vat15model.TimestampCr = VATNewModelFor5Percent.TimestampCr;
+                            vat15model.Type = VATNewModelFor5Percent.Type;
+                            vat15model.Waers = VATNewModelFor5Percent.Waers;
+                            vat15model.__metadata = VATNewModelFor5Percent.__metadata;
+                        }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+            return vATDeclarationD;
+        }
+
         public VATDeclarationD SetRemainingData(VATDeclarationD vATDeclarationD)
         {
             if (!String.IsNullOrEmpty(vATDeclarationD.StdsalesAmt))
@@ -4643,6 +4742,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     vATDeclarationD.NetdueVat = !NetdueVat.Contains(",") ? NetdueVat : NetdueVat.Replace(",", "");
                 }
+
+
+
+
             }
             catch (Exception ex)
             {
