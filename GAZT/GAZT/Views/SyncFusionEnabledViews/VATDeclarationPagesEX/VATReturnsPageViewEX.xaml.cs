@@ -1075,7 +1075,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            if(viewModel.IsFifteenPercentChange)
+                            {
+                                if(viewModel.IsYesChecked)
+                                {
+                                    viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                }
+                                else
+                                {
+                                    viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                }
+                            }
+                            else
+                            {
+                                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            }
                         }
                     }
                     else
@@ -1133,7 +1147,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            if(viewModel.IsFifteenPercentChange)
+                            {
+                                if(viewModel.IsYesChecked)
+                                {
+                                    viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                }
+                                else
+                                {
+                                    viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                }
+                            }
+                            else
+                            {
+                                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            }
                         }
                     }
                     else
@@ -1335,7 +1363,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            if(viewModel.IsFifteenPercentChange)
+                            {
+                                if (viewModel.IsYesChecked)
+                                {
+                                    viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                }
+                                else
+                                {
+                                    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                }
+                            }
+                            else
+                            {
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            }
                         }
                     }
                     else
@@ -1383,7 +1425,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            if(viewModel.IsFifteenPercentChange)
+                            {
+                                if(viewModel.IsYesChecked)
+                                {
+                                    viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                                }
+                                else
+                                {
+                                    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                                }
+                            }
+                            else
+                            {
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            }
+
                         }
                     }
                     else
@@ -6794,20 +6852,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
                             //}
                         }
-                        else
-                        {
-                            if (senderObj != null && senderObj.Text.Length > 0)
-                                senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                        }
+
                     }
                     else
                     {
-                        if (viewModel.IsUnFocusedTextBox == true)
-                        {
-                            viewModel.IsUnFocusedTextBox = false;
-                        }
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                     }
                 }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+                
             }
             catch (Exception ex)
             {
@@ -6844,11 +6904,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
                             if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
                             {
-                                viewModel.ImportspaidVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                                viewModel.ImportspaidVat5 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATRate003For5Percent);
                             }
                             else
                             {
-                                viewModel.ImportspaidVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                                viewModel.ImportspaidVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATRate003For5Percent);
                             }
 
 
@@ -6882,21 +6942,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
                             //}
                         }
-                        else
-                        {
-                            if (senderObj != null && senderObj.Text.Length > 0)
-                                senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
-                        }
+
                     }
                     else
                     {
-                        if (viewModel.IsUnFocusedTextBox == true)
-                        {
-                            viewModel.IsUnFocusedTextBox = false;
-                        }
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                     }
                 }
-            }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                   }
+               }
             catch (Exception ex)
             {
 
@@ -6930,7 +6991,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.VATRate002For15Percent);
+                            viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATRate002For15Percent);
 
                             if (viewModel.IsYesChecked)
                             {
@@ -7009,7 +7070,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         CheckMandetoryFields();
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.VATRate002For15Percent);
+                            viewModel.ImportsaccVat5 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.VATRate003For5Percent);
 
                             if (viewModel.IsYesChecked)
                             {
