@@ -103,11 +103,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         public void checkNewFormorOld()
         {
-            if (viewModel.VATDeclarationData.d.GoliveFg == "X")
+            if (viewModel.VATDeclarationData!=null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg == "X")
             {
                 viewModel.IsFifteenPercentChange = true;
                 viewModel.IsNewReturn = true;
                 ShowHideContent(viewModel.IsNewReturn);
+                SetNewVATRate();
             }
             else
             {
@@ -116,6 +117,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 ShowHideContent(viewModel.IsNewReturn);
             }
             
+        }
+
+        public void SetNewVATRate()
+        {
+        
+            if(viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null)
+            {
+                if(viewModel.VATDeclarationData.d.VATPERITEMSet!=null && viewModel.VATDeclarationData.d.VATPERITEMSet.results != null)
+                {
+                     Result6 Rate002For15Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
+                     Result6 Rate003For5Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
+                     
+                    if(Rate002For15Percent!=null)
+                    {
+                        viewModel.VATRate002For15Percent = Rate002For15Percent.Rate;
+                    }
+                    if (Rate003For5Percent != null)
+                    {
+                        viewModel.VATRate003For5Percent = Rate003For5Percent.Rate;
+                    }
+                }
+            }
+
+
+
+
         }
 
         public void ShowHideContent(bool IsNewReturn)
@@ -984,10 +1011,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                         {
-                            viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
-                            viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
-                            viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                            viewModel.TotalsalesVat = viewModel.StdsalesVat;
+                            if (!viewModel.IsFifteenPercentChange)
+                            {
+                                viewModel.StdsalesVat = viewModel.StandardRatedSalesVatAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.StdsalesAdj);
+                                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                viewModel.TotalsalesVat = viewModel.StdsalesVat;
+                            }
                         }
                     }
                     else
@@ -5640,7 +5670,80 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         private void ClickGestureRecognizer_ClickedForVatAmount15(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
+                    //{
+                    //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+                    //    EntryVatAmount.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
+                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //}
+                    CheckMandetoryFields();
+                    // char LastChar = ' ';
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
 
+
+                            viewModel.StdsalesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.StdsalesAdj,viewModel.VATRate002For15Percent);
+                            
+                            if(viewModel.IsYesChecked)
+                            {
+                                viewModel.StdsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5);
+                                viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt);
+                                viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj);
+
+                                viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15,viewModel.StdsalesVat5);
+                            }
+                            else
+                            {
+                                viewModel.StdsalesVat = viewModel.GetSingleAmount(viewModel.StdsalesVat15);
+                                viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt);
+                                viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj);
+
+
+                                viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                viewModel.TotalsalesVat = viewModel.StdsalesVat15;
+                            }
+
+                            //viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            //viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            //viewModel.TotalsalesVat = viewModel.StdsalesVat;
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
         }
 
         private void EntryVatAmount5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -6272,9 +6375,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
-                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
-                    EntryImportsaccAdj.Text = ValueWithComma;
-                    EntryImportsaccAdj.TextColor = Color.Black;
+                    string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj15.Text);
+                    EntryImportsaccAdj15.Text = ValueWithComma;
+                    EntryImportsaccAdj15.TextColor = Color.Black;
                 }
                 else
                 {
@@ -6388,6 +6491,80 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
                     // UserName.TextColor = Color.Black;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatAmount5Percent(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
+                    //{
+                    //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
+                    //    EntryVatAmount.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
+                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //}
+                    CheckMandetoryFields();
+                    // char LastChar = ' ';
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+
+
+                            viewModel.StdsalesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATRate003For5Percent);
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.StdsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5);
+                                viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt);
+                                viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj);
+
+
+                                viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                                viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15,viewModel.StdsalesVat5);
+                            }
+                            //else
+                            //{
+                            //    viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            //    viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            //    viewModel.TotalsalesVat = viewModel.StdsalesVat15;
+                            //}
+
+                            //viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
+                            //viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
+                            //viewModel.TotalsalesVat = viewModel.StdsalesVat;
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
                 }
             }
             catch (Exception ex)
