@@ -4888,6 +4888,72 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             return TotalAmount;
         }
 
+        public string TotalAmountForEightVar(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6, string Amount7, string Amount8)
+        {
+            String TotalAmount = "0.00";
+            try
+            {
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
+                {
+                    Amount1 = Amount1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
+                {
+                    Amount4 = Amount4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
+                {
+                    Amount5 = Amount5.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount6) && Amount6.Contains(","))
+                {
+                    Amount6 = Amount6.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount7) && Amount7.Contains(","))
+                {
+                    Amount7 = Amount7.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount8) && Amount8.Contains(","))
+                {
+                    Amount8 = Amount8.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6) && !string.IsNullOrEmpty(Amount7) && !string.IsNullOrEmpty(Amount8))
+                {
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != "." && Amount7 != "." && Amount8 != ".")
+                    {
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-") && !Amount7.Contains("-") && !Amount8.Contains("-"))
+                        {
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)) + (String.IsNullOrEmpty(Amount7) ? 0.00 : Convert.ToDouble(Amount7)) + (String.IsNullOrEmpty(Amount8) ? 0.00 : Convert.ToDouble(Amount8)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
+                        }
+                    }
+                }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
+            }
+            catch (Exception ex)
+            {
+            }
+            return TotalAmount;
+        }
+
 
         public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5)
         {
@@ -5264,6 +5330,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             return VATAmount;
         }
+
+        public string ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(string Amount, string Adjustment,string NewVATRate)
+        {
+            string VATAmount = "0.00";
+            try
+            {
+                if (!string.IsNullOrEmpty(Amount) && Amount.Contains(","))
+                {
+                    Amount = Amount.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Adjustment) && Adjustment.Contains(","))
+                {
+                    Adjustment = Adjustment.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(NewVATRate) && NewVATRate.Contains(","))
+                {
+                    NewVATRate = NewVATRate.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount) && !string.IsNullOrEmpty(Adjustment) && !string.IsNullOrEmpty(NewVATRate) && Amount != "." && Adjustment != "." && NewVATRate != ".")
+                {
+                    if (!Amount.Contains("-") && !Adjustment.Contains("-") && !NewVATRate.Contains("-"))
+                    {
+                        Double dAmount = string.IsNullOrEmpty(Amount) ? 0 : Convert.ToDouble(Amount);
+                        Double dAdjustment = string.IsNullOrEmpty(Adjustment) ? 0 : Convert.ToDouble(Adjustment);
+                        Double dVATRate002 = string.IsNullOrEmpty(NewVATRate) ? 0 : Convert.ToDouble(NewVATRate);
+                        Double dVATRate001 = Convert.ToDouble(VATRate001);
+                        dVATRate002 = Convert.ToDouble(NewVATRate);
+                        VATAmount = Convert.ToDouble((((dAmount * dVATRate001) / 100) - ((dAdjustment * dVATRate002) / 100))).ToString();
+                        if (VATAmount == "0")
+                        {
+                            VATAmount = "0.00";
+                        }
+                    }
+                }
+                if (!String.IsNullOrEmpty(VATAmount) && VATAmount != "0.00")
+                {
+                    VATAmount = Math.Round(Convert.ToDecimal(VATAmount), 2).ToString();
+                    VATAmount = UtilityManager.GetCommaSeparatedAmount(VATAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(VATAmount);
+                VATAmount = isTrue ? "0.00" : VATAmount;
+                return VATAmount;
+            }
+            catch (Exception ex)
+            {
+            }
+            return VATAmount;
+        }
+
         public string ImportSubjectToVatPaidAtCustomsVatAmountForNonDesignated(string Amount, string Adjustment)
         {
             string VATAmount = "0.00";

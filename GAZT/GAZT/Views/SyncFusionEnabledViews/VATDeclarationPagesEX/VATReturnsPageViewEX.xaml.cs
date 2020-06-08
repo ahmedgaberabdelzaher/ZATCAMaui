@@ -44,12 +44,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 ChangeAeroIcon();
                 viewModel = App.Locator.VATReturnsPageViewEX;
                 viewModel.SelectedIndex = 0;
-               this.BindingContext = viewModel;
+                this.BindingContext = viewModel;
                 SetLTR();
                 if (_vATDeclarationInfo.d != null)
                 {
                     viewModel.VATDeclarationData = _vATDeclarationInfo;
-                   
+
                 }
                 if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
                 {
@@ -63,7 +63,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 //New logic
 
                 checkNewFormorOld();
-               
+
                 //New logic
 
 
@@ -103,7 +103,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         public void checkNewFormorOld()
         {
-            if (viewModel.VATDeclarationData!=null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg == "X")
+            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg == "X")
             {
                 viewModel.IsFifteenPercentChange = true;
                 viewModel.IsNewReturn = true;
@@ -116,20 +116,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 viewModel.IsNewReturn = false;
                 ShowHideContent(viewModel.IsNewReturn);
             }
-            
+
         }
 
         public void SetNewVATRate()
         {
-        
-            if(viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null)
+
+            if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null)
             {
-                if(viewModel.VATDeclarationData.d.VATPERITEMSet!=null && viewModel.VATDeclarationData.d.VATPERITEMSet.results != null)
+                if (viewModel.VATDeclarationData.d.VATPERITEMSet != null && viewModel.VATDeclarationData.d.VATPERITEMSet.results != null)
                 {
-                     Result6 Rate002For15Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
-                     Result6 Rate003For5Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
-                     
-                    if(Rate002For15Percent!=null)
+                    Result6 Rate002For15Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
+                    Result6 Rate003For5Percent = viewModel.VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "003").FirstOrDefault();
+
+                    if (Rate002For15Percent != null)
                     {
                         viewModel.VATRate002For15Percent = Rate002For15Percent.Rate;
                     }
@@ -148,7 +148,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         public void ShowHideContent(bool IsNewReturn)
         {
             //Test Checked In VAT15Change
-            if(IsNewReturn==true)
+            if (IsNewReturn == true)
             {
                 viewModel.IsPrevReturn = false;
                 viewModel.IsNewReturn = true;
@@ -2161,10 +2161,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
                 else
                 {
-                    if(viewModel.IsFifteenPercentChange)
+                    if (viewModel.IsFifteenPercentChange)
                     {
-                        bool check=CheckMandetoryFieldsFor15PercentView();
-                        if(!check)
+                        bool check = CheckMandetoryFieldsFor15PercentView();
+                        if (!check)
                         {
                             IsAllEntered = false;
                         }
@@ -2182,48 +2182,48 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             bool IsAllEntered = true;
             try
             {
-                    if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryVatAmountFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAmountFrame.HasError = false;
-                    }
+                if (string.IsNullOrEmpty(EntryVatAmount.Text) || EntryVatAmount.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryVatAmountFrame.HasError = true;
+                }
+                else
+                {
+                    EntryVatAmountFrame.HasError = false;
+                }
 
-                    if (string.IsNullOrEmpty(EntryVatAmount15.Text) || EntryVatAmount15.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryVatAmountFrame15.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAmountFrame15.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryVatAmount5.Text) || EntryVatAmount5.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryVatAmountFrame5.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAmountFrame5.HasError = false;
-                    }
+                if (string.IsNullOrEmpty(EntryVatAmount15.Text) || EntryVatAmount15.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryVatAmountFrame15.HasError = true;
+                }
+                else
+                {
+                    EntryVatAmountFrame15.HasError = false;
+                }
+                if (string.IsNullOrEmpty(EntryVatAmount5.Text) || EntryVatAmount5.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryVatAmountFrame5.HasError = true;
+                }
+                else
+                {
+                    EntryVatAmountFrame5.HasError = false;
+                }
 
 
-                
+
 
 
                 if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) || EntryVatAdjustmentWithSAR.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryVatAdjustmentWithSARFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryVatAdjustmentWithSARFrame.HasError = false;
-                    }
+                {
+                    IsAllEntered = false;
+                    EntryVatAdjustmentWithSARFrame.HasError = true;
+                }
+                else
+                {
+                    EntryVatAdjustmentWithSARFrame.HasError = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) || EntryVatAdjustmentWithSAR15.TextColor == Color.Red)
                 {
@@ -2245,12 +2245,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     EntryVatAdjustmentWithSARFrame5.HasError = false;
                 }
 
-                
 
-                    if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
+
+                if (string.IsNullOrEmpty(EntryStdsalesVat.Text) || EntryStdsalesVat.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryStdsalesVat15.Text) || EntryStdsalesVat15.TextColor == Color.Red)
                 {
@@ -2258,86 +2258,86 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
                 if (string.IsNullOrEmpty(EntrySalesGccAmt.Text) || EntrySalesGccAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntrySalesGccAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntrySalesGccAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntrySalesGccAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntrySalesGccAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZerosalesAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZerosalesAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZerosalesAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZerosalesAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExportsAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExportsAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExportsAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExportsAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptsalesAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptsalesAmtFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptsalesAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptsalesAdjFrame.HasError = false; ;
-                    }
-                    if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryStdpurchaseAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryStdpurchaseAmtFrame.HasError = false; ;
-                    }
+                {
+                    IsAllEntered = false;
+                    EntrySalesGccAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntrySalesGccAmtFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntrySalesGccAdj.Text) || EntrySalesGccAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntrySalesGccAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntrySalesGccAdjFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryZerosalesAmt.Text) || EntryZerosalesAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZerosalesAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryZerosalesAmtFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryZerosalesAdj.Text) || EntryZerosalesAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZerosalesAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryZerosalesAdjFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryExportsAmt.Text) || EntryExportsAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExportsAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExportsAmtFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryExportsAdj.Text) || EntryExportsAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExportsAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExportsAdjFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryExemptsalesAmt.Text) || EntryExemptsalesAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExemptsalesAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExemptsalesAmtFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryExemptsalesAdj.Text) || EntryExemptsalesAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExemptsalesAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExemptsalesAdjFrame.HasError = false; ;
+                }
+                if (string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) || EntryStdpurchaseAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAmtFrame.HasError = false; ;
+                }
 
                 if (string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) || EntryStdpurchaseAmt15.TextColor == Color.Red)
                 {
@@ -2359,19 +2359,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     EntryStdpurchaseAmtFrame5.HasError = false; ;
                 }
 
-                
 
 
 
-                    if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryStdpurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryStdpurchaseAdjFrame.HasError = false;
-                    }
+
+                if (string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) || EntryStdpurchaseAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryStdpurchaseAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryStdpurchaseAdjFrame.HasError = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) || EntryStdpurchaseAdj15.TextColor == Color.Red)
                 {
@@ -2394,10 +2394,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
 
-                    if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
+                if (string.IsNullOrEmpty(EntryStdpurchasesVat.Text) || EntryStdpurchasesVat.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryStdpurchasesVat15.Text) || EntryStdpurchasesVat15.TextColor == Color.Red)
                 {
@@ -2408,18 +2408,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     IsAllEntered = false;
                 }
-                
+
 
 
                 if (string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) || EntryZVatAmountWithSAR.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZVatAmountWithSARFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZVatAmountWithSARFrame.HasError = false;
-                    }
+                {
+                    IsAllEntered = false;
+                    EntryZVatAmountWithSARFrame.HasError = true;
+                }
+                else
+                {
+                    EntryZVatAmountWithSARFrame.HasError = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) || EntryZVatAmountWithSAR15.TextColor == Color.Red)
                 {
@@ -2442,15 +2442,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
 
-                    if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportspaidAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportspaidAdjFrame.HasError = false;
-                    }
+                if (string.IsNullOrEmpty(EntryImportspaidAdj.Text) || EntryImportspaidAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportspaidAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryImportspaidAdjFrame.HasError = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryImportspaidAdj15.Text) || EntryImportspaidAdj15.TextColor == Color.Red)
                 {
@@ -2472,13 +2472,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     EntryImportspaidAdjFrame5.HasError = false;
                 }
 
-                
 
 
-                    if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
+
+                if (string.IsNullOrEmpty(EntryImportspaidVat.Text) || EntryImportspaidVat.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
                 if (string.IsNullOrEmpty(EntryImportspaidVat15.Text) || EntryImportspaidVat15.TextColor == Color.Red)
                 {
                     IsAllEntered = false;
@@ -2489,17 +2489,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
 
-               
 
-                    if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportsaccAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportsaccAmtFrame.HasError = false;
-                    }
+
+                if (string.IsNullOrEmpty(EntryImportsaccAmt.Text) || EntryImportsaccAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAmtFrame.HasError = false;
+                }
 
 
                 if (string.IsNullOrEmpty(EntryImportsaccAmt15.Text) || EntryImportsaccAmt15.TextColor == Color.Red)
@@ -2524,15 +2524,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
 
 
-                    if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryImportsaccAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryImportsaccAdjFrame.HasError = false;
-                    }
+                if (string.IsNullOrEmpty(EntryImportsaccAdj.Text) || EntryImportsaccAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryImportsaccAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryImportsaccAdjFrame.HasError = false;
+                }
 
                 if (string.IsNullOrEmpty(EntryImportsaccAdj15.Text) || EntryImportsaccAdj15.TextColor == Color.Red)
                 {
@@ -2555,10 +2555,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
 
-                    if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
+                if (string.IsNullOrEmpty(EntryImportsaccVat.Text) || EntryImportsaccVat.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
                 if (string.IsNullOrEmpty(EntryImportsaccVat15.Text) || EntryImportsaccVat15.TextColor == Color.Red)
                 {
                     IsAllEntered = false;
@@ -2569,93 +2569,93 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
 
 
-                
 
-                    if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
+
+                if (string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) || EntryZeropurchaseAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZeropurchaseAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryZeropurchaseAmtFrame.HasError = false;
+                }
+                if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryZeropurchaseAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryZeropurchaseAdjFrame.HasError = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExemptpurchaseAmtFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExemptpurchaseAmtFrame.HasError = false;
+                }
+                if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryExemptpurchaseAdjFrame.HasError = true;
+                }
+                else
+                {
+                    EntryExemptpurchaseAdjFrame.HasError = false;
+                }
+                if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                    EntryPreperiodcorrFrame.HasError = true;
+                }
+                else
+                {
+                    if (viewModel.IsGreaterThanFiveT == false)
                     {
-                        IsAllEntered = false;
-                        EntryZeropurchaseAmtFrame.HasError = true;
+                        EntryPreperiodcorrFrame.HasError = false;
                     }
                     else
                     {
-                        EntryZeropurchaseAmtFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) || EntryZeropurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryZeropurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryZeropurchaseAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) || EntryExemptpurchaseAmt.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptpurchaseAmtFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptpurchaseAmtFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) || EntryExemptpurchaseAdj.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                        EntryExemptpurchaseAdjFrame.HasError = true;
-                    }
-                    else
-                    {
-                        EntryExemptpurchaseAdjFrame.HasError = false;
-                    }
-                    if (string.IsNullOrEmpty(EntryPreperiodcorr.Text) || EntryPreperiodcorr.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
                         EntryPreperiodcorrFrame.HasError = true;
                     }
-                    else
-                    {
-                        if (viewModel.IsGreaterThanFiveT == false)
-                        {
-                            EntryPreperiodcorrFrame.HasError = false;
-                        }
-                        else
-                        {
-                            EntryPreperiodcorrFrame.HasError = true;
-                        }
-                    }
-                    if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
-                    {
-                        IsAllEntered = false;
-                    }
-                    if (viewModel.IsGreaterThanFiveT == true)
-                    {
-                        IsAllEntered = false;
-                    }
-                    //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
-                    //{
-                    //    IsAllEntered = false;
-                    //}
-                    if (IsAllEntered == false)
-                    {
-                        viewModel.IsMainButtonEnabled = false;
-                        // BtnNextStep.IsEnabled = false;
-                    }
-                    else
-                    {
-                        // viewModel.IsDeclarationCheckedForInstruction = false;
-                        viewModel.IsMainButtonEnabled = true;
-                        //  BtnNextStep.IsEnabled = true;
-                    }
+                }
+                if (string.IsNullOrEmpty(EntryCreditVat.Text) || EntryCreditVat.TextColor == Color.Red)
+                {
+                    IsAllEntered = false;
+                }
+                if (viewModel.IsGreaterThanFiveT == true)
+                {
+                    IsAllEntered = false;
+                }
+                //if (string.IsNullOrEmpty(EntryNetdueVat.Text))
+                //{
+                //    IsAllEntered = false;
+                //}
+                if (IsAllEntered == false)
+                {
+                    viewModel.IsMainButtonEnabled = false;
+                    // BtnNextStep.IsEnabled = false;
+                }
+                else
+                {
+                    // viewModel.IsDeclarationCheckedForInstruction = false;
+                    viewModel.IsMainButtonEnabled = true;
+                    //  BtnNextStep.IsEnabled = true;
+                }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
             return IsAllEntered;
         }
 
-            //Test    
-            private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
+        //Test    
+        private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
@@ -5606,7 +5606,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
             }
 
-            
+
         }
 
         private void EntryVatAmount15_Unfocused(object sender, FocusEventArgs e)
@@ -5698,9 +5698,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
 
 
-                            viewModel.StdsalesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.StdsalesAdj,viewModel.VATRate002For15Percent);
-                            
-                            if(viewModel.IsYesChecked)
+                            viewModel.StdsalesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATRate002For15Percent);
+
+                            if (viewModel.IsYesChecked)
                             {
                                 viewModel.StdsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5);
                                 viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt);
@@ -5708,7 +5708,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
                                 viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
                                 viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15,viewModel.StdsalesVat5);
+                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5);
                             }
                             else
                             {
@@ -6539,7 +6539,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
                                 viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt);
                                 viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj);
-                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15,viewModel.StdsalesVat5);
+                                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5);
                             }
                             //else
                             //{
@@ -6571,31 +6571,502 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
             }
         }
+
+        private void ClickGestureRecognizer_ClickedForVatAmountForPurchase15(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.StdpurchasesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATRate002For15Percent);
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.StdpurchasesVat = viewModel.AddTwoAmount(viewModel.StdpurchasesVat15, viewModel.StdpurchasesVat5);
+
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt);
+
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            else
+                            {
+                                viewModel.StdpurchasesVat = viewModel.GetSingleAmount(viewModel.StdpurchasesVat15);
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt);
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAdj);
+
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+
+                            }
+
+
+                            //viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatAmountForPurchase5(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.StdpurchasesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATRate003For5Percent);
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.StdpurchasesVat = viewModel.AddTwoAmount(viewModel.StdpurchasesVat15, viewModel.StdpurchasesVat5);
+
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt);
+
+                                viewModel.ResponseVATDeclarationD.StdpurchaseAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            //else
+                            //{
+                            //    viewModel.StdpurchasesVat = viewModel.GetSingleAmount(viewModel.StdpurchasesVat15);
+                            //    viewModel.ResponseVATDeclarationD.StdpurchaseAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt);
+                            //    viewModel.ResponseVATDeclarationD.StdpurchaseAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAdj);
+
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+
+                            //}
+
+
+                            //viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        private void ClickGestureRecognizer_ClickedForVatPaidatcustoms15(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
+                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
+                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
+                            {
+                                viewModel.ImportspaidVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                            }
+                            else
+                            {
+                                viewModel.ImportspaidVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                            }
+
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.ImportspaidVat = viewModel.AddTwoAmount(viewModel.ImportspaidVat15, viewModel.ImportspaidVat5);
+
+                                viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt);
+
+                                viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            else
+                            {
+                                viewModel.ImportspaidVat = viewModel.GetSingleAmount(viewModel.ImportspaidVat15);
+                                viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAmt);
+                                viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAdj);
+
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+
+                            }
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            //}
+                        }
+                        else
+                        {
+                            if (senderObj != null && senderObj.Text.Length > 0)
+                                senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (viewModel.IsUnFocusedTextBox == true)
+                        {
+                            viewModel.IsUnFocusedTextBox = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatPaidatcustoms5(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
+                    //{
+                    //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
+                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
+                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            if (viewModel.ResponseVATDeclarationD != null && viewModel.ResponseVATDeclarationD.TpregFg == "X")
+                            {
+                                viewModel.ImportspaidVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                            }
+                            else
+                            {
+                                viewModel.ImportspaidVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATRate002For15Percent);
+                            }
+
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.ImportspaidVat = viewModel.AddTwoAmount(viewModel.ImportspaidVat15, viewModel.ImportspaidVat5);
+
+                                viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt);
+
+                                viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            else
+                            {
+                                //viewModel.ImportspaidVat = viewModel.GetSingleAmount(viewModel.ImportspaidVat15);
+                                //viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAmt);
+                                //viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAdj);
+
+
+                                //viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                //viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+
+                            }
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            //}
+                        }
+                        else
+                        {
+                            if (senderObj != null && senderObj.Text.Length > 0)
+                                senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                        }
+                    }
+                    else
+                    {
+                        if (viewModel.IsUnFocusedTextBox == true)
+                        {
+                            viewModel.IsUnFocusedTextBox = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatAccounted15(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
+                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
+                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.VATRate002For15Percent);
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.ImportsaccVat = viewModel.AddTwoAmount(viewModel.ImportsaccVat15, viewModel.ImportsaccVat5);
+
+                                viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt);
+
+                                viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            else
+                            {
+                                viewModel.ImportsaccVat = viewModel.GetSingleAmount(viewModel.ImportsaccVat15);
+                                viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAmt);
+                                viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAdj);
+
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            //}
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        private void ClickGestureRecognizer_ClickedForVatAccounted5(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                bool isArabicChecked = true;
+                var senderObj = (Entry)sender;
+                if (viewModel.IsUnFocusedTextBox == false)
+                {
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
+                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //}
+                    //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
+                    //{
+                    //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
+                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //}
+                    if (!string.IsNullOrEmpty(senderObj.Text))
+                    {
+                        isArabicChecked = isCheckArabic(senderObj.Text);
+                    }
+                    if (isArabicChecked)
+                    {
+                        CheckMandetoryFields();
+                        if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
+                        {
+                            viewModel.ImportsaccVat15 = viewModel.ImportSubjectToVatPaidAtCustomsVatAmountForDesignatedForNewPercentage(viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.VATRate002For15Percent);
+
+                            if (viewModel.IsYesChecked)
+                            {
+                                viewModel.ImportsaccVat = viewModel.AddTwoAmount(viewModel.ImportsaccVat15, viewModel.ImportsaccVat5);
+
+                                viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt);
+
+                                viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj);
+
+                                viewModel.TotalpurchaseAmt = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor5Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor5Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.VATNewModelFor5Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+
+                                viewModel.TotalpurchaseAdj = viewModel.TotalAmountForEightVar(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor5Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor5Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.VATNewModelFor5Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            }
+                            //else
+                            //{
+                            //    viewModel.ImportsaccVat = viewModel.GetSingleAmount(viewModel.ImportsaccVat15);
+                            //    viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAmt);
+                            //    viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAdj);
+
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdpurchaseAdj, viewModel.VATNewModelFor15Percent.ImportspaidAdj, viewModel.VATNewModelFor15Percent.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+
+                            //}
+
+
+                            //    viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.ResponseVATDeclarationD.StdpurchaseAmt, viewModel.ResponseVATDeclarationD.ImportspaidAmt, viewModel.ResponseVATDeclarationD.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
+                            //    viewModel.TotalpurchaseAdj = viewModel.TotalAdjustment(viewModel.ResponseVATDeclarationD.StdpurchaseAdj, viewModel.ResponseVATDeclarationD.ImportspaidAdj, viewModel.ResponseVATDeclarationD.ImportsaccAdj, viewModel.ResponseVATDeclarationD.ZeropurchaseAdj, viewModel.ResponseVATDeclarationD.ExemptpurchaseAdj);
+                            //}
+                        }
+                    }
+                    else
+                    {
+                        if (senderObj != null && senderObj.Text.Length > 0)
+                            senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
+                    }
+                }
+                else
+                {
+                    if (viewModel.IsUnFocusedTextBox == true)
+                    {
+                        viewModel.IsUnFocusedTextBox = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
-    //private void ICvalidation_Clicked(object sender, EventArgs e)
-    //{
-    //   //if(TabInstruction.IsVisible==true)
-    //   // {
-    //   //     if(chkDeclaration.IsChecked==false)
-    //   //     {
-    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-    //   //     }
-    //   //     else
-    //   //     {
-    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
-    //   //     }
-    //   // }
-    //   //if(TabTaxPayerDetails.IsVisible==true)
-    //   // {
-    //   //     if (chkClearification.IsChecked == false)
-    //   //     {
-    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
-    //   //     }
-    //   //     else
-    //   //     {
-    //   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
-    //   //     }
-    //   // }
-    //}
 }
+//private void ICvalidation_Clicked(object sender, EventArgs e)
+//{
+//   //if(TabInstruction.IsVisible==true)
+//   // {
+//   //     if(chkDeclaration.IsChecked==false)
+//   //     {
+//   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+//   //     }
+//   //     else
+//   //     {
+//   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+//   //     }
+//   // }
+//   //if(TabTaxPayerDetails.IsVisible==true)
+//   // {
+//   //     if (chkClearification.IsChecked == false)
+//   //     {
+//   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorRed"];
+//   //     }
+//   //     else
+//   //     {
+//   //         Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
+//   //     }
+//   // }
+//}
+
+
 
