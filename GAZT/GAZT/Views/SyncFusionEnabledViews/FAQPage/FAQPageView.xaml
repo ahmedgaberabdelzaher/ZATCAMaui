@@ -68,10 +68,12 @@
                                            VerticalOptions="Center"
                                            IsBusy="{Binding IsLoading}"
                                        ViewBoxWidth = "70" 
-                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
+                        <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
+
                     </StackLayout>
                 </StackLayout>
             </Grid>

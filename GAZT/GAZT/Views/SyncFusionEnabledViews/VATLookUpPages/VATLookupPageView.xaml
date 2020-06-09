@@ -135,9 +135,17 @@
     Hint="{x:Static local:AppResources.ZSearchParameter}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined"  Grid.Row="3" Grid.Column="0"  UnfocusedColor="#B1B1B1" x:Name="frmSearchParameter"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry x:Name="SearchParameterEnter" FontAttributes="Bold" Text="{Binding TxtSearchParameter}" Focused="OnParameterTypeEntryEntryFocussed" IsEnabled="False" IsSpellCheckEnabled="False" FontSize="Small">
+                            <custom:BorderlessEntry x:Name="SearchParameterEnter" FontFamily="{StaticResource SSTArabicMedium}"  FontAttributes="Bold" Text="{Binding TxtSearchParameter}" Focused="OnParameterTypeEntryEntryFocussed" IsEnabled="False" IsSpellCheckEnabled="False" FontSize="Small">
                             </custom:BorderlessEntry>
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle >
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                    </inputLayout:LabelStyle.FontFamily>
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                         </inputLayout:SfTextInputLayout>
+                        
                         <custom:CustomButton x:Name="PPicker_btn" Clicked="PPicker_btn_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" Margin="10,0,10,0"  >
                         </custom:CustomButton>
                         <syncfusion:SfPicker x:Name="PPicker"
@@ -172,20 +180,23 @@
                         <inputLayout:SfTextInputLayout  Grid.Row="4" Grid.Column="0" Margin="10,-6,10,0" 
     Hint="{x:Static local:AppResources.ZPleaseenterthecorrespondingnumber}" x:Name="frmLookupNumner" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
-                            <custom:BorderlessEntry x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
+    OutlineCornerRadius="8" FocusedColor="#005e4b"  ErrorColor="#B00020" HasError="False"    HelperText="{x:Static local:AppResources.ZZZRequired}">
+                            <custom:BorderlessEntry  FontFamily="{StaticResource SSTArabicMedium}" x:Name="entryNumber" Text="{Binding LookupNumber}" FontSize="Small"     MaxLength="{Binding MaxDigids}">
                                 <Entry.Behaviors>
                                     <custom1:OnlyNumericValuesBehaviour/>
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                             <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="15">
+                                <inputLayout:LabelStyle FontSize="14">
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                    </inputLayout:LabelStyle.FontFamily>
                                 </inputLayout:LabelStyle>
                             </inputLayout:SfTextInputLayout.HintLabelStyle>
-                            <inputLayout:SfTextInputLayout.TrailingView>
+                            <inputLayout:SfTextInputLayout.TrailingView >
                                 <Label HorizontalOptions="End" IsEnabled="{Binding IsTooltipEnableVisible}"
                                            IsVisible="{Binding IsTooltipEnableVisible}"
-                        Margin="0,0,0,2"
+                        Margin="0,0,0,4" FontSize="Title"   VerticalOptions="Center"
                        Style="{StaticResource IconLabelStyle}"
                          TextColor="#005e4b"
                         Text="{StaticResource Help}"  >
@@ -242,11 +253,13 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                                     
+                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
                     </StackLayout>
+                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->

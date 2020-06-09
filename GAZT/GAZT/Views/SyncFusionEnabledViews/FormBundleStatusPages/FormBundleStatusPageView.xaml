@@ -290,10 +290,11 @@ HeaderTextColor="White"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
+                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
                                        TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>

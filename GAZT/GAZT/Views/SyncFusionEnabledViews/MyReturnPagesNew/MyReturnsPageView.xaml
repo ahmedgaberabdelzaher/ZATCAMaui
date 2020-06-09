@@ -458,7 +458,7 @@
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding SubmittedETReturnsCount}" ></Span>
+                                                        <Span Text="{Binding SubmittedETReturnsCount}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" ></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -2330,10 +2330,11 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                         Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
+                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                         TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>

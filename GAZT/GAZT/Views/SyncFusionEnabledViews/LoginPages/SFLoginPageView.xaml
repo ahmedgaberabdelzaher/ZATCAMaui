@@ -240,11 +240,12 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                       Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"
+                                       
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#d99a29"/>
                     </StackLayout>
+                    <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->

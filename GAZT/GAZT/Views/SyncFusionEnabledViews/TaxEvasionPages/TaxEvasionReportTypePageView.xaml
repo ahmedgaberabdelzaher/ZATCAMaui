@@ -162,10 +162,11 @@ Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
+                        <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>

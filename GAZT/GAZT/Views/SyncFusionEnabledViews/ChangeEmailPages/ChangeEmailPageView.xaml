@@ -172,10 +172,11 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                       Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                       
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#d99a29"/>
+                            <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                         </StackLayout>
                     </StackLayout>
                 </Grid>
@@ -193,10 +194,11 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                       Title="Loading..."
+                                       
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#d99a29"/>
+                        <!--Title="Loading..."-->
                     </StackLayout>
                 </StackLayout>
             </Grid>
