@@ -5695,7 +5695,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     if (!string.IsNullOrEmpty(EntryVatAmount15.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAmount15.Text != "." && EntryVatAdjustmentWithSAR15.Text != "." && EntryVatAmount15.Text != "," && EntryVatAdjustmentWithSAR15.Text != ",")
                     {
-                        //CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                        CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR15.Text));
                     }
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
@@ -5856,7 +5856,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     if (!string.IsNullOrEmpty(EntryVatAmount5.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAmount5.Text != "." && EntryVatAdjustmentWithSAR5.Text != "." && EntryVatAmount5.Text != "," && EntryVatAdjustmentWithSAR5.Text != ",")
                     {
-                        //CheckOneaOneb(Convert.ToDecimal(EntryVatAmount15.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR.Text));
+                        CheckOneaOneb(Convert.ToDecimal(EntryVatAmount5.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR5.Text));
                     }
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
@@ -5908,9 +5908,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                if (!string.IsNullOrEmpty(EntryVatAmount5.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAmount5.Text != "." && EntryVatAdjustmentWithSAR5.Text != "." && EntryVatAmount5.Text != "," && EntryVatAdjustmentWithSAR5.Text != ",")
+                if (viewModel.IsVisibleVatReturnForm == true)
                 {
-                    CheckOneaOneb(Convert.ToDecimal(EntryVatAmount5.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR5.Text));
+                    if (!string.IsNullOrEmpty(EntryVatAmount5.Text) && !string.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAmount5.Text != "." && EntryVatAdjustmentWithSAR5.Text != "." && EntryVatAmount5.Text != "," && EntryVatAdjustmentWithSAR5.Text != ",")
+                    {
+                        CheckOneaOneb(Convert.ToDecimal(EntryVatAmount5.Text), Convert.ToDecimal(EntryVatAdjustmentWithSAR5.Text));
+                    }
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
@@ -5986,14 +5989,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
-                //{
-                //    CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
-                //}
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                //{
-                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-                //}
+                if (viewModel.IsNoChecked)
+                {
+                    if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt15.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt15.Text != "," && LabelTotalsalesAmt.Text != ",")
+                    {
+                        CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt15.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
+                    }
+                }
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) && EntryStdpurchaseAmt15.Text != "." && EntryStdpurchaseAdj15.Text != "." && EntryStdpurchaseAmt15.Text != "," && EntryStdpurchaseAdj15.Text != ",")
+                {
+                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt15.Text), Convert.ToDecimal(EntryStdpurchaseAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6018,10 +6024,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                //{
-                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) && EntryStdpurchaseAmt15.Text != "." && EntryStdpurchaseAdj15.Text != "." && EntryStdpurchaseAmt15.Text != "," && EntryStdpurchaseAdj15.Text != ",")
+                {
+                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt15.Text), Convert.ToDecimal(EntryStdpurchaseAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6071,14 +6077,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt.Text != "," && LabelTotalsalesAmt.Text != ",")
-                //{
-                //    CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
-                //}
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                //{
-                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-                //}
+                if (viewModel.IsYesChecked)
+                {
+                    if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && !string.IsNullOrEmpty(LabelTotalsalesAmt.Text) && EntryStdpurchaseAmt5.Text != "." && LabelTotalsalesAmt.Text != "." && EntryStdpurchaseAmt5.Text != "," && LabelTotalsalesAmt.Text != ",")
+                    {
+                        CheckSevenaSixa(Convert.ToDecimal(EntryStdpurchaseAmt5.Text), Convert.ToDecimal(LabelTotalsalesAmt.Text));
+                    }
+                }
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) && EntryStdpurchaseAmt5.Text != "." && EntryStdpurchaseAdj5.Text != "." && EntryStdpurchaseAmt5.Text != "," && EntryStdpurchaseAdj5.Text != ",")
+                {
+                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt5.Text), Convert.ToDecimal(EntryStdpurchaseAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6128,10 +6137,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAmt.Text != "." && EntryStdpurchaseAdj.Text != "." && EntryStdpurchaseAmt.Text != "," && EntryStdpurchaseAdj.Text != ",")
-                //{
-                //    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt.Text), Convert.ToDecimal(EntryStdpurchaseAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && !string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) && EntryStdpurchaseAmt5.Text != "." && EntryStdpurchaseAdj5.Text != "." && EntryStdpurchaseAmt5.Text != "," && EntryStdpurchaseAdj5.Text != ",")
+                {
+                    CheckSevenaSevenb(Convert.ToDecimal(EntryStdpurchaseAmt5.Text), Convert.ToDecimal(EntryStdpurchaseAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6181,10 +6190,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                //{
-                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj15.Text) && EntryZVatAmountWithSAR15.Text != "." && EntryImportspaidAdj15.Text != "." && EntryZVatAmountWithSAR15.Text != "," && EntryImportspaidAdj15.Text != ",")
+                {
+                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR15.Text), Convert.ToDecimal(EntryImportspaidAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6234,10 +6243,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                //{
-                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj15.Text) && EntryZVatAmountWithSAR15.Text != "." && EntryImportspaidAdj15.Text != "." && EntryZVatAmountWithSAR15.Text != "," && EntryImportspaidAdj15.Text != ",")
+                {
+                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR15.Text), Convert.ToDecimal(EntryImportspaidAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6287,10 +6296,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                //{
-                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj5.Text) && EntryZVatAmountWithSAR5.Text != "." && EntryImportspaidAdj5.Text != "." && EntryZVatAmountWithSAR5.Text != "," && EntryImportspaidAdj5.Text != ",")
+                {
+                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR5.Text), Convert.ToDecimal(EntryImportspaidAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6340,10 +6349,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryZVatAmountWithSAR.Text != "." && EntryImportspaidAdj.Text != "." && EntryZVatAmountWithSAR.Text != "," && EntryImportspaidAdj.Text != ",")
-                //{
-                //    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR.Text), Convert.ToDecimal(EntryImportspaidAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) && !string.IsNullOrEmpty(EntryImportspaidAdj5.Text) && EntryZVatAmountWithSAR5.Text != "." && EntryImportspaidAdj5.Text != "." && EntryZVatAmountWithSAR5.Text != "," && EntryImportspaidAdj5.Text != ",")
+                {
+                    CheckEightaEightb(Convert.ToDecimal(EntryZVatAmountWithSAR5.Text), Convert.ToDecimal(EntryImportspaidAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6393,10 +6402,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                //{
-                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt15.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj15.Text) && EntryImportsaccAmt15.Text != "." && EntryImportsaccAdj15.Text != "." && EntryImportsaccAmt15.Text != "," && EntryImportsaccAdj15.Text != ",")
+                {
+                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt15.Text), Convert.ToDecimal(EntryImportsaccAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6446,10 +6455,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                //{
-                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt15.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj15.Text) && EntryImportsaccAmt15.Text != "." && EntryImportsaccAdj15.Text != "." && EntryImportsaccAmt15.Text != "," && EntryImportsaccAdj15.Text != ",")
+                {
+                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt15.Text), Convert.ToDecimal(EntryImportsaccAdj15.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6499,10 +6508,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                //{
-                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt5.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj5.Text) && EntryImportsaccAmt5.Text != "." && EntryImportsaccAdj5.Text != "." && EntryImportsaccAmt5.Text != "," && EntryImportsaccAdj5.Text != ",")
+                {
+                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt5.Text), Convert.ToDecimal(EntryImportsaccAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
@@ -6552,10 +6561,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
-                //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAmt.Text != "." && EntryImportsaccAdj.Text != "." && EntryImportsaccAmt.Text != "," && EntryImportsaccAdj.Text != ",")
-                //{
-                //    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt.Text), Convert.ToDecimal(EntryImportsaccAdj.Text));
-                //}
+                if (!string.IsNullOrEmpty(EntryImportsaccAmt5.Text) && !string.IsNullOrEmpty(EntryImportsaccAdj5.Text) && EntryImportsaccAmt5.Text != "." && EntryImportsaccAdj5.Text != "." && EntryImportsaccAmt5.Text != "," && EntryImportsaccAdj5.Text != ",")
+                {
+                    CheckNineaNineb(Convert.ToDecimal(EntryImportsaccAmt5.Text), Convert.ToDecimal(EntryImportsaccAdj5.Text));
+                }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
                     viewModel.IsUnFocusedTextBox = true;
