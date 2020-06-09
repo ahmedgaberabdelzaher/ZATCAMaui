@@ -102,12 +102,12 @@
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <Label 
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
-                                                       HorizontalOptions="StartAndExpand"
+                                                       HorizontalOptions="Start"
                                                        VerticalOptions="CenterAndExpand"
                                                    
                                    Grid.Row="3"
                                    Grid.Column="0">
-                                                    <Label.FormattedText>
+                                                    <Label.FormattedText >
                                                         <FormattedString>
                                                             <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SSTArBold}"/>
                                                             <Span Text="  "/>
