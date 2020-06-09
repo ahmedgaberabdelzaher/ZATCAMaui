@@ -259,7 +259,7 @@
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
                     </StackLayout>
-                    Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>
             </Grid>
             <!-- Acticity indicator layout end -->

@@ -249,7 +249,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"    HorizontalOptions="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -434,7 +434,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -619,7 +619,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1001,7 +1001,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1186,7 +1186,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1371,7 +1371,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1556,7 +1556,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1753,7 +1753,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1938,7 +1938,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -2123,7 +2123,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -2308,7 +2308,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
