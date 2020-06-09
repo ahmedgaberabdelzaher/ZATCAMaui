@@ -38,21 +38,13 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        //This constant is to make a shift in the API for prod only
-        //as the systems are not in sync for the security changes for the below two methods
-        //GAZTGetZAKATReturn
-        //GAZTGetEstimatedZakatReturnSADADNumber
-        public static bool IsProductionRelease = true;
-
-
         //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         //public static string DomainUrlForCookies = QADomainForCookies;
 
-
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = ProdDomainForCookies;
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string DomainUrlForCookies = QADomainForCookies;
 
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
