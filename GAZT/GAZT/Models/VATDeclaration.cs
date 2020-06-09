@@ -529,8 +529,8 @@ namespace EGAZT.Models
         public string ImportsaccAdj { get; set; }
         public string ImportsaccVat { get; set; }
         public string ReturnId { get; set; }
-        public object TimestampCr { get; set; }
-        public object TimestampCh { get; set; }
+        public string TimestampCr { get; set; }
+        public string TimestampCh { get; set; }
         public string Waers { get; set; }
     }
 

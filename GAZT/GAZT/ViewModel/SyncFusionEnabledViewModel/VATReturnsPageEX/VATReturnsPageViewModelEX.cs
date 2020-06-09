@@ -5038,6 +5038,61 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             return TotalAmount;
         }
 
+        public string TotalAmountForSixVarForNegative(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6)
+        {
+            String TotalAmount = "0.00";
+            try
+            {
+                if (!string.IsNullOrEmpty(Amount1) && Amount1.Contains(","))
+                {
+                    Amount1 = Amount1.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
+                {
+                    Amount2 = Amount2.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                {
+                    Amount3 = Amount3.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount4) && Amount4.Contains(","))
+                {
+                    Amount4 = Amount4.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
+                {
+                    Amount5 = Amount5.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount6) && Amount6.Contains(","))
+                {
+                    Amount6 = Amount6.Replace(",", "");
+                }
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6))
+                {
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != ".")
+                    {
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)))).ToString();
+                            if (TotalAmount == "0")
+                            {
+                                TotalAmount = "0.00";
+                            }
+                    }
+                }
+                if (!String.IsNullOrEmpty(TotalAmount) && TotalAmount != "0.00")
+                {
+                    TotalAmount = Math.Round(Convert.ToDecimal(TotalAmount), 2).ToString();
+                    TotalAmount = UtilityManager.GetCommaSeparatedAmount(TotalAmount);
+                }
+                bool isTrue = IsTextNullOrEmpty(TotalAmount);
+                TotalAmount = isTrue ? "0.00" : TotalAmount;
+                return TotalAmount;
+            }
+            catch (Exception ex)
+            {
+            }
+            return TotalAmount;
+        }
+
         public string TotalAmountForEightVar(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6, string Amount7, string Amount8)
         {
             String TotalAmount = "0.00";

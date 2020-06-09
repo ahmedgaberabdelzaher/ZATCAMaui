@@ -1496,11 +1496,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     {
                         if (viewModel.IsYesChecked)
                         {
-                            viewModel.TotalpurchaseVat = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdpurchasesVat, viewModel.VATNewModelFor5Percent.StdpurchasesVat, viewModel.VATNewModelFor15Percent.ImportspaidVat, viewModel.VATNewModelFor5Percent.ImportspaidVat, viewModel.VATNewModelFor15Percent.ImportsaccVat, viewModel.VATNewModelFor5Percent.ImportsaccVat);
+                            viewModel.TotalpurchaseVat = viewModel.TotalAmountForSixVarForNegative(viewModel.StdpurchasesVat15, viewModel.StdpurchasesVat5, viewModel.ImportspaidVat15, viewModel.ImportspaidVat5, viewModel.ImportsaccVat15, viewModel.ImportsaccVat5);
                         }
                         else
                         {
-                            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.VATNewModelFor15Percent.StdpurchasesVat, viewModel.VATNewModelFor15Percent.ImportspaidVat, viewModel.VATNewModelFor15Percent.ImportsaccVat);
+                            viewModel.TotalpurchaseVat = viewModel.TotalVatAmount(viewModel.StdpurchasesVat15, viewModel.ImportspaidVat15, viewModel.ImportsaccVat15);
                         }
                     }
                     else
@@ -6847,8 +6847,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             else
                             {
                                 viewModel.ImportspaidVat = viewModel.GetSingleAmount(viewModel.ImportspaidVat15);
-                                viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAmt);
-                                viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportspaidAdj);
+                                viewModel.ResponseVATDeclarationD.ImportspaidAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.ImportspaidAmt);
+                                viewModel.ResponseVATDeclarationD.ImportspaidAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.ImportspaidAdj);
 
 
                                 viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
@@ -7018,8 +7018,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             else
                             {
                                 viewModel.ImportsaccVat = viewModel.GetSingleAmount(viewModel.ImportsaccVat15);
-                                viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAmt);
-                                viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor5Percent.ImportsaccAdj);
+                                viewModel.ResponseVATDeclarationD.ImportsaccAmt = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.ImportsaccAmt);
+                                viewModel.ResponseVATDeclarationD.ImportsaccAdj = viewModel.GetSingleAmount(viewModel.VATNewModelFor15Percent.ImportsaccAdj);
 
 
                                 viewModel.TotalpurchaseAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdpurchaseAmt, viewModel.VATNewModelFor15Percent.ImportspaidAmt, viewModel.VATNewModelFor15Percent.ImportsaccAmt, viewModel.ResponseVATDeclarationD.ZeropurchaseAmt, viewModel.ResponseVATDeclarationD.ExemptpurchaseAmt);
@@ -7193,7 +7193,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
             EntryVatAmount15.Text = string.Empty;
             EntryVatAdjustmentWithSAR15.Text = string.Empty;
-            EntryStdsalesVat15.Text = string.Empty;
+            EntryStdsalesVat15.Text = "0.00";
 
             EntryVatAmount5.Text = "0.00";
             EntryVatAdjustmentWithSAR5.Text = "0.00";
@@ -7202,7 +7202,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             //
             EntryStdpurchaseAmt15.Text = string.Empty;
             EntryStdpurchaseAdj15.Text = string.Empty;
-            EntryStdpurchasesVat15.Text = string.Empty;
+            EntryStdpurchasesVat15.Text = "0.00";
 
             EntryStdpurchaseAmt5.Text = "0.00";
             EntryStdpurchaseAdj5.Text = "0.00";
@@ -7211,7 +7211,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             //
             EntryZVatAmountWithSAR15.Text = string.Empty;
             EntryImportspaidAdj15.Text = string.Empty;
-            EntryImportspaidVat15.Text = string.Empty;
+            EntryImportspaidVat15.Text = "0.00";
 
             EntryZVatAmountWithSAR5.Text = "0.00";
             EntryImportspaidAdj5.Text = "0.00";
@@ -7220,7 +7220,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             //
             EntryImportsaccAmt15.Text = string.Empty;
             EntryImportsaccAdj15.Text = string.Empty;
-            EntryImportsaccVat15.Text = string.Empty;
+            EntryImportsaccVat15.Text = "0.00";
 
             EntryImportsaccAmt5.Text = "0.00";
             EntryImportsaccAdj5.Text = "0.00";
@@ -7247,41 +7247,41 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
             EntryVatAmount15.Text = string.Empty;
             EntryVatAdjustmentWithSAR15.Text = string.Empty;
-            EntryStdsalesVat15.Text = string.Empty;
+            EntryStdsalesVat15.Text = "0.00";
 
             EntryVatAmount5.Text = string.Empty;
             EntryVatAdjustmentWithSAR5.Text = string.Empty;
-            EntryStdsalesVat5.Text = string.Empty;
+            EntryStdsalesVat5.Text = "0.00";
 
             //
 
             EntryStdpurchaseAmt15.Text = string.Empty;
             EntryStdpurchaseAdj15.Text = string.Empty;
-            EntryStdpurchasesVat15.Text = string.Empty;
+            EntryStdpurchasesVat15.Text = "0.00";
 
             EntryStdpurchaseAmt5.Text = string.Empty;
             EntryStdpurchaseAdj5.Text = string.Empty;
-            EntryStdpurchasesVat5.Text = string.Empty;
+            EntryStdpurchasesVat5.Text = "0.00";
 
             //
 
             EntryZVatAmountWithSAR15.Text = string.Empty;
             EntryImportspaidAdj15.Text = string.Empty;
-            EntryImportspaidVat15.Text = string.Empty;
+            EntryImportspaidVat15.Text = "0.00";
 
             EntryZVatAmountWithSAR5.Text = string.Empty;
             EntryImportspaidAdj5.Text = string.Empty;
-            EntryImportspaidVat5.Text = string.Empty;
+            EntryImportspaidVat5.Text = "0.00";
 
             //
 
             EntryImportsaccAmt15.Text = string.Empty;
             EntryImportsaccAdj15.Text = string.Empty;
-            EntryImportsaccVat15.Text = string.Empty;
+            EntryImportsaccVat15.Text = "0.00";
 
             EntryImportsaccAmt5.Text = string.Empty;
             EntryImportsaccAdj5.Text = string.Empty;
-            EntryImportsaccVat5.Text = string.Empty;
+            EntryImportsaccVat5.Text = "0.00";
 
 
         }

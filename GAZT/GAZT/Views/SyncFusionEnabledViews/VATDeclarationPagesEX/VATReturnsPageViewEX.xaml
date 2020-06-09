@@ -494,9 +494,9 @@
                                                     <ColumnDefinition Width="50*"/>
                                                     <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
-                                           
-                                            <RadioButton x:Name="radioButton" GroupName="Rdforchange" Clicked="Yesrdbuttonclicked" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"></RadioButton>
-                                            <RadioButton x:Name="radioButton2" GroupName="Rdforchange" Clicked="Nordbuttonclicked" Grid.Row="0" Grid.Column="1" Text="{x:Static local:AppResources.ZZZNoText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNoChecked}"></RadioButton>
+
+                                            <RadioButton x:Name="radioButton" GroupName="Rdforchange" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Clicked="Yesrdbuttonclicked" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"></RadioButton>
+                                            <RadioButton x:Name="radioButton2" GroupName="Rdforchange" IsEnabled="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsControlEnabled}" Clicked="Nordbuttonclicked" Grid.Row="0" Grid.Column="1" Text="{x:Static local:AppResources.ZZZNoText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNoChecked}"></RadioButton>
                                            </Grid>
                                         <!--<buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}">
                                             <buttons:SfRadioButton x:Name="radioButton" PropertyChanged="YesRdBtnChecked"  HorizontalOptions="StartAndExpand" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"   UncheckedColor="#B1B1B1"/>
