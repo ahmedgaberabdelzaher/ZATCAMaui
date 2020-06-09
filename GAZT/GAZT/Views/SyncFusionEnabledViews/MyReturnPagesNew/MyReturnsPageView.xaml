@@ -12,7 +12,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:local1="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage.MyReturnsPageView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"  >
@@ -68,7 +68,7 @@
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
                             <StackLayout>
-                                <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -101,6 +101,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView  x:Name="ReturnsVATSubmited"   AutoFitMode="Height" SelectionBackgroundColor="White" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}" HorizontalOptions="Center" SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -254,7 +257,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content"   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>                                           
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -287,6 +290,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView  HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatSubmited"  SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatSubmited}" IsVisible="{Binding IsVisibleZakatSumbitted}" SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -439,7 +445,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>                                            
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -472,6 +478,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -624,7 +633,7 @@
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -657,6 +666,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
