@@ -486,10 +486,22 @@
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
-                                        <buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}">
-                                            <buttons:SfRadioButton x:Name="radioButton" StateChanged="radioButtonYes_StateChanged" HorizontalOptions="StartAndExpand" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"   UncheckedColor="#B1B1B1"/>
-                                            <buttons:SfRadioButton x:Name="radioButton2" StateChanged="radioButtonNo_StateChanged"  Text="{x:Static local:AppResources.ZZZNoText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNoChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="StartAndExpand"/>
-                                        </buttons:SfRadioGroup>
+                                        <Grid Margin="10,0,10,0"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="50*"/>
+                                                </Grid.ColumnDefinitions>
+                                           
+                                            <RadioButton x:Name="radioButton" GroupName="Rdforchange" Clicked="Yesrdbuttonclicked" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"></RadioButton>
+                                            <RadioButton x:Name="radioButton2" GroupName="Rdforchange" Clicked="Nordbuttonclicked" Grid.Row="0" Grid.Column="1" Text="{x:Static local:AppResources.ZZZNoText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNoChecked}"></RadioButton>
+                                           </Grid>
+                                        <!--<buttons:SfRadioGroup x:Name="radioGroup" Margin="10,0,10,0" Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}">
+                                            <buttons:SfRadioButton x:Name="radioButton" PropertyChanged="YesRdBtnChecked"  HorizontalOptions="StartAndExpand" Text="{x:Static local:AppResources.ZZZYesText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsYesChecked}"   UncheckedColor="#B1B1B1"/>
+                                            <buttons:SfRadioButton x:Name="radioButton2" PropertyChanged="NoRdBtnChecked"  Text="{x:Static local:AppResources.ZZZNoText}" IsChecked="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNoChecked}" UncheckedColor="#B1B1B1"  HorizontalOptions="StartAndExpand"/>
+                                        </buttons:SfRadioGroup>-->
                                         <Frame Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                                         </Frame>
                                         <Label Text="{x:Static custom2:AppResources.ZVatOnSales}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >

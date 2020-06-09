@@ -59,7 +59,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     viewModel.IsChangeRegistrationlinkVisible = false;
                 }
-
                 //New logic
 
                 checkNewFormorOld();
@@ -92,6 +91,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 IntilizeAsync();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 viewModel.IsMainButtonEnabled = false;
+               
                 // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }
             catch (Exception e)
@@ -7131,17 +7131,161 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             }
         }
 
-        
-
-        private void radioButtonYes_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
+        private void Yesrdbuttonclicked(object sender, EventArgs e)
         {
+            try
+            {
+                RadioButton rd = sender as RadioButton;
+                if (rd != null)
+                {
+                    if(rd.IsChecked)
+                    {
+                        viewModel.IsFifteenPersenctVisible = true;
+                        viewModel.IsFivePersenctVisible = true;
+                        Clear15And5PercentObject();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void Nordbuttonclicked(object sender, EventArgs e)
+        {
+            try
+            {
+                RadioButton rd = sender as RadioButton;
+                if (rd != null)
+                {
+                    if (rd.IsChecked)
+                    {
+                        viewModel.IsFifteenPersenctVisible = true;
+                        viewModel.IsFivePersenctVisible = false;
+                        Clear5PercentObject();
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public void Clear5PercentObject()
+        {
+            EntryVatAmount.Text = "0.00";
+            EntryVatAdjustmentWithSAR.Text = "0.00";
+            EntryStdsalesVat.Text = "0.00";
+
+            EntryStdpurchaseAmt.Text = "0.00";
+            EntryStdpurchaseAdj.Text = "0.00";
+            EntryStdpurchasesVat.Text = "0.00";
+
+            EntryZVatAmountWithSAR.Text = "0.00";
+            EntryImportspaidAdj.Text = "0.00";
+            EntryImportspaidVat.Text = "0.00";
+
+            EntryImportsaccAmt.Text = "0.00";
+            EntryImportsaccAdj.Text = "0.00";
+            EntryImportsaccVat.Text = "0.00";
+
+            EntryVatAmount15.Text = string.Empty;
+            EntryVatAdjustmentWithSAR15.Text = string.Empty;
+            EntryStdsalesVat15.Text = string.Empty;
+
+            EntryVatAmount5.Text = "0.00";
+            EntryVatAdjustmentWithSAR5.Text = "0.00";
+            EntryStdsalesVat5.Text = "0.00";
+
+            //
+            EntryStdpurchaseAmt15.Text = string.Empty;
+            EntryStdpurchaseAdj15.Text = string.Empty;
+            EntryStdpurchasesVat15.Text = string.Empty;
+
+            EntryStdpurchaseAmt5.Text = "0.00";
+            EntryStdpurchaseAdj5.Text = "0.00";
+            EntryStdpurchasesVat5.Text = "0.00";
+
+            //
+            EntryZVatAmountWithSAR15.Text = string.Empty;
+            EntryImportspaidAdj15.Text = string.Empty;
+            EntryImportspaidVat15.Text = string.Empty;
+
+            EntryZVatAmountWithSAR5.Text = "0.00";
+            EntryImportspaidAdj5.Text = "0.00";
+            EntryImportspaidVat5.Text = "0.00";
+
+            //
+            EntryImportsaccAmt15.Text = string.Empty;
+            EntryImportsaccAdj15.Text = string.Empty;
+            EntryImportsaccVat15.Text = string.Empty;
+
+            EntryImportsaccAmt5.Text = "0.00";
+            EntryImportsaccAdj5.Text = "0.00";
+            EntryImportsaccVat5.Text = "0.00";
+        }
+
+        public void Clear15And5PercentObject()
+        {
+            EntryVatAmount.Text = "0.00";
+            EntryVatAdjustmentWithSAR.Text = "0.00";
+            EntryStdsalesVat.Text = "0.00";
+
+            EntryStdpurchaseAmt.Text = "0.00";
+            EntryStdpurchaseAdj.Text = "0.00";
+            EntryStdpurchasesVat.Text = "0.00";
+
+            EntryZVatAmountWithSAR.Text = "0.00";
+            EntryImportspaidAdj.Text = "0.00";
+            EntryImportspaidVat.Text = "0.00";
+
+            EntryImportsaccAmt.Text = "0.00";
+            EntryImportsaccAdj.Text = "0.00";
+            EntryImportsaccVat.Text = "0.00";
+
+            EntryVatAmount15.Text = string.Empty;
+            EntryVatAdjustmentWithSAR15.Text = string.Empty;
+            EntryStdsalesVat15.Text = string.Empty;
+
+            EntryVatAmount5.Text = string.Empty;
+            EntryVatAdjustmentWithSAR5.Text = string.Empty;
+            EntryStdsalesVat5.Text = string.Empty;
+
+            //
+
+            EntryStdpurchaseAmt15.Text = string.Empty;
+            EntryStdpurchaseAdj15.Text = string.Empty;
+            EntryStdpurchasesVat15.Text = string.Empty;
+
+            EntryStdpurchaseAmt5.Text = string.Empty;
+            EntryStdpurchaseAdj5.Text = string.Empty;
+            EntryStdpurchasesVat5.Text = string.Empty;
+
+            //
+
+            EntryZVatAmountWithSAR15.Text = string.Empty;
+            EntryImportspaidAdj15.Text = string.Empty;
+            EntryImportspaidVat15.Text = string.Empty;
+
+            EntryZVatAmountWithSAR5.Text = string.Empty;
+            EntryImportspaidAdj5.Text = string.Empty;
+            EntryImportspaidVat5.Text = string.Empty;
+
+            //
+
+            EntryImportsaccAmt15.Text = string.Empty;
+            EntryImportsaccAdj15.Text = string.Empty;
+            EntryImportsaccVat15.Text = string.Empty;
+
+            EntryImportsaccAmt5.Text = string.Empty;
+            EntryImportsaccAdj5.Text = string.Empty;
+            EntryImportsaccVat5.Text = string.Empty;
+
 
         }
 
-        private void radioButtonNo_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
-        {
-
-        }
     }
 }
 //private void ICvalidation_Clicked(object sender, EventArgs e)
