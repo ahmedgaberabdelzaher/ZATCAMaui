@@ -102,7 +102,7 @@
                                    Grid.Column="0" Grid.ColumnSpan="2"/>
                                                 <Label 
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
-                                                       HorizontalOptions="Start"
+                                                       HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"
                                                        VerticalOptions="CenterAndExpand"
                                                    
                                    Grid.Row="3"
