@@ -466,7 +466,7 @@
     <value>مسدد</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مدفوع جزئي</value>
+    <value>مسددة جزئيا</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>غير مسدد</value>
@@ -3362,9 +3362,8 @@
     <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي (5%)</value>
     <comment>VAT Declaration</comment>
   </data>
-    <data name="ZZZCRValidateMessg" xml:space="preserve">
+  <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>الرجاء ملاحظة ان رقم السجل التجاري او الرخصة او العقد مستخدم من قبل مكلف أخر في الهيئة . او تاريخ الترخيص اصغر من تاريخ إيقاف التسجيل الرجاءقم بالتصحيح.</value>
     <comment>CRValidation</comment>
   </data>
-    
 </root>
