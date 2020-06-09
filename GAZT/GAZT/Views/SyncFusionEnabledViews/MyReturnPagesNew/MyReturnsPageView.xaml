@@ -67,6 +67,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
                                 <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
@@ -822,6 +823,7 @@
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static custom2:AppResources.UnSubmitted}"
@@ -832,6 +834,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATNonSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
@@ -866,7 +869,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name = "ReturnsVATNonSubmited"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}"  IsVisible="{Binding IsVisibleVATNonSumbitted}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1051,7 +1057,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand"  x:Name = "ReturnsZakatNonSubmited"  SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatNonSubmited}" IsVisible="{Binding IsVisibleZakatNonSumbitted}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1236,7 +1245,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsETNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1421,7 +1433,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsWHNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1574,6 +1589,7 @@
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static custom2:AppResources.OverDue}"
@@ -1584,6 +1600,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATOverDueExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0" >
                                     <syncfusion:SfExpander.Header>
@@ -1618,7 +1635,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name="ReturnsVATOverDue"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}"  IsVisible="{Binding IsVisibleVATOverDue}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1803,7 +1823,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatOverDue" SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatOverDue}" IsVisible="{Binding IsVisibleZakatOverDue}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1988,7 +2011,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETOverDue"    AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -2173,7 +2199,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHOverDue"     AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -2326,6 +2355,7 @@
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                 </tabview:SfTabView.Items>
