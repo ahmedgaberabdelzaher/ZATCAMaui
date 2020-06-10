@@ -258,6 +258,12 @@
   <data name="PurchaseValue" xml:space="preserve">
     <value>قيمة المشتريات</value>
   </data>
+  <data name="RequestTimeoutTitle" xml:space="preserve">
+    <value>انتهت الجلسة</value>
+  </data>
+  <data name="RequestTimeoutDescription" xml:space="preserve">
+    <value>الخادم لا يستجيب، نرجو المحاولة في وقت لاحق</value>
+  </data>
   <data name="ReasonForChatting" xml:space="preserve">
     <value>الغرض من المحادثة</value>
   </data>

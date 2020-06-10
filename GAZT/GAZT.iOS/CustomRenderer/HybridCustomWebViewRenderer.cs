@@ -59,7 +59,7 @@ namespace GAZT.iOS.CustomRenderer
 
                 NSUrl portalLogin = new NSUrl(hybridWebView.Url);
                 NSMutableUrlRequest portalReq = new NSMutableUrlRequest(portalLogin);
-
+                
                 NSMutableDictionary dic = new NSMutableDictionary();
                 dic.Add(new NSString(GAZT.Helper.Constants.LanguageCookieNameForLogin), new NSString(langVal));
                 portalReq.Headers = dic;
@@ -68,7 +68,6 @@ namespace GAZT.iOS.CustomRenderer
             }
 
             App.ArePreLoginLangCookiesSet = true;
-
             this.NavigationDelegate = new DisplayLinkWebViewDelegateNew((HybridWebView)Element);
         }
     }
@@ -81,13 +80,32 @@ namespace GAZT.iOS.CustomRenderer
         {
             this.element = element;
         }
+        
+        private bool IsError = false;
 
-        private void ClearCookies(WKWebView webView)
+        public override void ContentProcessDidTerminate(WKWebView webView)
         {
-
+            //base.ContentProcessDidTerminate(webView);
+            Console.WriteLine("ContentProcessDidTerminate");
         }
 
-        private bool IsError = false;
+        public override void DidFailProvisionalNavigation(WKWebView webView, WKNavigation navigation, NSError error)
+        {
+            //base.DidFailProvisionalNavigation(webView, navigation, error);
+            Console.WriteLine("DidFailProvisionalNavigation");
+
+            if (error.Code == -1001 || error.Code == -1003)
+            {
+                //Request timeout error -1001
+                //Url not found -1003
+
+                App.LoginDataRetrieved = new LoginModel();
+                IsError = true;
+                App.IsLoginCalled = false;
+                App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
+                element.InvokeAction("requestTimedout");
+            }
+        }
 
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
@@ -305,13 +323,13 @@ namespace GAZT.iOS.CustomRenderer
                 }
             });
 
-
             //base.DidFinishNavigation(webView, navigation);
         }
 
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
             //base.DidFailNavigation(webView, navigation, error);
+            Console.WriteLine("DidFailNavigation");
         }
 
         NSMutableArray multiCookieArr = new NSMutableArray();
