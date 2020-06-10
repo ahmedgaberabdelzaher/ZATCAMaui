@@ -2009,7 +2009,7 @@
     <comment>VAT declaration</comment>
   </data>
   <data name="ZZFormFiveTappedMessage" xml:space="preserve">
-    <value>الرجاء الدخول على بوابة الهيئة لفتح الإقرار المختار</value>
+    <value>الرجاء الدخول على بوابة الهيئة لاستعراض الإقرار بشكل كامل</value>
     <comment>Estimated ZAKAT Return</comment>
   </data>
   <data name="ZLink" xml:space="preserve">
