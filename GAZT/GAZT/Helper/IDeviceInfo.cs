@@ -12,5 +12,7 @@ namespace GAZT.Helper
         string[] GetAttachmentTypeStringForAll();
 
         string[] GetAttachmentTypeStringForTaxEvasion();
+
+        string GetDeviceUdid();
     }
 }

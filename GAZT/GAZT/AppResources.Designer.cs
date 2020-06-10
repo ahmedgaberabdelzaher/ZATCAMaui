@@ -1488,24 +1488,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Our Servers are not responding at this moment, please try again after sometime..
-        /// </summary>
-        public static string RequestTimeoutDescription {
-            get {
-                return ResourceManager.GetString("RequestTimeoutDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Request Timeout.
-        /// </summary>
-        public static string RequestTimeoutTitle {
-            get {
-                return ResourceManager.GetString("RequestTimeoutTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Resend OTP.
         /// </summary>
         public static string ResendOTP {
@@ -1646,15 +1628,6 @@ namespace EGAZT {
         public static string StartChatting {
             get {
                 return ResourceManager.GetString("StartChatting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Request Timeout.
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

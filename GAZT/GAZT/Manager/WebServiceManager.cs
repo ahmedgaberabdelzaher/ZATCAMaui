@@ -4311,7 +4311,7 @@ namespace GAZT.Manager
 
         public static string CreateSAMLLoginURL(string Euser, string DeviceId, string FcmId, string DeviceTyp, string Language)
         {
-            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + "'" + DeviceId + ",FcmId='" +
+            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='"+ DeviceId +"'"  + ",FcmId='" +
                 FcmId + "'" + ",DeviceTyp='" + DeviceTyp + "')?sap-language=" + Language + "&$format=json";
             return FullUrl;
         }

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Essentials;
+using GAZT.Helper;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 {
     /// <summary>
@@ -817,7 +820,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
         public string CreateLoginURL(string lang)
         {
-            return WebServiceManager.CreateSAMLLoginURL("", "", "", "", lang);
+            string deviceOs = Xamarin.Essentials.DeviceInfo.Platform.ToString();
+            string deviceUdid = DependencyService.Get<IDeviceInfo>().GetDeviceUdid();
+            return WebServiceManager.CreateSAMLLoginURL("", deviceUdid, "", deviceOs, lang);
+
+            //return WebServiceManager.CreateSAMLLoginURL("", "", "", "", lang);
         }
 
         public async Task LoginCompletedInWebView()

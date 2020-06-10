@@ -80,7 +80,7 @@ namespace GAZT.iOS.DependencyServices
             return filetypesForTaxEvasion;
         }
 
-            public string[] GetAttachmentTypeStringForZakat()
+        public string[] GetAttachmentTypeStringForZakat()
         {
             string[]  filetypesforZakat = new string[] {
                 UTType.PDF,
@@ -93,5 +93,16 @@ namespace GAZT.iOS.DependencyServices
             return filetypesforZakat;
         }
 
+        public string GetDeviceUdid()
+        {
+            try
+            {
+                return UIDevice.CurrentDevice.IdentifierForVendor.AsString();
+            }
+            catch(Exception ex)
+            {
+                return "";
+            }
+        }
     }
 }

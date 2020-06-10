@@ -164,6 +164,19 @@ namespace GAZT.iOS.CustomRenderer
             {
                 try
                 {
+                    //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
+                    ////App.LoginDataRetrieved = new LoginModel();
+
+                    //HtmlDocument document = new HtmlDocument();
+                    //document.LoadHtml(htmlData.ToString());
+
+
+                    //var htmlResponse = document.DocumentNode.InnerText;
+                    //var LoginConfirmation = htmlResponse.ToString();
+
+                    //Console.WriteLine(htmlData);
+                    //Console.WriteLine(htmlData.ToString());
+
                     if (cookies.Length > 0)
                     {
                         Uri url = webView.Url;
@@ -180,15 +193,6 @@ namespace GAZT.iOS.CustomRenderer
                             //        Console.Write(html);
                             //    }
                             //}
-
-                            //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
-                            //App.LoginDataRetrieved = new LoginModel();
-
-                            //HtmlDocument document = new HtmlDocument();
-                            //document.LoadHtml(htmlData.ToString());
-
-                            //var htmlResponse = document.DocumentNode.InnerText;
-                            //var LoginConfirmation = htmlResponse.ToString();
 
                             //if (!string.IsNullOrEmpty(LoginConfirmation))
                             //{
