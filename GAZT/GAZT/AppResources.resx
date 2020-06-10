@@ -544,7 +544,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
   </data>
-  <data name="RequestTimeoutTitle" xml:space="preserve">
+    <data name="RequestTimeoutTitle" xml:space="preserve">
     <value>Request Timeout</value>
   </data>
   <data name="RequestTimeoutDescription" xml:space="preserve">
