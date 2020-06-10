@@ -58,7 +58,20 @@ namespace EGAZT {
                 return ResourceManager.GetString("AmendReturn", resourceCulture);
             }
         }
-        
+        public static string RequestTimeoutDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("RequestTimeoutDescription", resourceCulture);
+            }
+        }
+        public static string RequestTimeoutTitle
+        {
+            get
+            {
+                return ResourceManager.GetString("RequestTimeoutTitle", resourceCulture);
+            }
+        }
         public static string AmountDetailsAndSADADNumberPayment {
             get {
                 return ResourceManager.GetString("AmountDetailsAndSADADNumberPayment", resourceCulture);
