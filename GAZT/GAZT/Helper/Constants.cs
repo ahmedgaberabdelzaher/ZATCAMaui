@@ -23,8 +23,6 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
-        
-
         #region Cookie Info
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
         public static string QADomainForCookies = "loginqa.gazt.gov.sa";
@@ -42,10 +40,9 @@ namespace GAZT.Helper
         //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         //public static string DomainUrlForCookies = QADomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-
+        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = PreprodDomainForCookies;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";

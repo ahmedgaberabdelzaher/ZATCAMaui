@@ -32,7 +32,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private double width = 0;
         private double height = 0;
         HybridWebView hybridWebView;
-        CustomLabel backLabel;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
@@ -222,7 +221,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 //hybridWebView.Cookies = loginWebViewCookieContainer;
 
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
-
+                
                 hybridWebView.RegisterAction(async (data) =>
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -251,10 +250,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 viewModel.IsLoading = false;
                             }
 
-                            if (data == "requestTimedOut")
+                            if (data == "requestTimedout")
                             {
+                                hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
-                                viewModel._navigationService.GoBack();
+
+                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                                {
+                                    App.LoginDataRetrieved.AppMsg = AppResources.RequestTimeoutDescription;
+                                }
+
+                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                                {
+                                    App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
+                                }
+
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //hybridWebView.RefreshCommand();
+
+                                LogoffUser();
                             }
 
                             if (data == "success")

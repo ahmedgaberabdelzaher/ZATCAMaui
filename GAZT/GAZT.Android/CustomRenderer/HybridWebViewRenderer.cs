@@ -297,13 +297,6 @@ namespace EGAZT.Droid.CustomRenderer
             Console.WriteLine(message);
         }
 
-        [Obsolete]
-        public override WebResourceResponse ShouldInterceptRequest(Android.Webkit.WebView view, string url)
-        {
-            Console.WriteLine(url);
-            return base.ShouldInterceptRequest(view, url);
-        }
-
         public override void OnReceivedHttpError(Android.Webkit.WebView view, IWebResourceRequest request, WebResourceResponse errorResponse)
         {
             base.OnReceivedHttpError(view, request, errorResponse);

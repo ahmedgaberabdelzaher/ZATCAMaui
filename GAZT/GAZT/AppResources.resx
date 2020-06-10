@@ -544,6 +544,12 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
   </data>
+  <data name="RequestTimeoutTitle" xml:space="preserve">
+    <value>Request Timeout</value>
+  </data>
+  <data name="RequestTimeoutDescription" xml:space="preserve">
+    <value>Our Servers are not responding at this moment, please try again after sometime.</value>
+  </data>
   <data name="Pleasechangepassword" xml:space="preserve">
     <value>Please change password</value>
   </data>
@@ -1088,6 +1094,8 @@ GAZT reserves the right to investigate your return form further.</value>
   <data name="ZVatSummary" xml:space="preserve">
     <value>Summary</value>
   </data>
+   
+    
   <data name="ZVatTandCfour" xml:space="preserve">
     <value>After submission of this form, and if the taxpayer finds that they need to do a correction, a self - amendment form should be submitted if the amount of the correction is equal to or more than SAR 5000.00 or equal to or less than SAR -5000.00 .</value>
   </data>

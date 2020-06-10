@@ -899,6 +899,18 @@ namespace EGAZT {
             }
         }
         
+        public static string RequestTimeoutTitle {
+            get {
+                return ResourceManager.GetString("RequestTimeoutTitle", resourceCulture);
+            }
+        }
+        
+        public static string RequestTimeoutDescription {
+            get {
+                return ResourceManager.GetString("RequestTimeoutDescription", resourceCulture);
+            }
+        }
+        
         public static string Pleasechangepassword {
             get {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
