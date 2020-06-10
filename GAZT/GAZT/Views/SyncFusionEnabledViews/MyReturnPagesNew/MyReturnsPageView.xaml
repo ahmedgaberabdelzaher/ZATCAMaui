@@ -12,7 +12,7 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:local1="clr-namespace:GAZT.SyncFusionEnabledBehaviors.Behaviors"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage.MyReturnsPageView"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="White"  >
@@ -67,8 +67,9 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
-                                <syncfusion:SfExpander x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsVATSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -101,6 +102,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView  x:Name="ReturnsVATSubmited"   AutoFitMode="Height" SelectionBackgroundColor="White" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATSubmited}"  IsVisible="{Binding IsVisibleVATSumbitted}" HorizontalOptions="Center" SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -249,12 +253,12 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"    HorizontalOptions="Center"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content"   x:Name="ReturnsZakatSubmitedExpander"  IsVisible="{Binding IsZakatVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>                                           
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -287,6 +291,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView  HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatSubmited"  SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatSubmited}" IsVisible="{Binding IsVisibleZakatSumbitted}" SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -434,12 +441,12 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsETSubmitedExpander" IsVisible="{Binding IsETVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>                                            
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -458,7 +465,7 @@
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding SubmittedETReturnsCount}" ></Span>
+                                                        <Span Text="{Binding SubmittedETReturnsCount}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" ></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -472,6 +479,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETSubmited}" IsVisible="{Binding IsVisibleETSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -619,12 +629,12 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
-                                <syncfusion:SfExpander x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
+                                <syncfusion:SfExpander DynamicSizeMode="Content" x:Name="ReturnsWHSubmitedExpander" IsVisible="{Binding IsWHVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <local:CustomLabel FlowDirection="{Binding FDirection}" IsVisible="False"  TextColor="#495F6E" Margin="10,0,10,0" Padding="0"    HeightRequest="50" VerticalTextAlignment="Center" VerticalOptions="Center" >
@@ -657,6 +667,9 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHSubmited}" IsVisible="{Binding IsVisibleWHSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
+                                                <listView:SfListView.Behaviors>
+                                                    <local1:ListViewBehavior/>
+                                                </listView:SfListView.Behaviors>
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
@@ -810,6 +823,7 @@
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static custom2:AppResources.UnSubmitted}"
@@ -820,6 +834,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATNonSubmitedExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0">
                                     <syncfusion:SfExpander.Header>
@@ -854,7 +869,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name = "ReturnsVATNonSubmited"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATNonSubmited}"  IsVisible="{Binding IsVisibleVATNonSumbitted}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1001,7 +1019,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1039,7 +1057,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand"  x:Name = "ReturnsZakatNonSubmited"  SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatNonSubmited}" IsVisible="{Binding IsVisibleZakatNonSumbitted}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1186,7 +1207,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1224,7 +1245,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsETNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETNonSubmited}" IsVisible="{Binding IsVisibleETNonSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1371,7 +1395,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1409,7 +1433,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name = "ReturnsWHNonSubmited"   AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHNonSubmited}" IsVisible="{Binding IsVisibleWHNonSumbitted}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#5D6770" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1556,12 +1583,13 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHNonSumbittedLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHNonSumbittedLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static custom2:AppResources.OverDue}"
@@ -1572,6 +1600,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                 TitleFontColor="Gray">
                         <tabview:SfTabItem.Content>
+                            <ScrollView>
                             <StackLayout>
                                 <syncfusion:SfExpander x:Name="ReturnsVATOverDueExpander" IsVisible="{Binding IsVATVisible}" FlowDirection="{Binding FDirection}" AnimationDuration="0" >
                                     <syncfusion:SfExpander.Header>
@@ -1606,7 +1635,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" SelectionBackgroundColor="White" x:Name="ReturnsVATOverDue"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsVATOverDue}"  IsVisible="{Binding IsVisibleVATOverDue}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1753,7 +1785,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleVATOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1791,7 +1823,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsZakatOverDue" SelectionBackgroundColor="White"  AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsZakatOverDue}" IsVisible="{Binding IsVisibleZakatOverDue}" SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -1938,7 +1973,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleZakatOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -1976,7 +2011,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsETOverDue"    AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsETOverDue}" IsVisible="{Binding IsVisibleETOverDue}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -2123,7 +2161,7 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleETOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
@@ -2161,7 +2199,10 @@
                                     <syncfusion:SfExpander.Content>
                                         <StackLayout>
                                             <listView:SfListView HorizontalOptions="CenterAndExpand" x:Name="ReturnsWHOverDue"     AutoFitMode="Height" HeightRequest="400" ItemSpacing="5" ItemsSource="{Binding ReturnsWHOverDue}" IsVisible="{Binding IsVisibleWHOverDue}" SelectionBackgroundColor="White"  SelectionMode="Single">
-                                                <listView:SfListView.ItemTemplate>
+                                                    <listView:SfListView.Behaviors>
+                                                        <local1:ListViewBehavior/>
+                                                    </listView:SfListView.Behaviors>
+                                                    <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <ViewCell>
                                                             <cards1:SfCardView HasShadow="True" Margin="5" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="#AA0C19" IndicatorPosition="Left" IndicatorThickness="5">
@@ -2308,18 +2349,19 @@
                                                     </DataTemplate>
                                                 </listView:SfListView.ItemTemplate>
                                             </listView:SfListView>
-                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHOverDueLabel}">
+                                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.ZZZReturnsNotFound}" Style="{StaticResource MiniBlackLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsVisibleWHOverDueLabel}">
                                             </local:CustomLabel>
                                         </StackLayout>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                             </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                 </tabview:SfTabView.Items>
             </tabview:SfTabView>
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -2330,10 +2372,11 @@
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                         Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"
+                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                         TextColor="#006450"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>

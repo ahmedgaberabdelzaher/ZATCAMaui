@@ -555,6 +555,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 ChangeFromEstimateTAccountringBasisButtonVisibility = false;
             }
         }
+
+        public void ClearData()
+        {
+            ZakatReturnDetail = null;
+        }
+        
         #endregion
     }
 }

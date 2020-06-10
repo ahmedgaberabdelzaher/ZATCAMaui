@@ -41,7 +41,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>E-GAZT</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.GAZT.KSA</string>
+	<string>com.gazt.egazt</string>
 	<key>CFBundleName</key>
 	<string>E-GAZT</string>
 	<key>XSAppIconAssets</key>
@@ -56,8 +56,6 @@
 	<string>Picking Media</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>To select date</string>
-	<key>CFBundleVersion</key>
-	<string>2.0.4.9</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Can we use your location when your application is being used?</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -68,9 +66,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>appcenter-${7ada2f7d-1509-41b7-b948-899a7acb8783}</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 	<key>UIRequiresFullScreen</key>
@@ -93,6 +89,8 @@
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.4.9</string>
+	<string>0.0.0.7</string>
+	<key>CFBundleVersion</key>
+	<string>0.0.0.7</string>
 </dict>
 </plist>

@@ -25,6 +25,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
             {
                 viewModel = App.Locator.ZakatReturnDetailsPageView;
                 InitializeComponent();
+                viewModel.ClearData();
                 Fbguid = fbguid;
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 SetLTR();
@@ -68,16 +69,40 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
             ZakatReturnDetailsPageViewModel.IsAmendButtonClicked = false;
             if (viewModel.ZakatReturnDetails.d.Statusz.Equals("E0001") || viewModel.ZakatReturnDetails.d.Statusz.Equals("IP011"))
             {
-                var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
-                if (result)
+                //var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                //if (result)
+                //{
+                //    await viewModel.OnReleaseOrBillsClicked();
+                //}
+
+                if (App.IsArabic)
                 {
-                    await viewModel.OnReleaseOrBillsClicked();
+                    var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    if (!result)
+                    {
+                        await viewModel.OnReleaseOrBillsClicked();
+                    }
+
+                }
+                else
+                {
+                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    if (result)
+                    {
+                        await viewModel.OnReleaseOrBillsClicked();
+                    }
+
                 }
             }
             else
             {
                 await viewModel.OnReleaseOrBillsClicked();
             }
+
+
+            
+
+
         }
         private void OnInformationMessageClickedOne(object sender, EventArgs e)
         {

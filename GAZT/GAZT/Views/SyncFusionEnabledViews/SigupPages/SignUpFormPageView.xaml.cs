@@ -223,8 +223,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-        private void btnSubmitNext_Clicked(object sender, EventArgs e)
+        private async void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+            });
             bool IsNextValid = true;
             if (viewModel.IsTIN == true)
             {
@@ -368,16 +375,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     try
                     {
-                        //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty);
-                        //if (ResultDuplicate.d.Flag == "")
-                        //{
+                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", string.Empty, string.Empty,string.Empty);
+                        if (ResultDuplicate.d.Flag == "")
+                        {
                         if (viewModel.IsCRChecked == true)
                         {
                             try
                             {
-                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                //if (ResultDuplicateCR.d.Flag == "")
-                                //{
+                                    //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                    DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA","CRNum");
+                                    if (ResultDuplicateCR.d.Flag == "")
+                                {
                                 CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
                                 SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                                 if (App.IsArabic)
@@ -481,18 +489,68 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 {
                                     viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
-                                //}
-                                //else
-                                //{
-                                //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                //}
+                                }
+                                    else if (ResultDuplicateCR.d.Flag == "X")
+                                    {
+                                        var result = false;
+
+                                        if (App.IsArabic)
+                                        {
+
+                                            result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                            (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                                AppResources.ZZZNoText, AppResources.ZZZYesText);
+                                            if (result == true)
+                                            {
+                                                viewModel.IsLoading = false;
+
+                                                return;
+
+                                            }
+                                            else // if it's equal to YES
+                                            {
+                                                CRDuplicateCheck();
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                           (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                               AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                                            if (result == true)
+                                            {
+                                                CRDuplicateCheck();
+                                                // _navigationService.GoBack();
+
+                                            }
+                                            else // if it's equal to NO
+                                            {
+                                                viewModel.IsLoading = false;
+
+                                                return; // just return to the page and do nothing.
+                                            }
+                                        }
+
+                                        //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
+
+                                    }
+                                    else
+                                {
+                                    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                }
                             }
 
                             catch (GAZTException gex)
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -664,7 +722,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -721,17 +782,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 });
                             }
                         }
-                        //}
-                        //else
-                        //{
-                        //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                        //}
+                        }
+                        else
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                        }
                     }
                     catch (GAZTException gex)
                     {
                         // Handle the GAZT custom exception.
                         string MessageForTheUser = gex.Message;
-
+                        if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        }
                         if (gex is GAZTNetworkConnectivityIssueException)
                         {
                             MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -787,16 +851,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 2)
                 {
-                    //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty);
-                    //if (ResultDuplicate.d.Flag == "")
-                    //{
+                    DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0002", string.Empty, string.Empty,string.Empty);
+                    if (ResultDuplicate.d.Flag == "")
+                    {
                     if (viewModel.IsCRChecked == true)
                     {
                         try
                         {
-                            //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                            //if (ResultDuplicateCR.d.Flag == "")
-                            //{
+                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA","CRNum");
+
+                           if (ResultDuplicateCR.d.Flag == "")
+                            {
                             CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
                             SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                             if (App.IsArabic)
@@ -900,17 +966,67 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
-                            //}
-                            //else
-                            //{
-                            //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                            //}
+                            }
+                                else if (ResultDuplicateCR.d.Flag == "X")
+                                {
+                                    var result = false;
+
+                                    if (App.IsArabic)
+                                    {
+
+                                        result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                        (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                            AppResources.ZZZNoText, AppResources.ZZZYesText);
+                                        if (result == true)
+                                        {
+                                            viewModel.IsLoading = false;
+
+                                            return;
+
+                                        }
+                                        else // if it's equal to YES
+                                        {
+                                            CRDuplicateCheck();
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                                       (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                           AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                                        if (result == true)
+                                        {
+                                            CRDuplicateCheck();
+                                            // _navigationService.GoBack();
+
+                                        }
+                                        else // if it's equal to NO
+                                        {
+                                            viewModel.IsLoading = false;
+
+                                            return; // just return to the page and do nothing.
+                                        }
+                                    }
+
+                                    //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
+
+                                }
+                                else
+                            {
+                                viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                            }
                         }
                         catch (GAZTException gex)
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1072,7 +1188,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1126,24 +1245,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             });
                         }
                     }
-                    //}
-                    //else
-                    //{
-                    //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                    //}
+                    }
+                    else
+                    {
+                        viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                    }
                 }
                 if (viewModel.SelectedSignUpUsing.ID == 3)
                 {
                     try
                     {
-                        //DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty);
+                        DuplicateSignUpModelRootObject ResultDuplicate = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0003", string.Empty, string.Empty,string.Empty);
                         if (viewModel.IsCRChecked == true)
                         {
                             try
                             {
-                                //DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
-                                //if (ResultDuplicateCR.d.Flag == "")
-                                //{
+                                //  DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtIDNumber, "ZS0001", "BUP002", "SA");
+                                DuplicateSignUpModelRootObject ResultDuplicateCR = WebServiceManager.GAZTValidateDuplicate(viewModel.TxtCRNumber, "BUP002", "90702", "SA", "CRNum");
+
+                                if (ResultDuplicateCR.d.Flag == "")
+                                {
                                 CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
                                 SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
                                 if (App.IsArabic)
@@ -1247,14 +1368,61 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 {
                                     viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                                 }
-                                //}
-                                //else
-                                //{
-                                //    viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
-                                //}
+                               }
+                               else if(ResultDuplicateCR.d.Flag == "X")
+                                {
+                                    var result = false;
+
+                                    if (App.IsArabic)
+                                    {
+
+                            result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                            (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                AppResources.ZZZNoText, AppResources.ZZZYesText);
+                                        if (result == true)
+                                        {
+                                            viewModel.IsLoading = false;
+
+                                            return;
+
+                                        }
+                                        else // if it's equal to YES
+                                        {
+                                            CRDuplicateCheck();
+                                        }
+                                    }
+                                    else
+                                    {
+
+                             result = await Xamarin.Forms.Application.Current.MainPage.DisplayAlert
+                                                            (AppResources.Alerts, AppResources.ZZZCRValidateMessg,
+                                                                AppResources.ZZZYesText, AppResources.ZZZNoText);
+
+                                        if (result == true)
+                                        {
+                                            CRDuplicateCheck();
+                                           // _navigationService.GoBack();
+
+                                        }
+                                        else // if it's equal to NO
+                                        {
+                                            viewModel.IsLoading = false;
+
+                                            return; // just return to the page and do nothing.
+                                        }
+                                    }
+
+                                    //viewModel._dialogService.ShowMessage(AppResources.ZZZCRValidateMessg, AppResources.Information);
+
+                                    
+                                }
+                                else
+                                {
+                                    await viewModel._dialogService.ShowMessage(AppResources.ZZYoushouldsignupasnewuser, AppResources.Information);
+                                }
                             }
 
-                              catch(GAZTException gex)
+                   catch(GAZTException gex)
                     {
                         // Handle the GAZT custom exception.
                         string MessageForTheUser = gex.Message;
@@ -1421,7 +1589,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             {
                                 // Handle the GAZT custom exception.
                                 string MessageForTheUser = gex.Message;
-
+                                if (gex is GAZTInvalidDataException)
+                                {
+                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                }
                                 if (gex is GAZTNetworkConnectivityIssueException)
                                 {
                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1484,6 +1655,119 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         });
                     }
                 }
+            }
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            });
+        }
+        private void CRDuplicateCheck()
+        {
+            CaseGuidModelRootObject ResutGuid = WebServiceManager.GAZTGetSignupGuid();
+            SignUpNextBodyModel SiguupModel = new SignUpNextBodyModel();
+            if (App.IsArabic)
+            {
+                SiguupModel.ALang = "A";
+            }
+            else
+            {
+                SiguupModel.ALang = "E";
+            }
+            var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
+            string month = selectedItem[1].ToString();
+            string day = selectedItem[0].ToString();
+            string year = selectedItem[2].ToString();
+            SiguupModel.ABirthdt = year + "-" + month + "-" + day + "T00:00:00";
+            SiguupModel.AType = "1";
+            SiguupModel.AFirstname = viewModel.TxtName;
+            SiguupModel.ALastname = ".";
+            if (viewModel.IsTIN)
+            {
+                SiguupModel.ATin = viewModel.TxtTIN;
+                SiguupModel.ATinExist = "X";
+            }
+            else
+            {
+                SiguupModel.ATin = "";
+                SiguupModel.ATinExist = "";
+            }
+            SiguupModel.AIdnumber = viewModel.TxtIDNumber;
+            if (viewModel.IsCRChecked == true)
+            {
+                SiguupModel.ACommId = viewModel.TxtCRNumber;
+                SiguupModel.ALicenceNo = "";
+                SiguupModel.AIssuedBy = "";
+                SiguupModel.ACity = "";
+                SiguupModel.ACityCode = "";
+            }
+            else
+            {
+                SiguupModel.ALicenceNo = viewModel.TxtLicenseNumber;
+                SiguupModel.AIssuedBy = viewModel.SelectedIssuedBy.elementCode;
+                try
+                {
+                    if (viewModel.SelectCityList != null && viewModel.SelectCityList.CityName != null)
+                    {
+                        SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                        SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                    }
+                    else
+                    {
+                        SiguupModel.ACity = string.Empty;
+                        SiguupModel.ACityCode = string.Empty;
+
+                    }
+                    SiguupModel.ACommId = "";
+                }
+                catch (Exception ex)
+                {
+                }
+                //SiguupModel.ACity = viewModel.SelectCityList.CityName;
+                //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
+                SiguupModel.ACommId = "";
+            }
+            SiguupModel.AEmail = viewModel.TxtEmailAddress;
+            SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
+            SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+            if (viewModel.SelectedSignUpUsing.ID == 1)
+            {
+                SiguupModel.AIdtype = "ZS0001";
+            }
+            else if (viewModel.SelectedSignUpUsing.ID == 2)
+            {
+                SiguupModel.AIdtype = "ZS0002";
+            }
+            else if (viewModel.SelectedSignUpUsing.ID == 3)
+            {
+                SiguupModel.AIdtype = "ZS0003";
+            }
+            SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+            string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
+            SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+            viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;
+            if (ResultFirstSubmitModel.d == null)
+            {
+                SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                StringBuilder Message = new StringBuilder();
+                foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                {
+                    if (itemerror.code.Contains("ZD_PUSR"))
+                    {
+                        if (Message.Length > 0)
+                        {
+                            Message.Append(Environment.NewLine);
+                        }
+                        Message.Append(itemerror.message);
+                    }
+                }
+                viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+            }
+            else
+            {
+                viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
             }
         }
         private async void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -1578,7 +1862,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                             {
                                                 // Handle the GAZT custom exception.
                                                 string MessageForTheUser = gex.Message;
-
+                                                if (gex is GAZTInvalidDataException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                }
                                                 if (gex is GAZTNetworkConnectivityIssueException)
                                                 {
                                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1705,7 +1992,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                             {
                                                 // Handle the GAZT custom exception.
                                                 string MessageForTheUser = gex.Message;
-
+                                                if (gex is GAZTInvalidDataException)
+                                                {
+                                                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                                                }
                                                 if (gex is GAZTNetworkConnectivityIssueException)
                                                 {
                                                     MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1773,7 +2063,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     // Handle the GAZT custom exception.
                     string MessageForTheUser = gex.Message;
-
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
                     if (gex is GAZTNetworkConnectivityIssueException)
                     {
                         MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -1928,7 +2221,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -2039,7 +2335,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                         {
                             // Handle the GAZT custom exception.
                             string MessageForTheUser = gex.Message;
-
+                            if (gex is GAZTInvalidDataException)
+                            {
+                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            }
                             if (gex is GAZTNetworkConnectivityIssueException)
                             {
                                 MessageForTheUser = AppResources.NetworkConnectivityIssue;
@@ -2597,21 +2896,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void ddlLIssuedBy_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            //SelectedIssuedBy
+            if ((IssuedByResponse)e.NewValue != null)
+            { 
             IssuedByResponse issuedByResponse = (IssuedByResponse)e.NewValue;
             ddlLIssuedBy.SelectedItem = issuedByResponse;
             viewModel.SelectedIssuedBy = issuedByResponse;
             viewModel.SelectedIssuedByPrev = issuedByResponse;
             viewModel.TxtLOrCIssuedBy = issuedByResponse.txt50;
+            }
         }
         private void ddlLIssuedByCity_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
-            ddlLIssuedByCity.SelectedItem = selectedcity;
-            viewModel.SelectCityList = selectedcity;
-            viewModel.SelectCityListPrev = selectedcity;
-            viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
-        }
+            if ((SignupCityResult)e.NewValue != null)
+            {
+                SignupCityResult selectedcity = (SignupCityResult)e.NewValue;
+                ddlLIssuedByCity.SelectedItem = selectedcity;
+                viewModel.SelectCityList = selectedcity;
+                viewModel.SelectCityListPrev = selectedcity;
+                viewModel.TxtLOrCIssuedByCity = selectedcity.CityName;
+            }
+            }
         private void DpDbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             FrmDBO.HasError = false;

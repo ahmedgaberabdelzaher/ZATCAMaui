@@ -48,7 +48,7 @@
         <StackLayout x:Name="MainLayout">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ScrollView Orientation="Vertical" Grid.Row="0" Grid.Column="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" Padding="10,20,10,0" ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="0" Grid.Column="0" RowSpacing="0" Padding="0,10,0,0"  ColumnSpacing="5 " HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>

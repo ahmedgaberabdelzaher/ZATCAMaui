@@ -1,5 +1,8 @@
-﻿using EGAZT.Models;
+﻿using EGAZT.CustomControl;
+using EGAZT.Enums;
+using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_ViewModel;
+using GAZT.CustomControl;
 using GAZT.Helper;
 using GAZT.Models;
 using Plugin.Connectivity;
@@ -103,7 +106,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 base.OnAppearing();
+                int transitionCount = 0;
+                try
+                {
+                  
+                    MessagingCenter.Subscribe<SFAnonymousLandingPageViewModel, TransitionType>(this, AppSettings.TransitionMessage, (sender, arg) =>
+                    {
+                        if(transitionCount == 0)
+                        {
+                            transitionCount++;
+                            var transitionType = (TransitionType)arg;
+                            var transitionNavigationPage = Parent as CustomNavigation;
 
+                            if (transitionNavigationPage != null)
+                            {
+                                transitionNavigationPage.TransitionType = transitionType;
+                                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
+                                viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
+                            }
+                        }
+                        else
+                        {
+
+                        }
+                      
+                    });
+                }
+                catch(Exception ex)
+                {
+
+                }
+               
                 //var safeInsets = On<iOS>().SafeAreaInsets();
                 //safeInsets.Top = 20;
                 //Padding = safeInsets;

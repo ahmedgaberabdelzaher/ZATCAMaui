@@ -696,7 +696,7 @@ ItemHeight="45" ShowFooter="True"
                     </Grid>
                         <!--Activity indicator-->
                         <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                             </StackLayout>
                             <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -730,7 +730,7 @@ ItemHeight="45" ShowFooter="True"
             </Grid>
             <!--Activity indicator-->
             <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.7" VerticalOptions="FillAndExpand">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                     <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
@@ -741,12 +741,12 @@ ItemHeight="45" ShowFooter="True"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
                     </StackLayout>
-                    <!--<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />
                         <Label Text="{x:Static local:AppResources.ActivityIndicatorTitle}" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>-->

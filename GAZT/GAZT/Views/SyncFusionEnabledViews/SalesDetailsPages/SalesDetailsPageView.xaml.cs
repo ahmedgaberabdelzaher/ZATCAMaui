@@ -257,11 +257,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
         {
             if(viewModel.IsCurrentZAKATTaxLess)
             {
-                var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
-                if (result)
+                //var result = await this.DisplayAlert(AppResources.Alerts, AppResources.ZZDeartaxpayerbasedonthesubmittedamendments, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                //if (result)
+                //{
+                //    await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 
+                //}
+
+
+                if (App.IsArabic)
                 {
-                    await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 
+                    var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    if (!result)
+                    {
+                        await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 
+                    }
+
                 }
+                else
+                {
+                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZZOkayText, AppResources.ZZCancel);
+                    if (result)
+                    {
+                        await viewModel.OnConfirmClicked("S");//Passing S if Existing ZAKAT is greater than new one 
+                    }
+
+                }
+
             }
             else
             {

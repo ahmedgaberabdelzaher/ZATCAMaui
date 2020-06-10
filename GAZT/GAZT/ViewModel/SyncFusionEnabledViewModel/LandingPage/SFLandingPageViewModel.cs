@@ -1,4 +1,5 @@
 ﻿using EGAZT;
+using EGAZT.Enums;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -509,9 +510,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         /// <param name="obj">The Object</param>
         private void ShowOptionsCommandClicked(object obj)
         {
-            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
-            _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
-        }
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                if (App.IsArabic)
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromRight);
+                }
+                else
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromLeft);
+
+                }
+            }
+            else
+            {
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.None);
+                }
+                else
+                {
+                    ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsDashboardPage;
+                    _navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
+                }
+            }
+                   }
         /// <summary>
         /// Invoked when an item is selected.
         /// </summary>
@@ -835,7 +859,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Certificates, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
             //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
+            //Tax Evasion Section
+            /*eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });*/
+            //Tax Evasion Section
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
         }
         public void NavigateToMyBills(BillInfo billInfo)

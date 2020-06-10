@@ -141,6 +141,12 @@
   <data name="Verify" xml:space="preserve">
     <value>تحقق</value>
   </data>
+  <data name="VersonCheckErrorTitle" xml:space="preserve">
+    <value>إصدار جديد متوفر حالياً</value>
+  </data>
+  <data name="VersonCheckErrorMsg" xml:space="preserve">
+    <value>لكي تتمكن من المتابعة، نرجو تحديث التطبيق لآخر إصدار</value>
+  </data>
   <data name="AverageNumOfEmployment" xml:space="preserve">
     <value>متوسط عدد العمالة</value>
   </data>
@@ -251,6 +257,12 @@
   </data>
   <data name="PurchaseValue" xml:space="preserve">
     <value>قيمة المشتريات</value>
+  </data>
+  <data name="RequestTimeoutTitle" xml:space="preserve">
+    <value>انتهت الجلسة</value>
+  </data>
+  <data name="RequestTimeoutDescription" xml:space="preserve">
+    <value>الخادم لا يستجيب، نرجو المحاولة في وقت لاحق</value>
   </data>
   <data name="ReasonForChatting" xml:space="preserve">
     <value>الغرض من المحادثة</value>
@@ -460,7 +472,7 @@
     <value>مسدد</value>
   </data>
   <data name="PartiallyPaid" xml:space="preserve">
-    <value>مدفوع جزئي</value>
+    <value>مسددة جزئيا</value>
   </data>
   <data name="UnPaid" xml:space="preserve">
     <value>غير مسدد</value>
@@ -2003,7 +2015,7 @@
     <comment>VAT declaration</comment>
   </data>
   <data name="ZZFormFiveTappedMessage" xml:space="preserve">
-    <value>الرجاء الدخول على بوابة الهيئة لفتح الإقرار المختار</value>
+    <value>الرجاء الدخول على بوابة الهيئة لاستعراض الإقرار بشكل كامل</value>
     <comment>Estimated ZAKAT Return</comment>
   </data>
   <data name="ZLink" xml:space="preserve">
@@ -3355,5 +3367,9 @@
   <data name="ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5" xml:space="preserve">
     <value>الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكسي (5%)</value>
     <comment>VAT Declaration</comment>
+  </data>
+  <data name="ZZZCRValidateMessg" xml:space="preserve">
+    <value>الرجاء ملاحظة ان رقم السجل التجاري او الرخصة او العقد مستخدم من قبل مكلف أخر في الهيئة . او تاريخ الترخيص اصغر من تاريخ إيقاف التسجيل الرجاءقم بالتصحيح.</value>
+    <comment>CRValidation</comment>
   </data>
 </root>

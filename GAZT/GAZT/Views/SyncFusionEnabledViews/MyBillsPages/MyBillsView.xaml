@@ -75,15 +75,16 @@
                                     <chart:PieSeries ItemsSource="{Binding ListMyBillsChartModel}"  XBindingPath="BillType" YBindingPath="BillCount"/>
                                 </chart:SfChart.Series>
                             </chart:SfChart>-->
-                                <syncfusion:SfExpander IsExpanded="True" IsVisible="{Binding SetNoDataLabelVisibilityALLList}">
+                                <syncfusion:SfExpander IsExpanded="True"  IsVisible="{Binding SetNoDataLabelVisibilityALLList}">
                                     <syncfusion:SfExpander.Header>
                                         <Grid>
                                             <Label TextColor="#495F6E" Margin="10,0,10,0"  Text=""  HeightRequest="50" VerticalTextAlignment="Center" />
                                         </Grid>
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
-                                        <StackLayout Padding="0,0,0,20">
-                                            <chart:SfChart   x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="260">
+                                        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <StackLayout>
+                                                <chart:SfChart ChartPadding="30"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="260">
                                                 <!--<chart:SfChart.Title>
                                                     <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                 </chart:SfChart.Title>-->
@@ -121,9 +122,9 @@
                                                             <chart:ChartDataMarker >
                                                                 <chart:ChartDataMarker.LabelTemplate>
                                                                     <DataTemplate>
-                                                                        <StackLayout Orientation="Vertical">
-                                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
-                                                                            <Label FontSize="12" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
+                                                                        <StackLayout Orientation="Vertical"  >
+                                                                            <Label FontSize="12" TextColor="Black" BackgroundColor="White" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
+                                                                            <Label FontSize="12" BackgroundColor="White" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
                                                                         </StackLayout>
                                                                     </DataTemplate>
                                                                 </chart:ChartDataMarker.LabelTemplate>
@@ -137,7 +138,8 @@
                                             </chart:SfChart>
                                             <!--<local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
                                             </local1:CustomLabel>-->
-                                        </StackLayout>
+                                            </StackLayout>
+                                        </ScrollView>
                                     </syncfusion:SfExpander.Content>
                                 </syncfusion:SfExpander>
                                 <ListView  x:Name="Bills" 
@@ -229,7 +231,7 @@
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
                                                                 </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -243,8 +245,39 @@
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN}"></Span>
                                                                         </FormattedString>
                                                                     </Label.FormattedText>
+                                                                </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+    Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        Grid.ColumnSpan="2"
+                                    Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
                                                                 </local1:CustomLabel>
-                                                                <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+                                                            <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                                 <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                             </Grid>
                                                         </StackLayout>
@@ -253,7 +286,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
                                     </local1:CustomLabel>
                                 </StackLayout>
                         </tabview:SfTabItem.Content>
@@ -355,7 +388,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -369,7 +402,39 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                   Grid.Row="4"
+                                   
+                                                                        Grid.ColumnSpan="2"
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>
@@ -379,7 +444,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
                         </tabview:SfTabItem.Content>
@@ -481,7 +546,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -495,7 +560,40 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                                                                                      Grid.Row="4"
+                                   Grid.Column="0"
+                                                                        Grid.ColumnSpan="2"
+                                   Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>
@@ -505,7 +603,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityUNPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityUNPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
                         </tabview:SfTabItem.Content>
@@ -601,7 +699,7 @@
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </local1:CustomLabel>
-                                                            <local1:CustomLabel  Margin="0" 
+                                                            <!--<local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="4"
@@ -615,7 +713,40 @@
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FAEDN, StringFormat='{}{0:yyyy}'}"></Span>
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
-                                                            </local1:CustomLabel>
+                                                            </local1:CustomLabel>-->
+                                                            <StackLayout  Margin="0" 
+                                                                                                        Grid.Row="4"
+                                   
+                                                                        Grid.ColumnSpan="2"
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                                <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                                    <local1:CustomLabel.FormattedText>
+                                                                        <FormattedString>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                                        </FormattedString>
+                                                                    </local1:CustomLabel.FormattedText>
+                                                                </local1:CustomLabel>
+                                                                <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="-5,0,-5,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding FAEDN}"
+                                                          >
+                                                                </local1:CustomLabel>
+                                                            </StackLayout>
+
+
                                                             <Image  Grid.Row="1"  Grid.Column="2"  Grid.ColumnSpan="3" Grid.RowSpan="5"  Source="sf_Sadad_logo.png" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"/>
                                                              <Image  Grid.Row="0"  Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="1"  Source="{Binding StatusImage}" HorizontalOptions="EndAndExpand" VerticalOptions="Start"/>
                                                         </Grid>
@@ -625,7 +756,7 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPPAID}">
+                                <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}"   Style="{StaticResource MiniBlackLabelStyle}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityPPAID}">
                                 </local1:CustomLabel>
                             </StackLayout>
                         </tabview:SfTabItem.Content>
@@ -644,10 +775,11 @@
                                            VerticalOptions="Center"
                                            IsBusy="{Binding IsLoading}"
                                        ViewBoxWidth = "70" 
-                                         Title="{x:Static local:AppResources.ActivityIndicatorTitle}"
+                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
                                        TextColor="#006450"/>
+                        <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
             </Grid>

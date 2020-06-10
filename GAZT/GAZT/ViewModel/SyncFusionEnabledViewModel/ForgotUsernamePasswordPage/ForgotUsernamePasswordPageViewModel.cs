@@ -888,7 +888,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         {
             if (SelectedTaxPayerType.id.Equals("1"))
             {
-                IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                if (!(SelectedForgotType.id.Equals("2")))
+                {
+                    IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
+                }
+
                 MaxChar = 10;
                 //IsForgotUserNameWithIndividual = true;
                 //IsForgotUserNameWithCorporate = false;
@@ -1128,7 +1132,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessageBox(AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter, AppResources.Information);
+                                string messagefordialogue = AppResources.ZYouraccounthasbeenlockedPleasecontactourcallcenter;
+                                if (!App.IsArabic)
+                                {
+                                    messagefordialogue = messagefordialogue.Replace("{0}", "3");
+                                }
+                                else
+                                {
+                                    messagefordialogue = messagefordialogue.Replace("}0{", "3");
+                                }
+                                
+                                await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -1392,12 +1406,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 if (IsEmailUserName)
                 {
                     TINs = new List<TIN>();
+                    List<TIN> Tins = new List<TIN>();
                     try
                     {
                         try
                         {
-                            TINs = await WebServiceManager.GAZTGetAllTins(IDNumber);
-                            if (TINs.Count != 0 && SelectedTinId == null)
+                            SelectedTinId = null;
+                            Tins = await WebServiceManager.GAZTGetAllTins(IDNumber);
+                            TINs = Tins;
+                            if (Tins.Count != 0 && SelectedTinId == null)
                             {
                                 IsVisibleTinIds = true;
                                 SelectedTinId = TINs[0];

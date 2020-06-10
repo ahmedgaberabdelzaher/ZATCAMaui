@@ -105,15 +105,32 @@ namespace GAZT.CustomControl
                             Month.Clear();
                             if (resetDate(year))
                             {
-                                for (int j = 1; j <= DateTime.Today.Day; j++)
+                                if (resetDateforMonth(month))
                                 {
-                                    if (j < 10)
+                                    for (int j = 1; j <= DateTime.Today.Day; j++)
                                     {
-                                        days.Add("0" + j);
+                                        if (j < 10)
+                                        {
+                                            days.Add("0" + j);
+                                        }
+                                        else
+                                            days.Add(j.ToString());
                                     }
-                                    else
-                                        days.Add(j.ToString());
+
                                 }
+                                else
+                                {
+                                    for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
+                                    {
+                                        if (j < 10)
+                                        {
+                                            days.Add("0" + j);
+                                        }
+                                        else
+                                            days.Add(j.ToString());
+                                    }
+                                }
+
                                 for (int i = 1; i <= DateTime.Today.Month; i++)
                                 {
                                     if (i < 10)
@@ -133,7 +150,39 @@ namespace GAZT.CustomControl
                                         }
                                     }
                                 }
+
                             }
+                           //if (resetDateforMonth(month))
+                           // {
+                           //     //for (int j = 1; j <= DateTime.Today.Day; j++)
+                           //     //{
+                           //     //    if (j < 10)
+                           //     //    {
+                           //     //        days.Add("0" + j);
+                           //     //    }
+                           //     //    else
+                           //     //        days.Add(j.ToString());
+                           //     //}
+                           //     for (int i = 1; i <= DateTime.Today.Month; i++)
+                           //     {
+                           //         if (i < 10)
+                           //         {
+                           //             if (!Month.Contains("0" + i)) { Month.Add("0" + i); }
+                           //             if (!months.ContainsKey("0" + i))
+                           //             {
+                           //                 months.Add("0" + i, "0" + i);
+                           //             }
+                           //         }
+                           //         else
+                           //         {
+                           //             if (!Month.Contains(i.ToString())) { Month.Add(i.ToString()); }
+                           //             if (!months.ContainsKey(i.ToString()))
+                           //             {
+                           //                 months.Add(i.ToString(), i.ToString());
+                           //             }
+                           //         }
+                           //     }
+                           // }
                             else
                             {
                                 for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
@@ -239,6 +288,17 @@ namespace GAZT.CustomControl
         private Boolean resetDate(int year)
         {
             if (year != DateTime.Today.Year)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private Boolean resetDateforMonth(int month)
+        {
+            if (month != DateTime.Today.Month)
             {
                 return false;
             }

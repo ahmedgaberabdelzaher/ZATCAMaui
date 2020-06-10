@@ -4,9 +4,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -267,7 +269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                     FormBundleApplicationNumberModel formbundleApplicationNumberList = new FormBundleApplicationNumberModel();
                     formbundleApplicationNumberList = await WebServiceManager.GAZTGetFormBundleApplicationNumberModel(SelectedFormBindleFbtyp.Fbtyp);
                     PopToRootPage();
-                    if(formbundleApplicationNumberList!=null)
+                    if (formbundleApplicationNumberList != null)
                         FormBundleApplicatioNumberList = formbundleApplicationNumberList.d.results.OrderBy(x => x.Fbnum).ToList();
                 });
                 Task.Run(() =>
@@ -275,11 +277,76 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                     IsLoading = false;
                 });
             }
+            catch (GAZTException gex)
+            {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+
+            catch (HttpRequestException ex)
+            {
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    // IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                });
+            }
+
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
+                Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch (Exception)
+            {
+                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    // IsLoading = false;
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                 });
             }
         }
