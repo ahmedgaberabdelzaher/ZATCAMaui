@@ -93,17 +93,22 @@ namespace GAZT.iOS.CustomRenderer
         {
             //base.DidFailProvisionalNavigation(webView, navigation, error);
             Console.WriteLine("DidFailProvisionalNavigation");
-
-            if (error.Code == -1001 || error.Code == -1003)
+            try
             {
-                //Request timeout error -1001
-                //Url not found -1003
+                if (error != null && error.Code == -1001)
+                {
+                    //Request timeout error -1001
 
-                App.LoginDataRetrieved = new LoginModel();
-                IsError = true;
-                App.IsLoginCalled = false;
-                App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
-                element.InvokeAction("requestTimedout");
+                    App.LoginDataRetrieved = new LoginModel();
+                    IsError = true;
+                    App.IsLoginCalled = false;
+                    App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
+                    element.InvokeAction("requestTimedout");
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
