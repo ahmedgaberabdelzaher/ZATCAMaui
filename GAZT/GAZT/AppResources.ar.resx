@@ -3366,4 +3366,7 @@
     <value>الرجاء ملاحظة ان رقم السجل التجاري او الرخصة او العقد مستخدم من قبل مكلف أخر في الهيئة . او تاريخ الترخيص اصغر من تاريخ إيقاف التسجيل الرجاءقم بالتصحيح.</value>
     <comment>CRValidation</comment>
   </data>
+  <data name="ZZNotification" xml:space="preserve">
+    <value>اشعار</value>
+  </data>
 </root>
