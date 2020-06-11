@@ -62,7 +62,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                 MyReturnsResult SelectedItem = e.ItemData as MyReturnsResult;
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
-                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) +" - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) +" - " + SelectedItem.Abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         App.IsZakatLoadingFromMyReturns = true;
@@ -85,7 +85,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
-                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         App.IsZakatLoadingFromMyReturns = true;
@@ -108,7 +108,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.ItemData;
                 if (SelectedItem.Fbtyp.Equals("FZ12"))
                 {
-                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("yyyy/MM/dd", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("yyyy/MM/dd", new CultureInfo("en-US")); ;
+                    ZakatReturnListPageViewModel.ReturnPeriod = SelectedItem.Abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " - " + SelectedItem.Abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         App.IsZakatLoadingFromMyReturns = true;
