@@ -1081,6 +1081,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 RaisePropertyChanged("VATRate002");
             }
         }
+
+        private string _vATRate003=string.Empty;
+        public string VATRate003
+        {
+            get
+            {
+                return _vATRate003;
+            }
+            set
+            {
+                _vATRate003 = value;
+                RaisePropertyChanged("VATRate003");
+            }
+        }
         private string _tPName = "";
         public string TPName
         {
@@ -4107,6 +4121,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         if (Rate001 != null)
                         {
                             VATRate001 = Rate001.Penalty;
+                        }
+                        VATCalculationDataVATRSet Rate003 = vATCalculationsforEnd.Where(x => x.Type == "003").FirstOrDefault();
+                        if (Rate003 != null)
+                        {
+                            VATRate003 = Rate003.Penalty;
                         }
                         //VATCalculationDataVATRSet Rate00T1 = CalculationRateSet.Where(x => x.Begda <= startDate && x.Endda >= endDate).FirstOrDefault();
                         //VATCalculationDataVATRSet Rate002 = CalculationRateSet.Where(x => (x.Begda.Date >= startDate.Date) && (x.Endda.Date <= endDate.Date) && (x.Type== "002")).FirstOrDefault();

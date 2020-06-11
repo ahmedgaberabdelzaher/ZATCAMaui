@@ -118,6 +118,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     viewModel.IsEnableSwitchToggledFor15PercentChange = true;
                 }
+                if(App.ICRStatus== "E0055" || App.ICRStatus == "E0058")
+                {
+                    viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                }
             }
 
 
@@ -954,7 +958,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                     if (viewModel.IsVisibleSummary)
                                     {
                                         ValidationsForVATRefund();
-                                        if (viewModel.IschkRefundDeclaration == false || viewModel.IsDeclarationCheckedForSummary == false)
+                                        if (viewModel.IsDeclarationCheckedForSummary == false)
                                         {
                                             viewModel.IsMainButtonEnabled = false;
                                         }
@@ -5335,7 +5339,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount5;
-            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 + "%");
+            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate003 + "%");
             popUp.Message = MessageWithPercent;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
@@ -5363,6 +5367,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment5;
+            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate003 + "%");
+            popUp.Message = MessageWithPercent;
+
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
