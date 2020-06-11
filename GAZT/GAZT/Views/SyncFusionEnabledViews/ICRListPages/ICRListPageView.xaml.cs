@@ -264,20 +264,36 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
         }
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ICRStatus selectedfbtyp = (ICRStatus)e.NewValue;
-            BPicker.SelectedItem = selectedfbtyp;
-            viewModel.SelectedICRStatus = selectedfbtyp;
-            viewModel.SelectedICRStatusPrev = selectedfbtyp;
-            viewModel.TxtSelectedStatus = selectedfbtyp.Txt30;
+            try
+            {
+                ICRStatus selectedfbtyp = (ICRStatus)e.NewValue;
+                BPicker.SelectedItem = selectedfbtyp;
+                viewModel.SelectedICRStatus = selectedfbtyp;
+                viewModel.SelectedICRStatusPrev = selectedfbtyp;
+                viewModel.TxtSelectedStatus = selectedfbtyp.Txt30;
+            }
+            catch(Exception ex)
+            {
+
+            }
+          
         }
         private void BPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
-            BPicker.SelectedItem = viewModel.SelectedICRStatusPrev;
-            if(viewModel.SelectedICRStatusPrev == null)
+            try
             {
-                viewModel.TxtSelectedStatus = string.Empty;
+                viewModel.SelectedICRStatus = viewModel.SelectedICRStatusPrev;
+                BPicker.SelectedItem = viewModel.SelectedICRStatusPrev;
+                if (viewModel.SelectedICRStatusPrev == null)
+                {
+                    viewModel.TxtSelectedStatus = string.Empty;
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+          
         }
     }
 }
