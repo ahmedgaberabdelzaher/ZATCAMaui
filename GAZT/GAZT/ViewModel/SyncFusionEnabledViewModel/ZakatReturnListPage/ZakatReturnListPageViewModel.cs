@@ -5,8 +5,10 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -385,7 +387,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                         //{
                             if (myZakatReturnsListTemp[i].Period.Contains("-"))
                         {
-                            myZakatReturnsListTemp[i].Period.Replace("-", "- ");
+                            //FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            DateTime _dueDate = JsonConvert.DeserializeObject<DateTime>(@"""" + myZakatReturnsListTemp[i].DueDt + @"""");
+                            // Convert.ToDateTime(myZakatReturnsListTemp[i].DueDt);
+                            string DueDate = _dueDate.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
+                            myZakatReturnsListTemp[i].DueDtC = DueDate;
+                            DateTime _abrzu = JsonConvert.DeserializeObject<DateTime>(@"""" + myZakatReturnsListTemp[i].Abrzu + @""""); // Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzu);
+                            DateTime _abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + myZakatReturnsListTemp[i].Abrzo + @"""");// Convert.ToDateTime(myZakatReturnsListTemp[i].Abrzo);
+                            myZakatReturnsListTemp[i].Period = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")) + " - " + _abrzo.ToString("dd-MMMM-yyyy", new CultureInfo("en-US")); ;
+
+                          
                         }
                         //}
                         if (string.IsNullOrEmpty(myZakatReturnsListTemp[i].Statfg))

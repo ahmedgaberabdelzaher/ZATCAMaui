@@ -39,7 +39,7 @@ namespace EGAZT.Models
         public string Due { get; set; }
         public string Persl { get; set; }
         public string TaxPeriod { get; set; } //Date
-       // public string DueDt { get; set; }
+        public string DueDt { get; set; }
         public string Fbnum { get; set; }
         public string Status { get; set; }
         public string CalendrTyp { get; set; }
@@ -83,27 +83,27 @@ namespace EGAZT.Models
                 _dueDate = value;
             }
         }
-        public string _dueDT;
-        public string DueDt
-        {
-            get
-            {
-                return _dueDT;
-            }
-            set
-            {
-                _dueDT = value;
-                if (_dueDT != null)
-                {
-                    if (_dueDT.Contains("T"))
-                    {
-                        string[] _dueDate = new String[2];
-                        _dueDate = _dueDT.Split('T');
-                        DueDate = _dueDate[0];
-                    }
-                }
-            }
-        }//DueDate
+        //public string _dueDT;
+        //public string DueDt
+        //{
+        //    get
+        //    {
+        //        return _dueDT;
+        //    }
+        //    set
+        //    {
+        //        _dueDT = value;
+        //        if (_dueDT != null)
+        //        {
+        //            if (_dueDT.Contains("T"))
+        //            {
+        //                string[] _dueDate = new String[2];
+        //                _dueDate = _dueDT.Split('T');
+        //                DueDate = _dueDate[0];
+        //            }
+        //        }
+        //    }
+        //}//DueDate
         //private string _statusImage;
         public string StatusImage { get; set; }
         //{
