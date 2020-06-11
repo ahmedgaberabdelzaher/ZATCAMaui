@@ -1743,7 +1743,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
-    <value>هل تريد إصدار الإقرار</value>
+    <value>هل ترغب في إصدار اقرارك الزكوي ؟</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
