@@ -103,6 +103,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         public void checkNewFormorOld()
         {
+
+            if (App.ICRStatus == "E0001" && App.ICRStatus == "E00013")
+            {
+                viewModel.IsEnableSwitchToggledFor15PercentChange = true;
+            }
+            else
+            {
+                if((App.ICRStatus=="E0045" || App.ICRStatus== "E0056" || App.ICRStatus== "E0006") && viewModel.VATDeclarationData.d.Yesno == "X")
+                {
+                    viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                }
+                else
+                {
+                    viewModel.IsEnableSwitchToggledFor15PercentChange = true;
+                }
+            }
+
+
             if (viewModel.VATDeclarationData != null && viewModel.VATDeclarationData.d != null && viewModel.VATDeclarationData.d.GoliveFg == "X")
             {
                 viewModel.IsFifteenPercentChange = true;
@@ -156,12 +174,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     viewModel.IsFifteenPersenctVisible = true;
                     viewModel.IsFivePersenctVisible = true;
+                    viewModel.IsSwitchToggledFor15PercentChange = true;
                     viewModel.IsYesChecked = true;
                 }
                 else
                 {
                     viewModel.IsFifteenPersenctVisible = true;
                     viewModel.IsFivePersenctVisible = false;
+                    viewModel.IsSwitchToggledFor15PercentChange = false;
                     viewModel.IsNoChecked = true;
                 }
             }
@@ -7175,117 +7195,155 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         public void Clear5PercentObject()
         {
-            EntryVatAmount.Text = "0.00";
-            EntryVatAdjustmentWithSAR.Text = "0.00";
-            EntryStdsalesVat.Text = "0.00";
+            try
+            {
+                EntryVatAmount.Text = "0.00";
+                EntryVatAdjustmentWithSAR.Text = "0.00";
+                EntryStdsalesVat.Text = "0.00";
 
-            EntryStdpurchaseAmt.Text = "0.00";
-            EntryStdpurchaseAdj.Text = "0.00";
-            EntryStdpurchasesVat.Text = "0.00";
+                EntryStdpurchaseAmt.Text = "0.00";
+                EntryStdpurchaseAdj.Text = "0.00";
+                EntryStdpurchasesVat.Text = "0.00";
 
-            EntryZVatAmountWithSAR.Text = "0.00";
-            EntryImportspaidAdj.Text = "0.00";
-            EntryImportspaidVat.Text = "0.00";
+                EntryZVatAmountWithSAR.Text = "0.00";
+                EntryImportspaidAdj.Text = "0.00";
+                EntryImportspaidVat.Text = "0.00";
 
-            EntryImportsaccAmt.Text = "0.00";
-            EntryImportsaccAdj.Text = "0.00";
-            EntryImportsaccVat.Text = "0.00";
+                EntryImportsaccAmt.Text = "0.00";
+                EntryImportsaccAdj.Text = "0.00";
+                EntryImportsaccVat.Text = "0.00";
 
-            EntryVatAmount15.Text = string.Empty;
-            EntryVatAdjustmentWithSAR15.Text = string.Empty;
-            EntryStdsalesVat15.Text = "0.00";
+                EntryVatAmount15.Text = string.Empty;
+                EntryVatAdjustmentWithSAR15.Text = string.Empty;
+                EntryStdsalesVat15.Text = "0.00";
 
-            EntryVatAmount5.Text = "0.00";
-            EntryVatAdjustmentWithSAR5.Text = "0.00";
-            EntryStdsalesVat5.Text = "0.00";
+                EntryVatAmount5.Text = "0.00";
+                EntryVatAdjustmentWithSAR5.Text = "0.00";
+                EntryStdsalesVat5.Text = "0.00";
 
-            //
-            EntryStdpurchaseAmt15.Text = string.Empty;
-            EntryStdpurchaseAdj15.Text = string.Empty;
-            EntryStdpurchasesVat15.Text = "0.00";
+                //
+                EntryStdpurchaseAmt15.Text = string.Empty;
+                EntryStdpurchaseAdj15.Text = string.Empty;
+                EntryStdpurchasesVat15.Text = "0.00";
 
-            EntryStdpurchaseAmt5.Text = "0.00";
-            EntryStdpurchaseAdj5.Text = "0.00";
-            EntryStdpurchasesVat5.Text = "0.00";
+                EntryStdpurchaseAmt5.Text = "0.00";
+                EntryStdpurchaseAdj5.Text = "0.00";
+                EntryStdpurchasesVat5.Text = "0.00";
 
-            //
-            EntryZVatAmountWithSAR15.Text = string.Empty;
-            EntryImportspaidAdj15.Text = string.Empty;
-            EntryImportspaidVat15.Text = "0.00";
+                //
+                EntryZVatAmountWithSAR15.Text = string.Empty;
+                EntryImportspaidAdj15.Text = string.Empty;
+                EntryImportspaidVat15.Text = "0.00";
 
-            EntryZVatAmountWithSAR5.Text = "0.00";
-            EntryImportspaidAdj5.Text = "0.00";
-            EntryImportspaidVat5.Text = "0.00";
+                EntryZVatAmountWithSAR5.Text = "0.00";
+                EntryImportspaidAdj5.Text = "0.00";
+                EntryImportspaidVat5.Text = "0.00";
 
-            //
-            EntryImportsaccAmt15.Text = string.Empty;
-            EntryImportsaccAdj15.Text = string.Empty;
-            EntryImportsaccVat15.Text = "0.00";
+                //
+                EntryImportsaccAmt15.Text = string.Empty;
+                EntryImportsaccAdj15.Text = string.Empty;
+                EntryImportsaccVat15.Text = "0.00";
 
-            EntryImportsaccAmt5.Text = "0.00";
-            EntryImportsaccAdj5.Text = "0.00";
-            EntryImportsaccVat5.Text = "0.00";
+                EntryImportsaccAmt5.Text = "0.00";
+                EntryImportsaccAdj5.Text = "0.00";
+                EntryImportsaccVat5.Text = "0.00";
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public void Clear15And5PercentObject()
         {
-            EntryVatAmount.Text = "0.00";
-            EntryVatAdjustmentWithSAR.Text = "0.00";
-            EntryStdsalesVat.Text = "0.00";
+            try
+            {
+                EntryVatAmount.Text = "0.00";
+                EntryVatAdjustmentWithSAR.Text = "0.00";
+                EntryStdsalesVat.Text = "0.00";
 
-            EntryStdpurchaseAmt.Text = "0.00";
-            EntryStdpurchaseAdj.Text = "0.00";
-            EntryStdpurchasesVat.Text = "0.00";
+                EntryStdpurchaseAmt.Text = "0.00";
+                EntryStdpurchaseAdj.Text = "0.00";
+                EntryStdpurchasesVat.Text = "0.00";
 
-            EntryZVatAmountWithSAR.Text = "0.00";
-            EntryImportspaidAdj.Text = "0.00";
-            EntryImportspaidVat.Text = "0.00";
+                EntryZVatAmountWithSAR.Text = "0.00";
+                EntryImportspaidAdj.Text = "0.00";
+                EntryImportspaidVat.Text = "0.00";
 
-            EntryImportsaccAmt.Text = "0.00";
-            EntryImportsaccAdj.Text = "0.00";
-            EntryImportsaccVat.Text = "0.00";
+                EntryImportsaccAmt.Text = "0.00";
+                EntryImportsaccAdj.Text = "0.00";
+                EntryImportsaccVat.Text = "0.00";
 
-            EntryVatAmount15.Text = string.Empty;
-            EntryVatAdjustmentWithSAR15.Text = string.Empty;
-            EntryStdsalesVat15.Text = "0.00";
+                EntryVatAmount15.Text = string.Empty;
+                EntryVatAdjustmentWithSAR15.Text = string.Empty;
+                EntryStdsalesVat15.Text = "0.00";
 
-            EntryVatAmount5.Text = string.Empty;
-            EntryVatAdjustmentWithSAR5.Text = string.Empty;
-            EntryStdsalesVat5.Text = "0.00";
+                EntryVatAmount5.Text = string.Empty;
+                EntryVatAdjustmentWithSAR5.Text = string.Empty;
+                EntryStdsalesVat5.Text = "0.00";
 
-            //
+                //
 
-            EntryStdpurchaseAmt15.Text = string.Empty;
-            EntryStdpurchaseAdj15.Text = string.Empty;
-            EntryStdpurchasesVat15.Text = "0.00";
+                EntryStdpurchaseAmt15.Text = string.Empty;
+                EntryStdpurchaseAdj15.Text = string.Empty;
+                EntryStdpurchasesVat15.Text = "0.00";
 
-            EntryStdpurchaseAmt5.Text = string.Empty;
-            EntryStdpurchaseAdj5.Text = string.Empty;
-            EntryStdpurchasesVat5.Text = "0.00";
+                EntryStdpurchaseAmt5.Text = string.Empty;
+                EntryStdpurchaseAdj5.Text = string.Empty;
+                EntryStdpurchasesVat5.Text = "0.00";
 
-            //
+                //
 
-            EntryZVatAmountWithSAR15.Text = string.Empty;
-            EntryImportspaidAdj15.Text = string.Empty;
-            EntryImportspaidVat15.Text = "0.00";
+                EntryZVatAmountWithSAR15.Text = string.Empty;
+                EntryImportspaidAdj15.Text = string.Empty;
+                EntryImportspaidVat15.Text = "0.00";
 
-            EntryZVatAmountWithSAR5.Text = string.Empty;
-            EntryImportspaidAdj5.Text = string.Empty;
-            EntryImportspaidVat5.Text = "0.00";
+                EntryZVatAmountWithSAR5.Text = string.Empty;
+                EntryImportspaidAdj5.Text = string.Empty;
+                EntryImportspaidVat5.Text = "0.00";
 
-            //
+                //
 
-            EntryImportsaccAmt15.Text = string.Empty;
-            EntryImportsaccAdj15.Text = string.Empty;
-            EntryImportsaccVat15.Text = "0.00";
+                EntryImportsaccAmt15.Text = string.Empty;
+                EntryImportsaccAdj15.Text = string.Empty;
+                EntryImportsaccVat15.Text = "0.00";
 
-            EntryImportsaccAmt5.Text = string.Empty;
-            EntryImportsaccAdj5.Text = string.Empty;
-            EntryImportsaccVat5.Text = "0.00";
+                EntryImportsaccAmt5.Text = string.Empty;
+                EntryImportsaccAdj5.Text = string.Empty;
+                EntryImportsaccVat5.Text = "0.00";
+            }
+            catch(Exception ex)
+            {
 
+            }
 
         }
 
+        private async void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
+        {
+
+            if(viewModel.IsSwitchToggledFor15PercentChange)
+            {
+                viewModel.IsSwitchToggledFor15PercentChange = false;
+            }
+            else
+            {
+                viewModel.IsSwitchToggledFor15PercentChange = true;
+            }
+
+            if(viewModel.IsSwitchToggledFor15PercentChange)
+            {
+                viewModel.IsFifteenPersenctVisible = true;
+                viewModel.IsFivePersenctVisible = true;
+                Clear15And5PercentObject();
+            }
+            else
+            {
+                viewModel.IsFifteenPersenctVisible = true;
+                viewModel.IsFivePersenctVisible = false;
+                Clear5PercentObject();
+            }
+        }
     }
 }
 //private void ICvalidation_Clicked(object sender, EventArgs e)

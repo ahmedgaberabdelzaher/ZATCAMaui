@@ -118,6 +118,49 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
         }
 
+
+        private bool _isEnableToggledFor15PercentChange = false;
+        public bool IsEnableSwitchToggledFor15PercentChange
+        {
+            get
+            {
+                return _isEnableToggledFor15PercentChange;
+            }
+            set
+            {
+                _isEnableToggledFor15PercentChange = value;
+                RaisePropertyChanged("IsEnableSwitchToggledFor15PercentChange");
+            }
+        }
+
+        private bool _isSwitchToggledFor15PercentChange = false;
+        public bool IsSwitchToggledFor15PercentChange
+        {
+            get
+            {
+                return _isSwitchToggledFor15PercentChange;
+            }
+            set
+            {
+                _isSwitchToggledFor15PercentChange = value;
+                if (_isSwitchToggledFor15PercentChange != null)
+                {
+                    if (_isSwitchToggledFor15PercentChange == true)
+                    {
+                        IsYesChecked = true;
+                        IsNoChecked = false;
+                    }
+                    else
+                    {
+                        IsNoChecked = true;
+                        IsYesChecked = false;
+                    }
+                }
+                RaisePropertyChanged("IsSwitchToggledFor15PercentChange");
+            }
+        }
+
+
         private bool _isYesChecked = false;
         public bool IsYesChecked
         {
@@ -1566,6 +1609,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
 
 
+        private bool _is15PercentChangeToggled = false;
+        public bool Is15PercentChangeToggled
+        {
+            get
+            {
+                return _is15PercentChangeToggled;
+            }
+            set
+            {
+                _is15PercentChangeToggled = value;
+                if (_is15PercentChangeToggled == true)
+                {
+                }
+                RaisePropertyChanged("Is15PercentChangeToggled");
+            }
+        }
+
+
 
 
         private bool _iSSwichButtonEnable = false;
@@ -2015,6 +2076,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 RaisePropertyChanged("IsRefundVisible");
             }
         }
+
+        private bool _isSwichButtonOf15PercentChangeEnableToTap = true;
+        public bool IsSwichButtonOf15PercentChangeEnableToTap
+        {
+            get
+            {
+                return _isSwichButtonOf15PercentChangeEnableToTap;
+            }
+            set
+            {
+                _isSwichButtonOf15PercentChangeEnableToTap = value;
+                RaisePropertyChanged("IsSwichButtonOf15PercentChangeEnableToTap");
+            }
+        }
+
         private bool _isSwichButtonEnableToTap = true;
         public bool IsSwichButtonEnableToTap
         {
