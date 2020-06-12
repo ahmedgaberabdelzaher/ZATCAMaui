@@ -209,7 +209,13 @@
                                                 <ColumnDefinition Width="10*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                            </Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                         FontFamily="{StaticResource SSTArabicMedium}"
