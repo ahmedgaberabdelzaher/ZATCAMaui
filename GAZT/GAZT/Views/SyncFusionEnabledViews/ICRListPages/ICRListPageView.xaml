@@ -52,8 +52,8 @@
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" HeightRequest="1000">
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="ParentGrid"  ColumnSpacing="10" RowSpacing="0" Margin="0"  >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="12*" />
+                    <RowDefinition Height="18*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
@@ -72,7 +72,7 @@
                         <TapGestureRecognizer Tapped="onDropdownButtonClicked" />
                     </Image.GestureRecognizers>
                 </Image>-->
-                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,-6"
+                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,0"
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False"  Text="{Binding TxtSelectedStatus}" FontSize="Small">
@@ -115,7 +115,7 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
-                <StackLayout  x:Name="ListLayout"  Margin="10,-15,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" HeightRequest="1000">
+                <StackLayout  x:Name="ListLayout"  Margin="10,0,10,0" Spacing="0" BackgroundColor="White" IsVisible="{Binding IsICRListVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" HeightRequest="1000">
                     <ListView  x:Name="ICRList" 
            ItemsSource="{Binding ICRList}"
           HorizontalOptions="FillAndExpand"
