@@ -196,6 +196,8 @@
                  SelectedItem="{Binding SelectedZakatReturn}"     
             SeparatorVisibility="None"
             >
+
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -290,7 +292,7 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                        <Span Style="{ StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"  Text="{Binding DueDtC}"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
