@@ -318,6 +318,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                                         IsValueChanged();// 1584987294.32348//1584987210.06955
                                                                          // ZakatReturnAttachmentsList.Add(_estimateZakatAttachment);
                                                     }
+                                                    else
+                                                    {
+                                                        Device.BeginInvokeOnMainThread(async () =>
+                                                        {
+                                                            AttachmentName = string.Empty;
+                                                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                            IsLoading = false;
+                                                        });
+                                                    }
                                                 }
                                                 else
                                                 {
