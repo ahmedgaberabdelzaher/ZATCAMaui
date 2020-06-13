@@ -116,7 +116,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
                 else
                 {
-                    viewModel.IsEnableSwitchToggledFor15PercentChange = true;
+                    if(App.ICRStatus == "E0056")
+                    {
+                        viewModel.IsEnableSwitchToggledFor15PercentChange = true;
+                    }
+                    else
+                    {
+                        viewModel.IsEnableSwitchToggledFor15PercentChange = false;
+                    }
                 }
                 if(App.ICRStatus== "E0055" || App.ICRStatus == "E0058")
                 {
@@ -287,6 +294,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
                             viewModel.ManageEnabledAsyncProperty(false);
                             //   viewModel.ManageEnabledProperty(false);
+                            if(App.ICRStatus == "E0055" || App.ICRStatus == "E0058")
+                            {
+                                viewModel.IsMoreButtonEnabled = false;
+                            }
                             viewModel.IsCheckedTaxPayerDetailsInfo = true;
                             viewModel.IsDeclarationCheckedForSummary = true;
                             viewModel.IsDeclarationCheckedForInstruction = true;

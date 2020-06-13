@@ -3390,6 +3390,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
+                            IsEnableSwitchToggledFor15PercentChange = false;
                             IsMainButtonVisible = false;
                             IsSwichButtonEnableToTap = false;
                             IsEnableIBAN = false;
@@ -3489,6 +3490,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                     Device.BeginInvokeOnMainThread(async () =>
                                     {
                                         await ManageEnabledAsyncProperty(false);
+                                        IsEnableSwitchToggledFor15PercentChange = false;
                                         IsMainButtonVisible = false;
                                         IsSwichButtonEnableToTap = false;
                                         IsEnableIBAN = false;
@@ -3951,6 +3953,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await ManageEnabledAsyncProperty(true);
+                        if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.d.Yesno == "X")
+                        {
+                            IsEnableSwitchToggledFor15PercentChange = false;
+                        }
+                        else
+                        {
+                            IsEnableSwitchToggledFor15PercentChange = true;
+                        }
                         IsDeclarationCheckEnabled = false;
                         IsTaxPayerCheckEnabled = false;
                         IsAmendClicked = true;
