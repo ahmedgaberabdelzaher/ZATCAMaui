@@ -306,6 +306,24 @@ namespace EGAZT.Droid.CustomRenderer
         {
             //_hybridWebView.InvokeAction("requestTimedOut");
             base.OnReceivedError(view, request, error);
+            try
+            {
+                if (error != null && error.ErrorCode == ClientError.Timeout)
+                {
+                    _hybridWebView.Opacity = 0;
+                    IsError = true;
+                    App.IsLoginCalled = false;
+                    App.IsSamlApiCalledAndroid = false;
+                    App.LoginDataRetrieved = new LoginModel();
+                    App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
+                    _hybridWebView.InvokeAction("requestTimedout");
+                }
+
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
 
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)

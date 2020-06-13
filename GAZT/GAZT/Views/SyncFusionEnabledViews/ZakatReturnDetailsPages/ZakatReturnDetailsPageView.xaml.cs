@@ -77,7 +77,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View
 
                 if (App.IsArabic)
                 {
-                    var result = await this.DisplayAlert(AppResources.ZLogout, AppResources.LogoutConfirmationMessage, AppResources.ZZCancel, AppResources.ZZZOkayText);
+                    var result = await this.DisplayAlert(AppResources.ZZConfirmation, AppResources.ZZDoyouwanttoreleasethedeclaration, AppResources.ZZCancel, AppResources.ZZZOkayText);
                     if (!result)
                     {
                         await viewModel.OnReleaseOrBillsClicked();

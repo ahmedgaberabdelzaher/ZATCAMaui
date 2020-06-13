@@ -8500,5 +8500,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZYesText", resourceCulture);
             }
         }
+        
+        public static string ZZNotification {
+            get {
+                return ResourceManager.GetString("ZZNotification", resourceCulture);
+            }
+        }
     }
 }

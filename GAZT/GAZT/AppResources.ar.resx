@@ -595,7 +595,7 @@
     <value>متأخرة</value>
   </data>
   <data name="Partial" xml:space="preserve">
-    <value>مسدد جزئي</value>
+    <value>مسددة جزئيا</value>
   </data>
   <data name="Returns" xml:space="preserve">
     <value>الإقرارات</value>
@@ -1743,7 +1743,7 @@
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZDoyouwanttoreleasethedeclaration" xml:space="preserve">
-    <value>هل تريد إصدار الإقرار</value>
+    <value>هل ترغب في إصدار اقرارك الزكوي ؟</value>
     <comment>Estimated Zakat</comment>
   </data>
   <data name="ZZGreatervalueofEstimatedSales" xml:space="preserve">
@@ -3371,5 +3371,8 @@
   <data name="ZZZCRValidateMessg" xml:space="preserve">
     <value>الرجاء ملاحظة ان رقم السجل التجاري او الرخصة او العقد مستخدم من قبل مكلف أخر في الهيئة . او تاريخ الترخيص اصغر من تاريخ إيقاف التسجيل الرجاءقم بالتصحيح.</value>
     <comment>CRValidation</comment>
+  </data>
+  <data name="ZZNotification" xml:space="preserve">
+    <value>اشعار</value>
   </data>
 </root>

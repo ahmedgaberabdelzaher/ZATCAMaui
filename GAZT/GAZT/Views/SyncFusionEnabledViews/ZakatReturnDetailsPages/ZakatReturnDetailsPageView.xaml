@@ -86,9 +86,30 @@
                         <Label Text="{x:Static local:AppResources.FiscalYear}"  Grid.Row="1"   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
                     <Label Text="{Binding Persl}" FontFamily="{StaticResource SSTArBold}" Grid.Row="2" Grid.Column="0"   Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" />
                     <Label Text="{x:Static local:AppResources.FinancialPeriodFrom}" Grid.Row="3" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
+
+
                     <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                     <Label x:Name="date" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                                                  </StackLayout>
+
+                        <!--<Label x:Name="date" FontFamily="{StaticResource SSTArBold}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>-->
+
+                        <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="10,0,10,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 x:Name="date"
+                                                          >
+                                                    </local1:CustomLabel>
+                    </StackLayout>
+
+
+                     
+
+
+
                     <Label Text="{x:Static local:AppResources.ZReturnReferenceNumber}"  Grid.Row="5" HorizontalOptions="StartAndExpand"  VerticalOptions="CenterAndExpand" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
                     <Label Text="{Binding Fbnum}" FontFamily="{StaticResource SSTArBold}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                     <BoxView  Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Style="{StaticResource GAZTBoxViewStyle}" ></BoxView>

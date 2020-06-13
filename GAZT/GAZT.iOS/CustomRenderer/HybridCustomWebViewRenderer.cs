@@ -93,17 +93,22 @@ namespace GAZT.iOS.CustomRenderer
         {
             //base.DidFailProvisionalNavigation(webView, navigation, error);
             Console.WriteLine("DidFailProvisionalNavigation");
-
-            if (error.Code == -1001 || error.Code == -1003)
+            try
             {
-                //Request timeout error -1001
-                //Url not found -1003
+                if (error != null && error.Code == -1001)
+                {
+                    //Request timeout error -1001
 
-                App.LoginDataRetrieved = new LoginModel();
-                IsError = true;
-                App.IsLoginCalled = false;
-                App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
-                element.InvokeAction("requestTimedout");
+                    App.LoginDataRetrieved = new LoginModel();
+                    IsError = true;
+                    App.IsLoginCalled = false;
+                    App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
+                    element.InvokeAction("requestTimedout");
+                }
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 
@@ -164,6 +169,19 @@ namespace GAZT.iOS.CustomRenderer
             {
                 try
                 {
+                    //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
+                    ////App.LoginDataRetrieved = new LoginModel();
+
+                    //HtmlDocument document = new HtmlDocument();
+                    //document.LoadHtml(htmlData.ToString());
+
+
+                    //var htmlResponse = document.DocumentNode.InnerText;
+                    //var LoginConfirmation = htmlResponse.ToString();
+
+                    //Console.WriteLine(htmlData);
+                    //Console.WriteLine(htmlData.ToString());
+
                     if (cookies.Length > 0)
                     {
                         Uri url = webView.Url;
@@ -180,15 +198,6 @@ namespace GAZT.iOS.CustomRenderer
                             //        Console.Write(html);
                             //    }
                             //}
-
-                            //NSObject htmlData = await webView.EvaluateJavaScriptAsync("document.documentElement.outerHTML.toString()").ConfigureAwait(false);
-                            //App.LoginDataRetrieved = new LoginModel();
-
-                            //HtmlDocument document = new HtmlDocument();
-                            //document.LoadHtml(htmlData.ToString());
-
-                            //var htmlResponse = document.DocumentNode.InnerText;
-                            //var LoginConfirmation = htmlResponse.ToString();
 
                             //if (!string.IsNullOrEmpty(LoginConfirmation))
                             //{

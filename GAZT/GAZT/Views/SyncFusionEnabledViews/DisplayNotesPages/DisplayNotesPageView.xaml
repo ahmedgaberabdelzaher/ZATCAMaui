@@ -65,10 +65,7 @@
                                >
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="1,2,1,2" Padding="0" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="50*" />
-                                                </Grid.ColumnDefinitions>
+                                                
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="Auto" />
                                                     <RowDefinition Height="Auto" />
@@ -83,23 +80,25 @@
                                                        VerticalOptions="CenterAndExpand"
                                                         FontFamily="{StaticResource GAZT_FONT_BOLD}"
                                    Grid.Row="0"
-                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+                                   Grid.Column="0" />
                                                 <Label Text="{Binding Strline}" 
                                                        Margin="10,0,10,-3"
                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                          FontFamily="{StaticResource GAZT_FONT_BOLD}"
+                                                          FontFamily="{StaticResource SSTArabicMedium}"
+                                                       FontSize="12"
                                    Grid.Row="1"
-                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+                                   Grid.Column="0" />
                                                 <Label Text="{Binding Namez}" 
                                                        Margin="10,0,10,-8"
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                         FontFamily="{StaticResource GAZT_FONT_BOLD}"
+                                                       FontSize="12"
+                                                         FontFamily="{StaticResource SSTArabicMedium}"
                                    Grid.Row="2"
-                                   Grid.Column="0" Grid.ColumnSpan="2"/>
+                                   Grid.Column="0" />
                                                 <Label 
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"
@@ -109,9 +108,9 @@
                                    Grid.Column="0">
                                                     <Label.FormattedText >
                                                         <FormattedString>
-                                                            <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SSTArBold}"/>
-                                                            <Span Text="  "/>
-                                                            <Span Text="{Binding Strtime}" FontFamily="{StaticResource SSTArBold}"/>
+                                                            <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SSTArabicMedium}" FontSize="12"/>
+                                                            <Span Text="  " />
+                                                            <Span Text="{Binding Strtime}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="12"/>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

@@ -1,6 +1,9 @@
 ﻿using GAZT.Droid.DependencyServices;
 using Xamarin.Forms;
 using GAZT.Helper;
+using Android.OS;
+using System;
+
 [assembly: Dependency(typeof(DeviceInfo))]
 namespace GAZT.Droid.DependencyServices
 {
@@ -43,6 +46,31 @@ namespace GAZT.Droid.DependencyServices
         {
             string[] filetypesforZakat = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
             return filetypesforZakat;
+        }
+
+        public string GetDeviceUdid()
+        {
+            string id = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(id))
+                return id;
+
+            id = Android.OS.Build.Serial;
+            if (string.IsNullOrWhiteSpace(id) || id == Build.Unknown || id == "0")
+            {
+                try
+                {
+                    var context = Android.App.Application.Context;
+                    id = Android.Provider.Settings.Secure.GetString(context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
+                }
+                catch (Exception ex)
+                {
+                    id = "";
+                    //Android.Util.Log.Warn("DeviceInfo", "Unable to get id: " + ex.ToString());
+                }
+            }
+
+            return id;
         }
     }
 }

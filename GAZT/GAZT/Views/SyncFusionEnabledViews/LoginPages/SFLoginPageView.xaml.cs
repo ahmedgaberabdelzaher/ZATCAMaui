@@ -339,7 +339,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     AppResources.Culture = new CultureInfo(langName);
                                 }
 
-                                await WebServiceManager.GAZTLogOff();
+                                try
+                                {
+                                    await WebServiceManager.GAZTLogOff();
+                                }
+                                catch
+                                {
+
+                                }
+
 
                                 viewModel.IsLoading = false;
 
@@ -407,7 +415,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 AppResources.Culture = new CultureInfo(langName);
             }
 
-            await WebServiceManager.GAZTLogOff();
+            try
+            {
+                await WebServiceManager.GAZTLogOff();
+            }
+            catch
+            {
+
+            }
 
             viewModel.IsLoading = false;
 

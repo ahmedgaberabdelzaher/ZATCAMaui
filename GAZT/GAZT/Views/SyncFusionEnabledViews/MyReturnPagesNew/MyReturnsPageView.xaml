@@ -76,7 +76,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding SubmittedVATReturnsCount}"></Span>
+                                                            <Span Text="{Binding SubmittedVATReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -265,7 +265,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding SubmittedZakatReturnsCount}"></Span>
+                                                            <Span Text="{Binding SubmittedZakatReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -453,7 +453,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding SubmittedETReturnsCount}" ></Span>
+                                                            <Span Text="{Binding SubmittedETReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}" ></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -641,7 +641,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding SubmittedWHReturnsCount}"></Span>
+                                                            <Span Text="{Binding SubmittedWHReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -843,7 +843,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding NonSubmittedVATReturnsCount}"></Span>
+                                                            <Span Text="{Binding NonSubmittedVATReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1031,7 +1031,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding NonSubmittedZakatReturnsCount}"></Span>
+                                                            <Span Text="{Binding NonSubmittedZakatReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1219,7 +1219,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding NonSubmittedETReturnsCount}"></Span>
+                                                            <Span Text="{Binding NonSubmittedETReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1407,7 +1407,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding NonSubmittedWHReturnsCount}"></Span>
+                                                            <Span Text="{Binding NonSubmittedWHReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1609,7 +1609,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding OverDueVATReturnsCount}"></Span>
+                                                            <Span Text="{Binding OverDueVATReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1797,7 +1797,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding OverDueZakatReturnsCount}"></Span>
+                                                            <Span Text="{Binding OverDueZakatReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -1985,7 +1985,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding OverDueETReturnsCount}"></Span>
+                                                            <Span Text="{Binding OverDueETReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}"></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>
@@ -2173,7 +2173,7 @@
                                                 <local:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="&#10;" ></Span>
-                                                        <Span Text="{Binding OverDueWHReturnsCount}"></Span>
+                                                            <Span Text="{Binding OverDueWHReturnsCount}"  FontFamily="{StaticResource SSTArabicMedium}" ></Span>
                                                     </FormattedString>
                                                 </local:CustomLabel.FormattedText>
                                                 <local:CustomLabel.Triggers>

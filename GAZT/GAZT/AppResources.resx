@@ -544,7 +544,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
   </data>
-  <data name="RequestTimeoutTitle" xml:space="preserve">
+    <data name="RequestTimeoutTitle" xml:space="preserve">
     <value>Request Timeout</value>
   </data>
   <data name="RequestTimeoutDescription" xml:space="preserve">
@@ -3379,5 +3379,8 @@ Should we require further information, we would be in contact.</value>
             Note that your registration application will
         remain pending until the previous CR/Licence/Contract is not deregistered Do you want you continue?</value>
     <comment>CRValidation</comment>
+  </data>
+  <data name="ZZNotification" xml:space="preserve">
+    <value>Notification</value>
   </data>
 </root>

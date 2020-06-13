@@ -184,6 +184,7 @@
                         <custom1:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>
                 </syncfusion:SfPicker>
+
                 <StackLayout x:Name="ZakatICRListLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0" Grid.Row="1"  Grid.ColumnSpan="7" Margin="0,-2,0,0">
                 <ListView  x:Name="ZakatICRList" 
            ItemsSource="{Binding MyZakatReturns}"
@@ -195,19 +196,28 @@
                  SelectedItem="{Binding SelectedZakatReturn}"     
             SeparatorVisibility="None"
             >
+
+
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                     <!--Margin="10"-->
                                     <cards:SfCardView HasShadow="True"  Margin="0,10,0,10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="5,0,5,0" Padding="5,10,5,10 " >
+
                                         <Grid  ColumnSpacing="0" RowSpacing="0"  HorizontalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="90*" />
                                                 <ColumnDefinition Width="10*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
-                                            </Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
                                             <Label Text="{Binding FbtText}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
                                                         FontFamily="{StaticResource SSTArabicMedium}"
@@ -224,7 +234,7 @@
                                                        Grid.Row="1"
                                                        Grid.Column="0"
                                                      />
-                                            <Label  Margin="0" 
+                                            <!--<Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="2"
@@ -237,8 +247,43 @@
                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"  Text="{Binding Period}"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
-                                            </Label>
-                                            <Label  Margin="0" 
+                                            </Label>-->
+
+
+
+                                             <StackLayout  Margin="0"  Spacing="0"
+                                                                     Grid.Row="2"
+                                                         Grid.ColumnSpan="2"
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                    <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                        <local1:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ReturnPeriod}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                            </FormattedString>
+                                                        </local1:CustomLabel.FormattedText>
+                                                    </local1:CustomLabel>
+                                                    <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="0,0,0,0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding Period}"
+                                                          >
+                                                    </local1:CustomLabel>
+                                                </StackLayout>
+
+
+                                            <!--<Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
                                    Grid.Row="3"
@@ -247,11 +292,44 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}"></Span>
-                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
+                                                        <Span Style="{ StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}"  Text="{Binding DueDtC}"></Span>
                                                     </FormattedString>
                                                 </Label.FormattedText>
-                                            </Label>
+                                            </Label>-->
+
+
+                                              <StackLayout  Margin="0" 
+                                                                     Grid.Row="3"
+                               
+                                   Grid.Column="0" Orientation="Horizontal">
+
+                                                    <local1:CustomLabel
+                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                                        LineBreakMode="CharacterWrap"
+                                                   VerticalOptions="CenterAndExpand"
+                                                    Margin="0,0,0,0"
+                                                          >
+                                                        <local1:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueDate}" ></Span>
+                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : " ></Span>
+                                                            </FormattedString>
+                                                        </local1:CustomLabel.FormattedText>
+                                                    </local1:CustomLabel>
+                                                    <local1:CustomLabel
+                                   Style="{StaticResource MicroGrayLabelStyleNewEn}"
+                                                   VerticalOptions="CenterAndExpand"
+                                                        HorizontalOptions="StartAndExpand"
+                                                    Margin="0"
+                                                    FlowDirection="LeftToRight"
+                                                        LineBreakMode="CharacterWrap"
+                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                 Text="{Binding DueDtC}"
+                                                          >
+                                                    </local1:CustomLabel>
+                                                </StackLayout>
+
                                             <Label  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
