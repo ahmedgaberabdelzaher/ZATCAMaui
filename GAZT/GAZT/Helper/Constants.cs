@@ -36,9 +36,9 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = QADomainForCookies;
 
         public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
