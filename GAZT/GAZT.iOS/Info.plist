@@ -88,9 +88,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>CFBundleShortVersionString</key>
-	<string>0.0.0.8</string>
 	<key>CFBundleVersion</key>
-	<string>0.0.0.8</string>
+	<string>2.0.5.2</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.5.2</string>
 </dict>
 </plist>
