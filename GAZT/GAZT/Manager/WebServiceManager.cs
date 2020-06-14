@@ -3523,7 +3523,8 @@ namespace GAZT.Manager
 
                     string Langz = UtilityManager.GetLanguageParameter();
                     string FirstSignupSubmit = string.Empty;
-                    string url = Constants.GAZTSignUpFirstSubmit + "?sap-language=" + Langz;
+                    //string url = Constants.GAZTSignUpFirstSubmit + "?sap-language=" + Langz;
+                    string url = Constants.GAZTSignUpFirstSubmit + Langz;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");

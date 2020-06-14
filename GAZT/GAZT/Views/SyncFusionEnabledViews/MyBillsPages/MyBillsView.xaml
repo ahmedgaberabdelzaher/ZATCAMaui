@@ -69,6 +69,7 @@
                                   TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                              TitleFontColor="Gray">
                         <tabview:SfTabItem.Content >
+                            <ScrollView>
                                  <StackLayout Margin="10,0,10,10"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                     <!--<chart:SfChart HeightRequest="160">
                                 <chart:SfChart.Series>
@@ -289,6 +290,7 @@
                                 <local1:CustomLabel Margin="0,20,0,0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" Text="{x:Static local:AppResources.NoBillsAvailable}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityALL}">
                                     </local1:CustomLabel>
                                 </StackLayout>
+                            </ScrollView>
                         </tabview:SfTabItem.Content>
                     </tabview:SfTabItem>
                     <tabview:SfTabItem Title="{x:Static local:AppResources.Paid}"   
