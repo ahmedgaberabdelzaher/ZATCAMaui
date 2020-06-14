@@ -104,7 +104,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         public void checkNewFormorOld()
         {
 
-            if (App.ICRStatus == "E0001" && App.ICRStatus == "E00013")
+            if (App.ICRStatus == "E0001" || App.ICRStatus == "E00013")
             {
                 viewModel.IsEnableSwitchToggledFor15PercentChange = true;
             }
