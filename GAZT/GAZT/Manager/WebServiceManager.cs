@@ -3526,7 +3526,8 @@ namespace GAZT.Manager
                     //string url = Constants.GAZTSignUpFirstSubmit + "?sap-language=" + Langz;
                     string url = Constants.GAZTSignUpFirstSubmit + Langz;
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
