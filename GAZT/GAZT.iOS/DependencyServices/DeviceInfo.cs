@@ -14,6 +14,24 @@ namespace GAZT.iOS.DependencyServices
 {
     public class DeviceInfo : IDeviceInfo
     {
+        //public int ScreenHeight => throw new NotImplementedException();
+
+        //public int ScreenWidth => throw new NotImplementedException();
+
+       // public string DeviceId => throw new NotImplementedException();
+
+        //public string Manufacturer => throw new NotImplementedException();
+
+        public string Model => throw new NotImplementedException();
+
+        public string OperatingSystem => throw new NotImplementedException();
+
+        public string OperatingSystemVersion => throw new NotImplementedException();
+
+        public bool IsSimulator => throw new NotImplementedException();
+
+        public bool IsTablet => throw new NotImplementedException();
+
         public double GetDeviceHeight()
         {
             double height = 0;
@@ -104,5 +122,38 @@ namespace GAZT.iOS.DependencyServices
                 return "";
             }
         }
+
+        bool IDeviceInfo.IsJailBreakDetected()
+        {
+            //get
+            //{
+            try
+            {
+                var paths = new[]
+                                {
+                    "/Applications/Cydia.app",
+                    "/private/var/lib/cydia",
+                    "/private/var/tmp/cydia.log",
+                    "/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist",
+                    "/usr/libexec/sftp-server",
+                    "/usr/bin/sshd",
+                    "/usr/sbin/sshd",
+                    "/Applications/FakeCarrier.app",
+                    "/Applications/SBSettings.app",
+                    "/Applications/WinterBoard.app",
+                };
+
+
+                return paths.Any(System.IO.File.Exists);
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+                
+            //}
+        }
+
+       
     }
 }

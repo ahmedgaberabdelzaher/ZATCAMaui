@@ -78,7 +78,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0"  Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
+                            <local:CustomLabel Margin="0,20,0,0"  Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityZakat}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>
@@ -91,7 +91,7 @@
                                TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
                                TitleFontColor="Gray">
                 <tabView:SfTabItem.Content>
-                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10,0,10,0">
+                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0" Margin="0,10,0,0">
                         <ListView IsVisible="{Binding IsCertificateAvailableVAT}"   ItemsSource ="{Binding CertificateListVAT}" VerticalOptions="Fill" x:Name="CertificateLstVAT" HasUnevenRows="true" SelectedItem="{Binding SelectedCertificate}" BackgroundColor="Transparent" SeparatorVisibility="None">
                             <x:Arguments>
                                 <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
@@ -99,8 +99,8 @@
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <cards:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="DarkGreen" IndicatorPosition="Left" IndicatorThickness="5" >
-                                            <StackLayout Orientation="Horizontal">
+                                            <cards:SfCardView HasShadow="True" Margin="10"  Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="DarkGreen" IndicatorPosition="Left"  IndicatorThickness="5" >
+                                                <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
                                                 <local:CustomLabel Text="{Binding Descript}" Style="{StaticResource MiniBlackLabelStyle}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Margin="10" HorizontalTextAlignment="Start">
                                                 </local:CustomLabel>
                                                 <Image Source="ic_pdf.png" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0">
@@ -111,7 +111,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
+                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityVAT}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>
@@ -144,7 +144,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
+                            <local:CustomLabel Margin="0,20,0,0" Text="{x:Static custom2:AppResources.Nocertificateavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityET}">
                         </local:CustomLabel>
                     </StackLayout>
                 </tabView:SfTabItem.Content>

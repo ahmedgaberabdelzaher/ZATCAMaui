@@ -16,6 +16,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
         #region Variable
         SalesDetailsPageViewModel viewModel;
         ZakatReturnDetailsD ZakatReturnDetail = null;
+        string fbNum;
         int selectedIndex = -1;
         #endregion
         #region Property
@@ -31,6 +32,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
                 viewModel.zakatReturnDetailsD = ZakatReturnDetail;
                 viewModel.zakatReturnDetailsDToCompare = ZakatReturnDetail;
                 SalesDetailsPageViewModel.RetGuid = ZakatReturnDetail.d.ReturnIdz;
+                fbNum = ZakatReturnDetail.d.Fbnum;
                // AmendSalesDetailsPageViewModel.SelectedSalesDetails = new SalesDetails();
                 //viewModel.EstimatedZAKATSADADNumber.ObjectionInvoiceVisibility = false;
                 //viewModel.EstimatedZAKATSADADNumber.AmendInvoiceVisibility = false;
@@ -222,6 +224,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
         {
             Image EditImage = sender as Image;
             SalesDetails selectedSalesDetails = (SalesDetails)EditImage.BindingContext;
+            AmendSalesDetailsPageViewModel.fbNum = fbNum;
             if (!viewModel.ConfirmButtonVisibility)
             {
                 double d = Convert.ToDouble(viewModel.zakatReturnDetailsD.d.TvtslI);

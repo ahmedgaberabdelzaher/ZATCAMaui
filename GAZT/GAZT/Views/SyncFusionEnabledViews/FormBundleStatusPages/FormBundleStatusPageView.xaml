@@ -72,6 +72,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBtype}" FontSize="Small" FontAttributes="Bold" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
                             </custom:BorderlessEntry>
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle >
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                    </inputLayout:LabelStyle.FontFamily>
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn" Clicked="TapGestureRecognizer_Tapped" FontSize="Small" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" >
                         </custom:CustomButton>
@@ -124,6 +131,13 @@ HeaderTextColor="White"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtFBnum}" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}" FontFamily="{StaticResource SSTArabicMedium}">
                             </custom:BorderlessEntry>
+                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle >
+                                    <inputLayout:LabelStyle.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                    </inputLayout:LabelStyle.FontFamily>
+                                </inputLayout:LabelStyle>
+                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn1" Clicked="TapGestureRecognizer_Tapped_1" FontSize="Small" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="0" Margin="10,0,10,0" >
                         </custom:CustomButton>

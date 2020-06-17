@@ -4,6 +4,7 @@ using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
+using GAZT.Helper;
 using GAZT.Models;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -79,6 +80,7 @@ namespace EGAZT
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
+        public static bool  IsJailBrokenDevice = false;
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
         //public static bool PreviousIsArabic = false;
@@ -296,6 +298,18 @@ namespace EGAZT
         }
         protected override void OnStart()
         {
+            IsJailBrokenDevice = false;
+            try
+            {
+                 IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts
             AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +

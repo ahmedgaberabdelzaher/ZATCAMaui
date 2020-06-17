@@ -3,7 +3,23 @@ using Xamarin.Forms;
 using GAZT.Helper;
 using Android.OS;
 using System;
+using System.Linq;
 
+using System;
+using System.Linq;
+using Android;
+using Android.App;
+using Android.Content;
+using Android.Graphics;
+using Android.OS;
+using Android.Telephony;
+using Android.Provider;
+using Android.Util;
+using Android.Views;
+using Android.Runtime;
+using Java.IO;
+using Java.Lang;
+using B = Android.OS.Build;
 [assembly: Dependency(typeof(DeviceInfo))]
 namespace GAZT.Droid.DependencyServices
 {
@@ -63,7 +79,7 @@ namespace GAZT.Droid.DependencyServices
                     var context = Android.App.Application.Context;
                     id = Android.Provider.Settings.Secure.GetString(context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
                 }
-                catch (Exception ex)
+                catch (System.Exception ex)
                 {
                     id = "";
                     //Android.Util.Log.Warn("DeviceInfo", "Unable to get id: " + ex.ToString());
@@ -72,5 +88,70 @@ namespace GAZT.Droid.DependencyServices
 
             return id;
         }
+
+
+
+      
+        public string Model => throw new NotImplementedException();
+
+        public string OperatingSystem => throw new NotImplementedException();
+
+        public string OperatingSystemVersion => throw new NotImplementedException();
+
+        public bool IsSimulator => throw new NotImplementedException();
+
+        public bool IsTablet => throw new NotImplementedException();
+
+        static readonly string[] checks = new[]
+        {
+            "/system/app/Superuser.apk",
+            "/sbin/su",
+            "/system/bin/su",
+            "/system/xbin/su",
+            "/data/local/xbin/su",
+            "/data/local/bin/su",
+            "/system/sd/xbin/su",
+            "/system/bin/failsafe/su",
+            "/data/local/su",
+            "/su/bin/su"
+        };
+
+
+        //protected virtual bool CheckJailBreakProcess()
+        //{
+        //    try
+        //    {
+        //        using (var process = Runtime.GetRuntime().Exec("/system/xbin/which", new[] { "su" }))
+        //        {
+        //            using (var reader = new BufferedReader(new InputStreamReader(process.InputStream)))
+        //            {
+        //                if (reader.ReadLine() != null)
+        //                    return true;
+        //            }
+        //        }
+
+        //        return false;
+        //    }
+        //    catch(System.Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
+
+
+        bool IDeviceInfo.IsJailBreakDetected()
+        {
+            if (checks.Any(System.IO.File.Exists))
+                return true;
+
+            if (B.Tags?.Contains("test-keys") ?? false)
+                return true;
+
+            //if (this.CheckJailBreakProcess())
+            //    return true;
+
+            return false;
+        }
+
     }
 }

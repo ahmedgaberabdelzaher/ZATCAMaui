@@ -87,6 +87,8 @@ namespace GAZT.iOS
                 UIRemoteNotificationType notificationType = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
                 UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationType);
             }
+
+
             return base.FinishedLaunching(app, options);
         }
         //Code for PUSH notification
@@ -118,5 +120,52 @@ namespace GAZT.iOS
         //        avAlert.Show();
         //    }
         //}
+
+//        BOOL isJailbroken()
+//        {
+//#if !(TARGET_IPHONE_SIMULATOR)
+
+//            if ([[NSFileManager defaultManager] fileExistsAtPath: @"/Applications/Cydia.app"] ||
+          
+//                 [[NSFileManager defaultManager] fileExistsAtPath: @"/Library/MobileSubstrate/MobileSubstrate.dylib"] ||
+           
+//                  [[NSFileManager defaultManager] fileExistsAtPath: @"/bin/bash"] ||
+            
+//                   [[NSFileManager defaultManager] fileExistsAtPath: @"/usr/sbin/sshd"] ||
+             
+//                    [[NSFileManager defaultManager] fileExistsAtPath: @"/etc/apt"] ||
+              
+//                     [[NSFileManager defaultManager] fileExistsAtPath: @"/private/var/lib/apt/"] ||
+               
+//                      [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"cydia://package/com.example.package"]])  {
+//                return YES;
+//            }
+
+//            FILE* f = NULL;
+//            if ((f = fopen("/bin/bash", "r")) ||
+//               (f = fopen("/Applications/Cydia.app", "r")) ||
+//               (f = fopen("/Library/MobileSubstrate/MobileSubstrate.dylib", "r")) ||
+//               (f = fopen("/usr/sbin/sshd", "r")) ||
+//               (f = fopen("/etc/apt", "r")))
+//            {
+//                fclose(f);
+//                return YES;
+//            }
+//            fclose(f);
+
+//            NSError* error;
+//            NSString* stringToBeWritten = @"This is a test.";
+//            [stringToBeWritten writeToFile:@"/private/jailbreak.txt" atomically: YES encoding:NSUTF8StringEncoding error:&error];
+//            [[NSFileManager defaultManager] removeItemAtPath: @"/private/jailbreak.txt" error: nil];
+//            if (error == nil)
+//            {
+//                return YES;
+//            }
+
+//#endif
+
+//            return NO;
+//        }
+
     }
 }

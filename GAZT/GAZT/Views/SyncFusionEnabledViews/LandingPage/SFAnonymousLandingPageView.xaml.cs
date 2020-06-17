@@ -51,14 +51,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
 
                 //A On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
                 viewModel = App.Locator.SFAnonymousLandingPageView;
                 this.BindingContext = viewModel;
-                DependencyService.Get<IStatusBar>().HideStatusBar();
-                Changecornerradious();
-                LoadDate();
-                LoadData();
-                SetLTR();
-              //  DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+                if (!App.IsJailBrokenDevice)
+                {
+                    DependencyService.Get<IStatusBar>().HideStatusBar();
+                    Changecornerradious();
+                    LoadDate();
+                    LoadData();
+                    SetLTR();
+                }
+                else
+                {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                        });
+                }
+
+                //  DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
             }
             catch (Exception ex)
             {
@@ -106,71 +118,84 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 base.OnAppearing();
-                int transitionCount = 0;
-                try
-                {
-                  
-                    MessagingCenter.Subscribe<SFAnonymousLandingPageViewModel, TransitionType>(this, AppSettings.TransitionMessage, (sender, arg) =>
-                    {
-                        if(transitionCount == 0)
-                        {
-                            transitionCount++;
-                            var transitionType = (TransitionType)arg;
-                            var transitionNavigationPage = Parent as CustomNavigation;
 
-                            if (transitionNavigationPage != null)
+                if (!App.IsJailBrokenDevice)// Checking Jail Broken Device
+                {
+                    int transitionCount = 0;
+                    try
+                    {
+
+                        MessagingCenter.Subscribe<SFAnonymousLandingPageViewModel, TransitionType>(this, AppSettings.TransitionMessage, (sender, arg) =>
+                        {
+                            if (transitionCount == 0)
                             {
-                                transitionNavigationPage.TransitionType = transitionType;
-                                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
-                                viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+                                transitionCount++;
+                                var transitionType = (TransitionType)arg;
+                                var transitionNavigationPage = Parent as CustomNavigation;
+
+                                if (transitionNavigationPage != null)
+                                {
+                                    transitionNavigationPage.TransitionType = transitionType;
+                                    ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
+                                    viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
+                                }
+                            }
+                            else
+                            {
 
                             }
-                        }
-                        else
+
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                    //var safeInsets = On<iOS>().SafeAreaInsets();
+                    //safeInsets.Top = 20;
+                    //Padding = safeInsets;
+
+                    if (App.IsSessionExpired)
+                    {
+                        await viewModel._dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
+                        App.IsSessionExpired = false;
+                    }
+                    else
+                    {
+
+                    }
+
+                    if (App.IsLogOut)
+                    {
+                        App.IsLogOut = false;
+                        var existingPages = Navigation.NavigationStack.ToList();
+
+                        foreach (var page in existingPages)
                         {
+                            if (page.GetType().Name != App.SFAnonymousLandingPageView)
+                            {
+                                Navigation.RemovePage(page);
+
+                            }
 
                         }
-                      
-                    });
-                }
-                catch(Exception ex)
-                {
+                    }
 
-                }
-               
-                //var safeInsets = On<iOS>().SafeAreaInsets();
-                //safeInsets.Top = 20;
-                //Padding = safeInsets;
-
-                if (App.IsSessionExpired)
-                {
-                    await viewModel._dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    App.IsSessionExpired = false;
+                    SetLTR();
+                    Changecornerradious();
+                    InitializeComponent();
                 }
                 else
                 {
-
-                }
-
-                if (App.IsLogOut)
-                {
-                    App.IsLogOut = false;
-                    var existingPages = Navigation.NavigationStack.ToList();
-                
-                    foreach (var page in existingPages)
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        if (page.GetType().Name != App.SFAnonymousLandingPageView)
-                        {
-                            Navigation.RemovePage(page);
-
-                        }
-
-                    }
+                        await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                    });
                 }
 
-                SetLTR();
-                Changecornerradious();
-                InitializeComponent();
+               
             }
             catch (Exception ex)
             {
@@ -201,17 +226,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
         private void SignIn_Clicked(object sender, EventArgs e)
         {
-            if (CrossConnectivity.Current.IsConnected)
+            if (!App.IsJailBrokenDevice)
             {
-                viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+                if (CrossConnectivity.Current.IsConnected)
+                {
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
                 });
             }
+
+           
         }
 
         private void OnTappedeService(object sender, EventArgs e)
@@ -312,22 +349,56 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         }
         private void OptionMenuClicked(object sender, EventArgs e)
         {
-            ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
-            viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
-        }
-        private void SignUP_Clicked(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
-        }
-        private void OnGaztLinkClicked(object sender, EventArgs e)
-        {
-            if (App.IsArabic)
+            if (!App.IsJailBrokenDevice)
             {
-                Device.OpenUri(new Uri("https://gazt.gov.sa/ar/pages/default.aspx"));
+
+                ComingToOptionScreenFrom comingToOptionScreenFrom = ComingToOptionScreenFrom.IsAnonymousPage;
+                viewModel._navigationService.NavigateTo(App.SFOptionsPageView, comingToOptionScreenFrom);
+
             }
             else
             {
-                Device.OpenUri(new Uri("https://gazt.gov.sa/en/pages/default.aspx"));
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                });
+            }
+
+       }
+        private void SignUP_Clicked(object sender, EventArgs e)
+        {
+            if (!App.IsJailBrokenDevice)
+            {
+                viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                });
+            }
+
+        }
+        private void OnGaztLinkClicked(object sender, EventArgs e)
+        {
+            if (!App.IsJailBrokenDevice)
+            {
+                if (App.IsArabic)
+                {
+                    Device.OpenUri(new Uri("https://gazt.gov.sa/ar/pages/default.aspx"));
+                }
+                else
+                {
+                    Device.OpenUri(new Uri("https://gazt.gov.sa/en/pages/default.aspx"));
+                }
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                });
             }
         }
     }
