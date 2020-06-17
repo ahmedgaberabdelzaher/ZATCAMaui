@@ -128,7 +128,6 @@
                                          ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="FillAndExpand"  VerticalOptions="EndAndExpand">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <!--HeightRequest="100" WidthRequest="100" BorderWidth=".5"-->
                                 <cards:SfCardView CornerRadius="8" VerticalOptions="CenterAndExpand" Margin="1,0,1,0"   HorizontalOptions="CenterAndExpand"  BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
                                     <cards:SfCardView.Content>
                                         <Grid>
