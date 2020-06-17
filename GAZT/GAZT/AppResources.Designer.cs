@@ -7776,6 +7776,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmation.
+        /// </summary>
+        public static string ZZZConfirmationMsg {
+            get {
+                return ResourceManager.GetString("ZZZConfirmationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Information.
         /// </summary>
         public static string ZZZContactInformation {
@@ -7919,6 +7928,15 @@ namespace EGAZT {
         public static string ZZZIndividualInformation {
             get {
                 return ResourceManager.GetString("ZZZIndividualInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Information.
+        /// </summary>
+        public static string ZZZInformationNew {
+            get {
+                return ResourceManager.GetString("ZZZInformationNew", resourceCulture);
             }
         }
         

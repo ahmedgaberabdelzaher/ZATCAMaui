@@ -2928,6 +2928,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
                         Pop.Message = AppResources.ZZValidationMessage02_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                        Pop.HeaderText = AppResources.ZZZInformationNew;
                         if (App.IsArabic)
                         {
                             Pop.FlowDirections = "RightToLeft";
@@ -2947,6 +2948,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage01_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3031,6 +3033,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = AppResources.ZZValidationMessage04_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3050,6 +3053,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 PopUp Pop = new PopUp();
                                 Pop.IsLinkAvailable = false;
                                 Pop.Message = string.Format(AppResources.ZZValidationMessage03_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                                Pop.HeaderText = AppResources.ZZZInformationNew;
                                 if (App.IsArabic)
                                 {
                                     Pop.FlowDirections = "RightToLeft";
@@ -3181,6 +3185,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         Masseges.Append(Massege);
                         PopUp Pop = new PopUp();
                         Pop.IsLinkAvailable = false;
+                        Pop.HeaderText = AppResources.ZZZInformationNew;
                         string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
                         //  decimal PercentageValue = (EntryZerosalesAmt / 100) * Convert.ToDecimal(Percentage);
                         if (((Convert.ToDecimal(Percentage) / 100) * EntryZerosalesAmt) + EntryZerosalesAmt < EntryZerosalesAdj)
@@ -3212,6 +3217,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage06_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3322,6 +3328,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         {
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             Masseges.Append(Massege);
                             string Percentage = viewModel.CalculationRateSetVTTH.Where(a => a.Type == "002").Select(x => x.Percentage).FirstOrDefault();
                             // decimal PercentageValue = (EntryExportsAmt / 100) * Convert.ToDecimal(Percentage);
@@ -3353,6 +3360,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 PopUp Pop = new PopUp();
                                 Pop.IsLinkAvailable = false;
+                                Pop.HeaderText = AppResources.ZZZInformationNew;
                                 Pop.Message = string.Format(AppResources.ZZValidationMessage08_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
@@ -3466,6 +3474,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     if (!string.IsNullOrEmpty(Message))
                     {
                         PopUp Pop = new PopUp();
+                        Pop.HeaderText = AppResources.ZZZInformationNew;
                         Masseges.Append(Message);
                         if (viewModel.CalculationRateSetVTTH != null)
                         {
@@ -3503,6 +3512,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             {
                                 PopUp Pop = new PopUp();
                                 Pop.IsLinkAvailable = false;
+                                Pop.HeaderText = AppResources.ZZZInformationNew;
                                 Pop.Message = string.Format(AppResources.ZZValidationMessage10_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
                                 if (App.IsArabic)
                                 {
@@ -3621,6 +3631,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     PopUp Pop = new PopUp();
                     Pop.IsLinkAvailable = false;
                     Pop.Message = AppResources.ZZValidationMessage12_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                    Pop.HeaderText = AppResources.ZZZInformationNew;
                     if (App.IsArabic)
                     {
                         Pop.FlowDirections = "RightToLeft";
@@ -3648,6 +3659,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage13_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3734,6 +3746,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage14_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3820,6 +3833,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage15_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3906,6 +3920,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage16_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -3992,6 +4007,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                             PopUp Pop = new PopUp();
                             Pop.IsLinkAvailable = false;
                             Pop.Message = string.Format(AppResources.ZZValidationMessage17_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero, Percentage.Split('.')[0]);
+                            Pop.HeaderText = AppResources.ZZZInformationNew;
                             if (App.IsArabic)
                             {
                                 Pop.FlowDirections = "RightToLeft";
@@ -5264,7 +5280,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 bool result;
                 if(App.IsArabic)
                 {
-                     result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage,AppResources.ZZZCancelText,AppResources.ZZZOkayText);
+                     result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundEnableMessage,AppResources.ZZZCancelText,AppResources.ZZZOkayText);
                         if (!result)
                         {
                             viewModel.IsSwichButtonEnable = true;
@@ -5277,7 +5293,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
                 else
                 {
-                     result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
+                     result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
                         if (result)
                         {
                             viewModel.IsSwichButtonEnable = true;

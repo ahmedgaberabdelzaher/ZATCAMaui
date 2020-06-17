@@ -28,6 +28,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel
                 RaisePropertyChanged("PopMessage");
             }
         }
+        private String _headerText;
+        public String HeaderText
+        {
+            get
+            {
+                return _headerText;
+            }
+            set
+            {
+                _headerText = value;
+                RaisePropertyChanged("HeaderText");
+            }
+        }
         private bool _isVisibleLink;
         public bool IsVisibleLink
         {

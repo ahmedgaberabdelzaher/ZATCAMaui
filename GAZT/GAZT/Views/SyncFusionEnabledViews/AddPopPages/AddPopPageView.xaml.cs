@@ -13,70 +13,81 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
         AddPopPageViewModel viewModel;
         public AddPopPageView(PopUp objPopUP)
         {
-            try
+            if (objPopUP != null)
             {
-                viewModel = App.Locator.AddPopPageView;
-                this.BindingContext = viewModel;
-                InitializeComponent();
-                SetLTR();
-                if (objPopUP.isFontSet)
+                try
                 {
-                    if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                    viewModel = App.Locator.AddPopPageView;
+                    this.BindingContext = viewModel;
+                    InitializeComponent();
+                    SetLTR();
+                    if (objPopUP.isFontSet)
                     {
-                        Message_label.FontFamily = "SSTArabic-Bold.ttf#SSTArabic";
+                        if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                        {
+                            Message_label.FontFamily = "SSTArabic-Bold.ttf#SSTArabic";
+                        }
+                        else
+                        {
+                            Message_label.FontFamily = "SSTArabic-Bold";
+                        }
+                        //Msglabel.FontFamily = "SSTArBold";
+                    }
+                    if(string.IsNullOrEmpty(objPopUP.HeaderText))
+                    {
+                        viewModel.HeaderText = AppResources.ZInstructions;
                     }
                     else
                     {
-                        Message_label.FontFamily = "SSTArabic-Bold";
+                        viewModel.HeaderText = objPopUP.HeaderText;
                     }
-                    //Msglabel.FontFamily = "SSTArBold";
+                    viewModel.PopMessage = objPopUP.Message;
+                    viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
+                    viewModel.Link = objPopUP.Link;
+                    viewModel.LinkMessage = objPopUP.LinkMessage;
+                    if (!string.IsNullOrEmpty(objPopUP.IsBold))
+                    {
+                        viewModel.IsBold = objPopUP.IsBold;
+                    }
+                    else
+                    {
+                        viewModel.IsBold = "Bold";
+                    }
+                    if (!string.IsNullOrEmpty(objPopUP.IsRed))
+                    {
+                        viewModel.IsRed = objPopUP.IsRed;
+                    }
+                    else
+                    {
+                        viewModel.IsRed = "#7D858D";
+                    }
+                    viewModel.FlowDirections = objPopUP.FlowDirections;
                 }
-                viewModel.PopMessage = objPopUP.Message;
-                viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
-                viewModel.Link = objPopUP.Link;
-                viewModel.LinkMessage = objPopUP.LinkMessage;
-                if (!string.IsNullOrEmpty(objPopUP.IsBold))
+                catch (Exception e)
                 {
-                    viewModel.IsBold = objPopUP.IsBold;
+                    viewModel.PopMessage = objPopUP.Message;
+                    viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
+                    viewModel.Link = objPopUP.Link;
+                    viewModel.LinkMessage = objPopUP.LinkMessage;
+                    if (!string.IsNullOrEmpty(objPopUP.IsBold))
+                    {
+                        viewModel.IsBold = objPopUP.IsBold;
+                    }
+                    else
+                    {
+                        viewModel.IsBold = "Bold";
+                    }
+                    if (!string.IsNullOrEmpty(objPopUP.IsRed))
+                    {
+                        viewModel.IsRed = objPopUP.IsRed;
+                    }
+                    else
+                    {
+                        viewModel.IsRed = "#7D858D";
+                    }
+                    viewModel.FlowDirections = objPopUP.FlowDirections;
+                    SetLTR();
                 }
-                else
-                {
-                    viewModel.IsBold = "Bold";
-                }
-                if (!string.IsNullOrEmpty(objPopUP.IsRed))
-                {
-                    viewModel.IsRed = objPopUP.IsRed;
-                }
-                else
-                {
-                    viewModel.IsRed = "#7D858D";
-                }
-                viewModel.FlowDirections = objPopUP.FlowDirections;
-            }
-            catch (Exception e)
-            {
-                viewModel.PopMessage = objPopUP.Message;
-                viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;
-                viewModel.Link = objPopUP.Link;
-                viewModel.LinkMessage = objPopUP.LinkMessage;
-                if (!string.IsNullOrEmpty(objPopUP.IsBold))
-                {
-                    viewModel.IsBold = objPopUP.IsBold;
-                }
-                else
-                {
-                    viewModel.IsBold = "Bold";
-                }
-                if (!string.IsNullOrEmpty(objPopUP.IsRed))
-                {
-                    viewModel.IsRed = objPopUP.IsRed;
-                }
-                else
-                {
-                    viewModel.IsRed = "#7D858D";
-                }
-                viewModel.FlowDirections = objPopUP.FlowDirections;
-                SetLTR();
             }
         }
         private void SetLTR()

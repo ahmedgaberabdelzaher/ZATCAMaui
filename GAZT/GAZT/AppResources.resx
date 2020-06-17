@@ -3389,4 +3389,10 @@ Should we require further information, we would be in contact.</value>
 2. Sales list subject to VAT (0%-15%-Exempt) 
 3. Purchased list subject to VAT (15%, reverse charge)</value>
   </data>
+  <data name="ZZZInformationNew" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="ZZZConfirmationMsg" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
 </root>

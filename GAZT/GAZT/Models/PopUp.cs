@@ -13,6 +13,7 @@ namespace GAZT.Models
         public string Link { get; set; }
         public string FlowDirections { get; set; }
         public bool isFontSet { get; set; }
+        public string HeaderText { get; set; }
     }
     public class ForPdfJs
     {

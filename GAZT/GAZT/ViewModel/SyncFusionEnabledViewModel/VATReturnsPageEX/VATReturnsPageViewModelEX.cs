@@ -3608,7 +3608,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool result;
                 if(App.IsArabic)
                 {
-                     result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg,AppResources.ZZCancel,AppResources.Confirm);
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundNoMsg,AppResources.ZZCancel,AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3622,7 +3622,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 else
                 {
-                     result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;
@@ -3663,7 +3663,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3677,7 +3677,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     else
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
                         if (!result)
                         {
                             returnResult = true;
@@ -3694,7 +3694,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 {
                     if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;
@@ -3708,7 +3708,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     else
                     {
-                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
                         if (result)
                         {
                             returnResult = true;

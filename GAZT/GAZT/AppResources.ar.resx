@@ -3381,4 +3381,10 @@
 2.المبيعات الخاضعة لضريبة القيمة المضافة (غير مشمول 0% -15%)
 3.المشتريات الخاضعة لضريبة القيمة المضافة (15%، رسوم عكسية)</value>
   </data>
+  <data name="ZZZInformationNew" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="ZZZConfirmationMsg" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
 </root>
