@@ -6540,6 +6540,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notification.
+        /// </summary>
+        public static string ZZNotification {
+            get {
+                return ResourceManager.GetString("ZZNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Objection request will not be submitted to GAZT until you pay the undisputed amount plus 25% of the disputed amount.
         /// </summary>
         public static string ZZObjectionrequestwillnotbesubmittedtoGAZTuntilyoupaytheundisputedamountplus25ofthedisputedamount {
@@ -8133,6 +8142,18 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
+        ///1. Trail balance for the return period 
+        ///2. Sales list subject to VAT (0%-15%-Exempt) 
+        ///3. Purchased list subject to VAT (15%, reverse charge).
+        /// </summary>
+        public static string ZZZRefundYesMsgForFiteenPercent {
+            get {
+                return ResourceManager.GetString("ZZZRefundYesMsgForFiteenPercent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required *.
         /// </summary>
         public static string ZZZRequired {
@@ -8498,12 +8519,6 @@ namespace EGAZT {
         public static string ZZZYesText {
             get {
                 return ResourceManager.GetString("ZZZYesText", resourceCulture);
-            }
-        }
-        
-        public static string ZZNotification {
-            get {
-                return ResourceManager.GetString("ZZNotification", resourceCulture);
             }
         }
     }

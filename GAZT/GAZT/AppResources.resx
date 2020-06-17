@@ -544,7 +544,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="Somethingwentwrong" xml:space="preserve">
     <value>Something went wrong, Please try again</value>
   </data>
-    <data name="RequestTimeoutTitle" xml:space="preserve">
+  <data name="RequestTimeoutTitle" xml:space="preserve">
     <value>Request Timeout</value>
   </data>
   <data name="RequestTimeoutDescription" xml:space="preserve">
@@ -3382,5 +3382,11 @@ Should we require further information, we would be in contact.</value>
   </data>
   <data name="ZZNotification" xml:space="preserve">
     <value>Notification</value>
+  </data>
+  <data name="ZZZRefundYesMsgForFiteenPercent" xml:space="preserve">
+    <value>Dear Taxpayer, GAZT may request from you to upload the following information during the review of your refund request:
+1. Trail balance for the return period 
+2. Sales list subject to VAT (0%-15%-Exempt) 
+3. Purchased list subject to VAT (15%, reverse charge)</value>
   </data>
 </root>

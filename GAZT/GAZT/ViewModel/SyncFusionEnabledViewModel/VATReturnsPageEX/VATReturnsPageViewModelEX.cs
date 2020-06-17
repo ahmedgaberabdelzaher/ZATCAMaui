@@ -3597,7 +3597,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             if (Convert.ToDouble(NetVAT) <= 0 && IsVisibleDropdownForRefund == false && IsRefundVisible == true)
             {
-                var result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                bool result;
+                if(App.IsArabic)
+                {
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg,AppResources.ZZCancel,AppResources.Confirm);
+                }
+                else
+                {
+                     result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                }
+
                 if (result)
                 {
                     returnResult = true;
@@ -3630,7 +3639,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             if (Convert.ToDouble(NetVAT) <= 0 && IsVisibleDropdownForRefund == true && IsRefundVisible == true)
             {
-                var result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                bool result;
+                if (App.IsArabic)
+                {
+                    if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
+                    {
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
+                    }
+                    else
+                    {
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
+                    }
+                }
+                else
+                {
+                    if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
+                    {
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
+                    }
+                    else
+                    {
+                        result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                    }
+                }
                 if (result)
                 {
                     returnResult = true;

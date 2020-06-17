@@ -5261,7 +5261,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             if (!viewModel.IsSwichButtonEnable)
             {
-                var result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
+                bool result;
+                if(App.IsArabic)
+                {
+                     result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage,AppResources.ZZZCancelText,AppResources.ZZZOkayText);
+
+                }
+                else
+                {
+                     result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
+
+                }
                 if (result)
                 {
                     viewModel.IsSwichButtonEnable = true;
