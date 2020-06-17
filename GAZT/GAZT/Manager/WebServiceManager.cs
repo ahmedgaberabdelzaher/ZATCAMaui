@@ -3455,8 +3455,8 @@ namespace GAZT.Manager
 
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res =await  client.PostAsync(uri, contentPost);
-                    FirstSignupSubmit =await  res.Content.ReadAsStringAsync();
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    FirstSignupSubmit = await res.Content.ReadAsStringAsync();
                     // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
                     return FirstSignupSubmit;
                 }
@@ -3480,7 +3480,7 @@ namespace GAZT.Manager
             {
                 try
                 {
-                 
+
 
                     //string FirstSignupSubmit = string.Empty;
                     //string url = Constants.GAZTSignUpFirstSubmit;
@@ -4313,7 +4313,7 @@ namespace GAZT.Manager
 
         public static string CreateSAMLLoginURL(string Euser, string DeviceId, string FcmId, string DeviceTyp, string Language)
         {
-            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='"+ DeviceId +"'"  + ",FcmId='" +
+            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + DeviceId + "'" + ",FcmId='" +
                 FcmId + "'" + ",DeviceTyp='" + DeviceTyp + "')?sap-language=" + Language + "&$format=json";
             return FullUrl;
         }
@@ -4832,58 +4832,6 @@ namespace GAZT.Manager
             else
             {
                 throw new GAZTInternetException();
-            }
-        }
-
-        public static async Task<AttachmentDocumentModel> GAZTGetAllAttachments(String retGuid, String fbNum)
-        {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                String GAZTAttachmentsResponseResult = String.Empty;
-                AttachmentDocumentModel attachmentDocumentModel = null;
-                try
-                {
-                    HttpClient client = new HttpClient(App.httpClientHandler);
-                    client.DefaultRequestHeaders.Add("Token", "123");
-
-                    //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr%20eq%20%27065000210711%27%20and%20RetGuid%20eq%20%27005056B1F8FB1EEAA9D0D6E708285146%27&saml2=enabled&$format=json";
-                    //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '" +fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
-
-                    string url = Constants.GAZTGetAllAttachments + fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
-
-                    var uri = new Uri(url);
-                    HttpResponseMessage GAZTGetAllAttachmentsResponse = await client.GetAsync(uri);
-
-                    if (GAZTGetAllAttachmentsResponse != null)
-                    {
-                        GAZTAttachmentsResponseResult = GAZTGetAllAttachmentsResponse.Content.ReadAsStringAsync().Result;
-                    }
-                    if (!string.IsNullOrEmpty(GAZTAttachmentsResponseResult))
-                    {
-                        GAZTAttachmentsResponseResult = JObject.Parse(GAZTAttachmentsResponseResult).ToString();
-                        attachmentDocumentModel = JsonConvert.DeserializeObject<AttachmentDocumentModel>(GAZTAttachmentsResponseResult);
-                        if (attachmentDocumentModel == null)
-                        {
-                            throw new Exception(AppResources.NoTINsAvailable);
-                        }
-                    }
-                    return attachmentDocumentModel;
-                }
-                catch (Exception ex)
-                {
-                    if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
-                    {
-                        throw new Exception(AppResources.NoTINsAvailable);
-                    }
-                    else
-                    {
-                        throw new Exception(AppResources.NetworkConnectivityIssue);
-                    }
-                }
-            }
-            else
-            {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
         #endregion
