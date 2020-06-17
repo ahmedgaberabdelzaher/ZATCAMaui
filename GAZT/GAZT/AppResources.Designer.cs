@@ -2091,6 +2091,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your device does not pass the GAZT security check.
+        /// </summary>
+        public static string YourDeviceDoesNotPassTheGAZTSecurityCheck {
+            get {
+                return ResourceManager.GetString("YourDeviceDoesNotPassTheGAZTSecurityCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password has been changed successfully.
         /// </summary>
         public static string YourPasswordhasbeenChangedsuccessfully {
