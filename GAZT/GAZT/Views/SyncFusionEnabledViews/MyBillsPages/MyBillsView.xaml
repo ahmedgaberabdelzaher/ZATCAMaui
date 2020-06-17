@@ -224,7 +224,7 @@
                                                            >
                                                                     <Label.FormattedText>
                                                                         <FormattedString>
-                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueAmount}"></Span>
+                                                                            <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZZZInvoiceamount}"></Span>
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TestDueAmount}"></Span>
                                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" "></Span>
@@ -382,7 +382,7 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueAmount}"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZZZInvoiceamount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TestDueAmount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" "></Span>
@@ -540,7 +540,7 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueAmount}"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZZZInvoiceamount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TestDueAmount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" "></Span>
@@ -693,7 +693,7 @@
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.DueAmount}"></Span>
+                                                                        <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZZZInvoiceamount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TestDueAmount}"></Span>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" "></Span>

@@ -3387,4 +3387,7 @@
   <data name="ZZZConfirmationMsg" xml:space="preserve">
     <value>تأكيد</value>
   </data>
+  <data name="ZZZInvoiceamount" xml:space="preserve">
+    <value>مبلغ الفاتورة</value>
+  </data>
 </root>

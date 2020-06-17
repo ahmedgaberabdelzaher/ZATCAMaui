@@ -7959,6 +7959,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Amount.
+        /// </summary>
+        public static string ZZZInvoiceamount {
+            get {
+                return ResourceManager.GetString("ZZZInvoiceamount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please use your GAZT account to log in or create a new account.
         /// </summary>
         public static string ZZZLandingCreateAccountNote {
