@@ -3375,4 +3375,10 @@
   <data name="ZZNotification" xml:space="preserve">
     <value>اشعار</value>
   </data>
+    
+   <data name="YourDeviceDoesNotPassTheGAZTSecurityCheck" xml:space="preserve">
+    <value>جهازك لا يتوافق مع متطلبات الامان المحددة</value>
+    <comment>Annonymous landing page</comment>
+  </data>
+    
 </root>

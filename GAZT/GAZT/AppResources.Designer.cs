@@ -5639,5 +5639,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZNotification", resourceCulture);
             }
         }
+        
+        public static string YourDeviceDoesNotPassTheGAZTSecurityCheck {
+            get {
+                return ResourceManager.GetString("YourDeviceDoesNotPassTheGAZTSecurityCheck", resourceCulture);
+            }
+        }
     }
 }

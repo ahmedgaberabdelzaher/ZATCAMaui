@@ -36,13 +36,13 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = QADomainForCookies;
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string DomainUrlForCookies = QADomainForCookies;
 
-        public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        public static string DomainUrlForCookies = ProdDomainForCookies  ;
+        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = ProdDomainForCookies  ;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
