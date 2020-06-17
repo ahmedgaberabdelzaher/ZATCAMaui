@@ -3375,19 +3375,23 @@
   <data name="ZZNotification" xml:space="preserve">
     <value>اشعار</value>
   </data>
+  <data name="YourDeviceDoesNotPassTheGAZTSecurityCheck" xml:space="preserve">
+    <value>جهازك لا يتوافق مع متطلبات الامان المحددة</value>
+    <comment>Annonymous landing page</comment>
+  </data>
+  <data name="ZZZConfirmationMsg" xml:space="preserve">
+    <value>تأكيد</value>
+  </data>
+  <data name="ZZZInformationNew" xml:space="preserve">
+    <value>معلومات</value>
+  </data>
+  <data name="ZZZInvoiceamount" xml:space="preserve">
+    <value>مبلغ الفاتورة</value>
+  </data>
   <data name="ZZZRefundYesMsgForFiteenPercent" xml:space="preserve">
     <value>عزيزي المكلف, قد تحتاج الهيئة خلال مراجعة طلب الاسترداد الى البيانات الإضافية التالية:
 1.ميزان المراجعة لفترة الإقرار
 2.المبيعات الخاضعة لضريبة القيمة المضافة (غير مشمول 0% -15%)
 3.المشتريات الخاضعة لضريبة القيمة المضافة (15%، رسوم عكسية)</value>
-  </data>
-  <data name="ZZZInformationNew" xml:space="preserve">
-    <value>معلومات</value>
-  </data>
-  <data name="ZZZConfirmationMsg" xml:space="preserve">
-    <value>تأكيد</value>
-  </data>
-  <data name="ZZZInvoiceamount" xml:space="preserve">
-    <value>مبلغ الفاتورة</value>
   </data>
 </root>

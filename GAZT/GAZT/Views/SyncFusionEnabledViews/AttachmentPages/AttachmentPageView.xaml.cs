@@ -33,8 +33,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             InitializeComponent();
             SetLTR();
-            double ht =  DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
-            ht = (ht * 45)/100;
+            double ht = DependencyService.Get<IDeviceInfo>().GetDeviceHeight();
+            ht = (ht * 45) / 100;
             AttachmentList.HeightRequest = ht;
             ChangeAeroIcon();
             List.ItemTapped += (object sender, ItemTappedEventArgs e) =>
@@ -49,7 +49,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
                 viewModel = App.Locator.AttachmentPageView;
                 this.BindingContext = viewModel;
-               
+
                 viewModel.VatAttachmentsList = null;
                 viewModel.ClearData();
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
@@ -67,16 +67,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                         {
                             if (!App.ICRStatus.Equals("E0001"))
                             {
-                                if(AttachmentCount < ICRListPageViewModel.numberOfAttachmentComingFromServer)
+                                if (AttachmentCount < ICRListPageViewModel.numberOfAttachmentComingFromServer)
                                 {
                                     AttachmentCount++;
-                                        if (item.Erfdt != null)
+                                    if (item.Erfdt != null)
                                     {
                                         item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                         item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                     }
                                 }
-                                    
+
                             }
 
                             //if (App.IsArabic)
@@ -97,7 +97,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                             //    }
                             //}
                         }
-                        if(App.ICRStatus.Equals("E0045"))
+                        if (App.ICRStatus.Equals("E0045"))
                         {
                             viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                         }
@@ -127,7 +127,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModelEX.IsAmend == false))
+                if ((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == false))
                 {
                     //Show some message
 
@@ -139,13 +139,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     //    DeleteAttachment(result, attachment);
                     //}
                 }
-                else if((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModelEX.IsAmend == true))
+                else if ((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == true))
                 {
                     try
                     {
                         Image arrowImage = sender as Image;
                         VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-                        if(!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
+                        if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         {
                             int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
                             if (indexToReduceTheSize > viewModel.NumberOfAttachmentComingFromServer - 1)
@@ -157,17 +157,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                                 }
                             }
                         }
-                       
-                        
+
+
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                     }
-                   
-                    
+
+
                 }
-                else 
+                else
                 {
                     try
                     {
@@ -192,9 +192,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     {
 
                     }
-                   
+
                 }
-                
+
             }
             catch (InternetException ex)
             {
@@ -228,7 +228,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
                             VATAttachment listitemTwo = (from itm in viewModel.AttachmentList
                                                          where itm.Doguid == attachment.Doguid.ToString()
-                                                   select itm)
+                                                         select itm)
                                             .FirstOrDefault<VATAttachment>();
 
                             viewModel.VatAttachmentsList.Remove(listitem);
@@ -287,18 +287,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 //}
                 //else
                 //{
-                    if (attachment.DocUrl != null)
+                if (attachment.DocUrl != null)
+                {
+                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                }
+                else
+                {
+                    //pop that certificate is not available
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-                    }
-                    else
-                    {
-                        //pop that certificate is not available
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                        });
-                    }
+                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    });
+                }
                 //}
             }
             else
@@ -333,7 +333,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             {
                 viewModel.IsLoading = true;
             });
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
                 try
                 {
@@ -368,7 +368,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                             File = new ShareFile(file)
                         });
                     });
-                  
+
                 }
                 catch (Exception ex)
                 {
