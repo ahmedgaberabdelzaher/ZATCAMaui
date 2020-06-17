@@ -107,7 +107,7 @@
                         </StackLayout>
                         <StackLayout VerticalOptions="EndAndExpand">
                             <buttons:SfButton Text="{x:Static local:AppResources.ZVatRefresh}" IsVisible="{Binding IsRefreshButtonVisible}" Clicked="OnVATRefreshButtonClicked" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
-                            <buttons:SfButton Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
+                            <buttons:SfButton Text="{x:Static local:AppResources.DownloadAcknowlwdgement}" IsVisible="{Binding IsAcknowledgementButtonVisible}" Command="{Binding OnAcknowlwdgementClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
                             <buttons:SfButton Text="{x:Static local:AppResources.ZDownloadForm}" IsVisible="{Binding IsButtonVisible}" Command="{Binding OnDownloadFormClicked}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7" VerticalOptions="EndAndExpand"></buttons:SfButton>
                         </StackLayout>
                     </StackLayout>

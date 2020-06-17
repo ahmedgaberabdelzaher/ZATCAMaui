@@ -39,6 +39,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                     viewModel.SadadNumber = string.Empty;
                     viewModel.IsSadadNumberVisible = false;
                     viewModel.IsButtonVisible = false;
+                    viewModel.IsAcknowledgementButtonVisible = false;
                     if ((App.ICRStatus == "E0045") && viewModel.VATDeclarationData.d.RefundFg != "1")
                     {
                         if (Convert.ToDouble(viewModel.VATDeclarationData.d.NetdueVat) <= 0)
@@ -47,6 +48,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                             viewModel.IsSadadNoteVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
+                            if (vATDeclaration.d.EstimatedFg == "X")
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = true;
+                            }
                         }
                         else
                         {
@@ -61,6 +70,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                             viewModel.IsSadadNoteVisible = false;
                             viewModel.IsRefreshButtonVisible = false;
                             viewModel.IsButtonVisible = true;
+                            if (vATDeclaration.d.EstimatedFg == "X")
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                viewModel.IsAcknowledgementButtonVisible = true;
+                            }
                         }
                         else
                         {
@@ -80,6 +97,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                         viewModel.IsSadadNoteVisible = false;
                         viewModel.IsRefreshButtonVisible = false;
                         viewModel.IsButtonVisible = true;
+                        if (vATDeclaration.d.EstimatedFg == "X")
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = false;
+                        }
+                        else
+                        {
+                            viewModel.IsAcknowledgementButtonVisible = true;
+                        }
                     }
                     viewModel.ReceiptDate = JsonConvert.DeserializeObject<DateTime>(@"""" + viewModel.VATDeclarationData.d.ReceiptDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     //if (App.IsArabic)

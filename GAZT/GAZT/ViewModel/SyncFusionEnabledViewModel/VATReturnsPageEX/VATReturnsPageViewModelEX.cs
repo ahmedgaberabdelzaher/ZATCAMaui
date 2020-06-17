@@ -3400,6 +3400,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             IsGetAcknowledgementClicked = true;
                             IsMoreButtonEnabled = false;
                         });
+                        if(App.ICRStatus=="E0045" || App.ICRStatus=="E0056")
+                        {
+                            await Task.Delay(5000);
+                        }
                         //ManageEnabledProperty(false);
                         _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                     }
@@ -3500,6 +3504,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                         IsGetAcknowledgementClicked = true;
                                         IsMoreButtonEnabled = false;
                                     });
+                                    if (App.ICRStatus == "E0045" || App.ICRStatus == "E0056")
+                                    {
+                                        await Task.Delay(5000);
+                                    }
                                     //ManageEnabledProperty(false);
                                     _navigationService.NavigateTo(App.AcknowledgementDetailsPageView, VATDeclarationData);
                                 }
@@ -3601,22 +3609,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 if(App.IsArabic)
                 {
                      result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg,AppResources.ZZCancel,AppResources.Confirm);
+                        if (!result)
+                        {
+                            returnResult = true;
+                            IsRefundNoMsgDisplayed = true;
+                            IsRefundYesMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                 }
                 else
                 {
                      result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundNoMsg, AppResources.Confirm, AppResources.ZZCancel);
+                        if (result)
+                        {
+                            returnResult = true;
+                            IsRefundNoMsgDisplayed = true;
+                            IsRefundYesMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                 }
 
-                if (result)
-                {
-                    returnResult = true;
-                    IsRefundNoMsgDisplayed = true;
-                    IsRefundYesMsgDisplayed = false;
-                }
-                else
-                {
-                    returnResult = false;
-                }
+                
                 Task.Run(() =>
                 {
                     IsLoading = true;
@@ -3645,10 +3664,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
                     {
                         result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.ZZCancel, AppResources.Confirm);
+                        if (!result)
+                        {
+                            returnResult = true;
+                            IsRefundYesMsgDisplayed = true;
+                            IsRefundNoMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                     }
                     else
                     {
                         result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.ZZCancel, AppResources.Confirm);
+                        if (!result)
+                        {
+                            returnResult = true;
+                            IsRefundYesMsgDisplayed = true;
+                            IsRefundNoMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                     }
                 }
                 else
@@ -3656,22 +3695,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     if (VATDeclarationData != null && VATDeclarationData.d != null && VATDeclarationData.d.GoliveFg == "X")
                     {
                         result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsgForFiteenPercent, AppResources.Confirm, AppResources.ZZCancel);
+                        if (result)
+                        {
+                            returnResult = true;
+                            IsRefundYesMsgDisplayed = true;
+                            IsRefundNoMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                     }
                     else
                     {
                         result = await Application.Current.MainPage.DisplayAlert(AppResources.Information, AppResources.ZZZRefundYesMsg, AppResources.Confirm, AppResources.ZZCancel);
+                        if (result)
+                        {
+                            returnResult = true;
+                            IsRefundYesMsgDisplayed = true;
+                            IsRefundNoMsgDisplayed = false;
+                        }
+                        else
+                        {
+                            returnResult = false;
+                        }
                     }
                 }
-                if (result)
-                {
-                    returnResult = true;
-                    IsRefundYesMsgDisplayed = true;
-                    IsRefundNoMsgDisplayed = false;
-                }
-                else
-                {
-                    returnResult = false;
-                }
+               
                 Task.Run(() =>
                 {
                     IsLoading = true;

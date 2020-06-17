@@ -176,6 +176,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage_
                 RaisePropertyChanged("IsButtonVisible");
             }
         }
+
+
+        private bool _isAcknowledgementButtonVisible = false;
+        public bool IsAcknowledgementButtonVisible
+        {
+            get
+            {
+                return _isAcknowledgementButtonVisible;
+            }
+            set
+            {
+                _isAcknowledgementButtonVisible = value;
+                RaisePropertyChanged("IsAcknowledgementButtonVisible");
+            }
+        }
+
         private bool _isRefreshButtonVisible = true;
         public bool IsRefreshButtonVisible
         {
@@ -309,11 +325,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage_
                                 IsSadadNumberVisible = true;
                             }
                             IsButtonVisible = true;
+                            if (VATDeclarationData.d.EstimatedFg == "X")
+                            {
+                               IsAcknowledgementButtonVisible = false;
+                            }
+                            else
+                            {
+                                IsAcknowledgementButtonVisible = true;
+                            }
                             IsRefreshButtonVisible = false;
                         }
                         else
                         {
                             IsButtonVisible = false;
+                            IsAcknowledgementButtonVisible = false;
                             IsRefreshButtonVisible = true;
                         }
                     }

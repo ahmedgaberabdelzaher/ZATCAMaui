@@ -104,7 +104,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         public void checkNewFormorOld()
         {
 
-            if (App.ICRStatus == "E0001" || App.ICRStatus == "E00013")
+            if (App.ICRStatus == "E0001" || App.ICRStatus == "E0013")
             {
                 viewModel.IsEnableSwitchToggledFor15PercentChange = true;
             }
@@ -5265,21 +5265,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if(App.IsArabic)
                 {
                      result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage,AppResources.ZZZCancelText,AppResources.ZZZOkayText);
+                        if (!result)
+                        {
+                            viewModel.IsSwichButtonEnable = true;
+                        }
+                        else
+                        {
+                            viewModel.IsSwichButtonEnable = false;
+                        }
 
                 }
                 else
                 {
                      result = await this.DisplayAlert(AppResources.Information, AppResources.ZZZRefundEnableMessage, AppResources.ZZZOkayText, AppResources.ZZZCancelText);
-
+                        if (result)
+                        {
+                            viewModel.IsSwichButtonEnable = true;
+                        }
+                        else
+                        {
+                            viewModel.IsSwichButtonEnable = false;
+                        }
                 }
-                if (result)
-                {
-                    viewModel.IsSwichButtonEnable = true;
-                }
-                else
-                {
-                    viewModel.IsSwichButtonEnable = false;
-                }
+               
             }
             else
             {
