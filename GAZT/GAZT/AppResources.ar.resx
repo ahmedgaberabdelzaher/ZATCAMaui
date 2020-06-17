@@ -3375,4 +3375,7 @@
   <data name="ZZNotification" xml:space="preserve">
     <value>اشعار</value>
   </data>
+    <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+    <value>تم تحميل الملف، نرجو البحث في مجلد التنزيلات</value>
+  </data>
 </root>

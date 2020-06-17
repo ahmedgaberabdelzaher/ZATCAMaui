@@ -1,11 +1,15 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel;
+using Foundation;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using UIKit;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -17,6 +21,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
     {
         #region Variable
         AmendSalesDetailsPageViewModel viewModel;
+        string downloadFilePath;
+        public string fbNum;
         #endregion
         #region Property
         #endregion
@@ -47,8 +53,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             }
         }
         #endregion
-        #region Method
-        private void SetDynamicBehaviour()
+ 
+            #region Method
+            private void SetDynamicBehaviour()
         {
             if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
             {
@@ -72,7 +79,64 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             Image DownloadImage = sender as Image;
             ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
             //attachment.DocUrl;
-            if (attachment.Filename.Contains(".")) ;
+
+            String retGuid = attachment.RetGuid;
+            
+            //String fbNum = viewModel.VATDeclarationDataForAttch.d.Fbnum;
+            String fbNum = AmendSalesDetailsPageViewModel.fbNum;
+            viewModel.IsLoading = true;
+            
+            AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
+            
+            foreach (AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+            {
+
+                if (attachment.Filename == tempAttachmentDocumentModel.Filename)
+                {
+                    var platform = DeviceInfo.Platform;
+                    if (Device.RuntimePlatform == Device.iOS)
+                        {
+                        downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                        viewModel.IsLoading = false;
+                        var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(downloadFilePath));
+                        PreviewController.Delegate = new UIDocumentInteractionControllerDelegateClass(UIApplication.SharedApplication.KeyWindow.RootViewController);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            PreviewController.PresentPreview(true);
+                        });
+                    }
+                    else
+                    {
+              
+                        if (tempAttachmentDocumentModel.Filename.Contains(""))
+                        {
+                            try
+                            {
+
+                                var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
+                        viewModel.IsLoading = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZDownloadAttachmentMessg, AppResources.Information);
+                        });
+                    }
+                }
+            }
+
+            /*if (attachment.Filename.Contains(".")) ;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
@@ -85,7 +149,55 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             {
                 await email(attachment.Doguid, attachment);
             }
-            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;*/
+
+        }
+        private async Task DownloadAndSaveFile(string pathToFile, string fileContents)
+        {
+            File.WriteAllBytes(pathToFile, Convert.FromBase64String(fileContents));
+        }
+
+        public string PathToFolder(string fileName, string folderName)
+        {
+            try
+            {
+                string pathToNewFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Images", "temp");
+
+                Directory.CreateDirectory(pathToNewFolder);
+                string pathToNewFile = Path.Combine(pathToNewFolder, fileName);
+
+
+                return pathToNewFile;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public String WriteFileToPath(string fileName, string base64Data)
+        {
+            string getFilePath = PathToFolder(fileName, "GAZTFiles");
+            File.WriteAllBytes(getFilePath, Convert.FromBase64String(base64Data));
+
+            return getFilePath;
+        }
+        public class UIDocumentInteractionControllerDelegateClass : UIDocumentInteractionControllerDelegate
+        {
+            UIViewController ownerVC;
+            public UIDocumentInteractionControllerDelegateClass(UIViewController vc)
+            {
+                ownerVC = vc;
+            }
+
+            public override UIViewController ViewControllerForPreview(UIDocumentInteractionController controller)
+            {
+                return ownerVC;
+            }
+            public override UIView ViewForPreview(UIDocumentInteractionController controller)
+            {
+                return ownerVC.View;
+            }
         }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {

@@ -104,5 +104,11 @@ namespace GAZT.iOS.DependencyServices
                 return "";
             }
         }
+        public string GetAttachmentToDownloadsPath(string fileP, string fileX)
+        {
+            string result = "";
+
+            return result;
+        }
     }
 }

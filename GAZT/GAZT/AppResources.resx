@@ -3385,4 +3385,7 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZNotification" xml:space="preserve">
     <value>Notification</value>
   </data>
+      <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+    <value>File is downloaded, please check in your downloads folder</value>
+  </data>
 </root>

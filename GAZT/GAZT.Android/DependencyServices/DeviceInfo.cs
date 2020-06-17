@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using GAZT.Helper;
 using Android.OS;
 using System;
+using System.IO;
 
 [assembly: Dependency(typeof(DeviceInfo))]
 namespace GAZT.Droid.DependencyServices
@@ -71,6 +72,26 @@ namespace GAZT.Droid.DependencyServices
             }
 
             return id;
+        }
+        public string GetAttachmentToDownloadsPath(string fileName, string fileContents)
+        {
+            byte[] myByte = System.Text.ASCIIEncoding.Default.GetBytes(fileContents);
+
+            var downloadDirectory = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
+            var filePath = Path.Combine(downloadDirectory, fileName);
+
+            try
+            {
+                var streamWriter = File.Create(filePath);
+                streamWriter.Close();
+                File.WriteAllBytes(filePath, myByte);
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.ToString());
+            }
+
+            return filePath;
         }
     }
 }

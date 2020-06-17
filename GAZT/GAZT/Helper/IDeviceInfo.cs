@@ -14,5 +14,8 @@ namespace GAZT.Helper
         string[] GetAttachmentTypeStringForTaxEvasion();
 
         string GetDeviceUdid();
+
+        string GetAttachmentToDownloadsPath(string fileName, string fileContents);
+
     }
 }
