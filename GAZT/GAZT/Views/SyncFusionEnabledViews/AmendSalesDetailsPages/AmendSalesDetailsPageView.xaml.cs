@@ -52,11 +52,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         {
             if (SalesType.Text.Equals(AppResources.ZZAveragenumberoflabour))
             {
-                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false, Max = 14, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
             else
             {
-                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false,Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
+                NewValue.Behaviors.Add(new ElevenDotTwoDecimalPlacesAndNoNegativeValue() { isNegativeEnable = false, Max = 18, numberOfDigitBeforDecimal = 11, numberOfDigitAfterDecimal = 2 });
             }
         }
         private void SetLTR()
@@ -111,12 +111,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         {
             Image deleteImage = sender as Image;
             ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
-            if(estimateZakatAttachment != null) 
+            if (estimateZakatAttachment != null)
             {
-                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE,AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
                 if (result)
                 {
-                 await   viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
+                    await viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
                 }
                 else
                 {
@@ -129,7 +129,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             {
                 viewModel.IsLoading = true;
             });
-            await Task.Run(async() =>
+            await Task.Run(async () =>
             {
                 try
                 {
@@ -164,7 +164,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                             File = new ShareFile(file)
                         });
                     });
-                   
+
                 }
                 catch (Exception ex)
                 {
@@ -211,7 +211,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             }
         }
 
-        
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)

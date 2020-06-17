@@ -26,6 +26,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
         public ICommand OnAttachmentClick { get; set; }
         public ICommand OnDeleteAttachmentClickedTapped { get; set; }
         public static bool IsSaveButtonPressed = false;
+        public static string fbNum;
+
         public RootObject rootObject { get; set; }
         public bool isOnLoad = false;
         int attachmentCount = 0;

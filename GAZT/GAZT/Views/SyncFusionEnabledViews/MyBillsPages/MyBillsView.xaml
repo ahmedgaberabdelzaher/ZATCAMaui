@@ -84,8 +84,8 @@
                                     </syncfusion:SfExpander.Header>
                                     <syncfusion:SfExpander.Content>
                                         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                                            <StackLayout>
-                                                <chart:SfChart ChartPadding="30"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="260">
+                                                <StackLayout HeightRequest="300">
+                                                <chart:SfChart ChartPadding="30"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" IsVisible="{Binding SetNoDataLabelVisibilityALLList}"  VerticalOptions="FillAndExpand" SelectionChanged="Chart_SelectionChanged" AnnotationClicked="Chart_AnnotationClicked" LegendItemClicked="Chart_LegendItemClicked"   HeightRequest="230">
                                                 <!--<chart:SfChart.Title>
                                                     <chart:ChartTitle Text="{x:Static local:AppResources.MyBills}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                                 </chart:SfChart.Title>-->
@@ -96,8 +96,14 @@
                                     <chart:ChartTooltipBehavior />
                                 </chart:SfChart.ChartBehaviors>-->
                                                 <chart:SfChart.Legend>
-                                                    <chart:ChartLegend IconHeight="14" IconWidth="14" Margin="0,0,0,5"   OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False" />
-                                                </chart:SfChart.Legend>
+                                                            <chart:ChartLegend IconHeight="14" IconWidth="14" Margin="0,0,0,5"   OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False"  >
+                                                                <chart:ChartLegend.LabelStyle>
+
+                                                                    <chart:ChartLegendLabelStyle FontFamily="{StaticResource SSTArabicMedium}"/>
+
+                                                                </chart:ChartLegend.LabelStyle>
+                                                            </chart:ChartLegend>
+                                                        </chart:SfChart.Legend>
                                                 <chart:SfChart.Series>
                                                     <chart:PieSeries  x:Name="pieSeries" EnableSmartLabels="True" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="True" ItemsSource="{Binding ListMyBillsChartModel,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
                                                         <chart:PieSeries.ColorModel>
@@ -124,8 +130,8 @@
                                                                 <chart:ChartDataMarker.LabelTemplate>
                                                                     <DataTemplate>
                                                                         <StackLayout Orientation="Vertical"  >
-                                                                            <Label FontSize="12" TextColor="Black" BackgroundColor="White" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
-                                                                            <Label FontSize="12" BackgroundColor="White" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
+                                                                                    <Label FontSize="12" TextColor="Black" BackgroundColor="White" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}, ConverterParameter='Label'}"/>
+                                                                                    <Label FontSize="12" BackgroundColor="White" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Converter={StaticResource converter}}"/>
                                                                         </StackLayout>
                                                                     </DataTemplate>
                                                                 </chart:ChartDataMarker.LabelTemplate>

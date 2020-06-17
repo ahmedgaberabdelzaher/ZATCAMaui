@@ -36,7 +36,7 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+       public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
 
@@ -124,5 +124,9 @@ namespace GAZT.Helper
         #region TES
         public static string GAZTGetFAQ = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
         #endregion
+        #region DownloadAttachment
+        public static string GAZTGetAllAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '";
+        #endregion
+
     }
 }

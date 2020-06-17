@@ -3455,8 +3455,8 @@ namespace GAZT.Manager
 
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-                    HttpResponseMessage res =await  client.PostAsync(uri, contentPost);
-                    FirstSignupSubmit =await  res.Content.ReadAsStringAsync();
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    FirstSignupSubmit = await res.Content.ReadAsStringAsync();
                     // FirstSignupSubmit = JsonConvert.DeserializeObject<SignUpModelRootObject>(detailJson);
                     return FirstSignupSubmit;
                 }
@@ -3480,7 +3480,7 @@ namespace GAZT.Manager
             {
                 try
                 {
-                 
+
 
                     //string FirstSignupSubmit = string.Empty;
                     //string url = Constants.GAZTSignUpFirstSubmit;
@@ -3526,7 +3526,8 @@ namespace GAZT.Manager
                     //string url = Constants.GAZTSignUpFirstSubmit + "?sap-language=" + Langz;
                     string url = Constants.GAZTSignUpFirstSubmit + Langz;
                     var uri = new Uri(url);
-                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     var serilized = JsonConvert.SerializeObject(SignUpModel);
@@ -4312,7 +4313,7 @@ namespace GAZT.Manager
 
         public static string CreateSAMLLoginURL(string Euser, string DeviceId, string FcmId, string DeviceTyp, string Language)
         {
-            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='"+ DeviceId +"'"  + ",FcmId='" +
+            string FullUrl = Constants.GAZTSAMLLoginService + "(Euser='" + Euser + "'" + ",DeviceId='" + DeviceId + "'" + ",FcmId='" +
                 FcmId + "'" + ",DeviceTyp='" + DeviceTyp + "')?sap-language=" + Language + "&$format=json";
             return FullUrl;
         }
