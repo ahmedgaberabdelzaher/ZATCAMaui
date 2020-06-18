@@ -837,7 +837,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{D36E23EC-2F43-4CF9-BFCE-B8EBA9F3A4A2}</Project>
+      <Project>{73C13029-1893-450D-9DFC-78A3896C38DB}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>
