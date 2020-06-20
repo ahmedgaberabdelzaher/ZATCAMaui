@@ -68,6 +68,10 @@ namespace GAZT.Droid
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
+                if (permissions[i].Equals("android.permission.STORAGE") && grantResults[i] == Permission.Granted)
+                {
+                    global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                }
                 //else
                 //{
                 //    Android.App.AlertDialog.Builder dialog = new AlertDialog.Builder(this);

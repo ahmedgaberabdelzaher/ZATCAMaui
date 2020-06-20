@@ -122,6 +122,36 @@ namespace GAZT.iOS.DependencyServices
                 return "";
             }
         }
+        public string GetAttachmentToDownloadsPath(string fileP, string fileX)
+        {
+            string result = "";
+
+            var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(fileX));
+            PreviewController.Delegate = new UIDocumentInteractionControllerDelegateClass(UIApplication.SharedApplication.KeyWindow.RootViewController);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PreviewController.PresentPreview(true);
+            });
+
+            return result;
+        }
+        public class UIDocumentInteractionControllerDelegateClass : UIDocumentInteractionControllerDelegate
+        {
+            UIViewController ownerVC;
+            public UIDocumentInteractionControllerDelegateClass(UIViewController vc)
+            {
+                ownerVC = vc;
+            }
+
+            public override UIViewController ViewControllerForPreview(UIDocumentInteractionController controller)
+            {
+                return ownerVC;
+            }
+            public override UIView ViewForPreview(UIDocumentInteractionController controller)
+            {
+                return ownerVC.View;
+            }
+        }
 
         bool IDeviceInfo.IsJailBreakDetected()
         {

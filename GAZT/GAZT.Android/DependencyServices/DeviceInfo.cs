@@ -4,7 +4,7 @@ using GAZT.Helper;
 using Android.OS;
 using System;
 using System.Linq;
-
+using System.IO;
 using System;
 using System.Linq;
 using Android;
@@ -90,8 +90,27 @@ namespace GAZT.Droid.DependencyServices
         }
 
 
+        public string GetAttachmentToDownloadsPath(string fileName, string fileContents)
+        {
+            byte[] myByte = System.Text.ASCIIEncoding.Default.GetBytes(fileContents);
 
-      
+            var downloadDirectory = System.IO.Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, Android.OS.Environment.DirectoryDownloads);
+            var filePath = System.IO.Path.Combine(downloadDirectory, fileName);
+
+            try
+            {
+                var streamWriter = System.IO.File.Create(filePath);
+                streamWriter.Close();
+                System.IO.File.WriteAllBytes(filePath, myByte);
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.ToString());
+            }
+
+            return filePath;
+        }
+
         public string Model => throw new NotImplementedException();
 
         public string OperatingSystem => throw new NotImplementedException();
