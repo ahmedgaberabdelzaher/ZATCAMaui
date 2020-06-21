@@ -785,7 +785,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>Search Parameter</value>
+    <value>Search Parameter  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>VAT Account Number</value>
@@ -884,7 +884,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Declarations</value>
   </data>
   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>Please enter the corresponding number</value>
+    <value>Please enter the corresponding number    </value>
   </data>
   <data name="ZInstructions" xml:space="preserve">
     <value>Instructions</value>

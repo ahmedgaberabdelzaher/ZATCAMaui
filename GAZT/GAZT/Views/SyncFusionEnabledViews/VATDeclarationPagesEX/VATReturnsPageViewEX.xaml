@@ -543,6 +543,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAmount}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -570,6 +577,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAdjustmentWithSAR}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -593,6 +607,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryStdsalesVat" Keyboard="Numeric" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat , StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdsalesVat}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -619,6 +640,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAmount15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -646,6 +674,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAdjustmentWithSAR15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -669,6 +704,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryStdsalesVat15" Keyboard="Numeric" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat15 , StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdsalesVat15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -695,6 +737,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAmount5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -722,6 +771,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryVatAdjustmentWithSAR5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -745,6 +801,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry  x:Name="EntryStdsalesVat5" Keyboard="Numeric" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdsalesVat5 , StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdsalesVat5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -776,6 +839,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntrySalesGccAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -806,6 +876,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntrySalesGccAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -844,6 +921,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZerosalesAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -874,6 +958,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZerosalesAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -912,6 +1003,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExportsAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -942,6 +1040,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExportsAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -980,6 +1085,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExemptsalesAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1010,6 +1122,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExemptsalesAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1050,7 +1169,7 @@
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
                                             <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAmt, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAmt"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="0" Grid.Column="1"/>
-                                            <local1:CustomLabel  Margin="10,0,10,1" FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="1" Grid.Column="0">
+                                            <local1:CustomLabel  Margin="10,0,10,1" FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Grid.Row="1" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
@@ -1059,7 +1178,7 @@
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
                                             <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
-                                            <local1:CustomLabel  Margin="10,0,10,1"  FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" Grid.Row="2" Grid.Column="0">
+                                            <local1:CustomLabel  Margin="10,0,10,1"  FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Grid.Row="2" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
@@ -1094,6 +1213,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1124,6 +1250,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1148,7 +1281,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
-                                        
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
 
@@ -1172,6 +1311,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAmt15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1202,6 +1348,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAdj15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1226,7 +1379,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat15" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat15, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
-
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
                                         <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="29" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" >
@@ -1249,6 +1408,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAmt5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1279,6 +1445,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryStdpurchaseAdj5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1303,7 +1476,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryStdpurchasesVat5" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.StdpurchasesVat5, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
-
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
 
@@ -1327,6 +1506,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZVatAmountWithSAR}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1357,6 +1543,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportspaidAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1381,6 +1574,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat"  TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
                                         <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="33" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" HorizontalTextAlignment="Start" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" >
@@ -1403,6 +1603,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZVatAmountWithSAR15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1433,6 +1640,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportspaidAdj15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1457,6 +1671,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat15"  TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat15, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
                                         <local1:CustomLabel   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="37" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" HorizontalTextAlignment="Start" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}">
@@ -1477,6 +1698,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZVatAmountWithSAR5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1505,6 +1733,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportspaidAdj5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1529,6 +1764,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportspaidVat5"  TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportspaidVat5, StringFormat='{0:D2}'}"    Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                         </inputLayout:SfTextInputLayout>
 
 
@@ -1550,6 +1792,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1580,6 +1829,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1604,6 +1860,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Label
                         Margin="0,0,0,2"
@@ -1635,6 +1898,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAmt15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1663,6 +1933,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAdj15}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1687,6 +1964,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat15" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat15, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Label
                         Margin="0,0,0,2"
@@ -1718,6 +2002,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAmt5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1746,6 +2037,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryImportsaccAdj5}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1770,6 +2068,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                             <custom:GAZTBorderlessEntry x:Name="EntryImportsaccVat5" TextChanged="ClickGestureRecognizer_ClickedForAllPurchaseVatAmount" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.ImportsaccVat5, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Label
                         Margin="0,0,0,2"
@@ -1806,6 +2111,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZeropurchaseAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1834,6 +2146,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryZeropurchaseAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1872,6 +2191,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExemptpurchaseAmt}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -1900,6 +2226,13 @@
                                                     <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="19" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="12"/>
                                                 </custom:GAZTBorderlessEntry.Behaviors>
                                             </custom:GAZTBorderlessEntry>
+                                            <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                <inputLayout:LabelStyle >
+                                                    <inputLayout:LabelStyle.FontFamily>
+                                                        <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                    </inputLayout:LabelStyle.FontFamily>
+                                                </inputLayout:LabelStyle>
+                                            </inputLayout:SfTextInputLayout.HintLabelStyle>
                                             <inputLayout:SfTextInputLayout.Triggers>
                                                 <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryExemptpurchaseAdj}, Path=Text.Length}" Value="0">
                                                     <Setter Property="HasError" Value="True" />
@@ -2027,6 +2360,13 @@
                                                         <custom2:ElevenDotTwoDecimalPlacesAndNoNegativeValue isNegativeEnable="True"  Max="11" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="6"/>
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                    <inputLayout:LabelStyle >
+                                                        <inputLayout:LabelStyle.FontFamily>
+                                                            <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                        </inputLayout:LabelStyle.FontFamily>
+                                                    </inputLayout:LabelStyle>
+                                                </inputLayout:SfTextInputLayout.HintLabelStyle>
                                                 <inputLayout:SfTextInputLayout.Triggers>
                                                     <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryPreperiodcorr}, Path=Text.Length}" Value="0">
                                                         <Setter Property="HasError" Value="True" />
@@ -2087,6 +2427,13 @@
                                     <custom1:DecimalPlacesConverter/>
                                 </custom:GAZTBorderlessEntry.Behaviors>-->
                                                 </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                    <inputLayout:LabelStyle >
+                                                        <inputLayout:LabelStyle.FontFamily>
+                                                            <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                        </inputLayout:LabelStyle.FontFamily>
+                                                    </inputLayout:LabelStyle>
+                                                </inputLayout:SfTextInputLayout.HintLabelStyle>
                                                 <inputLayout:SfTextInputLayout.Triggers>
                                                     <DataTrigger TargetType="inputLayout:SfTextInputLayout" Binding="{Binding Source={x:Reference EntryCreditVat}, Path=Text.Length}" Value="0">
                                                         <Setter Property="HasError" Value="True" />
@@ -2133,6 +2480,13 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                 <custom:GAZTBorderlessEntry x:Name="EntryNetdueVat"  TextChanged="EntryNetdueVat_TextChanged" IsReadOnly="True" TextColor="#7D858D" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.NetdueVat, StringFormat='{0:D2}'}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Keyboard="Numeric">
                                                 </custom:GAZTBorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                                    <inputLayout:LabelStyle >
+                                                        <inputLayout:LabelStyle.FontFamily>
+                                                            <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
+                                                        </inputLayout:LabelStyle.FontFamily>
+                                                    </inputLayout:LabelStyle>
+                                                </inputLayout:SfTextInputLayout.HintLabelStyle>
                                                 <inputLayout:SfTextInputLayout.TrailingView>
                                                     <Label
                         Margin="0,0,0,2"

@@ -2912,7 +2912,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search Parameter.
+        ///   Looks up a localized string similar to Search Parameter  .
         /// </summary>
         public static string ZSearchParameter {
             get {
@@ -6822,7 +6822,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter the corresponding number.
+        ///   Looks up a localized string similar to Please enter the corresponding number    .
         /// </summary>
         public static string ZZPleaseenterthecorrespondingnumber {
             get {

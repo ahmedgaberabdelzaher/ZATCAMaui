@@ -1910,6 +1910,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipNetVATdue;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {

@@ -769,7 +769,7 @@
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم التسلسلي</value>
+    <value>الرجاء إدخال الرقم التسلسلي    </value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
@@ -781,7 +781,7 @@
     <value>الرجاء إختيار نوع المعرف</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>نوع البحث</value>
+    <value>نوع البحث  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>الرقم الضريبي</value>
@@ -984,10 +984,10 @@
     <value>العنوان</value>
   </data>
   <data name="ZVatAdjustmentWithSAR" xml:space="preserve">
-    <value>مبلغ التعديل (ريال)</value>
+    <value>مبلغ التعديل (ريال)   </value>
   </data>
   <data name="ZVatAmountWithSAR" xml:space="preserve">
-    <value>المبلغ (ريال)</value>
+    <value>المبلغ (ريال) </value>
   </data>
   <data name="ZVatAttachmentMaxSizeNotfication" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 40 ملفات.</value>
@@ -3186,7 +3186,7 @@
     <comment>Dashboard</comment>
   </data>
   <data name="ZZZVATAmoutWithSAR" xml:space="preserve">
-    <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
+    <value>مبلغ ضريبة القيمة المضافة (ريال)       </value>
     <comment>VAT</comment>
   </data>
   <data name="ZZZChangetoLanguage" xml:space="preserve">
