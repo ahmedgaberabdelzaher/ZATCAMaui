@@ -1251,7 +1251,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Update Mobile</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>Financial Period</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>

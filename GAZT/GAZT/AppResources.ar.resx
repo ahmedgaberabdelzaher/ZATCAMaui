@@ -1251,7 +1251,7 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>الفترة المالية من</value>
+    <value>الفترة المالية</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>الى</value>

@@ -777,7 +777,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Financial Period From.
+        ///   Looks up a localized string similar to Financial Period.
         /// </summary>
         public static string FinancialPeriodFrom {
             get {
