@@ -174,9 +174,9 @@ namespace GAZT.iOS.DependencyServices
                 };
 
 
-                return false;
+                return paths.Any(System.IO.File.Exists);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
