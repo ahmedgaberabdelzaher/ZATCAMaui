@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -197,19 +198,19 @@ namespace EGAZT.Models
         public string Reply { get; set; }
     }
 
-    public partial class TaxEvasionRegionsModel
+    public partial class TaxEvasionRegionsCityModel
     {
         [JsonProperty("status")]
         public bool Status { get; set; }
 
         [JsonProperty("data")]
-        public TaxEvasionRegionDatum[] Data { get; set; }
+        public List<TaxEvasionRegionCityDatum> Data { get; set; }
 
         [JsonProperty("code")]
         public long Code { get; set; }
     }
 
-    public partial class TaxEvasionRegionDatum
+    public partial class TaxEvasionRegionCityDatum
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -217,6 +218,7 @@ namespace EGAZT.Models
         [JsonProperty("name")]
         public string Name { get; set; }
     }
+
 
     public enum RegionNameAr { Asir, Bahah, Riyadh };
 

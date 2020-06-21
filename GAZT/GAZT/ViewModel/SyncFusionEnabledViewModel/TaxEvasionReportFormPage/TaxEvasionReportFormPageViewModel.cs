@@ -605,8 +605,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("TFWType");
             }
         }
-        private TERRegion _selectedTaxEvasionRegion = null;
-        public TERRegion SelectedTaxEvasionRegion
+        private TaxEvasionRegionCityDatum _selectedTaxEvasionRegion = null;
+        public TaxEvasionRegionCityDatum SelectedTaxEvasionRegion
         {
             get
             {
@@ -620,11 +620,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     onSelectedTaxEvasionRegion();
                     if (App.IsArabic)
                     {
-                        TxtReportDetailRegion = _selectedTaxEvasionRegion.RegionNameAR;
+                        TxtReportDetailRegion = _selectedTaxEvasionRegion.Name;
                     }
                     else
                     {
-                        TxtReportDetailRegion = _selectedTaxEvasionRegion.RegionNameEN;
+                        TxtReportDetailRegion = _selectedTaxEvasionRegion.Name;
                     }
                     //TEReportobj.RegionCode = v;
                 }
@@ -632,8 +632,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectedTaxEvasionRegion");
             }
         }
-        private TERRegion _selectedTaxEvasionRegionPrev = null;
-        public TERRegion SelectedTaxEvasionRegionPrev
+        private TaxEvasionRegionCityDatum _selectedTaxEvasionRegionPrev = null;
+        public TaxEvasionRegionCityDatum SelectedTaxEvasionRegionPrev
         {
             get
             {
@@ -724,8 +724,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectLCTypePrev");
             }
         }
-        private List<TaxEvasionRegionDatum> _rList= null;
-        public List<TaxEvasionRegionDatum> RList
+        private List<TaxEvasionRegionCityDatum> _rList= null;
+        public List<TaxEvasionRegionCityDatum> RList
         {
             get
             {
@@ -737,8 +737,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("RList");
             }
         }
-        private List<TERCity> _cityList= null;
-        public List<TERCity> CList
+        private List<TaxEvasionRegionCityDatum> _cityList= null;
+        public List<TaxEvasionRegionCityDatum> CList
         {
             get
             {
@@ -894,7 +894,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                         //{
                         //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
 
-                        TaxEvasionRegionsModel regionlist = new TaxEvasionRegionsModel();
+                        TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
                         regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
 
                         if (regionlist != null && regionlist.Data.Count() != 0)
@@ -905,7 +905,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                                 TxtReportDetailCity = string.Empty;
                             }
 
-                            RList = regionlist.Data.ToList();
+                            RList = regionlist.Data;
                         }
                         else
                         {
@@ -936,11 +936,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     _navigationService.GoBack();
                 });
             }
-
-
-
-
-
         }
         public async  void NoInternetGoBack()
         {
@@ -960,15 +955,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             {
                 try
                 {
-                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.RegionCode != null)
+                    if (SelectedTaxEvasionRegion != null && SelectedTaxEvasionRegion.Id != null)
                     {
-                        TERFCityRetrieveRootObject citylist = new TERFCityRetrieveRootObject();
-                        citylist = await WebServiceManager.GAZTTESFormGetCity(SelectedTaxEvasionRegion.RegionCode);
+                        TaxEvasionRegionsCityModel citylist = new TaxEvasionRegionsCityModel();
+                        citylist = await WebServiceManager.GAZTTaxEvasionGetAllCitiesByRegion(SelectedTaxEvasionRegion.Id);
                         PopToRootPage();
-                        CList = citylist.CityList;
+                        CList = citylist.Data;
                     }
                     else
                     {
+
                     }
                 }
                 catch (InternetException ex)
@@ -1016,10 +1012,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 TaxEvasionReportTobeUsedToSubmit.District = TFDAdress;
                 TaxEvasionReportTobeUsedToSubmit.CompanyAddress = TFSAddress;
                 TaxEvasionReportTobeUsedToSubmit.WorkType = TFWType;
-                TaxEvasionReportTobeUsedToSubmit.RegionCode = SelectedTaxEvasionRegion.RegionCode;
+                TaxEvasionReportTobeUsedToSubmit.RegionCode = Convert.ToString(SelectedTaxEvasionRegion.Id);
+
                 TaxEvasionReportTobeUsedToSubmit.CityCode = SelectLCType.CityCode;
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = TFaciMobNo;
+                TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = TFaciMobNo;  
                 TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
                 response = await WebServiceManager.GAZTTESReportSubmit(TaxEvasionReportTobeUsedToSubmit, newList);
                 if (response != null && response.Success == true)

@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
 using GAZT.Models;
 using System;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             MainLayout.Padding = new Thickness(0, 0, 0, 0);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            viewModel.TaxEvasionListobj = new TaxEvasionReport();
+            viewModel.TaxEvasionListobj = new TaxEvasionReportDetails();
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             viewModel.IsimgVisiblec1 = false;
             viewModel.IsimgVisiblec2 = false;

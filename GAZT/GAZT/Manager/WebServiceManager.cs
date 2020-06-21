@@ -5073,9 +5073,9 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<TaxEvasionRegionsModel> GAZTTaxEvasionGetAllRegions()
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
         {
-            TaxEvasionRegionsModel regionsModel = new TaxEvasionRegionsModel();
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5101,7 +5101,7 @@ namespace GAZT.Manager
 
                     HttpResponseMessage res = await client.GetAsync(uri);
                     var response = res.Content.ReadAsStringAsync().Result;
-                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsModel>(response);
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
                     return regionsModel;
                 }
                 catch (JsonReaderException ex)
@@ -5130,6 +5130,66 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllCitiesByRegion(long regionId)
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetAllCities + Convert.ToString(regionId);
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return regionsModel;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+
         #endregion
     }
 }
