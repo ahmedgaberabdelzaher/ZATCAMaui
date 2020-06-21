@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -56,6 +57,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                 this.RaisePropertyChanged("MobileNumber");
             }
         }
+
+        public string MobileNumberPrefix { get; set; }
+
         public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -75,17 +79,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
         {
             _navigationService.GoBack();
         }
-        public void VerifyCommandClick()
+
+        public async void VerifyCommandClick()
         {
-            ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
-            tesmobnoscreen.tes = "1";
-            tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
-;
-            if (MobileNumber.Length== 8)
+           
+            try
             {
-                tesmobnoscreen.MobileNumber = MobileNumber;
-                _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-               // WebServiceManager.GetOtpVerification();
+                ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
+                tesmobnoscreen.tes = "1";
+                tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
+
+                if (MobileNumber.Length == 8)
+                {
+                    tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                    _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    // WebServiceManager.GetOtpVerification();
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch(Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
 //_navigationService.NavigateTo();
         }

@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -6,6 +7,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,8 +25,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         public ICommand AddButtonClicked { get; set; }
         public ICommand OnOpenClicked_Tapped { get; set; }
         private bool _setNoDataLabelVisibilityforOpen = false;//SelectedTaxEvasionListItem
-        private TaxEvasionReport _selectedTaxEvasionListItem;
-        public TaxEvasionReport SelectedTaxEvasionListItem
+        private TaxEvasionReportDetails _selectedTaxEvasionListItem;
+        public TaxEvasionReportDetails SelectedTaxEvasionListItem
         {
             get
             {
@@ -110,8 +112,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 RaisePropertyChanged("SetNoDataLabelVisibilityforClose");
             }
         }
-        private List<TaxEvasionReport> _taxEvasionReportList;
-        public List<TaxEvasionReport> TERListReportbymobno
+        private TaxEvasionReportDetails[] _taxEvasionReportList;
+        public TaxEvasionReportDetails[] TERListReportbymobno
         {
             get
             {
@@ -123,8 +125,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 RaisePropertyChanged("TERListReportbymobno");
             }
         }
-        private List<TaxEvasionReport> _taxEvasionReportListClosed;
-        public List<TaxEvasionReport> TERListReportbymobnoClosed
+        private TaxEvasionReportDetails[] _taxEvasionReportListClosed;
+        public TaxEvasionReportDetails[] TERListReportbymobnoClosed
         {
             get
             {
@@ -190,9 +192,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             {
                 try
                 {
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                    TERListReportbymobnoClosed.Clear();
-                    TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                    //TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                    //TERListReportbymobnoClosed.Clear();
+                    //TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
                     //if (TERListReportbymobnoClosed == null)
                     //{
                     //    SetNoDataLabelVisibility = true;
@@ -206,7 +208,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             {
                 try
                 {
-                    TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
+                    //TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();//SetNoDataLabelVisibility
                     //if (TERListReportbymobno != null)
                     //{
                     //    SetNoDataLabelVisibility = false;
@@ -221,7 +223,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 }
             });
         }
-        public async Task passSelectedTaxEvasionItem(TaxEvasionReport SelectedTaxEvasionReport)
+        public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
             try
             {
@@ -267,6 +269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 });
             }
         }
+
         public async Task OnPageLoad()
         {
             SetNoDataLabelVisibilityforOpen = false;
@@ -274,43 +277,37 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             try
             {
                 //string test = App.TP.Mobile;
-                ReportRetriveByMobNoRootObject rootObject = new ReportRetriveByMobNoRootObject();
-                 rootObject = await WebServiceManager.GAZTTESReportByMobNo(MobileNumber);
+                TaxEvasionReportsModel rootObject = new TaxEvasionReportsModel();
+                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                taxEvasionSendSmsModel.mobile = MobileNumber;
+
+                rootObject = await WebServiceManager.GAZTTaxEvasionGetAllReportsByMobileNumber(taxEvasionSendSmsModel);
+
                 PopToRootPage();
+
                 if (rootObject != null)
                 {
-                    if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
+                    if (rootObject.Data != null)
                     {
-                       
-                        TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
-                        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
-                        if (TERListReportbymobno != null)
+                        if(rootObject.Data.Opened.Count() > 0)
                         {
-                            if (TERListReportbymobno.Count > 0)
-                            {
-                                SetNoDataLabelVisibilityforOpen = false;
-                            }
-                            else
-                            {
-                                SetNoDataLabelVisibilityforOpen = true;
-
-                            }
-                            
+                            TERListReportbymobno = rootObject.Data.Opened;
+                            SetNoDataLabelVisibilityforOpen = false;
                         }
-                        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                        if (TERListReportbymobnoClosed != null )
+                        else
                         {
-                            if (TERListReportbymobnoClosed.Count > 0)
-                            {
-                                SetNoDataLabelVisibilityforClose = false;
-                            }
-                            else
-                            {
-                                SetNoDataLabelVisibilityforClose = true;
-                            }
-                            
+                            SetNoDataLabelVisibilityforOpen = true;
                         }
 
+                        if (rootObject.Data.Closed.Count() > 0)
+                        {
+                            TERListReportbymobnoClosed = rootObject.Data.Closed;
+                            SetNoDataLabelVisibilityforClose = false;
+                        }
+                        else
+                        {
+                            SetNoDataLabelVisibilityforClose = true;
+                        }
                     }
                     else
                     {
@@ -323,6 +320,53 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     SetNoDataLabelVisibilityforOpen = true;
                     SetNoDataLabelVisibilityforClose = true;
                 }
+
+                //if (rootObject != null)
+                //{
+                //    if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
+                //    {
+
+                //        //TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
+                //        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
+                //        if (TERListReportbymobno != null)
+                //        {
+                //            if (TERListReportbymobno.Count > 0)
+                //            {
+                //                SetNoDataLabelVisibilityforOpen = false;
+                //            }
+                //            else
+                //            {
+                //                SetNoDataLabelVisibilityforOpen = true;
+
+                //            }
+
+                //        }
+                //        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
+                //        if (TERListReportbymobnoClosed != null )
+                //        {
+                //            if (TERListReportbymobnoClosed.Count > 0)
+                //            {
+                //                SetNoDataLabelVisibilityforClose = false;
+                //            }
+                //            else
+                //            {
+                //                SetNoDataLabelVisibilityforClose = true;
+                //            }
+
+                //        }
+
+                //    }
+                //    else
+                //    {
+                //        SetNoDataLabelVisibilityforOpen = true;
+                //        SetNoDataLabelVisibilityforClose = true;
+                //    }
+                //}
+                //else
+                //{
+                //    SetNoDataLabelVisibilityforOpen = true;
+                //    SetNoDataLabelVisibilityforClose = true;
+                //}
             }
             catch (Exception ex)
             {

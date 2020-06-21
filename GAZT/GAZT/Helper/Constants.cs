@@ -130,5 +130,14 @@ namespace GAZT.Helper
         public static string GAZTGetAllAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '";
         #endregion
 
+        #region Tax Evasion New API - Pointing to Prod
+
+        public static string GAZTTaxEvasionSendSms = "https://vat2.gazt.gov.sa/api/v4/sendSms";
+        public static string GAZTTaxEvasionVerifySms = "https://vat2.gazt.gov.sa/api/v4/verifySms";
+        public static string GAZTTaxEvasionGetAllReports = "https://vat2.gazt.gov.sa/api/v4/get-reports";
+        public static string GAZTTaxEvasionGetAllRegions = "https://vat2.gazt.gov.sa/api/v4/list-regions";
+
+        #endregion
+
     }
 }

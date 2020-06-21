@@ -11,7 +11,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TaxEvasionReportMobilePageView : ContentPage
     {
-            TaxEvasionReportMobilePageViewModel viewModel;
+        TaxEvasionReportMobilePageViewModel viewModel;
         private double width = 0;
         private double height = 0;
         public TaxEvasionReportMobilePageView()
@@ -23,7 +23,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
             viewModel = App.Locator.TaxEvasionReportPhonePageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             ChangeAeroIcon();
-           viewModel.MobileNumber= string.Empty;
+            viewModel.MobileNumber= string.Empty;
+
             //  On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             if (App.IsArabic)
             {
@@ -40,6 +41,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
             }
             DependencyService.Get<IStatusBar>().HideStatusBar();
             this.BindingContext = viewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            viewModel.MobileNumberPrefix = mobileNumberPrefix.Text;
         }
         //protected override void OnSizeAllocated(double width, double height)
         //{

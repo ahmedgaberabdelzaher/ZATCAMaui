@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -159,8 +160,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("TxtReportDetailRegion");
             }
         }
-        private TaxEvasionReport _selectedtaxEList = null;
-        public TaxEvasionReport selectedtaxEList
+        private TaxEvasionReportDetails _selectedtaxEList = null;
+        public TaxEvasionReportDetails selectedtaxEList
         {
             get
             {
@@ -723,8 +724,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectLCTypePrev");
             }
         }
-        private List<TERRegion> _rList= null;
-        public List<TERRegion> RList
+        private List<TaxEvasionRegionDatum> _rList= null;
+        public List<TaxEvasionRegionDatum> RList
         {
             get
             {
@@ -881,35 +882,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         {
             try
             {
-
-
-                if (!string.IsNullOrEmpty(selectedtaxEList.ReportNumber))
+                if (!string.IsNullOrEmpty(selectedtaxEList.TicketId))
                 {
 
                 }
                 else
                 {
-
                     try
                     {
                         //await Task.Run(async() =>
                         //{
-
-
                         //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
-                        TERFRegionRootObject regionlist = new TERFRegionRootObject();
 
+                        TaxEvasionRegionsModel regionlist = new TaxEvasionRegionsModel();
+                        regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
 
-
-                        regionlist = await WebServiceManager.GAZTTESFormGetRegion();
-                        if (regionlist != null && regionlist.RegionList.Count != 0)
+                        if (regionlist != null && regionlist.Data.Count() != 0)
                         {
                             if (CList != null && CList.Count > 0)
                             {
                                 CList.Clear();
                                 TxtReportDetailCity = string.Empty;
                             }
-                            RList = regionlist.RegionList;
+
+                            RList = regionlist.Data.ToList();
                         }
                         else
                         {

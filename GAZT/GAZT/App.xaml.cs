@@ -118,6 +118,10 @@ namespace EGAZT
 
         public static string IncomingChannel = string.Empty;
 
+        #region Tax Evasion
+        public static string TaxEvasionToken = string.Empty;
+        #endregion
+
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
