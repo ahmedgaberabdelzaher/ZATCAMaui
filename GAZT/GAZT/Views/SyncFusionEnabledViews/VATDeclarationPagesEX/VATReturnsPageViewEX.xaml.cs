@@ -1576,30 +1576,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         }
         private void OnStandardRatedSalesAmountClicked(object sender, EventArgs e)
         {
-            PopUp popUp = new PopUp();
-            popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
-            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 + "%");
-            popUp.Message = MessageWithPercent;
-            popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            if (App.IsArabic)
+            try
             {
-                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
-            }
-            else
-            {
-                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
-            }
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount;
+                string rate = viewModel.VATRate002.Replace(".00", string.Empty);
+                String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
+                popUp.Message = MessageWithPercent;
+                popUp.IsLinkAvailable = true;
+                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
 
-            if (App.IsArabic)
-            {
-                popUp.FlowDirections = "RightToLeft";
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            else
+            catch(Exception ex)
             {
-                popUp.FlowDirections = "LeftToRight";
+
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         private void OnStandardRatedSalesAdjustmentClicked(object sender, EventArgs e)
         {
@@ -5338,30 +5346,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         private void OnStandardRatedSalesAmount15Clicked(object sender, EventArgs e)
         {
-            PopUp popUp = new PopUp();
-            popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount15;
-            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate002 + "%");
-            popUp.Message = MessageWithPercent;
-            popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            if (App.IsArabic)
+            try
             {
-                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
-            }
-            else
-            {
-                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
-            }
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount15;
+                string rate = viewModel.VATRate002.Replace(".00", string.Empty);
+                String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
+                popUp.Message = MessageWithPercent;
+                popUp.IsLinkAvailable = true;
+                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
 
-            if (App.IsArabic)
-            {
-                popUp.FlowDirections = "RightToLeft";
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            else
+            catch(Exception ex)
             {
-                popUp.FlowDirections = "LeftToRight";
+
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardRatedSales15AdjustmentClicked(object sender, EventArgs e)
@@ -5382,49 +5398,65 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
         private void OnStandardRatedSalesAmount5Clicked(object sender, EventArgs e)
         {
-            PopUp popUp = new PopUp();
-            popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount5;
-            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate003 + "%");
-            popUp.Message = MessageWithPercent;
-            popUp.IsLinkAvailable = true;
-            popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
-            if (App.IsArabic)
+            try
             {
-                popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
-            }
-            else
-            {
-                popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
-            }
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZToolTipStandardRatedSalesAmount5;
+                string rate = viewModel.VATRate003.Replace(".00", string.Empty);
+                String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
+                popUp.Message = MessageWithPercent;
+                popUp.IsLinkAvailable = true;
+                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
 
-            if (App.IsArabic)
-            {
-                popUp.FlowDirections = "RightToLeft";
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            else
+            catch(Exception ex)
             {
-                popUp.FlowDirections = "LeftToRight";
+
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardRatedSalesAdjustment5Clicked(object sender, EventArgs e)
         {
-            PopUp popUp = new PopUp();
-            popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment5;
-            String MessageWithPercent = popUp.Message.Replace("5%", viewModel.VATRate003 + "%");
-            popUp.Message = MessageWithPercent;
+            try
+            {
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment5;
+                string rate = viewModel.VATRate003.Replace(".00", string.Empty);
+                String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
+                popUp.Message = MessageWithPercent;
 
-            popUp.IsLinkAvailable = false;
-            if (App.IsArabic)
-            {
-                popUp.FlowDirections = "RightToLeft";
+                popUp.IsLinkAvailable = false;
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            else
+            catch(Exception ex)
             {
-                popUp.FlowDirections = "LeftToRight";
+
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         private void OnStandardrateddomesticpurchasesAmount15Clicked(object sender, EventArgs e)
