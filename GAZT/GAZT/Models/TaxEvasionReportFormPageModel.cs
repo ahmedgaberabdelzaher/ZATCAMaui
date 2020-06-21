@@ -171,7 +171,7 @@ namespace GAZT.Models
     }
     public class UploadedDocumentsList
     {
-        public string DocBinaryInBase64 { get; set; }
+        public byte[] DocBinaryInBase64 { get; set; }
         public string FileNameWithExtension { get; set; }
         public string MimeType { get; set; }
     }

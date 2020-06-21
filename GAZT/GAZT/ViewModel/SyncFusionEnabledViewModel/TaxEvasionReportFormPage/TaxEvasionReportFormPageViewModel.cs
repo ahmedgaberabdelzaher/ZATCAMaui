@@ -22,8 +22,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         public ICommand BackButtonClicked { get; set; }
         public ICommand SubmitReportClicked { get; set; }
         #endregion 
-        private TaxEvasionReportTobeUsedToSubmit _TaxEvasionReportTobeUsedToSubmit;
-        public TaxEvasionReportTobeUsedToSubmit TaxEvasionReportTobeUsedToSubmit
+        private TaxEvasionReportDetails _TaxEvasionReportTobeUsedToSubmit;
+        public TaxEvasionReportDetails TaxEvasionReportTobeUsedToSubmit
         {
             get
             {
@@ -672,8 +672,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("DatePickPrev");
             }
         }
-        private TERCity _selectLCType= null;
-        public TERCity SelectLCType
+        private TaxEvasionRegionCityDatum _selectLCType = null;
+        public TaxEvasionRegionCityDatum SelectLCType
         {
             get
             {
@@ -686,11 +686,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 {
                     if (App.IsArabic)
                     {
-                        TxtReportDetailCity = _selectLCType.CityNameAR;
+                        TxtReportDetailCity = _selectLCType.Name;
                     }
                     else
                     {
-                        TxtReportDetailCity = _selectLCType.CityNameEN;
+                        TxtReportDetailCity = _selectLCType.Name;
                     }
                 }
                 RaisePropertyChanged("SelectLCType");
@@ -711,8 +711,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 //    }
                     //ListFormBudles = null;
         }
-        private TERCity _selectLCTypePrev = null;
-        public TERCity SelectLCTypePrev
+        private TaxEvasionRegionCityDatum _selectLCTypePrev = null;
+        public TaxEvasionRegionCityDatum SelectLCTypePrev
         {
             get
             {
@@ -808,8 +808,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 if (fileData != null)
                 {
                     attachment = fileData.DataArray;
+
                     string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
                     AttachmentName = fileData.FileName;
+
                     //float sizemb = (attachment.Length / 1024f) / 1024f;
                     //AttachmentSize = AttachmentSize + sizemb;
                     if (fileData.FileName.Contains("."))
@@ -831,7 +833,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                                         {
                                             UploadedDocumentsList a = new UploadedDocumentsList();
                                             a.FileNameWithExtension = AttachmentName;
-                                            a.DocBinaryInBase64 = base64String;
+                                            a.DocBinaryInBase64 = attachment;
                                             
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             //UploadedDocumentsList.DocBinaryInBase64 = base64String;
@@ -987,42 +989,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             {
                 string date = DateTime.UtcNow.ToString("dd/MM/yyyy");//1902/03/09
                 date = DatePick;
-                TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-                TaxEvasionReportTobeUsedToSubmit.ReceivedDate = date;
+                TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportDetails();
+                TaxEvasionReportTobeUsedToSubmit.CreatedAt = date;
                 //TaxEvasionReportTobeUsedToSubmit.CompanyType = SelectedTaxEvasionCompanyType.Id;
-                TaxEvasionReportTobeUsedToSubmit.CompanyType = "0";
-                TaxEvasionReportTobeUsedToSubmit.ViolationType = _selectedCategory;
-                TaxEvasionReportTobeUsedToSubmit.Channel = "2";
-                TaxEvasionReportTobeUsedToSubmit.WSPassword = "gazt@123";
-                TaxEvasionReportTobeUsedToSubmit.WSUserName = "GAZT@CRM";
-                TaxEvasionReportTobeUsedToSubmit.TaxType = "1";
-                TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
-                TaxEvasionReportTobeUsedToSubmit.TIN = TxtTIN;
-                TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
-                TaxEvasionReportTobeUsedToSubmit.ReportDetails = TReportDetail;
-                TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
-                TaxEvasionReportTobeUsedToSubmit.CompanyName = TFaciName;
-                TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
-                TaxEvasionReportTobeUsedToSubmit.ReporterMobileNumber = TMobNumber;
-                TaxEvasionReportTobeUsedToSubmit.ID = TID;
-                TaxEvasionReportTobeUsedToSubmit.VAT = TVatNumber;
+
+                TaxEvasionReportTobeUsedToSubmit.Category = _selectedCategory;
+
+                //Removed
+                //TaxEvasionReportTobeUsedToSubmit.Channel = "2";
+                //TaxEvasionReportTobeUsedToSubmit.ReporterName = TName;
+                //TaxEvasionReportTobeUsedToSubmit.ReporterEmail = TEmail;
+                //TaxEvasionReportTobeUsedToSubmit.CompanyType = "0";
+                //TaxEvasionReportTobeUsedToSubmit.HavingTIN = IsTINVisible.ToString().ToLower();
+                //TaxEvasionReportTobeUsedToSubmit.CompanyOwnerName = TFaciOwnerName;
+                //TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
+
+                TaxEvasionReportTobeUsedToSubmit.Tin = TxtTIN;
+                TaxEvasionReportTobeUsedToSubmit.Content = TReportDetail;
+
+                TaxEvasionReportTobeUsedToSubmit.Facilities = TFaciName;
+                //TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TMobNumber;
+                TaxEvasionReportTobeUsedToSubmit.Id = TID;
+                TaxEvasionReportTobeUsedToSubmit.VatNumber = TVatNumber;
                 TaxEvasionReportTobeUsedToSubmit.Longitude = Longitude.ToString();
                 TaxEvasionReportTobeUsedToSubmit.Latitude = Latitude.ToString();
-                TaxEvasionReportTobeUsedToSubmit.CompanyEmail = TFaciEmail;
                 TaxEvasionReportTobeUsedToSubmit.District = TFDAdress;
-                TaxEvasionReportTobeUsedToSubmit.CompanyAddress = TFSAddress;
+                TaxEvasionReportTobeUsedToSubmit.Street = TFSAddress;
                 TaxEvasionReportTobeUsedToSubmit.WorkType = TFWType;
                 TaxEvasionReportTobeUsedToSubmit.RegionCode = Convert.ToString(SelectedTaxEvasionRegion.Id);
+                TaxEvasionReportTobeUsedToSubmit.City = Convert.ToString(SelectLCType.Id);
 
-                TaxEvasionReportTobeUsedToSubmit.CityCode = SelectLCType.CityCode;
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                TaxEvasionReportTobeUsedToSubmit.CompanyMobileNumber = TFaciMobNo;  
-                TEReportResponsePostRootObject response = new TEReportResponsePostRootObject();
-                response = await WebServiceManager.GAZTTESReportSubmit(TaxEvasionReportTobeUsedToSubmit, newList);
-                if (response != null && response.Success == true)
-                { //ZTEReportReportSuccessResponsep1
+                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TFaciMobNo;
+
+                TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
+                response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+
+                if (response != null && response.Status == true)
+                {
+                    //ZTEReportReportSuccessResponsep1
                     var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
-                    var newrm = resmessage.Replace("Report Number", response.TaxEvasionNumber);
+                    var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
                     var newReplacedMsg = newrm.Replace("5","10");
                     
                     await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);

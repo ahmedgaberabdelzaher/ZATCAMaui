@@ -284,8 +284,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 {
                     string mobb = viewModel.selectedtaxEList.PhoneNumber;
                     viewModel.TMobNumber = mobb;
-                    TMobNumber.IsEnabled = false;
-                    TMobNumberAr.IsEnabled = false;
+                    TMobNumber.IsEnabled = true;
+                    TMobNumberAr.IsEnabled = true;
                 }
             }
         }
@@ -500,11 +500,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                     showFillFeildsMessage();
                 }
-                    //else
-                    //{
-                        if (flag == true)
-                        { await viewModel.SubmitCreatedReport(); }
-                    //}
+                    if (flag == true)
+                    {
+                        await viewModel.SubmitCreatedReport();
+                    }
             }
         }
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
@@ -1111,21 +1110,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERCity selectedcity = (TERCity)e.NewValue;
+            TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
             CityPicker.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
-            viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
+            viewModel.TxtReportDetailCity = selectedcity.Name;
             FrmCity.HasError = false;
             
         }
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERCity selectedcity = (TERCity)e.NewValue;
+            TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
             CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
-            viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
+            viewModel.TxtReportDetailCity = selectedcity.Name;
             FrmCity.HasError = false;
         }
         private void TFaciName_Unfocused(object sender, FocusEventArgs e)
