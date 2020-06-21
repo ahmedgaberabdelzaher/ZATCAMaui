@@ -513,7 +513,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             //viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -522,7 +522,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                 IsLoading = false;
                             });
 
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             //viewModel._navigationService.GoBack();
                         });
                     }
@@ -1057,7 +1057,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                         //viewModel._navigationService.GoBack();
                     });
                 }
-                catch(Exception)
+                catch(Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -1066,7 +1066,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             IsLoading = false;
                         });
 
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         //viewModel._navigationService.GoBack();
                     });
                 }

@@ -5,6 +5,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -320,59 +321,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     SetNoDataLabelVisibilityforOpen = true;
                     SetNoDataLabelVisibilityforClose = true;
                 }
+            }
+            catch (GAZTException gex)
+            {
+                SetNoDataLabelVisibilityforOpen = true;
+                SetNoDataLabelVisibilityforClose = true;
 
-                //if (rootObject != null)
-                //{
-                //    if (rootObject.TaxEvasionReportList != null && rootObject.TaxEvasionReportList.Count > 0)
-                //    {
-
-                //        //TERListReportbymobnoDummy = rootObject.TaxEvasionReportList;
-                //        TERListReportbymobno = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "0") || (x.ReportStatus == "1") || (x.ReportStatus == "2")).ToList();
-                //        if (TERListReportbymobno != null)
-                //        {
-                //            if (TERListReportbymobno.Count > 0)
-                //            {
-                //                SetNoDataLabelVisibilityforOpen = false;
-                //            }
-                //            else
-                //            {
-                //                SetNoDataLabelVisibilityforOpen = true;
-
-                //            }
-
-                //        }
-                //        TERListReportbymobnoClosed = TERListReportbymobnoDummy.Where(x => (x.ReportStatus == "3")).ToList();
-                //        if (TERListReportbymobnoClosed != null )
-                //        {
-                //            if (TERListReportbymobnoClosed.Count > 0)
-                //            {
-                //                SetNoDataLabelVisibilityforClose = false;
-                //            }
-                //            else
-                //            {
-                //                SetNoDataLabelVisibilityforClose = true;
-                //            }
-
-                //        }
-
-                //    }
-                //    else
-                //    {
-                //        SetNoDataLabelVisibilityforOpen = true;
-                //        SetNoDataLabelVisibilityforClose = true;
-                //    }
-                //}
-                //else
-                //{
-                //    SetNoDataLabelVisibilityforOpen = true;
-                //    SetNoDataLabelVisibilityforClose = true;
-                //}
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
             }
             catch (Exception ex)
             {
                 SetNoDataLabelVisibilityforOpen = true;
                 SetNoDataLabelVisibilityforClose = true;
-                _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Alerts);
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
             }
         }
       

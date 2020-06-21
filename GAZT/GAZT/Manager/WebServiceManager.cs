@@ -4899,6 +4899,8 @@ namespace GAZT.Manager
         public static async Task<TaxEvasionSendSmsResponseModel> GAZTTaxEvasionSendSms(TaxEvasionSendSmsModel sendSmsModel)
         {
             TaxEvasionSendSmsResponseModel sendSmsResponse = new TaxEvasionSendSmsResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -4917,29 +4919,14 @@ namespace GAZT.Manager
                     var serilized = JsonConvert.SerializeObject(sendSmsModel);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    response = res.Content.ReadAsStringAsync().Result;
                     sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
                     return sendSmsResponse;
                 }
-                catch (JsonReaderException ex)
-                {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
-                }
                 catch (Exception)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
                 }
             }
             else
@@ -4951,6 +4938,8 @@ namespace GAZT.Manager
         public static async Task<TaxEvasionVerifySmsResponseModel> GAZTTaxEvasionVerifySms(TaxEvasionVerifySmsModel verifySmsModel, string mobileNumber)
         {
             TaxEvasionVerifySmsResponseModel verifySmsResponse = new TaxEvasionVerifySmsResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -4970,11 +4959,17 @@ namespace GAZT.Manager
 
                     requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
 
-                    //HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    requestMessage.Headers.Add("Accept-Language", langVal);
 
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
 
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    response = res.Content.ReadAsStringAsync().Result;
 
                     verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionVerifySmsResponseModel>(response);
 
@@ -4982,25 +4977,10 @@ namespace GAZT.Manager
 
                     return verifySmsResponse;
                 }
-                catch (JsonReaderException ex)
+                catch (Exception)
                 {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
-                }
-                catch (Exception ex)
-                {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
                 }
             }
             else
@@ -5012,6 +4992,8 @@ namespace GAZT.Manager
         public static async Task<TaxEvasionReportsModel> GAZTTaxEvasionGetAllReportsByMobileNumber(TaxEvasionSendSmsModel mobileNumberModel)
         {
             TaxEvasionReportsModel verifySmsResponse = new TaxEvasionReportsModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5035,37 +5017,21 @@ namespace GAZT.Manager
                     {
                         langVal = "ar";
                     }
+
                     requestMessage.Headers.Add("Accept-Language", langVal);
-
                     var serilized = JsonConvert.SerializeObject(mobileNumberModel);
-
                     requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
-                    var response = res.Content.ReadAsStringAsync().Result;
+                    response = res.Content.ReadAsStringAsync().Result;
 
                     verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionReportsModel>(response);
 
                     return verifySmsResponse;
                 }
-                catch (JsonReaderException ex)
+                catch (Exception)
                 {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
-                }
-                catch (Exception ex)
-                {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
                 }
             }
             else
@@ -5192,6 +5158,8 @@ namespace GAZT.Manager
         public static async Task<TaxEvasionCreateReportResponseModel> GAZTTaxEvasionCreateReport(TaxEvasionReportDetails evasionReportDetails, List<UploadedDocumentsList> documentsLists)
         {
             TaxEvasionCreateReportResponseModel responseModel = new TaxEvasionCreateReportResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5204,7 +5172,6 @@ namespace GAZT.Manager
                     string url = Constants.GAZTTaxEvasionCreateReport;
                     var uri = new Uri(url);
 
-                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
                     using (var client = new HttpClient())
                     {
                         using (var multipartFormDataContent = new MultipartFormDataContent())
@@ -5237,59 +5204,27 @@ namespace GAZT.Manager
                             //    '"' + "File" + '"',
                             //    '"' + "test.txt" + '"');
 
+                            string langVal = "en";
+                            if (App.IsArabic == true)
+                            {
+                                langVal = "ar";
+                            }
+
+                            client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
                             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
                             var result = await client.PostAsync(uri, multipartFormDataContent);
                             HttpContent responseContent = result.Content;
-                            String stringContentsTask = responseContent.ReadAsStringAsync().Result;
-                            responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(stringContentsTask);
+                            response = responseContent.ReadAsStringAsync().Result;
+                            responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(response);
                             return responseModel;
                         }
                     }
-
-                    //https://www.google.com/maps/search/?api=1&query=24.713552,46.675296
-                    //MultipartFormDataContent multiPartContent = new MultipartFormDataContent("----");
-
-                    //foreach(UploadedDocumentsList attachedDoc in documentsLists)
-                    //{
-                    //    ByteArrayContent byteArrayContent = new ByteArrayContent(attachedDoc.DocBinaryInBase64);
-                    //    multiPartContent.Add(byteArrayContent, "file[]", attachedDoc.FileNameWithExtension);
-                    //}
-
-                    //HttpClient httpClient = new HttpClient(crmSignUphttpClientHandler);
-
-                    //try
-                    //{
-                    //    HttpResponseMessage httpResponse = await httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
-                    //    HttpStatusCode statusCode = httpResponse.StatusCode;
-                    //    HttpContent responseContent = httpResponse.Content;
-                    //    String stringContentsTask = responseContent.ReadAsStringAsync().Result;
-                    //    responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(stringContentsTask);
-                    //    return responseModel;
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    throw new GAZTNetworkConnectivityIssueException();
-                    //}
-                }
-                catch (JsonReaderException ex)
-                {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
                 }
                 catch (Exception)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
                 }
             }
             else
@@ -5297,8 +5232,6 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
-
-       
 
         #endregion
     }
