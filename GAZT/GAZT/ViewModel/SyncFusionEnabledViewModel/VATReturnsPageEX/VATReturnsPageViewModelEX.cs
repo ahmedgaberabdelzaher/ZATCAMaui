@@ -4337,7 +4337,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         CorrectionNegativePeriodAmount = vATCalculationData.d.VTTHSet.results.Where(x => x.Type == "001").Select(x => x.MinVal).FirstOrDefault();
                         if (!string.IsNullOrEmpty(CorrectionPeriodAmount))
                         {
-                            CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", "±" + CorrectionPeriodAmount);
+                            if (App.IsArabic)
+                            {
+                                CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±",CorrectionPeriodAmount+" ± ");
+                            }
+                            else
+                            {
+                                CarriedValueString = AppResources.ZVatCorrectionsfrompreviousperiod.Replace("±", " ± " + CorrectionPeriodAmount);
+                            }
                         }
                     }
                 }

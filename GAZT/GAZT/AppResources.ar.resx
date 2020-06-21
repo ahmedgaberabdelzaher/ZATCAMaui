@@ -1173,7 +1173,7 @@
     <value>إجمالي المبيعات</value>
   </data>
   <data name="ZVatTotalVATdueforcurrentperiod" xml:space="preserve">
-    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية الحالية</value>
+    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية  الحالية</value>
   </data>
   <data name="ZVatVATAmountWithSAR" xml:space="preserve">
     <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
@@ -3249,7 +3249,7 @@
     <comment>VAT Declarartion</comment>
   </data>
   <data name="ZZZImportssubjecttoVATpaidatcustoms5" xml:space="preserve">
-    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك (5%)</value>
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة والتي تدفع في الجمارك (5%)</value>
     <comment>VAT Declarartion</comment>
   </data>
   <data name="ZZZPurchasessubjecttoVATat5" xml:space="preserve">
@@ -3394,7 +3394,12 @@
 2.المبيعات الخاضعة لضريبة القيمة المضافة (غير مشمول 0% -15%)
 3.المشتريات الخاضعة لضريبة القيمة المضافة (15%، رسوم عكسية)</value>
   </data>
-     <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+  <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
     <value>تم تحميل الملف، نرجو البحث في مجلد التنزيلات</value>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment5ForNew" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات الخاضعة لنسبة 5% (غير شامل ضريبة القيمة المضافة ) المباعة في المملكة العربية السعودية خلال الفترات الضريبية السابقة بالإضافة إلى : - التوريدات المفترضة. - التوريدات الخاضعة لطريقة هامش الربح
+
+• على سبيل المثال، إرجاع العملاء للسلع والخدمات التي استحقت عنها ضريبة القيمة المضافة للهيئة العامة للزكاة والدخل، شطب الديون المعدومة على الذمم المدينة الخاضعة للضريبة بالنسبة الأساسية</value>
   </data>
 </root>

@@ -65,6 +65,7 @@
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                              TitleFontColor="Gray"
+                                           TitleFontSize="10"
                              TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             <tabView:SfTabItem.Content>
                                 <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabInstruction"  IsVisible="{Binding IsVisibleInstrunction}"  VerticalOptions="FillAndExpand"  >
@@ -162,6 +163,7 @@
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                              TitleFontColor="Gray"
+                                           TitleFontSize="10"
                                            TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             <tabView:SfTabItem.Content>
                                 <ScrollView  Orientation="Vertical"  x:Name="TabTaxPayerDetails"   IsVisible="{Binding IsVisibleTaxPayerDetails}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
@@ -411,6 +413,7 @@
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                              TitleFontColor="Gray"
+                                           TitleFontSize="10"
                                         TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"   >
                             <tabView:SfTabItem.Content>
                                 <ScrollView Orientation="Vertical" x:Name="TabVatReturn" IsVisible="{Binding IsVisibleVatReturnForm}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
@@ -479,7 +482,7 @@
                                             <ColumnDefinition Width="86*"/>
                                             <ColumnDefinition Width="14*"/>
                                         </Grid.ColumnDefinitions>
-                                        <local1:CustomLabel Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  HorizontalOptions="Start" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}" >
+                                        <local1:CustomLabel Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}" FontFamily="{StaticResource SSTArBold}"  HorizontalOptions="Start" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsNewReturn}" >
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="{x:Static local:AppResources.ZZZDoyouhavesalesorpurchasessubjectto5VAT}"  />
@@ -526,8 +529,8 @@
                                         <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}" >
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="1. " FontFamily="{StaticResource SSTArBold}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatStandardRatedSales}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="1. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatStandardRatedSales}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -602,8 +605,8 @@
                                         <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFifteenPersenctVisible}" >
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="1. " FontFamily="{StaticResource SSTArBold}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZVatStandardRatedSales15}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="1. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZVatStandardRatedSales15}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -678,8 +681,8 @@
 <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsFivePersenctVisible}" >
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="1.1 " FontFamily="{StaticResource SSTArBold}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZSalessubjecttoVATat5}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="1.1 " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZSalessubjecttoVATat5}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -757,7 +760,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="2. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatPrivateHealthcare}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatPrivateHealthcare}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -825,7 +828,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="3. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatZerorateddomesticsales}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatZerorateddomesticsales}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -893,7 +896,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="4. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatExports}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatExports}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -961,7 +964,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="5. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatExemptsales}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatExemptsales}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1042,7 +1045,7 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="6. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalSales}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalSales}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
@@ -1075,7 +1078,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatStandardrateddomesticpurchases}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatStandardrateddomesticpurchases}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1153,7 +1156,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZVatStandardrateddomesticpurchases15}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZVatStandardrateddomesticpurchases15}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1230,7 +1233,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="7.1 " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZPurchasessubjecttoVATat5}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZPurchasessubjecttoVATat5}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1308,7 +1311,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="8. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatImportsVatPaidatcustoms}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatImportsVatPaidatcustoms}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1384,7 +1387,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="8. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZImportssubjecttoVATpaidatcustoms15}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZImportssubjecttoVATpaidatcustoms15}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1460,7 +1463,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="8.1 " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZZImportssubjecttoVATpaidatcustoms5}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZZImportssubjecttoVATpaidatcustoms5}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1533,7 +1536,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="9. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatImportsSubjectToVatAccounted}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatImportsSubjectToVatAccounted}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1618,7 +1621,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="9. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism15}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1701,7 +1704,7 @@
                                             <local1:CustomLabel.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="9.1 " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZZImportssubjecttoVATaccountedforthroughthereversechargemechanism5}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </local1:CustomLabel.FormattedText>
                                         </local1:CustomLabel>
@@ -1787,7 +1790,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="10. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatZeroRatedPurchases}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatZeroRatedPurchases}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1853,7 +1856,7 @@
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <Span Text="11. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                    <Span Text="{x:Static custom2:AppResources.ZVatExemptPurchases}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                    <Span Text="{x:Static custom2:AppResources.ZVatExemptPurchases}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
@@ -1938,7 +1941,7 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="12. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalPurchases}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalPurchases}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
@@ -1969,7 +1972,7 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="13. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalVATdueforcurrentperiod}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZVatTotalVATdueforcurrentperiod}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
@@ -2050,7 +2053,7 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="15. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                        <Span Text="{x:Static custom2:AppResources.ZVatcreditcarriedforward}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZVatcreditcarriedforward}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
@@ -2105,7 +2108,7 @@
                                                 <Label.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="16. " FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
-                                                        <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="13"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZVatNetdue}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="13"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -2151,6 +2154,7 @@
                             SelectionColor="DarkGreen"
                              FontIconFontColor="#FF00AFF0"
                              TitleFontColor="Gray"
+                                           TitleFontSize="10"
                                            TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             <tabView:SfTabItem.Content>
                                 <ScrollView HorizontalOptions="FillAndExpand" x:Name="TabSummarry"    IsVisible="{Binding IsVisibleSummary}" VerticalOptions="FillAndExpand"  >

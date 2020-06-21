@@ -3402,7 +3402,12 @@ Should we require further information, we would be in contact.</value>
 2. Sales list subject to VAT (0%-15%-Exempt) 
 3. Purchased list subject to VAT (15%, reverse charge)</value>
   </data>
-     <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+  <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
     <value>File is downloaded, please check in your downloads folder</value>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment5ForNew" xml:space="preserve">
+    <value>• Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+
+• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
   </data>
 </root>

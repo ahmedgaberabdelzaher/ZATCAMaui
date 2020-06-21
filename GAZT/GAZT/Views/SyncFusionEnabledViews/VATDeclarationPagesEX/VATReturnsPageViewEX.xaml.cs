@@ -1583,6 +1583,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 string rate = viewModel.VATRate002.Replace(".00", string.Empty);
                 String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
                 popUp.Message = MessageWithPercent;
+                popUp.HeaderText = AppResources.ZZZInformationNew;
                 popUp.IsLinkAvailable = true;
                 popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
@@ -1613,6 +1614,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1629,6 +1631,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAmount;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZLink;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
             if (App.IsArabic)
@@ -1645,6 +1648,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipPrivateHealthcareAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZLink; ;
             popUp.Link = "https://www.uqn.gov.sa/articles/1515222747471373200/";
@@ -1663,6 +1667,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAmount;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -1686,6 +1691,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZerorateddomesticsalesAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1725,6 +1731,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1740,6 +1747,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1780,6 +1788,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -1803,6 +1812,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1818,6 +1828,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZeroratedpurchasesAmount;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -1842,6 +1853,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAmount;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -1866,6 +1878,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptpurchasesAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1881,6 +1894,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipcreditcarriedforwardfrompreviousperiod;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1911,6 +1925,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExemptAmount;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -1935,6 +1950,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -1950,6 +1966,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -1974,6 +1991,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -2004,6 +2022,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipZeroratedpurchasesAdjustment;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -2020,6 +2039,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             // < 5,000 >
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipCorrectionsfrompreviousperiod;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             String MessageWithPositiveValue = popUp.Message.Replace("<5,000>", viewModel.CorrectionPeriodAmount);
             String MessageWithNegativeValue = popUp.Message.Replace("<-5,000>", MessageWithPositiveValue);
             popUp.Message = MessageWithNegativeValue;
@@ -3300,9 +3320,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
+                string Message = string.Empty;
+                if (viewModel.ResponseVATDeclarationD.ExporterFg == "0")
+                {
+                    if (EntryExportsAmt.Text != "." && !EntryExportsAmt.Text.Contains("-") && !string.IsNullOrEmpty(EntryExportsAmt.Text))
+                    {
+                        if (Convert.ToDouble(EntryExportsAmt.Text) > 0)
+                        {
+                            // PopUp popUp = new PopUp();
+                            Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
+                            //popUp.IsLinkAvailable = false;
+                            //if (App.IsArabic)
+                            //{
+                            //    popUp.FlowDirections = "RightToLeft";
+                            //}
+                            //else
+                            //{
+                            //    popUp.FlowDirections = "LeftToRight";
+                            //}
+                            //PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        }
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && !string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAmt.Text != "." && EntryExportsAdj.Text != "." && EntryExportsAmt.Text != "," && EntryExportsAdj.Text != ",")
                 {
-                    CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), "");
+                    CheckFouraFourb(Convert.ToDecimal(EntryExportsAmt.Text), Convert.ToDecimal(EntryExportsAdj.Text), Message);
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
@@ -3449,9 +3492,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             try
             {
+                string Message = string.Empty;
+                IGRTSetResult IGRTSetModel = viewModel.CalculationRateIGRTSet.Where(a => a.GrpNo == viewModel.ResponseVATDeclarationD.GrpNo).FirstOrDefault();
+                if (IGRTSetModel != null && IGRTSetModel.RateTrtmt != null)
+                {
+                    if (IGRTSetModel.RateTrtmt != "E")
+                    {
+                        if (EntryExemptsalesAmt.Text != "." && !EntryExemptsalesAmt.Text.Contains("-") && !string.IsNullOrEmpty(EntryExemptsalesAmt.Text))
+                        {
+                            if (Convert.ToDouble(EntryExemptsalesAmt.Text) > 0)
+                            {
+                                //PopUp popUp = new PopUp();
+                                Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
+                                //popUp.IsLinkAvailable = false;
+                                //if (App.IsArabic)
+                                //{
+                                //    popUp.FlowDirections = "RightToLeft";
+                                //}
+                                //else
+                                //{
+                                //    popUp.FlowDirections = "LeftToRight";
+                                //}
+                                //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            }
+                        }
+                    }
+                }
+
+
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && !string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAmt.Text != "." && EntryExemptsalesAdj.Text != "." && EntryExemptsalesAmt.Text != "," && EntryExemptsalesAdj.Text != ",")
                 {
-                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text), "");
+                    CheckFiveaFiveb(Convert.ToDecimal(EntryExemptsalesAmt.Text), Convert.ToDecimal(EntryExemptsalesAdj.Text),Message);
                 }
                 if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
                 {
@@ -5353,6 +5424,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 string rate = viewModel.VATRate002.Replace(".00", string.Empty);
                 String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
                 popUp.Message = MessageWithPercent;
+                popUp.HeaderText = AppResources.ZZZInformationNew;
                 popUp.IsLinkAvailable = true;
                 popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
@@ -5384,6 +5456,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardRatedSalesAdjustment15;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5405,6 +5478,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 string rate = viewModel.VATRate003.Replace(".00", string.Empty);
                 String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
                 popUp.Message = MessageWithPercent;
+                popUp.HeaderText = AppResources.ZZZInformationNew;
                 popUp.IsLinkAvailable = true;
                 popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
                 if (App.IsArabic)
@@ -5441,7 +5515,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 string rate = viewModel.VATRate003.Replace(".00", string.Empty);
                 String MessageWithPercent = popUp.Message.Replace("5%", rate + "%");
                 popUp.Message = MessageWithPercent;
-
+                popUp.HeaderText = AppResources.ZZZInformationNew;
                 popUp.IsLinkAvailable = false;
                 if (App.IsArabic)
                 {
@@ -5464,6 +5538,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount15;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -5488,6 +5563,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment15;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5505,6 +5581,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAmount5;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -5529,6 +5606,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipStandardrateddomesticpurchasesAdjustment5;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5561,6 +5639,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount15;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -5587,6 +5666,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount15;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -5611,6 +5691,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment15;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5627,6 +5708,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount15;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5643,6 +5725,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAmount5;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = true;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
@@ -5668,6 +5751,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedAdjustment5;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5684,6 +5768,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATaccountedVatAmount5;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
@@ -5701,6 +5786,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAmount5;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {
@@ -5725,6 +5811,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipImportssubjecttoVATpaidatcustomsAdjustment5;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.IsLinkAvailable = false;
             if (App.IsArabic)
             {
