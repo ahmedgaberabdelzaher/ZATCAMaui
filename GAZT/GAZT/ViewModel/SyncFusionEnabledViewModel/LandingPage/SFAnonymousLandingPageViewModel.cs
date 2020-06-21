@@ -579,7 +579,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 {
                     listofPaymentReturn.Add(UnsubmittedReturn);
                 }
-               // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
+                // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
                 //foreach (var item in listofPaymentReturn)
                 //{
                 //    CalendarInlineEvent BillOrReturnDueEvent = new CalendarInlineEvent();
@@ -600,7 +600,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 //}
             }
             catch(Exception ex)
-            { 
+            {
             }
         }
         public void PopulateeServicesApplicableToTheTaxPayer()

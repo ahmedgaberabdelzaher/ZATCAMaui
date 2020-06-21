@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -5073,9 +5074,9 @@ namespace GAZT.Manager
             }
         }
 
-        public static async Task<TaxEvasionRegionsModel> GAZTTaxEvasionGetAllRegions()
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
         {
-            TaxEvasionRegionsModel regionsModel = new TaxEvasionRegionsModel();
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5088,7 +5089,6 @@ namespace GAZT.Manager
                     string url = Constants.GAZTTaxEvasionGetAllRegions;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
 
                     string langVal = "en";
@@ -5101,7 +5101,7 @@ namespace GAZT.Manager
 
                     HttpResponseMessage res = await client.GetAsync(uri);
                     var response = res.Content.ReadAsStringAsync().Result;
-                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsModel>(response);
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
                     return regionsModel;
                 }
                 catch (JsonReaderException ex)
@@ -5130,6 +5130,176 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllCitiesByRegion(long regionId)
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetAllCities + Convert.ToString(regionId);
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return regionsModel;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionCreateReportResponseModel> GAZTTaxEvasionCreateReport(TaxEvasionReportDetails evasionReportDetails, List<UploadedDocumentsList> documentsLists)
+        {
+            TaxEvasionCreateReportResponseModel responseModel = new TaxEvasionCreateReportResponseModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionCreateReport;
+                    var uri = new Uri(url);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    using (var client = new HttpClient())
+                    {
+                        using (var multipartFormDataContent = new MultipartFormDataContent())
+                        {
+                            var values = new[]
+                            {
+                                new KeyValuePair<string, string>("RegionCode", evasionReportDetails.RegionCode),
+                                new KeyValuePair<string, string>("category", evasionReportDetails.Category),
+                                new KeyValuePair<string, string>("category_id", "1"),
+                                new KeyValuePair<string, string>("city", evasionReportDetails.City),
+                                new KeyValuePair<string, string>("content", evasionReportDetails.Content),
+                                new KeyValuePair<string, string>("district", evasionReportDetails.District),
+                                new KeyValuePair<string, string>("facilities", evasionReportDetails.Facilities),
+                                new KeyValuePair<string, string>("facility_work_type", evasionReportDetails.WorkType),
+                                new KeyValuePair<string, string>("location", "https://www.google.com/maps/search/?api=1&query=" + evasionReportDetails.Latitude + "," + evasionReportDetails.Longitude),
+                                new KeyValuePair<string, string>("phone_number", evasionReportDetails.PhoneNumber),
+                                new KeyValuePair<string, string>("street", evasionReportDetails.Street),
+                                new KeyValuePair<string, string>("subject", ""),
+                                new KeyValuePair<string, string>("vat_number", evasionReportDetails.VatNumber),
+                                new KeyValuePair<string, string>("TIN", evasionReportDetails.Tin)
+                            };
+
+                            foreach (var keyValuePair in values)
+                            {
+                                multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
+                                    String.Format("\"{0}\"", keyValuePair.Key));
+                            }
+
+                            //multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("test.txt")),
+                            //    '"' + "File" + '"',
+                            //    '"' + "test.txt" + '"');
+
+                            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+                            var result = await client.PostAsync(uri, multipartFormDataContent);
+                            HttpContent responseContent = result.Content;
+                            String stringContentsTask = responseContent.ReadAsStringAsync().Result;
+                            responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(stringContentsTask);
+                            return responseModel;
+                        }
+                    }
+
+                    //https://www.google.com/maps/search/?api=1&query=24.713552,46.675296
+                    //MultipartFormDataContent multiPartContent = new MultipartFormDataContent("----");
+
+                    //foreach(UploadedDocumentsList attachedDoc in documentsLists)
+                    //{
+                    //    ByteArrayContent byteArrayContent = new ByteArrayContent(attachedDoc.DocBinaryInBase64);
+                    //    multiPartContent.Add(byteArrayContent, "file[]", attachedDoc.FileNameWithExtension);
+                    //}
+
+                    //HttpClient httpClient = new HttpClient(crmSignUphttpClientHandler);
+
+                    //try
+                    //{
+                    //    HttpResponseMessage httpResponse = await httpClient.SendAsync(requestMessage, HttpCompletionOption.ResponseContentRead, CancellationToken.None);
+                    //    HttpStatusCode statusCode = httpResponse.StatusCode;
+                    //    HttpContent responseContent = httpResponse.Content;
+                    //    String stringContentsTask = responseContent.ReadAsStringAsync().Result;
+                    //    responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(stringContentsTask);
+                    //    return responseModel;
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    throw new GAZTNetworkConnectivityIssueException();
+                    //}
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+       
+
         #endregion
     }
 }

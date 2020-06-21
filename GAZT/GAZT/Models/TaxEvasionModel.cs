@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -137,8 +138,26 @@ namespace EGAZT.Models
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
 
+        public string _facilities { get; set; }
         [JsonProperty("facilities")]
-        public string Facilities { get; set; }
+        public string Facilities
+        {
+            get
+            {
+                if(_facilities == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _facilities;
+                }
+            }
+            set
+            {
+                _facilities = value;
+            }
+        }
 
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
@@ -197,19 +216,19 @@ namespace EGAZT.Models
         public string Reply { get; set; }
     }
 
-    public partial class TaxEvasionRegionsModel
+    public partial class TaxEvasionRegionsCityModel
     {
         [JsonProperty("status")]
         public bool Status { get; set; }
 
         [JsonProperty("data")]
-        public TaxEvasionRegionDatum[] Data { get; set; }
+        public List<TaxEvasionRegionCityDatum> Data { get; set; }
 
         [JsonProperty("code")]
         public long Code { get; set; }
     }
 
-    public partial class TaxEvasionRegionDatum
+    public partial class TaxEvasionRegionCityDatum
     {
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -217,6 +236,28 @@ namespace EGAZT.Models
         [JsonProperty("name")]
         public string Name { get; set; }
     }
+
+    public partial class TaxEvasionCreateReportResponseModel
+    {
+        [JsonProperty("status")]
+        public bool Status { get; set; }
+
+        [JsonProperty("data")]
+        public TaxEvasionCreateReportResponseData Data { get; set; }
+
+        [JsonProperty("code")]
+        public long Code { get; set; }
+    }
+
+    public partial class TaxEvasionCreateReportResponseData
+    {
+        [JsonProperty("ticket_id")]
+        public string TicketId { get; set; }
+
+        [JsonProperty("ticket_post_id")]
+        public Guid TicketPostId { get; set; }
+    }
+
 
     public enum RegionNameAr { Asir, Bahah, Riyadh };
 
