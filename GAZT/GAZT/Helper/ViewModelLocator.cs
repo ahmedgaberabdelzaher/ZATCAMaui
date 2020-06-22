@@ -37,6 +37,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
@@ -84,6 +85,7 @@ using EGAZT.Views.SyncFusionEnabledViews.SFLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
+using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
@@ -146,6 +148,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<SignUpTAndCPageViewModel>();
             SimpleIoc.Default.Register<SignUpFormPageViewModel>();
             SimpleIoc.Default.Register<CreateGaztAccountPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
@@ -607,6 +610,20 @@ namespace EGAZT
                 }
             }
         }
+        public TaxEvasionRegistrationViewModel TaxEvasionRegistrationFormPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public FormBundleStatusPageViewModel FormBundleStatusPageView
         {
             get
@@ -891,6 +908,7 @@ namespace EGAZT
             navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
             navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
             navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
             navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
             navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
             navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));

@@ -926,9 +926,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                             _navigationService.GoBack();
                         });
                     }
-
                 }
-
             }
             catch(Exception ex)
             {

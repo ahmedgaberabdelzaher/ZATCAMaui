@@ -39,7 +39,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.selectedtaxEList = new TaxEvasionReportDetails();
                 viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
 
-
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
@@ -51,7 +50,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 {
                     SetLocationToMap();
                 }
-
                 
                 SetDataToUI();
                 SetPickerFont();

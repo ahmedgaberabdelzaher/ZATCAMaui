@@ -2446,6 +2446,10 @@
     <value>هناك حساب مسجل بالفعل بنفس المعلومات المدخلة، حاول التسجيل مره اخرى كمستخدم جديد</value>
     <comment>Sign Up</comment>
   </data>
+<data name="ZTERNewAccount" xml:space="preserve">
+    <value>حساب جديد</value>
+    <comment>New Account</comment>
+</data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>الرجاء إختيار نوع الإقرار</value>
     <comment>Tax Evasion Report Service</comment>

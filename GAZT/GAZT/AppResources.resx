@@ -2444,6 +2444,10 @@ Should we require further information, we would be in contact.</value>
     <value>There already exists an account associated with this information, please signup as a new user</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZTERNewAccount" xml:space="preserve">
+    <value>New Account</value>
+    <comment>New Account</comment>
+  </data> 
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>Please choose Report Category</value>
     <comment>Tax Evasion Report Service</comment>

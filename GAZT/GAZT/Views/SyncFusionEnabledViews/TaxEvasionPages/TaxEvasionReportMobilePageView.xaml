@@ -124,6 +124,7 @@
                                 <Label x:Name="Arabic_mobCountycode" Text="9665+"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                             </StackLayout>
                             <!--  Login button  -->
+
                             <buttons:SfButton
                             Grid.Row="3"
                             Margin="10,16,10,16"
@@ -132,7 +133,16 @@
                                 IsEnabled="{Binding IsVerifyEnable}"
                                 Command="{Binding VerifyCommand}"
                             Style="{StaticResource SfButtonStyle}"
-                            Text="{x:Static local1:AppResources.Verify}" />
+                            Text="{x:Static local1:AppResources.Verify}"/>
+
+                            <buttons:SfButton
+                            Grid.Row="4"
+                            Margin="10,16,10,16"
+                            BackgroundColor="#D99A29"
+                            Opacity="0.7"
+                                Command="{Binding RegisterCommand}"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="{x:Static local1:AppResources.ZTERNewAccount}"/>
                             <!--Command="{Binding LoginCommand}"-->
                         </Grid>
                     </StackLayout>

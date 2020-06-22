@@ -17,6 +17,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand VerifyCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
+
         //VerifyCommand
         private bool _isVerifyEnable = false;
         public bool IsVerifyEnable
@@ -74,10 +76,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
             _dialogService = dialogService;
             this.BackButtonClicked = new Command(this.BackButtonClick);
             this.VerifyCommand = new Command(this.VerifyCommandClick);
+            this.RegisterCommand = new Command(this.RegisterCommandClick);
+
         }
         public void BackButtonClick()
         {
             _navigationService.GoBack();
+        }
+
+        public async void RegisterCommandClick()
+        {
+            _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
         }
 
         public async void VerifyCommandClick()
