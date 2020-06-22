@@ -3431,4 +3431,7 @@ Should we require further information, we would be in contact.</value>
 
 • For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
   </data>
+      <data name="ZZCreateYourTEAccount" xml:space="preserve">
+    <value>Create Your Tax Evasion Account</value>
+  </data>
 </root>

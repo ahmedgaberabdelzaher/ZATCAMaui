@@ -66,7 +66,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 
         private void btnReportDetailCity_Clicked(object sender, EventArgs e)
         {
-            
+            CityPicker.IsOpen = true;
         }
 
         private void btnSubmitNext_Clicked(object sender, EventArgs e)
@@ -87,7 +87,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
-            CityPickerAR.SelectedItem = selectedcity;
+           // CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
             viewModel.TxtReportDetailCity = selectedcity.Name;
@@ -106,7 +106,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
         private void CityPickerAR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.SelectLCType = viewModel.SelectLCTypePrev;
-            CityPickerAR.SelectedItem = viewModel.SelectLCTypePrev;
+            //CityPickerAR.SelectedItem = viewModel.SelectLCTypePrev;
             if (viewModel.SelectLCTypePrev == null)
             {
                 viewModel.TxtReportDetailCity = string.Empty;
@@ -172,10 +172,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                                 CityPicker.SelectedItemFontFamily = "GE SS Two";
                                 CityPicker.UnSelectedItemFontFamily = "GE SS Two";//CityPickerAR
 
-                                CityPickerAR.HeaderFontFamily = "GE SS Two";
-                                CityPickerAR.ColumnHeaderFontFamily = "GE SS Two";
-                                CityPickerAR.SelectedItemFontFamily = "GE SS Two";
-                                CityPickerAR.UnSelectedItemFontFamily = "GE SS Two";//CityPicker
+                               // CityPickerAR.HeaderFontFamily = "GE SS Two";
+                               // CityPickerAR.ColumnHeaderFontFamily = "GE SS Two";
+                               // CityPickerAR.SelectedItemFontFamily = "GE SS Two";
+                               // CityPickerAR.UnSelectedItemFontFamily = "GE SS Two";//CityPicker
                             }
                             else
                             {
@@ -184,10 +184,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                                 CityPicker.SelectedItemFontFamily = "SSTArabic-Medium";
                                 CityPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//CityPickerAR
 
-                                CityPickerAR.HeaderFontFamily = "SSTArabic-Medium";
-                                CityPickerAR.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                CityPickerAR.SelectedItemFontFamily = "SSTArabic-Medium";
-                                CityPickerAR.UnSelectedItemFontFamily = "SSTArabic-Medium";//CityPickerAR
+                                //CityPickerAR.HeaderFontFamily = "SSTArabic-Medium";
+                                //CityPickerAR.ColumnHeaderFontFamily = "SSTArabic-Medium";
+                                //CityPickerAR.SelectedItemFontFamily = "SSTArabic-Medium";
+                                //CityPickerAR.UnSelectedItemFontFamily = "SSTArabic-Medium";//CityPickerAR
                             }
                         }
                         break;
@@ -198,10 +198,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                             CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
                             CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
 
-                            CityPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            CityPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            CityPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            CityPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPicker
+                           // CityPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            //CityPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            //CityPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            //CityPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPicker
 
                         }
                         break;

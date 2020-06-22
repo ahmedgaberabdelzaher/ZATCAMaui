@@ -5711,5 +5711,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZToolTipStandardRatedSalesAdjustment5ForNew", resourceCulture);
             }
         }
+        
+        public static string ZZCreateYourTEAccount {
+            get {
+                return ResourceManager.GetString("ZZCreateYourTEAccount", resourceCulture);
+            }
+        }
     }
 }
