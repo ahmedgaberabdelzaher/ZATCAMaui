@@ -4608,6 +4608,30 @@ namespace EGAZT {
             }
         }
         
+        public static string ZRealEstateServiceTitle {
+            get {
+                return ResourceManager.GetString("ZRealEstateServiceTitle", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRealEstatePropertyRegistration {
+            get {
+                return ResourceManager.GetString("ZVATRealEstatePropertyRegistration", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRealEstateRequestVerification {
+            get {
+                return ResourceManager.GetString("ZVATRealEstateRequestVerification", resourceCulture);
+            }
+        }
+        
+        public static string ZVATRealEstateTerminationOfRequest {
+            get {
+                return ResourceManager.GetString("ZVATRealEstateTerminationOfRequest", resourceCulture);
+            }
+        }
+        
         public static string ZZYourEntitytypeisIndividual {
             get {
                 return ResourceManager.GetString("ZZYourEntitytypeisIndividual", resourceCulture);

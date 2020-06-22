@@ -1,4 +1,4 @@
-﻿using CommonServiceLocator;
+using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
@@ -28,6 +28,7 @@ namespace EGAZT
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
         public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView";
+
         //SYNCFUSION INTEGRATION
         public static string MyCertificate = "MyCertificate";
         public static string PdfView = "PdfView";
@@ -80,6 +81,9 @@ namespace EGAZT
         public static string VATIndividualSignupPageView = "VATIndividualSignupPageView";
         public static string IndividualRegistrationPageView = "IndividualRegistrationPageView";
         public static string RegistrationSuccessfulPageView = "RegistrationSuccessfulPageView";
+        public static string VATRealEstateServicesPageView = "VATRealEstateServicesPageView";
+        public static string PropertyRegistrationPage = "PropertyRegistrationPage";
+
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -310,14 +314,12 @@ namespace EGAZT
             IsJailBrokenDevice = false;
             try
             {
-                 IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+               //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
             catch (Exception ex)
             {
 
             }
-
-
 
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts

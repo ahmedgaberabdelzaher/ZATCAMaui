@@ -23,6 +23,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             InitializeComponent();
             viewModel = App.Locator.TaxEvasionRegistrationFormPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
             SetLTR();
             SetPickerFont();
         }
@@ -44,7 +45,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
         }
-
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         private void EntryName_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(viewModel.TxtName))
@@ -58,6 +69,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             
         }
 
+        private void btnSubmitNext_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;

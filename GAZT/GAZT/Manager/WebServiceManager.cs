@@ -5039,7 +5039,56 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+        public static async Task<TaxEvasionSendSmsResponseModel> GAZTTaxEvasionGetUserByMobile(TaxEvasionSendSmsModel mobileNumberModel)
+        {
+            TaxEvasionSendSmsResponseModel sendSmsResponse = new TaxEvasionSendSmsResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
 
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetUserByMobile;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    requestMessage.Headers.Add("Accept-Language", langVal);
+                    var serilized = JsonConvert.SerializeObject(mobileNumberModel);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
+
+                    return sendSmsResponse;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
         public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
         {
             TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();

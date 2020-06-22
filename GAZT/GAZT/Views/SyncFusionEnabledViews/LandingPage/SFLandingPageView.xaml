@@ -166,8 +166,8 @@
                                                     Margin="5,0,5,5"
                                                     FontSize="Micro"
                                                   IsVisible="{Binding IsPaymentOverdue}"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
+                                                   Grid.Row="1"
+                                                 Grid.Column="0"
                                                           >
                                                         <local1:CustomLabel.FormattedText>
                                                             <FormattedString>
@@ -183,7 +183,7 @@
                                                         <local1:CustomLabel
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
-                                FontFamily="{StaticResource SSTArabicMedium}"
+                                                FontFamily="{StaticResource SSTArabicMedium}"
                                                           >
                                                             <local1:CustomLabel.FormattedText>
                                                                 <FormattedString>

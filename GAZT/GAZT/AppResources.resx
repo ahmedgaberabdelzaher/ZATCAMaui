@@ -2703,6 +2703,7 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Tax Evasion Reports</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+    
   <data name="ZTEReportReportStatus" xml:space="preserve">
     <value>Report Status</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2714,6 +2715,22 @@ Should we require further information, we would be in contact.</value>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>Please fill all the report details before submit</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+      <data name="ZRealEstateServiceTitle" xml:space="preserve">
+    <value>VAT Real Estate Transactions for Individuals</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
+    <value>Property registration request</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
+    <value>Request verification</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
+    <value>Termination of requests</value>
+    <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
     <value>Your Entity type is Individual</value>

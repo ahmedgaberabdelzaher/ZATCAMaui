@@ -464,7 +464,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
 
                         if(taxEvasionVerifySmsResponseModel.Status == true)
                         {
-                            await navigateToListPage();
+                            // API Call for getusermobile
+                            //if its success
+
+                            TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                            taxEvasionSendSmsModel.mobile = UnmaskedMobileNumber;
+
+                            try
+                            {
+                                taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+
+                                if (taxEvasionSendSmsResponseModel.Status == true)
+                                {
+                                    await navigateToListPage();
+                                }
+                               
+                            }catch(Exception ex)
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
+
+                                    _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+
+                                  //  await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
+                                    //viewModel._navigationService.GoBack();
+                                });
+                            }
+
+                           
                         }
                         else
                         {
@@ -523,6 +555,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             });
 
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                             //viewModel._navigationService.GoBack();
                         });
                     }

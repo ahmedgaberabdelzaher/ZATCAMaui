@@ -45,6 +45,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
@@ -95,6 +96,7 @@ using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
+using EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages;
 using EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList;
@@ -163,9 +165,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
+
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
+
+            SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
+            SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
+
         }
         public PdfViewModel pdfView
         {
@@ -300,8 +307,40 @@ namespace EGAZT
             }
         }
         /// <summary>
-        /// Returns the current instance of ForgotUsernamePasswordViewModel
+        /// Returns the current instance of VATRealEstateServices
         /// </summary>
+        public VATRealEstateServicesPageViewModel VATRealEstateServicesPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRealEstateServicesPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        /// <summary>
+        /// Returns the current instance of VATRealEstateServices
+        /// </summary>
+        public PropertyRegistrationPageViewModel PropertyRegistrationPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<PropertyRegistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         /// <summary>
         /// Returns the current instance of ForgotUsernamePasswordViewModel
         /// </summary>
@@ -928,7 +967,7 @@ namespace EGAZT
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
-         //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
+            //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
             navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
             navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
             navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
@@ -978,7 +1017,11 @@ namespace EGAZT
             navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
             navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
             navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
+            navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
+            navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
             return navigationService;
         }
     }
+
+
 }

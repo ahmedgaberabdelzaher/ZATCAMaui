@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:xaml="http://xamarin.com/schemas/2014/forms/design"
+
+                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.VATRealEstateServicesPage"
+
+                    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+                      xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:behavior="clr-namespace:GAZTeServicesApp.Behaviors"
+                BackgroundColor="White"
+>
+        <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+          <Grid x:Name="ParentContainer" BackgroundColor="White" >
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="26*"/>
+                <RowDefinition  Height="74*"/>                   
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100*"/>
+            </Grid.ColumnDefinitions>
+                   <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Padding="5">
+                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
+                        <listView:SfListView.ItemTemplate>
+                            <DataTemplate>
+                                <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450"
+                                                  BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
+                                    <cards:SfCardView.Content>
+                                        <Grid>
+                                             <StackLayout Margin="0,10,0,10" Spacing="5" Padding="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                                                <Image Source="{Binding iConImagePath}" >
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnTappedTest"></TapGestureRecognizer>
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Label HorizontalTextAlignment="Center" TextColor="#006450"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="8.5" >
+                                                    <Label.FormattedText >
+                                                        <FormattedString>
+                                                            <Span Text="{Binding eServiceName}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                    <Label.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnTappedTest"></TapGestureRecognizer>
+                                                    </Label.GestureRecognizers>
+                                                </Label>
+                                            </StackLayout>
+                                        </Grid>
+                                    </cards:SfCardView.Content>
+                                </cards:SfCardView>
+                            </DataTemplate>
+                        </listView:SfListView.ItemTemplate>
+                        <!--Layout to customize number of columns in SfListView-->
+                        <listView:SfListView.LayoutManager>
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
+                        </listView:SfListView.LayoutManager>
+                        <listView:SfListView.Behaviors>
+                            <behavior:SfListViewExtendHeightBehavior >
+
+                            </behavior:SfListViewExtendHeightBehavior>
+                        </listView:SfListView.Behaviors>
+                    </listView:SfListView>
+                    </StackLayout>
+            </ScrollView>
+              </Grid>
+    </ContentPage.Content>
+</ContentPage>
