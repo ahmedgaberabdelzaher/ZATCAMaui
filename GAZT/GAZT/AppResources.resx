@@ -3402,4 +3402,25 @@ Should we require further information, we would be in contact.</value>
 2. Sales list subject to VAT (0%-15%-Exempt) 
 3. Purchased list subject to VAT (15%, reverse charge)</value>
   </data>
+  <data name="CompleteBelow" xml:space="preserve">
+    <value>Complete the below details</value>
+  </data>
+  <data name="IndividualRegistration" xml:space="preserve">
+    <value>Individual Registration</value>
+  </data>
+  <data name="NationalAddress" xml:space="preserve">
+    <value>National Address</value>
+  </data>
+  <data name="NewAccount" xml:space="preserve">
+    <value>New Account</value>
+  </data>
+  <data name="SelectEntityType" xml:space="preserve">
+    <value>Select the type of Entity</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
 </root>

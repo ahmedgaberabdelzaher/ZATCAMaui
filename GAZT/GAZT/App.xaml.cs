@@ -2,6 +2,7 @@
 using EGAZT.Models;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
+using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
 using GAZT.Helper;
@@ -75,6 +76,9 @@ namespace EGAZT
         public static string MyReturnsPageView = "MyReturnsPageView";
         public static string MyCommitmentsPageView = "MyCommitmentsPageView";
         public static string ContactUsPageView = "ContactUsPageView";
+        public static string VATIndividualSignupPageView = "VATIndividualSignupPageView";
+        public static string IndividualRegistrationPageView = "IndividualRegistrationPageView";
+        public static string RegistrationSuccessfulPageView = "RegistrationSuccessfulPageView";
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;

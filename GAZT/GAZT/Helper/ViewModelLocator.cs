@@ -42,6 +42,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
@@ -90,6 +91,7 @@ using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
 using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
+using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
 using EGAZT.Views.SyncFusionEnabledViews.VATReturnsPage;
 using EGAZT.Views.SyncFusionEnabledViews.ZakatReturnDetails_View;
@@ -158,6 +160,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
+            SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
+            SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -846,6 +851,54 @@ namespace EGAZT
                 }
             }
         }
+        /// <summary>
+        /// Returns the current instance of VATIndividualSignupPageViewModel
+        /// </summary>
+        public VATIndividualSignupPageViewModel VATIndividualSignupPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        /// <summary>
+        /// Returns the current instance of IndividualRegistrationPageViewModel
+        /// </summary>
+        public IndividualRegistrationPageViewModel IndividualRegistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public RegistrationSuccessfulPageViewModel RegistrationSuccessfulPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -854,7 +907,7 @@ namespace EGAZT
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
-            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView)); 
+            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
@@ -904,6 +957,9 @@ namespace EGAZT
             navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
             navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
             navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
+            navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
+            navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
+            navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
             return navigationService;
         }
     }

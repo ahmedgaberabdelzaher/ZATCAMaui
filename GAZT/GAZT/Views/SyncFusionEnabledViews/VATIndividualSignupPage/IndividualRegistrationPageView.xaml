@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:EGAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.IndividualRegistrationPageView"
+             BackgroundColor="#005e4b"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <yummy:PancakeView BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="15,15,15,10" BackgroundColor="White">
+                <!--    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  Padding="15,15,15,10" BackgroundColor="White" RowSpacing="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="80*" />
+                    <RowDefinition Height="10*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>-->
+            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                <StackLayout Orientation="Horizontal">
+                    <Image HorizontalOptions="Start" VerticalOptions="Start" Rotation="270">
+                        <Image.Source>
+                            <FontImageSource Color="Gray" FontFamily="UserIconFont"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                        </Image.Source>
+                    </Image>
+                    <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+                    <Image HorizontalOptions="End" VerticalOptions="Start">
+                        <Image.Source>
+                            <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                        </Image.Source>
+                    </Image>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Padding="10,0,0,10">
+                    <BoxView x:Name="BoxOne" CornerRadius="25" BackgroundColor="{Binding BoxColorOne}"/>
+                        <BoxView x:Name="BoxTwo" CornerRadius="25" BackgroundColor="{Binding BoxColorTwo}"/>
+                        <BoxView x:Name="BoxThree" CornerRadius="25" BackgroundColor="{Binding BoxColorThree}"/>
+                        <BoxView x:Name="BoxFour" CornerRadius="25" BackgroundColor="{Binding BoxColorFour}"/>
+                        <BoxView x:Name="BoxFive" CornerRadius="25" BackgroundColor="{Binding BoxColorFive}"/>
+                </StackLayout>
+            </StackLayout>
+                <ScrollView>
+                    <StackLayout BackgroundColor="White">
+                        <!--Individual Registration-->
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                          x:Name="IndividualRegistrationView">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0">
+                        <Label Text="Individual Registration"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                        <Label Text="Complete Below" FontFamily="{StaticResource SSTArBold}"/>
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                    </StackLayout>
+                    <ScrollView Grid.Row="1">
+                        <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                              ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0"  Text="ID Type" Padding="15,0,15,0"/>
+                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6" 
+                                ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:BorderlessEntry Text="{Binding TxtIDType}" FontAttributes="Bold" FontSize="Small" 
+                                                        Placeholder="Select ID Type" IsSpellCheckEnabled="False">
+                                            </custom:BorderlessEntry>
+                                            <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+                                    </inputLayout:SfTextInputLayout>
+                                    <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="10,0,10,0"  >
+                                    </custom:CustomButton>
+                                    <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
+                                    HeaderTextColor="White"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
+                                    ColumnHeaderHeight="46"
+                                    PickerMode="Dialog"
+                              HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                  OKButtonTextColor="#006450"      
+                                                 CancelButtonTextColor="#006450"
+                                                 ShowColumnHeader="False"
+                                                 ShowFooter="True"
+                                                 OKButtonBackgroundColor="#EAF7CC"
+                                                 CancelButtonBackgroundColor="#EAF7CC"
+                                                 BackgroundColor="#EAF7CC"
+                       ItemHeight="40"
+                         DisplayMemberPath="SUType" ItemsSource="{Binding SignUpUsingList}"  SelectionChanged="DDlIDType_SelectedIndexChanged" Margin="10,0,10,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                                        <syncfusion:SfPicker.Behaviors>
+                                            <custom1:SfPickerBehavior />
+                                        </syncfusion:SfPicker.Behaviors>
+                                    </syncfusion:SfPicker>
+                                    <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Label Grid.Row="0"  Text="ID Number" Padding="15,0,15,0"/>
+                                <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Margin="10,-6,10,-6" 
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                    <custom:BorderlessEntry x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                                            TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="ID Number">
+                                        <Entry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                            <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Text="Date of Birth" Padding="15,0,15,0"/>
+                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
+                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small">
+                                            </custom:BorderlessEntry>
+                                            <Image HorizontalOptions="EndAndExpand">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                </Image.Source>
+                                            </Image>
+                                        </StackLayout>
+                                    </inputLayout:SfTextInputLayout>
+                                    <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
+                                    <custom1:CustomDatePicker Grid.Row="1"
+								ShowHeader="false"
+								Margin="2" 
+                              BackgroundColor="#EAF7CC"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+								ShowFooter="True"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="#EAF7CC"
+								ColumnHeaderHeight="50"
+                                PickerMode="Dialog"
+								HeaderText="Date of Birth"
+								x:Name="DpDbo"
+                           SelectionChanged="DpDbo_SelectionChanged"
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                            Closed="DpDbo_Closed"
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                OkButtonClicked="DpDbo_OkButtonClicked"
+                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+								ItemHeight="45" >
+                                        <custom1:CustomDatePicker.Behaviors>
+                                            <custom1:SfPickerBehavior />
+                                        </custom1:CustomDatePicker.Behaviors>
+                                    </custom1:CustomDatePicker>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Label Text="Name" Padding="15,0,15,0"/>
+                                <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                    ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                    <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Enter Name">
+                                        <Entry.Behaviors>
+                                            <custom1:AlphabetandArabicCharacters/>
+                                        </Entry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+                        </Grid>
+                    </ScrollView>
+                </Grid>
+                        <!--National Address-->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                              x:Name="NationalAddressView">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="National Address"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <Label Text="Complete the Below details" FontFamily="{StaticResource SSTArBold}"/>
+                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1">
+                                <ScrollView>
+                                    <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="City" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                    ContainerType="Outlined" x:Name="City" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry x:Name="EntryCity" Unfocused="EntryName_Unfocused" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="City Name">
+                                                    <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Neighborhood" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                    ContainerType="Outlined" x:Name="Neighborhood" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry x:Name="EntryNeighborhood" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Neighborhood">
+                                                    <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Postal Code" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                    ContainerType="Outlined" x:Name="PostalCode" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry x:Name="EntryPostalCode" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Postal Code">
+                                                    <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Building Number" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                    ContainerType="Outlined" x:Name="BuildingNumber" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry x:Name="EntryBuildingNumber" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Building Number">
+                                                    <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Unit Number" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
+                                                    ContainerType="Outlined" x:Name="UnitNumber" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                <custom:BorderlessEntry x:Name="EntryUnitNumber" Text="" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Unit Number">
+                                                    <Entry.Behaviors>
+                                                        <custom1:AlphabetandArabicCharacters/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </ScrollView>
+                            </StackLayout>
+
+                        </Grid>
+                        <!--Contact Information-->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                              x:Name="ContactInformationView">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Contact Information"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <Label Text="Complete the Below details" FontFamily="{StaticResource SSTArBold}"/>
+                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                                <ScrollView>
+                                    <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Email" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
+                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry Text="{Binding TxtEmailAddress}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small" IsSpellCheckEnabled="False">
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Confirm Email" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry Text="{Binding TxtMobileNumber}" Placeholder="Confirm Email" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small" IsSpellCheckEnabled="False" >
+                                                    <Entry.Behaviors>
+                                                        <custom1:OnlyNumericValuesBehaviour/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Label Text="Mobile" Padding="15,0,15,0"/>
+                                            <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
+                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                <custom:BorderlessEntry Text="{Binding TxtPhoneNumber}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="Moblie Number" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small">
+                                                    <Entry.Behaviors>
+                                                        <custom1:OnlyNumericValuesBehaviour/>
+                                                    </Entry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+                                    </Grid>
+                                </ScrollView>
+                            </StackLayout>
+                        </Grid>
+                        <!--Verification Code
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                              x:Name="VerificationCodeView">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Verification Code"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <Label Text="Please enter Verification Code sent to your mobile" FontFamily="{StaticResource SSTArBold}"/>
+                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                                <Label Text="Mobile Number xxxxxx3388"/>
+                                
+                                <StackLayout Orientation="Horizontal">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="20"
+                                         Glyph="{x:Static FontImage:IconFonts.TimerOutline}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label Text="0:59"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>-->
+                        <!--Summery-->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                              x:Name="SummeryView">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Summery"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <Label Text="Review information" FontFamily="{StaticResource SSTArBold}"/>
+                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                                <!--Personal Information-->
+                                <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="Personal Information" FontSize="Medium" TextColor="Black"/>
+                                    </StackLayout>
+                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                        <Grid Padding="10,5,10,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Grid.Column="0" Text="ID Type"/>
+                                            <Label Grid.Row="0" Grid.Column="1" Text="National ID" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="1" Grid.Column="0" Text="ID Number"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="123456789" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="2" Grid.Column="0" Text="Name"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+
+                                        </Grid>
+                                    </StackLayout>
+                            </Frame>
+                                <!--National Address-->
+                                <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.CrosshairsGps}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="National Address" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+                                        <Grid Padding="10,5,10,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Row="0" Grid.Column="0" Text="City"/>
+                                                <Label Grid.Row="0" Grid.Column="1" Text="National ID" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="1" Grid.Column="0" Text="Neighborhood"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="123456789" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="2" Grid.Column="0" Text="Postal Code"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="3" Grid.Column="0" Text="Building Number"/>
+                                            <Label Grid.Row="3" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="4" Grid.Column="0" Text="Unit Number"/>
+                                            <Label Grid.Row="4" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                                <!--Contact Information-->
+                                <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.Phone}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="Contact Information" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineSeperator}"/>
+                                        <Grid Padding="10,5,10,10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="40*"/>
+                                                <ColumnDefinition Width="50*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Label Grid.Row="0" Grid.Column="0" Text="Mobile Number"/>
+                                            <Label Grid.Row="0" Grid.Column="1" Text="00996655555" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="1" Grid.Column="0" Text="Email"/>
+                                            <Label Grid.Row="1" Grid.Column="1" Text="Test@gazt.gov.sa" TextColor="Black"/>
+
+
+                                            <Label Grid.Row="2" Grid.Column="0" Text="Name"/>
+                                            <Label Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </Grid>
+                        <!--Password-->
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                              x:Name="PasswordView">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackLayout Grid.Row="0">
+                                <Label Text="Password"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                <Label Text="Create a Secure Password" FontFamily="{StaticResource SSTArBold}"/>
+                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                            </StackLayout>
+                            <StackLayout Grid.Row="1">
+                               
+                                <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label Text="New Password" Padding="15,0,15,0"/>
+                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" ErrorColor="#B00020" HasError="False"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:BorderlessEntry FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                Placeholder="New Password" IsPassword="True">
+                                                </custom:BorderlessEntry>
+                                                <Image HorizontalOptions="EndAndExpand">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </inputLayout:SfTextInputLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label Text="Repeat Password" Padding="15,0,15,0"/>
+                                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" ErrorColor="#B00020" HasError="False"
+                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:BorderlessEntry FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                Placeholder="Repeat Password" IsPassword="True">
+                                                </custom:BorderlessEntry>
+                                                <Image HorizontalOptions="EndAndExpand">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </inputLayout:SfTextInputLayout>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HorizontalOptions="EndAndExpand">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="At least 8 Characters long"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HorizontalOptions="EndAndExpand">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="English Capital and small letters"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HorizontalOptions="EndAndExpand">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="Not exceed 16 Characters"/>
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image HorizontalOptions="EndAndExpand">
+                                                <Image.Source>
+                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="Numbers and symbols"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                                <!--Verification Code-->
+                                <Grid Padding="0,10,0,0" x:Name="VerificationCodeView">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0">
+                                        <Label Text="Verification Code"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="Please enter Verification Code sent to your mobile" FontFamily="{StaticResource SSTArBold}"/>
+                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1">
+                                        <Label Text="Mobile Number xxxxxx3388"/>
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Image>
+                                                <Image.Source>
+                                                    <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="20"
+                                         Glyph="{x:Static FontImage:IconFonts.TimerOutline}"/>
+                                                </Image.Source>
+                                            </Image>
+                                            <Label Text="0:59"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
+                            <buttons:SfButton x:Name="btnContinue" Text="Continue" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                  HeightRequest="56" Clicked="btnContinue_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+                <!--</Grid>-->
+            </StackLayout>
+        </yummy:PancakeView>
+    </ContentPage.Content>
+</ContentPage>

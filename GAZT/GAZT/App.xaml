@@ -47,6 +47,10 @@
                 <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
                 <On Platform="iOS" Value="GE_SS_Two_Bold" />
             </OnPlatform>-->
+            <Style x:Key="lineSeperator" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayTextColor}"/>
+            </Style>
             <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>

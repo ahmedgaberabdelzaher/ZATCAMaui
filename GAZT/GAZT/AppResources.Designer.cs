@@ -368,11 +368,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete the below details.
+        /// </summary>
+        public static string CompleteBelow {
+            get {
+                return ResourceManager.GetString("CompleteBelow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string Confirm {
             get {
                 return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
             }
         }
         
@@ -503,6 +521,15 @@ namespace EGAZT {
         public static string DateHijri {
             get {
                 return ResourceManager.GetString("DateHijri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string DateOfBirth {
+            get {
+                return ResourceManager.GetString("DateOfBirth", resourceCulture);
             }
         }
         
@@ -876,6 +903,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Individual Registration.
+        /// </summary>
+        public static string IndividualRegistration {
+            get {
+                return ResourceManager.GetString("IndividualRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Information.
         /// </summary>
         public static string Information {
@@ -1074,11 +1110,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National Address.
+        /// </summary>
+        public static string NationalAddress {
+            get {
+                return ResourceManager.GetString("NationalAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
             get {
                 return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Account.
+        /// </summary>
+        public static string NewAccount {
+            get {
+                return ResourceManager.GetString("NewAccount", resourceCulture);
             }
         }
         
@@ -1619,6 +1673,15 @@ namespace EGAZT {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the type of Entity.
+        /// </summary>
+        public static string SelectEntityType {
+            get {
+                return ResourceManager.GetString("SelectEntityType", resourceCulture);
             }
         }
         
