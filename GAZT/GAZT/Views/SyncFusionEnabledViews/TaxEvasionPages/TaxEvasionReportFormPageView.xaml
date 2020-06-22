@@ -103,14 +103,14 @@
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsReadOnly="True" IsSpellCheckEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+966" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                             <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TMobNumber" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8" >
+                                <custom:BorderlessEntry  x:Name="TMobNumber" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="9" >
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
@@ -121,7 +121,7 @@
                             <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TMobNumberAr" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="8">
+                                <custom:BorderlessEntry  x:Name="TMobNumberAr" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="9">
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
@@ -200,13 +200,13 @@
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+9665" IsReadOnly="True" IsSpellCheckEnabled="False"/>
+                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+966" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
                             <inputLayout:SfTextInputLayout x:Name="FrmFMobNo"  HorizontalOptions="FillAndExpand"     Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
+                                <custom:BorderlessEntry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="9" Keyboard="Telephone">
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>
@@ -218,7 +218,7 @@
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TFaciMobNoAr" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="8" Keyboard="Telephone">
+                                <custom:BorderlessEntry  x:Name="TFaciMobNoAr" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="9" Keyboard="Telephone">
                                     <Entry.Behaviors>
                                         <custom1:OnlyNumericValuesBehaviour/>
                                     </Entry.Behaviors>

@@ -97,7 +97,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                 tesmobnoscreen.tes = "1";
                 tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
 
-                if (MobileNumber.Length == 8)
+                if (MobileNumber.Length == 9)
                 {
                     tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
                     App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;

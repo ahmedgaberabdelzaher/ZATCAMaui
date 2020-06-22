@@ -6,9 +6,11 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 try
                 {
                     _selectedTaxEvasionListItem = value;
+                    
                     if (_selectedTaxEvasionListItem != null)
                     {
                         passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
@@ -226,6 +229,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         }
         public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
+         
             try
             {
                 await Task.Run(() =>
@@ -284,6 +288,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
 
                 rootObject = await WebServiceManager.GAZTTaxEvasionGetAllReportsByMobileNumber(taxEvasionSendSmsModel);
 
+           
+
                 PopToRootPage();
 
                 if (rootObject != null)
@@ -303,6 +309,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                         if (rootObject.Data.Closed.Count() > 0)
                         {
                             TERListReportbymobnoClosed = rootObject.Data.Closed;
+                            
+
                             SetNoDataLabelVisibilityforClose = false;
                         }
                         else

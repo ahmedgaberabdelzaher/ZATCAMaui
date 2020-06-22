@@ -182,7 +182,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 checkBox.IsEnabled = false;
                 viewModel.TName = viewModel.selectedtaxEList.Username;
                 TName.IsEnabled = false;
-                viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 2);
+                viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
                 TMobNumber.IsEnabled = false;
                 TMobNumberAr.IsEnabled = false;
                 viewModel.TEmail = viewModel.selectedtaxEList.EmailId;
@@ -338,8 +338,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 reporterMobStackLayout.IsVisible = false;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    FmobcountrycodeAr.Text = "+9665";
-                    TmobcountrycodeAr.Text = "+9665";              
+                    FmobcountrycodeAr.Text = "+966";
+                    TmobcountrycodeAr.Text = "+966";              
                 }
             }
             else
@@ -510,7 +510,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    if (TMobNumberAr.Text.Length < 8)
+                    if (TMobNumberAr.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -537,7 +537,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    if (TMobNumber.Text.Length < 8)
+                    if (TMobNumber.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -567,7 +567,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TFaciMobNoAr.Text))
                 {
-                    if (TFaciMobNoAr.Text.Length < 8)
+                    if (TFaciMobNoAr.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -595,7 +595,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TFaciMobNo.Text))
                 {
-                    if (TFaciMobNo.Text.Length < 8)
+                    if (TFaciMobNo.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;

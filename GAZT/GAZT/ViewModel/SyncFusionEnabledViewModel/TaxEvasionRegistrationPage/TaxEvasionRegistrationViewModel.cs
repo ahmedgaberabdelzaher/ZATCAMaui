@@ -183,9 +183,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            BackButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                _navigationService.GoBack();
+                var _navigation = Application.Current.MainPage.Navigation;
+                //await _navigation.PopAsync();
+                //_navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                  _navigationService.GoBack();
             });
 
             this.RegisterUserClicked = new Command(this.RegisterCommandClick);
