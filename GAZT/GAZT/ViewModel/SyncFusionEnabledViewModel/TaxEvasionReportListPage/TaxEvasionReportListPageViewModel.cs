@@ -279,6 +279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         {
             SetNoDataLabelVisibilityforOpen = false;
             SetNoDataLabelVisibilityforClose = false;
+
             try
             {
                 //string test = App.TP.Mobile;

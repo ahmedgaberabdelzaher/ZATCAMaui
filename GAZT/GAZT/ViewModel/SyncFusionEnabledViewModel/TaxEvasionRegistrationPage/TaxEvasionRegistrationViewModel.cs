@@ -62,17 +62,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 this.RaisePropertyChanged("IsLoading");
             }
         }
-        private string _tEmail = string.Empty;
-        public string TEmail
+        
+        private string _txtEmailAddress = string.Empty;
+        public string TxtEmailAddress
         {
             get
             {
-                return _tEmail;
+                return _txtEmailAddress;
             }
             set
             {
-                _tEmail = value;
-                RaisePropertyChanged("TEmail");
+                _txtEmailAddress = value;
+                RaisePropertyChanged("TxtEmailAddress");
             }
         }
 
@@ -191,7 +192,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                   _navigationService.GoBack();
             });
 
-            this.RegisterUserClicked = new Command(this.RegisterCommandClick);
+            //this.RegisterUserClicked = new Command(this.RegisterCommandClick);
         }
         public async Task OnPageLoad()
         {
@@ -233,7 +234,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                         _navigationService.GoBack();
                     });
                 }
-
             }
             catch (Exception ex)
             {
@@ -253,7 +253,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 _navigationService.GoBack();
             });
         }
-        public async void RegisterCommandClick()
+
+        public async Task navigateToListPage()
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            _navigationService.NavigateTo(App.TaxEvasionReportListPageView, App.TaxEvasionUserData.Mobile);
+        }
+
+        public async Task RegisterCommandClick()
         {
             try
             {
@@ -261,12 +272,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 TaxEvasionRegisterUserModel taxEvasionRegisterUserModel = new TaxEvasionRegisterUserModel();
                 taxEvasionRegisterUserModel.FullName = TxtName;
                 taxEvasionRegisterUserModel.Mobile = App.TaxEvasionUserData.Mobile;
-                taxEvasionRegisterUserModel.Email = TEmail;
+                taxEvasionRegisterUserModel.Email = TxtEmailAddress;
                 taxEvasionRegisterUserModel.City = TxtReportDetailCity;
 
                 TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = new TaxEvasionUserRegistrationResponseModel();
                 taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionRegisterUser(taxEvasionRegisterUserModel);
-                App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
+
+                IsLoading = false;
+                if(taxEvasionUserRegistrationResponseModel.Status == true)
+                {
+                    App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
+                    navigateToListPage();
+                }
             }
             catch (GAZTException gex)
             {

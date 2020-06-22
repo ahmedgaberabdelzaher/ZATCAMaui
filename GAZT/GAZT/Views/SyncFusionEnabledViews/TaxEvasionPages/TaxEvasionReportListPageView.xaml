@@ -125,17 +125,17 @@
                                                             <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
- FontFamily="{StaticResource GAZT_FONT_MEDIUM }"
-  Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
- FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
- Text=" : "></Span>
+                                                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM }"
+                                                                      Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                     <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
+                                                                     FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                     Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding CreatedAt}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
@@ -302,8 +302,8 @@
                                                             <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       Grid.Column="0"
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
@@ -316,12 +316,12 @@
                                                             <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
-                                   Grid.Column="0"
+                                                       Grid.Row="2"
+                                                       Grid.Column="0"      
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>
@@ -330,9 +330,9 @@
                                                             <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="3"
-                                   Grid.Column="0"
-                                                           >
+                                                       Grid.Row="3"
+                                                       Grid.Column="0"
+                                                       >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>

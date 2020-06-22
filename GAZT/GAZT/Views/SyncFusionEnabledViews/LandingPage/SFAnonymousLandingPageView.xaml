@@ -126,7 +126,7 @@
                    <!-- <BoxView BackgroundColor="#006450" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="6,6,6,0"></BoxView>-->
                     <listView:SfListView x:Name="SfListView" AutoFitMode="Height" SelectionMode="None" Margin="0,6,0,0" Padding="0" 
                                          ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}"
-                                         HorizontalOptions="FillAndExpand"  VerticalOptions="EndAndExpand">
+                                         HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView CornerRadius="8"  Margin="1,0,1,0"   
@@ -168,7 +168,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                   <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
+                   <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
 
                            <!-- <listView:GridLayout x:Name="GridLayout" SpanCount="1"  />-->
                         </listView:SfListView.LayoutManager>

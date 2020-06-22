@@ -127,7 +127,7 @@ namespace EGAZT
         public static string IncomingChannel = string.Empty;
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
-        public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+        public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
         #endregion
 
         public static HttpClientHandler httpClientHandler = null;

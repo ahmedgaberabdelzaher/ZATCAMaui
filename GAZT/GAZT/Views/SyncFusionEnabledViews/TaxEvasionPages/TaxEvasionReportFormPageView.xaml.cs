@@ -497,7 +497,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     if (showMessage == true)
                     {
                     showFillFeildsMessage();
-                }
+                    }
                     if (flag == true)
                     {
                         await viewModel.SubmitCreatedReport();
@@ -899,10 +899,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
             }
         }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-        }
+        
+
         public async Task GetRegionList()
         {
             await Task.Run(() =>
@@ -932,13 +930,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     double lat = 00.00, lon = 00.00;
                     try
                     {
-                        var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                        var location = await Geolocation.GetLocationAsync(request);
+                        var timeout = TimeSpan.FromSeconds(10);
+                        var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
+
+                        var location = await Geolocation.GetLocationAsync(locationRequestData);
                         if (location != null)
                         {
                             lat = location.Latitude;
                             lon = location.Longitude;
                         }
+
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
                         mapView.MoveToRegion(mapSpan);

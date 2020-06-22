@@ -135,7 +135,7 @@
                             Style="{StaticResource SfButtonStyle}"
                             Text="{x:Static local1:AppResources.Verify}"/>
 
-                            <buttons:SfButton IsVisible="true"
+                            <buttons:SfButton IsVisible="false"
                             Grid.Row="4"
                             Margin="10,16,10,16"
                             BackgroundColor="#D99A29"
