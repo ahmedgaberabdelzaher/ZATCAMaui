@@ -374,7 +374,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                         <listView:SfListView.Behaviors>
                             <behavior:SfListViewExtendHeightBehavior ></behavior:SfListViewExtendHeightBehavior>

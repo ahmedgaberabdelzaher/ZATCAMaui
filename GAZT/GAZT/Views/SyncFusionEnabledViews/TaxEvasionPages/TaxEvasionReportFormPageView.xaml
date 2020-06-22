@@ -196,55 +196,14 @@
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>-->
                         <!--SelectedItem="{Binding SelectedTaxEvasionCompanyType}"-->
-                        <StackLayout HorizontalOptions="FillAndExpand" x:Name="facilityMobileStackLayout" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
-    ContainerType="Outlined" 
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry FontSize="Small" Keyboard="Telephone"  Text="+966" IsReadOnly="True" IsSpellCheckEnabled="False"/>
-                            </inputLayout:SfTextInputLayout>
-                            <inputLayout:SfTextInputLayout x:Name="FrmFMobNo"  HorizontalOptions="FillAndExpand"     Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TFaciMobNo" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="9" Keyboard="Telephone">
-                                    <Entry.Behaviors>
-                                        <custom1:OnlyNumericValuesBehaviour/>
-                                    </Entry.Behaviors>
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
-                        <StackLayout HorizontalOptions="FillAndExpand"  x:Name="facilityMobileStackLayoutAr" Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout x:Name="FrmFMobNoAr"  HorizontalOptions="FillAndExpand"     Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityMobNo}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TFaciMobNoAr" FontSize="Small" Unfocused="TFaciMobNo_Unfocused" IsSpellCheckEnabled="False" Text="{Binding TFaciMobNo}" MaxLength="9" Keyboard="Telephone">
-                                    <Entry.Behaviors>
-                                        <custom1:OnlyNumericValuesBehaviour/>
-                                    </Entry.Behaviors>
-                                </custom:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                            <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
-    ContainerType="Outlined" 
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry x:Name="FmobcountrycodeAr" FontSize="Small" Keyboard="Telephone"  Text="9665+" IsReadOnly="True" IsSpellCheckEnabled="False"/>
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFEmail"   Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityEmail}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="TFaciEmail" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFaciEmail_Unfocused"  Text="{Binding TFaciEmail}"  Keyboard="Email">
-                            </custom:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFDAddress"   Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmFDAddress"   Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFDAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFSAddress"   Grid.Row="9"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmFSAddress"   Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -254,12 +213,12 @@
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailRegion}" HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="frmRegionPicker"
-    ContainerType="Outlined" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry" IsSpellCheckEnabled="False" FontSize="Small">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomButton x:Name="btnTxtReportDetailRegion" Clicked="btnTxtReportDetailRegion_Clicked" FontSize="Small"  BackgroundColor="Transparent" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                        <custom:CustomButton x:Name="btnTxtReportDetailRegion" Clicked="btnTxtReportDetailRegion_Clicked" FontSize="Small"  BackgroundColor="Transparent" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
                         <syncfusion:SfPicker
                     HeaderHeight="40"
@@ -278,7 +237,7 @@ HeaderTextColor="White"
                                              BackgroundColor="#EAF7CC"
                            OkButtonClicked="RegionPicker_OkButtonClicked"
                             CancelButtonClicked="RegionPicker_CancelButtonClicked"
-                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="Name"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="Name"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
                     ShowFooter="True"
@@ -319,12 +278,12 @@ HeaderTextColor="White"
                        <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" HelperText="{x:Static local:AppResources.ZZZRequired}"
-    ContainerType="Outlined" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+    ContainerType="Outlined" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small"  x:Name="City_entry">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                        <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
                         <syncfusion:SfPicker
                         HeaderHeight="40"
@@ -343,7 +302,7 @@ HeaderTextColor="White"
                         SelectedItemTextColor="#006450"
                         BorderColor="Black"
                                                  BackgroundColor="#EAF7CC"
-                       x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                       x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          ShowFooter="True"
@@ -372,7 +331,7 @@ HeaderTextColor="White"
                             CancelButtonClicked="CityPickerAR_CancelButtonClicked"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
-                   x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
                     ShowFooter="True"
@@ -383,8 +342,8 @@ HeaderTextColor="White"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
                         <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
-                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="12" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
-                        <StackLayout Grid.Row="13"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTIN">
+                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
+                        <StackLayout Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTIN">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
