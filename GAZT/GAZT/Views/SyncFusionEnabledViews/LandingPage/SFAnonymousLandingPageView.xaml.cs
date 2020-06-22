@@ -10,7 +10,7 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
-using Xamarin.Essentials;   
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -39,14 +39,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 if (Device.RuntimePlatform == Device.Android)
                 {
                     GreenHeader.Margin = new Thickness(0, 0, 0, 0);
-                    HamberLabel.Padding = new Thickness(4,0,0,0);
+                    HamberLabel.Padding = new Thickness(4, 0, 0, 0);
                     LogoStackLayout.Padding = new Thickness(0, 0, 0, 0);
                 }
                 else
                 {
-                    GreenHeader.Margin = new Thickness(0,-50, 0, 0);
-                    HamberLabel.Padding = new Thickness(5,80, 5, 0);
-                    LogoStackLayout.Padding = new Thickness(0,50, 0, 0);
+                    GreenHeader.Margin = new Thickness(0, -50, 0, 0);
+                    HamberLabel.Padding = new Thickness(5, 80, 5, 0);
+                    LogoStackLayout.Padding = new Thickness(0, 50, 0, 0);
                 }
 
 
@@ -64,10 +64,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 }
                 else
                 {
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
-                        });
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                    });
                 }
 
                 //  DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
@@ -89,11 +89,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         {
             if (App.IsArabic)
             {
-                border.CornerRadius = new Thickness(0,0,0,40);
+                border.CornerRadius = new Thickness(0, 0, 0, 40);
             }
             else
             {
-                border.CornerRadius = new Thickness(0,0,40,0);
+                border.CornerRadius = new Thickness(0, 0, 40, 0);
             }
         }
         private void LoadDate()
@@ -195,7 +195,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                     });
                 }
 
-               
+
             }
             catch (Exception ex)
             {
@@ -215,7 +215,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 //        LandingCreateAccountNote.LineHeight = 1.25;
                 //        break;
                 //}
-                
+
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
             else
@@ -248,7 +248,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 });
             }
 
-           
+
         }
 
         private void OnTappedeService(object sender, EventArgs e)
@@ -290,11 +290,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 //}
+                if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
                 }
-              //  if (BModel.eServiceName == AppResources.VATLookup)
+                //  if (BModel.eServiceName == AppResources.VATLookup)
                 if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
@@ -336,6 +340,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 //{
                 //    viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
                 //}
+                if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                {
+                    viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
@@ -364,7 +372,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 });
             }
 
-       }
+        }
         private void SignUP_Clicked(object sender, EventArgs e)
         {
             if (!App.IsJailBrokenDevice)
