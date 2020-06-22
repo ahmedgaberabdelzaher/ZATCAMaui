@@ -17,14 +17,34 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <ContentPage.ControlTemplate>
+      <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <controls:TitleView Title="{x:Static local:AppResources.ZZCreateYourTEAccount}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <!--<ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZCreateYourTEAccount}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
                             TextColor="#006450"
@@ -35,9 +55,9 @@
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>
+    </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
-        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" RowSpacing="0" >
+        <Grid >
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
                 <RowDefinition Height="10*" />
@@ -69,7 +89,7 @@
                               </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                       
-                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,6,10,-6"
                                 Hint="{x:Static local:AppResources.ZTERReportDetailCity}"
                                                            HelperText="{x:Static local:AppResources.ZZZRequired}"
                                      ContainerType="Outlined" x:Name="FrmCity" UnfocusedColor="#B1B1B1"

@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
 {
-    public class TaxEvasionRegistrationViewModel: ViewModelBase
+    public class TaxEvasionRegistrationViewModel : ViewModelBase
     {
         #region variable
         public readonly INavigationService _navigationService;
@@ -125,7 +127,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 }
                 RaisePropertyChanged("SelectLCType");
             }
-           
+
         }
 
         private TaxEvasionRegionCityDatum _selectLCTypePrev = null;
@@ -139,6 +141,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             {
                 _selectLCTypePrev = value;
                 RaisePropertyChanged("SelectLCTypePrev");
+            }
+        }
+        private List<TaxEvasionRegionCityDatum> _rList = null;
+        public List<TaxEvasionRegionCityDatum> RList
+        {
+            get
+            {
+                return _rList;
+            }
+            set
+            {
+                _rList = value;
+                RaisePropertyChanged("RList");
             }
         }
 
@@ -175,7 +190,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
 
             this.RegisterUserClicked = new Command(this.RegisterCommandClick);
         }
+        public async Task OnPageLoad()
+        {
+            try
+            {
 
+                try
+                {
+                    //await Task.Run(async() =>
+                    //{
+                    //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
+
+                    TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
+                    regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
+
+                    if (regionlist != null && regionlist.Data.Count() != 0)
+                    {
+                        if (CList != null && CList.Count > 0)
+                        {
+                            CList.Clear();
+                            TxtReportDetailCity = string.Empty;
+                        }
+
+                        CList = regionlist.Data;
+                    }
+                    else
+                    {
+                        //_dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                        //_navigationService.GoBack();
+                        NoInternetGoBack();
+                    }
+
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+        public async void NoInternetGoBack()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                _navigationService.GoBack();
+            });
+        }
         public async void RegisterCommandClick()
         {
             try
