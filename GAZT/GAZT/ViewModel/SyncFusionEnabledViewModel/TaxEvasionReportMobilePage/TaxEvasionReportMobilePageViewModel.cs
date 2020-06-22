@@ -91,7 +91,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
 
         public async void VerifyCommandClick()
         {
-           
             try
             {
                 ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
@@ -101,8 +100,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                 if (MobileNumber.Length == 8)
                 {
                     tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                    App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
                     _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-                    // WebServiceManager.GetOtpVerification();
                 }
             }
             catch (InternetException ex)

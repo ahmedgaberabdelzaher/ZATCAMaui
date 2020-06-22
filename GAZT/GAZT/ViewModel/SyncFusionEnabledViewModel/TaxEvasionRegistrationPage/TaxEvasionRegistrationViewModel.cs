@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
 {
@@ -13,6 +17,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
+        public ICommand RegisterUserClicked { get; set; }
+
         #endregion
 
         private bool _isVisiblePickerAr = false;
@@ -39,6 +45,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             {
                 _isVisiblePickerEn = value;
                 RaisePropertyChanged("IsVisiblePickerEn");
+            }
+        }
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                this.RaisePropertyChanged("IsLoading");
             }
         }
         private string _tEmail = string.Empty;
@@ -68,6 +87,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 RaisePropertyChanged("TxtName");
             }
         }
+
         private string _txtReportDetailCity = string.Empty;
         public string TxtReportDetailCity
         {
@@ -107,6 +127,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             }
            
         }
+
         private TaxEvasionRegionCityDatum _selectLCTypePrev = null;
         public TaxEvasionRegionCityDatum SelectLCTypePrev
         {
@@ -134,6 +155,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 RaisePropertyChanged("CList");
             }
         }
+
         public TaxEvasionRegistrationViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -150,6 +172,68 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             {
                 _navigationService.GoBack();
             });
+
+            this.RegisterUserClicked = new Command(this.RegisterCommandClick);
+        }
+
+        public async void RegisterCommandClick()
+        {
+            try
+            {
+                IsLoading = true;
+                TaxEvasionRegisterUserModel taxEvasionRegisterUserModel = new TaxEvasionRegisterUserModel();
+                taxEvasionRegisterUserModel.FullName = TxtName;
+                taxEvasionRegisterUserModel.Mobile = App.TaxEvasionUserData.Mobile;
+                taxEvasionRegisterUserModel.Email = TEmail;
+                taxEvasionRegisterUserModel.City = TxtReportDetailCity;
+
+                TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = new TaxEvasionUserRegistrationResponseModel();
+                taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionRegisterUser(taxEvasionRegisterUserModel);
+                App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
+            }
+            catch (GAZTException gex)
+            {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
         }
     }
 }

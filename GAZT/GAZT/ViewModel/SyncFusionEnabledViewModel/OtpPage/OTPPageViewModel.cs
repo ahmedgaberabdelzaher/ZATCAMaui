@@ -472,14 +472,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
 
                             try
                             {
-                                taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+                                TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+                                App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
 
                                 if (taxEvasionSendSmsResponseModel.Status == true)
                                 {
                                     await navigateToListPage();
                                 }
-                               
-                            }catch(Exception ex)
+                            }
+                            catch(Exception ex)
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
@@ -495,8 +496,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                     //viewModel._navigationService.GoBack();
                                 });
                             }
-
-                           
                         }
                         else
                         {

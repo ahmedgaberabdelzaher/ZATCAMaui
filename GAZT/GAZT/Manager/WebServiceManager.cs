@@ -4351,7 +4351,12 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+                            //Dev
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                            //QA, Pre-prod and Prod
+                            //cookie.Domain = ".gazt.gov.sa";
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4485,7 +4490,13 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+
+                            //Dev
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                            //QA, Pre-prod and Prod
+                            //cookie.Domain = ".gazt.gov.sa";
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4698,7 +4709,8 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -5039,9 +5051,10 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
-        public static async Task<TaxEvasionSendSmsResponseModel> GAZTTaxEvasionGetUserByMobile(TaxEvasionSendSmsModel mobileNumberModel)
+
+        public static async Task<TaxEvasionUserRegistrationResponseModel> GAZTTaxEvasionGetUserByMobile(TaxEvasionSendSmsModel mobileNumberModel)
         {
-            TaxEvasionSendSmsResponseModel sendSmsResponse = new TaxEvasionSendSmsResponseModel();
+            TaxEvasionUserRegistrationResponseModel sendSmsResponse = new TaxEvasionUserRegistrationResponseModel();
             TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
             string response = string.Empty;
 
@@ -5074,7 +5087,7 @@ namespace GAZT.Manager
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
                     response = res.Content.ReadAsStringAsync().Result;
 
-                    sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
+                    sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionUserRegistrationResponseModel>(response);
 
                     return sendSmsResponse;
                 }
@@ -5089,6 +5102,52 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+
+        public static async Task<TaxEvasionUserRegistrationResponseModel> GAZTTaxEvasionRegisterUser(TaxEvasionRegisterUserModel registerUserModel)
+        {
+            TaxEvasionUserRegistrationResponseModel registrationResponseModel = new TaxEvasionUserRegistrationResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionRegisterUser;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+                   
+                    var serilized = JsonConvert.SerializeObject(registerUserModel);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    registrationResponseModel = JsonConvert.DeserializeObject<TaxEvasionUserRegistrationResponseModel>(response);
+
+                    return registrationResponseModel;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+
         public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
         {
             TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();

@@ -124,11 +124,10 @@ namespace EGAZT
         public static bool IsSAMLLoginEnabled = true;
         public static bool IsUserLoggedIn = false;
         //HttpClientHandlerForSSL Certificate Issue
-
         public static string IncomingChannel = string.Empty;
-
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
+        public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
         #endregion
 
         public static HttpClientHandler httpClientHandler = null;

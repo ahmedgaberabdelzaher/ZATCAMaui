@@ -118,6 +118,7 @@ namespace EGAZT.Models
         public TaxEvasionReportDetails[] Closed { get; set; }
     }
 
+
     public partial class TaxEvasionReportDetails
     {
         [JsonProperty("status")]
@@ -268,5 +269,86 @@ namespace EGAZT.Models
 
         [JsonProperty("code")]
         public long Code { get; set; }
+    }
+
+    public partial class TaxEvasionRegisterUserModel
+    {
+        [JsonProperty("full_name")]
+        public string FullName { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+    }
+
+    public partial class TaxEvasionUserRegistrationResponseModel
+    {
+        [JsonProperty("status")]
+        public bool Status { get; set; }
+
+        [JsonProperty("data")]
+        public TaxEvasionUserRegistrationResponseData Data { get; set; }
+
+        [JsonProperty("code")]
+        public long Code { get; set; }
+    }
+
+    public partial class TaxEvasionUserRegistrationResponseData
+    {
+        [JsonProperty("id")]
+        public long Id { get; set; }
+
+        [JsonProperty("full_name")]
+        public string FullName { get; set; }
+
+        [JsonProperty("password")]
+        public object Password { get; set; }
+
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        [JsonProperty("mobile")]
+        public string Mobile { get; set; }
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("access_token")]
+        public object AccessToken { get; set; }
+
+        [JsonProperty("status")]
+        public long Status { get; set; }
+
+        [JsonProperty("confirmation_code")]
+        public object ConfirmationCode { get; set; }
+
+        [JsonProperty("confirmed")]
+        public long Confirmed { get; set; }
+
+        [JsonProperty("remember_token")]
+        public object RememberToken { get; set; }
+
+        [JsonProperty("created_at")]
+        public string CreatedAt { get; set; }
+
+        [JsonProperty("updated_at")]
+        public string UpdatedAt { get; set; }
+
+        [JsonProperty("deleted_at")]
+        public string DeletedAt { get; set; }
+
+        [JsonProperty("ios_version")]
+        public string IosVersion { get; set; }
+
+        [JsonProperty("android_version")]
+        public string AndroidVersion { get; set; }
+
+        [JsonProperty("api_token")]
+        public string ApiToken { get; set; }
     }
 }

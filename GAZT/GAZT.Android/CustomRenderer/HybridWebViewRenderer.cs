@@ -362,7 +362,12 @@ namespace EGAZT.Droid.CustomRenderer
                             CookieModel cookie = new CookieModel();
                             cookie.CName = httpCookie.Name;
                             cookie.CValue = httpCookie.Value;
-                            cookie.Domain = ".gazt.gov.sa";
+                            //Dev
+                            cookie.Domain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
+
+                            //QA, Pre-prod and Prod
+                            //cookie.Domain = ".gazt.gov.sa";
+
                             App.LoginCookiesRetrieved.Add(cookie);
                         }
 

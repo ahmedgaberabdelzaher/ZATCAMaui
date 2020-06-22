@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
 namespace GAZT.Helper
 {
     public static class Constants
@@ -24,27 +25,33 @@ namespace GAZT.Helper
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
         #region Cookie Info
+
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
         public static string QADomainForCookies = "loginqa.gazt.gov.sa";
         public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
         public static string ProdDomainForCookies = "login.gazt.gov.sa";
 
+        public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
+        public static string QAPrepprodProdPartialDomainForCookies = ".gazt.gov.sa";
+
         public static string LanguageCookieNameForLogin = "langMobile";
 
-        //public static string DomainUrlForCookies = QADomainForCookies;
-
-        public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = ProdDomainForCookies;
-
+        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = DevDomainForCookies;
+        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
+        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = ProdDomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -140,6 +147,7 @@ namespace GAZT.Helper
         public static string GAZTTaxEvasionGetAllCities = "https://vat2.gazt.gov.sa/api/v4/list-cities?region=";
         public static string GAZTTaxEvasionGetAllCategories = "https://vat2.gazt.gov.sa/api/v4/list-categories";
         public static string GAZTTaxEvasionCreateReport = "https://vat2.gazt.gov.sa/api/v4/add-report";
+        public static string GAZTTaxEvasionRegisterUser = "https://vat2.gazt.gov.sa/api/v4/user/register";
 
         #endregion
 
