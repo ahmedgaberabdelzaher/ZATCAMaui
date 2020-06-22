@@ -59,7 +59,10 @@
                 </Grid.ColumnDefinitions>
 
                 <ScrollView Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalOptions="FillAndExpand">
-                    <Grid   Margin="0" Padding="5" HorizontalOptions="FillAndExpand" RowSpacing="0" >
+                    <!--<ListView>
+
+                    </ListView>-->
+                    <Grid   Margin="0" Padding="5" HorizontalOptions="FillAndExpand" RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10*"/>
                             <RowDefinition Height="auto"/>

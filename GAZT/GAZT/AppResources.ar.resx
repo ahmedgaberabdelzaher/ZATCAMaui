@@ -769,7 +769,7 @@
     <value>Please enter lookup number</value>
   </data>
   <data name="ZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم التسلسلي</value>
+    <value>الرجاء إدخال الرقم التسلسلي    </value>
   </data>
   <data name="ZPleaseentertheCRcomposedof10digits" xml:space="preserve">
     <value>يرجى ادخال رقم السجل التجاري المؤلف من 10 ارقام</value>
@@ -781,7 +781,7 @@
     <value>الرجاء إختيار نوع المعرف</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>نوع البحث</value>
+    <value>نوع البحث  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>الرقم الضريبي</value>
@@ -984,10 +984,10 @@
     <value>العنوان</value>
   </data>
   <data name="ZVatAdjustmentWithSAR" xml:space="preserve">
-    <value>مبلغ التعديل (ريال)</value>
+    <value>مبلغ التعديل (ريال)   </value>
   </data>
   <data name="ZVatAmountWithSAR" xml:space="preserve">
-    <value>المبلغ (ريال)</value>
+    <value>المبلغ (ريال) </value>
   </data>
   <data name="ZVatAttachmentMaxSizeNotfication" xml:space="preserve">
     <value>يجب أن لا يزيد عدد المرفقات عن 40 ملفات.</value>
@@ -1173,7 +1173,7 @@
     <value>إجمالي المبيعات</value>
   </data>
   <data name="ZVatTotalVATdueforcurrentperiod" xml:space="preserve">
-    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية الحالية</value>
+    <value>إجمالي ضريبة القيمة المضافة المستحقة عن الفترة الضريبية  الحالية</value>
   </data>
   <data name="ZVatVATAmountWithSAR" xml:space="preserve">
     <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
@@ -1251,7 +1251,7 @@
     <value>تحديث رقم الجوال</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>الفترة المالية من</value>
+    <value>الفترة المالية</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>الى</value>
@@ -2446,6 +2446,10 @@
     <value>هناك حساب مسجل بالفعل بنفس المعلومات المدخلة، حاول التسجيل مره اخرى كمستخدم جديد</value>
     <comment>Sign Up</comment>
   </data>
+<data name="ZTERNewAccount" xml:space="preserve">
+    <value>حساب جديد</value>
+    <comment>New Account</comment>
+</data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>الرجاء إختيار نوع الإقرار</value>
     <comment>Tax Evasion Report Service</comment>
@@ -3186,7 +3190,7 @@
     <comment>Dashboard</comment>
   </data>
   <data name="ZZZVATAmoutWithSAR" xml:space="preserve">
-    <value>مبلغ ضريبة القيمة المضافة (ريال)</value>
+    <value>مبلغ ضريبة القيمة المضافة (ريال)       </value>
     <comment>VAT</comment>
   </data>
   <data name="ZZZChangetoLanguage" xml:space="preserve">
@@ -3249,7 +3253,7 @@
     <comment>VAT Declarartion</comment>
   </data>
   <data name="ZZZImportssubjecttoVATpaidatcustoms5" xml:space="preserve">
-    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك (5%)</value>
+    <value>الاستيرادات الخاضعة لضريبة القيمة المضافة والتي تدفع في الجمارك (5%)</value>
     <comment>VAT Declarartion</comment>
   </data>
   <data name="ZZZPurchasessubjecttoVATat5" xml:space="preserve">
@@ -3393,5 +3397,13 @@
 1.ميزان المراجعة لفترة الإقرار
 2.المبيعات الخاضعة لضريبة القيمة المضافة (غير مشمول 0% -15%)
 3.المشتريات الخاضعة لضريبة القيمة المضافة (15%، رسوم عكسية)</value>
+  </data>
+  <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+    <value>تم تحميل الملف، نرجو البحث في مجلد التنزيلات</value>
+  </data>
+  <data name="ZToolTipStandardRatedSalesAdjustment5ForNew" xml:space="preserve">
+    <value>• المبلغ الإجمالي للتعديلات التي تم إجراؤها على التوريدات الخاضعة لنسبة 5% (غير شامل ضريبة القيمة المضافة ) المباعة في المملكة العربية السعودية خلال الفترات الضريبية السابقة بالإضافة إلى : - التوريدات المفترضة. - التوريدات الخاضعة لطريقة هامش الربح
+
+• على سبيل المثال، إرجاع العملاء للسلع والخدمات التي استحقت عنها ضريبة القيمة المضافة للهيئة العامة للزكاة والدخل، شطب الديون المعدومة على الذمم المدينة الخاضعة للضريبة بالنسبة الأساسية</value>
   </data>
 </root>

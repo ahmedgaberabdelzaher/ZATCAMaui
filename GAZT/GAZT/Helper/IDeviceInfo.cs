@@ -15,6 +15,8 @@ namespace GAZT.Helper
 
         string GetDeviceUdid();
 
+        string GetAttachmentToDownloadsPath(string fileName, string fileContents);
+
         bool IsJailBreakDetected();
 
 
@@ -30,5 +32,7 @@ namespace GAZT.Helper
         string OperatingSystemVersion { get; }
         bool IsSimulator { get; }
         bool IsTablet { get; }
+
+
     }
 }

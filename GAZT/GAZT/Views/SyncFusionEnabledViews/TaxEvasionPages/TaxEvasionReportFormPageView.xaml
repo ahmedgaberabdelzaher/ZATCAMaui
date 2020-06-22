@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"  
-xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom="clr-namespace:GAZT"
 
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
@@ -278,7 +278,7 @@ HeaderTextColor="White"
                                              BackgroundColor="#EAF7CC"
                            OkButtonClicked="RegionPicker_OkButtonClicked"
                             CancelButtonClicked="RegionPicker_CancelButtonClicked"
-                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameEN"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    x:Name="RegionPicker"  ItemsSource="{Binding RList}" DisplayMemberPath="Name"  IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
                     ShowFooter="True"
@@ -306,7 +306,7 @@ HeaderTextColor="White"
                             OkButtonClicked="RegionPickerAR_OkButtonClicked"
                             CancelButtonClicked="RegionPickerAR_CancelButtonClicked"
                    ItemHeight="40"
-                   x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="RegionNameAR"  IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="RegionPickerAR"  ItemsSource="{Binding RList}" DisplayMemberPath="Name"  IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
                      ShowFooter="True"
@@ -327,32 +327,32 @@ HeaderTextColor="White"
                         <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
                         <syncfusion:SfPicker
-                    HeaderHeight="40"
-                    ShowHeader="true"
-                    HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
-                            HeaderTextColor="White"
+                        HeaderHeight="40"
+                        ShowHeader="true"
+                        HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
+                                HeaderTextColor="White"
 
-                    ShowColumnHeader="False"
-                    ColumnHeaderHeight="46"
-                    PickerMode="Dialog"                                              
-                   ItemHeight="40"
-                            OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
-                            OkButtonClicked="CityPicker_OkButtonClicked"
-                            CancelButtonClicked="CityPicker_CancelButtonClicked"
-                              HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
-                    BorderColor="Black"
-                                             BackgroundColor="#EAF7CC"
-                   x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="CityNameEN" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
-                    PickerHeight="200"
-                    PickerWidth="270"
-                     ShowFooter="True"
-                     OKButtonBackgroundColor="#EAF7CC"
-                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
-                            <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
-                            <syncfusion:SfPicker.Behaviors>
-                                <custom1:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
+                        ShowColumnHeader="False"
+                        ColumnHeaderHeight="46"
+                        PickerMode="Dialog"                                              
+                       ItemHeight="40"
+                                OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                                OkButtonClicked="CityPicker_OkButtonClicked"
+                                CancelButtonClicked="CityPicker_CancelButtonClicked"
+                                  HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                 BackgroundColor="#EAF7CC"
+                       x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         ShowFooter="True"
+                         OKButtonBackgroundColor="#EAF7CC"
+                                        CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
+                                <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
+                                <syncfusion:SfPicker.Behaviors>
+                                    <custom1:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
                        <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
                         <syncfusion:SfPicker
@@ -372,7 +372,7 @@ HeaderTextColor="White"
                             CancelButtonClicked="CityPickerAR_CancelButtonClicked"
                                              BackgroundColor="#EAF7CC"
                    ItemHeight="40"
-                   x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="CityNameAR" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                   x:Name="CityPickerAR"  ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
                     PickerHeight="200"
                     PickerWidth="270"
                     ShowFooter="True"

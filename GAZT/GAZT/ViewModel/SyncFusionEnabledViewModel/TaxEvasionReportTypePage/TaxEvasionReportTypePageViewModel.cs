@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
@@ -15,11 +16,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
-       // public ICommand OnNextClicked { get; set; }
-        public ICommand OnNextClicked{ get;  set; }
+        // public ICommand OnNextClicked { get; set; }
+        public ICommand OnNextClicked { get; set; }
         #endregion
-        private TaxEvasionReport _taxEvasionListobj = null;
-        public TaxEvasionReport TaxEvasionListobj
+        private TaxEvasionReportDetails _taxEvasionListobj = null;
+        public TaxEvasionReportDetails TaxEvasionListobj
         {
             get
             {
@@ -193,7 +194,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 //{
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 //});
-                OnNextClicked = new Command(async() =>
+                OnNextClicked = new Command(async () =>
                 {
                     if (IsnextbuttonEnable == true)
                     {
@@ -216,10 +217,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
 
                 });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
-    }
+        }
         public async Task navigateToFormPage()
         {
             await Task.Run(() =>
@@ -251,29 +252,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 }
                 if (CategorySelected_Index != "0")
                 {
-                    TaxEvasionListobj = new TaxEvasionReport();
-                    TaxEvasionListobj.ViolationType = CategorySelected_Index;
+                    TaxEvasionListobj = new TaxEvasionReportDetails();
+                    TaxEvasionListobj.Category = CategorySelected_Index;
                     if (!string.IsNullOrEmpty(MobileNumber))
                     {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
-                        TaxEvasionListobj.ReporterMobileNumber = MobileNumber;
+                        TaxEvasionListobj.PhoneNumber = MobileNumber;
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                       
+                            IsLoading = false;
                             _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
-
-                            
-                                IsLoading = false;
-                           
                         });
                     }
                 }
                 else
-                { IsLoading = false;
-                 
+                {
+                    IsLoading = false;
                     //IsLoading = false;
                 }
             });
-           
+
         }
         public void PopToRootPage()
         {
@@ -285,6 +282,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                     await _navigation.PopToRootAsync();
                 });
             }
+        }
+
+        public async Task OnPageLoad()
+        {
+
         }
     }
 }

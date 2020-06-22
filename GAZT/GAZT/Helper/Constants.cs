@@ -36,11 +36,16 @@ namespace GAZT.Helper
         public static string PartialDomainUrlForCookies = ".gazt.gov.sa";
         #endregion
 
-       public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = ProdDomainForCookies;
+
+
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
 
-       
+
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
 
@@ -123,6 +128,18 @@ namespace GAZT.Helper
         #endregion
         #region DownloadAttachment
         public static string GAZTGetAllAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '";
+        #endregion
+
+        #region Tax Evasion New API - Pointing to Prod
+
+        public static string GAZTTaxEvasionSendSms = "https://vat2.gazt.gov.sa/api/v4/sendSms";
+        public static string GAZTTaxEvasionVerifySms = "https://vat2.gazt.gov.sa/api/v4/verifySms";
+        public static string GAZTTaxEvasionGetAllReports = "https://vat2.gazt.gov.sa/api/v4/get-reports";
+        public static string GAZTTaxEvasionGetAllRegions = "https://vat2.gazt.gov.sa/api/v4/list-regions";
+        public static string GAZTTaxEvasionGetAllCities = "https://vat2.gazt.gov.sa/api/v4/list-cities?region=";
+        public static string GAZTTaxEvasionGetAllCategories = "https://vat2.gazt.gov.sa/api/v4/list-categories";
+        public static string GAZTTaxEvasionCreateReport = "https://vat2.gazt.gov.sa/api/v4/add-report";
+
         #endregion
 
     }

@@ -2,6 +2,7 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewModel;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.IO;
 using System.Net;
@@ -17,6 +18,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
     {
         #region Variable
         AmendSalesDetailsPageViewModel viewModel;
+        string downloadFilePath;
+        public string fbNum;
         #endregion
         #region Property
         #endregion
@@ -72,20 +75,102 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             Image DownloadImage = sender as Image;
             ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
             //attachment.DocUrl;
-            if (attachment.Filename.Contains(".")) ;
-            string Extention = attachment.Filename.Split('.')[1];
-            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+
+            String retGuid = attachment.RetGuid;
+            String fbNum = AmendSalesDetailsPageViewModel.fbNum;
+            viewModel.IsLoading = true;
+
+            AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
+            foreach (AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
             {
-                if (attachment.DocUrl != null)
+                if (attachment.Filename == tempAttachmentDocumentModel.Filename)
+            {
+                var platform = DeviceInfo.Platform;
+                if (Device.RuntimePlatform == Device.iOS)
                 {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                    viewModel.IsLoading = false;
+                    var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+
+
+                }
+                else
+                {
+ 
+                    if (tempAttachmentDocumentModel.Filename.Contains(""))
+                    {
+                        try
+                        {
+
+                            var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+
+                    viewModel.IsLoading = false;
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await viewModel._dialogService.ShowMessageBox(AppResources.ZZDownloadAttachmentMessg, AppResources.Information);
+                    });
                 }
             }
-            else
+        }
+        /* Image DownloadImage = sender as Image;
+         ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
+         //attachment.DocUrl;
+         if (attachment.Filename.Contains(".")) ;
+         string Extention = attachment.Filename.Split('.')[1];
+         if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+         {
+             if (attachment.DocUrl != null)
+             {
+                 viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+             }
+         }
+         else
+         {
+             await email(attachment.Doguid, attachment);
+         }
+         if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;*/
+    }
+        private async Task DownloadAndSaveFile(string pathToFile, string fileContents)
+        {
+            File.WriteAllBytes(pathToFile, Convert.FromBase64String(fileContents));
+        }
+
+        public string PathToFolder(string fileName, string folderName)
+        {
+            try
             {
-                await email(attachment.Doguid, attachment);
+                string pathToNewFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Images", "temp");
+
+                Directory.CreateDirectory(pathToNewFolder);
+                string pathToNewFile = Path.Combine(pathToNewFolder, fileName);
+
+
+                return pathToNewFile;
             }
-            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            catch
+            {
+                return null;
+            }
+        }
+
+        public String WriteFileToPath(string fileName, string base64Data)
+        {
+            string getFilePath = PathToFolder(fileName, "GAZTFiles");
+            File.WriteAllBytes(getFilePath, Convert.FromBase64String(base64Data));
+
+            return getFilePath;
         }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {

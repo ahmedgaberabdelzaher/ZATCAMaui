@@ -15,6 +15,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
@@ -4840,6 +4841,398 @@ namespace GAZT.Manager
                 throw new GAZTInternetException();
             }
         }
+        public static async Task<AttachmentDocumentModel> GAZTGetAllAttachments(String retGuid, String fbNum)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                String GAZTAttachmentsResponseResult = String.Empty;
+                AttachmentDocumentModel attachmentDocumentModel = null;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+
+                    //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr%20eq%20%27065000210711%27%20and%20RetGuid%20eq%20%27005056B1F8FB1EEAA9D0D6E708285146%27&saml2=enabled&$format=json";
+                    //string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '" +fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
+
+                    string url = Constants.GAZTGetAllAttachments + fbNum + "'" + " and RetGuid eq '" + retGuid + "'" + "&saml2=enabled&$format=json";
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTGetAllAttachmentsResponse = await client.GetAsync(uri);
+
+                    if (GAZTGetAllAttachmentsResponse != null)
+                    {
+                        GAZTAttachmentsResponseResult = GAZTGetAllAttachmentsResponse.Content.ReadAsStringAsync().Result;
+                    }
+                    if (!string.IsNullOrEmpty(GAZTAttachmentsResponseResult))
+                    {
+                        GAZTAttachmentsResponseResult = JObject.Parse(GAZTAttachmentsResponseResult).ToString();
+                        attachmentDocumentModel = JsonConvert.DeserializeObject<AttachmentDocumentModel>(GAZTAttachmentsResponseResult);
+                        if (attachmentDocumentModel == null)
+                        {
+                            throw new Exception(AppResources.NoTINsAvailable);
+                        }
+                    }
+                    return attachmentDocumentModel;
+                }
+                catch (Exception ex)
+                {
+                    if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
+                    {
+                        throw new Exception(AppResources.NoTINsAvailable);
+                    }
+                    else
+                    {
+                        throw new Exception(AppResources.NetworkConnectivityIssue);
+                    }
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
+
+        #region Tax Evasion
+
+        public static async Task<TaxEvasionSendSmsResponseModel> GAZTTaxEvasionSendSms(TaxEvasionSendSmsModel sendSmsModel)
+        {
+            TaxEvasionSendSmsResponseModel sendSmsResponse = new TaxEvasionSendSmsResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionSendSms;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var serilized = JsonConvert.SerializeObject(sendSmsModel);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    response = res.Content.ReadAsStringAsync().Result;
+                    sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
+                    return sendSmsResponse;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionVerifySmsResponseModel> GAZTTaxEvasionVerifySms(TaxEvasionVerifySmsModel verifySmsModel, string mobileNumber)
+        {
+            TaxEvasionVerifySmsResponseModel verifySmsResponse = new TaxEvasionVerifySmsResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionVerifySms;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+                    requestMessage.Headers.Add("mobile", mobileNumber);
+                    var serilized = JsonConvert.SerializeObject(verifySmsModel);
+
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    requestMessage.Headers.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionVerifySmsResponseModel>(response);
+
+                    App.TaxEvasionToken = verifySmsResponse.SmsResponse.Token;
+
+                    return verifySmsResponse;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionReportsModel> GAZTTaxEvasionGetAllReportsByMobileNumber(TaxEvasionSendSmsModel mobileNumberModel)
+        {
+            TaxEvasionReportsModel verifySmsResponse = new TaxEvasionReportsModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetAllReports;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    requestMessage.Headers.Add("Accept-Language", langVal);
+                    var serilized = JsonConvert.SerializeObject(mobileNumberModel);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionReportsModel>(response);
+
+                    return verifySmsResponse;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetAllRegions;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return regionsModel;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllCitiesByRegion(long regionId)
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetAllCities + Convert.ToString(regionId);
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return regionsModel;
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionCreateReportResponseModel> GAZTTaxEvasionCreateReport(TaxEvasionReportDetails evasionReportDetails, List<UploadedDocumentsList> documentsLists)
+        {
+            TaxEvasionCreateReportResponseModel responseModel = new TaxEvasionCreateReportResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionCreateReport;
+                    var uri = new Uri(url);
+
+                    using (var client = new HttpClient())
+                    {
+                        using (var multipartFormDataContent = new MultipartFormDataContent())
+                        {
+                            var values = new[]
+                            {
+                                new KeyValuePair<string, string>("RegionCode", evasionReportDetails.RegionCode),
+                                new KeyValuePair<string, string>("category", evasionReportDetails.Category),
+                                new KeyValuePair<string, string>("category_id", "1"),
+                                new KeyValuePair<string, string>("city", evasionReportDetails.City),
+                                new KeyValuePair<string, string>("content", evasionReportDetails.Content),
+                                new KeyValuePair<string, string>("district", evasionReportDetails.District),
+                                new KeyValuePair<string, string>("facilities", evasionReportDetails.Facilities),
+                                new KeyValuePair<string, string>("facility_work_type", evasionReportDetails.WorkType),
+                                new KeyValuePair<string, string>("location", "https://www.google.com/maps/search/?api=1&query=" + evasionReportDetails.Latitude + "," + evasionReportDetails.Longitude),
+                                new KeyValuePair<string, string>("phone_number", evasionReportDetails.PhoneNumber),
+                                new KeyValuePair<string, string>("street", evasionReportDetails.Street),
+                                new KeyValuePair<string, string>("subject", ""),
+                                new KeyValuePair<string, string>("vat_number", evasionReportDetails.VatNumber),
+                                new KeyValuePair<string, string>("TIN", evasionReportDetails.Tin)
+                            };
+
+                            foreach (var keyValuePair in values)
+                            {
+                                multipartFormDataContent.Add(new StringContent(keyValuePair.Value),
+                                    String.Format("\"{0}\"", keyValuePair.Key));
+                            }
+
+                            //multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("test.txt")),
+                            //    '"' + "File" + '"',
+                            //    '"' + "test.txt" + '"');
+
+                            string langVal = "en";
+                            if (App.IsArabic == true)
+                            {
+                                langVal = "ar";
+                            }
+
+                            client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+                            var result = await client.PostAsync(uri, multipartFormDataContent);
+                            HttpContent responseContent = result.Content;
+                            response = responseContent.ReadAsStringAsync().Result;
+                            responseModel = JsonConvert.DeserializeObject<TaxEvasionCreateReportResponseModel>(response);
+                            return responseModel;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
         #endregion
     }
 }

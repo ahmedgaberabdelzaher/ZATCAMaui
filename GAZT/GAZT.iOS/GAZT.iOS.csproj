@@ -40,6 +40,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,7 +73,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision> eGAZT Distribution Profile</CodesignProvision>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
   </PropertyGroup>
@@ -399,7 +401,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{D36E23EC-2F43-4CF9-BFCE-B8EBA9F3A4A2}</Project>
+      <Project>{73C13029-1893-450D-9DFC-78A3896C38DB}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

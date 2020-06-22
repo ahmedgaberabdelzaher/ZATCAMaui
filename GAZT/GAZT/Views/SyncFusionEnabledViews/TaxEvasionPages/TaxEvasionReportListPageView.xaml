@@ -118,7 +118,7 @@
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"
  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
  Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"   FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TicketId}" FontAttributes="None"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -136,7 +136,7 @@
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
  Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReceivedDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding CreatedAt}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -168,7 +168,7 @@
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"  FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding Status}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -295,7 +295,7 @@
                                                                     <FormattedString>
                                                                         <Span Style="{StaticResource MicroGrayLabelStyleNew}"   FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"  FontSize="12" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReportNumber}" FontAttributes="None"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding TicketId}" FontAttributes="None"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -309,7 +309,7 @@
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12"   Text="{x:Static local:AppResources.ZTEReportReportDate}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReceivedDate}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding CreatedAt}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>
@@ -337,7 +337,7 @@
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportReportStatus}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding ReportStatusMessageNewTObIND}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding Status}"></Span>
                                                                     </FormattedString>
                                                                 </local1:CustomLabel.FormattedText>
                                                             </local1:CustomLabel>

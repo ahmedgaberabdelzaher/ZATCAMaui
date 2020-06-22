@@ -64,6 +64,7 @@ namespace EGAZT
         public static string SignUpTAndCViewPage = "SignUpTAndCViewPage";
         public static string SignUpFormPageView = "SignUpFormPageView";
         public static string CreateGaztAccountPageView = "CreateGaztAccountPageView";
+        public static string TaxEvasionRegistrationPageView = "TaxEvasionRegistrationPageView";
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportMobilePageView = "TaxEvasionReportMobilePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
@@ -121,6 +122,10 @@ namespace EGAZT
         //HttpClientHandlerForSSL Certificate Issue
 
         public static string IncomingChannel = string.Empty;
+
+        #region Tax Evasion
+        public static string TaxEvasionToken = string.Empty;
+        #endregion
 
         public static HttpClientHandler httpClientHandler = null;
         public App()

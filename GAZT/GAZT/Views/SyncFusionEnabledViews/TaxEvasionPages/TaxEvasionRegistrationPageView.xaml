@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionRegistrationPageView">
+   <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZCreateYourGAZTAccount}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{TemplateBinding BindingContext.GoBackClick}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{DynamicResource StyleReverseBack}"/>
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+    <ContentPage.Content>
+        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" RowSpacing="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90*" />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+                <ScrollView>
+                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" ColumnSpacing="0" RowSpacing="1" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
+                        </Frame>
+                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
+                            Hint="{x:Static local:AppResources.ZZName}"  HelperText="{x:Static local:AppResources.ZZZRequired}"
+                            ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
+                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                              <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding TxtName}" IsSpellCheckEnabled="False" FontSize="Small" >
+                                    <Entry.Behaviors>
+                                        <custom1:AlphabetandArabicCharacters/>
+                                    </Entry.Behaviors>
+                              </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
+                            Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                            ContainerType="Outlined" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                        <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small"  x:Name="City_entry">
+                        </custom:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomButton x:Name="btnReportDetailCity" Clicked="btnReportDetailCity_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
+                        </custom:CustomButton>
+                        <syncfusion:SfPicker
+                        HeaderHeight="40"
+                        ShowHeader="true"
+                        HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
+                                HeaderTextColor="White"
+
+                        ShowColumnHeader="False"
+                        ColumnHeaderHeight="46"
+                        PickerMode="Dialog"                                              
+                        ItemHeight="40"
+                                OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                                OkButtonClicked="CityPicker_OkButtonClicked"
+                                CancelButtonClicked="CityPicker_CancelButtonClicked"
+                                    HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                    BackgroundColor="#EAF7CC"
+                        x:Name="CityPicker"    ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerEn}" IsEnabled="{Binding IsVisiblePickerEn}"   Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                            ShowFooter="True"
+                            OKButtonBackgroundColor="#EAF7CC"
+                                        CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                    <syncfusion:SfPicker
+                    HeaderHeight="40"
+                    ShowHeader="true"
+                    HeaderText="{x:Static local:AppResources.ZTERReportDetailCity}"
+                            HeaderTextColor="White"
+
+                    ShowColumnHeader="False"
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                               HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                            OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                            OkButtonClicked="CityPickerAR_OkButtonClicked"
+                            CancelButtonClicked="CityPickerAR_CancelButtonClicked"
+                                             BackgroundColor="#EAF7CC"
+                   ItemHeight="40"
+                   x:Name="CityPickerAR" ItemsSource="{Binding CList}" DisplayMemberPath="Name" IsVisible="{Binding IsVisiblePickerAr}" IsEnabled="{Binding IsVisiblePickerAr}"    Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"
+                    PickerHeight="200"
+                    PickerWidth="270"
+                    ShowFooter="True"
+                     OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                        
+                         <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                                Hint="{x:Static local:AppResources.ZZEmailAddress}" 
+                                ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                <custom:BorderlessEntry Text="{Binding TxtEmailAddress}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small" IsSpellCheckEnabled="False">
+                                </custom:BorderlessEntry>
+                          </inputLayout:SfTextInputLayout>
+                     </Grid>
+                    </ScrollView>
+            </Grid>
+     </ContentPage.Content>
+</ContentPage>

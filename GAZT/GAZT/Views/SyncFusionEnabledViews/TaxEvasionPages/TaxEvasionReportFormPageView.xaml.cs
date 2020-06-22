@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -24,7 +25,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         private double width = 0;
         private double height = 0;
         TaxEvasionReportFormPageViewModel viewModel;
-        public TaxEvasionReportFormPageView(TaxEvasionReport SelectedTaxEvasionListItem)
+        public TaxEvasionReportFormPageView(TaxEvasionReportDetails SelectedTaxEvasionListItem)
         {
             try
             {
@@ -34,8 +35,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 this.BindingContext = viewModel;
                 MainLayout.Padding = new Thickness(0, 0, 0, 0);
                 ChangeAeroIcon();
-                viewModel.selectedtaxEList = new TaxEvasionReport();
+
+                viewModel.selectedtaxEList = new TaxEvasionReportDetails();
                 viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
+
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
@@ -43,10 +46,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.CreateCompanyTypeList();
                 
                 GetRegionList();
-                if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+                if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
                 {
                     SetLocationToMap();
                 }
+                
                 SetDataToUI();
                 SetPickerFont();
                 //RegionPicker
@@ -145,45 +149,88 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
 
         private void SetDataToUI()
         {
-            viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
-            if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+            //viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
+            if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             {
                 //btn4.IsEnabled = false;
                 if (App.IsArabic)
                 {
-                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameAr;
+                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.City;
                     viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameAr;
                 }
                 else
                 {
-                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.CityNameEn;
-                    viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameEn;
+                    viewModel.TxtReportDetailCity = viewModel.selectedtaxEList.City;
+                    viewModel.TxtReportDetailRegion = viewModel.selectedtaxEList.RegionNameAr;
                 }
                 viewModel.IsVisibleForReportDisplay = false;
-                //FacilityType_entry.IsEnabled = false; btnFacilityType.IsEnabled = false; ddlFacilityType.IsEnabled = false;
-                btnReportDetailCity.IsEnabled = false; City_entry.IsEnabled = false;
+                btnReportDetailCity.IsEnabled = false;
+                City_entry.IsEnabled = false;
                 CityPicker.IsEnabled = false;
                 CityPickerAR.IsEnabled = false;
-                btnTxtReportDetailRegion.IsEnabled = false; RegionPicker.IsEnabled = false;
-                RegionPickerAR.IsEnabled = false; Region_entry.IsEnabled = false; Attachment_Label.IsVisible = false;
-                Attachment_Label.IsVisible = false; TFSAddress.IsEnabled = false;
-                Attachment_Tmg.IsVisible = false; Attachment_Frm.IsVisible = false; Attachment_Entry.IsVisible = false; Attachment_Tmg.IsEnabled = false;
-                checkBox.IsEnabled = false;
-                viewModel.TName = viewModel.selectedtaxEList.ReporterName; TName.IsEnabled = false;
-                viewModel.TMobNumber = viewModel.selectedtaxEList.ReporterMobileNumber.Remove(0, 2); TMobNumber.IsEnabled = false; TMobNumberAr.IsEnabled = false;
-                viewModel.TEmail = viewModel.selectedtaxEList.ReporterEmail; TEmail.IsEnabled = false;
-                viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName; TFaciName.IsEnabled = false;
-                TFaciOwnerName.IsEnabled = false;
-                TFaciMobNo.IsEnabled = false; TFaciMobNoAr.IsEnabled = false; TFaciEmail.IsEnabled = false;
+                btnTxtReportDetailRegion.IsEnabled = false;
                 RegionPicker.IsEnabled = false;
-                RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false;
-                viewModel.TFDAdress = viewModel.selectedtaxEList.District; TFDAdress.IsEnabled = false;
-                viewModel.TFWType = viewModel.selectedtaxEList.WorkType; TFWType.IsEnabled = false;
-                viewModel.TFSAddress = viewModel.selectedtaxEList.CompanyAddress; TFDAdress.IsEnabled = false;
-                viewModel.IsSubmitButtonEnable = false; submit_btnmane.IsEnabled = false; submit_btnmane.BackgroundColor = Color.Gray;
-                viewModel.TReportDetail = viewModel.selectedtaxEList.ReportDetails; TReportDetail.IsEnabled = false;
-                viewModel.TVatNumber = viewModel.selectedtaxEList.VATNumber; TVatNumber.IsEnabled = false;
-                RegionPicker.IsEnabled = false; RegionPickerAR.IsEnabled = false; CityPicker.IsEnabled = false; CityPickerAR.IsEnabled = false; //btnFacilityType.IsEnabled = false;
+                RegionPickerAR.IsEnabled = false;
+                Region_entry.IsEnabled = false;
+                Attachment_Label.IsVisible = false;
+                Attachment_Label.IsVisible = false;
+                TFSAddress.IsEnabled = false;
+                Attachment_Tmg.IsVisible = false;
+                Attachment_Frm.IsVisible = false;
+                Attachment_Entry.IsVisible = false;
+                Attachment_Tmg.IsEnabled = false;
+                checkBox.IsEnabled = false;
+                viewModel.TName = viewModel.selectedtaxEList.Username;
+                TName.IsEnabled = false;
+                viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 2);
+                TMobNumber.IsEnabled = false;
+                TMobNumberAr.IsEnabled = false;
+                viewModel.TEmail = viewModel.selectedtaxEList.EmailId;
+                TEmail.IsEnabled = false;
+                viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName;
+                TFaciName.IsEnabled = false;
+                TFaciOwnerName.IsEnabled = false;
+                TFaciMobNo.IsEnabled = false;
+                TFaciMobNoAr.IsEnabled = false;
+                TFaciEmail.IsEnabled = false;
+                RegionPicker.IsEnabled = false;
+                RegionPickerAR.IsEnabled = false;
+                CityPicker.IsEnabled = false;
+                CityPickerAR.IsEnabled = false;
+                viewModel.TFDAdress = viewModel.selectedtaxEList.District;
+                TFDAdress.IsEnabled = false;
+                viewModel.TFWType = viewModel.selectedtaxEList.WorkType;
+                TFWType.IsEnabled = false;
+                viewModel.TFSAddress = viewModel.selectedtaxEList.Street;
+                TFDAdress.IsEnabled = false;
+                viewModel.IsSubmitButtonEnable = false;
+                submit_btnmane.IsEnabled = false;
+                submit_btnmane.BackgroundColor = Color.Gray;
+                viewModel.TReportDetail = viewModel.selectedtaxEList.Content;
+                TReportDetail.IsEnabled = false;
+                viewModel.TVatNumber = viewModel.selectedtaxEList.VatNumber;
+                TVatNumber.IsEnabled = false;
+                RegionPicker.IsEnabled = false;
+                RegionPickerAR.IsEnabled = false;
+                CityPicker.IsEnabled = false;
+                CityPickerAR.IsEnabled = false;
+                //btnFacilityType.IsEnabled = false;
+
+                try
+                {
+                    if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Location)))
+                    {
+                        string[] words = viewModel.selectedtaxEList.Location.Split(',');
+                        viewModel.selectedtaxEList.Latitude = words[0];
+                        viewModel.selectedtaxEList.Longitude = words[1];
+                    }
+                }
+                catch
+                {
+                    viewModel.selectedtaxEList.Latitude = string.Empty;
+                    viewModel.selectedtaxEList.Longitude = string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.RegionCode))
                 {
                     //viewModel.SelectedTaxEvasionRegion = viewModel.RList.Where(x => x.RegionCode == viewModel.selectedtaxEList.RegionCode).FirstOrDefault();
@@ -193,6 +240,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     //    viewModel.SelectLCType = viewModel.CList.Where(x => x.CityCode == viewModel.selectedtaxEList.CityCode).FirstOrDefault();
                     //}
                 }
+
                 if (!(string.IsNullOrEmpty(viewModel.selectedtaxEList.Latitude) && string.IsNullOrEmpty(viewModel.selectedtaxEList.Longitude)))
                 {
                     Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
@@ -206,14 +254,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     mapView.Pins.Add(pin);
                 }
                 mapView.IsEnabled = false;
-                if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TIN))
-                { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.TIN; viewModel.IsTINVisible = true; }
+                if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.Tin))
+                { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.Tin; viewModel.IsTINVisible = true; }
                 else
                 {
                     viewModel.IsTIN = false;
                 }
                 TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
-                viewModel.TID = viewModel.selectedtaxEList.ID; TID.IsEnabled = false;
+                viewModel.TID = viewModel.selectedtaxEList.Id;
+                TID.IsEnabled = false;
             }
             else
             {
@@ -229,12 +278,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
                 if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
                 { viewModel.TEmail = App.TP.Email; }
-                if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.ReporterMobileNumber != null)
+                if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
                 {
-                    string mobb = viewModel.selectedtaxEList.ReporterMobileNumber;
+                    string mobb = viewModel.selectedtaxEList.PhoneNumber;
                     viewModel.TMobNumber = mobb;
-                    TMobNumber.IsEnabled = false;
-                    TMobNumberAr.IsEnabled = false;
+                    TMobNumber.IsEnabled = true;
+                    TMobNumberAr.IsEnabled = true;
                 }
             }
         }
@@ -340,7 +389,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         public async Task AddReport()
         {
-            if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+            if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             {
                 submit_btnmane.BackgroundColor = Color.Gray;
             }
@@ -449,11 +498,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                     showFillFeildsMessage();
                 }
-                    //else
-                    //{
-                        if (flag == true)
-                        { await viewModel.SubmitCreatedReport(); }
-                    //}
+                    if (flag == true)
+                    {
+                        await viewModel.SubmitCreatedReport();
+                    }
             }
         }
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
@@ -817,8 +865,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
           
                 
                 }
-
-                
                 
                 viewModel.AttachmentCount = 0;
                 viewModel.TxtReportDetailCity = string.Empty;
@@ -865,7 +911,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             });
             await Task.Run(async() =>
             {
-                
                 await viewModel.OnPageLoad();//TaxEvasionReport
             });
             await Task.Run(() =>
@@ -877,7 +922,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         {
             try
             {
-                if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber)))
+                if (!((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId)))
                 {
                     viewModel.IsLoading = false;
                     //clearFields();
@@ -924,7 +969,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         private async void mapView_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
-            if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.ReportNumber))
+            if ((viewModel.selectedtaxEList != null) && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             {
                 //   viewModel.IsLoading = false;
                 //clearFields();
@@ -1038,11 +1083,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         //}
         private void RegionPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERRegion selectedregion = (TERRegion)e.NewValue;
+            TaxEvasionRegionCityDatum selectedregion = (TaxEvasionRegionCityDatum)e.NewValue;
             RegionPicker.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
             viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
-            viewModel.TxtReportDetailRegion = selectedregion.RegionNameEN;
+            viewModel.TxtReportDetailRegion = selectedregion.Name;
             frmRegionPicker.HasError = false;
             viewModel.SelectLCTypePrev = null;
             viewModel.SelectLCType = null;
@@ -1051,11 +1096,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         private void RegionPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERRegion selectedregion = (TERRegion)e.NewValue;
+            TaxEvasionRegionCityDatum selectedregion = (TaxEvasionRegionCityDatum)e.NewValue;
             RegionPickerAR.SelectedItem = selectedregion;
             viewModel.SelectedTaxEvasionRegion = selectedregion;//selectedregion
             viewModel.SelectedTaxEvasionRegionPrev = selectedregion;//selectedregion
-            viewModel.TxtReportDetailRegion = selectedregion.RegionNameAR;
+            viewModel.TxtReportDetailRegion = selectedregion.Name;
             frmRegionPicker.HasError = false;
             viewModel.SelectLCTypePrev = null;
             viewModel.SelectLCType = null;
@@ -1063,21 +1108,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         private void CityPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERCity selectedcity = (TERCity)e.NewValue;
+            TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
             CityPicker.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
-            viewModel.TxtReportDetailCity = selectedcity.CityNameEN;
+            viewModel.TxtReportDetailCity = selectedcity.Name;
             FrmCity.HasError = false;
             
         }
         private void CityPickerAR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            TERCity selectedcity = (TERCity)e.NewValue;
+            TaxEvasionRegionCityDatum selectedcity = (TaxEvasionRegionCityDatum)e.NewValue;
             CityPickerAR.SelectedItem = selectedcity;
             viewModel.SelectLCType = selectedcity;//selectedregion
             viewModel.SelectLCTypePrev = selectedcity;//selectedregion
-            viewModel.TxtReportDetailCity = selectedcity.CityNameAR;
+            viewModel.TxtReportDetailCity = selectedcity.Name;
             FrmCity.HasError = false;
         }
         private void TFaciName_Unfocused(object sender, FocusEventArgs e)

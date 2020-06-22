@@ -785,7 +785,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>Search Parameter</value>
+    <value>Search Parameter  </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>VAT Account Number</value>
@@ -884,7 +884,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Declarations</value>
   </data>
   <data name="ZZPleaseenterthecorrespondingnumber" xml:space="preserve">
-    <value>Please enter the corresponding number</value>
+    <value>Please enter the corresponding number    </value>
   </data>
   <data name="ZInstructions" xml:space="preserve">
     <value>Instructions</value>
@@ -1251,7 +1251,7 @@ GAZT reserves the right to investigate your return form further.</value>
     <value>Update Mobile</value>
   </data>
   <data name="FinancialPeriodFrom" xml:space="preserve">
-    <value>Financial Period From</value>
+    <value>Financial Period</value>
   </data>
   <data name="To" xml:space="preserve">
     <value>To</value>
@@ -2444,6 +2444,10 @@ Should we require further information, we would be in contact.</value>
     <value>There already exists an account associated with this information, please signup as a new user</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZTERNewAccount" xml:space="preserve">
+    <value>New Account</value>
+    <comment>New Account</comment>
+  </data> 
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>Please choose Report Category</value>
     <comment>Tax Evasion Report Service</comment>
@@ -3402,25 +3406,12 @@ Should we require further information, we would be in contact.</value>
 2. Sales list subject to VAT (0%-15%-Exempt) 
 3. Purchased list subject to VAT (15%, reverse charge)</value>
   </data>
-  <data name="CompleteBelow" xml:space="preserve">
-    <value>Complete the below details</value>
+  <data name="ZZDownloadAttachmentMessg" xml:space="preserve">
+    <value>File is downloaded, please check in your downloads folder</value>
   </data>
-  <data name="IndividualRegistration" xml:space="preserve">
-    <value>Individual Registration</value>
-  </data>
-  <data name="NationalAddress" xml:space="preserve">
-    <value>National Address</value>
-  </data>
-  <data name="NewAccount" xml:space="preserve">
-    <value>New Account</value>
-  </data>
-  <data name="SelectEntityType" xml:space="preserve">
-    <value>Select the type of Entity</value>
-  </data>
-  <data name="Continue" xml:space="preserve">
-    <value>Continue</value>
-  </data>
-  <data name="DateOfBirth" xml:space="preserve">
-    <value>Date of Birth</value>
+  <data name="ZToolTipStandardRatedSalesAdjustment5ForNew" xml:space="preserve">
+    <value>• Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
+
+• For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
   </data>
 </root>

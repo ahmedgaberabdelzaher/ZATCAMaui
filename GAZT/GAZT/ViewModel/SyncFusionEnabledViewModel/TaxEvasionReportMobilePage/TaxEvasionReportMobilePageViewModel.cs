@@ -1,6 +1,7 @@
 ﻿using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using System;
@@ -16,6 +17,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand VerifyCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
+
         //VerifyCommand
         private bool _isVerifyEnable = false;
         public bool IsVerifyEnable
@@ -56,6 +59,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                 this.RaisePropertyChanged("MobileNumber");
             }
         }
+
+        public string MobileNumberPrefix { get; set; }
+
         public TaxEvasionReportMobilePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -70,22 +76,51 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
             _dialogService = dialogService;
             this.BackButtonClicked = new Command(this.BackButtonClick);
             this.VerifyCommand = new Command(this.VerifyCommandClick);
+            this.RegisterCommand = new Command(this.RegisterCommandClick);
+
         }
         public void BackButtonClick()
         {
             _navigationService.GoBack();
         }
-        public void VerifyCommandClick()
+
+        public async void RegisterCommandClick()
         {
-            ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
-            tesmobnoscreen.tes = "1";
-            tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
-;
-            if (MobileNumber.Length== 8)
+            _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+        }
+
+        public async void VerifyCommandClick()
+        {
+           
+            try
             {
-                tesmobnoscreen.MobileNumber = MobileNumber;
-                _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-               // WebServiceManager.GetOtpVerification();
+                ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
+                tesmobnoscreen.tes = "1";
+                tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
+
+                if (MobileNumber.Length == 8)
+                {
+                    tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
+                    _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    // WebServiceManager.GetOtpVerification();
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    
+                    await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch(Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
 //_navigationService.NavigateTo();
         }

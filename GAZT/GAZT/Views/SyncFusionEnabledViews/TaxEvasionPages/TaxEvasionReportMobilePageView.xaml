@@ -98,7 +98,7 @@
                             <!--Entry to get email ID from user-->
                             <!--ZTERReportDetailNumber-->
                             <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" Margin="10,5,10,0" x:Name="StacklayoutEn">
-                                <Label  Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                                <Label x:Name="mobileNumberPrefix"  Text="+9665"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
     Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
     ContainerType="Outlined" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
@@ -124,6 +124,7 @@
                                 <Label x:Name="Arabic_mobCountycode" Text="9665+"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                             </StackLayout>
                             <!--  Login button  -->
+
                             <buttons:SfButton
                             Grid.Row="3"
                             Margin="10,16,10,16"
@@ -132,7 +133,16 @@
                                 IsEnabled="{Binding IsVerifyEnable}"
                                 Command="{Binding VerifyCommand}"
                             Style="{StaticResource SfButtonStyle}"
-                            Text="{x:Static local1:AppResources.Verify}" />
+                            Text="{x:Static local1:AppResources.Verify}"/>
+
+                            <buttons:SfButton
+                            Grid.Row="4"
+                            Margin="10,16,10,16"
+                            BackgroundColor="#D99A29"
+                            Opacity="0.7"
+                                Command="{Binding RegisterCommand}"
+                            Style="{StaticResource SfButtonStyle}"
+                            Text="{x:Static local1:AppResources.ZTERNewAccount}"/>
                             <!--Command="{Binding LoginCommand}"-->
                         </Grid>
                     </StackLayout>

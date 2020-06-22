@@ -5,6 +5,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
     {
         #region Variable
         AttachmentPageViewModel viewModel;
+        VATDeclaration vatDec;
+
+        string downloadFilePath;
         #endregion
         #region Property
         #endregion
@@ -264,6 +268,62 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             Image arrowImage = sender as Image;
             VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+
+            viewModel.VATDeclarationDataForAttch = this.vatDec;
+
+            String retGuid = attachment.RetGuid;
+            String fbNum = viewModel.VATDeclarationDataForAttch.d.Fbnum;
+
+            viewModel.IsLoading = true;
+            Models.AttachmentDocumentModel attachmentDocumentModel = await WebServiceManager.GAZTGetAllAttachments(retGuid, fbNum);
+
+            foreach (Models.AttachmentResult tempAttachmentDocumentModel in attachmentDocumentModel.D.Results)
+            {
+
+                if (attachment.Filename == tempAttachmentDocumentModel.Filename)
+                {
+                    var platform = DeviceInfo.Platform;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        downloadFilePath = WriteFileToPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                        viewModel.IsLoading = false;
+                        var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, downloadFilePath);
+
+
+                    }
+                    else
+                    {
+                        //Activity Indicator while downloading
+                        //Once download is completed you have to tell the user through an alert that download is completed and check in download folder.
+                        if (tempAttachmentDocumentModel.Filename.Contains(""))
+                        {
+                            try
+                            {
+
+                                var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
+
+                            }
+                            catch (Exception ex)
+                            {
+
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
+                        viewModel.IsLoading = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.ZZDownloadAttachmentMessg, AppResources.Information);
+                        });
+                    }
+                }
+            }
+            /*Image arrowImage = sender as Image;
+            VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
             //attachment.DocUrl;
             string Extention = attachment.Filename.Split('.')[1];
             if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
@@ -304,8 +364,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             else
             {
                 await email(attachment.Doguid, attachment);
-            }
+            }*/
             // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
+        }
+        private async Task DownloadAndSaveFile(string pathToFile, string fileContents)
+        {
+            File.WriteAllBytes(pathToFile, Convert.FromBase64String(fileContents));
+        }
+
+        public string PathToFolder(string fileName, string folderName)
+        {
+            try
+            {
+                string pathToNewFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Images", "temp");
+
+                Directory.CreateDirectory(pathToNewFolder);
+                string pathToNewFile = Path.Combine(pathToNewFolder, fileName);
+
+
+                return pathToNewFile;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public String WriteFileToPath(string fileName, string base64Data)
+        {
+            string getFilePath = PathToFolder(fileName, "GAZTFiles");
+            File.WriteAllBytes(getFilePath, Convert.FromBase64String(base64Data));
+
+            return getFilePath;
         }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {

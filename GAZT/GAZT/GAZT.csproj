@@ -65,6 +65,7 @@
     <Folder Include="SyncFusionEnabledBehaviors\" />
     <Folder Include="Views\SyncFusionEnabledViews\Common\" />
     <Folder Include="Enums\" />
+    <Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

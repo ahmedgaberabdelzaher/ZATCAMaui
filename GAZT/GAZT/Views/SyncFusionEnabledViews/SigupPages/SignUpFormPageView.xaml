@@ -190,7 +190,7 @@ HeaderTextColor="White"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DOBpicker_OkButtonClicked"
                                 CancelButtonClicked="DpDbo_CancelButtonClicked"
-								ItemHeight="45" >
+								ItemHeight="45">
                             <custom1:CustomDatePicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
