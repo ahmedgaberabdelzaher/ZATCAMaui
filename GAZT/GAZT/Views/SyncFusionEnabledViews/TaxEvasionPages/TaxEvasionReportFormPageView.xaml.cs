@@ -42,23 +42,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
-                ClearFields();
-                viewModel.CreateCompanyTypeList();
                 
-                GetRegionList();
-                if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-                {
-                    SetLocationToMap();
-                }
-                
-                SetDataToUI();
-                SetPickerFont();
                 //RegionPicker
             }
             catch (Exception ex)
             {
             }
             // viewModel.SelectedCategory = SelectedCat;
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ClearFields();
+            viewModel.CreateCompanyTypeList();
+
+            SetDataToUI();
+            SetPickerFont();
+
+            if (viewModel.selectedtaxEList != null && string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+            {
+                SetLocationToMap();
+            }
+
+            await GetRegionList();
         }
         public void SetPickerFont()
         {
@@ -117,26 +125,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        {
 
-                        RegionPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPicker
 
-                        CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
+                            RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
 
-                        CityPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
-                        break;
+                            RegionPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            RegionPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPicker
+
+                            CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
+
+                            CityPickerAR.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPickerAR.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPickerAR.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                            CityPickerAR.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//CityPickerAR
+                        }
+                       break;
                 }
             }
             catch (Exception ex)
@@ -149,7 +161,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
 
         private void SetDataToUI()
         {
-            //viewModel.SelectedCategory = viewModel.selectedtaxEList.ViolationType;
+            viewModel.SelectedCategory = viewModel.selectedtaxEList.Category;
             if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
             {
                 //btn4.IsEnabled = false;
@@ -276,12 +288,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                     }
                 }
+
                 if (App.TP != null && !string.IsNullOrEmpty(App.TP.Email))
-                { viewModel.TEmail = App.TP.Email; }
+                {
+                    viewModel.TEmail = App.TP.Email;
+                }
+
                 if (viewModel.selectedtaxEList != null && viewModel.selectedtaxEList.PhoneNumber != null)
                 {
-                    string mobb = viewModel.selectedtaxEList.PhoneNumber;
-                    viewModel.TMobNumber = mobb;
+                    string mobb = App.TaxEvasionUserData.Mobile;
+
+                    if (mobb == null)
+                        mobb = string.Empty;
+
+                    //viewModel.TMobNumber = mobb;
                     TMobNumber.IsEnabled = true;
                     TMobNumberAr.IsEnabled = true;
                 }
@@ -861,8 +881,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
 
                     }
-
-          
                 
                 }
                 
@@ -899,7 +917,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
             }
         }
-        
 
         public async Task GetRegionList()
         {
@@ -916,7 +933,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsLoading = false;
             });
         }
-        private async  void SetLocationToMap()
+        private async void SetLocationToMap()
         {
             try
             {
@@ -927,18 +944,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
                 else
                 {
-                    double lat = 00.00, lon = 00.00;
+                    double lat = 24.7136, lon = 46.6753;
                     try
                     {
-                        var timeout = TimeSpan.FromSeconds(10);
-                        var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
+                        //var timeout = TimeSpan.FromSeconds(4);
+                        //var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
 
-                        var location = await Geolocation.GetLocationAsync(locationRequestData);
-                        if (location != null)
-                        {
-                            lat = location.Latitude;
-                            lon = location.Longitude;
-                        }
+                        //var location = Geolocation.GetLocationAsync(locationRequestData).Result;
+                        //if (location != null)
+                        //{
+                        //    lat = location.Latitude;
+                        //    lon = location.Longitude;
+                        //}
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
