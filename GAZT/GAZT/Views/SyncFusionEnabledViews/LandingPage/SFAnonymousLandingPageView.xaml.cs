@@ -380,6 +380,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             }
 
         }
+
+
+        private void OnVATRegistrationClicked(object sender, EventArgs e)
+        {
+            if (!App.IsJailBrokenDevice)
+            {
+                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                });
+            }
+        }
+
+
         private void OnGaztLinkClicked(object sender, EventArgs e)
         {
             if (!App.IsJailBrokenDevice)

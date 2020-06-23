@@ -61,7 +61,6 @@
     <CodesignProvision>eGAZT Development Profile</CodesignProvision>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <MtouchExtraArgs>--interpreter</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>

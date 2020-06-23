@@ -21,6 +21,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.IndividualRegistrationPageView;
             this.BindingContext = viewModel;
+            viewModel.ClearData();
+            viewModel.OnPageLoad();
         }
 
         /*        private void OnIDTypeTapped(object sender, EventArgs e)
@@ -264,15 +266,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     break;
             }*/
         }
-        protected override async void OnAppearing()
-        {
-       /*     BoxOne.BackgroundColor = Color.DarkGreen;
-            await BoxOne.TranslateTo(100,0,500,Easing.BounceOut);
-            BoxTwo.BackgroundColor = BoxThree.BackgroundColor = BoxFour.BackgroundColor = BoxFive.BackgroundColor = Color.LightGray;
+        // protected override async void OnAppearing()
+        // {
 
-            NationalAddressView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
-            SummeryView.IsVisible = PasswordView.IsVisible = false;
-            CurrentView = 1;*/
+
+        ///*     BoxOne.BackgroundColor = Color.DarkGreen;
+        //     await BoxOne.TranslateTo(100,0,500,Easing.BounceOut);
+        //     BoxTwo.BackgroundColor = BoxThree.BackgroundColor = BoxFour.BackgroundColor = BoxFive.BackgroundColor = Color.LightGray;
+
+        //     NationalAddressView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
+        //     SummeryView.IsVisible = PasswordView.IsVisible = false;
+        //     CurrentView = 1;*/
+        // }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
         }
     }
 }
