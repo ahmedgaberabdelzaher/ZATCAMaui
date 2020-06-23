@@ -230,7 +230,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         _navigationService.GoBack();
                     });
                 }

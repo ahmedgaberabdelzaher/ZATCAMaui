@@ -16,6 +16,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         private ICommand EserviceCommand { get; set; }
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand BackButtonClicked { get; set; }
+
 
         public VATRealEstateServicesPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
@@ -29,9 +31,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             {
                 throw new ArgumentNullException("dialogService");
             }
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
 
-    
         }
+  
         public ObservableCollection<eServiceInfo> eServicesAvailableToTheTP
         {
             get
@@ -60,9 +66,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         public void PopulateServicesData()
         {
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstatePropertyRegistration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstateRequestVerification, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstateTerminationOfRequest, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstatePropertyRegistration, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Payment.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstateRequestVerification, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VerifyRequest.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZVATRealEstateTerminationOfRequest, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Cancel_payment.png" });
         }
     }
 }

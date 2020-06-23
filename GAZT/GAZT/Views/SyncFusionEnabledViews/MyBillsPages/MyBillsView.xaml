@@ -679,8 +679,9 @@
                                                             <local1:CustomLabel  Margin="0" 
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                   Grid.Row="2"
+                                    Grid.Row="2"
                                    Grid.Column="0"
+                                                                                 Grid.ColumnSpan="2"
                                                            >
                                                                 <Label.FormattedText>
                                                                     <FormattedString>

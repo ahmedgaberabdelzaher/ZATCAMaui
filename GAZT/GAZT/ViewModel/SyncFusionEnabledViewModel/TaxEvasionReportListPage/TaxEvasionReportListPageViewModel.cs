@@ -289,8 +289,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
 
                 rootObject = await WebServiceManager.GAZTTaxEvasionGetAllReportsByMobileNumber(taxEvasionSendSmsModel);
 
-           
-
                 PopToRootPage();
 
                 if (rootObject != null)
@@ -376,7 +374,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                         IsLoading = false;
                     });
 
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     //viewModel._navigationService.GoBack();
                 });
             }

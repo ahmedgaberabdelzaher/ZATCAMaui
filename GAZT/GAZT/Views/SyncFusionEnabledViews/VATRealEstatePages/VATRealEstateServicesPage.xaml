@@ -2,13 +2,17 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:xaml="http://xamarin.com/schemas/2014/forms/design"
-
+              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                   x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.VATRealEstateServicesPage"
+                          xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
 
                     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
                       xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:behavior="clr-namespace:GAZTeServicesApp.Behaviors"
                 BackgroundColor="White"
+                                       NavigationPage.HasNavigationBar="False"
+
 >
         <ContentPage.Resources>
         <ResourceDictionary>
@@ -17,7 +21,28 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+   <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <controls:TitleView Title="{x:Static local:AppResources.ZRealEstateServiceTitle}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
+                            CommandParameter="{x:Reference backButton}"
+                            CornerRadius="4"
+                            TextColor="#006450"
+                            Style="{StaticResource IconButtonStyle}"
+                             Text="{DynamicResource StyleReverseBack}"
+                             />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter VerticalOptions="FillAndExpand" />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
     <ContentPage.Content>
+
           <Grid x:Name="ParentContainer" BackgroundColor="White" >
             <Grid.RowDefinitions>
                 <RowDefinition  Height="26*"/>
@@ -59,7 +84,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                         <listView:SfListView.Behaviors>
                             <behavior:SfListViewExtendHeightBehavior >

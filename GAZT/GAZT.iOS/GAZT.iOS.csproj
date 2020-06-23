@@ -151,6 +151,18 @@
     <BundleResource Include="Resources\service_6%403x.png" />
     <BundleResource Include="Resources\service_6.png" />
     <BundleResource Include="Resources\service_6%402x.png" />
+    <BundleResource Include="Resources\sf_Cancel_payment.png" />
+    <BundleResource Include="Resources\sf_Cancel_payment%402x.png" />
+    <BundleResource Include="Resources\sf_Cancel_payment%403x.png" />
+    <BundleResource Include="Resources\sf_Payment.png" />
+    <BundleResource Include="Resources\sf_Payment%402x.png" />
+    <BundleResource Include="Resources\sf_Payment%403x.png" />
+    <BundleResource Include="Resources\sf_VerifyRequest.png" />
+    <BundleResource Include="Resources\sf_VerifyRequest%402x.png" />
+    <BundleResource Include="Resources\sf_VerifyRequest%403x.png" />
+    <BundleResource Include="Resources\sf_Service_6.png" />
+    <BundleResource Include="Resources\sf_Service_6%402x.png" />
+    <BundleResource Include="Resources\sf_Service_6%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

@@ -6,10 +6,13 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             NavigationPage.HasNavigationBar="False"
-                         x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.PropertyRegistrationPage"
-             BackgroundColor="White">
+
+             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.PropertyRegistrationPage"
+             BackgroundColor="White"
+              NavigationPage.HasNavigationBar="False"
+             >
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,7 +27,7 @@
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
-                            Clicked="BackButtonClicked"
+                            Command="{TemplateBinding BindingContext.BackButtonClicked}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
                             TextColor="#006450"
@@ -37,7 +40,7 @@
             </StackLayout>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-    <ContentPage.Content>
+    <ContentPage.Content>  
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"></RowDefinition>
@@ -67,7 +70,6 @@
                     </StackLayout>
                 </StackLayout>
             </Grid>
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>

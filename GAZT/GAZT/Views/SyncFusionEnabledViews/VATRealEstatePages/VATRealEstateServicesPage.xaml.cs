@@ -22,7 +22,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
 
             LoadData();
             ChangeAeroIcon();
-
             SetLTR();
         }
         private void SetLTR()
@@ -43,6 +42,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
             {
             }
         }
+ 
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -72,21 +72,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 {
                     Image arrowImage = sender as Image;
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-          
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstatePropertyRegistration)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateRequestVerification)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
 
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateTerminationOfRequest)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
 
-                    }
+                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                 
+               
                 }
                 catch (Exception ex)
                 {
@@ -98,22 +89,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 {
                     Label arrowImage = sender as Label;
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-              
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstatePropertyRegistration)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
 
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateRequestVerification)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
 
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateTerminationOfRequest)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                    viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
 
-                    }
+                    
                 }
                 catch (Exception ex)
                 {
@@ -125,21 +106,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 {
                     Label arrowImage = sender as Label;
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstatePropertyRegistration)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
 
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateRequestVerification)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+                    viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
 
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZVATRealEstateTerminationOfRequest)
-                    {
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-                    }
+                 
                 }
                 catch (Exception ex)
                 {

@@ -118,7 +118,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="1"  Grid.Column="0"  x:Name="reporterMobStackLayoutAr" Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
+                            <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" HorizontalOptions="FillAndExpand"  Margin="10,-6,10,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:BorderlessEntry  x:Name="TMobNumberAr" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="9">
@@ -243,7 +243,6 @@ HeaderTextColor="White"
                     ShowFooter="True"
                      OKButtonBackgroundColor="#EAF7CC"
                                     CancelButtonBackgroundColor="#EAF7CC" FooterHeight="46">
-                            <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                             <syncfusion:SfPicker.Behaviors>
                                 <custom1:SfPickerBehavior />
                             </syncfusion:SfPicker.Behaviors>
@@ -700,10 +699,10 @@ ItemHeight="45" ShowFooter="True"
                                            VerticalOptions="CenterAndExpand"
                                            IsBusy="True"
                                        ViewBoxWidth = "70" 
-                                        
                                        TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
+                                       ViewBoxHeight="70"
                                        TextColor="#006450"/>
+
                     </StackLayout>
                     <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"<StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                         <ActivityIndicator IsVisible="true" IsRunning="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Color="White" />

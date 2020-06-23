@@ -179,7 +179,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                                 IsLoading = false;
                             });
 
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             //viewModel._navigationService.GoBack();
                         });
                     }

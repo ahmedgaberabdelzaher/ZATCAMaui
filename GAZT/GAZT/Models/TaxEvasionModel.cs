@@ -121,23 +121,113 @@ namespace EGAZT.Models
 
     public partial class TaxEvasionReportDetails
     {
+        public string _status { get; set; }
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public string Status
+        {
+            get
+            {
+                if (_status == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _status;
+                }
+            }
+            set
+            {
+                _status = value;
+            }
+        }
 
         [JsonProperty("statusNO")]
         public long StatusNo { get; set; }
 
+        public string _ticketId { get; set; }
         [JsonProperty("ticket_id")]
-        public string TicketId { get; set; }
+        public string TicketId
+        {
+            get
+            {
+                if (_ticketId == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _ticketId;
+                }
+            }
+            set
+            {
+                _ticketId = value;
+            }
+        }
 
+        public string _department { get; set; }
         [JsonProperty("department")]
-        public string Department { get; set; }
+        public string Department
+        {
+            get
+            {
+                if (_department == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _department;
+                }
+            }
+            set
+            {
+                _department = value;
+            }
+        }
 
+        public string _subject { get; set; }
         [JsonProperty("subject")]
-        public string Subject { get; set; }
+        public string Subject
+        {
+            get
+            {
+                if (_subject == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _subject;
+                }
+            }
+            set
+            {
+                _subject = value;
+            }
+        }
 
+        public string _createdAt { get; set; }
         [JsonProperty("created_at")]
-        public string CreatedAt { get; set; }
+        public string CreatedAt
+        {
+            get
+            {
+                if (_createdAt == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _createdAt;
+                }
+            }
+            set
+            {
+                _createdAt = value;
+            }
+        }
 
         public string _facilities { get; set; }
         [JsonProperty("facilities")]
@@ -160,52 +250,304 @@ namespace EGAZT.Models
             }
         }
 
+        public string _phoneNumber { get; set; }
         [JsonProperty("phone_number")]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber
+        {
+            get
+            {
+                if (_phoneNumber == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _phoneNumber;
+                }
+            }
+            set
+            {
+                _phoneNumber = value;
+            }
+        }
 
         public string EmailId { get; set; }
 
+        public string _location { get; set; }
         [JsonProperty("location")]
-        public string Location { get; set; }
+        public string Location
+        {
+            get
+            {
+                if (_location == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _location;
+                }
+            }
+            set
+            {
+                _location = value;
+            }
+        }
 
         public string Latitude { get; set; }
         public string Longitude { get; set; }
 
+        public string _vatNumber { get; set; }
         [JsonProperty("vat_number")]
-        public string VatNumber { get; set; }
+        public string VatNumber
+        {
+            get
+            {
+                if (_vatNumber == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _vatNumber;
+                }
+            }
+            set
+            {
+                _vatNumber = value;
+            }
+        }
 
+        public string _category { get; set; }
         [JsonProperty("category")]
-        public string Category { get; set; }
+        public string Category
+        {
+            get
+            {
+                if (_category == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _category;
+                }
+            }
+            set
+            {
+                _category = value;
+            }
+        }
 
+        public string _content { get; set; }
         [JsonProperty("content")]
-        public string Content { get; set; }
+        public string Content
+        {
+            get
+            {
+                if (_content == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _content;
+                }
+            }
+            set
+            {
+                _content = value;
+            }
+        }
 
+        public string _companyName { get; set; }
         [JsonProperty("company_name")]
-        public string CompanyName { get; set; }
+        public string CompanyName
+        {
+            get
+            {
+                if (_companyName == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _companyName;
+                }
+            }
+            set
+            {
+                _companyName = value;
+            }
+        }
 
+        public string _workType { get; set; }
         [JsonProperty("work_type")]
-        public string WorkType { get; set; }
+        public string WorkType
+        {
+            get
+            {
+                if (_workType == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _workType;
+                }
+            }
+            set
+            {
+                _workType = value;
+            }
+        }
 
+        public string _city { get; set; }
         [JsonProperty("city")]
-        public string City { get; set; }
+        public string City
+        {
+            get
+            {
+                if (_city == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _city;
+                }
+            }
+            set
+            {
+                _city = value;
+            }
+        }
 
+        public string _username { get; set; }
         [JsonProperty("username")]
-        public string Username { get; set; }
+        public string Username
+        {
+            get
+            {
+                if (_username == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _username;
+                }
+            }
+            set
+            {
+                _username = value;
+            }
+        }
 
+        public string _district { get; set; }
         [JsonProperty("district")]
-        public string District { get; set; }
+        public string District
+        {
+            get
+            {
+                if (_district == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _district;
+                }
+            }
+            set
+            {
+                _district = value;
+            }
+        }
 
+        public string _street { get; set; }
         [JsonProperty("street")]
-        public string Street { get; set; }
+        public string Street
+        {
+            get
+            {
+                if (_street == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _street;
+                }
+            }
+            set
+            {
+                _street = value;
+            }
+        }
 
+        public string _tin { get; set; }
         [JsonProperty("TIN")]
-        public string Tin { get; set; }
+        public string Tin
+        {
+            get
+            {
+                if (_tin == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _tin;
+                }
+            }
+            set
+            {
+                _tin = value;
+            }
+        }
 
+        public string _cr { get; set; }
         [JsonProperty("CR")]
-        public string Cr { get; set; }
+        public string Cr
+        {
+            get
+            {
+                if (_cr == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _cr;
+                }
+            }
+            set
+            {
+                _cr = value;
+            }
+        }
 
+        public string _id { get; set; }
         [JsonProperty("ID")]
-        public string Id { get; set; }
+        public string Id
+        {
+            get
+            {
+                if (_id == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _id;
+                }
+            }
+            set
+            {
+                _id = value;
+            }
+        }
 
         [JsonProperty("RegionCode")]
         public string RegionCode { get; set; }
