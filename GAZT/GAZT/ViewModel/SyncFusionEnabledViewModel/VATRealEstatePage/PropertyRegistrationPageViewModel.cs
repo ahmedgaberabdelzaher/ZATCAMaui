@@ -10,8 +10,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public ICommand GoBackClick { get; set; }
+        public ICommand BackButtonClicked { get; set; }
 
+        public static string reServiceName;
 
         private string _webUrl = string.Empty;
         public string WebUrl
@@ -24,6 +25,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             {
                 _webUrl = value;
                 RaisePropertyChanged("WebUrl");
+            }
+        }
+        private string _title = string.Empty;
+        public string HeaderTitle
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged("HeaderTitle");
             }
         }
         private bool _isLoading;
@@ -51,7 +65,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
-            GoBackClick = new Xamarin.Forms.Command(() =>
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });
