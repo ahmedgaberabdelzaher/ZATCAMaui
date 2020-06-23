@@ -1,8 +1,10 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -188,9 +190,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         }
 
-        public void OnPageLoad()
+        public async Task OnPageLoad()
         {
             currentStep = 1;
+            GetSignUpIdType();
+         string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();
+            string aaa = await WebServiceManager.GAZTValidateIDTypes("ZS0015", "1007190646", "15.05.1980");
+            var dd = await WebServiceManager.GAZTGetCityListForSignup();
+
+            
+
+
         }
 
         public void SetFormVisibility()
@@ -235,5 +245,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         #endregion
 
+        public void GetSignUpIdType()
+        {
+            List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
+           new SignUpIdType {ID = "ZS0015",Name = AppResources.NationaID},
+                      new SignUpIdType {ID = "ZS0017",Name = AppResources.ZZIqamaID},
+                                            new SignUpIdType {ID = "ZS0018",Name = AppResources.ZZGCCID},
+
+
+            };
+
+            List<SignUpIdType> list = new List<SignUpIdType>();
+            list = signUpIdTypeList;
+
+        }
     }
 }

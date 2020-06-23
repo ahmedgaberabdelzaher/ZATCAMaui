@@ -5345,6 +5345,69 @@ namespace GAZT.Manager
             }
         }
 
+
+
+        public static async Task<string> GAZTGetVATSignUpCaseId()
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTGetCaseId;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    //string langVal = "en";
+                    //if (App.IsArabic == true)
+                    //{
+                    //    langVal = "ar";
+                    //}
+
+                    //client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return "";
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+
+        
+
         #endregion
     }
 }
