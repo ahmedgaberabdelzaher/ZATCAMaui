@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel
 {
     public class TaxEvasionReportFormPageViewModel : ViewModelBase
@@ -725,7 +726,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectLCTypePrev");
             }
         }
-        private List<TaxEvasionRegionCityDatum> _rList= null;
+        private List<TaxEvasionRegionCityDatum> _rList;
         public List<TaxEvasionRegionCityDatum> RList
         {
             get
@@ -738,7 +739,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("RList");
             }
         }
-        private List<TaxEvasionRegionCityDatum> _cityList= null;
+        private List<TaxEvasionRegionCityDatum> _cityList;
         public List<TaxEvasionRegionCityDatum> CList
         {
             get
@@ -769,12 +770,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             });
             SubmitReportClicked = new Xamarin.Forms.Command(() =>
             {
+
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 await AddAttachment();
             });
         }
+
+
         public async Task AddAttachment()
         {
             if (AttachmentCount < 3)
@@ -881,6 +885,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 }
             }
         }
+
         public async Task OnPageLoad()
         {
             try
@@ -918,7 +923,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
                     }
