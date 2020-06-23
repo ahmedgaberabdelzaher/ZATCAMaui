@@ -893,10 +893,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 {
                     try
                     {
-                        //await Task.Run(async() =>
-                        //{
-                        //string date = DateTime.UtcNow.ToString("yyyy//MM/dd");
-
                         TaxEvasionRegionsCityModel regionlist = new TaxEvasionRegionsCityModel();
                         regionlist = await WebServiceManager.GAZTTaxEvasionGetAllRegions();
 

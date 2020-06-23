@@ -208,13 +208,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                         }
                         catch (Exception ex)
                         {
-
                         }
-
-
                     }
-
-
                 });
             }
             catch (Exception ex)

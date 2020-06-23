@@ -4982,7 +4982,6 @@ namespace GAZT.Manager
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
 
                     response = res.Content.ReadAsStringAsync().Result;
-
                     verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionVerifySmsResponseModel>(response);
 
                     App.TaxEvasionToken = verifySmsResponse.SmsResponse.Token;
@@ -5074,6 +5073,7 @@ namespace GAZT.Manager
 
                     HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
                     requestMessage.Headers.Add("Accept", "application/json");
+                    requestMessage.Headers.Add("mobile", mobileNumberModel.mobile);
 
                     string langVal = "en";
                     if (App.IsArabic == true)
@@ -5132,6 +5132,7 @@ namespace GAZT.Manager
                     response = res.Content.ReadAsStringAsync().Result;
 
                     registrationResponseModel = JsonConvert.DeserializeObject<TaxEvasionUserRegistrationResponseModel>(response);
+                    App.TaxEvasionToken = registrationResponseModel.Data.ApiToken;
 
                     return registrationResponseModel;
                 }
@@ -5308,9 +5309,12 @@ namespace GAZT.Manager
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
 
-                            //multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("test.txt")),
-                            //    '"' + "File" + '"',
-                            //    '"' + "test.txt" + '"');
+                            foreach(UploadedDocumentsList uploadedDocumentsList in documentsLists)
+                            {
+                                multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                               '"' + "File" + '"',
+                               '"' + uploadedDocumentsList.FileNameWithExtension + '"');
+                            }
 
                             string langVal = "en";
                             if (App.IsArabic == true)

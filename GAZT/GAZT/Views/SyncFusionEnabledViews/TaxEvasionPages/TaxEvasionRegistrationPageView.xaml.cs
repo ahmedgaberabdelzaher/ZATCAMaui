@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net.Mail;
 using System.Resources;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -119,7 +120,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             }
         }
 
-        private void EntryEmail_TextChanged(object sender, TextChangedEventArgs e)
+
+        private void TEmail_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryEmail.Text))
             {
@@ -127,12 +129,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 if (!flag)
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.ZZPleaseenteravalidEmailAddress;//ZZPleaseenteravalidEmailAddress//ZZEmailAddressdoesnotmatchwithvalueinMinistryofCommerce;//ZZZInvalidEmailAddressMessage
+                    popUp.Message = AppResources.InvalidEmailFormat;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {
                         popUp.FlowDirections = "RightToLeft";
-                        // popUp.isFontSet = true;
                     }
                     else
                     {
@@ -141,22 +142,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
+
                 }
                 else
                 {
                     FrmEmailAddress.HasError = false;
                 }
             }
+            else
+            {
+                FrmEmailAddress.HasError = false;
+            }
         }
 
         public bool IsValid(string emailaddress)
         {
-            bool isEmail = Regex.IsMatch(emailaddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
-            if (isEmail)
+            try
             {
+                MailAddress m = new MailAddress(emailaddress);
                 return true;
             }
-            else
+            catch (FormatException)
             {
                 return false;
             }
@@ -175,6 +181,58 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
             {
                 viewModel.IsLoading = false;
             });
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
+            await AddReport();
+            Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = false; });
+            //viewModel.SubmitCreatedReport();
+        }
+
+        public async Task AddReport()
+        {
+            bool flag = true;
+            bool showMessage = false;
+            if (string.IsNullOrEmpty(EntryName.Text))
+            {
+                showMessage = true;
+                FrmName.HasError = true;
+                flag = false;
+
+                //flag = false; TName.Focus(); FrmName.HasError = true; showFillFeildsMessage();
+            }
+            if (string.IsNullOrEmpty(City_entry.Text))
+            {
+                flag = false;
+                FrmCity.HasError = true;
+                showMessage = true;
+            }
+            if (showMessage == true)
+            {
+                showFillFeildsMessage();
+            }
+            if (flag == true)
+            {
+                await viewModel.RegisterCommandClick();
+            }
+        }
+
+        private void showFillFeildsMessage()
+        {
+            PopUp popUp = new PopUp();
+            popUp.Message = AppResources.ZZPleasefillallthemandatoryfields;
+            popUp.IsLinkAvailable = false;
+            if (App.IsArabic)
+            {
+                popUp.FlowDirections = "RightToLeft";
+            }
+            else
+            {
+                popUp.FlowDirections = "LeftToRight";
+            }
+            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
 
         public void SetPickerFont()

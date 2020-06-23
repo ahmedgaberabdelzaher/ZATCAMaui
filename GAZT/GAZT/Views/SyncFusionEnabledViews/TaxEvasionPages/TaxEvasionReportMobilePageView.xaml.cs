@@ -32,7 +32,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     Arabic_mobCountycode.Text = string.Empty;
-                    Arabic_mobCountycode.Text = "+9665";
+                    Arabic_mobCountycode.Text = "+966";
                 }
             }
             else
@@ -116,7 +116,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
         {
             if (!string.IsNullOrEmpty(viewModel.MobileNumber))
             {
-                if (viewModel.MobileNumber.Length != 8)
+                if (viewModel.MobileNumber.Length != 9)
                 {
                     frmMobile.HasError = true;
                     frmMobileAr.HasError = true;
