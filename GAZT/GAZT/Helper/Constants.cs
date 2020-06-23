@@ -160,9 +160,12 @@ namespace GAZT.Helper
         #endregion
 
         #region VAT Sign Up
-        public static string GAZTGetCaseId = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$format=json";
+        public static string GAZTGetVATSignUpCaseId = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$format=json";
+        public static string GAZTVATSignUpValidateId = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet";//(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+        public static string GAZTGetVATSignUpCityAndRegionList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/";//dropdown_headerSet(Spras='A',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json
+
         #endregion
 
-        
+
     }
 }

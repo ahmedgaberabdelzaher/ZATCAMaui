@@ -161,6 +161,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorFive");
             }
         }
+
+        public List<SignUpIdType> idTypeList;
+        public List<SignUpIdType> IdTypeList
+        {
+            get
+            {
+                return _BoxColorFive;
+            }
+            set
+            {
+                idTypeList = value;
+                RaisePropertyChanged("IdTypeList");
+            }
+        }
+        
         #endregion
 
         #region Constructor
@@ -194,9 +209,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             currentStep = 1;
             GetSignUpIdType();
-         string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();
-            string aaa = await WebServiceManager.GAZTValidateIDTypes("ZS0015", "1007190646", "15.05.1980");
-            var dd = await WebServiceManager.GAZTGetCityListForSignup();
+            string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
+            string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
+            var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
 
             
 
