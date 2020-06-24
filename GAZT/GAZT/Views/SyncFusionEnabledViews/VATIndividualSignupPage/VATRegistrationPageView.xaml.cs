@@ -136,5 +136,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
         }
+
+        private void btnContactID_Clicked(object sender, EventArgs e)
+        {
+            DDlContactIDType.IsOpen = true;
+        }
     }
 }
