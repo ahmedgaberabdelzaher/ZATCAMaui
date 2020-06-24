@@ -6,9 +6,11 @@ using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,6 +40,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 try
                 {
                     _selectedTaxEvasionListItem = value;
+                    
                     if (_selectedTaxEvasionListItem != null)
                     {
                         passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
@@ -226,6 +229,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         }
         public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
+         
             try
             {
                 await Task.Run(() =>
@@ -275,6 +279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         {
             SetNoDataLabelVisibilityforOpen = false;
             SetNoDataLabelVisibilityforClose = false;
+
             try
             {
                 //string test = App.TP.Mobile;
@@ -303,6 +308,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                         if (rootObject.Data.Closed.Count() > 0)
                         {
                             TERListReportbymobnoClosed = rootObject.Data.Closed;
+                            
+
                             SetNoDataLabelVisibilityforClose = false;
                         }
                         else
@@ -367,7 +374,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                         IsLoading = false;
                     });
 
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     //viewModel._navigationService.GoBack();
                 });
             }

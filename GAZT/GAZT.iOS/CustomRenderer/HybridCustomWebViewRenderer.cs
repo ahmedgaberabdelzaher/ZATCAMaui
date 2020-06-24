@@ -224,56 +224,6 @@ namespace GAZT.iOS.CustomRenderer
                                 Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
                             }
 
-                            //Task task1 = new Task(() =>
-                            //{
-                            //    foreach (NSHttpCookie nSHttpCookie in allCookies)
-                            //    {
-                            //        WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.DeleteCookie(nSHttpCookie, () =>
-                            //        {
-                            //            Console.WriteLine("Deleted");
-                            //        });
-                            //    }
-                            //});
-
-                            //Task task2 = new Task(() =>
-                            //{
-                            //    WKWebsiteDataStore.DefaultDataStore.HttpCookieStore.GetAllCookies(async (cookiesTemp) =>
-                            //    {
-                            //        try
-                            //        {
-                            //            if (cookiesTemp.Length > 0)
-                            //            {
-                            //                allCookies = cookiesTemp;
-                            //                task1.RunSynchronously();
-                            //            }
-                            //        }
-                            //        catch (Exception ex)
-                            //        {
-
-                            //        }
-                            //    });
-                            //});
-
-                            //task2.RunSynchronously();
-
-                            //NSDate date = NSDate.FromTimeIntervalSince1970(0);
-                            //NSHttpCookieStorage CookieStorage = NSHttpCookieStorage.SharedStorage;
-                            //CookieStorage.RemoveCookiesSinceDate(date);
-                            //NSUserDefaults.StandardUserDefaults.Synchronize();
-
-                            //NSSet<NSString> set = WKWebsiteDataStore.AllWebsiteDataTypes;
-                            //try
-                            //{
-                            //    WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(set, date, () =>
-                            //    {
-                            //        Console.WriteLine(set);
-                            //    });
-                            //}
-                            //catch (Exception ex)
-                            //{
-                            //    Console.WriteLine(ex.Message);
-                            //}
-
                             try
                             {
                                 App.httpClientHandler = new HttpClientHandler();
@@ -283,10 +233,6 @@ namespace GAZT.iOS.CustomRenderer
                             {
 
                             }
-
-                            //NSUrlSession.SharedSession.Reset(()=> {
-                            //    Console.WriteLine("NSUrlSession.SharedSession.Reset");
-                            //});
 
                             App.LoginDataRetrieved = new LoginModel();
                             App.LoginDataRetrieved = await WebServiceManager.SFGAZTGetLoginData(url.ToString());

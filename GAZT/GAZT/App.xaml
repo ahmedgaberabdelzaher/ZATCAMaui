@@ -373,6 +373,48 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
             </Style>
+
+              <!--For VAT Sign Up-->
+            <Style x:Key="GAZTSmallGrayLabelStyle" x:Name="GAZTSmallGrayLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
+                <Setter Property="Margin" Value="10,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+             <!--For VAT Sign Up-->
+            <Style x:Key="GAZTMediumGrayLabelStyle" x:Name="GAZTMediumGrayLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
+                <Setter Property="Margin" Value="14,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+
+             <!--For VAT Sign Up-->
+            <Style x:Key="GAZTSmallBlackLabel" x:Name="GAZTSmallBlackLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
+                <Setter Property="Margin" Value="10,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+             <!--For VAT Sign Up-->
+            <Style x:Key="GAZTMediumBoldBlackLabelStyle" x:Name="GAZTMediumBoldBlackLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
+                <Setter Property="Margin" Value="10,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+            
             <Style x:Key="GAZTWhiteLabelStyleForButton" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />

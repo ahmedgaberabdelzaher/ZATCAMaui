@@ -306,9 +306,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
         private void ShowOptionsCommandClicked(object obj)
         {
 
-            if(Device.RuntimePlatform == Device.iOS)
+            if (Device.RuntimePlatform == Device.iOS)
             {
-                if(App.IsArabic)
+                if (App.IsArabic)
                 {
                     MessagingCenter.Send(this, AppSettings.TransitionMessage, TransitionType.SlideFromRight);
                 }
@@ -435,7 +435,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                     }
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
         public void PopulateBillsInformation()
@@ -443,7 +443,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
             BillsInfoItems = new ObservableCollection<BillInfo>();
             try
             {
-                    if (DashboardData != null)
+                if (DashboardData != null)
                     if (DashboardData.results != null && DashboardData.results.Count > 0)
                     {
                         //Paid Bills
@@ -560,7 +560,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                     }
             }
             catch (Exception ex)
-            { 
+            {
             }
         }
         public void PopulateBillsAndReturnsSchedule()
@@ -599,7 +599,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 //    BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
                 //}
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
             }
         }
@@ -613,9 +613,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
             //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
             //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
             //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZTaxpayerServices, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Eservices.png" });
+
+
+            //Adding VAT RealEstate Service Section
+           // eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
+
             //Removed_TaxEvasion Section
-            //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
             //Removed_TaxEvasion Section
+
+
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
         }
         public void NavigateToMyBills(BillInfo billInfo)

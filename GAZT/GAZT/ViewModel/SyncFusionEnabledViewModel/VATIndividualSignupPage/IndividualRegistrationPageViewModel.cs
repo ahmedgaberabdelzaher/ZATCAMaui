@@ -1,8 +1,11 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -11,8 +14,101 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand OnContinueButtonClick { get; set; }
+        public int currentStep { get; set; }
 
-#region Properties
+
+
+        #region Properties
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+
+        private bool _individualRegistrationView = true;
+        public bool IndividualRegistrationView
+        {
+            get
+            {
+                return _individualRegistrationView;
+            }
+            set
+            {
+                _individualRegistrationView = value;
+                RaisePropertyChanged("IndividualRegistrationView");
+            }
+        }
+
+        private bool _nationalAddressView = false;
+        public bool NationalAddressView
+        {
+            get
+            {
+                return _nationalAddressView;
+            }
+            set
+            {
+                _nationalAddressView = value;
+                RaisePropertyChanged("NationalAddressView");
+            }
+        }
+
+        private bool _contactInformationView = false;
+        public bool ContactInformationView
+        {
+            get
+            {
+                return _contactInformationView;
+            }
+            set
+            {
+                _contactInformationView = value;
+                RaisePropertyChanged("ContactInformationView");
+            }
+        }
+
+
+        private bool _summeryView = false;
+        public bool SummeryView
+        {
+            get
+            {
+                return _summeryView;
+            }
+            set
+            {
+                _summeryView = value;
+                RaisePropertyChanged("SummeryView");
+            }
+        }
+
+        private bool _passwordView = false;
+        public bool PasswordView
+        {
+            get
+            {
+                return _passwordView;
+            }
+            set
+            {
+                _passwordView = value;
+                RaisePropertyChanged("PasswordView");
+            }
+        }
+
+
+
         public Color _BoxColorOne;
         public Color BoxColorOne
         {
@@ -65,8 +161,214 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorFive");
             }
         }
+
+        public List<SignUpIdType> _idTypeList;
+        public List<SignUpIdType> IdTypeList
+        {
+            get
+            {
+                return _idTypeList;
+            }
+            set
+            {
+                _idTypeList = value;
+                RaisePropertyChanged("IdTypeList");
+            }
+        }
+
+        public string _iDTypeIndex = "1";
+        public string IDTypeIndex
+        {
+            get {
+                return _iDTypeIndex;
+            }
+            set
+            {
+                _iDTypeIndex = value;
+                RaisePropertyChanged("IDTypeIndex");
+            }
+        }
+
+        public string _idNumber;
+        public string IdNumber
+        {
+            get
+            {
+                return _idNumber;
+            }
+            set
+            {
+                _idNumber = value;
+                RaisePropertyChanged("IdNumber");
+            }
+        }
+
+        private string _dBO = string.Empty;
+        public string DBO
+        {
+            get
+            {
+                return _dBO;
+            }
+            set
+            {
+                _dBO = value;
+                RaisePropertyChanged("DBO");
+            }
+        }
+
+        private string _dBOPrev = string.Empty;
+        public string DBOPrev
+        {
+            get
+            {
+                return _dBOPrev;
+            }
+            set
+            {
+                _dBOPrev = value;
+                RaisePropertyChanged("DBOPrev");
+            }
+        }
+
+        private int _maxLengthID = 10;
+        public int MaxLengthID
+        {
+            get
+            {
+                return _maxLengthID;
+            }
+            set
+            {
+                _maxLengthID = value;
+                RaisePropertyChanged("MaxLengthID");
+            }
+        }
+
+        private string _txtIDType = string.Empty;
+        public string TxtIDType
+        {
+            get
+            {
+                return _txtIDType;
+            }
+            set
+            {
+                _txtIDType = value;
+                RaisePropertyChanged("TxtIDType");
+            }
+        }
+
+        private SignUpIdType _selectedIdType = null;
+        public SignUpIdType SelectedIdType
+        {
+            get
+            {
+                return _selectedIdType;
+            }
+            set
+            {
+                _selectedIdType = value;
+                if (_selectedIdType != null)
+                {
+                    try
+                    {
+                        if (_selectedIdType.ID.Equals("ZS0015"))
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0017"))
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0018"))
+                        {
+                            MaxLengthID = 15;
+                        }
+                        TxtIDType = _selectedIdType.Name;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
+                }
+                RaisePropertyChanged("SelectedIdType");
+            }
+        }
+
+        private string _name = string.Empty;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        private string _email = string.Empty;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                RaisePropertyChanged("Email");
+            }
+        }
+
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+
+        private string _password = string.Empty;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged("Password");
+            }
+        }
+
+        private string _confirmPassword = string.Empty;
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
+        }
+
+        
         #endregion
 
+        #region Constructor
         public IndividualRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -80,6 +382,84 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("dialogService");
             }
 
+            OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
+            {
+                SetFormVisibility();
+            });
+        }
+        #endregion
+
+        #region Method
+        public void ClearData()
+        {
+
+        }
+
+        public async Task OnPageLoad()
+        {
+            currentStep = 1;
+            GetSignUpIdType();
+            //string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
+            //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
+            //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+
+            
+
+
+        }
+
+        public void SetFormVisibility()
+        {
+            try
+            {
+                if (currentStep == 1)
+                {
+                    IndividualRegistrationView = false;
+                    NationalAddressView = true;
+                    currentStep++;
+                }
+                else if (currentStep == 2)
+                {
+                    NationalAddressView = false;
+                    ContactInformationView = true;
+                    currentStep++;
+                }
+                else if (currentStep == 3)
+                {
+                    ContactInformationView = false;
+                    SummeryView = true;
+
+                    currentStep++;
+                }
+                else if (currentStep == 4)
+                {
+                    SummeryView = false;
+                    PasswordView = true;
+                    currentStep++;
+                }
+                else if (currentStep == 5)
+                {
+                    PasswordView = false;
+                    currentStep = 1;
+                    _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        #endregion
+
+        public void GetSignUpIdType()
+        {
+            List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
+           new SignUpIdType {ID = "ZS0015",Name = AppResources.NationaID},
+                      new SignUpIdType {ID = "ZS0017",Name = AppResources.ZZIqamaID},
+                                            new SignUpIdType {ID = "ZS0018",Name = AppResources.ZZGCCID},
+
+
+            };
+            IdTypeList = signUpIdTypeList;
 
         }
     }

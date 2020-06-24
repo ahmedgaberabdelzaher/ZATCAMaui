@@ -194,40 +194,49 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 //{
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 //});
-                OnNextClicked = new Command(async () =>
-                {
-                    if (IsnextbuttonEnable == true)
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = true;
-                        });
-                        try
-                        {
-                            await navigateToFormPage();
-                        }
-                        catch (Exception ex)
-                        {
 
-                        }
+                this.OnNextClicked = new Command(this.OnNextButtonClicked);
 
-
-                    }
-
-
-                });
+                //OnNextClicked = new Command(async () =>
+                //{
+                //    if (IsnextbuttonEnable == true)
+                //    {
+                //        try
+                //        {
+                //            await navigateToFormPage();
+                //        }
+                //        catch (Exception ex)
+                //        {
+                //        }
+                //    }
+                //});
             }
             catch (Exception ex)
             {
             }
         }
-        public async Task navigateToFormPage()
+
+        public void OnNextButtonClicked()
         {
-            await Task.Run(() =>
+            if (IsnextbuttonEnable == true)
+            {
+                try
+                {
+                    navigateToFormPage();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        public void navigateToFormPage()
+        {
+            Task.Run(() =>
             {
                 IsLoading = true;
             });
-            await Task.Run(() =>
+            Task.Run(() =>
             {
                 CategorySelected_Index = "0";
                 if (IsimgVisiblec1 == true)
@@ -255,7 +264,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                     TaxEvasionListobj = new TaxEvasionReportDetails();
                     TaxEvasionListobj.Category = CategorySelected_Index;
                     if (!string.IsNullOrEmpty(MobileNumber))
-                    {// TaxEvasionListobj.MobNofromAnonymousOrOfTo = MobileNumber; }
+                    {
                         TaxEvasionListobj.PhoneNumber = MobileNumber;
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -282,11 +291,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                     await _navigation.PopToRootAsync();
                 });
             }
-        }
-
-        public async Task OnPageLoad()
-        {
-
         }
     }
 }

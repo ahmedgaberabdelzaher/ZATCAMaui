@@ -3323,6 +3323,12 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+
+
+
+      
+
+
         public static CRValidationModelRootObject GAZTValidateCRNumber(string CRNumber)
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -4351,7 +4357,12 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+                            //Dev
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                            //QA, Pre-prod and Prod
+                            //cookie.Domain = ".gazt.gov.sa";
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4485,7 +4496,13 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+
+                            //Dev
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                            //QA, Pre-prod and Prod
+                            //cookie.Domain = ".gazt.gov.sa";
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4698,7 +4715,8 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = ".gazt.gov.sa";
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4805,6 +4823,10 @@ namespace GAZT.Manager
                 //ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
                 try
                 {
+                    ///---New API---///
+                    ///https://prdsmswrapper.gazt.gov.sa/GAZTServiceREST.svc/SendBulkSMS?userName=*******&password=*********&tagName=GAZT.gov.sa&recepientNumbers=966********;966*****&message=*********&sendDateTime=0
+
+                    //Replace the below API with the new one
                     string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=" + userName + "&password=" + password + "&tagName=" + tagName + "&recepientNumber=" + recepientNumber + "&message=" + message + "&sendDateTime=0";
                     // string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=GaztApp&password=Gazt@2020&tagName=Gazt.gov.sa&recepientNumber=966571006494&message=Test123onkar13:40&sendDateTime=0";
                     var uri = new Uri(url);
@@ -4970,7 +4992,6 @@ namespace GAZT.Manager
                     HttpResponseMessage res = await client.SendAsync(requestMessage);
 
                     response = res.Content.ReadAsStringAsync().Result;
-
                     verifySmsResponse = JsonConvert.DeserializeObject<TaxEvasionVerifySmsResponseModel>(response);
 
                     App.TaxEvasionToken = verifySmsResponse.SmsResponse.Token;
@@ -5039,6 +5060,104 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+
+        public static async Task<TaxEvasionUserRegistrationResponseModel> GAZTTaxEvasionGetUserByMobile(TaxEvasionSendSmsModel mobileNumberModel)
+        {
+            TaxEvasionUserRegistrationResponseModel sendSmsResponse = new TaxEvasionUserRegistrationResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionGetUserByMobile;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+                    requestMessage.Headers.Add("mobile", mobileNumberModel.mobile);
+
+                    string langVal = "en";
+                    if (App.IsArabic == true)
+                    {
+                        langVal = "ar";
+                    }
+
+                    requestMessage.Headers.Add("Accept-Language", langVal);
+                    var serilized = JsonConvert.SerializeObject(mobileNumberModel);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionUserRegistrationResponseModel>(response);
+
+                    return sendSmsResponse;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+        public static async Task<TaxEvasionUserRegistrationResponseModel> GAZTTaxEvasionRegisterUser(TaxEvasionRegisterUserModel registerUserModel)
+        {
+            TaxEvasionUserRegistrationResponseModel registrationResponseModel = new TaxEvasionUserRegistrationResponseModel();
+            TaxEvasionErrorReponseModel errorReponseModel = new TaxEvasionErrorReponseModel();
+            string response = string.Empty;
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTTaxEvasionRegisterUser;
+                    var uri = new Uri(url);
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", App.TaxEvasionToken);
+
+                    HttpRequestMessage requestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+                    requestMessage.Headers.Add("Accept", "application/json");
+                   
+                    var serilized = JsonConvert.SerializeObject(registerUserModel);
+                    requestMessage.Content = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.SendAsync(requestMessage);
+                    response = res.Content.ReadAsStringAsync().Result;
+
+                    registrationResponseModel = JsonConvert.DeserializeObject<TaxEvasionUserRegistrationResponseModel>(response);
+                    App.TaxEvasionToken = registrationResponseModel.Data.ApiToken;
+
+                    return registrationResponseModel;
+                }
+                catch (Exception)
+                {
+                    errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
+                    throw new Exception(errorReponseModel.Data);
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
 
         public static async Task<TaxEvasionRegionsCityModel> GAZTTaxEvasionGetAllRegions()
         {
@@ -5200,9 +5319,12 @@ namespace GAZT.Manager
                                     String.Format("\"{0}\"", keyValuePair.Key));
                             }
 
-                            //multipartFormDataContent.Add(new ByteArrayContent(File.ReadAllBytes("test.txt")),
-                            //    '"' + "File" + '"',
-                            //    '"' + "test.txt" + '"');
+                            foreach(UploadedDocumentsList uploadedDocumentsList in documentsLists)
+                            {
+                                multipartFormDataContent.Add(new ByteArrayContent(uploadedDocumentsList.DocBinaryInBase64),
+                               '"' + "File" + '"',
+                               '"' + uploadedDocumentsList.FileNameWithExtension + '"');
+                            }
 
                             string langVal = "en";
                             if (App.IsArabic == true)
@@ -5232,6 +5354,223 @@ namespace GAZT.Manager
                 throw new GAZTNetworkConnectivityIssueException();
             }
         }
+
+
+
+        public static async Task<string> GAZTGetVATSignUpCaseId()
+        {
+            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+                    string url = Constants.GAZTGetVATSignUpCaseId;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    //string langVal = "en";
+                    //if (App.IsArabic == true)
+                    //{
+                    //    langVal = "ar";
+                    //}
+
+                    //client.DefaultRequestHeaders.Add("Accept-Language", langVal);
+
+                    HttpResponseMessage res = await client.GetAsync(uri);
+                    var response = res.Content.ReadAsStringAsync().Result;
+                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
+                    return "";
+                }
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new GAZTNetworkConnectivityIssueException();
+            }
+        }
+
+
+        public async static Task<string> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
+                    if (SignupIsIDTypeValidList != null)
+                    {
+                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    }
+                    return IsIDTypeValidList;// tINStatus;
+                }
+
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public static async Task<SignupCityRootObject> GAZTGetVATSignUpCityListForSignup()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                SignupCityRootObject SignupCityList = new SignupCityRootObject();
+                string NewToken = string.Empty;
+                try
+                {
+                    char lang = GetLangZParameter();
+
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    String url = Constants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
+                                                                               // dropdown_headerSet(Spras='A',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTSignupCityList = await client.GetAsync(uri);
+                    if (GAZTSignupCityList != null)
+                    {
+                        HttpHeaders headers = GAZTSignupCityList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
+                        SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
+                    }
+                    return SignupCityList;// tINStatus;
+                }
+
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
+            }
+            else
+            {
+                //throw new GAZTNetworkConnectivityIssueException(AppResources.ZZInternetConnectionMessage);
+                throw new GAZTInternetException();
+            }
+        }
+
 
         #endregion
     }

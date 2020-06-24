@@ -2703,6 +2703,7 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Tax Evasion Reports</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+    
   <data name="ZTEReportReportStatus" xml:space="preserve">
     <value>Report Status</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2714,6 +2715,22 @@ Should we require further information, we would be in contact.</value>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>Please fill all the report details before submit</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+      <data name="ZRealEstateServiceTitle" xml:space="preserve">
+    <value>VAT Real Estate Transactions for Individuals</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
+    <value>Property registration request</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
+    <value>Request verification</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+    <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
+    <value>Termination of requests</value>
+    <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
     <value>Your Entity type is Individual</value>
@@ -3413,5 +3430,8 @@ Should we require further information, we would be in contact.</value>
     <value>• Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
 
 • For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
+  </data>
+      <data name="ZZCreateYourTEAccount" xml:space="preserve">
+    <value>Create Your Tax Evasion Account</value>
   </data>
 </root>

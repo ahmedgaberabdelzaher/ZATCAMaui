@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using pdfjs.Interfaces;
@@ -230,7 +231,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                     {
                         Cookie cookie = new Cookie();
-                        cookie.Domain = ".gazt.gov.sa";
+                        //Dev
+                        cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                        //QA, Pre-prod and Prod
+                        //cookie.Domain = ".gazt.gov.sa";
+
                         cookie.Comment = cookieModel.Comment;   
                         cookie.Version = cookieModel.Version;
                         cookie.HttpOnly = cookieModel.IsHttpOnly;

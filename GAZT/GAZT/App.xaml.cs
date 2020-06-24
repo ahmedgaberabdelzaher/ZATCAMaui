@@ -1,4 +1,4 @@
-﻿using CommonServiceLocator;
+using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
@@ -28,6 +28,7 @@ namespace EGAZT
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
         public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView";
+
         //SYNCFUSION INTEGRATION
         public static string MyCertificate = "MyCertificate";
         public static string PdfView = "PdfView";
@@ -80,6 +81,9 @@ namespace EGAZT
         public static string VATIndividualSignupPageView = "VATIndividualSignupPageView";
         public static string IndividualRegistrationPageView = "IndividualRegistrationPageView";
         public static string RegistrationSuccessfulPageView = "RegistrationSuccessfulPageView";
+        public static string VATRealEstateServicesPageView = "VATRealEstateServicesPageView";
+        public static string PropertyRegistrationPage = "PropertyRegistrationPage";
+
         public static string VATRegistrationPageView = "VATRegistrationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string fontFamilyBold = null;
@@ -122,11 +126,10 @@ namespace EGAZT
         public static bool IsSAMLLoginEnabled = true;
         public static bool IsUserLoggedIn = false;
         //HttpClientHandlerForSSL Certificate Issue
-
         public static string IncomingChannel = string.Empty;
-
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
+        public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
         #endregion
 
         public static HttpClientHandler httpClientHandler = null;
@@ -313,14 +316,12 @@ namespace EGAZT
             IsJailBrokenDevice = false;
             try
             {
-                 IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+               //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
             catch (Exception ex)
             {
 
             }
-
-
 
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             // Handle when your app starts

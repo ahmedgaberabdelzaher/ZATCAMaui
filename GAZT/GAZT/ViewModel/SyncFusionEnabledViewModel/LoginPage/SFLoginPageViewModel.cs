@@ -851,8 +851,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 }
 
                 App.TP = new TaxPayerProfile();
-                TPProfile.Tin = Email;
                 App.TP = TPProfile;
+                App.TP.Userid = TPProfile.Tin;
             }
 
             String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
@@ -862,41 +862,56 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             {
                 try
                 {
-                    string currentAttempts = "1";
-                    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
-                    IsLoading = false;
 
                     App.IsLoginCalled = false;
-                       App.ArePreLoginLangCookiesSet = false;
+                    App.ArePreLoginLangCookiesSet = false;
 
-                    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    Device.BeginInvokeOnMainThread(() =>
                     {
+                        _navigationService.NavigateTo(App.SFLandingPageView);
+                    });
 
-                        App.TP.Userid = UserId;
-                        App.TP.Password = Password;
+                    //if (App.IsOTPByPassed == true)
+                    //{
+                    //}
+                    //else
+                    //{
+                    //    string currentAttempts = "1";
+                    //    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                    //    IsLoading = false;
+                    //    App.IsLoginCalled = false;
+                    //    App.ArePreLoginLangCookiesSet = false;
 
-                        ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
+                    //    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    //    {
 
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()
-                            {
-                                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin,
-                                NavigateToThisService = NavigateToThisService
-                            });
-                        });
-                    }
-                    else
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-                        Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessageBox(response, AppResources.Information);
-                        });
-                    }
+                    //        App.TP.Userid = UserId;
+                    //        App.TP.Password = Password;
+
+                    //        ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
+
+                    //        Device.BeginInvokeOnMainThread(() =>
+                    //        {
+                    //            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()
+                    //            {
+                    //                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin,
+                    //                NavigateToThisService = NavigateToThisService
+                    //            });
+                    //        });
+
+                    //    }
+                    //    else
+                    //    {
+                    //        await Task.Run(() =>
+                    //        {
+                    //            IsLoading = false;
+                    //        });
+                    //        Device.BeginInvokeOnMainThread(async () =>
+                    //        {
+                    //            await _dialogService.ShowMessageBox(response, AppResources.Information);
+                    //        });
+                    //    }
+                    //}
                 }
                 catch (GAZTInternetException)
                 {

@@ -4,9 +4,11 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel
@@ -91,18 +93,98 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
 
         public async void VerifyCommandClick()
         {
-           
             try
             {
+
                 ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
                 tesmobnoscreen.tes = "1";
                 tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
 
-                if (MobileNumber.Length == 8)
+                if (MobileNumber.Length == 9)
                 {
                     tesmobnoscreen.MobileNumber = MobileNumberPrefix + MobileNumber;
-                    _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
-                    // WebServiceManager.GetOtpVerification();
+
+                    TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                    taxEvasionSendSmsModel.mobile = tesmobnoscreen.MobileNumber;
+
+                    try
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = true;
+                        });
+
+                        TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            IsLoading = false;
+                        });
+
+                        if (taxEvasionSendSmsResponseModel.Status == true)
+                        {
+                            App.TaxEvasionUserData  = new TaxEvasionUserRegistrationResponseData();
+                            App.TaxEvasionUserData.Mobile = tesmobnoscreen.MobileNumber;
+                            App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+
+                            _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            });
+                        }
+                    }
+                    catch (GAZTException gex)
+                    {
+                        // Handle the GAZT custom exception.
+                        string MessageForTheUser = gex.Message;
+                        if (gex is GAZTInvalidDataException)
+                        {
+                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                        }
+
+                        if (gex is GAZTNetworkConnectivityIssueException)
+                        {
+                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                        }
+                        else if (gex is GAZTInternetException)
+                        {
+                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                        }
+                        else if (gex is GAZTSessionExpiredException)
+                        {
+                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                        }
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                            //viewModel._navigationService.GoBack();
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            //viewModel._navigationService.GoBack();
+                        });
+                    }
+
+                  
                 }
             }
             catch (InternetException ex)

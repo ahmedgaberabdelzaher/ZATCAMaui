@@ -132,14 +132,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
                     viewModel.IsLoading = false;
                 });
             });
-
-
-
-
-
-
-
-
         }
         private void SetLTR()
         {

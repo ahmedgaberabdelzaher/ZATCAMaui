@@ -36,5 +36,7 @@ namespace EGAZT.Models
         public string NavigateToThisService {get;set;}
         public string MobileNumber { get; set; }
         public string tes { get; set; }
+        public string LoginKey { get; set; }
+
     }
 }

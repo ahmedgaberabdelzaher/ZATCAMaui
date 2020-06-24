@@ -19,7 +19,7 @@ namespace GAZT.Models
         {
             get
             {
-                return FirstName + " " + LastName;
+                return NameFirst + NameLast;
             }
         }
         public String Email { get; set; }
@@ -35,8 +35,20 @@ namespace GAZT.Models
                 _NewEmail = value;
             }
         }
+
         public String Userid { get; set; }
-        public String Tin { get; set; }
+        public String Tin
+        {
+            get
+            {
+                return Partner;
+            }
+            set
+            {
+                Partner = value;
+            }
+        }
+
         private String _Mobile = String.Empty;
         public string Mobile
         {
@@ -74,5 +86,9 @@ namespace GAZT.Models
                 _NewPassword = value;
             }
         }
+
+        public string Partner { get; set; }
+        public string NameFirst { get; set; }
+        public string NameLast { get; set; }
     }
 }

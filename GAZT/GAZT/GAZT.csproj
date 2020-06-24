@@ -66,6 +66,8 @@
     <Folder Include="Views\SyncFusionEnabledViews\Common\" />
     <Folder Include="Enums\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
+    <Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
+    <Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -95,6 +97,12 @@
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\TaxEvasionPages\TaxEvasionReportMobilePageView.xaml.cs">
       <DependentUpon>TaxEvasionReportMobilePageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
+      <DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
+      <DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Font\MyMaterialIcon.ttf" />
+    <None Remove=".DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />

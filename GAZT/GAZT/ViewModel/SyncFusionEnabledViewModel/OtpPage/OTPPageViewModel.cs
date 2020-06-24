@@ -457,14 +457,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                     try
                     {
                         TaxEvasionVerifySmsModel taxEvasionVerifySmsModel = new TaxEvasionVerifySmsModel();
-                        taxEvasionVerifySmsModel.key = taxEvasionSendSmsResponseModel.Data.Key;
+                        taxEvasionVerifySmsModel.key = App.TaxEvasionUserData.LoginKey;
                         taxEvasionVerifySmsModel.code = EnteredOTP;
 
                         taxEvasionVerifySmsResponseModel = await WebServiceManager.GAZTTaxEvasionVerifySms(taxEvasionVerifySmsModel, UnmaskedMobileNumber);
 
                         if(taxEvasionVerifySmsResponseModel.Status == true)
                         {
-                            await navigateToListPage();
+                            TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                            taxEvasionSendSmsModel.mobile = UnmaskedMobileNumber;
+
+                            try
+                            {
+                                TaxEvasionUserRegistrationResponseModel taxEvasionUserRegistrationResponseModel = await WebServiceManager.GAZTTaxEvasionGetUserByMobile(taxEvasionSendSmsModel);
+                                App.TaxEvasionUserData = taxEvasionUserRegistrationResponseModel.Data;
+
+                                if (taxEvasionUserRegistrationResponseModel.Status == true)
+                                {
+                                    await navigateToListPage();
+                                }
+                            }
+                            catch(Exception ex)
+                            {
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
+
+                                    _navigationService.NavigateTo(App.TaxEvasionRegistrationPageView);
+                                });
+                            }
                         }
                         else
                         {
@@ -523,6 +547,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                             });
 
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+
                             //viewModel._navigationService.GoBack();
                         });
                     }
@@ -571,7 +596,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                 //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);
                 //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
                 numberOfSeconds = 120;
-                TimerStart(numberOfSeconds);
+                
                 tessentOtptomobile();
             }
             else
@@ -1006,71 +1031,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                 IsVerifyOTPEnabled = true;
                 VerifyButtonDisableColor = Color.FromHex("#005e4b");
                 AccountWillBeBlocked = string.Empty;
-
-                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
-                taxEvasionSendSmsModel.mobile = UnmaskedMobileNumber;
-
-                try
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = true;
-                    });
-
-                    taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
-
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                }
-                catch (GAZTException gex)
-                {
-                    // Handle the GAZT custom exception.
-                    string MessageForTheUser = gex.Message;
-                    if (gex is GAZTInvalidDataException)
-                    {
-                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                    }
-
-                    if (gex is GAZTNetworkConnectivityIssueException)
-                    {
-                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                    }
-                    else if (gex is GAZTInternetException)
-                    {
-                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                    }
-                    else if (gex is GAZTSessionExpiredException)
-                    {
-                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                    }
-
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-
-                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        //viewModel._navigationService.GoBack();
-                    });
-                }
-                catch(Exception ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        //viewModel._navigationService.GoBack();
-                    });
-                }
-
             }
             else
             {
@@ -1104,7 +1064,87 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
         }
         public async void tessentOtptomobile()
         {
-            TesSetGenerateOtp();
+            //TesSetGenerateOtp();
+
+            TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+            taxEvasionSendSmsModel.mobile = App.TaxEvasionUserData.Mobile;
+            try
+            {
+                numberOfSeconds = 120;
+
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
+                TimerStart(numberOfSeconds);
+
+                if (taxEvasionSendSmsResponseModel.Status == true)
+                {
+                    App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    });
+                }
+            }
+            catch (GAZTException gex)
+            {
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+
 
             string mobnumber = TesReporterMobileNumber;
             TesMessageForSms = String.Format(AppResources.ZOTPformobileverificationis,
@@ -1128,12 +1168,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
             }
             catch (Exception ex)
             {
+
             }
             //numberOfSeconds = 120;
             //TimerStart(numberOfSeconds);
         }
         private async Task SendOTPToRegisterMobileNumberToLogIn()
         {
+
         }
         public void TimerStart(int Seconds)
         {
