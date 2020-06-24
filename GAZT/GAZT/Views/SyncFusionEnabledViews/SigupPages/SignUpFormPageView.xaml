@@ -114,6 +114,7 @@
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0"  >
                         </custom:CustomButton>
+
                         <syncfusion:SfPicker x:Name="DDlIDType"
                     HeaderHeight="40"
                     ShowHeader="true"
@@ -167,6 +168,7 @@ HeaderTextColor="White"
                         </inputLayout:SfTextInputLayout>
                             <Button x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"   Margin="0,0,0,0" >
                             </Button>
+
                             <custom1:CustomDatePicker 
 								ShowHeader="false"
 								Margin="2" 

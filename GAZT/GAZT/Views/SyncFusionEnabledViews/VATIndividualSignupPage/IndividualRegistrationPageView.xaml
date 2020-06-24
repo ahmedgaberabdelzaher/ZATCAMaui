@@ -174,12 +174,13 @@
                                     <!--SelectedItem="{Binding SelectedSignUpUsing,Mode=TwoWay}"-->
                                 </Grid>
                             </StackLayout>
+
                             <StackLayout Grid.Row="1" Grid.Column="0">
                                 <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="ID Number" Padding="0,0,0,0"/>
                                 <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                    <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                         <Entry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
@@ -187,6 +188,7 @@
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
+
                             <StackLayout Grid.Row="2" Grid.Column="0">
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -194,6 +196,7 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0" Text="Date of Birth" Padding="0,0,0,0"/>
+
                                     <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -208,7 +211,9 @@
                                             </Image>
                                         </StackLayout>
                                     </inputLayout:SfTextInputLayout>
+
                                     <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
+
                                     <custom1:CustomDatePicker Grid.Row="1"
 								ShowHeader="false"
 								Margin="2" 
@@ -224,12 +229,12 @@
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
-								x:Name="DpDbo"
-                           SelectionChanged="DpDbo_SelectionChanged"
+								x:Name="DOB"
+                           SelectionChanged="Dbo_SelectionChanged"
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
-                            Closed="DpDbo_Closed"
+                            Closed="DBO_Closed"
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DpDbo_OkButtonClicked"
@@ -246,7 +251,7 @@
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="" IsSpellCheckEnabled="False"
+                                    <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding Name}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Enter Name" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                         <Entry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
@@ -257,7 +262,8 @@
                         </Grid>
                     </ScrollView>
                 </Grid>
-                        <!--National Address-->
+
+                            <!--National Address-->
                         <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
                             <Grid.RowDefinitions>
@@ -383,10 +389,11 @@
                                             <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                <custom:BorderlessEntry Text="{Binding TxtEmailAddress}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" >
+                                                <custom:BorderlessEntry Text="{Binding Email}" x:Name="EntryEmail" Unfocused="EntryEmail_TextChanged" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                         </StackLayout>
+
                                         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Confirm Email" Padding="0,0,0,0"/>
                                             <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,-6,0,-6"
@@ -401,7 +408,7 @@
                                         </StackLayout>
                                         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Mobile" Padding="0,0,0,0"/>
-                                            <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
+                                            <inputLayout:SfTextInputLayout x:Name="MobileNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                 <custom:BorderlessEntry Text="{Binding TxtPhoneNumber}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="Moblie Number" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryPhoneNumber_Unfocused" Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
@@ -609,7 +616,7 @@
                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                             <StackLayout Orientation="Horizontal">
-                                                <custom:BorderlessEntry FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                <custom:BorderlessEntry Text="{Binding Password}" FontSize="Small" WidthRequest="128" MaxLength="16"
                                                                 Placeholder="New Password" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 </custom:BorderlessEntry>
                                                 <Image HorizontalOptions="EndAndExpand">
@@ -626,7 +633,7 @@
                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                             <StackLayout Orientation="Horizontal">
-                                                <custom:BorderlessEntry FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                <custom:BorderlessEntry Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128" MaxLength="16"
                                                                 Placeholder="Repeat Password" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 </custom:BorderlessEntry>
                                                 <Image HorizontalOptions="EndAndExpand">

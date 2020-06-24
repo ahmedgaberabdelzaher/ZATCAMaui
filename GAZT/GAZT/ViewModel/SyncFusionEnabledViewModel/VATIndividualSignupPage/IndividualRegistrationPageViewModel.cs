@@ -162,19 +162,209 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public List<SignUpIdType> idTypeList;
+        public List<SignUpIdType> _idTypeList;
         public List<SignUpIdType> IdTypeList
         {
             get
             {
-                return _BoxColorFive;
+                return _idTypeList;
             }
             set
             {
-                idTypeList = value;
+                _idTypeList = value;
                 RaisePropertyChanged("IdTypeList");
             }
         }
+
+        public string _iDTypeIndex = "1";
+        public string IDTypeIndex
+        {
+            get {
+                return _iDTypeIndex;
+            }
+            set
+            {
+                _iDTypeIndex = value;
+                RaisePropertyChanged("IDTypeIndex");
+            }
+        }
+
+        public string _idNumber;
+        public string IdNumber
+        {
+            get
+            {
+                return _idNumber;
+            }
+            set
+            {
+                _idNumber = value;
+                RaisePropertyChanged("IdNumber");
+            }
+        }
+
+        private string _dBO = string.Empty;
+        public string DBO
+        {
+            get
+            {
+                return _dBO;
+            }
+            set
+            {
+                _dBO = value;
+                RaisePropertyChanged("DBO");
+            }
+        }
+
+        private string _dBOPrev = string.Empty;
+        public string DBOPrev
+        {
+            get
+            {
+                return _dBOPrev;
+            }
+            set
+            {
+                _dBOPrev = value;
+                RaisePropertyChanged("DBOPrev");
+            }
+        }
+
+        private int _maxLengthID = 10;
+        public int MaxLengthID
+        {
+            get
+            {
+                return _maxLengthID;
+            }
+            set
+            {
+                _maxLengthID = value;
+                RaisePropertyChanged("MaxLengthID");
+            }
+        }
+
+        private string _txtIDType = string.Empty;
+        public string TxtIDType
+        {
+            get
+            {
+                return _txtIDType;
+            }
+            set
+            {
+                _txtIDType = value;
+                RaisePropertyChanged("TxtIDType");
+            }
+        }
+
+        private SignUpIdType _selectedIdType = null;
+        public SignUpIdType SelectedIdType
+        {
+            get
+            {
+                return _selectedIdType;
+            }
+            set
+            {
+                _selectedIdType = value;
+                if (_selectedIdType != null)
+                {
+                    try
+                    {
+                        if (_selectedIdType.ID.Equals("ZS0015"))
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0017"))
+                        {
+                            MaxLengthID = 10;
+                        }
+                        else if (_selectedIdType.ID.Equals("ZS0018"))
+                        {
+                            MaxLengthID = 15;
+                        }
+                        TxtIDType = _selectedIdType.Name;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
+                }
+                RaisePropertyChanged("SelectedIdType");
+            }
+        }
+
+        private string _name = string.Empty;
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        private string _email = string.Empty;
+        public string Email
+        {
+            get
+            {
+                return _email;
+            }
+            set
+            {
+                _email = value;
+                RaisePropertyChanged("Email");
+            }
+        }
+
+        private string _mobileNumber = string.Empty;
+        public string MobileNumber
+        {
+            get
+            {
+                return _mobileNumber;
+            }
+            set
+            {
+                _mobileNumber = value;
+                RaisePropertyChanged("MobileNumber");
+            }
+        }
+
+        private string _password = string.Empty;
+        public string Password
+        {
+            get
+            {
+                return _password;
+            }
+            set
+            {
+                _password = value;
+                RaisePropertyChanged("Password");
+            }
+        }
+
+        private string _confirmPassword = string.Empty;
+        public string ConfirmPassword
+        {
+            get
+            {
+                return _confirmPassword;
+            }
+            set
+            {
+                _confirmPassword = value;
+                RaisePropertyChanged("ConfirmPassword");
+            }
+        }
+
         
         #endregion
 
@@ -209,9 +399,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             currentStep = 1;
             GetSignUpIdType();
-            string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
-            string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
-            var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+            //string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
+            //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
+            //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
 
             
 
@@ -269,9 +459,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
             };
-
-            List<SignUpIdType> list = new List<SignUpIdType>();
-            list = signUpIdTypeList;
+            IdTypeList = signUpIdTypeList;
 
         }
     }
