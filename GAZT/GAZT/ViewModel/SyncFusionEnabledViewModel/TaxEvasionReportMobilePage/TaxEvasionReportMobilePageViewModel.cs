@@ -116,7 +116,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
 
                         TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
 
-                        await Task.Run(() =>
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
                             IsLoading = false;
                         });
