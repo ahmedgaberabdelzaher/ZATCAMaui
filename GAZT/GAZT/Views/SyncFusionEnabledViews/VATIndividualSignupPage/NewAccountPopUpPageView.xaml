@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:custom="clr-namespace:GAZT"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.NewAccountPopUpPageView">
+    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
+        <StackLayout>
+            <StackLayout Padding="22,22,22,0">
+                <Label Text="New Account"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                <Label Text="IBAN" FontFamily="{StaticResource SSTArBold}"/>
+            </StackLayout>
+            <StackLayout Padding="15,0,15,15">
+                <Frame Padding="0" BorderColor="LightGray" CornerRadius="8">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
+                                <Label Text="SA" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
+                                <Image Rotation="270">
+                                    <Image.Source>
+                                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="15"
+                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                    </Image.Source>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
+                        <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
+                            <custom:BorderlessEntry Placeholder="03" FontAttributes="Bold" FontSize="Small"/>
+                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                            <custom:BorderlessEntry Placeholder="80000000" FontAttributes="Bold" FontSize="Small"/>
+                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                            <custom:BorderlessEntry Placeholder="0000" FontAttributes="Bold" FontSize="Small"/>
+                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                            <custom:BorderlessEntry Placeholder="0000" FontAttributes="Bold" FontSize="Small"/>
+                            <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
+                            <custom:BorderlessEntry Placeholder="0000" FontAttributes="Bold" FontSize="Small"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

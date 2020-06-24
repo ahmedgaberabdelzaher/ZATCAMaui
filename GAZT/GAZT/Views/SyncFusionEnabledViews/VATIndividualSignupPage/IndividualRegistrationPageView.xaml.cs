@@ -216,7 +216,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
         #endregion
-        private async void btnContinue_Clicked(object sender, EventArgs e)
+        private void btnContinue_Clicked(object sender, EventArgs e)
         {
 /*            if (CurrentView <= 6)
             {
@@ -227,50 +227,46 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 case 1:
                     break;
                 case 2:
+                    BoxTwo.BackgroundColor = Color.DarkGreen;
                     NationalAddressView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
+                    IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible =
                     SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxTwo.TranslateTo(100, 0, 500, Easing.BounceOut);
+                    //await BoxTwo.TranslateTo(100, 0, 500, Easing.BounceOut);
                     break;
                 case 3:
+                    BoxThree.BackgroundColor = Color.DarkGreen;
                     ContactInformationView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = NationalAddressView.IsVisible = VerificationCodeView.IsVisible =
+                    IndividualRegistrationView.IsVisible = NationalAddressView.IsVisible = 
                     SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxThree.TranslateTo(100, 0, 500, Easing.BounceOut);
+                   // await BoxThree.TranslateTo(100, 0, 500, Easing.BounceOut);
                     break;
                 case 4:
-                    VerificationCodeView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible = NationalAddressView.IsVisible = ContactInformationView.IsVisible =
-                    SummeryView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxFour.TranslateTo(100, 0, 500, Easing.BounceOut);
-                    break;
-                case 5: 
+                    BoxFour.BackgroundColor = Color.DarkGreen;
                     btnContinue.Text = "Confirm";
-                    
                     SummeryView.IsVisible = true;
-                    IndividualRegistrationView.IsVisible =ContactInformationView.IsVisible= NationalAddressView.IsVisible =
-                        VerificationCodeView.IsVisible = PasswordView.IsVisible = false;
-                    await BoxFive.TranslateTo(100, 0, 500, Easing.BounceOut);
+                    IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible = NationalAddressView.IsVisible =
+                       PasswordView.IsVisible = false;
+                 //   await BoxFive.TranslateTo(100, 0, 500, Easing.BounceOut);
                     break;
-                case 6:
+                case 5:
+                    BoxFive.BackgroundColor = Color.DarkGreen;
                     btnContinue.Text = "Continue";
                     PasswordView.IsVisible = true;
                     IndividualRegistrationView.IsVisible = ContactInformationView.IsVisible = NationalAddressView.IsVisible =
-                        VerificationCodeView.IsVisible = SummeryView.IsVisible = false;
-                   // await BoxFive.TranslateTo(100, 0, 500, Easing.BounceOut);
+                        SummeryView.IsVisible = false;
                     break;
-                case 7:
-            viewModel._navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
+                case 6:
+                    viewModel._navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
                     break;
             }*/
         }
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
-       /*     BoxOne.BackgroundColor = Color.DarkGreen;
-            await BoxOne.TranslateTo(100,0,500,Easing.BounceOut);
+/*            BoxOne.BackgroundColor = Color.DarkGreen;
+            //await BoxOne.TranslateTo(100,0,500,Easing.BounceOut);
             BoxTwo.BackgroundColor = BoxThree.BackgroundColor = BoxFour.BackgroundColor = BoxFive.BackgroundColor = Color.LightGray;
-
-            NationalAddressView.IsVisible = ContactInformationView.IsVisible = VerificationCodeView.IsVisible =
+            IndividualRegistrationView.IsVisible = true;
+            NationalAddressView.IsVisible = ContactInformationView.IsVisible =
             SummeryView.IsVisible = PasswordView.IsVisible = false;
             CurrentView = 1;*/
         }

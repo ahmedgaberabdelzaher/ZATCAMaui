@@ -166,6 +166,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
+            SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -902,13 +904,42 @@ namespace EGAZT
                 }
             }
         }
-        public RegistrationSuccessfulPageViewModel RegistrationSuccessfulPageView
+        public RegistrationSuccessfulPageViewModel VATRegistrationSuccessfulPageView
         {
             get
             {
                 try
                 {
                     return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATRegistrationPageViewModel VATRegistrationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRegistrationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATRegistrationSuccessfullPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -978,6 +1009,9 @@ namespace EGAZT
             navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
             navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
             navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
+            navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
+            navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
+            
             return navigationService;
         }
     }

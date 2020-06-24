@@ -568,7 +568,8 @@
                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                             </StackLayout>
                             <StackLayout Grid.Row="1">
-                               
+                                <ScrollView>
+                                    <StackLayout>
                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                         ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                     <Grid.RowDefinitions>
@@ -677,6 +678,8 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Grid>
+                                    </StackLayout>
+                                </ScrollView>
                             </StackLayout>
                         </Grid>
                         <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >

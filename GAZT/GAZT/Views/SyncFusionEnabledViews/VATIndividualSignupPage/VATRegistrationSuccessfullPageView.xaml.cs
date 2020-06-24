@@ -11,17 +11,17 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegistrationSuccessfulPageView : ContentPage
+    public partial class VATRegistrationSuccessfullPageView : ContentPage
     {
-        RegistrationSuccessfulPageViewModel viewModel;
-        public RegistrationSuccessfulPageView()
+        VATRegistrationSuccessfullPageViewModel viewModel;
+        public VATRegistrationSuccessfullPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.VATRegistrationSuccessfulPageView;
+            viewModel = App.Locator.VATRegistrationSuccessfullPageView;
             this.BindingContext = viewModel;
         }
 
-        private void btnVATRegistration_Clicked(object sender, EventArgs e)
+        private void btnDashboard_Clicked(object sender, EventArgs e)
         {
 
         }

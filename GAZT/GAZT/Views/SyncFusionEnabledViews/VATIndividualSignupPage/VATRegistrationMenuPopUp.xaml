@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:custom="clr-namespace:GAZT"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATRegistrationMenuPopUp">
+    <yummy:PancakeView CornerRadius="22,22,22,22" HasShadow="True" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+        <StackLayout Margin="10,22,10,22">
+            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="35"
+                                                 Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                    </Image.Source>
+                </Image>
+                <Label Text="Attachments" FontSize="Large" TextColor="Black"/>
+            </StackLayout>
+            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Image>
+                    <Image.Source>
+                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="35"
+                                                 Glyph="{x:Static FontImage:IconFonts.ContentSaveEdit}"/>
+                    </Image.Source>
+                </Image>
+                <Label Text="Save as Draft" FontSize="Large" TextColor="Black"/>
+            </StackLayout>
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>
