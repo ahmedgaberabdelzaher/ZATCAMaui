@@ -57,7 +57,6 @@ namespace GAZT.Helper
         //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = ProdDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -125,7 +124,7 @@ namespace GAZT.Helper
         public static string GAZTSiguupIssuedByList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_MOBILE_SRV/ConsumeSet?$filter=Request eq ";
         //  public static string GAZTSignUpFirstSubmit = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet";
 
-                                                                               // "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet";
+        // "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet";
         public static string GAZTSignUpFirstSubmit = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet?sap-language=";
         public static string GAZTSignUpGetGuid = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_PUSR_SIGNUP_SRV/signup_headerSet?$format=json&$filter=AType eq  '1'";
         #endregion

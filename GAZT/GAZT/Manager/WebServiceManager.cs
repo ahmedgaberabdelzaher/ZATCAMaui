@@ -4823,6 +4823,10 @@ namespace GAZT.Manager
                 //ReportRetriveByMobNoRootObject terfreport = new ReportRetriveByMobNoRootObject();
                 try
                 {
+                    ///---New API---///
+                    ///https://prdsmswrapper.gazt.gov.sa/GAZTServiceREST.svc/SendBulkSMS?userName=*******&password=*********&tagName=GAZT.gov.sa&recepientNumbers=966********;966*****&message=*********&sendDateTime=0
+
+                    //Replace the below API with the new one
                     string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=" + userName + "&password=" + password + "&tagName=" + tagName + "&recepientNumber=" + recepientNumber + "&message=" + message + "&sendDateTime=0";
                     // string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=GaztApp&password=Gazt@2020&tagName=Gazt.gov.sa&recepientNumber=966571006494&message=Test123onkar13:40&sendDateTime=0";
                     var uri = new Uri(url);
