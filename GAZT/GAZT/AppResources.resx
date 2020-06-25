@@ -2447,7 +2447,7 @@ Should we require further information, we would be in contact.</value>
   <data name="ZTERNewAccount" xml:space="preserve">
     <value>New Account</value>
     <comment>New Account</comment>
-  </data> 
+  </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>Please choose Report Category</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2703,7 +2703,6 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Tax Evasion Reports</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-    
   <data name="ZTEReportReportStatus" xml:space="preserve">
     <value>Report Status</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2716,19 +2715,19 @@ Should we require further information, we would be in contact.</value>
     <value>Please fill all the report details before submit</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-      <data name="ZRealEstateServiceTitle" xml:space="preserve">
+  <data name="ZRealEstateServiceTitle" xml:space="preserve">
     <value>VAT Real Estate Transactions for Individuals</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-    <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
+  <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
     <value>Property registration request</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-    <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
+  <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
     <value>Request verification</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-    <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
+  <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
     <value>Termination of requests</value>
     <comment>VAT Real Estate Service</comment>
   </data>
@@ -3431,7 +3430,19 @@ Should we require further information, we would be in contact.</value>
 
 • For example, return of goods and services by customers on which you have paid VAT to GAZT, write off of bad debt on standard rated receivables.</value>
   </data>
-      <data name="ZZCreateYourTEAccount" xml:space="preserve">
+  <data name="ZZCreateYourTEAccount" xml:space="preserve">
     <value>Create Your Tax Evasion Account</value>
+  </data>
+  <data name="ZZZZCity" xml:space="preserve">
+    <value>City</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZCountry" xml:space="preserve">
+    <value>Country</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProvinceRegion" xml:space="preserve">
+    <value>Province / Region</value>
+    <comment>New SignUp</comment>
   </data>
 </root>
