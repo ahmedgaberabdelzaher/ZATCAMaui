@@ -410,26 +410,36 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (currentStep == 1)
                 {
-                   
-                 bool isValidId =  await ValidateId();
-                    if(isValidId)
+
+                    if(SelectedIdType.ID.Equals("ZS0018"))
                     {
                         IndividualRegistrationView = false;
                         NationalAddressView = true;
                         currentStep++;
-                        VATSignUpData _vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
-
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(() =>
+                        bool isValidId = await ValidateId();
+                        if (isValidId)
                         {
-                            _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+                            IndividualRegistrationView = false;
+                            NationalAddressView = true;
+                            currentStep++;
+                            VATSignUpData _vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
 
-                        });
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+
+                            });
 
 
+                        }
                     }
+                
 
                 }
                 else if (currentStep == 2)
