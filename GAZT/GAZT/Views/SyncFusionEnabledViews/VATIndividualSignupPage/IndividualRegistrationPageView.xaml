@@ -177,7 +177,7 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="1" Grid.Column="0">
-                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="ID Number" Padding="0,0,0,0"/>
+                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.IDNumber}" Padding="0,0,0,0"/>
                                 <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -196,7 +196,7 @@
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0" Text="Date of Birth" Padding="0,0,0,0"/>
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0" Text="{x:Static local:AppResources.ZZDateofBirth}" Padding="0,0,0,0"/>
 
                                     <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
@@ -248,7 +248,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Grid.Row="3" Grid.Column="0" >
-                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Name" Padding="0,0,0,0"/>
+                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZName}" Padding="0,0,0,0"/>
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
