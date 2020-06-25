@@ -399,7 +399,7 @@
                                 ContainerType="Outlined" x:Name="Frame_Country"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small"
+                                                                <custom:BorderlessEntry Text="{Binding CountryName}" FontSize="Small"
                                                         Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
@@ -413,10 +413,10 @@
                                                         <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Country" Clicked="PickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
 
-                                                        <syncfusion:SfPicker x:Name="Picker_Country" Grid.Row="1"
+                                                        <syncfusion:SfPicker x:Name="Picker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
                                     HeaderTextColor="White"
-                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCountryIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
@@ -430,10 +430,10 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding CountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
-                         FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="IDType_CancelButtonClicked">
+                         FooterHeight="46" OkButtonClicked="Country_OkayButtonClicked"  CancelButtonClicked="Country_CancelButtonClicked">
                                                             <syncfusion:SfPicker.Behaviors>
                                                                 <custom1:SfPickerBehavior />
                                                             </syncfusion:SfPicker.Behaviors>
@@ -446,8 +446,8 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZProvinceRegion}" Padding="0,0,0,0"/>
-                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZProvinceRegion}" Padding="0,0,0,0" IsVisible="{Binding SetStateListVisibility}"/>
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"  IsVisible="{Binding SetStateListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_Region"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
@@ -464,10 +464,11 @@
                                                         </inputLayout:SfTextInputLayout>
                                                         <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Region" Clicked="PickerBtn_Region_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
-                                                        <syncfusion:SfPicker x:Name="Picker_Region" Grid.Row="1"
+
+                                                        <syncfusion:SfPicker x:Name="Picker_Region" Grid.Row="1" IsVisible="{Binding SetStateListVisibility}"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZProvinceRegion}"
                                     HeaderTextColor="White"
-                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedRegionIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
@@ -481,10 +482,10 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding RegionList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
-                         FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="IDType_CancelButtonClicked">
+                         FooterHeight="46" OkButtonClicked="Region_OkayButtonClicked"  CancelButtonClicked="Region_CancelButtonClicked">
                                                             <syncfusion:SfPicker.Behaviors>
                                                                 <custom1:SfPickerBehavior />
                                                             </syncfusion:SfPicker.Behaviors>
@@ -497,12 +498,12 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZCity}" Padding="0,0,0,0"/>
-                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZCity}" Padding="0,0,0,0" IsVisible="{Binding SetCityListVisibility}"/>
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding SetCityListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_City"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small"
+                                                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}"
                                                         Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
@@ -515,10 +516,10 @@
                                                         </inputLayout:SfTextInputLayout>
                                                         <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                         </custom:CustomButton>
-                                                        <syncfusion:SfPicker x:Name="Picker_City" Grid.Row="1"
+                                                        <syncfusion:SfPicker x:Name="Picker_City" Grid.Row="1" IsVisible="{Binding SetCityListVisibility}"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCity}"
                                     HeaderTextColor="White"
-                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCityIndex}"
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
                               HeaderBackgroundColor="#006450"
@@ -532,10 +533,10 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding CityList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
-                         FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="IDType_CancelButtonClicked">
+                         FooterHeight="46" OkButtonClicked="City_OkayButtonClicked"  CancelButtonClicked="City_CancelButtonClicked">
                                                             <syncfusion:SfPicker.Behaviors>
                                                                 <custom1:SfPickerBehavior />
                                                             </syncfusion:SfPicker.Behaviors>
@@ -551,7 +552,7 @@
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="Neighborhood" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                        <custom:BorderlessEntry x:Name="EntryNeighborhood" Text="" IsSpellCheckEnabled="False"
+                                                        <custom:BorderlessEntry x:Name="EntryNeighborhood" Text="{Binding Neighborhood}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Neighborhood" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                             <Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
@@ -564,7 +565,7 @@
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="PostalCode" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                        <custom:BorderlessEntry x:Name="EntryPostalCode" Text="" IsSpellCheckEnabled="False"
+                                                        <custom:BorderlessEntry x:Name="EntryPostalCode" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Postal Code" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                             <Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
@@ -577,7 +578,7 @@
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="BuildingNumber" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                        <custom:BorderlessEntry x:Name="EntryBuildingNumber" Text="" IsSpellCheckEnabled="False"
+                                                        <custom:BorderlessEntry x:Name="EntryBuildingNumber" Text="{Binding BuildingNumber}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Building Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                             <Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
@@ -590,7 +591,7 @@
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="UnitNumber" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry x:Name="EntryUnitNumber" Text="" IsSpellCheckEnabled="False"
+                                                        <custom:BorderlessEntry x:Name="EntryUnitNumber" Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Unit Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                             <Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
@@ -643,7 +644,7 @@
                                             <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                <custom:BorderlessEntry Text="{Binding TxtMobileNumber}" Placeholder="Confirm Email" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" Placeholder="Confirm Email" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                     <Entry.Behaviors>
                                                         <custom1:OnlyNumericValuesBehaviour/>
                                                     </Entry.Behaviors>
