@@ -12,7 +12,7 @@
     <yummy:PancakeView CornerRadius="22,22,22,22" HasShadow="True" VerticalOptions="CenterAndExpand" BackgroundColor="White">
         <StackLayout Margin="10,22,10,22">
             <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Image>
+                <Image Rotation="-45">
                     <Image.Source>
                         <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="35"
                                                  Glyph="{x:Static FontImage:IconFonts.Attachment}"/>

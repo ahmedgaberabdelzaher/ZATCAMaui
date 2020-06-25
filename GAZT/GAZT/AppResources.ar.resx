@@ -2446,10 +2446,10 @@
     <value>هناك حساب مسجل بالفعل بنفس المعلومات المدخلة، حاول التسجيل مره اخرى كمستخدم جديد</value>
     <comment>Sign Up</comment>
   </data>
-<data name="ZTERNewAccount" xml:space="preserve">
+  <data name="ZTERNewAccount" xml:space="preserve">
     <value>حساب جديد</value>
     <comment>New Account</comment>
-</data>
+  </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>الرجاء إختيار نوع الإقرار</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2706,19 +2706,19 @@
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-     <data name="ZRealEstateServiceTitle" xml:space="preserve">
+  <data name="ZRealEstateServiceTitle" xml:space="preserve">
     <value>ضريبة القيمة المضافة لعقارات الأفراد</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-        <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
+  <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
     <value>طلب تسجيل عقار</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-    <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
+  <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
     <value>التحقق من طلب تسجيل العقار</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-    <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
+  <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
     <value>إلغاء الطلب</value>
     <comment>VAT Real Estate Service</comment>
   </data>
@@ -3422,7 +3422,19 @@
 
 • على سبيل المثال، إرجاع العملاء للسلع والخدمات التي استحقت عنها ضريبة القيمة المضافة للهيئة العامة للزكاة والدخل، شطب الديون المعدومة على الذمم المدينة الخاضعة للضريبة بالنسبة الأساسية</value>
   </data>
-        <data name="ZZCreateYourTEAccount" xml:space="preserve">
+  <data name="ZZCreateYourTEAccount" xml:space="preserve">
     <value>إنشاء حساب التهرب الضريبي الخاص بك</value>
+  </data>
+  <data name="ZZZZCity" xml:space="preserve">
+    <value>City</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZCountry" xml:space="preserve">
+    <value>Country</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProvinceRegion" xml:space="preserve">
+    <value>Province / Region</value>
+    <comment>New SignUp</comment>
   </data>
 </root>
