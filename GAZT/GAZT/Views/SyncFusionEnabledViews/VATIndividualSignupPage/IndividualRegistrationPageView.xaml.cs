@@ -702,5 +702,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnAppearing();
 
         }
+
+        private void PickerBtn_Country_Clicked(object sender, EventArgs e)
+        {
+            Picker_Country.IsOpen = true;
+        }
+
+        private void PickerBtn_Region_Clicked(object sender, EventArgs e)
+        {
+            Picker_Region.IsOpen = true;
+
+        }
+
+        private void PickerBtn_City_Clicked(object sender, EventArgs e)
+        {
+            Picker_City.IsOpen = true;
+        }
     }
 }
