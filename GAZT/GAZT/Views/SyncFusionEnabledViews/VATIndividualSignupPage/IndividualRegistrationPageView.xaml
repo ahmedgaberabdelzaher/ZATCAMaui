@@ -48,7 +48,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Image HorizontalOptions="Start" VerticalOptions="Start" Rotation="270">
                         <Image.Source>
-                            <FontImageSource Color="Gray" FontFamily="UserIconFont"
+                            <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                         </Image.Source>
                     </Image>
@@ -72,20 +72,20 @@
                  <!-- Dot Images End-->
 
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" RowSpacing="0" >
+                  BackgroundColor="White" RowSpacing="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="88*" />
                     <RowDefinition Height="12*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
               
 
 
-                <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
-                    <StackLayout BackgroundColor="White">
+                <ScrollView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                    <StackLayout BackgroundColor="White" Spacing="0" Padding="0" Margin="0">
 
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,15,0,10" BackgroundColor="White" RowSpacing="0" >
@@ -98,12 +98,15 @@
                            
 
                         <!--Individual Registration-->
-                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" Margin="0" 
                           x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0">
                         <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="Individual Registration"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" />
                         <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="Complete Below" />
@@ -605,8 +608,8 @@
 
                                 </Grid>
 
-                                <!--Contact Information-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                                <!--Contact Information  Grid.ColumnSpan="2" -->
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="ContactInformationView" IsVisible="{Binding ContactInformationView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -693,8 +696,8 @@
                                 </StackLayout>
                             </StackLayout>
                         </Grid>-->
-                        <!--Summery-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                        <!--Summery Grid.ColumnSpan="2"  -->
+                        <Grid Grid.Row="0" Grid.Column="0" Padding="0,10,0,0"
                               x:Name="SummeryView"  IsVisible="{Binding SummeryView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -833,7 +836,7 @@
                             </StackLayout>
                         </Grid>
                         <!--Password-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="PasswordView" IsVisible="{Binding PasswordView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>

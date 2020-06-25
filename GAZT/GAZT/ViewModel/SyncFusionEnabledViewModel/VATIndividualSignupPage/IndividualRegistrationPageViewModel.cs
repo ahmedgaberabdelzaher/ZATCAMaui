@@ -792,7 +792,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             if (!SelectedIdType.ID.Equals("ZS0018"))
             {
-                CityList = GetCityList(SelectedRegion.Bland);//vATSignUpData.d.city_dropdownSet.results;
+                CityList = vATSignUpData.d.city_dropdownSet.results;
             }
         }
 
