@@ -176,8 +176,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public string _iDTypeIndex = "1";
-        public string IDTypeIndex
+        public int _iDTypeIndex = 0;
+        public int IDTypeIndex
         {
             get {
                 return _iDTypeIndex;
@@ -203,31 +203,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private string _dBO = string.Empty;
-        public string DBO
+        private string _DOB = string.Empty;
+        public string DOB
         {
             get
             {
-                return _dBO;
+                return _DOB;
             }
             set
             {
-                _dBO = value;
-                RaisePropertyChanged("DBO");
+                _DOB = value;
+                RaisePropertyChanged("DOB");
             }
         }
 
-        private string _dBOPrev = string.Empty;
-        public string DBOPrev
+        private string _DOBPrev = string.Empty;
+        public string DOBPrev
         {
             get
             {
-                return _dBOPrev;
+                return _DOBPrev;
             }
             set
             {
-                _dBOPrev = value;
-                RaisePropertyChanged("DBOPrev");
+                _DOBPrev = value;
+                RaisePropertyChanged("DOBPrev");
             }
         }
 
@@ -399,29 +399,44 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             currentStep = 1;
             GetSignUpIdType();
-            //string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
+           string CaseId = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
             //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
             //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+ }
 
-            
-
-
-        }
-
-        public void SetFormVisibility()
+        public async Task SetFormVisibility()
         {
             try
             {
                 if (currentStep == 1)
                 {
-                    IndividualRegistrationView = false;
-                    NationalAddressView = true;
-                    currentStep++;
+                   
+                 bool isValidId =  await ValidateId();
+                    if(isValidId)
+                    {
+                        IndividualRegistrationView = false;
+                        NationalAddressView = true;
+                        currentStep++;
+                        VATSignUpData _vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+
+                        });
+
+
+                    }
+
                 }
                 else if (currentStep == 2)
                 {
                     NationalAddressView = false;
                     ContactInformationView = true;
+                 
                     currentStep++;
                 }
                 else if (currentStep == 3)
@@ -452,6 +467,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public void GetSignUpIdType()
         {
+            
             List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
            new SignUpIdType {ID = "ZS0015",Name = AppResources.NationaID},
                       new SignUpIdType {ID = "ZS0017",Name = AppResources.ZZIqamaID},
@@ -459,7 +475,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
             };
+            List<SignUpIdType> lst = new List<SignUpIdType>();
+            lst = signUpIdTypeList;
             IdTypeList = signUpIdTypeList;
+
+        }
+        /// <summary>
+        /// Validate the National and Iqama ID
+        /// </summary>
+        public async Task<bool>  ValidateId()
+        {
+            string dob = DOB.Replace("/","");
+            VATSignUp _VATSignUp = await WebServiceManager.GAZTVATSignUpValidateIDTypes(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
+            if(_VATSignUp != null && _VATSignUp.d != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
     }

@@ -5416,11 +5416,11 @@ namespace GAZT.Manager
         }
 
 
-        public async static Task<string> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
+        public async static Task<VATSignUp> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+                VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
                 try
@@ -5434,15 +5434,15 @@ namespace GAZT.Manager
                     //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
 
                     var uri = new Uri(url);
-                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
-                    if (SignupIsIDTypeValidList != null)
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    if (VATSignUpIdValidateObject != null)
                     {
-                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
                         {
                             App.IsSessionExpired = true;
                             return null;
                         }
-                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -5457,9 +5457,12 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                        String SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        vATSignUp = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
+
+                        //IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
                     }
-                    return IsIDTypeValidList;// tINStatus;
+                    return vATSignUp;// tINStatus;
                 }
 
                 catch (JsonReaderException ex)
@@ -5495,11 +5498,11 @@ namespace GAZT.Manager
         }
 
 
-        public static async Task<SignupCityRootObject> GAZTGetVATSignUpCityListForSignup()
+        public static async Task<VATSignUpData> GAZTGetVATSignUpCityListForSignup()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
-                SignupCityRootObject SignupCityList = new SignupCityRootObject();
+                VATSignUpData vATSignUpData = new VATSignUpData();
                 string NewToken = string.Empty;
                 try
                 {
@@ -5513,10 +5516,10 @@ namespace GAZT.Manager
                     String url = Constants.GAZTGetVATSignUpCityAndRegionList + "dropdown_headerSet(Spras='" + lang + "',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json";
                                                                                // dropdown_headerSet(Spras='A',Land1='',Bland='',Cityc='')?&$expand=city_dropdownSet,country_dropdownSet,State_dropdownSet&saml2=enabled&$format=json
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTSignupCityList = await client.GetAsync(uri);
-                    if (GAZTSignupCityList != null)
+                    HttpResponseMessage VATSignUpCountryRegionCityList = await client.GetAsync(uri);
+                    if (VATSignUpCountryRegionCityList != null)
                     {
-                        HttpHeaders headers = GAZTSignupCityList.Headers;
+                        HttpHeaders headers = VATSignUpCountryRegionCityList.Headers;
                         IEnumerable<string> values;
                         if (headers.TryGetValues("token", out values))
                         {
@@ -5531,10 +5534,10 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                        String SignUpCityList = await GAZTSignupCityList.Content.ReadAsStringAsync();
-                        SignupCityList = JsonConvert.DeserializeObject<SignupCityRootObject>(SignUpCityList);
+                        String signUpData = await VATSignUpCountryRegionCityList.Content.ReadAsStringAsync();
+                        vATSignUpData = JsonConvert.DeserializeObject<VATSignUpData>(signUpData);
                     }
-                    return SignupCityList;// tINStatus;
+                    return vATSignUpData;// tINStatus;
                 }
 
                 catch (JsonReaderException ex)

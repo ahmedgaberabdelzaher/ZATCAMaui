@@ -146,6 +146,7 @@
                                     </inputLayout:SfTextInputLayout>
                                     <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                     </custom:CustomButton>
+
                                     <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
@@ -155,7 +156,7 @@
                               HeaderBackgroundColor="#006450"
                         SelectedItemTextColor="#006450"
                         BorderColor="Black"
-                                                  OKButtonTextColor="#006450"      
+                                                 OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
                                                  ShowFooter="True"
@@ -163,7 +164,7 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="SUType" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="IDType_CancelButtonClicked">
@@ -182,9 +183,9 @@
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                        <Entry.Behaviors>
+                                        <!--<Entry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
+                                        </Entry.Behaviors>-->
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -201,7 +202,7 @@
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding DOB}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand">
                                                 <Image.Source>
@@ -229,16 +230,16 @@
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
-								x:Name="DOB"
-                           SelectionChanged="Dbo_SelectionChanged"
+								x:Name="SignUpDOB"
+                          
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
-                            Closed="DBO_Closed"
+                           
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
-                                OkButtonClicked="DpDbo_OkButtonClicked"
-                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+                                OkButtonClicked="DOB_OkButtonClicked"
+                                CancelButtonClicked="DOB_CancelButtonClicked"
 								ItemHeight="45" >
                                         <custom1:CustomDatePicker.Behaviors>
                                             <custom1:SfPickerBehavior />
