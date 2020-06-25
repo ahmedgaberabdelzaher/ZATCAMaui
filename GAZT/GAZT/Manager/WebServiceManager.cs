@@ -5357,9 +5357,9 @@ namespace GAZT.Manager
 
 
 
-        public static async Task<string> GAZTGetVATSignUpCaseId()
+        public static async Task<VATSignUpCaseId> GAZTGetVATSignUpCaseId()
         {
-            TaxEvasionRegionsCityModel regionsModel = new TaxEvasionRegionsCityModel();
+            VATSignUpCaseId vATSignUpCaseId = new VATSignUpCaseId();
 
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5385,8 +5385,8 @@ namespace GAZT.Manager
 
                     HttpResponseMessage res = await client.GetAsync(uri);
                     var response = res.Content.ReadAsStringAsync().Result;
-                    regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
-                    return "";
+                    vATSignUpCaseId = JsonConvert.DeserializeObject<VATSignUpCaseId>(response);
+                    return vATSignUpCaseId;
                 }
                 catch (JsonReaderException ex)
                 {
