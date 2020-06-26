@@ -431,7 +431,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public IList<VATSignUpGCC> _gCCCountryList;
+        public IList<VATSignUpGCC> GCCCountryList
+        {
+            get
+            {
+                return _gCCCountryList;
+            }
+            set
+            {
+                _gCCCountryList = value;
+                RaisePropertyChanged("GCCCountryList");
+            }
+        }
 
+        private VATSignUpGCC _selectedGCCCountry = null;
+        public VATSignUpGCC SelectedGCCCountry
+        {
+            get
+            {
+                return _selectedGCCCountry;
+            }
+            set
+            {
+                _selectedGCCCountry = value;
+
+                RaisePropertyChanged("SelectedGCCCountry");
+            }
+        }
+
+        public int _gelectedGCCCountryIndex;
+        public int SelectedGCCCountryIndex
+        {
+            get
+            {
+                return _gelectedGCCCountryIndex;
+            }
+            set
+            {
+                _gelectedGCCCountryIndex = value;
+                RaisePropertyChanged("SelectedGCCCountryIndex");
+            }
+        }
 
         public IList<VATSignUpStateResults> _regionList;
         public IList<VATSignUpStateResults> RegionList
@@ -475,6 +516,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("SelectedRegionIndex");
             }
         }
+
+        public string _region = "";
+        public string Region
+        {
+            get
+            {
+                return _region;
+            }
+            set
+            {
+                _region = value;
+                RaisePropertyChanged("Region");
+            }
+        }
+
+        public string _cityName = "";
+        public string CityName
+        {
+            get
+            {
+                return _cityName;
+            }
+            set
+            {
+                _cityName = value;
+                RaisePropertyChanged("CityName");
+            }
+        }
+
 
         public IList<VATSignUPCityResults> _cityList;
         public IList<VATSignUPCityResults> CityList
@@ -621,6 +691,33 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public bool _setGCCCountryVisibility = false;
+        public bool SetGCCCountryVisibility
+        {
+            get
+            {
+                return _setGCCCountryVisibility;
+            }
+            set
+            {
+                _setGCCCountryVisibility = value;
+                RaisePropertyChanged("SetGCCCountryVisibility");
+            }
+        }
+
+        public bool _setCountryVisibility = true;
+        public bool SetCountryVisibility
+        {
+            get
+            {
+                return _setCountryVisibility;
+            }
+            set
+            {
+                _setCountryVisibility = value;
+                RaisePropertyChanged("SetCountryVisibility");
+            }
+        }
         
         #endregion
 
@@ -640,7 +737,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
-                SetFormVisibility();
+              await  SetFormVisibility();
             });
         }
         #endregion
@@ -667,11 +764,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (currentStep == 1)
                 {
 
-                    if(SelectedIdType.ID.Equals("ZS0018"))
+                    if(SelectedIdType != null && SelectedIdType.ID.Equals("ZS0018"))
                     {
                         IndividualRegistrationView = false;
                         NationalAddressView = true;
                         currentStep++;
+                        SetVisibilityToNationalAddressContent();
+
                     }
                     else
                     {
@@ -711,8 +810,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     ContactInformationView = false;
                     SummeryView = true;
-
                     currentStep++;
+                   await SetRequestObject();
                 }
                 else if (currentStep == 4)
                 {
@@ -753,69 +852,114 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         /// </summary>
         public async Task<bool>  ValidateId()
         {
-            string dob = DOB.Replace("/","");
-           _VATSignUp = await WebServiceManager.GAZTVATSignUpValidateIDTypes(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
-            if(_VATSignUp != null && _VATSignUp.d != null)
+            try
             {
-                return true;
+                string dob = DOB.Replace("/", "");
+                _VATSignUp = await WebServiceManager.GAZTVATSignUpValidateIDTypes(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
+                if (_VATSignUp != null && _VATSignUp.d != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception ex)
             {
                 return false;
             }
-
         }
 
         public void SetCountryList()
         {
-            if (SelectedIdType.ID.Equals("ZS0018"))
+            try
             {
-                CountryList = vATSignUpData.d.country_dropdownSet.results;
+                if (SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    SetCountryVisibility = false;
+                    SetGCCCountryVisibility = true;
+                  //  GetVATSignUpGCCList();
+                    //CountryList = vATSignUpData.d.country_dropdownSet.results;
+                }
+                else
+                {
+                    SetCountryVisibility = true;
+                    SetGCCCountryVisibility = false;
+                    SetEnabilityToCountryList = false;
+                    CountryName = "Saudi Arabiya";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                SetEnabilityToCountryList = false;
-                CountryName = "Saudi Arabiya";
+
             }
+
+            
 
         }
 
         public void SetStateList()
         {
-            if (!SelectedIdType.ID.Equals("ZS0018"))
+            try
             {
-                RegionList = vATSignUpData.d.State_dropdownSet.results;
+                if (!SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    RegionList = vATSignUpData.d.State_dropdownSet.results;
+                }
             }
+            catch (Exception ex)
+            {
+
+            }
+
+           
         }
 
         public void SetCityList()
         {
-            if (!SelectedIdType.ID.Equals("ZS0018"))
+            try
             {
-                CityList = vATSignUpData.d.city_dropdownSet.results;
+                if (!SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    CityList = vATSignUpData.d.city_dropdownSet.results;
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
 
         public void SetVisibilityToNationalAddressContent()
         {
-            if(SelectedIdType.ID.Equals("ZS0018"))
+            try
             {
-                SetStateListVisibility = false;
-                SetCityListVisibility = false;
-                SetEnabilityToCountryList = true;
-                SetCountryList();
+                if (SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    SetStateListVisibility = false;
+                    SetCityListVisibility = false;
+                    SetEnabilityToCountryList = true;
+                    SetCountryList();
 
 
+                }
+                else
+                {
+                    SetStateListVisibility = true;
+                    SetCityListVisibility = true;
+                    SetStateList();
+                    CountryName = "Saudi Arabiya";
+                    SetEnabilityToCountryList = false;
+
+                }
             }
-            else
+            catch(Exception ex)
             {
-                SetStateListVisibility = true;
-                SetCityListVisibility = true;
-                SetStateList();
-                CountryName = "Saudi Arabiya";
-                SetEnabilityToCountryList = false;
-              
+
             }
+           
         }
 
         public void GetCityList(string Bland)
@@ -823,5 +967,52 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             
         }
 
+        public void GetVATSignUpGCCList()
+        {
+             
+           List<VATSignUpGCC> signUpIdTypeList = new List<VATSignUpGCC>{
+           new VATSignUpGCC {CountryName = "UAE",CountryCode="AE",CountryId="1"},
+           new VATSignUpGCC {CountryName = "Bahrain",CountryCode="BH",CountryId="2"},
+           new VATSignUpGCC {CountryName = "Kuwait",CountryCode="KW",CountryId="3"},
+           new VATSignUpGCC {CountryName = "Oman",CountryCode="OM",CountryId="4"},
+           new VATSignUpGCC {CountryName = "Qatar",CountryCode="QA",CountryId="5"},
+
+            };
+            List<VATSignUpGCC> lst = new List<VATSignUpGCC>();
+            lst = signUpIdTypeList;
+            GCCCountryList = lst;
+        }
+
+        public async Task SetRequestObject()
+        {
+            VATSignUpSubmit vATSignUpSubmit =  new VATSignUpSubmit
+            {
+               // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
+                Type ="1",
+                IdType = "ZS0018",
+                Idnumber = "11111112221",
+                Firstname = "Ashish",
+                Lastname = "Ranjan",
+                PostCode1 = "00000",
+                City1 = "",
+                Country = "OM",
+                Region = "",
+                Building = "",
+                Floor = "",
+                Street = "",
+                Begda = "/Date(1593139376000)/",
+                Endda = "/Date(253402251010000)/",
+                Email = "abc@gmail.com",
+                Mobile = "00966546825230",
+                CaseGuid =SignUpCaseIdD.d.results[0].CaseGuid,
+                Birthdt = "/Date(1577846576000)/",
+                Password = "",
+                SmsCode = "",
+                EmailCode = "",
+                Submit = "",
+            };
+
+            VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
+        }
     }
 }

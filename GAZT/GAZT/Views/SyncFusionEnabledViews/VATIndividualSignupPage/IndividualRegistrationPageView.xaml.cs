@@ -580,6 +580,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+            viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
         }
 
         private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -589,7 +590,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void Country_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-           // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+            viewModel.CountryName = viewModel.CountryList[viewModel.SelectedCountryIndex].Natio;
+            viewModel.SelectedCountry = viewModel.CountryList[viewModel.SelectedCountryIndex];
         }
 
         private void Country_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -597,6 +599,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
+        private void GCCCountry_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
+            viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
+        }
+
+        private void GCCCountry_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+        
         private void Region_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
