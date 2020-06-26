@@ -784,7 +784,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             SignUpCaseIdD = await WebServiceManager.GAZTGetVATSignUpCaseId();// working
             //string aaa = await WebServiceManager.GAZTVATSignUpValidateIDTypes("ZS0015", "1048089609", "19650224");
             //var dd = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
- }
+        }
 
         public async Task SetFormVisibility()
         {

@@ -8633,11 +8633,56 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At least 8 characters long.
+        /// </summary>
+        public static string ZZZZAtleast8characterslong {
+            get {
+                return ResourceManager.GetString("ZZZZAtleast8characterslong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Building Number.
+        /// </summary>
+        public static string ZZZZBuildingNumber {
+            get {
+                return ResourceManager.GetString("ZZZZBuildingNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City.
         /// </summary>
         public static string ZZZZCity {
             get {
                 return ResourceManager.GetString("ZZZZCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Complete the below details.
+        /// </summary>
+        public static string ZZZZCompletethebelowdetails {
+            get {
+                return ResourceManager.GetString("ZZZZCompletethebelowdetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm Email.
+        /// </summary>
+        public static string ZZZZConfirmEmail {
+            get {
+                return ResourceManager.GetString("ZZZZConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string ZZZZContinue {
+            get {
+                return ResourceManager.GetString("ZZZZContinue", resourceCulture);
             }
         }
         
@@ -8651,11 +8696,164 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a secure Password.
+        /// </summary>
+        public static string ZZZZCreateasecurePassword {
+            get {
+                return ResourceManager.GetString("ZZZZCreateasecurePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English capital and small letters.
+        /// </summary>
+        public static string ZZZZEnglishcapitalandsmallletters {
+            get {
+                return ResourceManager.GetString("ZZZZEnglishcapitalandsmallletters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to Dashboard.
+        /// </summary>
+        public static string ZZZZGotoDashboard {
+            get {
+                return ResourceManager.GetString("ZZZZGotoDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual Registration.
+        /// </summary>
+        public static string ZZZZIndividualRegistration {
+            get {
+                return ResourceManager.GetString("ZZZZIndividualRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National Address.
+        /// </summary>
+        public static string ZZZZNationalAddress {
+            get {
+                return ResourceManager.GetString("ZZZZNationalAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighborhood.
+        /// </summary>
+        public static string ZZZZNeighborhood {
+            get {
+                return ResourceManager.GetString("ZZZZNeighborhood", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not exceed 16 characters.
+        /// </summary>
+        public static string ZZZZNotexceed16characters {
+            get {
+                return ResourceManager.GetString("ZZZZNotexceed16characters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numbers and symbols.
+        /// </summary>
+        public static string ZZZZNumbersandsymbols {
+            get {
+                return ResourceManager.GetString("ZZZZNumbersandsymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Information.
+        /// </summary>
+        public static string ZZZZPersonalInformation {
+            get {
+                return ResourceManager.GetString("ZZZZPersonalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        public static string ZZZZPostalCode {
+            get {
+                return ResourceManager.GetString("ZZZZPostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Province / Region.
         /// </summary>
         public static string ZZZZProvinceRegion {
             get {
                 return ResourceManager.GetString("ZZZZProvinceRegion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register in VAT Now.
+        /// </summary>
+        public static string ZZZZRegisterinVATNow {
+            get {
+                return ResourceManager.GetString("ZZZZRegisterinVATNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Successful.
+        /// </summary>
+        public static string ZZZZRegistration_Successful {
+            get {
+                return ResourceManager.GetString("ZZZZRegistration Successful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat Password.
+        /// </summary>
+        public static string ZZZZRepeatPassword {
+            get {
+                return ResourceManager.GetString("ZZZZRepeatPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review information.
+        /// </summary>
+        public static string ZZZZReviewinformation {
+            get {
+                return ResourceManager.GetString("ZZZZReviewinformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summery.
+        /// </summary>
+        public static string ZZZZSummery {
+            get {
+                return ResourceManager.GetString("ZZZZSummery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Number.
+        /// </summary>
+        public static string ZZZZUnitNumber {
+            get {
+                return ResourceManager.GetString("ZZZZUnitNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT.
+        /// </summary>
+        public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
+            get {
+                return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
     }
