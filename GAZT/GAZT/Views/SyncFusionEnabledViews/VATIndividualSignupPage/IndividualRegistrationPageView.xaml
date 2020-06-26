@@ -184,7 +184,7 @@
                                 <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                    <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                    <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryIDNumber" Keyboard="Numeric" FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                         <!--<Entry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
@@ -393,7 +393,7 @@
                                                     <ColumnDefinition Width="auto"/>
                                                 </Grid.ColumnDefinitions>
                                                
-                                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding SetCountryVisibility}">
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="true"><!--{Binding SetCountryVisibility}-->
                                                     <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -435,7 +435,7 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding CountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Natio" ItemsSource="{Binding CountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="Country_OkayButtonClicked"  CancelButtonClicked="Country_CancelButtonClicked">
@@ -447,7 +447,7 @@
                                                 </StackLayout>
 
 
-                                                  <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding SetGCCCountryVisibility}">
+                                                  <!--<StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="true">
                                                     <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -489,7 +489,7 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="CountryName" ItemsSource="{Binding GCCCountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="GCCCountry_OkayButtonClicked"  CancelButtonClicked="GCCCountry_CancelButtonClicked">
@@ -498,7 +498,7 @@
                                                             </syncfusion:SfPicker.Behaviors>
                                                         </syncfusion:SfPicker>
                                                     </Grid>
-                                                </StackLayout>
+                                                </StackLayout>-->
 
                                                 <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
                                                     <Grid>
@@ -791,15 +791,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="ID Type"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" Text="National ID" TextColor="Black"/>
+                                            <Label Text="{Binding TxtIDType}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="0" Text="ID Number"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1" Text="123456789" TextColor="Black"/>
+                                            <Label Text="{Binding IdNumber}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1" TextColor="Black"/>
 
-
+                                            
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="0" Text="Name"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                            <Label Text="{Binding Name}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1"  TextColor="Black"/>
 
                                         </Grid>
                                     </StackLayout>
@@ -831,23 +831,23 @@
                                             </Grid.ColumnDefinitions>
 
                                                 <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="City"/>
-                                                <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" Text="National ID" TextColor="Black"/>
+                                                <Label Text="{Binding CityName}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="0" Text="Neighborhood"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1" Text="123456789" TextColor="Black"/>
+                                            <Label Text="{Binding Neighborhood}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="0" Text="Postal Code"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                            <Label Text="{Binding PostalCode}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="0" Text="Building Number"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                            <Label Text="{Binding BuildingNumber}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="4" Grid.Column="0" Text="Unit Number"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="4" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                            <Label Text="{Binding UnitNumber}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="4" Grid.Column="1"  TextColor="Black"/>
 
                                         </Grid>
                                     </StackLayout>
@@ -877,15 +877,15 @@
                                             </Grid.ColumnDefinitions>
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="Mobile Number"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" Text="00996655555" TextColor="Black"/>
+                                            <Label Text="{Binding MobileNumber}"  Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="0" Text="Email"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1" Text="Test@gazt.gov.sa" TextColor="Black"/>
+                                            <Label Text="{Binding Email}"  Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"  TextColor="Black"/>
 
 
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="0" Text="Name"/>
-                                            <Label Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                            <Label Text="{Binding Name}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1" TextColor="Black"/>
 
                                         </Grid>
                                     </StackLayout>
@@ -910,6 +910,7 @@
                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                         ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                     <Grid.RowDefinitions>
+                                          <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
@@ -917,7 +918,27 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                     <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="OTP" Padding="0,0,0,0"/>
+                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                            <StackLayout Orientation="Horizontal">
+                                                <custom:BorderlessEntry Text="{Binding OTP}" FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                Placeholder="Enter OTP" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                </custom:BorderlessEntry>
+                                                <Image HorizontalOptions="EndAndExpand">
+                                                    <Image.Source>
+                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </inputLayout:SfTextInputLayout>
+                                    </StackLayout>
+
+
+                                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="New Password" Padding="0,0,0,0"/>
                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
@@ -934,7 +955,8 @@
                                             </StackLayout>
                                         </inputLayout:SfTextInputLayout>
                                     </StackLayout>
-                                    <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Repeat Password" Padding="0,0,0,0"/>
                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
@@ -951,7 +973,8 @@
                                             </StackLayout>
                                         </inputLayout:SfTextInputLayout>
                                     </StackLayout>
-                                    <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+
+                                    <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                         <StackLayout Orientation="Horizontal">
                                             <Image HorizontalOptions="EndAndExpand">
                                                 <Image.Source>
@@ -979,6 +1002,7 @@
                                             </Image>
                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Not exceed 16 Characters"/>
                                         </StackLayout>
+
                                         <StackLayout Orientation="Horizontal">
                                             <Image HorizontalOptions="EndAndExpand">
                                                 <Image.Source>

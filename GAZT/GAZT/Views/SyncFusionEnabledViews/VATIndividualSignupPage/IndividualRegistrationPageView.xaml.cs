@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -137,7 +138,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-           // ValidateIDNumber();
+          ValidateIDNumber();
         }
 
         public async void ValidateIDNumber()
@@ -154,6 +155,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             string day = selectedItem[0].ToString();
             string year = selectedItem[2].ToString();
             viewModel.DOB = year + "/" + month + "/" + day;
+            string ddmmyyyy= day + "/" + month + "/" + year;
+            viewModel.dateTime = DateTime.ParseExact(ddmmyyyy, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+
+            DateTime dt = Convert.ToDateTime(viewModel.DOB);
             string DOB = year + month + day;
             viewModel.DOBPrev = viewModel.DOB;
             //string DOB = Convert.ToDateTime(DOB.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
@@ -559,29 +564,70 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnSubmitNext_Clicked(object sender, EventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void IDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void IDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
-            viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
-        }
+            try
+            {
+                viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+                viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+                   }
 
         private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -590,44 +636,110 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void Country_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.CountryName = viewModel.CountryList[viewModel.SelectedCountryIndex].Natio;
-            viewModel.SelectedCountry = viewModel.CountryList[viewModel.SelectedCountryIndex];
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                viewModel.CountryName = viewModel.CountryList[viewModel.SelectedCountryIndex].Natio;
+                viewModel.SelectedCountry = viewModel.CountryList[viewModel.SelectedCountryIndex];
+            }
         }
 
         private void Country_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void GCCCountry_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
-            viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
-        }
+            try
+            {
+                viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
+                viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+                 }
 
         private void GCCCountry_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
         
         private void Region_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
             // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
         }
 
         private void Region_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void City_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
             // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
         }
 
         private void City_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
 
+            }
+            catch (Exception ex)
+            {
+
+
+            }
         }
 
         private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)

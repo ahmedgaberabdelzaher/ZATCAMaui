@@ -20,7 +20,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
         public VATSignUp _VATSignUp { get; set; }
-         
+        public DateTime  dateTime { get; set; }
+
 
 
         #region Properties
@@ -352,6 +353,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _password = value;
                 RaisePropertyChanged("Password");
+            }
+        }
+
+        private string _oTP = string.Empty;
+        public string OTP
+        {
+            get
+            {
+                return _oTP;
+            }
+            set
+            {
+                _oTP = value;
+                RaisePropertyChanged("OTP");
             }
         }
 
@@ -811,18 +826,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     ContactInformationView = false;
                     SummeryView = true;
                     currentStep++;
-                   await SetRequestObject();
+                  
                 }
                 else if (currentStep == 4)
                 {
                     SummeryView = false;
                     PasswordView = true;
                     currentStep++;
+                    await SetRequestObject();
                 }
                 else if (currentStep == 5)
                 {
                     PasswordView = false;
                     currentStep = 1;
+                    await SetRequestObject();
                     _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
                 }
             }
@@ -879,7 +896,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     SetCountryVisibility = false;
                     SetGCCCountryVisibility = true;
-                  //  GetVATSignUpGCCList();
+                   GetVATSignUpGCCList();
                     //CountryList = vATSignUpData.d.country_dropdownSet.results;
                 }
                 else
@@ -985,31 +1002,72 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public async Task SetRequestObject()
         {
+            TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+            string unixTime = span.TotalSeconds.ToString("N0");
+            unixTime = unixTime.Replace(",", "");
+          string dd = "" + "/Date(" + unixTime + ")/";// need to
+            string submitValue;
+            if (currentStep == 4)
+            {
+                 submitValue = "";
+            }
+            else
+            {
+                 submitValue = "X";
+            }
+       
+
             VATSignUpSubmit vATSignUpSubmit =  new VATSignUpSubmit
             {
                // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
                 Type ="1",
-                IdType = "ZS0018",
-                Idnumber = "11111112221",
-                Firstname = "Ashish",
-                Lastname = "Ranjan",
-                PostCode1 = "00000",
-                City1 = "",
-                Country = "OM",
-                Region = "",
-                Building = "",
+                IdType = SelectedIdType.ID,//"ZS0018",
+                Idnumber = IdNumber,
+                Firstname =Name,
+                Lastname = "",
+                PostCode1 = PostalCode,
+                City1 =CityName,
+                Country = SelectedCountry.Land1,
+                Region = SelectedRegion.Land1,
+                Building = BuildingNumber,
                 Floor = "",
-                Street = "",
+                Street ="" ,
                 Begda = "/Date(1593139376000)/",
                 Endda = "/Date(253402251010000)/",
-                Email = "abc@gmail.com",
-                Mobile = "00966546825230",
+                Email = Email,
+                Mobile = "00966"+ "546825230",
                 CaseGuid =SignUpCaseIdD.d.results[0].CaseGuid,
-                Birthdt = "/Date(1577846576000)/",
-                Password = "",
-                SmsCode = "",
+                Birthdt = "" + "/Date(" + unixTime + ")/",//"/Date(1577846576000)/",
+            Password =Password,
+                SmsCode = OTP,
                 EmailCode = "",
-                Submit = "",
+                Submit = submitValue,
+            
+                
+              
+
+                //Type = "1",
+                //IdType = SelectedIdType.ID,//"ZS0018",
+                //Idnumber = "11111112221",
+                //Firstname = "Ashish",
+                //Lastname = "Ranjan",
+                //PostCode1 = "00000",
+                //City1 = "",
+                //Country = "OM",
+                //Region = "",
+                //Building = "",
+                //Floor = "",
+                //Street = "",
+                //Begda = "/Date(1593139376000)/",
+                //Endda = "/Date(253402251010000)/",
+                //Email = "abc@gmail.com",
+                //Mobile = "00966546825230",
+                //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                //Birthdt = "/Date(1577846576000)/",
+                //Password = "",
+                //SmsCode = "",
+                //EmailCode = "",
+                //Submit = "",
             };
 
             VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
