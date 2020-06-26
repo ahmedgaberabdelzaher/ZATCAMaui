@@ -88,6 +88,34 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
+        private void IdNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            bool isArabicChecked = true;
+            var senderObj = (Entry)sender;
+            if(viewModel.SelectedIdType.Equals("ZS0018"))
+            {
+                if (senderObj.Text.Length < 7)
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
+            else if (viewModel.SelectedIdType.Equals("ZS0015"))
+            {
+                if (!senderObj.Text[0].Equals("1"))
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
+            else if (viewModel.SelectedIdType.Equals("ZS0017"))
+            {
+                if (!senderObj.Text[0].Equals("2"))
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
+
+        }
+        
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -103,8 +131,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void EntryIDNumber_Unfocused(object sender, FocusEventArgs e)
+        private void IDNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            bool isArabicChecked = true;
+            var senderObj = (Entry)sender;
+            if (viewModel.SelectedIdType.Equals("ZS0018"))
+            {
+                if (senderObj.Text.Length < 7)
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
+            else if (viewModel.SelectedIdType.Equals("ZS0015"))
+            {
+                if (senderObj.Text.Length < 10)
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
+            else if (viewModel.SelectedIdType.Equals("ZS0017"))
+            {
+                if (senderObj.Text.Length < 10)
+                {
+                    FrmIDNumber.HasError = true;
+                }
+            }
 
         }
         private void DpDOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -638,13 +689,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
+                if(viewModel.SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    viewModel.CountryName = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex].CountryName;
+                    viewModel.SelectedGCCCountry = viewModel.GCCCountryList[viewModel.SelectedGCCCountryIndex];
+
+                }
 
             }
             catch (Exception ex)
             {
-                viewModel.CountryName = viewModel.CountryList[viewModel.SelectedCountryIndex].Natio;
-                viewModel.SelectedCountry = viewModel.CountryList[viewModel.SelectedCountryIndex];
-            }
+                    }
         }
 
         private void Country_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -860,9 +915,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void PickerBtn_Country_Clicked(object sender, EventArgs e)
         {
-            Picker_Country.IsOpen = true;
+           // Picker_Country.IsOpen = true;
         }
 
+
+        private void GCCPickerBtn_Country_Clicked(object sender, EventArgs e)
+        {
+            GCCPicker_Country.IsOpen = true;
+        }
+
+        
         private void PickerBtn_Region_Clicked(object sender, EventArgs e)
         {
             Picker_Region.IsOpen = true;

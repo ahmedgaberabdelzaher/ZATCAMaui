@@ -5383,7 +5383,7 @@ namespace GAZT.Manager
 
                     //client.DefaultRequestHeaders.Add("Accept-Language", langVal);
 
-                    HttpResponseMessage res = await client.GetAsync(uri);
+                    HttpResponseMessage res =  client.GetAsync(uri).Result;
                     var response = res.Content.ReadAsStringAsync().Result;
                     vATSignUpCaseId = JsonConvert.DeserializeObject<VATSignUpCaseId>(response);
                     return vATSignUpCaseId;
