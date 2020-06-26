@@ -1708,6 +1708,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZToolTipExportsAmount;
             popUp.IsLinkAvailable = true;
+            popUp.HeaderText = AppResources.ZZZInformationNew;
             popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
             if (App.IsArabic)
             {

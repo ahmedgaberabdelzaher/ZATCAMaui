@@ -3426,15 +3426,15 @@
     <value>إنشاء حساب التهرب الضريبي الخاص بك</value>
   </data>
   <data name="ZZZZCity" xml:space="preserve">
-    <value>City</value>
+    <value>المدينة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCountry" xml:space="preserve">
-    <value>Country</value>
+    <value>الدولة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZProvinceRegion" xml:space="preserve">
-    <value>Province / Region</value>
+    <value>المنطقة</value>
     <comment>New SignUp</comment>
   </data>
 </root>

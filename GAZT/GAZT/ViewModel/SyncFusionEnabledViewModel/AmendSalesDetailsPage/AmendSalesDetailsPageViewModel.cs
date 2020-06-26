@@ -313,7 +313,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                                                         TimeSpan span = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
                                                         string unixTime = span.TotalSeconds.ToString("N0");
                                                         unixTime = unixTime.Replace(",", "");
-                                                        _estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
+                                                        _estimateZakatAttachment.Erfdt =""+ "/Date(" + unixTime + ")/";// need to
                                                                                                                     //_estimateZakatAttachment.Erfdt = "/Date(" + unixTime + ")/";// need to
                                                         SelectedSalesDetails.estimateZakatAttachment.Add(_estimateZakatAttachment);
                                                         ZakatReturnAttachmentsList = CloneAttachmmentListInLocalList(SelectedSalesDetails.estimateZakatAttachment);
