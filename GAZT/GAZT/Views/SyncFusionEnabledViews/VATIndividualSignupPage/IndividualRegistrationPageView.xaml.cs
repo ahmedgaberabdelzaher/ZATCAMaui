@@ -106,26 +106,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
 
         }
-        private void DpDbo_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DpDOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             
         }
 
-        private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DpDOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
             {
-                viewModel.DBO = viewModel.DBOPrev;
-                if (!string.IsNullOrEmpty(viewModel.DBOPrev))
+                viewModel.DOB = viewModel.DOBPrev;
+                if (!string.IsNullOrEmpty(viewModel.DOBPrev))
                 {
-                    string[] Date = viewModel.DBOPrev.Split('/');
+                    string[] Date = viewModel.DOBPrev.Split('/');
                     ObservableCollection<object> todaycollection = new ObservableCollection<object>();
                     //Select today dates
                     todaycollection.Add(Date[2]);
                     todaycollection.Add(Date[1]);//day
                     todaycollection.Add(Date[0]);
 
-                    DOB.SelectedItem = todaycollection;
+                    SignUpDOB.SelectedItem = todaycollection;
                 }
             }
             catch(Exception Ex)
@@ -137,7 +137,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-            ValidateIDNumber();
+           // ValidateIDNumber();
         }
 
         public async void ValidateIDNumber()
@@ -149,14 +149,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsLoading = true;
                 });
             });
-            var selectedItem = DOB.SelectedItem as ObservableCollection<object>;
+            var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
             string month = selectedItem[1].ToString();
             string day = selectedItem[0].ToString();
             string year = selectedItem[2].ToString();
-            viewModel.DBO = year + "/" + month + "/" + day;
-            string DBO = year + month + day;
-            viewModel.DBOPrev = viewModel.DBO;
-            //string DBO = Convert.ToDateTime(DOB.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
+            viewModel.DOB = year + "/" + month + "/" + day;
+            string DOB = year + month + day;
+            viewModel.DOBPrev = viewModel.DOB;
+            //string DOB = Convert.ToDateTime(DOB.Date.ToString().Split(' ')[0]).ToString("yyyyMMdd", new CultureInfo("en-US"));
             EntryName.IsEnabled = true;
             if (viewModel.SelectedIdType.ID.Equals("ZS0015"))
             {
@@ -164,7 +164,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     try
                     {
-                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DOB);
                         //IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         //if (SignupIsIDTypeValid.d == null)
                         //{
@@ -191,7 +191,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DBO);
+                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.TxtIDNumber, DOB);
                             //IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             //if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             //{
@@ -278,7 +278,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     try
                     {
-                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DOB);
                         //IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         //if (SignupIsIDTypeValid.d == null)
                         //{
@@ -305,7 +305,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DOB);
                             //IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             //if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             //{
@@ -392,7 +392,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     try
                     {
-                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                        //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DOB);
                         //IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
                         //if (SignupIsIDTypeValid.d == null)
                         //{
@@ -419,7 +419,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DBO);
+                            //string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.TxtIDNumber, DOB);
                             //IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             //if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             //{
@@ -518,7 +518,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
 
         }
-        private async void DBO_Closed(object sender, EventArgs e)
+        private async void DOB_Closed(object sender, EventArgs e)
         {
 
         }
@@ -544,7 +544,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
-            DOB.IsOpen = true;
+            SignUpDOB.IsOpen = true;
         }
 
         private void LIssuedBy_Clicked(object sender, EventArgs e)
@@ -567,7 +567,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void Dbo_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
 
         }
@@ -579,7 +579,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
         }
 
         private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -587,9 +587,53 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        private void Country_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+           // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+        }
+
+        private void Country_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void Region_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+        }
+
+        private void Region_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void City_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            // viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
+        }
+
+        private void City_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var selectedItem = SignUpDOB.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.DOB = year + "/" + month + "/" + day;
+                string DOB = year + month + day;
+                viewModel.DOBPrev = viewModel.DOB;
+            }
+            catch(Exception ex)
+            {
+
+            }
+         
         }
 
         private void ddlLIssuedBy_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -617,10 +661,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void DOB_Closed(object sender, EventArgs e)
-        {
+        //private void DOB_Closed(object sender, EventArgs e)
+        //{
 
-        }
+        //}
         #endregion
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
@@ -687,6 +731,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnAppearing();
 
+        }
+
+        private void PickerBtn_Country_Clicked(object sender, EventArgs e)
+        {
+            Picker_Country.IsOpen = true;
+        }
+
+        private void PickerBtn_Region_Clicked(object sender, EventArgs e)
+        {
+            Picker_Region.IsOpen = true;
+
+        }
+
+        private void PickerBtn_City_Clicked(object sender, EventArgs e)
+        {
+            Picker_City.IsOpen = true;
         }
     }
 }

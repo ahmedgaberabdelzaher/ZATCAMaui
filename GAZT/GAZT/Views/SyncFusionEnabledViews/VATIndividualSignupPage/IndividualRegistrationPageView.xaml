@@ -48,7 +48,7 @@
                 <StackLayout Orientation="Horizontal">
                     <Image HorizontalOptions="Start" VerticalOptions="Start" Rotation="270">
                         <Image.Source>
-                            <FontImageSource Color="Gray" FontFamily="UserIconFont"
+                            <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                         </Image.Source>
                     </Image>
@@ -72,20 +72,20 @@
                  <!-- Dot Images End-->
 
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" RowSpacing="0" >
+                  BackgroundColor="White" RowSpacing="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="88*" />
                     <RowDefinition Height="12*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="100*"/>
                 </Grid.ColumnDefinitions>
 
               
 
 
-                <ScrollView Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand">
-                    <StackLayout BackgroundColor="White">
+                <ScrollView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                    <StackLayout BackgroundColor="White" Spacing="0" Padding="0" Margin="0">
 
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,15,0,10" BackgroundColor="White" RowSpacing="0" >
@@ -98,12 +98,15 @@
                            
 
                         <!--Individual Registration-->
-                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" Margin="0" 
                           x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*"/>
+                </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0">
                         <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="Individual Registration"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" />
                         <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="Complete Below" />
@@ -146,6 +149,7 @@
                                     </inputLayout:SfTextInputLayout>
                                     <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                     </custom:CustomButton>
+
                                     <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
@@ -155,7 +159,7 @@
                               HeaderBackgroundColor="#006450"
                         SelectedItemTextColor="#006450"
                         BorderColor="Black"
-                                                  OKButtonTextColor="#006450"      
+                                                 OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
                                                  ShowFooter="True"
@@ -163,7 +167,7 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="SUType" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="DDlIDType_OkayButtonClicked"  CancelButtonClicked="IDType_CancelButtonClicked">
@@ -176,15 +180,15 @@
                             </StackLayout>
 
                             <StackLayout Grid.Row="1" Grid.Column="0">
-                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="ID Number" Padding="0,0,0,0"/>
+                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.IDNumber}" Padding="0,0,0,0"/>
                                 <inputLayout:SfTextInputLayout  x:Name="FrmIDNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                     <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryIDNumber"  FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                        <Entry.Behaviors>
+                                        <!--<Entry.Behaviors>
                                             <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
+                                        </Entry.Behaviors>-->
                                     </custom:BorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
                             </StackLayout>
@@ -195,13 +199,13 @@
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
-                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0" Text="Date of Birth" Padding="0,0,0,0"/>
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0" Text="{x:Static local:AppResources.ZZDateofBirth}" Padding="0,0,0,0"/>
 
                                     <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding PkrDBO}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding DOB}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand">
                                                 <Image.Source>
@@ -229,16 +233,16 @@
 								ColumnHeaderHeight="50"
                                 PickerMode="Dialog"
 								HeaderText="Date of Birth"
-								x:Name="DOB"
-                           SelectionChanged="Dbo_SelectionChanged"
+								x:Name="SignUpDOB"
+                          
                              OKButtonTextColor="#006450" 
                                 
                                              CancelButtonTextColor="#006450"
-                            Closed="DBO_Closed"
+                           
                             SelectedItem="{Binding TodayDate}"
                             HorizontalOptions="FillAndExpand"
-                                OkButtonClicked="DpDbo_OkButtonClicked"
-                                CancelButtonClicked="DpDbo_CancelButtonClicked"
+                                OkButtonClicked="DOB_OkButtonClicked"
+                                CancelButtonClicked="DOB_CancelButtonClicked"
 								ItemHeight="45" >
                                         <custom1:CustomDatePicker.Behaviors>
                                             <custom1:SfPickerBehavior />
@@ -247,7 +251,7 @@
                                 </Grid>
                             </StackLayout>
                             <StackLayout Grid.Row="3" Grid.Column="0" >
-                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Name" Padding="0,0,0,0"/>
+                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZName}" Padding="0,0,0,0"/>
                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -264,7 +268,7 @@
                 </Grid>
 
                             <!--National Address-->
-                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
+                        <!--<Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -359,9 +363,253 @@
                                 </ScrollView>
                             </StackLayout>
 
-                        </Grid>
-                        <!--Contact Information-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                        </Grid>-->
+                                <Grid Grid.Row="0" Grid.Column="0"  Padding="0,0,0,0"
+                              x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Row="0">
+                                        <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="National Address"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="Complete the Below details" />
+                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1">
+                                        <ScrollView>
+                                            <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                </Grid.ColumnDefinitions>
+                                               
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZCountry}" Padding="0,0,0,0"/>
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                ContainerType="Outlined" x:Name="Frame_Country"  UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry Text="{Binding CountryName}" FontSize="Small"
+                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Country" Clicked="PickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
+                                                        </custom:CustomButton>
+
+                                                        <syncfusion:SfPicker x:Name="Picker_Country" Grid.Row="1" IsEnabled="{Binding SetEnabilityToCountryList}"
+                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCountry}"
+                                    HeaderTextColor="White"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCountryIndex}"
+                                    ColumnHeaderHeight="46"
+                                    PickerMode="Dialog"
+                              HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                  OKButtonTextColor="#006450"      
+                                                 CancelButtonTextColor="#006450"
+                                                 ShowColumnHeader="False"
+                                                 ShowFooter="True"
+                                                 OKButtonBackgroundColor="#EAF7CC"
+                                                 CancelButtonBackgroundColor="#EAF7CC"
+                                                 BackgroundColor="#EAF7CC"
+                       ItemHeight="40"
+                         DisplayMemberPath="Name" ItemsSource="{Binding CountryList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         FooterHeight="46" OkButtonClicked="Country_OkayButtonClicked"  CancelButtonClicked="Country_CancelButtonClicked">
+                                                            <syncfusion:SfPicker.Behaviors>
+                                                                <custom1:SfPickerBehavior />
+                                                            </syncfusion:SfPicker.Behaviors>
+                                                        </syncfusion:SfPicker>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZProvinceRegion}" Padding="0,0,0,0" IsVisible="{Binding SetStateListVisibility}"/>
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"  IsVisible="{Binding SetStateListVisibility}"
+                                ContainerType="Outlined" x:Name="Frame_Region"  UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small"
+                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Region" Clicked="PickerBtn_Region_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
+                                                        </custom:CustomButton>
+
+                                                        <syncfusion:SfPicker x:Name="Picker_Region" Grid.Row="1" IsVisible="{Binding SetStateListVisibility}"
+                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZProvinceRegion}"
+                                    HeaderTextColor="White"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedRegionIndex}"
+                                    ColumnHeaderHeight="46"
+                                    PickerMode="Dialog"
+                              HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                  OKButtonTextColor="#006450"      
+                                                 CancelButtonTextColor="#006450"
+                                                 ShowColumnHeader="False"
+                                                 ShowFooter="True"
+                                                 OKButtonBackgroundColor="#EAF7CC"
+                                                 CancelButtonBackgroundColor="#EAF7CC"
+                                                 BackgroundColor="#EAF7CC"
+                       ItemHeight="40"
+                         DisplayMemberPath="Name" ItemsSource="{Binding RegionList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         FooterHeight="46" OkButtonClicked="Region_OkayButtonClicked"  CancelButtonClicked="Region_CancelButtonClicked">
+                                                            <syncfusion:SfPicker.Behaviors>
+                                                                <custom1:SfPickerBehavior />
+                                                            </syncfusion:SfPicker.Behaviors>
+                                                        </syncfusion:SfPicker>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" >
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZCity}" Padding="0,0,0,0" IsVisible="{Binding SetCityListVisibility}"/>
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding SetCityListVisibility}"
+                                ContainerType="Outlined" x:Name="Frame_City"  UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}"
+                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+                                                        <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
+                                                        </custom:CustomButton>
+                                                        <syncfusion:SfPicker x:Name="Picker_City" Grid.Row="1" IsVisible="{Binding SetCityListVisibility}"
+                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZZZCity}"
+                                    HeaderTextColor="White"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding SelectedCityIndex}"
+                                    ColumnHeaderHeight="46"
+                                    PickerMode="Dialog"
+                              HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                  OKButtonTextColor="#006450"      
+                                                 CancelButtonTextColor="#006450"
+                                                 ShowColumnHeader="False"
+                                                 ShowFooter="True"
+                                                 OKButtonBackgroundColor="#EAF7CC"
+                                                 CancelButtonBackgroundColor="#EAF7CC"
+                                                 BackgroundColor="#EAF7CC"
+                       ItemHeight="40"
+                         DisplayMemberPath="Name" ItemsSource="{Binding CityList}"  SelectionChanged="IDType_SelectedIndexChanged" Margin="0,0,0,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         FooterHeight="46" OkButtonClicked="City_OkayButtonClicked"  CancelButtonClicked="City_CancelButtonClicked">
+                                                            <syncfusion:SfPicker.Behaviors>
+                                                                <custom1:SfPickerBehavior />
+                                                            </syncfusion:SfPicker.Behaviors>
+                                                        </syncfusion:SfPicker>
+                                                    </Grid>
+                                                </StackLayout>
+
+
+
+
+                                                <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Neighborhood" Padding="0,0,0,0"/>
+                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                                                    ContainerType="Outlined" x:Name="Neighborhood" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                        <custom:BorderlessEntry x:Name="EntryNeighborhood" Text="{Binding Neighborhood}" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Neighborhood" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            <Entry.Behaviors>
+                                                                <custom1:AlphabetandArabicCharacters/>
+                                                            </Entry.Behaviors>
+                                                        </custom:BorderlessEntry>
+                                                    </inputLayout:SfTextInputLayout>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Postal Code" Padding="0,0,0,0"/>
+                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                                                    ContainerType="Outlined" x:Name="PostalCode" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                        <custom:BorderlessEntry x:Name="EntryPostalCode" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Postal Code" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            <Entry.Behaviors>
+                                                                <custom1:AlphabetandArabicCharacters/>
+                                                            </Entry.Behaviors>
+                                                        </custom:BorderlessEntry>
+                                                    </inputLayout:SfTextInputLayout>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Building Number" Padding="0,0,0,0"/>
+                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                                                    ContainerType="Outlined" x:Name="BuildingNumber" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                        <custom:BorderlessEntry x:Name="EntryBuildingNumber" Text="{Binding BuildingNumber}" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Building Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            <Entry.Behaviors>
+                                                                <custom1:AlphabetandArabicCharacters/>
+                                                            </Entry.Behaviors>
+                                                        </custom:BorderlessEntry>
+                                                    </inputLayout:SfTextInputLayout>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Unit Number" Padding="0,0,0,0"/>
+                                                    <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
+                                                    ContainerType="Outlined" x:Name="UnitNumber" UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                        <custom:BorderlessEntry x:Name="EntryUnitNumber" Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="Unit Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            <Entry.Behaviors>
+                                                                <custom1:AlphabetandArabicCharacters/>
+                                                            </Entry.Behaviors>
+                                                        </custom:BorderlessEntry>
+                                                    </inputLayout:SfTextInputLayout>
+                                                </StackLayout>
+                                            </Grid>
+                                        </ScrollView>
+                                    </StackLayout>
+
+                                </Grid>
+
+                                <!--Contact Information  Grid.ColumnSpan="2" -->
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="ContactInformationView" IsVisible="{Binding ContactInformationView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -399,7 +647,7 @@
                                             <inputLayout:SfTextInputLayout   x:Name="FrmMobileNumber"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                <custom:BorderlessEntry Text="{Binding TxtMobileNumber}" Placeholder="Confirm Email" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" Placeholder="Confirm Email" x:Name="EntryMobileNumber"  Unfocused="EntryMobileNumber_Unfocused" FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                     <Entry.Behaviors>
                                                         <custom1:OnlyNumericValuesBehaviour/>
                                                     </Entry.Behaviors>
@@ -448,8 +696,8 @@
                                 </StackLayout>
                             </StackLayout>
                         </Grid>-->
-                        <!--Summery-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                        <!--Summery Grid.ColumnSpan="2"  -->
+                        <Grid Grid.Row="0" Grid.Column="0" Padding="0,10,0,0"
                               x:Name="SummeryView"  IsVisible="{Binding SummeryView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
@@ -588,7 +836,7 @@
                             </StackLayout>
                         </Grid>
                         <!--Password-->
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="0,10,0,0"
+                        <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="PasswordView" IsVisible="{Binding PasswordView}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>

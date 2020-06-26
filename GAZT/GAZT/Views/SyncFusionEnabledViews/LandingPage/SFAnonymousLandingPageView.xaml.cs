@@ -375,22 +375,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         }
         private void SignUP_Clicked(object sender, EventArgs e)
         {
-            if (!App.IsJailBrokenDevice)
-            {
-                viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
-            }
-            else
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
-                });
-            }
-
-
             //if (!App.IsJailBrokenDevice)
             //{
-            //    viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+            //    viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
             //}
             //else
             //{
@@ -399,6 +386,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             //        await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
             //    });
             //}
+
+
+            if (!App.IsJailBrokenDevice)
+            {
+                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+            }
+            else
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+                });
+            }
 
 
         }
