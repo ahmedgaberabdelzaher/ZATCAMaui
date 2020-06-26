@@ -3457,7 +3457,7 @@ Should we require further information, we would be in contact.</value>
     <value>Complete the below details</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZConfirm Email" xml:space="preserve">
+  <data name="ZZZZConfirmEmail" xml:space="preserve">
     <value>Confirm Email</value>
     <comment>New SignUp</comment>
   </data>

@@ -8671,9 +8671,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
-        public static string ZZZZConfirm_Email {
+        public static string ZZZZConfirmEmail {
             get {
-                return ResourceManager.GetString("ZZZZConfirm Email", resourceCulture);
+                return ResourceManager.GetString("ZZZZConfirmEmail", resourceCulture);
             }
         }
         
