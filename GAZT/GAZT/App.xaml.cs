@@ -86,6 +86,8 @@ namespace EGAZT
 
         public static string VATRegistrationPageView = "VATRegistrationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
+        
+        public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
@@ -164,7 +166,7 @@ namespace EGAZT
 
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
- //           CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
+          //  CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);

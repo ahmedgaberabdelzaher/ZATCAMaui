@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Xamarin.Forms;
 using static GAZT.ErrorMessage;
 namespace GAZT.Manager
 {
@@ -4362,7 +4363,7 @@ namespace GAZT.Manager
 
                             //QA, Pre-prod and Prod
                             //cookie.Domain = ".gazt.gov.sa";
-
+                         
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
@@ -4498,19 +4499,28 @@ namespace GAZT.Manager
                             Cookie cookie = new Cookie();
 
                             //Dev
-                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+                            //cookie.Domain = Constants.PartialDomainUrlForCookies;
 
                             //QA, Pre-prod and Prod
-                            //cookie.Domain = ".gazt.gov.sa";
-
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
                             cookie.HttpOnly = cookieModel.IsHttpOnly;
                             cookie.Path = cookieModel.Path;
                             cookie.Name = cookieModel.CName;
+
+                            if(cookieModel.Domain.StartsWith(".") == false)
+                            {
+                                cookie.Domain = "." + cookieModel.Domain;
+                            }
+                            else
+                            {
+                                cookie.Domain = cookieModel.Domain;
+                            }
+
                             cookie.Value = cookieModel.CValue;
                             cookie.Secure = cookieModel.Secure;
                             cookieContainer.Add(cookie);
+                           
                         }
 
                         App.httpClientHandler.CookieContainer = cookieContainer;
@@ -4659,6 +4669,7 @@ namespace GAZT.Manager
                 throw new GAZTInternetException(String.Empty);
             }
         }
+
         public static async Task GAZTLogOff()
         {
             if (CrossConnectivity.Current.IsConnected)
@@ -4715,7 +4726,22 @@ namespace GAZT.Manager
                         foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                         {
                             Cookie cookie = new Cookie();
-                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+
+                            if (Device.RuntimePlatform == Device.iOS)
+                            {
+                                if (cookieModel.Domain.StartsWith(".") == false)
+                                {
+                                    cookie.Domain = "." + cookieModel.Domain;
+                                }
+                                else
+                                {
+                                    cookie.Domain = cookieModel.Domain;
+                                }
+                            }
+                            else if (Device.RuntimePlatform == Device.Android)
+                            {
+                                cookie.Domain = Constants.PartialDomainUrlForCookies;
+                            }
 
                             cookie.Comment = cookieModel.Comment;
                             cookie.Version = cookieModel.Version;
