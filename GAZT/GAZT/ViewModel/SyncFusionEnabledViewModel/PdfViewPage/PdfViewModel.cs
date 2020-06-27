@@ -231,11 +231,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     foreach (CookieModel cookieModel in App.LoginCookiesRetrieved)
                     {
                         Cookie cookie = new Cookie();
-                        //Dev
-                        cookie.Domain = Constants.PartialDomainUrlForCookies;
 
-                        //QA, Pre-prod and Prod
-                        //cookie.Domain = ".gazt.gov.sa";
+                        if (Device.RuntimePlatform == Device.iOS)
+                        {
+                            if (cookieModel.Domain.StartsWith(".") == false)
+                            {
+                                cookie.Domain = "." + cookieModel.Domain;
+                            }
+                            else
+                            {
+                                cookie.Domain = cookieModel.Domain;
+                            }
+                        }
+                        else if (Device.RuntimePlatform == Device.Android)
+                        {
+                            cookie.Domain = Constants.PartialDomainUrlForCookies;
+                        }
 
                         cookie.Comment = cookieModel.Comment;   
                         cookie.Version = cookieModel.Version;

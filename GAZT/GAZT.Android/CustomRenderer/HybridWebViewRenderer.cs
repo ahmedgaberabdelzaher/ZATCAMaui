@@ -329,12 +329,14 @@ namespace EGAZT.Droid.CustomRenderer
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
         {
             var cookieHeader = CookieManager.Instance.GetCookie(url);
+             
             string[] cookiePairs = new string[100];
+            Android.Webkit.WebView webView;
 
             if (cookieHeader != null)
             {
                 cookiePairs = cookieHeader.Split(';');
-                Android.Webkit.WebView webView = view;
+                webView = view;
             }
 
             //Hide element by class name
@@ -349,7 +351,6 @@ namespace EGAZT.Droid.CustomRenderer
             if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true)
             {
                 //view.LoadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');")
-
                 App.LoginCookiesRetrieved = new List<CookieModel>();
                 for (int i = 0; i < cookiePairs.Length; i++)
                 {
@@ -362,12 +363,7 @@ namespace EGAZT.Droid.CustomRenderer
                             CookieModel cookie = new CookieModel();
                             cookie.CName = httpCookie.Name;
                             cookie.CValue = httpCookie.Value;
-                            //Dev
-                            cookie.Domain = GAZT.Helper.Constants.PartialDomainUrlForCookies;
-
-                            //QA, Pre-prod and Prod
-                            //cookie.Domain = ".gazt.gov.sa";
-
+                            cookie.Domain = httpCookie.Domain;
                             App.LoginCookiesRetrieved.Add(cookie);
                         }
 
@@ -375,7 +371,7 @@ namespace EGAZT.Droid.CustomRenderer
                     }
                     catch (System.Exception ex)
                     {
-
+                            
                     }
                 }
 
