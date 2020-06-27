@@ -11,7 +11,7 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATRegistrationMenuPopUp">
     <yummy:PancakeView CornerRadius="22,22,22,22" HasShadow="True" VerticalOptions="CenterAndExpand" BackgroundColor="White">
         <StackLayout Margin="10,22,10,22">
-            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <StackLayout x:Name="attach" Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Image Rotation="-45">
                     <Image.Source>
                         <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="35"
@@ -19,6 +19,9 @@
                     </Image.Source>
                 </Image>
                 <Label Text="Attachments" FontSize="Large" TextColor="Black"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnAttachmentTapped" NumberOfTapsRequired="1"/>
+                </StackLayout.GestureRecognizers>
             </StackLayout>
             <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                 <Image>

@@ -1313,8 +1313,11 @@
                     </Image>-->
                     <Image Source="icon.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
-
+                    <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="TappedOnMenu"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                    </Label>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="10,0,0,10" BackgroundColor="White">
                         <BoxView x:Name="BoxOne" CornerRadius="25" />
                         <BoxView x:Name="BoxTwo" CornerRadius="25" />

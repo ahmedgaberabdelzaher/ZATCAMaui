@@ -195,11 +195,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void SideMenu_Clicked(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
-        }
-
         private void btnContactID_Clicked(object sender, EventArgs e)
         {
             DDlContactIDType.IsOpen = true;
@@ -292,6 +287,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+        }
+
+        private void TappedOnMenu(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
         }
     }
 }
