@@ -57,12 +57,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnImporter_Clicked(object sender, EventArgs e)
         {
-
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
-
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
 
         private void NewAccount_Clicked(object sender, EventArgs e)
@@ -287,6 +287,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             //    viewModel.CurrentStep = "Step5";
             //    SetfifthBoxColor();
             //}
+        }
+
+        private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
     }
 }

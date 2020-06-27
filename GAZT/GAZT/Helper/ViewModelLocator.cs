@@ -175,6 +175,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
             SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
 
+            SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
+
         }
         public PdfViewModel pdfView
         {
@@ -986,6 +988,21 @@ namespace EGAZT
                 }
             }
         }
+
+        public FileAttachmentPopUpPageViewModel FileAttachmentPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FileAttachmentPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1053,6 +1070,9 @@ namespace EGAZT
             
             navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
             navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
+            
+                navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
+
             return navigationService;
         }
     }
