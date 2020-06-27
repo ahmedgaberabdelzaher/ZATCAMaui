@@ -40,6 +40,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _frameNameError = false;
+        public bool FrameNameError
+        {
+            get
+            {
+                return _frameNameError;
+            }
+            set
+            {
+                _frameNameError = value;
+                RaisePropertyChanged("FrameNameError");
+            }
+        }
+
+        private bool _frameIDError = false;
+        public bool FrameIDError
+        {
+            get
+            {
+                return _frameIDError;
+            }
+            set
+            {
+                _frameIDError = value;
+                RaisePropertyChanged("FrameIDError");
+            }
+        }
+        private bool _frameDOBError = false;
+        public bool FrameDOBError
+        {
+            get
+            {
+                return _frameDOBError;
+            }
+            set
+            {
+                _frameDOBError = value;
+                RaisePropertyChanged("FrameDOBError");
+            }
+        }
+
 
         private bool _individualRegistrationView = true;
         public bool IndividualRegistrationView
@@ -51,6 +92,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _individualRegistrationView = value;
+                if (_individualRegistrationView == true)
+                {
+                    SetcolorForDots("IndividualRegistrationView");
+                }
                 RaisePropertyChanged("IndividualRegistrationView");
             }
         }
@@ -65,6 +110,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _nationalAddressView = value;
+                if (_nationalAddressView == true)
+                {
+                    SetcolorForDots("NationalAddressView"); 
+                }
+               
                 RaisePropertyChanged("NationalAddressView");
             }
         }
@@ -79,6 +129,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _contactInformationView = value;
+                if (_contactInformationView == true)
+                {
+                    SetcolorForDots("ContactInformationView");
+                }
                 RaisePropertyChanged("ContactInformationView");
             }
         }
@@ -114,7 +168,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        public Color _BoxColorOne;
+        public Color _BoxColorOne=Color.FromHex("#DDDDDD");
         public Color BoxColorOne
         {
             get { return _BoxColorOne; }
@@ -124,7 +178,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorOne");
             }
         }
-        public Color _BoxColorTwo;
+        public Color _BoxColorTwo=Color.FromHex("#DDDDDD");
         public Color BoxColorTwo
         {
             get { return _BoxColorTwo; }
@@ -134,7 +188,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorTwo");
             }
         }
-        public Color _BoxColorThree;
+        public Color _BoxColorThree = Color.FromHex("#DDDDDD");
         public Color BoxColorThree
         {
             get { return _BoxColorThree; }
@@ -145,7 +199,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public Color _BoxColorFour;
+        public Color _BoxColorFour = Color.FromHex("#DDDDDD");
         public Color BoxColorFour
         {
             get { return _BoxColorFour; }
@@ -156,7 +210,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public Color _BoxColorFive;
+        public Color _BoxColorFive = Color.FromHex("#DDDDDD");
         public Color BoxColorFive
         {
             get { return _BoxColorFive; }
@@ -281,14 +335,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (_selectedIdType.ID.Equals("ZS0015"))
                         {
                             MaxLengthID = 10;
+                            SetStateListVisibility = true;
+                            SetCityListVisibility = true;
+                            SetCountryVisibility = true;
+                            SetGCCCountryVisibility = false;
+                            SetEnabilityToCountryList = false;
                         }
                         else if (_selectedIdType.ID.Equals("ZS0017"))
                         {
                             MaxLengthID = 10;
+                            SetStateListVisibility = true;
+                            SetCityListVisibility = true;
+                            SetCountryVisibility = true;
+                            SetGCCCountryVisibility = false;
+                            SetEnabilityToCountryList = false;
                         }
                         else if (_selectedIdType.ID.Equals("ZS0018"))
                         {
                             MaxLengthID = 15;
+                            SetStateListVisibility = false;
+                            SetCityListVisibility = false;
+                            SetCountryVisibility = false;
+                            SetGCCCountryVisibility = true;
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
@@ -777,41 +845,63 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 if (currentStep == 1)
-                {
-
-                    if(SelectedIdType != null && SelectedIdType.ID.Equals("ZS0018"))
+                {bool flag = true;
+                    if (SelectedIdType == null)
                     {
-                        IndividualRegistrationView = false;
-                        NationalAddressView = true;
-                        currentStep++;
-                        SetVisibilityToNationalAddressContent();
+                        flag = false;
+                    }
+                    if (string.IsNullOrEmpty(IdNumber))
+                    {
+                        flag = false;
+                    }
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        flag = false;
 
                     }
-                    else
+                    if (flag)
                     {
-                        bool isValidId = await ValidateId();
-                        if (isValidId)
+                        if (SelectedIdType != null)
                         {
-                            IndividualRegistrationView = false;
-                            NationalAddressView = true;
-                            currentStep++;
-                            vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
-                            SetVisibilityToNationalAddressContent();
-                          
-
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
+                            if (SelectedIdType.ID.Equals("ZS0018"))
                             {
-                                _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+                                IndividualRegistrationView = false;
+                                NationalAddressView = true;
+                                currentStep++;
+                                flag = true;
+                                SetVisibilityToNationalAddressContent();
 
-                            });
+
+                            }
+                            else
+                            {
+                                bool isValidId = await ValidateId();
+                                if (isValidId)
+                                {
+                                    IndividualRegistrationView = false;
+                                    NationalAddressView = true;
+                                    currentStep++;
+                                    vATSignUpData = await WebServiceManager.GAZTGetVATSignUpCityListForSignup();
+                               
+                                    SetVisibilityToNationalAddressContent();
 
 
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+             
+                                        _dialogService.ShowMessageBox("Wrong Id", AppResources.ZError);
+
+                                    });
+
+
+                                }
+                            }
                         }
+
                     }
-                
 
                 }
                 else if (currentStep == 2)
@@ -862,11 +952,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             List<SignUpIdType> lst = new List<SignUpIdType>();
             lst = signUpIdTypeList;
             IdTypeList = signUpIdTypeList;
+            IDTypeIndex = 0;
+            TxtIDType = AppResources.ZZNationalID;
 
+            TxtIDType = IdTypeList[IDTypeIndex].Name;
+            SelectedIdType =IdTypeList[IDTypeIndex];
         }
         /// <summary>
         /// Validate the National and Iqama ID
         /// </summary>
+        /// 
+        public async Task<string> ValidateIDs()
+        {
+            try
+            {
+                string dob = DOB.Replace("/", "");
+                string resposne = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
+                return resposne;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public async Task<bool>  ValidateId()
         {
             try
@@ -887,6 +996,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 return false;
             }
         }
+
 
         public void SetCountryList()
         {
@@ -1071,6 +1181,51 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             };
 
             VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
+        }
+
+      
+
+
+
+
+        public void SetcolorForDots(string visiliblityItemName)
+        {
+            if (visiliblityItemName.Equals("IndividualRegistrationView"))
+                
+            {
+                BoxColorOne = Color.FromHex("#006450");
+                BoxColorTwo = Color.FromHex("#DDDDDD");
+                BoxColorThree = Color.FromHex("#DDDDDD");
+                BoxColorFour = Color.FromHex("#DDDDDD");
+                BoxColorFive = Color.FromHex("#DDDDDD");
+            }
+            else if (visiliblityItemName.Equals("NationalAddressView"))
+            {
+                BoxColorOne = Color.FromHex("#006450");
+                BoxColorTwo = Color.FromHex("#006450");
+                BoxColorThree = Color.FromHex("#DDDDDD");
+                BoxColorFour = Color.FromHex("#DDDDDD");
+                BoxColorFive = Color.FromHex("#DDDDDD");
+            }
+            //ContactInformationView
+            else if (visiliblityItemName.Equals("ContactInformationView"))
+            {
+                BoxColorOne = Color.FromHex("#006450");
+                BoxColorTwo = Color.FromHex("#006450");
+                BoxColorThree = Color.FromHex("#006450");
+                BoxColorFour = Color.FromHex("#DDDDDD");
+                BoxColorFive = Color.FromHex("#DDDDDD");
+            }
+            else if (visiliblityItemName.Equals("SummeryView"))
+            {
+                BoxColorOne = Color.FromHex("#006450");
+                BoxColorTwo = Color.FromHex("#006450");
+                BoxColorThree = Color.FromHex("#006450");
+                BoxColorFour = Color.FromHex("#006450");
+                BoxColorFive = Color.FromHex("#DDDDDD");
+            }
+
+
         }
     }
 }
