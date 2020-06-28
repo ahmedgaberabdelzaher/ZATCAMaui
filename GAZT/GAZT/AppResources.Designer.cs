@@ -7814,6 +7814,51 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Type.
+        /// </summary>
+        public static string ZZZAttachementAddNewType {
+            get {
+                return ResourceManager.GetString("ZZZAttachementAddNewType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments are mandatory for Non-Eligible Taxpayers.
+        /// </summary>
+        public static string ZZZAttachementMandatory {
+            get {
+                return ResourceManager.GetString("ZZZAttachementMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment Section.
+        /// </summary>
+        public static string ZZZAttachementSection {
+            get {
+                return ResourceManager.GetString("ZZZAttachementSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
+        /// </summary>
+        public static string ZZZAttachementSubmitNote {
+            get {
+                return ResourceManager.GetString("ZZZAttachementSubmitNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is the type of document that you are submitting to prove whether or not eligible..
+        /// </summary>
+        public static string ZZZAttachementSubmitProveNote {
+            get {
+                return ResourceManager.GetString("ZZZAttachementSubmitProveNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Business Information.
         /// </summary>
         public static string ZZZBusinessInformation {
@@ -8534,6 +8579,145 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional Information.
+        /// </summary>
+        public static string ZZZVATRAdditionalInfo {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be Less than January 1, 2018
+        ///Cannot be before the start of your business
+        ///You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million
+        ///If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively
+        ///If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply..
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctions {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply..
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsFifthLine {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsFifthLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be Less than January 1, 2018.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsFirstLine {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsFirstLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsFourthLine {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsFourthLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be Less than January 2018.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsPart1 {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsPart1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be before the start of your Buisness.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsPart2 {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsPart2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be before the start of your Buisness.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsPart3 {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsPart3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot be before the start of your business.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsSecondLine {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsSecondLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million.
+        /// </summary>
+        public static string ZZZVATRAdditionalInformationInstrunctionsThirdLine {
+            get {
+                return ResourceManager.GetString("ZZZVATRAdditionalInformationInstrunctionsThirdLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief.
+        /// </summary>
+        public static string ZZZVATRDR1 {
+            get {
+                return ResourceManager.GetString("ZZZVATRDR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I hereby certify that i am authorized to complete this form for the taxable person and that all information contained is correct.
+        /// </summary>
+        public static string ZZZVATRDR2 {
+            get {
+                return ResourceManager.GetString("ZZZVATRDR2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Person Name.
+        /// </summary>
+        public static string ZZZVATRDRContactPersonName {
+            get {
+                return ResourceManager.GetString("ZZZVATRDRContactPersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Type / ID No.
+        /// </summary>
+        public static string ZZZVATRDRIdTypeAndNo {
+            get {
+                return ResourceManager.GetString("ZZZVATRDRIdTypeAndNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Eligibility Commencement Date.
+        /// </summary>
+        public static string ZZZVATREligibilityCommencementDate {
+            get {
+                return ResourceManager.GetString("ZZZVATREligibilityCommencementDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Return.
         /// </summary>
         public static string ZZZVATReturn {
@@ -8548,6 +8732,236 @@ namespace EGAZT {
         public static string ZZZVATReturnTitle {
             get {
                 return ResourceManager.GetString("ZZZVATReturnTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you an Exporter.
+        /// </summary>
+        public static string ZZZVATRExporter {
+            get {
+                return ResourceManager.GetString("ZZZVATRExporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In this section answer the following questions to determine your VAT eligibility and provide the necessary attachment(s) as applicable..
+        /// </summary>
+        public static string ZZZVATRFinancialDetailsQNotes {
+            get {
+                return ResourceManager.GetString("ZZZVATRFinancialDetailsQNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string ZZZVATRFirstName {
+            get {
+                return ResourceManager.GetString("ZZZVATRFirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you are a resident taxpayer,this section is optional and you can skip this section or enter the below details to continue.
+        ///*If you are a Non resident this is a Mandatory section.
+        ///*Please don’t use the Taxpayer&apos;s TIN or ID in the financial representative section..
+        /// </summary>
+        public static string ZZZVATRFR1 {
+            get {
+                return ResourceManager.GetString("ZZZVATRFR1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you an Importer.
+        /// </summary>
+        public static string ZZZVATRImporter {
+            get {
+                return ResourceManager.GetString("ZZZVATRImporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For applications on behalf of a company, this form should be completed by an official contact person of the company and signed by a person who has authority to sign of on behalf of the company. If the provided information is incorrect or incomplete then penalties are added as per Value Added Tax Law without interfering with any penalties applied by other regulations in the Kingdom of Saudi Arabia.
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions1 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT reserves the right to obtain financial statements and business records of the company and review them..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions2 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT reserves the right to obtain financial statements and business records to the owner and review them..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions3 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A VAT registration may be cancelled in accordance to the cases listed as per the VAT Law..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions4 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The person registered in VAT tax system must notify GAZT of changing any of the information provided in the registration form, a change or cessation of business activity, or any major changes that affects liability to be VAT registered, in accordance with the VAT Regulations..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions5 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Businesses with 2018 annual taxable supplies that do not exceed SAR 1 million may select an effective registration date up to 1/1/2019..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions6 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
+        ///* Registration during the specified period, according to the VAT Law and its Regulations.
+        ///* Submitting VAT filing on time based on the annual revenues.
+        ///* Payin [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions7 {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree with these conditions and proceed further..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditionsAgreeCondition {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditionsAgreeCondition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. Applicants should ensure that their existing taxpayer details are completed and accurate before registering for VAT..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditionsFirst {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditionsFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please refer to the  VAT FAQ  section in the GAZT website before filling out this application form..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditionsSecond {
+            get {
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditionsSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main outlet CR/License.
+        /// </summary>
+        public static string ZZZVATRMainOutlet {
+            get {
+                return ResourceManager.GetString("ZZZVATRMainOutlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or provide a new IBAN (if any).
+        /// </summary>
+        public static string ZZZVATRprovidenewIBAN {
+            get {
+                return ResourceManager.GetString("ZZZVATRprovidenewIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What will be your total VAT taxable sales value in the upcoming 12 months (incl. this month)?.
+        /// </summary>
+        public static string ZZZVATRQuestion1 {
+            get {
+                return ResourceManager.GetString("ZZZVATRQuestion1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What was your total VAT taxable sales value for the last 12 months at the time of registration?.
+        /// </summary>
+        public static string ZZZVATRQuestion2 {
+            get {
+                return ResourceManager.GetString("ZZZVATRQuestion2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What will be your total VAT taxable expenses value in the upcoming 12 months (incl. this month)?.
+        /// </summary>
+        public static string ZZZVATRQuestion3 {
+            get {
+                return ResourceManager.GetString("ZZZVATRQuestion3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What was your total VAT taxable expenses value for the last 12 months at the time of registration?.
+        /// </summary>
+        public static string ZZZVATRQuestion4 {
+            get {
+                return ResourceManager.GetString("ZZZVATRQuestion4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an existing IBAN.
+        /// </summary>
+        public static string ZZZVATRSelectanexistingIBAN {
+            get {
+                return ResourceManager.GetString("ZZZVATRSelectanexistingIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        public static string ZZZVATRSource {
+            get {
+                return ResourceManager.GetString("ZZZVATRSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Surname.
+        /// </summary>
+        public static string ZZZVATRSurName {
+            get {
+                return ResourceManager.GetString("ZZZVATRSurName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Eligibility Section.
+        /// </summary>
+        public static string ZZZVATRVATEligibilitySection {
+            get {
+                return ResourceManager.GetString("ZZZVATRVATEligibilitySection", resourceCulture);
             }
         }
         
@@ -8845,6 +9259,42 @@ namespace EGAZT {
         public static string ZZZZUnitNumber {
             get {
                 return ResourceManager.GetString("ZZZZUnitNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Details.
+        /// </summary>
+        public static string ZZZZVATREFinancialDetails {
+            get {
+                return ResourceManager.GetString("ZZZZVATREFinancialDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Instructions and Conditions.
+        /// </summary>
+        public static string ZZZZVATREInstructionsandConditions {
+            get {
+                return ResourceManager.GetString("ZZZZVATREInstructionsandConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Representative.
+        /// </summary>
+        public static string ZZZZVATRFinancialRepresentative {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFinancialRepresentative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Date.
+        /// </summary>
+        public static string ZZZZVATRStartDate {
+            get {
+                return ResourceManager.GetString("ZZZZVATRStartDate", resourceCulture);
             }
         }
         

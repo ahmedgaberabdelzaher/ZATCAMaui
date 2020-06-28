@@ -3525,4 +3525,156 @@
     <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>
     <comment>New SignUp</comment>
   </data>
+  <data name="ZZZAttachementAddNewType" xml:space="preserve">
+    <value>إضافة نوع جديد</value>
+  </data>
+  <data name="ZZZAttachementMandatory" xml:space="preserve">
+    <value>المرفقات إلزامية للمكلفين الغير خاضعين</value>
+  </data>
+  <data name="ZZZAttachementSection" xml:space="preserve">
+    <value>قسم المرفقات</value>
+  </data>
+  <data name="ZZZAttachementSubmitNote" xml:space="preserve">
+    <value>الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .</value>
+  </data>
+  <data name="ZZZAttachementSubmitProveNote" xml:space="preserve">
+    <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+  <data name="ZZZVATRAdditionalInfo" xml:space="preserve">
+    <value>المعلومات الإضافية</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctions" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل 1 يناير 2018
+لا يمكن أن يكون قبل تاريخ بداية السجل التجاري
+يحق لكم تأجيل تاريخ نفاذ تسجيلكم وخضوعكم لضريبة القيمة المضافة حتى 1/1/2019، في حال كانت توريداتكم السنوية الخاضعة للضريبة لا تتجاوز مليون ريال
+إذا كنت مكلف مقيم في المملكة العربية السعودية يجب أن يعبر التاريخ عن تاريخ البداية الالزامي ( أو الاختياري) بأثر سابق أو لاحق
+إذا كنت مكلف غير مقيم في المملكة العربية السعودية يجب أن يعبر عن تاريخ أول توريد ضريبي</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFifthLine" xml:space="preserve">
+    <value>إذا كنت مكلف غير مقيم في المملكة العربية السعودية يجب أن يعبر عن تاريخ أول توريد ضريبي</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل 1 يناير 2018</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFourthLine" xml:space="preserve">
+    <value>إذا كنت مكلف مقيم في المملكة العربية السعودية يجب أن يعبر التاريخ عن تاريخ البداية الالزامي ( أو الاختياري) بأثر سابق أو لاحق</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل تاريخ بداية السجل التجاري</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>يحق لكم تأجيل تاريخ نفاذ تسجيلكم وخضوعكم لضريبة القيمة المضافة حتى 1/1/2019، في حال كانت توريداتكم السنوية الخاضعة للضريبة لا تتجاوز مليون ريال</value>
+  </data>
+  <data name="ZZZVATRDR1" xml:space="preserve">
+    <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+  </data>
+  <data name="ZZZVATRDR2" xml:space="preserve">
+    <value>أتعهد بأنني مخول لإكمال هذا النموذج للشخص الخاضع للضريبة وبأن جميع المعلومات صحيحة</value>
+  </data>
+  <data name="ZZZVATRDRContactPersonName" xml:space="preserve">
+    <value>اسم الشخص الذي يمكن الاتصال به</value>
+  </data>
+  <data name="ZZZVATRDRIdTypeAndNo" xml:space="preserve">
+    <value>نوع الهوية/رقم الهوية</value>
+  </data>
+  <data name="ZZZVATREligibilityCommencementDate" xml:space="preserve">
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة:</value>
+  </data>
+  <data name="ZZZVATRExporter" xml:space="preserve">
+    <value>هل أنت مصدر</value>
+  </data>
+  <data name="ZZZVATRFinancialDetailsQNotes" xml:space="preserve">
+    <value>في هذا القسم أجب على الأسئلة التالية لتحديد خضوعك لضريبة القيمة المضافة وتقديم الملفات المطلوبة</value>
+  </data>
+  <data name="ZZZVATRFirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="ZZZVATRFR1" xml:space="preserve">
+    <value>في حال كنت مكلف مقيم،هذا القسم إختياري ويمكن لك تخطي القسم أو ادخال التفاصيل في الاسفل للاكمال
+*في حال لم تكن مقيم هذا القسم إلزامي
+*الرجاء عدم استخدام الرقم المميز أو الهوية للمكلف في قسم معلومات الممثل المالي</value>
+  </data>
+  <data name="ZZZVATRImporter" xml:space="preserve">
+    <value>هل أنت مستورد</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions1" xml:space="preserve">
+    <value>لتقديم الطلب بالنيابة عن المنشأة يجب تعبئة هذا الطلب من قبل الممثل النظامي للمنشأة , وفي حال عدم صحة المعلومات المقدمة تطبق العقوبات الواردة في نظام ضريبة القيمة المضافة دون الإخلال بالعقوبات الواردة في الأنظمة الأخرى المطبقة في المملكة العربية السعودية .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions2" xml:space="preserve">
+    <value>للهيئة الحق في الحصول على البيانات المالية والسجلات المحاسبية للمنشأة ومراجعتها .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions3" xml:space="preserve">
+    <value>للهيئة الحق في الحصول على البيانات المالية والسجلات المحاسبية للمالك ( الملاك ) ومراجعتها .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions4" xml:space="preserve">
+    <value>قد يتم إلغاء هذا التسجيل وفقاً للحالات المنصوص عليها بموجب أحكام هذا النظام .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions5" xml:space="preserve">
+    <value>يجب على الشخص المسجل في نظام ضريبة القيمة المضافة إخطار الهيئة بموجب إشعار بأي تغيرات جوهرية ينتج عنها فقدان الشخص المسجل الأحقية في التسجيل في نظام ضريبة القيمة المضافة أو في حال تعديل أي من البيانات المذكورة في نموذج التسجيل , وذلك وفقاً لأحكام النظام .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions6" xml:space="preserve">
+    <value>يجوز للمنشآت التي لا تتجاوز توريداتها السنوية الخاضعة للضريبة مليون ريال سعودي حتى نهاية عام 2018، اختيار أي تاريخ لنفاذ التسجيل بحد أقصى 1/1/2019</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions7" xml:space="preserve">
+    <value>أقر باطلاعي والتزامي بكافة المتطلبات والإجراءات الواردة في نظام ضريبة القيمة المضافة ولائحته التنفيذية والتي تتضمن على سبيل المثال لا الحصر ما يلي أدناه. ويحق للهيئة العامة للزكاة والدخل اتخاذ الإجراءات المناسبة وفق نظام ضريبة القيمة المضافة ولائحته التنفيذية في حال مخالفة هذه المتطلبات وعدم الالتزام بها.
+* الالتزام بالتقدم للتسجيل في نظام ضريبة القيمة المضافة خلال المدة المحددة في نظام ضريبة القيمة المضافة ولائحته التنفيذية.
+* الالتزام بتقديم الإقرارات الضريبية في الأوقات المحددة في اللائحة حسب الإيرادات السنوية للمنشأة أو للشخص الخاضع للضريبة.
+* الالتزام بسداد الضريبة المستحقة و أية غرامات مرتبطة بها خلال المدد التي تحددها اللائحة.
+* الالتزام بتقديم كافة المعلومات والسجلات و المستندات التي تطلبها الهيئة للتحقق من الالتزامات الضريبية المستحقة، خلال المدة المحددة في اللائحة.
+* الالتزام بعدم إصدار فاتورة ضريبية في حال عدم استكمال التسجيل أو عدم بدء نفاذه.
+* الالتزام بحفظ الفواتير الضريبية والدفاتر والسجلات والمستندات المحاسبية خلال الفترة المنصوص عليها في اللائحة.
+* للهيئة الحق بإعادة تقييم الإقرار المقدم في أي فترة، وفقا لأحكام نظام ضريبة القيمة المضافة ولائحته التنفيذية.
+* للهيئة الحق في اجراء تقييم لأي فترة ضريبية لم يتم تقديم الإقرار الخاص بها في الموعد المحدد نظاماً، وفقاً لأحكام نظام ضريبة القيمة المضافة ولائحته التنفيذية.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsAgreeCondition" xml:space="preserve">
+    <value>أوافق على التعليمات والشروط وإكمال الخطوات</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsFirst" xml:space="preserve">
+    <value>الرجاء إكمال المعلومات المطلوبة لكل خطوة , لا يمكن تقديم هذا الطلب حتى يتم إدخال جميع المعلومات الإلزامية , يجب على مقدم الطلب التأكد من أن تفاصيل المكلف الحالية مكتملة وصحيحة قبل التسجيل في ضريبة القيمة المضافة .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsSecond" xml:space="preserve">
+    <value>الرجاء الاطلاع على صفحة  الأسئلة والأجوبة لضريبة القيمة المضافة  في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
+  </data>
+  <data name="ZZZVATRMainOutlet" xml:space="preserve">
+    <value>السجل التجاري للفرع الرئيسي</value>
+  </data>
+  <data name="ZZZVATRprovidenewIBAN" xml:space="preserve">
+    <value>و ادخل رقم ايبان جديد</value>
+  </data>
+  <data name="ZZZVATRQuestion1" xml:space="preserve">
+    <value>كم ستبلغ مبيعاتك الخاضعة لضريبة القيمة المضافة خلال الـ 12 شهر القادمة ( بما فيها الشهر الحالي )؟</value>
+  </data>
+  <data name="ZZZVATRQuestion2" xml:space="preserve">
+    <value>كم كان إجمالي مبيعاتك الخاضعة لضريبة القيمة المضافة للـ 12 شهر الماضية حتى وقت التسجيل ؟</value>
+  </data>
+  <data name="ZZZVATRQuestion3" xml:space="preserve">
+    <value>كم ستبلغ مصروفاتك الخاضعة لضريبة القيمة المضافة خلال الـ 12 شهر القادمة ( بما فيها الشهر الحالي )؟</value>
+  </data>
+  <data name="ZZZVATRQuestion4" xml:space="preserve">
+    <value>كم كان إجمالي مصروفاتك الخاضعة لضريبة القيمة المضافة للـ 12 شهر الماضية حتى وقت التسجيل ؟</value>
+  </data>
+  <data name="ZZZVATRSelectanexistingIBAN" xml:space="preserve">
+    <value>اختيار رقم الايبان الحالي</value>
+  </data>
+  <data name="ZZZVATRSource" xml:space="preserve">
+    <value>مصدر المكلف</value>
+  </data>
+  <data name="ZZZVATRSurName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="ZZZVATRVATEligibilitySection" xml:space="preserve">
+    <value>قسم الخضوع لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATREFinancialDetails" xml:space="preserve">
+    <value>المعلومات المالية</value>
+  </data>
+  <data name="ZZZZVATREInstructionsandConditions" xml:space="preserve">
+    <value>التعليمات و الشروط</value>
+  </data>
+  <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
+    <value>الممثل المالي</value>
+  </data>
+  <data name="ZZZZVATRStartDate" xml:space="preserve">
+    <value>تاريخ البداية</value>
+  </data>
 </root>
