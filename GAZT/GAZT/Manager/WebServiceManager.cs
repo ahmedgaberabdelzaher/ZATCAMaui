@@ -5727,8 +5727,50 @@ namespace GAZT.Manager
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     var detailJson = res.Content.ReadAsStringAsync().Result;
+                    
                     vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(detailJson);
                     return vatSignUpSubmit;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        public static async Task<string> GAZTCreateVATSignUpFirst(VATSignUpSubmit vATSignUpSubmit)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
+                    string url = Constants.GAZTGetCreateVATSignUp;
+                    var uri = new Uri(url);
+
+                    try
+                    {
+                        App.httpClientHandler.CookieContainer = null;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    var serilized = JsonConvert.SerializeObject(vATSignUpSubmit);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                    var detailJson = res.Content.ReadAsStringAsync().Result;
+                    //VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
+                    //vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(detailJson);
+                    return detailJson;
                 }
                 catch (Exception ex)
                 {

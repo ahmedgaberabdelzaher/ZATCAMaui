@@ -46,7 +46,7 @@
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <Label Text="TIN Nimber" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label Text="1234567890" TextColor="Black"/>
+                                <Label Text="{Binding TINnumber}" TextColor="Black"/>
                                 <Image>
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"

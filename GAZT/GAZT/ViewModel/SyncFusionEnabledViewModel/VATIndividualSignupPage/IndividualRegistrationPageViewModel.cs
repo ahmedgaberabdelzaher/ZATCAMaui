@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
+using GAZT.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -938,18 +940,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 else if (currentStep == 4)
                 {
-
-                    SummeryView = false;
-                    PasswordView = true;
-                    currentStep++;
-                    await SetRequestObject();
+                    await SetRequestObjectFirst();
+                    
+                    
                 }
                 else if (currentStep == 5)
                 {
-                    PasswordView = false;
-                    currentStep = 1;
-                    await SetRequestObject();
-                    _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
+
+                    await SetRequestObjectFirst();
+                   // await SetRequestObject();
+                    //PasswordView = false;
+                    //currentStep = 1;
+                    //await SetRequestObject();
+                    //_navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
                 }
             }
             catch (Exception ex)
@@ -1134,79 +1137,278 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             GCCCountryList = lst;
         }
 
+
+        public async Task SetRequestObjectFirst()
+        {
+            try
+            {
+                
+                var dateTime = new DateTime(2015, 05, 24, 10, 2, 0, DateTimeKind.Local);
+                var dateTimeOffset = new DateTimeOffset(dateTime);
+                var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                string _City = string.Empty;
+                string _Region = string.Empty;
+                string _Country = string.Empty;
+                if (SelectedIdType != null)
+                {
+                    if (SelectedIdType.ID.Equals("ZS0018"))
+                    {
+                        if (SelectedGCCCountry != null)
+                        {
+                            _Country = SelectedGCCCountry.CountryCode;
+
+                        }
+                    }
+                    else
+                    {
+                        _Country = "SA";
+                        _Region = SelectedRegion.Land1;
+                        _City = _selectedCity.CityCode;
+
+                    }
+                }
+                //TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                //string unixTime = span.TotalSeconds.ToString("N0");
+                //unixTime = unixTime.Replace(",", "");
+                // string dd = "" + "/Date(" + unixTime + ")/";// need to
+                string submitValue;
+                if (currentStep == 4)
+                {
+                    submitValue = "";
+                }
+                else
+                {
+                    submitValue = "X";
+                }
+
+
+
+
+                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                {
+                    // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
+                    Type = "1",
+                    IdType = SelectedIdType.ID,//"ZS0018",
+                    Idnumber = IdNumber,
+                    Firstname = Name,
+                    Lastname = ".",
+                    PostCode1 = PostalCode,
+                    City1 = _City,
+                    //Country = SelectedCountry.Land1,
+                    //Region = SelectedRegion.Land1,
+                    Region = _Region,
+                    //Country = SelectedGCCCountry.CountryCode,
+                    Country = _Country,
+                    Building = BuildingNumber,
+                    Floor = "",
+                    Street = "",
+                    Begda = "/Date(1593139376000)/",
+                    Endda = "/Date(253402251010000)/",
+                    Email = Email,
+                    Mobile = "00966" + "564692664",
+                    CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    //Birthdt = "" + "/Date(" + unixTime + ")/",//"/Date(1577846576000)/",
+                    Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
+                    Password = Password,
+                    SmsCode = OTP,
+                    EmailCode = "",
+                    Submit = submitValue,
+
+
+
+
+                    //Type = "1",
+                    //IdType = SelectedIdType.ID,//"ZS0018",
+                    //Idnumber = "11111112221",
+                    //Firstname = "Ashish",
+                    //Lastname = "Ranjan",
+                    //PostCode1 = "00000",
+                    //City1 = "",
+                    //Country = "OM",
+                    //Region = "",
+                    //Building = "",
+                    //Floor = "",
+                    //Street = "",
+                    //Begda = "/Date(1593139376000)/",
+                    //Endda = "/Date(253402251010000)/",
+                    //Email = "abc@gmail.com",
+                    //Mobile = "00966546825230",
+                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    //Birthdt = "/Date(1577846576000)/",
+                    //Password = "",
+                    //SmsCode = "",
+                    //EmailCode = "",
+                    //Submit = "",
+                };
+
+                //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
+                string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
+                vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(response);
+                if (vatSignUpSubmit == null)
+                {
+                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
+                    StringBuilder Message = new StringBuilder();
+                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                    {
+                        if (itemerror.code.Contains("ZD_PUSR"))
+                        {
+                            if (Message.Length > 0)
+                            {
+                                Message.Append(Environment.NewLine);
+                            }
+                            Message.Append(itemerror.message);
+                        }
+                    }
+                    _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                }
+                else
+                {//success
+                 //_navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                    if (currentStep == 4)
+                    {
+
+                        SummeryView = false;
+                        PasswordView = true;
+
+                        currentStep++;
+
+                    }
+                    else if (currentStep == 5)
+                    {
+                        PasswordView = false;
+                        currentStep = 1;
+
+                        _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
+                    }
+
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+        }
         public async Task SetRequestObject()
         {
-            TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-            string unixTime = span.TotalSeconds.ToString("N0");
-            unixTime = unixTime.Replace(",", "");
-          string dd = "" + "/Date(" + unixTime + ")/";// need to
-            string submitValue;
-            if (currentStep == 4)
+
+            try
             {
-                 submitValue = "";
+                //TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+                //string unixTime = span.TotalSeconds.ToString("N0");
+                //unixTime = unixTime.Replace(",", "");
+                var dateTime = new DateTime(2015, 05, 24, 10, 2, 0, DateTimeKind.Local);
+                var dateTimeOffset = new DateTimeOffset(dateTime);
+                var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                string dd = "" + "/Date(" + unixDateTime + ")/";// need to
+                string submitValue;
+                if (currentStep == 4)
+                {
+                    submitValue = "";
+                }
+                else
+                {
+                    submitValue = "X";
+                }
+
+
+
+
+                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                {
+                    // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
+                    Type = "1",
+                    IdType = SelectedIdType.ID,//"ZS0018",
+                    Idnumber = IdNumber,
+                    Firstname = Name,
+                    Lastname = ".",
+                    PostCode1 = PostalCode,
+                    // City1 =CityName,
+                    City1 = " ",
+                    Country = SelectedGCCCountry.CountryCode,
+                    // Region = SelectedRegion.Land1,
+                    Region = " ",
+                    Building = BuildingNumber,
+                    Floor = "",
+                    Street = "",
+                    Begda = "/Date(1593139376000)/",
+                    Endda = "/Date(253402251010000)/",
+                    Email = Email,
+                    Mobile = "00966" + "546825230",
+                    CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    // Birthdt = "" + "/Date(" + unixTime + ")/",//"/Date(1577846576000)/",
+                    Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
+                    Password = Password,
+                    SmsCode = OTP,
+                    EmailCode = "",
+                    Submit = submitValue,
+
+
+
+
+                    //Type = "1",
+                    //IdType = SelectedIdType.ID,//"ZS0018",
+                    //Idnumber = "11111112221",
+                    //Firstname = "Ashish",
+                    //Lastname = "Ranjan",
+                    //PostCode1 = "00000",
+                    //City1 = "",
+                    //Country = "OM",
+                    //Region = "",
+                    //Building = "",
+                    //Floor = "",
+                    //Street = "",
+                    //Begda = "/Date(1593139376000)/",
+                    //Endda = "/Date(253402251010000)/",
+                    //Email = "abc@gmail.com",
+                    //Mobile = "00966546825230",
+                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
+                    //Birthdt = "/Date(1577846576000)/",
+                    //Password = "",
+                    //SmsCode = "",
+                    //EmailCode = "",
+                    //Submit = "",
+                };
+
+               // VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
+
+                string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
+                vatSignUpSubmit = JsonConvert.DeserializeObject<VATSignUpSubmit>(response);
+                if (vatSignUpSubmit == null)
+                {
+                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
+                    StringBuilder Message = new StringBuilder();
+                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
+                    {
+                        if (itemerror.code.Contains("ZD_PUSR"))
+                        {
+                            if (Message.Length > 0)
+                            {
+                                Message.Append(Environment.NewLine);
+                            }
+                            Message.Append(itemerror.message);
+                        }
+                    }
+                    _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                }
+                else
+                {//success
+                 //_navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                    PasswordView = false;
+                    currentStep = 1;
+                    
+                    _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
+                }
             }
-            else
-            {
-                 submitValue = "X";
+            catch (Exception ex)
+            { 
+            
             }
-            
-
-       
-
-            VATSignUpSubmit vATSignUpSubmit =  new VATSignUpSubmit
-            {
-               // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
-                Type ="1",
-                IdType = SelectedIdType.ID,//"ZS0018",
-                Idnumber = IdNumber,
-                Firstname =Name,
-                Lastname = ".",
-                PostCode1 = PostalCode,
-                City1 =CityName,
-                Country = SelectedCountry.Land1,
-                Region = SelectedRegion.Land1,
-                Building = BuildingNumber,
-                Floor = "",
-                Street ="" ,
-                Begda = "/Date(1593139376000)/",
-                Endda = "/Date(253402251010000)/",
-                Email = Email,
-                Mobile = "00966"+ "546825230",
-                CaseGuid =SignUpCaseIdD.d.results[0].CaseGuid,
-                Birthdt = "" + "/Date(" + unixTime + ")/",//"/Date(1577846576000)/",
-            Password =Password,
-                SmsCode = OTP,
-                EmailCode = "",
-                Submit = submitValue,
-            
-                
-              
-
-                //Type = "1",
-                //IdType = SelectedIdType.ID,//"ZS0018",
-                //Idnumber = "11111112221",
-                //Firstname = "Ashish",
-                //Lastname = "Ranjan",
-                //PostCode1 = "00000",
-                //City1 = "",
-                //Country = "OM",
-                //Region = "",
-                //Building = "",
-                //Floor = "",
-                //Street = "",
-                //Begda = "/Date(1593139376000)/",
-                //Endda = "/Date(253402251010000)/",
-                //Email = "abc@gmail.com",
-                //Mobile = "00966546825230",
-                //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-                //Birthdt = "/Date(1577846576000)/",
-                //Password = "",
-                //SmsCode = "",
-                //EmailCode = "",
-                //Submit = "",
-            };
-
-            VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
         }
 
       
