@@ -19,7 +19,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfulPageView;
             this.BindingContext = viewModel;
-            viewModel.TINnumber= TIN
+            viewModel.TINnumber = TIN;
         }
 
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
