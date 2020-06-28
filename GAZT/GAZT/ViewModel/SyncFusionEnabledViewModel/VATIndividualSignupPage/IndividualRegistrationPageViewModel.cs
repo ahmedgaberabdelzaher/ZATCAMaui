@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -395,6 +396,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("Email");
             }
         }
+        private string _confirmEmail = string.Empty;
+        public string ConfirmEmail
+        {
+            get
+            {
+                return _confirmEmail;
+            }
+            set
+            {
+                _confirmEmail = value;
+                RaisePropertyChanged("ConfirmEmail");
+            }
+        }
 
         private string _mobileNumber = string.Empty;
         public string MobileNumber
@@ -581,6 +595,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _selectedRegion = value;
+                if (_selectedRegion != null)
+                {
+                    SetCityList();
+                }
 
                 RaisePropertyChanged("SelectedRegion");
             }
@@ -920,6 +938,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 else if (currentStep == 4)
                 {
+
                     SummeryView = false;
                     PasswordView = true;
                     currentStep++;
@@ -1033,6 +1052,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (!SelectedIdType.ID.Equals("ZS0018"))
                 {
                     RegionList = vATSignUpData.d.State_dropdownSet.results;
+                    RegionList= vATSignUpData.d.State_dropdownSet.results.Where(x => x.Land1 == "").ToList();
                 }
             }
             catch (Exception ex)
@@ -1049,7 +1069,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 if (!SelectedIdType.ID.Equals("ZS0018"))
                 {
+
                     CityList = vATSignUpData.d.city_dropdownSet.results;
+                    string selectedRegioncode = SelectedRegion.Bland;
+
+                    CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
                 }
             }
             catch(Exception ex)
@@ -1125,6 +1149,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                  submitValue = "X";
             }
+            
+
        
 
             VATSignUpSubmit vATSignUpSubmit =  new VATSignUpSubmit
@@ -1134,7 +1160,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IdType = SelectedIdType.ID,//"ZS0018",
                 Idnumber = IdNumber,
                 Firstname =Name,
-                Lastname = "",
+                Lastname = ".",
                 PostCode1 = PostalCode,
                 City1 =CityName,
                 Country = SelectedCountry.Land1,

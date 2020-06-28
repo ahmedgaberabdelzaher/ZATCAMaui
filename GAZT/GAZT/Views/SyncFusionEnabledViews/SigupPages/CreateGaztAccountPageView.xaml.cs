@@ -219,7 +219,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void EntryPass_TextChanged(object sender, TextChangedEventArgs e)
         {
-            frmPass.HasError = false;
+             frmPass.HasError = false;
         }
     }
 }
