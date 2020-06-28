@@ -99,9 +99,9 @@
                             <ColumnDefinition Width="80*"/>
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <inputLayout:SfTextInputLayout x:Name="FrmName"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmName"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailName}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1"  HelperText="{x:Static local:AppResources.ZZZRequired}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
@@ -109,14 +109,14 @@
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <StackLayout HorizontalOptions="FillAndExpand" x:Name="reporterMobStackLayout" Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
+                        <StackLayout HorizontalOptions="FillAndExpand" x:Name="reporterMobStackLayout" Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2" Orientation="Horizontal">
                             <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
                                 <Entry FontSize="Small" Keyboard="Telephone"  Text="+966" IsReadOnly="True" IsSpellCheckEnabled="False"/>
                             </inputLayout:SfTextInputLayout>
-                            <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                            <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="20,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -128,7 +128,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="1"  Grid.Column="0"  x:Name="reporterMobStackLayoutAr" Grid.ColumnSpan="2" Orientation="Horizontal">
-                            <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}" HelperText="{x:Static local:AppResources.ZZZRequired}" HorizontalOptions="FillAndExpand"  Margin="10,-6,10,-6"
+                            <inputLayout:SfTextInputLayout x:Name="FrmNumberAr" Hint="{x:Static local:AppResources.ZTERReportDetailNumber}"  HorizontalOptions="FillAndExpand"  Margin="10,-6,10,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                 <custom:BorderlessEntry  x:Name="TMobNumberAr" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="9">
@@ -137,21 +137,21 @@
                                     </Entry.Behaviors>
                                 </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
-                            <inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
+                            <!--<inputLayout:SfTextInputLayout HorizontalOptions="Start" Margin="10,-6,0,-6"
     ContainerType="Outlined" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" UnfocusedColor="#B1B1B1" >
-                                <Entry x:Name="TmobcountrycodeAr" FontSize="Small"  Keyboard="Telephone"  Text="9665+" IsReadOnly="True" IsSpellCheckEnabled="False"/>
-                            </inputLayout:SfTextInputLayout>
+                                <Entry x:Name="TmobcountrycodeAr" FontSize="Small"  Keyboard="Telephone"  Text="966+" IsReadOnly="True" IsSpellCheckEnabled="False"/>
+                            </inputLayout:SfTextInputLayout>-->
                         </StackLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmEmail"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                       <!-- <inputLayout:SfTextInputLayout x:Name="FrmEmail"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailEMail}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TEmail" FontSize="Small"  Unfocused="TEmail_Unfocused" Text="{Binding TEmail}" IsSpellCheckEnabled="False" >
                             </custom:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFName"   Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityName}" HelperText="{x:Static local:AppResources.ZZZRequired}"
+                        </inputLayout:SfTextInputLayout>-->
+                        <inputLayout:SfTextInputLayout x:Name="FrmFName"   Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+    Hint="{x:Static local:AppResources.ZTERReportDetailFacilityName}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFaciName" IsSpellCheckEnabled="False" FontSize="Small"   Text="{Binding TFaciName}"  Unfocused="TFaciName_Unfocused">
@@ -160,7 +160,7 @@
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFOName"   Grid.Row="4"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                       <!-- <inputLayout:SfTextInputLayout x:Name="FrmFOName"   Grid.Row="4"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityOwnerName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -169,7 +169,7 @@
                                     <custom1:AlphabetandArabicCharacters/>
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
-                        </inputLayout:SfTextInputLayout>
+                        </inputLayout:SfTextInputLayout>-->
                         <!--<inputLayout:SfTextInputLayout  HelperText="{x:Static local:AppResources.ZZZRequired}" Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFacilityType}"
     ContainerType="Outlined" x:Name="FrmFType" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
@@ -206,24 +206,24 @@
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>-->
                         <!--SelectedItem="{Binding SelectedTaxEvasionCompanyType}"-->
-                        <inputLayout:SfTextInputLayout x:Name="FrmFDAddress"   Grid.Row="5"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmFDAddress"   Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFDAddress}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFDAdress" FontSize="Small" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmFSAddress"   Grid.Row="6"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmFSAddress"   Grid.Row="7"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFSAddress}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFSAddress" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}"  MaxLength="100">
                             </custom:BorderlessEntry>
                             <!--FontAttributes="Bold"-->
                         </inputLayout:SfTextInputLayout>
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailRegion}" HelperText="{x:Static local:AppResources.ZZZRequired}" x:Name="frmRegionPicker"
-    ContainerType="Outlined" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+    Hint="{x:Static local:AppResources.ZTERReportDetailRegion}"  x:Name="frmRegionPicker"
+    ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry" IsSpellCheckEnabled="False" FontSize="Small">
                             </custom:BorderlessEntry>
@@ -286,8 +286,8 @@ HeaderTextColor="White"
                         </syncfusion:SfPicker>
                        <!--SelectedItem="{Binding SelectedTaxEvasionRegion,Mode=TwoWay}"-->
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" HelperText="{x:Static local:AppResources.ZZZRequired}"
-    ContainerType="Outlined" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
+    Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" 
+    ContainerType="Outlined" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontSize="Small"  x:Name="City_entry">
                             </custom:BorderlessEntry>
@@ -351,7 +351,7 @@ HeaderTextColor="White"
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
                         <!--SelectedItem="{Binding SelectLCType,Mode=TwoWay}"-->
-                        <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
+                       <!-- <buttons:SfCheckBox x:Name="checkBox" IsChecked="{Binding IsTIN}" Text="{x:Static local:AppResources.ZZAlreadyhaveTIN}"  HorizontalOptions="StartAndExpand" Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Margin="5,3,5,3"/>
                         <StackLayout Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsTINVisible}" x:Name="IsTIN">
                             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   >
                                 <Grid.RowDefinitions>
@@ -359,15 +359,15 @@ HeaderTextColor="White"
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"/>
-                                </Grid.ColumnDefinitions>
-                                <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                                </Grid.ColumnDefinitions>-->
+                                <inputLayout:SfTextInputLayout x:Name="FrmTIN"   Grid.Row="9"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZZTIN}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10"   Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused"  IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
-                            </Grid>
-                        </StackLayout>
+                            <!--</Grid>
+                        </StackLayout>-->
                         <!--<Label Grid.Row="28"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <Label.FormattedText>
                                 <FormattedString>
@@ -379,7 +379,7 @@ HeaderTextColor="White"
                         <Frame  Grid.Row="29"    Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmID">
                         </Frame>
                         <custom:GAZTBorderlessEntry  Grid.Row="29"  Grid.Column="0"  Grid.ColumnSpan="2"   Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="{Binding TID}" x:Name="TID" Placeholder=" " Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>-->
-                        <inputLayout:SfTextInputLayout x:Name="FrmID"   Grid.Row="11"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <!--<inputLayout:SfTextInputLayout x:Name="FrmID"   Grid.Row="11"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailID}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -387,7 +387,7 @@ HeaderTextColor="White"
                                                          Text="{Binding TID}" x:Name="TID"  Unfocused="TID_Unfocused"
                                                          MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
                             
-                        </inputLayout:SfTextInputLayout>
+                        </inputLayout:SfTextInputLayout>-->
                         <!--<inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}" IsVisible="{Binding IsVisibleForReportDisplay}"
     ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor="#B1B1B1"
@@ -421,21 +421,21 @@ ItemHeight="45" ShowFooter="True"
                                 <custom1:SfPickerBehavior />
                             </custom1:CustomDatePicker.Behaviors>
                         </custom1:CustomDatePicker>-->
-                        <inputLayout:SfTextInputLayout x:Name="FrmVAT"   Grid.Row="12"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmVAT"   Grid.Row="3"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailVATNumber}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry   IsSpellCheckEnabled="False" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmReportDetail"   Grid.Row="13"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmReportDetail"   Grid.Row="10"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailReportDetails}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Editor  MaxLength="3000" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" x:Name="TReportDetail" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmTFW"   Grid.Row="14"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmTFW"   Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFWType}"
-    ContainerType="Outlined" UnfocusedColor="#B1B1B1" HelperText="{x:Static local:AppResources.ZZZRequired}"
+    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  IsSpellCheckEnabled="False" x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
@@ -696,7 +696,7 @@ ItemHeight="45" ShowFooter="True"
                 </Frame>-->
                 <!--<Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
-                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
                 </StackLayout>
             </Grid>
             <!--Activity indicator-->

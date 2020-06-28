@@ -448,6 +448,25 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 }
             }
         }
+        private string _tCategory = string.Empty;
+        public string TCategory
+        {
+            get
+            {
+                return _tCategory;
+            }
+            set
+            {
+                try
+                {
+                    _tCategory = value;
+                    RaisePropertyChanged("TCategory");
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
         private string _tMobNumber = string.Empty;
         public string TMobNumber
         {
