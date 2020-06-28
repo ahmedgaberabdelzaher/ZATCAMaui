@@ -119,13 +119,13 @@
                                             <Label Text=""  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="Please refer to the "/>
-                                                        <Span Text="VAT FAQ " TextColor="Blue">
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="Blue">
                                                             <Span.GestureRecognizers>
                                                                 <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
                                                             </Span.GestureRecognizers>
                                                         </Span>
-                                                        <Span Text="section in the GAZT website before filling out this application form."/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>

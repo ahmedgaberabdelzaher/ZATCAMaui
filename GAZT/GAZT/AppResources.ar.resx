@@ -3677,4 +3677,13 @@
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
   </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>لرجاء الاطلاع على صفحة</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>الأسئلة والأجوبة لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
+  </data>
 </root>

@@ -3694,4 +3694,13 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>Start Date</value>
   </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>Please refer to the</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>VAT FAQ</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>section in the GAZT website before filling out this application form.</value>
+  </data>
 </root>
