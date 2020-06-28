@@ -90,8 +90,12 @@
                                     <ColumnDefinition Width="50*" />
                                     <ColumnDefinition Width="50*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{x:Static local:AppResources.EnterVerificationCodeTitle}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
-                                <Label Text="{Binding OTPSentOnThisText}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                <Label Text="{x:Static local:AppResources.EnterVerificationCodeTitle}" Margin="0,0,0,30" Style="{StaticResource LabelStyle}"
+                                       FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="0" Grid.Column="0"
+                                       Grid.ColumnSpan="2"/>
+                                <Label BackgroundColor="Green" Text="{Binding OTPSentOnThisText}" Style="{StaticResource LabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                                 <!--<Label Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.UserName}" Style="{StaticResource GAZTSmallGreenLabelStyle}" HorizontalOptions="Start" VerticalOptions="Center" >
                         </Label>
                         <Frame Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Style="{StaticResource GAZTFrameStyleForEntry}" >
@@ -126,7 +130,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>-->
-                                <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
+                                <inputLayout:SfTextInputLayout   x:Name="enterOtp"  Grid.Row="2"  Grid.Column="0"  Grid.ColumnSpan="2" WidthRequest="100"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.VarificationCode}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >

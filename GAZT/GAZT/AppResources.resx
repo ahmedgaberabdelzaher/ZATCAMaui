@@ -613,6 +613,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
     <value>Total partially paid bills</value>
   </data>
+  <data name="NoReportsAvailable" xml:space="preserve">
+    <value>You don't have any reports</value>
+  </data>
   <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>Total partial paid bills amount</value>
   </data>
@@ -2440,6 +2443,10 @@ Should we require further information, we would be in contact.</value>
     <value>Please fill the mandatory fields.</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZTEAddReport" xml:space="preserve">
+    <value>Add Report</value>
+    <comment>Add Report</comment>
+  </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
     <value>There already exists an account associated with this information, please signup as a new user</value>
     <comment>Sign Up</comment>
@@ -2708,7 +2715,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>The report is submitted successfully with reference number (Report Number), you will receive GAZT response within 5 working days</value>
+    <value>The report is submitted successfully with reference number (Report Number), soon you will receive GAZT response.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -3528,6 +3535,10 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZZUnitNumber" xml:space="preserve">
     <value>Unit Number</value>
     <comment>New SignUp</comment>
+  </data>
+      <data name="ZTEReportAttachmentTitle" xml:space="preserve">
+    <value>Please attach documents which can be bills, images</value>
+    <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
     <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>

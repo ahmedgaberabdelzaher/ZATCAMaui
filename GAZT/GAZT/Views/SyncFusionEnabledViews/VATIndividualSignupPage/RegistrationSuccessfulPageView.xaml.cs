@@ -14,11 +14,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     public partial class RegistrationSuccessfulPageView : ContentPage
     {
         RegistrationSuccessfulPageViewModel viewModel;
-        public RegistrationSuccessfulPageView()
+        public RegistrationSuccessfulPageView(string TIN)
         {
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfulPageView;
             this.BindingContext = viewModel;
+            viewModel.TINnumber= TIN
         }
 
         private void btnVATRegistration_Clicked(object sender, EventArgs e)

@@ -2,6 +2,9 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
 using GAZT.Models;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -14,23 +17,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
         TaxEvasionReportTypePageViewModel viewModel;
         private double width = 0;
         private double height = 0;
-        public TaxEvasionReportTypePageView(string MobileNumber)
+        public TaxEvasionReportTypePageView(string mobileNumber)
         {
             viewModel = App.Locator.TaxEvasionReportTypePageView;
             InitializeComponent();
             ChangeAeroIcon();
-            MainLayout.Padding = new Thickness(0, 0, 0, 0);
+            //MainLayout.Padding = new Thickness(0, 0, 0, 0);
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.TaxEvasionListobj = new TaxEvasionReportDetails();
+            
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = false;
             viewModel.CategorySelected_Index = "0";
-            viewModel.MobileNumber = MobileNumber;
+            viewModel.MobileNumber = mobileNumber;
             SetLTR();
             viewModel.IsnextbuttonEnable = false;
             //viewModel.onPageLoad();
@@ -47,28 +46,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
                     if (width > height)
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(false);
-                        MainLayout.Padding = new Thickness(40, 0, 40, 0);
+                        //MainLayout.Padding = new Thickness(40, 0, 40, 0);
                     }
                     else
                     {
                         On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-                        MainLayout.Padding = new Thickness(0, 0, 0, 0);
+                        //MainLayout.Padding = new Thickness(0, 0, 0, 0);
                     }
                 }
                 //reconfigure layout
             }
         }
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = false;
             viewModel.CategorySelected_Index = "0";
             viewModel.NextbuttonDisableColor= Color.FromHex("#9EA4A9");
             viewModel.IsnextbuttonEnable = false;
+            await viewModel.OnPageLoad();
         }
         private void SetLTR()
         {
@@ -84,6 +79,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
         }
         private void Button_Clicked(object sender, EventArgs e)
         {
+
         }
         private void BackButtonClicked(object sender, EventArgs e)
         {
@@ -92,61 +88,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
                 Navigation.RemovePage(pg);
             }
-           // viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, viewModel.MobileNumber);
-            //for (int index = Navigation.NavigationStack.Count - 2; index > 1; index--)
-            //{
-            //}
         }
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            viewModel.IsimgVisiblec1 = true;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = false;
-            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
-            viewModel.IsnextbuttonEnable = true;
-        }
-        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
-        {
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = true;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = false;
-            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
-            viewModel.IsnextbuttonEnable = true;
-        }
-        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
-        {
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = true;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = false;
-            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
-            viewModel.IsnextbuttonEnable = true;
-        }
-        private void TapGestureRecognizer_Tapped_3(object sender, EventArgs e)
-        {
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = true;
-            viewModel.IsimgVisiblec5 = false;
-            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
-            viewModel.IsnextbuttonEnable = true;
-        }
-        private void TapGestureRecognizer_Tapped_4(object sender, EventArgs e)
-        {
-            viewModel.IsimgVisiblec1 = false;
-            viewModel.IsimgVisiblec2 = false;
-            viewModel.IsimgVisiblec3 = false;
-            viewModel.IsimgVisiblec4 = false;
-            viewModel.IsimgVisiblec5 = true;
-            viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
-            viewModel.IsnextbuttonEnable = true;
-        }
+       
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -157,6 +100,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        void ListView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        {
+            var index = (ReportTypesListView.ItemsSource as ObservableCollection<TaxEvasionCategoriesDataModel>).IndexOf(e.SelectedItem as TaxEvasionCategoriesDataModel);
+            var itemselected = viewModel.ReportTypes[index];
+
+            foreach (var c in viewModel.ReportTypes)
+            {
+                c.IsTypeSelected = false;
+            }
+
+            if (!itemselected.IsTypeSelected)
+            {
+                itemselected.IsTypeSelected = true;
+            }
+
+            ReportTypesListView.ItemsSource = null;
+            ReportTypesListView.ItemsSource = viewModel.ReportTypes;
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel.IsnextbuttonEnable = true;
+                viewModel.NextbuttonDisableColor = Color.FromHex("#005e4b");
+            });
+
+            //var selectedcolors = viewModel.ReportTypes.Where(p => p.IsTypeSelected == true);
         }
     }
 }

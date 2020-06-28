@@ -22,6 +22,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
+        public ICommand NextButtonClicked { get; set; }
         public ICommand SubmitReportClicked { get; set; }
         #endregion 
         private TaxEvasionReportDetails _TaxEvasionReportTobeUsedToSubmit;
@@ -768,8 +769,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             {
                 _navigationService.GoBack();
             });
+       
             SubmitReportClicked = new Xamarin.Forms.Command(() =>
             {
+                IsLoading = false;
+              //  _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, selectedtaxEList);
 
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
@@ -985,6 +989,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         }
         public async Task SubmitCreatedReport()
         {
+
             try
             {
                 string date = DateTime.UtcNow.ToString("dd/MM/yyyy");//1902/03/09
@@ -1022,74 +1027,79 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
                 TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TFaciMobNo;
 
-                TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
-                response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+                TaxEvasionReportDetails tex = TaxEvasionReportTobeUsedToSubmit;
 
-                if (response != null && response.Status == true)
-                {
-                    //ZTEReportReportSuccessResponsep1
-                    var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
-                    var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
-                    var newReplacedMsg = newrm.Replace("5","10");
-                    
-                    await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    var _lastPage = _navigation.NavigationStack.LastOrDefault();
-                    //Remove last page
-                    _navigation.RemovePage(_lastPage);
-                    //Go back 
-                    _navigation.PopAsync();
-                    //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
-                }
-                else
-                {//ZTEReportReportSuccessResponsep2
-                    _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
-                }
+                _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, tex);
             }
-            catch (GAZTException gex)
-            {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
 
-                    _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //viewModel._navigationService.GoBack();
-                });
-            }
+            //    TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
+            //    response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+
+            //    if (response != null && response.Status == true)
+            //    {
+            //        //ZTEReportReportSuccessResponsep1
+            //        var resmessage = AppResources.ZTEReportReportSuccessResponsep1;
+            //        var newrm = resmessage.Replace("Report Number", response.Data.TicketId);
+            //        var newReplacedMsg = newrm.Replace("5","10");
+
+            //        await _dialogService.ShowMessage(newReplacedMsg, AppResources.ZZZSubmittedReport);
+            //        var _navigation = Application.Current.MainPage.Navigation;
+            //        var _lastPage = _navigation.NavigationStack.LastOrDefault();
+            //        //Remove last page
+            //        _navigation.RemovePage(_lastPage);
+            //        //Go back 
+            //        _navigation.PopAsync();
+            //        //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
+            //    }
+            //    else
+            //    {//ZTEReportReportSuccessResponsep2
+            //        _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
+            //    }
+            //}
+            //catch (GAZTException gex)
+            //{
+            //    // Handle the GAZT custom exception.
+            //    string MessageForTheUser = gex.Message;
+            //    if (gex is GAZTInvalidDataException)
+            //    {
+            //        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+            //    }
+            //    if (gex is GAZTNetworkConnectivityIssueException)
+            //    {
+            //        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+            //    }
+            //    else if (gex is GAZTInternetException)
+            //    {
+            //        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+            //    }
+            //    else if (gex is GAZTSessionExpiredException)
+            //    {
+            //        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+            //    }
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await Task.Run(() =>
+            //        {
+            //            IsLoading = false;
+            //        });
+
+            //        _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+            //        //viewModel._navigationService.GoBack();
+            //    });
+            //}
             catch (Exception)
             {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
+                //    Device.BeginInvokeOnMainThread(async () =>
+                //    {
+                //        await Task.Run(() =>
+                //        {
+                //            IsLoading = false;
+                //        });
 
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                });
+                //        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                //    });
             }
-        }
+            }
         public void CreateCompanyTypeList()
         {
             try
