@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel
 {
@@ -32,6 +36,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 //if (_selectedTaxEvasionListItem != null)
                 //{ passSelectedTaxEvasionItem(); }
                 RaisePropertyChanged("TaxEvasionListobj");
+            }
+        }
+
+        private ObservableCollection<TaxEvasionCategoriesDataModel> _reportTypes = null;
+        public ObservableCollection<TaxEvasionCategoriesDataModel> ReportTypes
+        {
+            get
+            {
+                return _reportTypes;
+            }
+            set
+            {
+                _reportTypes = value;
+
+                //if (_selectedTaxEvasionListItem != null)
+                //{ passSelectedTaxEvasionItem(); }
+                RaisePropertyChanged("ReportTypes");
+            }
+        }
+
+        private TaxEvasionCategoriesDataModel _selectedReportTypeListItem;
+        public TaxEvasionCategoriesDataModel SelectedReportTypeListItem
+        {
+            get
+            {
+                return _selectedReportTypeListItem;
+            }
+            set
+            {
+                try
+                {
+                    _selectedReportTypeListItem = value;
+
+                    if (_selectedReportTypeListItem != null)
+                    {
+                        //_selectedReportTypeListItem.IsTypeSelected = true;
+
+                        //ObservableCollection<TaxEvasionCategoriesDataModel> tempReportType = ReportTypes;
+
+                        //foreach (TaxEvasionCategoriesDataModel taxEvasionCategoriesDataModel in tempReportType)
+                        //{
+                        //    if(taxEvasionCategoriesDataModel.Id == _selectedReportTypeListItem.Id)
+                        //    {
+                        //        taxEvasionCategoriesDataModel.IsTypeSelected = true;
+                        //    }
+                        //    else
+                        //    {
+                        //        taxEvasionCategoriesDataModel.IsTypeSelected = false;
+                        //    }
+                        //}
+
+                        //ReportTypes = tempReportType;
+                        //passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
+                    }
+
+                    RaisePropertyChanged("SelectedReportTypeListItem");
+                }
+                catch (Exception ex)
+                {
+                }
             }
         }
         private Color _nextbuttonDisableColor = Color.FromHex("#005e4b");
@@ -101,71 +165,90 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 RaisePropertyChanged("IsLoading");
             }
         }
-        private bool _isimgVisiblec1 = false;
-        public bool IsimgVisiblec1
+
+        public async Task OnPageLoad()
         {
-            get
+            try
             {
-                return _isimgVisiblec1;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                TaxEvasionCategoriesModel rootObject = await WebServiceManager.GAZTTaxEvasionGetCategories();
+                PopToRootPage();
+                if (rootObject != null)
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    if(rootObject.Data != null)
+                    {
+                        ReportTypes = new ObservableCollection<TaxEvasionCategoriesDataModel>();
+                        foreach (TaxEvasionCategoriesDataModel taxEvasionCategoriesDataModel in rootObject.Data)
+                        {
+                            ReportTypes.Add(taxEvasionCategoriesDataModel);
+                        }
+                    }
+                    else
+                    {
+                        _navigationService.GoBack();
+                    }
+                }
+                else
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                }
             }
-            set
+            catch (GAZTException gex)
             {
-                _isimgVisiblec1 = value;
-                RaisePropertyChanged("IsimgVisiblec1");
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
             }
         }
-        private bool _isimgVisiblec2 = false;
-        public bool IsimgVisiblec2
-        {
-            get
-            {
-                return _isimgVisiblec2;
-            }
-            set
-            {
-                _isimgVisiblec2 = value;
-                RaisePropertyChanged("IsimgVisiblec2");
-            }
-        }
-        private bool _isimgVisiblec3 = false;
-        public bool IsimgVisiblec3
-        {
-            get
-            {
-                return _isimgVisiblec3;
-            }
-            set
-            {
-                _isimgVisiblec3 = value;
-                RaisePropertyChanged("IsimgVisiblec3");
-            }
-        }
-        private bool _isimgVisiblec4 = false;
-        public bool IsimgVisiblec4
-        {
-            get
-            {
-                return _isimgVisiblec4;
-            }
-            set
-            {
-                _isimgVisiblec4 = value;
-                RaisePropertyChanged("IsimgVisiblec4");
-            }
-        }
-        private bool _isimgVisiblec5 = false;
-        public bool IsimgVisiblec5
-        {
-            get
-            {
-                return _isimgVisiblec5;
-            }
-            set
-            {
-                _isimgVisiblec5 = value;
-                RaisePropertyChanged("IsimgVisiblec5");
-            }
-        }
+
         public TaxEvasionReportTypePageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             try
@@ -190,6 +273,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                         });
                     }
                 });
+
                 //Device.BeginInvokeOnMainThread(async () =>
                 //{
                 //    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -213,6 +297,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
             }
             catch (Exception ex)
             {
+
             }
         }
 
@@ -226,6 +311,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 }
                 catch (Exception ex)
                 {
+
                 }
             }
         }
@@ -238,49 +324,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
             });
             Task.Run(() =>
             {
-                CategorySelected_Index = "0";
-                if (IsimgVisiblec1 == true)
+                TaxEvasionListobj = new TaxEvasionReportDetails();
+                TaxEvasionListobj.Category = SelectedReportTypeListItem.Id.ToString();
+                TaxEvasionListobj.CategoryTitle = SelectedReportTypeListItem.Title;
+
+                if (!string.IsNullOrEmpty(MobileNumber))
                 {
-                    CategorySelected_Index = "1";
-                }
-                else if (IsimgVisiblec2 == true)
-                {
-                    CategorySelected_Index = "2";
-                }
-                else if (IsimgVisiblec3 == true)
-                {
-                    CategorySelected_Index = "3";
-                }
-                else if (IsimgVisiblec4 == true)
-                {
-                    CategorySelected_Index = "4";
-                }
-                else if (IsimgVisiblec5 == true)
-                {
-                    CategorySelected_Index = "5";
-                }
-                if (CategorySelected_Index != "0")
-                {
-                    TaxEvasionListobj = new TaxEvasionReportDetails();
-                    TaxEvasionListobj.Category = CategorySelected_Index;
-                    if (!string.IsNullOrEmpty(MobileNumber))
+                    TaxEvasionListobj.PhoneNumber = MobileNumber;
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        TaxEvasionListobj.PhoneNumber = MobileNumber;
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            IsLoading = false;
-                            _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
-                        });
-                    }
-                }
-                else
-                {
-                    IsLoading = false;
-                    //IsLoading = false;
+                        IsLoading = false;
+                        _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, TaxEvasionListobj);
+                    });
                 }
             });
-
         }
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

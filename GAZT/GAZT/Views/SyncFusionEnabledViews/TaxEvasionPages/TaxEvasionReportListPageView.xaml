@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:local="clr-namespace:EGAZT;assembly:GAZT" 
+             xmlns:local="clr-namespace:EGAZT" 
              xmlns:local1="clr-namespace:GAZT" 
               xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
              Title="{x:Static local:AppResources.ZTEReportReportScreenTitle}"
@@ -39,13 +39,6 @@
                              Text="{DynamicResource StyleReverseBack}"
                              />
                     </controls:TitleView.LeadingView>
-                    <controls:TitleView.TrailingView>
-                        <Image Source="{TemplateBinding BindingContext.AddIcon}">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.AddButtonClicked}"></TapGestureRecognizer>
-                            </Image.GestureRecognizers>
-                        </Image>
-                    </controls:TitleView.TrailingView>
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
@@ -58,7 +51,7 @@
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="2" >
+        <tabview:SfTabView Margin="0,0,0,2" x:Name="simTab" VisibleHeaderCount="3" SelectionChanged="simTab_SelectionChanged" >
             <tabview:SfTabView.SelectionIndicatorSettings>
                 <tabview:SelectionIndicatorSettings
                     Color="DarkGreen" 
@@ -113,8 +106,8 @@
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" 
- FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-  Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
+                                                                             FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                                              Text="{x:Static local:AppResources.ZTEReportReportNumber}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}"
  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
  Text=" : "></Span>
@@ -150,7 +143,7 @@
                                                                     <FormattedString>
                                                                                 <Span  Style="{StaticResource MicroGrayLabelStyleNew}" 
  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
-  Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
+  Text="{x:Static local:AppResources.ZTEReportCompanyName}"></Span>
                                                                                 <Span  Style="{StaticResource MicroGrayLabelStyleNew}" 
  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
  Text=" : "></Span>
@@ -184,7 +177,9 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforOpen}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="Medium"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                        Text="{x:Static local:AppResources.NoReportsAvailable}" Style="{StaticResource MiniBlackLabelStyle}"
+                                                        HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforOpen}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
@@ -321,7 +316,7 @@
                                                            >
                                                                 <local1:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTERReportDetailFacilityName}"></Span>
+                                                                                <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text="{x:Static local:AppResources.ZTEReportCompanyName}"></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNew}" FontSize="12" Text=" : "></Span>
                                                                                 <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" FontSize="12" Text="{Binding CompanyName}"></Span>
                                                                     </FormattedString>
@@ -349,11 +344,22 @@
                                     </ListView.ItemTemplate>
                                 </ListView>
                             </StackLayout>
-                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.Nodataavailable}" Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
+                                    <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="Medium"
+                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.NoReportsAvailable}"
+                                                        Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center"
+                                                        IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
                             </local1:CustomLabel>
                         </Grid>
                     </tabview:SfTabItem.Content>
                 </tabview:SfTabItem>
+                <tabview:SfTabItem Title="{x:Static local:AppResources.ZTEAddReport}"  
+                             TitleFontSize="14"
+                             SelectionColor="DarkGreen"
+                             FontIconFontColor="#FF00AFF0"
+                                   TitleFontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                              TitleFontColor="Gray">
+                        
+                    </tabview:SfTabItem>
             </tabview:SfTabView.Items>
         </tabview:SfTabView>
 </Grid>

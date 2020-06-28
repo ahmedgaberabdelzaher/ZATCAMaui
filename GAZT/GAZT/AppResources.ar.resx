@@ -621,6 +621,9 @@
   <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
+   <data name="NoReportsAvailable" xml:space="preserve">
+    <value>لا يوجد تقارير متاحة</value>
+  </data>
   <data name="Nodataavailable" xml:space="preserve">
     <value>لا تتوفر بيانات</value>
   </data>
@@ -2453,6 +2456,10 @@
   <data name="ZTERChooseReportCategory" xml:space="preserve">
     <value>الرجاء إختيار نوع الإقرار</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEAddReport" xml:space="preserve">
+    <value>إضافة تقرير</value>
+    <comment>Add Report</comment>
   </data>
   <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
     <value>التالي</value>

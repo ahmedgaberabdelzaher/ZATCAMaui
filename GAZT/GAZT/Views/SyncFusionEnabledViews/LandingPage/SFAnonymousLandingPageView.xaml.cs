@@ -118,7 +118,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 base.OnAppearing();
-
+                
                 if (!App.IsJailBrokenDevice)// Checking Jail Broken Device
                 {
                     int transitionCount = 0;
