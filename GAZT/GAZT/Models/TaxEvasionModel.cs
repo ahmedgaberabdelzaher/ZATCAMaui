@@ -254,7 +254,16 @@ namespace EGAZT.Models
             }
             set
             {
-                _createdAt = value;
+                string json = string.Empty;
+                if (value.Contains("/"))
+                {
+                    DateTime date = DateTime.ParseExact(value, "dd/MM/yyyy", new CultureInfo("en-US"));
+                    json = JsonConvert.SerializeObject(date,
+                           new IsoDateTimeConverter() { DateTimeFormat = "dd-MMMM-yyyy" });
+                    json = json.Replace("\"", "");
+                    
+                }
+                _createdAt = json;
             }
         }
 

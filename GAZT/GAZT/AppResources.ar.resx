@@ -2075,8 +2075,12 @@
     <value>الزكاة و ضريبة الدخل</value>
     <comment>Correspondence</comment>
   </data>
-  <data name="ZZFormBundleStatus" xml:space="preserve">
+  <!--<data name="ZZFormBundleStatus" xml:space="preserve">
     <value>حالة الطلب</value>
+    <comment>Form Bundle</comment>
+  </data>-->
+      <data name="ZZFormBundleStatus" xml:space="preserve">
+    <value>الاستعلام عن حالة الطلب</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
@@ -2453,14 +2457,19 @@
     <value>حساب جديد</value>
     <comment>New Account</comment>
   </data>
-  <data name="ZTERChooseReportCategory" xml:space="preserve">
-    <value>الرجاء إختيار نوع الإقرار</value>
+  <!--<data name="ZTERChooseReportCategory" xml:space="preserve">
+     <value>الرجاء إختيار نوع الإقرار</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
+        <data name="ZTERChooseReportCategory" xml:space="preserve">
+    <value>الرجاء اختيار نوع الإبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEAddReport" xml:space="preserve">
     <value>إضافة تقرير</value>
     <comment>Add Report</comment>
   </data>
+
   <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
     <value>التالي</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2501,8 +2510,12 @@
     <value>المدينة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTERReportDetailFacilityName" xml:space="preserve">
+  <!--<data name="ZTERReportDetailFacilityName" xml:space="preserve">
     <value>اسم المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
+    <data name="ZTERReportDetailFacilityName" xml:space="preserve">
+    <value>اسم المالبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
@@ -2513,6 +2526,7 @@
     <value>عنوان الشارع للمنشأة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+
   <data name="ZTERReportDetailFWType" xml:space="preserve">
     <value>نوع عمل المنشأة</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2689,10 +2703,14 @@
     <value>تاريخ التقرير</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTEReportReportNumber" xml:space="preserve">
-    <value>رقم التقرير</value>
+      <data name="ZTEReportReportNumber" xml:space="preserve">
+    <value>رقم التالبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+ <!-- <data name="ZTEReportReportNumber" xml:space="preserve">
+    <value>رقم التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
   <data name="ZTEReportReportOpen" xml:space="preserve">
     <value>قائمة</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2701,10 +2719,14 @@
     <value>الإبلاغ عن التهرب في ضريبة القيمة المضافة</value>
     <comment>tax Evasion Report Service</comment>
   </data>
-  <data name="ZTEReportReportStatus" xml:space="preserve">
-    <value>حالة التقرير</value>
+      <data name="ZTEReportReportStatus" xml:space="preserve">
+    <value>حالة الالبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+ <!-- <data name="ZTEReportReportStatus" xml:space="preserve">
+    <value>حالة التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
     <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال 5 أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
@@ -2899,8 +2921,12 @@
   <data name="ZZZMyCommitment" xml:space="preserve">
     <value>التزاماتي</value>
   </data>
-  <data name="ZZZApplicationStatusTitle" xml:space="preserve">
+  <!--<data name="ZZZApplicationStatusTitle" xml:space="preserve">
     <value>حالة الطلب</value>
+    <comment>Title</comment>
+  </data>-->
+    <data name="ZZZApplicationStatusTitle" xml:space="preserve">
+    <value>الاستعلام عن حالة الطلب</value>
     <comment>Title</comment>
   </data>
   <data name="ZZZCorrespondenceTitle" xml:space="preserve">
@@ -3527,6 +3553,10 @@
   <data name="ZZZZUnitNumber" xml:space="preserve">
     <value>Unit Number</value>
     <comment>New SignUp</comment>
+  </data>
+        <data name="ZTEReportAttachmentTitle" xml:space="preserve">
+    <value>نرجو إرفاق الملفات (فواتير أو صور)</value>
+    <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
     <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>

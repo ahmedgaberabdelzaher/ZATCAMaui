@@ -69,6 +69,8 @@ namespace EGAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportMobilePageView = "TaxEvasionReportMobilePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
+        public static string TaxEvasionAttachmentPageView = "TaxEvasionAttachmentPageView";
+
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";
