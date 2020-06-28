@@ -2507,7 +2507,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>المدينة</value>
+    <value>المدينة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <!--<data name="ZTERReportDetailFacilityName" xml:space="preserve">
@@ -2515,28 +2515,28 @@
     <comment>Tax Evasion Report Service</comment>
   </data>-->
     <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>اسم المالبلاغ</value>
+    <value>اسم المالبلاغ *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنطقة للمنشأة</value>
+    <value>عنوان المنطقة للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة</value>
+    <value>عنوان الشارع للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
 
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة</value>
+    <value>نوع عمل المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>اسم مقدم البلاغ</value>
+    <value>اسم مقدم البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>رقم الجوال</value>
+    <value>رقم الجوال*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
@@ -2548,7 +2548,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل البلاغ</value>
+    <value>تفاصيل البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
