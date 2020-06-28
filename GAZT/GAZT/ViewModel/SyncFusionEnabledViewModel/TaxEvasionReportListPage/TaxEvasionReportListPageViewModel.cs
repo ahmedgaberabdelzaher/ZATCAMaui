@@ -229,7 +229,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
         }
         public async Task passSelectedTaxEvasionItem(TaxEvasionReportDetails SelectedTaxEvasionReport)
         {
-         
             try
             {
                 await Task.Run(() =>
@@ -243,11 +242,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 await Task.Run(() =>
                 {
                     Device.BeginInvokeOnMainThread(async () =>
-                 {
+                    {
                         _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
                     });
-
-
                 });
                 await Task.Run(() =>
                 {
@@ -259,7 +256,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             }
             catch (Exception ex)
             { 
-            
             
             }
         }
@@ -275,6 +271,60 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
             }
         }
 
+        public async void NavigateToAddReport()
+        {
+            try
+            {
+                _navigationService.NavigateTo(App.TaxEvasionReportTypePageView, App.TaxEvasionUserData.Mobile);
+            }
+            catch (GAZTException gex)
+            {
+             
+                // Handle the GAZT custom exception.
+                string MessageForTheUser = gex.Message;
+                if (gex is GAZTInvalidDataException)
+                {
+                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                }
+                if (gex is GAZTNetworkConnectivityIssueException)
+                {
+                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                }
+                else if (gex is GAZTInternetException)
+                {
+                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                }
+                else if (gex is GAZTSessionExpiredException)
+                {
+                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
+
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    //viewModel._navigationService.GoBack();
+                });
+            }
+
+        }
+
         public async Task OnPageLoad()
         {
             SetNoDataLabelVisibilityforOpen = false;
@@ -285,7 +335,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 //string test = App.TP.Mobile;
                 TaxEvasionReportsModel rootObject = new TaxEvasionReportsModel();
                 TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
-                taxEvasionSendSmsModel.mobile = MobileNumber;
+                taxEvasionSendSmsModel.mobile = App.TaxEvasionUserData.Mobile;
 
                 rootObject = await WebServiceManager.GAZTTaxEvasionGetAllReportsByMobileNumber(taxEvasionSendSmsModel);
 
@@ -308,8 +358,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                         if (rootObject.Data.Closed.Count() > 0)
                         {
                             TERListReportbymobnoClosed = rootObject.Data.Closed;
-                            
-
                             SetNoDataLabelVisibilityforClose = false;
                         }
                         else

@@ -12,6 +12,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
         TaxEvasionReportListPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
+        private int lastTabSelection = 0;
+
         public TaxEvasionReportListPageView(string mobno)
         {
             viewModel = App.Locator.TaxEvasionReportListPageView;
@@ -98,7 +100,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
         {
             base.OnAppearing();
 
-
             // this.Content = null;
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -107,30 +108,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
                     viewModel.IsLoading = true;
                 });
             });
+
              viewModel.IsLoading = true;
-                    await viewModel.OnPageLoad();
-                
-                    try
-                    {
-                        var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                        foreach (var item in _navigation.NavigationStack)
-                        {
-                            if (item.GetType().Name == App.OTPPageView)
-                            {
-                                _navigation.RemovePage(item);
-                                break;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-            Device.BeginInvokeOnMainThread(async () =>
+             await viewModel.OnPageLoad();
+
+            try
             {
-                await Task.Run(() =>
+                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                foreach (var item in _navigation.NavigationStack)
                 {
-                    viewModel.IsLoading = false;
-                });
+                    if (item.GetType().Name == App.OTPPageView)
+                    {
+                        _navigation.RemovePage(item);
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                simTab.SelectedIndex = lastTabSelection;
+                viewModel.IsLoading = false;
             });
         }
         private void SetLTR()
@@ -177,11 +179,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
+
         private void CertificateLst_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             return;
         }
+
         //protected override bool OnBackButtonPressed() => true;
         protected override bool OnBackButtonPressed()
         {
@@ -192,6 +196,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList
             else
             {
                 return true;
+            }
+        }
+
+        void simTab_SelectionChanged(System.Object sender, Syncfusion.XForms.TabView.SelectionChangedEventArgs e)
+        {
+            if(e.Index == 0 || e.Index == 1)
+            {
+                lastTabSelection = e.Index;
+            }
+
+            if (e.Index == 2)
+            {
+                viewModel.NavigateToAddReport();
             }
         }
     }

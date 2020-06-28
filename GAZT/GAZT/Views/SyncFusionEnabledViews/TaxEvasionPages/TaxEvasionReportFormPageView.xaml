@@ -9,7 +9,7 @@
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
               xmlns:local1="clr-namespace:GAZT"
-               xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+               xmlns:local="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
@@ -39,6 +39,16 @@
                              Text="{DynamicResource StyleReverseBack}"
                              />
                     </controls:TitleView.LeadingView>
+                  <!--      <controls:TitleView.TrailingView>
+                        <Button Text="Next"
+                                x:Name="nextButton"
+                                Command="{TemplateBinding BindingContext.NextButtonClicked}"
+                                 CommandParameter="{x:Reference nextButton}"
+                            CornerRadius="4"
+                            TextColor="#006450">
+                           
+                        </Button>
+                    </controls:TitleView.TrailingView>-->
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
@@ -146,7 +156,7 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFaciName" IsSpellCheckEnabled="False" FontSize="Small"   Text="{Binding TFaciName}"  Unfocused="TFaciName_Unfocused">
                                 <Entry.Behaviors>
-                                    <custom1:OnlyAlphabatesBehaviour/>
+                                    <custom1:AlphabetandArabicCharacters/>
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -156,7 +166,7 @@
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TFaciOwnerName" FontSize="Small" Unfocused="TFaciOwnerName_Unfocused" IsSpellCheckEnabled="False"  Text="{Binding TFaciOwnerName}" >
                                 <Entry.Behaviors>
-                                    <custom1:OnlyAlphabatesBehaviour/>
+                                    <custom1:AlphabetandArabicCharacters/>
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                         </inputLayout:SfTextInputLayout>
@@ -373,7 +383,10 @@ HeaderTextColor="White"
     Hint="{x:Static local:AppResources.ZTERReportDetailID}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  Grid.Row="11"  Grid.Column="0"  Grid.ColumnSpan="2"  Text="{Binding TID}" x:Name="TID"  Unfocused="TID_Unfocused" MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+                            <custom:GAZTBorderlessEntry  Grid.Row="11"  Grid.Column="0"  Grid.ColumnSpan="2"
+                                                         Text="{Binding TID}" x:Name="TID"  Unfocused="TID_Unfocused"
+                                                         MaxLength="10" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+                            
                         </inputLayout:SfTextInputLayout>
                         <!--<inputLayout:SfTextInputLayout Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2"  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.Date}" HelperText="{x:Static local:AppResources.ZZZRequired}" IsVisible="{Binding IsVisibleForReportDisplay}"
@@ -426,12 +439,12 @@ ItemHeight="45" ShowFooter="True"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry  IsSpellCheckEnabled="False" x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
-                                    <custom1:OnlyAlphabatesBehaviour/>
+                                    <custom1:AlphabetandArabicCharacters/>
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <!--Report Location-->
-                            <local1:CustomLabel Grid.Row="15"  Grid.Column="0" Grid.ColumnSpan="2"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                         <!--   <local1:CustomLabel Grid.Row="15"  Grid.Column="0" Grid.ColumnSpan="2"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{x:Static local:AppResources.ZTERReportDetailReportDetailRLocation}"  />
@@ -440,14 +453,14 @@ ItemHeight="45" ShowFooter="True"
                         </local1:CustomLabel>
                         <Frame  Grid.Row="16" BackgroundColor="White"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
                             <maps:Map Grid.Row="16"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
-                        </Frame>
+                        </Frame>-->
                         <!--Attachment-->
-                            <local1:CustomLabel Grid.Row="17" x:Name="Attachment_Label"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
+                           <!-- <local1:CustomLabel Grid.Row="17" x:Name="Attachment_Label"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTSmallGreenLabelStyle}"  HorizontalOptions="Start"  >
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />
+                                    <Span Text="{x:Static local:AppResources.ZTERReportDetailAttachment}"  />-->
                                     <!--<Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />-->
-                                </FormattedString>
+                                <!--</FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
                         <Frame Grid.Row="18"  x:Name="Attachment_Frm" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
@@ -458,11 +471,11 @@ ItemHeight="45" ShowFooter="True"
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
                             </Image.GestureRecognizers>
-                        </Image>
+                        </Image>-->
                         <!--HasUnevenRows="True"
                                                  SeparatorVisibility="None"-->
                         <!--<StackLayout Margin="10,0,10,0" HorizontalOptions="FillAndExpand"  Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Start">-->
-                        <listView:SfListView  AutoFitMode="DynamicHeight" 
+                        <!--<listView:SfListView  AutoFitMode="DynamicHeight" 
            ItemsSource="{Binding UploadedDocumentsListObj}" SelectionBackgroundColor="White"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="Start"
@@ -516,7 +529,7 @@ ItemHeight="45" ShowFooter="True"
                                     </ViewCell>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
-                        </listView:SfListView>
+                        </listView:SfListView>-->
                         <!--</StackLayout>-->
                         <!--Close attachment-->
                         <!--//ZTERReportDetailFacilityOwnerName-->

@@ -14,6 +14,35 @@ namespace EGAZT.Models
         }
     }
 
+    public partial class TaxEvasionCategoriesModel
+    {
+        [JsonProperty("status")]
+        public bool Status { get; set; }
+
+        [JsonProperty("data")]
+        public TaxEvasionCategoriesDataModel[] Data { get; set; }
+
+        [JsonProperty("code")]
+        public long Code { get; set; }
+    }
+
+    public partial class TaxEvasionCategoriesDataModel
+    {
+        [JsonProperty("id")]
+        public long Id { get; set; }
+
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("related")]
+        public long Related { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        public bool IsTypeSelected { get; set; }
+    }
+
     public class TaxEvasionSendSmsModel
     {
         [JsonProperty("mobile")]
@@ -225,7 +254,16 @@ namespace EGAZT.Models
             }
             set
             {
-                _createdAt = value;
+                string json = string.Empty;
+                if (value.Contains("/"))
+                {
+                    DateTime date = DateTime.ParseExact(value, "dd/MM/yyyy", new CultureInfo("en-US"));
+                    json = JsonConvert.SerializeObject(date,
+                           new IsoDateTimeConverter() { DateTimeFormat = "dd-MMMM-yyyy" });
+                    json = json.Replace("\"", "");
+                    
+                }
+                _createdAt = json;
             }
         }
 
@@ -336,6 +374,26 @@ namespace EGAZT.Models
             set
             {
                 _category = value;
+            }
+        }
+
+        public string _categoryTitle { get; set; }
+        public string CategoryTitle
+        {
+            get
+            {
+                if (_categoryTitle == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    return _categoryTitle;
+                }
+            }
+            set
+            {
+                _categoryTitle = value;
             }
         }
 

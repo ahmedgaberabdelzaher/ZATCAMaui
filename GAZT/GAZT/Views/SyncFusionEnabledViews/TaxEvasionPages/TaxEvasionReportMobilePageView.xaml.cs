@@ -47,6 +47,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
         {
             base.OnAppearing();
             viewModel.MobileNumberPrefix = mobileNumberPrefix.Text;
+            Mobile_EntryAr.Focus();
+            Mobile_Entry.Focus();
         }
         //protected override void OnSizeAllocated(double width, double height)
         //{

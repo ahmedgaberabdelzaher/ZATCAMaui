@@ -69,6 +69,8 @@ namespace EGAZT
         public static string TaxEvasionReportTypePageView = "TaxEvasionReportTypePageView";
         public static string TaxEvasionReportMobilePageView = "TaxEvasionReportMobilePageView";
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
+        public static string TaxEvasionAttachmentPageView = "TaxEvasionAttachmentPageView";
+
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";
@@ -166,8 +168,8 @@ namespace EGAZT
 
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-          //  CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
-            //   new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
+            //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
+            //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
@@ -337,7 +339,6 @@ namespace EGAZT
             catch (Exception exception)
             {
                 Crashes.TrackError(exception);
-                //}
             }
         }
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
