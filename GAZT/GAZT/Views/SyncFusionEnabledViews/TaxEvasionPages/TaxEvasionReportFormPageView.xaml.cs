@@ -71,12 +71,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 if (App.IsArabic)
                 {
                     TMobNumber.IsEnabled = false;
+                    TName.Text = App.TaxEvasionUserData.FullName;
                     TMobNumber.Text = App.TaxEvasionUserData.Mobile;
                     TMobNumber.FlowDirection = FlowDirection.RightToLeft;
+                    TName.FlowDirection = FlowDirection.RightToLeft;
                 }
                 else
                 {
                     TMobNumber.IsEnabled = false;
+                    TName.Text = App.TaxEvasionUserData.FullName;
                     TMobNumber.Text = App.TaxEvasionUserData.Mobile;
                 }
             });

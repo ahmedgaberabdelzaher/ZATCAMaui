@@ -13,7 +13,8 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionFormPage">
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionFormPage"
+             xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps">
    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="..\Common\Styles.xaml" />
@@ -120,8 +121,9 @@
                                 </FormattedString>
                             </local1:CustomLabel.FormattedText>
                         </local1:CustomLabel>
+
                         <Frame  Grid.Row="4" BackgroundColor="White"   Grid.Column="0" Grid.ColumnSpan="2"  Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
-                            <maps:Map Grid.Row="4"    Grid.Column="0" Grid.ColumnSpan="2"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                            <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" x:Name="mapView" MapClicked="mapView_MapClicked" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
                         </Frame>
                         <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailRegion}"  x:Name="frmRegionPicker"

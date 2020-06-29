@@ -220,10 +220,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 
             SubmitReportClicked = new Xamarin.Forms.Command(async () =>
             {
-                IsLoading = false;
-           await SubmitCreatedReport();
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
 
-
+                await SubmitCreatedReport();
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
@@ -235,18 +237,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
         {
             try
             {
-              
-   
-
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
 
                 TaxEvasionReportTobeUsedToSubmit.Latitude = _latitude.ToString();
                 TaxEvasionReportTobeUsedToSubmit.Longitude = _longitude.ToString();
 
-
-
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
                 response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
+
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
 
                 if (response != null && response.Status == true)
                 {
