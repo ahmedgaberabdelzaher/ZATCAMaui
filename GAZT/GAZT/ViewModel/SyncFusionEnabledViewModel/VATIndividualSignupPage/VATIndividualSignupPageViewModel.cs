@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
@@ -13,6 +14,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly IDialogService _dialogService;
         
         public Command IndividualRegistrationCommand { get; set; }
+
+
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         public VATIndividualSignupPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -28,9 +44,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             this.IndividualRegistrationCommand = new Command(this.OnIndividualRegistrationClicked);
         }
-        private void OnIndividualRegistrationClicked(object obj)
+        private async void OnIndividualRegistrationClicked(object obj)
         {
-            _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+            ////IsLoading
+            ////      Device.BeginInvokeOnMainThread(async () =>
+            ////      {
+            //         await  Task.Run(() =>
+            //          {
+            //             IsLoading = true;
+            //          });
+            ////  });
+            //await Task.Run(() =>
+            //{
+            //    _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+            //});
+
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
+
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+            
+            Device.BeginInvokeOnMainThread( () =>
+          {
+              _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+              IsLoading = false;
+          });
+
+            
         }
     }
 }
