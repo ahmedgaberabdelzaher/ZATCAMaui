@@ -3536,7 +3536,7 @@ Should we require further information, we would be in contact.</value>
     <value>Unit Number</value>
     <comment>New SignUp</comment>
   </data>
-      <data name="ZTEReportAttachmentTitle" xml:space="preserve">
+  <data name="ZTEReportAttachmentTitle" xml:space="preserve">
     <value>Please attach documents which can be bills, images</value>
     <comment>Tax Evasion</comment>
   </data>
@@ -3704,5 +3704,9 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
+    <value>Email field and Confirm Email field should match up</value>
+    <comment>New SignUp</comment>
   </data>
 </root>

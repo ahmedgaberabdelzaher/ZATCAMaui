@@ -44,14 +44,17 @@
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="TIN Nimber" HorizontalOptions="StartAndExpand"/>
+                            <Label  Text="TIN Nimber" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label Text="{Binding TINnumber}" TextColor="Black"/>
-                                <Image>
+                                <Label x:Name="Label_Tin" Text="{Binding TINnumber}" TextColor="Black"/>
+                                <Image x:Name="Image_Copy">
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentPaste}"/>
                                     </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Image_Copy_Tapped"/>
+                                    </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
                         </StackLayout>

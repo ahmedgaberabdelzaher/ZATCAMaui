@@ -234,7 +234,7 @@
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
                                         <StackLayout Orientation="Horizontal">
-                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding DOB}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                            <custom:BorderlessEntry  x:Name="DateEntry" Text ="{Binding DOB}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand">
                                                 <Image.Source>
@@ -293,8 +293,8 @@
                                               
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmName" UnfocusedColor="#B1B1B1"
-                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" Text="{Binding Name}" IsSpellCheckEnabled="False"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameNameError}" >
+                                    <custom:BorderlessEntry x:Name="EntryName" Unfocused="EntryName_Unfocused" TextChanged="EntryName_TextChanged" Text="{Binding Name}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Enter Name" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                         <Entry.Behaviors>
                                             <custom1:AlphabetandArabicCharacters/>
@@ -513,13 +513,23 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZCountry}" Padding="0,0,0,0"/>
+                                                        <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Padding="0,0,0,0"/>-->
+                                                        <custom:CustomLabel  Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span  Text="{x:Static local:AppResources.ZZZZCountry}" />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                 ContainerType="Outlined" x:Name="GCCFrame_Country"  UnfocusedColor="#B1B1B1"
-                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameGccCountyError}" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry Text="{Binding CountryName}" FontSize="Small"
-                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="{Binding SetEnabilityToCountryList}">
+                                                                <custom:BorderlessEntry x:Name="GccCountryName" Text="{Binding CountryName}" FontSize="Small"
+                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" IsEnabled="{Binding SetEnabilityToCountryList}" TextChanged="GccCountryName_TextChanged">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
                                                                     <Image.Source>
@@ -569,10 +579,10 @@
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"  Text="{x:Static local:AppResources.ZZZZProvinceRegion}" Padding="0,0,0,0" IsVisible="{Binding SetStateListVisibility}"/>
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"  IsVisible="{Binding SetStateListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_Region"  UnfocusedColor="#B1B1B1"
-                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameRegionError}" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry Text="{Binding Region}" FontSize="Small"
-                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                <custom:BorderlessEntry x:Name="Entry_Region" Text="{Binding Region}" FontSize="Small"
+                                                        Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" TextChanged="Entry_Region_TextChanged">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
                                                                     <Image.Source>
@@ -632,9 +642,9 @@
 
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding SetCityListVisibility}"
                                 ContainerType="Outlined" x:Name="Frame_City"  UnfocusedColor="#B1B1B1"
-                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameCityError}" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry Text="{Binding CityName}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}"
+                                                                <custom:BorderlessEntry x:Name="Entry_City" Text="{Binding CityName}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}" TextChanged="Entry_City_TextChanged"
                                                         Placeholder="" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Rotation="270">
@@ -764,7 +774,7 @@
                                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.Email}"   Padding="0,0,0,0"/>
                                             <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="0,-6,0,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameEmailError}" >
                                                         <custom:BorderlessEntry Text="{Binding Email}" x:Name="EntryEmail" Unfocused="EntryEmail_Unfocused"
                                                                                 FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}" >
                                                 </custom:BorderlessEntry>
@@ -775,7 +785,7 @@
                                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZConfirmEmail}"  Padding="0,0,0,0"/>
                                                     <inputLayout:SfTextInputLayout   x:Name="FrmConfirmEmail"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameConfirmEmailError}" >
                                                         <custom:BorderlessEntry Text="{Binding ConfirmEmail}" Placeholder="{x:Static local:AppResources.ZZZZConfirmEmail}"  x:Name="EntryConfirmEmail"  Unfocused="EntryConfirmEmail_Unfocused"  FontSize="Small" IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                     <!--<Entry.Behaviors>
                                                         <custom1:OnlyNumericValuesBehaviour/>
@@ -787,9 +797,9 @@
                                                     <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZMobileNumber}"  Padding="0,0,0,0"/>
                                             <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >
                                                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                                            <Label Text="(00966)" FontSize="20" VerticalOptions="Center" TextColor="#006450"/>
+                                                            <custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>
                                                             <custom:BorderlessEntry Text="{Binding MobileNumber}" HorizontalTextAlignment="Start" x:Name="EntryMobileNumber" Placeholder="Moblie Number" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
@@ -996,38 +1006,44 @@
                                         <ColumnDefinition Width="auto"/>
                                     </Grid.ColumnDefinitions>
                                                     <!--Text="OTP"-->
-                                                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                                                    <!--<StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.EnterOTP}"   Padding="0,0,0,0"/>
-                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
+                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:BorderlessEntry Text="{Binding OTP}" FontSize="Small" WidthRequest="128" MaxLength="16"
-                                                                Placeholder="{x:Static local:AppResources.EnterOTP}" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                Placeholder="{x:Static local:AppResources.EnterOTP}" IsPassword="{Binding IsOTPEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 </custom:BorderlessEntry>
-                                                <Image HorizontalOptions="EndAndExpand">
+                                                <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeOtp">
                                                     <Image.Source>
                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                          Glyph="{x:Static FontImage:IconFonts.Eye}"/>
                                                     </Image.Source>
-                                                </Image>
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
                                             </StackLayout>
                                         </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
+                                    </StackLayout>-->
 
 
                                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.NewPassword}"  Padding="0,0,0,0"/>
-                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
+                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                             <StackLayout Orientation="Horizontal">
                                                 <custom:BorderlessEntry Text="{Binding Password}" FontSize="Small" WidthRequest="128" MaxLength="16"
-                                                                Placeholder="New Password" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                Placeholder="New Password" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 </custom:BorderlessEntry>
-                                                <Image HorizontalOptions="EndAndExpand">
+                                                <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword">
                                                     <Image.Source>
                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                          Glyph="{x:Static FontImage:IconFonts.Eye}"/>
                                                     </Image.Source>
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
+                                                                    </Image.GestureRecognizers>
                                                 </Image>
                                             </StackLayout>
                                         </inputLayout:SfTextInputLayout>
@@ -1035,25 +1051,30 @@
 
                                     <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>
-                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="False"
+                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameConfirmPasswordError}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                             <StackLayout Orientation="Horizontal">
-                                                <custom:BorderlessEntry Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128" MaxLength="16"
-                                                                Placeholder="{x:Static local:AppResources.ZZZZRepeatPassword}" IsPassword="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                <custom:BorderlessEntry x:Name="EntryConfirmPassword" Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128" MaxLength="16" TextChanged="EntryConfirmPassword_TextChanged"
+                                                                        
+                                                                Placeholder="{x:Static local:AppResources.ZZZZRepeatPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                 </custom:BorderlessEntry>
-                                                <Image HorizontalOptions="EndAndExpand">
+                                                                <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeConfirmPassword" >
                                                     <Image.Source>
                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                          Glyph="{x:Static FontImage:IconFonts.Eye}"/>
                                                     </Image.Source>
-                                                </Image>
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
+                                                                    </Image.GestureRecognizers>
+
+                                                                </Image>
                                             </StackLayout>
                                         </inputLayout:SfTextInputLayout>
                                     </StackLayout>
 
                                     <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                         <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="EndAndExpand">
+                                            <Image HorizontalOptions="Start">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
@@ -1062,7 +1083,7 @@
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="EndAndExpand">
+                                            <Image HorizontalOptions="Start">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
@@ -1071,7 +1092,7 @@
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" />
                                         </StackLayout>
                                         <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="EndAndExpand">
+                                            <Image HorizontalOptions="Start">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
@@ -1081,7 +1102,7 @@
                                         </StackLayout>
 
                                         <StackLayout Orientation="Horizontal">
-                                            <Image HorizontalOptions="EndAndExpand">
+                                            <Image HorizontalOptions="Start">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
@@ -1096,6 +1117,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
                                                         <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"   Text="{x:Static local:AppResources.VerificationCode}"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
@@ -1103,7 +1125,7 @@
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1">
-                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="Mobile Number xxxxxx3388"/>
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}"/>
 
                                         <StackLayout Orientation="Horizontal">
                                             <Image>
@@ -1112,10 +1134,31 @@
                                          Glyph="{x:Static FontImage:IconFonts.TimerOutline}"/>
                                                 </Image.Source>
                                             </Image>
-                                            <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="0:59"/>
+                                            <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text=" "/>
                                         </StackLayout>
                                     </StackLayout>
-                                </Grid>
+                                                    <StackLayout Grid.Row="2" Grid.Column="0" >
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.EnterOTP}"   Padding="0,0,0,0"/>
+                                                        <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry Text="{Binding OTP}" FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                Placeholder="{x:Static local:AppResources.EnterOTP}" IsPassword="{Binding IsOTPEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeOtp">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                                    </Image.Source>
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                                                                    </Image.GestureRecognizers>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+                                                    </StackLayout>
+
+                                                </Grid>
                                     </StackLayout>
                                 </ScrollView>
                             </StackLayout>
@@ -1125,7 +1168,7 @@
                 </ScrollView>
                 <!--</Grid>-->
                      <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
-                        <buttons:SfButton x:Name="btnContinue" Text="{x:Static local:AppResources.ZZZZContinue}"  CornerRadius="10" VerticalOptions="End" 
+                        <buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"   CornerRadius="10" VerticalOptions="End" 
                                   HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
                         </StackLayout>
                     </Grid>

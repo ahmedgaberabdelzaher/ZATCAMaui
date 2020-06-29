@@ -41,6 +41,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.ContactInformationView = false;
             viewModel.SummeryView = false;
             viewModel.PasswordView = false;
+            viewModel.ContinueButtonText = AppResources.ZZZZContinue;
             //viewModel.SetFormVisibility();
         }
         private void SetLTR()
@@ -756,6 +757,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
                 viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    if (string.IsNullOrEmpty(viewModel.DOB) && string.IsNullOrEmpty(viewModel.IdNumber))
+                    {
+                        ValidateIDNumber();
+                    }
+                    
+                }
 
             }
             catch (Exception ex)
@@ -1093,12 +1102,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmEmailAddress.HasError = true;
+                    viewModel.FrameEmailError = true;
+                    //FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
                 }
                 else
                 {
-                    FrmEmailAddress.HasError = false;
+                    viewModel.FrameEmailError = false;
+                    //FrmEmailAddress.HasError = false;
                 }
             }
         }
@@ -1123,12 +1134,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmConfirmEmail.HasError = true;
+                    viewModel.FrameConfirmEmailError = true;
+                    //FrmConfirmEmail.HasError = true;
                     EntryConfirmEmail.Text = string.Empty;
                 }
                 else
                 {
-                    FrmConfirmEmail.HasError = false;
+                    viewModel.FrameConfirmEmailError = false;
+                   // FrmConfirmEmail.HasError = false;
                 }
             }
         }
@@ -1165,21 +1178,104 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.HasError = true;
+                    //FrmMobileNumber.HasError = true;
+                    viewModel.FrameMobileNumberError = true;
                     EntryMobileNumber.Text = string.Empty;
                 }
                 else
                 {
-                    FrmMobileNumber.HasError = false;
+                    //FrmMobileNumber.HasError = false;
+                    viewModel.FrameMobileNumberError = false;
                 }
             }
         }
 
+        private void EntryConfirmPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryConfirmPassword.Text))
+            {
+                if (viewModel.Password != viewModel.ConfirmPassword)
+                {
+                    viewModel.FrameConfirmPasswordError = true;
+                    //frmCfrmPass.HasError = true;
+                }
+                else
+                {
+                    viewModel.FrameConfirmPasswordError = false;
+                    //frmCfrmPass.HasError = false;
+                }
+            }
+        }
 
+        private void ImageSeePassword_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsPasswordEncripted)
+            {
+                viewModel.IsPasswordEncripted = false;
+            }
+            else
+            {
+                viewModel.IsPasswordEncripted = true;
+            }
+        }
 
-        //private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
-        //{
+        private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsConfirmPasswordEncripted)
+            {
+                viewModel.IsConfirmPasswordEncripted = false;
+            }
+            else
+            {
+                viewModel.IsConfirmPasswordEncripted = true;
+            }
+            
+        }
 
-        //}
+        private void ImageSeeOtp_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsOTPEncripted)
+            {
+                viewModel.IsOTPEncripted = false;
+            }
+            else
+            {
+                viewModel.IsOTPEncripted = true;
+            }
+        }
+
+        private void GccCountryName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.CountryName))
+            {
+                viewModel.FrameGccCountyError = false;
+            }
+        }
+
+        private void Entry_Region_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.Region))
+            {
+                viewModel.FrameRegionError = false;
+            }
+        }
+
+        private void Entry_City_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(viewModel.CityName))
+            {
+                viewModel.FrameCityError = false;
+            }
+        }
+
+        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.FrameDOBError = false;
+        }
+
+        private void EntryName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.FrameNameError = false;
+        }
     }
 }
