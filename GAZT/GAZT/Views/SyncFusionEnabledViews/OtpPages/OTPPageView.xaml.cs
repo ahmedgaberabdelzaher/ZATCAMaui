@@ -256,6 +256,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             }
             else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+
                 viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
                 viewModel.TesReporterMobileNumber = _ComingToOTPVerificationScreenFromAndNavigatingTo.MobileNumber;
                 // NumberOfAttemptsText.IsVisible = false;
@@ -299,6 +304,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             ChangeAeroIcon();
             if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel.IsLoading = false;
+                });
+
                 App.IsOTPiew = true;
                 viewModel.TimerStart(viewModel.numberOfSeconds);
                 viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");

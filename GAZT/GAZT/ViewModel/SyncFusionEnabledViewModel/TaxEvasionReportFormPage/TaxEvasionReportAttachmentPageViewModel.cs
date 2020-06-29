@@ -239,7 +239,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
    
 
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-               
+
+                TaxEvasionReportTobeUsedToSubmit.Latitude = _latitude.ToString();
+                TaxEvasionReportTobeUsedToSubmit.Longitude = _longitude.ToString();
+
+
 
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
                 response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
@@ -256,7 +260,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                     var _lastPage = _navigation.NavigationStack.LastOrDefault();
                     //Remove last page
                     _navigation.RemovePage(_lastPage);
+                    var _lastPage2 = _navigation.NavigationStack.LastOrDefault();
+                    //Remove last page
+                    _navigation.RemovePage(_lastPage2);
                     //Go back 
+
                     _navigation.PopAsync();
                     //_navigationService.NavigateTo(App.TaxEvasionReportListPageView);
                 }

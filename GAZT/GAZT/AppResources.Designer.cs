@@ -4302,6 +4302,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZTERReportType {
+            get {
+                return ResourceManager.GetString("ZTERReportType", resourceCulture);
+            }
+        }
+        
         public static string ZTERReportDetailNumber {
             get {
                 return ResourceManager.GetString("ZTERReportDetailNumber", resourceCulture);
@@ -6168,36 +6174,6 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Please refer to the.
-        /// </summary>
-        public static string ZZZZVATRFAQ1 {
-            get {
-                return ResourceManager.GetString("ZZZZVATRFAQ1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VAT FAQ.
-        /// </summary>
-        public static string ZZZZVATRFAQ2 {
-            get {
-                return ResourceManager.GetString("ZZZZVATRFAQ2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to section in the GAZT website before filling out this application form..
-        /// </summary>
-        public static string ZZZZVATRFAQ3 {
-            get {
-                return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Financial Representative.
-        /// </summary>
         public static string ZZZZVATRFinancialRepresentative {
             get {
                 return ResourceManager.GetString("ZZZZVATRFinancialRepresentative", resourceCulture);
@@ -6207,6 +6183,36 @@ namespace EGAZT {
         public static string ZZZZVATRStartDate {
             get {
                 return ResourceManager.GetString("ZZZZVATRStartDate", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFAQ1 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ1", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFAQ2 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ2", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFAQ3 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
+            }
+        }
+        
+        public static string ZVATStartsWithVAlidation {
+            get {
+                return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
+            }
+        }
+        
+        public static string ZNameVAlidation {
+            get {
+                return ResourceManager.GetString("ZNameVAlidation", resourceCulture);
             }
         }
     }

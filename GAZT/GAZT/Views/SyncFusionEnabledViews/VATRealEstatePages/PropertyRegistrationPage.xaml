@@ -11,8 +11,7 @@
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.PropertyRegistrationPage"
              BackgroundColor="White"
-              NavigationPage.HasNavigationBar="False"
-             >
+              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
