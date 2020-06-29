@@ -37,6 +37,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
@@ -166,7 +167,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
-
+            SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
@@ -660,6 +661,20 @@ namespace EGAZT
                 }
             }
         }
+        public TaxEvasionFormPageViewModel TaxEvasionFormPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public TaxEvasionRegistrationViewModel TaxEvasionRegistrationFormPageView
         {
             get
@@ -1088,6 +1103,7 @@ namespace EGAZT
             navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
 
             navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
+            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
 
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
             return navigationService;

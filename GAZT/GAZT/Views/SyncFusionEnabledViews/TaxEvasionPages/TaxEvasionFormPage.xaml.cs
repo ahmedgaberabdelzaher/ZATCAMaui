@@ -19,6 +19,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel;
+
 namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -27,14 +29,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
     {
         private double width = 0;
         private double height = 0;
-        TaxEvasionReportFormPageViewModel viewModel;
+        TaxEvasionFormPageViewModel viewModel;
      
         public TaxEvasionFormPage(TaxEvasionReportDetails SelectedTaxEvasionListItem)
         {
             try
             {
                 InitializeComponent();
-                viewModel = App.Locator.TaxEvasionReportFormPageView;
+                viewModel = App.Locator.TaxEvasionFormPage;
                 SetLTR();
                 this.BindingContext = viewModel;
                 MainLayout.Padding = new Thickness(0, 0, 0, 0);
@@ -192,10 +194,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 //  Attachment_Label.IsVisible = false;
                 //  Attachment_Label.IsVisible = false;
                 TFSAddress.IsEnabled = false;
+                TCategory.IsEnabled = false;
+                viewModel.TCategory = viewModel.selectedtaxEList.Category;
+
                 //  Attachment_Tmg.IsVisible = false;
                 //  Attachment_Frm.IsVisible = false;
                 //  Attachment_Entry.IsVisible = false;
                 //  Attachment_Tmg.IsEnabled = false;
+                
                 viewModel.TName = viewModel.selectedtaxEList.Username;
                 viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
              
@@ -213,8 +219,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 viewModel.TFDAdress = viewModel.selectedtaxEList.District;
                 viewModel.TFSAddress = viewModel.selectedtaxEList.Street;
                 viewModel.IsSubmitButtonEnable = false;
-                submit_btnmane.IsEnabled = false;
-                submit_btnmane.BackgroundColor = Color.Gray;
+               // submit_btnmane.IsEnabled = false;
+                //submit_btnmane.BackgroundColor = Color.Gray;
                 viewModel.TReportDetail = viewModel.selectedtaxEList.Content;
                 viewModel.TVatNumber = viewModel.selectedtaxEList.VatNumber;
                 TVatNumber.IsEnabled = false;
@@ -253,15 +259,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 {
                     Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                     MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                    //mapView.MoveToRegion(mapSpan);
+                    mapView.MoveToRegion(mapSpan);
                     Pin pin = new Pin();
                     pin.Label = "Report Location";
                     pin.Type = PinType.Place;
                     pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                    //mapView.Pins.Clear();
-                    //mapView.Pins.Add(pin);
+                    mapView.Pins.Clear();
+                    mapView.Pins.Add(pin);
                 }
-                //mapView.IsEnabled = false;
+                mapView.IsEnabled = false;
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.Tin))
                 { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.Tin; viewModel.IsTINVisible = true; }
                 else
@@ -367,7 +373,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
         private async void Button_Clicked(object sender, EventArgs e)
         {
             Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = true; });
-            await AddReport();
+           // await AddReport();
             Device.BeginInvokeOnMainThread(() => { viewModel.IsLoading = false; });
             //viewModel.SubmitCreatedReport();
         }
@@ -628,7 +634,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        // mapView.MoveToRegion(mapSpan);
+                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
                     }
@@ -668,9 +674,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                     {
                         Position position = new Position(location.Latitude, location.Longitude);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        // mapView.MoveToRegion(mapSpan);
+                         mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = location.Latitude;
-                        //viewModel.TEReportobj.Latitude = location.Latitude.ToString();
+                       // viewModel.TEReportobj.Latitude = location.Latitude.ToString();
                         viewModel.Longitude = location.Longitude;
                     }
                 }
@@ -696,8 +702,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
                 viewModel.Latitude = e.Position.Latitude;
                 viewModel.Longitude = e.Position.Longitude;
-                //  mapView.Pins.Clear();
-                //  mapView.Pins.Add(pin);
+                  mapView.Pins.Clear();
+                  mapView.Pins.Add(pin);
             }
             else
             {
