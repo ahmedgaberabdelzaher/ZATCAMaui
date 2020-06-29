@@ -67,7 +67,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 SetLocationToMap();
             }
 
+            Device.BeginInvokeOnMainThread(() => {
+
+                if (App.IsArabic)
+                {
+
+                    TMobNumberAr.IsEnabled = false;
+
+                    TMobNumberAr.Text = App.TaxEvasionUserData.Mobile;
+                    TMobNumber.IsVisible = false;
+                }
+                else
+                {
+                    TMobNumberAr.IsVisible = false;
+                    TMobNumber.IsEnabled = false;
+                    TMobNumber.Text = App.TaxEvasionUserData.Mobile;
+                }
+            });
+
+
+
+
             await GetRegionList();
+            
         }
         public void SetPickerFont()
         {
@@ -307,9 +329,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     if (mobb == null)
                         mobb = string.Empty;
 
+                    //viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber;
                     //viewModel.TMobNumber = mobb;
-                    TMobNumber.IsEnabled = true;
-                    TMobNumberAr.IsEnabled = true;
+                 
+                   
                 }
             }
         }
@@ -470,13 +493,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         showMessage = true;
                     }
             //if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
-            if (string.IsNullOrEmpty(TxtTIN.Text.Trim()))
-            {
+            //if (string.IsNullOrEmpty(TxtTIN.Text.Trim()))
+            //{
                         //flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage();
-                        flag = false;
-                        FrmTIN.HasError = true;
-                        showMessage = true;
-                    }
+                    //    flag = false;
+                  //      FrmTIN.HasError = true;
+                //        showMessage = true;
+              //      }
                     if (string.IsNullOrEmpty(TReportDetail.Text.Trim()))
                     {
                         //flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); 

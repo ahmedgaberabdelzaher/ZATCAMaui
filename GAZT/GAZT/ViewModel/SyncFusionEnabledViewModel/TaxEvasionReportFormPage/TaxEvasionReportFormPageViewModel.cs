@@ -1044,7 +1044,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 TaxEvasionReportTobeUsedToSubmit.City = Convert.ToString(SelectLCType.Id);
 
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TFaciMobNo;
+                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = App.TaxEvasionUserData.Mobile;
 
                 TaxEvasionReportDetails tex = TaxEvasionReportTobeUsedToSubmit;
 
