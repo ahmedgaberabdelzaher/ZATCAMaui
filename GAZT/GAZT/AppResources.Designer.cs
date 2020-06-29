@@ -2631,6 +2631,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name cannot contain numbers or special characters.
+        /// </summary>
+        public static string ZNameVAlidation {
+            get {
+                return ResourceManager.GetString("ZNameVAlidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Negative.
         /// </summary>
         public static string ZNegative {
@@ -3281,7 +3290,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to City.
+        ///   Looks up a localized string similar to City*.
         /// </summary>
         public static string ZTERReportDetailCity {
             get {
@@ -3425,7 +3434,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Facility Name.
+        ///   Looks up a localized string similar to Facility Name*.
         /// </summary>
         public static string ZTERReportDetailFacilityName {
             get {
@@ -3452,7 +3461,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Facility District Address.
+        ///   Looks up a localized string similar to Facility District Address*.
         /// </summary>
         public static string ZTERReportDetailFDAddress {
             get {
@@ -3461,7 +3470,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Facility Street Address.
+        ///   Looks up a localized string similar to Facility Street Address*.
         /// </summary>
         public static string ZTERReportDetailFSAddress {
             get {
@@ -3470,7 +3479,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Facility Work Type.
+        ///   Looks up a localized string similar to Facility Work Type*.
         /// </summary>
         public static string ZTERReportDetailFWType {
             get {
@@ -3488,7 +3497,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reporter Name.
+        ///   Looks up a localized string similar to Reporter Name*.
         /// </summary>
         public static string ZTERReportDetailName {
             get {
@@ -3497,7 +3506,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile Number.
+        ///   Looks up a localized string similar to Mobile Number*.
         /// </summary>
         public static string ZTERReportDetailNumber {
             get {
@@ -3524,7 +3533,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report Details.
+        ///   Looks up a localized string similar to Report Details*.
         /// </summary>
         public static string ZTERReportDetailReportDetails {
             get {
@@ -3646,6 +3655,15 @@ namespace EGAZT {
         public static string ZTERReportPageHeadingText {
             get {
                 return ResourceManager.GetString("ZTERReportPageHeadingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Type.
+        /// </summary>
+        public static string ZTERReportType {
+            get {
+                return ResourceManager.GetString("ZTERReportType", resourceCulture);
             }
         }
         
@@ -5218,6 +5236,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT number starts with 3.
+        /// </summary>
+        public static string ZVATStartsWithVAlidation {
+            get {
+                return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Move to Step 4.
         /// </summary>
         public static string ZVatStepFour {
@@ -6568,13 +6595,10 @@ namespace EGAZT {
             }
         }
         
-        public static string ZTERReportType {
-            get {
-                return ResourceManager.GetString("ZTERReportType", resourceCulture);
-            }
-        }
-        
-        public static string ZTERReportDetailNumber {
+        /// <summary>
+        ///   Looks up a localized string similar to National ID consists of numbers only.
+        /// </summary>
+        public static string ZZNationalIDconsistsofnumbersonly {
             get {
                 return ResourceManager.GetString("ZZNationalIDconsistsofnumbersonly", resourceCulture);
             }
@@ -9320,6 +9344,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please refer to the.
+        /// </summary>
+        public static string ZZZZVATRFAQ1 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT FAQ.
+        /// </summary>
+        public static string ZZZZVATRFAQ2 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to section in the GAZT website before filling out this application form..
+        /// </summary>
+        public static string ZZZZVATRFAQ3 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial Representative.
         /// </summary>
         public static string ZZZZVATRFinancialRepresentative {
@@ -9337,33 +9388,12 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZZVATRFAQ1 {
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT.
+        /// </summary>
+        public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
-                return ResourceManager.GetString("ZZZZVATRFAQ1", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZVATRFAQ2 {
-            get {
-                return ResourceManager.GetString("ZZZZVATRFAQ2", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZVATRFAQ3 {
-            get {
-                return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
-            }
-        }
-        
-        public static string ZVATStartsWithVAlidation {
-            get {
-                return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
-            }
-        }
-        
-        public static string ZNameVAlidation {
-            get {
-                return ResourceManager.GetString("ZNameVAlidation", resourceCulture);
+                return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
     }
