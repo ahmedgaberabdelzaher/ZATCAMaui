@@ -5858,5 +5858,225 @@ namespace GAZT.Manager
         }
 
         #endregion
+
+
+        #region VatRegistration
+
+        public static VATRegistrationDetails GAZTGetVATRegistrationData(string Langz,string TxnTpz)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + Langz + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + App.LoginDataRetrieved.Euser + "',Fbguid='" + App.LoginDataRetrieved.FbGuid + "'" + ")?&$ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATRegistrationDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATRegistrationDataResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
+                        vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
+                    }
+                    return vATRegistrationDetails;
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public static VATRegistrationOtherDetails GAZTGetVATRegistrationDataWithButtons(string Lang, string Status, string TxnTp, string Formproc)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATRegistrationOtherDetails vATRegistrationOtherDetails = new VATRegistrationOtherDetails();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    String url = Constants.GAZTGetVATRegistrationOtherDetails + "',Lang='" + Lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + "E0001" + "',TxnTp='" + "CRE_RGVT" + "',Formproc='" + "ZTAX_VT_REG" + ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATRegistrationDataOtherResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATRegistrationDataOtherResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataOtherResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataOtherResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
+                        vATRegistrationOtherDetails = JsonConvert.DeserializeObject<VATRegistrationOtherDetails>(VatRegistrationOtherData);
+                    }
+                    return vATRegistrationOtherDetails;
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        //public static async Task<VATRegistrationDetails> SaveVATRegistrationData(VATRegistrationDetails vATRegistrationDetails)
+        //{
+        //    VATRegistrationDetails RequestVATDeclaration = new VATRegistrationDetails();
+        //    VATRegistrationDetails _vATDeclarationD = new VATRegistrationDetails();
+        //    if (CrossConnectivity.Current.IsConnected)
+        //    {
+        //        try
+        //        {
+        //            if (vATRegistrationDetails != null && vATRegistrationDetails.d != null)
+        //            {
+        //                if (vATRegistrationDetails.d != null)
+        //                {
+        //                    RequestVATDeclaration = vATRegistrationDetails;
+                          
+
+        //                }
+        //                char LangZ = GetLangZParameter();
+        //                string lang = UtilityManager.GetLanguageParameter();
+        //                String url = Constants.SaveVATRegistrationData;
+        //                var uri = new Uri(url);
+        //                HttpClient client = new HttpClient(App.httpClientHandler);
+
+        //                client.DefaultRequestHeaders.Add("Token", "123");
+        //                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+        //                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+        //                client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+        //                var serilized = JsonConvert.SerializeObject(RequestVATDeclaration);
+        //                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+        //                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+        //                var detailJson = res.Content.ReadAsStringAsync().Result;
+        //                _vATDeclarationD = JsonConvert.DeserializeObject<VATDeclaration>(detailJson);
+        //                if (_vATDeclarationD != null)
+        //                {
+        //                    if (_vATDeclarationD.d != null)
+        //                    {
+        //                        if (_vATDeclarationD.d.NOTESSet == null)
+        //                        {
+        //                            NOTESSet nOTEs = new NOTESSet();
+        //                            nOTEs.results = new List<Note>();
+        //                            _vATDeclarationD.d.NOTESSet = nOTEs;
+        //                        }
+        //                        if (_vATDeclarationD.d.IBANSet == null)
+        //                        {
+        //                            IBANSet iBANSet = new IBANSet();
+        //                            iBANSet.results = new List<Result2>();
+        //                            _vATDeclarationD.d.IBANSet = iBANSet;
+        //                        }
+        //                        if (_vATDeclarationD.d.CFSet == null)
+        //                        {
+        //                            CFSet cFSet = new CFSet();
+        //                            cFSet.results = new List<Result3>();
+        //                            _vATDeclarationD.d.CFSet = cFSet;
+        //                        }
+        //                        if (_vATDeclarationD.d.ATTACHSet == null)
+        //                        {
+        //                            ATTACHSet aTTACHSet = new ATTACHSet();
+        //                            aTTACHSet.results = new List<Attachment>();
+        //                            _vATDeclarationD.d.ATTACHSet = aTTACHSet;
+        //                        }
+        //                        if (_vATDeclarationD.d.ADRSet == null)
+        //                        {
+        //                            ADRSet aDRSet = new ADRSet();
+        //                            aDRSet.results = new List<Result5>();
+        //                            _vATDeclarationD.d.ADRSet = aDRSet;
+        //                        }
+        //                        if (_vATDeclarationD.d.VATR_MSGSet == null)
+        //                        {
+        //                            VATRMSGSet vATRMSGSet = new VATRMSGSet();
+        //                            vATRMSGSet.results = new List<object>();
+        //                            _vATDeclarationD.d.VATR_MSGSet = vATRMSGSet;
+        //                        }
+        //                        if (_vATDeclarationD.d.VATPERITEMSet == null)
+        //                        {
+        //                            VATPERITEMSet vATPERITEMSet = new VATPERITEMSet();
+        //                            vATPERITEMSet.results = new List<Result6>();
+        //                            _vATDeclarationD.d.VATPERITEMSet = vATPERITEMSet;
+        //                        }
+        //                    }
+        //                }
+        //                if (_vATDeclarationD == null || _vATDeclarationD.d == null)
+        //                {
+        //                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+        //                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+        //                    {
+        //                        ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+        //                        ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+        //                        String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+        //                        ErrorMessageForVAT = WithReplacedString;
+        //                        //ErrorMessageForVAT
+        //                    }
+        //                }
+        //                return _vATDeclarationD;
+        //            }
+        //            return _vATDeclarationD;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
+        //    }
+        //}
+        #endregion
     }
 }
