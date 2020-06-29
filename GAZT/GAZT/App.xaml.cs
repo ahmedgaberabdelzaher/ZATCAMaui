@@ -1,5 +1,6 @@
 using CommonServiceLocator;
 using EGAZT.Models;
+using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
@@ -11,11 +12,13 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -137,10 +140,11 @@ namespace EGAZT
         public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
         #endregion
 
+        public static ActivityIndicatorPageView ActivityIndicatorView;
+
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
-
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
 
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
@@ -167,6 +171,7 @@ namespace EGAZT
                     break;
             }
 
+            ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
@@ -342,6 +347,7 @@ namespace EGAZT
                 Crashes.TrackError(exception);
             }
         }
+
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
         {
             // Look at releaseDetails public properties to get version information, release notes text or release notes URL
@@ -390,6 +396,22 @@ namespace EGAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
+        }
+
+        public static async void DisplayProgressView()
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
+            });
+        }
+
+        public static async void HideProgressView()
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                PopupNavigation.Instance.PopAsync(true);
+            });
         }
     }
 }

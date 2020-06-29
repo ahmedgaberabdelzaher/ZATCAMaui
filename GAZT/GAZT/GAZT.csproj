@@ -69,6 +69,7 @@
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
     <Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
+    <Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

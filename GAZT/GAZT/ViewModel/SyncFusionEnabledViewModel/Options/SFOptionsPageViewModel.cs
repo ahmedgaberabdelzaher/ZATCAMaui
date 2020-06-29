@@ -300,7 +300,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
         {
             await Task.Run(() =>
             {
-                IsLoading = true;
+                App.DisplayProgressView();
             });
             if (App.TP!=null)
                 App.TP = null;
@@ -326,7 +326,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
 
             await Task.Run(() =>
             {
-                IsLoading = false;
+                App.HideProgressView();
             });
 
             var _navigation = Application.Current.MainPage.Navigation; 
