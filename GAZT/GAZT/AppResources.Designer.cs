@@ -6203,5 +6203,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
             }
         }
+        
+        public static string ZVATStartsWithVAlidation {
+            get {
+                return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
+            }
+        }
+        
+        public static string ZNameVAlidation {
+            get {
+                return ResourceManager.GetString("ZNameVAlidation", resourceCulture);
+            }
+        }
     }
 }

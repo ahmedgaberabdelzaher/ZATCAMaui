@@ -667,8 +667,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         {
             if (string.IsNullOrEmpty(TName.Text))
             {
-                FrmName.HasError = true;
-                TName.Text = string.Empty;
+                if (hasSpecialChar(TName.Text))
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZNameVAlidation;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmName.HasError = true;
+                    TName.Text = string.Empty;
+                }
+               
             }
            else
            { FrmName.HasError = false; }
@@ -769,9 +785,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 FrmFSAddress.HasError = true;
             }
             else
+            { FrmFSAddress.HasError = false; }
+        }
+
+        public static bool hasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+            foreach (var item in specialChar)
             {
-                FrmFSAddress.HasError = false;
+                if (input.Contains(item)) return true;
             }
+
+            return false;
         }
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
         {
@@ -830,6 +855,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidVatNumber;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmVAT.HasError = true;
+                        TVatNumber.Text = string.Empty;
+                    }
+                    if (TVatNumber.Text.StartsWith("1"))
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZVATStartsWithVAlidation;
                         popUp.IsLinkAvailable = false;
                         if (App.IsArabic)
                         {

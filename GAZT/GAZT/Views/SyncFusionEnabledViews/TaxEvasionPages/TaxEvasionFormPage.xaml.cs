@@ -470,6 +470,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 FrmFSAddress.HasError = false;
             }
         }
+        private void TFSName_Unfocused(object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(TFSAddress.Text))
+            {
+                FrmFSAddress.HasError = true;
+            }
+            else
+            {
+                FrmFSAddress.HasError = false;
+            }
+        }
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtTIN.Text))
@@ -521,6 +532,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                         FrmVAT.HasError = true;
                         TVatNumber.Text = string.Empty;
                     }
+               
                     else
                     {
                         FrmVAT.HasError = false;

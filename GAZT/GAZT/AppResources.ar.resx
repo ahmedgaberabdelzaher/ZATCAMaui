@@ -3727,4 +3727,10 @@
   <data name="ZZZZVATRFAQ3" xml:space="preserve">
     <value>في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
   </data>
+       <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+    <value>الرقم الخاص بضريبة القيمة المضافة يبدأ برقم</value>
+  </data>
+       <data name="ZNameVAlidation" xml:space="preserve">
+    <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
+  </data>
 </root>
