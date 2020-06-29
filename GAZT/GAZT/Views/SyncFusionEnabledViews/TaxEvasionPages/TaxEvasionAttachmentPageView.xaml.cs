@@ -8,8 +8,8 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewMo
 using GAZT.Models;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Xamarin.Forms.GoogleMaps;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 {
@@ -90,7 +90,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                         mapView.MoveToRegion(mapSpan);
+                        mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
                     }

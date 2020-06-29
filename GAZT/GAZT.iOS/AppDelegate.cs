@@ -69,6 +69,7 @@ namespace GAZT.iOS
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             SfMaskedEditRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
+            Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
 
             LoadApplication(iosapp);
             //Code for PUSH notification

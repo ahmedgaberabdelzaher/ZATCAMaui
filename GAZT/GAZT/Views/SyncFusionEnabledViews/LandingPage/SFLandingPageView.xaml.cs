@@ -437,15 +437,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
-                        string mobno = string.Empty;
-                        if (App.TP != null && App.TP.Mobile != null)
-                        {
-                            mobno = App.TP.Mobile;
-                            //mobno = mobno.Remove(0, 6);
-                            mobno = mobno.Replace("009665", string.Empty);
-                        }
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                            string mobno = string.Empty;
+                            if (App.TP != null && App.TP.Mobile != null)
+                            {
+                                mobno = App.TP.Mobile;
+                                //mobno = mobno.Remove(0, 6);
+                                mobno = mobno.Replace("009665", string.Empty);
+                            }
+                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
+                        }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                         }
                         //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
@@ -456,6 +461,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                     }
                     catch (Exception ex)
                     {
+
                     }
             }
             await Task.Run(() =>

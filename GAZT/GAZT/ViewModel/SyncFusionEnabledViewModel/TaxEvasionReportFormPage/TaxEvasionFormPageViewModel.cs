@@ -14,9 +14,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel
+namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel
 {
-    public class TaxEvasionReportFormPageViewModel : ViewModelBase
+    public class TaxEvasionFormPageViewModel : ViewModelBase
     {
         #region variable
         public readonly INavigationService _navigationService;
@@ -85,7 +85,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("TotalAttachmentSize");
             }
         }
-        private UploadedDocumentsList _uploadedDocumentsList= null;
+        private UploadedDocumentsList _uploadedDocumentsList = null;
         public UploadedDocumentsList UploadedDocumentsList
         {
             get
@@ -327,7 +327,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("IsTINVisible");
             }
         }//SelectedTaxEvasionCompanyType
-        private FacilityCompanyType _selectedTaxEvasionCompanyType= null;
+        private FacilityCompanyType _selectedTaxEvasionCompanyType = null;
         public FacilityCompanyType SelectedTaxEvasionCompanyType
         {
             get
@@ -339,7 +339,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 _selectedTaxEvasionCompanyType = value;
                 if (_selectedTaxEvasionCompanyType != null)
                 {
-                        TxtFType = _selectedTaxEvasionCompanyType.Name;
+                    TxtFType = _selectedTaxEvasionCompanyType.Name;
                 }
                 RaisePropertyChanged("SelectedTaxEvasionCompanyType");
             }
@@ -357,7 +357,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectedTaxEvasionCompanyTypePrev");
             }
         }
-        private string _selectedCategory= string.Empty;
+        private string _selectedCategory = string.Empty;
         public string SelectedCategory
         {
             get
@@ -668,7 +668,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("SelectedTaxEvasionRegionPrev");
             }
         }
-        private string _datePick =DateTime.UtcNow.ToString("dd/MM/yyyy");
+        private string _datePick = DateTime.UtcNow.ToString("dd/MM/yyyy");
         public string DatePick
         {
             get
@@ -717,21 +717,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 }
                 RaisePropertyChanged("SelectLCType");
             }
-                //if (_selectLCType != null)
-                //{
-                //    //  _TaxEvasionReportTobeUsedToSubmit.CityCode = _selectLCType.CityCode;
-                //    if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                //    { //_TaxEvasionReportTobeUsedToSubmit.Latitude = "0.0"; 
-                //    }
-                //    else
-                //    {// _TaxEvasionReportTobeUsedToSubmit.Latitude = _selectLCType.Latitude; }
-                //        if (string.IsNullOrEmpty(_selectLCType.Latitude))
-                //        { _TaxEvasionReportTobeUsedToSubmit.Longitude = "0.0"; }
-                //        else
-                //        { //_TaxEvasionReportTobeUsedToSubmit.Longitude = _selectLCType.Longitude; }
-                //        }
-                //    }
-                    //ListFormBudles = null;
+            //if (_selectLCType != null)
+            //{
+            //    //  _TaxEvasionReportTobeUsedToSubmit.CityCode = _selectLCType.CityCode;
+            //    if (string.IsNullOrEmpty(_selectLCType.Latitude))
+            //    { //_TaxEvasionReportTobeUsedToSubmit.Latitude = "0.0"; 
+            //    }
+            //    else
+            //    {// _TaxEvasionReportTobeUsedToSubmit.Latitude = _selectLCType.Latitude; }
+            //        if (string.IsNullOrEmpty(_selectLCType.Latitude))
+            //        { _TaxEvasionReportTobeUsedToSubmit.Longitude = "0.0"; }
+            //        else
+            //        { //_TaxEvasionReportTobeUsedToSubmit.Longitude = _selectLCType.Longitude; }
+            //        }
+            //    }
+            //ListFormBudles = null;
         }
         private TaxEvasionRegionCityDatum _selectLCTypePrev = null;
         public TaxEvasionRegionCityDatum SelectLCTypePrev
@@ -772,7 +772,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 RaisePropertyChanged("CList");
             }
         }
-        public TaxEvasionReportFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public TaxEvasionFormPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {
@@ -788,11 +788,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             {
                 _navigationService.GoBack();
             });
-       
+
             SubmitReportClicked = new Xamarin.Forms.Command(() =>
             {
                 IsLoading = false;
-              //  _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, selectedtaxEList);
+                //  _navigationService.NavigateTo(App.TaxEvasionAttachmentPageView, selectedtaxEList);
 
             });
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
@@ -810,26 +810,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
 
                 filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
-    //            if (Device.RuntimePlatform == Device.iOS)
-    //            {
-    //                filetypes = new string[] {
-    ////            UTType.PDF,
-    ////            "org.openxmlformats.wordprocessingml.document",
-    ////            "com.microsoft.word.doc",
-    ////"org.openxmlformats.spreadsheetml.sheet",
-    ////"org.openxmlformats.presentationml.presentation",
-    ////            UTType.JPEG,
-    ////            UTType.PNG,
-    ////            UTType.GIF,
-    ////            "com.microsoft.excel.xls",
-    ////            "com.microsoft.powerpoint.​ppt",
-    ////             UTType.Text
-    //                        };
-    //            }
-    //            else
-    //            {
-    //                filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
-    //            }
+                //            if (Device.RuntimePlatform == Device.iOS)
+                //            {
+                //                filetypes = new string[] {
+                ////            UTType.PDF,
+                ////            "org.openxmlformats.wordprocessingml.document",
+                ////            "com.microsoft.word.doc",
+                ////"org.openxmlformats.spreadsheetml.sheet",
+                ////"org.openxmlformats.presentationml.presentation",
+                ////            UTType.JPEG,
+                ////            UTType.PNG,
+                ////            UTType.GIF,
+                ////            "com.microsoft.excel.xls",
+                ////            "com.microsoft.powerpoint.​ppt",
+                ////             UTType.Text
+                //                        };
+                //            }
+                //            else
+                //            {
+                //                filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
+                //            }
                 var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                 //if (AttachmentSize < 10)
                 //{
@@ -862,7 +862,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                                             UploadedDocumentsList a = new UploadedDocumentsList();
                                             a.FileNameWithExtension = AttachmentName;
                                             a.DocBinaryInBase64 = attachment;
-                                            
+
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             //UploadedDocumentsList.DocBinaryInBase64 = base64String;
                                             //UploadedDocumentsList.FileNameWithExtension = AttachmentName;
@@ -940,7 +940,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                             //_navigationService.GoBack();
                             NoInternetGoBack();
                         }
-                       
+
                     }
                     catch (InternetException ex)
                     {
@@ -952,7 +952,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -962,7 +962,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 });
             }
         }
-        public async  void NoInternetGoBack()
+        public async void NoInternetGoBack()
         {
             Device.BeginInvokeOnMainThread(async () =>
             {
@@ -973,10 +973,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
         public async Task onSelectedTaxEvasionRegion()
         {
             await Task.Run(() =>
-          {
-              IsLoading = true;
-          });
-            await Task.Run(async() =>
+            {
+                IsLoading = true;
+            });
+            await Task.Run(async () =>
             {
                 try
                 {
@@ -1044,7 +1044,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 TaxEvasionReportTobeUsedToSubmit.City = Convert.ToString(SelectLCType.Id);
 
                 List<UploadedDocumentsList> newList = UploadedDocumentsListObj.ToList<UploadedDocumentsList>();
-                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = App.TaxEvasionUserData.Mobile;
+                TaxEvasionReportTobeUsedToSubmit.PhoneNumber = TFaciMobNo;
 
                 TaxEvasionReportDetails tex = TaxEvasionReportTobeUsedToSubmit;
 
@@ -1118,7 +1118,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 //        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 //    });
             }
-            }
+        }
         public void CreateCompanyTypeList()
         {
             try

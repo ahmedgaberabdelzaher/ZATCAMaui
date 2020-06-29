@@ -103,6 +103,5 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 viewModel._navigationService.GoBack();
             }
         }
-
     }
 }

@@ -2498,31 +2498,39 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>المدينة</value>
+    <value>المدينة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>اسم المالبلاغ</value>
+  <!--<data name="ZTERReportDetailFacilityName" xml:space="preserve">
+    <value>اسم المنشأة</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
+    <data name="ZTERReportDetailFacilityName" xml:space="preserve">
+    <value>اسم المالبلاغ *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنطقة للمنشأة</value>
+    <value>عنوان المنطقة للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة</value>
+    <value>عنوان الشارع للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة</value>
+    <value>نوع عمل المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>اسم مقدم البلاغ</value>
+    <value>اسم مقدم البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+  <data name="ZTERReportType" xml:space="preserve">
+        <value>نوع التقرير</value>
+        <comment>Tax Evasion Report Service</comment>
+  </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>رقم الجوال</value>
+    <value>رقم الجوال*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
@@ -2534,7 +2542,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل البلاغ</value>
+    <value>تفاصيل البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
@@ -2706,7 +2714,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال 5 أيام عمل</value>
+    <value>تم إرسال التقرير مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -3687,6 +3695,21 @@
   </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>تاريخ البداية</value>
+  </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>لرجاء الاطلاع على صفحة</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>الأسئلة والأجوبة لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
+  </data>
+       <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+    <value>الرقم الخاص بضريبة القيمة المضافة يبدأ برقم ٣</value>
+  </data>
+       <data name="ZNameVAlidation" xml:space="preserve">
+    <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
   </data>
   <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
     <value>Email field and Confirm Email field should match up</value>

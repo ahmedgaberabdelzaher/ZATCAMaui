@@ -243,7 +243,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        _navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
+                        _navigationService.NavigateTo(App.TaxEvasionFormPage, SelectedTaxEvasionReport);
+                        //_navigationService.NavigateTo(App.TaxEvasionReportFormPageView, SelectedTaxEvasionReport);
                     });
                 });
                 await Task.Run(() =>

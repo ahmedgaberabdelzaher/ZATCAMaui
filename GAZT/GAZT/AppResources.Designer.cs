@@ -6568,10 +6568,13 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to National ID consists of numbers only.
-        /// </summary>
-        public static string ZZNationalIDconsistsofnumbersonly {
+        public static string ZTERReportType {
+            get {
+                return ResourceManager.GetString("ZTERReportType", resourceCulture);
+            }
+        }
+        
+        public static string ZTERReportDetailNumber {
             get {
                 return ResourceManager.GetString("ZZNationalIDconsistsofnumbersonly", resourceCulture);
             }
@@ -9334,12 +9337,33 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT.
-        /// </summary>
-        public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
+        public static string ZZZZVATRFAQ1 {
             get {
-                return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
+                return ResourceManager.GetString("ZZZZVATRFAQ1", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFAQ2 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ2", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZVATRFAQ3 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRFAQ3", resourceCulture);
+            }
+        }
+        
+        public static string ZVATStartsWithVAlidation {
+            get {
+                return ResourceManager.GetString("ZVATStartsWithVAlidation", resourceCulture);
+            }
+        }
+        
+        public static string ZNameVAlidation {
+            get {
+                return ResourceManager.GetString("ZNameVAlidation", resourceCulture);
             }
         }
     }

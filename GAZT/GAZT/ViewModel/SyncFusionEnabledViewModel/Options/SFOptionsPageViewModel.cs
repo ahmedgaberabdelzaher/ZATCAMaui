@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
 {
     /// <summary>
@@ -113,6 +114,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             {
                 _isCorrespondenceVisible = value;
                 RaisePropertyChanged("IsCorrespondenceVisible");
+            }
+        }
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
             }
         }
         private ComingToOptionScreenFrom _isComingFrom;
@@ -284,7 +298,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
         }
         public async Task LogOut()
         {
-            if(App.TP!=null)
+            await Task.Run(() =>
+            {
+                App.DisplayProgressView();
+            });
+            if (App.TP!=null)
                 App.TP = null;
             if (App.PreviousIsArabic)
             {
@@ -305,6 +323,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             {
 
             }
+
+            await Task.Run(() =>
+            {
+                App.HideProgressView();
+            });
 
             var _navigation = Application.Current.MainPage.Navigation; 
             foreach (var item in _navigation.NavigationStack)

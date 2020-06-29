@@ -2488,31 +2488,35 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>City</value>
+    <value>City*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>Facility Name</value>
+    <value>Facility Name*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>Facility District Address</value>
+    <value>Facility District Address*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>Facility Street Address</value>
+    <value>Facility Street Address*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>Facility Work Type</value>
+    <value>Facility Work Type*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>Reporter Name</value>
+    <value>Reporter Name*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+    <data name="ZTERReportType" xml:space="preserve">
+        <value>Report Type</value>
+        <comment>Tax Evasion Report Service</comment>
+    </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>Mobile Number</value>
+    <value>Mobile Number*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
@@ -2524,7 +2528,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>Report Details</value>
+    <value>Report Details*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
@@ -3192,6 +3196,7 @@ Should we require further information, we would be in contact.</value>
     <value>Vat number is not equal to 15</value>
     <comment>Vat Lookup Error Message</comment>
   </data>
+    
   <data name="ZZZWrongverificationcode" xml:space="preserve">
     <value>Wrong verification code</value>
     <comment>Forgot Password</comment>
@@ -3704,6 +3709,21 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZZZZVATRStartDate" xml:space="preserve">
     <value>Start Date</value>
+  </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>Please refer to the</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>VAT FAQ</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>section in the GAZT website before filling out this application form.</value>
+  </data>
+  <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+    <value>VAT number starts with 3</value>
+  </data>
+      <data name="ZNameVAlidation" xml:space="preserve">
+    <value>Name cannot contain numbers or special characters</value>
   </data>
   <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
     <value>Email field and Confirm Email field should match up</value>
