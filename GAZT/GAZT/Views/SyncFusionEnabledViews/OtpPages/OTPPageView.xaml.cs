@@ -256,10 +256,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             }
             else if (_ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(async() =>
                 {
                     viewModel.IsLoading = false;
-
                 });
 
                 viewModel.EmailOrMobileNumber = AppResources.MobileNumber;
@@ -305,7 +304,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.OTPPage
             ChangeAeroIcon();
             if (viewModel.ComingToOTPVerificationScreenFromAndNavigatingTo._ComingToOTPVerificationScreenFrom == ComingToOTPVerificationScreenFrom.IsTes)
             {
-                Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsLoading = false;
                 });
