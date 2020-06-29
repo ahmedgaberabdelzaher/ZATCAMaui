@@ -12,7 +12,7 @@
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
         xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-    xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
     FlowDirection="LeftToRight"
     NavigationPage.HasNavigationBar="False"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile.TaxEvasionReportMobilePageView"
@@ -80,32 +80,30 @@
                             Text="{x:Static local1:AppResources.ZZZPleaseenteryourmobilenumbertoproceedfurther}" />
                             <!--Entry to get email ID from user-->
                             <!--ZTERReportDetailNumber-->
-                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" Margin="10,5,10,0" x:Name="StacklayoutEn">
-                                <Label x:Name="mobileNumberPrefix"  Text="+966"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
-    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
-    ContainerType="Outlined" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
-                                    <control:BorderlessEntry x:Name="Mobile_Entry"  Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused"    FontSize="Small" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
-                                        <Entry.Behaviors>
-                                            <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
-                                    </control:BorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
-                            </StackLayout>
-                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="2"   Orientation="Horizontal" x:Name="StackLayoutAr" Margin="10,5,10,0">
-                                <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" 
-    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="FillAndExpand"
-    ContainerType="Outlined" x:Name="frmMobileAr" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
-                                    <control:BorderlessEntry x:Name="Mobile_EntryAr"  Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused"    FontSize="Small" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
-                                        <Entry.Behaviors>
-                                            <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>
-                                    </control:BorderlessEntry>
-                                </inputLayout:SfTextInputLayout>
-                                <Label x:Name="Arabic_mobCountycode" Text="966+"  TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                            </StackLayout>
+                                <Grid FlowDirection="LeftToRight"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                       Grid.Row="2" Margin="10,5,10,0" x:Name="StacklayoutEn">
+                                     <Grid.RowDefinitions>
+                                         <RowDefinition Height="Auto" />
+                                     </Grid.RowDefinitions>
+                                     <Grid.ColumnDefinitions>
+                                         <ColumnDefinition Width="20*" />
+                                          <ColumnDefinition Width="80*" />
+                                     </Grid.ColumnDefinitions>
+                                    <Frame FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" BorderColor="White" HasShadow="False"/>
+                                    <Label FlowDirection="LeftToRight" Margin="0,10,-20,0" x:Name="mobileNumberPrefix" Grid.Row="0" Grid.Column="0"  Text="+966"  TextColor="#D99A29"
+                                           FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"
+                                           HorizontalTextAlignment="Center"></Label>
+                                    <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0"
+                                    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    ContainerType="None" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
+                                        <control:BorderlessEntry FlowDirection="LeftToRight" x:Name="Mobile_Entry" Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused" FontSize="Medium" TextColor="White"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+                                            <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
+                                        </control:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                </Grid>
                             <!--  Login button  -->
 
                             <buttons:SfButton
