@@ -2511,6 +2511,10 @@ Should we require further information, we would be in contact.</value>
     <value>Reporter Name*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+    <data name="ZTERReportType" xml:space="preserve">
+        <value>Report Type</value>
+        <comment>Tax Evasion Report Service</comment>
+    </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
     <value>Mobile Number*</value>
     <comment>Tax Evasion Report Service</comment>

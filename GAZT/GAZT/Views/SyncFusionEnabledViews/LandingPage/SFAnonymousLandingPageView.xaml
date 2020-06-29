@@ -127,7 +127,7 @@
                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
                     <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
-                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=280, Tablet=320, Desktop=320}"
+                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=350, Tablet=320, Desktop=320}"
                                          ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="Center" VerticalOptions="Center">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
@@ -168,7 +168,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=2, Desktop=2}" />
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=3, Desktop=3}" />
                         </listView:SfListView.LayoutManager>
                         <listView:SfListView.Behaviors>
                             <behavior:SfListViewExtendHeightBehavior ></behavior:SfListViewExtendHeightBehavior>

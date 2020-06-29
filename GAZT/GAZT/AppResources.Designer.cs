@@ -4302,6 +4302,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZTERReportType {
+            get {
+                return ResourceManager.GetString("ZTERReportType", resourceCulture);
+            }
+        }
+        
         public static string ZTERReportDetailNumber {
             get {
                 return ResourceManager.GetString("ZTERReportDetailNumber", resourceCulture);

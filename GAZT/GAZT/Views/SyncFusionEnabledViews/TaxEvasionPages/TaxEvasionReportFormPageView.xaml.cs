@@ -68,25 +68,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             }
 
             Device.BeginInvokeOnMainThread(() => {
-
                 if (App.IsArabic)
                 {
-
-                    TMobNumberAr.IsEnabled = false;
-
-                    TMobNumberAr.Text = App.TaxEvasionUserData.Mobile;
-                    TMobNumber.IsVisible = false;
+                    TMobNumber.IsEnabled = false;
+                    TMobNumber.Text = App.TaxEvasionUserData.Mobile;
+                    TMobNumber.FlowDirection = FlowDirection.RightToLeft;
                 }
                 else
                 {
-                    TMobNumberAr.IsVisible = false;
                     TMobNumber.IsEnabled = false;
                     TMobNumber.Text = App.TaxEvasionUserData.Mobile;
                 }
             });
-
-
-
 
             await GetRegionList();
             
@@ -221,7 +214,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 //TName.Text = viewModel.selectedtaxEList.Username;
                 viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
                 TMobNumber.IsEnabled = false;
-                TMobNumberAr.IsEnabled = false;
 
                 //TMobNumber.Text = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
                 //TMobNumberAr.Text = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
@@ -383,8 +375,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsVisiblePickerEn = false;
                 //facilityMobileStackLayoutAr.IsVisible = true;
                 //facilityMobileStackLayout.IsVisible = false;
-                reporterMobStackLayoutAr.IsVisible = true;
-                reporterMobStackLayout.IsVisible = false;
+                reporterMobStackLayout.IsVisible = true;
+                TMobNumber.FlowDirection = FlowDirection.RightToLeft;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     //FmobcountrycodeAr.Text = "+966";
@@ -401,8 +393,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsVisiblePickerEn = true;
                 //facilityMobileStackLayout.IsVisible = true;
                 //facilityMobileStackLayoutAr.IsVisible = false;
-                reporterMobStackLayoutAr.IsVisible = false;
                 reporterMobStackLayout.IsVisible = true;
+                TMobNumber.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -460,7 +452,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     if (App.IsArabic)
                     {
                         showMessage = true;
-                        FrmNumberAr.HasError = true;
+                        FrmNumber.HasError = true;
                         //TMobNumberAr.Focus(); FrmNumberAr.HasError = true; showFillFeildsMessage();
                     }
                     else
@@ -561,7 +553,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    if (TMobNumberAr.Text.Length < 9)
+                    if (TMobNumber.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -575,12 +567,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmNumberAr.HasError = true;
-                        TMobNumberAr.Text = string.Empty;
+                        FrmNumber.HasError = true;
+                        TMobNumber.Text = string.Empty;
                     }
                     else
                     {
-                        FrmNumberAr.HasError = false;
+                        FrmNumber.HasError = false;
                     }
                 }
             }
@@ -928,7 +920,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 TFaciName.Text = string.Empty;
               //  TFaciOwnerName.Text = string.Empty;
                 TMobNumber.Text = string.Empty;
-                TMobNumberAr.Text = string.Empty;
                 //TFaciMobNo.Text = string.Empty;
                 //TFaciMobNoAr.Text = string.Empty;
                // TEmail.Text = string.Empty;

@@ -1,21 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
-            
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
               xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"
-              xmlns:local1="clr-namespace:GAZT"
-               xmlns:local="clr-namespace:EGAZT"
+             xmlns:local1="clr-namespace:GAZT"
+             xmlns:local="clr-namespace:EGAZT"
              NavigationPage.HasNavigationBar="False"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-   
-             
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-            
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages.TaxEvasionFormPage">
@@ -28,7 +23,8 @@
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZTERReportFormPageTittle}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"
+                                    BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -89,7 +85,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <inputLayout:SfTextInputLayout x:Name="FrmCategory"   Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailName}"
+    Hint="{x:Static local:AppResources.ZTERReportType}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <controls:BorderlessEntry  x:Name="TCategory" IsSpellCheckEnabled="False" FontSize="Small"  Text="{Binding TCategory}">
