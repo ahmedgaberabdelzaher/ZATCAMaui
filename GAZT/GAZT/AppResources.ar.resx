@@ -2501,11 +2501,7 @@
     <value>المدينة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <!--<data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>اسم المنشأة</value>
-    <comment>Tax Evasion Report Service</comment>
-  </data>-->
-    <data name="ZTERReportDetailFacilityName" xml:space="preserve">
+  <data name="ZTERReportDetailFacilityName" xml:space="preserve">
     <value>اسم المالبلاغ *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
@@ -2526,8 +2522,8 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportType" xml:space="preserve">
-        <value>نوع التقرير</value>
-        <comment>Tax Evasion Report Service</comment>
+    <value>نوع التقرير</value>
+    <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
     <value>رقم الجوال*</value>
@@ -3705,14 +3701,18 @@
   <data name="ZZZZVATRFAQ3" xml:space="preserve">
     <value>في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
   </data>
-       <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+  <data name="ZVATStartsWithVAlidation" xml:space="preserve">
     <value>الرقم الخاص بضريبة القيمة المضافة يبدأ برقم ٣</value>
   </data>
-       <data name="ZNameVAlidation" xml:space="preserve">
+  <data name="ZNameVAlidation" xml:space="preserve">
     <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
   </data>
   <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
     <value>Email field and Confirm Email field should match up</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
+    <value>Select the type of Entity</value>
     <comment>New SignUp</comment>
   </data>
 </root>

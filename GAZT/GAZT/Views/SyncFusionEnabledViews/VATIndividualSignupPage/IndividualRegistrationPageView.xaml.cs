@@ -53,10 +53,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                Image_backArrow.Rotation = 0;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                Image_backArrow.Rotation = 180;
             }
         }
 

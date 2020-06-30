@@ -25,6 +25,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
+        public ICommand OnBackButtonClick { get; set; }
+        public ICommand GoButtonClick { get; set; }
         public int currentStep { get; set; }
         public VATSignUpData vATSignUpData { get; set; }
         public VATSignUpCaseId SignUpCaseIdD { get; set; }
@@ -340,6 +342,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_passwordView == true)
                 {
                     SetcolorForDots("PasswordView");
+                    BackArrowVisible = false;
+                }
+                else
+                {
+                    BackArrowVisible = true;
                 }
                 RaisePropertyChanged("PasswordView");
             }
@@ -1108,6 +1115,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
+        private bool _backArrowVisible = true;
+        public bool BackArrowVisible
+        {
+            get
+            {
+                return _backArrowVisible;
+            }
+            set
+            {
+                _backArrowVisible = value;
+                RaisePropertyChanged("BackArrowVisible");
+            }
+        }
         private bool _isOTPEntryEnable = true;
         public bool IsOTPEntryEnable
         {
@@ -1168,6 +1188,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
               await  SetFormVisibility();
             });
+
+            OnBackButtonClick = new Xamarin.Forms.Command(async () =>
+                 {
+                     await SetBackFormVisibility();
+                 });
+            GoButtonClick = new Xamarin.Forms.Command(async () =>
+                 {
+                     _navigationService.GoBack();
+                 });
         }
         #endregion
 
@@ -1189,9 +1218,42 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             BuildingNumber = string.Empty;
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
+            BackArrowVisible = true;
+        }
+        public async Task SetBackFormVisibility()
+        {
+            try
+            {
+                if (currentStep == 1)
+                {
+                    _navigationService.GoBack();
+                }
+                else if(currentStep == 2)
+                {
+                    NationalAddressView = false;
+                    IndividualRegistrationView = true;
+                    currentStep--;
+                }
+                else if (currentStep == 3)
+                {
+                    ContactInformationView = false;
+                    NationalAddressView = true;
+                    currentStep--;
+                }
+                else if (currentStep == 4)
+                {
+                    SummeryView = false;
+                    ContactInformationView = true;
+                    currentStep--;
+
+                }
+
+            }
+            catch
+            { }
         }
 
-        public async Task OnPageLoad()
+                    public async Task OnPageLoad()
         {
             
                 currentStep = 1;
@@ -1954,8 +2016,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Country = SelectedGCCCountry.CountryCode,
                     Country = _Country,
                     Building = BuildingNumber,
-                    Floor = "",
-                    Street = "",
+                    Floor = UnitNumber,
+                    Street = Neighborhood,
                     Begda = "/Date(1593139376000)/",
                     Endda = "/Date(253402251010000)/",
                     Email = Email,

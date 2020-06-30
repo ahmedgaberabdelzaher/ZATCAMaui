@@ -9308,6 +9308,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the type of Entity.
+        /// </summary>
+        public static string ZZZZSelectthetypeofEntity {
+            get {
+                return ResourceManager.GetString("ZZZZSelectthetypeofEntity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Summery.
         /// </summary>
         public static string ZZZZSummery {
