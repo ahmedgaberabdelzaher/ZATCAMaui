@@ -5850,9 +5850,9 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZZRegistration_Successful {
+        public static string ZZZZRegistrationSuccessful {
             get {
-                return ResourceManager.GetString("ZZZZRegistration Successful", resourceCulture);
+                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
             }
         }
         

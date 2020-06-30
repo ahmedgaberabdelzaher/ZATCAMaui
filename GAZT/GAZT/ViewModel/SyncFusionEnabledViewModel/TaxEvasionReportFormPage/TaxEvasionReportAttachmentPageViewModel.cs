@@ -220,9 +220,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 
             SubmitReportClicked = new Xamarin.Forms.Command(async () =>
             {
+            
                 await Task.Run(() =>
                 {
-                    IsLoading = true;
+                    App.DisplayProgressView();
                 });
 
                 await SubmitCreatedReport();
@@ -244,11 +245,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
 
                 TaxEvasionCreateReportResponseModel response = new TaxEvasionCreateReportResponseModel();
                 response = await WebServiceManager.GAZTTaxEvasionCreateReport(TaxEvasionReportTobeUsedToSubmit, newList);
-
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
 
                 if (response != null && response.Status == true)
                 {
@@ -274,6 +270,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                 {//ZTEReportReportSuccessResponsep2
                     _dialogService.ShowMessage(AppResources.ZTEReportReportSuccessResponsep2, " ");
                 }
+                await Task.Run(() =>
+                {
+                    App.HideProgressView();
+                });
             }
             catch (GAZTException gex)
             {
