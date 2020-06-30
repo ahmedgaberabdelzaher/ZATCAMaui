@@ -6,6 +6,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,8 +14,10 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -33,7 +36,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.IndividualRegistrationPageView;
             this.BindingContext = viewModel;
             viewModel.ClearData();
-            viewModel.OnPageLoad();
+             Task.Run(async() =>
+            {
+                viewModel.OnPageLoad();
+            });
+            
             viewModel.IndividualRegistrationView = true;
             SetLTR();
             viewModel.currentStep = 1;
@@ -41,6 +48,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.ContactInformationView = false;
             viewModel.SummeryView = false;
             viewModel.PasswordView = false;
+            viewModel.ContinueButtonText = AppResources.ZZZZContinue;
             //viewModel.SetFormVisibility();
         }
         private void SetLTR()
@@ -48,67 +56,81 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                Image_backArrow.Rotation = 0;
+                //Label_MobileInitialAr.IsVisible = false;
+                //Label_MobileInitialEng.IsVisible = true;
+                EntryMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
+                Image_backArrow.Rotation = 180;
+                EntryMobileNumber.HorizontalTextAlignment = TextAlignment.End;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("EGAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
+                //Label_MobileInitialAr.IsVisible = true;
+                //Label_MobileInitialEng.IsVisible = false;
             }
         }
 
-        /*        private void OnIDTypeTapped(object sender, EventArgs e)
-                {
-                    DDlIDType.IsOpen = true;
-                }
-                private void OnDOBTapped(object sender, EventArgs e)
-                {
-                    DOB.IsOpen = true;
-                }
-                private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+    /*        private void OnIDTypeTapped(object sender, EventArgs e)
+            {
+                DDlIDType.IsOpen = true;
+            }
+            private void OnDOBTapped(object sender, EventArgs e)
+            {
+                DOB.IsOpen = true;
+            }
+            private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void IDTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void IDTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void IDTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void IDTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_Closed(object sender, EventArgs e)
-                {
+            private void DOB_Closed(object sender, EventArgs e)
+            {
 
-                }*/
-        #region
-        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+            }*/
+    #region
+    private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -756,6 +778,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
                 viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
+                {
+                    if (string.IsNullOrEmpty(viewModel.DOB) && string.IsNullOrEmpty(viewModel.IdNumber))
+                    {
+                        ValidateIDNumber();
+                    }
+                    
+                }
+                
 
             }
             catch (Exception ex)
@@ -1093,12 +1124,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmEmailAddress.HasError = true;
+                    viewModel.FrameEmailError = true;
+                    //FrmEmailAddress.HasError = true;
                     EntryEmail.Text = string.Empty;
                 }
                 else
                 {
-                    FrmEmailAddress.HasError = false;
+                    viewModel.FrameEmailError = false;
+                    //FrmEmailAddress.HasError = false;
                 }
             }
         }
@@ -1123,12 +1156,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmConfirmEmail.HasError = true;
+                    viewModel.FrameConfirmEmailError = true;
+                    //FrmConfirmEmail.HasError = true;
                     EntryConfirmEmail.Text = string.Empty;
                 }
                 else
                 {
-                    FrmConfirmEmail.HasError = false;
+                    viewModel.FrameConfirmEmailError = false;
+                   // FrmConfirmEmail.HasError = false;
                 }
             }
         }
@@ -1165,21 +1200,104 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmMobileNumber.HasError = true;
+                    //FrmMobileNumber.HasError = true;
+                    viewModel.FrameMobileNumberError = true;
                     EntryMobileNumber.Text = string.Empty;
                 }
                 else
                 {
-                    FrmMobileNumber.HasError = false;
+                    //FrmMobileNumber.HasError = false;
+                    viewModel.FrameMobileNumberError = false;
                 }
             }
         }
 
+        private void EntryConfirmPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryConfirmPassword.Text))
+            {
+                if (viewModel.Password != viewModel.ConfirmPassword)
+                {
+                    viewModel.FrameConfirmPasswordError = true;
+                    //frmCfrmPass.HasError = true;
+                }
+                else
+                {
+                    viewModel.FrameConfirmPasswordError = false;
+                    //frmCfrmPass.HasError = false;
+                }
+            }
+        }
 
+        private void ImageSeePassword_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsPasswordEncripted)
+            {
+                viewModel.IsPasswordEncripted = false;
+            }
+            else
+            {
+                viewModel.IsPasswordEncripted = true;
+            }
+        }
 
-        //private void EntryEmail_TextChanged(object sender, FocusEventArgs e)
-        //{
+        private void ImageSeeConfirmPassword_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsConfirmPasswordEncripted)
+            {
+                viewModel.IsConfirmPasswordEncripted = false;
+            }
+            else
+            {
+                viewModel.IsConfirmPasswordEncripted = true;
+            }
+            
+        }
 
-        //}
+        private void ImageSeeOtp_Tapped(object sender, EventArgs e)
+        {
+            if (viewModel.IsOTPEncripted)
+            {
+                viewModel.IsOTPEncripted = false;
+            }
+            else
+            {
+                viewModel.IsOTPEncripted = true;
+            }
+        }
+
+        private void GccCountryName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.CountryName))
+            {
+                viewModel.FrameGccCountyError = false;
+            }
+        }
+
+        private void Entry_Region_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(viewModel.Region))
+            {
+                viewModel.FrameRegionError = false;
+            }
+        }
+
+        private void Entry_City_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(!string.IsNullOrEmpty(viewModel.CityName))
+            {
+                viewModel.FrameCityError = false;
+            }
+        }
+
+        private void DateEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.FrameDOBError = false;
+        }
+
+        private void EntryName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            viewModel.FrameNameError = false;
+        }
     }
 }

@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATIndividualSignupPageView"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="DarkGreen">
     <ContentPage.Resources>
@@ -18,26 +18,42 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <yummy:PancakeView BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0">
+        <Grid>
+        <yummy:PancakeView Grid.Row="0" BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0">
             <StackLayout Padding="20">
-                <StackLayout Orientation="Horizontal">
-                <Image HorizontalOptions="Start">
-                    <Image.Source>
+                <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="Image_backArrow" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!--<Image HorizontalOptions="Start">-->
+                           
+                            <!--<Image.Source>
                         <FontImageSource Color="Black" 
                                  FontFamily="UserIconFont"
                                  Glyph="{x:Static FontImage:IconFonts.ArchiveArrowDown}"
                             />
-                    </Image.Source>
-                </Image>
-                <Image Source="icon.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                </StackLayout>
-                <Label Text="New Account" FontSize="Large" TextColor="Black" 
+                    </Image.Source>-->
+                <!--</Image>-->
+                        <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="Large" TextColor="Black" 
                        FontFamily="{StaticResource SSTArBold}"/>
-                <Label Text="Select Entity Type" FontFamily="{StaticResource SSTArBold}"/>
+                    <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
                 <StackLayout Padding="5">
-                <Frame CornerRadius="5" BackgroundColor="DarkGreen" HeightRequest="100">
-                        <Label Text="Individual Registration" TextColor="{StaticResource WhiteTextColor}"
+                        <Frame CornerRadius="5" BackgroundColor="DarkGreen" HeightRequest="100"><!--Text="Individual Registration"-->
+                            <Label  Text="{x:Static local:AppResources.ZZZZIndividualRegistration}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
@@ -46,5 +62,26 @@
                 </StackLayout>
             </StackLayout>
         </yummy:PancakeView>
+            <Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" >
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center"
+                                           IsBusy="{Binding IsLoading}"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                    </StackLayout>
+                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
+                </StackLayout>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

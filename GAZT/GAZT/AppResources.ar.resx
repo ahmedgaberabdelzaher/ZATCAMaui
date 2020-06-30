@@ -805,7 +805,7 @@
     <value>مرحباً</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
-    <value>ادخل رمز التحقق</value>
+    <value>الرجاء ادخال رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
     <value>إقرارات الزكاة/ضريبة الدخل</value>
@@ -2514,7 +2514,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة*</value>
+    <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
@@ -2710,7 +2710,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال التقرير مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>تم إرسال البلاغ مالبلاقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -3512,7 +3512,7 @@
     <value>Register in VAT Now</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZRegistration Successful" xml:space="preserve">
+  <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
     <value>Registration Successful</value>
     <comment>New SignUp</comment>
   </data>
@@ -3706,6 +3706,14 @@
   </data>
   <data name="ZNameVAlidation" xml:space="preserve">
     <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
+  </data>
+  <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
+    <value>Email field and Confirm Email field should match up</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
+    <value>Select the type of Entity</value>
+    <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>التسجيل في ضريبة القيمة المضافة</value>

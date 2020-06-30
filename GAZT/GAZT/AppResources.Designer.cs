@@ -9396,5 +9396,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
             }
         }
+        
+        public static string ZZZZEmailandconfirmemailshouldmatchup {
+            get {
+                return ResourceManager.GetString("ZZZZEmailandconfirmemailshouldmatchup", resourceCulture);
+            }
+        }
+        
+        public static string ZZZZSelectthetypeofEntity {
+            get {
+                return ResourceManager.GetString("ZZZZSelectthetypeofEntity", resourceCulture);
+            }
+        }
     }
 }

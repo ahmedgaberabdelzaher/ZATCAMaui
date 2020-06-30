@@ -330,7 +330,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
-                    }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                        }
+                }
                     catch (Exception ex)
                     {
                     }
@@ -399,7 +404,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                    {
+                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                     }
+                }
                     catch (Exception ex)
                     {
                     }
@@ -473,7 +483,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                    {
+                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                     }
+                }
                     catch (Exception ex)
                     {
 
