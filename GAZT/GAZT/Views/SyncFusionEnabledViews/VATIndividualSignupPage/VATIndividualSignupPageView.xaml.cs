@@ -28,5 +28,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.IsLoading = false;
+        }
     }
 }

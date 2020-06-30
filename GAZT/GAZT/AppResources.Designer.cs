@@ -9283,9 +9283,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Registration Successful.
         /// </summary>
-        public static string ZZZZRegistration_Successful {
+        public static string ZZZZRegistrationSuccessful {
             get {
-                return ResourceManager.GetString("ZZZZRegistration Successful", resourceCulture);
+                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
             }
         }
         

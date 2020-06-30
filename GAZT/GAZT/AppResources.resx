@@ -3520,7 +3520,7 @@ Should we require further information, we would be in contact.</value>
     <value>Register in VAT Now</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZRegistration Successful" xml:space="preserve">
+  <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
     <value>Registration Successful</value>
     <comment>New SignUp</comment>
   </data>

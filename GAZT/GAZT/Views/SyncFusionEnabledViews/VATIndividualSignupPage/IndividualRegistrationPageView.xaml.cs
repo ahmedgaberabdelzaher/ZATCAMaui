@@ -54,11 +54,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
                 Image_backArrow.Rotation = 0;
+                //Label_MobileInitialAr.IsVisible = false;
+                //Label_MobileInitialEng.IsVisible = true;
+                EntryMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 Image_backArrow.Rotation = 180;
+                EntryMobileNumber.HorizontalTextAlignment = TextAlignment.End;
+                //Label_MobileInitialAr.IsVisible = true;
+                //Label_MobileInitialEng.IsVisible = false;
             }
         }
 
@@ -771,6 +777,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                     
                 }
+                
 
             }
             catch (Exception ex)

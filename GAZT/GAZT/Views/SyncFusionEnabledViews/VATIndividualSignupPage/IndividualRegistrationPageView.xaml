@@ -841,9 +841,11 @@
                                                         <inputLayout:SfTextInputLayout x:Name="FrmMobileNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,-6,0,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >
-                                                            <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                                                            
+                                                            <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                                                 <custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>
-                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}" HorizontalTextAlignment="Start" x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"   x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+
                                                                     <Entry.Behaviors>
                                                                         <custom1:OnlyNumericValuesBehaviour/>
                                                                     </Entry.Behaviors>
