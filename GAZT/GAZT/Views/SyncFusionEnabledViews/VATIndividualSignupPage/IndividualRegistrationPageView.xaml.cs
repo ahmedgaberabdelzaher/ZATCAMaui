@@ -6,6 +6,7 @@ using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,8 +14,10 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -57,71 +60,77 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //Label_MobileInitialAr.IsVisible = false;
                 //Label_MobileInitialEng.IsVisible = true;
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.Start;
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
             }
             else
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 Image_backArrow.Rotation = 180;
                 EntryMobileNumber.HorizontalTextAlignment = TextAlignment.End;
+                CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
+                PickerResourceManager.Manager = new ResourceManager("EGAZT.SyncfusionControl", Xamarin.Forms.Application.Current.GetType().Assembly);
                 //Label_MobileInitialAr.IsVisible = true;
                 //Label_MobileInitialEng.IsVisible = false;
             }
         }
 
-        /*        private void OnIDTypeTapped(object sender, EventArgs e)
-                {
-                    DDlIDType.IsOpen = true;
-                }
-                private void OnDOBTapped(object sender, EventArgs e)
-                {
-                    DOB.IsOpen = true;
-                }
-                private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+    /*        private void OnIDTypeTapped(object sender, EventArgs e)
+            {
+                DDlIDType.IsOpen = true;
+            }
+            private void OnDOBTapped(object sender, EventArgs e)
+            {
+                DOB.IsOpen = true;
+            }
+            private void DDlIDType_SelectedIndexChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void IDTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void IDTypePicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void IDTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void IDTypePicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DDlIDType_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
-                {
+            private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+            {
 
-                }
+            }
 
-                private void DOB_Closed(object sender, EventArgs e)
-                {
+            private void DOB_Closed(object sender, EventArgs e)
+            {
 
-                }*/
-        #region
-        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+            }*/
+    #region
+    private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
