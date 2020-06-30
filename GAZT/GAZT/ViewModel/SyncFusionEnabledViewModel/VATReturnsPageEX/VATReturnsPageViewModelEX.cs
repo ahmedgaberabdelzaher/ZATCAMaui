@@ -44,6 +44,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         public ICommand onCreditCarriedForwardClicked { get; set; }
         public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
         public ICommand OnGetAcknowledgementLinkClicked { get; set; }
+
+        public static bool IsFirstTimeForNote = false;
         #endregion
         #region Property
         private bool _isPrevReturn = false;

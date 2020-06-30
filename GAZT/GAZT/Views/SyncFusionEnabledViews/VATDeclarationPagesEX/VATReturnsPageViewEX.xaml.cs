@@ -87,6 +87,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 viewModel.TxtSelectedIBANIDNumber = string.Empty;
                 viewModel.TxtSelectedIBAN = string.Empty;
                 viewModel.TxtSelectedIBANType = string.Empty;
+                VATReturnsPageViewModelEX.IsFirstTimeForNote = true;
                 setAllCheckbox(false);
                 IntilizeAsync();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
