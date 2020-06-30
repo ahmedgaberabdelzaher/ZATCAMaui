@@ -36,6 +36,7 @@
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
                 </Image>
+                <!--ZZZZRegistrationSuccessful-->
                 <Label Text="Registration Successful"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
                 <Label Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>

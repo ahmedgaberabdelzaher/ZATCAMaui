@@ -26,12 +26,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                Image_backArrow.Rotation = 0;
+            }
+            else
+            {
+                Image_backArrow.Rotation = 180;
             }
         }
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             viewModel.IsLoading = false;
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            viewModel._navigationService.GoBack();
         }
     }
 }

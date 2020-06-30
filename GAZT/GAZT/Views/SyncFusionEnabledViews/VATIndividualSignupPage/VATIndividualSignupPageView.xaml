@@ -21,17 +21,32 @@
         <Grid>
         <yummy:PancakeView Grid.Row="0" BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0">
             <StackLayout Padding="20">
-                <StackLayout Orientation="Horizontal">
-                <Image HorizontalOptions="Start">
-                    <Image.Source>
+                <Grid HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="Image_backArrow" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <!--<Image HorizontalOptions="Start">-->
+                           
+                            <!--<Image.Source>
                         <FontImageSource Color="Black" 
                                  FontFamily="UserIconFont"
                                  Glyph="{x:Static FontImage:IconFonts.ArchiveArrowDown}"
                             />
-                    </Image.Source>
-                </Image>
-                        <Image Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                </StackLayout>
+                    </Image.Source>-->
+                <!--</Image>-->
+                        <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
                     <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="Large" TextColor="Black" 
                        FontFamily="{StaticResource SSTArBold}"/>
                     <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>

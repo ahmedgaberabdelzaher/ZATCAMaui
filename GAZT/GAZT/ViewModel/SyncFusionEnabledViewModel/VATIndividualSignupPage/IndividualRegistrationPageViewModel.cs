@@ -2067,14 +2067,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
+                        if (itemerror.code.Contains("ZD_ZVTX/006") || itemerror.code.Contains("ZD_ZVTX/007"))
                         {
                             if (Message.Length > 0)
                             {
                                 Message.Append(Environment.NewLine);
                             }
                             Message.Append(itemerror.message);
-                        }
+                        }//ZD_ZVTX/007
+                        
                     }
                     _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                 }
