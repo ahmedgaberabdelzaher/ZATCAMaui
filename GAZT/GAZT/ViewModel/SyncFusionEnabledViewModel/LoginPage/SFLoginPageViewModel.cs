@@ -934,6 +934,113 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
         }
 
+        public async Task LoginCompletedInWebViewForVATRegistrationTestPurpose()
+        {
+            string response = string.Empty;
+            string UserId = App.LoginDataRetrieved.TIN;
+
+            String lang = "E";
+            string language = UtilityManager.GetLanguageParameter();
+
+            if (App.IsArabic == true)
+                lang = "AR";
+
+            string _currentAttempts = CurrentAttempt.ToString();
+            string languag = UtilityManager.GetLanguageParameter();
+
+            TaxPayerProfile TPProfile = WebServiceManager.SFGAZTGetTaxPayerProfile(UserId, lang);
+
+            if (TPProfile != null)
+            {
+                //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                //{
+                //    throw new GAZTRegistrationPendingException();
+                //}
+
+                App.TP = new TaxPayerProfile();
+                App.TP = TPProfile;
+                App.TP.Userid = TPProfile.Tin;
+            }
+
+            String OnAuthenticationSuccessMsg = AppResources.LoginSuccessful;
+            String OnSuccessfulAuthenticationqMsg = AppResources.EnterVerificationCode;
+
+            await Task.Run(async () =>
+            {
+                try
+                {
+
+                    App.IsLoginCalled = false;
+                    App.ArePreLoginLangCookiesSet = false;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        _navigationService.NavigateTo(App.SFLandingPageView);
+                    });
+
+                    //if (App.IsOTPByPassed == true)
+                    //{
+                    //}
+                    //else
+                    //{
+                    //    string currentAttempts = "1";
+                    //    response = await WebServiceManager.GAZTSendAndReceiveOTP(lang, UserId, currentAttempts);
+                    //    IsLoading = false;
+                    //    App.IsLoginCalled = false;
+                    //    App.ArePreLoginLangCookiesSet = false;
+
+                    //    if (0 == String.Compare("OTP has send", response, true) || 0 == String.Compare("كلمة مرور مرة واحدة قد أرسلت", response, true))
+                    //    {
+
+                    //        App.TP.Userid = UserId;
+                    //        App.TP.Password = Password;
+
+                    //        ComingToOTPVerificationScreenFrom NavigatingFromLogin = ComingToOTPVerificationScreenFrom.IsLogin;
+
+                    //        Device.BeginInvokeOnMainThread(() =>
+                    //        {
+                    //            _navigationService.NavigateTo(App.OTPPageView, new ComingToOTPVerificationScreenFromAndNavigatingTo()
+                    //            {
+                    //                _ComingToOTPVerificationScreenFrom = NavigatingFromLogin,
+                    //                NavigateToThisService = NavigateToThisService
+                    //            });
+                    //        });
+
+                    //    }
+                    //    else
+                    //    {
+                    //        await Task.Run(() =>
+                    //        {
+                    //            IsLoading = false;
+                    //        });
+                    //        Device.BeginInvokeOnMainThread(async () =>
+                    //        {
+                    //            await _dialogService.ShowMessageBox(response, AppResources.Information);
+                    //        });
+                    //    }
+                    //}
+                }
+                catch (GAZTInternetException)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+
+
+                }
+                catch (Exception)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    });
+                }
+
+            });
+
+        }
+
         public async Task Logout()
         {
             await WebServiceManager.GAZTLogOff();

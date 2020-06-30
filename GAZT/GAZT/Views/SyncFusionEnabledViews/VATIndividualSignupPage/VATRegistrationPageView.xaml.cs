@@ -70,6 +70,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView());
         }
 
+
+
         private void btnContinue_Clicked(object sender, EventArgs e)
         {
             if(viewModel.CurrentStep == "Step1")
@@ -122,8 +124,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             
         }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await GetVatRegistrationData();
 
-
+        }
+        public async Task GetVatRegistrationData()
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                await viewModel.onPageLoad();
+            });
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
 
         private void DateEntry_Focused(object sender, FocusEventArgs e)
         {

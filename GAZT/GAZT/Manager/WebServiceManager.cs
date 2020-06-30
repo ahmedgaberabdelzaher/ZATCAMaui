@@ -5862,7 +5862,7 @@ namespace GAZT.Manager
 
         #region VatRegistration
 
-        public static VATRegistrationDetails GAZTGetVATRegistrationData(string Langz,string TxnTpz)
+        public static VATRegistrationDetails GAZTGetVATRegistrationData()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5870,9 +5870,10 @@ namespace GAZT.Manager
                 string NewToken = string.Empty;
                 try
                 {
+                    Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + Langz + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + App.LoginDataRetrieved.Euser + "',Fbguid='" + App.LoginDataRetrieved.FbGuid + "'" + ")?&$ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,ELGBL_DOCSet&$format=json";
-                    client.DefaultRequestHeaders.Add("Token", "123");
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "00000000000009303150" + "',Fbguid='" + "005056B1F8FB1EEAAEC90BA1484E32D6" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,ELGBL_DOCSet&$format=json";
+                    //client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATRegistrationDataResponse = client.GetAsync(uri).Result;
                     if (GAZTVATRegistrationDataResponse != null)
@@ -5916,7 +5917,7 @@ namespace GAZT.Manager
         }
 
 
-        public static VATRegistrationOtherDetails GAZTGetVATRegistrationDataWithButtons(string Lang, string Status, string TxnTp, string Formproc)
+        public static VATRegistrationOtherDetails GAZTGetVATRegistrationDataWithButtons(string Fbnumz,string Lang, string Officerz, string Status, string TxnTp, string Formproc)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -5925,7 +5926,7 @@ namespace GAZT.Manager
                 try
                 {
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATRegistrationOtherDetails + "',Lang='" + Lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + "E0001" + "',TxnTp='" + "CRE_RGVT" + "',Formproc='" + "ZTAX_VT_REG" + ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
+                    String url = Constants.GAZTGetVATRegistrationOtherDetails + Fbnumz + "',Lang='" + Lang + "',Officer='" + Officerz + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + Status + "',TxnTp='" + "CRE_RGVT" + "',Formproc='" + "ZTAX_VT_REG" + ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATRegistrationDataOtherResponse = client.GetAsync(uri).Result;

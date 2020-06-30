@@ -307,7 +307,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
                             string mobno=string.Empty;
                             Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
@@ -371,7 +376,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
                         string mobno = string.Empty;
                         if (App.TP != null && App.TP.Mobile != null)
@@ -435,7 +445,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
                             string mobno = string.Empty;
                             if (App.TP != null && App.TP.Mobile != null)
