@@ -805,7 +805,7 @@
     <value>مرحباً</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
-    <value>ادخل رمز التحقق</value>
+    <value>الرجاء ادخال رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
     <value>إقرارات الزكاة/ضريبة الدخل</value>
@@ -2513,15 +2513,20 @@
     <value>عنوان الشارع للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTERReportDetailFWType" xml:space="preserve">
+    
+ <!-- <data name="ZTERReportDetailFWType" xml:space="preserve">
     <value>نوع عمل المنشأة*</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>-->
+         <data name="ZTERReportDetailFWType" xml:space="preserve">
+    <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
     <value>اسم مقدم البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTERReportType" xml:space="preserve">
+ <data name="ZTERReportType" xml:space="preserve">
     <value>نوع التقرير</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
@@ -2710,7 +2715,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال التقرير مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>تم إرسال البلاغ مالبلاقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">

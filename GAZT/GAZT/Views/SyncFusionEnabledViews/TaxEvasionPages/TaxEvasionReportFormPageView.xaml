@@ -99,7 +99,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
                         <inputLayout:SfTextInputLayout x:Name="FrmName"  Grid.Row="1"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
-    Hint="{x:Static local:AppResources.ZTERReportDetailName}"
+     Hint="{x:Static local:AppResources.ZTERReportDetailName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <custom:BorderlessEntry  x:Name="TName" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
