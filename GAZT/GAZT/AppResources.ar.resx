@@ -2513,12 +2513,7 @@
     <value>عنوان الشارع للمنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-    
- <!-- <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة*</value>
-    <comment>Tax Evasion Report Service</comment>
-  </data>-->
-         <data name="ZTERReportDetailFWType" xml:space="preserve">
+  <data name="ZTERReportDetailFWType" xml:space="preserve">
     <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
@@ -2526,7 +2521,7 @@
     <value>اسم مقدم البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
- <data name="ZTERReportType" xml:space="preserve">
+  <data name="ZTERReportType" xml:space="preserve">
     <value>نوع التقرير</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
@@ -3517,7 +3512,7 @@
     <value>Register in VAT Now</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZRegistration Successful" xml:space="preserve">
+  <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
     <value>Registration Successful</value>
     <comment>New SignUp</comment>
   </data>
