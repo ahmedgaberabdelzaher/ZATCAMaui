@@ -8845,9 +8845,12 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZZRegistration_Successful {
+        /// <summary>
+        ///   Looks up a localized string similar to GAZT reserves the right to obtain financial statements and business records of the company and review them..
+        /// </summary>
+        public static string ZZZVATRInstrunctionsAndConditions2 {
             get {
-                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
+                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions2", resourceCulture);
             }
         }
         
@@ -9170,6 +9173,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email field and Confirm Email field should match up.
+        /// </summary>
+        public static string ZZZZEmailandconfirmemailshouldmatchup {
+            get {
+                return ResourceManager.GetString("ZZZZEmailandconfirmemailshouldmatchup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English capital and small letters.
         /// </summary>
         public static string ZZZZEnglishcapitalandsmallletters {
@@ -9271,9 +9283,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Registration Successful.
         /// </summary>
-        public static string ZZZZRegistration_Successful {
+        public static string ZZZZRegistrationSuccessful {
             get {
-                return ResourceManager.GetString("ZZZZRegistration Successful", resourceCulture);
+                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
             }
         }
         
@@ -9292,6 +9304,15 @@ namespace EGAZT {
         public static string ZZZZReviewinformation {
             get {
                 return ResourceManager.GetString("ZZZZReviewinformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the type of Entity.
+        /// </summary>
+        public static string ZZZZSelectthetypeofEntity {
+            get {
+                return ResourceManager.GetString("ZZZZSelectthetypeofEntity", resourceCulture);
             }
         }
         
@@ -9391,18 +9412,6 @@ namespace EGAZT {
         public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZEmailandconfirmemailshouldmatchup {
-            get {
-                return ResourceManager.GetString("ZZZZEmailandconfirmemailshouldmatchup", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZSelectthetypeofEntity {
-            get {
-                return ResourceManager.GetString("ZZZZSelectthetypeofEntity", resourceCulture);
             }
         }
     }
