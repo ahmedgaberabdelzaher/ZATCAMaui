@@ -36,6 +36,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            //viewModel.IsLoading = false;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //your code here;
             viewModel.IsLoading = false;
         }
 
