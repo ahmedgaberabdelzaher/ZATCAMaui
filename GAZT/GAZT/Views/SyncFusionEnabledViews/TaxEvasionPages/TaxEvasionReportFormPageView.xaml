@@ -405,13 +405,13 @@ ItemHeight="45" ShowFooter="True"
     Hint="{x:Static local:AppResources.ZTERReportDetailReportDetails}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <Editor  MaxLength="3000" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" x:Name="TReportDetail" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
+                            <Editor  MaxLength="3000" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" x:Name="TReportDetail" HeightRequest="150" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
                         </inputLayout:SfTextInputLayout>
-                        <inputLayout:SfTextInputLayout x:Name="FrmTFW"   Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
+                        <inputLayout:SfTextInputLayout x:Name="FrmTFW"  Grid.Row="8"  Grid.Column="0"  Grid.ColumnSpan="2"    Margin="10,-6,10,-6"
     Hint="{x:Static local:AppResources.ZTERReportDetailFWType}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry  IsSpellCheckEnabled="False" x:Name="TFWType" MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
+                            <custom:GAZTBorderlessEntry  IsSpellCheckEnabled="False" x:Name="TFWType"  MaxLength="100" Unfocused="TFWType_Unfocused" Text="{Binding TFWType}">
                                 <custom:GAZTBorderlessEntry.Behaviors>
                                     <custom1:AlphabetandArabicCharacters/>
                                 </custom:GAZTBorderlessEntry.Behaviors>

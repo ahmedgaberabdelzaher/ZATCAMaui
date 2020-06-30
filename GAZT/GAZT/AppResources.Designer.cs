@@ -8845,12 +8845,9 @@ namespace EGAZT {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to GAZT reserves the right to obtain financial statements and business records of the company and review them..
-        /// </summary>
-        public static string ZZZVATRInstrunctionsAndConditions2 {
+        public static string ZZZZRegistration_Successful {
             get {
-                return ResourceManager.GetString("ZZZVATRInstrunctionsAndConditions2", resourceCulture);
+                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
             }
         }
         
