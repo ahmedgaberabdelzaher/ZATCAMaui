@@ -1658,10 +1658,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 if (_iSSwichButtonEnable == true)
                 {
                     // await showInfoMessageForRefund();
-                    IsVisibleDropdownForRefund = true;
-                    IsDropdownVisibleForIban = true;
-                    IsVisiblechkRefundDeclaration = true;
-
+                    OpenIbanSet();
                 }
                 else
                 {
@@ -3987,6 +3984,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 IsLoading = false;
             });
         }
+
+        public async void OpenIbanSet()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(() =>
+                {
+                    IsVisibleDropdownForRefund = true;
+                    IsDropdownVisibleForIban = true;
+                    IsVisiblechkRefundDeclaration = true;
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         public async Task VATReturnAmendAsync()
         {
             await Task.Run(() =>
