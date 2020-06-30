@@ -37,5 +37,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
             }
         }
+        protected override bool OnBackButtonPressed() => true;
     }
 }
