@@ -262,7 +262,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
-                            ValidateIDNumber(); ;
+                            if (!string.IsNullOrEmpty(viewModel.DOB))
+                            {
+                                ValidateIDNumber(); 
+                            }
+                                
 
                         }
                     }
@@ -321,7 +325,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
-                            ValidateIDNumber();
+                            if (!string.IsNullOrEmpty(viewModel.DOB))
+                            {
+                                ValidateIDNumber();
+                            }
                         }
                     }
                     
@@ -873,6 +880,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
               viewModel.SelectedRegion= viewModel.RegionList[viewModel.SelectedRegionIndex];
               viewModel.Region=viewModel.RegionList[viewModel.SelectedRegionIndex].Bezei;
+                viewModel.CityName = string.Empty;
 
             }
             catch (Exception ex)

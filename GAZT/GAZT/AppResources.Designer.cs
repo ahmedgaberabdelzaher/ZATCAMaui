@@ -9209,6 +9209,123 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Iqama ID &amp; is not valid – please check.
+        /// </summary>
+        public static string ZZZZErroMessage1 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Postal Code &amp; must be entered in English numbers only..
+        /// </summary>
+        public static string ZZZZErroMessage10 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid Email Signup Code.
+        /// </summary>
+        public static string ZZZZErroMessage11 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email ID &amp; is already registered  with us– please use different one..
+        /// </summary>
+        public static string ZZZZErroMessage2 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile number &amp; is already registered with us- please use different one..
+        /// </summary>
+        public static string ZZZZErroMessage3 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email &amp; is already used for sign up..
+        /// </summary>
+        public static string ZZZZErroMessage4 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile &amp; is already used for signup..
+        /// </summary>
+        public static string ZZZZErroMessage5 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The ID Number is already registered in GAZT.
+        /// </summary>
+        public static string ZZZZErroMessage6 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid SMS Signup Code..
+        /// </summary>
+        public static string ZZZZErroMessage7 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Saudi ID &amp; is not valid – please check.
+        /// </summary>
+        public static string ZZZZErroMessage8 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This id is already registered with GAZT plesse sign in using e-mail id.
+        /// </summary>
+        public static string ZZZZErroMessage9 {
+            get {
+                return ResourceManager.GetString("ZZZZErroMessage9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please re-enter the verification code that be sent to your mobile correctly.
+        /// </summary>
+        public static string ZZZZErrorMessage007 {
+            get {
+                return ResourceManager.GetString("ZZZZErrorMessage007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Number is not Correct.
+        /// </summary>
+        public static string ZZZZErrorMessage303 {
+            get {
+                return ResourceManager.GetString("ZZZZErrorMessage303", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go to Dashboard.
         /// </summary>
         public static string ZZZZGotoDashboard {

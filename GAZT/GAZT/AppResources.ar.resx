@@ -3742,6 +3742,47 @@
     <value>يرجى تحديد المنطقة قبل اختيار المدينة</value>
     <comment>Tax Evasion Report</comment>
   </data>
+  <data name="ZZZZErroMessage1" xml:space="preserve">
+    <value>رقم الاقامة &amp; غير صحيح - الرجاء التأكد من رقم الاقامة</value>
+  </data>
+  <data name="ZZZZErroMessage10" xml:space="preserve">
+    <value>يجب إدخال الرمز البريدي &amp; بالأرقام الإنجليزية فقط</value>
+  </data>
+  <data name="ZZZZErroMessage11" xml:space="preserve">
+    <value>الرجاء إدخال كلمة المرور المرسله إلى بريدك الإلكتروني بشكل صحيح</value>
+  </data>
+  <data name="ZZZZErroMessage2" xml:space="preserve">
+    <value>البريد الالكترني &amp; مسجل مسبقاً مع الهيئة, الرجاء استخدم بريد الكتروني آخر</value>
+  </data>
+  <data name="ZZZZErroMessage3" xml:space="preserve">
+    <value>رقم الجوال &amp; مستخدم مسبقاً, الرجاء ادخل رقم جوال آخر</value>
+  </data>
+  <data name="ZZZZErroMessage4" xml:space="preserve">
+    <value>البريد الالكتروني &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول</value>
+  </data>
+  <data name="ZZZZErroMessage5" xml:space="preserve">
+    <value>رقم الجوال &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول</value>
+  </data>
+  <data name="ZZZZErroMessage6" xml:space="preserve">
+    <value>رقم الهوية مسجل مسبقاً فى الهيئة</value>
+  </data>
+  <data name="ZZZZErroMessage7" xml:space="preserve">
+    <value>الرجاء ادخال رمز التحقق المرسل الى جوالك بشكل صحيح</value>
+  </data>
+  <data name="ZZZZErroMessage8" xml:space="preserve">
+    <value>رقم الهوية السعودي &amp; غير صحيح , الرجاء التأكد</value>
+  </data>
+  <data name="ZZZZErroMessage9" xml:space="preserve">
+    <value>تم استخدام رقم الهوية مسبقاً مع الهيئة, استخدم البريد الاكتروني للدخول</value>
+  </data>
+  <data name="ZZZZErrorMessage007" xml:space="preserve">
+    <value>الرجاء ادخال رمز التحقق المرسل الى جوالك بشكل صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErrorMessage303" xml:space="preserve">
+    <value>رقم الهوية غير صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
   <data name="ZZZZInvalidPostalCode" xml:space="preserve">
     <value>الرمز البريدي غير صحيح</value>
     <comment>New SignUp</comment>
