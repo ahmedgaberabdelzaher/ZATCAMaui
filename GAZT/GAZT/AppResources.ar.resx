@@ -621,6 +621,9 @@
   <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
+  <data name="NoReportsAvailable" xml:space="preserve">
+    <value>لا يوجد تقارير متاحة</value>
+  </data>
   <data name="Nodataavailable" xml:space="preserve">
     <value>لا تتوفر بيانات</value>
   </data>
@@ -802,7 +805,7 @@
     <value>مرحباً</value>
   </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
-    <value>ادخل رمز التحقق</value>
+    <value>الرجاء ادخال رمز التحقق</value>
   </data>
   <data name="ZZakatReturnListing" xml:space="preserve">
     <value>إقرارات الزكاة/ضريبة الدخل</value>
@@ -2073,7 +2076,7 @@
     <comment>Correspondence</comment>
   </data>
   <data name="ZZFormBundleStatus" xml:space="preserve">
-    <value>حالة الطلب</value>
+    <value>الاستعلام عن حالة الطلب</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZZPleaseselectFormBundleNumber" xml:space="preserve">
@@ -2451,8 +2454,12 @@
     <comment>New Account</comment>
   </data>
   <data name="ZTERChooseReportCategory" xml:space="preserve">
-    <value>الرجاء إختيار نوع الإقرار</value>
+    <value>الرجاء اختيار نوع الإبلاغ</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTEAddReport" xml:space="preserve">
+    <value>إضافة تقرير</value>
+    <comment>Add Report</comment>
   </data>
   <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
     <value>التالي</value>
@@ -2491,31 +2498,35 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>المدينة</value>
+    <value>المدينة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>اسم المنشأة</value>
+    <value>إسم المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنطقة للمنشأة</value>
+    <value>عنوان المنشأة- الحي*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة</value>
+    <value>عنوان المنشأة- الشارع*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع عمل المنشأة</value>
+    <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>اسم مقدم البلاغ</value>
+    <value>اسم مقدم البلاغ*</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportType" xml:space="preserve">
+    <value>نوع التقرير</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>رقم الجوال</value>
+    <value>رقم الجوال*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
@@ -2527,7 +2538,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>تفاصيل البلاغ</value>
+    <value>تفاصيل البلاغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
@@ -2535,7 +2546,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailVATNumber" xml:space="preserve">
-    <value>رقم حساب ضريبة القيمة المضافة</value>
+    <value>الرقم الضريبي</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportFormEnterCity" xml:space="preserve">
@@ -2671,7 +2682,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportCompanyName" xml:space="preserve">
-    <value>أسم الشركة</value>
+    <value>اسم الشركة</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportClosed" xml:space="preserve">
@@ -2679,11 +2690,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportDate" xml:space="preserve">
-    <value>تاريخ التقرير</value>
+    <value>تاريخ البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportNumber" xml:space="preserve">
-    <value>رقم التقرير</value>
+    <value>رقم البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportOpen" xml:space="preserve">
@@ -2695,11 +2706,11 @@
     <comment>tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportStatus" xml:space="preserve">
-    <value>حالة التقرير</value>
+    <value>حالة البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال 5 أيام عمل</value>
+    <value>تم إرسال البلاغ مالبلاقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -2893,7 +2904,7 @@
     <value>التزاماتي</value>
   </data>
   <data name="ZZZApplicationStatusTitle" xml:space="preserve">
-    <value>حالة الطلب</value>
+    <value>الاستعلام عن حالة الطلب</value>
     <comment>Title</comment>
   </data>
   <data name="ZZZCorrespondenceTitle" xml:space="preserve">
@@ -3438,31 +3449,31 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZAtleast8characterslong" xml:space="preserve">
-    <value>At least 8 characters long</value>
+    <value>يجب أن لاتقل عن 8 خانات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZBuildingNumber" xml:space="preserve">
-    <value>Building Number</value>
+    <value>رقم المبنى</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCompletethebelowdetails" xml:space="preserve">
-    <value>Complete the below details</value>
+    <value>أكمل التفاصيل أدناه</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZConfirmEmail" xml:space="preserve">
-    <value>Confirm Email</value>
+    <value>تأكيد البريد الالكتروني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>استمر</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCreateasecurePassword" xml:space="preserve">
-    <value>Create a secure Password</value>
+    <value>إنشاء كلمة مرور آمنة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEnglishcapitalandsmallletters" xml:space="preserve">
-    <value>English capital and small letters</value>
+    <value>حروف إنجليزية كبيرة وصغيرة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZGotoDashboard" xml:space="preserve">
@@ -3474,55 +3485,257 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNationalAddress" xml:space="preserve">
-    <value>National Address</value>
+    <value>العنوان الوطني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNeighborhood" xml:space="preserve">
-    <value>Neighborhood</value>
+    <value>الحي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNotexceed16characters" xml:space="preserve">
-    <value>Not exceed 16 characters</value>
+    <value>يجب أن لاتتجاوز عن 16 خانة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNumbersandsymbols" xml:space="preserve">
-    <value>Numbers and symbols</value>
+    <value>أرقام ورموز</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPersonalInformation" xml:space="preserve">
-    <value>Personal Information</value>
+    <value>المعلومات الشخصية</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPostalCode" xml:space="preserve">
-    <value>Postal Code</value>
+    <value>الرمز البريدي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRegisterinVATNow" xml:space="preserve">
-    <value>Register in VAT Now</value>
+    <value>التسجيل في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZRegistration Successful" xml:space="preserve">
-    <value>Registration Successful</value>
+  <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
+    <value>تم التسجيل بنجاح</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRepeatPassword" xml:space="preserve">
-    <value>Repeat Password</value>
+    <value>تأكيد كلمة المرور</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZReviewinformation" xml:space="preserve">
-    <value>Review information</value>
+    <value>مراجعة المعلومات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSummery" xml:space="preserve">
-    <value>Summery</value>
+    <value>الملخص</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZUnitNumber" xml:space="preserve">
     <value>Unit Number</value>
     <comment>New SignUp</comment>
   </data>
+  <data name="ZTEReportAttachmentTitle" xml:space="preserve">
+    <value>نرجو إرفاق الملفات (فواتير أو صور)</value>
+    <comment>Tax Evasion</comment>
+  </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>
+    <value>تم التسجيل الى خدمات الهيئة العامة للزكاة والدخل بنجاح . لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZAttachementAddNewType" xml:space="preserve">
+    <value>إضافة نوع جديد</value>
+  </data>
+  <data name="ZZZAttachementMandatory" xml:space="preserve">
+    <value>المرفقات إلزامية للمكلفين الغير خاضعين</value>
+  </data>
+  <data name="ZZZAttachementSection" xml:space="preserve">
+    <value>قسم المرفقات</value>
+  </data>
+  <data name="ZZZAttachementSubmitNote" xml:space="preserve">
+    <value>الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .</value>
+  </data>
+  <data name="ZZZAttachementSubmitProveNote" xml:space="preserve">
+    <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+  <data name="ZZZVATRAdditionalInfo" xml:space="preserve">
+    <value>المعلومات الإضافية</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctions" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل 1 يناير 2018
+لا يمكن أن يكون قبل تاريخ بداية السجل التجاري
+يحق لكم تأجيل تاريخ نفاذ تسجيلكم وخضوعكم لضريبة القيمة المضافة حتى 1/1/2019، في حال كانت توريداتكم السنوية الخاضعة للضريبة لا تتجاوز مليون ريال
+إذا كنت مكلف مقيم في المملكة العربية السعودية يجب أن يعبر التاريخ عن تاريخ البداية الالزامي ( أو الاختياري) بأثر سابق أو لاحق
+إذا كنت مكلف غير مقيم في المملكة العربية السعودية يجب أن يعبر عن تاريخ أول توريد ضريبي</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFifthLine" xml:space="preserve">
+    <value>إذا كنت مكلف غير مقيم في المملكة العربية السعودية يجب أن يعبر عن تاريخ أول توريد ضريبي</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل 1 يناير 2018</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFourthLine" xml:space="preserve">
+    <value>إذا كنت مكلف مقيم في المملكة العربية السعودية يجب أن يعبر التاريخ عن تاريخ البداية الالزامي ( أو الاختياري) بأثر سابق أو لاحق</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>لا يمكن أن يكون قبل تاريخ بداية السجل التجاري</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>يحق لكم تأجيل تاريخ نفاذ تسجيلكم وخضوعكم لضريبة القيمة المضافة حتى 1/1/2019، في حال كانت توريداتكم السنوية الخاضعة للضريبة لا تتجاوز مليون ريال</value>
+  </data>
+  <data name="ZZZVATRDR1" xml:space="preserve">
+    <value>أتعهد بأن جميع المعلومات المذكورة في الأعلى حقيقية وصحيحة على حد علمي</value>
+  </data>
+  <data name="ZZZVATRDR2" xml:space="preserve">
+    <value>أتعهد بأنني مخول لإكمال هذا النموذج للشخص الخاضع للضريبة وبأن جميع المعلومات صحيحة</value>
+  </data>
+  <data name="ZZZVATRDRContactPersonName" xml:space="preserve">
+    <value>اسم الشخص الذي يمكن الاتصال به</value>
+  </data>
+  <data name="ZZZVATRDRIdTypeAndNo" xml:space="preserve">
+    <value>نوع الهوية/رقم الهوية</value>
+  </data>
+  <data name="ZZZVATREligibilityCommencementDate" xml:space="preserve">
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة:</value>
+  </data>
+  <data name="ZZZVATRExporter" xml:space="preserve">
+    <value>هل أنت مصدر</value>
+  </data>
+  <data name="ZZZVATRFinancialDetailsQNotes" xml:space="preserve">
+    <value>في هذا القسم أجب على الأسئلة التالية لتحديد خضوعك لضريبة القيمة المضافة وتقديم الملفات المطلوبة</value>
+  </data>
+  <data name="ZZZVATRFirstName" xml:space="preserve">
+    <value>الاسم الأول</value>
+  </data>
+  <data name="ZZZVATRFR1" xml:space="preserve">
+    <value>في حال كنت مكلف مقيم،هذا القسم إختياري ويمكن لك تخطي القسم أو ادخال التفاصيل في الاسفل للاكمال
+*في حال لم تكن مقيم هذا القسم إلزامي
+*الرجاء عدم استخدام الرقم المميز أو الهوية للمكلف في قسم معلومات الممثل المالي</value>
+  </data>
+  <data name="ZZZVATRImporter" xml:space="preserve">
+    <value>هل أنت مستورد</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions1" xml:space="preserve">
+    <value>لتقديم الطلب بالنيابة عن المنشأة يجب تعبئة هذا الطلب من قبل الممثل النظامي للمنشأة , وفي حال عدم صحة المعلومات المقدمة تطبق العقوبات الواردة في نظام ضريبة القيمة المضافة دون الإخلال بالعقوبات الواردة في الأنظمة الأخرى المطبقة في المملكة العربية السعودية .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions2" xml:space="preserve">
+    <value>للهيئة الحق في الحصول على البيانات المالية والسجلات المحاسبية للمنشأة ومراجعتها .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions3" xml:space="preserve">
+    <value>للهيئة الحق في الحصول على البيانات المالية والسجلات المحاسبية للمالك ( الملاك ) ومراجعتها .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions4" xml:space="preserve">
+    <value>قد يتم إلغاء هذا التسجيل وفقاً للحالات المنصوص عليها بموجب أحكام هذا النظام .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions5" xml:space="preserve">
+    <value>يجب على الشخص المسجل في نظام ضريبة القيمة المضافة إخطار الهيئة بموجب إشعار بأي تغيرات جوهرية ينتج عنها فقدان الشخص المسجل الأحقية في التسجيل في نظام ضريبة القيمة المضافة أو في حال تعديل أي من البيانات المذكورة في نموذج التسجيل , وذلك وفقاً لأحكام النظام .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions6" xml:space="preserve">
+    <value>يجوز للمنشآت التي لا تتجاوز توريداتها السنوية الخاضعة للضريبة مليون ريال سعودي حتى نهاية عام 2018، اختيار أي تاريخ لنفاذ التسجيل بحد أقصى 1/1/2019</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions7" xml:space="preserve">
+    <value>أقر باطلاعي والتزامي بكافة المتطلبات والإجراءات الواردة في نظام ضريبة القيمة المضافة ولائحته التنفيذية والتي تتضمن على سبيل المثال لا الحصر ما يلي أدناه. ويحق للهيئة العامة للزكاة والدخل اتخاذ الإجراءات المناسبة وفق نظام ضريبة القيمة المضافة ولائحته التنفيذية في حال مخالفة هذه المتطلبات وعدم الالتزام بها.
+* الالتزام بالتقدم للتسجيل في نظام ضريبة القيمة المضافة خلال المدة المحددة في نظام ضريبة القيمة المضافة ولائحته التنفيذية.
+* الالتزام بتقديم الإقرارات الضريبية في الأوقات المحددة في اللائحة حسب الإيرادات السنوية للمنشأة أو للشخص الخاضع للضريبة.
+* الالتزام بسداد الضريبة المستحقة و أية غرامات مرتبطة بها خلال المدد التي تحددها اللائحة.
+* الالتزام بتقديم كافة المعلومات والسجلات و المستندات التي تطلبها الهيئة للتحقق من الالتزامات الضريبية المستحقة، خلال المدة المحددة في اللائحة.
+* الالتزام بعدم إصدار فاتورة ضريبية في حال عدم استكمال التسجيل أو عدم بدء نفاذه.
+* الالتزام بحفظ الفواتير الضريبية والدفاتر والسجلات والمستندات المحاسبية خلال الفترة المنصوص عليها في اللائحة.
+* للهيئة الحق بإعادة تقييم الإقرار المقدم في أي فترة، وفقا لأحكام نظام ضريبة القيمة المضافة ولائحته التنفيذية.
+* للهيئة الحق في اجراء تقييم لأي فترة ضريبية لم يتم تقديم الإقرار الخاص بها في الموعد المحدد نظاماً، وفقاً لأحكام نظام ضريبة القيمة المضافة ولائحته التنفيذية.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsAgreeCondition" xml:space="preserve">
+    <value>أوافق على التعليمات والشروط وإكمال الخطوات</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsFirst" xml:space="preserve">
+    <value>الرجاء إكمال المعلومات المطلوبة لكل خطوة , لا يمكن تقديم هذا الطلب حتى يتم إدخال جميع المعلومات الإلزامية , يجب على مقدم الطلب التأكد من أن تفاصيل المكلف الحالية مكتملة وصحيحة قبل التسجيل في ضريبة القيمة المضافة .</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsSecond" xml:space="preserve">
+    <value>الرجاء الاطلاع على صفحة  الأسئلة والأجوبة لضريبة القيمة المضافة  في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
+  </data>
+  <data name="ZZZVATRMainOutlet" xml:space="preserve">
+    <value>السجل التجاري للفرع الرئيسي</value>
+  </data>
+  <data name="ZZZVATRprovidenewIBAN" xml:space="preserve">
+    <value>و ادخل رقم ايبان جديد</value>
+  </data>
+  <data name="ZZZVATRQuestion1" xml:space="preserve">
+    <value>كم ستبلغ مبيعاتك الخاضعة لضريبة القيمة المضافة خلال الـ 12 شهر القادمة ( بما فيها الشهر الحالي )؟</value>
+  </data>
+  <data name="ZZZVATRQuestion2" xml:space="preserve">
+    <value>كم كان إجمالي مبيعاتك الخاضعة لضريبة القيمة المضافة للـ 12 شهر الماضية حتى وقت التسجيل ؟</value>
+  </data>
+  <data name="ZZZVATRQuestion3" xml:space="preserve">
+    <value>كم ستبلغ مصروفاتك الخاضعة لضريبة القيمة المضافة خلال الـ 12 شهر القادمة ( بما فيها الشهر الحالي )؟</value>
+  </data>
+  <data name="ZZZVATRQuestion4" xml:space="preserve">
+    <value>كم كان إجمالي مصروفاتك الخاضعة لضريبة القيمة المضافة للـ 12 شهر الماضية حتى وقت التسجيل ؟</value>
+  </data>
+  <data name="ZZZVATRSelectanexistingIBAN" xml:space="preserve">
+    <value>اختيار رقم الايبان الحالي</value>
+  </data>
+  <data name="ZZZVATRSource" xml:space="preserve">
+    <value>مصدر المكلف</value>
+  </data>
+  <data name="ZZZVATRSurName" xml:space="preserve">
+    <value>اسم العائلة</value>
+  </data>
+  <data name="ZZZVATRVATEligibilitySection" xml:space="preserve">
+    <value>قسم الخضوع لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATREFinancialDetails" xml:space="preserve">
+    <value>المعلومات المالية</value>
+  </data>
+  <data name="ZZZZVATREInstructionsandConditions" xml:space="preserve">
+    <value>التعليمات و الشروط</value>
+  </data>
+  <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
+    <value>الممثل المالي</value>
+  </data>
+  <data name="ZZZZVATRStartDate" xml:space="preserve">
+    <value>تاريخ البداية</value>
+  </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>لرجاء الاطلاع على صفحة</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>الأسئلة والأجوبة لضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>في موقع الهيئة العامة للزكاة والدخل قبل تعبئة هذا النموذج.</value>
+  </data>
+  <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+    <value>الرقم الخاص بضريبة القيمة المضافة يبدأ برقم ٣</value>
+  </data>
+  <data name="ZNameVAlidation" xml:space="preserve">
+    <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
+  </data>
+  <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
+    <value>البريد الالكتروني غير مطابق الرجاء ادخال البريد بشكل صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
+    <value>الرجاء اختيار كيان المكلف</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZVatRegistrationTile" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>البحرين</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>الكويت</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>عُمان</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>قطر</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>الإمارات العربية المتحدة</value>
     <comment>New SignUp</comment>
   </data>
 </root>

@@ -57,18 +57,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnImporter_Clicked(object sender, EventArgs e)
         {
-
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
-
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
 
         private void NewAccount_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView());
         }
+
+
 
         private void btnContinue_Clicked(object sender, EventArgs e)
         {
@@ -122,8 +124,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             
         }
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await GetVatRegistrationData();
 
-
+        }
+        public async Task GetVatRegistrationData()
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            await Task.Run(async () =>
+            {
+                await viewModel.onPageLoad();
+            });
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
 
         private void DateEntry_Focused(object sender, FocusEventArgs e)
         {
@@ -193,11 +214,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-        }
-
-        private void SideMenu_Clicked(object sender, EventArgs e)
-        {
-            PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
         }
 
         private void btnContactID_Clicked(object sender, EventArgs e)
@@ -287,6 +303,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             //    viewModel.CurrentStep = "Step5";
             //    SetfifthBoxColor();
             //}
+        }
+
+        private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+        }
+
+        private void TappedOnMenu(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PushAsync(new VATRegistrationMenuPopUp());
+        }
+
+        private void VATFaqTapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

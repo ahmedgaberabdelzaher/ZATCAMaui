@@ -29,21 +29,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 if(PropertyRegistrationPageViewModel.reServiceName == AppResources.ZVATRealEstatePropertyRegistration)
                 {
                     viewModel.HeaderTitle = AppResources.ZVATRealEstatePropertyRegistration;
-                    viewModel.WebUrl = "http://10.50.14.186/ar/eServices/Pages/NewMojcertificateMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/ar/eServices/Pages/NewMojcertificateMV.aspx";
                 }
                 if (PropertyRegistrationPageViewModel.reServiceName == AppResources.ZVATRealEstateRequestVerification)
                 {
 
                     viewModel.HeaderTitle = AppResources.ZVATRealEstateRequestVerification;
 
-                    viewModel.WebUrl = "http://10.50.14.186/ar/eServices/Pages/MOJVerifyMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/ar/eServices/Pages/MOJVerifyMV.aspx";
                 }
                 if (PropertyRegistrationPageViewModel.reServiceName == AppResources.ZVATRealEstateTerminationOfRequest)
                 {
 
                     viewModel.HeaderTitle = AppResources.ZVATRealEstateTerminationOfRequest;
 
-                    viewModel.WebUrl = "http://10.50.14.186/ar/eServices/Pages/MOJCancelMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/ar/eServices/Pages/MOJCancelMV.aspx";
                 }
 
 
@@ -55,19 +55,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 {
                     viewModel.HeaderTitle = AppResources.ZVATRealEstatePropertyRegistration;
 
-                    viewModel.WebUrl = "http://10.50.14.186/en/eServices/Pages/NewMojcertificateMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/en/eServices/Pages/NewMojcertificateMV.aspx";
                 }
                 if (PropertyRegistrationPageViewModel.reServiceName == AppResources.ZVATRealEstateRequestVerification)
                 {
                     viewModel.HeaderTitle = AppResources.ZVATRealEstateRequestVerification;
 
-                    viewModel.WebUrl = "http://10.50.14.186/en/eServices/Pages/MOJVerifyMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/en/eServices/Pages/MOJVerifyMV.aspx";
                 }
                 if (PropertyRegistrationPageViewModel.reServiceName == AppResources.ZVATRealEstateTerminationOfRequest)
                 {
                     viewModel.HeaderTitle = AppResources.ZVATRealEstateTerminationOfRequest;
 
-                    viewModel.WebUrl = "http://10.50.14.186/en/eServices/Pages/MOJCancelMV.aspx";
+                    viewModel.WebUrl = "http://stgextportal1/en/eServices/Pages/MOJCancelMV.aspx";
                 }
 
             }
@@ -103,6 +103,5 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
                 viewModel._navigationService.GoBack();
             }
         }
-
     }
 }

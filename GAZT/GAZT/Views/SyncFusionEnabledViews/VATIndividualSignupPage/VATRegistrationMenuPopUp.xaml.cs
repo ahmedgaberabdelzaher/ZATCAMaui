@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public VATRegistrationMenuPopUp()
         {
             InitializeComponent();
+        }
+
+        private async void OnAttachmentTapped(object sender, EventArgs e)
+        {
+            await attach.TranslateTo(0, 0, 0, Easing.BounceOut);
+           
+            
+            await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
         }
     }
 }

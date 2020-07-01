@@ -37,7 +37,9 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
@@ -165,7 +167,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReturnsPageViewModel>();
             SimpleIoc.Default.Register<MyCommitmentsPageViewModel>();
             SimpleIoc.Default.Register<ContactUsPageViewModel>();
-
+            SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
             SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
@@ -174,6 +176,9 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
             SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
+            SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
+
+            SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
 
         }
         public PdfViewModel pdfView
@@ -656,6 +661,20 @@ namespace EGAZT
                 }
             }
         }
+        public TaxEvasionFormPageViewModel TaxEvasionFormPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public TaxEvasionRegistrationViewModel TaxEvasionRegistrationFormPageView
         {
             get
@@ -663,6 +682,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxEvasionReportAttachmentPageViewModel TaxEvasionAttachmentPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxEvasionReportAttachmentPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -986,6 +1019,21 @@ namespace EGAZT
                 }
             }
         }
+
+        public FileAttachmentPopUpPageViewModel FileAttachmentPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FileAttachmentPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1050,9 +1098,14 @@ namespace EGAZT
             navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
             navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
             navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
-            
+
             navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
             navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
+
+            navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
+            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
+
+            navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
             return navigationService;
         }
     }

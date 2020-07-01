@@ -8,6 +8,7 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
+            xmlns:local="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.RegistrationSuccessfulPageView"
              BackgroundColor="DarkGreen">
     <ContentPage.Resources>
@@ -36,31 +37,35 @@
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
                 </Image>
-                <Label Text="Registration Successful" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"
+                <!--ZZZZRegistrationSuccessful Text="Registration Successful" Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"-->
+                <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SSTArabicMedium}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="TIN Nimber" HorizontalOptions="StartAndExpand"/>
+                            <Label   Text="{x:Static local:AppResources.TINS}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label Text="1234567890" TextColor="Black"/>
-                                <Image>
+                                <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TINnumber}" TextColor="Black"/>
+                                <Image x:Name="Image_Copy">
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentPaste}"/>
                                     </Image.Source>
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="Image_Copy_Tapped"/>
+                                    </Image.GestureRecognizers>
                                 </Image>
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <buttons:SfButton x:Name="btnVATRegistration" Text="Register in VAT Now" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                    <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZRegisterinVATNow}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="56" Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
-                    <buttons:SfButton x:Name="btnDashboard" Text="Go To Dashboard" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnVATRegistration_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                    <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      HeightRequest="46" Clicked="btnVATRegistration_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
                 </StackLayout>
             </yummy:PancakeView>

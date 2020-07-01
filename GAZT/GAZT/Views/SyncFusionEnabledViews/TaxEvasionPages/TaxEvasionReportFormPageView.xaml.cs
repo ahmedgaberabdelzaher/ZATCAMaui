@@ -37,10 +37,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 ChangeAeroIcon();
 
                 viewModel.selectedtaxEList = new TaxEvasionReportDetails();
-                viewModel.selectedtaxEList=   SelectedTaxEvasionListItem;
+                viewModel.selectedtaxEList =   SelectedTaxEvasionListItem;
 
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 viewModel.UploadedDocumentsList = new UploadedDocumentsList();
+                
                 //viewModel.TaxEvasionReportTobeUsedToSubmit = new TaxEvasionReportTobeUsedToSubmit();
                 
                 //RegionPicker
@@ -66,7 +67,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 SetLocationToMap();
             }
 
+            Device.BeginInvokeOnMainThread(() => {
+                if (App.IsArabic)
+                {
+                    TMobNumber.IsEnabled = false;
+                    TName.Text = App.TaxEvasionUserData.FullName;
+                    TMobNumber.Text = App.TaxEvasionUserData.Mobile;
+                    TMobNumber.FlowDirection = FlowDirection.RightToLeft;
+                    TName.FlowDirection = FlowDirection.RightToLeft;
+                }
+                else
+                {
+                    TMobNumber.IsEnabled = false;
+                    TName.Text = App.TaxEvasionUserData.FullName;
+                    TMobNumber.Text = App.TaxEvasionUserData.Mobile;
+                }
+            });
+
             await GetRegionList();
+            
         }
         public void SetPickerFont()
         {
@@ -184,24 +203,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 RegionPicker.IsEnabled = false;
                 RegionPickerAR.IsEnabled = false;
                 Region_entry.IsEnabled = false;
-                Attachment_Label.IsVisible = false;
-                Attachment_Label.IsVisible = false;
+              //  Attachment_Label.IsVisible = false;
+              //  Attachment_Label.IsVisible = false;
                 TFSAddress.IsEnabled = false;
-                Attachment_Tmg.IsVisible = false;
-                Attachment_Frm.IsVisible = false;
-                Attachment_Entry.IsVisible = false;
-                Attachment_Tmg.IsEnabled = false;
-                checkBox.IsEnabled = false;
+              //  Attachment_Tmg.IsVisible = false;
+              //  Attachment_Frm.IsVisible = false;
+              //  Attachment_Entry.IsVisible = false;
+              //  Attachment_Tmg.IsEnabled = false;
+               // checkBox.IsEnabled = false;
                 viewModel.TName = viewModel.selectedtaxEList.Username;
                 TName.IsEnabled = false;
+
+                //TName.Text = viewModel.selectedtaxEList.Username;
                 viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
                 TMobNumber.IsEnabled = false;
-                TMobNumberAr.IsEnabled = false;
+
+                //TMobNumber.Text = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
+                //TMobNumberAr.Text = viewModel.selectedtaxEList.PhoneNumber.Remove(0, 1);
                 viewModel.TEmail = viewModel.selectedtaxEList.EmailId;
-                TEmail.IsEnabled = false;
+               // TEmail.IsEnabled = false;
                 viewModel.TFaciName = viewModel.selectedtaxEList.CompanyName;
                 TFaciName.IsEnabled = false;
-                TFaciOwnerName.IsEnabled = false;
+              //  TFaciOwnerName.IsEnabled = false;
                 //TFaciMobNo.IsEnabled = false;
                 //TFaciMobNoAr.IsEnabled = false;
                 //TFaciEmail.IsEnabled = false;
@@ -257,24 +280,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 {
                     Position position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
                     MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                    mapView.MoveToRegion(mapSpan);
+                    //mapView.MoveToRegion(mapSpan);
                     Pin pin = new Pin();
                     pin.Label = "Report Location";
                     pin.Type = PinType.Place;
                     pin.Position = new Position(Convert.ToDouble(viewModel.selectedtaxEList.Latitude), Convert.ToDouble(viewModel.selectedtaxEList.Longitude));
-                    mapView.Pins.Clear();
-                    mapView.Pins.Add(pin);
+                    //mapView.Pins.Clear();
+                    //mapView.Pins.Add(pin);
                 }
-                mapView.IsEnabled = false;
+                //mapView.IsEnabled = false;
                 if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.Tin))
                 { viewModel.IsTIN = true; viewModel.TxtTIN = viewModel.selectedtaxEList.Tin; viewModel.IsTINVisible = true; }
                 else
                 {
                     viewModel.IsTIN = false;
                 }
-                TxtTIN.IsEnabled = false; IsTIN.IsEnabled = false;
+                TxtTIN.IsEnabled = false; //IsTIN.IsEnabled = false;
                 viewModel.TID = viewModel.selectedtaxEList.Id;
-                TID.IsEnabled = false;
+                //TID.IsEnabled = false;
             }
             else
             {
@@ -301,9 +324,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     if (mobb == null)
                         mobb = string.Empty;
 
+                    //viewModel.TMobNumber = viewModel.selectedtaxEList.PhoneNumber;
                     //viewModel.TMobNumber = mobb;
-                    TMobNumber.IsEnabled = true;
-                    TMobNumberAr.IsEnabled = true;
+                 
+                   
                 }
             }
         }
@@ -354,12 +378,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsVisiblePickerEn = false;
                 //facilityMobileStackLayoutAr.IsVisible = true;
                 //facilityMobileStackLayout.IsVisible = false;
-                reporterMobStackLayoutAr.IsVisible = true;
-                reporterMobStackLayout.IsVisible = false;
+                reporterMobStackLayout.IsVisible = true;
+                TMobNumber.FlowDirection = FlowDirection.RightToLeft;
                 if (Device.RuntimePlatform == Device.iOS)
                 {
                     //FmobcountrycodeAr.Text = "+966";
-                    TmobcountrycodeAr.Text = "+966";              
+                   // TmobcountrycodeAr.Text = "+966";              
                 }
             }
             else
@@ -372,8 +396,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.IsVisiblePickerEn = true;
                 //facilityMobileStackLayout.IsVisible = true;
                 //facilityMobileStackLayoutAr.IsVisible = false;
-                reporterMobStackLayoutAr.IsVisible = false;
                 reporterMobStackLayout.IsVisible = true;
+                TMobNumber.FlowDirection = FlowDirection.LeftToRight;
             }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -409,12 +433,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         }
         public async Task AddReport()
         {
-            if (!string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
-            {
-                submit_btnmane.BackgroundColor = Color.Gray;
-            }
-            else
-            {
+            //if (string.IsNullOrEmpty(viewModel.selectedtaxEList.TicketId))
+           // {
+                //submit_btnmane.BackgroundColor = Color.Gray;
+            //}
+            //else
+            //{
                 bool flag = true;
                 bool showMessage = false;
                 if (string.IsNullOrEmpty(TName.Text))
@@ -431,7 +455,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     if (App.IsArabic)
                     {
                         showMessage = true;
-                        FrmNumberAr.HasError = true;
+                        FrmNumber.HasError = true;
                         //TMobNumberAr.Focus(); FrmNumberAr.HasError = true; showFillFeildsMessage();
                     }
                     else
@@ -463,13 +487,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         FrmFSAddress.HasError = true;
                         showMessage = true;
                     }
-                     if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
-                    {
+            //if (string.IsNullOrEmpty(TxtTIN.Text.Trim()) && checkBox.IsChecked == true)
+            //if (string.IsNullOrEmpty(TxtTIN.Text.Trim()))
+            //{
                         //flag = false; TxtTIN.Focus(); FrmTIN.HasError = true; showFillFeildsMessage();
-                        flag = false;
-                        FrmTIN.HasError = true;
-                        showMessage = true;
-                    }
+                    //    flag = false;
+                  //      FrmTIN.HasError = true;
+                //        showMessage = true;
+              //      }
                     if (string.IsNullOrEmpty(TReportDetail.Text.Trim()))
                     {
                         //flag = false; FrmReportDetail.HasError = true; TReportDetail.Focus(); showFillFeildsMessage(); 
@@ -516,13 +541,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     //}
                     if (showMessage == true)
                     {
-                    showFillFeildsMessage();
+                    await showFillFeildsMessage();
                     }
                     if (flag == true)
                     {
+
                         await viewModel.SubmitCreatedReport();
                     }
-            }
+           // }
         }
         private void TMobNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -530,7 +556,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 if (!string.IsNullOrEmpty(TMobNumber.Text))
                 {
-                    if (TMobNumberAr.Text.Length < 9)
+                    if (TMobNumber.Text.Length < 9)
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidMobileNoError;
@@ -544,12 +570,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                             popUp.FlowDirections = "LeftToRight";
                         }
                         PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmNumberAr.HasError = true;
-                        TMobNumberAr.Text = string.Empty;
+                        FrmNumber.HasError = true;
+                        TMobNumber.Text = string.Empty;
                     }
                     else
                     {
-                        FrmNumberAr.HasError = false;
+                        FrmNumber.HasError = false;
                     }
                 }
             }
@@ -644,21 +670,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         {
             if (string.IsNullOrEmpty(TName.Text))
             {
-                FrmName.HasError = true;
-                TName.Text = string.Empty;
-            }
-           else
-           { FrmName.HasError = false; }
-        }
-        private void TEmail_Unfocused(object sender, FocusEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(TEmail.Text))
-            {
-                bool flag = IsValid(TEmail.Text);
-                if (!flag)
+                if (hasSpecialChar(TName.Text))
                 {
                     PopUp popUp = new PopUp();
-                    popUp.Message = AppResources.InvalidEmailFormat;
+                    popUp.Message = AppResources.ZNameVAlidation;
                     popUp.IsLinkAvailable = false;
                     if (App.IsArabic)
                     {
@@ -669,20 +684,47 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmEmail.HasError = true;
-                    TEmail.Text = string.Empty;
-
+                    FrmName.HasError = true;
+                    TName.Text = string.Empty;
                 }
-                else
-                {
-                    FrmEmail.HasError = false;
-                }
+               
             }
-            else
-            {
-                FrmEmail.HasError = false;
-            }
+           else
+           { FrmName.HasError = false; }
         }
+        //private void TEmail_Unfocused(object sender, FocusEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(TEmail.Text))
+        //    {
+        //        bool flag = IsValid(TEmail.Text);
+        //        if (!flag)
+        //        {
+        //            PopUp popUp = new PopUp();
+        //            popUp.Message = AppResources.InvalidEmailFormat;
+        //            popUp.IsLinkAvailable = false;
+        //            if (App.IsArabic)
+        //            {
+        //                popUp.FlowDirections = "RightToLeft";
+        //            }
+        //            else
+        //            {
+        //                popUp.FlowDirections = "LeftToRight";
+        //            }
+        //            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+        //            FrmEmail.HasError = true;
+        //            TEmail.Text = string.Empty;
+
+        //        }
+        //        else
+        //        {
+        //            FrmEmail.HasError = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        FrmEmail.HasError = false;
+        //    }
+        //}
         public bool IsValid(string emailaddress)
         {
             try
@@ -695,13 +737,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 return false;
             }
         }
-        private void TFaciOwnerName_Unfocused(object sender, FocusEventArgs e)
-        {
-            if (string.IsNullOrEmpty(TFaciOwnerName.Text))
-            {
-                FrmFOName.HasError = false;
-            }
-        }
+        //private void TFaciOwnerName_Unfocused(object sender, FocusEventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(TFaciOwnerName.Text))
+        //    {
+        //        FrmFOName.HasError = false;
+        //    }
+        //}
         //private void TFaciEmail_Unfocused(object sender, FocusEventArgs e)
         //{
         //    if (!string.IsNullOrEmpty(TFaciEmail.Text))
@@ -746,9 +788,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 FrmFSAddress.HasError = true;
             }
             else
+            { FrmFSAddress.HasError = false; }
+        }
+
+        public static bool hasSpecialChar(string input)
+        {
+            string specialChar = @"\|!#$%&/()=?»«@£§€{}.-;'<>_,";
+            foreach (var item in specialChar)
             {
-                FrmFSAddress.HasError = false;
+                if (input.Contains(item)) return true;
             }
+
+            return false;
         }
         private void TxtTIN_Unfocused(object sender, FocusEventArgs e)
         {
@@ -778,26 +829,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
             }
         }
-        private void TID_Unfocused(object sender, FocusEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(TID.Text))
-            {
-                if (TID.Text.Length < 10)
-                {
-                    FrmID.HasError = true;
-                    TID.Text = string.Empty;
-                    //TID.Focus();
-                }
-                else
-                {
-                    FrmID.HasError = false;
-                }
-            }
-            else 
-            {
-                FrmID.HasError = false;
-            }
-        }
+        //private void TID_Unfocused(object sender, FocusEventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(TID.Text))
+        //    {
+        //        if (TID.Text.Length < 10)
+        //        {
+        //            FrmID.HasError = true;
+        //            TID.Text = string.Empty;
+        //            //TID.Focus();
+        //        }
+        //        else
+        //        {
+        //            FrmID.HasError = false;
+        //        }
+        //    }
+        //    else 
+        //    {
+        //        FrmID.HasError = false;
+        //    }
+        //}
         private void TVatNumber_Unfocused(object sender, FocusEventArgs e)
         {
             {
@@ -807,6 +858,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                         PopUp popUp = new PopUp();
                         popUp.Message = AppResources.ZInvalidVatNumber;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        FrmVAT.HasError = true;
+                        TVatNumber.Text = string.Empty;
+                    }
+                    if (!TVatNumber.Text.StartsWith("3"))
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZVATStartsWithVAlidation;
                         popUp.IsLinkAvailable = false;
                         if (App.IsArabic)
                         {
@@ -888,21 +956,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 viewModel.TxtReportDetailCity = string.Empty;
                 viewModel.TxtReportDetailRegion = string.Empty;
                 viewModel.UploadedDocumentsListObj.Clear();
-                Attachment_Entry.Text = string.Empty;
+                //Attachment_Entry.Text = string.Empty;
                 //FacilityType_entry.Text = string.Empty;
                 //Date_entry.Text = string.Empty;
                 City_entry.Text = string.Empty;
                 Region_entry.Text = string.Empty;
                 TName.Text = string.Empty;
                 TFaciName.Text = string.Empty;
-                TFaciOwnerName.Text = string.Empty;
+              //  TFaciOwnerName.Text = string.Empty;
                 TMobNumber.Text = string.Empty;
-                TMobNumberAr.Text = string.Empty;
                 //TFaciMobNo.Text = string.Empty;
                 //TFaciMobNoAr.Text = string.Empty;
-                TEmail.Text = string.Empty;
+               // TEmail.Text = string.Empty;
                 //TFaciEmail.Text = string.Empty;
-                TID.Text = string.Empty;
+                //TID.Text = string.Empty;
                 TVatNumber.Text = string.Empty;
                 TxtTIN.Text = string.Empty;
                 viewModel.IsTIN = true;
@@ -959,7 +1026,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        mapView.MoveToRegion(mapSpan);
+                       // mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
                     }
@@ -999,7 +1066,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     {
                         Position position = new Position(location.Latitude, location.Longitude);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                        mapView.MoveToRegion(mapSpan);
+                       // mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = location.Latitude;
                         //viewModel.TEReportobj.Latitude = location.Latitude.ToString();
                         viewModel.Longitude = location.Longitude;
@@ -1027,8 +1094,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 pin.Position = new Position(e.Position.Latitude, e.Position.Longitude);
                 viewModel.Latitude = e.Position.Latitude;
                 viewModel.Longitude = e.Position.Longitude;
-                mapView.Pins.Clear();
-                mapView.Pins.Add(pin);
+              //  mapView.Pins.Clear();
+              //  mapView.Pins.Add(pin);
             }
             else 
             { 
@@ -1167,7 +1234,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         //    string year = selectedItem[2].ToString();
         //    viewModel.DatePick = day + "/" + month + "/" + year;
         //}
-        private void showFillFeildsMessage()
+        private async Task showFillFeildsMessage()
         {
             PopUp popUp = new PopUp();
             popUp.Message = AppResources.ZZPleasefillallthemandatoryfields;
@@ -1180,7 +1247,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+           // await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         public void ChangeAeroIcon()
         {

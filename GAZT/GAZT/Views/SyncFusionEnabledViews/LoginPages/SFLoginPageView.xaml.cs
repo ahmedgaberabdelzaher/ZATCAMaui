@@ -316,6 +316,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 //hybridWebView.RefreshCommand();
 
                                 LogoffUser();
+
+                                //Test code for implementing the VAT Registration
+                                //if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app.")
+                                //{
+                                //    App.IsUserLoggedIn = true;
+                                //    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
+                                //}
+                                //else
+                                //{
+                                //    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //    LogoffUser();
+                                //}
+
+                                //hybridWebView.RefreshCommand();
+
+
                             }
 
                             if (data == "errorGeneric")

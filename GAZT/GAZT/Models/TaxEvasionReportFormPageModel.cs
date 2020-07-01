@@ -224,4 +224,8 @@ namespace GAZT.Models
         public string TaxEvasionGuid { get; set; }
         public string TaxEvasionNumber { get; set; }
     }
+    public class TaxEvasionReportToSubmitRootObject
+    {
+        public TaxEvasionReportTobeUsedToSubmit d { get; set; }
+    }
 }

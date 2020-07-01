@@ -613,6 +613,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="TotalPartiallyPaidBills" xml:space="preserve">
     <value>Total partially paid bills</value>
   </data>
+  <data name="NoReportsAvailable" xml:space="preserve">
+    <value>You don't have any reports</value>
+  </data>
   <data name="TotalPartialPaidBillsAmount" xml:space="preserve">
     <value>Total partial paid bills amount</value>
   </data>
@@ -2440,6 +2443,10 @@ Should we require further information, we would be in contact.</value>
     <value>Please fill the mandatory fields.</value>
     <comment>Sign Up</comment>
   </data>
+  <data name="ZTEAddReport" xml:space="preserve">
+    <value>Add Report</value>
+    <comment>Add Report</comment>
+  </data>
   <data name="ZZYoushouldsignupasnewuser" xml:space="preserve">
     <value>There already exists an account associated with this information, please signup as a new user</value>
     <comment>Sign Up</comment>
@@ -2481,31 +2488,35 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>City</value>
+    <value>City*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>Facility Name</value>
+    <value>Facility Name*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>Facility District Address</value>
+    <value>Facility District Address*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>Facility Street Address</value>
+    <value>Facility Street Address*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>Facility Work Type</value>
+    <value>Facility Work Type*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>Reporter Name</value>
+    <value>Reporter Name*</value>
+    <comment>Tax Evasion Report Service</comment>
+  </data>
+  <data name="ZTERReportType" xml:space="preserve">
+    <value>Report Type</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>Mobile Number</value>
+    <value>Mobile Number*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
@@ -2517,7 +2528,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>Report Details</value>
+    <value>Report Details*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">
@@ -2708,7 +2719,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>The report is submitted successfully with reference number (Report Number), you will receive GAZT response within 5 working days</value>
+    <value>The report is submitted successfully with reference number (Report Number), soon you will receive GAZT response.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -3509,7 +3520,7 @@ Should we require further information, we would be in contact.</value>
     <value>Register in VAT Now</value>
     <comment>New SignUp</comment>
   </data>
-  <data name="ZZZZRegistration Successful" xml:space="preserve">
+  <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
     <value>Registration Successful</value>
     <comment>New SignUp</comment>
   </data>
@@ -3529,8 +3540,219 @@ Should we require further information, we would be in contact.</value>
     <value>Unit Number</value>
     <comment>New SignUp</comment>
   </data>
+  <data name="ZTEReportAttachmentTitle" xml:space="preserve">
+    <value>Please attach documents which can be bills, images</value>
+    <comment>Tax Evasion</comment>
+  </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
     <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZAttachementAddNewType" xml:space="preserve">
+    <value>Add New Type</value>
+  </data>
+  <data name="ZZZAttachementMandatory" xml:space="preserve">
+    <value>Attachments are mandatory for Non-Eligible Taxpayers</value>
+  </data>
+  <data name="ZZZAttachementSection" xml:space="preserve">
+    <value>Attachment Section</value>
+  </data>
+  <data name="ZZZAttachementSubmitNote" xml:space="preserve">
+    <value>Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months</value>
+  </data>
+  <data name="ZZZAttachementSubmitProveNote" xml:space="preserve">
+    <value>What is the type of document that you are submitting to prove whether or not eligible.</value>
+  </data>
+  <data name="ZZZVATRAdditionalInfo" xml:space="preserve">
+    <value>Additional Information</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctions" xml:space="preserve">
+    <value>Cannot be Less than January 1, 2018
+Cannot be before the start of your business
+You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million
+If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively
+If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply.</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFifthLine" xml:space="preserve">
+    <value>If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply.</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFirstLine" xml:space="preserve">
+    <value>Cannot be Less than January 1, 2018</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsFourthLine" xml:space="preserve">
+    <value>If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsPart1" xml:space="preserve">
+    <value>Cannot be Less than January 2018</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsPart2" xml:space="preserve">
+    <value>Cannot be before the start of your Buisness</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsPart3" xml:space="preserve">
+    <value>Cannot be before the start of your Buisness</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsSecondLine" xml:space="preserve">
+    <value>Cannot be before the start of your business</value>
+  </data>
+  <data name="ZZZVATRAdditionalInformationInstrunctionsThirdLine" xml:space="preserve">
+    <value>You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed SAR 1 million</value>
+  </data>
+  <data name="ZZZVATRDR1" xml:space="preserve">
+    <value>I hereby declare that the above mentioned information is true and correct to the best of my knowledge and belief</value>
+  </data>
+  <data name="ZZZVATRDR2" xml:space="preserve">
+    <value>I hereby certify that i am authorized to complete this form for the taxable person and that all information contained is correct</value>
+  </data>
+  <data name="ZZZVATRDRContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
+  <data name="ZZZVATRDRIdTypeAndNo" xml:space="preserve">
+    <value>ID Type / ID No</value>
+  </data>
+  <data name="ZZZVATREligibilityCommencementDate" xml:space="preserve">
+    <value>VAT Eligibility Commencement Date</value>
+  </data>
+  <data name="ZZZVATRExporter" xml:space="preserve">
+    <value>Are you an Exporter</value>
+  </data>
+  <data name="ZZZVATRFinancialDetailsQNotes" xml:space="preserve">
+    <value>In this section answer the following questions to determine your VAT eligibility and provide the necessary attachment(s) as applicable.</value>
+  </data>
+  <data name="ZZZVATRFirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="ZZZVATRFR1" xml:space="preserve">
+    <value>If you are a resident taxpayer,this section is optional and you can skip this section or enter the below details to continue.
+*If you are a Non resident this is a Mandatory section.
+*Please don’t use the Taxpayer's TIN or ID in the financial representative section.</value>
+  </data>
+  <data name="ZZZVATRImporter" xml:space="preserve">
+    <value>Are you an Importer</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions1" xml:space="preserve">
+    <value>For applications on behalf of a company, this form should be completed by an official contact person of the company and signed by a person who has authority to sign of on behalf of the company. If the provided information is incorrect or incomplete then penalties are added as per Value Added Tax Law without interfering with any penalties applied by other regulations in the Kingdom of Saudi Arabia</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions2" xml:space="preserve">
+    <value>GAZT reserves the right to obtain financial statements and business records of the company and review them.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions3" xml:space="preserve">
+    <value>GAZT reserves the right to obtain financial statements and business records to the owner and review them.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions4" xml:space="preserve">
+    <value>A VAT registration may be cancelled in accordance to the cases listed as per the VAT Law.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions5" xml:space="preserve">
+    <value>The person registered in VAT tax system must notify GAZT of changing any of the information provided in the registration form, a change or cessation of business activity, or any major changes that affects liability to be VAT registered, in accordance with the VAT Regulations.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions6" xml:space="preserve">
+    <value>Businesses with 2018 annual taxable supplies that do not exceed SAR 1 million may select an effective registration date up to 1/1/2019.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditions7" xml:space="preserve">
+    <value>I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.
+* Registration during the specified period, according to the VAT Law and its Regulations.
+* Submitting VAT filing on time based on the annual revenues.
+* Paying VAT payments and any related penalties within the specified period, according to the Regulations
+* Providing all the information, documents and records requested by the GAZT within the specified period, according to the Regulations.
+* Not issue a tax invoice without being effectively registered for VAT purposes.
+* Keeping tax invoices, records and accounting documents within the period which were stipulated by the Regulations
+* GAZT has the right to reassess the submitted filings in accordance with the VAT Law and its Regulations
+* GAZT has the right to reassess the non-submitted filing in accordance with the VAT Law and its Regulations</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsAgreeCondition" xml:space="preserve">
+    <value>I agree with these conditions and proceed further.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsFirst" xml:space="preserve">
+    <value>Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. Applicants should ensure that their existing taxpayer details are completed and accurate before registering for VAT.</value>
+  </data>
+  <data name="ZZZVATRInstrunctionsAndConditionsSecond" xml:space="preserve">
+    <value>Please refer to the  VAT FAQ  section in the GAZT website before filling out this application form.</value>
+  </data>
+  <data name="ZZZVATRMainOutlet" xml:space="preserve">
+    <value>Main outlet CR/License</value>
+  </data>
+  <data name="ZZZVATRprovidenewIBAN" xml:space="preserve">
+    <value>or provide a new IBAN (if any)</value>
+  </data>
+  <data name="ZZZVATRQuestion1" xml:space="preserve">
+    <value>What will be your total VAT taxable sales value in the upcoming 12 months (incl. this month)?</value>
+  </data>
+  <data name="ZZZVATRQuestion2" xml:space="preserve">
+    <value>What was your total VAT taxable sales value for the last 12 months at the time of registration?</value>
+  </data>
+  <data name="ZZZVATRQuestion3" xml:space="preserve">
+    <value>What will be your total VAT taxable expenses value in the upcoming 12 months (incl. this month)?</value>
+  </data>
+  <data name="ZZZVATRQuestion4" xml:space="preserve">
+    <value>What was your total VAT taxable expenses value for the last 12 months at the time of registration?</value>
+  </data>
+  <data name="ZZZVATRSelectanexistingIBAN" xml:space="preserve">
+    <value>Select an existing IBAN</value>
+  </data>
+  <data name="ZZZVATRSource" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="ZZZVATRSurName" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="ZZZVATRVATEligibilitySection" xml:space="preserve">
+    <value>VAT Eligibility Section</value>
+  </data>
+  <data name="ZZZZVATREFinancialDetails" xml:space="preserve">
+    <value>Financial Details</value>
+  </data>
+  <data name="ZZZZVATREInstructionsandConditions" xml:space="preserve">
+    <value>Instructions and Conditions</value>
+  </data>
+  <data name="ZZZZVATRFinancialRepresentative" xml:space="preserve">
+    <value>Financial Representative</value>
+  </data>
+  <data name="ZZZZVATRStartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="ZZZZVATRFAQ1" xml:space="preserve">
+    <value>Please refer to the</value>
+  </data>
+  <data name="ZZZZVATRFAQ2" xml:space="preserve">
+    <value>VAT FAQ</value>
+  </data>
+  <data name="ZZZZVATRFAQ3" xml:space="preserve">
+    <value>section in the GAZT website before filling out this application form.</value>
+  </data>
+  <data name="ZVATStartsWithVAlidation" xml:space="preserve">
+    <value>VAT number starts with 3</value>
+  </data>
+  <data name="ZNameVAlidation" xml:space="preserve">
+    <value>Name cannot contain numbers or special characters</value>
+  </data>
+  <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
+    <value>Email field and Confirm Email field should match up</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
+    <value>Select the type of Entity</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZVatRegistrationTile" xml:space="preserve">
+    <value>Register in Value Added Tax(VAT)</value>
+  </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>Bahrain</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>Kuwait</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>Oman</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>Qatar</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>UAE</value>
     <comment>New SignUp</comment>
   </data>
 </root>

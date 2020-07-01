@@ -546,7 +546,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                 IsLoading = false;
                             });
 
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
 
                             //viewModel._navigationService.GoBack();
                         });

@@ -91,7 +91,7 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="Instrunctions and Conditions Details"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                                         <!--<Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                     </StackLayout>
@@ -115,14 +115,26 @@
                                                 <ColumnDefinition Width="85*"/>
                                             </Grid.ColumnDefinitions>
                                             <!--Start Of Read Only or pre-populated-->
-                                            <Label Text="Please fill the requested information for each step. This application cannot be successfully submitted until all of the mandatory fields and attachments have been completed. Applicants should ensure that their existing taxpayer details are completed and accurate before registering for VAT."  Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                            <Label Text="Please refer to the  VAT FAQ  section in the GAZT website before filling out this application form."  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                            <Label Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                            <Label Text=""  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="Blue">
+                                                            <Span.GestureRecognizers>
+                                                                <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
+                                                            </Span.GestureRecognizers>
+                                                        </Span>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
 
                                             <custom:CustomLabel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="1."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="For applications on behalf of a company, this form should be completed by an official contact person of the company and signed by a person who has authority to sign of on behalf of the company. If the provided information is incorrect or incomplete then penalties are added as per Value Added Tax Law without interfering with any penalties applied by other regulations in the Kingdom of Saudi Arabia"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions1}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -130,7 +142,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="2."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="GAZT reserves the right to obtain financial statements and business records of the company and review them." FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions2}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -138,7 +150,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="3."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="GAZT reserves the right to obtain financial statements and business records to the owner and review them." FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span  Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions3}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -146,7 +158,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="4."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="A VAT registration may be cancelled in accordance to the cases listed as per the VAT Law." FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions4}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -154,7 +166,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="5."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="The person registered in VAT tax system must notify GAZT of changing any of the information provided in the registration form, a change or cessation of business activity, or any major changes that affects liability to be VAT registered, in accordance with the VAT Regulations." FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions5}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -162,7 +174,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="6."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="Businesses with 2018 annual taxable supplies that do not exceed SAR 1 million may select an effective registration date up to 1/1/2019." FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions6}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -170,7 +182,7 @@
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <Span Text="7."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                        <Span Text="I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the General Authority for Zakat and Tax (GAZT) has the full right to apply the proper procedures in accordance with the rules and regulations.* Registration during the specified period, according to the VAT Law and its Regulations.* Submitting VAT filing on time based on the annual revenues.* Paying VAT payments and any related penalties within the specified period, according to the Regulations* Providing all the information, documents and records requested by the GAZT within the specified period, according to the Regulations.* Not issue a tax invoice without being effectively registered for VAT purposes.* Keeping tax invoices, records and accounting documents within the period which were stipulated by the Regulations* GAZT has the right to reassess the submitted filings in accordance with the VAT Law and its Regulations* GAZT has the right to reassess the non-submitted filing in accordance with the VAT Law and its Regulations" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions7}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -197,7 +209,7 @@
                                             <custom:CustomLabel  Grid.Row="9" Grid.Column="1"  Margin="0,0,0,5"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
                                                 <custom:CustomLabel.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="I agree with these conditions and proceed further."  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
                                                     </FormattedString>
                                                 </custom:CustomLabel.FormattedText>
                                             </custom:CustomLabel>
@@ -215,8 +227,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="TaxPayers Details"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                        <Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
                                     <ScrollView Grid.Row="1">
@@ -236,7 +248,7 @@
                                             </Grid.RowDefinitions>
                                             <!--Start Of Read Only or pre-populated-->
                                             <StackLayout Grid.Row="0">
-                                                <Label  Text="TIN" Padding="15,0,15,0"/>
+                                                <Label  Text="{x:Static custom2:AppResources.TIN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -249,7 +261,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="1">
-                                                <Label Text="Name" Padding="15,0,15,0"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZZName}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -261,7 +273,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="2">
-                                                <Label Text="Main Outlet CR/License" Padding="15,0,15,0"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZZZVATRMainOutlet}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -284,7 +296,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="3">
-                                                <Label Text="Business Start Date" Padding="15,0,15,0"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZZZZVATRStartDate}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -302,7 +314,7 @@
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
                                             <StackLayout Grid.Row="4">
-                                                <Label Text="Address" Padding="15,0,15,0"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZVatAddress}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                     <custom:BorderlessEntry Text="21" FontSize="Small" Placeholder="ID Number" 
@@ -319,22 +331,22 @@
                                             <!--End Of Read Only or pre-populated-->
                                             <!--Start Of Additional Information-->
                                             <StackLayout Grid.Row="5">
-                                                <Label Text="Additional Information"  VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
+                                                <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                             </StackLayout>
 
                                             <StackLayout Grid.Row="6">
-                                                <Label Text="Importer or Exporter" Padding="15,0,15,0"/>
+                                                <Label Text="Importer or Exporter" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <StackLayout Orientation="Horizontal" Padding="15,0,15,0">
-                                                    <Label Text="Importer" TextColor="Black" />
+                                                    <Label Text="Importer" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                     <Switch x:Name="ImporterSwitch"/>
-                                                    <Button x:Name="btnImporter" Text="Attachment" Clicked="btnImporter_Clicked" BackgroundColor="#d49504"
+                                                    <Button x:Name="btnImporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnImporter_Clicked" BackgroundColor="#d49504"
                                                     TextColor="White" Padding="10" CornerRadius="8"/>
                                                 </StackLayout>
                                                 <StackLayout Orientation="Horizontal" Padding="15,0,15,0">
-                                                    <Label Text="Exporter" TextColor="Black"/>
+                                                    <Label Text="Exporter" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                     <Switch x:Name="ExporterSwitch"/>
-                                                    <Button x:Name="btnExporter" Text="Attachment" Clicked="btnExporter_Clicked" BackgroundColor="#d49504"
+                                                    <Button x:Name="btnExporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnExporter_Clicked" BackgroundColor="#d49504"
                                                     TextColor="White" Padding="10" CornerRadius="8"/>
                                                 </StackLayout>
                                             </StackLayout>
@@ -345,8 +357,8 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
-                                                    <Label Grid.Row="0" Text="Account" Padding="15,0,15,0"/>
-                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
+                                                    <Label Grid.Row="0" Text="Account" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmNewAccount" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
@@ -357,7 +369,7 @@
                                                                 </Image.Source>
                                                             </Image>
 
-                                                            <Label Text="New Account" TextColor="DarkGreen" VerticalTextAlignment="Center"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZTERNewAccount}" TextColor="DarkGreen" VerticalTextAlignment="Center"/>
                                                             <Image HorizontalOptions="EndAndExpand">
                                                                 <Image.Source>
                                                                     <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="20"
@@ -366,7 +378,7 @@
                                                             </Image>
                                                         </StackLayout>
                                                     </inputLayout:SfTextInputLayout>
-                                                    <Button Grid.Row="1" x:Name="NewAccount" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
+                                                    <Button Grid.Row="1" x:Name="NewAccount" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
                                                 </Grid>
                                             </StackLayout>
 
@@ -385,8 +397,8 @@
                                                     Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
                                                                 </Image.Source>
                                                             </Image>
-                                                            <Label Text="...1234" TextColor="White"/>
-                                                            <Label Text="Inma Bank" TextColor="White"/>
+                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
+                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
                                                         </StackLayout>
                                                     </cards:SfCardView>
                                                     <cards:SfCardView Grid.Column="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
@@ -398,8 +410,8 @@
                                                     Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
                                                                 </Image.Source>
                                                             </Image>
-                                                            <Label Text="...1234" TextColor="Black"/>
-                                                            <Label Text="Inma Bank" TextColor="Black"/>
+                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                         </StackLayout>
                                                     </cards:SfCardView>
                                                 </Grid>
@@ -412,8 +424,8 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
-                                                    <Label Grid.Row="0" Text="VAT Eligible Start Date" Padding="15,0,15,0"/>
-                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
+                                                    <Label Grid.Row="0" Text="VAT Eligible Start Date" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
+                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal">
@@ -467,12 +479,12 @@
                                                             Glyph="{x:Static FontImage:IconFonts.Information}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                                <Label Text="Cannot be Less than January 2018" TextColor="Black"/>
+                                                                <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFirstLine}" TextColor="Black"/>
                                                             </StackLayout>
-                                                            <Label Text="Cannot be before the start of your Buisness" TextColor="Black"/>
-                                                            <Label Text="Cannot be after a month from now" TextColor="Black"/>
-                                                            <Label Text="if you are KSA resident taxpayer, It should reflect the date when you exceeded mandatory (or Voluntary) threshold either prospectively or something" TextColor="Black"/>
-                                                            <Label Text="if you are non-resident taxpayer, It should not reflect the date when you made your first taxable supply" TextColor="Black"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsSecondLine}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsThirdLine}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFourthLine}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFifthLine}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
                                                         </StackLayout>
                                                     </Frame>
                                                 </Grid>
@@ -489,13 +501,13 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="Sales Details"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                        <Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Label Text="{x:Static custom2:AppResources.SalesDetails}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource SSTArabicMedium}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
                                     <ScrollView Grid.Row="1">
                                         <StackLayout>
-                                            <Label Text="In the upcoming 12 months [including this month], What will be your total VAT taxable sales value?"
+                                            <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion1}"
                                            TextColor="DarkGreen"/>
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                       RowSpacing="15" BackgroundColor="White">
@@ -510,36 +522,36 @@
                                                 <cards:SfCardView Grid.Row="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Less than 187,500 SAR" TextColor="Black"/>
+                                                        <Label Text="Less than 187,500 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="2" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 375,000 SAR until 1,000,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 375,000 SAR until 1,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="3" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 1,000,000 SAR until 40,000,000 SAR" TextColor="White"/>
+                                                        <Label Text="Greater than 1,000,000 SAR until 40,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="4" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 40,000,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 40,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                             </Grid>
-                                            <Label Text="For the last 12 months [at the time of registration], What was your total VAT taxable sales value?"
-                                           TextColor="DarkGreen"/>
+                                            <Label  Text="{x:Static custom2:AppResources.ZZZVATRQuestion2}"
+                                           TextColor="DarkGreen" FontFamily="{StaticResource SSTArabicMedium}"/>
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                       RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
@@ -552,31 +564,31 @@
                                                 <cards:SfCardView Grid.Row="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Less than 187,500 SAR" TextColor="Black"/>
+                                                        <Label Text="Less than 187,500 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="2" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 375,000 SAR until 1,000,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 375,000 SAR until 1,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="3" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 1,000,000 SAR until 40,000,000 SAR" TextColor="White"/>
+                                                        <Label Text="Greater than 1,000,000 SAR until 40,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                                 <cards:SfCardView Grid.Row="4" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                        <Label Text="Greater than 40,000,000 SAR" TextColor="Black"/>
+                                                        <Label Text="Greater than 40,000,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                     </StackLayout>
                                                 </cards:SfCardView>
 
@@ -587,13 +599,13 @@
                                                         <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
                                                     <StackLayout Grid.Row="0">
-                                                        <Label Text="Expenses Details"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                                        <Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
+                                                        <Label Text="Expenses Details" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                                        <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource SSTArabicMedium}"/>
                                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                                     </StackLayout>
                                                     <ScrollView Grid.Row="1">
                                                         <StackLayout>
-                                                            <Label Text="In the upcoming 12 months [including this month], What will be your total VAT taxable Expenses value?"
+                                                            <Label FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static custom2:AppResources.ZZZVATRQuestion3}"
                                            TextColor="DarkGreen"/>
                                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                       RowSpacing="15" BackgroundColor="White">
@@ -604,17 +616,17 @@
                                                                 <cards:SfCardView Grid.Row="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                                        <Label Text="Less than 187,500 SAR" TextColor="Black"/>
+                                                                        <Label Text="Less than 187,500 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                                     </StackLayout>
                                                                 </cards:SfCardView>
                                                                 <cards:SfCardView Grid.Row="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                                        <Label Text="Greater than 187,500 SAR" TextColor="White"/>
+                                                                        <Label Text="Greater than 187,500 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
                                                                     </StackLayout>
                                                                 </cards:SfCardView>
                                                             </Grid>
-                                                            <Label Text="For the last 12 months [at the time of registration], What was your total VAT taxable Expenses value?"
+                                                            <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion4}"
                                            TextColor="DarkGreen"/>
                                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                       RowSpacing="15" BackgroundColor="White">
@@ -626,13 +638,13 @@
                                                                 <cards:SfCardView Grid.Row="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                                        <Label Text="Less than 187,500 SAR" TextColor="White"/>
+                                                                        <Label Text="Less than 187,500 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
                                                                     </StackLayout>
                                                                 </cards:SfCardView>
                                                                 <cards:SfCardView Grid.Row="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                     <StackLayout Orientation="Horizontal" Padding="10">
-                                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" TextColor="Black"/>
+                                                                        <Label Text="Greater than 187,500 SAR until 375,000 SAR" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                                     </StackLayout>
                                                                 </cards:SfCardView>
                                                                 <StackLayout Grid.Row="2">
@@ -696,7 +708,8 @@
                                                                 Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                                                                                     </Image.Source>
                                                                                 </Image>
-                                                                                <custom:CustomButton Grid.Row="0" x:Name="btnAttachmentDocuments" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"/>
+                                                                                <custom:CustomButton Grid.Row="0" x:Name="btnAttachmentDocuments" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" 
+                                                                                                     Clicked="btnAttachmentDocuments_Clicked" Margin="0,0,0,0"/>
                                                                             </Grid>
                                                                         </Frame>
                                                                     </Grid>
@@ -845,8 +858,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="Financial Representative"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                        <Label Text="Complete Below" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
 
@@ -863,8 +876,8 @@
                                                         </Image>
 
                                                     </StackLayout>
-                                                    <Label Text="If you are a resident taxpayer, this section is optional and the taxpayer can click on the Skip button to advance to the next step without entering any data." TextColor="Black"/>
-                                                    <Label Text="But for Non-Resident taxpayer, this section is mandatory before navigating to the next section." TextColor="Black"/>
+                                                    <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.ZZZVATRFR1}" TextColor="Black"/>
+                                                    <!--<Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="But for Non-Resident taxpayer, this section is mandatory before navigating to the next section." TextColor="Black"/>-->
                                                 </StackLayout>
                                             </Frame>
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
@@ -879,7 +892,7 @@
                                                     <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <StackLayout Grid.Row="0">
-                                                    <Label Text="TIN" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.TIN}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -897,7 +910,7 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Grid.Row="0"  Text="ID Type" Padding="15,0,15,0"/>
+                                                        <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.ZZIDType}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6" 
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -942,7 +955,7 @@
                                                     </Grid>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2">
-                                                    <Label Text="ID No." Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -955,7 +968,7 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="3">
-                                                    <Label Text="First Name" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -968,7 +981,7 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="4">
-                                                    <Label Text="Last Name" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.ZZZVATRSurName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -981,7 +994,7 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="5">
-                                                    <Label Text="Email" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.Email}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -991,7 +1004,7 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="6">
-                                                    <Label Text="Mobile" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.MobileNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -1014,8 +1027,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="Summery"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                        <Label Text="Review information" FontFamily="{StaticResource SSTArBold}"/>
+                                        <Label Text="{x:Static custom2:AppResources.ZZSummary}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <Label Text="Review information" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1">
@@ -1027,7 +1040,7 @@
                                                         Glyph="{x:Static FontImage:IconFonts.CheckCircle}"/>
                                                     </Image.Source>
                                                 </Image>
-                                                <Label Text="Your Eligible For VAT" TextColor="Black"/>
+                                                <Label Text="Your Eligible For VAT" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
                                             </StackLayout>
                                         </Frame>
                                         <Frame BackgroundColor="Red" Padding="0" CornerRadius="10">
@@ -1038,7 +1051,7 @@
                                                         Glyph="{x:Static FontImage:IconFonts.CloseCircle}"/>
                                                     </Image.Source>
                                                 </Image>
-                                                <Label Text="Not Your Eligible For VAT" TextColor="Black"/>
+                                                <Label Text="Not Your Eligible For VAT" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
                                             </StackLayout>
                                         </Frame>
                                         <!--Taxpayer Details Summery-->
@@ -1051,7 +1064,7 @@
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="Taxpayer Details" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <Grid Padding="10,5,10,10">
@@ -1064,12 +1077,12 @@
                                                         <ColumnDefinition Width="50*"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <Label Grid.Row="0" Grid.Column="0" Text="VAT Eligible Start Date"/>
-                                                    <Label Grid.Row="0" Grid.Column="1" Text="02 Jan 2020" TextColor="Black"/>
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="VAT Eligible Start Date" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="02 Jan 2020" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
 
 
-                                                    <Label Grid.Row="1" Grid.Column="0" Text="Import or Export"/>
-                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black"/>
+                                                    <Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
                                                 </Grid>
                                             </StackLayout>
@@ -1084,12 +1097,12 @@
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="Alainma Bank" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <StackLayout Padding="10,5,10,10">
-                                                    <Label Text="IBAN"/>
-                                                    <Label Text="SA03 800........1234" TextColor="Black"/>
+                                                    <Label Text="IBAN" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="SA03 800........1234" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>
@@ -1103,14 +1116,14 @@
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="Sales Details" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="{x:Static custom2:AppResources.SalesDetails}" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <StackLayout Padding="10,5,10,10">
-                                                    <Label Text="VAT Taxable Sales Value (Upcoming 12 months)"/>
-                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black"/>
-                                                    <Label Text="VAT Taxable Sales Value (last 12 months)" Margin="0,20,0,0"/>
-                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black"/>
+                                                    <Label Text="VAT Taxable Sales Value (Upcoming 12 months)" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="VAT Taxable Sales Value (last 12 months)" Margin="0,20,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>
@@ -1123,14 +1136,14 @@
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="Expenses Details" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="Expenses Details" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <StackLayout Padding="10,5,10,10">
-                                                    <Label Text="VAT Taxable Expenses Value (Upcoming 12 months)"/>
-                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black"/>
-                                                    <Label Text="VAT Taxable Expenses Value (last 12 months)" Margin="0,20,0,0"/>
-                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black"/>
+                                                    <Label Text="VAT Taxable Expenses Value (Upcoming 12 months)" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="VAT Taxable Expenses Value (last 12 months)" Margin="0,20,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Text="Greater than 10,000,000 until 40,000,000 SAR" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 </StackLayout>
                                             </StackLayout>
                                         </Frame>
@@ -1143,7 +1156,7 @@
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="Expenses Details" FontSize="Medium" TextColor="Black"/>
+                                                    <Label Text="Expenses Details" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <Grid Padding="10,5,10,10">
@@ -1160,35 +1173,35 @@
                                                         <ColumnDefinition Width="40*"/>
                                                         <ColumnDefinition Width="50*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Label Grid.Row="0" Grid.Column="0" Text="TIN "/>
-                                                    <Label Grid.Row="0" Grid.Column="1" Text="123456799" TextColor="Black"/>
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static custom2:AppResources.TIN}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="123456799" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="1" Grid.Column="0" Text="ID Type"/>
-                                                    <Label Grid.Row="1" Grid.Column="1" Text="GCCID" TextColor="Black"/>
+                                                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZIDType}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="GCCID" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="2" Grid.Column="0" Text="ID Number"/>
-                                                    <Label Grid.Row="2" Grid.Column="1" Text="123456789" TextColor="Black"/>
+                                                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="2" Grid.Column="1" Text="123456789" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="3" Grid.Column="0" Text="First Name"/>
-                                                    <Label Grid.Row="3" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                                    <Label Grid.Row="3" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="3" Grid.Column="1" Text="Name Name" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="4" Grid.Column="0" Text="Last Name"/>
-                                                    <Label Grid.Row="4" Grid.Column="1" Text="Name Name" TextColor="Black"/>
+                                                    <Label Grid.Row="4" Grid.Column="0" Text="{x:Static custom2:AppResources.ZZZVATRSurName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="4" Grid.Column="1" Text="Name Name" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="5" Grid.Column="0" Text="Mobile Number"/>
-                                                    <Label Grid.Row="5" Grid.Column="1" Text="123456789" TextColor="Black"/>
+                                                    <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="5" Grid.Column="1" Text="123456789" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                    <Label Grid.Row="6" Grid.Column="0" Text="Mobile Number"/>
-                                                    <Label Grid.Row="6" Grid.Column="1" Text="123456789" TextColor="Black"/>
+                                                    <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="6" Grid.Column="1" Text="123456789" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 </Grid>
                                             </StackLayout>
                                         </Frame>
                                         <StackLayout>
                                             <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
                                                 <CheckBox VerticalOptions="Start"/>
-                                                <Label Text="I hereby Inform that Above Mentioned Information is true and Correct"/>
+                                                <Label  Text="{x:Static custom2:AppResources.ZZZVATRDR1}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                             </StackLayout>
-                                            <Label Margin="0,20,0,15" Text="I hereby certify that i am authorized to complete this form for the taxable person" TextColor="Black"/>
+                                            <Label Margin="0,20,0,15" Text="{x:Static custom2:AppResources.ZZZVATRDR2}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
@@ -1202,7 +1215,7 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Grid.Row="0"  Text="ID Type" Padding="15,0,15,0"/>
+                                                        <Label Grid.Row="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="ID Type" Padding="0,0,0,0"/>
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -1249,7 +1262,7 @@
                                                     </Grid>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="1">
-                                                    <Label Grid.Row="0"  Text="ID Number" Padding="15,0,15,0"/>
+                                                    <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmContactIDNumber" Margin="0,-6,0,-6" 
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
@@ -1262,7 +1275,7 @@
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="2">
-                                                    <Label Text="Name" Padding="15,0,15,0"/>
+                                                    <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -1312,8 +1325,11 @@
                     </Image>-->
                     <Image Source="icon.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
-                    <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
-
+                    <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Tapped="TappedOnMenu"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                    </Label>
                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="10,0,0,10" BackgroundColor="White">
                         <BoxView x:Name="BoxOne" CornerRadius="25" />
                         <BoxView x:Name="BoxTwo" CornerRadius="25" />

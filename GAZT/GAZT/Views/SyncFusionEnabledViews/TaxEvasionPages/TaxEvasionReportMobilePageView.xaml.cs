@@ -29,11 +29,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
             if (App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
-                if (Device.RuntimePlatform == Device.iOS)
-                {
-                    Arabic_mobCountycode.Text = string.Empty;
-                    Arabic_mobCountycode.Text = "+966";
-                }
             }
             else
             {
@@ -47,6 +42,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
         {
             base.OnAppearing();
             viewModel.MobileNumberPrefix = mobileNumberPrefix.Text;
+            Mobile_Entry.Focus();
         }
         //protected override void OnSizeAllocated(double width, double height)
         //{
@@ -104,12 +100,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
             if (App.IsArabic)
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
-                StacklayoutEn.IsVisible = false;
             }
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-                StackLayoutAr.IsVisible = false;
             }
         }
         private void Mobile_Entry_Unfocused(object sender, FocusEventArgs e)
@@ -119,14 +113,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile
                 if (viewModel.MobileNumber.Length != 9)
                 {
                     frmMobile.HasError = true;
-                    frmMobileAr.HasError = true;
                     viewModel.IsVerifyEnable = false;
                 }
                 else
                 {
                     viewModel.IsVerifyEnable = true;
                     frmMobile.HasError = false;
-                    frmMobileAr.HasError = false;
                 }
             }
         }

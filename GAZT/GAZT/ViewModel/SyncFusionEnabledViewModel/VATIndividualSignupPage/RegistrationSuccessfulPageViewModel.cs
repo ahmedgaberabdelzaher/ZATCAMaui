@@ -10,6 +10,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+
+
+        private string _tINnumber;
+        public string TINnumber
+        {
+            get
+            {
+                return _tINnumber; 
+            }
+            set
+            {
+                _tINnumber = value;
+              
+                RaisePropertyChanged("TINnumber");
+            }
+        }
         public RegistrationSuccessfulPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)

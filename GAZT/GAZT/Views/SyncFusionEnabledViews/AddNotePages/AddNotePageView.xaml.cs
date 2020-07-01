@@ -1,5 +1,6 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -54,8 +55,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddNote
                     {
                         if (viewModel.VATDeclarationData.d.NOTESSet.results.Count != 0)
                         {
-                            viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
-                            viewModel.PreviousNoteText = viewModel.NoteText;
+                            if (App.ICRStatus == "E0045" || App.ICRStatus == "E0006")
+                            {
+                                if (VATReturnsPageViewModelEX.IsFirstTimeForNote == true)
+                                {
+                                    viewModel.NoteText = string.Empty;
+                                    viewModel.PreviousNoteText = viewModel.NoteText;
+                                   
+                                }
+                                else
+                                {
+                                    viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                                    viewModel.PreviousNoteText = viewModel.NoteText;
+                                }
+
+                            }
+                            else
+                            {
+                                viewModel.NoteText = viewModel.VATDeclarationData.d.NOTESSet.results.Where(x => x.DataVersionz == "00000").Select(x => x.Strline).FirstOrDefault();
+                                viewModel.PreviousNoteText = viewModel.NoteText;
+                            }
                         }
                     }
                     //if(App.ICRStatus=="E0045" && AddNotePageViewModel.NoteCount == 0)

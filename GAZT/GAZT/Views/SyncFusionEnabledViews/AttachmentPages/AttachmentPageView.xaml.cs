@@ -59,6 +59,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 if (vATDeclaration.d.ATTACHSet != null && vATDeclaration.d.ATTACHSet.results != null && vATDeclaration.d.ATTACHSet.results.Count > 0)
                     viewModel.NumberOfAttachmentComingFromServer = ICRListPageViewModel.numberOfAttachmentComingFromServer;// vATDeclaration.d.ATTACHSet.results.Count;
                 viewModel.TotalAttachmentSize = AttachmentPageViewModel.AttachmentUploadedSize;
+                viewModel.IsAmendClickedOnVAT = VATReturnsPageViewModelEX.IsAmend;
                 if (vATDeclaration != null && vATDeclaration.d != null)
                 {
                     viewModel.VATDeclarationDataForAttch = vATDeclaration;
@@ -131,7 +132,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         {
             try
             {
-                if ((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == false))
+                if ((App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == false))
                 {
                     //Show some message
 
@@ -143,7 +144,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     //    DeleteAttachment(result, attachment);
                     //}
                 }
-                else if ((App.ICRStatus.Equals("E0045") && VATReturnsPageViewModel.IsAmend == true))
+                else if ((App.ICRStatus.Equals("E0045") && viewModel.IsAmendClickedOnVAT == true))
                 {
                     try
                     {
@@ -266,6 +267,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         #endregion
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
+            try
+            { 
             Image arrowImage = sender as Image;
             VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
 
@@ -322,50 +325,55 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     }
                 }
             }
-            /*Image arrowImage = sender as Image;
-            VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
-            //attachment.DocUrl;
-            string Extention = attachment.Filename.Split('.')[1];
-            if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
-            {
-                //if (Device.RuntimePlatform == Device.iOS)
-                //{
-                //    if (attachment.DocUrl != null)
-                //    {
-                //        //Uri uri = new Uri(pdfUrl);
-                //        //Device.OpenUri(uri);
-                //        viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
-                //    }
-                //    else
-                //    {
-                //        //pop that certificate is not available
-                //        Device.BeginInvokeOnMainThread(async () =>
-                //        {
-                //            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                //        });
-                //    }
-                //}
-                //else
-                //{
-                if (attachment.DocUrl != null)
+                /*Image arrowImage = sender as Image;
+                VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
+                //attachment.DocUrl;
+                string Extention = attachment.Filename.Split('.')[1];
+                if (Extention == "PDF" || Extention == "pdf" || Extention.Contains("PDF") || Extention.Contains("pdf"))
                 {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    //if (Device.RuntimePlatform == Device.iOS)
+                    //{
+                    //    if (attachment.DocUrl != null)
+                    //    {
+                    //        //Uri uri = new Uri(pdfUrl);
+                    //        //Device.OpenUri(uri);
+                    //        viewModel._navigationService.NavigateTo(App.PdfiOSView, "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + attachment.Doguid + "',Cotyp='VTA0')/$value?saml2=disabled");
+                    //    }
+                    //    else
+                    //    {
+                    //        //pop that certificate is not available
+                    //        Device.BeginInvokeOnMainThread(async () =>
+                    //        {
+                    //            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                    //        });
+                    //    }
+                    //}
+                    //else
+                    //{
+                    if (attachment.DocUrl != null)
+                    {
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    }
+                    else
+                    {
+                        //pop that certificate is not available
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                        });
+                    }
+                    //}
                 }
                 else
                 {
-                    //pop that certificate is not available
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    });
-                }
-                //}
+                    await email(attachment.Doguid, attachment);
+                }*/
+                // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
             }
-            else
+            catch(Exception ex)
             {
-                await email(attachment.Doguid, attachment);
-            }*/
-            // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
+
+            }
         }
         private async Task DownloadAndSaveFile(string pathToFile, string fileContents)
         {

@@ -3,15 +3,17 @@
     x:Class="EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding.SFAnonymousLandingPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+    
     xmlns:behavior="clr-namespace:GAZTeServicesApp.Behaviors"
     xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-        xmlns:local1="clr-namespace:GAZT"
+    xmlns:local="clr-namespace:EGAZT"
+    xmlns:local1="clr-namespace:GAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
  BackgroundColor="White"
     NavigationPage.HasNavigationBar="False"
     >
@@ -119,18 +121,18 @@
                         <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4"  VerticalOptions="Center"   HeightRequest="40" Text="{x:Static local:AppResources.LogIn}" TextColor="White"  BackgroundColor="#006450"  Clicked="SignIn_Clicked" Padding="20,0,20,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
                     <StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
-                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill" BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40" Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"  BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill"
+                                           BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40"
+                                           Text="{x:Static local:AppResources.ZZSignup}" TextColor="#d99a29"
+                                           BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"
+                                           FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
-                    <Label Padding="5,0,5,0" Margin="1,43"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
-                    <!--AutoFitMode="Height" WidthRequest="{OnIdiom Phone=250, Tablet=320, Desktop=320}"-->
-                   <!-- <BoxView BackgroundColor="#006450" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="6,6,6,0"></BoxView>-->
-                    <listView:SfListView x:Name="SfListView" AutoFitMode="Height" SelectionMode="None" Margin="0,6,0,0" Padding="0" 
-                                         ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}"
-                                         HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand">
+                    <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
+                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=350, Tablet=320, Desktop=320}"
+                                         ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="Center" VerticalOptions="Center">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView CornerRadius="8"  Margin="1,0,1,0"   
-                                                  BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
+                                <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
                                     <cards:SfCardView.Content>
                                         <Grid>
                                             <!--<gradient:SfGradientView>
@@ -142,9 +144,8 @@
                                                         </gradient:SfLinearGradientBrush.GradientStops>
                                                     </gradient:SfLinearGradientBrush>
                                                 </gradient:SfGradientView.BackgroundBrush>
-                                            </gradient:SfGradientView> Margin="10"-->
-                                            <StackLayout Margin="0,10,0,10" Spacing="5" Padding="0"
-                                                         HorizontalOptions="Center" VerticalOptions="Center" >
+                                            </gradient:SfGradientView>-->
+                                            <StackLayout Margin="10" Spacing="5" HorizontalOptions="Center" VerticalOptions="Center" >
                                                 <Image Source="{Binding iConImagePath}" >
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnTappedeService"></TapGestureRecognizer>
@@ -168,8 +169,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                   <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
-                           <!-- <listView:GridLayout x:Name="GridLayout" SpanCount="1"  />-->
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=3, Desktop=3}" />
                         </listView:SfListView.LayoutManager>
                         <listView:SfListView.Behaviors>
                             <behavior:SfListViewExtendHeightBehavior ></behavior:SfListViewExtendHeightBehavior>

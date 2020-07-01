@@ -1,8 +1,13 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Helper;
+using GAZT.Manager;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -105,6 +110,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private VATRegistrationDetails _vATRegistrationDetailsData;
+        public VATRegistrationDetails VATRegistrationDetailsData
+        {
+            get
+            {
+                return _vATRegistrationDetailsData;
+            }
+            set
+            {
+                _vATRegistrationDetailsData = value;
+                RaisePropertyChanged("VATRegistrationDetailsData");
+            }
+        }
+
 
         #endregion
 
@@ -134,6 +167,69 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             IsExpensesVisible = false;
             IsFinancialVisible = false;
             IsSummaryVisible = false;
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    await _navigation.PopToRootAsync();
+                });
+            }
+        }
+        public async Task onPageLoad()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    VATRegistrationDetailsData = null;
+                    VATRegistrationDetails vATRegistration = null;
+                    try
+                    {
+                        
+                        vATRegistration = WebServiceManager.GAZTGetVATRegistrationData();
+                        PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                        if (vATRegistration != null && vATRegistration.d != null)
+                        {
+                            
+                        }
+                       
+                    }
+                    catch (InternetException ex)
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            _navigationService.GoBack();
+                        });
+                        //   await Task.Run(() =>
+                        //   {
+                        //  });
+                    }
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+               
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
         }
 
         #endregion

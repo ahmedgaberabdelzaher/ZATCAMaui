@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
@@ -99,6 +100,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel
                 //{
                 //    NoteText = string.Empty;
                 //}
+                if (VATReturnsPageViewModelEX.IsFirstTimeForNote == true)
+                {
+                    if (string.IsNullOrEmpty(NoteText))
+                    {
+
+                    }
+                    else
+                    {
+                        VATReturnsPageViewModelEX.IsFirstTimeForNote = false;
+                    }
+                }
                 if (String.Compare(PreviousNoteText, NoteText) != 0)
                 {
                     NoteText = PreviousNoteText;
@@ -108,6 +120,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel
             });
             OnAddButtonClicked = new Command(() =>
             {
+                if (VATReturnsPageViewModelEX.IsFirstTimeForNote ==true)
+                {
+                    if(string.IsNullOrEmpty(NoteText))
+                    {
+
+                    }
+                    else
+                    {
+                        VATReturnsPageViewModelEX.IsFirstTimeForNote = false;
+                    }
+                }
                 _navigationService.GoBack();
             });
         }

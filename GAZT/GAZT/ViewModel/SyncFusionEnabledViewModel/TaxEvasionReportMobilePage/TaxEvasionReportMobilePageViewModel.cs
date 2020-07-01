@@ -57,7 +57,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
             }
             set
             {
-                _mobileNumber = value;         
+                _mobileNumber =  value;         
                 this.RaisePropertyChanged("MobileNumber");
             }
         }
@@ -116,7 +116,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
 
                         TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
 
-                        Device.BeginInvokeOnMainThread(async () =>
+                        await Task.Run(() =>
                         {
                             IsLoading = false;
                         });

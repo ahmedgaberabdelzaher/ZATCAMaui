@@ -307,7 +307,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
                             string mobno=string.Empty;
                             Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
@@ -325,7 +330,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
-                    }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                        }
+                }
                     catch (Exception ex)
                     {
                     }
@@ -371,7 +381,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
                         string mobno = string.Empty;
                         if (App.TP != null && App.TP.Mobile != null)
@@ -389,7 +404,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                    {
+                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                     }
+                }
                     catch (Exception ex)
                     {
                     }
@@ -435,17 +455,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.MyBillsView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                    {
+                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                    }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                         {
-                        string mobno = string.Empty;
-                        if (App.TP != null && App.TP.Mobile != null)
-                        {
-                            mobno = App.TP.Mobile;
-                            //mobno = mobno.Remove(0, 6);
-                            mobno = mobno.Replace("009665", string.Empty);
-                        }
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                            string mobno = string.Empty;
+                            if (App.TP != null && App.TP.Mobile != null)
+                            {
+                                mobno = App.TP.Mobile;
+                                //mobno = mobno.Remove(0, 6);
+                                mobno = mobno.Replace("009665", string.Empty);
+                            }
+                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
+                        }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                         }
                         //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
@@ -453,9 +483,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                             Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                         }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                    {
+                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                        viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                     }
+                }
                     catch (Exception ex)
                     {
+
                     }
             }
             await Task.Run(() =>

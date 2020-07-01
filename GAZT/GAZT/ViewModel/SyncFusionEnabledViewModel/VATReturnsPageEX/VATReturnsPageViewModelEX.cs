@@ -44,6 +44,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         public ICommand onCreditCarriedForwardClicked { get; set; }
         public ICommand onStandardRatedSalesVatAmountTapped { get; set; }
         public ICommand OnGetAcknowledgementLinkClicked { get; set; }
+
+        public static bool IsFirstTimeForNote = false;
         #endregion
         #region Property
         private bool _isPrevReturn = false;
@@ -1656,10 +1658,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 if (_iSSwichButtonEnable == true)
                 {
                     // await showInfoMessageForRefund();
-                    IsVisibleDropdownForRefund = true;
-                    IsDropdownVisibleForIban = true;
-                    IsVisiblechkRefundDeclaration = true;
-
+                    OpenIbanSet();
                 }
                 else
                 {
@@ -3985,6 +3984,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 IsLoading = false;
             });
         }
+
+        public async void OpenIbanSet()
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                await Task.Run(() =>
+                {
+                    IsVisibleDropdownForRefund = true;
+                    IsDropdownVisibleForIban = true;
+                    IsVisiblechkRefundDeclaration = true;
+                });
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         public async Task VATReturnAmendAsync()
         {
             await Task.Run(() =>

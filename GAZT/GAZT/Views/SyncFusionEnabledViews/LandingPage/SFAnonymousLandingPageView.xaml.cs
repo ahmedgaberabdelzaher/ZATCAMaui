@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net.Http;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -77,6 +78,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             }
         }
 
+        //private void AddMarkers()
+        //{
+        //    Position loc1 = new Position(17.430486, 78.341331);
+        //    Position loc2 = new Position(17.427579, 78.342017);
+
+        //    Pin marker1 = new Pin()
+        //    {
+        //        Address = "Gachibowli",
+        //        IsVisible = true,
+        //        Label = "Microsoft Hyderabad",
+        //        Position = loc1,
+        //        Type = PinType.Place
+
+        //    };
+        //    Pin marker2 = new Pin()
+        //    {
+        //        Address = "Gachibowli",
+        //        IsVisible = true,
+        //        Label = "Wipro Hyderabad",
+        //        Position = loc2,
+        //        Type = PinType.Place
+
+        //    };
+
+        //    mapView.Pins.Add(marker1);
+        //    mapView.Pins.Add(marker2);
+        //    mapView.MoveToRegion(MapSpan.FromCenterAndRadius(marker1.Position, Distance.FromMeters(1000)));
+        //}
+
         //void OnMainDisplayInfoChanged(object sender, DisplayInfoChangedEventArgs e)
         //{
         //    // Process changes
@@ -118,7 +148,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             try
             {
                 base.OnAppearing();
-
+                
                 if (!App.IsJailBrokenDevice)// Checking Jail Broken Device
                 {
                     int transitionCount = 0;
@@ -182,7 +212,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
                         }
                     }
-
                     SetLTR();
                     Changecornerradious();
                     InitializeComponent();
@@ -375,22 +404,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         }
         private void SignUP_Clicked(object sender, EventArgs e)
         {
-            //if (!App.IsJailBrokenDevice)
-            //{
-            //    viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
-            //}
-            //else
-            //{
-            //    Device.BeginInvokeOnMainThread(async () =>
-            //    {
-            //        await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
-            //    });
-            //}
-
-
             if (!App.IsJailBrokenDevice)
             {
-                viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+                viewModel._navigationService.NavigateTo(App.SignUpTAndCViewPage);
             }
             else
             {
@@ -399,6 +415,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                     await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
                 });
             }
+
+
+            //if (!App.IsJailBrokenDevice)
+            //{
+            //    viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+            //}
+            //else
+            //{
+            //    Device.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
+            //    });
+            //}
 
 
         }

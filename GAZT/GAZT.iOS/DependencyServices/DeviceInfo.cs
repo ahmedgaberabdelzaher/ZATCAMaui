@@ -173,7 +173,8 @@ namespace GAZT.iOS.DependencyServices
                     "/Applications/WinterBoard.app",
                 };
 
-                return false;
+                return paths.Any(System.IO.File.Exists);
+                //return false;
             }
             catch (Exception ex)
             {
