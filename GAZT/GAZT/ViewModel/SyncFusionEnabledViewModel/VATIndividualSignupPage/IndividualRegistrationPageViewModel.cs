@@ -242,6 +242,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _individualRegistrationView = value;
                 if (_individualRegistrationView == true)
                 {
+                    currentStep = 1;
                     SetcolorForDots("IndividualRegistrationView");
                 }
                 RaisePropertyChanged("IndividualRegistrationView");
@@ -260,6 +261,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _nationalAddressView = value;
                 if (_nationalAddressView == true)
                 {
+                    currentStep = 2;
                     SetcolorForDots("NationalAddressView"); 
                 }
                
@@ -279,6 +281,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _contactInformationView = value;
                 if (_contactInformationView == true)
                 {
+                    currentStep = 3;
                     SetcolorForDots("ContactInformationView");
                 }
                 RaisePropertyChanged("ContactInformationView");
@@ -298,6 +301,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _summeryView = value;
                 if (_summeryView == true)
                 {
+                    currentStep = 4;
                     SetcolorForDots("SummeryView");
                 }
                 RaisePropertyChanged("SummeryView");
@@ -356,6 +360,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _passwordView = value;
                 if (_passwordView == true)
                 {
+                    currentStep = 5;
                     SetcolorForDots("PasswordView");
                     BackArrowVisible = false;
                 }
@@ -1274,19 +1279,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     NationalAddressView = false;
                     IndividualRegistrationView = true;
-                    currentStep--;
+                  //  currentStep--;
                 }
                 else if (currentStep == 3)
                 {
                     ContactInformationView = false;
                     NationalAddressView = true;
-                    currentStep--;
+                    //currentStep--;
                 }
                 else if (currentStep == 4)
                 {
                     SummeryView = false;
                     ContactInformationView = true;
-                    currentStep--;
+                    //currentStep--;
 
                 }
 
@@ -1486,7 +1491,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 ContactInformationView = false;
                 SummeryView = true;
                 ContinueButtonText = AppResources.Confirm;
-                currentStep++;
+               // currentStep++;
             }
 
 
@@ -1532,7 +1537,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 NationalAddressView = false;
                 ContactInformationView = true;
                 ContinueButtonText = AppResources.ZZZZContinue;
-                currentStep++;
+                //currentStep++;
             }
         }
 
@@ -1569,7 +1574,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         IndividualRegistrationView = false;
                         NationalAddressView = true;
-                        currentStep++;
+                      //  currentStep++;
                         flag = true;
                         SetVisibilityToNationalAddressContent();
 
@@ -1582,7 +1587,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             IndividualRegistrationView = false;
                             NationalAddressView = true;
-                            currentStep++;
+                          //  currentStep++;
                             await Task.Run(() =>
                             {
                                 IsLoading = true;
@@ -1891,7 +1896,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetCountryVisibility = true;
                     SetGCCCountryVisibility = false;
                     SetEnabilityToCountryList = false;
-                    CountryName = "Saudi Arabiya";
+                    CountryName = AppResources.ZZZZSaudiArabia;
                 }
             }
             catch (Exception ex)
@@ -1959,7 +1964,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetStateListVisibility = true;
                     SetCityListVisibility = true;
                     SetStateList();
-                    CountryName = "Saudi Arabiya";
+                    CountryName = AppResources.ZZZZSaudiArabia;
                     SetEnabilityToCountryList = false;
 
                 }
@@ -2131,7 +2136,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         SummeryView = false;
                         PasswordView = true;
-                        currentStep++;
+                      //  currentStep++;
                         
                             int timeToExpireOTP = 120;
                             TimerStart(timeToExpireOTP);
