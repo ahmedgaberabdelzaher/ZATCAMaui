@@ -1203,7 +1203,7 @@
                                                             <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.EnterVerificationCode}"   />
                                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                                         </StackLayout>
-                                                        <!--<StackLayout Grid.Row="1">
+                                                        <StackLayout Grid.Row="1">
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding EncriptedMobileNumber}"/>
 
                                                             <StackLayout Orientation="Horizontal">
@@ -1215,7 +1215,8 @@
                                                                 </Image>
                                                                 <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}"/>
                                                             </StackLayout>
-                                                        </StackLayout>-->
+                                                        </StackLayout>
+
                                                         <StackLayout Grid.Row="2" Grid.Column="0" >
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.EnterOTP}" FontFamily="{StaticResource SSTArabicMedium}"  Padding="0,0,0,0"/>
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"

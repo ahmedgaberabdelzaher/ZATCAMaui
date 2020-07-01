@@ -1040,7 +1040,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("SetCountryVisibility");
             }
         }
-        private string _oTPValidDuration;
+        private string _oTPValidDuration = "0:00";
         public string OTPValidDuration
         {
             get
@@ -1255,7 +1255,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     public async Task OnPageLoad()
         {
-            
+           // TimerStart(120);
                 currentStep = 1;
                 GetSignUpIdType();
             await Task.Run(() =>
@@ -2059,6 +2059,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                if(response != null)
+                {
+                    int timeToExpireOTP = 120;
+                    TimerStart(timeToExpireOTP);
+                }
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
                 if (VatSignUpSubmitResponse.d == null)
@@ -2465,7 +2470,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
                         StopTimer = true;
-                        // TimerStart(TotalSec);
+                         TimerStart(TotalSec);
                     }
                 }
                 if (CTS.IsCancellationRequested)
@@ -2478,13 +2483,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         return false;
                     }
-                    else if (!StopTimer)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                    }
+                    //else if (!StopTimer)
+                    //{
+                    //    return false;
+                    //}
+                    //else
+                    //{
+                    //}
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
