@@ -3735,4 +3735,24 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>Register in Value Added Tax(VAT)</value>
   </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>Bahrain</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>Kuwait</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>Oman</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>Qatar</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>UAE</value>
+    <comment>New SignUp</comment>
+  </data>
 </root>

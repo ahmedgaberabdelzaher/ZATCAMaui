@@ -3718,4 +3718,24 @@
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>التسجيل في ضريبة القيمة المضافة</value>
   </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>البحرين</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>الكويت</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>عُمان</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>قطر</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>الإمارات العربية المتحدة</value>
+    <comment>New SignUp</comment>
+  </data>
 </root>

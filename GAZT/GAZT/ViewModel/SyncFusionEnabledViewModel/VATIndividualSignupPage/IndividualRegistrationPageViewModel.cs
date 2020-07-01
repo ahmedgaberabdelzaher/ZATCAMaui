@@ -1938,11 +1938,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
              
            List<VATSignUpGCC> signUpIdTypeList = new List<VATSignUpGCC>{
-           new VATSignUpGCC {CountryName = "UAE",CountryCode="AE",CountryId="1"},
-           new VATSignUpGCC {CountryName = "Bahrain",CountryCode="BH",CountryId="2"},
-           new VATSignUpGCC {CountryName = "Kuwait",CountryCode="KW",CountryId="3"},
-           new VATSignUpGCC {CountryName = "Oman",CountryCode="OM",CountryId="4"},
-           new VATSignUpGCC {CountryName = "Qatar",CountryCode="QA",CountryId="5"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZUAE,CountryCode="AE",CountryId="1"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZBahrain,CountryCode="BH",CountryId="2"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZKuwait,CountryCode="KW",CountryId="3"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZOman,CountryCode="OM",CountryId="4"},
+           new VATSignUpGCC {CountryName =AppResources.ZZZZQatar,CountryCode="QA",CountryId="5"},
 
             };
             List<VATSignUpGCC> lst = new List<VATSignUpGCC>();
