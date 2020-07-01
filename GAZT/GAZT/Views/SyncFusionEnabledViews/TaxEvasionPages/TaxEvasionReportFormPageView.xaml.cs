@@ -545,7 +545,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                     }
                     if (flag == true)
                     {
-
                         await viewModel.SubmitCreatedReport();
                     }
            // }
@@ -851,47 +850,45 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
         //}
         private void TVatNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            if (!string.IsNullOrEmpty(TVatNumber.Text))
             {
-                if (!string.IsNullOrEmpty(TVatNumber.Text))
+                if (TVatNumber.Text.Length < 15)
                 {
-                    if (TVatNumber.Text.Length < 15)
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZInvalidVatNumber;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
                     {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZInvalidVatNumber;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmVAT.HasError = true;
-                        TVatNumber.Text = string.Empty;
-                    }
-                    if (!TVatNumber.Text.StartsWith("3"))
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZVATStartsWithVAlidation;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        FrmVAT.HasError = true;
-                        TVatNumber.Text = string.Empty;
+                        popUp.FlowDirections = "RightToLeft";
                     }
                     else
                     {
-                        FrmVAT.HasError = false;
+                        popUp.FlowDirections = "LeftToRight";
                     }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmVAT.HasError = true;
+                    TVatNumber.Text = string.Empty;
+                }
+                else if (!TVatNumber.Text.StartsWith("3"))
+                {
+                    PopUp popUp = new PopUp();
+                    popUp.Message = AppResources.ZVATStartsWithVAlidation;
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    FrmVAT.HasError = true;
+                    TVatNumber.Text = string.Empty;
+                }
+                else
+                {
+                    FrmVAT.HasError = false;
                 }
             }
         }

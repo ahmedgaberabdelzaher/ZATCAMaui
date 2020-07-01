@@ -348,6 +348,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     {
                         if(rootObject.Data.Opened.Count() > 0)
                         {
+                            rootObject.Data.Opened = rootObject.Data.Opened.OrderByDescending(c => c.TicketId).ToArray();
                             TERListReportbymobno = rootObject.Data.Opened;
                             SetNoDataLabelVisibilityforOpen = false;
                         }
@@ -358,6 +359,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
 
                         if (rootObject.Data.Closed.Count() > 0)
                         {
+                            rootObject.Data.Opened = rootObject.Data.Closed.OrderByDescending(c => c.TicketId).ToArray();
                             TERListReportbymobnoClosed = rootObject.Data.Closed;
                             SetNoDataLabelVisibilityforClose = false;
                         }
