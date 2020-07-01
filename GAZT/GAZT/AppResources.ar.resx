@@ -2502,15 +2502,15 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-   <value>اسم المبلغ*</value>
+   <value>إسم المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنطقة للمنشأة*</value>
+    <value>عنوان المنشأة- الحي*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة*</value>
+    <value>عنوان المنشأة- الشارع*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
@@ -2546,7 +2546,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailVATNumber" xml:space="preserve">
-    <value>رقم حساب ضريبة القيمة المضافة</value>
+    <value>الرقم الضريبي</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportFormEnterCity" xml:space="preserve">
