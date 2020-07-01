@@ -262,6 +262,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
+                            ValidateIDNumber(); ;
+
                         }
                     }
 
@@ -319,6 +321,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
+                            ValidateIDNumber();
                         }
                     }
                     
@@ -786,6 +789,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.TxtIDType = viewModel.IdTypeList[viewModel.IDTypeIndex].Name;
                 viewModel.SelectedIdType = viewModel.IdTypeList[viewModel.IDTypeIndex];
+                viewModel.IdNumber = string.Empty;
                 if (!viewModel.SelectedIdType.ID.Equals("ZS0018"))
                 {
                     if (string.IsNullOrEmpty(viewModel.DOB) && string.IsNullOrEmpty(viewModel.IdNumber))
@@ -1306,6 +1310,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void EntryName_TextChanged(object sender, TextChangedEventArgs e)
         {
             viewModel.FrameNameError = false;
+        }
+
+        private void EntryPostalCode_Unfocused(object sender, FocusEventArgs e)
+        {
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
+            if (!string.IsNullOrEmpty(viewModel.PostalCode))
+            {
+                if (viewModel.PostalCode.Length != 5)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                  
+                    if (Message.Length > 0)
+                    {
+                        popUp.Message = Message.ToString();
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                        //FrmMobileNumber.HasError = true;
+                        viewModel.PostalCode = string.Empty;
+                    }
+                }
+                 
+         
+            }
         }
     }
 }

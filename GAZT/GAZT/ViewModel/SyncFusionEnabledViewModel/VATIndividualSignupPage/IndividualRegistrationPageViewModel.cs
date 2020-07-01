@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,6 +23,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
     public class IndividualRegistrationPageViewModel : ViewModelBase
     {
+        public int DefaultMonth;
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
@@ -39,7 +41,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
         #region Properties
-
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -1225,6 +1239,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Method
         public void ClearData()
         {
+            SetDefaultDate();
             VerifyButtonDisableColor = Color.FromHex("#d49504");
             IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
@@ -1245,6 +1260,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
             BackArrowVisible = true;
+         
         }
         public async Task SetBackFormVisibility()
         {
@@ -2560,6 +2576,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     return true;
                 }
             });
+        }
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
         }
     }
 }

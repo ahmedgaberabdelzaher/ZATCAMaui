@@ -737,7 +737,7 @@
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="PostalCode" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryPostalCode"  FontFamily="{StaticResource SSTArLight}" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryPostalCode" Unfocused="EntryPostalCode_Unfocused" FontFamily="{StaticResource SSTArLight}" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZPostalCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <!--<Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
