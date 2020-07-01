@@ -2770,7 +2770,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Form bundle status</comment>
   </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
-    <value>Please enter access Code.</value>
+    <value>Please enter verification Code.</value>
     <comment>OTP Screen</comment>
   </data>
   <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
