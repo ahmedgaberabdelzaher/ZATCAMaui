@@ -1116,10 +1116,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 RegionPicker.IsOpen = true;
             }
         }
-        private void btnReportDetailCity_Clicked(object sender, EventArgs e)
+        private async void btnReportDetailCity_Clicked(object sender, EventArgs e)
         {
+
+
             if (!string.IsNullOrEmpty(Region_entry.Text))
             {
+
+
                 if (App.IsArabic)
                 {
                     CityPickerAR.IsOpen = true;
@@ -1130,7 +1134,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                 }
             }
             else
-            {
+           {
+               await  viewModel._dialogService.ShowMessage(AppResources.ZTaxEvasionReportCityValidationMessage, AppResources.Information);
+
                 if (App.IsArabic)
                 {
                     RegionPickerAR.IsOpen = true;

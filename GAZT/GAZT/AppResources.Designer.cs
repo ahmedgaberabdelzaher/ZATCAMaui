@@ -6263,5 +6263,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZUAE", resourceCulture);
             }
         }
+        
+        public static string ZTaxEvasionReportCityValidationMessage {
+            get {
+                return ResourceManager.GetString("ZTaxEvasionReportCityValidationMessage", resourceCulture);
+            }
+        }
     }
 }

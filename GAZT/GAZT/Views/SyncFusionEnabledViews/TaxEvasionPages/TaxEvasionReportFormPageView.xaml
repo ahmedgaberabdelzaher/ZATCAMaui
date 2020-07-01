@@ -308,7 +308,7 @@ HeaderTextColor="White"
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Medium"  x:Name="City_entry">
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="16">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -389,7 +389,7 @@ HeaderTextColor="White"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused"  IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
                                 <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="16">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -470,7 +470,7 @@ ItemHeight="45" ShowFooter="True"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Editor  MaxLength="999" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" FontSize= "Small" x:Name="TReportDetail" HeightRequest="200" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
     <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="16">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -487,7 +487,7 @@ ItemHeight="45" ShowFooter="True"
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="16">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
