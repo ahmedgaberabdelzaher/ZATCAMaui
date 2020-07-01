@@ -139,6 +139,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnDisappearing();
             viewModel.StopTimer = false;
+            viewModel.TotalSec = -10;
+            
         }
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
