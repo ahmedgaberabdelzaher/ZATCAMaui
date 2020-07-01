@@ -10,7 +10,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
             xmlns:local="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.RegistrationSuccessfulPageView"
-             BackgroundColor="DarkGreen">
+              BackgroundColor="#006450"><!--BackgroundColor="DarkGreen"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
