@@ -26,6 +26,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand OnBackButtonClick { get; set; }
+        public ICommand OnResendButtonClick { get; set; }
         public ICommand GoButtonClick { get; set; }
         public int currentStep { get; set; }
         public VATSignUpData vATSignUpData { get; set; }
@@ -33,7 +34,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public VATSignUp _VATSignUp { get; set; }
         public DateTime  dateTime { get; set; }
         public int numberOfSeconds = 120;
-        int TotalSec;
+        public int TotalSec;
         public bool StopTimer = false;
 
 
@@ -1052,7 +1053,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableColor = Color.FromHex("#d49504");
                     ButtonDisableTextColor = Color.White;
                     IsResendOTPEnabled = true;
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
@@ -1141,7 +1142,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#006450");
+        private Color _verifybuttonDisableColor = Color.FromHex("#d49504");
         public Color VerifyButtonDisableColor
         {
             get
@@ -1186,7 +1187,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
-              await  SetFormVisibility();
+                if (IsVerifyOTPEnabled) 
+                {
+                    await SetFormVisibility();
+                }
+             
+            });
+            OnResendButtonClick = new Xamarin.Forms.Command(async () =>
+            {
+               // ContinueButtonText = AppResources.ZZZZContinue;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (IsResendOTPEnabled)
+                {
+                    await SetRequestObjectResendOtp();
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
             });
 
             OnBackButtonClick = new Xamarin.Forms.Command(async () =>
@@ -1203,6 +1225,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Method
         public void ClearData()
         {
+            VerifyButtonDisableColor = Color.FromHex("#d49504");
+            IsVerifyOTPEnabled = true;
+            IsResendOTPEnabled = false;
+            ButtonDisableColor = Color.Gray;
             IdNumber = string.Empty;
             Name = string.Empty;
             DOB = string.Empty;
@@ -2059,15 +2085,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
-                if(response != null)
-                {
-                    int timeToExpireOTP = 120;
-                    TimerStart(timeToExpireOTP);
-                }
+              
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
                 if (VatSignUpSubmitResponse.d == null)
                 {
+                 
+                 
                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
@@ -2092,9 +2116,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         SummeryView = false;
                         PasswordView = true;
                         currentStep++;
+                        
+                            int timeToExpireOTP = 120;
+                            TimerStart(timeToExpireOTP);
 
-                     
-                    }
+
+                        }
                     else if (currentStep == 5)
                     {
                         PasswordView = false;
@@ -2173,7 +2200,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Idnumber = IdNumber,
                     Firstname = Name,
                     Lastname = ".",
-                    PostCode1 = PostalCode,
+                    PostCode1 = "00000",
                     City1 = _City,
                     //Country = SelectedCountry.Land1,
                     //Region = SelectedRegion.Land1,
@@ -2190,8 +2217,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
-                    Password = Password,
-                    SmsCode = OTP,
+                    Password = "",
+                    SmsCode = "",
                     EmailCode = "",
                     Submit = submitValue,
 
@@ -2224,6 +2251,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                if (response != null)
+                {
+                    //OTPValidDuration = " 0:00";
+                    //ButtonDisableColor = Color.FromHex("#d49504");
+                    //ButtonDisableTextColor = Color.White;
+                    //IsResendOTPEnabled = true;
+                    //VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    //VerifyButtonDisableTextColor = Color.Gray;
+                    //IsVerifyOTPEnabled = false;
+                    //IsOTPEntryEnable = false;
+                    int timeToExpireOTP = 120;
+                    TimerStart(timeToExpireOTP);
+                    ButtonDisableColor = Color.FromHex("#9EA4A9");//9EA4A9
+                    IsResendOTPEnabled = false;
+                    VerifyButtonDisableColor = Color.FromHex("#d49504");
+                    IsVerifyOTPEnabled = true;
+                }
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
                 if (VatSignUpSubmitResponse.d == null)
@@ -2488,12 +2532,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //    return false;
                     //}
                     //else
-                    //{
-                    //}
+                    //{#006450 green 
+                    //}#d49504 golden
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#006450");
+                        ButtonDisableColor = Color.FromHex("#d49504");
                         ButtonDisableTextColor = Color.White;
                         IsResendOTPEnabled = true;
                         VerifyButtonDisableColor = Color.FromHex("#9EA4A9");

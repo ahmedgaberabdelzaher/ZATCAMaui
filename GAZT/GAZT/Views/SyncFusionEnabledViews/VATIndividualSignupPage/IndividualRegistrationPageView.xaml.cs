@@ -35,6 +35,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.IndividualRegistrationPageView;
             this.BindingContext = viewModel;
+
             viewModel.ClearData();
              Task.Run(async() =>
             {

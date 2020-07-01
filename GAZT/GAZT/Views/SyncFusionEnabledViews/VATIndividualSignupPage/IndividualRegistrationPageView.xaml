@@ -1222,7 +1222,7 @@
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry Text="{Binding OTP}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                    <custom:BorderlessEntry Keyboard="Numeric" MaxLength="4" Text="{Binding OTP}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" WidthRequest="128" 
                                                                 Placeholder="{x:Static local:AppResources.EnterOTP}" IsPassword="{Binding IsOTPEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeOtp">
@@ -1236,6 +1236,9 @@
                                                                     </Image>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
+                                                            <!--ResendOTP-->
+                                                            <buttons:SfButton x:Name="btnResendOtp" Text="{x:Static local:AppResources.ResendOTP}"   FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
+                                  HeightRequest="56" Command="{Binding OnResendButtonClick}"    FontSize="15"  Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding ButtonDisableColor}"  />
                                                         </StackLayout>
 
                                                     </Grid>
@@ -1246,10 +1249,10 @@
                                 </Grid>
                             </StackLayout>
                         </ScrollView>
-                        <!--</Grid>-->
+                        <!--</Grid> VerifyButtonDisableTextColor BackgroundColor="#d49504"-->
                         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
                             <buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
-                                  HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
+                                  HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />
                         </StackLayout>
                     </Grid>
                 </StackLayout>
