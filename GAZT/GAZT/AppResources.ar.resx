@@ -2502,7 +2502,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-   <value>إسم المنشأة*</value>
+    <value>إسم المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
@@ -2514,7 +2514,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-      <value>نوع نشاط المنشأة*</value>
+    <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
@@ -3449,31 +3449,31 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZAtleast8characterslong" xml:space="preserve">
-    <value>At least 8 characters long</value>
+    <value>يجب أن لاتقل عن 8 خانات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZBuildingNumber" xml:space="preserve">
-    <value>Building Number</value>
+    <value>رقم المبنى</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCompletethebelowdetails" xml:space="preserve">
-    <value>Complete the below details</value>
+    <value>أكمل التفاصيل أدناه</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZConfirmEmail" xml:space="preserve">
-    <value>Confirm Email</value>
+    <value>تأكيد البريد الالكتروني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>استمر</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCreateasecurePassword" xml:space="preserve">
-    <value>Create a secure Password</value>
+    <value>إنشاء كلمة مرور آمنة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEnglishcapitalandsmallletters" xml:space="preserve">
-    <value>English capital and small letters</value>
+    <value>حروف إنجليزية كبيرة وصغيرة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZGotoDashboard" xml:space="preserve">
@@ -3485,47 +3485,47 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNationalAddress" xml:space="preserve">
-    <value>National Address</value>
+    <value>العنوان الوطني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNeighborhood" xml:space="preserve">
-    <value>Neighborhood</value>
+    <value>الحي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNotexceed16characters" xml:space="preserve">
-    <value>Not exceed 16 characters</value>
+    <value>يجب أن لاتتجاوز عن 16 خانة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNumbersandsymbols" xml:space="preserve">
-    <value>Numbers and symbols</value>
+    <value>أرقام ورموز</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPersonalInformation" xml:space="preserve">
-    <value>Personal Information</value>
+    <value>المعلومات الشخصية</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPostalCode" xml:space="preserve">
-    <value>Postal Code</value>
+    <value>الرمز البريدي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRegisterinVATNow" xml:space="preserve">
-    <value>Register in VAT Now</value>
+    <value>التسجيل في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
-    <value>Registration Successful</value>
+    <value>تم التسجيل بنجاح</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRepeatPassword" xml:space="preserve">
-    <value>Repeat Password</value>
+    <value>تأكيد كلمة المرور</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZReviewinformation" xml:space="preserve">
-    <value>Review information</value>
+    <value>مراجعة المعلومات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSummery" xml:space="preserve">
-    <value>Summery</value>
+    <value>الملخص</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZUnitNumber" xml:space="preserve">
@@ -3537,7 +3537,7 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>
+    <value>تم التسجيل الى خدمات الهيئة العامة للزكاة والدخل بنجاح . لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
@@ -3708,11 +3708,11 @@
     <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
   </data>
   <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
-    <value>Email field and Confirm Email field should match up</value>
+    <value>البريد الالكتروني غير مطابق الرجاء ادخال البريد بشكل صحيح</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
-    <value>Select the type of Entity</value>
+    <value>الرجاء اختيار كيان المكلف</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
