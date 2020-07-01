@@ -9227,6 +9227,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Postal Code.
+        /// </summary>
+        public static string ZZZZInvalidPostalCode {
+            get {
+                return ResourceManager.GetString("ZZZZInvalidPostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kuwait.
         /// </summary>
         public static string ZZZZKuwait {

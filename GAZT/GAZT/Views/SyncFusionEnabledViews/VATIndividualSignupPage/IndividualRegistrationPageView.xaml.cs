@@ -1324,7 +1324,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         Message.Append(Environment.NewLine);
                     }
-                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                    Message.Append(AppResources.ZZZZInvalidPostalCode);
                   
                     if (Message.Length > 0)
                     {

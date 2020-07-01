@@ -3477,11 +3477,11 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZGotoDashboard" xml:space="preserve">
-    <value>Go to Dashboard</value>
+    <value>الذهاب الى لوحة التحكم</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZIndividualRegistration" xml:space="preserve">
-    <value>Individual Registration</value>
+    <value>التسجيل الفردي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNationalAddress" xml:space="preserve">
@@ -3529,7 +3529,7 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZUnitNumber" xml:space="preserve">
-    <value>Unit Number</value>
+    <value>رقم الوحدة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZTEReportAttachmentTitle" xml:space="preserve">
@@ -3741,6 +3741,10 @@
   <data name="ZTaxEvasionReportCityValidationMessage" xml:space="preserve">
     <value>يرجى تحديد المنطقة قبل اختيار المدينة</value>
     <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZZZZInvalidPostalCode" xml:space="preserve">
+    <value>الرمز البريدي غير صحيح</value>
+    <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSaudiArabia" xml:space="preserve">
     <value>المملكة العربية السعودية</value>
