@@ -132,7 +132,7 @@
                                          ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="Center" VerticalOptions="Center">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
+                                <cards:SfCardView CornerRadius="8" HeightRequest="110" WidthRequest="100" BorderColor="#006450" BorderWidth=".5" IndicatorPosition="Bottom" IndicatorThickness="8" IndicatorColor="#006450">
                                     <cards:SfCardView.Content>
                                         <Grid>
                                             <!--<gradient:SfGradientView>
