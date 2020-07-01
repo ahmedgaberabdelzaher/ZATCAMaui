@@ -3738,8 +3738,12 @@
     <value>الإمارات العربية المتحدة</value>
     <comment>New SignUp</comment>
   </data>
-          <data name="ZTaxEvasionReportCityValidationMessage" xml:space="preserve">
+  <data name="ZTaxEvasionReportCityValidationMessage" xml:space="preserve">
     <value>يرجى تحديد المنطقة قبل اختيار المدينة</value>
     <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZZZZSaudiArabia" xml:space="preserve">
+    <value>المملكة العربية السعودية</value>
+    <comment>New SignUp</comment>
   </data>
 </root>
