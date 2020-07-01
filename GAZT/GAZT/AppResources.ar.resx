@@ -2757,7 +2757,7 @@
     <comment>Form bundle status</comment>
   </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
-    <value>الرجاء إدخال رمز الدخول</value>
+    <value>الرجاء ادخال رمز التحقق</value>
     <comment>OTP Screen</comment>
   </data>
   <data name="BreakDownLabel" xml:space="preserve">
