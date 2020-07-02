@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -22,10 +23,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
     public class IndividualRegistrationPageViewModel : ViewModelBase
     {
+        public int DefaultMonth;
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnContinueButtonClick { get; set; }
         public ICommand OnBackButtonClick { get; set; }
+        public ICommand OnResendButtonClick { get; set; }
         public ICommand GoButtonClick { get; set; }
         public int currentStep { get; set; }
         public VATSignUpData vATSignUpData { get; set; }
@@ -33,12 +36,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public VATSignUp _VATSignUp { get; set; }
         public DateTime  dateTime { get; set; }
         public int numberOfSeconds = 120;
-        int TotalSec;
+        public int TotalSec;
         public bool StopTimer = false;
 
 
         #region Properties
-
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -227,6 +242,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _individualRegistrationView = value;
                 if (_individualRegistrationView == true)
                 {
+                    currentStep = 1;
                     SetcolorForDots("IndividualRegistrationView");
                 }
                 RaisePropertyChanged("IndividualRegistrationView");
@@ -245,6 +261,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _nationalAddressView = value;
                 if (_nationalAddressView == true)
                 {
+                    currentStep = 2;
                     SetcolorForDots("NationalAddressView"); 
                 }
                
@@ -264,6 +281,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _contactInformationView = value;
                 if (_contactInformationView == true)
                 {
+                    currentStep = 3;
                     SetcolorForDots("ContactInformationView");
                 }
                 RaisePropertyChanged("ContactInformationView");
@@ -283,6 +301,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _summeryView = value;
                 if (_summeryView == true)
                 {
+                    currentStep = 4;
                     SetcolorForDots("SummeryView");
                 }
                 RaisePropertyChanged("SummeryView");
@@ -341,6 +360,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _passwordView = value;
                 if (_passwordView == true)
                 {
+                    currentStep = 5;
                     SetcolorForDots("PasswordView");
                     BackArrowVisible = false;
                 }
@@ -1040,7 +1060,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("SetCountryVisibility");
             }
         }
-        private string _oTPValidDuration;
+        private string _oTPValidDuration = "0:00";
         public string OTPValidDuration
         {
             get
@@ -1052,7 +1072,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableColor = Color.FromHex("#d49504");
                     ButtonDisableTextColor = Color.White;
                     IsResendOTPEnabled = true;
                     VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
@@ -1141,7 +1161,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#006450");
+        private Color _verifybuttonDisableColor = Color.FromHex("#d49504");
         public Color VerifyButtonDisableColor
         {
             get
@@ -1186,7 +1206,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             OnContinueButtonClick = new Xamarin.Forms.Command(async () =>
             {
-              await  SetFormVisibility();
+                if (IsVerifyOTPEnabled) 
+                {
+                    await SetFormVisibility();
+                }
+             
+            });
+            OnResendButtonClick = new Xamarin.Forms.Command(async () =>
+            {
+               // ContinueButtonText = AppResources.ZZZZContinue;
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+                if (IsResendOTPEnabled)
+                {
+                    await SetRequestObjectResendOtp();
+                }
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
+
             });
 
             OnBackButtonClick = new Xamarin.Forms.Command(async () =>
@@ -1203,6 +1244,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         #region Method
         public void ClearData()
         {
+            SetDefaultDate();
+            VerifyButtonDisableColor = Color.FromHex("#d49504");
+            IsVerifyOTPEnabled = true;
+            IsResendOTPEnabled = false;
+            ButtonDisableColor = Color.Gray;
             IdNumber = string.Empty;
             Name = string.Empty;
             DOB = string.Empty;
@@ -1219,6 +1265,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
             BackArrowVisible = true;
+         
         }
         public async Task SetBackFormVisibility()
         {
@@ -1232,19 +1279,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     NationalAddressView = false;
                     IndividualRegistrationView = true;
-                    currentStep--;
+                  //  currentStep--;
                 }
                 else if (currentStep == 3)
                 {
                     ContactInformationView = false;
                     NationalAddressView = true;
-                    currentStep--;
+                    //currentStep--;
                 }
                 else if (currentStep == 4)
                 {
                     SummeryView = false;
                     ContactInformationView = true;
-                    currentStep--;
+                    //currentStep--;
 
                 }
 
@@ -1255,7 +1302,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     public async Task OnPageLoad()
         {
-            
+           // TimerStart(120);
                 currentStep = 1;
                 GetSignUpIdType();
             await Task.Run(() =>
@@ -1444,7 +1491,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 ContactInformationView = false;
                 SummeryView = true;
                 ContinueButtonText = AppResources.Confirm;
-                currentStep++;
+               // currentStep++;
             }
 
 
@@ -1490,7 +1537,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 NationalAddressView = false;
                 ContactInformationView = true;
                 ContinueButtonText = AppResources.ZZZZContinue;
-                currentStep++;
+                //currentStep++;
             }
         }
 
@@ -1527,7 +1574,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         IndividualRegistrationView = false;
                         NationalAddressView = true;
-                        currentStep++;
+                      //  currentStep++;
                         flag = true;
                         SetVisibilityToNationalAddressContent();
 
@@ -1540,7 +1587,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                             IndividualRegistrationView = false;
                             NationalAddressView = true;
-                            currentStep++;
+                          //  currentStep++;
                             await Task.Run(() =>
                             {
                                 IsLoading = true;
@@ -1849,7 +1896,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetCountryVisibility = true;
                     SetGCCCountryVisibility = false;
                     SetEnabilityToCountryList = false;
-                    CountryName = "Saudi Arabiya";
+                    CountryName = AppResources.ZZZZSaudiArabia;
                 }
             }
             catch (Exception ex)
@@ -1917,7 +1964,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     SetStateListVisibility = true;
                     SetCityListVisibility = true;
                     SetStateList();
-                    CountryName = "Saudi Arabiya";
+                    CountryName = AppResources.ZZZZSaudiArabia;
                     SetEnabilityToCountryList = false;
 
                 }
@@ -1938,11 +1985,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
              
            List<VATSignUpGCC> signUpIdTypeList = new List<VATSignUpGCC>{
-           new VATSignUpGCC {CountryName = "UAE",CountryCode="AE",CountryId="1"},
-           new VATSignUpGCC {CountryName = "Bahrain",CountryCode="BH",CountryId="2"},
-           new VATSignUpGCC {CountryName = "Kuwait",CountryCode="KW",CountryId="3"},
-           new VATSignUpGCC {CountryName = "Oman",CountryCode="OM",CountryId="4"},
-           new VATSignUpGCC {CountryName = "Qatar",CountryCode="QA",CountryId="5"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZUAE,CountryCode="AE",CountryId="1"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZBahrain,CountryCode="BH",CountryId="2"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZKuwait,CountryCode="KW",CountryId="3"},
+           new VATSignUpGCC {CountryName = AppResources.ZZZZOman,CountryCode="OM",CountryId="4"},
+           new VATSignUpGCC {CountryName =AppResources.ZZZZQatar,CountryCode="QA",CountryId="5"},
 
             };
             List<VATSignUpGCC> lst = new List<VATSignUpGCC>();
@@ -2008,7 +2055,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Idnumber = IdNumber,
                     Firstname = Name,
                     Lastname = ".",
-                    PostCode1 = PostalCode,
+                    PostCode1 = "00000",
                     City1 = _City,
                     //Country = SelectedCountry.Land1,
                     //Region = SelectedRegion.Land1,
@@ -2059,25 +2106,99 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+              
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
                 if (VatSignUpSubmitResponse.d == null)
                 {
+                 
+                 
                     SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006") || itemerror.code.Contains("ZD_ZVTX/007"))
-                        {
-                            if (Message.Length > 0)
+                        //    if (itemerror.code.Contains("ZD_ZVTX/006") || itemerror.code.Contains("ZD_ZVTX/007"))
+                        //    {
+                        //        if (Message.Length > 0)
+                        //        {
+                        //            Message.Append(Environment.NewLine);
+                        //        }
+                        //        Message.Append(itemerror.message);
+                        //    }//ZD_ZVTX/007
+                        //if (itemerror.code.Contains("ZD_ZVTX/006"))
+                        //{
+                            //if (Message.Length > 0)
+                            //{
+                            //    Message.Append(Environment.NewLine);
+                            //}
+                            //Message.Append(itemerror.message);
+                            if (itemerror.code.Contains("ZD_ZVTX/006"))
                             {
-                                Message.Append(Environment.NewLine);
+
+                                Message.Append(AppResources.ZZZZErroMessage6);
                             }
-                            Message.Append(itemerror.message);
-                        }//ZD_ZVTX/007
-                        
-                    }
-                    _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                            if (itemerror.code.Contains("ZD_ZVTX/007"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage7);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/008"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage8);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/009"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage9);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0010"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage10);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0011"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage11);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/001"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage1);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/002"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage2);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/003"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage3);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/004"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage4);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/005"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage5);
+                            }
+                           
+                            if (itemerror.code.Contains("ZD_ZREG/303"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErrorMessage303);
+                            }
+
+                        }
+                        _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+
+
+
                 }
                 else
                 {//success
@@ -2086,10 +2207,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         SummeryView = false;
                         PasswordView = true;
-                        currentStep++;
+                      //  currentStep++;
+                        
+                            int timeToExpireOTP = 120;
+                            TimerStart(timeToExpireOTP);
 
-                     
-                    }
+
+                        }
                     else if (currentStep == 5)
                     {
                         PasswordView = false;
@@ -2142,33 +2266,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     }
                 }
-                //TimeSpan span = (dateTime - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
-                //string unixTime = span.TotalSeconds.ToString("N0");
-                //unixTime = unixTime.Replace(",", "");
-                // string dd = "" + "/Date(" + unixTime + ")/";// need to
                 string submitValue;
                 submitValue = "";
-                //if (currentStep == 4)
-                //{
-                //    submitValue = "";
-                //}
-                //else
-                //{
-                //    submitValue = "X";
-                //}
-
-
-
-
-                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+            VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
-                    // {"Type":"1","IdType":"ZS0018","Idnumber":"11111111111","Firstname":"Ashish","Lastname":"Ranjan","PostCode1":"00000","City1":"","Country":"OM","Region":"","Building":" ","Floor":" ","Street":" ","Begda":"\/Date(1593139376000)\/","Endda":"\/Date(253402251010000)\/","Email":"ashish.ranjan@parallelminds.in","Mobile":"00966546825230","CaseGuid":"005056B1FE5D1EEAADC647121D569A67","Birthdt":"\/Date(1577846576000)\/","Password":"Init@1234","SmsCode":"6506","EmailCode":"","Submit":"X"}
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
                     Idnumber = IdNumber,
                     Firstname = Name,
                     Lastname = ".",
-                    PostCode1 = PostalCode,
+                    PostCode1 = "00000",
                     City1 = _City,
                     //Country = SelectedCountry.Land1,
                     //Region = SelectedRegion.Land1,
@@ -2185,40 +2292,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
                     Birthdt = Bdt,//"/Date(1577846576000)/",
                     //Birthdt = "" + "/Date(" + unixDateTime + ")/",//"/Date(1577846576000)/",
-                    Password = Password,
-                    SmsCode = OTP,
+                    Password = "",
+                    SmsCode = "",
                     EmailCode = "",
                     Submit = submitValue,
 
-
-
-
-                    //Type = "1",
-                    //IdType = SelectedIdType.ID,//"ZS0018",
-                    //Idnumber = "11111112221",
-                    //Firstname = "Ashish",
-                    //Lastname = "Ranjan",
-                    //PostCode1 = "00000",
-                    //City1 = "",
-                    //Country = "OM",
-                    //Region = "",
-                    //Building = "",
-                    //Floor = "",
-                    //Street = "",
-                    //Begda = "/Date(1593139376000)/",
-                    //Endda = "/Date(253402251010000)/",
-                    //Email = "abc@gmail.com",
-                    //Mobile = "00966546825230",
-                    //CaseGuid = SignUpCaseIdD.d.results[0].CaseGuid,
-                    //Birthdt = "/Date(1577846576000)/",
-                    //Password = "",
-                    //SmsCode = "",
-                    //EmailCode = "",
-                    //Submit = "",
                 };
 
-                //VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 string response = await WebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
+                if (response != null)
+                {
+                    int timeToExpireOTP = 120;
+                    TimerStart(timeToExpireOTP);
+                    ButtonDisableColor = Color.FromHex("#9EA4A9");//9EA4A9
+                    IsResendOTPEnabled = false;
+                    VerifyButtonDisableColor = Color.FromHex("#d49504");
+                    IsVerifyOTPEnabled = true;
+                }
                 VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
                 VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
                 if (VatSignUpSubmitResponse.d == null)
@@ -2227,33 +2317,77 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     StringBuilder Message = new StringBuilder();
                     foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                     {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
-                        {
-                            if (Message.Length > 0)
+                            if (itemerror.code.Contains("ZD_ZVTX/006"))
                             {
-                                Message.Append(Environment.NewLine);
+
+                                Message.Append(AppResources.ZZZZErroMessage6);
                             }
-                            Message.Append(itemerror.message);
+                            if (itemerror.code.Contains("ZD_ZVTX/007"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage7);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/008"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage8);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/009"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage9);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0010"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage10);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/0011"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage11);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/001"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage1);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/002"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage2);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/003"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage3);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/004"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage4);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/005"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage5);
+                            }
+                            if (itemerror.code.Contains("ZD_ZVTX/005"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErroMessage5);
+                            }
+                            if (itemerror.code.Contains("ZD_ZREG/303"))
+                            {
+
+                                Message.Append(AppResources.ZZZZErrorMessage303);
+                            }
+
                         }
-                    }
-                    _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                        _dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                 }
                 else
-                {//success
-                 //_navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                    //if (currentStep == 4)
-                    //{
-                    //    SummeryView = false;
-                    //    PasswordView = true;
-                    //    currentStep++;
-                    //}
-                    //else if (currentStep == 5)
-                    //{
-                    //    PasswordView = false;
-                    //    currentStep = 1;
-                    //    string TinNumber = VatSignUpSubmitResponse.d.Tin;
-                    //    _navigationService.NavigateTo(App.RegistrationSuccessfulPageView, TinNumber);
-                    //}
+                {
 
 
 
@@ -2465,7 +2599,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
                         App.IsComingFromSleepMode = false;
                         StopTimer = true;
-                        // TimerStart(TotalSec);
+                         TimerStart(TotalSec);
                     }
                 }
                 if (CTS.IsCancellationRequested)
@@ -2478,17 +2612,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     {
                         return false;
                     }
-                    else if (!StopTimer)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                    }
+                    //else if (!StopTimer)
+                    //{
+                    //    return false;
+                    //}
+                    //else
+                    //{#006450 green 
+                    //}#d49504 golden
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#006450");
+                        ButtonDisableColor = Color.FromHex("#d49504");
                         ButtonDisableTextColor = Color.White;
                         IsResendOTPEnabled = true;
                         VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
@@ -2511,6 +2645,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     return true;
                 }
             });
+        }
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
         }
     }
 }

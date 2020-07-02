@@ -276,18 +276,49 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 //App.IsUserLoggedIn = true;
                                 //await viewModel.LoginCompletedInWebView();
 
-                                if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                try
                                 {
-                                    App.IsUserLoggedIn = true;
-                                    await viewModel.LoginCompletedInWebView();
-                                }
-                                else
-                                {
-                                    hybridWebView.Opacity = 0;
-                                    viewModel.IsLoading = false;
+                                    string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+                                    if(minMaxVersions.Count() > 1)
+                                    {
+                                        double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
+                                        double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
+                                        double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
 
-                                    await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                    LogoffUser();
+                                        if(currVer >= minVer && currVer <= maxVer)
+                                        {
+                                            App.IsUserLoggedIn = true;
+                                            await viewModel.LoginCompletedInWebView();
+                                        }
+                                        else
+                                        {
+                                            hybridWebView.Opacity = 0;
+                                            viewModel.IsLoading = false;
+
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                            LogoffUser();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        {
+                                            App.IsUserLoggedIn = true;
+                                            await viewModel.LoginCompletedInWebView();
+                                        }
+                                        else
+                                        {
+                                            hybridWebView.Opacity = 0;
+                                            viewModel.IsLoading = false;
+
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                            LogoffUser();
+                                        }
+                                    }
+                                }
+                                catch
+                                {
+                                    await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }
                             }
 

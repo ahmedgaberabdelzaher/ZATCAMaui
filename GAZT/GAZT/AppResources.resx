@@ -2770,7 +2770,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Form bundle status</comment>
   </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
-    <value>Please enter access Code.</value>
+    <value>Please enter verification code.</value>
     <comment>OTP Screen</comment>
   </data>
   <data name="ZZProceedtoindivisualSignup" xml:space="preserve">
@@ -3734,6 +3734,90 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>Register in Value Added Tax(VAT)</value>
+  </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>Bahrain</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>Kuwait</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>Oman</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>Qatar</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>UAE</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZTaxEvasionReportCityValidationMessage" xml:space="preserve">
+    <value>Please select region before city</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZZZZErroMessage1" xml:space="preserve">
+    <value>The Iqama ID &amp; is not valid – please check</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage10" xml:space="preserve">
+    <value>Postal Code &amp; must be entered in English numbers only.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage11" xml:space="preserve">
+    <value>Please enter a valid Email Signup Code</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage2" xml:space="preserve">
+    <value>Email ID &amp; is already registered  with us– please use different one.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage3" xml:space="preserve">
+    <value>Mobile number &amp; is already registered with us- please use different one.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage4" xml:space="preserve">
+    <value>Email &amp; is already used for sign up.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage5" xml:space="preserve">
+    <value>Mobile &amp; is already used for signup.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage6" xml:space="preserve">
+    <value>The ID Number is already registered in GAZT</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage7" xml:space="preserve">
+    <value>Please enter a valid SMS Signup Code.</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage8" xml:space="preserve">
+    <value>The Saudi ID &amp; is not valid – please check</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErroMessage9" xml:space="preserve">
+    <value>This id is already registered with GAZT plesse sign in using e-mail id</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErrorMessage007" xml:space="preserve">
+    <value>Please re-enter the verification code that be sent to your mobile correctly</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErrorMessage303" xml:space="preserve">
+    <value>ID Number is not Correct</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZInvalidPostalCode" xml:space="preserve">
+    <value>Invalid Postal Code</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSaudiArabia" xml:space="preserve">
+    <value>Saudi Arabia</value>
+    <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
     <value>File size should be less than 5 MB</value>

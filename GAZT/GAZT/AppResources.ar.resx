@@ -2502,15 +2502,15 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>اسم المبلغ*</value>
+    <value>إسم المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنطقة للمنشأة*</value>
+    <value>عنوان المنشأة- الحي*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان الشارع للمنشأة*</value>
+    <value>عنوان المنشأة- الشارع*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
@@ -2546,7 +2546,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailVATNumber" xml:space="preserve">
-    <value>رقم حساب ضريبة القيمة المضافة</value>
+    <value>الرقم الضريبي</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportFormEnterCity" xml:space="preserve">
@@ -2757,7 +2757,7 @@
     <comment>Form bundle status</comment>
   </data>
   <data name="ZZPleaseenteraccessCode" xml:space="preserve">
-    <value>الرجاء إدخال رمز الدخول</value>
+    <value>الرجاء ادخال رمز التحقق</value>
     <comment>OTP Screen</comment>
   </data>
   <data name="BreakDownLabel" xml:space="preserve">
@@ -3449,87 +3449,87 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZAtleast8characterslong" xml:space="preserve">
-    <value>At least 8 characters long</value>
+    <value>يجب أن لاتقل عن 8 خانات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZBuildingNumber" xml:space="preserve">
-    <value>Building Number</value>
+    <value>رقم المبنى</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCompletethebelowdetails" xml:space="preserve">
-    <value>Complete the below details</value>
+    <value>أكمل التفاصيل أدناه</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZConfirmEmail" xml:space="preserve">
-    <value>Confirm Email</value>
+    <value>تأكيد البريد الالكتروني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZContinue" xml:space="preserve">
-    <value>Continue</value>
+    <value>استمر</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZCreateasecurePassword" xml:space="preserve">
-    <value>Create a secure Password</value>
+    <value>إنشاء كلمة مرور آمنة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEnglishcapitalandsmallletters" xml:space="preserve">
-    <value>English capital and small letters</value>
+    <value>حروف إنجليزية كبيرة وصغيرة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZGotoDashboard" xml:space="preserve">
-    <value>Go to Dashboard</value>
+    <value>الذهاب الى لوحة التحكم</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZIndividualRegistration" xml:space="preserve">
-    <value>Individual Registration</value>
+    <value>التسجيل الفردي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNationalAddress" xml:space="preserve">
-    <value>National Address</value>
+    <value>العنوان الوطني</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNeighborhood" xml:space="preserve">
-    <value>Neighborhood</value>
+    <value>الحي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNotexceed16characters" xml:space="preserve">
-    <value>Not exceed 16 characters</value>
+    <value>يجب أن لاتتجاوز عن 16 خانة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZNumbersandsymbols" xml:space="preserve">
-    <value>Numbers and symbols</value>
+    <value>أرقام ورموز</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPersonalInformation" xml:space="preserve">
-    <value>Personal Information</value>
+    <value>المعلومات الشخصية</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZPostalCode" xml:space="preserve">
-    <value>Postal Code</value>
+    <value>الرمز البريدي</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRegisterinVATNow" xml:space="preserve">
-    <value>Register in VAT Now</value>
+    <value>التسجيل في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRegistrationSuccessful" xml:space="preserve">
-    <value>Registration Successful</value>
+    <value>تم التسجيل بنجاح</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZRepeatPassword" xml:space="preserve">
-    <value>Repeat Password</value>
+    <value>تأكيد كلمة المرور</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZReviewinformation" xml:space="preserve">
-    <value>Review information</value>
+    <value>مراجعة المعلومات</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSummery" xml:space="preserve">
-    <value>Summery</value>
+    <value>الملخص</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZUnitNumber" xml:space="preserve">
-    <value>Unit Number</value>
+    <value>رقم الوحدة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZTEReportAttachmentTitle" xml:space="preserve">
@@ -3537,7 +3537,7 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>You have successfully registered to GAZT Services. Use the following TIN number to login with GAZT</value>
+    <value>تم التسجيل الى خدمات الهيئة العامة للزكاة والدخل بنجاح . لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
@@ -3708,15 +3708,88 @@
     <value>لا يمكن أن يحتوي الاسم على أرقام أو حروف خاصة</value>
   </data>
   <data name="ZZZZEmailandconfirmemailshouldmatchup" xml:space="preserve">
-    <value>Email field and Confirm Email field should match up</value>
+    <value>البريد الالكتروني غير مطابق الرجاء ادخال البريد بشكل صحيح</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZSelectthetypeofEntity" xml:space="preserve">
-    <value>Select the type of Entity</value>
+    <value>الرجاء اختيار كيان المكلف</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZBahrain" xml:space="preserve">
+    <value>البحرين</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZKuwait" xml:space="preserve">
+    <value>الكويت</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZOman" xml:space="preserve">
+    <value>عُمان</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZQatar" xml:space="preserve">
+    <value>قطر</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZUAE" xml:space="preserve">
+    <value>الإمارات العربية المتحدة</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZTaxEvasionReportCityValidationMessage" xml:space="preserve">
+    <value>يرجى تحديد المنطقة قبل اختيار المدينة</value>
+    <comment>Tax Evasion Report</comment>
+  </data>
+  <data name="ZZZZErroMessage1" xml:space="preserve">
+    <value>رقم الاقامة &amp; غير صحيح - الرجاء التأكد من رقم الاقامة</value>
+  </data>
+  <data name="ZZZZErroMessage10" xml:space="preserve">
+    <value>يجب إدخال الرمز البريدي &amp; بالأرقام الإنجليزية فقط</value>
+  </data>
+  <data name="ZZZZErroMessage11" xml:space="preserve">
+    <value>الرجاء إدخال كلمة المرور المرسله إلى بريدك الإلكتروني بشكل صحيح</value>
+  </data>
+  <data name="ZZZZErroMessage2" xml:space="preserve">
+    <value>البريد الالكترني &amp; مسجل مسبقاً مع الهيئة, الرجاء استخدم بريد الكتروني آخر</value>
+  </data>
+  <data name="ZZZZErroMessage3" xml:space="preserve">
+    <value>رقم الجوال &amp; مستخدم مسبقاً, الرجاء ادخل رقم جوال آخر</value>
+  </data>
+  <data name="ZZZZErroMessage4" xml:space="preserve">
+    <value>البريد الالكتروني &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول</value>
+  </data>
+  <data name="ZZZZErroMessage5" xml:space="preserve">
+    <value>رقم الجوال &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول</value>
+  </data>
+  <data name="ZZZZErroMessage6" xml:space="preserve">
+    <value>رقم الهوية مسجل مسبقاً فى الهيئة</value>
+  </data>
+  <data name="ZZZZErroMessage7" xml:space="preserve">
+    <value>الرجاء ادخال رمز التحقق المرسل الى جوالك بشكل صحيح</value>
+  </data>
+  <data name="ZZZZErroMessage8" xml:space="preserve">
+    <value>رقم الهوية السعودي &amp; غير صحيح , الرجاء التأكد</value>
+  </data>
+  <data name="ZZZZErroMessage9" xml:space="preserve">
+    <value>تم استخدام رقم الهوية مسبقاً مع الهيئة, استخدم البريد الاكتروني للدخول</value>
+  </data>
+  <data name="ZZZZErrorMessage007" xml:space="preserve">
+    <value>الرجاء ادخال رمز التحقق المرسل الى جوالك بشكل صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZErrorMessage303" xml:space="preserve">
+    <value>رقم الهوية غير صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZInvalidPostalCode" xml:space="preserve">
+    <value>الرمز البريدي غير صحيح</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZSaudiArabia" xml:space="preserve">
+    <value>المملكة العربية السعودية</value>
+    <comment>New SignUp</comment>
   </data>
   <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
     <value>يجب ان يكون حجم الملف اقل من 5 ميقا</value>

@@ -24,6 +24,8 @@ namespace GAZT.Droid
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
+
             InitRoundedCornerView.Init();
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)

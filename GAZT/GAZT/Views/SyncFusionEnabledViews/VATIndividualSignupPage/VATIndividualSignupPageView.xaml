@@ -9,7 +9,7 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATIndividualSignupPageView"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="DarkGreen">
+            BackgroundColor="#006450" >  <!--BackgroundColor="DarkGreen"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -29,7 +29,7 @@
                         </Grid.ColumnDefinitions>
                         <Label x:Name="Image_backArrow" Grid.Row="0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                             </Label.GestureRecognizers>
                         </Label>
                         <!--<Image HorizontalOptions="Start">-->
@@ -42,17 +42,15 @@
                     </Image.Source>-->
                 <!--</Image>-->
                         <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                            </Image.GestureRecognizers>
+                         
                         </Image>
                     </Grid>
                     <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="Large" TextColor="Black" 
                        FontFamily="{StaticResource SSTArBold}"/>
                     <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
-                <StackLayout Padding="5">
-                        <Frame CornerRadius="5" BackgroundColor="DarkGreen" HeightRequest="100"><!--Text="Individual Registration"-->
+                    <StackLayout Padding="5"><!--BackgroundColor="DarkGreen"-->
+                        <Frame CornerRadius="5" BackgroundColor="#006450" HeightRequest="100"><!--Text="Individual Registration"-->
                             <Label  Text="{x:Static local:AppResources.ZZZZIndividualRegistration}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                     <Frame.GestureRecognizers>
