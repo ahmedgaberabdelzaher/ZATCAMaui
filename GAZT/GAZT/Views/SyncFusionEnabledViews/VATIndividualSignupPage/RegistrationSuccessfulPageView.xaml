@@ -9,7 +9,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.RegistrationSuccessfulPageView"
-             BackgroundColor="DarkGreen">
+             BackgroundColor="#006450">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -63,7 +63,7 @@
                     <buttons:SfButton x:Name="btnVATRegistration" Text="Register in VAT Now" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="56" Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
-                    <buttons:SfButton x:Name="btnDashboard" Text="Go To Dashboard" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                    <buttons:SfButton x:Name="btnDashboard" Text="Go To Dashboard" CornerRadius="10" VerticalOptions="EndAndExpand" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnVATRegistration_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
                 </StackLayout>

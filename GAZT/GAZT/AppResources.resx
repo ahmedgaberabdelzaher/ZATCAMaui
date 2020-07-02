@@ -3735,4 +3735,22 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>Register in Value Added Tax(VAT)</value>
   </data>
+  <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
+    <value>File size should be less than 5 MB</value>
+  </data>
+  <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
+    <value>Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection" xml:space="preserve">
+    <value>Attachment Section</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection1" xml:space="preserve">
+    <value>Attachments are mandatory for Non-Eligible Taxpayers*</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection2" xml:space="preserve">
+    <value>Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection3" xml:space="preserve">
+    <value>What is the type of document that you are submitting to prove whether or not eligible.</value>
+  </data>
 </root>

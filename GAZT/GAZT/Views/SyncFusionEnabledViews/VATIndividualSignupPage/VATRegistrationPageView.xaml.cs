@@ -20,10 +20,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
+            viewModel.SetVisibility();
             viewModel.IsInstrunctionVisible = true;
             viewModel.CurrentStep = "Step2";
             SetfirstBoxColor();
-            App.IsArabic = false;
+           // App.IsArabic = false;
             SetLTR();
 
         }
@@ -33,6 +35,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+            }
+
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
         private void DpEStartDate_Closed(object sender, EventArgs e)
@@ -127,7 +141,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await GetVatRegistrationData();
+            //await GetVatRegistrationData();
 
         }
         public async Task GetVatRegistrationData()
@@ -319,5 +333,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
 
         }
+
+      
     }
 }

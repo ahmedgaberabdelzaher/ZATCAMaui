@@ -2502,7 +2502,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-   <value>اسم المبلغ*</value>
+    <value>اسم المبلغ*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
@@ -2514,7 +2514,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-      <value>نوع نشاط المنشأة*</value>
+    <value>نوع نشاط المنشأة*</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
@@ -3717,5 +3717,23 @@
   </data>
   <data name="ZZZZVatRegistrationTile" xml:space="preserve">
     <value>التسجيل في ضريبة القيمة المضافة</value>
+  </data>
+  <data name="ZZZZVATRAttachmentNote1" xml:space="preserve">
+    <value>يجب ان يكون حجم الملف اقل من 5 ميقا</value>
+  </data>
+  <data name="ZZZZVATRAttachmentNote2" xml:space="preserve">
+    <value>يجب ان تكون صيغة الملف من ضمن: Doc,Docx,Jpg,PDF,xlsx,xls</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection" xml:space="preserve">
+    <value>قسم المرفقات</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection1" xml:space="preserve">
+    <value>المرفقات إلزامية للمكلفين الغير خاضعين*</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection2" xml:space="preserve">
+    <value>الرجاء تقديم المستندات المطلوبة لإثبات أحقيتك بالتسجيل في ضريبة القيمة المضافة , وفي حالة عدم تقديم تلك المستندات , فمن المرجح أن تتم عملية التدقيق على مدى 6 أشهر المقبلة .</value>
+  </data>
+  <data name="ZZZZVATRAttachmentSection3" xml:space="preserve">
+    <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
   </data>
 </root>

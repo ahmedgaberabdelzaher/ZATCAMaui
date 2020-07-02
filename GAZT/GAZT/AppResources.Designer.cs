@@ -9335,6 +9335,60 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File size should be less than 5 MB.
+        /// </summary>
+        public static string ZZZZVATRAttachmentNote1 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentNote1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx.
+        /// </summary>
+        public static string ZZZZVATRAttachmentNote2 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentNote2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment Section.
+        /// </summary>
+        public static string ZZZZVATRAttachmentSection {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments are mandatory for Non-Eligible Taxpayers*.
+        /// </summary>
+        public static string ZZZZVATRAttachmentSection1 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentSection1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
+        /// </summary>
+        public static string ZZZZVATRAttachmentSection2 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentSection2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What is the type of document that you are submitting to prove whether or not eligible..
+        /// </summary>
+        public static string ZZZZVATRAttachmentSection3 {
+            get {
+                return ResourceManager.GetString("ZZZZVATRAttachmentSection3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial Details.
         /// </summary>
         public static string ZZZZVATREFinancialDetails {

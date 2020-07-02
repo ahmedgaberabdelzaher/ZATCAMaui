@@ -20,8 +20,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.FileAttachmentPopUpPageView;
             this.BindingContext = viewModel;
-        }
+            SetLTR();
 
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 

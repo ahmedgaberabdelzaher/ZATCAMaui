@@ -23,12 +23,12 @@
                             <StackLayout Orientation="Horizontal">
                                 <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
                                 <Label Text="SA" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
-                                <Image Rotation="270">
+                                <!--<Image Rotation="270">
                                     <Image.Source>
                                         <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="15"
                                                  Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                     </Image.Source>
-                                </Image>
+                                </Image>-->
                             </StackLayout>
                         </StackLayout>
                         <BoxView WidthRequest="1" BackgroundColor="LightGray"/>

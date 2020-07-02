@@ -20,8 +20,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.VATRegistrationSuccessfulPageView;
             this.BindingContext = viewModel;
             viewModel.TINnumber = TIN;
+            //App.IsArabic = false;
+            SetLTR();
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
 

@@ -19,8 +19,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfullPageView;
             this.BindingContext = viewModel;
+            SetLTR();
         }
-
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
 

@@ -43,6 +43,9 @@
     <x:String x:Key="Home">&#xe706;</x:String>
     <Color x:Key="Green">#7ed321</Color>
     <x:String x:Key="ContactUS">&#xe71c;</x:String>
+    <x:String x:Key="Attach">&#xe71e;</x:String>
+    <x:String x:Key="Delete">&#xe716;</x:String>
+    <x:String x:Key="Add">&#xe730;</x:String>
 
     <!-- Common style for navigation bar buttons -->
     <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
