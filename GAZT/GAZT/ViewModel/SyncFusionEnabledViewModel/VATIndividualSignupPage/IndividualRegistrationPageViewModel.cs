@@ -1937,6 +1937,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     string selectedRegioncode = SelectedRegion.Bland;
 
                     CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
+                    if (CityList != null)
+                    { 
+                        CityList = CityList.Where(c => c.Country == "SA").ToList();
+                    }
                 }
             }
             catch(Exception ex)
