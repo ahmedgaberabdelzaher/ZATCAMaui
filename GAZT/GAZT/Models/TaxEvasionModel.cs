@@ -162,18 +162,27 @@ namespace EGAZT.Models
                 }
                 else
                 {
-                       if (_status.Contains("Completed"))
+                    
+                    string newStatus = string.Empty;
+                       if (_status.Contains("Completed") || _status.Contains("تم التنفيذ"))
                         {
-                            _status = AppResources.ZTEReportStatusCompleted;
+                            newStatus = AppResources.ZTEReportStatusCompleted;
+                        _status = newStatus;
 
+                        }
+                       else if (_status.Contains("New")|| _status.Contains("تم فتح الطلب"))
+                        
+                        {
+                            newStatus = AppResources.ZTEReportStatusNew;
+                        _status = newStatus;
                         }
                         else
                         {
-                            _status = AppResources.ZTEReportStatusNew;
+                            _status = _status;
                         }
-                    
-                   
-                    return _status;
+
+                   return _status;
+                 
                 }
             }
             set
