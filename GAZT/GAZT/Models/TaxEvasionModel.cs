@@ -162,6 +162,17 @@ namespace EGAZT.Models
                 }
                 else
                 {
+                       if (_status.Contains("Completed"))
+                        {
+                            _status = AppResources.ZTEReportStatusCompleted;
+
+                        }
+                        else
+                        {
+                            _status = AppResources.ZTEReportStatusNew;
+                        }
+                    
+                   
                     return _status;
                 }
             }

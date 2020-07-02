@@ -546,7 +546,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel
                                 IsLoading = false;
                             });
 
-                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            if (ex.Message.Contains("The entered code is incorrect"))
+                            {
+                                await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                            }
+                            else
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            }
 
                             //viewModel._navigationService.GoBack();
                         });
