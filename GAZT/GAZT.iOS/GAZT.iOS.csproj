@@ -869,4 +869,31 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_logo_gazt%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_background%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_background%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_success.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_success%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_success%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_individaualregistration.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_individaualregistration%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_individaualregistration%403x.png" />
+  </ItemGroup>
 </Project>
