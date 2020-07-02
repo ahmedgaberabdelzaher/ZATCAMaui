@@ -724,7 +724,7 @@
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="Neighborhood" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryNeighborhood"  FontFamily="{StaticResource SSTArLight}" Text="{Binding Neighborhood}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryNeighborhood"  FontFamily="{StaticResource SSTArLight}" Text="{Binding Neighborhood}" MaxLength="60" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZNeighborhood}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
@@ -739,18 +739,18 @@
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryPostalCode" Unfocused="EntryPostalCode_Unfocused" FontFamily="{StaticResource SSTArLight}" Text="{Binding PostalCode}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZPostalCode}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                                                <!--<Entry.Behaviors>
-                                                                <custom1:AlphabetandArabicCharacters/>
-                                                            </Entry.Behaviors>-->
+                                                                <Entry.Behaviors>
+                                                                    <custom1:OnlyNumericValuesBehaviour/>
+                                                                </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="5" Margin="0,15,0,0" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZBuildingNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Padding="0,0,0,0"/>
+                                                        <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZBuildingNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Padding="0,0,0,0"/>
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="BuildingNumber" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryBuildingNumber"  FontFamily="{StaticResource SSTArLight}" Text="{Binding BuildingNumber}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryBuildingNumber"  FontFamily="{StaticResource SSTArLight}" Text="{Binding BuildingNumber}" MaxLength="20" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZBuildingNumber}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
@@ -763,7 +763,7 @@
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6"
                                                     ContainerType="Outlined" x:Name="UnitNumber" UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                            <custom:BorderlessEntry x:Name="EntryUnitNumber"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryUnitNumber" MaxLength="10"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZUnitNumber}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
