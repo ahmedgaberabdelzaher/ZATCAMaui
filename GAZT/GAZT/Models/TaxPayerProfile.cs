@@ -19,7 +19,7 @@ namespace GAZT.Models
         {
             get
             {
-                return NameFirst + NameLast;
+                return NameFirst + " " + NameLast;
             }
         }
         public String Email { get; set; }
