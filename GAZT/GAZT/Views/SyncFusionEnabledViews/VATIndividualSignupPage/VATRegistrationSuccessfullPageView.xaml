@@ -9,6 +9,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              BackgroundColor="#006450"
+             xmlns:custom2="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATRegistrationSuccessfullPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -67,7 +68,7 @@
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="Date" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{x:Static custom2:AppResources.Date}" HorizontalOptions="StartAndExpand"/>
                             <Label Text="17 March 2020" TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>

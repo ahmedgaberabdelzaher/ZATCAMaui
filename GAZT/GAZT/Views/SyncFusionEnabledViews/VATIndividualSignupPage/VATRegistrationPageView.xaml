@@ -454,7 +454,7 @@
                                                         <ColumnDefinition Width="50*"/>
                                                         <ColumnDefinition Width="50*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Select an existing IBAN" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                     <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                         <StackLayout Padding="10">
@@ -1461,7 +1461,7 @@
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                         <custom:BorderlessEntry Text="{Binding IdNumber}" x:Name="EntryContactIDNumber"  FontSize="Small" MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
-                                                             Placeholder="ID Number" >
+                                                             Placeholder="{x:Static custom2:AppResources.IDNumber}" >
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                             </Entry.Behaviors>
