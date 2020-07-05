@@ -138,6 +138,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private VATRegistrationOtherDetails _vATRegistrationOtherDetails;
+        public VATRegistrationOtherDetails VATRegistrationOtherDetails
+        {
+            get
+            {
+                return _vATRegistrationOtherDetails;
+            }
+            set
+            {
+                _vATRegistrationOtherDetails = value;
+                RaisePropertyChanged("VATRegistrationOtherDetails");
+            }
+        }
+
+
 
         #endregion
 
@@ -191,15 +206,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 await Task.Run(async () =>
                 {
                     VATRegistrationDetailsData = null;
+                    VATRegistrationOtherDetails = null;
                     VATRegistrationDetails vATRegistration = null;
+                    VATRegistrationOtherDetails vATRegistrationOther = null;
                     try
                     {
                         
-                        vATRegistration = WebServiceManager.GAZTGetVATRegistrationData();
+                        vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
-                            
+                            vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         }
                        
                     }

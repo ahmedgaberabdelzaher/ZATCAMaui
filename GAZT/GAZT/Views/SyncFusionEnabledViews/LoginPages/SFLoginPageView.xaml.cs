@@ -350,15 +350,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                                 // Test code for implementing the VAT Registration
                                 //if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
-                                //    {
-                                //        App.IsUserLoggedIn = true;
-                                //        await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
-                                //    }
-                                //    else
-                                //    {
-                                //        await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                //        LogoffUser();
-                                //    }
+                                //{
+                                //    App.IsUserLoggedIn = true;
+                                //    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
+                                //}
+                                //else
+                                //{
+                                //    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //    LogoffUser();
+                                //}
 
                                 //hybridWebView.RefreshCommand();
 

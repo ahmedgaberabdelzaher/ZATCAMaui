@@ -141,7 +141,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            //await GetVatRegistrationData();
+            await GetVatRegistrationData();
 
         }
         public async Task GetVatRegistrationData()
