@@ -1937,6 +1937,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     string selectedRegioncode = SelectedRegion.Bland;
 
                     CityList = vATSignUpData.d.city_dropdownSet.results.Where(x => x.Region == selectedRegioncode).ToList();
+                    if (CityList != null)
+                    { 
+                        CityList = CityList.Where(c => c.Country == "SA").ToList();
+                    }
                 }
             }
             catch(Exception ex)
@@ -2282,10 +2286,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
                     Country = _Country,
-                    Building = BuildingNumber,
-                    Floor = "",
-                    Street = "",
-                    Begda = "/Date(1593139376000)/",
+                    //Building = BuildingNumber,
+                    //Floor = "",
+                    //Street = "",
+                Building = BuildingNumber,
+                Floor = UnitNumber,
+                Street = Neighborhood,
+                Begda = "/Date(1593139376000)/",
                     Endda = "/Date(253402251010000)/",
                     Email = Email,
                     Mobile = "00966" + MobileNumber,

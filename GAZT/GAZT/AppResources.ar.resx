@@ -2458,7 +2458,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEAddReport" xml:space="preserve">
-    <value>إضافة تقرير</value>
+    <value>إضافة بلاغ</value>
     <comment>Add Report</comment>
   </data>
   <data name="ZTEReportCategoryNextBtn" xml:space="preserve">
@@ -2578,12 +2578,21 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportFormPageTittle" xml:space="preserve">
-    <value>تفاصيل التقرير</value>
+    <value>تفاصيل البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportPageHeadingText" xml:space="preserve">
     <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
     <comment>Tax Evasion Report Service</comment>
+  </data>
+   
+    <data name="ZTEReportStatusNew" xml:space="preserve">
+    <value>مقدمة</value>
+         <comment>Tax Evasion Report Service</comment>
+  </data>
+       <data name="ZTEReportStatusCompleted" xml:space="preserve">
+    <value>مغلقة</value>
+         <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
     <value>تم إنشاء الحساب الجديد بنجاح</value>
@@ -2710,9 +2719,10 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال البلاغ مالبلاقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>تم إرسال التقرير مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
+    
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>

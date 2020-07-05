@@ -5085,16 +5085,11 @@ namespace GAZT.Manager
                 catch (Exception)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
-                    if (errorReponseModel.Data.Contains("Invalid code"))
+                    if (errorReponseModel.Data.Contains("Invalid code")||errorReponseModel.Data.Contains("الرمز غير صحيح"))
                     {
-                        if (App.IsArabic)
-                        {
+                      
                             throw new Exception(AppResources.InvalidOTP);
-                        }
-                        else
-                        {
-                            throw new Exception(AppResources.InvalidOTP);
-                        }
+  
 
                     }
                     else

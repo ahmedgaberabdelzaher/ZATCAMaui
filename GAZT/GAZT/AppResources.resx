@@ -3444,6 +3444,14 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZCreateYourTEAccount" xml:space="preserve">
     <value>Create Your Tax Evasion Account</value>
   </data>
+      <data name="ZTEReportStatusNew" xml:space="preserve">
+    <value>Submitted</value>
+         <comment>Tax Evasion Report Service</comment>
+  </data>
+       <data name="ZTEReportStatusCompleted" xml:space="preserve">
+    <value>Closed</value>
+         <comment>Tax Evasion Report Service</comment>
+  </data>
   <data name="ZZZZCity" xml:space="preserve">
     <value>City</value>
     <comment>New SignUp</comment>
