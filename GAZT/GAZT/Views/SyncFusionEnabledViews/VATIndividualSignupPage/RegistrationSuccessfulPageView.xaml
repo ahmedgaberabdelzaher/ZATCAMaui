@@ -31,12 +31,13 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
-                <Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
+                <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="White" Size="100"
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
-                </Image>
+                </Image>-->
+                <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
                 <!--ZZZZRegistrationSuccessful Text="Registration Successful" Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"-->
                 <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
                 <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SSTArabicMedium}"

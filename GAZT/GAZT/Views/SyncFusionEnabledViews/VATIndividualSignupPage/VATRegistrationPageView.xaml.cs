@@ -336,6 +336,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-      
+        private void NewAttachment_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

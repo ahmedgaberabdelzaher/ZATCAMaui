@@ -26156,13 +26156,19 @@ namespace GAZT.Droid
 			public const int user = 2131165675;
 			
 			// aapt resource value: 0x7F0701EC
-			public const int vat_tile_IbanCard_background = 2131165676;
+			public const int vat_ic_success = 2131165676;
 			
 			// aapt resource value: 0x7F0701ED
-			public const int vat_tile_IbanCard_background_white = 2131165677;
+			public const int vat_ic_taxpayerDetail = 2131165677;
 			
 			// aapt resource value: 0x7F0701EE
-			public const int ViewMode = 2131165678;
+			public const int vat_tile_IbanCard_background = 2131165678;
+			
+			// aapt resource value: 0x7F0701EF
+			public const int vat_tile_IbanCard_background_white = 2131165679;
+			
+			// aapt resource value: 0x7F0701F0
+			public const int ViewMode = 2131165680;
 			
 			static Drawable()
 			{

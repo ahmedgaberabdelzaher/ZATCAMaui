@@ -411,159 +411,7 @@
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
-                                            <!--End Of Read Only or pre-populated-->
-                                            <!--Start Of Additional Information-->
                                             <StackLayout Grid.Row="6">
-                                                <Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
-                                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
-                                            </StackLayout>
-
-                                            <StackLayout Grid.Row="7">
-                                                <!--<Label Text="Importer or Exporter" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
-                                                <Grid  Padding="15,0,15,0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="30*"/>
-                                                        <ColumnDefinition Width="20*"/>
-                                                        <ColumnDefinition Width="20*"/>
-                                                        <ColumnDefinition Width="30*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label Text="I am Importer" TextColor="Black" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ImporterSwitch" Grid.Row="0" Grid.Column="1" VerticalOptions="Center"/>
-                                                    <!--<Button x:Name="btnImporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnImporter_Clicked" BackgroundColor="#d49504"
-                                                    TextColor="White" Padding="10" CornerRadius="8"/>-->
-
-                                                    <Image  Rotation="-45" Margin="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="2">
-                                                        <Image.Source>
-                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="btnImporter_Clicked"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-
-                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="0" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
-
-                                                    <Label Text="I am Exporter" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ExporterSwitch" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
-                                                    <Image  Rotation="-45" Margin="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2">
-                                                        <Image.Source>
-                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                        </Image.Source>
-                                                        <Image.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="btnExporter_Clicked"/>
-                                                        </Image.GestureRecognizers>
-                                                    </Image>
-                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-
-
-                                                    <!--<Frame Grid.Row="0" Padding="0" Grid.Column="2"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" BackgroundColor="#d49504" HeightRequest="40" CornerRadius="8">
-                                                        <Grid Padding="5">
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto"/>
-                                                            </Grid.RowDefinitions>
-                                                            <Image Grid.Row="0" Rotation="-45" Margin="0" Aspect="AspectFill">
-                                                                <Image.Source>
-                                                                    <FontImageSource Color="White" FontFamily="UserIconFont" Size="15"
-                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                            <custom:CustomButton Grid.Row="0" x:Name="btnAttachmentDocuments1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" 
-                                                                                                     Clicked="btnImporter_Clicked" Margin="0,0,0,0"/>
-                                                        </Grid>
-                                                    </Frame>-->
-                                                </Grid>
-                                                <!--<StackLayout Orientation="Horizontal" Padding="15,0,15,0">
-                                                    <Label Text="Exporter" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Switch x:Name="ExporterSwitch"/>
-                                                    <Button x:Name="btnExporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnExporter_Clicked" BackgroundColor="#d49504"
-                                                    TextColor="White" Padding="10" CornerRadius="8"/>
-                                                </StackLayout>-->
-                                            </StackLayout>
-
-                                            <StackLayout Grid.Row="8">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <StackLayout Grid.Row="0">
-                                                        <Label Text="Account Details" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
-                                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
-                                                    </StackLayout>
-
-                                                  
-                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
-                                            ContainerType="Outlined" x:Name="FrmNewAccount" UnfocusedColor= "#B1B1B1"
-                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                        <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
-                                                            <Image>
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                                    Glyph="{x:Static FontImage:IconFonts.PlusCircleOutline}"/>
-                                                                </Image.Source>
-                                                            </Image>
-
-                                                            <Label Text="{x:Static custom2:AppResources.ZTERNewAccount}" TextColor="DarkGreen" VerticalTextAlignment="Center"/>
-                                                            <Image HorizontalOptions="EndAndExpand">
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="20"
-                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                        </StackLayout>
-                                                    </inputLayout:SfTextInputLayout>
-                                                    <Button Grid.Row="1" x:Name="NewAccount" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
-                                                </Grid>
-                                            </StackLayout>
-
-                                            <StackLayout Grid.Row="9">
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="auto"/>
-                                                        <RowDefinition Height="auto"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50*"/>
-                                                        <ColumnDefinition Width="50*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
-                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
-                                                        <StackLayout Padding="10">
-                                                            <Image HorizontalOptions="EndAndExpand">
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="White" Size="20"
-                                                    Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
-                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" TextColor="White"/>
-                                                        </StackLayout>
-                                                    </cards:SfCardView>
-                                                    <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
-                                                          BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
-                                                        <StackLayout Padding="10">
-                                                            <Image HorizontalOptions="EndAndExpand">
-                                                                <Image.Source>
-                                                                    <FontImageSource FontFamily="UserIconFont" Color="Black" Size="20"
-                                                    Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
-                                                                </Image.Source>
-                                                            </Image>
-                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
-                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
-                                                        </StackLayout>
-                                                    </cards:SfCardView>
-                                                </Grid>
-                                            </StackLayout>
-
-                                            <StackLayout Grid.Row="10">
                                                 <Grid>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"/>
@@ -616,62 +464,281 @@
                                                             <custom1:SfPickerBehavior />
                                                         </custom1:CustomDatePicker.Behaviors>
                                                     </custom1:CustomDatePicker>
-                                                    <!--<Frame Grid.Row="2" BorderColor="#CEE0DD" CornerRadius="8" BackgroundColor="#CEE0DD">
-                                                        <StackLayout>
-                                                            <StackLayout Orientation="Horizontal">
-                                                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
-                                                                    <Image.Source>
-                                                                        <FontImageSource Color="DeepSkyBlue" FontFamily="UserIconFont"
-                                                            Glyph="{x:Static FontImage:IconFonts.Information}"/>
-                                                                    </Image.Source>
-                                                                </Image>
-                                                              
-                                                            </StackLayout>
-                                                            <Label  TextColor="Black" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="-"></Span>
-                                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFirstLine}"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  TextColor="Black" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="-"></Span>
-                                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsSecondLine}"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  TextColor="Black" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="-"></Span>
-                                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsThirdLine}"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  FontFamily="{StaticResource GAZT_FONT_REGULAR}" TextColor="Black">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="-"></Span>
-                                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFourthLine}"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-                                                            <Label  FontFamily="{StaticResource GAZT_FONT_REGULAR}" TextColor="Black">
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="-"></Span>
-                                                                        <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFifthLine}"></Span>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
+                                                </Grid>
+                                            </StackLayout>
+                                            <!--End Of Read Only or pre-populated-->
+                                            <!--Start Of Additional Information-->
+                                            <StackLayout Grid.Row="7">
+                                                <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
+                                                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+                                                <Label Text="Import or  Exporter " Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50*"/>
+                                                        <ColumnDefinition Width="50*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                        <Grid>
+                                                            <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                                            </Image>
+                                                            <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <StackLayout Grid.Row="1" Spacing="0">
+                                                                   
+                                                                    <Label Text="Importer"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                </StackLayout>
+
+                                                            </Grid>
+
+                                                        </Grid>
+
+                                                    </cards:SfCardView>
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0"  ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen"  CornerRadius="3" HorizontalOptions="FillAndExpand">
+
+                                                        <Grid Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                                            <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Source="vat_tile_IbanCard_background_white.png"  Aspect="AspectFill"/>
+                                                            </yummy:PancakeView>
+
+                                                            <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <StackLayout Grid.Row="1" Spacing="0">
+                                                                    
+                                                                    <Label Text="Exporter" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                                </StackLayout>
+
+                                                            </Grid>
+                                                        </Grid>
+
+                                                    </cards:SfCardView>
+                                                </Grid>
+                                                <Label Text="Attachment (Optional)" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                            ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
+                                            OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
+                                                        </custom:BorderlessEntry>
+                                                        <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                            <Image.Source>
+                                                                <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                                            </Image.Source>
+                                                        </Image>
+                                                    </StackLayout>
+                                                </inputLayout:SfTextInputLayout>
+                                            </StackLayout>
+
+                                            <!--<StackLayout Grid.Row="7">
+                                                --><!--<Label Text="Importer or Exporter" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>--><!--
+                                                <Grid  Padding="15,0,15,0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="30*"/>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="20*"/>
+                                                        <ColumnDefinition Width="30*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Text="I am Importer" TextColor="Black" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Switch x:Name="ImporterSwitch" Grid.Row="0" Grid.Column="1" VerticalOptions="Center"/>
+                                                    --><!--<Button x:Name="btnImporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnImporter_Clicked" BackgroundColor="#d49504"
+                                                    TextColor="White" Padding="10" CornerRadius="8"/>-->
+
+                                                    <!--<Image  Rotation="-45" Margin="0" Grid.Row="0" HorizontalOptions="Start" VerticalOptions="Center"  Grid.Column="2">
+                                                        <Image.Source>
+                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
+                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="btnImporter_Clicked"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>--><!--
+
+                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="0" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+
+
+                                                    <Label Text="I am Exporter" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Switch x:Name="ExporterSwitch" Grid.Row="1" Grid.Column="1" VerticalOptions="Center"/>
+                                                    <Image  Rotation="-45" Margin="0" Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="2">
+                                                        <Image.Source>
+                                                            <FontImageSource Color="#d49504" FontFamily="UserIconFont" Size="30"
+                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="btnExporter_Clicked"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                    <Label Text="(Optional)" TextColor="Black" Grid.Row="1" VerticalOptions="Center" Grid.Column="3" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+
+
+                                                    --><!--<Frame Grid.Row="0" Padding="0" Grid.Column="2"  HorizontalOptions="Start" VerticalOptions="CenterAndExpand" BackgroundColor="#d49504" HeightRequest="40" CornerRadius="8">
+                                                        <Grid Padding="5">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto"/>
+                                                            </Grid.RowDefinitions>
+                                                            <Image Grid.Row="0" Rotation="-45" Margin="0" Aspect="AspectFill">
+                                                                <Image.Source>
+                                                                    <FontImageSource Color="White" FontFamily="UserIconFont" Size="15"
+                                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <custom:CustomButton Grid.Row="0" x:Name="btnAttachmentDocuments1" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" BackgroundColor="Transparent" 
+                                                                                                     Clicked="btnImporter_Clicked" Margin="0,0,0,0"/>
+                                                        </Grid>
+                                                    </Frame>--><!--
+                                                </Grid>
+                                                --><!--<StackLayout Orientation="Horizontal" Padding="15,0,15,0">
+                                                    <Label Text="Exporter" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Switch x:Name="ExporterSwitch"/>
+                                                    <Button x:Name="btnExporter" Text="Attachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Clicked="btnExporter_Clicked" BackgroundColor="#d49504"
+                                                    TextColor="White" Padding="10" CornerRadius="8"/>
+                                                </StackLayout>--><!--
+                                            </StackLayout>-->
+
+                                            <StackLayout Grid.Row="8">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Grid.Row="0">
+                                                        <Label Text="Account" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                        <!--<Label Text="Account" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
+                                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+                                                    </StackLayout>
+
+                                                  
+                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                            ContainerType="Outlined" x:Name="FrmNewAccount" UnfocusedColor= "#B1B1B1"
+                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                        <StackLayout Orientation="Horizontal" Padding="5,10,5,10">
+                                                            <Image>
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.PlusCircleOutline}"/>
+                                                                </Image.Source>
+                                                            </Image>
+
+                                                            <Label Text="{x:Static custom2:AppResources.ZTERNewAccount}" TextColor="DarkGreen" VerticalTextAlignment="Center"/>
+                                                            <Image HorizontalOptions="EndAndExpand">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                                                </Image.Source>
+                                                            </Image>
                                                         </StackLayout>
-                                                    </Frame>-->
+                                                    </inputLayout:SfTextInputLayout>
+                                                    <Button Grid.Row="1" x:Name="NewAccount" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAccount_Clicked" Margin="0,0,0,0" />
                                                 </Grid>
                                             </StackLayout>
 
+                                            <StackLayout Grid.Row="9">
+                                                <!--<Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50*"/>
+                                                        <ColumnDefinition Width="50*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                        <StackLayout Padding="10">
+                                                            -->
+                                                <!--<Image HorizontalOptions="EndAndExpand">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="White" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
+                                                                </Image.Source>
+                                                            </Image>-->
+                                                <!--
+                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="End" TextColor="White"/>
+                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="End" TextColor="White"/>
+                                                        </StackLayout>
+                                                    </cards:SfCardView>
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
+                                                          BackgroundColor="White" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                        <StackLayout Padding="10">
+                                                            <Image HorizontalOptions="EndAndExpand">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="Black" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.BoxShadow}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <Label Text="...1234" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                        </StackLayout>
+                                                    </cards:SfCardView>
+                                                </Grid>-->
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="50*"/>
+                                                        <ColumnDefinition Width="50*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                        <Grid>
+                                                            <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                                            </Image>
+                                                            <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <StackLayout Grid.Row="1" Spacing="0">
+
+                                                                    <Label Text="...1234"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                    <Label Text="Inma Bank"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                </StackLayout>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </cards:SfCardView>
+                                                    <cards:SfCardView Grid.Row="1" Grid.Column="1" HasShadow="True"  Margin="3" Padding="0"  ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen"  CornerRadius="3" HorizontalOptions="FillAndExpand">
+
+                                                        <Grid Margin="0" Padding="0" VerticalOptions="FillAndExpand">
+                                                            <yummy:PancakeView Grid.Row="0" BackgroundColor="White">
+                                                                <Image HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Source="vat_tile_IbanCard_background_white.png"  Aspect="AspectFill"/>
+                                                            </yummy:PancakeView>
+
+                                                            <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="*"/>
+                                                                    <RowDefinition Height="auto"/>
+                                                                </Grid.RowDefinitions>
+                                                                <StackLayout Grid.Row="1" Spacing="0">
+
+                                                                    <Label Text="...1234" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                                    <Label Text="Al Rajhi Bank" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                                </StackLayout>
+                                                            </Grid>
+                                                        </Grid>
+                                                    </cards:SfCardView>
+                                                </Grid>
+                                            </StackLayout>
                                         </Grid>
                                     </ScrollView>
                                 </Grid>
@@ -1006,7 +1073,8 @@
                                         <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <StackLayout Grid.Row="0">
-                                        <Label Text="{x:Static custom2:AppResources.SalesDetails}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                        <!--Text="{x:Static custom2:AppResources.SalesDetails}"-->
+                                        <Label Text="Financial Details"  FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                                         <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource SSTArabicMedium}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
@@ -1267,6 +1335,42 @@
 
                                                 </Frame>
 
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="8">
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <StackLayout Grid.Row="0">
+                                                        <Label Text="Attachment" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                        <!--<Label Text="Account" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
+                                                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+                                                    </StackLayout>
+
+
+                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                            ContainerType="Outlined" x:Name="FrmNewAttachment" UnfocusedColor= "#B1B1B1"
+                                            OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                        <StackLayout Orientation="Horizontal" Padding="5,10,5,10">
+                                                            <Image>
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.PlusCircleOutline}"/>
+                                                                </Image.Source>
+                                                            </Image>
+
+                                                            <Label  Text="New Attachment"  TextColor="DarkGreen" VerticalTextAlignment="Center"/>
+                                                            <Image HorizontalOptions="EndAndExpand">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                        </StackLayout>
+                                                    </inputLayout:SfTextInputLayout>
+                                                    <Button Grid.Row="1" x:Name="NewAttachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAttachment_Clicked" Margin="0,0,0,0" />
+                                                </Grid>
                                             </StackLayout>
                                             <!--<Label  Text="{x:Static custom2:AppResources.ZZZVATRQuestion2}"
                                            TextColor="DarkGreen" FontFamily="{StaticResource SSTArabicMedium}"/>
@@ -1675,7 +1779,7 @@
 
                                     <ScrollView Grid.Row="1">
                                         <StackLayout>
-                                            <Frame Grid.Row="2" BorderColor="#CEE0DD" CornerRadius="8" BackgroundColor="#CEE0DD">
+                                            <!--<Frame Grid.Row="2" BorderColor="#CEE0DD" CornerRadius="8" BackgroundColor="#CEE0DD">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal">
                                                         <Image HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
@@ -1687,9 +1791,37 @@
 
                                                     </StackLayout>
                                                     <Label FontFamily="{StaticResource GAZT_FONT_REGULAR}"  Text="{x:Static custom2:AppResources.ZZZVATRFR1}" TextColor="Black"/>
-                                                    <!--<Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="But for Non-Resident taxpayer, this section is mandatory before navigating to the next section." TextColor="Black"/>-->
+                                                    --><!--<Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="But for Non-Resident taxpayer, this section is mandatory before navigating to the next section." TextColor="Black"/>--><!--
                                                 </StackLayout>
-                                            </Frame>
+                                                
+                                            </Frame>-->
+                                            <StackLayout Margin="0,0,0,15" >
+                                                <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <StackLayout>
+
+                                                        <Grid>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto"/>
+
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="20"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+                                                            <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+                                                            <Image HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" VerticalOptions="Start">
+                                                                <Image.Source>
+                                                                    <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                                        Glyph="{x:Static FontImage:IconFonts.Information}"/>
+                                                                </Image.Source>
+                                                            </Image>
+                                                            <Label HorizontalTextAlignment="Start" Grid.Column="1" Grid.Row="0" FontSize="11"  Text="{x:Static custom2:AppResources.ZZZVATRFR1}"  />
+                                                        </Grid>
+                                                    </StackLayout>
+
+                                                </Frame>
+
+                                            </StackLayout>
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
@@ -1842,7 +1974,7 @@
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                     </StackLayout>
                                     <StackLayout Grid.Row="1">
-                                        <Frame BackgroundColor="#CEE0DD" Padding="0" CornerRadius="10">
+                                        <Frame BackgroundColor="#cee0dd" Padding="0" CornerRadius="10">
                                             <StackLayout Orientation="Horizontal" Padding="10">
                                                 <Image>
                                                     <Image.Source>
@@ -1867,13 +1999,14 @@
                                         <!--Taxpayer Details Summery-->
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
-                                                    <Image>
+                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                    <!--<Image>
                                                         <Image.Source>
                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
-                                                    </Image>
+                                                    </Image>-->
+                                                    <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
                                                     <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
@@ -1900,14 +2033,15 @@
                                         <!--Bank Details Summery-->
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
-                                                    <Image>
+                                                <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,5,10,5">
+                                                    <!--<Image>
                                                         <Image.Source>
                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
-                                                    </Image>
-                                                    <Label Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
+                                                    </Image>-->
+                                                    <StackLayout BackgroundColor="Transparent" WidthRequest="30"></StackLayout>
+                                                    <Label  Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <StackLayout Padding="10,5,10,10">
@@ -1919,10 +2053,10 @@
                                         <!--Sales Details Summery-->
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                     <Image>
                                                         <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                            <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
@@ -1939,10 +2073,10 @@
                                         </Frame>
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                     <Image>
                                                         <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                            <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
@@ -1959,10 +2093,10 @@
                                         </Frame>
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
-                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,10">
+                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                     <Image>
                                                         <Image.Source>
-                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
+                                                            <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                         </Image.Source>
                                                     </Image>
