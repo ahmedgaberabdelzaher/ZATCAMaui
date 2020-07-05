@@ -93,7 +93,7 @@
      Hint="{x:Static local:AppResources.ZTERReportDetailName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="TName" FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
+                            <custom:BorderlessEntry  x:Name="TName" IsEnabled="False"  FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
                                     <custom1:AlphabetandArabicCharacters/>
                                 </Entry.Behaviors>
