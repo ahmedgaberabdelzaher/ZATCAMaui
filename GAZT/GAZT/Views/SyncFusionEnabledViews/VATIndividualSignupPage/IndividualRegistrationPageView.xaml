@@ -1102,11 +1102,11 @@
                                                             </custom:CustomLabel>
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" WidthRequest="128" MaxLength="16"
+                                                                    <custom:BorderlessEntry HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" MaxLength="16"
                                                                 Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword">
+                                                              <inputLayout:SfTextInputLayout.TrailingView>
+                                                              <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
                                          Glyph="{x:Static FontImage:IconFonts.Eye}"/>
@@ -1115,7 +1115,7 @@
                                                                             <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
                                                                     </Image>
-                                                                </StackLayout>
+                                                              </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
 
@@ -1132,22 +1132,22 @@
                                                             </custom:CustomLabel>
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameConfirmPasswordError}"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
-                                                                <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry x:Name="EntryConfirmPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128" MaxLength="16" TextChanged="EntryConfirmPassword_TextChanged"
+                                                                <custom:BorderlessEntry x:Name="EntryConfirmPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128" MaxLength="16" TextChanged="EntryConfirmPassword_TextChanged"
                                                                         
                                                                 Placeholder="{x:Static local:AppResources.ZZZZRepeatPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                                                    </custom:BorderlessEntry>
+                                                                </custom:BorderlessEntry>
+                                                               <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeConfirmPassword" >
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
-                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                                                Glyph="{x:Static FontImage:IconFonts.Eye}"/>
                                                                         </Image.Source>
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
 
                                                                     </Image>
-                                                                </StackLayout>
+                                                               </inputLayout:SfTextInputLayout.TrailingView>    
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
 
