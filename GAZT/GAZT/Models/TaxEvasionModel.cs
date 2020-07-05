@@ -574,6 +574,10 @@ namespace EGAZT.Models
                 {
                     return string.Empty;
                 }
+                else if(_tin == "1234567890")
+                {
+                    return string.Empty;
+                }
                 else
                 {
                     return _tin;
