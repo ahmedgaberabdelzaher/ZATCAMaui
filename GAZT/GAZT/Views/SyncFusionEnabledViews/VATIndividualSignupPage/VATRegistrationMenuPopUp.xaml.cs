@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
@@ -17,6 +18,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public VATRegistrationMenuPopUp()
         {
             InitializeComponent();
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
         }
 
         private async void OnAttachmentTapped(object sender, EventArgs e)
