@@ -464,7 +464,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                             FrmNumber.HasError = true;
                             //   TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
                         }
-                    }
+                 }
                      if (string.IsNullOrEmpty(TFaciName.Text.Trim()))
                     {
                         flag = false;
@@ -1250,7 +1250,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-           // await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+           await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         public void ChangeAeroIcon()
         {
