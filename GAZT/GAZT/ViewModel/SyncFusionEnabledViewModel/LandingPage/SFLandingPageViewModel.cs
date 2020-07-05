@@ -4,6 +4,7 @@ using EGAZT.Models;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
+using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary;
@@ -833,6 +834,122 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             {
             }
         }
+
+        public async Task VerifyCommandClick()
+        {
+            try
+            {
+                string mobno = string.Empty;
+
+                ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
+                tesmobnoscreen.tes = "1";
+                tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
+                
+                if (App.TP != null && App.TP.Mobile != null)
+                {
+                    mobno = App.TP.Mobile;
+
+                    if(mobno.StartsWith("00"))
+                    {
+                        mobno = mobno.Remove(0, 2);
+                        mobno = "+" + mobno;
+                    }
+                }
+
+                tesmobnoscreen.MobileNumber = mobno;
+
+                TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
+                taxEvasionSendSmsModel.mobile = mobno;
+
+                try
+                {
+                    TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
+
+                   
+
+                    if (taxEvasionSendSmsResponseModel.Status == true)
+                    {
+                        App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
+                        App.TaxEvasionUserData.Mobile = mobno;
+                        App.TaxEvasionUserData.LoginKey = taxEvasionSendSmsResponseModel.Data.Key;
+
+                        _navigationService.NavigateTo(App.OTPPageView, tesmobnoscreen);
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        });
+                    }
+                }
+                catch (GAZTException gex)
+                {
+                    // Handle the GAZT custom exception.
+                    string MessageForTheUser = gex.Message;
+                    if (gex is GAZTInvalidDataException)
+                    {
+                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                    }
+
+                    if (gex is GAZTNetworkConnectivityIssueException)
+                    {
+                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                    }
+                    else if (gex is GAZTInternetException)
+                    {
+                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                    }
+                    else if (gex is GAZTSessionExpiredException)
+                    {
+                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                    }
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
+                        await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
+
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        //viewModel._navigationService.GoBack();
+                    });
+                }
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    await _dialogService.ShowMessage(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            catch (Exception ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+            //_navigationService.NavigateTo();
+        }
+
         public void PopulateeServicesApplicableToTheTaxPayer()
         {
             //Call the API to get the eSevrices applicable to the TP
