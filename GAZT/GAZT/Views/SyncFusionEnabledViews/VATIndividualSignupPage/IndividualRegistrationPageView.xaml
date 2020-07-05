@@ -753,7 +753,7 @@
                                                             <custom:BorderlessEntry x:Name="EntryBuildingNumber"  FontFamily="{StaticResource SSTArLight}" Text="{Binding BuildingNumber}" MaxLength="20" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZBuildingNumber}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
-                                                                    <custom1:AlphabetandArabicCharacters/>
+                                                                    <custom:AlphaNumericValidatorBehaviour/>
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
@@ -766,7 +766,7 @@
                                                             <custom:BorderlessEntry x:Name="EntryUnitNumber" MaxLength="10"  FontFamily="{StaticResource SSTArLight}"  Text="{Binding UnitNumber}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="{x:Static local:AppResources.ZZZZUnitNumber}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
-                                                                    <custom1:AlphabetandArabicCharacters/>
+                                                                    <custom:AlphaNumericValidatorBehaviour/>
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
