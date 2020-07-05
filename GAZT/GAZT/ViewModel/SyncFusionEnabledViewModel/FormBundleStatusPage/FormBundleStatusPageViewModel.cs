@@ -381,14 +381,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                 {
                     foreach (FormBundleResult Object in FormBundleTypeList)
                     {
-                        if (Object.Fbtyp.Equals("NREG") || Object.Fbtyp.Equals("ZREG"))
-                        {
-                            Object.Txt50 = Object.Fbtyp + " - " + Object.Txt50;
-                        }
-                        else
-                        {
-                            Object.Txt50 = Object.Txt50;
-                        }
+                        //if (Object.Fbtyp.Equals("NREG") || Object.Fbtyp.Equals("ZREG"))
+                        //{
+                        //    Object.Txt50 = Object.Fbtyp + " - " + Object.Txt50;
+                        //}
+                        //else
+                        //{
+                        //    Object.Txt50 = Object.Txt50;
+                        //}
+
+                        Object.Txt50 = Object.Txt50;
                         list.Add(Object);
                     }
                 }
