@@ -2488,27 +2488,27 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>City*</value>
+    <value>City *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>Facility Name*</value>
+    <value>Facility Name *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>Facility District Address*</value>
+    <value>Facility District Address *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>Facility Street Address*</value>
+    <value>Facility Street Address *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>Facility Work Type*</value>
+    <value>Facility Work Type *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>Reporter Name*</value>
+    <value>Reporter Name *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportType" xml:space="preserve">
@@ -2516,11 +2516,11 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>Mobile Number*</value>
+    <value>Mobile Number *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
-    <value>Region</value>
+    <value>Region *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
@@ -2528,7 +2528,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetails" xml:space="preserve">
-    <value>Report Details*</value>
+    <value>Report Details *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailTIN" xml:space="preserve">

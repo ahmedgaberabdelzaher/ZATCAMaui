@@ -367,7 +367,7 @@
                                 </ListView>
                             </StackLayout>
                                     <local1:CustomLabel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="Medium"
-                                                        FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.NoReportsAvailable}"
+                                                        FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NoReportsAvailable}"
                                                         Style="{StaticResource MiniBlackLabelStyle}"  HorizontalOptions="Center" VerticalOptions="Center"
                                                         IsVisible="{Binding SetNoDataLabelVisibilityforClose}">
                             </local1:CustomLabel>

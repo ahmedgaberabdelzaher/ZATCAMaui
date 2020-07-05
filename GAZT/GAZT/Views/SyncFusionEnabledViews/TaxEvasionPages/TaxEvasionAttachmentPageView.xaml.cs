@@ -130,7 +130,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 viewModel.AttachmentCount = 0;
 
                 viewModel.UploadedDocumentsListObj.Clear();
-                Attachment_Entry.Text = string.Empty;
          
                
             }
@@ -181,7 +180,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 
                   Attachment_Tmg.IsVisible = true;
                   Attachment_Frm.IsVisible = true;
-                  Attachment_Entry.IsVisible = true;
                   Attachment_Tmg.IsEnabled = true;
             
                 //TFaciMobNo.IsEnabled = false;

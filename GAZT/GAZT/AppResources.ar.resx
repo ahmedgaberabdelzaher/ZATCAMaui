@@ -622,7 +622,7 @@
     <value>إجمالي مبلغ الفواتير المسددة جزئيا</value>
   </data>
   <data name="NoReportsAvailable" xml:space="preserve">
-    <value>لا يوجد تقارير متاحة</value>
+    <value>لا يوجد بلاغات متاحة</value>
   </data>
   <data name="Nodataavailable" xml:space="preserve">
     <value>لا تتوفر بيانات</value>
@@ -2498,27 +2498,27 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailCity" xml:space="preserve">
-    <value>المدينة*</value>
+    <value>المدينة *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFacilityName" xml:space="preserve">
-    <value>إسم المنشأة*</value>
+    <value>إسم المنشأة *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFDAddress" xml:space="preserve">
-    <value>عنوان المنشأة- الحي*</value>
+    <value>عنوان المنشأة- الحي *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFSAddress" xml:space="preserve">
-    <value>عنوان المنشأة- الشارع*</value>
+    <value>عنوان المنشأة- الشارع *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailFWType" xml:space="preserve">
-    <value>نوع نشاط المنشأة*</value>
+    <value>نوع نشاط المنشأة *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailName" xml:space="preserve">
-    <value>اسم مقدم البلاغ*</value>
+    <value>اسم مقدم البلاغ *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportType" xml:space="preserve">
@@ -2526,11 +2526,11 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailNumber" xml:space="preserve">
-    <value>رقم الجوال*</value>
+    <value>رقم الجوال *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailRegion" xml:space="preserve">
-    <value>المنطقة</value>
+    <value>المنطقة *</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTERReportDetailReportDetailRLocation" xml:space="preserve">
@@ -2719,7 +2719,7 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال التقرير مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+     <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
     
