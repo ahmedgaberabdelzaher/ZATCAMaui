@@ -80,18 +80,9 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
+                        
+                            
+                            
                             <RowDefinition Height="200"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -102,13 +93,13 @@
      Hint="{x:Static local:AppResources.ZTERReportDetailName}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"  
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry  x:Name="TName" FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
+                            <custom:BorderlessEntry  x:Name="TName" IsEnabled="False"  FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Small"  Unfocused="TName_Unfocused" Text="{Binding TName}">
                                 <Entry.Behaviors>
                                     <custom1:AlphabetandArabicCharacters/>
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                               <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -119,11 +110,11 @@
                             <inputLayout:SfTextInputLayout x:Name="FrmNumber" HorizontalOptions="FillAndExpand"      Margin="10,-6,10,-6"
                             ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:BorderlessEntry  x:Name="TMobNumber" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="9" >
+                                <custom:BorderlessEntry  x:Name="TMobNumber" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" Keyboard="Telephone" Unfocused="TMobNumber_Unfocused" Text="{Binding TMobNumber}" MaxLength="15" >
                                     
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -148,7 +139,7 @@
                                 </Entry.Behaviors>
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -208,7 +199,7 @@
                             <custom:BorderlessEntry  x:Name="TFDAdress" FontSize="Small" FontFamily="{StaticResource SSTArabicMedium}" Unfocused="TFDAdress_Unfocused"  Text="{Binding TFDAdress}" IsSpellCheckEnabled="False"  MaxLength="100">
                             </custom:BorderlessEntry>
                        <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -222,7 +213,7 @@
                             <custom:BorderlessEntry  x:Name="TFSAddress" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" IsSpellCheckEnabled="False" Unfocused="TFSAddress_Unfocused"  Text="{Binding TFSAddress}"  MaxLength="100">
                             </custom:BorderlessEntry>
                               <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -237,7 +228,7 @@
                             <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry"  FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Medium">
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -246,6 +237,7 @@
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomButton x:Name="btnTxtReportDetailRegion" Clicked="btnTxtReportDetailRegion_Clicked" FontSize="Small"  BackgroundColor="Transparent" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,0" >
                         </custom:CustomButton>
+
                         <syncfusion:SfPicker
                     HeaderHeight="40"
                     ShowHeader="True"
@@ -308,7 +300,7 @@ HeaderTextColor="White"
                             <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Medium"  x:Name="City_entry">
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -387,9 +379,14 @@ HeaderTextColor="White"
     Hint="{x:Static local:AppResources.ZZTIN}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:GAZTBorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused"  IsSpellCheckEnabled="False" Keyboard="Numeric" ></custom:GAZTBorderlessEntry>
-                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="16">
+                                    <custom:BorderlessEntry  Grid.Row="0"  Grid.Column="0"  Grid.ColumnSpan="2"   MaxLength="10" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small" Text="{Binding TxtTIN}" x:Name="TxtTIN" Unfocused="TxtTIN_Unfocused"  IsSpellCheckEnabled="False" Keyboard="Numeric" >
+                                          <custom:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
+
+                                    <inputLayout:SfTextInputLayout.HintLabelStyle>
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -455,9 +452,13 @@ ItemHeight="45" ShowFooter="True"
     Hint="{x:Static local:AppResources.ZTERReportDetailVATNumber}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry   IsSpellCheckEnabled="False" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric"></custom:GAZTBorderlessEntry>
+                            <custom:BorderlessEntry   IsSpellCheckEnabled="False" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TVatNumber}" x:Name="TVatNumber" MaxLength="15" Unfocused="TVatNumber_Unfocused" Placeholder="{x:Static local:AppResources.ZTERReportFormEnterVATno}" Keyboard="Numeric">
+                                  <custom:BorderlessEntry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour/>
+                                        </custom:BorderlessEntry.Behaviors>
+                            </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="18">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -470,7 +471,7 @@ ItemHeight="45" ShowFooter="True"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                             <Editor  MaxLength="999" IsSpellCheckEnabled="False" Text="{Binding TReportDetail}" FontSize= "Small" x:Name="TReportDetail" HeightRequest="200" AutoSize="TextChanges" Unfocused="TReportDetail_Unfocused"></Editor>
     <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>
@@ -487,7 +488,7 @@ ItemHeight="45" ShowFooter="True"
                                 </custom:GAZTBorderlessEntry.Behaviors>
                             </custom:GAZTBorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
-                                <inputLayout:LabelStyle FontSize="16">
+                                <inputLayout:LabelStyle FontSize="14">
                                     <inputLayout:LabelStyle.FontFamily>
                                         <OnPlatform x:TypeArguments="x:String" iOS="{StaticResource SSTArabicMedium}" Android="{StaticResource SSTArabicMedium}" WinPhone="{StaticResource SSTArabicMedium}" />
                                     </inputLayout:LabelStyle.FontFamily>

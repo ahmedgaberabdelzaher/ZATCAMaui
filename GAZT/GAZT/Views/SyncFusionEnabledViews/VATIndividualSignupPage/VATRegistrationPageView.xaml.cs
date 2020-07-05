@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
@@ -19,6 +20,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationPageView;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             viewModel.SetVisibility();
@@ -334,6 +336,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-      
+        private void NewAttachment_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

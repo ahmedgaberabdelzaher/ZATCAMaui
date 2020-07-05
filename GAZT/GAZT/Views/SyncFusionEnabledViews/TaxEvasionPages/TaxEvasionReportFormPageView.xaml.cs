@@ -464,7 +464,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                             FrmNumber.HasError = true;
                             //   TMobNumber.Focus(); FrmNumber.HasError = true; showFillFeildsMessage();
                         }
-                    }
+                 }
                      if (string.IsNullOrEmpty(TFaciName.Text.Trim()))
                     {
                         flag = false;
@@ -1014,7 +1014,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
                         //var timeout = TimeSpan.FromSeconds(4);
                         //var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
 
-                        //var location = Geolocation.GetLocationAsync(locationRequestData).Result;
+                        //var location = await Geolocation.GetLocationAsync(locationRequestData);
                         //if (location != null)
                         //{
                         //    lat = location.Latitude;
@@ -1023,7 +1023,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
-                       // mapView.MoveToRegion(mapSpan);
+
+                        // mapView.MoveToRegion(mapSpan);
                         viewModel.Latitude = lat;
                         viewModel.Longitude = lon;
                     }
@@ -1250,7 +1251,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm
             {
                 popUp.FlowDirections = "LeftToRight";
             }
-           // await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+           await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
         }
         public void ChangeAeroIcon()
         {

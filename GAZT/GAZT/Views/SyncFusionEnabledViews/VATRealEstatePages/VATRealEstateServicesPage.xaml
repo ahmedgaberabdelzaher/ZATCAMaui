@@ -53,7 +53,9 @@
             </Grid.ColumnDefinitions>
                    <ScrollView Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <StackLayout Padding="5">
-                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" >
+                    <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" ItemSpacing="5"
+                                         ItemsSource="{Binding eServicesAvailableToTheTP}" WidthRequest="{OnIdiom Phone=350, Tablet=320, Desktop=320}"
+                                         HorizontalOptions="Center" VerticalOptions="Center" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <cards:SfCardView CornerRadius="8" HeightRequest="100" WidthRequest="100" BorderColor="#006450"
@@ -84,7 +86,7 @@
                         </listView:SfListView.ItemTemplate>
                         <!--Layout to customize number of columns in SfListView-->
                         <listView:SfListView.LayoutManager>
-                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                            <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=3, Tablet=4, Desktop=5}" />
                         </listView:SfListView.LayoutManager>
                         <listView:SfListView.Behaviors>
                             <behavior:SfListViewExtendHeightBehavior >

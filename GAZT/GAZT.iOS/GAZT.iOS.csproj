@@ -914,4 +914,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_IbanCard_background_white%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_backgroun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_backgroun%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_IbanCard_backgroun%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_taxpayerDetail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_taxpayerDetail%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_taxpayerDetail%403x.png" />
+  </ItemGroup>
 </Project>

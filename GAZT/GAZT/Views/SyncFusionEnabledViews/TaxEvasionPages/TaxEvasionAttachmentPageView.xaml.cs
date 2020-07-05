@@ -71,22 +71,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 else
                 {
                     double lat = 24.7136, lon = 46.6753;
+                    var timeout = TimeSpan.FromSeconds(4);
+
                     try
                     {
-                        double latitud = 40.765819;
-                        double longitud = -73.975866;
-                        string placeName = "Home";
+                        var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
 
-                       
-                        //var timeout = TimeSpan.FromSeconds(4);
-                        //var locationRequestData = new GeolocationRequest(GeolocationAccuracy.Medium, timeout);
-
-                        //var location = Geolocation.GetLocationAsync(locationRequestData).Result;
-                        //if (location != null)
-                        //{
-                        //    lat = location.Latitude;
-                        //    lon = location.Longitude;
-                        //}
+                        var location = await Geolocation.GetLocationAsync(locationRequestData);
+                        if (location != null)
+                        {
+                            lat = location.Latitude;
+                            lon = location.Longitude;
+                        }
 
                         Position position = new Position(lat, lon);
                         MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
@@ -100,11 +96,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                     }
                     catch (FeatureNotEnabledException fneEx)
                     {
-                        // Handle not enabled on device exception
+                        //Handle not enabled on device exception
                     }
                     catch (PermissionException pEx)
                     {
-                        // Handle permission exception
+                        //Handle permission exception
+                        Position position = new Position(lat, lon);
+                        MapSpan mapSpan = new MapSpan(position, 0.0001, 0.001);
+                        mapView.MoveToRegion(mapSpan);
+                        viewModel.Latitude = lat;
+                        viewModel.Longitude = lon;
                     }
                     catch (Exception ex)
                     {
@@ -130,7 +131,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 viewModel.AttachmentCount = 0;
 
                 viewModel.UploadedDocumentsListObj.Clear();
-                Attachment_Entry.Text = string.Empty;
          
                
             }
@@ -181,7 +181,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages
                 
                   Attachment_Tmg.IsVisible = true;
                   Attachment_Frm.IsVisible = true;
-                  Attachment_Entry.IsVisible = true;
                   Attachment_Tmg.IsEnabled = true;
             
                 //TFaciMobNo.IsEnabled = false;

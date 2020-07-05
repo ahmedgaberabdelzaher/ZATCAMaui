@@ -33,12 +33,14 @@
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
                 <!--<Image Source="confirmnew.jpg" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="100" HorizontalOptions="CenterAndExpand"></Image>-->
                 
-                <Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
+                <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="White" Size="100"
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
-                </Image>
+                </Image>-->
+                
+                <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
                 <Label Text="VAT Registration Successful" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
                 <Label Text="You have successfully Registered to VAT Services."
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
