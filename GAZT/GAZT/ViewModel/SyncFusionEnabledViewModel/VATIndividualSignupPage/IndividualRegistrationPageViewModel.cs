@@ -1265,6 +1265,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             UnitNumber = string.Empty;
             PostalCode = string.Empty;
             BackArrowVisible = true;
+            ConfirmPassword = string.Empty;
          
         }
         public async Task SetBackFormVisibility()
