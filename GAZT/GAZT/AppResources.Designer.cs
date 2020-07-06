@@ -9461,6 +9461,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proceed to Home screen.
+        /// </summary>
+        public static string ZZZZProceedtoHomescreen {
+            get {
+                return ResourceManager.GetString("ZZZZProceedtoHomescreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proceed to VAT registration.
+        /// </summary>
+        public static string ZZZZProceedtoVATregistration {
+            get {
+                return ResourceManager.GetString("ZZZZProceedtoVATregistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Province / Region.
         /// </summary>
         public static string ZZZZProvinceRegion {

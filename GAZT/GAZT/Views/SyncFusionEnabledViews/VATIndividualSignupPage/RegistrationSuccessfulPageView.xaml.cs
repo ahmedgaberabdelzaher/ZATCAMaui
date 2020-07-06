@@ -34,7 +34,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         private void btnVATRegistration_Clicked(object sender, EventArgs e)
         {
-            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+            viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+            
         }
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)
@@ -48,5 +49,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
         protected override bool OnBackButtonPressed() => true;
+
+        private void btnDashboard_Clicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+        }
     }
 }

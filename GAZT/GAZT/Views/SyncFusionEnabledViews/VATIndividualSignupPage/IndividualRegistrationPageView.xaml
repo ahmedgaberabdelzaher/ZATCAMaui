@@ -40,60 +40,18 @@
             <yummy:PancakeView Grid.Row="0" Grid.Column="0" BackgroundColor="White" CornerRadius="32,32,0,0" Padding="0,20,0,0">
 
 
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  BackgroundColor="White">
+                <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                  BackgroundColor="White">-->
+                    <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                  
 
-                    <!-- Dot Images -->
-                    <StackLayout >
-                        <Grid >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
-                                </Label.GestureRecognizers>
-                            </Label>
-                            <!--<Image x:Name="Image_backArrow" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}" >--><!--Rotation="270"--><!--
-                                <Image.Source>
-                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                </Image.Source>
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
-                                </Image.GestureRecognizers>
-                            </Image>-->
-                            <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                            <!--<Image HorizontalOptions="End" VerticalOptions="Start">
-                                <Image.Source>
-                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
-                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                                </Image.Source>
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                                </Image.GestureRecognizers>
-                            </Image>-->
-                            <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
-                                </Label.GestureRecognizers>
-                            </Label>
+                    
 
-                        </Grid>
-
-                        <StackLayout Orientation="Horizontal" Padding="10,0,0,10">
-                            <BoxView x:Name="BoxOne" CornerRadius="25" BackgroundColor="{Binding BoxColorOne}"/>
-                            <BoxView x:Name="BoxTwo" CornerRadius="25" BackgroundColor="{Binding BoxColorTwo}"/>
-                            <BoxView x:Name="BoxThree" CornerRadius="25" BackgroundColor="{Binding BoxColorThree}"/>
-                            <BoxView x:Name="BoxFour" CornerRadius="25" BackgroundColor="{Binding BoxColorFour}"/>
-                            <BoxView x:Name="BoxFive" CornerRadius="25" BackgroundColor="{Binding BoxColorFive}"/>
-                        </StackLayout>
-                    </StackLayout>
-                    <!-- Dot Images End-->
-
-                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                    <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White" RowSpacing="0" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="88*" />
@@ -1255,7 +1213,59 @@
                                   HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />
                         </StackLayout>
                     </Grid>
-                </StackLayout>
+                        <!-- Dot Images -->
+                        <StackLayout BackgroundColor="White" Grid.Row="0" >
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <!--<Image x:Name="Image_backArrow" HorizontalOptions="Start" VerticalOptions="Start" IsVisible="{Binding BackArrowVisible}" >-->
+                                <!--Rotation="270"-->
+                                <!--
+                                <Image.Source>
+                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                </Image.GestureRecognizers>
+                            </Image>-->
+                                <Image Grid.Row="0" Grid.Column="1" Source="ic_logo_gazt.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+                                <!--<Image HorizontalOptions="End" VerticalOptions="Start">
+                                <Image.Source>
+                                    <FontImageSource Color="Gray" FontFamily="UserIconFont" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                                </Image.Source>
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                </Image.GestureRecognizers>
+                            </Image>-->
+                                <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </Grid>
+
+                            <StackLayout Orientation="Horizontal" Padding="10,0,0,10">
+                                <BoxView x:Name="BoxOne" CornerRadius="25" BackgroundColor="{Binding BoxColorOne}"/>
+                                <BoxView x:Name="BoxTwo" CornerRadius="25" BackgroundColor="{Binding BoxColorTwo}"/>
+                                <BoxView x:Name="BoxThree" CornerRadius="25" BackgroundColor="{Binding BoxColorThree}"/>
+                                <BoxView x:Name="BoxFour" CornerRadius="25" BackgroundColor="{Binding BoxColorFour}"/>
+                                <BoxView x:Name="BoxFive" CornerRadius="25" BackgroundColor="{Binding BoxColorFive}"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <!-- Dot Images End-->
+                    </Grid>
+                <!--</StackLayout>-->
             </yummy:PancakeView>
 
 
