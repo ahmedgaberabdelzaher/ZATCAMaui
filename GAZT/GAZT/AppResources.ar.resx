@@ -3818,7 +3818,11 @@
     <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
   </data>
   <data name="ZZZZestablishmentsignup" xml:space="preserve">
-    <value>Establishment Signup</value>
+    <value>تسجيل المؤسسات</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZIndividualSignupinVAT" xml:space="preserve">
+    <value>تسجيل الأفراد في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
 </root>

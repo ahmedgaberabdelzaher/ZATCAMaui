@@ -3849,4 +3849,8 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Establishment Signup</value>
     <comment>New SignUp</comment>
   </data>
+  <data name="ZZZZIndividualSignupinVAT" xml:space="preserve">
+    <value>Individual Signup in VAT</value>
+    <comment>New SignUp</comment>
+  </data>
 </root>

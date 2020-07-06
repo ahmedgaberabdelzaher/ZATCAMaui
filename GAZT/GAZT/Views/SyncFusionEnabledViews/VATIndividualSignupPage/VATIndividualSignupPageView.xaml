@@ -51,7 +51,7 @@
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
                     <StackLayout Padding="5"><!--BackgroundColor="DarkGreen"-->
                         <Frame CornerRadius="5" BackgroundColor="#006450" HeightRequest="100"><!--Text="Individual Registration"-->
-                            <Label  Text="{x:Static local:AppResources.ZZZZIndividualRegistration}" TextColor="{StaticResource WhiteTextColor}"
+                            <Label  Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>

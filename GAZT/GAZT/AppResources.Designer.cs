@@ -9371,6 +9371,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Individual Signup in VAT.
+        /// </summary>
+        public static string ZZZZIndividualSignupinVAT {
+            get {
+                return ResourceManager.GetString("ZZZZIndividualSignupinVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Postal Code.
         /// </summary>
         public static string ZZZZInvalidPostalCode {
