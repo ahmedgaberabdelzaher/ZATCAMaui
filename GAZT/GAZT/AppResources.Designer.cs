@@ -4632,6 +4632,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZRealEstateServiceDetailTitle {
+            get {
+                return ResourceManager.GetString("ZRealEstateServiceDetailTitle", resourceCulture);
+            }
+        }
+        
         public static string ZRealEstateServiceIndividualTitle {
             get {
                 return ResourceManager.GetString("ZRealEstateServiceIndividualTitle", resourceCulture);

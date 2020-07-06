@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -58,56 +59,56 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             this.TerminateRequestCommand = new Command(this.TerminateRequestCommandClicked);
 
         }
-        private void PropertyRegistrationCommandClicked(object obj)
+        private async void PropertyRegistrationCommandClicked(object obj)
         {
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstatePropertyRegistration;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+                 IsLoading = false;
             });
 
 
         }
-        private  void RequestVerificationCommandClicked(object obj)
+        private async void  RequestVerificationCommandClicked(object obj)
         {
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateRequestVerification;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+                 IsLoading = false;
             });
 
 
         }
-        private  void TerminateRequestCommandClicked(object obj)
+        private async void TerminateRequestCommandClicked(object obj)
         {
 
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateTerminationOfRequest;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+                 IsLoading = false;
             });
 
 

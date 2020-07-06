@@ -30,8 +30,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
             }
             else
             {
-                this.FlowDirection = FlowDirection.RightToLeft;
-                Image_backArrow.Rotation = 360;
+                
+                Image_backArrow.Rotation = 180;
             }
         }
         protected override void OnDisappearing()

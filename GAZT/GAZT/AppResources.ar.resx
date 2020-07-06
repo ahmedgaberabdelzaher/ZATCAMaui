@@ -2729,8 +2729,12 @@
     <value>ضريبة القيمة المضافة لعقارات الأفراد</value>
     <comment>VAT Real Estate Service</comment>
   </data>
+          <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
+    <value>معاملات ضريبة القيمة المضافة للعقارات</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
 <data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
-    <value>For Individual</value>
+    <value>للأفراد</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
