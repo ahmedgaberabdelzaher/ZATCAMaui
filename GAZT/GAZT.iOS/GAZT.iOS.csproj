@@ -164,6 +164,21 @@
     <BundleResource Include="Resources\sf_Service_6%402x.png" />
     <BundleResource Include="Resources\sf_Service_6%403x.png" />
     <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\re_Property_Registration.png" />
+    <BundleResource Include="Resources\re_Property_Registration%402x.png" />
+    <BundleResource Include="Resources\re_Property_Registration%403x.png" />
+    <BundleResource Include="Resources\re_Request_Verification.png" />
+    <BundleResource Include="Resources\re_Request_Verification%402x.png" />
+    <BundleResource Include="Resources\re_Request_Verification%403x.png" />
+    <BundleResource Include="Resources\re_Termination_Request.png" />
+    <BundleResource Include="Resources\re_Termination_Request%402x.png" />
+    <BundleResource Include="Resources\re_Termination_Request%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_White.png" />
+    <BundleResource Include="Resources\re_Tile_Background_White%402x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_White%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background.png" />
+    <BundleResource Include="Resources\re_Tile_Background%402x.png" />
+    <BundleResource Include="Resources\re_Tile_Background%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
