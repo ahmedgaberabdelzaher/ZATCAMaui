@@ -9,15 +9,15 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom2="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-     x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.FinancialDetailAttachmentPopupPageView">
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
+                 x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.FinancialDetailAttachmentPopupPageView">
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
-            <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+            <!--<Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
             <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
-            <!--ItemTapped="Attachmentlist_ItemTapped"-->
+            --><!--ItemTapped="Attachmentlist_ItemTapped"--><!--
             <ListView ItemsSource="{Binding FileAttachments}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
             HasUnevenRows="True" x:Name="List" BackgroundColor="White"
             SeparatorVisibility="None" HeightRequest="300">
@@ -34,7 +34,7 @@
 
                                 <Image Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png">
                                     <Image.GestureRecognizers>
-                                        <TapGestureRecognizer /> <!--Tapped="OnDeleteAttachmentClicked"-->
+                                        <TapGestureRecognizer /> --><!--Tapped="OnDeleteAttachmentClicked"--><!--
                                     </Image.GestureRecognizers>
                                 </Image>
                             </Grid>
@@ -44,7 +44,110 @@
             </ListView>
             <buttons:SfButton x:Name="btnAddAttachment" Text="Add Attachment" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                               HeightRequest="56" Margin="0,0,0,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                              BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
+                              BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>-->
+
+            <!--<Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static custom2:AppResources.ZZZContactInformation}"   VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" />
+            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <StackLayout>
+                <StackLayout Padding="22,22,22,0">
+                    <Label Text="New Attachment"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                    <StackLayout Grid.Row="2">
+                       
+                    </StackLayout>
+                    <Label Text="type of document that you are submitting to prove whether or not eligible." FontFamily="{StaticResource SSTArBold}"/>
+                </StackLayout>
+                <StackLayout Padding="15,0,15,15">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
+                                ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
+                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                            <StackLayout Orientation="Horizontal">
+                                <custom:BorderlessEntry Text="{Binding TxtIDType}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
+                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" TextColor="Black"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                </custom:BorderlessEntry>
+                                <Image HorizontalOptions="EndAndExpand" Rotation="270" >
+                                    <!--Rotation="270"-->
+                                    <Image.Source>
+                                        <FontImageSource FontFamily="UserIconFont" Color="Black" Size="20"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                    </Image.Source>
+                                </Image>
+                            </StackLayout>
+                        </inputLayout:SfTextInputLayout>
+                        <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
+                        </custom:CustomButton>
+
+                        <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                                    HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static custom2:AppResources.ZZIDType}"
+                                    HeaderTextColor="White"
+                                    UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}" 
+                                    ColumnHeaderHeight="46"
+                                    PickerMode="Dialog"
+                              HeaderBackgroundColor="#006450"
+                        SelectedItemTextColor="#006450"
+                        BorderColor="Black"
+                                                         
+                                                 OKButtonTextColor="#006450"      
+                                                 CancelButtonTextColor="#006450"
+                                                 ShowColumnHeader="False"
+                                                 ShowFooter="True"
+                                                 OKButtonBackgroundColor="#EAF7CC"
+                                                 CancelButtonBackgroundColor="#EAF7CC"
+                                                 BackgroundColor="#EAF7CC"
+                       ItemHeight="40"
+                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="0,0,0,0"
+                        PickerHeight="200"
+                        PickerWidth="270"
+                         FooterHeight="46" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                        <StackLayout Grid.Row="2">
+                            <Label Text="Attachment" Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
+                                            ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
+                                            OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
+                                    </custom:BorderlessEntry>
+                                    <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.Attachment}" />
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                       
+                    </Grid>
+                </StackLayout>
+                <buttons:SfButton x:Name="btnAddAccount" Text="Add Account" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                  HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                              BackgroundColor="#d49504" BorderWidth="0" />
+            </StackLayout>
+            
+
         </StackLayout>
     </yummy:PancakeView>
 </pages:PopupPage>
