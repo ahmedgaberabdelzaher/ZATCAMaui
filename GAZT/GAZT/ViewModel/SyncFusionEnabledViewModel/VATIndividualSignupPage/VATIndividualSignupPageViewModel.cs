@@ -49,23 +49,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         //EstablishmentSignupCommand
         private async void OnIndividualRegistrationClicked(object obj)
         {
-            ////IsLoading
-            ////      Device.BeginInvokeOnMainThread(async () =>
-            ////      {
-            //         await  Task.Run(() =>
-            //          {
-            //             IsLoading = true;
-            //          });
-            ////  });
-            //await Task.Run(() =>
-            //{
-            //    _navigationService.NavigateTo(App.IndividualRegistrationPageView);
-            //});
-
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
 
             await Task.Run(() =>
             {
@@ -82,24 +65,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
         private async void OnEstablishmentSignupClicked(object obj)
         {
-            ////IsLoading
-            ////      Device.BeginInvokeOnMainThread(async () =>
-            ////      {
-            //         await  Task.Run(() =>
-            //          {
-            //             IsLoading = true;
-            //          });
-            ////  });
-            //await Task.Run(() =>
-            //{
-            //    _navigationService.NavigateTo(App.IndividualRegistrationPageView);
-            //});
-
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
-
             await Task.Run(() =>
             {
                 IsLoading = true;

@@ -123,41 +123,59 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 await Task.Run(() =>
                 {
-                    IsLoading = true;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        IsLoading = true;
+                        // IsLoading = false;
+                    });
+                   
                 });
-                try
+
+
+                await Task.Run(async () =>
                 {
-                    if (IsButtonEnabled == true)
+                    try
                     {
-                        _navigationService.NavigateTo(App.IndividualRegistrationPageView);
-                    }
-                    else
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
-                        if (App.IsArabic)
+                        if (IsButtonEnabled == true)
                         {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+                                // IsLoading = false;
+                            });
+
                         }
                         else
                         {
-                            popUp.FlowDirections = "LeftToRight";
+                            PopUp popUp = new PopUp();
+                            popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            await Task.Run(() =>
+                            {
+                                IsLoading = false;
+                            });
+                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         }
+                    }
+                    catch (Exception ex)
+                    {
                         await Task.Run(() =>
                         {
                             IsLoading = false;
                         });
-                        await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     }
-                }
-                catch (Exception ex)
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                }
+                });
+
+            
+               
             });
         }
         #endregion

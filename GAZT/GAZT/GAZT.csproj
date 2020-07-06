@@ -102,6 +102,9 @@
     <Compile Update="Views\SyncFusionEnabledViews\TaxEvasionPages\TaxEvasionReportMobilePageView.xaml.cs">
       <DependentUpon>TaxEvasionReportMobilePageView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml.cs">
+      <DependentUpon>FinancialDetailAttachmentPopupPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\VATRealEstateServicesPage.xaml.cs">
       <DependentUpon>VATRealEstateServicesPage.xaml</DependentUpon>
     </Compile>
@@ -128,6 +131,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FileAttachmentPopUpPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\IndividualRegistrationPageView.xaml">
