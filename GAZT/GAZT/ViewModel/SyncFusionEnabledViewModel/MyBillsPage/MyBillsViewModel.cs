@@ -391,7 +391,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
-                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
                     if (myBills != null && myBills.Count != 0)
                     {
                         SetNoDataLabelVisibilityALL = false;
@@ -551,20 +553,53 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     string _testDueAmount = testDueAmount.ToString("#,##0");
                     myBills[i].TestDueAmount = _testDueAmount;
                 }
-                if (myBills[i].FAEDN.Contains("T"))
+
+                //Caltype here tells if the date is Hijiri
+                //Incase of the Hijri Date we are converting into Gregorian and displaying it to the user
+                if (myBills[i].CalTyp == "H")
                 {
-                    try { 
-                    string[] _dueDate = new String[2];
-                    _dueDate = myBills[i].FAEDN.Split('T');
+                    string[] _dueDateTemp = new String[2];
+
+                    if (myBills[i].FAEDN.Contains("T"))
+                    {
+                        _dueDateTemp = myBills[i].FAEDN.Split('T');
+                        myBills[i].FAEDN = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
+
+                        CultureInfo cultureInfo = new CultureInfo("ar-sa");
+                        DateTime dateStart = DateTime.ParseExact(myBills[i].FAEDN, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+                        string dateStr = string.Format("{0}/{1}/{2}", day, month, year);
+
+                        myBills[i].FAEDN = dateStr;
+
+                        string dt = string.Empty;
+                        string[] dts = null;
+
+                        dts = myBills[i].FAEDN.Split('/');
+                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                        myBills[i].FAEDN = dt;
+                    }
+                }
+
+                if (myBills[i].FAEDN.Contains("T") && myBills[i].CalTyp != "H")
+                {
+                    try
+                    {
+                        string[] _dueDate = new String[2];
+                        _dueDate = myBills[i].FAEDN.Split('T');
                     
                         myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
 
                         string dt = string.Empty;
                         string[] dts = null;
                         
-                            dts = myBills[i].FAEDN.Split('/');
+                        dts = myBills[i].FAEDN.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                    myBills[i].FAEDN = dt;
+                        myBills[i].FAEDN = dt;
                     }
                     catch(Exception ex)
                     {
@@ -574,5 +609,38 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             return myBills;
         }
+
+        //public string ConvertDateCalendar(DateTime DateConv, string Calendar, string DateLangCulture)
+        //{
+        //    System.Globalization.DateTimeFormatInfo DTFormat;
+        //    DateLangCulture = DateLangCulture.ToLower();
+        //    /// We can't have the hijri date writen in English. We will get a runtime error - LAITH - 11/13/2005 1:01:45 PM -
+
+        //    if (Calendar == "Hijri" && DateLangCulture.StartsWith("en-"))
+        //    {
+        //        DateLangCulture = "ar-AE";
+        //    }
+
+        //    /// Set the date time format to the given culture - LAITH - 11/13/2005 1:04:22 PM -
+        //    DTFormat = new System.Globalization.CultureInfo(DateLangCulture, false).DateTimeFormat;
+        //                /// Set the calendar property of the date time format to the given calendar - LAITH - 11/13/2005 1:04:52 PM -
+        //    switch (Calendar)
+        //    {
+        //        case "Hijri":
+        //            DTFormat.Calendar = new System.Globalization.HijriCalendar();
+        //            break;
+
+        //        case "Gregorian":
+        //            DTFormat.Calendar = new System.Globalization.GregorianCalendar();
+        //            break;
+
+        //        default:
+        //            return "";
+        //    }
+
+        //    /// We format the date structure to whatever we want - LAITH - 11/13/2005 1:05:39 PM -
+        //    DTFormat.ShortDatePattern = "dd/MM/yyyy";
+        //    return (DateConv.Date.ToString("f", DTFormat));
+        //}
     }
 }
