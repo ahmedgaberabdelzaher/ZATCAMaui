@@ -4,12 +4,13 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.Xaml;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
 {
-    [Preserve(AllMembers = true)]
-
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class VATRealEstateServicesPageViewModel : ViewModelBase
     {
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
@@ -17,8 +18,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand BackButtonClicked { get; set; }
+        public ICommand PropertyRegistrationCommand { get; set; }
+        public ICommand RequestVerificationCommand { get; set; }
+        public ICommand TerminateRequestCommand { get; set; }
 
 
+        private bool _isLoading = false;
+        public bool IsLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            set
+            {
+                _isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
         public VATRealEstateServicesPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -36,8 +53,65 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 _navigationService.GoBack();
             });
 
+            this.PropertyRegistrationCommand = new Command(this.PropertyRegistrationCommandClicked);
+            this.RequestVerificationCommand = new Command(this.RequestVerificationCommandClicked);
+            this.TerminateRequestCommand = new Command(this.TerminateRequestCommandClicked);
+
         }
-  
+        private void PropertyRegistrationCommandClicked(object obj)
+        {
+
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstatePropertyRegistration;
+
+                _navigationService.NavigateTo(App.PropertyRegistrationPage);
+                // IsLoading = false;
+            });
+
+
+        }
+        private  void RequestVerificationCommandClicked(object obj)
+        {
+
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateRequestVerification;
+
+                _navigationService.NavigateTo(App.PropertyRegistrationPage);
+                // IsLoading = false;
+            });
+
+
+        }
+        private  void TerminateRequestCommandClicked(object obj)
+        {
+
+            //await Task.Run(() =>
+            //{
+            //    IsLoading = false;
+            //});
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateTerminationOfRequest;
+
+                _navigationService.NavigateTo(App.PropertyRegistrationPage);
+                // IsLoading = false;
+            });
+
+
+        }
         public ObservableCollection<eServiceInfo> eServicesAvailableToTheTP
         {
             get
@@ -50,19 +124,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 this.RaisePropertyChanged("eServicesAvailableToTheTP");
             }
         }
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get
-            {
-                return _isLoading;
-            }
-            set
-            {
-                _isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+
         public void PopulateServicesData()
         {
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();

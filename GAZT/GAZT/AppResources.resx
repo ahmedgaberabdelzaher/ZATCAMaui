@@ -2726,10 +2726,7 @@ Should we require further information, we would be in contact.</value>
     <value>Please fill all the report details before submit</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZRealEstateServiceTitle" xml:space="preserve">
-    <value>VAT Real Estate Transactions for Individuals</value>
-    <comment>VAT Real Estate Service</comment>
-  </data>
+  <data name="ZRealEstateServiceTitle" xml:space="preserve">     <value>VAT Real Estate Transactions</value>     <comment>VAT Real Estate Service</comment>   </data>       <data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">     <value>For Individuals</value>     <comment>VAT Real Estate Service</comment>   </data> 
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
     <value>Property registration request</value>
     <comment>VAT Real Estate Service</comment>
@@ -2933,10 +2930,7 @@ Should we require further information, we would be in contact.</value>
     <value>My Certificate</value>
     <comment>Title</comment>
   </data>
-  <data name="ZZZSignUpTitle" xml:space="preserve">
-    <value>Sign Up</value>
-    <comment>Title</comment>
-  </data>
+  <data name="ZZSignup" xml:space="preserve">     <value>Sign Up as Taxpayer</value>     <comment>Sign Up</comment>   </data>
   <data name="ZZZTINStatusTitle" xml:space="preserve">
     <value>TIN Status</value>
     <comment>Title</comment>

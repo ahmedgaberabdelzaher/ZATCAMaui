@@ -6,23 +6,28 @@
              xmlns:controls="clr-namespace:GAZTeServicesApp.Controls"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
-
+       
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages.PropertyRegistrationPage"
              BackgroundColor="White"
-              NavigationPage.HasNavigationBar="False">
+              NavigationPage.HasNavigationBar="False"
+             >
+ 
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
+        
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZVATRealEstatePropertyRegistration}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView  Title="{TemplateBinding BindingContext.HeaderTitle}"  FontSize="14"   FontFamily="{x:StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+     
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -34,6 +39,7 @@
                              Text="{DynamicResource StyleReverseBack}"
                              />
                     </controls:TitleView.LeadingView>
+                                     
                 </controls:TitleView>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
