@@ -127,6 +127,13 @@
                                            BackgroundColor="White"  Clicked="SignUP_Clicked" Padding="20,0,20,0"
                                            FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     </StackLayout>
+                    <!--<StackLayout VerticalOptions="Center"  HorizontalOptions="CenterAndExpand" Margin="6,0,6,0">
+                        <buttons:SfButton  Style="{StaticResource SfButtonStyle}" CornerRadius="4" HorizontalOptions="Fill"
+                                           BorderWidth="1" VerticalOptions="Center" BorderColor="#d99a29"  HeightRequest="40"
+                                           Text="{x:Static local:AppResources.ZZZZestablishmentsignup}" TextColor="#d99a29"
+                                           BackgroundColor="White"  Clicked="Establishmentsignup_Clicked" Padding="20,0,20,0"
+                                           FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                    </StackLayout>-->
                     <Label Padding="5,0,5,0" Margin="1,13"  TextColor="#006450" Text="{x:Static local:AppResources.ZZeServices}" Style="{StaticResource LabelStyleFromCommonGreenStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Label>
                     <listView:SfListView x:Name="SfListView" SelectionMode="None" AutoFitMode="Height" WidthRequest="{OnIdiom Phone=350, Tablet=320, Desktop=320}"
                                          ItemSpacing="5" ItemsSource="{Binding eServicesAvailableToTheTP}" HorizontalOptions="Center" VerticalOptions="Center">

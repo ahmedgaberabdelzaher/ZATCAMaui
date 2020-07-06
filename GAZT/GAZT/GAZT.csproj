@@ -142,6 +142,9 @@
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATIndividualSignupTnCPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

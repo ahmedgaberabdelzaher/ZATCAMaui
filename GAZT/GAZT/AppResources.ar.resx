@@ -2585,14 +2585,13 @@
     <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-   
-    <data name="ZTEReportStatusNew" xml:space="preserve">
+  <data name="ZTEReportStatusNew" xml:space="preserve">
     <value>مقدمة</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
-       <data name="ZTEReportStatusCompleted" xml:space="preserve">
+  <data name="ZTEReportStatusCompleted" xml:space="preserve">
     <value>مغلقة</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
     <value>تم إنشاء الحساب الجديد بنجاح</value>
@@ -2719,10 +2718,9 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-     <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-    
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
@@ -3818,5 +3816,9 @@
   </data>
   <data name="ZZZZVATRAttachmentSection3" xml:space="preserve">
     <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+  <data name="ZZZZestablishmentsignup" xml:space="preserve">
+    <value>Establishment Signup</value>
+    <comment>New SignUp</comment>
   </data>
 </root>

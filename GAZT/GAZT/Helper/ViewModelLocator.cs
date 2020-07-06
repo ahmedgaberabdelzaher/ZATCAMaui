@@ -179,6 +179,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
 
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
+            SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
 
         }
         public PdfViewModel pdfView
@@ -188,6 +189,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<PdfViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1106,6 +1121,7 @@ namespace EGAZT
             navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
 
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
+            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
             return navigationService;
         }
     }

@@ -58,7 +58,18 @@
                     </Frame.GestureRecognizers>
                 </Frame>
                 </StackLayout>
-            </StackLayout>
+                    <StackLayout Padding="5">
+                        <!--BackgroundColor="DarkGreen"-->
+                        <Frame CornerRadius="5" BackgroundColor="#006450" HeightRequest="100">
+                            <!--Text="Individual Registration"-->
+                            <Label  Text="{x:Static local:AppResources.ZZZZestablishmentsignup}" TextColor="{StaticResource WhiteTextColor}"
+                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}"/>
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
         </yummy:PancakeView>
             <Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" >
                 <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">

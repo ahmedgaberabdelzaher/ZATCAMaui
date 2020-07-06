@@ -1189,7 +1189,7 @@
                                                                 <ColumnDefinition Width="50*"/>
                                                                 <ColumnDefinition Width="50*"/>
                                                             </Grid.ColumnDefinitions>
-                                                            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                            <!--<Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.ZZZVATRSelectanexistingIBAN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
                                                             <cards:SfCardView Grid.Row="1" Grid.Column="0" HasShadow="True"  Margin="3" Padding="0" ShadowColor="#5d6770" 
                                                           BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
                                                                 <Grid>
@@ -1201,8 +1201,8 @@
                                                                             <RowDefinition Height="auto"/>
                                                                         </Grid.RowDefinitions>
                                                                         <StackLayout Grid.Row="1" Spacing="0">
-                                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}"   TextColor="White"/>
-                                                                            <Label Text="...1234"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                            <Label Text="Less than" FontFamily="{StaticResource SSTArLight}" TextColor="White"/>
+                                                                            <Label Text="187,500 SAR"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
                                                                         </StackLayout>
 
                                                                     </Grid>
@@ -1224,8 +1224,8 @@
                                                                             <RowDefinition Height="auto"/>
                                                                         </Grid.RowDefinitions>
                                                                         <StackLayout Grid.Row="1" Spacing="0">
-                                                                            <Label Text="...1234" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
-                                                                            <Label Text="Inma Bank" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                                            <Label Text="Greater than or equal to" VerticalOptions="End" FontFamily="{StaticResource SSTArLight}" TextColor="Black"/>
+                                                                            <Label Text="187,500 SAR" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                                         </StackLayout>
 
                                                                     </Grid>
@@ -1268,8 +1268,8 @@
                                                                             <RowDefinition Height="auto"/>
                                                                         </Grid.RowDefinitions>
                                                                         <StackLayout Grid.Row="1" Spacing="0">
-                                                                            <Label Text="Inma Bank" FontFamily="{StaticResource SSTArabicMedium}"   TextColor="White"/>
-                                                                            <Label Text="...1234"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                            <Label Text="Less than" FontFamily="{StaticResource SSTArLight}" TextColor="White"/>
+                                                                            <Label Text="187,500 SAR"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
                                                                         </StackLayout>
 
                                                                     </Grid>
@@ -1291,8 +1291,8 @@
                                                                             <RowDefinition Height="auto"/>
                                                                         </Grid.RowDefinitions>
                                                                         <StackLayout Grid.Row="1" Spacing="0">
-                                                                            <Label Text="...1234" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
-                                                                            <Label Text="Inma Bank" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
+                                                                            <Label Text="Greater than or equal to" VerticalOptions="End" FontFamily="{StaticResource SSTArLight}" TextColor="Black"/>
+                                                                            <Label Text="187,500 SAR" VerticalOptions="End" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black"/>
                                                                         </StackLayout>
 
                                                                     </Grid>
