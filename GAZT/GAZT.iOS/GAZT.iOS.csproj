@@ -947,4 +947,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_taxpayerDetail%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\individual_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup.png" />
+  </ItemGroup>
 </Project>
