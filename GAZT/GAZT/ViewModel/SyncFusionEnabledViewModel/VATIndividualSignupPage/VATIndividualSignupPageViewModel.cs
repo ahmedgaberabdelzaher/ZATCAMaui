@@ -14,6 +14,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly IDialogService _dialogService;
         
         public Command IndividualRegistrationCommand { get; set; }
+        public Command EstablishmentSignupCommand { get; set; }
 
 
         private bool _isLoading = false;
@@ -43,26 +44,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
 
             this.IndividualRegistrationCommand = new Command(this.OnIndividualRegistrationClicked);
+            this.EstablishmentSignupCommand = new Command(this.OnEstablishmentSignupClicked);
         }
+        //EstablishmentSignupCommand
         private async void OnIndividualRegistrationClicked(object obj)
         {
-            ////IsLoading
-            ////      Device.BeginInvokeOnMainThread(async () =>
-            ////      {
-            //         await  Task.Run(() =>
-            //          {
-            //             IsLoading = true;
-            //          });
-            ////  });
-            //await Task.Run(() =>
-            //{
-            //    _navigationService.NavigateTo(App.IndividualRegistrationPageView);
-            //});
-
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = false;
-            //});
 
             await Task.Run(() =>
             {
@@ -71,12 +57,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             
             Device.BeginInvokeOnMainThread( () =>
           {
-              _navigationService.NavigateTo(App.IndividualRegistrationPageView);
+              _navigationService.NavigateTo(App.VATIndividualSignupTnCPageView);
              // IsLoading = false;
           });
 
             
         }
-      
+        private async void OnEstablishmentSignupClicked(object obj)
+        {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                _navigationService.NavigateTo(App.SignUpTAndCViewPage);
+                // IsLoading = false;
+            });
+
+
+        }
     }
 }

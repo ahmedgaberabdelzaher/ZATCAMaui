@@ -179,6 +179,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
 
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
+            SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
+            SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
         }
@@ -189,6 +191,34 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<PdfViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        } 
+        public FinancialDetailAttachmentPopupPageViewModel FinancialDetailAttachmentPopupPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FinancialDetailAttachmentPopupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1126,9 +1156,8 @@ namespace EGAZT
             navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
 
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
-            navigationService.Configure(App.NewAccountPopUpPageView, typeof(NewAccountPopUpPageView));
-
-            
+            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
+            navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
             return navigationService;
         }
     }

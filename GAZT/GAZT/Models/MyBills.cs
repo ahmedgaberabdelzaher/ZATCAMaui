@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+
 namespace EGAZT.Models
 {
     public class MyBills
@@ -37,7 +39,7 @@ namespace EGAZT.Models
             }
         }
         public string Txt30 { get; set; }
-        public string FAEDN { get; set; } //DueDate
+        public string Faednar { get; set; } //DueDate
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
         private string _status = string.Empty;
@@ -64,6 +66,20 @@ namespace EGAZT.Models
                     StatusImage = "ic_money.png";
                     Colorcode = " #AA0C19";
                 }
+            }
+        }
+
+        public string _cal_typ = String.Empty;
+        public string CalTyp
+        {
+            get
+            {
+                
+                return _cal_typ;
+            }
+            set
+            {
+                _cal_typ = value;
             }
         }
     }

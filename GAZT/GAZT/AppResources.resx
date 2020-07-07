@@ -2611,7 +2611,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Sign Up as Taxpayer</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZTERReportDetailCompanyType1" xml:space="preserve">
@@ -2730,16 +2730,24 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Real Estate Transactions for Individuals</value>
     <comment>VAT Real Estate Service</comment>
   </data>
+      <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
+    <value>VAT Real Estate Transactions</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>       <data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
+    <value>For Individuals</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
-    <value>Property registration request</value>
+    <value>Property Registration Request</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
-    <value>Request verification</value>
+    <value>Request Verification</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
-    <value>Termination of requests</value>
+    <value>Termination of Requests</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
@@ -2933,9 +2941,9 @@ Should we require further information, we would be in contact.</value>
     <value>My Certificate</value>
     <comment>Title</comment>
   </data>
-  <data name="ZZZSignUpTitle" xml:space="preserve">
-    <value>Sign Up</value>
-    <comment>Title</comment>
+  <data name="ZZSignup" xml:space="preserve">
+    <value>Sign Up as Taxpayer</value>
+    <comment>Sign Up</comment>
   </data>
   <data name="ZZZTINStatusTitle" xml:space="preserve">
     <value>TIN Status</value>
@@ -3444,13 +3452,13 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZCreateYourTEAccount" xml:space="preserve">
     <value>Create Your Tax Evasion Account</value>
   </data>
-      <data name="ZTEReportStatusNew" xml:space="preserve">
+  <data name="ZTEReportStatusNew" xml:space="preserve">
     <value>Submitted</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
-       <data name="ZTEReportStatusCompleted" xml:space="preserve">
+  <data name="ZTEReportStatusCompleted" xml:space="preserve">
     <value>Closed</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZZZCity" xml:space="preserve">
     <value>City</value>
@@ -3844,5 +3852,21 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   </data>
   <data name="ZZZZVATRAttachmentSection3" xml:space="preserve">
     <value>What is the type of document that you are submitting to prove whether or not eligible.</value>
+  </data>
+  <data name="ZZZZestablishmentsignup" xml:space="preserve">
+    <value>Establishment Signup</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZIndividualSignupinVAT" xml:space="preserve">
+    <value>Individual Signup in VAT</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProceedtoHomescreen" xml:space="preserve">
+    <value>Proceed to Home screen</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProceedtoVATregistration" xml:space="preserve">
+    <value>Proceed to VAT registration</value>
+    <comment>New SignUp</comment>
   </data>
 </root>

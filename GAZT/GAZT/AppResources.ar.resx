@@ -2585,14 +2585,13 @@
     <value>لتجنب العقوبات، الرجاء عدم إرسال تقارير أو معلومات غير صحيحة الى الهيئة العامة للزكاة والدخل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-   
-    <data name="ZTEReportStatusNew" xml:space="preserve">
+  <data name="ZTEReportStatusNew" xml:space="preserve">
     <value>مقدمة</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
-       <data name="ZTEReportStatusCompleted" xml:space="preserve">
+  <data name="ZTEReportStatusCompleted" xml:space="preserve">
     <value>مغلقة</value>
-         <comment>Tax Evasion Report Service</comment>
+    <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZZAccountCreatedSuccessfully" xml:space="preserve">
     <value>تم إنشاء الحساب الجديد بنجاح</value>
@@ -2611,7 +2610,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
-    <value>تسجيل جديد</value>
+    <value>التسجيل كمكلف</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
@@ -2719,16 +2718,23 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-     <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-    
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZRealEstateServiceTitle" xml:space="preserve">
     <value>ضريبة القيمة المضافة لعقارات الأفراد</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+          <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
+    <value>معاملات ضريبة القيمة المضافة للعقارات</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+<data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
+    <value>للأفراد</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
@@ -3818,5 +3824,21 @@
   </data>
   <data name="ZZZZVATRAttachmentSection3" xml:space="preserve">
     <value>ما هو نوع المستندات المقدمة لإثبات أحقيتك بالتسجيل</value>
+  </data>
+  <data name="ZZZZestablishmentsignup" xml:space="preserve">
+    <value>تسجيل المؤسسات</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZIndividualSignupinVAT" xml:space="preserve">
+    <value>تسجيل الأفراد في ضريبة القيمة المضافة</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProceedtoHomescreen" xml:space="preserve">
+    <value>Proceed to Home screen</value>
+    <comment>New SignUp</comment>
+  </data>
+  <data name="ZZZZProceedtoVATregistration" xml:space="preserve">
+    <value>Proceed to VAT registration</value>
+    <comment>New SignUp</comment>
   </data>
 </root>

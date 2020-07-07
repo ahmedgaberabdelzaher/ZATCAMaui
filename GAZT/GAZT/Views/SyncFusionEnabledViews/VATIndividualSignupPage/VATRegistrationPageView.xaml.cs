@@ -358,7 +358,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void NewAttachment_Clicked(object sender, EventArgs e)
         {
-
+            PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView());
         }
 
         private void TappendOnImporter(object sender, EventArgs e)

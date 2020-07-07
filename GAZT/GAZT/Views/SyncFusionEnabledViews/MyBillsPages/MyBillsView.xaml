@@ -280,7 +280,7 @@
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
-                                                 Text="{Binding FAEDN}"
+                                                 Text="{Binding Faednar}"
                                                           >
                                                                 </local1:CustomLabel>
                                                             </StackLayout>
@@ -438,7 +438,7 @@
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
-                                                 Text="{Binding FAEDN}"
+                                                 Text="{Binding Faednar}"
                                                           >
                                                                 </local1:CustomLabel>
                                                             </StackLayout>
@@ -596,7 +596,7 @@
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
-                                                 Text="{Binding FAEDN}"
+                                                 Text="{Binding Faednar}"
                                                           >
                                                                 </local1:CustomLabel>
                                                             </StackLayout>
@@ -750,7 +750,7 @@
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
                                                            FontFamily="{StaticResource SSTArabicMedium}"
-                                                 Text="{Binding FAEDN}"
+                                                 Text="{Binding Faednar}"
                                                           >
                                                                 </local1:CustomLabel>
                                                             </StackLayout>
