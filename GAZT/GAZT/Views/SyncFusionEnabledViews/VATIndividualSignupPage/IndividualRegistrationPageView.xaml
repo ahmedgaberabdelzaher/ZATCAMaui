@@ -1185,7 +1185,7 @@
 
                                                         <StackLayout Grid.Row="2" Grid.Column="0" >
                                                             <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.EnterOTP}" FontFamily="{StaticResource SSTArabicMedium}"  Padding="0,0,0,0"/>
-                                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
+                                                            <!--<inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry Keyboard="Numeric" MaxLength="4" Text="{Binding OTP}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" WidthRequest="128" 
@@ -1201,6 +1201,23 @@
                                                                         </Image.GestureRecognizers>
                                                                     </Image>
                                                                 </StackLayout>
+                                                            </inputLayout:SfTextInputLayout>-->
+                                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameOTPError}"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                                                    <custom:BorderlessEntry Keyboard="Numeric" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SSTArLight}" Text="{Binding OTP}" FontSize="Small" MaxLength="4"
+                                                                Placeholder="{x:Static local:AppResources.EnterOTP}" WidthRequest="128" IsPassword="{Binding IsOTPEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                    </custom:BorderlessEntry>
+                                                              <inputLayout:SfTextInputLayout.TrailingView>
+                                                              <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeOtp">
+                                                                        <Image.Source>
+                                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                                        </Image.Source>
+                                                                        <Image.GestureRecognizers>
+                                                                            <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                                                                        </Image.GestureRecognizers>
+                                                                    </Image>
+                                                              </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <!--ResendOTP-->
                                                             <buttons:SfButton x:Name="btnResendOtp" Text="{x:Static local:AppResources.ResendOTP}"   FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 

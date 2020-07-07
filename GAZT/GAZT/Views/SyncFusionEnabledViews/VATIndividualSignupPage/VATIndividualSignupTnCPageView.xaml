@@ -47,7 +47,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <WebView x:Name="TCWebView"  HorizontalOptions="FillAndExpand" />
+                    <WebView x:Name="TCWebView" HeightRequest="880" WidthRequest="1000" HorizontalOptions="FillAndExpand" />
                 </Grid>
                
                 <StackLayout Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
