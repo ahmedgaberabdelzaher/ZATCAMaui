@@ -225,7 +225,7 @@
     Hint="{x:Static local:AppResources.ZTERReportDetailRegion}"  x:Name="frmRegionPicker"
     ContainerType="Outlined" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry"  FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Medium">
+                            <custom:BorderlessEntry Text="{Binding TxtReportDetailRegion}" x:Name="Region_entry"  FontFamily="{StaticResource SSTArabicMedium}" IsSpellCheckEnabled="False" FontSize="Small">
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
                                 <inputLayout:LabelStyle FontSize="14">
@@ -297,7 +297,7 @@ HeaderTextColor="White"
     Hint="{x:Static local:AppResources.ZTERReportDetailCity}"  x:Name="FrmCity" 
     ContainerType="Outlined" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Medium"  x:Name="City_entry">
+                            <custom:BorderlessEntry IsSpellCheckEnabled="False" Text="{Binding TxtReportDetailCity}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="Small"  x:Name="City_entry">
                             </custom:BorderlessEntry>
                                <inputLayout:SfTextInputLayout.HintLabelStyle>
                                 <inputLayout:LabelStyle FontSize="14">
@@ -748,7 +748,7 @@ ItemHeight="45" ShowFooter="True"
                 </Frame>-->
                 <!--<Label Text="{x:Static local:AppResources.ZTERChooseReportCategory}"   VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />-->
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
-                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked" BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategoryNextBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="EndAndExpand" Command="{Binding SubmitReportClicked}" Clicked="Button_Clicked" BackgroundColor="#006450" ></buttons:SfButton>
                 </StackLayout>
             </Grid>
             <!--Activity indicator-->

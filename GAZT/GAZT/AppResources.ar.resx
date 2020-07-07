@@ -2610,7 +2610,7 @@
     <comment>Sign Up</comment>
   </data>
   <data name="ZZSignup" xml:space="preserve">
-    <value>تسجيل جديد</value>
+    <value>التسجيل كمكلف</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">
@@ -2727,6 +2727,14 @@
   </data>
   <data name="ZRealEstateServiceTitle" xml:space="preserve">
     <value>ضريبة القيمة المضافة لعقارات الأفراد</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+          <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
+    <value>معاملات ضريبة القيمة المضافة للعقارات</value>
+    <comment>VAT Real Estate Service</comment>
+  </data>
+<data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
+    <value>للأفراد</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">

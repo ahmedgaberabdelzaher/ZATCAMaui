@@ -16,33 +16,36 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
         public VATRealEstateServicesPage()
         {
             InitializeComponent();
-       
-             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel = App.Locator.VATRealEstateServicesPage;
-
-            LoadData();
-            ChangeAeroIcon();
+            viewModel = App.Locator.VATRealEstateServicesPage;
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
             SetLTR();
         }
         private void SetLTR()
         {
-            try
+            if (!App.IsArabic)
             {
-                if (App.IsArabic)
-                {
-                    this.FlowDirection = FlowDirection.RightToLeft;
-                }
-                else
-                {
-                    this.FlowDirection = FlowDirection.LeftToRight;
-                    
-                }
+                this.FlowDirection = FlowDirection.LeftToRight;
+                Image_backArrow.Rotation = 0;
             }
-            catch (Exception gec)
+            else
             {
+                
+                Image_backArrow.Rotation = 180;
             }
         }
- 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            //viewModel.IsLoading = false;
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //your code here;
+            //viewModel.IsLoading = false;
+        }
+
         public void ChangeAeroIcon()
         {
             if (App.IsArabic)
@@ -59,70 +62,68 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
             viewModel.PopulateServicesData();
 
         }
-        private async void OnTappedTest(object sender, EventArgs e)
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
-            string controltype = sender.GetType().ToString();
-            if (controltype == "Xamarin.Forms.Image")
-            {
-                try
-                {
-                    Image arrowImage = sender as Image;
-                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-
-                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-                        viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-                 
-               
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-            if (controltype == "Xamarin.Forms.Label")
-            {
-                try
-                {
-                    Label arrowImage = sender as Label;
-                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-
-                    viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-                    
-                }
-                catch (Exception ex)
-                {
-                }
-            }
-            if (controltype == "Xamarin.Forms.StackLayout")
-            {
-                try
-                {
-                    Label arrowImage = sender as Label;
-                    eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                    PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-                    viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-                 
-                }
-                catch (Exception ex)
-                {
-                }
-            }
+            viewModel._navigationService.GoBack();
         }
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
-        }
+        /* private async void OnTappedTest(object sender, EventArgs e)
+         {
+             await Task.Run(() =>
+             {
+                 viewModel.IsLoading = false;
+             });
+             string controltype = sender.GetType().ToString();
+             if (controltype == "Xamarin.Forms.Image")
+             {
+                 try
+                 {
+                     Image arrowImage = sender as Image;
+                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+
+                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
+
+                         viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+
+
+                 }
+                 catch (Exception ex)
+                 {
+                 }
+             }
+             if (controltype == "Xamarin.Forms.Label")
+             {
+                 try
+                 {
+                     Label arrowImage = sender as Label;
+                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
+
+
+                     viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+
+
+                 }
+                 catch (Exception ex)
+                 {
+                 }
+             }
+             if (controltype == "Xamarin.Forms.StackLayout")
+             {
+                 try
+                 {
+                     Label arrowImage = sender as Label;
+                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
+                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
+
+                     viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
+
+
+                 }
+                 catch (Exception ex)
+                 {
+                 }
+             }
+         }*/
+    
     }
 }

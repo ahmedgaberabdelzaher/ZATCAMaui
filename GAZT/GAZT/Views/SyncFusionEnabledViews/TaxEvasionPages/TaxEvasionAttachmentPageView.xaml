@@ -160,7 +160,7 @@
                             </listView:SfListView.ItemTemplate>
                         </listView:SfListView>
                     <StackLayout Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2"  Margin="0,0,0,0"  BackgroundColor="White">
-                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="Start" Command="{Binding SubmitReportClicked}"   BackgroundColor="#006450" Opacity="0.7" ></buttons:SfButton>
+                    <buttons:SfButton Text="{x:Static local:AppResources.ZTEReportCategorySubmitBtn}" HeightRequest="56"  x:Name="submit_btnmane" IsEnabled="{Binding IsSubmitButtonEnable}" Style="{StaticResource SfButtonStyle}" Margin="0" Padding="0" CornerRadius="0" VerticalOptions="Start" Command="{Binding SubmitReportClicked}"   BackgroundColor="#006450" ></buttons:SfButton>
                 </StackLayout>
             
              

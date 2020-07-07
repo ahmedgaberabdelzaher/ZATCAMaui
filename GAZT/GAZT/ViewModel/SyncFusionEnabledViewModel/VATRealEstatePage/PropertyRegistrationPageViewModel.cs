@@ -27,6 +27,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 RaisePropertyChanged("WebUrl");
             }
         }
+
         private string _title = string.Empty;
         public string HeaderTitle
         {
@@ -69,6 +70,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             {
                 _navigationService.GoBack();
             });
+
+
         }
     }
 }
