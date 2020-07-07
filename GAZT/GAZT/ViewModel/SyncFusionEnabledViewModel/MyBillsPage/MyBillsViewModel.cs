@@ -588,7 +588,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
                         DateTime dateStart = new DateTime();
 
-                        CultureInfo cultureInfo = new CultureInfo("ar-sa");
+                        CultureInfo cultureInfo = new CultureInfo("en-us");
 
                         if(App.IsArabic)
                         {
