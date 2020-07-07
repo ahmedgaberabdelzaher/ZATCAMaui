@@ -5766,12 +5766,6 @@ namespace EGAZT {
             }
         }
         
-        public static string ZZZZProvinceRegion {
-            get {
-                return ResourceManager.GetString("ZZZZProvinceRegion", resourceCulture);
-            }
-        }
-        
         public static string ZZZZAtleast8characterslong {
             get {
                 return ResourceManager.GetString("ZZZZAtleast8characterslong", resourceCulture);
@@ -5825,67 +5819,7 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZIndividualRegistration", resourceCulture);
             }
         }
-        
-        public static string ZZZZNationalAddress {
-            get {
-                return ResourceManager.GetString("ZZZZNationalAddress", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZNeighborhood {
-            get {
-                return ResourceManager.GetString("ZZZZNeighborhood", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZNotexceed16characters {
-            get {
-                return ResourceManager.GetString("ZZZZNotexceed16characters", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZNumbersandsymbols {
-            get {
-                return ResourceManager.GetString("ZZZZNumbersandsymbols", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZPersonalInformation {
-            get {
-                return ResourceManager.GetString("ZZZZPersonalInformation", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZPostalCode {
-            get {
-                return ResourceManager.GetString("ZZZZPostalCode", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZRegisterinVATNow {
-            get {
-                return ResourceManager.GetString("ZZZZRegisterinVATNow", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZRegistrationSuccessful {
-            get {
-                return ResourceManager.GetString("ZZZZRegistrationSuccessful", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZRepeatPassword {
-            get {
-                return ResourceManager.GetString("ZZZZRepeatPassword", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZReviewinformation {
-            get {
-                return ResourceManager.GetString("ZZZZReviewinformation", resourceCulture);
-            }
-        }
-        
+
         public static string ZZZZSummery {
             get {
                 return ResourceManager.GetString("ZZZZSummery", resourceCulture);
@@ -6255,24 +6189,6 @@ namespace EGAZT {
         public static string ZZZZBahrain {
             get {
                 return ResourceManager.GetString("ZZZZBahrain", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZKuwait {
-            get {
-                return ResourceManager.GetString("ZZZZKuwait", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZOman {
-            get {
-                return ResourceManager.GetString("ZZZZOman", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZQatar {
-            get {
-                return ResourceManager.GetString("ZZZZQatar", resourceCulture);
             }
         }
         
