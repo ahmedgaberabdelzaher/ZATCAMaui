@@ -2739,15 +2739,15 @@ Should we require further information, we would be in contact.</value>
   </data>
 
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
-    <value>Property registration request</value>
+    <value>Property Registration Request</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstateRequestVerification" xml:space="preserve">
-    <value>Request verification</value>
+    <value>Request Verification</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZVATRealEstateTerminationOfRequest" xml:space="preserve">
-    <value>Termination of requests</value>
+    <value>Termination of Requests</value>
     <comment>VAT Real Estate Service</comment>
   </data>
   <data name="ZZYourEntitytypeisIndividual" xml:space="preserve">

@@ -560,13 +560,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 {
                     string[] _dueDateTemp = new String[2];
 
-                    if (myBills[i].FAEDN.Contains("T"))
+                    if (myBills[i].Faednar.Contains("T"))
                     {
-                        _dueDateTemp = myBills[i].FAEDN.Split('T');
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
+                        _dueDateTemp = myBills[i].Faednar.Split('T');
+                        myBills[i].Faednar = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
 
                         CultureInfo cultureInfo = new CultureInfo("ar-sa");
-                        DateTime dateStart = DateTime.ParseExact(myBills[i].FAEDN, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                        DateTime dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
 
                         GregorianCalendar hjCalendar = new GregorianCalendar();
                         int year = hjCalendar.GetYear(dateStart);
@@ -574,38 +574,102 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         int day = hjCalendar.GetDayOfMonth(dateStart);
                         string dateStr = string.Format("{0}/{1}/{2}", day, month, year);
 
-                        myBills[i].FAEDN = dateStr;
+                        myBills[i].Faednar = dateStr;
 
                         string dt = string.Empty;
                         string[] dts = null;
 
-                        dts = myBills[i].FAEDN.Split('/');
+                        dts = myBills[i].Faednar.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        myBills[i].FAEDN = dt;
+                        myBills[i].Faednar = dt;
+                    }
+                    else
+                    {
+                        //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
+                        DateTime dateStart = new DateTime();
+
+                        CultureInfo cultureInfo = new CultureInfo("ar-sa");
+
+                        if(App.IsArabic)
+                        {
+                            dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                        }
+                        else
+                        {
+                            dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                        }
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                        myBills[i].Faednar = dateStr;
+
+                        string dt = string.Empty;
+                        string[] dts = null;
+
+                        dts = myBills[i].Faednar.Split('/');
+                        dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                        myBills[i].Faednar = dt;
                     }
                 }
 
-                if (myBills[i].FAEDN.Contains("T") && myBills[i].CalTyp != "H")
+                if (myBills[i].Faednar.Contains("T") && myBills[i].CalTyp == "G")
                 {
                     try
                     {
                         string[] _dueDate = new String[2];
-                        _dueDate = myBills[i].FAEDN.Split('T');
+                        _dueDate = myBills[i].Faednar.Split('T');
                     
-                        myBills[i].FAEDN = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                        myBills[i].Faednar = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
 
                         string dt = string.Empty;
                         string[] dts = null;
                         
-                        dts = myBills[i].FAEDN.Split('/');
+                        dts = myBills[i].Faednar.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-                        myBills[i].FAEDN = dt;
+                        myBills[i].Faednar = dt;
                     }
                     catch(Exception ex)
                     {
 
                     }
                 }
+                else if(myBills[i].CalTyp == "G")
+                {
+                    DateTime dateStart = new DateTime();
+                    CultureInfo cultureInfo = new CultureInfo("en-us");
+
+                    if (App.IsArabic)
+                    {
+                        dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    }
+                    else
+                    {
+                        dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
+                    }
+
+                    //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
+                    GregorianCalendar hjCalendar = new GregorianCalendar();
+                    int year = hjCalendar.GetYear(dateStart);
+                    int month = hjCalendar.GetMonth(dateStart);
+                    int day = hjCalendar.GetDayOfMonth(dateStart);
+                    string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                    myBills[i].Faednar = dateStr;
+
+                    string dt = string.Empty;
+                    string[] dts = null;
+
+                    dts = myBills[i].Faednar.Split('/');
+                    dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+                    myBills[i].Faednar = dt;
+                }
+
             }
             return myBills;
         }
