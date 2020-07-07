@@ -1049,7 +1049,7 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xhdpi\re_Request_Verification.png.png">
+    <AndroidResource Include="Resources\drawable-xhdpi\re_Request_Verification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
