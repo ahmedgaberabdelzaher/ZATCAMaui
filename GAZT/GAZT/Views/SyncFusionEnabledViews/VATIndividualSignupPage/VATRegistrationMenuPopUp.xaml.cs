@@ -1,4 +1,5 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.Models;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private async void OnAttachmentTapped(object sender, EventArgs e)
         {
             await attach.TranslateTo(0, 0, 0, Easing.BounceOut);
-           
-            
-            await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+            VATRegistrationDetails vatReg = null;
+
+             await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
     }
 }

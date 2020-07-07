@@ -1,7 +1,9 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,7 +60,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DpEStartDate_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try
+            {
+                var selectedItem = DpEStartDate.SelectedItem as ObservableCollection<object>;
+                string month = selectedItem[1].ToString();
+                string day = selectedItem[0].ToString();
+                string year = selectedItem[2].ToString();
+                viewModel.VatEligibleStartDate = day+"/"+ month+"/"+ year;
+      //          string DOB = year + month + day;
+     
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
         private void DpEStartDate_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -73,12 +88,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnImporter_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+            VATRegistrationDetails vatReg = null;
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
 
         private void btnExporter_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+            VATRegistrationDetails vatReg = null;
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
 
         private void NewAccount_Clicked(object sender, EventArgs e)
@@ -321,9 +338,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             //}
         }
 
+      
+
         private void btnAttachmentDocuments_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView());
+            VATRegistrationDetails vATRegistrationDetails = null;
+            PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vATRegistrationDetails));
         }
 
         private void TappedOnMenu(object sender, EventArgs e)
@@ -337,6 +357,112 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
 
         private void NewAttachment_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TappendOnImporter(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                {
+                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterTextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ImporterTextColor = Color.White;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void TappendOnExporter(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                {
+                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterTextColor = Color.Black;
+                }
+                else
+                {
+                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ExporterTextColor = Color.White;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
+                viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
+                
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        private void DDlIDTypeFR_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
+                viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+        }
+
+        private void DDlIDTypeFR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void IDTypeSR_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private async void ImporterExporterAttachment(object sender, EventArgs e)
+        {
+            try
+            {
+                VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
+                PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+       
+
+        private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
         {
 
         }

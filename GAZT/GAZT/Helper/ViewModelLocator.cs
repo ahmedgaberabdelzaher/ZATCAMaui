@@ -179,6 +179,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
 
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
+            SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
         }
         public PdfViewModel pdfView
@@ -1034,6 +1035,25 @@ namespace EGAZT
                 }
             }
         }
+
+        public NewAccountPopUpPageViewModel NewAccountPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewAccountPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1106,6 +1126,9 @@ namespace EGAZT
             navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
 
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
+            navigationService.Configure(App.NewAccountPopUpPageView, typeof(NewAccountPopUpPageView));
+
+            
             return navigationService;
         }
     }

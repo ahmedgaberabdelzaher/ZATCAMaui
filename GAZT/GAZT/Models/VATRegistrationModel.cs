@@ -150,7 +150,7 @@ public class QUESTIONSSet
 
     public class ATTDETSet
 {
-        public List <ResultsForATTDETSet> results { get; set; }
+        public List <Attachment> results { get; set; }
 }
 
 
@@ -232,5 +232,11 @@ public class VATRegistrationDetails
 {
         public vATRegistration d { get; set; }
 }
-
+    public enum IsComeFromForAttachment
+    {
+       Import=0,
+       Export=1,
+       General=3,
+       FinancialReprsentative=4
+    }
 }
