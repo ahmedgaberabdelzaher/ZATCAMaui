@@ -959,4 +959,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_listofsignup.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_location%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_location%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_phone%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_ic_phone%403x.png" />
+  </ItemGroup>
 </Project>
