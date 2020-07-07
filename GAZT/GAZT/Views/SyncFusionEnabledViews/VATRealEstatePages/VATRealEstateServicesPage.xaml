@@ -67,8 +67,8 @@
 
                                />
                                 <Image Source="re_Property_Registration.png" HorizontalOptions="Start" Margin="20,-20,20,0"/>
-                            <Label Text="{x:Static local:AppResources.ZVATRealEstatePropertyRegistration}" Margin="20,40,20,0" TextColor="{StaticResource WhiteTextColor}"
-                           HorizontalOptions="Start" VerticalOptions="Center" FontSize="Micro" FontFamily="{StaticResource SSTArabicMedium}"/>
+                            <Label Text="{x:Static local:AppResources.ZVATRealEstatePropertyRegistration}" Margin="20,50,20,0" TextColor="{StaticResource WhiteTextColor}"
+                           HorizontalOptions="Start" VerticalOptions="Center" FontSize="10"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"/>
                               </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding PropertyRegistrationCommand}"/>
@@ -82,8 +82,8 @@
                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Image Source="re_Tile_Background_White.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                                 <Image Source="re_Request_Verification.png"  HorizontalOptions="Start" Margin="20,-15,20,0"/>
-                            <Label Text="{x:Static local:AppResources.ZVATRealEstateRequestVerification}" Margin="20,60,20,0"  TextColor="#006450"
-                           HorizontalOptions="Start" VerticalOptions="Center" FontSize="Micro"  FontFamily="{StaticResource SSTArabicMedium}"/>
+                            <Label Text="{x:Static local:AppResources.ZVATRealEstateRequestVerification}" Margin="20,50,20,0"  TextColor="#006450"
+                           HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="10"  FontFamily="{StaticResource SSTArabicMedium}"/>
                               </Grid>
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding RequestVerificationCommand}"/>
@@ -97,8 +97,8 @@
                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                         <Image Source="re_Tile_Background_White.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
                                 <Image Source="re_Termination_Request.png"  HorizontalOptions="Start" Margin="20,-15,20,0"/>
-                         <Label HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZVATRealEstateTerminationOfRequest}" Margin="12,60,20,0"  TextColor="#006450"
-                           HorizontalOptions="Start" VerticalOptions="Center" FontSize="Micro"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"/>
+                         <Label HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZVATRealEstateTerminationOfRequest}" Margin="15,55,20,0"  TextColor="#006450"
+                           HorizontalOptions="Start" VerticalOptions="Center" FontSize="10" LineBreakMode="NoWrap"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"/>
                 
                               </Grid>
                     <Frame.GestureRecognizers>
