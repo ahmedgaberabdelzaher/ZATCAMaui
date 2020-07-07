@@ -343,10 +343,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     App.LoginDataRetrieved.MsgTitle = AppResources.Information;
                                 }
 
-                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                //hybridWebView.RefreshCommand();
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                ////hybridWebView.RefreshCommand();
 
-                                LogoffUser();
+                                 LogoffUser();
 
                                 // Test code for implementing the VAT Registration
                                 //if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")

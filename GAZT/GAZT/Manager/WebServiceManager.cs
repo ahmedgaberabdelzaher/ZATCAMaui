@@ -5868,7 +5868,8 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,ELGBL_DOCSet&$format=json";
-                    //client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATRegistrationDataResponse = await client.GetAsync(uri);
                     if (GAZTVATRegistrationDataResponse != null)
@@ -5896,6 +5897,20 @@ namespace GAZT.Manager
                         }
                         String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
                         vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
+                        if(!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails==null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new Exception(errorMessage);
+                            }
+                        }
                     }
                     return vATRegistrationDetails;
                 }
@@ -5924,6 +5939,7 @@ namespace GAZT.Manager
                     Char lang = WebServiceManager.GetLangZParameter();
                     String url = Constants.GAZTGetVATRegistrationOtherDetails + Fbnumz + "',Lang='" + lang + "',Officer='" + Officerz + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + Status + "',TxnTp='" + "CRE_RGVT" + "',Formproc='" + "ZTAX_VT_REG" + "')?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
                     if (GAZTVATRegistrationDataOtherResponse != null)
@@ -5951,6 +5967,22 @@ namespace GAZT.Manager
                         }
                         String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
                         vATRegistrationOtherDetails = JsonConvert.DeserializeObject<VATRegistrationOtherDetails>(VatRegistrationOtherData);
+
+                        if (!string.IsNullOrEmpty(VatRegistrationOtherData) && vATRegistrationOtherDetails == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationOtherData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
+                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new Exception(errorMessage);
+                            }
+                        }
+
                     }
                     return vATRegistrationOtherDetails;
                 }

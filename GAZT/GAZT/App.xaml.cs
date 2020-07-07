@@ -96,6 +96,7 @@ namespace EGAZT
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
         
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
+        public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;

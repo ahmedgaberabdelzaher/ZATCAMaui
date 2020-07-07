@@ -1069,7 +1069,7 @@
                                                             <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
                                                                     <custom:BorderlessEntry HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" MaxLength="16"
-                                                                Placeholder="{x:Static local:AppResources.NewPassword}" WidthRequest="128" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                Placeholder="{x:Static local:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                     </custom:BorderlessEntry>
                                                               <inputLayout:SfTextInputLayout.TrailingView>
                                                               <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword">

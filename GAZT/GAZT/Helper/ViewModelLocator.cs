@@ -181,6 +181,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
+            SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
         }
         public PdfViewModel pdfView
@@ -1064,6 +1065,25 @@ namespace EGAZT
                 }
             }
         }
+
+        public NewAccountPopUpPageViewModel NewAccountPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NewAccountPopUpPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {

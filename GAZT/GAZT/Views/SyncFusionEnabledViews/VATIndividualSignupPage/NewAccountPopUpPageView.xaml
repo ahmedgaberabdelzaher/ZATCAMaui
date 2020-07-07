@@ -47,20 +47,20 @@
                         </StackLayout>
                         <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
                         <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
-                            <custom:BorderlessEntry Placeholder="03" MaxLength="2" FontAttributes="Bold" FontSize="Small"/>
+                            <custom:BorderlessEntry Placeholder="03" MaxLength="2" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"/>
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry Placeholder="80000000" MaxLength="8" FontAttributes="Bold" FontSize="Small"/>
+                            <custom:BorderlessEntry Placeholder="80000000" MaxLength="8" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}"/>
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small"/>
+                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}"/>
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small"/>
+                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}"/>
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small"/>
+                            <custom:BorderlessEntry Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <buttons:SfButton x:Name="btnAddAccount" Text="Add Account" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+            <buttons:SfButton x:Name="btnAddAccount" Text="Add Account" Clicked="IbanAddButtonClicked" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                   HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
         </StackLayout>

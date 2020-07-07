@@ -1,4 +1,7 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using GAZT.Helper;
+using GAZT.Manager;
+using Rg.Plugins.Popup.Pages;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -19,12 +22,54 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewAccountPopUpPageView : PopupPage
     {
+        NewAccountPopUpPageViewModel viewModel;
         public NewAccountPopUpPageView()
         {
             InitializeComponent();
+            viewModel = App.Locator.NewAccountPopUpPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            this.BindingContext = viewModel;
             SetLTR();
         }
+
+        private void Checked_IBAN()
+        {
+            try
+            {
+                try
+                {
+                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                    if (response != null)
+                    {
+                        viewModel.IsIBANValid = true;
+                    }
+                    else
+                    {
+                        viewModel.IsIBANValid = false;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                        });
+                    }
+                }
+                catch (InternetException ex)
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                viewModel.IsIBANValid = false;
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                });
+            }
+        }
+
         private void SetLTR()
         {
             try
@@ -47,6 +92,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             catch (Exception gec)
             {
             }
+        }
+
+        private void IbanAddButtonClicked(object sender, EventArgs e)
+        {
+            viewModel.IbanNumberText = string.Empty;
+            viewModel.IbanNumberText = "SA"+viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
+            Checked_IBAN();
         }
     }
 }
