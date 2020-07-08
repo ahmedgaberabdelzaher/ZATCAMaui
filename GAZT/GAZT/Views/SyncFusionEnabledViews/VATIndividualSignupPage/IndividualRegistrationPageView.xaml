@@ -180,9 +180,9 @@
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                                         <custom:BorderlessEntry Text="{Binding IdNumber}" FontFamily="{StaticResource SSTArLight}" x:Name="EntryIDNumber" Keyboard="Numeric" FontSize="Small" Unfocused="EntryIDNumber_Unfocused"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="GAZTBorderlessEntry_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                                            <!--<Entry.Behaviors>
-                                            <custom1:OnlyNumericValuesBehaviour/>
-                                        </Entry.Behaviors>-->
+                                                            <Entry.Behaviors>
+                                                                <custom1:OnlyNumericValuesBehaviour/>
+                                                            </Entry.Behaviors>
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
