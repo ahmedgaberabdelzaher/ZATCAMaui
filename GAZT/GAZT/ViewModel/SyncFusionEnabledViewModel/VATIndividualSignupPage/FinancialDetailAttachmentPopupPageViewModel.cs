@@ -42,6 +42,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ResultsItemForDOCSet");
             }
         }
+        private ResultsItemForDOCSet _selectedResultsItemForDOCSet = null;
+        public ResultsItemForDOCSet SelectedResultsItemForDOCSet
+        {
+            get
+            {
+                return _selectedResultsItemForDOCSet;
+            }
+            set
+            {
+                _selectedResultsItemForDOCSet = value;
+                RaisePropertyChanged("SelectedResultsItemForDOCSet");
+            }
+        }
         private ELGBL_DOCSet _eLGBL_DOCSet = null;
         public ELGBL_DOCSet ELGBL_DOCSet
         {
@@ -53,6 +66,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _eLGBL_DOCSet = value;
                 RaisePropertyChanged("ELGBL_DOCSet");
+            }
+        }
+
+        private string _attachmentTypeTxt = null;
+        public string AttachmentTypeTxt
+        {
+            get
+            {
+                return _attachmentTypeTxt;
+            }
+            set
+            {
+                _attachmentTypeTxt = value;
+                RaisePropertyChanged("AttachmentTypeTxt");
             }
         }
 

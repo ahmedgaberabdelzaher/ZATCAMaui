@@ -50,12 +50,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+           // SelectedResultsItemForDOCSet
+                  ResultsItemForDOCSet selectedtyp = (ResultsItemForDOCSet)e.NewValue;
 
+            AttachmentTypePicker.SelectedItem = selectedtyp;
+            //viewModel.SelectedResultsItemForDOCSet = null;
+            viewModel.SelectedResultsItemForDOCSet = selectedtyp;
+            viewModel.AttachmentTypeTxt = selectedtyp.Txt50;
         }
 
         private void btn1_Clicked(object sender, EventArgs e)
         {
             AttachmentTypePicker.IsOpen = true;
+        }
+
+        private void btnAddAccount_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

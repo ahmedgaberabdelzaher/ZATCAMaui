@@ -127,8 +127,8 @@
                             <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
-                                <StackLayout Orientation="Horizontal">
-                                    <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
+                                <StackLayout Orientation="Horizontal" x:Name="ExploreAttachmentLayout">
+                                    <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
                                     </custom:BorderlessEntry>
                                     <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                         <Image.Source>
@@ -136,6 +136,11 @@
                                                     Glyph="{x:Static FontImage:IconFonts.Attachment}" />
                                         </Image.Source>
                                     </Image>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped">
+                                            
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -144,7 +149,9 @@
                 </StackLayout>
                 <buttons:SfButton x:Name="btnAddAccount" Text="Add Account" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                   HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                              BackgroundColor="#d49504" BorderWidth="0" />
+                              BackgroundColor="#d49504" Clicked="btnAddAccount_Clicked" BorderWidth="0" />
+                
+                
             </StackLayout>
             
 
