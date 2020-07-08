@@ -96,7 +96,7 @@
                         <custom:CustomButton  Grid.Row="1" x:Name="btn1" Clicked="btn1_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                         </custom:CustomButton>
 
-                        <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
+                        <syncfusion:SfPicker x:Name="AttachmentTypePicker" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static custom2:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
                                     UnSelectedItemFontSize="14" SelectedIndex="{Binding IDTypeIndex}" 
@@ -114,7 +114,7 @@
                                                  CancelButtonBackgroundColor="#EAF7CC"
                                                  BackgroundColor="#EAF7CC"
                        ItemHeight="40"
-                         DisplayMemberPath="Name" ItemsSource="{Binding IdTypeList}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="0,0,0,0"
+                         DisplayMemberPath="Txt50" ItemsSource="{Binding ResultsItemForDOCSet}"  SelectionChanged="DDlIDType_SelectionChanged" Margin="0,0,0,0"
                         PickerHeight="200"
                         PickerWidth="270"
                          FooterHeight="46" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked">

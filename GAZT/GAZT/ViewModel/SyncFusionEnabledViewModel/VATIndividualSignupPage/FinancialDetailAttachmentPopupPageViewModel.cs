@@ -29,6 +29,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public int NumberOfAttachmentComingFromServer = 0;
 
         #region Property
+        private List<ResultsItemForDOCSet> _resultsItemForDOCSet = null;
+        public List<ResultsItemForDOCSet>  ResultsItemForDOCSet 
+        {
+            get
+            {
+                return _resultsItemForDOCSet;
+            }
+            set
+            {
+                _resultsItemForDOCSet = value;
+                RaisePropertyChanged("ResultsItemForDOCSet");
+            }
+        }
+        private ELGBL_DOCSet _eLGBL_DOCSet = null;
+        public ELGBL_DOCSet ELGBL_DOCSet
+        {
+            get
+            {
+                return _eLGBL_DOCSet;
+            }
+            set
+            {
+                _eLGBL_DOCSet = value;
+                RaisePropertyChanged("ELGBL_DOCSet");
+            }
+        }
+
+
+
         private bool _isLoading = false;
         public bool IsLoading
         {
