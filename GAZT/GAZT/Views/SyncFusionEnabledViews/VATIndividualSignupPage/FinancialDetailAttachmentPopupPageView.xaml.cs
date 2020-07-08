@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using Rg.Plugins.Popup.Pages;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     public partial class FinancialDetailAttachmentPopupPageView : PopupPage
     {
         FinancialDetailAttachmentPopupPageViewModel viewModel;
-        public FinancialDetailAttachmentPopupPageView()
+        public FinancialDetailAttachmentPopupPageView(ELGBL_DOCSet _eLGBL_DOCSet)
         {
             InitializeComponent();
             viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
+            
+            viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
+            viewModel.ResultsItemForDOCSet = new List<ResultsItemForDOCSet>();
+            viewModel.ELGBL_DOCSet = _eLGBL_DOCSet;
+            viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
         }
         private void SetLTR()
         {
@@ -49,7 +55,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btn1_Clicked(object sender, EventArgs e)
         {
-
+            AttachmentTypePicker.IsOpen = true;
         }
     }
 }
