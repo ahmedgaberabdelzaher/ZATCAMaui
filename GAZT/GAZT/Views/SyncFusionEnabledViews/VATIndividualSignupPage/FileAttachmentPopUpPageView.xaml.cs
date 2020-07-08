@@ -48,17 +48,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         int AttachmentCount = 0;
                         foreach (var item in viewModel.VatAttachmentsList)
                         {
-                                    if (item.Erfdt != null)
+                                    if (item.Erfdt != null && item.Erftm!=null)
                                     {
                                         item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                         item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                     }
                         }
+                    viewModel.filterList();
                     viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                 }
             }
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
+            //comment because main button remains enabled
+            //  viewModel.IsSwichButtonEnable = false;
+        }
         public void SetDocType()
         {
             if(viewModel.IsComeFromForAttachment==IsComeFromForAttachment.Import)
@@ -186,7 +194,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                             viewModel.VatAttachmentsList.Remove(listitem);
                             viewModel.AttachmentList.Remove(listitemTwo);
-                            viewModel.VATDeclarationDataForAttch.d.ATTACHSet.results.Remove(listitem);
+                            viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
                             //if (indexToReduceTheSize != -1)
                                // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
