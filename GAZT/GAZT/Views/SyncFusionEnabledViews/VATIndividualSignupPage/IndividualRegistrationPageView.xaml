@@ -60,11 +60,7 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100*"/>
                         </Grid.ColumnDefinitions>
-
-
-
-
-                        <ScrollView Grid.Row="0"  Padding="10,0,10,10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand">
+                        <ScrollView Grid.Row="0"  Padding="10,0,10,10" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" >
                             <StackLayout BackgroundColor="White" Spacing="0" Padding="0" Margin="0">
 
                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
@@ -89,11 +85,11 @@
                                         </Grid.ColumnDefinitions>
                                         <StackLayout Grid.Row="0">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZIndividualRegistration}"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" />
-                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}"  Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
 
-                                        <ScrollView Grid.Row="1">
+                                        <ScrollView Grid.Row="1" Padding="10,0,10,0">
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
@@ -402,11 +398,11 @@
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNationalAddress}"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" />
+                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            <ScrollView IsVisible="{Binding NationalAddressView}">
+                                            <ScrollView IsVisible="{Binding NationalAddressView}"  Padding="10,0,10,0">
                                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                                         ColumnSpacing="0" RowSpacing="0" BackgroundColor="White">
                                                     <Grid.RowDefinitions>
@@ -744,11 +740,11 @@
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZContactInformation}"   VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" />
+                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZCompletethebelowdetails}" />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            <ScrollView>
+                                            <ScrollView  Padding="10,0,10,0">
                                                 <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                         ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                     <Grid.RowDefinitions>
@@ -868,7 +864,7 @@
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZSummery}"   VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZReviewinformation}" />
+                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZReviewinformation}" />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
@@ -976,7 +972,7 @@
                                                             </Image.Source>
                                                         </Image>
                                                         <!--<Image Source="vat_ic_phone.png" Aspect="AspectFit" HeightRequest="30"/>-->
-                                                        <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"   FontSize="Medium" TextColor="Black"/>
+                                                        <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"  FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <Grid Padding="10,5,10,10">
@@ -1015,11 +1011,11 @@
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"   Text="{x:Static local:AppResources.Password}"  VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZCreateasecurePassword}"   />
+                                            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZCreateasecurePassword}"   />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            <ScrollView>
+                                            <ScrollView Padding="10,0,10,0">
                                                 <StackLayout>
                                                     <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                                         ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
@@ -1125,7 +1121,7 @@
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" />
+                                                                <Label  FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image HorizontalOptions="Start">
@@ -1134,7 +1130,7 @@
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                                <Label FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" />
+                                                                <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image HorizontalOptions="Start">
@@ -1143,7 +1139,7 @@
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                                <Label FontFamily="{StaticResource SSTArabicMedium}" Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" />
+                                                                <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
                                                             </StackLayout>
 
                                                             <StackLayout Orientation="Horizontal">
@@ -1153,7 +1149,7 @@
                                                 Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                                                                     </Image.Source>
                                                                 </Image>
-                                                                <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}"/>
+                                                                <Label  FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />
                                                             </StackLayout>
                                                         </StackLayout>
                                                     </Grid>
