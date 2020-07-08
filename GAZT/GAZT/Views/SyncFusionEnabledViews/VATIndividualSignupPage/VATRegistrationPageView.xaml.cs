@@ -1751,5 +1751,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
+
+        private void Slider_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void Slider1_Unfocused(object sender, FocusEventArgs e)
+        {
+
+        }
+
+        private void slider1_completed(object sender, EventArgs e)
+        {
+
+        }
     }
 }
