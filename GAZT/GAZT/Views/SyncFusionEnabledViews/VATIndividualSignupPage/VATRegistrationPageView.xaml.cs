@@ -840,8 +840,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         else
                         {
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                          //  EntryName.IsEnabled = false;
+                          //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                           // viewModel.DOB = vATSignUpData.d.Birthdt10;
+                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
+                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                            viewModel.IdnumberFR = vATSignUpData.d.Idnum;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            //  EntryName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
                         }
