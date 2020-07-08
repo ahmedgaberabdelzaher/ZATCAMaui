@@ -355,6 +355,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                         uploadedDate = uploadedDate.Replace("‘", "");
                                                         uploadedDate = uploadedDate.Replace("UTC", "GMT");
                                                         _attachment.d.Erfdt = uploadedDate;
+                                                        _attachment.d.Dotyp = DocTypeString;
                                                         VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
                                                         Device.BeginInvokeOnMainThread(async () =>
@@ -390,6 +391,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                             }
                                                         }
                                                         AttachmentCount++;
+                                                        filterList();
                                                         CloneAttachmentList(VatAttachmentsList);
                                                         // TotalAttachmentSize += AttachmentSize;
                                                         AttachmentName = string.Empty;
@@ -456,6 +458,30 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             }
         }
+
+        public void filterList()
+        {
+            try
+            {
+                if (VatAttachmentsList != null && VatAttachmentsList.Count != 0)
+                {
+                    List<Attachment> attachmentsList = new List<Attachment>();
+                    foreach (var item in VatAttachmentsList)
+                    {
+                        if (item.Dotyp == DocTypeString)
+                        {
+                            attachmentsList.Add(item);
+                        }
+                    }
+                    VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType,string Doctype)
         {
             AttachmentRootOject _attachment = null;

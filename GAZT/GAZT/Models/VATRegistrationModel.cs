@@ -223,12 +223,37 @@ public class QUESTIONSSet
         public ELGBL_DOCSet ELGBL_DOCSet { get; set; }
         public CONTACT_PERSONSet CONTACT_PERSONSet { get; set; }
         public QUESTIONSSet QUESTIONSSet { get; set; }
+        public QUESCONFIG_MSet QUESCONFIG_MSet { get; set; }
         public ATTDETSet ATTDETSet { get; set; }
         public IBANSet IBANSet { get; set; }
         public QUESLISTSet QUESLISTSet { get; set; }
 }
+    public class QUESCONFIG_MSet
+    {
+        public IList<QuestionsetWithMinMax> results { get; set; }
 
-public class VATRegistrationDetails
+    }
+
+    public class QuestionsetWithMinMax
+    {
+        public __metadata __metadata { get; set; }
+        public string FormGuid { get; set; }
+        public string Gpart { get; set; }
+        public string DataVersion { get; set; }
+        public string ResidencyTy { get; set; }
+        public int LineNo { get; set; }
+        public string QoptNo { get; set; }
+        public string QoptTxt { get; set; }
+        public string RankingOrder { get; set; }
+        public string QoptAns { get; set; }
+        public string QueNo { get; set; }
+        public string Fbnum { get; set; }
+        public string Minvalue { get; set; }
+        public string Maxvalue { get; set; }
+
+    }
+
+    public class VATRegistrationDetails
 {
         public vATRegistration d { get; set; }
 }

@@ -231,53 +231,75 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
+            MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
         }
 
         protected async override void OnAppearing()
         {
-            base.OnAppearing();
-            string message = string.Empty;
-            Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
+            try
             {
-                if (arg != null)
+                base.OnAppearing();
+                string message = string.Empty;
+                Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
                 {
-                    message = arg;
+                    if (arg != null)
+                    {
+                        message = arg;
                     // firebasemessage = JsonConvert.DeserializeObject<PushnotificationMessage>(arg);
                     if (message == "SA")
-                    {
-                        if (viewModel.IbanList != null)
                         {
-                            viewModel.IbanList.Clear();
+                            if (viewModel.IbanList != null)
+                            {
+                                viewModel.IbanList.Clear();
+                            }
+                            viewModel.IbanList = null;
+                            viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                            viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
+                            viewModel.NewAccountText = "New Account";
                         }
-                        viewModel.IbanList = null;
-                        viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
-                        viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
-                        viewModel.NewAccountText = "New Account";
+                        else
+                        {
+                            triggerIban(message);
+                        }
                     }
-                    else
+                });
+
+                Xamarin.Forms.MessagingCenter.Subscribe<object, ATTDETSet>(this, "AttachmentReceived", (sender, arg) =>
+                {
+                    if (arg != null)
                     {
-                        triggerIban(message);
+                        viewModel.VATRegistrationDetailsData.d.ATTDETSet = arg;
                     }
-                }
-            });
-         
-            await GetVatRegistrationData();
-           
+                });
+
+                await GetVatRegistrationData();
+            }
+           catch(Exception ex)
+            {
+
+            }
         }
         public async Task GetVatRegistrationData()
         {
-            await Task.Run(() =>
+            try
             {
-                viewModel.IsLoading = true;
-            });
-            await Task.Run(async () =>
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
+                await Task.Run(async () =>
+                {
+                    await viewModel.onPageLoad();
+                });
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            catch(Exception ex)
             {
-                await viewModel.onPageLoad();
-            });
-            await Task.Run(() =>
-            {
-                viewModel.IsLoading = false;
-            });
+
+            }
         }
 
         private void DateEntry_Focused(object sender, FocusEventArgs e)
