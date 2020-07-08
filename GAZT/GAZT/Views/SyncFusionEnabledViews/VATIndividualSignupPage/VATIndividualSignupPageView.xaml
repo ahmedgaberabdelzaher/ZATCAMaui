@@ -99,10 +99,11 @@
                                 <!--<Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_ic_individaualregistration.png" Aspect="AspectFit"/>-->
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                            </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}"/>
                             </Frame.GestureRecognizers>
-                            </Grid>
+                          
                         </Frame>
                             
                     </Grid>
