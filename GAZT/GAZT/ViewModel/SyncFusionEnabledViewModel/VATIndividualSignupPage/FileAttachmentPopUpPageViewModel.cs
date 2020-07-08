@@ -44,6 +44,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        private bool _isImpoterAndExporter = false;
+        public bool IsImpoterAndExporter
+        {
+            get
+            {
+                return _isImpoterAndExporter;
+            }
+            set
+            {
+                _isImpoterAndExporter = value;
+                RaisePropertyChanged("IsImpoterAndExporter");
+            }
+        }
+
+
+
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
