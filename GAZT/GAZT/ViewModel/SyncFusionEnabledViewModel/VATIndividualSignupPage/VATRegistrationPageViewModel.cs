@@ -16,11 +16,132 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
     public class VATRegistrationPageViewModel : ViewModelBase
     {
+        public int DefaultMonth;
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static IsComeFromForAttachment IsComeFromForAttachment;
 
         #region Properties
+        private ObservableCollection<object> _todayDate;
+        public ObservableCollection<object> TodayDate
+        {
+            get
+            {
+                return _todayDate;
+            }
+            set
+            {
+                _todayDate = value;
+                RaisePropertyChanged("TodayDate");
+            }
+        }
+        private string _DOB = string.Empty;
+        public string DOB
+        {
+            get
+            {
+                return _DOB;
+            }
+            set
+            {
+                _DOB = value;
+                RaisePropertyChanged("DOB");
+            }
+        }
+         
+        private string _contactDOB = string.Empty;
+        public string ContactDOB
+        {
+            get
+            {
+                return _contactDOB;
+            }
+            set
+            {
+                _contactDOB = value;
+                RaisePropertyChanged("ContactDOB");
+            }
+        }
+
+        private int _maxLengthID = 10;
+        public int MaxLengthID
+        {
+            get
+            {
+                return _maxLengthID;
+            }
+            set
+            {
+                _maxLengthID = value;
+                RaisePropertyChanged("MaxLengthID");
+            }
+        } 
+        private int _maxLengthIDSR = 10;
+        public int MaxLengthIDSR
+        {
+            get
+            {
+                return _maxLengthIDSR;
+            }
+            set
+            {
+                _maxLengthIDSR = value;
+                RaisePropertyChanged("MaxLengthIDSR");
+            }
+        }
+        private bool _frameContactIDError = false;
+        public bool FrameContactIDError
+        {
+            get
+            {
+                return _frameContactIDError;
+            }
+            set
+            {
+                _frameContactIDError = value;
+                RaisePropertyChanged("FrameContactIDError");
+            }
+        }
+
+        private bool _frameIDError = false;
+        public bool FrameIDError
+        {
+            get
+            {
+                return _frameIDError;
+            }
+            set
+            {
+                _frameIDError = value;
+                RaisePropertyChanged("FrameIDError");
+            }
+        }
+        private bool _frameContactDOBError = false;
+        public bool FrameContactDOBError
+        {
+            get
+            {
+                return _frameContactDOBError;
+            }
+            set
+            {
+                _frameContactDOBError = value;
+                RaisePropertyChanged("FrameContactDOBError");
+            }
+        }
+        private bool _frameDOBError = false;
+        public bool FrameDOBError
+        {
+            get
+            {
+                return _frameDOBError;
+            }
+            set
+            {
+                _frameDOBError = value;
+                RaisePropertyChanged("FrameDOBError");
+            }
+        }
         private bool _isInstrunctionVisible = false;
         public bool IsInstrunctionVisible
         {
@@ -476,6 +597,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _selectedIdTypeFR = value;
                 if (_selectedIdTypeFR != null)
                 {
+                    try
+                    {
+                        if (_selectedIdTypeFR.ID.Equals("ZS0015"))
+                        {
+                            MaxLengthID = 10;
+
+                        }
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0017"))
+                        {
+                            MaxLengthID = 10;
+                        }
+
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0018"))
+                        {
+                            MaxLengthID = 15;
+
+                        }
+                            TxtIDTypeFR = _selectedIdTypeFR.Name;
+                    }
+                    catch (Exception Ex)
+                    {
+                    }
 
                 }
                 RaisePropertyChanged("SelectedIdTypeFR");
@@ -796,6 +939,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+
+        public async Task SetDefaultDate()
+        {
+            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+            //Select today dates
+
+            if (DateTime.Now.Date.Day < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Day);
+            else
+                todaycollection.Add(DateTime.Now.Date.Day.ToString());
+            if (DateTime.Now.Date.Month < 10)
+                todaycollection.Add("0" + DateTime.Now.Date.Month);
+            else
+                todaycollection.Add(DateTime.Now.Date.Month.ToString());
+            todaycollection.Add(DateTime.Now.Date.Year.ToString());
+            TodayDate = todaycollection;
+            DefaultMonth = DateTime.Now.Date.Month;
+        }
         #endregion
 
     }

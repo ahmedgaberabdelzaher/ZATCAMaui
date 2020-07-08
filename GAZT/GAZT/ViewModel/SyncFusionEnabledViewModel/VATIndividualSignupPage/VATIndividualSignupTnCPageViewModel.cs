@@ -132,11 +132,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
 
 
-                await Task.Run(async () =>
-                {
                     try
                     {
-                        if (IsButtonEnabled == true)
+                    await Task.Run(() =>
+                    { 
+                            IsLoading = true;
+                            // IsLoading = false;
+                       
+
+                    });
+
+                    if (IsButtonEnabled == true)
                         {
                             Device.BeginInvokeOnMainThread(() =>
                             {
@@ -176,7 +182,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             
                
-            });
+        
         }
         #endregion
     }
