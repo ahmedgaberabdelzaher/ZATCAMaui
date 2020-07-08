@@ -572,8 +572,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private ObservableCollection<string> _ibanList;
-        public ObservableCollection<string> IbanList
+        private ObservableCollection<Result2> _ibanList;
+        public ObservableCollection<Result2> IbanList
         {
             get
             {
@@ -583,6 +583,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _ibanList = value;
                 RaisePropertyChanged("IbanList");
+            }
+        }
+
+        private bool _isNewAccountClicked;
+        public bool IsNewAccountClicked
+        {
+            get
+            {
+                return _isNewAccountClicked;
+            }
+            set
+            {
+                _isNewAccountClicked = value;
+                RaisePropertyChanged("IsNewAccountClicked");
+            }
+        }
+
+        private string _isNewAccountText;
+        public string NewAccountText
+
+        {
+            get
+            {
+                return _isNewAccountText;
+            }
+            set
+            {
+                _isNewAccountText = value;
+                RaisePropertyChanged("NewAccountText");
             }
         }
 
@@ -642,7 +671,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 await Task.Run(async () =>
                 {
                     GetSignUpIdType();
-                    setIban();
+                  
                     VATRegistrationDetailsData = null;
                     VATRegistrationOtherDetails = null;
                     ADDRESSSetData = null;
@@ -656,6 +685,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
                             VATRegistrationDetailsData = vATRegistration;
+                            setIban();
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)
                             {
                                 ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet.results[0];
@@ -728,12 +758,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public void setIban()
         {
-            IbanList = new ObservableCollection<string>();
-            IbanList.Add("1111111111111");
-            IbanList.Add("1111111111111");
-            IbanList.Add("1111111111111");
-            IbanList.Add("1111111111111");
-            IbanList.Add("1111111111111");
+            IbanList = new ObservableCollection<Result2>();
+
+            if(VATRegistrationDetailsData.d.IBANSet!=null)
+            {
+                IbanList = new ObservableCollection<Result2>(VATRegistrationDetailsData.d.IBANSet.results);
+            }
+
         }
         public void GetSignUpIdType()
         {

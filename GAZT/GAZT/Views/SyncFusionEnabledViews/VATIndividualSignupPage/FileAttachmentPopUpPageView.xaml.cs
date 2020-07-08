@@ -36,10 +36,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         public void onPageLoad(VATRegistrationDetails vATRegistrationDetails)
         {
             viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
-            SetDocType();
             if (vATRegistrationDetails!=null && vATRegistrationDetails.d!=null)
             {
+               
                 viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
+                SetDocType();
                 if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
@@ -62,7 +63,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if(viewModel.IsComeFromForAttachment==IsComeFromForAttachment.Import)
             {
-                viewModel.DocTypeString = "ZVTB";
+                if (viewModel.VATRegistrationDetailsForAttach.d.ImFg=="1")
+                {
+                    viewModel.DocTypeString = "ZVTB";
+                }
+                else if(viewModel.VATRegistrationDetailsForAttach.d.ExFg == "1")
+                {
+                    viewModel.DocTypeString = "ZVTC";
+                }
             }
             else if(viewModel.IsComeFromForAttachment == IsComeFromForAttachment.Export)
             {

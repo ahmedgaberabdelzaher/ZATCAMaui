@@ -10,6 +10,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public static string ValidTypeIban;
 
         #region Property
         private string _ibanNumberText;
@@ -109,6 +110,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IbanPartFive");
             }
         }
+
+        private string _accountText;
+        public string AccountText
+        {
+            get
+            {
+                return _accountText;
+            }
+            set
+            {
+                _accountText = value;
+                RaisePropertyChanged("AccountText");
+            }
+        }
+
 
 
 

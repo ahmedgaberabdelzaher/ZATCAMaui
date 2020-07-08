@@ -15,7 +15,7 @@
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <StackLayout>
             <StackLayout Padding="22,22,22,0">
-                <Label Text="New Account"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                 <StackLayout Grid.Row="2">
                     <Label Text="{x:Static custom2:AppResources.ZZName}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
@@ -60,7 +60,7 @@
                     </StackLayout>
                 </Frame>
             </StackLayout>
-            <buttons:SfButton x:Name="btnAddAccount" Text="Add Account" Clicked="IbanAddButtonClicked" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+            <buttons:SfButton x:Name="btnAddAccount" Text="{x:Static custom2:AppResources.Save}" Clicked="IbanAddButtonClicked" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                   HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
         </StackLayout>

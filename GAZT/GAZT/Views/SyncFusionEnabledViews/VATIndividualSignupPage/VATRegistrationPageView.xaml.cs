@@ -29,7 +29,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IsInstrunctionVisible = true;
             viewModel.CurrentStep = "Step2";
             SetfirstBoxColor();
-           // App.IsArabic = false;
+            viewModel.IsNewAccountClicked = false;
+            viewModel.NewAccountText = AppResources.ZTERNewAccount;
+            // App.IsArabic = false;
             SetLTR();
 
         }
@@ -100,9 +102,67 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void NewAccount_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView());
+           // viewModel.IsNewAccountClicked = true;
+            PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(viewModel.VATRegistrationDetailsData.d.OptIban));
         }
 
+        public void triggerIban(string messagestring)
+        {
+            try
+            {
+                string message = messagestring;
+                if (!string.IsNullOrEmpty(message))
+                {
+                    bool isExist = false;
+                    if (!string.IsNullOrEmpty(message))
+                    {
+                        List<Result2> results1D = new List<Result2>();
+                        foreach (var item in viewModel.IbanList)
+                        {
+                            Result2 result = new Result2();
+                            result = item;
+                            
+                            if (string.IsNullOrEmpty(item.Bkvid))
+                            {
+                                isExist = true;
+                                result.Iban = message;
+                                //item.Iban = message;
+                                viewModel.VATRegistrationDetailsData.d.OptIban = message;
+                                viewModel.NewAccountText = "Edit Account";
+                            }
+                            results1D.Add(result);
+                        }
+
+                        if (results1D != null && results1D.Count != 0)
+                        {
+                            if(viewModel.IbanList!=null)
+                            {
+                                viewModel.IbanList.Clear();
+                            }
+                            viewModel.IbanList = null;
+                            viewModel.IbanList = new ObservableCollection<Result2>(results1D);
+                        }
+
+
+                        if (!isExist)
+                        {
+                            viewModel.VATRegistrationDetailsData.d.OptIban = message;
+                            Result2 result2 = new Result2();
+                            result2.Iban = message;
+                            List<Result2> results = new List<Result2>();
+                            results.Add(result2);
+                            viewModel.IbanList = new ObservableCollection<Result2>(results);
+                            viewModel.NewAccountText = "Edit Account";
+                        }
+                    }
+                    //                viewModel.IsNewAccountClicked = false;
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
 
 
         private void btnContinue_Clicked(object sender, EventArgs e)
@@ -157,11 +217,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
+        }
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            string message = string.Empty;
+            Xamarin.Forms.MessagingCenter.Subscribe<object, string>(this, "IbanReceived", (sender, arg) =>
+            {
+                if (arg != null)
+                {
+                    message = arg;
+                    // firebasemessage = JsonConvert.DeserializeObject<PushnotificationMessage>(arg);
+                    if (message == "SA")
+                    {
+                        if (viewModel.IbanList != null)
+                        {
+                            viewModel.IbanList.Clear();
+                        }
+                        viewModel.IbanList = null;
+                        viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
+                        viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
+                        viewModel.NewAccountText = "New Account";
+                    }
+                    else
+                    {
+                        triggerIban(message);
+                    }
+                }
+            });
+         
             await GetVatRegistrationData();
-
+           
         }
         public async Task GetVatRegistrationData()
         {
@@ -452,6 +544,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
+                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                {
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "1";
+                }
+                else
+                {
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+                }
+                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                {
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "1";
+                }
+                else
+                {
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "0";
+                }
                 PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
             }
             catch(Exception ex)

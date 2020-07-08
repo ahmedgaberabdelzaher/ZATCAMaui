@@ -2,6 +2,7 @@
 using GAZT.Helper;
 using GAZT.Manager;
 using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Syncfusion.SfCalendar.XForms;
 using Syncfusion.SfPicker.XForms;
 using System;
@@ -23,16 +24,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     public partial class NewAccountPopUpPageView : PopupPage
     {
         NewAccountPopUpPageViewModel viewModel;
-        public NewAccountPopUpPageView()
+        public NewAccountPopUpPageView(String Iban)
         {
             InitializeComponent();
             viewModel = App.Locator.NewAccountPopUpPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+            NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;
+            viewModel.IbanNumberText = Iban;
+            if(string.IsNullOrEmpty(viewModel.IbanNumberText))
+            {
+                viewModel.AccountText = "New Account";
+            }
+            else
+            {
+                viewModel.AccountText = "Edit Account";
+            }
             SetLTR();
         }
 
-        private void Checked_IBAN()
+        private async void Checked_IBAN()
         {
             try
             {
@@ -42,14 +53,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (response != null)
                     {
                         viewModel.IsIBANValid = true;
+                        NewAccountPopUpPageViewModel.ValidTypeIban = viewModel.IbanNumberText;
+                        MessagingCenter.Send<Object, string>(this, "IbanReceived", viewModel.IbanNumberText);
+                        await PopupNavigation.Instance.PopAsync();
                     }
                     else
                     {
+                        NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
                         viewModel.IsIBANValid = false;
-                        Device.BeginInvokeOnMainThread(async () =>
+                        if (viewModel.IbanNumberText == "SA")
                         {
-                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                        });
+                            MessagingCenter.Send<Object, string>(this, "IbanReceived", viewModel.IbanNumberText);
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
+                            });
+                        }
                     }
                 }
                 catch (InternetException ex)
