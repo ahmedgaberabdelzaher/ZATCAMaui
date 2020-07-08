@@ -1848,6 +1848,7 @@
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <StackLayout Grid.Row="0">
                                                     <Label Text="{x:Static custom2:AppResources.TIN}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
@@ -1916,16 +1917,85 @@
                                                     <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False"
-                                                            TextChanged="EntryIDNo_TextChanged" Placeholder="Enter ID Number">
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
+                                                        <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}"  FontSize="Small" Unfocused="EntryIDNo_Unfocused"   MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                                            TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" >
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                             </Entry.Behaviors>
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="3">
+
+                                                <StackLayout Grid.Row="3" Grid.Column="0">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+
+
+
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry  x:Name="DateEntryFR"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False" Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+
+                                                        <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
+
+                                                        <custom1:CustomDatePicker  Grid.Row="1"
+								ShowHeader="false"
+								Margin="2" 
+                              BackgroundColor="#EAF7CC"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+								ShowFooter="True"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="#EAF7CC"
+								ColumnHeaderHeight="50"
+                                PickerMode="Dialog"
+								HeaderText="Date of Birth"
+								x:Name="SignUpDOB"
+                          
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                           
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                OkButtonClicked="DOB_OkButtonClicked"
+                                CancelButtonClicked="DOB_CancelButtonClicked"
+								ItemHeight="45" >
+                                                            <custom1:CustomDatePicker.Behaviors>
+                                                                <custom1:SfPickerBehavior />
+                                                            </custom1:CustomDatePicker.Behaviors>
+                                                        </custom1:CustomDatePicker>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="4">
                                                     <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
@@ -1938,7 +2008,7 @@
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="4">
+                                                <StackLayout Grid.Row="5">
                                                     <Label Text="{x:Static custom2:AppResources.ZZZVATRSurName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1"
@@ -1951,7 +2021,7 @@
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="5">
+                                                <StackLayout Grid.Row="6">
                                                     <Label Text="{x:Static custom2:AppResources.Email}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1961,7 +2031,7 @@
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="6">
+                                                <StackLayout Grid.Row="7">
                                                     <Label Text="{x:Static custom2:AppResources.MobileNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -2225,8 +2295,8 @@
                                                     <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmContactIDNumber" Margin="0,-6,0,-6" 
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry Text="{Binding IdNumberSR}" x:Name="EntryContactIDNumber"  FontSize="Small" MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactIDError}">
+                                                        <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  Unfocused="EntryContactIDNumber_Unfocused" FontSize="Small"  IsSpellCheckEnabled="False"
                                                              Placeholder="{x:Static custom2:AppResources.IDNumber}" >
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -2234,7 +2304,75 @@
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="2">
+                                                <StackLayout Grid.Row="2" Grid.Column="0">
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+
+                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+
+
+                                                        <!--Focused="OnDateEntryFocussed" TextChanged="DateEntry_TextChanged" Unfocused="DatePicker_Unfocused"-->
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                        ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <custom:BorderlessEntry  x:Name="ContactDateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding ContactDOB}"   IsEnabled="False"   Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry>
+                                                                <Image HorizontalOptions="EndAndExpand">
+                                                                    <Image.Source>
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                                    Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                            </StackLayout>
+                                                        </inputLayout:SfTextInputLayout>
+
+                                                        <Button Grid.Row="1" x:Name="btnSR" BackgroundColor="Transparent" Clicked="btn4_Clicked" Margin="0,0,0,0" />
+
+                                                        <custom1:CustomDatePicker Grid.Row="1"
+								ShowHeader="false"
+								Margin="2" 
+                              BackgroundColor="#EAF7CC"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                     HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+								ShowFooter="True"
+								 ShowColumnHeader="True"
+                                             ColumnHeaderBackgroundColor="#EAF7CC"
+								ColumnHeaderHeight="50"
+                                PickerMode="Dialog"
+								HeaderText="Date of Birth"
+								x:Name="ContactDOBPicker"
+                          
+                             OKButtonTextColor="#006450" 
+                                
+                                             CancelButtonTextColor="#006450"
+                           
+                            SelectedItem="{Binding TodayDate}"
+                            HorizontalOptions="FillAndExpand"
+                                OkButtonClicked="ContactDOBPicker_OkButtonClicked"
+                                CancelButtonClicked="ContactDOBPicker_CancelButtonClicked"
+								ItemHeight="45" >
+                                                            <custom1:CustomDatePicker.Behaviors>
+                                                                <custom1:SfPickerBehavior />
+                                                            </custom1:CustomDatePicker.Behaviors>
+                                                        </custom1:CustomDatePicker>
+                                                    </Grid>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="3">
                                                     <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
