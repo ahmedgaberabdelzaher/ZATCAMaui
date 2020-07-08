@@ -375,9 +375,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
-            }            
+            }
         }
-        public void  onPageLoad(BillInfo billInfo)
+        public void onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
@@ -390,7 +390,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    myBills =  WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
+                    myBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang);
 
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
@@ -398,7 +398,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     {
                         SetNoDataLabelVisibilityALL = false;
                         SetNoDataLabelVisibilityALLList = true;
+
                         myBills = UpdateDueAmount(myBills);
+
                         MyBills = new ObservableCollection<MyBills>();
                         MyBills = myBills;
                         MyBillsOriginal = myBills;
@@ -417,20 +419,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         }
                         else
                         {
-                           // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
                             SetNoDataLabelVisibilityPAID = true;
                             SetNoDataLabelVisibilityPAIDList = false;
                         }
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
                         {
                             myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
-                            ColorsChild.Add(System.Drawing.Color.FromArgb(170,12,25));
+                            ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
                             SetNoDataLabelVisibilityUNPAID = false;
                             SetNoDataLabelVisibilityUNPAIDList = true;
                         }
                         else
                         {
-                          //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                            //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
                             SetNoDataLabelVisibilityUNPAID = true;
                             SetNoDataLabelVisibilityUNPAIDList = false;
                         }
@@ -444,7 +446,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         }
                         else
                         {
-                           // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
+                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
                             SetNoDataLabelVisibilityPPAID = true;
                             SetNoDataLabelVisibilityPPAIDList = false;
                         }
@@ -483,6 +485,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                 }
                 catch (Exception e)
                 {
+                  
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
@@ -493,6 +496,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
             }
             catch (InternetException ex)
             {
+               
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -512,7 +516,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         App.TP = null;
                     if (App.PreviousIsArabic)
                     {
-                        String langName = "ar-AE";
+                        String langName = "ar-SA";
                         AppResources.Culture = new CultureInfo(langName);
                     }
                     else
@@ -565,7 +569,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         _dueDateTemp = myBills[i].Faednar.Split('T');
                         myBills[i].Faednar = Convert.ToDateTime(_dueDateTemp[0]).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
 
-                        CultureInfo cultureInfo = new CultureInfo("ar-sa");
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
                         DateTime dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
 
                         GregorianCalendar hjCalendar = new GregorianCalendar();
@@ -588,17 +592,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         //myBills[i].Faednar = Convert.ToDateTime(myBills[i].Faednar).ToString("dd/MM/yyyy", new CultureInfo("en-us"));
                         DateTime dateStart = new DateTime();
 
+                       
                         CultureInfo cultureInfo = new CultureInfo("ar-SA");
 
-                        if(App.IsArabic)
+                        if (App.IsArabic)
                         {
+                            
                             dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                         }
                         else
                         {
+                           
                             dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                         }
 
+                    
                         GregorianCalendar hjCalendar = new GregorianCalendar();
                         int year = hjCalendar.GetYear(dateStart);
                         int month = hjCalendar.GetMonth(dateStart);
@@ -614,6 +622,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         dts = myBills[i].Faednar.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                         myBills[i].Faednar = dt;
+
+                      
                     }
                 }
 
@@ -623,32 +633,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     {
                         string[] _dueDate = new String[2];
                         _dueDate = myBills[i].Faednar.Split('T');
-                    
+
                         myBills[i].Faednar = Convert.ToDateTime(_dueDate[0]).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
 
                         string dt = string.Empty;
                         string[] dts = null;
-                        
+
                         dts = myBills[i].Faednar.Split('/');
                         dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                         myBills[i].Faednar = dt;
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
 
                     }
                 }
-                else if(myBills[i].CalTyp == "G")
+                else if (myBills[i].CalTyp == "G")
                 {
+                 
                     DateTime dateStart = new DateTime();
                     CultureInfo cultureInfo = new CultureInfo("en-us");
 
                     if (App.IsArabic)
                     {
+                 
                         dateStart = DateTime.ParseExact(myBills[i].Faednar, "yyyy/MM/dd", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                     }
                     else
                     {
+             
                         dateStart = DateTime.ParseExact(myBills[i].Faednar, "dd/MM/yyyy", cultureInfo.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                     }
 
@@ -660,6 +673,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     int day = hjCalendar.GetDayOfMonth(dateStart);
                     string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
 
+                   
                     myBills[i].Faednar = dateStr;
 
                     string dt = string.Empty;
@@ -668,6 +682,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     dts = myBills[i].Faednar.Split('/');
                     dt = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
                     myBills[i].Faednar = dt;
+
+              
                 }
 
             }
