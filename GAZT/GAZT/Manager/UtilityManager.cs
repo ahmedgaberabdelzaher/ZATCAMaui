@@ -1,4 +1,5 @@
 ﻿using EGAZT;
+using EGAZT.Models;
 using GAZT.Models;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
@@ -38,6 +39,9 @@ namespace GAZT.Manager
                 return false;
             }
         }
+
+
+
         public static bool IsIBANValid(string IBAN)
         {
             Match emailMatch = Regex.Match(IBAN, IBANValidator);
@@ -363,7 +367,7 @@ namespace GAZT.Manager
                 string[] date = new String[2];
                 date = PeriodDate.Split('-');
                 Date = ConvertNumerals(date[0]) + " " + AppResources.To + " " + ConvertNumerals(date[1]);
-           }
+            }
             return Date;
         }
         public static string DownloadDataFromLink(string url)
@@ -376,7 +380,7 @@ namespace GAZT.Manager
                     if (CrossConnectivity.Current.IsConnected)
                     {
                         String folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-                      //  string completePath = Path.Combine(folderPath, "GAZTeServices");
+                        //  string completePath = Path.Combine(folderPath, "GAZTeServices");
                         string Url = url;
                         if (!string.IsNullOrEmpty(Url))
                         {
@@ -680,7 +684,7 @@ namespace GAZT.Manager
             else if (Month == "جمادى الآخرة")
             {
                 Month = "جمادى ثاني";
-            }           
+            }
             else if (Month == "ربيع الأول")
             {
                 Month = "ربيع أول";
@@ -712,6 +716,40 @@ namespace GAZT.Manager
             return amountWithComma;
         }
         #endregion
+
+        public static IEnumerable<IGrouping<string, QuestionsetWithMinMax>> GetQuestionsGroupedByQuestionNo(QUESCONFIG_MSet qUESCONFIG_MSet)
+        {
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = qUESCONFIG_MSet.results.GroupBy(qn => qn.QueNo);
+            return QuestionsGroupedByQuestionNo;
+        }
+
+        //Get n group of QuestionNumberWithMinMaxRangeWithCountOfAnswers
+        public static List<QuestionNumberWithMinMaxRange> GetLowAndHighRangeForEachQuestionSet(QUESCONFIG_MSet qUESCONFIG_MSet)
+        {
+            List<QuestionNumberWithMinMaxRange> QuestionsGroupedyMinMaxRange = null;
+
+            if (qUESCONFIG_MSet != null && qUESCONFIG_MSet.results != null)
+            {
+                IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
+                if (QuestionsGroupedByQuestionNo != null)
+                {
+                    QuestionsGroupedyMinMaxRange = new List<QuestionNumberWithMinMaxRange>();
+                    // 4 question groups
+                    foreach (var QuestionGroup in QuestionsGroupedByQuestionNo)
+                    {
+                        QuestionsGroupedyMinMaxRange.Add(new QuestionNumberWithMinMaxRange { QueNo = QuestionGroup.First().QueNo, MinRangeValue = Convert.ToDouble(QuestionGroup.First().Minvalue), MaxRangeValue = Convert.ToDouble(QuestionGroup.Last().Maxvalue), CountOfProbableAnswersForThisQuestions = QuestionGroup.Count() });
+                    }
+                }
+            }
+            return QuestionsGroupedyMinMaxRange;
+        }
+        public static QuestionsetWithMinMax FindTheAnswerApplicableBasedOntheValue(string QuestionNumber, double CurrentValue, QUESCONFIG_MSet qUESCONFIG_MSet)
+        {
+            String Answer = String.Empty;
+            //Specific Set based on input QuestionNo
+            QuestionsetWithMinMax qs = qUESCONFIG_MSet.results.Where(q => (q.QueNo == QuestionNumber) && (CurrentValue >= Convert.ToDouble(q.Minvalue)) && (CurrentValue <= Convert.ToDouble(q.Maxvalue))).FirstOrDefault();
+            return qs;
+        }
     }
     public enum ArButtons
     {
@@ -772,6 +810,9 @@ namespace GAZT.Manager
         إصدار = 54,
         ReviseDownPayment = 55
     }
+
+
+
     public enum Buttons
     {
         None = -01,
@@ -831,4 +872,5 @@ namespace GAZT.Manager
         Release = 54,
         ReviseDownPayment = 55
     }
+
 }

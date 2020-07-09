@@ -59,6 +59,47 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _isSwitchToggled = true;
+        public bool IsSwitchToggled
+        {
+            get
+            {
+                return _isSwitchToggled;
+            }
+            set
+            {
+                _isSwitchToggled = value;
+                RaisePropertyChanged("IsSwitchToggled");
+            }
+        }
+
+        private bool _isEnableSwitchToggled = false;
+        public bool IsEnableSwitchToggled
+        {
+            get
+            {
+                return _isEnableSwitchToggled;
+            }
+            set
+            {
+                _isEnableSwitchToggled = value;
+                RaisePropertyChanged("IsEnableSwitchToggled");
+            }
+        }
+
+        private bool _isEnableSwitchToggledForButton = false;
+        public bool IsEnableSwitchToggledForButton
+        {
+            get
+            {
+                return _isEnableSwitchToggledForButton;
+            }
+            set
+            {
+                _isEnableSwitchToggledForButton = value;
+                RaisePropertyChanged("IsEnableSwitchToggledForButton");
+            }
+        }
 
 
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;

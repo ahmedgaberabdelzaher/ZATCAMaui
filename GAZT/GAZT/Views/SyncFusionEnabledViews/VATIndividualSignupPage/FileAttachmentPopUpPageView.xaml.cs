@@ -71,14 +71,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if(viewModel.IsComeFromForAttachment==IsComeFromForAttachment.Import)
             {
-                if (viewModel.VATRegistrationDetailsForAttach.d.ImFg=="1")
+                if(viewModel.VATRegistrationDetailsForAttach.d.ImFg == "1" && viewModel.VATRegistrationDetailsForAttach.d.ExFg == "1")
                 {
-                    viewModel.DocTypeString = "ZVTB";
-                }
-                else if(viewModel.VATRegistrationDetailsForAttach.d.ExFg == "1")
-                {
+                    viewModel.IsImpoterAndExporter = true;
+                    viewModel.IsSwitchToggled = true;
                     viewModel.DocTypeString = "ZVTC";
                 }
+                else
+                {
+                    viewModel.IsImpoterAndExporter = false;
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ImFg == "1")
+                    {
+                        viewModel.DocTypeString = "ZVTB";
+                    }
+                    else if (viewModel.VATRegistrationDetailsForAttach.d.ExFg == "1")
+                    {
+                        viewModel.DocTypeString = "ZVTC";
+                    }
+                }
+
+               
             }
             else if(viewModel.IsComeFromForAttachment == IsComeFromForAttachment.Export)
             {
@@ -227,7 +239,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
         {
-
+            if(viewModel.IsSwitchToggled)
+            {
+                viewModel.DocTypeString = "ZVTC";
+                viewModel.filterList();
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.IsSwitchToggled = false;
+            }
+            else
+            {
+                viewModel.DocTypeString = "ZVTB";
+                viewModel.filterList();
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.IsSwitchToggled = true;
+            }
         }
+        }
+
+       
     }
-}

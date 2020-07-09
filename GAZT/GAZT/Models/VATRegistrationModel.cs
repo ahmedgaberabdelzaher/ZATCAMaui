@@ -264,4 +264,12 @@ public class QUESTIONSSet
        General=3,
        FinancialReprsentative=4
     }
+
+    public class QuestionNumberWithMinMaxRange
+    {
+        public string QueNo = String.Empty;
+        public double MinRangeValue = -1;
+        public double MaxRangeValue = -1;
+        public int CountOfProbableAnswersForThisQuestions = -1;
+    }
 }

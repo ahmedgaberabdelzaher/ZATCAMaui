@@ -27,21 +27,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         VATRegistrationPageViewModel viewModel;
         public VATRegistrationPageView()
         {
-            InitializeComponent();
-            viewModel = App.Locator.VATRegistrationPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
-            ChangeAeroIcon();
-            viewModel.SetVisibility();
-            viewModel.IsInstrunctionVisible = true;
-            viewModel.CurrentStep = "Step2";
-            SetfirstBoxColor();
-            viewModel.IsNewAccountClicked = false;
-            viewModel.NewAccountText = AppResources.ZTERNewAccount;
-            // App.IsArabic = false;
-            // App.IsArabic = false;
-            viewModel.SetDefaultDate();
-            SetLTR();
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.VATRegistrationPageView;
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                this.BindingContext = viewModel;
+                ChangeAeroIcon();
+                viewModel.SetVisibility();
+                viewModel.IsInstrunctionVisible = true;
+                viewModel.CurrentStep = "Step2";
+                SetfirstBoxColor();
+                viewModel.IsNewAccountClicked = false;
+                viewModel.NewAccountText = AppResources.ZTERNewAccount;
+                // App.IsArabic = false;
+                // App.IsArabic = false;
+                viewModel.SetDefaultDate();
+                SetLTR();
+            }
+            catch(Exception ex)
+            {
+
+            }
 
         }
 
@@ -659,7 +666,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void NewAttachment_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView());
+           // PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView());
         }
 
         private void TappendOnImporter(object sender, EventArgs e)
@@ -1764,7 +1771,134 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void slider1_completed(object sender, EventArgs e)
         {
+            double value = ((Xamarin.Forms.Slider)sender).Value;
+        }
 
+        private void Slider_DragCompleted(object sender, EventArgs e)
+        {
+            try
+            {
+                double value = ((Xamarin.Forms.Slider)sender).Value;
+                viewModel.SliderCurrentValue1 = value;
+                QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                viewModel.SliderLable1 = obj.QoptTxt;
+
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+                {
+                    if (item.QueNo == "001")
+                    {
+                        if (item.QoptNo == obj.QoptNo)
+                        {
+                            item.QoptAns = "1";
+                        }
+                        else
+                        {
+                            item.QoptAns = "0";
+                        }
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            
+        }
+
+        private void Slider2Dragged(object sender, EventArgs e)
+        {
+            try
+            {
+                double value = ((Xamarin.Forms.Slider)sender).Value;
+                viewModel.SliderCurrentValue2 = value;
+                QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                viewModel.SliderLable2 = obj.QoptTxt;
+
+
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+                {
+                    if (item.QueNo == "002")
+                    {
+                        if (item.QoptNo == obj.QoptNo)
+                        {
+                            item.QoptAns = "1";
+                        }
+                        else
+                        {
+                            item.QoptAns = "0";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void TapppedOnQuestion3First(object sender, EventArgs e)
+        {
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            {
+               if(item.QueNo=="003" && item.QoptNo=="031")
+                {
+                    item.QoptAns = "1";
+                }
+                if (item.QueNo == "003" && item.QoptNo == "032")
+                {
+                    item.QoptAns = "0";
+                }
+            }
+            viewModel.setQuestionImage();
+        }
+
+        private void TapppedOnQuestion3Second(object sender, EventArgs e)
+        {
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            {
+                if (item.QueNo == "003" && item.QoptNo == "031")
+                {
+                    item.QoptAns = "0";
+                }
+                if (item.QueNo == "003" && item.QoptNo == "032")
+                {
+                    item.QoptAns = "1";
+                }
+            }
+            viewModel.setQuestionImage();
+        }
+
+        private void TapppedOnQuestion4First(object sender, EventArgs e)
+        {
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            {
+                if (item.QueNo == "004" && item.QoptNo == "041")
+                {
+                    item.QoptAns = "1";
+                }
+                if (item.QueNo == "004" && item.QoptNo == "042")
+                {
+                    item.QoptAns = "0";
+                }
+            }
+            viewModel.setQuestionImage();
+        }
+
+        private void TapppedOnQuestion4Second(object sender, EventArgs e)
+        {
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            {
+                if (item.QueNo == "004" && item.QoptNo == "041")
+                {
+                    item.QoptAns = "0";
+                }
+                if (item.QueNo == "004" && item.QoptNo == "042")
+                {
+                    item.QoptAns = "1";
+                }
+            }
+            viewModel.setQuestionImage();
         }
     }
 }

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -262,6 +263,133 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("VATRegistrationDetailsData");
             }
         }
+
+
+        private Double _minimumValueOfSlider1=0.0;
+        public Double MinimumValueOfSlider1
+        {
+            get
+            {
+                return _minimumValueOfSlider1;
+            }
+            set
+            {
+                _minimumValueOfSlider1 = value;
+                RaisePropertyChanged("MinimumValueOfSlider1");
+            }
+        }
+
+        private Double _maximumValueOfSlider1=1.0;
+        public Double MaximumValueOfSlider1
+        {
+            get
+            {
+                return _maximumValueOfSlider1;
+            }
+            set
+            {
+                _maximumValueOfSlider1 = value;
+                RaisePropertyChanged("MaximumValueOfSlider1");
+            }
+        }
+
+        private Double _maximumValueOfSlider2 = 1.0;
+        public Double MaximumValueOfSlider2
+        {
+            get
+            {
+                return _maximumValueOfSlider2;
+            }
+            set
+            {
+                _maximumValueOfSlider2 = value;
+                RaisePropertyChanged("MaximumValueOfSlider2");
+            }
+        }
+
+        private Double _minimumValueOfSlider2 = 0.0;
+        public Double MinimumValueOfSlider2
+        {
+            get
+            {
+                return _minimumValueOfSlider2;
+            }
+            set
+            {
+                _minimumValueOfSlider2 = value;
+                RaisePropertyChanged("MinimumValueOfSlider2");
+            }
+        }
+
+        private string _sliderLable1;
+        public string SliderLable1
+        {
+            get
+            {
+                return _sliderLable1;
+            }
+            set
+            {
+                _sliderLable1 = value;
+                RaisePropertyChanged("SliderLable1");
+            }
+        }
+        private string _sliderLable2;
+        public string SliderLable2
+        {
+            get
+            {
+                return _sliderLable2;
+            }
+            set
+            {
+                _sliderLable2 = value;
+                RaisePropertyChanged("SliderLable2");
+            }
+        }
+        private Double _sliderCurrentValue1 = 0.0;
+        public Double SliderCurrentValue1
+        {
+            get
+            {
+                return _sliderCurrentValue1;
+            }
+            set
+            {
+                _sliderCurrentValue1 = value;
+                RaisePropertyChanged("SliderCurrentValue1");
+            }
+        }
+
+        private Double _sliderCurrentValue2 = 0.0;
+        public Double SliderCurrentValue2
+        {
+            get
+            {
+                return _sliderCurrentValue2;
+            }
+            set
+            {
+                _sliderCurrentValue2 = value;
+                RaisePropertyChanged("SliderCurrentValue2");
+            }
+        }
+
+        private List<QuestionNumberWithMinMaxRange> _minMaxRanges;
+        public List<QuestionNumberWithMinMaxRange> MinMaxRanges
+        {
+            get
+            {
+                return _minMaxRanges;
+            }
+            set
+            {
+                _minMaxRanges = value;
+                RaisePropertyChanged("MinMaxRanges");
+            }
+        }
+
+
 
         private VATRegistrationOtherDetails _vATRegistrationOtherDetails;
         public VATRegistrationOtherDetails VATRegistrationOtherDetails
@@ -758,8 +886,171 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private String _textQuestion3First = string.Empty;
+        public String TextQuestion3First
+        {
+            get
+            {
+                return _textQuestion3First;
+            }
+            set
+            {
+                _textQuestion3First = value;
+                RaisePropertyChanged("TextQuestion3First");
+            }
+        }
 
+        private Color _textQuestion3FirstTextColor;
+        public Color TextQuestion3FirstTextColor
+        {
+            get
+            {
+                return _textQuestion3FirstTextColor;
+            }
+            set
+            {
+                _textQuestion3FirstTextColor = value;
+                RaisePropertyChanged("TextQuestion3FirstTextColor");
+            }
+        }
 
+        private String _textQuestion4First = string.Empty;
+        public String TextQuestion4First
+        {
+            get
+            {
+                return _textQuestion4First;
+            }
+            set
+            {
+                _textQuestion4First = value;
+                RaisePropertyChanged("TextQuestion4First");
+            }
+        }
+
+        private Color _textQuestion4FirstTextColor;
+        public Color TextQuestion4FirstTextColor
+        {
+            get
+            {
+                return _textQuestion4FirstTextColor;
+            }
+            set
+            {
+                _textQuestion4FirstTextColor = value;
+                RaisePropertyChanged("TextQuestion4FirstTextColor");
+            }
+        }
+
+        private String _textQuestion3Second = string.Empty;
+        public String TextQuestion3Second
+        {
+            get
+            {
+                return _textQuestion3Second;
+            }
+            set
+            {
+                _textQuestion3Second = value;
+                RaisePropertyChanged("TextQuestion3Second");
+            }
+        }
+
+        private Color _textQuestion3SecondTextColor;
+        public Color TextQuestion3SecondTextColor
+        {
+            get
+            {
+                return _textQuestion3SecondTextColor;
+            }
+            set
+            {
+                _textQuestion3SecondTextColor = value;
+                RaisePropertyChanged("TextQuestion3SecondTextColor");
+            }
+        }
+
+        private String _textQuestion4Second = string.Empty;
+        public String TextQuestion4Second
+        {
+            get
+            {
+                return _textQuestion4Second;
+            }
+            set
+            {
+                _textQuestion4Second = value;
+                RaisePropertyChanged("TextQuestion4Second");
+            }
+        }
+
+        private Color _textQuestion4SecondTextColor;
+        public Color TextQuestion4SecondTextColor
+        {
+            get
+            {
+                return _textQuestion4SecondTextColor;
+            }
+            set
+            {
+                _textQuestion4SecondTextColor = value;
+                RaisePropertyChanged("TextQuestion4SecondTextColor");
+            }
+        }
+
+        private String _imageforTextQuestion3First = string.Empty;
+        public String ImageforTextQuestion3First
+        {
+            get
+            {
+                return _imageforTextQuestion3First;
+            }
+            set
+            {
+                _imageforTextQuestion3First = value;
+                RaisePropertyChanged("ImageforTextQuestion3First");
+            }
+        }
+        private String _imageforTextQuestion3Second = string.Empty;
+        public String ImageforTextQuestion3Second
+        {
+            get
+            {
+                return _imageforTextQuestion3Second;
+            }
+            set
+            {
+                _imageforTextQuestion3Second = value;
+                RaisePropertyChanged("ImageforTextQuestion3Second");
+            }
+        }
+        private String _imageforTextQuestion4First = string.Empty;
+        public String ImageforTextQuestion4First
+        {
+            get
+            {
+                return _imageforTextQuestion4First;
+            }
+            set
+            {
+                _imageforTextQuestion4First = value;
+                RaisePropertyChanged("ImageforTextQuestion4First");
+            }
+        }
+
+        private String _imageforTextQuestion4Second = string.Empty;
+        public String ImageforTextQuestion4Second
+        {
+            get
+            {
+                return _imageforTextQuestion4Second;
+            }
+            set
+            {
+                _imageforTextQuestion4Second = value;
+                RaisePropertyChanged("ImageforTextQuestion4Second");
+            }
+        }
 
 
         #endregion
@@ -781,6 +1072,65 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
         #region Method
+
+        public void setQuestionImage()
+        {
+            if(VATRegistrationDetailsData.d.QUESCONFIG_MSet.results!=null)
+            {
+
+                string value1forimage3first = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage3second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
+
+                string value1forimage4first = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage4second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
+
+                if (value1forimage3first=="1")
+                {
+                    ImageforTextQuestion3First = "vat_tile_IbanCard_background.png";
+                    TextQuestion3FirstTextColor = Color.White;
+                }
+                else
+                {
+                    ImageforTextQuestion3First = "vat_tile_IbanCard_background_white.png";
+                    TextQuestion3FirstTextColor = Color.Black;
+                }
+
+                if (value2forimage3second == "1")
+                {
+                    ImageforTextQuestion3Second = "vat_tile_IbanCard_background.png";
+                    TextQuestion3SecondTextColor = Color.White;
+                }
+                else
+                {
+                    ImageforTextQuestion3Second = "vat_tile_IbanCard_background_white.png";
+                    TextQuestion3SecondTextColor = Color.Black;
+                }
+
+                if (value1forimage4first == "1")
+                {
+                    ImageforTextQuestion4First = "vat_tile_IbanCard_background.png";
+                    TextQuestion4FirstTextColor = Color.White;
+                }
+                else
+                {
+                    ImageforTextQuestion4First = "vat_tile_IbanCard_background_white.png";
+                    TextQuestion4FirstTextColor = Color.Black;
+                }
+
+                if (value2forimage4second == "1")
+                {
+                    ImageforTextQuestion4Second = "vat_tile_IbanCard_background.png";
+                    TextQuestion4SecondTextColor = Color.White;
+                }
+                else
+                {
+                    ImageforTextQuestion4Second = "vat_tile_IbanCard_background_white.png";
+                    TextQuestion4SecondTextColor = Color.Black;
+                }
+
+            }
+
+        }
 
         public void SetVisibility()
         {
@@ -859,6 +1209,31 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                                 ExporterTextColor = Color.Black;
+                            }
+
+                            if(VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count!=0)
+                            {
+                                MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
+                                MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+
+                                MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();//Select(x => x.MinRangeValue).FirstOrDefault();
+                                MinimumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x=>x.MinRangeValue).FirstOrDefault();
+
+                                SliderCurrentValue1 = Convert.ToDouble(MinimumValueOfSlider1);
+
+                                MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();//Select(x => x.MinRangeValue).FirstOrDefault();
+                                MinimumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+                                SliderCurrentValue2 = Convert.ToDouble(MinimumValueOfSlider2);
+
+
+                                TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo=="031").Select(x => x.QoptTxt).FirstOrDefault();
+                                TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
+
+                                TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptTxt).FirstOrDefault();
+                                TextQuestion4Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptTxt).FirstOrDefault();
+
+                                setQuestionImage();
+
                             }
 
                             vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
