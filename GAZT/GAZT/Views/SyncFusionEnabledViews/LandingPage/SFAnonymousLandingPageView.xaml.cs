@@ -259,7 +259,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
             {
                 if (CrossConnectivity.Current.IsConnected)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "SignIn_Tapped", "Login Tapped");
                     viewModel._navigationService.NavigateTo(App.SFLoginPageView, App.SFLandingPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 else
                 {
@@ -321,16 +323,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 //}
                 if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Real Estate Service Tapped");
                     viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Tax Evasion Service Tapped");
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 //  if (BModel.eServiceName == AppResources.VATLookup)
                 if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "VAT Look Up Service Tapped");
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
             }
             if (controltype == "Xamarin.Forms.Label")
@@ -371,16 +379,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 //}
                 if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Real Estate Service Tapped");
                     viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Tax Evasion Service Tapped");
                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
                 }
                 //if (BModel.eServiceName == AppResources.VATLookup)
                 if (BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                 {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "VAT Look Up Service Tapped");
                     viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
                 }
             }
         }
@@ -419,7 +436,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
 
             if (!App.IsJailBrokenDevice)
             {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "SignUp_Tapped", "Signup Tapped");
                 viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
             else
             {
@@ -428,8 +447,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                     await viewModel._dialogService.ShowMessage(AppResources.YourDeviceDoesNotPassTheGAZTSecurityCheck, AppResources.ZError);
                 });
             }
-
-
         }
 
 
@@ -437,7 +454,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
         {
             if (!App.IsJailBrokenDevice)
             {
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnVATRegistration_Tapped", "VAT Registration Tapped");
                 viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
             else
             {

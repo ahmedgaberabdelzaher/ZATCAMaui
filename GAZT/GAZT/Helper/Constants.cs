@@ -171,7 +171,5 @@ namespace GAZT.Helper
         public static string GAZTGetVATRegistrationOtherDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string SaveVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
         #endregion
-
-
     }
 }

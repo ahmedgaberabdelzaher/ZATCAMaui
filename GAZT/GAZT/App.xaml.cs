@@ -9,8 +9,6 @@ using GAZT.CustomControl;
 using GAZT.Helper;
 using GAZT.Models;
 using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -21,6 +19,8 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppDynamics.Agent;
+
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
 {
@@ -177,12 +177,15 @@ namespace EGAZT
             ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
             CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
-           // CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
+            //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
             navigationService.Initialize(navigationPage);
             var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
             dialogService.Initialize(navigationPage);
+
+            InitializeAppDynamics();
+           
             MainPage = navigationPage;
         }
 
@@ -340,15 +343,7 @@ namespace EGAZT
             AppCenter.Start("ios=eb11c7c9-cb42-4806-b01e-9b78bf433259" +
                   "uwp={Your UWP App secret here};" +
                   "android=138974d9-a5ae-4afa-b7b3-13ff660d8421",
-                  typeof(Analytics), typeof(Crashes), typeof(Distribute));
-            try
-            {
-                Crashes.GenerateTestCrash();
-            }
-            catch (Exception exception)
-            {
-                Crashes.TrackError(exception);
-            }
+                  typeof(Distribute));
         }
 
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
@@ -399,6 +394,15 @@ namespace EGAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
+        }
+
+        public static void InitializeAppDynamics()
+        {
+            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
         public static async void DisplayProgressView()

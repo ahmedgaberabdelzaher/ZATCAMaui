@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
 using GAZT.Models;
-using Microsoft.AppCenter.Analytics;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 

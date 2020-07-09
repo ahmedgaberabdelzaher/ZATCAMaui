@@ -18,6 +18,7 @@ using Tavant.XToolkit;
 using UIKit;
 using Xamarin;
 using Xamarin.Forms;
+using AppDynamics.Agent;
 
 namespace GAZT.iOS
 {
@@ -70,6 +71,8 @@ namespace GAZT.iOS
             SfMaskedEditRenderer.Init();
             Distribute.DontCheckForUpdatesInDebug();
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
+
+            App.InitializeAppDynamics();
 
             LoadApplication(iosapp);
             //Code for PUSH notification

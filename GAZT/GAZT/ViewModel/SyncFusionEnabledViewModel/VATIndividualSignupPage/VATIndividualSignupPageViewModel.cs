@@ -49,19 +49,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         //EstablishmentSignupCommand
         private async void OnIndividualRegistrationClicked(object obj)
         {
-
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
             
             Device.BeginInvokeOnMainThread( () =>
-          {
-              _navigationService.NavigateTo(App.VATIndividualSignupTnCPageView);
-             // IsLoading = false;
-          });
-
-            
+            {
+                _navigationService.NavigateTo(App.VATIndividualSignupTnCPageView);
+                // IsLoading = false;
+            });
         }
         private async void OnEstablishmentSignupClicked(object obj)
         {
@@ -75,8 +72,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _navigationService.NavigateTo(App.SignUpTAndCViewPage);
                 // IsLoading = false;
             });
-
-
         }
     }
 }

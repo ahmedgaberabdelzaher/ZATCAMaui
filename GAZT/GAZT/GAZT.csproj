@@ -9,8 +9,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.2.2" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="3.2.2" />
     <PackageReference Include="NodaTime" Version="3.0.0" />
     <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.2" />
@@ -55,6 +53,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.1.0.55" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
     <PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
+    <PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="LogInView.cs" />
@@ -72,6 +71,7 @@
     <Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\VATRealEstatePage\" />
     <Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
+    <Folder Include="Views\SyncFusionEnabledViews\VATLookUpPages\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
