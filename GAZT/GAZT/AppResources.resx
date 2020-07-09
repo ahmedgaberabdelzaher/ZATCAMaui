@@ -2730,14 +2730,14 @@ Should we require further information, we would be in contact.</value>
     <value>VAT Real Estate Transactions for Individuals</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-      <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
+  <data name="ZRealEstateServiceDetailTitle" xml:space="preserve">
     <value>VAT Real Estate Transactions</value>
     <comment>VAT Real Estate Service</comment>
-  </data>       <data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
+  </data>
+  <data name="ZRealEstateServiceIndividualTitle" xml:space="preserve">
     <value>For Individuals</value>
     <comment>VAT Real Estate Service</comment>
   </data>
-
   <data name="ZVATRealEstatePropertyRegistration" xml:space="preserve">
     <value>Property Registration Request</value>
     <comment>VAT Real Estate Service</comment>
@@ -2808,7 +2808,7 @@ Should we require further information, we would be in contact.</value>
     <value>of</value>
   </data>
   <data name="ZZProceedtoindividualSignup" xml:space="preserve">
-    <value>Proceed to individual Signup</value>
+    <value>Proceed to Signup</value>
     <comment>Sign Up</comment>
   </data>
   <data name="ZZZEditProfile" xml:space="preserve">
@@ -2940,10 +2940,6 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZZMyCertificateTitle" xml:space="preserve">
     <value>My Certificate</value>
     <comment>Title</comment>
-  </data>
-  <data name="ZZSignup" xml:space="preserve">
-    <value>Sign Up as Taxpayer</value>
-    <comment>Sign Up</comment>
   </data>
   <data name="ZZZTINStatusTitle" xml:space="preserve">
     <value>TIN Status</value>
