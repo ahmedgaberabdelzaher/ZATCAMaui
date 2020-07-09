@@ -3,7 +3,6 @@ using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel;
 using GAZT.CustomControl;
 using GAZT.Models;
-using Microsoft.AppCenter.Analytics;
 using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
@@ -214,10 +213,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             {
                 viewModel.IsLoading = true;
             });
-            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
-                Image img = sender as Image;
-                BillInfo billInfo = (BillInfo)img.BindingContext;
-                 viewModel.NavigateToMyBills(billInfo);
+
+            //Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " from Dashboard");
+            Image img = sender as Image;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
@@ -230,10 +233,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 viewModel.IsLoading = true;
             });
             viewModel.IsButtonEnabled = false;
-                Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
-                Label img = sender as Label;
-                BillInfo billInfo = (BillInfo)img.BindingContext;
-                 viewModel.NavigateToMyBills(billInfo);
+
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " from Dashboard");
+
+            Label img = sender as Label;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
@@ -245,10 +253,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
             {
                 viewModel.IsLoading = true;
             });
-            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
-                StackLayout img = sender as StackLayout;
-                BillInfo billInfo = (BillInfo)img.BindingContext;
-                 viewModel.NavigateToMyBills(billInfo);
+
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " from Dashboard");
+
+            StackLayout img = sender as StackLayout;
+            BillInfo billInfo = (BillInfo)img.BindingContext;
+            viewModel.NavigateToMyBills(billInfo);
+
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
             await Task.Run(() =>
             {
                 viewModel.IsLoading = false;
@@ -274,49 +287,57 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                         if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
-                            Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.VatReturns + " eService");
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                         {
-                            Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.EstimateZakat + " eService");
                             viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                         {
-                            Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZFormBundleStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.Certificates)
                         {
-                            Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Certificates + " eService");
                             viewModel._navigationService.NavigateTo(App.MyCertificate);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                         {
-                            Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTINStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                         {
-                            Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZCorrespondence + " eService");
                             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
-                            Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
-                    {
-                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
-                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
-                    {
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                        {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZZVatRegistrationTile + " eService");
+                            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                        {
                             string mobno=string.Empty;
 
-                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                            //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                         
                             if (App.TP != null && App.TP.Mobile != null)
                             {
@@ -331,6 +352,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                                         viewModel.IsLoading = true;
                                     });
 
+
+                                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
                                     await viewModel.VerifyCommandClick();
 
                                     await Task.Run(() =>
@@ -341,29 +366,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                                 }
                                 else
                                 {
+                                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
                                     viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                                 }
                             }
                             else
                             {
+                                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
                                 viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                             }
                          }
-
                         //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                         {
-                            Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZVatLookUpTitleTextNew + " eService");
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                         {
-                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZRealEstateServiceTitle + " eService");
                             viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                     }
                     catch (Exception ex)
                     {
+
                     }
                 }
                 if (controltype == "Xamarin.Forms.Label")
@@ -374,68 +405,110 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                         if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
-                            Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.VatReturns + " eService");
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                         {
-                            Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.EstimateZakat + " eService");
                             viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                         {
-                            Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZFormBundleStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.Certificates)
                         {
-                            Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Certificates + " eService");
                             viewModel._navigationService.NavigateTo(App.MyCertificate);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                         {
-                            Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTINStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                         {
-                            Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZCorrespondence + " eService");
                             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
-                            Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
-                    {
-                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
-                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
-                    }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
                         {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZZVatRegistrationTile + " eService");
+                            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                    if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    {
                         string mobno = string.Empty;
+
+                        //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                             mobno = App.TP.Mobile;
-                            //mobno = mobno.Remove(0, 6);
-                            mobno = mobno.Replace("009665", string.Empty);
+                            if (mobno.StartsWith("00966") || mobno.StartsWith("+966"))
+                            {
+                                //mobno = mobno.Remove(0, 2);
+                                //mobno = "+" + mobno;
+
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = true;
+                                });
+
+                                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                                await viewModel.VerifyCommandClick();
+
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = false;
+                                });
+
+                            }
+                            else
+                            {
+                                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                                viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                            }
                         }
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
-                        }
-                        //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
-                        if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
+                        else
                         {
-                            Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
-                    {
-                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
-                        viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
                     }
-                }
+                    //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
+                    if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
+                        {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZVatLookUpTitleTextNew + " eService");
+                            viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZRealEstateServiceTitle + " eService");
+                            viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                    }
                     catch (Exception ex)
                     {
                     }
@@ -448,71 +521,115 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                         if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                         {
-                            Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.VatReturns + " eService");
                             viewModel._navigationService.NavigateTo(App.ICRListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                         {
-                            Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZRealEstateServiceTitle + " eService");
                             viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                         {
-                            Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZFormBundleStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                         {
-                            Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyCertificate + " eService");
                             viewModel._navigationService.NavigateTo(App.MyCertificate);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                         {
-                            Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTINStatus + " eService");
                             viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                         {
-                            Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZCorrespondence + " eService");
                             viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                         {
-                            Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " eService");
                             viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
-                    if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
-                    {
-                        Analytics.TrackEvent(App.VATRegistrationPageView + " eService", null);
-                        viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
-                    }
+                        if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
+                        {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZZVatRegistrationTile + " eService");
+                            viewModel._navigationService.NavigateTo(App.VATRegistrationPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
+                    {
+                        string mobno = string.Empty;
+
+                        //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+
+                        if (App.TP != null && App.TP.Mobile != null)
                         {
-                            string mobno = string.Empty;
-                            if (App.TP != null && App.TP.Mobile != null)
+                            mobno = App.TP.Mobile;
+                            if (mobno.StartsWith("00966") || mobno.StartsWith("+966"))
                             {
-                                mobno = App.TP.Mobile;
-                                //mobno = mobno.Remove(0, 6);
-                                mobno = mobno.Replace("009665", string.Empty);
+                                //mobno = mobno.Remove(0, 2);
+                                //mobno = "+" + mobno;
+
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = true;
+                                });
+
+                                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+                                await viewModel.VerifyCommandClick();
+
+                                await Task.Run(() =>
+                                {
+                                    viewModel.IsLoading = false;
+                                });
+
                             }
-                            Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
-                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView,mobno);
+                            else
+                            {
+                                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                                viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                            }
                         }
-                        if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        else
                         {
-                            Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZTEReportReportScreenTitle + " eService");
+                            viewModel._navigationService.NavigateTo(App.TaxEvasionReportMobilePageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                    }
+
+                    if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
+                        {
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZRealEstateServiceTitle + " eService");
                             viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         //if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZVatLookUpTitleTextNew)
                         {
-                            Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
+                            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZZZVatLookUpTitleTextNew + " eService");
                             viewModel._navigationService.NavigateTo(App.VATLookupPageView);
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                     if (BModel != null && BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                     {
-                        Analytics.TrackEvent(App.VATRealEstateServicesPageView + " eService", null);
+                        var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.ZRealEstateServiceTitle + " eService");
                         viewModel._navigationService.NavigateTo(App.VATRealEstateServicesPageView);
+                        AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                     }
                 }
                     catch (Exception ex)
@@ -525,6 +642,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 viewModel.IsLoading = false;
             });
         }
+
+        private void openTaxEvasion()
+        {
+
+        }
+
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Task.Run(() =>
@@ -538,18 +661,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 0);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
-                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
-                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
             }
             if (controltype == "Xamarin.Forms.Label")
@@ -558,18 +684,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Submitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView);// , 0);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
-                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.UnSubmitted + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
-                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.OverDue + " from Dashboard");
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
             }
             await Task.Run(() =>

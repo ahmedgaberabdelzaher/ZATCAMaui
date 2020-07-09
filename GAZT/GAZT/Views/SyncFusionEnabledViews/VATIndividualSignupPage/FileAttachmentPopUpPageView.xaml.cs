@@ -224,5 +224,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
 
         }
+
+        private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
+        {
+
+        }
     }
 }

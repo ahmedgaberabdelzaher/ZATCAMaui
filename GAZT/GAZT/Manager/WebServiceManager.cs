@@ -5510,6 +5510,98 @@ namespace GAZT.Manager
             }
         }
 
+        public async static Task<String> GAZTVATSignUpValidateTinNumberStringResp(string Tin)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VATSignUp vATSignUp = new VATSignUp();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                String SignUpCityList = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    string IDType = string.Empty;
+                    string IDNumber = string.Empty;
+                    string DBO = string.Empty;
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    String url = Constants.GAZTVATSignUpValidateId + "(Tin='"+ Tin + "',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    //                     (Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+
+                    var uri = new Uri(url);
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+                    if (VATSignUpIdValidateObject != null)
+                    {
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        //vATSignUp = JsonConvert.DeserializeObject<VATSignUp>(SignUpCityList);
+                        //if (vATSignUp != null)
+                        //{
+                        //    if (vATSignUp.d == null)
+                        //    {
+
+                        //    }
+                        //}
+
+
+
+                        //IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    }
+                    return SignUpCityList;// tINStatus;
+                }
+
+                catch (JsonReaderException ex)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+
+                //catch (Exception ex)
+                //{
+                //    return null;
+                //}
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
 
         public async static Task<String> GAZTVATSignUpValidateIDTypesStringResp(string IDType, string IDNumber, string DBO)
         {
@@ -5867,7 +5959,7 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG,ELGBL_DOCSet&$format=json";
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);

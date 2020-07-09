@@ -64,7 +64,7 @@
                                     <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="individual_1.png" Aspect="AspectFit"/>
+                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_new_individual.png" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
@@ -96,7 +96,7 @@
                                     <ColumnDefinition Width="30*"/>
                                     <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
-                                <!--<Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_ic_individaualregistration.png" Aspect="AspectFit"/>-->
+                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_new_Establishment_W.png" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}" TextColor="{StaticResource WhiteTextColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>

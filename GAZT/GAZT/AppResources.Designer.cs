@@ -7155,7 +7155,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Proceed to individual Signup.
+        ///   Looks up a localized string similar to Proceed to Signup.
         /// </summary>
         public static string ZZProceedtoindividualSignup {
             get {
@@ -9560,7 +9560,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summery.
+        ///   Looks up a localized string similar to Summary.
         /// </summary>
         public static string ZZZZSummery {
             get {

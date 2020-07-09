@@ -10,6 +10,8 @@ using EGAZT;
 using Microsoft.AppCenter.Distribute;
 using Plugin.Permissions;
 using Tavant.XToolkit;
+using AppDynamics.Agent;
+
 namespace GAZT.Droid
 {
     [Activity(Label = "GAZT E-Services", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false,ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,ScreenOrientation = ScreenOrientation.Portrait)]
@@ -54,6 +56,9 @@ namespace GAZT.Droid
             {
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.AccessCoarseLocation }, 0);
             }
+
+            App.InitializeAppDynamics();
+
             PackageInfo info = this.PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;
             App app = new App();
