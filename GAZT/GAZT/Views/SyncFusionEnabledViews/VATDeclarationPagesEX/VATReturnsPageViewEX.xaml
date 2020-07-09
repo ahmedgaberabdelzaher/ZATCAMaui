@@ -1148,8 +1148,8 @@
                                         </inputLayout:SfTextInputLayout>
                                         <Grid Style="{DynamicResource GridStyle}" Grid.Row="23"  Grid.Column="0" Grid.ColumnSpan="2" ColumnSpacing="0"   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="60*" />
+                                                <ColumnDefinition Width="40*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto" />
