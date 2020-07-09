@@ -987,6 +987,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
                 viewModel.DOB = year + "/" + month + "/" + day;
+                viewModel.DOBddyymm= day + "/" + month + "/" + year;
                 string DOB = year + month + day;
                 viewModel.DOBPrev = viewModel.DOB;
 

@@ -210,8 +210,8 @@
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOB}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged" Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                                                                </custom:BorderlessEntry>
+                                                                <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOBddyymm}" Focused="OnDateEntryFocussed"  IsEnabled="False" Unfocused="DatePicker_Unfocused" TextChanged="DateEntry_TextChanged" Placeholder="dd/MM/yyyy" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                </custom:BorderlessEntry> <!--Placeholder="yyyy/MM/dd"-->
                                                                 <Image HorizontalOptions="EndAndExpand">
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
@@ -905,7 +905,7 @@
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="0" Text="{x:Static local:AppResources.ZZName}"  />
                                                         <Label Text="{Binding Name}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="1"  TextColor="Black"/>
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="0" Text="{x:Static local:AppResources.ZZDateofBirth}"  />
-                                                        <Label Text="{Binding DOB}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="1"  TextColor="Black"/>
+                                                        <Label Text="{Binding DOBddyymm}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="3" Grid.Column="1"  TextColor="Black"/>
 
                                                     </Grid>
                                                 </StackLayout>
@@ -914,13 +914,13 @@
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                       <Image VerticalOptions="Center" >
+                                                       <!--<Image VerticalOptions="Center" >
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51a997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.CrosshairsGps}" />
                                                             </Image.Source>
-                                                        </Image>
-                                                        <!--<Image Source="vat_ic_location.png" Aspect="AspectFit" HeightRequest="30"/>-->
+                                                        </Image>-->
+                                                        <Image Source="vat_new_Iconmetrolocation.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZZNationalAddress}"    FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
@@ -965,13 +965,13 @@
                                             <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5" VerticalOptions="Start">
-                                                        <Image VerticalOptions="Center" >
+                                                        <!--<Image VerticalOptions="Center" >
                                                             <Image.Source>
                                                                 <FontImageSource FontFamily="UserIconFont" Color="#51a997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Phone}"/>
                                                             </Image.Source>
-                                                        </Image>
-                                                        <!--<Image Source="vat_ic_phone.png" Aspect="AspectFit" HeightRequest="30"/>-->
+                                                        </Image>-->
+                                                        <Image Source="vat_new_Iconawesomephonealt.png" Aspect="AspectFit" HeightRequest="30"/>
                                                         <Label  Margin="0,5,0,5" Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" VerticalOptions="Center" Text="{x:Static local:AppResources.ZZZContactInformation}"  FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>

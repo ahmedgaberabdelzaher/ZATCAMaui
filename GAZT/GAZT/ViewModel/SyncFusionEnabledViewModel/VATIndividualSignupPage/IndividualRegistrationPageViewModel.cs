@@ -480,6 +480,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("DOB");
             }
         }
+        private string _DOBddyymm = string.Empty;
+        public string DOBddyymm
+        {
+            get
+            {
+                return _DOBddyymm;
+            }
+            set
+            {
+                _DOBddyymm = value;
+                RaisePropertyChanged("DOBddyymm");
+            }
+        }
 
 
         private string _continueButtonText = string.Empty;
@@ -1266,6 +1279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             PostalCode = string.Empty;
             BackArrowVisible = true;
             ConfirmPassword = string.Empty;
+            DOBddyymm = string.Empty;
          
         }
         public async Task SetBackFormVisibility()
