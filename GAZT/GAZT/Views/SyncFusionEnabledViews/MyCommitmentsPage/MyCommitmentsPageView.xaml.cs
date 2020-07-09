@@ -1,6 +1,5 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
 using GAZT.Models;
-using Microsoft.AppCenter.Analytics;
 using Syncfusion.SfCalendar.XForms;
 using System;
 using System.Collections.Generic;
@@ -140,7 +139,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                 viewModel.IsLoading = true;
             });
 
-            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+            //Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
             Image img = sender as Image;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
@@ -161,7 +160,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
             });
 
             viewModel.IsButtonEnabled = false;
-            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+            //Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
             Label img = sender as Label;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
@@ -181,7 +180,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
             {
                 viewModel.IsLoading = true;
             });
-            Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
+            //Analytics.TrackEvent(AppResources.MyBills + " from Dashboard", null);
             StackLayout img = sender as StackLayout;
             BillInfo billInfo = (BillInfo)img.BindingContext;
             viewModel.NavigateToMyBills(billInfo);
@@ -221,44 +220,44 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                     {
-                        Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                        //Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
-                        Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
-                        Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
-                        Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                        //Analytics.TrackEvent(App.MyCertificate + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
-                        Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
-                        Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                        //Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
-                        Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                        //Analytics.TrackEvent(App.MyBillsView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
                     {
                         string mobno = string.Empty;
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                         if (App.TP != null && App.TP.Mobile != null)
                         {
                             mobno = App.TP.Mobile;
@@ -269,7 +268,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
-                        Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
+                        //Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
                 }
@@ -288,38 +287,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                     {
-                        Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                        //Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
-                        Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
-                        Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
-                        Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                        //Analytics.TrackEvent(App.MyCertificate + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
-                        Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
-                        Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                        //Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
-                        Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                        //Analytics.TrackEvent(App.MyBillsView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
@@ -331,12 +330,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                             mobno = mobno.Remove(0, 6);
 
                         }
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
-                        Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
+                        //Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
 
@@ -356,38 +355,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
                     if (BModel != null && BModel.eServiceName == AppResources.VatReturns)
                     {
-                        Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
+                        //Analytics.TrackEvent(AppResources.VATDeclaration + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ICRListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.EstimateZakat)
                     {
-                        Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.ZakatReturnListPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.ZakatReturnListPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZFormBundleStatus)
                     {
-                        Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.FormBundleStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.FormBundleStatusPageView);
                     }
 
                     if (BModel != null && BModel.eServiceName == AppResources.MyCertificate)
                     {
-                        Analytics.TrackEvent(App.MyCertificate + " eService", null);
+                        //Analytics.TrackEvent(App.MyCertificate + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyCertificate);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTINStatus)
                     {
-                        Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
+                        //Analytics.TrackEvent(App.CheckTINStatusPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CheckTINStatusPageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZZCorrespondence)
                     {
-                        Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
+                        //Analytics.TrackEvent(App.CorrespondancePageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.CorrespondancePageView);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                     {
-                        Analytics.TrackEvent(App.MyBillsView + " eService", null);
+                        //Analytics.TrackEvent(App.MyBillsView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
@@ -399,12 +398,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                             mobno = mobno.Remove(0, 6);
 
                         }
-                        Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
+                        //Analytics.TrackEvent(App.TaxEvasionReportListPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.TaxEvasionReportListPageView, mobno);
                     }
                     if (BModel != null && BModel.eServiceName == AppResources.VATLookup)
                     {
-                        Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
+                        //Analytics.TrackEvent(App.VATLookupPageView + " eService", null);
                         viewModel._navigationService.NavigateTo(App.VATLookupPageView);
                     }
 
@@ -442,17 +441,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 0);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
-                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
-                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
                 }
 
@@ -463,17 +462,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage
                 ReturnInfo BModel = (ReturnInfo)arrowImage.BindingContext;
                 if (BModel.ReturnTypeName == AppResources.Submitted)
                 {
-                    Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.Submitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView);// , 0);
                 }
                 if (BModel.ReturnTypeName == AppResources.UnSubmitted)
                 {
-                    Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.UnSubmitted + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 1);
                 }
                 if (BModel.ReturnTypeName == AppResources.OverDue)
                 {
-                    Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
+                    //Analytics.TrackEvent(AppResources.OverDue + " from Dashboard", null);
                     viewModel._navigationService.NavigateTo(App.MyReturnsPageView, 2);
                 }
 

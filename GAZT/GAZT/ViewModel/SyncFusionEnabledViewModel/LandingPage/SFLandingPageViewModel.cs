@@ -832,6 +832,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             }
             catch (Exception ex)
             {
+
             }
         }
 
@@ -860,13 +861,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
 
                 TaxEvasionSendSmsModel taxEvasionSendSmsModel = new TaxEvasionSendSmsModel();
                 taxEvasionSendSmsModel.mobile = mobno;
-
                 try
                 {
                     TaxEvasionSendSmsResponseModel taxEvasionSendSmsResponseModel = await WebServiceManager.GAZTTaxEvasionSendSms(taxEvasionSendSmsModel);
-
-                   
-
                     if (taxEvasionSendSmsResponseModel.Status == true)
                     {
                         App.TaxEvasionUserData = new TaxEvasionUserRegistrationResponseData();
