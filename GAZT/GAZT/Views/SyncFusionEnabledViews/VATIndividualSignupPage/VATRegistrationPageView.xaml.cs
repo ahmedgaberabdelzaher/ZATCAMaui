@@ -1680,7 +1680,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-
                     FrmTINNumber.HasError = false;
                 }
             }

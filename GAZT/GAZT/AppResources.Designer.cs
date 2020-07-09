@@ -9560,7 +9560,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Summery.
+        ///   Looks up a localized string similar to Summary.
         /// </summary>
         public static string ZZZZSummery {
             get {
