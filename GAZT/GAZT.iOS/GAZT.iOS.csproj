@@ -977,4 +977,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_phone%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup_W%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\vat_tile_listofsignup_W%403x.png" />
+  </ItemGroup>
 </Project>

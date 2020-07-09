@@ -42,7 +42,7 @@
 
                 <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White">-->
-                    <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0">
+                    <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -1229,7 +1229,7 @@
                             </StackLayout>
                         </ScrollView>
                         <!--</Grid> VerifyButtonDisableTextColor BackgroundColor="#d49504"-->
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,0,0" VerticalOptions="End"  BackgroundColor="White" >
+                        <StackLayout Spacing="0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{Binding VerifyButtonDisableColor}" Margin="0,0,0,-2" VerticalOptions="End"   >
                             <buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
                                   HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />
                         </StackLayout>

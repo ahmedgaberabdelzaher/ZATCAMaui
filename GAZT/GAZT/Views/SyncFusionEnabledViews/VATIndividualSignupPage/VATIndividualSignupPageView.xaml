@@ -50,7 +50,7 @@
                     <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
                     <Grid Padding="0"><!--BackgroundColor="DarkGreen"-->
-                        <Image Grid.Row="0" Grid.Column="0"  Source="vat_tile_listofsignup.png" Aspect="AspectFill"/>
+                        <Image x:Name="image_individual_tile" Grid.Row="0" Grid.Column="0"  Source="{Binding ImageIndividualTile}" Aspect="AspectFill"/>
                         <Frame Margin="5" CornerRadius="5" BackgroundColor="Transparent" HeightRequest="100">
                             <!--Text="Individual Registration"-->
                             
@@ -64,8 +64,8 @@
                                     <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_new_individual.png" Aspect="AspectFit"/>
-                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}" TextColor="{StaticResource WhiteTextColor}"
+                                <Image x:Name="image_individual_icon" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageIndividualIcon }" Aspect="AspectFit"/>
+                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}"  TextColor="{Binding IndividualTileColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
@@ -84,7 +84,7 @@
                 </Grid>
                     <Grid Padding="0">
                         <!--BackgroundColor="DarkGreen"-->
-                        <Image Grid.Row="0" Grid.Column="0"   Source="vat_tile_listofsignup.png" Aspect="AspectFill"/>
+                        <Image x:Name="image_estimated_tile" Grid.Row="0" Grid.Column="0"   Source="{Binding ImageEstimatedTile}" Aspect="AspectFill"/>
                         <Frame CornerRadius="5" Margin="5" BackgroundColor="Transparent"  HeightRequest="100">
                             <!--Text="Individual Registration"-->
                             <Grid>
@@ -96,8 +96,8 @@
                                     <ColumnDefinition Width="30*"/>
                                     <ColumnDefinition Width="70*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="vat_new_Establishment_W.png" Aspect="AspectFit"/>
-                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}" TextColor="{StaticResource WhiteTextColor}"
+                                <Image Grid.Row="0"  Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageEstimatedIcon}" Aspect="AspectFit"/>
+                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}"  TextColor="{Binding EstimatedTileColor}"
                            VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>

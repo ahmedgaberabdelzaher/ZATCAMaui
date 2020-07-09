@@ -30,6 +30,114 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsLoading");
             }
         }
+
+        private string _ImageIndividualTile = "vat_tile_listofsignup_W.png";
+        public string  ImageIndividualTile
+        {
+            get
+            {
+                return _ImageIndividualTile;
+            }
+            set
+            {
+                _ImageIndividualTile = value;
+                RaisePropertyChanged("ImageIndividualTile");
+            }
+        }
+
+        private string _ImageIndividualIcon = "vat_new_individual_G.png";
+        public string ImageIndividualIcon
+        {
+            get
+            {
+                return _ImageIndividualIcon;
+            }
+            set
+            {
+                _ImageIndividualIcon = value;
+                if (_ImageEstimatedIcon.Equals("vat_new_individual_G.png"))
+                {
+
+                    IndividualTileColor = Color.FromHex("#006450");
+                    
+
+
+                }
+                else
+                {
+                    IndividualTileColor = Color.White;
+                }
+                RaisePropertyChanged("ImageIndividualIcon");
+            }
+        }
+        private string _ImageEstimatedTile = "vat_tile_listofsignup_W.png";
+        public string ImageEstimatedTile
+        {
+            get
+            {
+                return _ImageEstimatedTile;
+            }
+            set
+            {
+                _ImageEstimatedTile = value;
+                RaisePropertyChanged("ImageEstimatedTile");
+            }
+        }
+        private string _ImageEstimatedIcon = "vat_new_Establishment_G.png";
+        public string ImageEstimatedIcon
+        {
+            get
+            {
+                return _ImageEstimatedIcon;
+            }
+            set
+            {
+                _ImageEstimatedIcon = value;
+                if (_ImageEstimatedIcon.Equals("vat_new_Establishment_G.png"))
+                {
+
+                    EstimatedTileColor = Color.FromHex("#006450");
+                   
+
+
+                }
+                else
+                {
+                    EstimatedTileColor = Color.White;
+                }
+                RaisePropertyChanged("ImageEstimatedIcon");
+            }
+        }
+        private Color _IndividualTileColor = Color.FromHex("#006450");
+        public Color IndividualTileColor
+        {
+            get 
+            {
+                return _IndividualTileColor;
+            }
+            set 
+            {
+                _IndividualTileColor = value;
+
+                RaisePropertyChanged("IndividualTileColor");
+            }
+        }
+        private Color _EstimatedTileColor = Color.FromHex("#006450");
+        public Color EstimatedTileColor
+        {
+            get
+            {
+                return _EstimatedTileColor;
+            }
+            set
+            {
+                _EstimatedTileColor = value;
+                RaisePropertyChanged("EstimatedTileColor");
+            }
+        }
+
+
+
         public VATIndividualSignupPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -52,6 +160,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             await Task.Run(() =>
             {
                 IsLoading = true;
+                ImageIndividualTile= "vat_tile_listofsignup.png";
+                //viewModel.ImageIndividualTile = "vat_tile_listofsignup_W.png";
+                //image_estimated_tile.Source = "vat_tile_listofsignup.png";
+                //viewModel.ImageEstimatedTile = "vat_tile_listofsignup_W.png";
+                ImageIndividualIcon = "vat_new_individual.png";
+                //viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
+                //// image_estimated_icon.Source = "vat_new_Establishment_W.png";
+                //viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
+                //viewModel.EstimatedTileColor = Color.FromHex("#006450");
+                //viewModel.IndividualTileColor = Color.FromHex("#006450");
             });
             
             Device.BeginInvokeOnMainThread( () =>
@@ -65,6 +183,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             await Task.Run(() =>
             {
                 IsLoading = true;
+                ImageEstimatedTile= "vat_tile_listofsignup.png";
+                ImageEstimatedIcon = "vat_new_Establishment_W.png";
+
             });
 
             Device.BeginInvokeOnMainThread(() =>
