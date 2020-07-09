@@ -509,12 +509,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryTINNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (string.IsNullOrEmpty(EntryTINNumber.Text))
+            {
+                EntryIDNo.IsEnabled = true;
+                EntryFirstName.IsEnabled = true;
+                EntryLastName.IsEnabled = true;
+                EntryPhoneNumber.IsEnabled = true;
+                EntryEmail.IsEnabled = true;
+            }
+            else
+            {
+                EntryIDNo.IsEnabled = false;
+                EntryFirstName.IsEnabled = false;
+                EntryLastName.IsEnabled = false;
+                EntryPhoneNumber.IsEnabled = false;
+                EntryEmail.IsEnabled = false;
+            }
         }
 
         private void btnID_Clicked(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(EntryTINNumber.Text))
+            { 
             DDlIDType.IsOpen = true;
+            }
         }
 
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -666,7 +684,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void NewAttachment_Clicked(object sender, EventArgs e)
         {
-           // PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView());
+            PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet));
         }
 
         private void TappendOnImporter(object sender, EventArgs e)
@@ -1077,7 +1095,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
-            SignUpDOB.IsOpen = true;
+            if (string.IsNullOrEmpty(EntryTINNumber.Text))
+            {
+                SignUpDOB.IsOpen = true;
+            }
+           
         }
 
         private void DOB_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1665,10 +1687,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-                    // viewModel.Name = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
-                    //EntryName.IsEnabled = false;
-                    //FrmIDNumber.HasError = false;
-                    //viewModel.FrameIDError = false;
                     FrmTINNumber.HasError = false;
                 }
             }

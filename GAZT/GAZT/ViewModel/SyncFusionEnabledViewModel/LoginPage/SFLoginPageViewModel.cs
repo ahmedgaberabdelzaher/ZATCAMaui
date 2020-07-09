@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Essentials;
 using GAZT.Helper;
+using AppDynamics.Agent;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 {
@@ -831,6 +832,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         {
             string response = string.Empty;
             string UserId = App.LoginDataRetrieved.TIN;
+
+            Instrumentation.SetUserData("user_id", UserId);
 
             String lang = "E";
             string language = UtilityManager.GetLanguageParameter();

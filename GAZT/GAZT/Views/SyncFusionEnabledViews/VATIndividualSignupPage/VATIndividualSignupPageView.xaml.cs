@@ -1,9 +1,5 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -21,8 +17,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel = App.Locator.VATIndividualSignupPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            // image_individual_tile.Source = "vat_tile_listofsignup.png";
+            viewModel.ImageIndividualTile = "vat_tile_listofsignup_W.png";
+            //image_estimated_tile.Source = "vat_tile_listofsignup.png";
+            viewModel.ImageEstimatedTile = "vat_tile_listofsignup_W.png";
+            //image_individual_icon.Source = "vat_new_individual.png";
+            viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
+            // image_estimated_icon.Source = "vat_new_Establishment_W.png";
+            viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
+            viewModel.EstimatedTileColor = Color.FromHex("#006450");
+            viewModel.IndividualTileColor = Color.FromHex("#006450");
             SetLTR();
         }
+      
         private void SetLTR()
         {
             if (!App.IsArabic)
@@ -45,6 +52,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnAppearing();
             //your code here;
             viewModel.IsLoading = false;
+            viewModel.ImageIndividualTile = "vat_tile_listofsignup_W.png";
+
+            viewModel.ImageEstimatedTile = "vat_tile_listofsignup_W.png";
+
+            viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
+
+            viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
+            viewModel.EstimatedTileColor = Color.FromHex("#006450");
+            viewModel.IndividualTileColor = Color.FromHex("#006450");
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
