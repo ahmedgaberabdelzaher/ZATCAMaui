@@ -40,6 +40,8 @@ namespace EGAZT.Models
         }
         public string Txt30 { get; set; }
         public string Faednar { get; set; } //DueDate
+        public string FAEDN { get; set; } //DueDate
+
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
         private string _status = string.Empty;
