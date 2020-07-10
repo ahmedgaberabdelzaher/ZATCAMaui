@@ -250,6 +250,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private List<String> _ListOfActionButtonsApplicableForRegistration;
+        public List<String> ListOfActionButtonsApplicableForRegistration
+        {
+            get
+            {
+                return _ListOfActionButtonsApplicableForRegistration;
+            }
+            set
+            {
+                _ListOfActionButtonsApplicableForRegistration = value;
+                if (_ListOfActionButtonsApplicableForRegistration != null && _ListOfActionButtonsApplicableForRegistration.Count() != 0)
+                {
+                   // OnMoreOptionsEnabled = true;
+                }
+                else
+                {
+                    //OnMoreOptionsEnabled = false;
+                }
+                RaisePropertyChanged("ListOfActionButtonsApplicableForRegistration");
+            }
+        }
+
         private VATRegistrationDetails _vATRegistrationDetailsData;
         public VATRegistrationDetails VATRegistrationDetailsData
         {
@@ -1073,6 +1095,99 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         #region Method
 
+        public void setDATA()
+        {
+            try
+            {
+                if (IsInstrunctionChecked)
+                {
+                    VATRegistrationDetailsData.d.AgrFg = "1";
+                }
+                else
+                {
+                    VATRegistrationDetailsData.d.AgrFg = "0";
+                }
+                if (!string.IsNullOrEmpty(VatEligibleStartDate))
+                {
+                    string[] date1 = VatEligibleStartDate.Split('/');
+                    //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
+                    //var dateTimeOffset = new DateTimeOffset(dateTime);
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
+                    // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+                    var Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
+                    VATRegistrationDetailsData.d.VatTaxDt = Bdt;
+                }
+                VATRegistrationDetailsData.d.StepNumberz = "2";
+                VATRegistrationDetailsData.d.DecidTy = string.Empty;
+                //Step 4
+
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Gpart = GpartFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Type = TypeFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Idnumber = IdnumberFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Firstnm = FirstnmFR;
+                VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
+                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
+                VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
+
+                //Step 5
+                if (IsDeclarationChecked)
+                {
+                    VATRegistrationDetailsData.d.Decfg = "1";
+                }
+                else
+                {
+                    VATRegistrationDetailsData.d.Decfg = "0";
+                }
+                if (SelectedIdTypeSR != null)
+                {
+                    VATRegistrationDetailsData.d.DecidTy = SelectedIdTypeSR.ID;
+                }
+
+                VATRegistrationDetailsData.d.Decconno = IdNumberSR;
+                VATRegistrationDetailsData.d.Decname = FirstNameSR;
+
+              
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        public async Task<VATRegistrationDetails> SubmitClicked()
+        {
+            setDATA();
+            //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
+            VATRegistrationDetails response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
+            PopToRootPage();
+            if (response != null && response.d != null)
+            {
+                try
+                {
+                    if (response != null && response.d != null)
+                    {
+                        VATRegistrationDetailsData = response;
+                        //Set data after api call 
+
+                        setDataAfterSubmitAPI();
+
+
+                    }
+                    return response;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            return response;
+    }
+
+        public void setDataAfterSubmitAPI()
+        {
+
+        }
         public void setQuestionImage()
         {
             if(VATRegistrationDetailsData.d.QUESCONFIG_MSet.results!=null)
@@ -1153,6 +1268,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
             }
         }
+
+        
+
         public async Task onPageLoad()
         {
             try
@@ -1172,7 +1290,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationOtherDetails vATRegistrationOther = null;
                     try
                     {
-                        
+                        ListOfActionButtonsApplicableForRegistration = new List<string>();
+                        ListOfActionButtonsApplicableForRegistration.Add("SaveasDraft");
+
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (vATRegistration != null && vATRegistration.d != null)
@@ -1211,7 +1331,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 ExporterTextColor = Color.Black;
                             }
 
-                            if(VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count!=0)
+                            
+
+
+                            if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count!=0)
                             {
                                 MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                                 MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);

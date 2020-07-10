@@ -89,7 +89,7 @@ namespace EGAZT.Models
         /// <summary>
         /// 
         /// </summary>
-        public List<ResultsItemForDOCSet> results { get; set; }
+        public List<ResultsItemForElgblDocSet> results { get; set; }
     }
 
     public class VATRegistrationWithOtherInformation

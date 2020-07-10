@@ -60,8 +60,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("VATRegistrationDetailsForAttach");
             }
         }
-        private List<ResultsItemForDOCSet> _resultsItemForDOCSet = null;
-        public List<ResultsItemForDOCSet>  ResultsItemForDOCSet 
+        private List<ResultsItemForElgblDocSet> _resultsItemForDOCSet = null;
+        public List<ResultsItemForElgblDocSet>  ResultsItemForDOCSet 
         {
             get
             {

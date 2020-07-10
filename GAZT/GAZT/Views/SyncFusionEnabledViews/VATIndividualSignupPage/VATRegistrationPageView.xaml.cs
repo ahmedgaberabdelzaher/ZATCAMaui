@@ -297,6 +297,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 await Task.Run(async () =>
                 {
                     await viewModel.onPageLoad();
+                    setIban();
                 });
                 await Task.Run(() =>
                 {
@@ -308,7 +309,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
-
+        public void setIban()
+        {
+            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
+            {
+                viewModel.NewAccountText = "New Account";
+            }
+            else
+            {
+                viewModel.NewAccountText = "Edit Account";
+                triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
+            }
+        }
         private void DateEntry_Focused(object sender, FocusEventArgs e)
         {
 
@@ -695,11 +707,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ImporterTextColor = Color.Black;
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
                 {
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ImporterTextColor = Color.White;
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
             }
             catch(Exception ex)
@@ -716,11 +730,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ExporterTextColor = Color.Black;
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
                     viewModel.ExporterTextColor = Color.White;
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
             }
             catch(Exception ex)
@@ -728,7 +744,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+        private async void onMoreOptionClicked(object sender, EventArgs e)
+        {
+            String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
+            //For test
+            viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+
+            await viewModel.SubmitClicked();
+              
+            
+        }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
             try
@@ -1792,7 +1818,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             double value = ((Xamarin.Forms.Slider)sender).Value;
         }
 
-        private void Slider_DragCompleted(object sender, EventArgs e)
+        private async void Slider_DragCompleted(object sender, EventArgs e)
         {
             try
             {
@@ -1815,7 +1841,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 }
-
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             }
             catch(Exception ex)
             {
@@ -1824,7 +1851,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             
         }
 
-        private void Slider2Dragged(object sender, EventArgs e)
+        private async void Slider2Dragged(object sender, EventArgs e)
         {
             try
             {
@@ -1848,6 +1875,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                     }
                 }
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
             }
             catch (Exception ex)
             {
@@ -1855,7 +1884,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void TapppedOnQuestion3First(object sender, EventArgs e)
+        private async void TapppedOnQuestion3First(object sender, EventArgs e)
         {
             foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
             {
@@ -1869,9 +1898,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
 
-        private void TapppedOnQuestion3Second(object sender, EventArgs e)
+        private async void TapppedOnQuestion3Second(object sender, EventArgs e)
         {
             foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
             {
@@ -1885,9 +1916,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
 
-        private void TapppedOnQuestion4First(object sender, EventArgs e)
+        private async void TapppedOnQuestion4First(object sender, EventArgs e)
         {
             foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
             {
@@ -1901,9 +1934,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
 
-        private void TapppedOnQuestion4Second(object sender, EventArgs e)
+        private async void TapppedOnQuestion4Second(object sender, EventArgs e)
         {
             foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
             {
@@ -1917,6 +1952,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
     }
 }

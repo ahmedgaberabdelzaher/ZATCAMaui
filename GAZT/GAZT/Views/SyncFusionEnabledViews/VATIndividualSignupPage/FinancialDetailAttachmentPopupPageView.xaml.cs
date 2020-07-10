@@ -32,7 +32,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             SetLTR();
             
             viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
-            viewModel.ResultsItemForDOCSet = new List<ResultsItemForDOCSet>();
+            viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
             viewModel.ELGBL_DOCSet = _eLGBL_DOCSet;
             viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
         }

@@ -2436,7 +2436,7 @@
 
                     <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Menu}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Tapped="TappedOnMenu"></TapGestureRecognizer>
+                                <TapGestureRecognizer  Tapped="onMoreOptionClicked"></TapGestureRecognizer>
                     </Label.GestureRecognizers>
                     </Label>
                         <StackLayout  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="10,0,0,10" BackgroundColor="White" HorizontalOptions="FillAndExpand">

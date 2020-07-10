@@ -78,7 +78,7 @@ public class ResultsItemForContactPerson
         public string Gpart { get; set; }
         public string Enddt { get; set; }
         public string Contacttp { get; set; }
-        public string Defaultfg { get; set; }
+        public bool Defaultfg { get; set; }
         public string Startdt { get; set; }
         public string Firstnm { get; set; }
         public string Lastnm { get; set; }
@@ -116,7 +116,21 @@ public class ResultsItemForQuestion
         public string QoptAns { get; set; }
 }
 
-public class QUESTIONSSet
+    public class ResultsItemForElgblDocSet
+    {
+        public __metadata __metadata { get; set; }
+        public string Mandt { get; set; }
+        public string FormGuid { get; set; }
+        public string DataVersion { get; set; }
+        public int LineNo { get; set; }
+        public string RankingOrder { get; set; }
+        public string Fbtyp { get; set; }
+        public string TxnTp { get; set; }
+        public string DmsTp { get; set; }
+        public string DmsTxt { get; set; }
+    }
+
+    public class QUESTIONSSet
 {
         public List <ResultsItemForQuestion> results { get; set; }
 }

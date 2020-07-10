@@ -6089,117 +6089,135 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //public static async Task<VATDeclaration> SaveVATRegistrationData(VATRegistrationDetails vATRegistration)
-        //{
-        //    VATRegistrationDetails RequestVATRegistration = new VATRegistrationDetails();
-        //    VATRegistrationDetails _vATRegistration = new VATRegistrationDetails();
-        //    if (CrossConnectivity.Current.IsConnected)
-        //    {
-        //        try
-        //        {
-        //            if (vATRegistration != null && vATRegistration.d != null)
-        //            {
-        //                if (vATRegistration.d != null)
-        //                {
-        //                    RequestVATRegistration = vATRegistration;
+        public static async Task<VATRegistrationDetails> SaveVATRegistrationData(VATRegistrationDetails vATRegistration)
+        {
+            VATRegistrationDetails RequestVATRegistration = new VATRegistrationDetails();
+            VATRegistrationDetails _vATRegistration = new VATRegistrationDetails();
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    if (vATRegistration != null && vATRegistration.d != null)
+                    {
+                        if (vATRegistration.d != null)
+                        {
+                            RequestVATRegistration = vATRegistration;
 
-        //                    //RequestVATDeclaration.d.SubmitFg = "";
-        //                    ATTDETSet aTTACHSet = new ATTDETSet();
-        //                    aTTACHSet.results = new List<Attachment>();
-        //                    RequestVATRegistration.d.ATTDETSet = aTTACHSet;
-        //                }
-        //                char LangZ = GetLangZParameter();
-        //                string lang = UtilityManager.GetLanguageParameter();
-        //                String url = Constants.SaveVATRegistration;
-        //                vATRegistration.d.Langz = lang;
-        //                var uri = new Uri(url);
-        //                HttpClient client = new HttpClient(App.httpClientHandler);
+                            //RequestVATDeclaration.d.SubmitFg = "";
+                            ATTDETSet aTTACHSet = new ATTDETSet();
+                            aTTACHSet.results = new List<Attachment>();
+                            RequestVATRegistration.d.ATTDETSet = aTTACHSet;
+                        }
+                        char LangZ = GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.SaveVATRegistration;
+                        vATRegistration.d.Langz = lang;
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
 
-        //                client.DefaultRequestHeaders.Add("Token", "123");
-        //                client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                        client.DefaultRequestHeaders.Add("Token", "123");
+                        client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
-        //                client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-        //                client.DefaultRequestHeaders.Add("Accept", "application/json");
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
 
-        //                var serilized = JsonConvert.SerializeObject(RequestVATRegistration);
-        //                HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
-        //                HttpResponseMessage res = await client.PostAsync(uri, contentPost);
-        //                var detailJson = res.Content.ReadAsStringAsync().Result;
-        //                _vATRegistration = JsonConvert.DeserializeObject<VATRegistrationDetails>(detailJson);
-        //                if (_vATRegistration != null)
-        //                {
-        //                    if (_vATRegistration.d != null)
-        //                    {
-        //                        if (_vATRegistration.d.NOTESSet == null)
-        //                        {
-        //                            NOTESSet nOTEs = new NOTESSet();
-        //                            nOTEs.results = new List<Note>();
-        //                            _vATRegistration.d.NOTESSet = nOTEs;
-        //                        }
-        //                        if (_vATRegistration.d.IBANSet == null)
-        //                        {
-        //                            IBANSet iBANSet = new IBANSet();
-        //                            iBANSet.results = new List<Result2>();
-        //                            _vATRegistration.d.IBANSet = iBANSet;
-        //                        }
-        //                        if (_vATRegistration.d.ADDRESSSet == null)
-        //                        {
-        //                            ADDRESSSet aDDRESSSet = new ADDRESSSet();
-        //                            aDDRESSSet.results = new List<ResultsItem>();
-        //                            _vATRegistration.d.ADDRESSSet = aDDRESSSet;
-        //                        }
-        //                        if (_vATRegistration.d.ATTDETSet == null)
-        //                        {
-        //                            ATTDETSet aTTDETSet = new ATTDETSet();
-        //                            aTTDETSet.results = new List<Attachment>();
-        //                            _vATRegistration.d.ATTDETSet = aTTDETSet;
-        //                        }
-        //                        if (_vATRegistration.d.CONTACTDTSet == null)
-        //                        {
-        //                            CONTACTDTSet cONTACTDT = new CONTACTDTSet();
-        //                            cONTACTDT.results = new List<ResultsItemForContact>();
-        //                            _vATRegistration.d.CONTACTDTSet = cONTACTDT;
-        //                        }
-        //                        if (_vATRegistration.d.CONTACT_PERSONSet == null)
-        //                        {
-        //                            CONTACT_PERSONSet cONTACT_PERSONSet = new CONTACT_PERSONSet();
-        //                            cONTACT_PERSONSet.results = new List<ResultsItemForContactPerson>();
-        //                            _vATRegistration.d.CONTACT_PERSONSet = cONTACT_PERSONSet;
-        //                        }
-        //                        if (_vATRegistration.d.ELGBL_DOCSet == null)
-        //                        {
-        //                            ELGBL_DOCSet eLGBL_DOC = new ELGBL_DOCSet();
-        //                            eLGBL_DOC.results = new List<ResultsItemForDOCSet>();
-        //                            _vATRegistration.d.ELGBL_DOCSet = eLGBL_DOC;
-        //                        }
-        //                    }
-        //                }
-        //                if (_vATDeclarationD == null || _vATDeclarationD.d == null)
-        //                {
-        //                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-        //                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-        //                    {
-        //                        ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-        //                        ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
-        //                        String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-        //                        ErrorMessageForVAT = WithReplacedString;
-        //                        //ErrorMessageForVAT
-        //                    }
-        //                }
-        //                return _vATDeclarationD;
-        //            }
-        //            return _vATDeclarationD;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
-        //    }
-        //}
+                        var serilized = JsonConvert.SerializeObject(RequestVATRegistration);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+                        _vATRegistration = JsonConvert.DeserializeObject<VATRegistrationDetails>(detailJson);
+                        if (_vATRegistration != null)
+                        {
+                            if (_vATRegistration.d != null)
+                            {
+                                if (_vATRegistration.d.NOTESSet == null)
+                                {
+                                    NOTESSet nOTEs = new NOTESSet();
+                                    nOTEs.results = new List<Note>();
+                                    _vATRegistration.d.NOTESSet = nOTEs;
+                                }
+                                if (_vATRegistration.d.IBANSet == null)
+                                {
+                                    IBANSet iBANSet = new IBANSet();
+                                    iBANSet.results = new List<Result2>();
+                                    _vATRegistration.d.IBANSet = iBANSet;
+                                }
+                                if (_vATRegistration.d.ADDRESSSet == null)
+                                {
+                                    ADDRESSSet aDDRESSSet = new ADDRESSSet();
+                                    aDDRESSSet.results = new List<ResultsItem>();
+                                    _vATRegistration.d.ADDRESSSet = aDDRESSSet;
+                                }
+                                if (_vATRegistration.d.ATTDETSet == null)
+                                {
+                                    ATTDETSet aTTDETSet = new ATTDETSet();
+                                    aTTDETSet.results = new List<Attachment>();
+                                    _vATRegistration.d.ATTDETSet = aTTDETSet;
+                                }
+                                if (_vATRegistration.d.CONTACTDTSet == null)
+                                {
+                                    CONTACTDTSet cONTACTDT = new CONTACTDTSet();
+                                    cONTACTDT.results = new List<ResultsItemForContact>();
+                                    _vATRegistration.d.CONTACTDTSet = cONTACTDT;
+                                }
+                                if (_vATRegistration.d.CONTACT_PERSONSet == null)
+                                {
+                                    CONTACT_PERSONSet cONTACT_PERSONSet = new CONTACT_PERSONSet();
+                                    cONTACT_PERSONSet.results = new List<ResultsItemForContactPerson>();
+                                    _vATRegistration.d.CONTACT_PERSONSet = cONTACT_PERSONSet;
+                                }
+                                if (_vATRegistration.d.ELGBL_DOCSet == null)
+                                {
+                                    ELGBL_DOCSet eLGBL_DOC = new ELGBL_DOCSet();
+                                    eLGBL_DOC.results = new List<ResultsItemForElgblDocSet>();
+                                    _vATRegistration.d.ELGBL_DOCSet = eLGBL_DOC;
+                                }
+                                if (_vATRegistration.d.QUESTIONSSet == null)
+                                {
+                                    QUESTIONSSet qUESTIONSSet = new QUESTIONSSet();
+                                    qUESTIONSSet.results = new List<ResultsItemForQuestion>();
+                                    _vATRegistration.d.QUESTIONSSet = qUESTIONSSet;
+                                }
+                                if (_vATRegistration.d.QUESCONFIG_MSet == null)
+                                {
+                                    QUESCONFIG_MSet qUESCONFIG = new QUESCONFIG_MSet();
+                                    qUESCONFIG.results = new List<QuestionsetWithMinMax>();
+                                    _vATRegistration.d.QUESCONFIG_MSet = qUESCONFIG;
+                                }
+                                if (_vATRegistration.d.QUESLISTSet == null)
+                                {
+                                    QUESLISTSet qUESLIST = new QUESLISTSet();
+                                    qUESLIST.results = new List<string>();
+                                    _vATRegistration.d.QUESLISTSet = qUESLIST;
+                                }
+                            }
+                        }
+                        if (_vATRegistration == null || _vATRegistration.d == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                                ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForVAT = WithReplacedString;
+                                //ErrorMessageForVAT
+                            }
+                        }
+                        return _vATRegistration;
+                    }
+                    return _vATRegistration;
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
 
         //public static async Task<VATRegistrationDetails> SaveVATRegistrationData(VATRegistrationDetails vATRegistrationDetails)
         //{

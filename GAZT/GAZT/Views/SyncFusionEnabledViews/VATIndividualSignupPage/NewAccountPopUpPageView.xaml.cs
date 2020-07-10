@@ -39,6 +39,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             else
             {
                 viewModel.AccountText = "Edit Account";
+                viewModel.IbanPartOne= Iban.Substring(0, 2);
+                viewModel.IbanPartTwo = Iban.Substring(2, 8);
+                viewModel.IbanPartThree = Iban.Substring(9, 4);
+                viewModel.IbanPartFour = Iban.Substring(13,4);
+                viewModel.IbanPartFive = Iban.Substring(17, 4);
+                //Bind Iban and remove name
             }
             SetLTR();
         }
