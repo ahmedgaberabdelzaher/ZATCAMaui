@@ -40,7 +40,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
                 viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
                 viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
-                viewModel.ResultsItemForDOCSet = new List<ResultsItemForDOCSet>();
+                viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
                 viewModel.VATRegistrationDetailsForAttach= sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
@@ -49,7 +49,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 
                 if (viewModel.ResultsItemForDOCSet != null)
                 {
-                    viewModel.SelectedResultsItemForDOCSet = viewModel.ResultsItemForDOCSet.FirstOrDefault();
+                    //viewModel.SelectedResultsItemForDOCSet = viewModel.ResultsItemForDOCSet.FirstOrDefault();
                     AttachmentTypePicker.SelectedItem = "1";
                 }
                
