@@ -1350,11 +1350,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                            
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
-                            if (vATRegistration.d.CrStdt != null)
-                            { 
-                            string convertedStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            vATRegistration.d.CrStdt = Convert.ToDateTime(convertedStartDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                            }
+                            //if (vATRegistration.d.CrStdt != null)
+                            //{ 
+                            //string convertedStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            //vATRegistration.d.CrStdt = Convert.ToDateTime(convertedStartDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                            //}
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)
