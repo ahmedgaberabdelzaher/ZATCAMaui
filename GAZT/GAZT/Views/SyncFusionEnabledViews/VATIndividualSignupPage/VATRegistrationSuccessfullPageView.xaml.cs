@@ -30,8 +30,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+        
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
+            // Added by Divya
+            viewModel._navigationService.NavigateTo(App.SFLandingPageView);
 
         }
     }

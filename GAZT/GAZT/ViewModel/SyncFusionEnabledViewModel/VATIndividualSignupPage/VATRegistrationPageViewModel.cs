@@ -1294,9 +1294,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         ListOfActionButtonsApplicableForRegistration.Add("SaveasDraft");
 
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
+
+                    
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
+                            //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
+                            string convertedStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            vATRegistration.d.CrStdt = Convert.ToDateTime(convertedStartDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)
