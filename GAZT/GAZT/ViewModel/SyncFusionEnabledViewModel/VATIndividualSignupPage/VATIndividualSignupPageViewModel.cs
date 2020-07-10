@@ -96,14 +96,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ImageEstimatedIcon.Equals("vat_new_Establishment_G.png"))
                 {
 
-                    EstimatedTileColor = Color.FromHex("#006450");
-                   
 
 
+
+                    EstimatedTileColor = Color.White;
                 }
                 else
                 {
-                    EstimatedTileColor = Color.White;
+                    EstimatedTileColor = Color.FromHex("#006450");
+
                 }
                 RaisePropertyChanged("ImageEstimatedIcon");
             }
