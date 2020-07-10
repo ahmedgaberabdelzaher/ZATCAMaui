@@ -1932,23 +1932,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     string eligibilityText = string.Empty;
                     if (code.Equals('L'))
                     {
-                        eligibilityText = "Mandatory Registration - Large Taxpayer Group";
+                        eligibilityText= AppResources.ZZZZEligibilitylableTestmrl;
+                        //eligibilityText = "Mandatory Registration - Large Taxpayer Group";
                     }
                     else if (code.Equals('S'))
                     {
-                        eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                      //  eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                     }
                     else if (code.Equals('V'))
                     {
-                        eligibilityText = "Voluntary Registration";
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        //eligibilityText = "Voluntary Registration";
                     }
                     else if (code.Equals('N'))
                     {
-                        eligibilityText = "Not Eligible";
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                       // eligibilityText = "Not Eligible";
                     }
                     else if (code.Equals('M'))
                     {
-                        eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        //eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }

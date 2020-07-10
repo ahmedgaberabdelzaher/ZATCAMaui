@@ -9218,6 +9218,42 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mandatory Registration - Large Taxpayer Group.
+        /// </summary>
+        public static string ZZZZEligibilitylableTestmrl {
+            get {
+                return ResourceManager.GetString("ZZZZEligibilitylableTestmrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mandatory Registration - Small/Medium Taxpayer Group.
+        /// </summary>
+        public static string ZZZZEligibilitylableTestmrs {
+            get {
+                return ResourceManager.GetString("ZZZZEligibilitylableTestmrs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Eligible.
+        /// </summary>
+        public static string ZZZZEligibilitylableTestne {
+            get {
+                return ResourceManager.GetString("ZZZZEligibilitylableTestne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Voluntary Registration.
+        /// </summary>
+        public static string ZZZZEligibilitylableTestvr {
+            get {
+                return ResourceManager.GetString("ZZZZEligibilitylableTestvr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email field and Confirm Email field should match up.
         /// </summary>
         public static string ZZZZEmailandconfirmemailshouldmatchup {

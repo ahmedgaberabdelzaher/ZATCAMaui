@@ -3865,4 +3865,20 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Proceed to VAT registration</value>
     <comment>New SignUp</comment>
   </data>
+  <data name="ZZZZEligibilitylableTestmrl" xml:space="preserve">
+    <value>Mandatory Registration - Large Taxpayer Group</value>
+    <comment>VatRegistration</comment>
+  </data>
+  <data name="ZZZZEligibilitylableTestmrs" xml:space="preserve">
+    <value>Mandatory Registration - Small/Medium Taxpayer Group</value>
+    <comment>VatRegistration</comment>
+  </data>
+  <data name="ZZZZEligibilitylableTestne" xml:space="preserve">
+    <value>Not Eligible</value>
+    <comment>VatRegistration</comment>
+  </data>
+  <data name="ZZZZEligibilitylableTestvr" xml:space="preserve">
+    <value>Voluntary Registration</value>
+    <comment>VatRegistration</comment>
+  </data>
 </root>
