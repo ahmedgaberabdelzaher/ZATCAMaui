@@ -747,15 +747,94 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
         }
+
+        public enum OperationCode
+        {
+            SaveAsDraft =05,
+            Void=04,
+            Submit=01
+        }
+
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
-            //For test
-            viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            try
+            {
+                if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
+                {
+                    String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
-            await viewModel.SubmitClicked();
-              
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+                        switch (buttonId)
+                        {
+                            case ArButtons.المرفقات:
+                                //viewModel.VATViewAttachments();
+                                break;
+                            case ArButtons.إلغاء:
+                                // await viewModel.SetVoid();
+                                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                                break;
+
+                            case ArButtons.حفظكمسودة:
+                                // await viewModel.SaveAsDraft();
+                                viewModel.VATRegistrationDetailsData.d.Operationz = "04";
+                                break;
+
+                            case ArButtons.تقديم:
+                                // await viewModel.Submit();
+                               // viewModel.VATRegistrationDetailsData.d.Operationz = "04";
+                                break;
+
+
+
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+                        switch (buttonId)
+                        {
+                           
+                            case Buttons.Attachments:
+                              //  viewModel.VATViewAttachments();
+                                break;
+                            case Buttons.Void:
+                                // await viewModel.SetVoid();
+                                viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+                                break;
+                            case Buttons.SaveasDraft:
+                                // await viewModel.SaveAsDraft();
+                                viewModel.VATRegistrationDetailsData.d.Operationz = "04";
+                                break;
+                            case Buttons.Submit:
+                                // await viewModel.SaveAsDraft();
+                                //viewModel.VATRegistrationDetailsData.d.Operationz = "04";
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+                        
+            await viewModel.SubmitClicked();              
             
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)

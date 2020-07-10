@@ -1303,7 +1303,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     try
                     {
                         ListOfActionButtonsApplicableForRegistration = new List<string>();
-                        ListOfActionButtonsApplicableForRegistration.Add("SaveasDraft");
+
+                        ListOfActionButtonsApplicableForRegistration.Add(AppResources.Attachments);
+                        ListOfActionButtonsApplicableForRegistration.Add(AppResources.ZZSaveAsDraft);
+                        ListOfActionButtonsApplicableForRegistration.Add(AppResources.Submit);
+                        ListOfActionButtonsApplicableForRegistration.Add(AppResources.ZZVoid);
 
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
 
