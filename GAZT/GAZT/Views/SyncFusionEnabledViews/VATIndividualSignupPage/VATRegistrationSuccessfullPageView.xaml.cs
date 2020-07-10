@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     public partial class VATRegistrationSuccessfullPageView : ContentPage
     {
         VATRegistrationSuccessfullPageViewModel viewModel;
-        public VATRegistrationSuccessfullPageView()
+        public VATRegistrationSuccessfullPageView(VATRegistrationDetails response)
         {
             InitializeComponent();
             viewModel = App.Locator.VATRegistrationSuccessfullPageView;
