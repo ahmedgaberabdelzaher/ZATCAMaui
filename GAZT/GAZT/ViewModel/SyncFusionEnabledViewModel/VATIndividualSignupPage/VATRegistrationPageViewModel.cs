@@ -342,7 +342,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("MinimumValueOfSlider2");
             }
         }
-
+        private string _sliderLable1EligibilityText;
+        public string SliderLable1EligibilityText
+        {
+            get
+            {
+                return _sliderLable1EligibilityText;
+            }
+            set
+            {
+                _sliderLable1EligibilityText = value;
+                RaisePropertyChanged("SliderLable1EligibilityText");
+            }
+        }
         private string _sliderLable1;
         public string SliderLable1
         {
@@ -1300,9 +1312,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
+                            if (vATRegistration.d.CrStdt != null)
+                            { 
                             string convertedStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                             vATRegistration.d.CrStdt = Convert.ToDateTime(convertedStartDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-
+                            }
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)

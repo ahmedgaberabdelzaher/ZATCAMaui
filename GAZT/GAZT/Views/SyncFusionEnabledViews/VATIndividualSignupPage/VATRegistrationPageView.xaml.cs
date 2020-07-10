@@ -1846,6 +1846,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.VATRegistrationDetailsData.d.Operationz = "16";
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                //registrationDetails.d.RegTy.Equals('')
+                if (registrationDetails != null & registrationDetails.d != null)
+                {
+                    string code = registrationDetails.d.RegTy;
+                    string eligibilityText = string.Empty;
+                    if (code.Equals('L'))
+                    {
+                        eligibilityText = "Mandatory Registration - Large Taxpayer Group";
+                    }
+                    else if (code.Equals('S'))
+                    {
+                        eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                    }
+                    else if (code.Equals('V'))
+                    {
+                        eligibilityText = "Voluntary Registration";
+                    }
+                    else if (code.Equals('N'))
+                    {
+                        eligibilityText = "Not Eligible";
+                    }
+                    else if (code.Equals('M'))
+                    {
+                        eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                    }
+                    viewModel.SliderLable1EligibilityText = eligibilityText;
+                }
             }
             catch(Exception ex)
             {

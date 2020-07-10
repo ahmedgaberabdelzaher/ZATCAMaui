@@ -1143,7 +1143,10 @@
                                                 <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                     <StackLayout>
                                                         <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion1}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
+                                                        
                                                         <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable1}" FontSize="14" FontAttributes="Bold"/>
+
+                                                        <Label HorizontalTextAlignment="Center" TextColor="#010101" Text="{Binding SliderLable1EligibilityText}" FontSize="14" FontAttributes="Bold"/>
                                                         <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderCurrentValue1}" FontSize="14" FontAttributes="Bold"/>
                                                         <!--<Frame BackgroundColor="#eaeaea" CornerRadius="10" HeightRequest="30"   HorizontalOptions="FillAndExpand">
                                        
