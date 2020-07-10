@@ -47,7 +47,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
 
-        public VATRegistrationDetails _vATRegistrationDetailsForAttach;
+        private VATRegistrationDetails _vATRegistrationDetailsForAttach;
         public VATRegistrationDetails VATRegistrationDetailsForAttach
         {
             get
@@ -58,6 +58,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 _vATRegistrationDetailsForAttach = value;
                 RaisePropertyChanged("VATRegistrationDetailsForAttach");
+            }
+        } 
+        private VATRegistrationOtherDetails _VATRegistrationOtherDetails;
+        public VATRegistrationOtherDetails VATRegistrationOtherDetails
+        {
+            get
+            {
+                return _VATRegistrationOtherDetails;
+            }
+            set
+            {
+                _VATRegistrationOtherDetails = value;
+                RaisePropertyChanged("VATRegistrationOtherDetails");
+            }
+        }
+        private VATRegistrationDetails _VATRegistrationDetailsData ;
+        public VATRegistrationDetails VATRegistrationDetailsData
+        {
+            get
+            {
+                return _VATRegistrationDetailsData;
+            }
+            set
+            {
+                _VATRegistrationDetailsData = value;
+                RaisePropertyChanged("VATRegistrationDetailsData");
             }
         }
         private List<ResultsItemForDOCSet> _resultsItemForDOCSet = null;
@@ -83,6 +109,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _selectedResultsItemForDOCSet = value;
+                if (_selectedResultsItemForDOCSet != null)
+                {
+                    AttachmentTypeTxt = _selectedResultsItemForDOCSet.Txt50;
+                    DocTypeString = _selectedResultsItemForDOCSet.DmsTp;
+                    VatAttachmentsList.Clear();
+                    filterList();
+                    CloneAttachmentList(VatAttachmentsList);
+
+                }
                 RaisePropertyChanged("SelectedResultsItemForDOCSet");
             }
         }
@@ -381,6 +416,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                 if (IsAttachmentPresent == false)
                                                 {
                                                     string attachmentType = UtilityManager.GetContentType(Extention);
+                                                    //doctypestring - drop down id
                                                     AttachmentRootOject _attachment = await SaveAttachment(attachment, attachmentType, DocTypeString);// await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationDataForAttch.d.ReturnIdz, "VTA0");
                                                     PopToRootPage();
                                                     if (_attachment != null && _attachment.d != null)
@@ -501,10 +537,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
-                if (VatAttachmentsList != null && VatAttachmentsList.Count != 0)
+                // VATRegistrationDetailsForAttach.d.ATTDETSet.results
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
                 {
                     List<Attachment> attachmentsList = new List<Attachment>();
-                    foreach (var item in VatAttachmentsList)
+                    foreach (var item in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
                     {
                         if (item.Dotyp == DocTypeString)
                         {
@@ -512,7 +549,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                     }
                     VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                  
                 }
+               
+                //if (VatAttachmentsList != null && VatAttachmentsList.Count != 0)
+                //{
+                //    List<Attachment> attachmentsList = new List<Attachment>();
+                //    foreach (var item in VatAttachmentsList)
+                //    {
+                //        if (item.Dotyp == DocTypeString)
+                //        {
+                //            attachmentsList.Add(item);
+                //        }
+                //    }
+
+                //    VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                //}
             }
             catch (Exception ex)
             {
