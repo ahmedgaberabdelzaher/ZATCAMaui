@@ -6,13 +6,13 @@ namespace EGAZT.Models
 {
     public class __metadataForVATREgistrationOtherInfo
     {
-       
+
         public string id { get; set; }
         public string uri { get; set; }
         public string type { get; set; }
     }
 
-   
+
 
     public class ResultsItemForButton
     {
@@ -42,7 +42,7 @@ namespace EGAZT.Models
         public List<ResultsItemForButton> results { get; set; }
     }
 
-   
+
 
     public class ResultsItemForDOCSet
     {
@@ -179,4 +179,15 @@ namespace EGAZT.Models
         /// </summary>
         public VATRegistrationWithOtherInformation d { get; set; }
     }
+
+
+
+
+
+    public class DataToPassTofinancialDetailAttachmentPopup
+        {
+        public VATRegistrationOtherDetails vatRegOthrDetailtoPopup { get; set; }
+        public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
+}
+
 }
