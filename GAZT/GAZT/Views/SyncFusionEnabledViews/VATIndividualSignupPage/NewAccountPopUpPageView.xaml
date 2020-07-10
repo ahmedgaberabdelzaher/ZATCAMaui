@@ -12,8 +12,10 @@
                     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.NewAccountPopUpPageView">
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
+      <ScrollView>
+    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White">     
         <StackLayout>
+
             <StackLayout Padding="22,22,22,0">
                 <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                 <StackLayout Grid.Row="2">
@@ -64,5 +66,7 @@
                                   HeightRequest="56" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" />
         </StackLayout>
+          
     </yummy:PancakeView>
+            </ScrollView>
 </pages:PopupPage>

@@ -279,13 +279,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 try
                                 {
                                     string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
-                                    if(minMaxVersions.Count() > 1)
+                                    if (minMaxVersions.Count() > 1)
                                     {
                                         double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
                                         double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
                                         double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
 
-                                        if(currVer >= minVer && currVer <= maxVer)
+                                        if (currVer >= minVer && currVer <= maxVer)
                                         {
                                             App.IsUserLoggedIn = true;
                                             await viewModel.LoginCompletedInWebView();
@@ -343,22 +343,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     App.LoginDataRetrieved.MsgTitle = AppResources.Information;
                                 }
 
-                                //await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                //////hybridWebView.RefreshCommand();
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                ////hybridWebView.RefreshCommand();
 
-                                //LogoffUser();
+                                LogoffUser();
 
                                 // Test code for implementing the VAT Registration
-                                if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
-                                {
-                                    App.IsUserLoggedIn = true;
-                                    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
-                                }
-                                else
-                                {
-                                    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                    LogoffUser();
-                                }
+                                //if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
+                                //{
+                                //    App.IsUserLoggedIn = true;
+                                //    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
+                                //}
+                                //else
+                                //{
+                                //    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //    LogoffUser();
+                                //}
 
                                 //hybridWebView.RefreshCommand();
 
