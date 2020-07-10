@@ -179,6 +179,18 @@
     <BundleResource Include="Resources\re_Tile_Background.png" />
     <BundleResource Include="Resources\re_Tile_Background%402x.png" />
     <BundleResource Include="Resources\re_Tile_Background%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual.png" />
+    <BundleResource Include="Resources\vat_new_individual_G%402x.png" />
+    <BundleResource Include="Resources\vat_new_individual%403x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_G.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_G%402x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_G%403x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_W.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_W%402x.png" />
+    <BundleResource Include="Resources\vat_new_Establishment_W%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual_G.png" />
+    <BundleResource Include="Resources\vat_new_individual_G%403x.png" />
+    <BundleResource Include="Resources\vat_new_individual%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
