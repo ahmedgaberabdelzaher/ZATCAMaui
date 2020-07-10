@@ -27,7 +27,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();
-            viewModel.OnPageLoad();
             viewModel.TabIndexStatus = Index;
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
             ReturnsVATSubmited.ItemTapped += (sender, e) =>
@@ -232,10 +231,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
         protected override void OnAppearing()
         {
             base.OnAppearing();
-           // var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-           //// safeInsets.Left = 24;
-           // safeInsets.Right = 24;
-           // this.Padding = safeInsets;
+            viewModel.OnPageLoad();
+
+            // var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+            //// safeInsets.Left = 24;
+            // safeInsets.Right = 24;
+            // this.Padding = safeInsets;
         }
         protected override void OnSizeAllocated(double width, double height)
         {

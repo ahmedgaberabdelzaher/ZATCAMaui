@@ -50,8 +50,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel = App.Locator.SFLandingPageView;
                 Changecornerradious();
-                LoadDuesData();
-                LoadData();
+            
                 //  ParentContainer.RaiseChild(BusyIndicator);
              //   calendar.OnMonthCellLoaded += Calendar_OnMonthCellLoaded;
                 SetLTR();
@@ -157,6 +156,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                 SetLTR();
                 Changecornerradious();
                 viewModel.TaxPayerProfile = App.TP;
+                LoadDuesData();
+                LoadData();
             }
             catch(Exception ex)
             {
