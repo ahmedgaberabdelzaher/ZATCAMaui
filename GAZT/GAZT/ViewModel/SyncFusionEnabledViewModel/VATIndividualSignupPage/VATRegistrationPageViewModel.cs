@@ -1478,10 +1478,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 LocalisedButtonString = AppResources.ZZVoid;
             }
-            else if (0 == String.Compare(ButtonName, "Validate"))
-            {
-                LocalisedButtonString = AppResources.ZZValidate;
-            }            
+            //else if (0 == String.Compare(ButtonName, "Validate"))
+            //{
+            //    LocalisedButtonString = AppResources.ZZValidate;
+            //}            
 
             return LocalisedButtonString;
         }

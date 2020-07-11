@@ -15,11 +15,20 @@
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
-            <Label Margin="10,0,10,0" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}">
+            <!--<Label Margin="10,0,10,0" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
                 </Label.GestureRecognizers>
-            </Label>
+            </Label>-->
+            <Image HorizontalOptions="EndAndExpand" Margin="10,0,10,0" >
+                <Image.Source>
+                    <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                </Image.GestureRecognizers>
+            </Image>
 
             <Grid   HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsImpoterAndExporter}">
                 <Grid.RowDefinitions>

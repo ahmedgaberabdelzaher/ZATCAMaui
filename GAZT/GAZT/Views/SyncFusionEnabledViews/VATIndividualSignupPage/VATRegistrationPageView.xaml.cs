@@ -366,25 +366,38 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
-                viewModel.CurrentStep = "Step4";
-                viewModel.SetVisibility();
-                //viewModel.IsExpensesVisible = true;
-                viewModel.IsSalesVisible = true;
-                //SetfourthBoxColor();
-                SetthirdBoxColor();
-                viewModel.IsFDNameMobEmailEnable = false;
 
-                viewModel.Attachments = AppResources.Attachments;
-
-                
-
-                if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
+                string[] year= DateEntry.Text.Split('/');
+                int yearnumber = Int32.Parse(year[2]);
+                if (yearnumber >= 2018)
                 {
-                    viewModel.IsResident = true;
+                    viewModel.CurrentStep = "Step4";
+                    viewModel.SetVisibility();
+                    //viewModel.IsExpensesVisible = true;
+                    viewModel.IsSalesVisible = true;
+                    //SetfourthBoxColor();
+                    SetthirdBoxColor();
+                    viewModel.IsFDNameMobEmailEnable = false;
+
+                    viewModel.Attachments = AppResources.Attachments;
+
+
+
+                    if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
+                    {
+                        viewModel.IsResident = true;
+                    }
+                    else
+                    {
+                        viewModel.IsResident = false;
+                    }
+
                 }
                 else
                 {
-                    viewModel.IsResident = false;
+
+                    FrmEStartDate.Focus();
+                    FrmEStartDate.HasError = true;
                 }
             }
             else

@@ -129,5 +129,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IbanNumberText = "SA"+viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
             Checked_IBAN();
         }
+
+        private void Close_Tapped(object sender, EventArgs e)
+        {
+          
+                PopupNavigation.Instance.PopAsync();
+           
+        }
     }
 }

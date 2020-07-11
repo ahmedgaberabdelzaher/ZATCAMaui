@@ -394,8 +394,8 @@
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                         <StackLayout Orientation="Horizontal">
-                                                            <!--Text="{Binding CrStdt}"-->
-                                                            <custom:BorderlessEntry x:Name="Entry_CrStdt" TextColor="#bbbbbb" Text="{Binding StartdateToshow}" FontSize="Small" 
+                                                            <!--Text="{Binding CrStdt}" StartdateToshow Text="{Binding StartdateToshow}"-->
+                                                            <custom:BorderlessEntry x:Name="Entry_CrStdt" TextColor="#bbbbbb"  FontSize="Small" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}"
                                                             IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="0">
                                                             </custom:BorderlessEntry>
                                                             <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
@@ -481,7 +481,7 @@
                                 
                                              CancelButtonTextColor="#006450"
                             Closed="DpEStartDate_Closed"
-                            SelectedItem="{Binding TodayDate}"
+                            SelectedItem="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.TodayDate}"
                             HorizontalOptions="FillAndExpand"
                                 OkButtonClicked="DpEStartDate_OkButtonClicked"
                                 CancelButtonClicked="DpEStartDate_CancelButtonClicked"
@@ -492,7 +492,7 @@
                                                         </custom1:CustomDatePicker>
                                                     </Grid>
                                                 </StackLayout>
-                                                <!--End Of Read Only or pre-populated-->
+                                                <!--End Of Read Only or pre-populated {Binding TodayDate}"-->
                                                 <!--Start Of Additional Information-->
                                                 <StackLayout Grid.Row="8">
                                                     <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInfo}" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
