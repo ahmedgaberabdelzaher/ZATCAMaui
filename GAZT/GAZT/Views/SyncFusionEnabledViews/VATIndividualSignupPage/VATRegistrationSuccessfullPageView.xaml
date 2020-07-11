@@ -48,13 +48,13 @@
             <ScrollView>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">          
                 <StackLayout>
-                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <Label Text="Name" HorizontalOptions="StartAndExpand"/>
                             <Label x:Name="Label_Name"  TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
-                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <Label Text="Application Number" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
@@ -68,7 +68,7 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10">
+                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label Text="{x:Static custom2:AppResources.Date}" HorizontalOptions="StartAndExpand"/>
                             <Label x:Name="Label_Date" TextColor="Black" HorizontalOptions="EndAndExpand"/>
