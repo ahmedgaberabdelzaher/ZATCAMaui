@@ -1173,19 +1173,19 @@
                                                             <!--<Frame BackgroundColor="#eaeaea" CornerRadius="10" HeightRequest="30"   HorizontalOptions="FillAndExpand">
                                        
                                     </Frame>-->
-                                                            <yummy:PancakeView  BackgroundColor="#eaeaea" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
-                                                                <Slider Margin="0,10,0,10"   Maximum="{Binding MaximumValueOfSlider1}" Minimum="{Binding MinimumValueOfSlider1}" DragCompleted="Slider_DragCompleted" MaximumTrackColor="#006450"   MinimumTrackColor="#006450" HorizontalOptions="FillAndExpand">
-                                                                </Slider>
-                                                            </yummy:PancakeView>
-                                                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
-                                                                <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                                <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                            </StackLayout>
-                                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                                <Label Text="{Binding MinimumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                                <Label Text="{Binding MaximumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                            </StackLayout>
+                                                        <yummy:PancakeView  BackgroundColor="#eaeaea" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                                            <Slider Margin="0,10,0,10"   Maximum="{Binding MaximumValueOfSlider1}" Minimum="0" DragCompleted="Slider_DragCompleted" MaximumTrackColor="#006450"   MinimumTrackColor="#006450" HorizontalOptions="FillAndExpand">
+                                                            </Slider>
+                                                        </yummy:PancakeView>
+                                                        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
+                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
+                                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                            <Label Text="{Binding MinimumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="{Binding MaximumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
 
 
                                                     </Frame>
@@ -1200,19 +1200,19 @@
                                                             <!--<Frame BackgroundColor="#eaeaea" CornerRadius="10" HeightRequest="30"   HorizontalOptions="FillAndExpand">
                                        
                                     </Frame>-->
-                                                            <yummy:PancakeView  BackgroundColor="#eaeaea" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
-                                                                <Slider Margin="0,10,0,10"  Maximum="{Binding MaximumValueOfSlider2}" Minimum="{Binding MinimumValueOfSlider2}" DragCompleted="Slider2Dragged" MaximumTrackColor="#006450" MinimumTrackColor="#006450" HorizontalOptions="FillAndExpand">
-                                                                </Slider>
-                                                            </yummy:PancakeView>
-                                                            <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
-                                                                <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                                <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                            </StackLayout>
-                                                            <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                                <Label Text="{Binding MinimumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                                <Label Text="{Binding MaximumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                                                            </StackLayout>
+                                                        <yummy:PancakeView  BackgroundColor="#eaeaea" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                                                            <Slider Margin="0,10,0,10"  Maximum="{Binding MaximumValueOfSlider2}" Minimum="0" DragCompleted="Slider2Dragged" MaximumTrackColor="#006450" MinimumTrackColor="#006450" HorizontalOptions="FillAndExpand">
+                                                            </Slider>
+                                                        </yummy:PancakeView>
+                                                        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
+                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
+                                                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
+                                                            <Label Text="{Binding MinimumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="{Binding MaximumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                        </StackLayout>
+                                                    </StackLayout>
 
 
                                                     </Frame>
@@ -2155,12 +2155,12 @@
                                                             <ColumnDefinition Width="50*"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Label Grid.Row="0" Grid.Column="0" Text="VAT Eligible Start Date" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                        <Label Grid.Row="0" Grid.Column="1" Text="02 Jan 2020" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="VAT Eligible Start Date" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
 
 
-                                                        <Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                        <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
 
                                                     </Grid>
                                                 </StackLayout>
@@ -2175,23 +2175,45 @@
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
                                                     </Image>-->
-                                                        <StackLayout BackgroundColor="Transparent" WidthRequest="30"></StackLayout>
-                                                        <Label  Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
-                                                    </StackLayout>
-                                                    <BoxView Style="{StaticResource lineSeperator}"/>
-                                                    <StackLayout Padding="10,5,10,10">
-                                                        <Label Text="IBAN" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                        <Label Text="SA03 800........1234" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" TextColor="Black"/>
-                                                    </StackLayout>
+                                                    <StackLayout BackgroundColor="Transparent" WidthRequest="30"></StackLayout>
+                                                    <!--<Label  Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
                                                 </StackLayout>
-                                            </Frame>
-                                            <!--Sales Details Summery-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
-                                                <StackLayout>
-                                                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                                                        <Image>
-                                                            <Image.Source>
-                                                                <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
+                                                <BoxView Style="{StaticResource lineSeperator}"/>
+                                                <CollectionView Grid.Row="1" HeightRequest="100" ItemsSource="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IbanList}" x:Name="IbansetToDisplayForConfirmation"  ItemsLayout="HorizontalList" Margin="0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <CollectionView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Padding="5,0,5,0">
+                                                                <cards:SfCardView  HasShadow="True"   ShadowColor="#5d6770" 
+                                                          BackgroundColor="DarkGreen" CornerRadius="3" HorizontalOptions="FillAndExpand">
+                                                                    <Grid>
+                                                                        <Image Margin="0" Source="vat_tile_IbanCard_background.png" Aspect="AspectFill"  Grid.Row="0">
+                                                                        </Image>
+                                                                        <Grid  Padding="10" Grid.Row="0" VerticalOptions="End">
+                                                                            <Grid.RowDefinitions>
+                                                                                <RowDefinition Height="*"/>
+                                                                                <RowDefinition Height="auto"/>
+                                                                            </Grid.RowDefinitions>
+                                                                            <StackLayout Grid.Row="1" Spacing="0">
+
+                                                                                <Label Text="{Binding Iban}"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                                <Label Text="Inma Bank"  FontFamily="{StaticResource SSTArabicMedium}"  TextColor="White"/>
+                                                                            </StackLayout>
+                                                                        </Grid>
+                                                                    </Grid>
+                                                                </cards:SfCardView>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </CollectionView.ItemTemplate>
+                                                </CollectionView>
+                                            </StackLayout>
+                                        </Frame>
+                                        <!--Sales Details Summery-->
+                                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <StackLayout>
+                                                <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                                                    <Image>
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="#51A997" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.ChartBar}"/>
                                                             </Image.Source>
                                                         </Image>

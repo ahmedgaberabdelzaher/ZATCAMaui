@@ -1521,16 +1521,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                             }
 
-                            await setDataAfterSubmitAPIAsync(VATRegistrationDetailsData);
 
-                            //vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
-                            //PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                            //if(vATRegistrationOther != null && vATRegistrationOther.d != null)
-                            //{
-                            //    VATRegistrationOtherDetails = vATRegistrationOther;
+                            vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            if (vATRegistrationOther != null && vATRegistrationOther.d != null)
+                            {
+                                VATRegistrationOtherDetails = vATRegistrationOther;
 
-                            //    SetApplicableButtons();
-                            //}
+                                SetApplicableButtons();
+                            }
                         }
                   
                     }
