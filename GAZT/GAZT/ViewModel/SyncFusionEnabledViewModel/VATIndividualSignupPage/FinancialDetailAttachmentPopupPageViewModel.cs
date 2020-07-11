@@ -101,8 +101,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ResultsItemForDOCSet");
             }
         }
-        private ResultsItemForDOCSet _selectedResultsItemForDOCSet = null;
-        public ResultsItemForDOCSet SelectedResultsItemForDOCSet
+        private ResultsItemForElgblDocSet _selectedResultsItemForDOCSet = null;
+        public ResultsItemForElgblDocSet SelectedResultsItemForDOCSet
         {
             get
             {

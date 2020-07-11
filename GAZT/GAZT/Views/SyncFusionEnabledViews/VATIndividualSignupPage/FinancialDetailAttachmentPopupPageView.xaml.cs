@@ -197,7 +197,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
 
-                ResultsItemForDOCSet selectedtyp = (ResultsItemForDOCSet)e.NewValue;
+                ResultsItemForElgblDocSet selectedtyp = (ResultsItemForElgblDocSet)e.NewValue;
 
                 AttachmentTypePicker.SelectedItem = selectedtyp;
                 //viewModel.SelectedResultsItemForDOCSet = null;

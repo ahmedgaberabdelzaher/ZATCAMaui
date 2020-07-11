@@ -128,6 +128,7 @@ public class ResultsItemForQuestion
         public string TxnTp { get; set; }
         public string DmsTp { get; set; }
         public string DmsTxt { get; set; }
+        public string Txt50 { get; set; }
     }
 
     public class QUESTIONSSet

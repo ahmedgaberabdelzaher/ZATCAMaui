@@ -1277,11 +1277,11 @@
                             </Grid>
 
                             <StackLayout Orientation="Horizontal" Padding="10,0,0,10" Margin="10,0,10,0">
-                                <BoxView x:Name="BoxOne" CornerRadius="25" BackgroundColor="{Binding BoxColorOne}"/>
-                                <BoxView x:Name="BoxTwo" CornerRadius="25" BackgroundColor="{Binding BoxColorTwo}"/>
-                                <BoxView x:Name="BoxThree" CornerRadius="25" BackgroundColor="{Binding BoxColorThree}"/>
-                                <BoxView x:Name="BoxFour" CornerRadius="25" BackgroundColor="{Binding BoxColorFour}"/>
-                                <BoxView x:Name="BoxFive" CornerRadius="25" BackgroundColor="{Binding BoxColorFive}"/>
+                                <BoxView x:Name="BoxOne" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorOne}"/>
+                                <BoxView x:Name="BoxTwo" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorTwo}"/>
+                                <BoxView x:Name="BoxThree" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorThree}"/>
+                                <BoxView x:Name="BoxFour" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFour}"/>
+                                <BoxView x:Name="BoxFive" HeightRequest="10" CornerRadius="5" BackgroundColor="{Binding BoxColorFive}"/>
                             </StackLayout>
                         </StackLayout>
                         <!-- Dot Images End-->
