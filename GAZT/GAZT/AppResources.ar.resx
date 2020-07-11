@@ -3858,15 +3858,15 @@
     <comment>VatRegistration</comment>
   </data>
   <data name="FAPAddAttachment" xml:space="preserve">
-    <value>Add Attachment</value>
+    <value>إضافة مرفق</value>
     <comment>FileAttachmentPopUp</comment>
   </data>
   <data name="FAPExporter" xml:space="preserve">
-    <value>Exporter</value>
+    <value>أنا مصدر</value>
     <comment>FileAttachmentPopUp</comment>
   </data>
   <data name="FAPImporter" xml:space="preserve">
-    <value>Importer</value>
+    <value>أنا مستورد</value>
     <comment>FileAttachmentPopUp</comment>
   </data>
   <data name="FDAAttachment" xml:space="preserve">
@@ -3882,7 +3882,7 @@
     <comment>FinancialDetailAttachmentPopup</comment>
   </data>
   <data name="NAIBAN" xml:space="preserve">
-    <value>IBAN</value>
+    <value>الايبان</value>
     <comment>NewAccountPopUp</comment>
   </data>
   <data name="NASA" xml:space="preserve">
@@ -3902,15 +3902,15 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATREligibleStartDate" xml:space="preserve">
-    <value>VAT Eligible Start Date</value>
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExpensesDetails" xml:space="preserve">
-    <value>Expenses Details</value>
+    <value>تفاصيا المصروفات</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExporter" xml:space="preserve">
-    <value>Exporter</value>
+    <value>أنا مصدر</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRFinancialDetails" xml:space="preserve">
@@ -3926,11 +3926,11 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRImporter" xml:space="preserve">
-    <value>Importer</value>
+    <value>أنا مستورد</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRImportExport" xml:space="preserve">
-    <value>Import or  Exporter</value>
+    <value>مستورد أو مصدر</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRInmaBank" xml:space="preserve">
@@ -3942,7 +3942,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRMPAttachments" xml:space="preserve">
-    <value>Attachments</value>
+    <value>المرفقات</value>
     <comment>VATRegistrationMenuPopUp</comment>
   </data>
   <data name="VATRMPSaveasDraft" xml:space="preserve">
@@ -3962,7 +3962,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSAppNumber" xml:space="preserve">
-    <value>Appication Number</value>
+    <value>رقم الطلب</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSbtnGoToDashboard" xml:space="preserve">
@@ -3970,7 +3970,7 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSName" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegisteredToVATService" xml:space="preserve">
@@ -3978,7 +3978,7 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegistrationSuccessful" xml:space="preserve">
-    <value>VAT Registration Successful</value>
+    <value>تم التسجيل في ضريبة القيمة المضافة بنجاح</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSummeryofExpenseDetailsComming12Months" xml:space="preserve">
@@ -4014,11 +4014,11 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRVATEligibleStartDate" xml:space="preserve">
-    <value>VAT Eligible Start Date</value>
+    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRYouEligibleForVAT" xml:space="preserve">
-    <value>You Are Eligible For VAT</value>
+    <value>أنت مؤهل لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
 </root>
