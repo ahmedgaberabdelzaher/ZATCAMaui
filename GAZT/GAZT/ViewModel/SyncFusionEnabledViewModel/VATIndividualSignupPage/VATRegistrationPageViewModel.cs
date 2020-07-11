@@ -421,7 +421,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private Double _maximumValueOfSlider1 = 0.0;
+        private Double _maximumValueOfSlider1 = 1.0;
         public Double MaximumValueOfSlider1
         {
             get
@@ -1321,14 +1321,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public void setQuestionImage()
         {
-            if(VATRegistrationDetailsData.d.QUESCONFIG_MSet.results!=null)
+            if(VATRegistrationDetailsData.d.QUESTIONSSet.results!=null)
             {
 
-                string value1forimage3first = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage3second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage3first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage3second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptAns).FirstOrDefault();
 
-                string value1forimage4first = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
-                string value2forimage4second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
+                string value1forimage4first = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptAns).FirstOrDefault();
+                string value2forimage4second = VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "042").Select(x => x.QoptAns).FirstOrDefault();
 
                 if (value1forimage3first=="1")
                 {
@@ -1501,12 +1501,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                                 MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
-                                
-                                MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
                                 MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
+                                MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
 
-                                MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
                                 MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
+                                MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+                             
 
                                 MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
                                 MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;

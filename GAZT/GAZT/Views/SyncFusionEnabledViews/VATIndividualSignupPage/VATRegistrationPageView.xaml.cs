@@ -10,6 +10,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -243,53 +244,60 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         public void setdefaultvalueforTPDetailscreen()
         {
-            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
+            try
             {
-
-                viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                viewModel.ImporterTextColor = Color.Black;
-                viewModel.VATRegistrationDetailsData.d.ImFg = "0";
-
-            }
-            else
-            {
-                if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
+                if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
                 {
+
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ImporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+
                 }
-                else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
+                else
                 {
-                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
-                    viewModel.ImporterTextColor = Color.White;
-                    viewModel.VATRegistrationDetailsData.d.ImFg = "1";
+                    if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
+                    {
+                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ImporterTextColor = Color.Black;
+                        viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+                    }
+                    else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
+                    {
+                        viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ImporterTextColor = Color.White;
+                        viewModel.VATRegistrationDetailsData.d.ImFg = "1";
+                    }
+
                 }
 
-            }
-
-            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
-                {
-                viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                viewModel.ExporterTextColor = Color.Black;
-                viewModel.VATRegistrationDetailsData.d.ExFg = "0";
-            }
-            else
-            {
-                if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
+                if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                     viewModel.ExporterTextColor = Color.Black;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
-                else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
+                else
                 {
-                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
-                    viewModel.ExporterTextColor = Color.White;
-                    viewModel.VATRegistrationDetailsData.d.ExFg = "1";
+                    if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
+                    {
+                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                        viewModel.ExporterTextColor = Color.Black;
+                        viewModel.VATRegistrationDetailsData.d.ExFg = "0";
+                    }
+                    else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
+                    {
+                        viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                        viewModel.ExporterTextColor = Color.White;
+                        viewModel.VATRegistrationDetailsData.d.ExFg = "1";
+                    }
                 }
             }
-        }
+            catch(Exception ex)
+            { 
+            
+            }
+            }
     
         public async void step2Validation()
         {
@@ -639,6 +647,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.IsFDNameMobEmailEnable = false;
                 FrmTINNumber.HasError = false;
+                EntryIDNo.IsEnabled = true;
             }
             else
             {
@@ -650,8 +659,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         FrmTINNumber.HasError = true;
                     }
                 }
-                
-                
+
+                EntryIDNo.IsEnabled = false;
                 viewModel.IsFDNameMobEmailEnable = false;
           }
         }
@@ -975,8 +984,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
                 viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
-
-
+                EntryTINNumber.Text = string.Empty;
+                EntryIDNo.Text = string.Empty;
 
             }
             catch (Exception ex)
@@ -1916,7 +1925,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
-                    vATSignUpData.d.Idtype
+                   // vATSignUpData.d.Idtype
                     FrmTINNumber.HasError = false;
                 }
             }
