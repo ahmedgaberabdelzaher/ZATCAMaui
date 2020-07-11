@@ -1274,6 +1274,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public async Task<VATRegistrationDetails> SubmitClicked()
         {
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
             setDATA();
             //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
             VATRegistrationDetails response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
@@ -1290,19 +1294,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         setDataAfterSubmitAPIAsync(response);                       
 
                     }
+                    IsLoading = false;
                     return response;
+                    
                 }
                 catch (Exception ex)
                 {
+                    IsLoading = false;
                     return null;
+                
                 }
             }
+            IsLoading = false;
             return response;
     }
 
         public async Task setDataAfterSubmitAPIAsync(VATRegistrationDetails vATRegistration)
         {
             //Set applicable buttons
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
 
             await Task.Run(async () =>
             {
@@ -1316,6 +1329,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     SetApplicableButtons();
                 }
+               IsLoading = false;
             });
         }
 

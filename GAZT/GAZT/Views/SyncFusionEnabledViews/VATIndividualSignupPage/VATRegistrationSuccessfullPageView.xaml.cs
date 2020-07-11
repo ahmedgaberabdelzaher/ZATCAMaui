@@ -1,7 +1,9 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
+            if (response != null)
+            {
+                if (response.d != null)
+                {
+                    Label_Name.Text = response.d.TinNm;
+                    Label_ApplicationNumber.Text = response.d.Fbnumz;
+
+                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.GoLiveDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    Label_Date.Text = response.d.GoLiveDt;
+
+                }
+            }
+            
         }
         private void SetLTR()
         {

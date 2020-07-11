@@ -2038,6 +2038,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
                 double value = ((Xamarin.Forms.Slider)sender).Value;
                 viewModel.SliderCurrentValue1 = value;
 
@@ -2111,8 +2115,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = true;
+                });
 
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
 
         }
 

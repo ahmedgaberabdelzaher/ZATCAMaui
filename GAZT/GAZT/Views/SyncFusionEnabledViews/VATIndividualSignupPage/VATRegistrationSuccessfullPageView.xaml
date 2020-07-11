@@ -51,14 +51,14 @@
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <Label Text="Name" HorizontalOptions="StartAndExpand"/>
-                            <Label Text="Ahmad Hassan" TextColor="Black" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="Label_Name"  TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
                             <Label Text="Application Number" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label Text="1234567890" TextColor="Black"/>
+                                <Label x:Name="Label_ApplicationNumber" Text="" TextColor="Black"/>
                                 <Image>
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -71,7 +71,7 @@
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10">
                         <StackLayout Orientation="Horizontal" Padding="10">
                                 <Label Text="{x:Static custom2:AppResources.Date}" HorizontalOptions="StartAndExpand"/>
-                            <Label Text="17 March 2020" TextColor="Black" HorizontalOptions="EndAndExpand"/>
+                            <Label x:Name="Label_Date" TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                     <buttons:SfButton x:Name="btnDashboard" Text="Go To Dashboard" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
