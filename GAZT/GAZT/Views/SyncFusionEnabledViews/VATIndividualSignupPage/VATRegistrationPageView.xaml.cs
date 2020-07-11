@@ -46,6 +46,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 // App.IsArabic = false;
                 viewModel.SetDefaultDate();
                 SetLTR();
+                
                 Task.Run(async() =>
                 {
                     viewModel.IsLoading = true;
@@ -60,7 +61,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-        private void SetLTR()
+    private void SetLTR()
         {
             if (!App.IsArabic)
             {
@@ -79,7 +80,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
         }
-        private void DpEStartDate_Closed(object sender, EventArgs e)
+      
+    private void DpEStartDate_Closed(object sender, EventArgs e)
         {
 
         }
@@ -397,8 +399,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
+               
                 setdefaultvalueforTPDetailscreen();
+                if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
+                {
 
+                    viewModel.IsContinueButtonEnable = false;
+                }
+                else
+                {
+                    string[] year = viewModel.VatEligibleStartDate.Split('/');
+                    int yearnumber = Int32.Parse(year[2]);
+                    if (yearnumber >= 2018)
+                    {
+                        viewModel.IsContinueButtonEnable = true;
+                    }
+                    else
+                    {
+                        viewModel.IsContinueButtonEnable = false;
+                    }
+                    
+                }
 
             }
             else
@@ -2293,6 +2314,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     item.QoptAns = "0";
                 }
             }
+            viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
@@ -2312,6 +2334,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
@@ -2329,6 +2352,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     item.QoptAns = "0";
                 }
             }
+            viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
@@ -2348,6 +2372,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
             }
             viewModel.setQuestionImage();
+            viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
         }
@@ -2356,8 +2381,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (!string.IsNullOrEmpty(DateEntry.Text))
             {
-                FrmEStartDate.HasError = false;
+                string[] year = viewModel.VatEligibleStartDate.Split('/');
+                int yearnumber = Int32.Parse(year[2]);
+                if (yearnumber >= 2018)
+                {
+                    FrmEStartDate.HasError = false;
+                    viewModel.IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    FrmEStartDate.HasError = true; ;
+                    viewModel.IsContinueButtonEnable = false;
+                }
+               
             }
+            
         }
 
         private void ContactDateEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -2375,6 +2413,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {    
                 FrmContactName.HasError = false;
             }
+        }
+
+        private void DateEntry_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

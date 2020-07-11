@@ -87,6 +87,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("StartdateToshow");
             }
         }
+        private string _quesTion3answerSelected = string.Empty;
+        public string quesTion3answerSelected
+        {
+            get
+            {
+                return _quesTion3answerSelected;
+            }
+            set
+            {
+                _quesTion3answerSelected = value;
+
+                RaisePropertyChanged("quesTion3answerSelected");
+            }
+        }
+        private string _quesTion4answerSelected = string.Empty;
+        public string quesTion4answerSelected
+        {
+            get
+            {
+                return _quesTion4answerSelected;
+            }
+            set
+            {
+                _quesTion4answerSelected = value;
+
+                RaisePropertyChanged("quesTion4answerSelected");
+            }
+        }
         private ObservableCollection<object> _todayDate;
         public ObservableCollection<object> TodayDate
         {
