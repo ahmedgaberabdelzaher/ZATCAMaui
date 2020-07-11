@@ -215,12 +215,32 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else if (viewModel.CurrentStep == "Step4")
                 {
-                    viewModel.CurrentStep = "Step5";
-                    viewModel.SetVisibility();
-                    //viewModel.IsFinancialVisible = true;
-                    viewModel.IsFinancialVisible = true;
-                    //SetfifthBoxColor();
-                    SetfourthBoxColor();
+                    if (viewModel.RegTypeCode == "N")
+                    {
+                        if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
+                        {
+                            viewModel.CurrentStep = "Step5";
+                            viewModel.SetVisibility();
+                            //viewModel.IsFinancialVisible = true;
+                            viewModel.IsFinancialVisible = true;
+                            //SetfifthBoxColor();
+                            SetfourthBoxColor();
+                        }
+                        else
+                        {
+                            FrmNewAttachment.HasError = true;
+                        }
+                    }
+                    else
+                    {
+                        viewModel.CurrentStep = "Step5";
+                        viewModel.SetVisibility();
+
+                        //viewModel.IsFinancialVisible = true;
+                        viewModel.IsFinancialVisible = true;
+                        //SetfifthBoxColor();
+                        SetfourthBoxColor();
+                    }
                 }
                 else if (viewModel.CurrentStep == "Step5")
                 {
@@ -354,6 +374,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 SetthirdBoxColor();
                 viewModel.IsFDNameMobEmailEnable = false;
 
+                viewModel.Attachments = AppResources.Attachments;
+
+                
+
+                if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
+                {
+                    viewModel.IsResident = true;
+                }
+                else
+                {
+                    viewModel.IsResident = false;
+                }
             }
             else
             {
@@ -2088,8 +2120,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
                 if (registrationDetails != null & registrationDetails.d != null)
                 {
+                    viewModel.RegTypeCode = registrationDetails.d.RegTy;
                     string code = registrationDetails.d.RegTy;
                     string eligibilityText = string.Empty;
+                    viewModel.Attachments = AppResources.Attachments;
+
                     if (code.Equals("L"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
@@ -2108,14 +2143,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     else if (code.Equals("N"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
-                       // eligibilityText = "Not Eligible";
+                        viewModel.Attachments = AppResources.Attachments + "*";
+
+                        // eligibilityText = "Not Eligible";
                     }
                     else if (code.Equals("M"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                           // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                     }
-                  viewModel.SliderLable1EligibilityText = eligibilityText;
+                    viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
               //  viewModel.SliderLable1EligibilityText = eligibilityText;
             }
@@ -2143,7 +2180,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable2 = obj.QoptTxt;
-
 
                 foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
                 {

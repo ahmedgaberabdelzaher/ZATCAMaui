@@ -336,6 +336,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private string _regTypeCode = string.Empty;
+        public string RegTypeCode
+        {
+            get
+            {
+                return _regTypeCode;
+            }
+            set
+            {
+                _regTypeCode = value;
+                RaisePropertyChanged("RegTypeCode");
+            }
+        }
+
         private VATRegistrationDetails _vATRegistrationDetailsData;
         public VATRegistrationDetails VATRegistrationDetailsData
         {
@@ -570,7 +584,34 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
-        
+
+        private bool _isResident;
+        public bool IsResident
+        {
+            get
+            {
+                return _isResident;
+            }
+            set
+            {
+                _isResident = value;
+                RaisePropertyChanged("IsResident");
+            }
+        }
+
+        private string _attachments;
+        public string Attachments
+        {
+            get
+            {
+                return _attachments;
+            }
+            set
+            {
+                _attachments = value;
+                RaisePropertyChanged("Attachments");
+            }
+        }
 
         private ResultsItem _aDDRESSSetData;
         public ResultsItem ADDRESSSetData
@@ -1402,6 +1443,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             IsSummaryVisible = false;
         }
 
+       
+
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -1507,9 +1550,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                                 ExporterTextColor = Color.Black;
                             }
-
                             
-
 
                             if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count!=0)
                             {
@@ -1596,6 +1637,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     
                     if (false == String.IsNullOrEmpty(localisedString))
                         ListOfActionButtonsApplicableForRegistration.Add(localisedString);
+
+                    
                 }
             }
             //Parag

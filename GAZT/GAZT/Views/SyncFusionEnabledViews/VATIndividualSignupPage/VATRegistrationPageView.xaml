@@ -67,8 +67,8 @@
                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="0"  Margin="0" 
                   Padding="15,15,15,0" BackgroundColor="White" RowSpacing="0" >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="88*" />
-                            <RowDefinition Height="12*" />
+                            <RowDefinition Height="98*" />
+                            <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -99,7 +99,7 @@
                                             <!--<Label Text="Complete the Below Details" FontFamily="{StaticResource SSTArBold}"/>
                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                         </StackLayout>
-                                        <ScrollView Grid.Row="1">
+                                        <ScrollView Grid.Row="1" BackgroundColor="Beige" >
                                             <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
                               ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
@@ -1160,8 +1160,8 @@
                                                     </StackLayout>
                                                 </cards:SfCardView>
                                             </Grid>-->
-                                                <StackLayout Margin="0,0,0,15">
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" >
                                                         <StackLayout>
                                                             <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion1}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
 
@@ -1191,7 +1191,7 @@
                                                     </Frame>
 
                                                 </StackLayout>
-                                                <StackLayout Margin="0,0,0,15">
+                                                <StackLayout Margin="0,0,0,15" >
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                         <StackLayout>
                                                             <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion2}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
@@ -1218,7 +1218,7 @@
                                                     </Frame>
 
                                                 </StackLayout>
-                                                <StackLayout Margin="0,0,0,15">
+                                                <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                         <StackLayout>
                                                             <Label  Text="In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?" TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12"></Label>
@@ -1289,7 +1289,7 @@
                                                     </Frame>
 
                                                 </StackLayout>
-                                                <StackLayout Margin="0,0,0,15" >
+                                                <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}"  >
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                         <StackLayout>
                                                             <Label  Text="In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?" TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12"></Label>
@@ -1394,7 +1394,7 @@
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
                                                         <StackLayout Grid.Row="0">
-                                                            <Label Text="Attachment" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                            <Label Text="{Binding Attachments}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                             <!--<Label Text="Account" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                         </StackLayout>
