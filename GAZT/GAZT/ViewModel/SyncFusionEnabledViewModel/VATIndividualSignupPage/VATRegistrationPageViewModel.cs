@@ -1454,7 +1454,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 await Task.Run(async () =>
                 {
                     GetSignUpIdType();
-                  
+                    IsLoading = true;
                     VATRegistrationDetailsData = null;
                     VATRegistrationOtherDetails = null;
                     ADDRESSSetData = null;
@@ -1545,7 +1545,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 SetApplicableButtons();
                             }
                         }
-                  
+                        IsLoading = false; ;
                     }
                     catch (InternetException ex)
                     {

@@ -46,6 +46,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 // App.IsArabic = false;
                 viewModel.SetDefaultDate();
                 SetLTR();
+                Task.Run(async() =>
+                {
+                    viewModel.IsLoading = true;
+                    await GetVatRegistrationData();
+                });
+               
             }
             catch (Exception ex)
             {
@@ -401,7 +407,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 });
 
-                await GetVatRegistrationData();
+                //await GetVatRegistrationData();
             }
             catch (Exception ex)
             {
@@ -421,10 +427,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     await viewModel.onPageLoad();
                     setIban();
                 });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
+                //await Task.Run(() =>
+                //{
+                //    viewModel.IsLoading = false;
+                //});
             }
             catch (Exception ex)
             {
