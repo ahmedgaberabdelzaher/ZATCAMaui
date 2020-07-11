@@ -637,20 +637,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (string.IsNullOrEmpty(EntryTINNumber.Text))
             {
-                EntryIDNo.IsEnabled = true;
-                EntryFirstName.IsEnabled = true;
-                EntryLastName.IsEnabled = true;
-                EntryPhoneNumber.IsEnabled = true;
-                EntryEmail.IsEnabled = true;
+                viewModel.IsFDNameMobEmailEnable = false;
+                FrmTINNumber.HasError = false;
             }
             else
             {
-                EntryIDNo.IsEnabled = false;
-                EntryFirstName.IsEnabled = false;
-                EntryLastName.IsEnabled = false;
-                EntryPhoneNumber.IsEnabled = false;
-                EntryEmail.IsEnabled = false;
-            }
+
+                if (EntryTINNumber.Text.Substring(0, 1) != "3")
+                {
+                    if (EntryTINNumber.Text.Length != 10)
+                    {
+                        FrmTINNumber.HasError = true;
+                    }
+                }
+                
+                
+                viewModel.IsFDNameMobEmailEnable = false;
+          }
         }
 
         private void btnID_Clicked(object sender, EventArgs e)
@@ -1875,6 +1878,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
 
                 string Result = await WebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
                 VATSignUp vATSignUpData = new VATSignUp();
@@ -1888,14 +1895,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         //FrmIDNumber.HasError = true;
                         FrmTINNumber.HasError = true;
                         //viewModel.FrameIDError = true;
-                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                       await viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        EntryTINNumber.Text = string.Empty;
                     }
                     else
                     {
                         FrmTINNumber.HasError = false;
                         //viewModel.FrameIDError = false;
                         //FrmIDNumber.HasError = false;
-                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                      await   viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+                        EntryTINNumber.Text = string.Empty;
                     }
                 }
                 else
@@ -1907,6 +1916,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                    vATSignUpData.d.Idtype
                     FrmTINNumber.HasError = false;
                 }
             }
@@ -1919,14 +1929,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                     {
                         //FrmIDNumber.HasError = true;
-                        FrmTINNumber.HasError = true;
-                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                       // FrmTINNumber.HasError = true;
+                       await  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        EntryTINNumber.Text = string.Empty;
                     }
                     else
                     {
                         //FrmIDNumber.HasError = false;
-                        FrmTINNumber.HasError = false;
-                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                     //   FrmTINNumber.HasError = false;
+                   await      viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+                        EntryTINNumber.Text = string.Empty;
+
                     }
                 }
                 catch (GAZTException gex)

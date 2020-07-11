@@ -1246,7 +1246,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 VATRegistrationDetailsData.d.CONTACT_PERSONSet.results[0].Lastnm = LastnmFR;
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].MobNumber = MobNumberFR;
                 VATRegistrationDetailsData.d.CONTACTDTSet.results[0].SmtpAddr = SmtpAddrFR;
-
+                
                 //Step 5
                 if (IsDeclarationChecked)
                 {

@@ -1870,7 +1870,7 @@
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                         <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False" 
-                                                            TextChanged="EntryTINNumber_TextChanged" Placeholder="">
+                                                            TextChanged="EntryTINNumber_TextChanged"  Placeholder="">
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                             </Entry.Behaviors>
@@ -1889,7 +1889,7 @@
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
                                                                 <custom:BorderlessEntry Text="{Binding TxtIDTypeFR}" FontAttributes="Bold" FontSize="Small" 
-                                                        Placeholder="Select ID Type" IsSpellCheckEnabled="False">
+                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" IsSpellCheckEnabled="False">
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                     <Image.Source>
