@@ -1143,11 +1143,12 @@
                                                 <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                     <StackLayout>
                                                         <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion1}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
-                                                        
-                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable1}" FontSize="14" FontAttributes="Bold"/>
 
-                                                        <Label HorizontalTextAlignment="Center" TextColor="#010101" Text="{Binding SliderLable1EligibilityText}" FontSize="14" FontAttributes="Bold"/>
-                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderCurrentValue1}" FontSize="14" FontAttributes="Bold"/>
+                                                        <Label HorizontalTextAlignment="Center" TextColor="#d49504" Text="{Binding SliderLable1EligibilityText}" FontSize="14" FontAttributes="Bold"/>
+
+                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable1}" FontSize="13" FontAttributes="Bold"/>
+
+                                                        <!--<Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderCurrentValue1}" FontSize="14" FontAttributes="Bold"/>-->
                                                         <!--<Frame BackgroundColor="#eaeaea" CornerRadius="10" HeightRequest="30"   HorizontalOptions="FillAndExpand">
                                        
                                     </Frame>-->
@@ -1160,8 +1161,8 @@
                                                             <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                            <Label Text="{Binding MinimumValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                            <Label Text="{Binding MaximumValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                            <Label Text="{Binding MinimumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="{Binding MaximumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                     </StackLayout>
 
@@ -1173,8 +1174,8 @@
                                                 <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
                                                     <StackLayout>
                                                         <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion2}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
-                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable2}" FontSize="14" FontAttributes="Bold"/>
-                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderCurrentValue2}" FontSize="14" FontAttributes="Bold"/>
+                                                        <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable2}" FontSize="13" FontAttributes="Bold"/>
+                                                        <!--<Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderCurrentValue2}" FontSize="14" FontAttributes="Bold"/>-->
                                                         <!--<Frame BackgroundColor="#eaeaea" CornerRadius="10" HeightRequest="30"   HorizontalOptions="FillAndExpand">
                                        
                                     </Frame>-->
@@ -1187,8 +1188,8 @@
                                                             <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-                                                            <Label Text="{Binding MinimumValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                            <Label Text="{Binding MaximumValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                            <Label Text="{Binding MinimumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
+                                                            <Label Text="{Binding MaximumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                     </StackLayout>
 

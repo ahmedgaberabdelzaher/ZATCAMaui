@@ -1834,6 +1834,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 double value = ((Xamarin.Forms.Slider)sender).Value;
                 viewModel.SliderCurrentValue1 = value;
+
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable1 = obj.QoptTxt;
 
@@ -1900,6 +1901,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 double value = ((Xamarin.Forms.Slider)sender).Value;
                 viewModel.SliderCurrentValue2 = value;
+
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable2 = obj.QoptTxt;
 

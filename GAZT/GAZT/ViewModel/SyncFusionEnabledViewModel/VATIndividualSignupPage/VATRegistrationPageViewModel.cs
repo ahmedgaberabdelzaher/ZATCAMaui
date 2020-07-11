@@ -287,31 +287,59 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         }
 
 
-        private Double _minimumValueOfSlider1=0.0;
-        public Double MinimumValueOfSlider1
+        private Double _minimumDisplayValueOfSlider1=0.0;
+        public Double MinimumDisplayValueOfSlider1
         {
             get
             {
-                return _minimumValueOfSlider1;
+                return _minimumDisplayValueOfSlider1;
             }
             set
             {
-                _minimumValueOfSlider1 = value;
-                RaisePropertyChanged("MinimumValueOfSlider1");
+                _minimumDisplayValueOfSlider1 = value;
+                RaisePropertyChanged("MinimumDisplayValueOfSlider1");
             }
         }
 
-        private Double _maximumValueOfSlider1=1.0;
-        public Double MaximumValueOfSlider1
+        private Double _maximumDisplayValueOfSlider1 = 1.0;
+        public Double MaximumDisplayValueOfSlider1
         {
             get
             {
-                return _maximumValueOfSlider1;
+                return _maximumDisplayValueOfSlider1;
             }
             set
             {
-                _maximumValueOfSlider1 = value;
-                RaisePropertyChanged("MaximumValueOfSlider1");
+                _maximumDisplayValueOfSlider1 = value;
+                RaisePropertyChanged("MaximumDisplayValueOfSlider1");
+            }
+        }
+
+        private Double _maximumDisplayValueOfSlider2 = 1.0;
+        public Double MaximumDisplayValueOfSlider2
+        {
+            get
+            {
+                return _maximumDisplayValueOfSlider2;
+            }
+            set
+            {
+                _maximumDisplayValueOfSlider2 = value;
+                RaisePropertyChanged("MaximumDisplayValueOfSlider2");
+            }
+        }
+
+        private Double _minimumDisplayValueOfSlider2 = 0.0;
+        public Double MinimumDisplayValueOfSlider2
+        {
+            get
+            {
+                return _minimumDisplayValueOfSlider2;
+            }
+            set
+            {
+                _minimumDisplayValueOfSlider2 = value;
+                RaisePropertyChanged("MinimumDisplayValueOfSlider2");
             }
         }
 
@@ -329,19 +357,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private Double _minimumValueOfSlider2 = 0.0;
-        public Double MinimumValueOfSlider2
+        private Double _maximumValueOfSlider1 = 0.0;
+        public Double MaximumValueOfSlider1
         {
             get
             {
-                return _minimumValueOfSlider2;
+                return _maximumValueOfSlider1;
             }
             set
             {
-                _minimumValueOfSlider2 = value;
-                RaisePropertyChanged("MinimumValueOfSlider2");
+                _maximumValueOfSlider1 = value;
+                RaisePropertyChanged("MaximumValueOfSlider1");
             }
         }
+
         private string _sliderLable1EligibilityText;
         public string SliderLable1EligibilityText
         {
@@ -1396,16 +1425,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                                 MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                                
+                                MinimumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MinRangeValue).FirstOrDefault();
+                                MaximumDisplayValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();
 
-                                MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.MaxRangeValue).FirstOrDefault();//Select(x => x.MinRangeValue).FirstOrDefault();
-                                MinimumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x=>x.MinRangeValue).FirstOrDefault();
+                                MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
+                                MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
 
-                                SliderCurrentValue1 = Convert.ToDouble(MinimumValueOfSlider1);
-
-                                MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();//Select(x => x.MinRangeValue).FirstOrDefault();
-                                MinimumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
-                                SliderCurrentValue2 = Convert.ToDouble(MinimumValueOfSlider2);
-
+                                MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
+                                MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
 
                                 TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo=="031").Select(x => x.QoptTxt).FirstOrDefault();
                                 TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();

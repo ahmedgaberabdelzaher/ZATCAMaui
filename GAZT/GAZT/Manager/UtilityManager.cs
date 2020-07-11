@@ -737,7 +737,7 @@ namespace GAZT.Manager
                     // 4 question groups
                     foreach (var QuestionGroup in QuestionsGroupedByQuestionNo)
                     {
-                        QuestionsGroupedyMinMaxRange.Add(new QuestionNumberWithMinMaxRange { QueNo = QuestionGroup.First().QueNo, MinRangeValue = Convert.ToDouble(QuestionGroup.First().Minvalue), MaxRangeValue = Convert.ToDouble(QuestionGroup.Last().Maxvalue), CountOfProbableAnswersForThisQuestions = QuestionGroup.Count() });
+                        QuestionsGroupedyMinMaxRange.Add(new QuestionNumberWithMinMaxRange { QueNo = QuestionGroup.First().QueNo, MinRangeValue = Convert.ToDouble(QuestionGroup.First().Minvalue), MaxRangeValue = Convert.ToDouble(QuestionGroup.Last().Minvalue), CountOfProbableAnswersForThisQuestions = QuestionGroup.Count() });
                     }
                 }
             }
@@ -745,10 +745,15 @@ namespace GAZT.Manager
         }
         public static QuestionsetWithMinMax FindTheAnswerApplicableBasedOntheValue(string QuestionNumber, double CurrentValue, QUESCONFIG_MSet qUESCONFIG_MSet)
         {
-            String Answer = String.Empty;
-            //Specific Set based on input QuestionNo
-            QuestionsetWithMinMax qs = qUESCONFIG_MSet.results.Where(q => (q.QueNo == QuestionNumber) && (CurrentValue >= Convert.ToDouble(q.Minvalue)) && (CurrentValue <= Convert.ToDouble(q.Maxvalue))).FirstOrDefault();
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
+
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> AnswersGroupedByQuestionNo = QuestionsGroupedByQuestionNo.Where(x => x.Key == QuestionNumber);
+
+            int n = (int)Math.Ceiling(CurrentValue);
+            QuestionsetWithMinMax qs = AnswersGroupedByQuestionNo.FirstOrDefault().ElementAt(n);
+
             return qs;
+
         }
     }
     public enum ArButtons
