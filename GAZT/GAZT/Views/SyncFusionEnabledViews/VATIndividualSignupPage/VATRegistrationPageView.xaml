@@ -1179,7 +1179,7 @@
                                                         </yummy:PancakeView>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
                                                             <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                                <Label Text="Greater than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                             <Label Text="{Binding MinimumDisplayValueOfSlider1}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
@@ -1206,7 +1206,7 @@
                                                         </yummy:PancakeView>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0,10,0,0" BackgroundColor="White" Orientation="Horizontal">
                                                             <Label Text="Less than" TextColor="#686868" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
-                                                            <Label Text="Less than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                                            <Label Text="Greater than" TextColor="#686868" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
                                                         </StackLayout>
                                                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                                                             <Label Text="{Binding MinimumDisplayValueOfSlider2}" TextColor="#010101" FontAttributes="Bold" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start"/>
