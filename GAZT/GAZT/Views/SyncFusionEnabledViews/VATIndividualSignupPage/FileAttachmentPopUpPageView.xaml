@@ -83,11 +83,11 @@
                                             </Grid.RowDefinitions>
                                             <Label Text="{Binding Filename}" LineBreakMode="TailTruncation" Style="{StaticResource MicroGrayLabelStyleNew}"
                                                    HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" Grid.Row="0" Grid.Column="0"/>
-                                            <Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+                                            <!--<Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
                                                 </Image.GestureRecognizers>
-                                            </Image>
+                                            </Image>-->
                                             <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
