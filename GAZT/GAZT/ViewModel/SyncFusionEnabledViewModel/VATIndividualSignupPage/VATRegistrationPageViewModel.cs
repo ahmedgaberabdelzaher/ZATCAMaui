@@ -36,6 +36,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
         }
+     
+        private bool _isFDNameMobEmailEnable = false;
+        public bool IsFDNameMobEmailEnable
+        {
+            get
+            {
+                return _isFDNameMobEmailEnable;
+            }
+            set
+            {
+                _isFDNameMobEmailEnable = value;
+
+                RaisePropertyChanged("IsFDNameMobEmailEnable");
+            }
+        }
 
         private bool _isContinueButtonEnable =false;
         public bool IsContinueButtonEnable

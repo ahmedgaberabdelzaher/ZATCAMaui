@@ -338,6 +338,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsSalesVisible = true;
                 //SetfourthBoxColor();
                 SetthirdBoxColor();
+                viewModel.IsFDNameMobEmailEnable = false;
 
             }
             else

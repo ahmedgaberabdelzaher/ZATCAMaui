@@ -335,8 +335,8 @@
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding Gpartz}" FontSize="Small" IsReadOnly="True" TextColor="#c7c7c7"
-                                                            Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding Gpartz}" FontSize="Small" IsReadOnly="True" 
+                                                            Placeholder="ID Number" TextColor="#bbbbbb" >
                                                         <Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors>
@@ -348,7 +348,7 @@
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding TinNm}" TextColor="#c7c7c7" FontSize="Small" IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding TinNm}" TextColor="#bbbbbb" FontSize="Small" IsReadOnly="True" >
                                                         <!--<Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors>-->
@@ -360,8 +360,8 @@
                                                 <inputLayout:SfTextInputLayout Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding CrNo}" TextColor="#c7c7c7" FontSize="Small" 
-                                                            IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding CrNo}"  TextColor="#bbbbbb" FontSize="Small" 
+                                                            IsReadOnly="True" >
                                                         <Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors>
@@ -384,7 +384,7 @@
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                     <StackLayout Orientation="Horizontal"><!--Text="{Binding CrStdt}"-->
-                                                        <custom:BorderlessEntry x:Name="Entry_CrStdt"  Text="{Binding StartdateToshow}" TextColor="#c7c7c7" FontSize="Small" 
+                                                        <custom:BorderlessEntry x:Name="Entry_CrStdt" TextColor="#bbbbbb" Text="{Binding StartdateToshow}" FontSize="Small" 
                                                             IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="0">
                                                         </custom:BorderlessEntry>
                                                         <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
@@ -400,14 +400,14 @@
                                                 <Label Text="{x:Static custom2:AppResources.ZVatAddress}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}" TextColor="#c7c7c7" FontSize="Small" Placeholder="ID Number" 
-                                                            IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineOne}"  FontSize="Small" 
+                                                            IsReadOnly="True" TextColor="#bbbbbb" >
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}" TextColor="#c7c7c7" FontSize="Small" Placeholder="ID Number" 
-                                                            IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.AddressLineTwo}"  FontSize="Small" TextColor="#bbbbbb"
+                                                            IsReadOnly="True" >
                                                     </custom:BorderlessEntry>
                                                 </inputLayout:SfTextInputLayout>
                                             </StackLayout>
@@ -417,7 +417,7 @@
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <custom:BorderlessEntry Text="{Binding Source}" TextColor="#c7c7c7" FontSize="Small" IsReadOnly="True"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    <custom:BorderlessEntry Text="{Binding Source}" TextColor="#bbbbbb" FontSize="Small" IsReadOnly="True"  >
                                                         <!--<Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors>-->
@@ -1869,8 +1869,8 @@
                                                     <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False"
-                                                            TextChanged="EntryTINNumber_TextChanged" Placeholder="Enter TIN Number (If Any)">
+                                                        <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False" 
+                                                            TextChanged="EntryTINNumber_TextChanged" Placeholder="">
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
                                                             </Entry.Behaviors>
@@ -2014,8 +2014,8 @@
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                        <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="Enter First Name">
+                                                        <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False" IsEnabled="{Binding IsFDNameMobEmailEnable}"
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" >
                                                             <Entry.Behaviors>
                                                                 <custom1:AlphabetandArabicCharacters/>
                                                             </Entry.Behaviors>
@@ -2025,7 +2025,7 @@
                                                 <StackLayout Grid.Row="5">
                                                     <Label Text="{x:Static custom2:AppResources.ZZZVATRSurName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" 
-                                    ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1"
+                                    ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <custom:BorderlessEntry x:Name="EntryLastName" Text="{Binding LastnmFR}" IsSpellCheckEnabled="False"
                                                             FontSize="Small" Placeholder="Enter Last Name">
@@ -2038,7 +2038,7 @@
                                                 <StackLayout Grid.Row="6">
                                                     <Label Text="{x:Static custom2:AppResources.Email}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmEmailAddress"    Margin="10,-6,10,-6" Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2"
-                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                            ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" x:Name="EntryEmail"  FontSize="Small" 
                                                                     Placeholder="Enter Email" IsSpellCheckEnabled="False">
@@ -2048,7 +2048,7 @@
                                                 <StackLayout Grid.Row="7">
                                                     <Label Text="{x:Static custom2:AppResources.MobileNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
                                                     <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
-                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                                ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <custom:BorderlessEntry Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="Enter Moblie Number" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" FontSize="Small">
                                                             <Entry.Behaviors>
