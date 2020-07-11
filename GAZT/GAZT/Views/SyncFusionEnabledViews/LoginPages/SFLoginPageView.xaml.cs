@@ -341,7 +341,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
                                 {
                                     App.LoginDataRetrieved.MsgTitle = AppResources.Information;
-                                }
+                                };
 
                                 //await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
                                 ////hybridWebView.RefreshCommand();

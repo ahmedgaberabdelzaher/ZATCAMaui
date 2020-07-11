@@ -1404,11 +1404,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             String LocalisedButtonString = String.Empty;
 
-            if (0 == String.Compare(ButtonName, "Submit"))
-            {
-                LocalisedButtonString = AppResources.Submit;
-            }
-            else if (0 == String.Compare(ButtonName, "SaveasDraft"))
+            //if (0 == String.Compare(ButtonName, "Submit"))
+            //{
+            //    LocalisedButtonString = AppResources.Submit;
+            //}
+            
+            if (0 == String.Compare(ButtonName, "SaveasDraft"))
             {
                 LocalisedButtonString = AppResources.ZZSaveAsDraft;
             }
@@ -1520,14 +1521,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                             }
 
-                            vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
-                            PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                            if(vATRegistrationOther != null && vATRegistrationOther.d != null)
-                            {
-                                VATRegistrationOtherDetails = vATRegistrationOther;
+                            await setDataAfterSubmitAPIAsync(VATRegistrationDetailsData);
 
-                                SetApplicableButtons();
-                            }
+                            //vATRegistrationOther = await WebServiceManager.GAZTGetVATRegistrationDataWithButtons(vATRegistration.d.Fbnumz, vATRegistration.d.Officerz, vATRegistration.d.Statusz, vATRegistration.d.TxnTpz, "ZTAX_VT_REG");
+                            //PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                            //if(vATRegistrationOther != null && vATRegistrationOther.d != null)
+                            //{
+                            //    VATRegistrationOtherDetails = vATRegistrationOther;
+
+                            //    SetApplicableButtons();
+                            //}
                         }
                   
                     }
@@ -1577,6 +1580,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     Enum.TryParse(button.Button, out buttonEnumId);
                     String localisedString = GetLocalisedButtonString(buttonEnumId.ToString());
+                    
                     if (false == String.IsNullOrEmpty(localisedString))
                         ListOfActionButtonsApplicableForRegistration.Add(localisedString);
                 }

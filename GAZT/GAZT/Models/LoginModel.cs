@@ -23,6 +23,12 @@ namespace GAZT.Models
         [JsonProperty("DeviceFlag")]
         public string DeviceFlag { get; set; }
 
+        [JsonProperty("VtReg")]
+        public string VtReg { get; set; }
+
+        [JsonProperty("EtReg")]
+        public string EtReg { get; set; }
+
         [JsonProperty("ExeDate")]
         public DateTimeOffset ExeDate { get; set; }
 

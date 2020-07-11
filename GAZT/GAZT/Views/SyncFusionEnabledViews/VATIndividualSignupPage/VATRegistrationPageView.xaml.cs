@@ -863,13 +863,90 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+            String OperationCode = String.Empty;
 
-            //For test
-            viewModel.VATRegistrationDetailsData.d.Operationz = "05";
+            try
+            {
+                if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
+                {
+                    String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+                    if (App.IsArabic)
+                    {
+                        ArButtons buttonId = ArButtons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        
+                        Enum.TryParse(action, out buttonId);
+
+                        switch (buttonId)
+                        {
+                            case ArButtons.إضافةملاحظات:
+                                
+                                break;
+                            case ArButtons.عرضملاحظات:
+                                
+                                break;
+                            case ArButtons.المرفقات:
+                                
+                                break;
+                            case ArButtons.إلغاء:
+                                OperationCode = "04";
+                                break;
+                            
+                            case ArButtons.حفظكمسودة:
+                                OperationCode = "04";
+                                break;
+
+                            case ArButtons.تقديم:
+                                OperationCode = "01";
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Buttons buttonId = Buttons.None;
+                        if (!string.IsNullOrEmpty(action))
+                        {
+                            action = action.Replace(" ", "");
+                        }
+                        Enum.TryParse(action, out buttonId);
+                        
+                        switch (buttonId)
+                        {
+                            case Buttons.CreateNotes:
+                                break;
+                            case Buttons.DisplayNotes:
+                                break;
+                            case Buttons.Attachments:
+                                break;
+                            case Buttons.Void:
+                                OperationCode = "04";
+                                break;
+                            case Buttons.SaveasDraft:
+                                OperationCode = "05";
+                                break;
+                            case Buttons.Submit:
+                                OperationCode = "01";
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            
+            viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
 
             await viewModel.SubmitClicked();
-
 
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
