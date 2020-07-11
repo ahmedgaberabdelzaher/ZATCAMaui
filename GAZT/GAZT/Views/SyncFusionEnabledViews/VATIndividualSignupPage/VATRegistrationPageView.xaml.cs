@@ -39,6 +39,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.CurrentStep = "Step2";
                 SetfirstBoxColor();
                 viewModel.IsNewAccountClicked = false;
+                viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 // App.IsArabic = false;
                 // App.IsArabic = false;
@@ -183,23 +184,153 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void btnContinue_Clicked(object sender, EventArgs e)
         {
-            if (viewModel.CurrentStep == "Step1")
+
+
+            if (viewModel.IsContinueButtonEnable)
             {
-                viewModel.CurrentStep = "Step2";
-                viewModel.SetVisibility();
-                viewModel.IsTaxPayersVisible = true;
-                SetsecondBoxColor();
+                if (viewModel.CurrentStep == "Step1")
+                {
+
+                    viewModel.CurrentStep = "Step2";
+                    viewModel.SetVisibility();
+                    viewModel.IsTaxPayersVisible = true;
+                    SetsecondBoxColor();
+
+                }
+                else if (viewModel.CurrentStep == "Step2")
+                {//viewModel.IsSalesVisible = true;
+                 //SetthirdBoxColor();
+                    step2Validation();
+                }
+                else if (viewModel.CurrentStep == "Step3")
+                {
+                    step3Validation();
+                }
+                else if (viewModel.CurrentStep == "Step4")
+                {
+                    viewModel.CurrentStep = "Step5";
+                    viewModel.SetVisibility();
+                    //viewModel.IsFinancialVisible = true;
+                    viewModel.IsFinancialVisible = true;
+                    //SetfifthBoxColor();
+                    SetfourthBoxColor();
+                }
+                else if (viewModel.CurrentStep == "Step5")
+                {
+                    viewModel.CurrentStep = "Submit";
+                    viewModel.SetVisibility();
+                    //viewModel.IsSummaryVisible = true;
+                    viewModel.IsSummaryVisible = true;
+                    //SetfifthBoxColor();
+                    SetfifthBoxColor();
+                }
+                else if (viewModel.CurrentStep == "Submit")
+                {
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "01";
+
+                    VATRegistrationDetails response = await viewModel.SubmitClicked();
+                    if (response != null)
+                    {
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
+                    }
+
+                }
+
+
             }
-            else if (viewModel.CurrentStep == "Step2")
+
+
+        }
+        public void setdefaultvalueforTPDetailscreen()
+        {
+            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ImFg))
             {
+
+                viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                viewModel.ImporterTextColor = Color.Black;
+                viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+
+            }
+            else
+            {
+                if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
+                {
+                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ImporterTextColor = Color.Black;
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "0";
+                }
+                else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
+                {
+                    viewModel.ImporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ImporterTextColor = Color.White;
+                    viewModel.VATRegistrationDetailsData.d.ImFg = "1";
+                }
+
+            }
+
+            if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
+                {
+                viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                viewModel.ExporterTextColor = Color.Black;
+                viewModel.VATRegistrationDetailsData.d.ExFg = "0";
+            }
+            else
+            {
+                if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
+                {
+                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
+                    viewModel.ExporterTextColor = Color.Black;
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "0";
+                }
+                else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
+                {
+                    viewModel.ExporterImageSource = "vat_tile_IbanCard_background.png";
+                    viewModel.ExporterTextColor = Color.White;
+                    viewModel.VATRegistrationDetailsData.d.ExFg = "1";
+                }
+            }
+        }
+    
+        public async void step2Validation()
+        {
+            if (viewModel.IsInstrunctionChecked == true)
+            {
+
                 viewModel.CurrentStep = "Step3";
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                //viewModel.IsSalesVisible = true;
                 SetsecondBoxColor();
-                //SetthirdBoxColor();
+                setdefaultvalueforTPDetailscreen();
+
+
             }
-            else if (viewModel.CurrentStep == "Step3")
+            else
+            {
+                PopUp popUp = new PopUp();
+                popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                    popUp.isFontSet = true;
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                chkDeclaration.Focus();
+            }
+
+         
+        }
+        public void step3Validation()
+        {
+
+            if (!string.IsNullOrEmpty(DateEntry.Text))
             {
                 viewModel.CurrentStep = "Step4";
                 viewModel.SetVisibility();
@@ -207,40 +338,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsSalesVisible = true;
                 //SetfourthBoxColor();
                 SetthirdBoxColor();
-            }
-            else if (viewModel.CurrentStep == "Step4")
-            {
-                viewModel.CurrentStep = "Step5";
-                viewModel.SetVisibility();
-                //viewModel.IsFinancialVisible = true;
-                viewModel.IsFinancialVisible = true;
-                //SetfifthBoxColor();
-                SetfourthBoxColor();
-            }
-            else if (viewModel.CurrentStep == "Step5")
-            {
-                viewModel.CurrentStep = "Submit";
-                viewModel.SetVisibility();
-                //viewModel.IsSummaryVisible = true;
-                viewModel.IsSummaryVisible = true;
-                //SetfifthBoxColor();
-                SetfifthBoxColor();
-            }
-            else if (viewModel.CurrentStep == "Submit")
-            {
-                viewModel.VATRegistrationDetailsData.d.Operationz = "01";
 
-                VATRegistrationDetails response = await viewModel.SubmitClicked();
-                if (response != null)
-                {
-                    viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView,response);
-                }
-                
             }
-
+            else
+            {
+                FrmEStartDate.Focus();
+                FrmEStartDate.HasError = true;
+            }
 
         }
-
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -1837,13 +1943,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable1 = obj.QoptTxt;
 
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+                //foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+                //{
+                //    if (item.QueNo == "001")
+                //    {
+                //        if (item.QoptNo == obj.QoptNo)
+                //        {
+                        
+                //            item.QoptAns = "1";
+                //        }
+                //        else
+                //        {
+                //            item.QoptAns = "0";
+                //        }
+                //    }
+                //}
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
                 {
                     if (item.QueNo == "001")
                     {
                         if (item.QoptNo == obj.QoptNo)
                         {
-                        
+
                             item.QoptAns = "1";
                         }
                         else
@@ -1904,7 +2025,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.SliderLable2 = obj.QoptTxt;
 
 
-                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
                 {
                     if (item.QueNo == "002")
                     {
@@ -1929,7 +2050,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void TapppedOnQuestion3First(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -1947,7 +2068,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void TapppedOnQuestion3Second(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
             {
                 if (item.QueNo == "003" && item.QoptNo == "031")
                 {
@@ -1965,7 +2086,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void TapppedOnQuestion4First(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -1983,7 +2104,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private async void TapppedOnQuestion4Second(object sender, EventArgs e)
         {
-            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
             {
                 if (item.QueNo == "004" && item.QoptNo == "041")
                 {
@@ -1997,6 +2118,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+        }
+
+        private void DateEntry_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(DateEntry.Text))
+            {
+                FrmEStartDate.HasError = false;
+            }
         }
     }
 }
