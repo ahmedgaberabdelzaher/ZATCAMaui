@@ -38,24 +38,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
             if (vATRegistrationDetails!=null && vATRegistrationDetails.d!=null)
             {
-               
                 viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
                 SetDocType();
-                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
+                {
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
-                        int AttachmentCount = 0;
-                        foreach (var item in viewModel.VatAttachmentsList)
+
+                        try
                         {
-                                    if (item.Erfdt != null && item.Erftm!=null)
-                                    {
-                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    }
+                            foreach (var item in viewModel.VatAttachmentsList)
+                            {
+                                if (item.Erfdt != null && item.Erftm != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
                         }
-                    viewModel.filterList();
-                    viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        catch (Exception)
+                        {
+                        }
+
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                    }
                 }
             }
         }
@@ -88,9 +97,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.DocTypeString = "ZVTC";
                     }
-                }
-
-               
+                }               
             }
             else if(viewModel.IsComeFromForAttachment == IsComeFromForAttachment.Export)
             {
@@ -157,7 +164,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 if (attachment != null)
                                 {
                                     var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    DeleteAttachment(result, attachment);
+                                    
+                                    await DeleteAttachment(result, attachment);
                                 }
                            
                         //}
@@ -171,7 +179,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -204,9 +212,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                                          select itm)
                                             .FirstOrDefault<VATAttachment>();
 
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            viewModel.AttachmentList.Remove(listitemTwo);
+                            if(listitem!=null)
+                                viewModel.VatAttachmentsList.Remove(listitem);
+                            
+                            if (listitemTwo != null)
+                                viewModel.AttachmentList.Remove(listitemTwo);
+                            
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+                            
                             //if (indexToReduceTheSize != -1)
                                // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
                         }
