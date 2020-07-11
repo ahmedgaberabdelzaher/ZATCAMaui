@@ -3842,19 +3842,19 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEligibilitylableTestmrl" xml:space="preserve">
-    <value>Mandatory Registration - Large Taxpayer Group</value>
+    <value>تسجيل إلزامي - كبار المكلفين</value>
     <comment>VatRegistration</comment>
   </data>
   <data name="ZZZZEligibilitylableTestmrs" xml:space="preserve">
-    <value>Mandatory Registration - Small/Medium Taxpayer Group</value>
+    <value>تسجيل إلزامي - منشآت صغيرة/ متوسطة</value>
     <comment>VatRegistration</comment>
   </data>
   <data name="ZZZZEligibilitylableTestne" xml:space="preserve">
-    <value>Not Eligible</value>
+    <value>غير خاضع</value>
     <comment>VatRegistration</comment>
   </data>
   <data name="ZZZZEligibilitylableTestvr" xml:space="preserve">
-    <value>Voluntary Registration</value>
+    <value>تسجيل إختياري</value>
     <comment>VatRegistration</comment>
   </data>
   <data name="FAPAddAttachment" xml:space="preserve">
