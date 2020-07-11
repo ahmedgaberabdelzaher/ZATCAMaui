@@ -18,18 +18,18 @@
 
             <StackLayout Padding="22,22,22,0">
                 <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
-                <StackLayout Grid.Row="2">
+                <!--<StackLayout Grid.Row="2">
                     <Label Text="{x:Static custom2:AppResources.ZZName}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                         <custom:BorderlessEntry Text="Divya Choudhary" TextColor="Gray" FontSize="Small" IsReadOnly="True" Placeholder="ID Number" Style="{StaticResource GAZTTextBoxStyleForEntry}">
-                            <!--<Entry.Behaviors>
+                            --><!--<Entry.Behaviors>
                                 <custom1:OnlyNumericValuesBehaviour/>
-                            </Entry.Behaviors>-->
+                            </Entry.Behaviors>--><!--
                         </custom:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
-                </StackLayout>
+                </StackLayout>-->
                 <Label Text="IBAN" FontFamily="{StaticResource SSTArBold}"/>
             </StackLayout>
             <StackLayout Padding="15,0,15,15">

@@ -383,8 +383,8 @@
                                                 <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                    <StackLayout Orientation="Horizontal">
-                                                        <custom:BorderlessEntry Text="{Binding CrStdt}" TextColor="#c7c7c7" FontSize="Small" 
+                                                    <StackLayout Orientation="Horizontal"><!--Text="{Binding CrStdt}"-->
+                                                        <custom:BorderlessEntry x:Name="Entry_CrStdt"  Text="{Binding StartdateToshow}" TextColor="#c7c7c7" FontSize="Small" 
                                                             IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="0">
                                                         </custom:BorderlessEntry>
                                                         <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
@@ -438,7 +438,7 @@
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal">
-                                                            <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused" Placeholder="DD/MM/YYYY" FontSize="Small">
+                                                            <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused" Placeholder="DD/MM/YYYY" FontSize="Small">
                                                             </custom:BorderlessEntry>
                                                             <Image HorizontalOptions="EndAndExpand">
                                                                 <Image.Source>
@@ -2492,7 +2492,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="0"  Margin="0,0,0,0" VerticalOptions="End" HorizontalOptions="FillAndExpand"  BackgroundColor="White" >
                     <buttons:SfButton x:Name="MainButtonName" HorizontalOptions="FillAndExpand" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding CurrentStep}" CornerRadius="0" VerticalOptions="End" FontAttributes="Bold" 
-                                  HeightRequest="56" Clicked="btnContinue_Clicked"   Margin="0,0,0,0" FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
+                                  HeightRequest="56" Clicked="btnContinue_Clicked" IsEnabled="{Binding IsContinueButtonEnable}"  Margin="0,0,0,0" FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding ContinueButtonnBackroundColor}" />
                 </StackLayout>
             </Grid>
         </yummy:PancakeView>

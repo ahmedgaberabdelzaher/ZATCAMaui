@@ -23,6 +23,55 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public static IsComeFromForAttachment IsComeFromForAttachment;
 
         #region Properties
+        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
+
+        private bool _isContinueButtonEnable =false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                _isContinueButtonEnable = value;
+                if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                }
+                RaisePropertyChanged("IsContinueButtonEnable");
+            }
+        }
+        private string _startdateToshow = string.Empty;
+        public string StartdateToshow
+        {
+            get
+            {
+                return _startdateToshow;
+            }
+            set
+            {
+                _startdateToshow = value;
+              
+                RaisePropertyChanged("StartdateToshow");
+            }
+        }
         private ObservableCollection<object> _todayDate;
         public ObservableCollection<object> TodayDate
         {
@@ -478,6 +527,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isInstrunctionChecked = value;
+                if (_isInstrunctionChecked != null)
+                { 
+                if (_isInstrunctionChecked)
+                {
+                    IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    IsContinueButtonEnable = false;
+                }
+                }
                 RaisePropertyChanged("IsInstrunctionChecked");
             }
         }
@@ -495,6 +555,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
+        
 
         private ResultsItem _aDDRESSSetData;
         public ResultsItem ADDRESSSetData
@@ -1379,11 +1440,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         {
                            
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
-                            //if (vATRegistration.d.CrStdt != null)
-                            //{ 
-                            //string convertedStartDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            //vATRegistration.d.CrStdt = Convert.ToDateTime(convertedStartDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                            //}
+                            if (vATRegistration.d.CrStdt != null)
+                            {
+                                StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                           }
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
                             if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)
