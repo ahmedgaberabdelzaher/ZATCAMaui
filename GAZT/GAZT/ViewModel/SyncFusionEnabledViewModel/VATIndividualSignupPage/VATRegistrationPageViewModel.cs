@@ -1544,29 +1544,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         vATRegistration = await WebServiceManager.GAZTGetVATRegistrationData();
 
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        
+
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
-                           
+
                             //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
                             if (vATRegistration.d.CrStdt != null)
                             {
                                 StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                           }
+                            }
                             VATRegistrationDetailsData = vATRegistration;
                             setIban();
-                            if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count!=0)
+                            if (VATRegistrationDetailsData.d.ADDRESSSet != null && VATRegistrationDetailsData.d.ADDRESSSet.results.Count != 0)
                             {
                                 ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet.results[0];
                                 AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
                                 AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
                             }
-                            if(VATRegistrationDetailsData.d.VatTaxDt !=null)
+                            if (VATRegistrationDetailsData.d.VatTaxDt != null)
                             {
                                 string convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + VATRegistrationDetailsData.d.VatTaxDt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                                 VatEligibleStartDate = Convert.ToDateTime(convertedDate).ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                             }
-                            if(VATRegistrationDetailsData.d.ImFg=="1")
+                            if (VATRegistrationDetailsData.d.ImFg == "1")
                             {
                                 ImporterImageSource = "vat_tile_IbanCard_background.png";
                                 ImporterTextColor = Color.White;
@@ -1586,9 +1586,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 ExporterImageSource = "vat_tile_IbanCard_background_white.png";
                                 ExporterTextColor = Color.Black;
                             }
-                            
 
-                            if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count!=0)
+
+                            if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count != 0)
                             {
                                 MinMaxRanges = new List<QuestionNumberWithMinMaxRange>();
                                 MinMaxRanges = UtilityManager.GetLowAndHighRangeForEachQuestionSet(VATRegistrationDetailsData.d.QUESCONFIG_MSet);
@@ -1597,12 +1597,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                 MaximumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MaxRangeValue).FirstOrDefault();
                                 MinimumDisplayValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.MinRangeValue).FirstOrDefault();
-                             
+
 
                                 MaximumValueOfSlider1 = MinMaxRanges.Where(x => x.QueNo == "001").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
                                 MaximumValueOfSlider2 = MinMaxRanges.Where(x => x.QueNo == "002").Select(x => x.CountOfProbableAnswersForThisQuestions).FirstOrDefault() - 1;
 
-                                TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo=="031").Select(x => x.QoptTxt).FirstOrDefault();
+                                TextQuestion3First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "031").Select(x => x.QoptTxt).FirstOrDefault();
                                 TextQuestion3Second = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "003" && x.QoptNo == "032").Select(x => x.QoptTxt).FirstOrDefault();
 
                                 TextQuestion4First = VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Where(x => x.QueNo == "004" && x.QoptNo == "041").Select(x => x.QoptTxt).FirstOrDefault();
@@ -1621,6 +1621,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                                 SetApplicableButtons();
                             }
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                _navigationService.GoBack();
+                            });
                         }
                         IsLoading = false; ;
                     }
