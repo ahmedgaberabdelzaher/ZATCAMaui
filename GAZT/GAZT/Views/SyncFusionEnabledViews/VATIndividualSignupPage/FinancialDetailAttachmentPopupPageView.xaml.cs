@@ -34,26 +34,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 InitializeComponent();
                 viewModel = App.Locator.FinancialDetailAttachmentPopupPageView;
                 this.BindingContext = viewModel;
+
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                
                 SetLTR();
+                
                 viewModel.VATRegistrationDetailsData = new VATRegistrationDetails();
                 viewModel.VATRegistrationDetailsData = sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.VATRegistrationOtherDetails = new VATRegistrationOtherDetails();
                 viewModel.VATRegistrationOtherDetails = sendtoPopup.vatRegOthrDetailtoPopup;
+                
                 viewModel.ELGBL_DOCSet = new ELGBL_DOCSet();
                 viewModel.ResultsItemForDOCSet = new List<ResultsItemForElgblDocSet>();
                 viewModel.VATRegistrationDetailsForAttach = new VATRegistrationDetails();
+                
                 viewModel.VATRegistrationDetailsForAttach= sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
                 viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
+                
                 onPageLoad();
                 
                 if (viewModel.ResultsItemForDOCSet != null)
                 {
-                    //viewModel.SelectedResultsItemForDOCSet = viewModel.ResultsItemForDOCSet.FirstOrDefault();
                     AttachmentTypePicker.SelectedItem = "1";
-                }
-               
+                }               
                
             }
             catch (Exception ex)
@@ -205,17 +209,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 if (attachment != null)
                 {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
-
+                    if(false == String.IsNullOrEmpty(attachment.DocUrl))
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
                 }
 
             }
             catch (Exception ex)
             { 
-            
             }
-
-
         }
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
