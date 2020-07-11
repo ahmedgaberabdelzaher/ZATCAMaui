@@ -3609,7 +3609,7 @@
     <value>نوع الهوية/رقم الهوية</value>
   </data>
   <data name="ZZZVATREligibilityCommencementDate" xml:space="preserve">
-    <value>تاريخ بداية الخضوع لضريبة القيمة المضافة:</value>
+    <value>تاريخ البدء المؤهل لضريبة القيمة المضافة</value>
   </data>
   <data name="ZZZVATRExporter" xml:space="preserve">
     <value>هل أنت مصدر</value>
@@ -3874,11 +3874,11 @@
     <comment>FinancialDetailAttachmentPopup</comment>
   </data>
   <data name="FDADocToProveEligiblity" xml:space="preserve">
-    <value>type of document that you are submitting to prove whether or not eligible.</value>
+    <value>.نوع المستند الذي ترسله لإثبات ما إذا كنت مؤهلاً أم لا</value>
     <comment>FinancialDetailAttachmentPopup</comment>
   </data>
   <data name="FDANewAttachment" xml:space="preserve">
-    <value>New Attachment</value>
+    <value>مرفق جديد</value>
     <comment>FinancialDetailAttachmentPopup</comment>
   </data>
   <data name="NAIBAN" xml:space="preserve">
@@ -3890,15 +3890,15 @@
     <comment>NewAccountPopUp</comment>
   </data>
   <data name="VATRAccount" xml:space="preserve">
-    <value>Account</value>
+    <value>الحساب</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRAttachment" xml:space="preserve">
-    <value>Attachment (Optional)</value>
+    <value>مرفق (اختياري)</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRAttachmentMandatory" xml:space="preserve">
-    <value>Attachments are mandatory for Non-Eligible Taxpayers, Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months</value>
+    <value>مرفقات إلزامية لدافعي الضرائب غير المؤهلين ، يرجى تقديم المستندات الداعمة كدليل على أهليتك لضريبة القيمة المضافة. خلاف ذلك ، فمن المرجح للغاية أنه سيتم متابعتك على مدار الأشهر الستة المقبلة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATREligibleStartDate" xml:space="preserve">
@@ -3914,15 +3914,15 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRFinancialDetails" xml:space="preserve">
-    <value>Financial Details</value>
+    <value>التفاصيل المالية</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRGreaterThan" xml:space="preserve">
-    <value>Greater than</value>
+    <value>اكثر من</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRIDType" xml:space="preserve">
-    <value>ID Type</value>
+    <value>نوع الهوية</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRImporter" xml:space="preserve">
@@ -3938,7 +3938,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRLessThan" xml:space="preserve">
-    <value>Less than</value>
+    <value>اقل من</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRMPAttachments" xml:space="preserve">
@@ -3946,11 +3946,11 @@
     <comment>VATRegistrationMenuPopUp</comment>
   </data>
   <data name="VATRMPSaveasDraft" xml:space="preserve">
-    <value>Save as Draft</value>
+    <value>حفظ كمسودة</value>
     <comment>VATRegistrationMenuPopUp</comment>
   </data>
   <data name="VATRNewAttachment" xml:space="preserve">
-    <value>New Attachment</value>
+    <value>مرفق جديد</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRQuesComming12monthVATSalesTax" xml:space="preserve">
@@ -3958,7 +3958,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRReviewInformation" xml:space="preserve">
-    <value>Review Information</value>
+    <value>مراجعة المعلومات</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSAppNumber" xml:space="preserve">
@@ -3966,7 +3966,7 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSbtnGoToDashboard" xml:space="preserve">
-    <value>Go To Dashboard</value>
+    <value>الذهاب الى البوابة</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSName" xml:space="preserve">
@@ -3974,7 +3974,7 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegisteredToVATService" xml:space="preserve">
-    <value>You have successfully Registered to VAT Services.</value>
+    <value>لقد سجلت بنجاح في خدمات ضريبة القيمة المضافة.</value>
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSRegistrationSuccessful" xml:space="preserve">
@@ -3982,11 +3982,11 @@
     <comment>VATRegistrationSuccessfullPageView</comment>
   </data>
   <data name="VATRSummeryofExpenseDetailsComming12Months" xml:space="preserve">
-    <value>VAT Taxable Expenses Value (Upcoming 12 months)</value>
+    <value>قيمة المصروفات الخاضعة للضريبة على القيمة المضافة (12 شهراً قادمة)</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSummeryOfExpenseDetailsLast12Months" xml:space="preserve">
-    <value>VAT Taxable Expenses Value (last 12 months)</value>
+    <value>قيمة المصروفات الخاضعة للضريبة على القيمة المضافة (آخر 12 شهراً)</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSummeryOfExpenseDetailsValue2" xml:space="preserve">
@@ -3998,11 +3998,11 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSummeryOfSalesDetailsComming12months" xml:space="preserve">
-    <value>VAT Taxable Sales Value (Upcoming 12 months)</value>
+    <value>قيمة المبيعات الخاضعة للضريبة على ضريبة القيمة المضافة (12 شهراً قادمة)</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSummeryOfSalesDetailsLast12months" xml:space="preserve">
-    <value>VAT Taxable Sales Value (last 12 months)</value>
+    <value>قيمة المبيعات الخاضعة للضريبة على ضريبة القيمة المضافة (آخر 12 شهراً)</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRSummeryOfSalesDetailsValue" xml:space="preserve">
