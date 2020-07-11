@@ -581,6 +581,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isDeclarationChecked = value;
+                if(_isDeclarationChecked)
+                {
+                    IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    IsContinueButtonEnable = false;
+                }
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }

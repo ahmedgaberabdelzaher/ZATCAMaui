@@ -2398,7 +2398,7 @@
                                         ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding ContactDOB}"   IsEnabled="False"   Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="yyyy/MM/dd" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="EndAndExpand">
                                                                         <Image.Source>
@@ -2448,8 +2448,8 @@
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry x:Name="EntryContactName" Text="{Binding FirstNameSR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="Enter Name" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            <custom:BorderlessEntry x:Name="EntryContactName" TextChanged="EntryContactName_TextChanged" Text="{Binding FirstNameSR}" IsSpellCheckEnabled="False"
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.Name}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
