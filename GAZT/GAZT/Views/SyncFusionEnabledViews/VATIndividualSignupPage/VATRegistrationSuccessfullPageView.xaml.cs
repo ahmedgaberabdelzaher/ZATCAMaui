@@ -33,8 +33,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
 
                     string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.GoLiveDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
-                    Label_Date.Text = response.d.GoLiveDt;
-
+                    //Label_Date.Text = response.d.GoLiveDt;
+                    Label_Date.Text = StartdateToshow;
                 }
             }
             
