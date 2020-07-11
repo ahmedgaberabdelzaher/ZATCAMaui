@@ -15,8 +15,13 @@
       <ScrollView>
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White">     
         <StackLayout>
-
-            <StackLayout Padding="22,22,22,0">
+                <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <StackLayout Padding="22,22,22,0">
+                
                 <Label Text="{Binding AccountText}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                 <!--<StackLayout Grid.Row="2">
                     <Label Text="{x:Static custom2:AppResources.ZZName}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
@@ -30,7 +35,7 @@
                         </custom:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>-->
-                <Label Text="IBAN" FontFamily="{StaticResource SSTArBold}"/>
+                    <Label Text="{x:Static custom2:AppResources.NAIBAN}" FontFamily="{StaticResource SSTArBold}"/>
             </StackLayout>
             <StackLayout Padding="15,0,15,15">
                 <Frame Padding="0" BorderColor="LightGray" CornerRadius="8">
@@ -38,7 +43,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
                             <StackLayout Orientation="Horizontal">
                                 <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
-                                <Label Text="SA" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
+                                    <Label Text="{x:Static custom2:AppResources.NASA}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
                                 <!--<Image Rotation="270">
                                     <Image.Source>
                                         <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="15"

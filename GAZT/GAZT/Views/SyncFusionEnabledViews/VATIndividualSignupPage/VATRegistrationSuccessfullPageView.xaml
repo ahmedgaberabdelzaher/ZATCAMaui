@@ -41,8 +41,8 @@
                 </Image>-->
                 
                 <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
-                <Label Text="VAT Registration Successful" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="You have successfully Registered to VAT Services."
+                <Label Text="{x:Static custom2:AppResources.VATRSRegistrationSuccessful}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static custom2:AppResources.VATRSRegisteredToVATService}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
@@ -50,13 +50,13 @@
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="Name" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{x:Static custom2:AppResources.VATRSName}" HorizontalOptions="StartAndExpand"/>
                             <Label x:Name="Label_Name"  TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="Application Number" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
                                 <Label x:Name="Label_ApplicationNumber" Text="" TextColor="Black"/>
                                 <Image>
@@ -74,7 +74,7 @@
                             <Label x:Name="Label_Date" TextColor="Black" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
-                    <buttons:SfButton x:Name="btnDashboard" Text="Go To Dashboard" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                        <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.VATRSbtnGoToDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"   Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" TextColor="White" />
                 </StackLayout>

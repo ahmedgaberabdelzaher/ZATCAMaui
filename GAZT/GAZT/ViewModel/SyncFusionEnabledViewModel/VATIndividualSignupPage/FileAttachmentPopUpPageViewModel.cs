@@ -5,6 +5,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,6 +23,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public ICommand OnAttachmentClick { get; set; }
+        public ICommand GoButtonClick { get; set; }
 
         public static Decimal AttachmentUploadedSize = 0;
         public static bool IsToBeFilled = false;
@@ -312,6 +314,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
                 await AddAttachmentTest();
+            });
+
+            GoButtonClick = new Xamarin.Forms.Command(() =>
+            {
+                PopupNavigation.Instance.PopAsync();
             });
         }
 

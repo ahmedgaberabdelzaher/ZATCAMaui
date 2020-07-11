@@ -56,7 +56,11 @@
 
 
 
-
+            <Label Margin="10,0,10,0" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                </Label.GestureRecognizers>
+            </Label>
 
 
 
@@ -65,11 +69,11 @@
 
             <StackLayout>
                 <StackLayout Padding="22,22,22,0">
-                    <Label Text="New Attachment"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                    <Label Text="{x:Static custom2:AppResources.FDANewAttachment}"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                     <StackLayout Grid.Row="2">
                        
                     </StackLayout>
-                    <Label Text="type of document that you are submitting to prove whether or not eligible." FontFamily="{StaticResource SSTArBold}"/>
+                    <Label Text="{x:Static custom2:AppResources.FDADocToProveEligiblity}" FontFamily="{StaticResource SSTArBold}"/>
                 </StackLayout>
                 <StackLayout Padding="15,0,15,15">
                     <Grid>
@@ -123,7 +127,7 @@
                             </syncfusion:SfPicker.Behaviors>
                         </syncfusion:SfPicker>
                         <StackLayout Grid.Row="2">
-                            <Label Text="Attachment" Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
+                            <Label Text="{x:Static custom2:AppResources.FDAAttachment}" Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
                             <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >

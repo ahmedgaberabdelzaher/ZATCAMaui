@@ -15,6 +15,12 @@
     <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
         <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
+            <Label Margin="10,0,10,0" HorizontalOptions="End" VerticalOptions="Center" Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoButtonClick}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
             <Grid   HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsImpoterAndExporter}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -24,14 +30,14 @@
                     <ColumnDefinition Width="30*"/>
                     <ColumnDefinition Width="35*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Importer" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
+                <Label Text="{x:Static custom2:AppResources.FAPImporter}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
                 </Label>
 
                 <Switch HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"  Grid.Row="0" Grid.Column="1" IsToggled="{Binding IsSwitchToggled}" ></Switch>
                 <custom:CustomButton x:Name="btnForNewChange"  WidthRequest="15" HeightRequest="15"  Clicked="btnSwitch_ClickedForNewVATChange" FontSize="13" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1">
                 </custom:CustomButton>
 
-                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Exporter"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="2">
+                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.FAPExporter}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="2">
                 </Label>
             </Grid>
 
@@ -128,7 +134,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>-->
             </ListView>
-            <buttons:SfButton x:Name="btnAddAttachment" Text="Add Attachment" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+            <buttons:SfButton x:Name="btnAddAttachment" Text="{x:Static custom2:AppResources.FAPAddAttachment}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                               HeightRequest="56" Margin="0,0,0,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
                               BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
         </StackLayout>

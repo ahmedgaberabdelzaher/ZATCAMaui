@@ -29,5 +29,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
              await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(vatReg));
         }
+
+        private void CloseTapped(object sender, EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync();
+        }
     }
 }

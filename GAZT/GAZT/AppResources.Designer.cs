@@ -777,6 +777,60 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Attachment.
+        /// </summary>
+        public static string FAPAddAttachment {
+            get {
+                return ResourceManager.GetString("FAPAddAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporter.
+        /// </summary>
+        public static string FAPExporter {
+            get {
+                return ResourceManager.GetString("FAPExporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importer.
+        /// </summary>
+        public static string FAPImporter {
+            get {
+                return ResourceManager.GetString("FAPImporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment.
+        /// </summary>
+        public static string FDAAttachment {
+            get {
+                return ResourceManager.GetString("FDAAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to type of document that you are submitting to prove whether or not eligible..
+        /// </summary>
+        public static string FDADocToProveEligiblity {
+            get {
+                return ResourceManager.GetString("FDADocToProveEligiblity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Attachment.
+        /// </summary>
+        public static string FDANewAttachment {
+            get {
+                return ResourceManager.GetString("FDANewAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Financial Period.
         /// </summary>
         public static string FinancialPeriodFrom {
@@ -1056,11 +1110,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IBAN.
+        /// </summary>
+        public static string NAIBAN {
+            get {
+                return ResourceManager.GetString("NAIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taxpayer Name.
         /// </summary>
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SA.
+        /// </summary>
+        public static string NASA {
+            get {
+                return ResourceManager.GetString("NASA", resourceCulture);
             }
         }
         
@@ -2037,6 +2109,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account.
+        /// </summary>
+        public static string VATRAccount {
+            get {
+                return ResourceManager.GetString("VATRAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment (Optional).
+        /// </summary>
+        public static string VATRAttachment {
+            get {
+                return ResourceManager.GetString("VATRAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments are mandatory for Non-Eligible Taxpayers, Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
+        /// </summary>
+        public static string VATRAttachmentMandatory {
+            get {
+                return ResourceManager.GetString("VATRAttachmentMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT registration certificate.
         /// </summary>
         public static string VATRegistrationCertificate {
@@ -2046,11 +2145,281 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Eligible Start Date.
+        /// </summary>
+        public static string VATREligibleStartDate {
+            get {
+                return ResourceManager.GetString("VATREligibleStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Returns.
         /// </summary>
         public static string VatReturns {
             get {
                 return ResourceManager.GetString("VatReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses Details.
+        /// </summary>
+        public static string VATRExpensesDetails {
+            get {
+                return ResourceManager.GetString("VATRExpensesDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporter.
+        /// </summary>
+        public static string VATRExporter {
+            get {
+                return ResourceManager.GetString("VATRExporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Details.
+        /// </summary>
+        public static string VATRFinancialDetails {
+            get {
+                return ResourceManager.GetString("VATRFinancialDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greater than.
+        /// </summary>
+        public static string VATRGreaterThan {
+            get {
+                return ResourceManager.GetString("VATRGreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID Type.
+        /// </summary>
+        public static string VATRIDType {
+            get {
+                return ResourceManager.GetString("VATRIDType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Importer.
+        /// </summary>
+        public static string VATRImporter {
+            get {
+                return ResourceManager.GetString("VATRImporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import or  Exporter.
+        /// </summary>
+        public static string VATRImportExport {
+            get {
+                return ResourceManager.GetString("VATRImportExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inma Bank.
+        /// </summary>
+        public static string VATRInmaBank {
+            get {
+                return ResourceManager.GetString("VATRInmaBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Less than.
+        /// </summary>
+        public static string VATRLessThan {
+            get {
+                return ResourceManager.GetString("VATRLessThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachments.
+        /// </summary>
+        public static string VATRMPAttachments {
+            get {
+                return ResourceManager.GetString("VATRMPAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as Draft.
+        /// </summary>
+        public static string VATRMPSaveasDraft {
+            get {
+                return ResourceManager.GetString("VATRMPSaveasDraft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Attachment.
+        /// </summary>
+        public static string VATRNewAttachment {
+            get {
+                return ResourceManager.GetString("VATRNewAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?.
+        /// </summary>
+        public static string VATRQuesComming12monthVATSalesTax {
+            get {
+                return ResourceManager.GetString("VATRQuesComming12monthVATSalesTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review Information.
+        /// </summary>
+        public static string VATRReviewInformation {
+            get {
+                return ResourceManager.GetString("VATRReviewInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Number.
+        /// </summary>
+        public static string VATRSAppNumber {
+            get {
+                return ResourceManager.GetString("VATRSAppNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go To Dashboard.
+        /// </summary>
+        public static string VATRSbtnGoToDashboard {
+            get {
+                return ResourceManager.GetString("VATRSbtnGoToDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string VATRSName {
+            get {
+                return ResourceManager.GetString("VATRSName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have successfully Registered to VAT Services..
+        /// </summary>
+        public static string VATRSRegisteredToVATService {
+            get {
+                return ResourceManager.GetString("VATRSRegisteredToVATService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Successful.
+        /// </summary>
+        public static string VATRSRegistrationSuccessful {
+            get {
+                return ResourceManager.GetString("VATRSRegistrationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Taxable Expenses Value (Upcoming 12 months).
+        /// </summary>
+        public static string VATRSummeryofExpenseDetailsComming12Months {
+            get {
+                return ResourceManager.GetString("VATRSummeryofExpenseDetailsComming12Months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Taxable Expenses Value (last 12 months).
+        /// </summary>
+        public static string VATRSummeryOfExpenseDetailsLast12Months {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfExpenseDetailsLast12Months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        /// </summary>
+        public static string VATRSummeryOfExpenseDetailsValue2 {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfExpenseDetailsValue2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        /// </summary>
+        public static string VATRSummeryOfExpensesDetailsValue1 {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfExpensesDetailsValue1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Taxable Sales Value (Upcoming 12 months).
+        /// </summary>
+        public static string VATRSummeryOfSalesDetailsComming12months {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfSalesDetailsComming12months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Taxable Sales Value (last 12 months).
+        /// </summary>
+        public static string VATRSummeryOfSalesDetailsLast12months {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfSalesDetailsLast12months", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        /// </summary>
+        public static string VATRSummeryOfSalesDetailsValue {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfSalesDetailsValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greater than 10,000,000 until 40,000,000 SAR.
+        /// </summary>
+        public static string VATRSummeryOfSalesDetailsValue1 {
+            get {
+                return ResourceManager.GetString("VATRSummeryOfSalesDetailsValue1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Eligible Start Date.
+        /// </summary>
+        public static string VATRVATEligibleStartDate {
+            get {
+                return ResourceManager.GetString("VATRVATEligibleStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are Eligible For VAT.
+        /// </summary>
+        public static string VATRYouEligibleForVAT {
+            get {
+                return ResourceManager.GetString("VATRYouEligibleForVAT", resourceCulture);
             }
         }
         

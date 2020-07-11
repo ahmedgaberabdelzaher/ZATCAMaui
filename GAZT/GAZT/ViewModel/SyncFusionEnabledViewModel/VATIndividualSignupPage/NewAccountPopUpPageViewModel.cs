@@ -3,6 +3,8 @@ using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Rg.Plugins.Popup.Services;
+using System.Windows.Input;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
@@ -11,6 +13,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
         public static string ValidTypeIban;
+
+        public ICommand GoButtonClick { get; set; }
 
         #region Property
         private string _ibanNumberText;
@@ -142,6 +146,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 throw new ArgumentNullException("dialogService");
             }
+
+            GoButtonClick = new Xamarin.Forms.Command(() =>
+            {
+                PopupNavigation.Instance.PopAsync();
+            });
         }
     }
 }

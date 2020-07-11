@@ -3857,4 +3857,168 @@
     <value>Voluntary Registration</value>
     <comment>VatRegistration</comment>
   </data>
+  <data name="FAPAddAttachment" xml:space="preserve">
+    <value>Add Attachment</value>
+    <comment>FileAttachmentPopUp</comment>
+  </data>
+  <data name="FAPExporter" xml:space="preserve">
+    <value>Exporter</value>
+    <comment>FileAttachmentPopUp</comment>
+  </data>
+  <data name="FAPImporter" xml:space="preserve">
+    <value>Importer</value>
+    <comment>FileAttachmentPopUp</comment>
+  </data>
+  <data name="FDAAttachment" xml:space="preserve">
+    <value>Attachment</value>
+    <comment>FinancialDetailAttachmentPopup</comment>
+  </data>
+  <data name="FDADocToProveEligiblity" xml:space="preserve">
+    <value>type of document that you are submitting to prove whether or not eligible.</value>
+    <comment>FinancialDetailAttachmentPopup</comment>
+  </data>
+  <data name="FDANewAttachment" xml:space="preserve">
+    <value>New Attachment</value>
+    <comment>FinancialDetailAttachmentPopup</comment>
+  </data>
+  <data name="NAIBAN" xml:space="preserve">
+    <value>IBAN</value>
+    <comment>NewAccountPopUp</comment>
+  </data>
+  <data name="NASA" xml:space="preserve">
+    <value>SA</value>
+    <comment>NewAccountPopUp</comment>
+  </data>
+  <data name="VATRAccount" xml:space="preserve">
+    <value>Account</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRAttachment" xml:space="preserve">
+    <value>Attachment (Optional)</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRAttachmentMandatory" xml:space="preserve">
+    <value>Attachments are mandatory for Non-Eligible Taxpayers, Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATREligibleStartDate" xml:space="preserve">
+    <value>VAT Eligible Start Date</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRExpensesDetails" xml:space="preserve">
+    <value>Expenses Details</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRExporter" xml:space="preserve">
+    <value>Exporter</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRFinancialDetails" xml:space="preserve">
+    <value>Financial Details</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRGreaterThan" xml:space="preserve">
+    <value>Greater than</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRIDType" xml:space="preserve">
+    <value>ID Type</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRImporter" xml:space="preserve">
+    <value>Importer</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRImportExport" xml:space="preserve">
+    <value>Import or  Exporter</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRInmaBank" xml:space="preserve">
+    <value>Inma Bank</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRLessThan" xml:space="preserve">
+    <value>Less than</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRMPAttachments" xml:space="preserve">
+    <value>Attachments</value>
+    <comment>VATRegistrationMenuPopUp</comment>
+  </data>
+  <data name="VATRMPSaveasDraft" xml:space="preserve">
+    <value>Save as Draft</value>
+    <comment>VATRegistrationMenuPopUp</comment>
+  </data>
+  <data name="VATRNewAttachment" xml:space="preserve">
+    <value>New Attachment</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRQuesComming12monthVATSalesTax" xml:space="preserve">
+    <value>In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRReviewInformation" xml:space="preserve">
+    <value>Review Information</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSAppNumber" xml:space="preserve">
+    <value>Appication Number</value>
+    <comment>VATRegistrationSuccessfullPageView</comment>
+  </data>
+  <data name="VATRSbtnGoToDashboard" xml:space="preserve">
+    <value>Go To Dashboard</value>
+    <comment>VATRegistrationSuccessfullPageView</comment>
+  </data>
+  <data name="VATRSName" xml:space="preserve">
+    <value>Name</value>
+    <comment>VATRegistrationSuccessfullPageView</comment>
+  </data>
+  <data name="VATRSRegisteredToVATService" xml:space="preserve">
+    <value>You have successfully Registered to VAT Services.</value>
+    <comment>VATRegistrationSuccessfullPageView</comment>
+  </data>
+  <data name="VATRSRegistrationSuccessful" xml:space="preserve">
+    <value>VAT Registration Successful</value>
+    <comment>VATRegistrationSuccessfullPageView</comment>
+  </data>
+  <data name="VATRSummeryofExpenseDetailsComming12Months" xml:space="preserve">
+    <value>VAT Taxable Expenses Value (Upcoming 12 months)</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfExpenseDetailsLast12Months" xml:space="preserve">
+    <value>VAT Taxable Expenses Value (last 12 months)</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfExpenseDetailsValue2" xml:space="preserve">
+    <value>Greater than 10,000,000 until 40,000,000 SAR</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfExpensesDetailsValue1" xml:space="preserve">
+    <value>Greater than 10,000,000 until 40,000,000 SAR</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfSalesDetailsComming12months" xml:space="preserve">
+    <value>VAT Taxable Sales Value (Upcoming 12 months)</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfSalesDetailsLast12months" xml:space="preserve">
+    <value>VAT Taxable Sales Value (last 12 months)</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfSalesDetailsValue" xml:space="preserve">
+    <value>Greater than 10,000,000 until 40,000,000 SAR</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRSummeryOfSalesDetailsValue1" xml:space="preserve">
+    <value>Greater than 10,000,000 until 40,000,000 SAR</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRVATEligibleStartDate" xml:space="preserve">
+    <value>VAT Eligible Start Date</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
+  <data name="VATRYouEligibleForVAT" xml:space="preserve">
+    <value>You Are Eligible For VAT</value>
+    <comment>VATRegistrationPageView</comment>
+  </data>
 </root>
