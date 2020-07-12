@@ -2127,6 +2127,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional Information.
+        /// </summary>
+        public static string VATRAdditionalInformation {
+            get {
+                return ResourceManager.GetString("VATRAdditionalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment (Optional).
         /// </summary>
         public static string VATRAttachment {

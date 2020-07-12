@@ -4045,4 +4045,7 @@
   <data name="VATRStep5" xml:space="preserve">
     <value>الخطوه الخامسه</value>
   </data>
+  <data name="VATRAdditionalInformation" xml:space="preserve">
+    <value>المعلومات الإضافية</value>
+  </data>
 </root>

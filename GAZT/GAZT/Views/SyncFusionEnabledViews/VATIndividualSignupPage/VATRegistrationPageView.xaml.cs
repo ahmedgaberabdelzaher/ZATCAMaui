@@ -827,7 +827,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+            {
+              viewModel.FrameIDError = false;
+            }
         }
 
         private void EntryFirstName_Unfocused(object sender, FocusEventArgs e)
