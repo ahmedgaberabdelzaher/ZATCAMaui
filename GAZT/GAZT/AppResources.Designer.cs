@@ -2145,6 +2145,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment Category.
+        /// </summary>
+        public static string VATRAttachmentCategory {
+            get {
+                return ResourceManager.GetString("VATRAttachmentCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments are mandatory for Non-Eligible Taxpayers, Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
         /// </summary>
         public static string VATRAttachmentMandatory {

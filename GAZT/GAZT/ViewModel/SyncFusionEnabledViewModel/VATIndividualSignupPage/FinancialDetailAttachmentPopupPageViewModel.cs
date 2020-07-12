@@ -407,7 +407,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                         AttachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 2);
                                         decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
 
-                                        if (Convert.ToDecimal(AttachmentSize) <= 20)
+                                        if (Convert.ToDecimal(AttachmentSize) <= 5)
                                         {
                                             if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                             {

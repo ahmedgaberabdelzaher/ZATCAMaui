@@ -4048,4 +4048,7 @@
   <data name="VATRAdditionalInformation" xml:space="preserve">
     <value>المعلومات الإضافية</value>
   </data>
+  <data name="VATRAttachmentCategory" xml:space="preserve">
+    <value>فئة المرفقات</value>
+  </data>
 </root>

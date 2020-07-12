@@ -4072,4 +4072,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATRStep5" xml:space="preserve">
     <value>Step 5</value>
   </data>
+  <data name="VATRAttachmentCategory" xml:space="preserve">
+    <value>Attachment Category</value>
+  </data>
 </root>
