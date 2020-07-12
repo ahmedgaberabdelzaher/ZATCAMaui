@@ -1830,7 +1830,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin Number.
+        ///   Looks up a localized string similar to TIN Number.
         /// </summary>
         public static string TINS {
             get {

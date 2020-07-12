@@ -332,7 +332,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     flag = false;
                 }
-                if (string.IsNullOrEmpty(viewModel.IdNumberSR) ||viewModel.FrameContactIDError == true)
+                if (string.IsNullOrEmpty(viewModel.IdNumberSR))
                 {
                     flag = false;
                     viewModel.FrameContactIDError = true;
@@ -343,7 +343,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmContactName.HasError = true;
 
                 }
-                if (string.IsNullOrEmpty(viewModel.ContactDOB) ||viewModel.FrameContactDOBError == true)
+                if (string.IsNullOrEmpty(viewModel.ContactDOB) )
                 {
                     flag = false;
                     viewModel.FrameContactDOBError = true;
@@ -1606,7 +1606,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.FrameContactIDError = false;
                             if (!string.IsNullOrEmpty(viewModel.ContactDOB))
                             {
-                                ValidateIDNumber();
+                                ValidateIDNumberContact(); 
                             }
 
 
@@ -1813,12 +1813,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameContactIDError = false;
+                                
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1907,6 +1909,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -1934,6 +1937,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -2410,7 +2414,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryContactName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+            if (!string.IsNullOrEmpty(viewModel.FirstNameSR))
             {    
                 FrmContactName.HasError = false;
             }
