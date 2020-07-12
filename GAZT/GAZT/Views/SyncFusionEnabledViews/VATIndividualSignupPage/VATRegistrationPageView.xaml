@@ -276,7 +276,7 @@
                                                                     </Image.Source>
                                                                 </Image>
                                                                 <StackLayout Grid.Column="1" Grid.Row="0" Spacing="0" VerticalOptions="Start">
-                                                                    <Label  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
+                                                                    <Label HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <!--<Span Text="-"></Span>-->
