@@ -958,7 +958,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void VATFaqTapped(object sender, EventArgs e)
         {
+            try
+            {
+                PopUp popUp = new PopUp();
+                popUp.HeaderText = AppResources.ZZZInformationNew;
+                popUp.IsLinkAvailable = true;
+                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
 
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void NewAttachment_Clicked(object sender, EventArgs e)

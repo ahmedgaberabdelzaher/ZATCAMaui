@@ -175,7 +175,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     //}
                     await Task.Run(() =>
                     {
-                        IsLoading = false;
+                       viewModel.IsLoading = false;
                     });
                 }
                     catch (Exception ex)
