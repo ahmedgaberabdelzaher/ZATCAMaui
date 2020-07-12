@@ -940,17 +940,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
-                        if (_selectedIdTypeFR.ID.Equals("ZS0015"))
+                        if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
                             MaxLengthID = 10;
 
                         }
-                        else if (_selectedIdTypeFR.ID.Equals("ZS0017"))
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0002"))
                         {
                             MaxLengthID = 10;
                         }
 
-                        else if (_selectedIdTypeFR.ID.Equals("ZS0018"))
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0003"))
                         {
                             MaxLengthID = 15;
 
@@ -1700,9 +1700,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
-           new SignUpIdType {ID = "ZS0015",Name = AppResources.NationaID},
-                      new SignUpIdType {ID = "ZS0017",Name = AppResources.ZZIqamaID},
-                                            new SignUpIdType {ID = "ZS0018",Name = AppResources.ZZGCCID},
+           new SignUpIdType {ID = "ZS0001",Name = AppResources.NationaID},
+                      new SignUpIdType {ID = "ZS0002",Name = AppResources.ZZIqamaID},
+                                            new SignUpIdType {ID = "ZS0003",Name = AppResources.ZZGCCID},
 
 
             };

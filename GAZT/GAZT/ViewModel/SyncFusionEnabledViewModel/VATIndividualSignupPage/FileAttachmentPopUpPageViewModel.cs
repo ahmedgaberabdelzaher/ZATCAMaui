@@ -327,6 +327,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             FileAttachments = new ObservableCollection<string>();
             OnAttachmentClick = new Xamarin.Forms.Command(async () =>
             {
+                IsLoading = true;
                 await AddAttachmentEx();
             });
 
@@ -453,6 +454,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                             }
                                                             catch (Exception ex)
                                                             {
+                                                                await Task.Run(() =>
+                                                                {
+                                                                    IsLoading = false;
+                                                                });
                                                             }
                                                         }
                                                         AttachmentCount++;
@@ -465,42 +470,70 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                     else
                                                     {
                                                         AttachmentName = string.Empty;
+                                                        await Task.Run(() =>
+                                                        {
+                                                            IsLoading = false;
+                                                        });
                                                         await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
+                                                    await Task.Run(() =>
+                                                    {
+                                                        IsLoading = false;
+                                                    });
                                                     await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
+                                                await Task.Run(() =>
+                                                {
+                                                    IsLoading = false;
+                                                });
                                                 await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
+                                            await Task.Run(() =>
+                                            {
+                                                IsLoading = false;
+                                            });
                                             await _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
+                                        await Task.Run(() =>
+                                        {
+                                            IsLoading = false;
+                                        });
                                         await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
+                                    await Task.Run(() =>
+                                    {
+                                        IsLoading = false;
+                                    });
                                     await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
+                                await Task.Run(() =>
+                                {
+                                    IsLoading = false;
+                                });
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
                             }
                         }
@@ -508,11 +541,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     else
                     {
                         AttachmentName = string.Empty;
+                        await Task.Run(() =>
+                        {
+                            IsLoading = false;
+                        });
                         await _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
                     }
                 }
                 catch (InternetException ex)
                 {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -521,6 +562,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
 
             }
         }

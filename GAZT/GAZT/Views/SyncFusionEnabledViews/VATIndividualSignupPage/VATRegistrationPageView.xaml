@@ -1916,7 +1916,7 @@
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="10,-6,10,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                            <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False" 
+                                                            <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False"  MaxLength="10"
                                                             TextChanged="EntryTINNumber_TextChanged"  Placeholder="{x:Static custom2:AppResources.TINS}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
