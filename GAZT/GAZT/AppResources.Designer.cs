@@ -2235,7 +2235,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import  Exporter.
+        ///   Looks up a localized string similar to Importer  Exporter.
         /// </summary>
         public static string VATRImportExport {
             get {
