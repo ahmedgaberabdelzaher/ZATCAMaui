@@ -444,7 +444,16 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <Label Grid.Row="0" Text="{x:Static custom2:AppResources.VATREligibleStartDate}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
+                                                        <!--<Label Grid.Row="0" Text="{x:Static custom2:AppResources.VATREligibleStartDate}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
+                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.VATREligibleStartDate}"  />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -2320,7 +2329,16 @@
                                                                 <RowDefinition Height="auto"/>
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
-                                                            <Label Grid.Row="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.VATRIDType}" Padding="0,0,0,0"/>
+                                                            <!--<Label Grid.Row="0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.VATRIDType}" Padding="0,0,0,0"/>-->
+                                                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.VATRIDType}"  />
+                                                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
@@ -2367,7 +2385,17 @@
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="1">
-                                                        <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
+                                                        <!--<Label Grid.Row="0"  Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
+                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.IDNumber}" />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
+
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmContactIDNumber" Margin="0,-6,0,-6" 
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactIDError}">
@@ -2448,7 +2476,16 @@
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="3">
-                                                        <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
+                                                        <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
+                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" />
+                                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >

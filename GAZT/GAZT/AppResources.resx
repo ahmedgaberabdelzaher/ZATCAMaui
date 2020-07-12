@@ -4054,4 +4054,19 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATREditAccount" xml:space="preserve">
     <value>Edit Account</value>
   </data>
+  <data name="VATRStep1" xml:space="preserve">
+    <value>Step 1</value>
+  </data>
+  <data name="VATRStep2" xml:space="preserve">
+    <value>Step 2</value>
+  </data>
+  <data name="VATRStep3" xml:space="preserve">
+    <value>Step 3</value>
+  </data>
+  <data name="VATRStep4" xml:space="preserve">
+    <value>Step 4</value>
+  </data>
+  <data name="VATRStep5" xml:space="preserve">
+    <value>Step 5</value>
+  </data>
 </root>

@@ -2352,6 +2352,51 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Step 1.
+        /// </summary>
+        public static string VATRStep1 {
+            get {
+                return ResourceManager.GetString("VATRStep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 2.
+        /// </summary>
+        public static string VATRStep2 {
+            get {
+                return ResourceManager.GetString("VATRStep2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 3.
+        /// </summary>
+        public static string VATRStep3 {
+            get {
+                return ResourceManager.GetString("VATRStep3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 4.
+        /// </summary>
+        public static string VATRStep4 {
+            get {
+                return ResourceManager.GetString("VATRStep4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 5.
+        /// </summary>
+        public static string VATRStep5 {
+            get {
+                return ResourceManager.GetString("VATRStep5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Taxable Expenses Value (Upcoming 12 months).
         /// </summary>
         public static string VATRSummeryofExpenseDetailsComming12Months {
