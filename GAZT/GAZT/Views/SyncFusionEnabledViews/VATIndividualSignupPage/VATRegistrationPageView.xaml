@@ -1934,9 +1934,9 @@
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeFR}" FontAttributes="Bold" FontSize="Small" 
-                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" IsSpellCheckEnabled="False">
+                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                                    <Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
@@ -2344,9 +2344,9 @@
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeSR}" FontSize="Small" 
-                                                        Placeholder="{x:Static custom2:AppResources.VATRIDType}" IsSpellCheckEnabled="False" >
+                                                        Placeholder="{x:Static custom2:AppResources.VATRIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" >
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                                                    <Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
