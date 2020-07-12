@@ -63,7 +63,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
 
                         viewModel.filterList();
-                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
                 }
             }
@@ -219,6 +219,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 viewModel.AttachmentList.Remove(listitemTwo);
                             
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+
                             
                             //if (indexToReduceTheSize != -1)
                                // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
@@ -256,14 +257,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.DocTypeString = "ZVTC";
                 viewModel.filterList();
-                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                 viewModel.IsSwitchToggled = false;
             }
             else
             {
                 viewModel.DocTypeString = "ZVTB";
                 viewModel.filterList();
-                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                 viewModel.IsSwitchToggled = true;
             }
         }

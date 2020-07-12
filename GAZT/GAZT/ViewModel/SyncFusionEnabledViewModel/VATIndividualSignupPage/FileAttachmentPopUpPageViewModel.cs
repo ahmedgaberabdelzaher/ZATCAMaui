@@ -61,7 +61,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private bool _isSwitchToggled = true;
+        private bool _isSwitchToggled = false;
         public bool IsSwitchToggled
         {
             get
@@ -209,6 +209,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("VatAttachmentsList");
             }
         }
+        private ObservableCollection<Attachment> _vatAttachmentsListtofilter;
+        public ObservableCollection<Attachment> VatAttachmentsListtofilter
+        {
+            get
+            {
+                return _vatAttachmentsListtofilter;
+            }
+            set
+            {
+                _vatAttachmentsListtofilter = value;
+                RaisePropertyChanged("VatAttachmentsListtofilter");
+            }
+        }
+
 
         private ObservableCollection<VATAttachment> _attachmentList;
         public ObservableCollection<VATAttachment> AttachmentList
@@ -443,7 +457,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                         }
                                                         AttachmentCount++;
                                                         filterList();
-                                                        CloneAttachmentList(VatAttachmentsList);
+                                                        CloneAttachmentList(VatAttachmentsListtofilter);
+                                                        // CloneAttachmentList(VatAttachmentsList);
                                                         // TotalAttachmentSize += AttachmentSize;
                                                         AttachmentName = string.Empty;
                                                     }
@@ -524,7 +539,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             attachmentsList.Add(item);
                         }
                     }
-                    VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                    // VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                    VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
             catch (Exception ex)
