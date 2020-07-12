@@ -45,9 +45,9 @@
                          
                         </Image>
                     </Grid>
-                    <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="Large" TextColor="Black" 
+                    <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="22" TextColor="Black" 
                        FontFamily="{StaticResource SSTArBold}"/>
-                    <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>
+                    <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontSize="16" FontFamily="{StaticResource SSTArBold}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
                     <Grid Padding="0"><!--BackgroundColor="DarkGreen"-->
                         <Image x:Name="image_individual_tile" Grid.Row="0" Grid.Column="0"  Source="{Binding ImageIndividualTile}" Aspect="AspectFill"/>
@@ -66,7 +66,7 @@
 
                                 <Image x:Name="image_individual_icon" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageIndividualIcon }" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}"  TextColor="{Binding IndividualTileColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                           VerticalOptions="End" FontSize="14" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
@@ -98,7 +98,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0"  Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageEstimatedIcon}" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}"  TextColor="{Binding EstimatedTileColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                           VerticalOptions="End" FontSize="14" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}"/>

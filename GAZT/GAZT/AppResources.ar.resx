@@ -3834,11 +3834,11 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZProceedtoHomescreen" xml:space="preserve">
-    <value>Proceed to Home screen</value>
+    <value>اكمل إلى الشاشة الرئيسية</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZProceedtoVATregistration" xml:space="preserve">
-    <value>Proceed to VAT registration</value>
+    <value>اكمل إلى التسجيل في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEligibilitylableTestmrl" xml:space="preserve">

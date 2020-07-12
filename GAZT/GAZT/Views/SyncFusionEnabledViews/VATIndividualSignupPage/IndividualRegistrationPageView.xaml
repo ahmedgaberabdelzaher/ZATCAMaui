@@ -891,7 +891,7 @@
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="40*"/>
-                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="60*"/>
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZIDType}" />
@@ -935,7 +935,7 @@
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="40*"/>
-                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="60*"/>
                                                         </Grid.ColumnDefinitions>
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZZZCountry}" />
                                                         <Label Text="{Binding CountryName}" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1"  TextColor="Black"/>
@@ -983,7 +983,7 @@
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="40*"/>
-                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="60*"/>
                                                         </Grid.ColumnDefinitions>
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZMobileNumber}" />
@@ -991,7 +991,7 @@
 
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.Email}" />
-                                                        <Label Text="{Binding Email}"  Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"  TextColor="Black"/>
+                                                        <Label Text="{Binding Email}" FontSize="14" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="1" Grid.Column="1"  TextColor="Black"/>
 
 
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="2" Grid.Column="0" Text="{x:Static local:AppResources.ZZName}"/>
