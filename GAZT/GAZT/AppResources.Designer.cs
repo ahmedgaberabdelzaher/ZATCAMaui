@@ -2109,6 +2109,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to please check the declaration to proceed to submit information.
+        /// </summary>
+        public static string VATRAcceptDeclarationToSubmit {
+            get {
+                return ResourceManager.GetString("VATRAcceptDeclarationToSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string VATRAccount {
@@ -2402,6 +2411,15 @@ namespace EGAZT {
         public static string VATRSummeryOfSalesDetailsValue1 {
             get {
                 return ResourceManager.GetString("VATRSummeryOfSalesDetailsValue1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading documents for.
+        /// </summary>
+        public static string VATRUploadingDocumentsFor {
+            get {
+                return ResourceManager.GetString("VATRUploadingDocumentsFor", resourceCulture);
             }
         }
         

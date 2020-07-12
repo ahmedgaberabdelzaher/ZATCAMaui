@@ -32,6 +32,7 @@
             <Grid   HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsImpoterAndExporter}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="35*"/>
@@ -39,30 +40,23 @@
                     <ColumnDefinition Width="35*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackLayout>
+                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.VATRUploadingDocumentsFor}" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
 
-                    <Label Text="Uploading files for" VerticalOptions="Center"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
-                    </Label>
+                <Label Text="{x:Static custom2:AppResources.FAPImporter}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="0"  >
+                </Label>
+                
+                <Switch HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"  Grid.Row="1" Grid.Column="1" IsToggled="{Binding IsSwitchToggled}" ></Switch>
 
-                    <Label Text="{x:Static custom2:AppResources.FAPImporter}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" VerticalOptions="Center" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0">
-                       
-                    </Label>
-
-                    <Switch HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand"  Grid.Row="0" Grid.Column="1" IsToggled="{Binding IsSwitchToggled}" ></Switch>
-                </StackLayout>
-
-                <BoxView  Style="{StaticResource lineSeperator}" Margin="10,0,10,15"/>
-
-                <custom:CustomButton x:Name="btnForNewChange"  WidthRequest="15" HeightRequest="15"  Clicked="btnSwitch_ClickedForNewVATChange" FontSize="13" BackgroundColor="Transparent" Grid.Row="0" Grid.Column="1">
+                <custom:CustomButton x:Name="btnForNewChange"  WidthRequest="15" HeightRequest="15"  Clicked="btnSwitch_ClickedForNewVATChange" FontSize="13" BackgroundColor="Transparent" Grid.Row="1" Grid.Column="1">
                 </custom:CustomButton>
 
-                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.FAPExporter}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="2">
+                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.FAPExporter}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="1" Grid.Column="2">
                 </Label>
             </Grid>
 
-            <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-            <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
+            <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+            <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
             <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
