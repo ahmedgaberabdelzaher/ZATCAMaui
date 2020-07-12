@@ -4045,4 +4045,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>You are Eligible For VAT</value>
     <comment>VATRegistrationPageView</comment>
   </data>
+  <data name="VATRUploadingDocumentsFor" xml:space="preserve">
+    <value>Uploading documents for</value>
+  </data>
 </root>

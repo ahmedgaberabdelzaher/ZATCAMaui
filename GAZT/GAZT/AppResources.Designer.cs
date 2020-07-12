@@ -2406,6 +2406,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uploading documents for.
+        /// </summary>
+        public static string VATRUploadingDocumentsFor {
+            get {
+                return ResourceManager.GetString("VATRUploadingDocumentsFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Eligible Start Date.
         /// </summary>
         public static string VATRVATEligibleStartDate {

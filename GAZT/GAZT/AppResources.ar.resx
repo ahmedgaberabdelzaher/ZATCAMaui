@@ -4021,4 +4021,7 @@
     <value>أنت مؤهل لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
+  <data name="VATRUploadingDocumentsFor" xml:space="preserve">
+    <value>Uploading documents for</value>
+  </data>
 </root>
