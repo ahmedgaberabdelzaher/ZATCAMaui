@@ -3930,7 +3930,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRImportExport" xml:space="preserve">
-    <value>مستورد أو مصدر</value>
+    <value>مستورد  مصدر</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRInmaBank" xml:space="preserve">
