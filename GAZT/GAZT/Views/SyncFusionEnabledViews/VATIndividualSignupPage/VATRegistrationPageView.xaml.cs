@@ -204,12 +204,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
                     SetsecondBoxColor();
+                   
 
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep2)
                 {//viewModel.IsSalesVisible = true;
                  //SetthirdBoxColor();
                     step2Validation();
+                    setAttachmentImporterExporterVisibility();
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
@@ -921,6 +923,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsTaxPayersVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
+                setAttachmentImporterExporterVisibility();
             }
             else if (viewModel.IsFinancialVisible)
             {
@@ -1016,10 +1019,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.ImporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
+                setAttachmentImporterExporterVisibility();
             }
             catch (Exception ex)
             {
 
+            }
+        }
+        public void setAttachmentImporterExporterVisibility()
+        {
+            if (viewModel.VATRegistrationDetailsData.d.ExFg =="0" && viewModel.VATRegistrationDetailsData.d.ImFg== "0")
+            {
+
+                viewModel.isAttachmentImporterExporterVisible = false;
+            }
+            else
+            {
+                viewModel.isAttachmentImporterExporterVisible = true;
             }
         }
 
@@ -1039,6 +1055,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.ExporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
+                setAttachmentImporterExporterVisibility();
             }
             catch (Exception ex)
             {

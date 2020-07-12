@@ -36,6 +36,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
         }
+
      
         private bool _isFDNameMobEmailEnable = false;
         public bool IsFDNameMobEmailEnable
@@ -49,6 +50,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isFDNameMobEmailEnable = value;
 
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
+            }
+        }
+        private bool _isAttachmentImporterExporterVisible = false;
+        public bool isAttachmentImporterExporterVisible
+        {
+            get
+            {
+                return _isAttachmentImporterExporterVisible;
+            }
+            set
+            {
+                _isAttachmentImporterExporterVisible = value;
+
+                RaisePropertyChanged("isAttachmentImporterExporterVisible");
             }
         }
 

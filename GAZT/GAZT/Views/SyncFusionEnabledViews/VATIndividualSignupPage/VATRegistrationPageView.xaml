@@ -571,8 +571,8 @@
 
                                                         </cards:SfCardView>
                                                     </Grid>
-                                                    <Label Text="{x:Static custom2:AppResources.VATRAttachment}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                    <Label Text="{x:Static custom2:AppResources.VATRAttachment}" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" IsVisible="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.isAttachmentImporterExporterVisible}"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal">
