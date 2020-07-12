@@ -667,7 +667,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 RaisePropertyChanged("MaxChar");
             }
         }
-        private int _forgotTypeIndex ;
+        private int _forgotTypeIndex;
         public int ForgotTypeIndex
         {
             get
@@ -679,13 +679,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 _forgotTypeIndex = value;
                 if (_forgotTypeIndex == 0)
                 {
-                   // SelectedTaxPayerTypeIndex = 0;
-                   if(TaxpayerTypeList != null && TaxpayerTypeList.Count > 0)
+                    // SelectedTaxPayerTypeIndex = 0;
+                    if (TaxpayerTypeList != null && TaxpayerTypeList.Count > 0)
                     {
                         SelectedTaxPayerType = TaxpayerTypeList[0];
                     }
                 }
-                
+
                 RaisePropertyChanged("ForgotTypeIndex");
             }
         }
@@ -729,7 +729,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     bool _isAllFormDataAvailable = ValidateForms();
                     if (_isAllFormDataAvailable)
                     {
-                       // bool isValiedCaptcha = ValidateCaptcha();
+                        // bool isValiedCaptcha = ValidateCaptcha();
                         if (true)
                         {
                             if (SelectedForgotType.id.Equals("1") && ((SelectedTaxPayerType.id.Equals("1")) || (SelectedTaxPayerType.id.Equals("2"))) && !(string.IsNullOrEmpty(IDNumber)))
@@ -761,7 +761,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     //Captcha = captcha.ToString();
                     //EnteredCaptchaValue = string.Empty;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                 }
             });
@@ -847,7 +847,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
             };
                 ForgotTypeList = forgotCredentialListlist;
-                if(ForgotTypeList!=null && ForgotTypeList.Count!=0)
+                if (ForgotTypeList != null && ForgotTypeList.Count != 0)
                 {
                     SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
                     ForgotTypeIndex = 1;
@@ -1077,9 +1077,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         currentAttempts++;
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/"+Constants.ForgotPasswordServiceName+"/HeaderSet(Tin=";
+                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + EnteredOTP + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "'" + ",RdBt='" + "P" + "')";
                         string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -1141,7 +1141,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 {
                                     messagefordialogue = messagefordialogue.Replace("}0{", "3");
                                 }
-                                
+
                                 await _dialogService.ShowMessageBox(messagefordialogue, AppResources.Information);
                                 _navigationService.GoBack();
                             });
@@ -1206,9 +1206,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 await Task.Run(async () =>
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                     string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
-                    string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                    string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                     string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "1" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + IDNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
                     string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                     ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
@@ -1291,9 +1291,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     {
                         string idNumber = GetTinId();
                         string lang = UtilityManager.GetLanguageParameter();
-                        string st = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string st = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string id = st + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
-                        string st1 = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/" + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
+                        string st1 = Constants.BaseUrlOfODataServices + Constants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                         string uri = st1 + "'" + idNumber + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + NewPassword + "'" + ",RdBt='" + "P" + "')";
                         string type = Constants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
                         ForgotPasswordOTP forgotPassword = new ForgotPasswordOTP();
