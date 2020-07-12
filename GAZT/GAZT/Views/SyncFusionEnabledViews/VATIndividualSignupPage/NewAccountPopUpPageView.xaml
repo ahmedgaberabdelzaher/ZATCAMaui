@@ -48,8 +48,8 @@
                     <Label Text="{x:Static custom2:AppResources.NAIBAN}" FontFamily="{StaticResource SSTArBold}"/>
             </StackLayout>
             <StackLayout Padding="15,0,15,15">
-                <Frame Padding="0" BorderColor="LightGray" CornerRadius="8">
-                    <StackLayout Orientation="Horizontal">
+                <Frame Padding="0" BorderColor="LightGray" CornerRadius="8" HasShadow="False">
+                        <StackLayout Orientation="Horizontal" FlowDirection="LeftToRight">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
                             <StackLayout Orientation="Horizontal">
                                 <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>

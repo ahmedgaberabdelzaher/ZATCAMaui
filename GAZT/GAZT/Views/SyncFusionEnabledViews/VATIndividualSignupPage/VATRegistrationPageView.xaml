@@ -257,7 +257,7 @@
                                                 </Grid.RowDefinitions>
                                                 <!--Start Of Read Only or pre-populated-->
                                                 <StackLayout Margin="0,0,0,15" Grid.Row="0">
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
 
                                                             <Grid >
@@ -561,7 +561,8 @@
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal">
-                                                            <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="Explore" FontSize="Small">
+                                                            <!--Attachments-->
+                                                            <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.Attachments}" FontSize="Small">
                                                             </custom:BorderlessEntry>
                                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                 <Image.Source>
@@ -1161,7 +1162,7 @@
                                                 </cards:SfCardView>
                                             </Grid>-->
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" >
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
                                                             <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion1}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
 
@@ -1192,7 +1193,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" >
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
                                                             <Label FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static custom2:AppResources.ZZZVATRQuestion2}"  TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12" ></Label>
                                                             <Label HorizontalTextAlignment="Start" TextColor="#010101" Text="{Binding SliderLable2}" FontSize="13" FontAttributes="Bold"/>
@@ -1219,7 +1220,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}">
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
                                                             <Label  Text="{x:Static custom2:AppResources.ZZZVATRQuestion3}" TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12"></Label>
 
@@ -1290,7 +1291,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" IsVisible="{Binding IsResident}"  >
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
                                                             <Label  Text="{x:Static custom2:AppResources.ZZZVATRQuestion4}" TextColor="#010101" HorizontalTextAlignment="Start" FontSize="12"></Label>
 
@@ -1361,7 +1362,7 @@
 
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" >
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -1412,12 +1413,12 @@
                                                                 </Image>
 
                                                                 <Label  Text="{x:Static custom2:AppResources.VATRNewAttachment}"  TextColor="DarkGreen" VerticalTextAlignment="Center"/>
-                                                                <Image HorizontalOptions="EndAndExpand">
+                                                                <!--<Image HorizontalOptions="EndAndExpand">
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
                                                                     </Image.Source>
-                                                                </Image>
+                                                                </Image>-->
                                                             </StackLayout>
                                                         </inputLayout:SfTextInputLayout>
                                                         <Button Grid.Row="1" x:Name="NewAttachment" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" BackgroundColor="Transparent" Clicked="NewAttachment_Clicked" Margin="0,0,0,0" />
@@ -1861,7 +1862,7 @@
                                                 
                                             </Frame>-->
                                                 <StackLayout Margin="0,0,0,15" >
-                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20">
+                                                    <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
 
                                                             <Grid>
@@ -2109,7 +2110,7 @@
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <StackLayout Grid.Row="1">
-                                            <Frame BackgroundColor="#cee0dd" Padding="0" CornerRadius="10">
+                                            <Frame BackgroundColor="#cee0dd" Padding="0" CornerRadius="10" HasShadow="False">
                                                 <StackLayout Orientation="Horizontal" Padding="10">
                                                     <Image>
                                                         <Image.Source>
@@ -2132,7 +2133,7 @@
                                             </StackLayout>
                                         </Frame>-->
                                             <!--Taxpayer Details Summery-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <!--<Image>
@@ -2210,7 +2211,7 @@
                                             </StackLayout>
                                         </Frame>-->
                                         <!--Sales Details Summery-->
-                                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                             <StackLayout>
                                                 <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                     <Image>
@@ -2231,7 +2232,7 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Frame>
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Image>
@@ -2251,7 +2252,7 @@
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Frame>
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0" HasShadow="False">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
                                                         <Image>
