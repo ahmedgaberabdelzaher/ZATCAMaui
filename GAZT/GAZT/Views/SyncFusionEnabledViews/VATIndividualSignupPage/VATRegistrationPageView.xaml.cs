@@ -154,7 +154,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 result.Iban = message;
                                 //item.Iban = message;
                                 viewModel.VATRegistrationDetailsData.d.OptIban = message;
-                                viewModel.NewAccountText = "Edit Account";
+                                viewModel.NewAccountText = AppResources.VATREditAccount;
                             }
                             results1D.Add(result);
                         }
@@ -178,7 +178,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             List<Result2> results = new List<Result2>();
                             results.Add(result2);
                             viewModel.IbanList = new ObservableCollection<Result2>(results);
-                            viewModel.NewAccountText = "Edit Account";
+                            viewModel.NewAccountText = AppResources.VATREditAccount;
                         }
                     }
                     //                viewModel.IsNewAccountClicked = false;
@@ -520,7 +520,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.IbanList = null;
                             viewModel.IbanList = new ObservableCollection<Result2>(viewModel.VATRegistrationDetailsData.d.IBANSet.results);
                             viewModel.VATRegistrationDetailsData.d.OptIban = String.Empty;
-                            viewModel.NewAccountText = "New Account";
+                            viewModel.NewAccountText = AppResources.ZTERNewAccount;
                         }
                         else
                         {
@@ -571,11 +571,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.OptIban))
             {
-                viewModel.NewAccountText = "New Account";
+                viewModel.NewAccountText = AppResources.ZTERNewAccount;
             }
             else
             {
-                viewModel.NewAccountText = "Edit Account";
+                viewModel.NewAccountText = AppResources.VATREditAccount;
                 triggerIban(viewModel.VATRegistrationDetailsData.d.OptIban);
             }
         }
