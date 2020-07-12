@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -52,6 +52,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             // Added by Divya
             viewModel._navigationService.NavigateTo(App.SFLandingPageView);
 
+        }
+
+        private async void Image_Copy_Tapped(object sender, EventArgs e)
+        {
+                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                var displayText = AppResources.VATRSAppNumber + " " + text;
+                viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                }
+           
         }
     }
 }

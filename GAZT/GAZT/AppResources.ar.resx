@@ -3930,7 +3930,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRImportExport" xml:space="preserve">
-    <value>مستورد أو مصدر</value>
+    <value>مستورد  مصدر</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRInmaBank" xml:space="preserve">
@@ -4029,5 +4029,20 @@
   </data>
   <data name="VATREditAccount" xml:space="preserve">
     <value>تعديل حساب</value>
+  </data>
+  <data name="VATRStep1" xml:space="preserve">
+    <value>الخطوة الأولى</value>
+  </data>
+  <data name="VATRStep2" xml:space="preserve">
+    <value>الخطوة الثانية</value>
+  </data>
+  <data name="VATRStep3" xml:space="preserve">
+    <value>الخطوة الثالثه</value>
+  </data>
+  <data name="VATRStep4" xml:space="preserve">
+    <value>الخطوة الرابعه</value>
+  </data>
+  <data name="VATRStep5" xml:space="preserve">
+    <value>الخطوه الخامسه</value>
   </data>
 </root>

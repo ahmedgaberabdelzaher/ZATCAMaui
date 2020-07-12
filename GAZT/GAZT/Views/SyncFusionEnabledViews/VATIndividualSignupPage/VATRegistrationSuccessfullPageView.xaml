@@ -67,6 +67,9 @@
                                 </Image>
                             </StackLayout>
                         </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Image_Copy_Tapped"/>
+                            </Frame.GestureRecognizers>
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">

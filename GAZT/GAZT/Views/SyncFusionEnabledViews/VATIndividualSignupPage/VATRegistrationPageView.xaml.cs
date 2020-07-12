@@ -37,7 +37,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 ChangeAeroIcon();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
-                viewModel.CurrentStep = "Step2";
+                viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
@@ -197,31 +197,31 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             if (viewModel.IsContinueButtonEnable)
             {
-                if (viewModel.CurrentStep == "Step1")
+                if (viewModel.CurrentStep == AppResources.VATRStep1)
                 {
 
-                    viewModel.CurrentStep = "Step2";
+                    viewModel.CurrentStep = AppResources.VATRStep2;
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
                     SetsecondBoxColor();
 
                 }
-                else if (viewModel.CurrentStep == "Step2")
+                else if (viewModel.CurrentStep == AppResources.VATRStep2)
                 {//viewModel.IsSalesVisible = true;
                  //SetthirdBoxColor();
                     step2Validation();
                 }
-                else if (viewModel.CurrentStep == "Step3")
+                else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
                     step3Validation();
                 }
-                else if (viewModel.CurrentStep == "Step4")
+                else if (viewModel.CurrentStep == AppResources.VATRStep4)
                 {
                     if (viewModel.RegTypeCode == "N")
                     {
                         if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
                         {
-                            viewModel.CurrentStep = "Step5";
+                            viewModel.CurrentStep = AppResources.VATRStep5;
                        
                             viewModel.SetVisibility();
                             //viewModel.IsFinancialVisible = true;
@@ -236,7 +236,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                     else
                     {
-                        viewModel.CurrentStep = "Step5";
+                        viewModel.CurrentStep = AppResources.VATRStep5;
                         viewModel.SetVisibility();
                         
                         //viewModel.IsFinancialVisible = true;
@@ -245,17 +245,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         SetfourthBoxColor();
                     }
                 }
-                else if (viewModel.CurrentStep == "Step5")
+                else if (viewModel.CurrentStep == AppResources.VATRStep5)
                 {
                     //viewModel.IsDeclarationChecked = false;
-                    viewModel.CurrentStep = "Submit";
+                    //viewModel.CurrentStep = "Submit";
+                    viewModel.CurrentStep =AppResources.ZTEReportCategorySubmitBtn;
                     viewModel.SetVisibility();
                     //viewModel.IsSummaryVisible = true;
                     viewModel.IsSummaryVisible = true;
                     //SetfifthBoxColor();
                     SetfifthBoxColor();
                 }
-                else if (viewModel.CurrentStep == "Submit")
+                else if (viewModel.CurrentStep == AppResources.ZTEReportCategorySubmitBtn)
                 {
 
                     step5Validation();
@@ -332,7 +333,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     flag = false;
                 }
-                if (string.IsNullOrEmpty(viewModel.IdNumberSR) ||viewModel.FrameContactIDError == true)
+                if (string.IsNullOrEmpty(viewModel.IdNumberSR))
                 {
                     flag = false;
                     viewModel.FrameContactIDError = true;
@@ -343,7 +344,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     FrmContactName.HasError = true;
 
                 }
-                if (string.IsNullOrEmpty(viewModel.ContactDOB) ||viewModel.FrameContactDOBError == true)
+                if (string.IsNullOrEmpty(viewModel.ContactDOB) )
                 {
                     flag = false;
                     viewModel.FrameContactDOBError = true;
@@ -396,7 +397,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             if (viewModel.IsInstrunctionChecked == true)
             {
 
-                viewModel.CurrentStep = "Step3";
+                viewModel.CurrentStep = AppResources.VATRStep3;
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
                 SetsecondBoxColor();
@@ -456,7 +457,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 int yearnumber = Int32.Parse(year[2]);
                 if (yearnumber >= 2018)
                 {
-                    viewModel.CurrentStep = "Step4";
+                    viewModel.CurrentStep = AppResources.VATRStep4;
                     viewModel.SetVisibility();
                     //viewModel.IsExpensesVisible = true;
                     viewModel.IsSalesVisible = true;
@@ -904,28 +905,28 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
-                viewModel.CurrentStep = "Step2";
+                viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
             }
             else if (viewModel.IsSalesVisible)
             {
                 viewModel.SetVisibility();
                 viewModel.IsTaxPayersVisible = true;
-                viewModel.CurrentStep = "Step3";
+                viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
             }
             else if (viewModel.IsFinancialVisible)
             {
                 viewModel.SetVisibility();
                 viewModel.IsSalesVisible = true;
-                viewModel.CurrentStep = "Step4";
+                viewModel.CurrentStep = AppResources.VATRStep4;
                 SetthirdBoxColor();
             }
             else if (viewModel.IsSummaryVisible)
             {
                 viewModel.SetVisibility();
                 viewModel.IsFinancialVisible = true;
-                viewModel.CurrentStep = "Step5";
+                viewModel.CurrentStep = AppResources.VATRStep5;
                 SetfourthBoxColor();
             }
             //else if (viewModel.CurrentStep == "Submit")
@@ -1606,7 +1607,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.FrameContactIDError = false;
                             if (!string.IsNullOrEmpty(viewModel.ContactDOB))
                             {
-                                ValidateIDNumber();
+                                ValidateIDNumberContact(); 
                             }
 
 
@@ -1813,12 +1814,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
                             {
                                 //FrmIDNumber.HasError = false;
                                 viewModel.FrameContactIDError = false;
+                                
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                         }
@@ -1907,6 +1910,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 // FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -1934,6 +1938,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             {
                                 //FrmIDNumber.HasError = true;
                                 viewModel.FrameContactIDError = true;
+                                viewModel.IdNumberSR = string.Empty;
                                 viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
                             }
                             else
@@ -2410,7 +2415,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryContactName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(viewModel.FirstNameSR))
+            if (!string.IsNullOrEmpty(viewModel.FirstNameSR))
             {    
                 FrmContactName.HasError = false;
             }

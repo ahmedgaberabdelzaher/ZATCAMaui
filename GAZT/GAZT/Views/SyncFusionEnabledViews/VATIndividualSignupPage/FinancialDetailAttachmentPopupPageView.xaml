@@ -83,11 +83,12 @@
                                     <TapGestureRecognizer Tapped="Close_Tapped"/>
                                 </Image.GestureRecognizers>
                             </Image>
-                            <Label Text="New Attachment"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                            <!--VATRMPAttachments-->
+                            <Label  Text="{x:Static custom2:AppResources.VATRMPAttachments}"  HorizontalOptions="Center"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
                             <StackLayout Grid.Row="2">
 
                             </StackLayout>
-                            <Label Text="type of document that you are submitting to prove whether or not eligible." FontFamily="{StaticResource SSTArBold}"/>
+                            <!--<Label Text="type of document that you are submitting to prove whether or not eligible." HorizontalOptions="Center" FontFamily="{StaticResource SSTArBold}"/>-->
                         </StackLayout>
                         <StackLayout Padding="15,0,15,15">
                             <Grid>
@@ -100,7 +101,7 @@
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <StackLayout Orientation="Horizontal">
                                         <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
-                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" TextColor="Black"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                        TextColor="Black"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
                                         </custom:BorderlessEntry>
                                         <Image HorizontalOptions="EndAndExpand" Rotation="270" >
                                             <!--Rotation="270"-->
