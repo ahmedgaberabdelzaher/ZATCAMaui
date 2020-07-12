@@ -4021,7 +4021,10 @@
     <value>أنت مؤهل لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
+  <data name="VATRAcceptDeclarationToSubmit" xml:space="preserve">
+    <value>يرجى التحقق من الإعلان للمضي قدما في تقديم المعلومات</value>
+  </data>
   <data name="VATRUploadingDocumentsFor" xml:space="preserve">
-    <value>Uploading documents for</value>
+    <value>تحميل وثيقة ل</value>
   </data>
 </root>
