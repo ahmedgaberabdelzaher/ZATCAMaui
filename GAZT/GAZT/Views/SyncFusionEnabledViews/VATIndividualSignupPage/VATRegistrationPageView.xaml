@@ -446,8 +446,8 @@
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
-                                                        <!--<Label Grid.Row="0" Text="{x:Static custom2:AppResources.VATREligibleStartDate}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
-                                                        <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                        <!--<Label Grid.Row="0" Text="{x:Static custom2:AppResources.VATREligibleStartDate}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Style="{StaticResource GAZTSmallGrayLabelStyle}" Padding="0,0,0,0"/>-->
+                                                        <custom:CustomLabel  Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
