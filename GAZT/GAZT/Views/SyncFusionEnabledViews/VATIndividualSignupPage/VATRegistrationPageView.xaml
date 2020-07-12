@@ -178,7 +178,7 @@
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
-                                                <custom:CustomLabel  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,0,10,2" HorizontalOptions="StartAndExpand"  VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="6."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
