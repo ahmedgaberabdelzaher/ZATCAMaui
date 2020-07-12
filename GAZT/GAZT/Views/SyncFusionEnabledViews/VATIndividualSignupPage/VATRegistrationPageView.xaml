@@ -2117,7 +2117,7 @@
                                                         Glyph="{x:Static FontImage:IconFonts.CheckCircle}"/>
                                                         </Image.Source>
                                                     </Image>
-                                                    <Label Text="{x:Static custom2:AppResources.VATRYouEligibleForVAT}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
+                                                    <Label Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="Black"/>
                                                 </StackLayout>
                                             </Frame>
                                             <!--<Frame BackgroundColor="#ff0000" Padding="0" CornerRadius="10">
@@ -2142,7 +2142,9 @@
                                                         </Image.Source>
                                                     </Image>-->
                                                         <!--<Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>-->
-                                                        <Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
+                                                        <!--<Label  Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SliderLable1EligibilityText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
+                                                        <Image Source="vat_ic_taxpayerDetail.png" Aspect="AspectFit" HeightRequest="30"/>
+                                                        <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}"  FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>
                                                     </StackLayout>
                                                     <BoxView Style="{StaticResource lineSeperator}"/>
                                                     <Grid Padding="10,5,10,10">
@@ -2166,17 +2168,17 @@
                                                 </StackLayout>
                                             </Frame>
                                             <!--Bank Details Summery-->
-                                            <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
+                                            <!--<Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                                 <StackLayout>
                                                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="10,5,10,5">
-                                                        <!--<Image>
+                                                        --><!--comment<Image>
                                                         <Image.Source>
                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.FaceProfile}"/>
                                                         </Image.Source>
-                                                    </Image>-->
+                                                    </Image>comment--><!--
                                                     <StackLayout BackgroundColor="Transparent" WidthRequest="30"></StackLayout>
-                                                    <!--<Label  Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>-->
+                                                        --><!--comment<Label  Text="Alainma Bank" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Medium" TextColor="Black"/>comment--><!--
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                                                 <CollectionView Grid.Row="1" HeightRequest="100" ItemsSource="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.IbanList}" x:Name="IbansetToDisplayForConfirmation"  ItemsLayout="HorizontalList" Margin="0" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2206,7 +2208,7 @@
                                                     </CollectionView.ItemTemplate>
                                                 </CollectionView>
                                             </StackLayout>
-                                        </Frame>
+                                        </Frame>-->
                                         <!--Sales Details Summery-->
                                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,10,0,0">
                                             <StackLayout>
@@ -2368,7 +2370,7 @@
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmContactIDNumber" Margin="0,-6,0,-6" 
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactIDError}">
-                                                            <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  Unfocused="EntryContactIDNumber_Unfocused" FontSize="Small"  IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  TextChanged="EntryContactIDNumber_TextChanged" Unfocused="EntryContactIDNumber_Unfocused" FontSize="Small"  IsSpellCheckEnabled="False"
                                                              Placeholder="{x:Static custom2:AppResources.IDNumber}" >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>

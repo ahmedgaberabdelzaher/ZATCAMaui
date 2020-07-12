@@ -222,7 +222,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         if (viewModel.VATRegistrationDetailsData.d.ATTDETSet.results.Count > 0)
                         {
                             viewModel.CurrentStep = "Step5";
-                            viewModel.IsDeclarationChecked = false;
+                       
                             viewModel.SetVisibility();
                             //viewModel.IsFinancialVisible = true;
                             viewModel.IsFinancialVisible = true;
@@ -238,7 +238,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.CurrentStep = "Step5";
                         viewModel.SetVisibility();
-                        viewModel.IsDeclarationChecked = false;
+                        
                         //viewModel.IsFinancialVisible = true;
                         viewModel.IsFinancialVisible = true;
                         //SetfifthBoxColor();
@@ -247,6 +247,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else if (viewModel.CurrentStep == "Step5")
                 {
+                    //viewModel.IsDeclarationChecked = false;
                     viewModel.CurrentStep = "Submit";
                     viewModel.SetVisibility();
                     //viewModel.IsSummaryVisible = true;
@@ -385,7 +386,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
                 await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                 chkDeclaration.Focus();
-                viewModel.IsContinueButtonEnable = false;
+                //viewModel.IsContinueButtonEnable = false;
             }
 
 
@@ -2418,6 +2419,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void DateEntry_TextChanged_2(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void EntryContactIDNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           viewModel.FrameContactIDError= false;
+            FrmContactIDNumber.HasError = false;
         }
     }
 }
