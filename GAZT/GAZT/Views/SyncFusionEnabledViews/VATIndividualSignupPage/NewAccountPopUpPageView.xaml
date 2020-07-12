@@ -64,31 +64,31 @@
                         </StackLayout>
                         <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
                         <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
-                            <custom:BorderlessEntry x:Name="IbanOne" Placeholder="03" MaxLength="2" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"  >
+                            <custom:BorderlessEntry x:Name="IbanOne" Placeholder="03" MaxLength="2" ReturnType="Next" Keyboard="Numeric" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"  >
                                                     <custom:BorderlessEntry.Behaviors>
                                                        <local:EntryFocusBehaviour NextFocusElementName="IbanTwo"/>
                                                      </custom:BorderlessEntry.Behaviors>
                                  </custom:BorderlessEntry>                 
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry x:Name="IbanTwo" Placeholder="80000000" MaxLength="8" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}">
+                                <custom:BorderlessEntry x:Name="IbanTwo" Keyboard="Numeric" Placeholder="80000000" MaxLength="8" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}">
                                   <custom:BorderlessEntry.Behaviors>
                                                        <local:EntryFocusBehaviour NextFocusElementName="IbanThree"/>
                                                      </custom:BorderlessEntry.Behaviors>
                                  </custom:BorderlessEntry> 
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry x:Name="IbanThree" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}">
+                                <custom:BorderlessEntry x:Name="IbanThree" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}" Keyboard="Numeric">
                                   <custom:BorderlessEntry.Behaviors>
                                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFour"/>
                                                      </custom:BorderlessEntry.Behaviors>
                                  </custom:BorderlessEntry> 
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry x:Name="IbanFour" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}">
+                                <custom:BorderlessEntry x:Name="IbanFour" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}" Keyboard="Numeric">
                                   <custom:BorderlessEntry.Behaviors>
                                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFive"/>
                                                      </custom:BorderlessEntry.Behaviors>
                                  </custom:BorderlessEntry> 
                             <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                            <custom:BorderlessEntry x:Name="IbanFive" Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}"/>
+                                <custom:BorderlessEntry x:Name="IbanFive" Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}" Keyboard="Numeric"/>
                               
                         </StackLayout>
                     </StackLayout>
