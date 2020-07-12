@@ -2145,6 +2145,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
+        /// </summary>
+        public static string VATREditAccount {
+            get {
+                return ResourceManager.GetString("VATREditAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT registration certificate.
         /// </summary>
         public static string VATRegistrationCertificate {

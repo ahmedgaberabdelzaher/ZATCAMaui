@@ -4027,4 +4027,7 @@
   <data name="VATRUploadingDocumentsFor" xml:space="preserve">
     <value>تحميل وثيقة ل</value>
   </data>
+  <data name="VATREditAccount" xml:space="preserve">
+    <value>تعديل حساب</value>
+  </data>
 </root>

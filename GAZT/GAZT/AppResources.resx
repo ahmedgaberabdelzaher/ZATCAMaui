@@ -4051,4 +4051,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATRUploadingDocumentsFor" xml:space="preserve">
     <value>Uploading documents for</value>
   </data>
+  <data name="VATREditAccount" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
 </root>

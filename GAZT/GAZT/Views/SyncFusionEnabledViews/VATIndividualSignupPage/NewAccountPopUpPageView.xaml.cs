@@ -34,11 +34,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IbanNumberText = Iban;
             if(string.IsNullOrEmpty(viewModel.IbanNumberText))
             {
-                viewModel.AccountText = "New Account";
+                viewModel.AccountText = AppResources.ZTERNewAccount;
             }
             else
             {
-                viewModel.AccountText = "Edit Account";
+                viewModel.AccountText = AppResources.VATREditAccount;
                 viewModel.IbanPartOne= Iban.Substring(0, 2);
                 viewModel.IbanPartTwo = Iban.Substring(2, 8);
                 viewModel.IbanPartThree = Iban.Substring(9, 4);
