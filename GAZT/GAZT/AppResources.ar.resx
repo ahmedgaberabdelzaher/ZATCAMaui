@@ -2718,7 +2718,8 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>،بنجاح (Report Number)تم إرسال البلاغ مع الرقم المرجعي 
+سيتم الرد خلال 10 أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
@@ -3834,11 +3835,11 @@
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZProceedtoHomescreen" xml:space="preserve">
-    <value>Proceed to Home screen</value>
+    <value>اكمل إلى الشاشة الرئيسية</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZProceedtoVATregistration" xml:space="preserve">
-    <value>Proceed to VAT registration</value>
+    <value>اكمل إلى التسجيل في ضريبة القيمة المضافة</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZZEligibilitylableTestmrl" xml:space="preserve">
@@ -4044,5 +4045,17 @@
   </data>
   <data name="VATRStep5" xml:space="preserve">
     <value>الخطوه الخامسه</value>
+  </data>
+  <data name="VATRAdditionalInformation" xml:space="preserve">
+    <value>المعلومات الإضافية</value>
+  </data>
+  <data name="VATRAttachmentCategory" xml:space="preserve">
+    <value>فئة المرفقات</value>
+  </data>
+  <data name="VATRSuccessFullVoidMessage" xml:space="preserve">
+    <value>تم الغاء نموذج تسجيل ضريبة القيمة المضافة بنجاح، رقم المرجعي</value>
+  </data>
+  <data name="VATRVoidConfirmationMessage" xml:space="preserve">
+    <value>هل تريد إلغاء التسجيل؟</value>
   </data>
 </root>

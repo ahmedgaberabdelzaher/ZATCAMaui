@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ContinueButtonnBackroundColor");
             }
         }
+
      
         private bool _isFDNameMobEmailEnable = false;
         public bool IsFDNameMobEmailEnable
@@ -49,6 +51,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isFDNameMobEmailEnable = value;
 
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
+            }
+        }
+        private bool _isAttachmentImporterExporterVisible = false;
+        public bool isAttachmentImporterExporterVisible
+        {
+            get
+            {
+                return _isAttachmentImporterExporterVisible;
+            }
+            set
+            {
+                _isAttachmentImporterExporterVisible = value;
+
+                RaisePropertyChanged("isAttachmentImporterExporterVisible");
             }
         }
 
@@ -940,17 +956,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
-                        if (_selectedIdTypeFR.ID.Equals("ZS0015"))
+                        if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
                             MaxLengthID = 10;
 
                         }
-                        else if (_selectedIdTypeFR.ID.Equals("ZS0017"))
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0002"))
                         {
                             MaxLengthID = 10;
                         }
 
-                        else if (_selectedIdTypeFR.ID.Equals("ZS0018"))
+                        else if (_selectedIdTypeFR.ID.Equals("ZS0003"))
                         {
                             MaxLengthID = 15;
 
@@ -1362,6 +1378,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     if (response != null && response.d != null)
                     {
+                        if (response.d.Operationz.Equals("04"))
+                        {
+                            string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                               await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
+
+
                         VATRegistrationDetailsData = response;
                         
                         //Set data after api call 
@@ -1629,11 +1654,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         IsLoading = false; ;
                     }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
                     catch (InternetException ex)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -1646,10 +1675,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IsLoading = false;
                 });
-               
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                }); 
+
             }
             catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1700,9 +1747,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
-           new SignUpIdType {ID = "ZS0015",Name = AppResources.NationaID},
-                      new SignUpIdType {ID = "ZS0017",Name = AppResources.ZZIqamaID},
-                                            new SignUpIdType {ID = "ZS0018",Name = AppResources.ZZGCCID},
+           new SignUpIdType {ID = "ZS0001",Name = AppResources.NationaID},
+                      new SignUpIdType {ID = "ZS0002",Name = AppResources.ZZIqamaID},
+                                            new SignUpIdType {ID = "ZS0003",Name = AppResources.ZZGCCID},
 
 
             };

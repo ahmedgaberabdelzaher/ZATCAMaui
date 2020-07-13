@@ -204,12 +204,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SetVisibility();
                     viewModel.IsTaxPayersVisible = true;
                     SetsecondBoxColor();
+                   
 
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep2)
                 {//viewModel.IsSalesVisible = true;
                  //SetthirdBoxColor();
                     step2Validation();
+                    setAttachmentImporterExporterVisibility();
                 }
                 else if (viewModel.CurrentStep == AppResources.VATRStep3)
                 {
@@ -601,7 +603,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
             {
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0015")
+                if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
                 {
                     if (viewModel.IdnumberFR.Substring(0, 1) != "1")
                     {
@@ -665,7 +667,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
                 }
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0017")
+                if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
                 {
                     if (viewModel.IdnumberFR.Substring(0, 1) != "2")
                     {
@@ -726,7 +728,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
                 }
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0018")
+                if (viewModel.SelectedIdTypeFR.ID == "ZS0003")
                 {
                     if (viewModel.IdnumberFR.Substring(0, 1) == "0")
                     {
@@ -827,7 +829,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+            {
+              viewModel.FrameIDError = false;
+            }
         }
 
         private void EntryFirstName_Unfocused(object sender, FocusEventArgs e)
@@ -907,6 +912,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsInstrunctionVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep2;
                 SetfirstBoxColor();
+                if (viewModel.IsInstrunctionChecked)
+                {
+                    viewModel.IsContinueButtonEnable = true;
+                }
             }
             else if (viewModel.IsSalesVisible)
             {
@@ -914,6 +923,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsTaxPayersVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep3;
                 SetsecondBoxColor();
+                setAttachmentImporterExporterVisibility();
             }
             else if (viewModel.IsFinancialVisible)
             {
@@ -954,7 +964,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void VATFaqTapped(object sender, EventArgs e)
         {
+            try
+            {
+                PopUp popUp = new PopUp();
+                popUp.HeaderText = AppResources.ZZZInformationNew;
+                popUp.IsLinkAvailable = true;
+                popUp.LinkMessage = AppResources.ZVatClickFaqInstructions;
+                if (App.IsArabic)
+                {
+                    popUp.Link = "https://www.vat.gov.sa/ar/vat-rate";
+                }
+                else
+                {
+                    popUp.Link = "https://www.vat.gov.sa/en/vat-rate";
+                }
 
+                if (App.IsArabic)
+                {
+                    popUp.FlowDirections = "RightToLeft";
+                }
+                else
+                {
+                    popUp.FlowDirections = "LeftToRight";
+                }
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void NewAttachment_Clicked(object sender, EventArgs e)
@@ -981,10 +1019,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.ImporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
+                setAttachmentImporterExporterVisibility();
             }
             catch (Exception ex)
             {
 
+            }
+        }
+        public void setAttachmentImporterExporterVisibility()
+        {
+            if (viewModel.VATRegistrationDetailsData.d.ExFg =="0" && viewModel.VATRegistrationDetailsData.d.ImFg== "0")
+            {
+
+                viewModel.isAttachmentImporterExporterVisible = false;
+            }
+            else
+            {
+                viewModel.isAttachmentImporterExporterVisible = true;
             }
         }
 
@@ -1004,6 +1055,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.ExporterTextColor = Color.White;
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
+                setAttachmentImporterExporterVisibility();
             }
             catch (Exception ex)
             {
@@ -1094,8 +1146,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             
             viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
+            if (!string.IsNullOrEmpty(OperationCode))
+            {
+                if (OperationCode == "04")
+                {
+                    if (App.IsArabic)
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                        if (!result)
+                        {
+                            await viewModel.SubmitClicked();
+                        }
 
-            await viewModel.SubmitClicked();
+                    }
+                    else
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                        if (result)
+                        {
+                            await viewModel.SubmitClicked();
+                        }
+
+                    }
+                }
+                else
+                {
+                    await viewModel.SubmitClicked();
+                }
+
+
+            }
+            
 
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1205,14 +1286,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             });
             string dob = viewModel.DOB.Replace("/", "");
             // EntryName.IsEnabled = true;
-            if (viewModel.SelectedIdTypeFR.ID == "ZS0015")
+            if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
                 {
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0015", viewModel.IdnumberFR, dob);
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdnumberFR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
@@ -1250,7 +1331,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0015", viewModel.IdnumberFR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdnumberFR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -1332,7 +1413,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            if (viewModel.SelectedIdTypeFR.ID == "ZS0017")
+            if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
             {
                 //  EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
@@ -1340,7 +1421,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0017", viewModel.IdnumberFR, dob);
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdnumberFR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -1371,7 +1452,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0017", viewModel.IdnumberFR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdnumberFR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -1552,7 +1633,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             StringBuilder Messages = new StringBuilder();
             if (!string.IsNullOrEmpty(viewModel.IdNumberSR))
             {
-                if (viewModel.SelectedIdTypeSR.ID == "ZS0015")
+                if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
                 {
                     if (viewModel.IdNumberSR.Substring(0, 1) != "1")
                     {
@@ -1616,7 +1697,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
                 }
-                if (viewModel.SelectedIdTypeSR.ID == "ZS0017")
+                if (viewModel.SelectedIdTypeSR.ID == "ZS0002")
                 {
                     if (viewModel.IdNumberSR.Substring(0, 1) != "2")
                     {
@@ -1677,7 +1758,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
                 }
-                if (viewModel.SelectedIdTypeSR.ID == "ZS0018")
+                if (viewModel.SelectedIdTypeSR.ID == "ZS0003")
                 {
                     if (viewModel.IdNumberSR.Substring(0, 1) == "0")
                     {
@@ -1768,14 +1849,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             });
             string dob = viewModel.ContactDOB.Replace("/", "");
             // EntryName.IsEnabled = true;
-            if (viewModel.SelectedIdTypeSR.ID == "ZS0015")
+            if (viewModel.SelectedIdTypeSR.ID == "ZS0001")
             {
                 if (!string.IsNullOrEmpty(viewModel.IdNumberSR))
                 {
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0015", viewModel.IdNumberSR, dob);
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
@@ -1808,7 +1889,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0015", viewModel.IdNumberSR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -1892,7 +1973,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            if (viewModel.SelectedIdTypeSR.ID == "ZS0017")
+            if (viewModel.SelectedIdTypeSR.ID == "ZS0002")
             {
                 //  EntryName.IsEnabled = true;
                 if (!string.IsNullOrEmpty(viewModel.IdNumberSR))
@@ -1900,7 +1981,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0017", viewModel.IdNumberSR, dob);
+                        string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -1932,7 +2013,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0017", viewModel.IdNumberSR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {

@@ -307,7 +307,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
 
-        }
+              ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+       }
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)

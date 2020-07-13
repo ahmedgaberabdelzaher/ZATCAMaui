@@ -95,13 +95,15 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
+                                <Label Text="{x:Static custom2:AppResources.VATRAttachmentCategory}"  Grid.Row="0" Padding="0,0,0,0" FontFamily="{StaticResource SSTArBold}"/>
                                 <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
-                                                        TextColor="Black"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                        <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}"  FontSize="Small" 
+                                                        TextColor="Black"  IsSpellCheckEnabled="False" HorizontalOptions="FillAndExpand" >
                                         </custom:BorderlessEntry>
                                         <Image HorizontalOptions="EndAndExpand" Rotation="270" >
                                             <!--Rotation="270"-->
@@ -142,7 +144,7 @@
                                     </syncfusion:SfPicker.Behaviors>
                                 </syncfusion:SfPicker>
                                 <StackLayout Grid.Row="2">
-                                    <Label Text="Attachment" Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
+                                    <Label  Text="{x:Static custom2:AppResources.Attachment}"  Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
                                     <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >

@@ -219,4 +219,13 @@ namespace GAZTeServicesBusinessLibrary.GAZTExceptions
         {
         }
     }
+
+    public class GAZTVATRegistrationInProcessException : GAZTException
+    {
+        public GAZTVATRegistrationInProcessException()
+        { }
+        public GAZTVATRegistrationInProcessException(string ExceptionMessage) : base(ExceptionMessage)
+        {
+        }
+    }
 }

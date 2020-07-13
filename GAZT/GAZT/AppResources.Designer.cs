@@ -2127,11 +2127,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional Information.
+        /// </summary>
+        public static string VATRAdditionalInformation {
+            get {
+                return ResourceManager.GetString("VATRAdditionalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachment (Optional).
         /// </summary>
         public static string VATRAttachment {
             get {
                 return ResourceManager.GetString("VATRAttachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attachment Category.
+        /// </summary>
+        public static string VATRAttachmentCategory {
+            get {
+                return ResourceManager.GetString("VATRAttachmentCategory", resourceCulture);
             }
         }
         
@@ -2397,6 +2415,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Form cancelled successfully, Form Bundle number .
+        /// </summary>
+        public static string VATRSuccessFullVoidMessage {
+            get {
+                return ResourceManager.GetString("VATRSuccessFullVoidMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Taxable Expenses Value (Upcoming 12 months).
         /// </summary>
         public static string VATRSummeryofExpenseDetailsComming12Months {
@@ -2483,6 +2510,15 @@ namespace EGAZT {
         public static string VATRVATEligibleStartDate {
             get {
                 return ResourceManager.GetString("VATRVATEligibleStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to cancel the registration?.
+        /// </summary>
+        public static string VATRVoidConfirmationMessage {
+            get {
+                return ResourceManager.GetString("VATRVoidConfirmationMessage", resourceCulture);
             }
         }
         

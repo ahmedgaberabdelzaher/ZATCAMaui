@@ -46,19 +46,19 @@
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
-            <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">          
+            <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False" VerticalOptions="EndAndExpand">          
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{x:Static custom2:AppResources.VATRSName}" HorizontalOptions="StartAndExpand"/>
-                            <Label x:Name="Label_Name"  TextColor="Black" HorizontalOptions="EndAndExpand"/>
+                        <StackLayout Orientation="Horizontal" Padding="10" >
+                                <Label Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" FontSize="12" TextColor="#909090"  HorizontalOptions="StartAndExpand"/>
+                                <Label x:Name="Label_Name"   FontSize="16" TextColor="#010101" VerticalOptions="Center"  HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label x:Name="Label_ApplicationNumber" Text="" TextColor="Black"/>
+                                    <Label x:Name="Label_ApplicationNumber" Text="" FontSize="16" VerticalOptions="Center" TextColor="#010101" />
                                 <Image>
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -73,8 +73,8 @@
                     </Frame>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{x:Static custom2:AppResources.Date}" HorizontalOptions="StartAndExpand"/>
-                            <Label x:Name="Label_Date" TextColor="Black" HorizontalOptions="EndAndExpand"/>
+                                <Label Text="{x:Static custom2:AppResources.Date}" VerticalOptions="Center" FontSize="12" TextColor="#909090"   HorizontalOptions="StartAndExpand"/>
+                                <Label x:Name="Label_Date"  FontSize="16" TextColor="#010101" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                         <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.VATRSbtnGoToDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 

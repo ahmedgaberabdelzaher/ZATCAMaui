@@ -22,7 +22,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public readonly IDialogService _dialogService;
         public ICommand OnSubmitClicked { get; set; }
         public ICommand GoBackClick { get; set; }
-        
+        public ICommand BackButtonClicked { get; set; }
+
         #endregion
         #region Property
         private string _webUrl = string.Empty;
@@ -116,6 +117,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             _dialogService = dialogService;
             GoBackClick = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+            BackButtonClicked = new Xamarin.Forms.Command(() =>
             {
                 _navigationService.GoBack();
             });

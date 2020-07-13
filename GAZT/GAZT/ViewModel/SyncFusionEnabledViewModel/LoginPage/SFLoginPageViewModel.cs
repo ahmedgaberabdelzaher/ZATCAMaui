@@ -848,10 +848,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
             if (TPProfile != null)
             {
-                if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
-                {
-                    throw new GAZTRegistrationPendingException();
-                }
+                //if ((0 == string.Compare("Registration is pending", TPProfile.TpType)))
+                //{
+                //    throw new GAZTRegistrationPendingException();
+                //}
 
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;

@@ -122,7 +122,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
 
         //private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
@@ -156,7 +156,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                     try
                     {
-                        Image arrowImage = sender as Image;
+                    await Task.Run(() =>
+                    {
+                       viewModel.IsLoading = true;
+                    });
+                    Image arrowImage = sender as Image;
                         VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
                         //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         //{
@@ -167,9 +171,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                     
                                     await DeleteAttachment(result, attachment);
                                 }
-                           
-                        //}
-                    }
+
+                    //}
+                    await Task.Run(() =>
+                    {
+                       viewModel.IsLoading = false;
+                    });
+                }
                     catch (Exception ex)
                     {
 
