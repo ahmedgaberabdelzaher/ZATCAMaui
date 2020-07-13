@@ -5959,7 +5959,7 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -5989,7 +5989,7 @@ namespace GAZT.Manager
                         }
                         String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
                         vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
-                        if(!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails==null)
+                        if (!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -6000,11 +6000,15 @@ namespace GAZT.Manager
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
                                 //ErrorMessageForVAT
-                                throw new Exception(errorMessage);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
                     return vATRegistrationDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception ex)
                 {

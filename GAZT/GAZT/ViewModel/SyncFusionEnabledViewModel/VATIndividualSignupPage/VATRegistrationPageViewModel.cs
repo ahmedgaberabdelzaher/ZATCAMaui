@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -1653,11 +1654,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         IsLoading = false; ;
                     }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        throw ex;
+                    }
                     catch (InternetException ex)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             IsLoading = false;
                             _navigationService.GoBack();
                         });
@@ -1670,10 +1675,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     IsLoading = false;
                 });
-               
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                //await Task.Run(() =>
+                //{
+                
+                //});
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                }); 
+
             }
             catch (Exception ex)
             {
+                await Task.Run(() =>
+                {
+                    IsLoading = false;
+                });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
