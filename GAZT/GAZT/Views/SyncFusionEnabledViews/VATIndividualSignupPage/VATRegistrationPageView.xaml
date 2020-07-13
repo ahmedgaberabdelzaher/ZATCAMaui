@@ -2011,13 +2011,13 @@
 
 
 
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry  x:Name="DateEntryFR"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False" Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                    <custom:BorderlessEntry  x:Name="DateEntryFR"  HorizontalOptions="FillAndExpand"  Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False" Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" FontSize="Small" >
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand">
+                                                                    <Image HorizontalOptions="End">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
@@ -2440,13 +2440,13 @@
 
 
                                                             <!--Focused="OnDateEntryFocussed" TextChanged="DateEntry_TextChanged" Unfocused="DatePicker_Unfocused"-->
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
                                         ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  FontFamily="{StaticResource SSTArLight}" Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="YYYY/MM/DD" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="YYYY/MM/DD" FontSize="Small" HorizontalOptions="FillAndExpand">
                                                                     </custom:BorderlessEntry>
-                                                                    <Image HorizontalOptions="EndAndExpand">
+                                                                    <Image HorizontalOptions="End">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>

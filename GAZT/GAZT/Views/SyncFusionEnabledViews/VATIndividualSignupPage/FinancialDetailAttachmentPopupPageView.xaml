@@ -102,8 +102,8 @@
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <StackLayout Orientation="Horizontal">
-                                        <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}" FontFamily="{StaticResource SSTArLight}" FontSize="Small" 
-                                                        TextColor="Black"  IsSpellCheckEnabled="False" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                        <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}"  FontSize="Small" 
+                                                        TextColor="Black"  IsSpellCheckEnabled="False" >
                                         </custom:BorderlessEntry>
                                         <Image HorizontalOptions="EndAndExpand" Rotation="270" >
                                             <!--Rotation="270"-->
