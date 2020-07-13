@@ -2309,7 +2309,15 @@
                                                         <Label Grid.Row="4" Grid.Column="1" Text="{Binding LastnmFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
                                                         <Label Grid.Row="5" Grid.Column="0" Text="{x:Static custom2:AppResources.MobileNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                        <Label Grid.Row="5" Grid.Column="1" Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                        <!--<Label Grid.Row="5" Grid.Column="1" Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+                                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" >
+                                                            <custom:CustomLabel.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="(0966)" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                    <Span  Text="{Binding MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                </FormattedString>
+                                                            </custom:CustomLabel.FormattedText>
+                                                        </custom:CustomLabel>
 
                                                         <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                         <Label Grid.Row="6" Grid.Column="1" Text="{Binding SmtpAddrFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
