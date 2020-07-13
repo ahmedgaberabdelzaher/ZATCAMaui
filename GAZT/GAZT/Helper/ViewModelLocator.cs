@@ -26,6 +26,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel;
@@ -79,6 +80,7 @@ using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
 using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
+using EGAZT.Views.SyncFusionEnabledViews.OnBoarding;
 using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
 using EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
@@ -121,6 +123,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
             SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
+            SimpleIoc.Default.Register<OnBoardingAnimationPageViewModel>();
+            
             //SYNCFUSION INTEGRATION
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
@@ -1081,7 +1085,20 @@ namespace EGAZT
             }
         }
 
-
+        public OnBoardingAnimationPageViewModel OnBoardingAnimationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<OnBoardingAnimationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
         //SYNC FUSION INTEGRATION
@@ -1093,6 +1110,8 @@ namespace EGAZT
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
             navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
+            navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
+            
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
