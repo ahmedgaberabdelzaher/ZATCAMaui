@@ -2000,8 +2000,8 @@
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
-
+                                                            <custom:CustomLabel Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                          
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
@@ -2441,7 +2441,7 @@
 
 
                                                             <!--Focused="OnDateEntryFocussed" TextChanged="DateEntry_TextChanged" Unfocused="DatePicker_Unfocused"-->
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">

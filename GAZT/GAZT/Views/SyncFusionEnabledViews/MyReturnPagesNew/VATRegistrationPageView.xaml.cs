@@ -35,6 +35,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 this.BindingContext = viewModel;
                 ChangeAeroIcon();
+                clearDATA();
                 viewModel.SetVisibility();
                 viewModel.IsInstrunctionVisible = true;
                 viewModel.CurrentStep = AppResources.VATRStep2;
@@ -58,6 +59,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }
+
+        }
+        public void clearDATA()
+        {
+            viewModel.StartdateToshow = string.Empty;
+            viewModel.AddressLineOne = string.Empty;
+            viewModel.AddressLineTwo = string.Empty;
+            viewModel.SliderLable1EligibilityText = string.Empty;
 
         }
 
