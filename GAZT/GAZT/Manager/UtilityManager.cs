@@ -2,6 +2,7 @@
 using EGAZT.Models;
 using GAZT.Models;
 using Newtonsoft.Json;
+using PanCardView.Extensions;
 using Plugin.Connectivity;
 using System;
 using System.Collections.Generic;
@@ -755,7 +756,26 @@ namespace GAZT.Manager
             return qs;
 
         }
+
+        public static int FindTheAnswerIndexBasedOntheAnswerId(string QuestionNumber, string AnswerId, QUESCONFIG_MSet qUESCONFIG_MSet)
+        {
+            int AnswerIndexInTheQuestionSet = -1;
+
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> QuestionsGroupedByQuestionNo = GetQuestionsGroupedByQuestionNo(qUESCONFIG_MSet);
+
+            IEnumerable<IGrouping<string, QuestionsetWithMinMax>> AnswersGroupedByQuestionNo = QuestionsGroupedByQuestionNo.Where(x => x.Key == QuestionNumber);
+
+            IGrouping<string, QuestionsetWithMinMax> answers = AnswersGroupedByQuestionNo.FirstOrDefault();
+            int index = answers.ToList().FindIndex(a => a.QoptNo == AnswerId);
+            //QuestionsetWithMinMax qmm = answers.Where(x => x.QoptNo == AnswerId).FirstOrDefault();
+
+            //return AnswersGroupedByQuestionNo.FindIndex(qmm);
+            return index;
+        }
+
     }
+   
+
     public enum ArButtons
     {
         None = -01,
@@ -877,5 +897,5 @@ namespace GAZT.Manager
         Release = 54,
         ReviseDownPayment = 55
     }
-
 }
+

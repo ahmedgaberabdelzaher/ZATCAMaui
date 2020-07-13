@@ -6111,6 +6111,7 @@ namespace GAZT.Manager
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
                             RequestVATRegistration.d.ATTDETSet = aTTACHSet;
+
                         }
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();

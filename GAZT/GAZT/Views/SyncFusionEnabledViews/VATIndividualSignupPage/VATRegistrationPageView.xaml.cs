@@ -477,8 +477,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsFDNameMobEmailEnable = false;
 
                     viewModel.Attachments = AppResources.Attachments;
-
-
+                    setAnsWerOneSlider();
+                    setAnsWertwoSlider();
 
                     if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
                     {
@@ -504,6 +504,311 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
 
         }
+        public async  void setAnsWerOneSlider() 
+        {
+            if (viewModel.answer1selectedcount != 0)
+            {
+                try
+                {
+
+                  //double   value = 2;
+                string     AnswerID =viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "001" &&x.QoptAns=="1").Select(x => x.QoptNo).FirstOrDefault();
+                    int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("001", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    Slider_Answer1.Value = Convert.ToDouble(a);
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    viewModel.SliderLable1 = obj.QoptTxt;
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    {
+                        if (item.QueNo == "001")
+                        {
+                            if (item.QoptNo == obj.QoptNo)
+                            {
+
+                                item.QoptAns = "1";
+                            }
+                            else
+                            {
+                                item.QoptAns = "0";
+                            }
+                        }
+                    }
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    if (registrationDetails != null & registrationDetails.d != null)
+                    {
+                        viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                        string code = registrationDetails.d.RegTy;
+                        string eligibilityText = string.Empty;
+                        viewModel.Attachments = AppResources.Attachments;
+
+                        if (code.Equals("L"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        }
+                        else if (code.Equals("S"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        }
+                        else if (code.Equals("V"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        }
+                        else if (code.Equals("N"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                            viewModel.Attachments = AppResources.Attachments + "*";
+
+                            // eligibilityText = "Not Eligible";
+                        }
+                        else if (code.Equals("M"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                            // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        }
+                        viewModel.SliderLable1EligibilityText = eligibilityText;
+                        await Task.Run(() =>
+                        {
+                            viewModel.IsLoading = false;
+                        });
+                    }
+                    //  viewModel.SliderLable1EligibilityText = eligibilityText;
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+            }
+            else
+            {
+                try
+                {
+
+                    double value = 0;
+                    Slider_Answer1.Value = value;
+                    //string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "001" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    ////int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("001", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    viewModel.SliderLable1 = obj.QoptTxt;
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    {
+                        if (item.QueNo == "001")
+                        {
+                            if (item.QoptNo == obj.QoptNo)
+                            {
+
+                                item.QoptAns = "1";
+                            }
+                            else
+                            {
+                                item.QoptAns = "0";
+                            }
+                        }
+                    }
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    if (registrationDetails != null & registrationDetails.d != null)
+                    {
+                        viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                        string code = registrationDetails.d.RegTy;
+                        string eligibilityText = string.Empty;
+                        viewModel.Attachments = AppResources.Attachments;
+
+                        if (code.Equals("L"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        }
+                        else if (code.Equals("S"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        }
+                        else if (code.Equals("V"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        }
+                        else if (code.Equals("N"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                            viewModel.Attachments = AppResources.Attachments + "*";
+
+                            // eligibilityText = "Not Eligible";
+                        }
+                        else if (code.Equals("M"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                            // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        }
+                        viewModel.SliderLable1EligibilityText = eligibilityText;
+                        await Task.Run(() =>
+                        {
+                            viewModel.IsLoading = false;
+                        });
+                    }
+                    //  viewModel.SliderLable1EligibilityText = eligibilityText;
+                }
+                catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
+            }
+        }
+        public async void setAnsWertwoSlider()
+        {
+            if (viewModel.answer2selectedcount != 0)
+            {
+
+                try
+                {
+                 
+                    string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("002", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    Slider_Answer2.Value = Convert.ToDouble(a);
+                  //  viewModel.SliderCurrentValue2 = value; ;
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", Convert.ToDouble(a), viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    viewModel.SliderLable2 = obj.QoptTxt;
+
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    {
+                        if (item.QueNo == "002")
+                        {
+                            if (item.QoptNo == obj.QoptNo)
+                            {
+                                item.QoptAns = "1";
+                            }
+                            else
+                            {
+                                item.QoptAns = "0";
+                            }
+                        }
+                    }
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    if (registrationDetails != null & registrationDetails.d != null)
+                    {
+                        viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                        string code = registrationDetails.d.RegTy;
+                        string eligibilityText = string.Empty;
+                        viewModel.Attachments = AppResources.Attachments;
+
+                        if (code.Equals("L"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        }
+                        else if (code.Equals("S"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        }
+                        else if (code.Equals("V"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        }
+                        else if (code.Equals("N"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                            viewModel.Attachments = AppResources.Attachments + "*";
+
+                            // eligibilityText = "Not Eligible";
+                        }
+                        else if (code.Equals("M"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                            // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        }
+                        viewModel.SliderLable1EligibilityText = eligibilityText;
+                        await Task.Run(() =>
+                        {
+                            viewModel.IsLoading = false;
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+               
+            }
+            else
+            {
+                try
+                {
+                    double value= 0;
+                    //string AnswerID = viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results.Where(x => x.QueNo == "002" && x.QoptAns == "1").Select(x => x.QoptNo).FirstOrDefault();
+                    //int a = UtilityManager.FindTheAnswerIndexBasedOntheAnswerId("002", AnswerID, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    Slider_Answer2.Value = value;
+
+                    //  viewModel.SliderCurrentValue2 = value; ;
+                    QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("002", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
+                    viewModel.SliderLable2 = obj.QoptTxt;
+
+                    foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                    {
+                        if (item.QueNo == "002")
+                        {
+                            if (item.QoptNo == obj.QoptNo)
+                            {
+                                item.QoptAns = "1";
+                            }
+                            else
+                            {
+                                item.QoptAns = "0";
+                            }
+                        }
+                    }
+                    viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                    VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                    if (registrationDetails != null & registrationDetails.d != null)
+                    {
+                        viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                        string code = registrationDetails.d.RegTy;
+                        string eligibilityText = string.Empty;
+                        viewModel.Attachments = AppResources.Attachments;
+
+                        if (code.Equals("L"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        }
+                        else if (code.Equals("S"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        }
+                        else if (code.Equals("V"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        }
+                        else if (code.Equals("N"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                            viewModel.Attachments = AppResources.Attachments + "*";
+
+                            // eligibilityText = "Not Eligible";
+                        }
+                        else if (code.Equals("M"))
+                        {
+                            eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                            // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                        }
+                        viewModel.SliderLable1EligibilityText = eligibilityText;
+                        await Task.Run(() =>
+                        {
+                            viewModel.IsLoading = false;
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+        }
+    
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -2278,22 +2583,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 QuestionsetWithMinMax obj = UtilityManager.FindTheAnswerApplicableBasedOntheValue("001", value, viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet);
                 viewModel.SliderLable1 = obj.QoptTxt;
-
-                //foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESCONFIG_MSet.results)
-                //{
-                //    if (item.QueNo == "001")
-                //    {
-                //        if (item.QoptNo == obj.QoptNo)
-                //        {
-                        
-                //            item.QoptAns = "1";
-                //        }
-                //        else
-                //        {
-                //            item.QoptAns = "0";
-                //        }
-                //    }
-                //}
                 foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
                 {
                     if (item.QueNo == "001")
@@ -2321,33 +2610,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (code.Equals("L"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
-                        //eligibilityText = "Mandatory Registration - Large Taxpayer Group";
                     }
                     else if (code.Equals("S"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
-                       // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                     }
                     else if (code.Equals("V"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
-                        //eligibilityText = "Voluntary Registration";
                     }
                     else if (code.Equals("N"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestne;
                         viewModel.Attachments = AppResources.Attachments + "*";
-
-                        // eligibilityText = "Not Eligible";
                     }
                     else if (code.Equals("M"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
-                          // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
-              //  viewModel.SliderLable1EligibilityText = eligibilityText;
             }
             catch (Exception ex)
             {
@@ -2414,6 +2696,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            if (registrationDetails != null & registrationDetails.d != null)
+            {
+                viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                string code = registrationDetails.d.RegTy;
+                string eligibilityText = string.Empty;
+                viewModel.Attachments = AppResources.Attachments;
+
+                if (code.Equals("L"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                }
+                else if (code.Equals("S"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                }
+                else if (code.Equals("V"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                }
+                else if (code.Equals("N"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                    viewModel.Attachments = AppResources.Attachments + "*";
+
+                    // eligibilityText = "Not Eligible";
+                }
+                else if (code.Equals("M"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                }
+                viewModel.SliderLable1EligibilityText = eligibilityText;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
         }
 
         private async void TapppedOnQuestion3Second(object sender, EventArgs e)
@@ -2433,6 +2752,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.quesTion3answerSelected = viewModel.TextQuestion3Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            if (registrationDetails != null & registrationDetails.d != null)
+            {
+                viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                string code = registrationDetails.d.RegTy;
+                string eligibilityText = string.Empty;
+                viewModel.Attachments = AppResources.Attachments;
+
+                if (code.Equals("L"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                }
+                else if (code.Equals("S"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                }
+                else if (code.Equals("V"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                }
+                else if (code.Equals("N"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                    viewModel.Attachments = AppResources.Attachments + "*";
+
+                    // eligibilityText = "Not Eligible";
+                }
+                else if (code.Equals("M"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                }
+                viewModel.SliderLable1EligibilityText = eligibilityText;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
         }
 
         private async void TapppedOnQuestion4First(object sender, EventArgs e)
@@ -2452,6 +2808,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.setQuestionImage();
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            if (registrationDetails != null & registrationDetails.d != null)
+            {
+                viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                string code = registrationDetails.d.RegTy;
+                string eligibilityText = string.Empty;
+                viewModel.Attachments = AppResources.Attachments;
+
+                if (code.Equals("L"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                }
+                else if (code.Equals("S"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                }
+                else if (code.Equals("V"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                }
+                else if (code.Equals("N"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                    viewModel.Attachments = AppResources.Attachments + "*";
+
+                    // eligibilityText = "Not Eligible";
+                }
+                else if (code.Equals("M"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                }
+                viewModel.SliderLable1EligibilityText = eligibilityText;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
         }
 
         private async void TapppedOnQuestion4Second(object sender, EventArgs e)
@@ -2471,6 +2864,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.quesTion4answerSelected = viewModel.TextQuestion4Second;
             viewModel.VATRegistrationDetailsData.d.Operationz = "16";
             VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            if (registrationDetails != null & registrationDetails.d != null)
+            {
+                viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                string code = registrationDetails.d.RegTy;
+                string eligibilityText = string.Empty;
+                viewModel.Attachments = AppResources.Attachments;
+
+                if (code.Equals("L"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                }
+                else if (code.Equals("S"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                }
+                else if (code.Equals("V"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                }
+                else if (code.Equals("N"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                    viewModel.Attachments = AppResources.Attachments + "*";
+
+                    // eligibilityText = "Not Eligible";
+                }
+                else if (code.Equals("M"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                }
+                viewModel.SliderLable1EligibilityText = eligibilityText;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
         }
 
         private void DateEntry_TextChanged_1(object sender, TextChangedEventArgs e)
@@ -2493,6 +2923,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             
         }
+
+       public  void  validDateAnswer1present()
+        {
+
+           // bool has = list.Any(cus => cus.FirstName == "John" && );
+
+        }
+
+
 
         private void ContactDateEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
