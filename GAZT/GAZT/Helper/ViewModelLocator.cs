@@ -1110,7 +1110,7 @@ namespace EGAZT
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
             navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
-            navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
+           // navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
             
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
