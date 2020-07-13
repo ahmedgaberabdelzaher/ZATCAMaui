@@ -297,11 +297,12 @@
                                                             </Entry.Behaviors>
                                                         </custom:BorderlessEntry>
                                                     </inputLayout:SfTextInputLayout>
+
                                                     <inputLayout:SfTextInputLayout Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry Text="{Binding CrNm}" TextColor="#c7c7c7" FontSize="Small"  
-                                                            IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                        <custom:BorderlessEntry Text="{Binding CrNm}" TextColor="#bbbbbb" FontSize="Small"  
+                                                            IsReadOnly="True" >
                                                             <!--<Entry.Behaviors>
                                                             <custom1:OnlyNumericValuesBehaviour/>
                                                         </Entry.Behaviors>-->
@@ -316,7 +317,7 @@
                                                         <StackLayout Orientation="Horizontal">
                                                             <!--Text="{Binding CrStdt}" StartdateToshow Text="{Binding StartdateToshow}"-->
                                                             <custom:BorderlessEntry x:Name="Entry_CrStdt" TextColor="#bbbbbb"  FontSize="Small" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.StartdateToshow}"
-                                                            IsReadOnly="True" Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="0">
+                                                            IsReadOnly="True"  Margin="0">
                                                             </custom:BorderlessEntry>
                                                             <!--<Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                             <Image.Source>
@@ -378,11 +379,11 @@
                                                                     </Image.Source>
                                                                 </Image>
                                                                 <StackLayout Grid.Column="1" Grid.Row="0" Spacing="0" VerticalOptions="Start">
-                                                                    <Label HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
+                                                                    <Label HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Black" FontSize="11" FontFamily="{StaticResource GAZT_FONT_REGULAR}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <!--<Span Text="-"></Span>-->
-                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFirstLine}"></Span>
+                                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsFirstLine}" ></Span>
                                                                                 <Span Text="{x:Static system:Environment.NewLine}"/>
                                                                                 <Span Text="{x:Static custom2:AppResources.ZZZVATRAdditionalInformationInstrunctionsSecondLine}"></Span>
                                                                                 <Span Text="{x:Static system:Environment.NewLine}"/>
@@ -464,11 +465,11 @@
                                             ContainerType="Outlined" x:Name="FrmEStartDate" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <StackLayout Orientation="Horizontal">
-                                                                <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused"   Placeholder="DD/MM/YYYY" FontSize="Small">
+                                                                <custom:BorderlessEntry  x:Name="DateEntry" Focused="DateEntry_Focused"  TextChanged="DateEntry_TextChanged_1" IsEnabled="False" Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.VatEligibleStartDate}" Unfocused="DateEntry_Unfocused"   Placeholder="DD/MM/YYYY" FontSize="Small" TextColor="#bbbbbb" >
                                                                 </custom:BorderlessEntry>
                                                                 <Image HorizontalOptions="EndAndExpand">
                                                                     <Image.Source>
-                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
                                                     Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                                                                     </Image.Source>
                                                                 </Image>
@@ -577,7 +578,7 @@
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                                         <StackLayout Orientation="Horizontal">
                                                             <!--Attachments-->
-                                                            <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.Attachments}" FontSize="Small">
+                                                            <custom:BorderlessEntry  x:Name="AttachmentOptional"  IsEnabled="False" Placeholder="{x:Static custom2:AppResources.Attachments}" FontSize="Small" TextColor="#bbbbbb">
                                                             </custom:BorderlessEntry>
                                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                                 <Image.Source>
@@ -682,10 +683,10 @@
                                                         </StackLayout>
 
 
-                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
+                                                        <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-10,0,-10"
                                             ContainerType="Outlined" x:Name="FrmNewAccount" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
+                                                            <StackLayout Orientation="Horizontal" Padding="5"  >
                                                                 <Image>
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -1419,7 +1420,7 @@
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmNewAttachment" UnfocusedColor= "#B1B1B1"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <StackLayout Orientation="Horizontal" Padding="5,5,5,5">
+                                                            <StackLayout Orientation="Horizontal" Padding="0">
                                                                 <Image>
                                                                     <Image.Source>
                                                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -1917,11 +1918,11 @@
                                                     </Grid.RowDefinitions>
                                                     <StackLayout Grid.Row="0">
                                                         <Label Text="{x:Static custom2:AppResources.TIN}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
-                                                        <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="10,-6,10,-6" 
+                                                        <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
                                                             <custom:BorderlessEntry x:Name="EntryTINNumber" Text="{Binding GpartFR}"  FontSize="Small" Unfocused="EntryTINNumber_Unfocused" IsSpellCheckEnabled="False"  MaxLength="10"
-                                                            TextChanged="EntryTINNumber_TextChanged"  Placeholder="{x:Static custom2:AppResources.TINS}">
+                                                            TextChanged="EntryTINNumber_TextChanged"  Placeholder="{x:Static custom2:AppResources.TINS}" TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
@@ -1935,12 +1936,12 @@
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
                                                             <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.ZZIDType}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="15,0,15,0"/>
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6" 
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeFR}" FontAttributes="Bold" FontSize="Small" 
-                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False">
+                                                        Placeholder="{x:Static custom2:AppResources.ZZIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" TextColor="#bbbbbb">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
@@ -1984,7 +1985,7 @@
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
                                                             <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}"  FontSize="Small" Unfocused="EntryIDNo_Unfocused"   MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
-                                                            TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" >
+                                                            TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
@@ -2011,11 +2012,11 @@
 
 
 
-                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="10,-6,10,-6"
+                                                            <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry  x:Name="DateEntryFR"  HorizontalOptions="FillAndExpand"  Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False" Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" FontSize="Small" >
+                                                                    <custom:BorderlessEntry  x:Name="DateEntryFR"  HorizontalOptions="FillAndExpand"  Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False" Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" FontSize="Small" TextColor="#bbbbbb">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End">
                                                                         <Image.Source>
@@ -2066,7 +2067,7 @@
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryFirstName" Text="{Binding FirstnmFR}" IsSpellCheckEnabled="False" IsEnabled="{Binding IsFDNameMobEmailEnable}"
-                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" >
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.ZZZVATRFirstName}" TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
@@ -2079,7 +2080,7 @@
                                     ContainerType="Outlined" x:Name="FrmLastName" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryLastName" Text="{Binding LastnmFR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.ZZZVATRSurName}">
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.ZZZVATRSurName}" TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
@@ -2092,7 +2093,7 @@
                                             ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                             OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry Text="{Binding SmtpAddrFR}" x:Name="EntryEmail"  FontSize="Small" 
-                                                                    Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False">
+                                                                    Placeholder="{x:Static custom2:AppResources.Email}" IsSpellCheckEnabled="False" TextColor="#bbbbbb">
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -2101,7 +2102,7 @@
                                                         <inputLayout:SfTextInputLayout x:Name="FrmPhoneNumber" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" Margin="10,-6,10,-6"
                                                 ContainerType="Outlined" UnfocusedColor="#B1B1B1" IsEnabled="{Binding IsFDNameMobEmailEnable}"
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                                            <custom:BorderlessEntry Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" FontSize="Small">
+                                                            <custom:BorderlessEntry Text="{Binding MobNumberFR}" HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber" Placeholder="{x:Static custom2:AppResources.MobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" FontSize="Small" TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
@@ -2358,7 +2359,7 @@
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                                 <StackLayout Orientation="Horizontal">
                                                                     <custom:BorderlessEntry Text="{Binding TxtIDTypeSR}" FontSize="Small" 
-                                                        Placeholder="{x:Static custom2:AppResources.VATRIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" >
+                                                        Placeholder="{x:Static custom2:AppResources.VATRIDType}" HorizontalOptions="FillAndExpand" IsSpellCheckEnabled="False" TextColor="#bbbbbb">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End" Rotation="270">
                                                                         <Image.Source>
@@ -2414,7 +2415,7 @@
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactIDError}">
                                                             <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  TextChanged="EntryContactIDNumber_TextChanged" Unfocused="EntryContactIDNumber_Unfocused" FontSize="Small"  IsSpellCheckEnabled="False"
-                                                             Placeholder="{x:Static custom2:AppResources.IDNumber}" >
+                                                             Placeholder="{x:Static custom2:AppResources.IDNumber}" TextColor="#bbbbbb" >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
                                                                 </Entry.Behaviors>
@@ -2444,7 +2445,7 @@
                                         ContainerType="Outlined" x:Name="FrmContactDBO" UnfocusedColor= "#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactDOBError}" >
                                                                 <StackLayout Orientation="Horizontal">
-                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="YYYY/MM/DD" FontSize="Small" HorizontalOptions="FillAndExpand">
+                                                                    <custom:BorderlessEntry  x:Name="ContactDateEntry"  Text ="{Binding ContactDOB}"   IsEnabled="False"  TextChanged="ContactDateEntry_TextChanged"  Placeholder="YYYY/MM/DD" FontSize="Small" HorizontalOptions="FillAndExpand" TextColor="#bbbbbb">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End">
                                                                         <Image.Source>
@@ -2504,7 +2505,7 @@
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryContactName" TextChanged="EntryContactName_TextChanged" Text="{Binding FirstNameSR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.Name}"  Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.Name}"  TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
