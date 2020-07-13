@@ -60,7 +60,6 @@
     <Compile Remove="Views\BorderlessEntry.xaml.cs" />
     <Compile Remove="Helper\IHTTPClientHandlerCreationService.cs" />
     <Compile Remove="Models\AttachmentPageView.xaml.cs" />
-    <Compile Remove="AppResources.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Connected Services\" />
@@ -106,9 +105,6 @@
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\VATRealEstatePages\PropertyRegistrationPage.xaml.cs">
       <DependentUpon>PropertyRegistrationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="AppResources.Designer.cs">
-      <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
