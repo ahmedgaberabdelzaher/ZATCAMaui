@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using EGAZT;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 namespace GAZTeServicesApp.Controls
 {
@@ -196,12 +197,23 @@ namespace GAZTeServicesApp.Controls
         {
             var titleView = bindable as SignUpTitle;
             var newText = (string)newValue;
+            Color newColor = new Color();
             if (!string.IsNullOrEmpty(newText))
             {
+                if(newText.Contains(AppResources.ZVATRealEstatePropertyRegistration)||
+                    newText.Contains(AppResources.ZVATRealEstateRequestVerification)||
+                    newText.Contains(AppResources.ZVATRealEstateTerminationOfRequest))
+                {
+                   newColor = Color.FromHex("#006450");
+                }
+                else
+                {
+                    newColor = Color.White;
+                }
                 titleView.titleLabel = new Label
                 {
                     Text = newText,
-                    TextColor = Color.FromHex("#ffffff"),
+                    TextColor = newColor,
                     FontSize = 16,
                     Margin = new Thickness(0, 8),
                     FontFamily = Device.RuntimePlatform == Device.Android

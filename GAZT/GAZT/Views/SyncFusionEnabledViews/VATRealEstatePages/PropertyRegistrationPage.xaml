@@ -26,9 +26,9 @@
         <ControlTemplate>
         
             <StackLayout Spacing="0">
-                <controls:TitleView  Title="{TemplateBinding BindingContext.HeaderTitle}"  FontSize="14"   FontFamily="{x:StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:SignUpTitle  Title="{TemplateBinding BindingContext.HeaderTitle}"  FontSize="14"   FontFamily="{x:StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
      
-                    <controls:TitleView.LeadingView>
+                    <controls:SignUpTitle.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
@@ -38,9 +38,9 @@
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
-                    </controls:TitleView.LeadingView>
+                    </controls:SignUpTitle.LeadingView>
                                      
-                </controls:TitleView>
+                </controls:SignUpTitle>
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>
         </ControlTemplate>
@@ -54,7 +54,7 @@
                 <ColumnDefinition Width="100*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--Source="{Binding WebUrl}"-->
-            <WebView x:Name="PropertyWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0"   Grid.ColumnSpan="2" VerticalOptions="FillAndExpand" />
+            <WebView x:Name="PropertyWebView" Source="{Binding WebUrl}"  WidthRequest="1000" Grid.Row="0" Grid.Column="0"   Grid.ColumnSpan="2" VerticalOptions="Fill" />
             <Grid Grid.Row="0"    Grid.Column="0" Grid.ColumnSpan="2"  IsVisible="{Binding IsLoading}" >
                 <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
