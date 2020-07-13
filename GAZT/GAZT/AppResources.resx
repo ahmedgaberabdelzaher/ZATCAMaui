@@ -4075,4 +4075,10 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATRAttachmentCategory" xml:space="preserve">
     <value>Attachment Category</value>
   </data>
+  <data name="VATRSuccessFullVoidMessage" xml:space="preserve">
+    <value>VAT Registration Form cancelled successfully, Form Bundle number </value>
+  </data>
+  <data name="VATRVoidConfirmationMessage" xml:space="preserve">
+    <value>Do you want to cancel the registration?</value>
+  </data>
 </root>

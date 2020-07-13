@@ -1377,6 +1377,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     if (response != null && response.d != null)
                     {
+                        if (response.d.Operationz.Equals("04"))
+                        {
+                            string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                               await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            _navigationService.GoBack();
+                        }
+
+
                         VATRegistrationDetailsData = response;
                         
                         //Set data after api call 

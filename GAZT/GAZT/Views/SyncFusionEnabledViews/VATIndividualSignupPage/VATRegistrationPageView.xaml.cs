@@ -1146,8 +1146,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             
             viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
+            if (!string.IsNullOrEmpty(OperationCode))
+            {
+                if (OperationCode == "04")
+                {
+                    if (App.IsArabic)
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                        if (!result)
+                        {
+                            await viewModel.SubmitClicked();
+                        }
 
-            await viewModel.SubmitClicked();
+                    }
+                    else
+                    {
+                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                        if (result)
+                        {
+                            await viewModel.SubmitClicked();
+                        }
+
+                    }
+                }
+                else
+                {
+                    await viewModel.SubmitClicked();
+                }
+
+
+            }
+            
 
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
