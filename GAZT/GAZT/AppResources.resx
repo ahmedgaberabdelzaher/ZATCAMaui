@@ -2719,7 +2719,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>The report is submitted successfully with reference number (Report Number), soon you will receive GAZT response.</value>
+    <value>The report is submitted successfully with reference number (Report Number),  you will receive GAZT response within 10 working days.</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">

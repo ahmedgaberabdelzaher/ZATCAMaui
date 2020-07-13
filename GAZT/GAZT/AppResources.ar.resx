@@ -2718,7 +2718,8 @@
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-    <value>تم إرسال البلاغ مع الرقم المرجعي (Report Number) بنجاح، سيتم الرد بأقرب وقت ممكن</value>
+    <value>،بنجاح (Report Number)تم إرسال البلاغ مع الرقم المرجعي 
+سيتم الرد خلال 10 أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
