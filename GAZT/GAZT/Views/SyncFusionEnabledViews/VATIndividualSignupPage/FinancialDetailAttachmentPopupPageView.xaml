@@ -103,7 +103,7 @@
                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <StackLayout Orientation="Horizontal">
                                         <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}"  FontSize="Small" 
-                                                        TextColor="Black"  IsSpellCheckEnabled="False" >
+                                                        TextColor="Black"  IsSpellCheckEnabled="False" HorizontalOptions="FillAndExpand" >
                                         </custom:BorderlessEntry>
                                         <Image HorizontalOptions="EndAndExpand" Rotation="270" >
                                             <!--Rotation="270"-->
