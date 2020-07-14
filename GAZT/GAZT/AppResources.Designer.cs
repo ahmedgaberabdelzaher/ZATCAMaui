@@ -2163,6 +2163,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact Person Name.
+        /// </summary>
+        public static string VATRContactPersonName {
+            get {
+                return ResourceManager.GetString("VATRContactPersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit Account.
         /// </summary>
         public static string VATREditAccount {

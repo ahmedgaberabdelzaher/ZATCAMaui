@@ -4081,4 +4081,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATRVoidConfirmationMessage" xml:space="preserve">
     <value>Do you want to cancel the registration?</value>
   </data>
+  <data name="VATRContactPersonName" xml:space="preserve">
+    <value>Contact Person Name</value>
+  </data>
 </root>

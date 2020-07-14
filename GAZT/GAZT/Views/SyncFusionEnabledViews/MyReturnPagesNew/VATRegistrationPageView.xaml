@@ -2601,7 +2601,7 @@
 
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" />
+                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.VATRContactPersonName}" />
                                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
