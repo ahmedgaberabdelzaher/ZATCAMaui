@@ -2073,7 +2073,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IdType = SelectedIdType.ID,//"ZS0018",
                     Idnumber = IdNumber,
                     Firstname = Name,
-                    Lastname = ".",
+                    Lastname = string.Empty,
                     PostCode1 = "00000",
                     City1 = _City,
                     //Country = SelectedCountry.Land1,
