@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 RaisePropertyChanged("IsLoading");
             }
         }
-        private string _ImagePropertyTile = "re_Property_Tile_Background_White.png";
+        private string _ImagePropertyTile = "vat_tile_listofsignup_W.png";
         public string ImagePropertyTile
         {
             get
@@ -142,9 +142,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 if (_ImageTerminationIcon.Equals("re_Termination_Request.png"))
                 {
 
-
-
-
                     TerminateTileColor = Color.White;
                 }
                 else
@@ -217,7 +214,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             this.TerminateRequestCommand = new Command(this.TerminateRequestCommandClicked);
 
         }
-        private async void PropertyRegistrationCommandClicked(object obj)
+        private void PropertyRegistrationCommandClicked(object obj)
         {
 
             ImagePropertyTile = "re_Tile_Background.png";
@@ -225,46 +222,39 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             ImagePropertyIcon = "re_Property_Registration.png";
 
             PropertyTileColor = Color.White;
-            await Task.Run(() =>
-            {
-               // IsLoading = true;
-            });
+          
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstatePropertyRegistration;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+                
             });
 
 
         }
-        private async void  RequestVerificationCommandClicked(object obj)
+        private void  RequestVerificationCommandClicked(object obj)
         {
-
 
             ImageRequestTile = "re_Tile_Background_S.png";
 
             ImageRequestIcon = "re_Request_Verification_W.png";
 
             RequestTileColor = Color.White;
-            await Task.Run(() =>
-            {
-               // IsLoading = true;
-            });
+    
 
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateRequestVerification;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+               
             });
 
 
         }
-        private async void TerminateRequestCommandClicked(object obj)
+        private void TerminateRequestCommandClicked(object obj)
         {
 
             ImageTerminationTile = "re_Tile_Background_S.png";
@@ -272,18 +262,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             ImageTerminationIcon = "re_Termination_Request_W.png";
             TerminateTileColor = Color.White;
 
-
-            await Task.Run(() =>
-            {
-               // IsLoading = true;
-            });
-
             Device.BeginInvokeOnMainThread(() =>
             {
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateTerminationOfRequest;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                // IsLoading = false;
+                
             });
 
 
