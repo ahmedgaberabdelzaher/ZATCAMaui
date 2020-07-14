@@ -126,6 +126,7 @@
                               HeaderBackgroundColor="#006450"
                         SelectedItemTextColor="#006450"
                         BorderColor="Black"
+                                                       SelectedIndex="{Binding SelectedAttachmentType}"
                                                     
                                                        
                                                  OKButtonTextColor="#006450"      

@@ -50,14 +50,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 
                 viewModel.VATRegistrationDetailsForAttach= sendtoPopup.VATRegistrationDetailsDatatoPopup;
                 viewModel.ELGBL_DOCSet = viewModel.VATRegistrationOtherDetails.d.ELGBL_DOCSet;
-                viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
-                
-                onPageLoad();
-                
-                if (viewModel.ResultsItemForDOCSet != null)
+                try
                 {
-                    AttachmentTypePicker.SelectedItem = "1";
-                }               
+                    viewModel.ResultsItemForDOCSet = viewModel.ELGBL_DOCSet.results;
+                    onPageLoad();
+
+                    if (viewModel.ResultsItemForDOCSet != null)
+                    {
+                        viewModel.SelectedAttachmentType = 1;
+                        //AttachmentTypePicker.SelectedItem = "1";
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+                
+                          
                
             }
             catch (Exception ex)
@@ -68,29 +77,37 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         public void onPageLoad()
         {
-            //viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
-            if (viewModel.VATRegistrationDetailsForAttach != null && viewModel.VATRegistrationDetailsForAttach.d != null)
+            try
             {
-
-               // viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
-                //SetDocType();
-                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                //viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
+                if (viewModel.VATRegistrationDetailsForAttach != null && viewModel.VATRegistrationDetailsForAttach.d != null)
                 {
-                    ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
-                    viewModel.VatAttachmentsList = myCollection;
-                    int AttachmentCount = 0;
-                    foreach (var item in viewModel.VatAttachmentsList)
+
+                    // viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
+                    //SetDocType();
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
                     {
-                        if (item.Erfdt != null && item.Erftm != null)
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                        viewModel.VatAttachmentsList = myCollection;
+                        int AttachmentCount = 0;
+                        foreach (var item in viewModel.VatAttachmentsList)
                         {
-                            item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            if (item.Erfdt != null && item.Erftm != null)
+                            {
+                                item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                            }
                         }
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                     }
-                    viewModel.filterList();
-                    viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                 }
             }
+            catch(Exception ex)
+            {
+
+            }
+           
         }
         protected override void OnDisappearing()
         {
