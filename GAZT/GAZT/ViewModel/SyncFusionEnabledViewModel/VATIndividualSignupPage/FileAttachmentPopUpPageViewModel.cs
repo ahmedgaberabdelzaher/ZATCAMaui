@@ -329,6 +329,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 IsLoading = true;
                 await AddAttachmentEx();
+                IsLoading = false;
             });
 
             GoButtonClick = new Xamarin.Forms.Command(() =>
@@ -462,8 +463,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                         }
                                                         AttachmentCount++;
                                                         filterList();
-                                                        CloneAttachmentList(VatAttachmentsListtofilter);
-                                                        // CloneAttachmentList(VatAttachmentsList);
+                                                        //CloneAttachmentList(VatAttachmentsListtofilter);
+                                                        CloneAttachmentList(VatAttachmentsList);
                                                         // TotalAttachmentSize += AttachmentSize;
                                                         AttachmentName = string.Empty;
                                                     }
@@ -568,14 +569,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 });
 
             }
+            await Task.Run(() =>
+            {
+               IsLoading = false;
+            });
         }
 
         public void filterList()
         {
             try
             {
-                if (VatAttachmentsList != null && VatAttachmentsList.Count != 0)
-                {
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                { 
                     List<Attachment> attachmentsList = new List<Attachment>();
                     foreach (var item in VatAttachmentsList)
                     {
@@ -584,8 +589,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             attachmentsList.Add(item);
                         }
                     }
-                    // VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
-                    VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
+                     VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
+                   // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
             catch (Exception ex)
@@ -635,6 +640,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IsLoading = false;
             });
             return _attachment;
+          
         }
         public decimal GetAttachMentSize(List<decimal> SizeList)
         {
@@ -699,8 +705,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                     list.Add(vATAttachment);
                 }
-
-                AttachmentList = list;
+              
+                    AttachmentList = list;
+                if (VATRegistrationDetailsForAttach != null && VATRegistrationDetailsForAttach.d.ATTDETSet != null && VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
+                    if (VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                    {
+                        ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
+                        VatAttachmentsList = myCollection;
+                    }
             }
         }
 
