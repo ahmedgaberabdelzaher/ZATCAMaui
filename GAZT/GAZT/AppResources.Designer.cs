@@ -2109,7 +2109,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to please check the declaration to proceed to submit information.
+        ///   Looks up a localized string similar to Please check the declaration to proceed to submit the information.
         /// </summary>
         public static string VATRAcceptDeclarationToSubmit {
             get {
@@ -2159,6 +2159,24 @@ namespace EGAZT {
         public static string VATRAttachmentMandatory {
             get {
                 return ResourceManager.GetString("VATRAttachmentMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Account.
+        /// </summary>
+        public static string VATRBankAccount {
+            get {
+                return ResourceManager.GetString("VATRBankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Person Name.
+        /// </summary>
+        public static string VATRContactPersonName {
+            get {
+                return ResourceManager.GetString("VATRContactPersonName", resourceCulture);
             }
         }
         
@@ -3704,7 +3722,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number), soon you will receive GAZT response..
+        ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number),  you will receive GAZT response within 10 working days..
         /// </summary>
         public static string ZTEReportReportSuccessResponsep1 {
             get {

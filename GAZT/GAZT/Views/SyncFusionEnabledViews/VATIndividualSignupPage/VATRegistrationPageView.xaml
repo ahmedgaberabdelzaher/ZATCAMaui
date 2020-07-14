@@ -784,7 +784,7 @@
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
                                                         <StackLayout Grid.Row="0">
-                                                            <Label Text="{x:Static custom2:AppResources.VATRAccount}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.VATRBankAccount}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                                                             <!--<Label Text="Account" FontFamily="{StaticResource GAZT_FONT_BOLD}" VerticalOptions="Center" FontSize="Large" TextColor="Black"/>
                                                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
                                                         </StackLayout>
@@ -2601,7 +2601,7 @@
 
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" />
+                                                                    <Span FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Text="{x:Static custom2:AppResources.VATRContactPersonName}" />
                                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
@@ -2610,7 +2610,7 @@
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryContactName" TextChanged="EntryContactName_TextChanged" Text="{Binding FirstNameSR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.Name}"  TextColor="#bbbbbb">
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.VATRContactPersonName}"  TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
