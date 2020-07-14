@@ -1601,13 +1601,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public async void ValidateIDNumber()
         {
-            Device.BeginInvokeOnMainThread(async () =>
-            {
+
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-            });
+          
             string dob = viewModel.DOB.Replace("/", "");
             // EntryName.IsEnabled = true;
             if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
@@ -1858,13 +1857,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            Device.BeginInvokeOnMainThread(async () =>
-            {
+           
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
                 });
-            });
+            
         }
 
         private void btnDate_Clicked(object sender, EventArgs e)
@@ -1950,7 +1948,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         if (viewModel.VATRegistrationDetailsData.d.Gpartz.Equals(EntryTINNumber.Text))
                         {
                             /// have to change the message
-                            Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                            Messages.Append(AppResources.VATRPleaseEnterValidTin);
 
                             if (Messages.Length > 0)
                             {

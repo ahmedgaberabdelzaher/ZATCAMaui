@@ -2325,6 +2325,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Tin..
+        /// </summary>
+        public static string VATRPleaseEnterValidTin {
+            get {
+                return ResourceManager.GetString("VATRPleaseEnterValidTin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?.
         /// </summary>
         public static string VATRQuesComming12monthVATSalesTax {
