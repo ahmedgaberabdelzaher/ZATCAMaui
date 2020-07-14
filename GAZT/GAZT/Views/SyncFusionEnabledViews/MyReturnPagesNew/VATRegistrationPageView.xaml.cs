@@ -1930,13 +1930,54 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         popUp.FlowDirections = "LeftToRight";
                     }
                     PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                    FrmTINNumber.HasError = true;
+                    
                     EntryTINNumber.Text = string.Empty;
                 }
                 else
                 {
-                    FrmTINNumber.HasError = false;
-                    ValidateTinNumber(viewModel.GpartFR);
+                    if (viewModel.VATRegistrationDetailsData != null && viewModel.VATRegistrationDetailsData.d != null)
+                    {
+                        if (viewModel.VATRegistrationDetailsData.d.Gpartz.Equals(EntryTINNumber.Text))
+                        {
+                            /// have to change the message
+                            Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+
+                            if (Messages.Length > 0)
+                            {
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                
+                                EntryTINNumber.Text = string.Empty;
+                            }
+                        }
+                        else
+                        {
+
+                            FrmTINNumber.HasError = false;
+                            ValidateTinNumber(viewModel.GpartFR);
+                            FrmTINNumber.HasError = false;
+                            
+                        }
+                    }
+                    else
+                    {
+
+                        FrmTINNumber.HasError = false;
+                        ValidateTinNumber(viewModel.GpartFR);
+                    }
+
+
+
                 }
             }
         }
