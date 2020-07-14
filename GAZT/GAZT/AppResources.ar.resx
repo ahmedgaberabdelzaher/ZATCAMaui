@@ -4064,4 +4064,7 @@
   <data name="VATRContactPersonName" xml:space="preserve">
     <value>اسم المكلف</value>
   </data>
+  <data name="VATRSaveasdraftMessage" xml:space="preserve">
+    <value>سيتم حفظ طلبك كمسودة ويجب اكماله خلال 20 يوم عمل أو سيتم إلغاءه تلقائيا ويجب تقديم طلب جديد</value>
+  </data>
 </root>

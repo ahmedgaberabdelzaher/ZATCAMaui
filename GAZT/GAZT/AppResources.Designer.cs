@@ -2352,6 +2352,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application.
+        /// </summary>
+        public static string VATRSaveasdraftMessage {
+            get {
+                return ResourceManager.GetString("VATRSaveasdraftMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go To Dashboard.
         /// </summary>
         public static string VATRSbtnGoToDashboard {

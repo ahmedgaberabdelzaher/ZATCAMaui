@@ -4087,4 +4087,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="VATRContactPersonName" xml:space="preserve">
     <value>Contact Person Name</value>
   </data>
+  <data name="VATRSaveasdraftMessage" xml:space="preserve">
+    <value>Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application</value>
+  </data>
 </root>

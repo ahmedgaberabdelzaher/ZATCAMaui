@@ -1031,7 +1031,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedIdTypeFR != null)
                 {
                     TxtIDTypeFR = _selectedIdTypeFR.Name;
-                    try
+                    try 
                     {
                         if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
@@ -1487,6 +1487,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                             _navigationService.GoBack();
                         }
+                        if (response.d.Operationz.Equals("05"))
+                        {
+                          //  string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSaveasdraftMessage ;
+                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            
+                        }
+                        
+
 
 
                         VATRegistrationDetailsData = response;
