@@ -2610,7 +2610,7 @@
                                     ContainerType="Outlined" x:Name="FrmContactName" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                                             <custom:BorderlessEntry x:Name="EntryContactName" TextChanged="EntryContactName_TextChanged" Text="{Binding FirstNameSR}" IsSpellCheckEnabled="False"
-                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.Name}"  TextColor="#bbbbbb">
+                                                            FontSize="Small" Placeholder="{x:Static custom2:AppResources.VATRContactPersonName}"  TextColor="#bbbbbb">
                                                                 <Entry.Behaviors>
                                                                     <custom1:AlphabetandArabicCharacters/>
                                                                 </Entry.Behaviors>
