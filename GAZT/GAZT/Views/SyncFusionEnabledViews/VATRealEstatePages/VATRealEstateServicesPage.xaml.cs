@@ -18,6 +18,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
             viewModel = App.Locator.VATRealEstateServicesPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.ImagePropertyTile = "re_Property_Tile_Background_White.png";
+            viewModel.ImageRequestTile = "re_Tile_Background_White.png";
+            viewModel.ImageTerminationTile = "re_Tile_Background_White.png";
+
+            viewModel.ImagePropertyIcon = "re_Property_Registration_G.png";
+            //image_individual_icon.Source = "vat_new_individual.png";
+            viewModel.ImageRequestIcon = "re_Request_Verification.png";
+            // image_estimated_icon.Source = "vat_new_Establishment_W.png";
+            viewModel.ImageTerminationIcon = "re_Termination_Request.png";
+
+            viewModel.PropertyTileColor = Color.FromHex("#006450");
+            viewModel.RequestTileColor = Color.FromHex("#006450");
+            viewModel.TerminateTileColor = Color.FromHex("#006450");
+            //viewModel.IsLoading = false;
             SetLTR();
         }
         private void SetLTR()
@@ -36,11 +50,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            //viewModel.IsLoading = false;
+       
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            viewModel.ImagePropertyTile = "re_Property_Tile_Background_White.png";
+            viewModel.ImageRequestTile = "re_Tile_Background_White.png";
+            viewModel.ImageTerminationTile = "re_Tile_Background_White.png";
+
+            viewModel.ImagePropertyIcon = "re_Property_Registration_G.png";
+            //image_individual_icon.Source = "vat_new_individual.png";
+            viewModel.ImageRequestIcon = "re_Request_Verification.png";
+            // image_estimated_icon.Source = "vat_new_Establishment_W.png";
+            viewModel.ImageTerminationIcon = "re_Termination_Request.png";
+
+            viewModel.PropertyTileColor = Color.FromHex("#006450");
+            viewModel.RequestTileColor = Color.FromHex("#006450");
+            viewModel.TerminateTileColor = Color.FromHex("#006450");
+            //viewModel.IsLoading = false;
             //your code here;
             //viewModel.IsLoading = false;
         }
@@ -65,64 +93,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
         {
             viewModel._navigationService.GoBack();
         }
-        /* private async void OnTappedTest(object sender, EventArgs e)
-         {
-             await Task.Run(() =>
-             {
-                 viewModel.IsLoading = false;
-             });
-             string controltype = sender.GetType().ToString();
-             if (controltype == "Xamarin.Forms.Image")
-             {
-                 try
-                 {
-                     Image arrowImage = sender as Image;
-                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-
-                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-                         viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-
-                 }
-                 catch (Exception ex)
-                 {
-                 }
-             }
-             if (controltype == "Xamarin.Forms.Label")
-             {
-                 try
-                 {
-                     Label arrowImage = sender as Label;
-                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-
-                     viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-
-                 }
-                 catch (Exception ex)
-                 {
-                 }
-             }
-             if (controltype == "Xamarin.Forms.StackLayout")
-             {
-                 try
-                 {
-                     Label arrowImage = sender as Label;
-                     eServiceInfo BModel = (eServiceInfo)arrowImage.BindingContext;
-                     PropertyRegistrationPageViewModel.reServiceName = BModel.eServiceName;
-
-                     viewModel._navigationService.NavigateTo(App.PropertyRegistrationPage);
-
-
-                 }
-                 catch (Exception ex)
-                 {
-                 }
-             }
-         }*/
+        
     
     }
 }

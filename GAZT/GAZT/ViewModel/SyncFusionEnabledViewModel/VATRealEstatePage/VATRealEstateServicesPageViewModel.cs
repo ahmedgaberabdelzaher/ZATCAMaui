@@ -37,6 +37,164 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 RaisePropertyChanged("IsLoading");
             }
         }
+        private string _ImagePropertyTile = "re_Property_Tile_Background_White.png";
+        public string ImagePropertyTile
+        {
+            get
+            {
+                return _ImagePropertyTile;
+            }
+            set
+            {
+                _ImagePropertyTile = value;
+                RaisePropertyChanged("ImagePropertyTile");
+            }
+        }
+
+        private string _ImagePropertyIcon = "re_Property_Registration.png";
+        public string ImagePropertyIcon
+        {
+            get
+            {
+                return _ImagePropertyIcon;
+            }
+            set
+            {
+                _ImagePropertyIcon = value;
+                if (_ImagePropertyIcon.Equals("re_Property_Registration_G.png"))
+                {
+
+                    PropertyTileColor = Color.FromHex("#006450");
+
+
+
+                }
+                else
+                {
+                    PropertyTileColor = Color.White;
+                }
+                RaisePropertyChanged("ImagePropertyIcon");
+            }
+        }
+        private string _ImageRequestTile = "re_Tile_Background_White.png";
+        public string ImageRequestTile
+        {
+            get
+            {
+                return _ImageRequestTile;
+            }
+            set
+            {
+                _ImageRequestTile = value;
+                RaisePropertyChanged("ImageRequestTile");
+            }
+        }
+
+        private string _ImageRequestIcon = "re_Request_Verification_W.png";
+        public string ImageRequestIcon
+        {
+            get
+            {
+                return _ImageRequestIcon;
+            }
+            set
+            {
+                _ImageRequestIcon = value;
+                if (_ImageRequestIcon.Equals("re_Request_Verification.png"))
+                {
+
+
+
+
+                    RequestTileColor = Color.White;
+                }
+                else
+                {
+                    RequestTileColor = Color.FromHex("#006450");
+
+                }
+                RaisePropertyChanged("ImageRequestIcon");
+            }
+        }
+        private string _ImageTerminationTile = "re_Tile_Background_White.png";
+        public string ImageTerminationTile
+        {
+            get
+            {
+                return _ImageTerminationTile;
+            }
+            set
+            {
+                _ImageTerminationTile = value;
+                RaisePropertyChanged("ImageTerminationTile");
+            }
+        }
+        private string _ImageTerminationIcon = "re_Termination_Request_W.png";
+        public string ImageTerminationIcon
+        {
+            get
+            {
+                return _ImageTerminationIcon;
+            }
+            set
+            {
+                _ImageTerminationIcon = value;
+                if (_ImageTerminationIcon.Equals("re_Termination_Request.png"))
+                {
+
+
+
+
+                    TerminateTileColor = Color.White;
+                }
+                else
+                {
+                    TerminateTileColor = Color.FromHex("#006450");
+
+                }
+                RaisePropertyChanged("ImageTerminationIcon");
+            }
+        }
+        private Color _PropertyTileColor = Color.FromHex("#006450");
+        public Color PropertyTileColor
+        {
+            get
+            {
+                return _PropertyTileColor;
+            }
+            set
+            {
+                _PropertyTileColor = value;
+
+                RaisePropertyChanged("PropertyTileColor");
+            }
+        }
+        private Color _RequestTileColor = Color.FromHex("#006450");
+        public Color RequestTileColor
+        {
+            get
+            {
+                return _RequestTileColor;
+            }
+            set
+            {
+                _RequestTileColor = value;
+                RaisePropertyChanged("RequestTileColor");
+            }
+        }
+        private Color _TerminateTileColor = Color.FromHex("#006450");
+        public Color TerminateTileColor
+        {
+            get
+            {
+                return _TerminateTileColor;
+            }
+            set
+            {
+                _TerminateTileColor = value;
+                RaisePropertyChanged("TerminateTileColor");
+            }
+        }
         public VATRealEstateServicesPageViewModel(INavigationService navigationService, IDialogService dialogService) //: base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -62,6 +220,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         private async void PropertyRegistrationCommandClicked(object obj)
         {
 
+            ImagePropertyTile = "re_Tile_Background.png";
+           
+            ImagePropertyIcon = "re_Property_Registration.png";
+
+            PropertyTileColor = Color.White;
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -80,6 +243,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         private async void  RequestVerificationCommandClicked(object obj)
         {
 
+
+            ImageRequestTile = "re_Tile_Background_S.png";
+
+            ImageRequestIcon = "re_Request_Verification_W.png";
+
+            RequestTileColor = Color.White;
             await Task.Run(() =>
             {
                 IsLoading = true;
@@ -97,6 +266,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         }
         private async void TerminateRequestCommandClicked(object obj)
         {
+
+            ImageTerminationTile = "re_Tile_Background_S.png";
+
+            ImageTerminationIcon = "re_Termination_Request_W.png";
+            TerminateTileColor = Color.White;
+
 
             await Task.Run(() =>
             {
