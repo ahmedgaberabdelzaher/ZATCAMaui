@@ -1385,6 +1385,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
                 {
                     String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
+
+                    
                     if (App.IsArabic)
                     {
                         ArButtons buttonId = ArButtons.None;
@@ -1394,7 +1396,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         
                         Enum.TryParse(action, out buttonId);
-
                         switch (buttonId)
                         {
                             case ArButtons.إضافةملاحظات:
@@ -1404,7 +1405,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 
                                 break;
                             case ArButtons.المرفقات:
-                                
+                                //VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.General;
+                                //await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
                                 break;
                             case ArButtons.إلغاء:
                                 OperationCode = "04";
@@ -1425,10 +1427,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     else
                     {
                         Buttons buttonId = Buttons.None;
+
+                        buttonId = Buttons.Attachments;
+
                         if (!string.IsNullOrEmpty(action))
                         {
                             action = action.Replace(" ", "");
                         }
+
                         Enum.TryParse(action, out buttonId);
                         
                         switch (buttonId)
@@ -1438,6 +1444,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             case Buttons.DisplayNotes:
                                 break;
                             case Buttons.Attachments:
+                                //VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.General;
+                                //await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
                                 break;
                             case Buttons.Void:
                                 OperationCode = "04";
@@ -1471,7 +1479,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             await viewModel.SubmitClicked();
                         }
-
                     }
                     else
                     {
@@ -1480,18 +1487,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         {
                             await viewModel.SubmitClicked();
                         }
-
                     }
                 }
                 else
                 {
                     await viewModel.SubmitClicked();
                 }
-
-
             }
-            
-
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
