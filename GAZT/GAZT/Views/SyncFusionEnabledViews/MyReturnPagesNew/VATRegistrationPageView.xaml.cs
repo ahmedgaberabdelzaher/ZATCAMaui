@@ -382,7 +382,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             else
             {
                 PopUp popUp = new PopUp();
-                popUp.Message = AppResources.ZZPleaseselecttermsandconditions;
+                popUp.Message = AppResources.VATRAcceptDeclarationToSubmit;
                 if (App.IsArabic)
                 {
                     popUp.FlowDirections = "RightToLeft";

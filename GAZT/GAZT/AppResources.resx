@@ -4046,7 +4046,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRAcceptDeclarationToSubmit" xml:space="preserve">
-    <value>please check the declaration to proceed to submit information</value>
+    <value>Please check the declaration to proceed to submit the information</value>
   </data>
   <data name="VATRUploadingDocumentsFor" xml:space="preserve">
     <value>Uploading documents for</value>
