@@ -4058,6 +4058,9 @@
   <data name="VATRVoidConfirmationMessage" xml:space="preserve">
     <value>هل تريد إلغاء التسجيل؟</value>
   </data>
+  <data name="VATRBankAccount" xml:space="preserve">
+    <value>حساب البنك</value>
+  </data>
   <data name="VATRContactPersonName" xml:space="preserve">
     <value>اسم المكلف</value>
   </data>

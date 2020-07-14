@@ -2163,6 +2163,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Account.
+        /// </summary>
+        public static string VATRBankAccount {
+            get {
+                return ResourceManager.GetString("VATRBankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Person Name.
         /// </summary>
         public static string VATRContactPersonName {
