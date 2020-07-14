@@ -4070,4 +4070,7 @@
   <data name="VATRSaveasdraftMessage" xml:space="preserve">
     <value>سيتم حفظ طلبك كمسودة ويجب اكماله خلال 20 يوم عمل أو سيتم إلغاءه تلقائيا ويجب تقديم طلب جديد</value>
   </data>
+  <data name="VATRgotologinpage" xml:space="preserve">
+    <value>الذهاب الى صفحة تسجيل الدخول</value>
+  </data>
 </root>

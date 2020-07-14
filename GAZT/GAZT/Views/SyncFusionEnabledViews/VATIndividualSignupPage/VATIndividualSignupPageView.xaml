@@ -53,7 +53,7 @@
                         <Image x:Name="image_individual_tile" Grid.Row="0" Grid.Column="0"  Source="{Binding ImageIndividualTile}" Aspect="AspectFill"/>
                         <Frame Margin="5" CornerRadius="5" BackgroundColor="Transparent" HeightRequest="100">
                             <!--Text="Individual Registration"-->
-                            
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>
@@ -69,24 +69,18 @@
                            VerticalOptions="End" FontSize="14" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
-                                </Frame.GestureRecognizers>
-                            
+                                <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
+                            </Frame.GestureRecognizers>
                         </Frame>
-                        
-                        <!--<Frame CornerRadius="5" BackgroundColor="#006450" HeightRequest="100">--><!--Text="Individual Registration"--><!--
-                            <Label  Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}" TextColor="{StaticResource WhiteTextColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
-                    </Frame.GestureRecognizers>
-                </Frame>-->
-                </Grid>
-                    <Grid Padding="0">
-                        <!--BackgroundColor="DarkGreen"-->
+                    </Grid>
+                
+                
+               <!--Establishment signup block-->
+                    <!--<Grid Padding="0">
+                       
                         <Image x:Name="image_estimated_tile" Grid.Row="0" Grid.Column="0"   Source="{Binding ImageEstimatedTile}" Aspect="AspectFill"/>
                         <Frame CornerRadius="5" Margin="5" BackgroundColor="Transparent"  HeightRequest="100">
-                            <!--Text="Individual Registration"-->
+                       
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>
@@ -106,7 +100,8 @@
                           
                         </Frame>
                             
-                    </Grid>
+                    </Grid>-->
+                    <!--Establishment signup block-->
                 </StackLayout>
         </yummy:PancakeView>
             <Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" >

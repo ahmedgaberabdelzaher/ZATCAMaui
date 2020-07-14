@@ -62,10 +62,10 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZProceedtoVATregistration}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                    <!--<buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZProceedtoVATregistration}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="56" Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
-                    <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZProceedtoHomescreen}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" ZZZZProceedtoHomescreen />-->
+                    <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.VATRgotologinpage}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
                 </StackLayout>
