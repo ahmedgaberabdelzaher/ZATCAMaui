@@ -29,7 +29,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
+           viewModel.AttachmentList=new ObservableCollection<VATAttachment>();
             onPageLoad(vATRegistrationDetails);
+
 
         }
 
@@ -63,7 +65,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
 
                         viewModel.filterList();
-                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                     }
                 }
             }
@@ -75,6 +77,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
             //comment because main button remains enabled
             //  viewModel.IsSwichButtonEnable = false;
+            viewModel.IsLoading = false;
         }
         public void SetDocType()
         {
@@ -179,17 +182,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     });
                 }
                     catch (Exception ex)
+                {
+                    await Task.Run(() =>
                     {
+                        viewModel.IsLoading = false;
+                    });
 
-                    }
+                }
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    viewModel.IsLoading = false;
                     await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
 
 
@@ -222,16 +234,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                             if(listitem!=null)
                                 viewModel.VatAttachmentsList.Remove(listitem);
-                            
+                       
+
+
+
                             if (listitemTwo != null)
                                 viewModel.AttachmentList.Remove(listitemTwo);
                             
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
 
-                            
+
                             //if (indexToReduceTheSize != -1)
-                               // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                           viewModel.AttachmentCount--;
+                           viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                         }
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
                 });
                 await Task.Run(() =>
@@ -241,7 +261,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                viewModel.IsLoading = false;
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
         public void PopToRootPage()
         {
@@ -261,19 +286,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
         {
-            if(viewModel.IsSwitchToggled)
+            if(!viewModel.IsSwitchToggled)
             {
                 viewModel.DocTypeString = "ZVTC";
                 viewModel.filterList();
-                viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                viewModel.IsSwitchToggled = false;
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.IsSwitchToggled = true;
             }
             else
             {
                 viewModel.DocTypeString = "ZVTB";
                 viewModel.filterList();
-                viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
-                viewModel.IsSwitchToggled = true;
+                viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                viewModel.IsSwitchToggled = false;
             }
         }
         }

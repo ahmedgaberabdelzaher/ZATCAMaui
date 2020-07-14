@@ -124,7 +124,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
             SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
             SimpleIoc.Default.Register<OnBoardingAnimationPageViewModel>();
-            
+
             //SYNCFUSION INTEGRATION
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
@@ -201,7 +201,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        } 
+        }
         public FinancialDetailAttachmentPopupPageViewModel FinancialDetailAttachmentPopupPageView
         {
             get
@@ -1110,12 +1110,8 @@ namespace EGAZT
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
             navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
-<<<<<<< HEAD
             //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
-=======
-           // navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
->>>>>>> 68e7bfe261541976ef5302527db2f98ea1bc39a7
-            
+
             //SYNCFUSION INTEGRATION
             navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
             navigationService.Configure(App.PdfView, typeof(PdfView));
