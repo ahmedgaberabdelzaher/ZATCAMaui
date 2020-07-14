@@ -397,7 +397,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                 bool IsAttachmentPresent = false;
                                                 foreach (Attachment ItemA in VATRegistrationDetailsForAttach.d.ATTDETSet.results)
                                                 {
-                                                    if (AttachmentName == ItemA.Filename)
+                                                    if ((AttachmentName == ItemA.Filename) && (ItemA.Dotyp == DocTypeString))
                                                     {
                                                         IsAttachmentPresent = true;
                                                     }
