@@ -1036,16 +1036,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
                             MaxLengthID = 10;
+                            IsFDNameMobEmailEnable = false;
 
                         }
                         else if (_selectedIdTypeFR.ID.Equals("ZS0002"))
                         {
                             MaxLengthID = 10;
+                            IsFDNameMobEmailEnable = false;
                         }
 
                         else if (_selectedIdTypeFR.ID.Equals("ZS0003"))
                         {
                             MaxLengthID = 15;
+                            IsFDNameMobEmailEnable = true;
 
                         }
                             TxtIDTypeFR = _selectedIdTypeFR.Name;
