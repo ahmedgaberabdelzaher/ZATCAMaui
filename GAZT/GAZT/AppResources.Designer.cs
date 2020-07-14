@@ -2244,6 +2244,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go to login page.
+        /// </summary>
+        public static string VATRgotologinpage {
+            get {
+                return ResourceManager.GetString("VATRgotologinpage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Greater than.
         /// </summary>
         public static string VATRGreaterThan {

@@ -49,8 +49,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             // Added by Divya
-            viewModel._navigationService.NavigateTo(App.SFLandingPageView);
-
+            //  viewModel._navigationService.NavigateTo(App.SFLandingPageView);
+            App.TP = null;
+            viewModel.LogOut();
         }
 
         private async void Image_Copy_Tapped(object sender, EventArgs e)

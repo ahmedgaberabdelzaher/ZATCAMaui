@@ -53,6 +53,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+
+              
+            
+
         }
+             
+            
     }
 }
