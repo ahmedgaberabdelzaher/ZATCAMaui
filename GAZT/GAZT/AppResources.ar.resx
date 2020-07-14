@@ -3907,7 +3907,7 @@
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExpensesDetails" xml:space="preserve">
-    <value>تفاصيا المصروفات</value>
+    <value>التفاصيل المصروفات</value>
     <comment>VATRegistrationPageView</comment>
   </data>
   <data name="VATRExporter" xml:space="preserve">
