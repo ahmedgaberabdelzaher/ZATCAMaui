@@ -1570,7 +1570,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
         {
-
+                ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+         
         }
 
         private void DateEntry_Focused_1(object sender, FocusEventArgs e)
@@ -2502,6 +2503,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                    //viewModel.TypeFR = viewModel.SelectedIdTypeFR.Name
                    // vATSignUpData.d.Idtype
                     FrmTINNumber.HasError = false;
                 }
