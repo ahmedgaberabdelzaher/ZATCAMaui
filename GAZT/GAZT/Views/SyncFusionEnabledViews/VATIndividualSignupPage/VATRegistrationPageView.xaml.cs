@@ -1598,15 +1598,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-
         public async void ValidateIDNumber()
         {
-
+            Device.BeginInvokeOnMainThread(async () =>
+            {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = true;
                 });
-          
+            });
             string dob = viewModel.DOB.Replace("/", "");
             // EntryName.IsEnabled = true;
             if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
@@ -1857,13 +1857,279 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-           
+            Device.BeginInvokeOnMainThread(async () =>
+            {
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
                 });
-            
+            });
         }
+        //public async void ValidateIDNumber()
+        //{
+
+        //        await Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = true;
+        //        });
+          
+        //    string dob = viewModel.DOB.Replace("/", "");
+        //    // EntryName.IsEnabled = true;
+        //    if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
+        //    {
+        //        if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+        //        {
+        //            try
+        //            {
+
+        //                string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdnumberFR, dob);
+        //                VATSignUp vATSignUpData = new VATSignUp();
+        //                vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+        //                //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+        //                if (vATSignUpData.d == null)
+        //                {
+        //                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        viewModel.FrameIDError = false;
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+        //                    // viewModel.DOB = vATSignUpData.d.Birthdt10;
+        //                    viewModel.FirstnmFR = vATSignUpData.d.Name1;
+        //                    viewModel.LastnmFR = vATSignUpData.d.Name2;
+        //                    viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+        //                    viewModel.IdnumberFR = vATSignUpData.d.Idnum;
+        //                    viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+        //                    //  EntryName.IsEnabled = false;
+        //                    //FrmIDNumber.HasError = false;
+        //                    viewModel.FrameIDError = false;
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                try
+        //                {
+        //                    string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdnumberFR, dob);
+        //                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                catch (GAZTException gex)
+        //                {
+        //                    // Handle the GAZT custom exception.
+        //                    string MessageForTheUser = gex.Message;
+        //                    if (gex is GAZTInvalidDataException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    }
+        //                    if (gex is GAZTNetworkConnectivityIssueException)
+        //                    {
+        //                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //                    }
+        //                    else if (gex is GAZTInternetException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //                    }
+        //                    else if (gex is GAZTSessionExpiredException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+        //                    }
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel.IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        viewModel._navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (InternetException ex)
+        //                {
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //                        await Task.Run(() =>
+        //                        {
+        //                            viewModel.IsLoading = false;
+        //                        });
+        //                    });
+        //                }
+        //                catch (HttpRequestException ex)
+        //                {
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (Exception ex)
+        //                {
+
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
+        //    if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
+        //    {
+        //        //  EntryName.IsEnabled = true;
+        //        if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+        //        {
+        //            try
+        //            {
+
+        //                string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdnumberFR, dob);
+        //                VATSignUp vATSignUpData = new VATSignUp();
+        //                vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+        //                if (vATSignUpData.d == null)
+        //                {
+        //                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+        //                    {
+        //                        // FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+        //                    //  EntryName.IsEnabled = false;
+        //                    //FrmIDNumber.HasError = false;
+        //                    viewModel.FrameIDError = false;
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                try
+        //                {
+        //                    string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdnumberFR, dob);
+        //                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                catch (GAZTException gex)
+        //                {
+        //                    // Handle the GAZT custom exception.
+        //                    string MessageForTheUser = gex.Message;
+        //                    if (gex is GAZTInvalidDataException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    }
+        //                    if (gex is GAZTNetworkConnectivityIssueException)
+        //                    {
+        //                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //                    }
+        //                    else if (gex is GAZTInternetException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //                    }
+        //                    else if (gex is GAZTSessionExpiredException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+        //                    }
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel.IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        viewModel._navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (InternetException ex)
+        //                {
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //                        await Task.Run(() =>
+        //                        {
+        //                            viewModel.IsLoading = false;
+        //                        });
+        //                    });
+        //                }
+        //                catch (HttpRequestException ex)
+        //                {
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (Exception ex)
+        //                {
+
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
+           
+        //        await Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = false;
+        //        });
+            
+        //}
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
