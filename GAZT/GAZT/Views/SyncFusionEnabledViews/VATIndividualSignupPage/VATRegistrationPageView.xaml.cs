@@ -1309,12 +1309,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void NewAttachment_Clicked(object sender, EventArgs e)
+        private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
-            DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
-            sendtoPopup.VATRegistrationDetailsDatatoPopup = viewModel.VATRegistrationDetailsData;
-            sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
-            PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
+            try
+            {
+                   DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
+                   sendtoPopup.VATRegistrationDetailsDatatoPopup = viewModel.VATRegistrationDetailsData;
+                   sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
+                   await  PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
 
         private void TappendOnImporter(object sender, EventArgs e)
