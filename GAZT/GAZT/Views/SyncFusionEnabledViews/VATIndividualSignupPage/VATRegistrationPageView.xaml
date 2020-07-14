@@ -2642,7 +2642,7 @@
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                            <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer  Tapped="TappedOnBackButton"></TapGestureRecognizer>
                                 </Label.GestureRecognizers>

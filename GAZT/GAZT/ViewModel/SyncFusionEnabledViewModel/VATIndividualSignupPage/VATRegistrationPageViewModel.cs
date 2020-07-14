@@ -105,9 +105,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsFDNameMobEmailEnable");
             }
         }
+        private bool _IsBackStepButtonVisible = true;
+        public bool IsBackStepButtonVisible
+        {
+            get
+            {
+                return _IsBackStepButtonVisible;
+            }
+            set
+            {
+                _IsBackStepButtonVisible = value;
+
+                RaisePropertyChanged("IsBackStepButtonVisible");
+            }
+        }
 
 
-        
         private bool _isAttachmentImporterExporterVisible = false;
         public bool isAttachmentImporterExporterVisible
         {
@@ -316,6 +329,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isInstrunctionVisible = value;
+                if (_isInstrunctionVisible)
+                {
+                    IsBackStepButtonVisible = false;
+                }
+                else
+                {
+                    IsBackStepButtonVisible = true;
+                }
                 RaisePropertyChanged("IsInstrunctionVisible");
             }
         }
