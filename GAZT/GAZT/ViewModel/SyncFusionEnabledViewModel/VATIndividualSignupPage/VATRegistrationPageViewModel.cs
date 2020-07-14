@@ -1031,21 +1031,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_selectedIdTypeFR != null)
                 {
                     TxtIDTypeFR = _selectedIdTypeFR.Name;
-                    try
+                    try 
                     {
                         if (_selectedIdTypeFR.ID.Equals("ZS0001"))
                         {
                             MaxLengthID = 10;
+                            IsFDNameMobEmailEnable = false;
 
                         }
                         else if (_selectedIdTypeFR.ID.Equals("ZS0002"))
                         {
                             MaxLengthID = 10;
+                            IsFDNameMobEmailEnable = false;
                         }
 
                         else if (_selectedIdTypeFR.ID.Equals("ZS0003"))
                         {
                             MaxLengthID = 15;
+                            IsFDNameMobEmailEnable = true;
 
                         }
                             TxtIDTypeFR = _selectedIdTypeFR.Name;
@@ -1487,6 +1490,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                             _navigationService.GoBack();
                         }
+                        if (response.d.Operationz.Equals("05"))
+                        {
+                          //  string number = response.d.Fbnumz;
+                            string displayMessage = AppResources.VATRSaveasdraftMessage ;
+                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                            
+                        }
+                        
+
 
 
                         VATRegistrationDetailsData = response;
@@ -1693,7 +1705,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 LastnmFR= vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm ;
                                 MobNumberFR= vATRegistration.d.CONTACTDTSet.results[0].MobNumber ;
                                 SmtpAddrFR= vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr ;
-                                SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+
+                                //SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
 
                             }
 
@@ -1923,6 +1936,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IDTypeIndexFR = 0;
                 IDTypeIndexSR = 0;
                 TxtIDType = AppResources.ZZNationalID;
+              //  SelectedIdTypeFR = IdTypeListFR.FirstOrDefault();
 
                 TxtIDTypeFR = IdTypeListFR[IDTypeIndexFR].Name;
                 TxtIDTypeSR = IdTypeListSR[IDTypeIndexSR].Name;

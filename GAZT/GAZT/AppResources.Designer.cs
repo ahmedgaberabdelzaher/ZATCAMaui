@@ -2325,6 +2325,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Tin..
+        /// </summary>
+        public static string VATRPleaseEnterValidTin {
+            get {
+                return ResourceManager.GetString("VATRPleaseEnterValidTin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?.
         /// </summary>
         public static string VATRQuesComming12monthVATSalesTax {
@@ -2348,6 +2357,15 @@ namespace EGAZT {
         public static string VATRSAppNumber {
             get {
                 return ResourceManager.GetString("VATRSAppNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application.
+        /// </summary>
+        public static string VATRSaveasdraftMessage {
+            get {
+                return ResourceManager.GetString("VATRSaveasdraftMessage", resourceCulture);
             }
         }
         

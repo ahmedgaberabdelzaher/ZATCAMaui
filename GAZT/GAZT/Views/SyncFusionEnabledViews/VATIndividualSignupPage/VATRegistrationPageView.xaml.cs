@@ -913,44 +913,81 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void EntryIDNo_Unfocused(object sender, FocusEventArgs e)
         {
-            PopUp popUp = new PopUp();
-            StringBuilder Messages = new StringBuilder();
-            if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+            try
             {
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
+                PopUp popUp = new PopUp();
+                StringBuilder Messages = new StringBuilder();
+                if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
                 {
-                    if (viewModel.IdnumberFR.Substring(0, 1) != "1")
+                    if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
                     {
-                        popUp.Message = AppResources.ZZNationalIDstartswith1;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
+                        if (viewModel.IdnumberFR.Substring(0, 1) != "1")
                         {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
+                            popUp.Message = AppResources.ZZNationalIDstartswith1;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
+                            {
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
+                            }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.IdnumberFR = string.Empty;
+                            //ZZPleaseenteravalidNationalID
                         }
                         else
                         {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        //FrmIDNumber.HasError = true;
-                        viewModel.FrameIDError = true;
-                        viewModel.IdnumberFR = string.Empty;
-                        //ZZPleaseenteravalidNationalID
-                    }
-                    else
-                    {
-                        if (viewModel.IdnumberFR.Length != 10)
-                        {
+                            if (viewModel.IdnumberFR.Length != 10)
+                            {
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            }
                             if (Messages.Length > 0)
                             {
-                                Messages.Append(Environment.NewLine);
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
+                                viewModel.IdnumberFR = string.Empty;
                             }
-                            Messages.Append(AppResources.ZZNationalIDlengthis10digit);
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(viewModel.DOB))
+                                {
+                                    ValidateIDNumber();
+                                }
+
+
+                            }
                         }
-                        if (Messages.Length > 0)
+
+
+                    }
+                    if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
+                    {
+                        if (viewModel.IdnumberFR.Substring(0, 1) != "2")
                         {
-                            popUp.Message = Messages.ToString();
+                            popUp.Message = AppResources.ZZIqamaIDstartswith2;
                             popUp.IsLinkAvailable = false;
                             if (App.IsArabic)
                             {
@@ -968,52 +1005,51 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         else
                         {
-                            //FrmIDNumber.HasError = false;
-                            viewModel.FrameIDError = false;
-                            if (!string.IsNullOrEmpty(viewModel.DOB))
+                            if (viewModel.IdnumberFR.Length != 10)
                             {
-                                ValidateIDNumber();
+                                if (Messages.Length > 0)
+                                {
+                                    Messages.Append(Environment.NewLine);
+                                }
+                                Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
                             }
-
-
-                        }
-                    }
-
-
-                }
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
-                {
-                    if (viewModel.IdnumberFR.Substring(0, 1) != "2")
-                    {
-                        popUp.Message = AppResources.ZZIqamaIDstartswith2;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        //FrmIDNumber.HasError = true;
-                        viewModel.FrameIDError = true;
-                        viewModel.IdnumberFR = string.Empty;
-                    }
-                    else
-                    {
-                        if (viewModel.IdnumberFR.Length != 10)
-                        {
                             if (Messages.Length > 0)
                             {
-                                Messages.Append(Environment.NewLine);
+                                popUp.Message = Messages.ToString();
+                                popUp.IsLinkAvailable = false;
+                                if (App.IsArabic)
+                                {
+                                    popUp.FlowDirections = "RightToLeft";
+                                    popUp.isFontSet = true;
+                                }
+                                else
+                                {
+                                    popUp.FlowDirections = "LeftToRight";
+                                }
+                                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //FrmIDNumber.HasError = true;
+                                viewModel.FrameIDError = true;
+                                viewModel.IdnumberFR = string.Empty;
                             }
-                            Messages.Append(AppResources.ZZIqamaIDlengthis10digit);
+                            else
+                            {
+                                //FrmIDNumber.HasError = false;
+                                viewModel.FrameIDError = false;
+                                if (!string.IsNullOrEmpty(viewModel.DOB))
+                                {
+                                    ValidateIDNumber();
+                                }
+                            }
                         }
-                        if (Messages.Length > 0)
+
+
+                    }
+                    if (viewModel.SelectedIdTypeFR.ID == "ZS0003")
+                    {
+                        if (viewModel.IdnumberFR.Substring(0, 1) == "0")
                         {
-                            popUp.Message = Messages.ToString();
+                            //Have to change to neww error message
+                            popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
                             popUp.IsLinkAvailable = false;
                             if (App.IsArabic)
                             {
@@ -1029,68 +1065,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.FrameIDError = true;
                             viewModel.IdnumberFR = string.Empty;
                         }
-                        else
+                        else if (!(viewModel.IdnumberFR.Length <= 15 && viewModel.IdnumberFR.Length >= 7))
                         {
-                            //FrmIDNumber.HasError = false;
-                            viewModel.FrameIDError = false;
-                            if (!string.IsNullOrEmpty(viewModel.DOB))
+                            popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
+                            popUp.IsLinkAvailable = false;
+                            if (App.IsArabic)
                             {
-                                ValidateIDNumber();
+                                popUp.FlowDirections = "RightToLeft";
+                                popUp.isFontSet = true;
                             }
+                            else
+                            {
+                                popUp.FlowDirections = "LeftToRight";
+                            }
+                            PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //FrmIDNumber.HasError = true;
+                            viewModel.FrameIDError = true;
+                            viewModel.IdnumberFR = string.Empty;
+                            // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
                         }
+
+
                     }
-
-
                 }
-                if (viewModel.SelectedIdTypeFR.ID == "ZS0003")
+                else
                 {
-                    if (viewModel.IdnumberFR.Substring(0, 1) == "0")
-                    {
-                        //Have to change to neww error message
-                        popUp.Message = AppResources.ZZGCCIDdonotstartwith0;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        //FrmIDNumber.HasError = true;
-                        viewModel.FrameIDError = true;
-                        viewModel.IdnumberFR = string.Empty;
-                    }
-                    else if (!(viewModel.IdnumberFR.Length <= 15 && viewModel.IdnumberFR.Length >= 7))
-                    {
-                        popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
-                        //FrmIDNumber.HasError = true;
-                        viewModel.FrameIDError = true;
-                        viewModel.IdnumberFR = string.Empty;
-                        // EntryIDNumber.Text = string.Empty;//ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit
-                    }
-
-
+                    // FrmIDNumber.HasError = false;
+                    viewModel.FrameIDError = false;
                 }
+
+
             }
-            else
-            {
-                // FrmIDNumber.HasError = false;
-                viewModel.FrameIDError = false;
+            catch (Exception ex)
+            { 
+            
+            
             }
+
 
         }
 
@@ -1309,12 +1320,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void NewAttachment_Clicked(object sender, EventArgs e)
+        private async void NewAttachment_Clicked(object sender, EventArgs e)
         {
-            DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
-            sendtoPopup.VATRegistrationDetailsDatatoPopup = viewModel.VATRegistrationDetailsData;
-            sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
-            PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
+            try
+            {
+                   DataToPassTofinancialDetailAttachmentPopup sendtoPopup = new DataToPassTofinancialDetailAttachmentPopup();
+                   sendtoPopup.VATRegistrationDetailsDatatoPopup = viewModel.VATRegistrationDetailsData;
+                   sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
+                   await  PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
 
         private void TappendOnImporter(object sender, EventArgs e)
@@ -1572,7 +1592,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
         {
-
+                ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+         
         }
 
         private void DateEntry_Focused_1(object sender, FocusEventArgs e)
@@ -1589,7 +1610,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
 
         }
-
 
         public async void ValidateIDNumber()
         {
@@ -1635,9 +1655,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             // viewModel.DOB = vATSignUpData.d.Birthdt10;
                             viewModel.FirstnmFR = vATSignUpData.d.Name1;
                             viewModel.LastnmFR = vATSignUpData.d.Name2;
-                            viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
+                            viewModel.LastnmFR = vATSignUpData.d.Name2;
                             viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                             viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                            viewModel.SelectedIdTypeFR =viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
+                            if (vATSignUpData.d.Mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.Mobile))
+                            {
+                                viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                            }
+                          
                             //  EntryName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
@@ -1758,7 +1785,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         else
                         {
-                            viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+                            
+                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
+                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.FirstnmFR = vATSignUpData.d.Name1;
+                            viewModel.LastnmFR = vATSignUpData.d.Name2;
+                            viewModel.IdnumberFR = vATSignUpData.d.Idnum;
+                            viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                             //  EntryName.IsEnabled = false;
                             //FrmIDNumber.HasError = false;
                             viewModel.FrameIDError = false;
@@ -1858,6 +1891,271 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
             });
         }
+        //public async void ValidateIDNumber()
+        //{
+
+        //        await Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = true;
+        //        });
+          
+        //    string dob = viewModel.DOB.Replace("/", "");
+        //    // EntryName.IsEnabled = true;
+        //    if (viewModel.SelectedIdTypeFR.ID == "ZS0001")
+        //    {
+        //        if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+        //        {
+        //            try
+        //            {
+
+        //                string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdnumberFR, dob);
+        //                VATSignUp vATSignUpData = new VATSignUp();
+        //                vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+        //                //   IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
+        //                if (vATSignUpData.d == null)
+        //                {
+        //                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        viewModel.FrameIDError = false;
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    //  viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+        //                    // viewModel.DOB = vATSignUpData.d.Birthdt10;
+        //                    viewModel.FirstnmFR = vATSignUpData.d.Name1;
+        //                    viewModel.LastnmFR = vATSignUpData.d.Name2;
+        //                    viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+        //                    viewModel.IdnumberFR = vATSignUpData.d.Idnum;
+        //                    viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+        //                    //  EntryName.IsEnabled = false;
+        //                    //FrmIDNumber.HasError = false;
+        //                    viewModel.FrameIDError = false;
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                try
+        //                {
+        //                    string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdnumberFR, dob);
+        //                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                catch (GAZTException gex)
+        //                {
+        //                    // Handle the GAZT custom exception.
+        //                    string MessageForTheUser = gex.Message;
+        //                    if (gex is GAZTInvalidDataException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    }
+        //                    if (gex is GAZTNetworkConnectivityIssueException)
+        //                    {
+        //                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //                    }
+        //                    else if (gex is GAZTInternetException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //                    }
+        //                    else if (gex is GAZTSessionExpiredException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+        //                    }
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel.IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        viewModel._navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (InternetException ex)
+        //                {
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //                        await Task.Run(() =>
+        //                        {
+        //                            viewModel.IsLoading = false;
+        //                        });
+        //                    });
+        //                }
+        //                catch (HttpRequestException ex)
+        //                {
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (Exception ex)
+        //                {
+
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
+        //    if (viewModel.SelectedIdTypeFR.ID == "ZS0002")
+        //    {
+        //        //  EntryName.IsEnabled = true;
+        //        if (!string.IsNullOrEmpty(viewModel.IdnumberFR))
+        //        {
+        //            try
+        //            {
+
+        //                string Result = await WebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdnumberFR, dob);
+        //                VATSignUp vATSignUpData = new VATSignUp();
+        //                vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
+        //                if (vATSignUpData.d == null)
+        //                {
+        //                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+        //                    {
+        //                        // FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValidError.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    viewModel.FirstnmFR = vATSignUpData.d.Name1 + " " + vATSignUpData.d.Name2;
+        //                    //  EntryName.IsEnabled = false;
+        //                    //FrmIDNumber.HasError = false;
+        //                    viewModel.FrameIDError = false;
+        //                }
+        //            }
+        //            catch
+        //            {
+        //                try
+        //                {
+        //                    string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdnumberFR, dob);
+        //                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
+        //                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
+        //                    {
+        //                        //FrmIDNumber.HasError = true;
+        //                        viewModel.FrameIDError = true;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                    else
+        //                    {
+        //                        //FrmIDNumber.HasError = false;
+        //                        viewModel.FrameIDError = false;
+        //                        viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
+        //                    }
+        //                }
+        //                catch (GAZTException gex)
+        //                {
+        //                    // Handle the GAZT custom exception.
+        //                    string MessageForTheUser = gex.Message;
+        //                    if (gex is GAZTInvalidDataException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    }
+        //                    if (gex is GAZTNetworkConnectivityIssueException)
+        //                    {
+        //                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
+        //                    }
+        //                    else if (gex is GAZTInternetException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+        //                    }
+        //                    else if (gex is GAZTSessionExpiredException)
+        //                    {
+        //                        MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+        //                    }
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel.IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        viewModel._navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (InternetException ex)
+        //                {
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+        //                        await Task.Run(() =>
+        //                        {
+        //                            viewModel.IsLoading = false;
+        //                        });
+        //                    });
+        //                }
+        //                catch (HttpRequestException ex)
+        //                {
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //                catch (Exception ex)
+        //                {
+
+        //                    string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+        //                    Device.BeginInvokeOnMainThread(async () =>
+        //                    {
+        //                        // IsLoading = false;
+
+        //                        await viewModel._dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+        //                        //_navigationService.GoBack();
+        //                    });
+        //                }
+        //            }
+        //        }
+        //    }
+           
+        //        await Task.Run(() =>
+        //        {
+        //            viewModel.IsLoading = false;
+        //        });
+            
+        //}
 
         private void btnDate_Clicked(object sender, EventArgs e)
         {
@@ -1942,7 +2240,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         if (viewModel.VATRegistrationDetailsData.d.Gpartz.Equals(EntryTINNumber.Text))
                         {
                             /// have to change the message
-                            Messages.Append(AppResources.ZZTINnumberhastostartwithnumber3);
+                            Messages.Append(AppResources.VATRPleaseEnterValidTin);
 
                             if (Messages.Length > 0)
                             {
@@ -2504,6 +2802,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
+                    //viewModel.TypeFR = viewModel.SelectedIdTypeFR.Name
                    // vATSignUpData.d.Idtype
                     FrmTINNumber.HasError = false;
                 }

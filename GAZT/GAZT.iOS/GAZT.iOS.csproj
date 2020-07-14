@@ -191,6 +191,21 @@
     <BundleResource Include="Resources\vat_new_individual_G.png" />
     <BundleResource Include="Resources\vat_new_individual_G%403x.png" />
     <BundleResource Include="Resources\vat_new_individual%402x.png" />
+    <BundleResource Include="Resources\re_Property_Registration_G.png" />
+    <BundleResource Include="Resources\re_Property_Registration_G%403x.png" />
+    <BundleResource Include="Resources\re_Property_Registration_G%402x.png" />
+    <BundleResource Include="Resources\re_Termination_Request_W.png" />
+    <BundleResource Include="Resources\re_Termination_Request_W%402x.png" />
+    <BundleResource Include="Resources\re_Termination_Request_W%403x.png" />
+    <BundleResource Include="Resources\re_Request_Verification_W.png" />
+    <BundleResource Include="Resources\re_Request_Verification_W%402x.png" />
+    <BundleResource Include="Resources\re_Request_Verification_W%403x.png" />
+    <BundleResource Include="Resources\re_Property_Tile_Background_White.png" />
+    <BundleResource Include="Resources\re_Property_Tile_Background_White %402x.png" />
+    <BundleResource Include="Resources\re_Property_Tile_Background_White%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_S.png" />
+    <BundleResource Include="Resources\re_Tile_Background_S%403x.png" />
+    <BundleResource Include="Resources\re_Tile_Background_S%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

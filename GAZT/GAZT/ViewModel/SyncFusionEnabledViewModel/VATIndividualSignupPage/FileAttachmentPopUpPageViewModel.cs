@@ -71,6 +71,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _isSwitchToggled = value;
+                if (IsImpoterAndExporter)
+                {
+                    if (_isSwitchToggled)
+                    {
+                      DocTypeString = "ZVTC";
+                      filterList();
+                        CloneAttachmentList(VatAttachmentsList);
+
+                    }
+                    else
+                    {
+                        DocTypeString = "ZVTB";
+                        filterList();
+                        CloneAttachmentList(VatAttachmentsList);
+
+                    }
+                }
+                
                 RaisePropertyChanged("IsSwitchToggled");
             }
         }

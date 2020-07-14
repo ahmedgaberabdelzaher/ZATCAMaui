@@ -88,6 +88,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("VATRegistrationDetailsData");
             }
         }
+
+        private int _selectedAttachmentType;
+        public int SelectedAttachmentType
+        {
+            get
+            {
+                return _selectedAttachmentType;
+            }
+            set
+            {
+                _selectedAttachmentType = value;
+                RaisePropertyChanged("SelectedAttachmentType");
+            }
+        }
+
+
+        
+
         private List<ResultsItemForElgblDocSet> _resultsItemForDOCSet = null;
         public List<ResultsItemForElgblDocSet>  ResultsItemForDOCSet 
         {
