@@ -1705,7 +1705,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 LastnmFR= vATRegistration.d.CONTACT_PERSONSet.results[0].Lastnm ;
                                 MobNumberFR= vATRegistration.d.CONTACTDTSet.results[0].MobNumber ;
                                 SmtpAddrFR= vATRegistration.d.CONTACTDTSet.results[0].SmtpAddr ;
-                                SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
+
+                                //SelectedIdTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault();
 
                             }
 
@@ -1935,6 +1936,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IDTypeIndexFR = 0;
                 IDTypeIndexSR = 0;
                 TxtIDType = AppResources.ZZNationalID;
+              //  SelectedIdTypeFR = IdTypeListFR.FirstOrDefault();
 
                 TxtIDTypeFR = IdTypeListFR[IDTypeIndexFR].Name;
                 TxtIDTypeSR = IdTypeListSR[IDTypeIndexSR].Name;
