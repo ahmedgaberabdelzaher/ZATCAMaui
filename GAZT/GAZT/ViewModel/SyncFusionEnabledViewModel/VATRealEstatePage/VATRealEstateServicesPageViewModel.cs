@@ -227,7 +227,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             PropertyTileColor = Color.White;
             await Task.Run(() =>
             {
-                IsLoading = true;
+               // IsLoading = true;
             });
 
             Device.BeginInvokeOnMainThread(() =>
@@ -235,7 +235,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstatePropertyRegistration;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                 IsLoading = false;
+                // IsLoading = false;
             });
 
 
@@ -251,7 +251,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
             RequestTileColor = Color.White;
             await Task.Run(() =>
             {
-                IsLoading = true;
+               // IsLoading = true;
             });
 
             Device.BeginInvokeOnMainThread(() =>
@@ -259,7 +259,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateRequestVerification;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                 IsLoading = false;
+                // IsLoading = false;
             });
 
 
@@ -275,7 +275,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
 
             await Task.Run(() =>
             {
-                IsLoading = true;
+               // IsLoading = true;
             });
 
             Device.BeginInvokeOnMainThread(() =>
@@ -283,7 +283,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 PropertyRegistrationPageViewModel.reServiceName = AppResources.ZVATRealEstateTerminationOfRequest;
 
                 _navigationService.NavigateTo(App.PropertyRegistrationPage);
-                 IsLoading = false;
+                // IsLoading = false;
             });
 
 

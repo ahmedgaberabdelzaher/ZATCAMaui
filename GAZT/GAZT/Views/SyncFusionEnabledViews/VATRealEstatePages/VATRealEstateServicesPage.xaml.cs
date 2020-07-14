@@ -77,7 +77,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
         {
             if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
             else
             {
