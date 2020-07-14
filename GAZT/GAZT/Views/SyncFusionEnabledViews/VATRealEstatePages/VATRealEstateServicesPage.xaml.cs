@@ -18,7 +18,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
             viewModel = App.Locator.VATRealEstateServicesPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
-            viewModel.ImagePropertyTile = "re_Property_Tile_Background_White.png";
+            viewModel.ImagePropertyTile = "vat_tile_listofsignup_W.png";
             viewModel.ImageRequestTile = "re_Tile_Background_White.png";
             viewModel.ImageTerminationTile = "re_Tile_Background_White.png";
 
@@ -55,7 +55,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATRealEstatePages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            viewModel.ImagePropertyTile = "re_Property_Tile_Background_White.png";
+            viewModel.ImagePropertyTile = "vat_tile_listofsignup_W.png";
             viewModel.ImageRequestTile = "re_Tile_Background_White.png";
             viewModel.ImageTerminationTile = "re_Tile_Background_White.png";
 

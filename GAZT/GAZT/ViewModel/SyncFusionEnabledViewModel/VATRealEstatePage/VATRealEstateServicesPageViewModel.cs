@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
                 RaisePropertyChanged("IsLoading");
             }
         }
-        private string _ImagePropertyTile = "re_Property_Tile_Background_White.png";
+        private string _ImagePropertyTile = "vat_tile_listofsignup_W.png";
         public string ImagePropertyTile
         {
             get
@@ -220,7 +220,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage
         private async void PropertyRegistrationCommandClicked(object obj)
         {
 
-            ImagePropertyTile = "re_Tile_Background.png";
+            ImagePropertyTile = "vat_tile_listofsignup.png";
            
             ImagePropertyIcon = "re_Property_Registration.png";
 
