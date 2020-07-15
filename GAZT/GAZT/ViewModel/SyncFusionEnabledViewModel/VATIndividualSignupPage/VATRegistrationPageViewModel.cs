@@ -1469,57 +1469,77 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public async Task<VATRegistrationDetails> SubmitClicked()
         {
-            await Task.Run(() =>
+            VATRegistrationDetails response = new VATRegistrationDetails();
+            try
             {
-                IsLoading = true;
-            });
-            setDATA();
-            //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
-            VATRegistrationDetails response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
-            PopToRootPage();
-            if (response != null && response.d != null)
-            {
-                try
+                await Task.Run(() =>
                 {
-                    if (response != null && response.d != null)
+                    IsLoading = true;
+                });
+                setDATA();
+                //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
+                 response = await WebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
+                PopToRootPage();
+                if (response != null && response.d != null)
+                {
+                    try
                     {
-                        if (response.d.Operationz.Equals("04"))
+                        if (response != null && response.d != null)
                         {
-                            string number = response.d.Fbnumz;
-                            string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                               await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                            _navigationService.GoBack();
+                            if (response.d.Operationz.Equals("04"))
+                            {
+                                string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            if (response.d.Operationz.Equals("05"))
+                            {
+                                //  string number = response.d.Fbnumz;
+                                string displayMessage = AppResources.VATRSaveasdraftMessage;
+                                await _dialogService.ShowMessage(displayMessage, AppResources.Information);
+
+                            }
+
+
+
+
+                            VATRegistrationDetailsData = response;
+
+                            //Set data after api call 
+                            setDataAfterSubmitAPIAsync(response);
+
                         }
-                        if (response.d.Operationz.Equals("05"))
-                        {
-                          //  string number = response.d.Fbnumz;
-                            string displayMessage = AppResources.VATRSaveasdraftMessage ;
-                            await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                            
-                        }
-                        
-
-
-
-                        VATRegistrationDetailsData = response;
-                        
-                        //Set data after api call 
-                        setDataAfterSubmitAPIAsync(response);                       
+                        IsLoading = false;
+                        return response;
 
                     }
-                    IsLoading = false;
-                    return response;
-                    
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        return null;
+
+                    }
                 }
-                catch (Exception ex)
+                IsLoading = false;
+                return response;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    return null;
-                
-                }
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                   
+                });
+                return response;
             }
-            IsLoading = false;
-            return response;
+
+            catch (Exception ex)
+            {
+                return response;
+            }
     }
 
         public async Task setDataAfterSubmitAPIAsync(VATRegistrationDetails vATRegistration)

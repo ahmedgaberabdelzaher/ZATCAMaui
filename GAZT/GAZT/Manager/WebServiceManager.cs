@@ -6115,6 +6115,10 @@ namespace GAZT.Manager
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
                             RequestVATRegistration.d.ATTDETSet = aTTACHSet;
+                            //if (vATRegistration.d.VatTaxDt == null)
+                            //{
+                            //    vATRegistration.d.VatTaxDt = "";
+                            //}
 
                         }
 
@@ -6203,6 +6207,10 @@ namespace GAZT.Manager
                                     qUESLIST.results = new List<string>();
                                     _vATRegistration.d.QUESLISTSet = qUESLIST;
                                 }
+
+                               
+
+
                             }
                         }
                         if (_vATRegistration == null || _vATRegistration.d == null)
@@ -6215,12 +6223,18 @@ namespace GAZT.Manager
                                 String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                                 //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageForVAT);
                             }
                         }
                         return _vATRegistration;
                     }
                     return _vATRegistration;
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
                 catch (Exception ex)
                 {
                     return null;

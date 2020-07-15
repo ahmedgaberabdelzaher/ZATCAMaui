@@ -15,11 +15,20 @@ namespace GAZT.Models
         public string Result { get; set; }
         public string Otp { get; set; }
         public string TpType { get; set; }
+        public string NameOrg1 { get; set; }
         public String Name
         {
             get
             {
-                return NameFirst + " " + NameLast;
+                if (string.IsNullOrEmpty(NameFirst) && string.IsNullOrEmpty(NameLast))
+                {
+                    return NameOrg1;
+                }
+                else
+                {
+                    return NameFirst + " " + NameLast;
+                }
+                
             }
         }
         public String Email { get; set; }
@@ -61,6 +70,7 @@ namespace GAZT.Models
                 _Mobile = value;
             }
         }
+
         private String _NewMobile = String.Empty;
         public string NewMobile
         {
@@ -90,5 +100,6 @@ namespace GAZT.Models
         public string Partner { get; set; }
         public string NameFirst { get; set; }
         public string NameLast { get; set; }
+
     }
 }
