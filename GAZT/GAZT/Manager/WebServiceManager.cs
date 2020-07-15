@@ -5908,8 +5908,12 @@ namespace GAZT.Manager
             {
                 try
                 {
+                    string LangZ = GetLangZParameterAREN();
+        
+                 
+
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
-                    string url = Constants.GAZTGetCreateVATSignUp;
+                    string url = Constants.GAZTGetCreateVATSignUp + LangZ;
                     var uri = new Uri(url);
 
                     try
