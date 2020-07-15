@@ -2717,12 +2717,11 @@
     <value>حالة البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-  <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
+    <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
       <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
   </data> 
 
- 
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
