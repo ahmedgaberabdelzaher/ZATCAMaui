@@ -6117,9 +6117,13 @@ namespace GAZT.Manager
                             RequestVATRegistration.d.ATTDETSet = aTTACHSet;
 
                         }
+
+                        //string url = Constants.GAZTSignUpFirstSubmit;
+                        string LangZAREN = GetLangZParameterAREN();
+
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();
-                        String url = Constants.SaveVATRegistration;
+                        String url = Constants.SaveVATRegistration+ LangZAREN;
                         vATRegistration.d.Langz = lang;
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);

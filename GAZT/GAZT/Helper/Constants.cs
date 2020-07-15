@@ -170,7 +170,7 @@ namespace GAZT.Helper
         public static string GAZTGetVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet(Fbnumz='";
         public static string GAZTGetVATRegistrationOtherDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string SaveVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
-        public static string SaveVATRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
+        public static string SaveVATRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet?sap-language=";
         #endregion
     }
 }
