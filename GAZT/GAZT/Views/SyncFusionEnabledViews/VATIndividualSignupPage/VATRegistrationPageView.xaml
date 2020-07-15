@@ -94,8 +94,17 @@
                                                 <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Large" TextColor="Black"/>
 
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                <!--<StackLayout Orientation="Horizontal">
+                                                     <Label Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"></Label>
+                                                        <Label Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="#005e4b">
+                                                            <Label.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
+                                                                </Label.GestureRecognizers>
+                                                        </Label>
+                                                <Label Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"></Label>
 
-                                                <Label>
+                                                </StackLayout>-->
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
@@ -109,7 +118,24 @@
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
                                                         </FormattedString>
                                                     </Label.FormattedText>
-                                                </Label>
+                                                </custom:CustomLabel>
+
+                                                <!--<Label HorizontalOptions="End" HorizontalTextAlignment="End" >
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
+                                                            <Span Text="&#160;"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="#005e4b">
+                                                                <Span.GestureRecognizers>
+                                                                    <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
+                                                                </Span.GestureRecognizers>
+                                                            </Span>
+                                                            <Span Text="&#160;"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>-->
+
 
                                                 <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                                     <custom:CustomLabel.FormattedText>
@@ -471,7 +497,7 @@
                                                 </StackLayout>
                                                 <StackLayout Margin="0,0,0,15" Grid.Row="6">
                                                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,5,0,20"/>
-                                                    <Label Text="Additional Information" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
+                                                    <!--<Label Text="Additional Information" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>-->
 
 
                                                     <Label Text="{x:Static custom2:AppResources.VATRAdditionalInformation}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>

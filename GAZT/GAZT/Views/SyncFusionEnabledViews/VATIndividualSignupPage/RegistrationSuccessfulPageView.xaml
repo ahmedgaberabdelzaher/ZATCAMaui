@@ -29,6 +29,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
                 <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
@@ -71,5 +72,6 @@
                 </StackLayout>
             </yummy:PancakeView>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
