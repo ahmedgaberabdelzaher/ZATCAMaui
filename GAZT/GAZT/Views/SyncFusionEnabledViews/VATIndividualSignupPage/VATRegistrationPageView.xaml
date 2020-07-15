@@ -473,6 +473,9 @@
                                                     <BoxView Style="{StaticResource lineSeperator}" Margin="0,5,0,20"/>
                                                     <Label Text="Additional Information" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
 
+
+                                                    <Label Text="{x:Static custom2:AppResources.VATRAdditionalInformation}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_BOLD}"/>
+                                                   
                                                     <Frame BorderColor="#bbbbbb" BackgroundColor="White" CornerRadius="10" Padding="15,20,15,20" HasShadow="False">
                                                         <StackLayout>
 
