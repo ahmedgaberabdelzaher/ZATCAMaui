@@ -1173,24 +1173,24 @@
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
-                                                        <Span Text="{x:Static custom2:AppResources.ZZZTotalSalesAdjustment}" FontSize="12"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZTotalSalesAdjustment}" FontSize="12"  FontFamily="{StaticResource GAZT_FONT_REGULAR}"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
+                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesAdj, StringFormat='{0:D2}'}"  HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_REGULAR}" x:Name="LabelTotalsalesAdj"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="1" Grid.Column="1"/>
                                             <local1:CustomLabel  Margin="10,0,10,1"  FontSize="Micro" Style="{StaticResource GAZTCaptionGreenLabelStyle}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Grid.Row="2" Grid.Column="0">
                                                 <local1:CustomLabel.FormattedText>
                                                     <FormattedString>
                                                         <!--<Span Text="&#160;&#160;&#160;&#160;" FontFamily="{StaticResource SSTArBold}"/>-->
-                                                        <Span Text="{x:Static custom2:AppResources.ZZZTotalVATTaxableAmountonSales}" FontSize="12"/>
+                                                        <Span Text="{x:Static custom2:AppResources.ZZZTotalVATTaxableAmountonSales}" FontSize="12"  FontFamily="{StaticResource GAZT_FONT_REGULAR}"/>
                                                     </FormattedString>
                                                 </local1:CustomLabel.FormattedText>
                                             </local1:CustomLabel>
-                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
+                                            <Label FontSize="Micro" Text="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.TotalsalesVat, StringFormat='{0:D2}'}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource GAZT_FONT_REGULAR}"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Grid.Row="2" Grid.Column="1"/>
                                         </Grid>
                                         <Frame Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2"   Style="{StaticResource GAZTFrameStyleEntryForLableBackground}"   >
                                         </Frame>
-                                        <Label Text="{x:Static custom2:AppResources.ZVatOnPurchases}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2" >
+                                        <Label Text="{x:Static custom2:AppResources.ZVatOnPurchases}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="24" Grid.Column="0" Grid.ColumnSpan="2"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                         </Label>
 
                                         <Label   Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.IsPrevReturn}">
