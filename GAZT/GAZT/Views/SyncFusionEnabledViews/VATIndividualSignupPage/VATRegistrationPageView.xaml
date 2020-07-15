@@ -95,22 +95,24 @@
 
                                                 <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
 
-                                                <custom:CustomLabel>
-                                                    <custom:CustomLabel.FormattedText>
+
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                                    <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
                                                             <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" FontFamily="{StaticResource GAZT_FONT_BOLD}" TextColor="#005e4b">
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ2}" TextColor="#005e4b">
                                                                 <Span.GestureRecognizers>
                                                                     <TapGestureRecognizer Tapped="VATFaqTapped"></TapGestureRecognizer>
                                                                 </Span.GestureRecognizers>
                                                             </Span>
                                                             <Span Text="&#160;"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ3}"/>
                                                         </FormattedString>
-                                                    </custom:CustomLabel.FormattedText>
+                                                    </Label.FormattedText>
                                                 </custom:CustomLabel>
 
+                                                
                                                 <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
