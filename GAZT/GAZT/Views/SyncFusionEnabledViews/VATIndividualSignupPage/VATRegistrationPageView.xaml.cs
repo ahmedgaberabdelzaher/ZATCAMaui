@@ -477,16 +477,24 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsFDNameMobEmailEnable = false;
 
                     viewModel.Attachments = AppResources.Attachments;
-                    setAnsWerOneSlider();
-                    setAnsWertwoSlider();
+              
+                  
+
 
                     if (viewModel.VATRegistrationDetailsData.d.ResidencyTy == "R")
                     {
                         viewModel.IsResident = true;
+                        setAnsWerOneSlider();
+                        setDefaultAnswerThree();
+                        setDefaultansForAnswer4();
+                        setAnsWertwoSlider();
+
+
                     }
                     else
                     {
                         viewModel.IsResident = false;
+                        setAnsWertwoSlider();
                     }
 
                 }
@@ -503,6 +511,124 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 FrmEStartDate.HasError = true;
             }
 
+        }
+        public async void setDefaultAnswerThree()
+        {
+            if (viewModel.answer3selectedcount == 0)
+            { 
+            foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+            {
+                if (item.QueNo == "003" && item.QoptNo == "031")
+                {
+                    item.QoptAns = "1";
+                }
+                if (item.QueNo == "003" && item.QoptNo == "032")
+                {
+                    item.QoptAns = "0";
+                }
+            }
+            viewModel.quesTion3answerSelected = viewModel.TextQuestion3First;
+            viewModel.setQuestionImage();
+            viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+            VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+            if (registrationDetails != null & registrationDetails.d != null)
+            {
+                viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                string code = registrationDetails.d.RegTy;
+                string eligibilityText = string.Empty;
+                viewModel.Attachments = AppResources.Attachments;
+
+                if (code.Equals("L"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                }
+                else if (code.Equals("S"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                }
+                else if (code.Equals("V"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                }
+                else if (code.Equals("N"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                    viewModel.Attachments = AppResources.Attachments + "*";
+
+                    // eligibilityText = "Not Eligible";
+                }
+                else if (code.Equals("M"))
+                {
+                    eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                }
+                viewModel.SliderLable1EligibilityText = eligibilityText;
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
+            }
+            }
+        }
+
+
+        public async void setDefaultansForAnswer4()
+        {
+            if (viewModel.answer4selectedcount == 0)
+            {
+                foreach (var item in viewModel.VATRegistrationDetailsData.d.QUESTIONSSet.results)
+                {
+                    if (item.QueNo == "004" && item.QoptNo == "041")
+                    {
+                        item.QoptAns = "1";
+                    }
+                    if (item.QueNo == "004" && item.QoptNo == "042")
+                    {
+                        item.QoptAns = "0";
+                    }
+                }
+                viewModel.quesTion4answerSelected = viewModel.TextQuestion4First;
+                viewModel.setQuestionImage();
+                viewModel.VATRegistrationDetailsData.d.Operationz = "16";
+                VATRegistrationDetails registrationDetails = await viewModel.SubmitClicked();
+                if (registrationDetails != null & registrationDetails.d != null)
+                {
+                    viewModel.RegTypeCode = registrationDetails.d.RegTy;
+                    string code = registrationDetails.d.RegTy;
+                    string eligibilityText = string.Empty;
+                    viewModel.Attachments = AppResources.Attachments;
+
+                    if (code.Equals("L"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                    }
+                    else if (code.Equals("S"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    }
+                    else if (code.Equals("V"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                    }
+                    else if (code.Equals("N"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestne;
+                        viewModel.Attachments = AppResources.Attachments + "*";
+
+                        // eligibilityText = "Not Eligible";
+                    }
+                    else if (code.Equals("M"))
+                    {
+                        eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                    }
+                    viewModel.SliderLable1EligibilityText = eligibilityText;
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+                }
+            }
         }
         public async  void setAnsWerOneSlider() 
         {
