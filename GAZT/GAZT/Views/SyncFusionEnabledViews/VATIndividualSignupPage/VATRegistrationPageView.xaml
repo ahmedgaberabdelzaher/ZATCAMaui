@@ -2029,7 +2029,7 @@
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
 
-                                                    <StackLayout Grid.Row="3" Grid.Column="0">
+                                                    <StackLayout Grid.Row="3" Grid.Column="0" IsVisible="{Binding DOBMandatoryVisibility}">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
@@ -2055,9 +2055,9 @@
 
 
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
-                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1"
+                                        ContainerType="Outlined" x:Name="FrmDBO" UnfocusedColor= "#B1B1B1" IsVisible="{Binding DOBMandatoryVisibility}"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameDOBError}" >
-                                                                <StackLayout Orientation="Horizontal">
+                                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding DOBMandatoryVisibility}" >
                                                                     <custom:BorderlessEntry  x:Name="DateEntryFR"  HorizontalOptions="FillAndExpand"  Text ="{Binding DOB}" Focused="DateEntry_Focused_1"  IsEnabled="False"  Unfocused="DateEntry_Unfocused_1" TextChanged="DateEntry_TextChanged" Placeholder="YYYY/MM/DD" FontSize="Small" TextColor="#bbbbbb" FontFamily="{StaticResource SSTArabicMedium}">
                                                                     </custom:BorderlessEntry>
                                                                     <Image HorizontalOptions="End">

@@ -1827,7 +1827,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             {
                                 ADDRESSSetData = VATRegistrationDetailsData.d.ADDRESSSet.results[0];
                                 AddressLineOne = ADDRESSSetData.BuildingNo + " " + ADDRESSSetData.Street + " " + ADDRESSSetData.Quarter;
+                                if (ADDRESSSetData.PostalCd.Equals("00000"))
+                                {
+                                    ADDRESSSetData.PostalCd = string.Empty;
+                                }
                                 AddressLineTwo = ADDRESSSetData.RegionDesc + " " + ADDRESSSetData.City + " " + ADDRESSSetData.PostalCd;
+
                             }
                             if (VATRegistrationDetailsData.d.VatTaxDt != null)
                             {
