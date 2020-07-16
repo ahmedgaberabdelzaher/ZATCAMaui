@@ -6109,8 +6109,23 @@ namespace GAZT.Manager
                     {
                         if (vATRegistration.d != null)
                         {
-                            RequestVATRegistration = vATRegistration;
+                            //if (vATRegistration.d.ELGBL_DOCSet != null)
+                            //{
 
+
+                            //    //foreach (var item in vATRegistration.d.ELGBL_DOCSet.results)
+                            //    //{
+                            //    //    if (item.Txt50 == null)
+                            //    //    {
+                            //    //        item.Txt50 = string.Empty;
+                            //    //    }
+                            //    //}
+                            //}
+                                RequestVATRegistration = vATRegistration;
+
+                            ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
+                            eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
+                            RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
                             //RequestVATDeclaration.d.SubmitFg = "";
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
@@ -6119,6 +6134,7 @@ namespace GAZT.Manager
                             //{
                             //    vATRegistration.d.VatTaxDt = "";
                             //}
+                            
 
                         }
 
