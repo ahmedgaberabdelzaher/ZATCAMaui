@@ -120,6 +120,66 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        private bool _iDNumberNonMandatoryVisibility = true;
+        public bool IDNumberNonMandatoryVisibility
+        {
+            get
+            {
+                return _iDNumberNonMandatoryVisibility;
+            }
+            set
+            {
+                _iDNumberNonMandatoryVisibility = value;
+
+                RaisePropertyChanged("IDNumberNonMandatoryVisibility");
+            }
+        }
+
+        private bool _iDNumberMandatoryVisibility = false;
+        public bool IDNumberMandatoryVisibility
+        {
+            get
+            {
+                return _iDNumberMandatoryVisibility;
+            }
+            set
+            {
+                _iDNumberMandatoryVisibility = value;
+
+                RaisePropertyChanged("IDNumberMandatoryVisibility");
+            }
+        }
+
+        private bool _dOBNonMandatoryVisibility = false;
+        public bool DOBNonMandatoryVisibility
+        {
+            get
+            {
+                return _dOBNonMandatoryVisibility;
+            }
+            set
+            {
+                _dOBNonMandatoryVisibility = value;
+
+                RaisePropertyChanged("DOBNonMandatoryVisibility");
+            }
+        }
+
+        private bool _dOBMandatoryVisibility = false;
+        public bool DOBMandatoryVisibility
+        {
+            get
+            {
+                return _dOBMandatoryVisibility;
+            }
+            set
+            {
+                _dOBMandatoryVisibility = value;
+
+                RaisePropertyChanged("DOBMandatoryVisibility");
+            }
+        }
+
 
         private bool _isAttachmentImporterExporterVisible = false;
         public bool isAttachmentImporterExporterVisible

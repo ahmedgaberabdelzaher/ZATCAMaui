@@ -1681,6 +1681,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     EntryTINNumber.IsEnabled = true;
                     viewModel.IDTypeIndexFR = 0;
                     viewModel.TxtIDTypeFR = string.Empty;
+
+                    viewModel.IDNumberNonMandatoryVisibility = true;
+                    viewModel.IDNumberMandatoryVisibility = false;
+
+                    viewModel.DOBNonMandatoryVisibility = true;
+                    viewModel.DOBMandatoryVisibility = false;
                 }
                 else
                 {
@@ -1689,6 +1695,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     EntryTINNumber.Text = string.Empty;
                     EntryIDNo.Text = string.Empty;
                     EntryTINNumber.IsEnabled = false;
+                    viewModel.IDNumberNonMandatoryVisibility = false;
+                    viewModel.IDNumberMandatoryVisibility = true;
+
+                    
+                    if(viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
+                    {
+                        viewModel.DOBNonMandatoryVisibility = true;
+                        viewModel.DOBMandatoryVisibility = false;
+                    }
+                    else
+                    {
+                        viewModel.DOBNonMandatoryVisibility = false;
+                        viewModel.DOBMandatoryVisibility = true;
+                    }
+                    
+
                 }
             }
             catch (Exception ex)

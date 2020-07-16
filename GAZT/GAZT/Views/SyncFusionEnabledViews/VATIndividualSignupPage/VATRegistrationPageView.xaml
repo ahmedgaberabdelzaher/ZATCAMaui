@@ -2005,7 +2005,18 @@
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2">
 
-                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
+                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0" IsVisible="{Binding IDNumberNonMandatoryVisibility}" ></Label>
+
+
+                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0" IsVisible="{Binding IDNumberMandatoryVisibility}">
+                                                              <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{x:Static local:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                        </Label>
+
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
@@ -2025,7 +2036,13 @@
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
 
-                                                            <custom:CustomLabel Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                        <custom:CustomLabel Grid.Row="0" Text="{x:Static local:AppResources.ZZDateofBirth}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"  Padding="0,0,0,0" HorizontalOptions="Start" IsVisible="{Binding DOBNonMandatoryVisibility}">
+
+                                                        </custom:CustomLabel>
+
+
+                                                            <custom:CustomLabel Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" IsVisible="{Binding DOBMandatoryVisibility}">
 
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
