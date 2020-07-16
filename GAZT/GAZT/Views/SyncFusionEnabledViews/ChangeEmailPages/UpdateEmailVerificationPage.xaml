@@ -130,7 +130,7 @@
                                          VerticalOptions="EndAndExpand"
                 HorizontalOptions="FillAndExpand"
                     BackgroundColor="{Binding ButtonDisableColor}"
-                            Opacity="0.7"
+                          
                    FontFamily="{StaticResource GAZT_FONT_BOLD}"
                     HeightRequest="36"
                     CornerRadius="0"

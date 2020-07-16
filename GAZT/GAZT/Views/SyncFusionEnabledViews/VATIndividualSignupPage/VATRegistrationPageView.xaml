@@ -93,10 +93,10 @@
 
                                                 <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Large" TextColor="Black"/>
 
-                                                <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Margin="0">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>

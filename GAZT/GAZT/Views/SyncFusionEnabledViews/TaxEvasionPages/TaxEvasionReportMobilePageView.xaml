@@ -120,7 +120,7 @@
                             Grid.Row="3"
                             Margin="10,16,10,16"
                             BackgroundColor="#D99A29"
-                            Opacity="0.7"
+                          
                                 IsEnabled="{Binding IsVerifyEnable}"
                                 Command="{Binding VerifyCommand}"
                             Style="{StaticResource SfButtonStyle}"
@@ -130,7 +130,7 @@
                             Grid.Row="4"
                             Margin="10,16,10,16"
                             BackgroundColor="#D99A29"
-                            Opacity="0.7"
+                         
                                 Command="{Binding RegisterCommand}"
                             Style="{StaticResource SfButtonStyle}"
                             Text="{x:Static local1:AppResources.ZTERNewAccount}"/>
