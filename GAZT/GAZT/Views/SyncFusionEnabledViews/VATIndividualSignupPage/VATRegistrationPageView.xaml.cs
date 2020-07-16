@@ -3475,5 +3475,49 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
            viewModel.FrameContactIDError= false;
             FrmContactIDNumber.HasError = false;
         }
+
+        private void EntryPhoneNumber_Unfocused_1(object sender, FocusEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(EntryPhoneNumber.Text))
+            {
+                StringBuilder Message = new StringBuilder();
+                PopUp popUp = new PopUp();
+                if (EntryPhoneNumber.Text.Substring(0, 1) != "5")
+                {
+                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                }
+                if (EntryPhoneNumber.Text.Length != 9)
+                {
+                    if (Message.Length > 0)
+                    {
+                        Message.Append(Environment.NewLine);
+                    }
+                    Message.Append(AppResources.ZZMobilenumberlengthcannotbelessthan9digits);
+                }
+                if (Message.Length > 0)
+                {
+                    popUp.Message = Message.ToString();
+                    popUp.IsLinkAvailable = false;
+                    if (App.IsArabic)
+                    {
+                        popUp.FlowDirections = "RightToLeft";
+                        popUp.isFontSet = true;
+                    }
+                    else
+                    {
+                        popUp.FlowDirections = "LeftToRight";
+                    }
+                    PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                    //FrmMobileNumber.HasError = true;
+
+                    EntryPhoneNumber.Text = string.Empty;
+                }
+                else
+                {
+                    //FrmMobileNumber.HasError = false;
+               
+                }
+            }
+        }
     }
 }

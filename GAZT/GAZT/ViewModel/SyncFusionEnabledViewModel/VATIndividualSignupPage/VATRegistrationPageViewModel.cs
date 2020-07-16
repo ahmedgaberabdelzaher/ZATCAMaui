@@ -1479,17 +1479,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     VATRegistrationDetailsData.d.AgrFg = "0";
                 }
+                var Bdt = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "T00:00:00";
                 if (!string.IsNullOrEmpty(VatEligibleStartDate))
                 {
-                    string[] date1 = VatEligibleStartDate.Split('/');
                     //var dateTime = new DateTime(year, month, day, 10, 2, 0, DateTimeKind.Local);
                     //var dateTimeOffset = new DateTimeOffset(dateTime);
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     //var unixDateTime = dateTimeOffset.ToUnixTimeSeconds();
                     // Int32 unixTimestamp = (Int32)(dateTime.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-                    var Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
-                    VATRegistrationDetailsData.d.VatTaxDt = Bdt;
+                        string[] date1 = VatEligibleStartDate.Split('/');
+                        Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
+                    
                 }
+                VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 VATRegistrationDetailsData.d.StepNumberz = "2";
                 VATRegistrationDetailsData.d.DecidTy = string.Empty;
                 //Step 4
