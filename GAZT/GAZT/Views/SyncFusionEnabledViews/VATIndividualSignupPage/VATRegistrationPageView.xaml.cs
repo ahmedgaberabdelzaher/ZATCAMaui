@@ -1695,10 +1695,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     EntryTINNumber.Text = string.Empty;
                     EntryIDNo.Text = string.Empty;
                     EntryTINNumber.IsEnabled = false;
+
                     viewModel.IDNumberNonMandatoryVisibility = false;
                     viewModel.IDNumberMandatoryVisibility = true;
 
-                    
+
+                    // For GCC ID DOB is not mandatory
                     if(viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("ZS0003"))
                     {
                         viewModel.DOBNonMandatoryVisibility = true;

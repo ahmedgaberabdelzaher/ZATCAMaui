@@ -2003,12 +2003,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             try
             {
                 List<SignUpIdType> signUpIdTypeList = new List<SignUpIdType>{
-                    new SignUpIdType {ID = "00000",Name = "      "},
-           new SignUpIdType {ID = "ZS0001",Name = AppResources.NationaID},
-                      new SignUpIdType {ID = "ZS0002",Name = AppResources.ZZIqamaID},
-                                            new SignUpIdType {ID = "ZS0003",Name = AppResources.ZZGCCID},
-
-
+                new SignUpIdType {ID = "00000",Name = "      "},
+                new SignUpIdType {ID = "ZS0001",Name = AppResources.NationaID},
+                new SignUpIdType {ID = "ZS0002",Name = AppResources.ZZIqamaID},
+                new SignUpIdType {ID = "ZS0003",Name = AppResources.ZZGCCID},
             };
                 List<SignUpIdType> lst = new List<SignUpIdType>();
                 lst = signUpIdTypeList;
