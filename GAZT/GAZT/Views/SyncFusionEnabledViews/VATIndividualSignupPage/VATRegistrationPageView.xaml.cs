@@ -70,7 +70,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         }
 
-    private void SetLTR()
+        public void ClearFinancialRepresentativeData()
+        {
+            EntryTINNumber.Text = string.Empty;
+            DateEntryFR.Text = string.Empty;
+            EntryFirstName.Text = string.Empty;
+            EntryLastName.Text = string.Empty;
+            EntryEmail.Text = string.Empty;
+            EntryPhoneNumber.Text = string.Empty;
+            EntryIDNo.Text = string.Empty;
+            
+        }
+
+        private void SetLTR()
         {
             if (!App.IsArabic)
             {
@@ -1241,7 +1253,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             else
             {
-
+              
                 if (EntryTINNumber.Text.Substring(0, 1) != "3")
                 {
                     if (EntryTINNumber.Text.Length != 10)
@@ -1257,10 +1269,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnID_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(EntryTINNumber.Text))
-            {
-                DDlIDType.IsOpen = true;
-            }
+            // Code commented to implement as per web
+            //if (string.IsNullOrEmpty(EntryTINNumber.Text))
+            //{
+            //    DDlIDType.IsOpen = true;
+            //}
+            DDlIDType.IsOpen = true;
         }
 
         private void DDlIDType_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -1275,7 +1289,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-
+            ClearFinancialRepresentativeData();
         }
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
@@ -1662,11 +1676,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
-                viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
-                EntryTINNumber.Text = string.Empty;
-                EntryIDNo.Text = string.Empty;
-
+                if(viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
+                {
+                    EntryTINNumber.IsEnabled = true;
+                    viewModel.IDTypeIndexFR = 0;
+                    viewModel.TxtIDTypeFR = string.Empty;
+                }
+                else
+                {
+                    viewModel.TxtIDTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].Name;
+                    viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR[viewModel.IDTypeIndexFR];
+                    EntryTINNumber.Text = string.Empty;
+                    EntryIDNo.Text = string.Empty;
+                    EntryTINNumber.IsEnabled = false;
+                }
             }
             catch (Exception ex)
             {

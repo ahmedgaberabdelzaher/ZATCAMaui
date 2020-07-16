@@ -1932,7 +1932,9 @@
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
                                                     </Grid.RowDefinitions>
+
                                                     <StackLayout Grid.Row="0">
+
                                                         <Label Text="{x:Static custom2:AppResources.TIN}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmTINNumber" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -1944,13 +1946,16 @@
                                                                 </Entry.Behaviors>
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
+
                                                     </StackLayout>
+
                                                     <StackLayout Grid.Row="1">
                                                         <Grid>
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto"/>
                                                                 <RowDefinition Height="auto"/>
                                                             </Grid.RowDefinitions>
+
                                                             <Label Grid.Row="0"  Text="{x:Static custom2:AppResources.ZZIDType}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                             <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
@@ -1967,7 +1972,9 @@
                                                                     </Image>
                                                                 </StackLayout>
                                                             </inputLayout:SfTextInputLayout>
+
                                                             <custom:CustomButton  Grid.Row="1" x:Name="btnID" Clicked="btnID_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="10,0,10,0"/>
+
                                                             <syncfusion:SfPicker x:Name="DDlIDType" Grid.Row="1"
                                     HeaderHeight="40" ShowHeader="true" HeaderText="{x:Static local:AppResources.ZZIDType}"
                                     HeaderTextColor="White"
@@ -1977,7 +1984,7 @@
                               HeaderBackgroundColor="#006450"
                         SelectedItemTextColor="#006450"
                         BorderColor="Black"
-                                                  OKButtonTextColor="#006450"      
+                                                 OKButtonTextColor="#006450"      
                                                  CancelButtonTextColor="#006450"
                                                  ShowColumnHeader="False"
                                                  ShowFooter="True"
@@ -1993,9 +2000,11 @@
                                                                     <custom1:SfPickerBehavior />
                                                                 </syncfusion:SfPicker.Behaviors>
                                                             </syncfusion:SfPicker>
+
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2">
+
                                                         <Label Text="{x:Static custom2:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
@@ -2078,6 +2087,7 @@
                                                         </Grid>
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="4">
+
                                                         <Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>
                                                         <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" x:Name="FrmFirstName" UnfocusedColor="#B1B1B1"
