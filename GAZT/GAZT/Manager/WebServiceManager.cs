@@ -5928,6 +5928,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var serilized = JsonConvert.SerializeObject(vATSignUpSubmit);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
