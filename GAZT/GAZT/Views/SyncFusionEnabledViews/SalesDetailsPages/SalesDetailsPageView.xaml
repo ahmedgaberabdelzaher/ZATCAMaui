@@ -76,13 +76,13 @@
                                 <CheckBox x:Name="checkBox" Grid.Row="0" Grid.Column="0"  VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
                                 <GAZT:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" Text="{x:Static custom2:AppResources.ZZDeclarationText}" VerticalOptions="Start" IsVisible="{Binding DesClaimerVisibility}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></GAZT:CustomLabel>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.BillDetails}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAcceptReturnButtonClicked}"  Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.Submit}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Command="{Binding OnSubmitButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding SubmitButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                      FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                                 <buttons:SfButton Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="{x:Static custom2:AppResources.Confirm}" HorizontalOptions="FillAndExpand" VerticalOptions="End"  Clicked="OnConfirmButtonClicked"   Style="{StaticResource SfButtonStyle}"  IsVisible="{Binding ConfirmButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
+                    FontFamily="{StaticResource GAZT_FONT_BOLD}"></buttons:SfButton>
                             </Grid>
                         </ScrollView>
                     </Grid>
