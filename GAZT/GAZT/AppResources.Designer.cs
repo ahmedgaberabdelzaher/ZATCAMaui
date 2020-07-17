@@ -885,6 +885,528 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accounting Method.
+        /// </summary>
+        public static string FORM5AccountingMethod {
+            get {
+                return ResourceManager.GetString("FORM5AccountingMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity Profit.
+        /// </summary>
+        public static string FORM5ActivityProfit {
+            get {
+                return ResourceManager.GetString("FORM5ActivityProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicable.
+        /// </summary>
+        public static string FORM5Applicable {
+            get {
+                return ResourceManager.GetString("FORM5Applicable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Applicable Rules &amp; Regulations.
+        /// </summary>
+        public static string FORM5ApplicableRuleRegulations {
+            get {
+                return ResourceManager.GetString("FORM5ApplicableRuleRegulations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average Daily Income(SAR).
+        /// </summary>
+        public static string FORM5AvgDailyIncome {
+            get {
+                return ResourceManager.GetString("FORM5AvgDailyIncome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Based on minimum Profit.
+        /// </summary>
+        public static string FORM5BasedMiniProfit {
+            get {
+                return ResourceManager.GetString("FORM5BasedMiniProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Information.
+        /// </summary>
+        public static string FORM5BasicInformation {
+            get {
+                return ResourceManager.GetString("FORM5BasicInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you Pay the Bill amount above you can obtain the certificate automatically.
+        /// </summary>
+        public static string FORM5BillAmtAboveObtainCertificate {
+            get {
+                return ResourceManager.GetString("FORM5BillAmtAboveObtainCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sadad Bill No:.
+        /// </summary>
+        public static string FORM5BillNum {
+            get {
+                return ResourceManager.GetString("FORM5BillNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Branch.
+        /// </summary>
+        public static string FORM5Branch {
+            get {
+                return ResourceManager.GetString("FORM5Branch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cabs.
+        /// </summary>
+        public static string FORM5Cabs {
+            get {
+                return ResourceManager.GetString("FORM5Cabs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar Type.
+        /// </summary>
+        public static string FORM5CalendarType {
+            get {
+                return ResourceManager.GetString("FORM5CalendarType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear.
+        /// </summary>
+        public static string FORM5Dear {
+            get {
+                return ResourceManager.GetString("FORM5Dear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declaration.
+        /// </summary>
+        public static string FORM5Declaration {
+            get {
+                return ResourceManager.GetString("FORM5Declaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Electronic Mail.
+        /// </summary>
+        public static string FORM5ElectronicMail {
+            get {
+                return ResourceManager.GetString("FORM5ElectronicMail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expenses(SAR).
+        /// </summary>
+        public static string FORM5Expenses {
+            get {
+                return ResourceManager.GetString("FORM5Expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Financial Information.
+        /// </summary>
+        public static string FORM5FinancialInfo {
+            get {
+                return ResourceManager.GetString("FORM5FinancialInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finanical Period Ending (DD-MM).
+        /// </summary>
+        public static string FORM5FinancialPeriodEnd {
+            get {
+                return ResourceManager.GetString("FORM5FinancialPeriodEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finanical Year.
+        /// </summary>
+        public static string FORM5FinanicalYear {
+            get {
+                return ResourceManager.GetString("FORM5FinanicalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For the Period From :.
+        /// </summary>
+        public static string FORM5ForPeriod {
+            get {
+                return ResourceManager.GetString("FORM5ForPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here to Generate Objection.
+        /// </summary>
+        public static string FORM5GenerateObjection {
+            get {
+                return ResourceManager.GetString("FORM5GenerateObjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Taxi Office.
+        /// </summary>
+        public static string FORM5GenTaxiOffice {
+            get {
+                return ResourceManager.GetString("FORM5GenTaxiOffice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Individual Activity Details.
+        /// </summary>
+        public static string FORM5IndividualActiDetails {
+            get {
+                return ResourceManager.GetString("FORM5IndividualActiDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoice Letter.
+        /// </summary>
+        public static string FORM5InvoiceLetter {
+            get {
+                return ResourceManager.GetString("FORM5InvoiceLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is the above Registration Details are Correct?.
+        /// </summary>
+        public static string FORM5IsCorrect {
+            get {
+                return ResourceManager.GetString("FORM5IsCorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item.
+        /// </summary>
+        public static string FORM5Item {
+            get {
+                return ResourceManager.GetString("FORM5Item", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main Outlets.
+        /// </summary>
+        public static string FORM5MainOutlet {
+            get {
+                return ResourceManager.GetString("FORM5MainOutlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Profit(SAR).
+        /// </summary>
+        public static string FORM5NetProfit {
+            get {
+                return ResourceManager.GetString("FORM5NetProfit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Profit %.
+        /// </summary>
+        public static string FORM5NetProfitPer {
+            get {
+                return ResourceManager.GetString("FORM5NetProfitPer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Applicable.
+        /// </summary>
+        public static string FORM5NotApplicable {
+            get {
+                return ResourceManager.GetString("FORM5NotApplicable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. Of Branch.
+        /// </summary>
+        public static string FORM5NumBranch {
+            get {
+                return ResourceManager.GetString("FORM5NumBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No. of Employees or Labours.
+        /// </summary>
+        public static string FORM5NumEmployees {
+            get {
+                return ResourceManager.GetString("FORM5NumEmployees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Cars.
+        /// </summary>
+        public static string FORM5NumOfCars {
+            get {
+                return ResourceManager.GetString("FORM5NumOfCars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Occupancy Rate %.
+        /// </summary>
+        public static string FORM5OccupancyRate {
+            get {
+                return ResourceManager.GetString("FORM5OccupancyRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Outlet Name.
+        /// </summary>
+        public static string FORM5OutletName {
+            get {
+                return ResourceManager.GetString("FORM5OutletName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Outlets.
+        /// </summary>
+        public static string FORM5OutletNum {
+            get {
+                return ResourceManager.GetString("FORM5OutletNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period.
+        /// </summary>
+        public static string FORM5Period {
+            get {
+                return ResourceManager.GetString("FORM5Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We Have Received Your Return With Reference Number :.
+        /// </summary>
+        public static string FORM5RecivedReturn {
+            get {
+                return ResourceManager.GetString("FORM5RecivedReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Information.
+        /// </summary>
+        public static string FORM5RegistrationInfo {
+            get {
+                return ResourceManager.GetString("FORM5RegistrationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Residency Status.
+        /// </summary>
+        public static string FORM5ResidencyStatus {
+            get {
+                return ResourceManager.GetString("FORM5ResidencyStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return.
+        /// </summary>
+        public static string FORM5Return {
+            get {
+                return ResourceManager.GetString("FORM5Return", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Details.
+        /// </summary>
+        public static string FORM5ReturnDetails {
+            get {
+                return ResourceManager.GetString("FORM5ReturnDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return Declared by Taxpayer.
+        /// </summary>
+        public static string FORM5ReturnReclaTaxpayer {
+            get {
+                return ResourceManager.GetString("FORM5ReturnReclaTaxpayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Revenue(SAR).
+        /// </summary>
+        public static string FORM5Revenue {
+            get {
+                return ResourceManager.GetString("FORM5Revenue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAR.
+        /// </summary>
+        public static string FORM5SAR {
+            get {
+                return ResourceManager.GetString("FORM5SAR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Share in Persons Companies.
+        /// </summary>
+        public static string FORM5ShareInCompanies {
+            get {
+                return ResourceManager.GetString("FORM5ShareInCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have Share in other Companies?(SAR).
+        /// </summary>
+        public static string FORM5ShareInOtherCompanies {
+            get {
+                return ResourceManager.GetString("FORM5ShareInOtherCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taxpayer.
+        /// </summary>
+        public static string FORM5Taxpayer {
+            get {
+                return ResourceManager.GetString("FORM5Taxpayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It is Taxpayer Responsibility to Provide a Correct data Since it is going to affect liabilities calculation.
+        /// </summary>
+        public static string FORM5TaxpayerRespon {
+            get {
+                return ResourceManager.GetString("FORM5TaxpayerRespon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To:.
+        /// </summary>
+        public static string FORM5To {
+            get {
+                return ResourceManager.GetString("FORM5To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To Date.
+        /// </summary>
+        public static string FORM5ToDate {
+            get {
+                return ResourceManager.GetString("FORM5ToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total of Annual Salary(SAR).
+        /// </summary>
+        public static string FORM5TotalAnnualSalary {
+            get {
+                return ResourceManager.GetString("FORM5TotalAnnualSalary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Zakat Payable:.
+        /// </summary>
+        public static string FORM5TotalZakatPayable {
+            get {
+                return ResourceManager.GetString("FORM5TotalZakatPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yearly Rent(SAR).
+        /// </summary>
+        public static string FORM5YearlyRent {
+            get {
+                return ResourceManager.GetString("FORM5YearlyRent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Base(SAR).
+        /// </summary>
+        public static string FORM5ZakatBase {
+            get {
+                return ResourceManager.GetString("FORM5ZakatBase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Estimation.
+        /// </summary>
+        public static string FORM5ZakatEstimation {
+            get {
+                return ResourceManager.GetString("FORM5ZakatEstimation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Payable.
+        /// </summary>
+        public static string FORM5ZakatPayable {
+            get {
+                return ResourceManager.GetString("FORM5ZakatPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakat Rules and Conditions.
+        /// </summary>
+        public static string FORM5ZakatRulesConditions {
+            get {
+                return ResourceManager.GetString("FORM5ZakatRulesConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome,.
         /// </summary>
         public static string Hi {
@@ -1727,6 +2249,15 @@ namespace EGAZT {
         public static string StartChatting {
             get {
                 return ResourceManager.GetString("StartChatting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         
