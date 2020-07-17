@@ -29,7 +29,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             SetLTR();
+           viewModel.AttachmentList=new ObservableCollection<VATAttachment>();
             onPageLoad(vATRegistrationDetails);
+
 
         }
 
@@ -38,24 +40,33 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IsComeFromForAttachment = VATRegistrationPageViewModel.IsComeFromForAttachment;
             if (vATRegistrationDetails!=null && vATRegistrationDetails.d!=null)
             {
-               
                 viewModel.VATRegistrationDetailsForAttach = vATRegistrationDetails;
                 SetDocType();
-                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
+                if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet != null && viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results != null)
+                {
+                    if (viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Count != 0)
                     {
                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
                         viewModel.VatAttachmentsList = myCollection;
-                        int AttachmentCount = 0;
-                        foreach (var item in viewModel.VatAttachmentsList)
+
+                        try
                         {
-                                    if (item.Erfdt != null && item.Erftm!=null)
-                                    {
-                                        item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                        item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                                    }
+                            foreach (var item in viewModel.VatAttachmentsList)
+                            {
+                                if (item.Erfdt != null && item.Erftm != null)
+                                {
+                                    item.Erfdt = JsonConvert.DeserializeObject<DateTime>(@"""" + item.Erfdt + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                    item.Erfdt = Convert.ToDateTime(item.Erfdt).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                                }
+                            }
                         }
-                    viewModel.filterList();
-                    viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                        catch (Exception)
+                        {
+                        }
+
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
+                    }
                 }
             }
         }
@@ -66,6 +77,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             MessagingCenter.Send<Object, ATTDETSet>(this, "AttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet);
             //comment because main button remains enabled
             //  viewModel.IsSwichButtonEnable = false;
+            viewModel.IsLoading = false;
         }
         public void SetDocType()
         {
@@ -88,9 +100,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         viewModel.DocTypeString = "ZVTC";
                     }
-                }
-
-               
+                }               
             }
             else if(viewModel.IsComeFromForAttachment == IsComeFromForAttachment.Export)
             {
@@ -115,7 +125,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
         }
 
         //private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
@@ -149,31 +159,49 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                     try
                     {
-                        Image arrowImage = sender as Image;
+                    await Task.Run(() =>
+                    {
+                       viewModel.IsLoading = true;
+                    });
+                    Image arrowImage = sender as Image;
                         VATAttachment attachment = (VATAttachment)arrowImage.BindingContext;
                         //if (!attachment.DeleteImageSource.Equals("ic_Delete_disabled.png"))
                         //{
                            
                                 if (attachment != null)
-                                {
-                                    var result = await this.DisplayAlert(AppResources.ZZDELETEFILE, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
-                                    DeleteAttachment(result, attachment);
+                    {//ZZNotification
+                        var result = await this.DisplayAlert(AppResources.ZZNotification, AppResources.ZZDeleteAttachmentConfirmationText + " " + attachment.Filename + "?", AppResources.ZZZOkayText, AppResources.ZZCancel);
+                                    
+                                    await DeleteAttachment(result, attachment);
                                 }
-                           
-                        //}
-                    }
-                    catch (Exception ex)
-                    {
 
-                    }
+                    //}
+                    await Task.Run(() =>
+                    {
+                       viewModel.IsLoading = false;
+                    });
+                }
+                    catch (Exception ex)
+                {
+                    await Task.Run(() =>
+                    {
+                        viewModel.IsLoading = false;
+                    });
+
+                }
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel.IsLoading = false;
+                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
 
 
@@ -204,12 +232,26 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                                          select itm)
                                             .FirstOrDefault<VATAttachment>();
 
-                            viewModel.VatAttachmentsList.Remove(listitem);
-                            viewModel.AttachmentList.Remove(listitemTwo);
+                            if(listitem!=null)
+                                viewModel.VatAttachmentsList.Remove(listitem);
+                       
+
+
+
+                            if (listitemTwo != null)
+                                viewModel.AttachmentList.Remove(listitemTwo);
+                            
                             viewModel.VATRegistrationDetailsForAttach.d.ATTDETSet.results.Remove(listitem);
+
+
                             //if (indexToReduceTheSize != -1)
-                               // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                            // viewModel.ReduceTotalAttachmentSize(indexToReduceTheSize);
+                           viewModel.AttachmentCount--;
+                           viewModel.filterList();
+                            viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                         }
+                        viewModel.filterList();
+                        viewModel.CloneAttachmentList(viewModel.VatAttachmentsListtofilter);
                     }
                 });
                 await Task.Run(() =>
@@ -219,7 +261,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                viewModel.IsLoading = false;
             }
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
         }
         public void PopToRootPage()
         {
@@ -239,19 +286,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
         {
-            if(viewModel.IsSwitchToggled)
+            if(!viewModel.IsSwitchToggled)
             {
                 viewModel.DocTypeString = "ZVTC";
                 viewModel.filterList();
                 viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
-                viewModel.IsSwitchToggled = false;
+                viewModel.IsSwitchToggled = true;
             }
             else
             {
                 viewModel.DocTypeString = "ZVTB";
                 viewModel.filterList();
                 viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
-                viewModel.IsSwitchToggled = true;
+                viewModel.IsSwitchToggled = false;
             }
         }
         }

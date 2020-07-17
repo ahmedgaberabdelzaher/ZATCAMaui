@@ -20,8 +20,11 @@
              <Color x:Key="ForgotPasswordGrayTextColor">#7D858D</Color>
              <Color x:Key="EntryTextColor">#5D6770</Color>
             <Color x:Key="LightGreenColor">#CCE0DC</Color>
+            <Color x:Key="VATRegistrationEntryTextColor">#bbbbbb</Color>
             <x:String x:Key="Back">&#xe709;</x:String>
             <x:String x:Key="ReverseBack">&#xe71a;</x:String>
+
+
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
@@ -92,6 +95,7 @@
                  <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
+
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -101,6 +105,7 @@
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
+
             <Style x:Key="MicroGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -355,6 +360,7 @@
                  <!--<Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />-->
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
+
             <Style x:Key="PickerStyle" x:Name="PickerStyle" TargetType="Picker">
                 <Setter Property="FontSize">
                     <Setter.Value>
@@ -679,6 +685,130 @@
             <Style x:Key="StyleCheckBoxValidatorGreen" TargetType="CheckBox">
                 <Setter Property="Color" Value="Green"/>
             </Style>
+
+
+               <!-- VAT SignUp and VAT Registration Styles Starts  -->
+
+              <!-- Used for Heading-->
+            <Style x:Key="GAZTMediumBlackLabel" x:Name="GAZTMediumBlackLabel" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+             <!-- Used for Descrption in gold color-->
+             <Style x:Key="GAZTSmallGoldLabel" x:Name="GAZTSmallGoldLabel" TargetType="Label">
+                <!-- Micro font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+              <!-- Used for Descrption in gray color-->
+            <Style x:Key="GAZTMicroGrayLabel" x:Name="GAZTMicroGrayLabel" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+            <!-- Used for Checkbox label  in gray color-->
+            <Style x:Key="GAZTMicroMediumGrayLabel" x:Name="GAZTMicroMediumGrayLabel" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+
+            <!-- Used for SubHeading with bold font in medium font-->
+            <Style x:Key="GAZTSmallBlackLbl" x:Name="GAZTSmallBlackLbl" TargetType="Label">
+                <!-- Small font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+            <!-- Used for label which has corressponding value with medium font in medium font-->
+            <Style x:Key="GAZTSmallBlackLblMediumFont" x:Name="GAZTSmallBlackLblMediumFont" TargetType="Label">
+                <!-- Small font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+             <!-- Used  to show value coreessponding to label value with medium font in medium font-->
+            <Style x:Key="GAZTSmallGrayLblMediumFont" x:Name="GAZTSmallGrayLblMediumFont" TargetType="Label">
+                <!-- Small font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+
+
+             <Style x:Key="GAZTCaptionBlackLabel" x:Name="GAZTSmallBlackLabel" TargetType="Label">
+                <!-- Caption font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+
+            <Style x:Key="GAZTEntry" TargetType="Entry">
+              <Setter Property="HorizontalTextAlignment" Value="Start" />
+              <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+              <Setter Property="FontSize" Value="Small" />
+              <Setter Property="TextColor" Value="{DynamicResource VATRegistrationEntryTextColor}" />
+            </Style>
+
+
+            <Style x:Key="GAZTPicker" x:Name="GAZTPicker" TargetType="Picker">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
+            </Style>
+
+            <!--heading - medium
+            subheading - Small bold
+            label - small medium bold
+            entrytext size
+            description-->
+               <!-- VAT SignUp and VAT Registration Styles End  -->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

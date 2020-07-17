@@ -63,11 +63,11 @@
                         <Frame BackgroundColor="Transparent" Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                            
                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Image Source="re_Tile_Background.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        <Image x:Name="re_Property_Tile"  Source="{Binding ImagePropertyTile}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
 
                                />
-                                <Image Source="re_Property_Registration.png" HorizontalOptions="Start" Margin="20,-20,20,0"/>
-                            <Label Text="{x:Static local:AppResources.ZVATRealEstatePropertyRegistration}" Margin="20,50,20,0" TextColor="{StaticResource WhiteTextColor}"
+                                <Image x:Name= "re_Property_Registration" Source="{Binding ImagePropertyIcon}"  HorizontalOptions="Start" Margin="20,-20,20,0"/>
+                            <Label Text="{x:Static local:AppResources.ZVATRealEstatePropertyRegistration}" Margin="20,50,20,0" TextColor="{Binding PropertyTileColor}"
                            HorizontalOptions="Start" VerticalOptions="Center" FontSize="10"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"/>
                               </Grid>
                     <Frame.GestureRecognizers>
@@ -80,9 +80,9 @@
                         <Frame BackgroundColor="Transparent"  Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                            
                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Image Source="re_Tile_Background_White.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                                <Image Source="re_Request_Verification.png"  HorizontalOptions="Start" Margin="20,-15,20,0"/>
-                            <Label Text="{x:Static local:AppResources.ZVATRealEstateRequestVerification}" Margin="20,50,20,0"  TextColor="#006450"
+                        <Image x:Name="re_Request_Tile"  Source="{Binding ImageRequestTile}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Image x:Name="re_Request_Icon"  Source="{Binding ImageRequestIcon}"  HorizontalOptions="Start" Margin="20,-15,20,0"/>
+                            <Label Text="{x:Static local:AppResources.ZVATRealEstateRequestVerification}" Margin="20,50,20,0"  TextColor="{Binding RequestTileColor}"
                            HorizontalOptions="Start" VerticalOptions="Center" HorizontalTextAlignment="Center" Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontSize="10"  FontFamily="{StaticResource SSTArabicMedium}"/>
                               </Grid>
                     <Frame.GestureRecognizers>
@@ -95,9 +95,9 @@
                <Frame BackgroundColor="Transparent"  Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                    
                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Image Source="re_Tile_Background_White.png" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-                                <Image Source="re_Termination_Request.png"  HorizontalOptions="Start" Margin="20,-15,20,0"/>
-                         <Label HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZVATRealEstateTerminationOfRequest}" Margin="20,55,20,0"  TextColor="#006450"
+                        <Image x:Name="re_Termination_Tile" Source="{Binding ImageTerminationTile}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                <Image x:Name="re_Termination_Icon"  Source="{Binding ImageTerminationIcon}" HorizontalOptions="Start" Margin="20,-15,20,0"/>
+                         <Label HorizontalTextAlignment="Start" Text="{x:Static local:AppResources.ZVATRealEstateTerminationOfRequest}" Margin="20,55,20,0"  TextColor="{Binding TerminateTileColor}"
                            HorizontalOptions="Start" VerticalOptions="Center" FontSize="10" LineBreakMode="NoWrap"  Style="{StaticResource LabelStyleFromCommonGrayStyle}" FontFamily="{StaticResource SSTArabicMedium}"/>
                 
                               </Grid>

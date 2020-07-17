@@ -32,18 +32,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             NewAccountPopUpPageViewModel.ValidTypeIban = string.Empty;
             this.BindingContext = viewModel;
             viewModel.IbanNumberText = Iban;
-            if(string.IsNullOrEmpty(viewModel.IbanNumberText))
+            string SAremovedIban = Iban.Replace("SA", string.Empty);
+            if (string.IsNullOrEmpty(viewModel.IbanNumberText))
             {
-                viewModel.AccountText = "New Account";
+                viewModel.AccountText = AppResources.ZTERNewAccount;
             }
             else
             {
-                viewModel.AccountText = "Edit Account";
-                viewModel.IbanPartOne= Iban.Substring(0, 2);
-                viewModel.IbanPartTwo = Iban.Substring(2, 8);
-                viewModel.IbanPartThree = Iban.Substring(9, 4);
-                viewModel.IbanPartFour = Iban.Substring(13,4);
-                viewModel.IbanPartFive = Iban.Substring(17, 4);
+                viewModel.AccountText = AppResources.VATREditAccount;
+                viewModel.IbanPartOne= SAremovedIban.Substring(0, 2);
+                viewModel.IbanPartTwo = SAremovedIban.Substring(2, 8);
+                viewModel.IbanPartThree = SAremovedIban.Substring(9, 4);
+                viewModel.IbanPartFour = SAremovedIban.Substring(13,4);
+                viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
                 //Bind Iban and remove name
             }
             SetLTR();
@@ -128,6 +129,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IbanNumberText = string.Empty;
             viewModel.IbanNumberText = "SA"+viewModel.IbanPartOne + viewModel.IbanPartTwo + viewModel.IbanPartThree + viewModel.IbanPartFour + viewModel.IbanPartFive;
             Checked_IBAN();
+        }
+
+        private void Close_Tapped(object sender, EventArgs e)
+        {
+          
+                PopupNavigation.Instance.PopAsync();
+           
         }
     }
 }

@@ -29,6 +29,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
                 <!--<Image x:Name="imgCheck" HorizontalOptions="CenterAndExpand">
@@ -45,11 +46,11 @@
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">
                 <StackLayout>
-                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0">
+                    <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" HasShadow="False" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label   Text="{x:Static local:AppResources.TINS}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
+                            <Label   Text="{x:Static local:AppResources.TINS}" VerticalOptions="Center" FontSize="12" TextColor="#909090" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding TINnumber}" TextColor="Black"/>
+                                <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="#010101" Text="{Binding TINnumber}" />
                                 <Image x:Name="Image_Copy">
                                     <Image.Source>
                                         <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -62,14 +63,15 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZProceedtoVATregistration}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                    <!--<buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZProceedtoVATregistration}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="56" Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />
+                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />--> 
                     <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZProceedtoHomescreen}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
                 </StackLayout>
             </yummy:PancakeView>
         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>

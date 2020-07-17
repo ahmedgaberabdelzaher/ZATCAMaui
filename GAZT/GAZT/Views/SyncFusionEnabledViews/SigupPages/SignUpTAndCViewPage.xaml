@@ -85,7 +85,7 @@
                  CornerRadius="0"
                     HeightRequest="56"
                     HorizontalOptions="EndAndExpand"
-                    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" Opacity="0.7"
+                    Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450" 
                     Text="{x:Static local:AppResources.ZZProceedtoindividualSignup}"
                     IsEnabled="{Binding IsButtonEnabled}"
                     Command="{Binding OnSubmitClicked}" 

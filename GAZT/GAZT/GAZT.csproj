@@ -77,13 +77,13 @@
     <EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AppResources.ar.Designer.cs">
+      <DependentUpon>AppResources.ar.resx</DependentUpon>
+    </Compile>
     <Compile Update="AppResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="AppResources.ar.Designer.cs">
-      <DependentUpon>AppResources.ar.resx</DependentUpon>
     </Compile>
     <Compile Update="SyncfusionControl.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -95,6 +95,9 @@
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
       <DependentUpon>SFLandingPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SyncFusionEnabledViews\Onboarding\OnBoardingAnimationPageView.xaml.cs">
+      <DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">
       <DependentUpon>SFOptionsPage.xaml</DependentUpon>
@@ -152,9 +155,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationSuccessfullPageView.xaml">

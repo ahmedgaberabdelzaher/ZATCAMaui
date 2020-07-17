@@ -45,15 +45,15 @@
                          
                         </Image>
                     </Grid>
-                    <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="Large" TextColor="Black" 
+                    <Label Text="{x:Static local:AppResources.ZTERNewAccount}"  FontSize="22" TextColor="Black" 
                        FontFamily="{StaticResource SSTArBold}"/>
-                    <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontFamily="{StaticResource SSTArBold}"/>
+                    <Label  Text="{x:Static local:AppResources.ZZZZSelectthetypeofEntity}" FontSize="16" FontFamily="{StaticResource SSTArBold}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,25"/>
                     <Grid Padding="0"><!--BackgroundColor="DarkGreen"-->
                         <Image x:Name="image_individual_tile" Grid.Row="0" Grid.Column="0"  Source="{Binding ImageIndividualTile}" Aspect="AspectFill"/>
                         <Frame Margin="5" CornerRadius="5" BackgroundColor="Transparent" HeightRequest="100">
                             <!--Text="Individual Registration"-->
-                            
+
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>
@@ -66,27 +66,21 @@
 
                                 <Image x:Name="image_individual_icon" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageIndividualIcon }" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}"  TextColor="{Binding IndividualTileColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                           VerticalOptions="End" FontSize="14" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
-                                </Frame.GestureRecognizers>
-                            
+                                <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
+                            </Frame.GestureRecognizers>
                         </Frame>
-                        
-                        <!--<Frame CornerRadius="5" BackgroundColor="#006450" HeightRequest="100">--><!--Text="Individual Registration"--><!--
-                            <Label  Text="{x:Static local:AppResources.ZZZZIndividualSignupinVAT}" TextColor="{StaticResource WhiteTextColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding IndividualRegistrationCommand}"/>
-                    </Frame.GestureRecognizers>
-                </Frame>-->
-                </Grid>
-                    <Grid Padding="0">
-                        <!--BackgroundColor="DarkGreen"-->
+                    </Grid>
+                
+                
+               <!--Establishment signup block-->
+                    <!--<Grid Padding="0">
+                       
                         <Image x:Name="image_estimated_tile" Grid.Row="0" Grid.Column="0"   Source="{Binding ImageEstimatedTile}" Aspect="AspectFill"/>
                         <Frame CornerRadius="5" Margin="5" BackgroundColor="Transparent"  HeightRequest="100">
-                            <!--Text="Individual Registration"-->
+                       
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="70*"/>
@@ -98,7 +92,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0"  Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding ImageEstimatedIcon}" Aspect="AspectFit"/>
                                 <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{x:Static local:AppResources.ZZZZestablishmentsignup}"  TextColor="{Binding EstimatedTileColor}"
-                           VerticalOptions="End" FontFamily="{StaticResource SSTArBold}"/>
+                           VerticalOptions="End" FontSize="14" FontFamily="{StaticResource SSTArBold}"/>
                             </Grid>
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding EstablishmentSignupCommand}"/>
@@ -106,7 +100,8 @@
                           
                         </Frame>
                             
-                    </Grid>
+                    </Grid>-->
+                    <!--Establishment signup block-->
                 </StackLayout>
         </yummy:PancakeView>
             <Grid Grid.Row="0"    Grid.Column="0"   IsVisible="{Binding IsLoading}" >

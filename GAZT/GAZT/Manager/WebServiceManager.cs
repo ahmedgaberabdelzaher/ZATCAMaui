@@ -5908,8 +5908,12 @@ namespace GAZT.Manager
             {
                 try
                 {
+                    string LangZ = GetLangZParameterAREN();
+        
+                 
+
                     VATSignUpSubmit vatSignUpSubmit = new VATSignUpSubmit();
-                    string url = Constants.GAZTGetCreateVATSignUp;
+                    string url = Constants.GAZTGetCreateVATSignUp + LangZ;
                     var uri = new Uri(url);
 
                     try
@@ -5924,6 +5928,7 @@ namespace GAZT.Manager
 
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
 
                     var serilized = JsonConvert.SerializeObject(vATSignUpSubmit);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
@@ -5959,7 +5964,7 @@ namespace GAZT.Manager
                 {
                     Char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='"+ "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
+                    String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     var uri = new Uri(url);
@@ -5989,7 +5994,7 @@ namespace GAZT.Manager
                         }
                         String VatRegistrationData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
                         vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
-                        if(!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails==null)
+                        if (!string.IsNullOrEmpty(VatRegistrationData) && vATRegistrationDetails.d == null)
                         {
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -6000,11 +6005,15 @@ namespace GAZT.Manager
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
                                 //ErrorMessageForVAT
-                                throw new Exception(errorMessage);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
                     return vATRegistrationDetails;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception ex)
                 {
@@ -6101,16 +6110,41 @@ namespace GAZT.Manager
                     {
                         if (vATRegistration.d != null)
                         {
-                            RequestVATRegistration = vATRegistration;
+                            //if (vATRegistration.d.ELGBL_DOCSet != null)
+                            //{
 
+
+                            //    //foreach (var item in vATRegistration.d.ELGBL_DOCSet.results)
+                            //    //{
+                            //    //    if (item.Txt50 == null)
+                            //    //    {
+                            //    //        item.Txt50 = string.Empty;
+                            //    //    }
+                            //    //}
+                            //}
+                                RequestVATRegistration = vATRegistration;
+
+                            ELGBL_DOCSet eLGBL_DOCSet = new ELGBL_DOCSet();
+                            eLGBL_DOCSet.results = new List<ResultsItemForElgblDocSet>();
+                            RequestVATRegistration.d.ELGBL_DOCSet = eLGBL_DOCSet;
                             //RequestVATDeclaration.d.SubmitFg = "";
                             ATTDETSet aTTACHSet = new ATTDETSet();
                             aTTACHSet.results = new List<Attachment>();
                             RequestVATRegistration.d.ATTDETSet = aTTACHSet;
+                            //if (vATRegistration.d.VatTaxDt == null)
+                            //{
+                            //    vATRegistration.d.VatTaxDt = "";
+                            //}
+                            
+
                         }
+
+                        //string url = Constants.GAZTSignUpFirstSubmit;
+                        string LangZAREN = GetLangZParameterAREN();
+
                         char LangZ = GetLangZParameter();
                         string lang = UtilityManager.GetLanguageParameter();
-                        String url = Constants.SaveVATRegistration;
+                        String url = Constants.SaveVATRegistration+ LangZAREN;
                         vATRegistration.d.Langz = lang;
                         var uri = new Uri(url);
                         HttpClient client = new HttpClient(App.httpClientHandler);
@@ -6190,6 +6224,10 @@ namespace GAZT.Manager
                                     qUESLIST.results = new List<string>();
                                     _vATRegistration.d.QUESLISTSet = qUESLIST;
                                 }
+
+                               
+
+
                             }
                         }
                         if (_vATRegistration == null || _vATRegistration.d == null)
@@ -6202,12 +6240,18 @@ namespace GAZT.Manager
                                 String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                                 //ErrorMessageForVAT
+                                throw new GAZTVATRegistrationInProcessException(ErrorMessageForVAT);
                             }
                         }
                         return _vATRegistration;
                     }
                     return _vATRegistration;
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
                 catch (Exception ex)
                 {
                     return null;

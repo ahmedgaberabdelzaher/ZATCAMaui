@@ -2361,7 +2361,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tin Number.
+        ///   Looks up a localized string similar to TIN Number.
         /// </summary>
         public static string TINS {
             get {
@@ -2640,11 +2640,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please check the declaration to proceed to submit the information.
+        /// </summary>
+        public static string VATRAcceptDeclarationToSubmit {
+            get {
+                return ResourceManager.GetString("VATRAcceptDeclarationToSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Account.
         /// </summary>
         public static string VATRAccount {
             get {
                 return ResourceManager.GetString("VATRAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Additional Information.
+        /// </summary>
+        public static string VATRAdditionalInformation {
+            get {
+                return ResourceManager.GetString("VATRAdditionalInformation", resourceCulture);
             }
         }
         
@@ -2658,11 +2676,47 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attachment Category.
+        /// </summary>
+        public static string VATRAttachmentCategory {
+            get {
+                return ResourceManager.GetString("VATRAttachmentCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attachments are mandatory for Non-Eligible Taxpayers, Please submit the supporting documents as proof of your VAT eligibility. Otherwise, it is highly likely that you will be audited over the course of next 6 months.
         /// </summary>
         public static string VATRAttachmentMandatory {
             get {
                 return ResourceManager.GetString("VATRAttachmentMandatory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Account.
+        /// </summary>
+        public static string VATRBankAccount {
+            get {
+                return ResourceManager.GetString("VATRBankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Person Name.
+        /// </summary>
+        public static string VATRContactPersonName {
+            get {
+                return ResourceManager.GetString("VATRContactPersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Account.
+        /// </summary>
+        public static string VATREditAccount {
+            get {
+                return ResourceManager.GetString("VATREditAccount", resourceCulture);
             }
         }
         
@@ -2721,6 +2775,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go to login page.
+        /// </summary>
+        public static string VATRgotologinpage {
+            get {
+                return ResourceManager.GetString("VATRgotologinpage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Greater than.
         /// </summary>
         public static string VATRGreaterThan {
@@ -2748,7 +2811,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import or  Exporter.
+        ///   Looks up a localized string similar to Importer  Exporter.
         /// </summary>
         public static string VATRImportExport {
             get {
@@ -2802,6 +2865,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter valid Tin..
+        /// </summary>
+        public static string VATRPleaseEnterValidTin {
+            get {
+                return ResourceManager.GetString("VATRPleaseEnterValidTin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to In the upcoming 12 months [Including this month],What will be your total VAT taxable sales value?.
         /// </summary>
         public static string VATRQuesComming12monthVATSalesTax {
@@ -2825,6 +2897,15 @@ namespace EGAZT {
         public static string VATRSAppNumber {
             get {
                 return ResourceManager.GetString("VATRSAppNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your application will be saved in draft and you should complete it within the next 20 business days otherwise it will be automatically cancelled and you need to resubmit a fresh application.
+        /// </summary>
+        public static string VATRSaveasdraftMessage {
+            get {
+                return ResourceManager.GetString("VATRSaveasdraftMessage", resourceCulture);
             }
         }
         
@@ -2861,6 +2942,60 @@ namespace EGAZT {
         public static string VATRSRegistrationSuccessful {
             get {
                 return ResourceManager.GetString("VATRSRegistrationSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 1.
+        /// </summary>
+        public static string VATRStep1 {
+            get {
+                return ResourceManager.GetString("VATRStep1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 2.
+        /// </summary>
+        public static string VATRStep2 {
+            get {
+                return ResourceManager.GetString("VATRStep2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 3.
+        /// </summary>
+        public static string VATRStep3 {
+            get {
+                return ResourceManager.GetString("VATRStep3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 4.
+        /// </summary>
+        public static string VATRStep4 {
+            get {
+                return ResourceManager.GetString("VATRStep4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Step 5.
+        /// </summary>
+        public static string VATRStep5 {
+            get {
+                return ResourceManager.GetString("VATRStep5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Form cancelled successfully, Form Bundle number .
+        /// </summary>
+        public static string VATRSuccessFullVoidMessage {
+            get {
+                return ResourceManager.GetString("VATRSuccessFullVoidMessage", resourceCulture);
             }
         }
         
@@ -2937,11 +3072,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uploading documents for.
+        /// </summary>
+        public static string VATRUploadingDocumentsFor {
+            get {
+                return ResourceManager.GetString("VATRUploadingDocumentsFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Eligible Start Date.
         /// </summary>
         public static string VATRVATEligibleStartDate {
             get {
                 return ResourceManager.GetString("VATRVATEligibleStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to cancel the registration?.
+        /// </summary>
+        public static string VATRVoidConfirmationMessage {
+            get {
+                return ResourceManager.GetString("VATRVoidConfirmationMessage", resourceCulture);
             }
         }
         
@@ -4127,7 +4280,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number), soon you will receive GAZT response..
+        ///   Looks up a localized string similar to The report is submitted successfully with reference number (Report Number),  you will receive GAZT response within 10 working days..
         /// </summary>
         public static string ZTEReportReportSuccessResponsep1 {
             get {

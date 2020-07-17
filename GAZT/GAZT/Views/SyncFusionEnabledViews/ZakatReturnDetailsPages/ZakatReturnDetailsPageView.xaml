@@ -240,20 +240,20 @@
                     </StackLayout>-->
                     <StackLayout Grid.Column="0" Grid.Row="1" Orientation="Vertical" VerticalOptions="EndAndExpand" Spacing="1">
                         <buttons:SfButton Text="{x:Static local:AppResources.SalesDetails}" Command="{Binding OnSalesDetailsClicked}"  Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
 
                         <buttons:SfButton Text="{x:Static local:AppResources.ChangeFromEstimateToAccountingBasis}" Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"  Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}"></buttons:SfButton>
+                     FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}"></buttons:SfButton>
 
 
                        
 
                         <!--Command="{Binding OnSalesDetailsClicked}"-->
                         <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Clicked="OnBillsButtonClicked"   Style="{StaticResource SfButtonStyle}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56" IsVisible="{Binding SalesDetailsAndReleaseButtonVisibility}" BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
+                      FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
                         <!--Command="{Binding OnBillsButtonClicked}"-->
                          <buttons:SfButton Text="{x:Static local:AppResources.AmendReturn}" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Command="{Binding OnAmendReturnButtonClicked}"   Style="{StaticResource SfButtonStyle}" IsVisible="{Binding AmedmentButtonVisibility}" Margin="0" CornerRadius="0" Padding="0" HeightRequest="56"  BackgroundColor="#006450"
-                     Opacity="0.7" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
+                      FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="14"></buttons:SfButton>
                     </StackLayout>
                 </Grid>
              <!-- Acticity indicator layout start -->

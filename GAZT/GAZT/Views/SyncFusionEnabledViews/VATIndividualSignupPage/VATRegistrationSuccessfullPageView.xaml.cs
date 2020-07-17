@@ -7,7 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -31,8 +31,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     Label_Name.Text = response.d.TinNm;
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
-
-                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.GoLiveDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
+                    string StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + response.d.VatTaxDt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     //Label_Date.Text = response.d.GoLiveDt;
                     Label_Date.Text = StartdateToshow;
                 }
@@ -50,8 +49,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
             // Added by Divya
-            viewModel._navigationService.NavigateTo(App.SFLandingPageView);
+            //  viewModel._navigationService.NavigateTo(App.SFLandingPageView);
+            App.TP = null;
+            viewModel.LogOut();
+        }
 
+        private async void Image_Copy_Tapped(object sender, EventArgs e)
+        {
+                Clipboard.SetTextAsync(Label_ApplicationNumber.Text);
+                if (Clipboard.HasText)
+            {
+                var text = await Clipboard.GetTextAsync();
+                var displayText = AppResources.VATRSAppNumber + " " + text;
+                viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                }
+           
         }
     }
 }
