@@ -91,12 +91,12 @@
                                         <ScrollView HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never">
                                             <StackLayout BackgroundColor="White">
 
-                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" FontFamily="{StaticResource GAZT_FONT_BOLD}" FontSize="Large" TextColor="Black"/>
+                                                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATREInstructionsandConditions}" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0"/>
 
-                                                <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Margin="0"/>
+                                                <Label HorizontalTextAlignment="Start" TextColor="#d49504" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Margin="0">
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTSmallGoldLabel}"  Margin="0">
                                                     <Label.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}"/>
@@ -113,65 +113,65 @@
                                                 </custom:CustomLabel>
 
                                                 
-                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="1."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions1}"  FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="1."  />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions1}"  />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="2."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions2}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="2."   FontSize="11"/>
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions2}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="3."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span  Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions3}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="3." />
+                                                            <Span  Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions3}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="4."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions4}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="4."  />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions4}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  VerticalOptions="EndAndExpand" Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="5."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions5}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="5." />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions5}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  HorizontalOptions="StartAndExpand"  VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="6."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions6}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="6."  />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions6}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource MicroGrayLabelStyleNewEn}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTMicroGrayLabel}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="7."  FontFamily="{StaticResource SSTArLight}" FontSize="11"/>
-                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions7}" FontFamily="{StaticResource GAZT_FONT_REGULAR}" FontSize="11"/>
+                                                            <Span Text="7."  />
+                                                            <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditions7}" />
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
@@ -184,10 +184,10 @@
                                                             </DataTrigger>
                                                         </CheckBox.Triggers>
                                                     </CheckBox>
-                                                    <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}">
+                                                    <custom:CustomLabel   Style="{StaticResource GAZTMicroMediumGrayLabel}">
                                                         <custom:CustomLabel.FormattedText>
                                                             <FormattedString>
-                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="12"/>
+                                                                <Span Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsAgreeCondition}"  />
                                                             </FormattedString>
                                                         </custom:CustomLabel.FormattedText>
                                                     </custom:CustomLabel>
@@ -351,8 +351,8 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <StackLayout Grid.Row="0">
-                                            <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                                            <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                            <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" Style="{StaticResource GAZTMediumBlackLabel}" FontFamily="{StaticResource GAZT_FONT_BOLD}"  VerticalOptions="Center"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+                                            <Label Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" Style="{StaticResource GAZTSmallBlackLbl}"/>
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
                                         </StackLayout>
                                         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never" >
@@ -376,11 +376,11 @@
                                                 <!--Start Of Read Only or pre-populated-->
 
                                                 <StackLayout Grid.Row="0">
-                                                    <Label  Text="{x:Static custom2:AppResources.TIN}" Padding="0,0,0,0" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                    <Label  Text="{x:Static custom2:AppResources.TIN}" Padding="0,0,0,0" Style="{StaticResource GAZTCaptionBlackLabel}"/>
                                                     <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
-                                                        <custom:BorderlessEntry Text="{Binding Gpartz}" FontSize="Small" IsReadOnly="True" 
+                                                        <custom:BorderlessEntry Text="{Binding Gpartz}" FontSize="Small" IsReadOnly="True" Style="{StaticResource GAZTEntry}"
                                                             Placeholder="{x:Static custom2:AppResources.TINS}" TextColor="#bbbbbb" >
                                                             <Entry.Behaviors>
                                                                 <custom1:OnlyNumericValuesBehaviour/>
