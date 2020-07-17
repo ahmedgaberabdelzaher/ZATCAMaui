@@ -2371,14 +2371,14 @@
                                                         <custom:CustomLabel Grid.Row="5" Grid.Column="1" >
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="(0966)" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
-                                                                    <Span   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.MobNumberFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                                    <Span Text="(0966)" TextColor="Black"  />
+                                                                    <Span   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.MobNumberFR}" />
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
 
-                                                        <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SmtpAddrFR}" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                        <Label Grid.Row="6" Grid.Column="0"  Text="{x:Static custom2:AppResources.Email}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                                        <Label Grid.Row="6" Grid.Column="1"   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.SmtpAddrFR}" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
                                                     </Grid>
                                                 </StackLayout>
                                             </Frame>
