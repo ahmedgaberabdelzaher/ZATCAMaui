@@ -20,8 +20,11 @@
              <Color x:Key="ForgotPasswordGrayTextColor">#7D858D</Color>
              <Color x:Key="EntryTextColor">#5D6770</Color>
             <Color x:Key="LightGreenColor">#CCE0DC</Color>
+            <Color x:Key="VATRegistrationEntryTextColor">#bbbbbb</Color>
             <x:String x:Key="Back">&#xe709;</x:String>
             <x:String x:Key="ReverseBack">&#xe71a;</x:String>
+
+
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
@@ -693,7 +696,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -706,7 +709,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -718,7 +721,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -730,7 +733,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -743,10 +746,36 @@
                  <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
+
+            <!-- Used for label which has corressponding value with medium font in medium font-->
+            <Style x:Key="GAZTSmallBlackLblMediumFont" x:Name="GAZTSmallBlackLblMediumFont" TargetType="Label">
+                <!-- Small font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+             <!-- Used  to show value coreessponding to label value with medium font in medium font-->
+            <Style x:Key="GAZTSmallGrayLblMediumFont" x:Name="GAZTSmallGrayLblMediumFont" TargetType="Label">
+                <!-- Small font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+
 
              <Style x:Key="GAZTCaptionBlackLabel" x:Name="GAZTSmallBlackLabel" TargetType="Label">
                 <!-- Caption font-->
@@ -754,7 +783,7 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Margin" Value="0,0,0,0" />
                 <Setter Property="Padding" Value="0,0,0,0"/>
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->    <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -764,7 +793,7 @@
               <Setter Property="HorizontalTextAlignment" Value="Start" />
               <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
               <Setter Property="FontSize" Value="Small" />
-              <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+              <Setter Property="TextColor" Value="{DynamicResource VATRegistrationEntryTextColor}" />
             </Style>
 
 
