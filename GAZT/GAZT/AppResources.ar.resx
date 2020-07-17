@@ -4021,4 +4021,180 @@
     <value>أنت مؤهل لضريبة القيمة المضافة</value>
     <comment>VATRegistrationPageView</comment>
   </data>
+  <data name="FORM5AccountingMethod" xml:space="preserve">
+    <value>Accounting Method</value>
+  </data>
+  <data name="FORM5ActivityProfit" xml:space="preserve">
+    <value>Activity Profit</value>
+  </data>
+  <data name="FORM5Applicable" xml:space="preserve">
+    <value>Applicable</value>
+  </data>
+  <data name="FORM5ApplicableRuleRegulations" xml:space="preserve">
+    <value>Applicable Rules &amp; Regulations</value>
+  </data>
+  <data name="FORM5AvgDailyIncome" xml:space="preserve">
+    <value>Average Daily Income(SAR)</value>
+  </data>
+  <data name="FORM5BasedMiniProfit" xml:space="preserve">
+    <value>Based on minimum Profit</value>
+  </data>
+  <data name="FORM5BasicInformation" xml:space="preserve">
+    <value>Basic Information</value>
+    <comment>FORM5</comment>
+  </data>
+  <data name="FORM5BillAmtAboveObtainCertificate" xml:space="preserve">
+    <value>If you Pay the Bill amount above you can obtain the certificate automatically</value>
+  </data>
+  <data name="FORM5BillNum" xml:space="preserve">
+    <value>Sadad Bill No:</value>
+  </data>
+  <data name="FORM5Branch" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="FORM5Cabs" xml:space="preserve">
+    <value>Cabs</value>
+  </data>
+  <data name="FORM5CalendarType" xml:space="preserve">
+    <value>Calendar Type</value>
+  </data>
+  <data name="FORM5Dear" xml:space="preserve">
+    <value>Dear</value>
+  </data>
+  <data name="FORM5Declaration" xml:space="preserve">
+    <value>Declaration</value>
+  </data>
+  <data name="FORM5ElectronicMail" xml:space="preserve">
+    <value>Electronic Mail</value>
+  </data>
+  <data name="FORM5Expenses" xml:space="preserve">
+    <value>Expenses(SAR)</value>
+  </data>
+  <data name="FORM5FinancialInfo" xml:space="preserve">
+    <value>Financial Information</value>
+  </data>
+  <data name="FORM5FinancialPeriodEnd" xml:space="preserve">
+    <value>Finanical Period Ending (DD-MM)</value>
+  </data>
+  <data name="FORM5FinanicalYear" xml:space="preserve">
+    <value>Finanical Year</value>
+  </data>
+  <data name="FORM5ForPeriod" xml:space="preserve">
+    <value>For the Period From :</value>
+  </data>
+  <data name="FORM5GenerateObjection" xml:space="preserve">
+    <value>Click here to Generate Objection</value>
+  </data>
+  <data name="FORM5GenTaxiOffice" xml:space="preserve">
+    <value>General Taxi Office</value>
+  </data>
+  <data name="FORM5IndividualActiDetails" xml:space="preserve">
+    <value>Individual Activity Details</value>
+  </data>
+  <data name="FORM5InvoiceLetter" xml:space="preserve">
+    <value>Invoice Letter</value>
+    <comment>FORM5</comment>
+  </data>
+  <data name="FORM5IsCorrect" xml:space="preserve">
+    <value>Is the above Registration Details are Correct?</value>
+  </data>
+  <data name="FORM5Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="FORM5MainOutlet" xml:space="preserve">
+    <value>Main Outlets</value>
+  </data>
+  <data name="FORM5NetProfit" xml:space="preserve">
+    <value>Net Profit(SAR)</value>
+  </data>
+  <data name="FORM5NetProfitPer" xml:space="preserve">
+    <value>Net Profit %</value>
+  </data>
+  <data name="FORM5NotApplicable" xml:space="preserve">
+    <value>Not Applicable</value>
+  </data>
+  <data name="FORM5NumBranch" xml:space="preserve">
+    <value>No. Of Branch</value>
+  </data>
+  <data name="FORM5NumEmployees" xml:space="preserve">
+    <value>No. of Employees or Labours</value>
+  </data>
+  <data name="FORM5NumOfCars" xml:space="preserve">
+    <value>Number of Cars</value>
+  </data>
+  <data name="FORM5OccupancyRate" xml:space="preserve">
+    <value>Occupancy Rate %</value>
+  </data>
+  <data name="FORM5OutletName" xml:space="preserve">
+    <value>Outlet Name</value>
+  </data>
+  <data name="FORM5OutletNum" xml:space="preserve">
+    <value>Number Of Outlets</value>
+  </data>
+  <data name="FORM5Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="FORM5RecivedReturn" xml:space="preserve">
+    <value>We Have Received Your Return With Reference Number :</value>
+  </data>
+  <data name="FORM5RegistrationInfo" xml:space="preserve">
+    <value>Registration Information</value>
+  </data>
+  <data name="FORM5ResidencyStatus" xml:space="preserve">
+    <value>Residency Status</value>
+  </data>
+  <data name="FORM5Return" xml:space="preserve">
+    <value>Return</value>
+  </data>
+  <data name="FORM5ReturnDetails" xml:space="preserve">
+    <value>Return Details</value>
+  </data>
+  <data name="FORM5ReturnReclaTaxpayer" xml:space="preserve">
+    <value>Return Declared by Taxpayer</value>
+  </data>
+  <data name="FORM5Revenue" xml:space="preserve">
+    <value>Revenue(SAR)</value>
+  </data>
+  <data name="FORM5SAR" xml:space="preserve">
+    <value>SAR</value>
+  </data>
+  <data name="FORM5ShareInCompanies" xml:space="preserve">
+    <value>Share in Persons Companies</value>
+  </data>
+  <data name="FORM5ShareInOtherCompanies" xml:space="preserve">
+    <value>Do you have Share in other Companies?(SAR)</value>
+  </data>
+  <data name="FORM5Taxpayer" xml:space="preserve">
+    <value>Taxpayer</value>
+  </data>
+  <data name="FORM5TaxpayerRespon" xml:space="preserve">
+    <value>It is Taxpayer Responsibility to Provide a Correct data Since it is going to affect liabilities calculation</value>
+  </data>
+  <data name="FORM5To" xml:space="preserve">
+    <value>To:</value>
+  </data>
+  <data name="FORM5ToDate" xml:space="preserve">
+    <value>To Date</value>
+  </data>
+  <data name="FORM5TotalAnnualSalary" xml:space="preserve">
+    <value>Total of Annual Salary(SAR)</value>
+  </data>
+  <data name="FORM5TotalZakatPayable" xml:space="preserve">
+    <value>Total Zakat Payable:</value>
+  </data>
+  <data name="FORM5YearlyRent" xml:space="preserve">
+    <value>Yearly Rent(SAR)</value>
+  </data>
+  <data name="FORM5ZakatBase" xml:space="preserve">
+    <value>Zakat Base(SAR)</value>
+  </data>
+  <data name="FORM5ZakatEstimation" xml:space="preserve">
+    <value>Zakat Estimation</value>
+  </data>
+  <data name="FORM5ZakatPayable" xml:space="preserve">
+    <value>Zakat Payable</value>
+  </data>
+  <data name="FORM5ZakatRulesConditions" xml:space="preserve">
+    <value>Zakat Rules and Conditions</value>
+  </data>
 </root>
