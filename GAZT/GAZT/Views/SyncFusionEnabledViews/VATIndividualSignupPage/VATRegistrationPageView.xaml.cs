@@ -1289,7 +1289,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DDlIDType_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
-            ClearFinancialRepresentativeData();
+            //ClearFinancialRepresentativeData();
         }
 
         private void EntryIDNo_TextChanged(object sender, TextChangedEventArgs e)
@@ -1676,7 +1676,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                if(viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
+                ClearFinancialRepresentativeData();
+                if (viewModel.IdTypeListFR[viewModel.IDTypeIndexFR].ID.Equals("00000"))
                 {
                     EntryTINNumber.IsEnabled = true;
                     viewModel.IDTypeIndexFR = 0;
