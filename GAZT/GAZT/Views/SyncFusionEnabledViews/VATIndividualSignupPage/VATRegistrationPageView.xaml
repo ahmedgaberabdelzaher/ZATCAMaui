@@ -2016,7 +2016,7 @@
                                                         <Label Text="{x:Static custom2:AppResources.IDNumber}"  Style="{StaticResource GAZTCaptionBlackLabel}"></Label>
 
 
-                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" Style="{StaticResource GAZTCaptionBlackLabel}" IsVisible="{Binding IDNumberMandatoryVisibility}">
+                                                        <Label  Style="{StaticResource GAZTCaptionBlackLabel}" IsVisible="{Binding IDNumberMandatoryVisibility}">
                                                               <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{x:Static local:AppResources.IDNumber}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
@@ -2028,7 +2028,7 @@
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmIDNo" Margin="0,-6,0,-6" 
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameIDError}">
-                                                            <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}" FontFamily="{StaticResource SSTArabicMedium}"  Unfocused="EntryIDNo_Unfocused"   MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry x:Name="EntryIDNo" Text="{Binding IdnumberFR}" FontFamily="{StaticResource SSTArabicMedium}"  Unfocused="EntryIDNo_Unfocused"  Keyboard="Numeric"  MaxLength="{Binding MaxLengthID}" IsSpellCheckEnabled="False"
                                                             TextChanged="EntryIDNo_TextChanged" Placeholder="{x:Static local:AppResources.IDNumber}" Style="{StaticResource GAZTEntry}">
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
@@ -2473,7 +2473,7 @@
                                                         <inputLayout:SfTextInputLayout  x:Name="FrmContactIDNumber" Margin="0,-6,0,-6" 
                                         ContainerType="Outlined" UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameContactIDError}">
-                                                            <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  TextChanged="EntryContactIDNumber_TextChanged" Unfocused="EntryContactIDNumber_Unfocused" Style="{StaticResource GAZTEntry}"  IsSpellCheckEnabled="False"
+                                                            <custom:BorderlessEntry Text="{Binding IdNumberSR}" MaxLength="{Binding MaxLengthIDSR}" x:Name="EntryContactIDNumber"  TextChanged="EntryContactIDNumber_TextChanged" Unfocused="EntryContactIDNumber_Unfocused" Style="{StaticResource GAZTEntry}"  IsSpellCheckEnabled="False" Keyboard="Numeric"
                                                              Placeholder="{x:Static custom2:AppResources.IDNumber}"  >
                                                                 <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
