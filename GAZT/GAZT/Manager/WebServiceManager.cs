@@ -1775,6 +1775,90 @@ namespace GAZT.Manager
                 return null;
             }
         }
+        #region
+        public static ObservableCollection<InternationalMobileData> GAZTGetMobileRegionDropdown()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                ObservableCollection<InternationalMobileData> internationalCodes = new ObservableCollection<InternationalMobileData>();
+                string NewToken = string.Empty;
+                try
+                {
+                    string lang = UtilityManager.GetLanguageParameter();
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras" + " eq " + "'" + lang + "'" + " &$format=json";
+                    //String url = "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/Z_REG_DROPDOWN_SRV/CountryCodeSet?$filter=Spras%20eq%20%27AR%27&$format=json";
+                    //String url = Constants.GAZTGetVATRegistrationData + "',PortalUsrz='" + "',Langz='" + lang + "',Officerz='" + "',Gpartz='" + App.LoginDataRetrieved.TIN + "',TxnTpz='" + "04" + "',Euser='" + "" + "',Fbguid='" + "" + "'" + ")?&$expand=ADDRESSSet,IBANSet,ATTDETSet,CONTACT_PERSONSet,CONTACTDTSet,NOTESSet,QUESTIONSSet,QUESLISTSet,QUESCONFIG_MSet,ELGBL_DOCSet&$format=json";
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url);
+                    HttpResponseMessage GAZTVATRegistrationDataResponse = client.GetAsync(uri).Result;
+                    if (GAZTVATRegistrationDataResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        // String InternationalMobileData = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
+
+                        //internationalCodes = JsonConvert.DeserializeObject<InternationalMobileData>(InternationalMobileData);
+
+                        String GAZTMyBillsResponseJSON = GAZTVATRegistrationDataResponse.Content.ReadAsStringAsync().Result;
+                        if (!string.IsNullOrEmpty(GAZTMyBillsResponseJSON))
+                        {
+                            GAZTMyBillsResponseJSON = JObject.Parse(GAZTMyBillsResponseJSON)["d"].ToString();
+                            string GAZTMyBillsResponseJSONJToken = JObject.Parse(GAZTMyBillsResponseJSON)["results"].ToString();
+                            if (string.IsNullOrEmpty(GAZTMyBillsResponseJSONJToken) != true)
+                            {
+                                internationalCodes = JsonConvert.DeserializeObject<ObservableCollection<InternationalMobileData>>(GAZTMyBillsResponseJSONJToken);
+                                //internationalCodes = JsonConvert.DeserializeObject<InternationalMobileData>(GAZTMyBillsResponseJSONJToken);
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.NoBillsAvailable);
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception(AppResources.NoBillsAvailable);
+                        }
+                    }
+                    return internationalCodes;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+        #endregion
         //done internet exception handling
         public static async Task<List<IBANIDNumber>> GAZTGetIBANIdNumber(string IBANType)
         {

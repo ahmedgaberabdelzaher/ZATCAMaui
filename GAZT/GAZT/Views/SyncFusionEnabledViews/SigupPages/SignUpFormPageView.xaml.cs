@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
+using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
@@ -41,6 +42,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 //  viewModel.OnPageLoad();
                 //  DDlIDType.SelectedIndex = 0;
                 viewModel.TxtLOrCIssuedBy = string.Empty;
+                viewModel.TxtCountryCode = "+966";
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    IntnlCodes.Margin = new Thickness(0);
+                }
+                else
+                {
+                    IntnlCodes.Margin = new Thickness(10, -12, 10, -12);
+                }
                 //ddlLIssuedBy.SelectedIndex = -1;
                 ChangeAeroIcon();
                 SetLTR();
@@ -156,14 +166,29 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         {
             base.OnAppearing();
 
-           //await viewModel.SetDefaultDate();
-           // ClearFields();
-           // await viewModel.OnPageLoad();
-           //await  viewModel.SetIssueIdList();
-           //await  viewModel.SetCityList();
-             
-           // viewModel.PkrDBO = string.Empty;
-           // viewModel.TxtLOrCIssuedBy = string.Empty;
+            MessagingCenter.Subscribe<InternationalMobileNumberCodePages, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                IntnlCodes.Text = arg;
+                viewModel.TxtCountryCode = arg;
+            });
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+             {
+                IntnlCodes.Margin =  new Thickness(10,-12,10,-12);
+             }
+                
+            //await viewModel.SetDefaultDate();
+            // ClearFields();
+            // await viewModel.OnPageLoad();
+            //await  viewModel.SetIssueIdList();
+            //await  viewModel.SetCityList();
+
+            // viewModel.PkrDBO = string.Empty;
+            // viewModel.TxtLOrCIssuedBy = string.Empty;
         }
         public void ClearFields()
         {
@@ -191,6 +216,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             viewModel.TxtCRNumber = string.Empty;
             viewModel.TxtLicenseNumber = string.Empty;
             viewModel.TxtEmailAddress = string.Empty;
+            viewModel.TxtCountryCode = string.Empty;
+
             viewModel.TxtMobileNumber = string.Empty;
             viewModel.TxtPhoneNumber = string.Empty;
            
@@ -198,6 +225,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             //viewModel.Captcha = string.Empty;
             // DpDbo.Date = NullableDateProperty;
             //  viewModel.PkrDBO = null;
+
             viewModel.IDTypeModelRootObject = null;
             viewModel.SignUpFirstSubmitModel = null;
             viewModel.MaximumxD = DateTime.Now;
@@ -451,8 +479,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                if (viewModel.SelectedSignUpUsing.ID == 1)
+                                        string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                                        SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                        // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                        if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
                                     SiguupModel.AIdtype = "ZS0001";
                                 }
@@ -678,8 +708,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                if (viewModel.SelectedSignUpUsing.ID == 1)
+
+                                    string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                                    SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                    // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+                                    if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
                                     SiguupModel.AIdtype = "ZS0001";
                                 }
@@ -928,7 +961,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             }
                             SiguupModel.AEmail = viewModel.TxtEmailAddress;
                             SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                            SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+                            string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                            SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                            // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                             if (viewModel.SelectedSignUpUsing.ID == 1)
                             {
                                 SiguupModel.AIdtype = "ZS0001";
@@ -1149,7 +1185,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                             }
                             SiguupModel.AEmail = viewModel.TxtEmailAddress;
                             SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                            SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+                            string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                            SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                            // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
                             if (viewModel.SelectedSignUpUsing.ID == 1)
                             {
                                 SiguupModel.AIdtype = "ZS0001";
@@ -1330,8 +1369,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
-                                if (viewModel.SelectedSignUpUsing.ID == 1)
+
+                                    string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                                    SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                    // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+                                    if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
                                     SiguupModel.AIdtype = "ZS0001";
                                 }
@@ -1546,7 +1589,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 SiguupModel.AEmail = viewModel.TxtEmailAddress;
                                 SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-                                SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+                                string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+                                SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+                                // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
                                 if (viewModel.SelectedSignUpUsing.ID == 1)
                                 {
                                     SiguupModel.AIdtype = "ZS0001";
@@ -1731,7 +1778,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             }
             SiguupModel.AEmail = viewModel.TxtEmailAddress;
             SiguupModel.APhone = "00966" + viewModel.TxtPhoneNumber;
-            SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
+            string newCountryCodeString = viewModel.TxtCountryCode.Replace("+", "00");
+            SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
+            // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
+
             if (viewModel.SelectedSignUpUsing.ID == 1)
             {
                 SiguupModel.AIdtype = "ZS0001";
@@ -2123,17 +2174,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void EntryMobileNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
-            {
-                if (EntryMobileNumber.Text.Substring(0, 1) != "5")
-                {
-                    FrmMobileNumber.HasError = true;
-                }
-                else
-                {
-                    FrmMobileNumber.HasError = false;
-                }
-            }
+            //if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
+            //{
+            //    if (EntryMobileNumber.Text.Substring(0, 1) != "5")
+            //    {
+            //        FrmMobileNumber.HasError = true;
+            //    }
+            //    else
+            //    {
+            //        FrmMobileNumber.HasError = false;
+            //    }
+            //}
         }
         private void EntryPhoneNumber_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -2558,7 +2609,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
-            if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
+          /*  if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
                 StringBuilder Message = new StringBuilder();
                 PopUp popUp = new PopUp();
@@ -2595,7 +2646,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     FrmMobileNumber.HasError = false;
                 }
-            }
+            } */
         }
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -3069,6 +3120,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
             {
                 FrmName.HasError = false;
             }
+        }
+        private void MobileCodes_Clicked(object sender, EventArgs e)
+        {
+            viewModel._navigationService.NavigateTo(App.InternationalMobileNumberCodePages);
         }
         private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

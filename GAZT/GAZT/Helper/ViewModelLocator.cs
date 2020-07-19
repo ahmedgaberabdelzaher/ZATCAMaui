@@ -22,6 +22,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
@@ -76,6 +77,7 @@ using EGAZT.Views.SyncFusionEnabledViews.FAQPage;
 using EGAZT.Views.SyncFusionEnabledViews.ForgotUsernamePassword;
 using EGAZT.Views.SyncFusionEnabledViews.FormBundleStatus;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
+using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
 using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
@@ -177,6 +179,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
+            SimpleIoc.Default.Register<InternationalMobileNumberCodePagesViewModel>();
+
 
             SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
             SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
@@ -223,6 +227,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public InternationalMobileNumberCodePagesViewModel InternationalMobileNumberCodePages
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1177,6 +1196,9 @@ namespace EGAZT
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
             navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
+
+            navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
+
             return navigationService;
         }
     }
