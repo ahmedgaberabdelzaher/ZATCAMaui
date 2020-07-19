@@ -2717,11 +2717,10 @@
     <value>حالة البلاغ</value>
     <comment>Tax Evasion Report Service</comment>
   </data>
-    <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
-      <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
+  <data name="ZTEReportReportSuccessResponsep1" xml:space="preserve">
+    <value>تم تقديم البلاغ بنجاح برقم مرجعي (Report Number)، سوف تتلقى رد الهيئة خلال10  أيام عمل</value>
     <comment>Tax Evasion Report Service</comment>
-  </data> 
-
+  </data>
   <data name="ZTEReportReportSuccessResponsep2" xml:space="preserve">
     <value>الرجاء ادخال جميع تفاصيل البلاغ قبل تقديمه</value>
     <comment>Tax Evasion Report Service</comment>
@@ -3554,7 +3553,7 @@
     <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>تم التسجيل الى خدمات الهيئة العامة للزكاة والدخل بنجاح . لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
+    <value>تم التسجيل في خدمات الهيئة العامة للزكاة والدخل بنجاح . لتسجيل الدخول الرجاء استخدام الرقم المميز الخاص بك</value>
     <comment>New SignUp</comment>
   </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
