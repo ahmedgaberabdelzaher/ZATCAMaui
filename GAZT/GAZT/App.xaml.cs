@@ -94,7 +94,10 @@ namespace EGAZT
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
-        
+
+        public static string InternationalMobileNumberCodePages = "InternationalMobileNumberCodePages";
+
+
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
         public static string fontFamilyBold = null;
