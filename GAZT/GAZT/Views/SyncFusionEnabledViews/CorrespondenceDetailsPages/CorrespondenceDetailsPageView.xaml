@@ -10,7 +10,7 @@
              Title="{x:Static local:AppResources.ZZCorrespondence}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.CorrespondenceDetails.CorrespondenceDetailsPageView"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="White">
+                 BackgroundColor="#005e4b">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="{Binding FavIcon}" Order="Primary" Priority="0" Command="{Binding OnFavClicked}" />
     </ContentPage.ToolbarItems>-->
