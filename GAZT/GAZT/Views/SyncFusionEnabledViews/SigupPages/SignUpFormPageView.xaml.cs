@@ -3123,7 +3123,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
         }
         private void MobileCodes_Clicked(object sender, EventArgs e)
         {
+           
             viewModel._navigationService.NavigateTo(App.InternationalMobileNumberCodePages);
+
+
         }
         private void DpDbo_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

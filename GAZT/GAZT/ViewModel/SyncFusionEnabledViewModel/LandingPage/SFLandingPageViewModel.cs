@@ -536,7 +536,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
 
                 }
             }
-                   }
+        }
         /// <summary>
         /// Invoked when an item is selected.
         /// </summary>
@@ -845,12 +845,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 ComingToOTPVerificationScreenFromAndNavigatingTo tesmobnoscreen = new ComingToOTPVerificationScreenFromAndNavigatingTo();
                 tesmobnoscreen.tes = "1";
                 tesmobnoscreen._ComingToOTPVerificationScreenFrom = ComingToOTPVerificationScreenFrom.IsTes;
-                
+
                 if (App.TP != null && App.TP.Mobile != null)
                 {
                     mobno = App.TP.Mobile;
 
-                    if(mobno.StartsWith("00"))
+                    if (mobno.StartsWith("00"))
                     {
                         mobno = mobno.Remove(0, 2);
                         mobno = "+" + mobno;
@@ -950,43 +950,58 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         public async void PopulateeServicesApplicableToTheTaxPayer()
         {
             //Call the API to get the eSevrices applicable to the TP
-            eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
-            if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
-            {
-                UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
-                UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
-                string[] TpTypes = DashboardData.results[0].TpType.Split(',');
-                foreach (string ItemType in TpTypes)
-                {
-                    if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
-                    {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
-                    }
-                    if (ItemType == "03" || ItemType == "13")
-                    {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
-                    }
-                }
-            }
-
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Bills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Certificates, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
-
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
-
-            //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
-            //Tax Evasion Section
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
-            //Tax Evasion Section
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
-            //TaxRegistration
-            //If tehe value is "X" that means the registration of the user is completed and hence we will not show the Tile.
 
             try
             {
-                if(App.LoginDataRetrieved.VtReg == null)
+                eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
+
+                if (DashboardData != null)
+                {
+                    if (DashboardData.results[0].TpType != null && DashboardData.results[0].TpType != "")
+                    {
+                        UtilityManager.TPTaxAvalable = DashboardData.results[0].TpType;
+                        UtilityManager.IsZakatAvailable = DashboardData.results[0].EstimateZkat;
+                        string[] TpTypes = DashboardData.results[0].TpType.Split(',');
+                        foreach (string ItemType in TpTypes)
+                        {
+                            if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
+                            {
+                                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+                            }
+                            if (ItemType == "03" || ItemType == "13")
+                            {
+                                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                            }
+                        }
+                    }
+
+                }
+
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Bills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Certificates, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
+
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
+
+                //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
+                //Tax Evasion Section
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
+                //Tax Evasion Section
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
+                //TaxRegistration
+                //If tehe value is "X" that means the registration of the user is completed and hence we will not show the Tile.
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+
+            try
+            {
+                if (App.LoginDataRetrieved.VtReg == null)
                 {
                     eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
                 }

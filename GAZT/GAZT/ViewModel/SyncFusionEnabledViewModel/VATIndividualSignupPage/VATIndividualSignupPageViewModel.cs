@@ -186,7 +186,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 IsLoading = true;
                 ImageEstimatedTile= "vat_tile_listofsignup.png";
                 ImageEstimatedIcon = "vat_new_Establishment_W.png";
-
+                EstimatedTileColor = Color.White;
             });
 
             Device.BeginInvokeOnMainThread(() =>

@@ -379,6 +379,9 @@ HeaderTextColor="White"
              <FontImageSource FontFamily="UserIconFont" Color="Black" Size="15"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                     </Image.Source>
+            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                            </Image.GestureRecognizers>
                                                                 </Image>
              <custom:CustomButton HorizontalOptions="FillAndExpand" VerticalOptions="End" TextColor="Black"
                            Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="MobileCodes_Clicked"

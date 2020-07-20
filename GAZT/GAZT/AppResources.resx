@@ -4271,6 +4271,13 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
   <data name="FORM5ZakatRulesConditions" xml:space="preserve">
     <value>Zakat Rules and Conditions</value>
   </data>
+      <data name="InternationalCountryCode" xml:space="preserve">
+    <value>Country Code</value>
+  </data>
+       <data name="InternationalCountryCodeSearch" xml:space="preserve">
+    <value>Search Country code</value>
+  </data>
+           
   <data name="String1" xml:space="preserve">
     <value />
   </data>
