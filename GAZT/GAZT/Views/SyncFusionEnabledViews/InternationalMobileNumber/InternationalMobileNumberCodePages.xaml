@@ -37,7 +37,7 @@
         <SearchBar x:Name="searchBar"
                    HorizontalOptions="Fill"
                    VerticalOptions="CenterAndExpand"
-                   Placeholder="{x:Static local:AppResources.InternationalCountryCodeSearch}"
+                   Placeholder="{x:Static local:AppResources.InternationalCodeSearch}"
                    CancelButtonColor="Blue"
                    
                    PlaceholderColor="Gray"

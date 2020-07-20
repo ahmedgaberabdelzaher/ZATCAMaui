@@ -4251,7 +4251,7 @@
    <data name="InternationalCountryCode" xml:space="preserve">
     <value>رمز الدولة</value>
   </data>
-       <data name="InternationalCountryCodeSearch" xml:space="preserve">
+       <data name="InternationalCodeSearch" xml:space="preserve">
     <value>البحث عن رمز الدولة</value>
   </data>
 </root>
