@@ -3853,6 +3853,7 @@
     <value>غير خاضع</value>
     <comment>VatRegistration</comment>
   </data>
+
   <data name="ZZZZEligibilitylableTestvr" xml:space="preserve">
     <value>تسجيل إختياري</value>
     <comment>VatRegistration</comment>
@@ -4248,10 +4249,11 @@
   <data name="FORM5ZakatRulesConditions" xml:space="preserve">
     <value>Zakat Rules and Conditions</value>
   </data>
-   <data name="InternationalCountryCode" xml:space="preserve">
+  <data name="InternationalCountryCode" xml:space="preserve">
     <value>رمز الدولة</value>
   </data>
        <data name="InternationalCodeSearch" xml:space="preserve">
     <value>البحث عن رمز الدولة</value>
-  </data>
+  </data>    
+    
 </root>
