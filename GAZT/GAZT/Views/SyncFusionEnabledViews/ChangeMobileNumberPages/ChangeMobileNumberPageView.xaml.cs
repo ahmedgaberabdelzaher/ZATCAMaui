@@ -1,4 +1,6 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
+﻿using System;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
+using EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -22,6 +24,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             ChangeAeroIcon();
             SetLTR();
             this.BindingContext = viewModel;
+            viewModel.TxtCountryCode = "+966";
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+                ArIntnlCodes.Margin = new Thickness(0);
+
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+            }
+
             viewModel.OnPageLoad();
         }
         #endregion
@@ -68,6 +83,42 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             ChangeAeroIcon();
             // Task.Delay(20000);
             viewModel.NewMobile =string.Empty;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+                ArIntnlCodes.Margin = new Thickness(0);
+
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+            }
+
+            MessagingCenter.Subscribe<InternationalMobileNumberCodePages, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                if(App.IsArabic)
+                {
+                    ArIntnlCodes.Text = arg;
+                }
+                else
+                {
+                    IntnlCodes.Text = arg;
+                }
+           
+               
+                viewModel.TxtCountryCode = arg;
+            });
+
+           
+
+        }
+        private void MobileCodes_Clicked(object sender, EventArgs e)
+        {
+
+            viewModel._navigationService.NavigateTo(App.InternationalMobileNumberCodePages);
+
+
         }
         #endregion
     }

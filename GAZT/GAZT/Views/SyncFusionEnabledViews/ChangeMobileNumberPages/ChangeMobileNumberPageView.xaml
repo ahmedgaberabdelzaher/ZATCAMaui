@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             xmlns:local="clr-namespace:EGAZT"
+              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
@@ -98,14 +99,37 @@
                                     <ColumnDefinition Width="20*"></ColumnDefinition>
                                     <ColumnDefinition Width="80*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label  Text="{Binding CountryCode}" Grid.Row="0" Grid.Column="0" TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-                                <!--<inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
+                                <!-- <Label  Text="{Binding CountryCode}" Grid.Row="0" Grid.Column="0" TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
+                               <inputLayout:SfTextInputLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  x:Name="CountryCodeLayout"  Grid.Row="1" Grid.Column="0"   Margin="10,-6,10,-6"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                         <Label  Text="{Binding CountryCode}" Padding="0,14,0,14"  VerticalTextAlignment="Center"  HorizontalOptions="CenterAndExpand" TextColor="#7D858D" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
                     </inputLayout:SfTextInputLayout>-->
-                                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="1"  x:Name="NewMobileNumberLayout"  Margin="7,0,7,0"
-    Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
+                                 <StackLayout HorizontalOptions="FillAndExpand" x:Name="reporterMobStackLayout" Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="2" 
+              Orientation="Horizontal">
+    <inputLayout:SfTextInputLayout HorizontalOptions="StartAndExpand" VerticalOptions="Fill" Margin="10,0,7,0"
+    ContainerType="Outlined" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"
+                               UnfocusedColor="#B1B1B1" >
+   <StackLayout Orientation="Horizontal" HorizontalOptions="Start" >
+       <Image HorizontalOptions="StartAndExpand" Rotation="270" >
+         <Image.Source>
+             <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="15"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                            </Image.GestureRecognizers>
+              </Image>
+             <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="White"
+                           Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="MobileCodes_Clicked"
+                       Margin="5,-12,10,-12"
+                                  BackgroundColor="Transparent" >
+                                </custom:CustomButton>
+                                 </StackLayout>
+ </inputLayout:SfTextInputLayout>
+                                     </StackLayout>
+                                <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="1"  x:Name="NewMobileNumberLayout"  Margin="30,0,7,0"
+    Hint="Enter mobile number" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
                                     <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center" TextColor="White" x:Name="Username" Keyboard="Numeric" FontSize="Small" >
@@ -138,6 +162,30 @@
                                         </custom:GAZTBorderlessEntry.Behaviors>
                                     </custom:GAZTBorderlessEntry>
                                 </inputLayout:SfTextInputLayout>
+
+<StackLayout HorizontalOptions="FillAndExpand" x:Name="reporterArMobStackLayout" Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="5" 
+              Orientation="Horizontal">
+    <inputLayout:SfTextInputLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="10,0,7,0"
+    ContainerType="Outlined" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"
+                               UnfocusedColor="#B1B1B1" >
+   <StackLayout Orientation="Horizontal" HorizontalOptions="Start"  >
+       <Image HorizontalOptions="StartAndExpand" Rotation="270"  >
+         <Image.Source>
+             <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="15"
+                                     Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                            </Image.GestureRecognizers>
+              </Image>
+             <custom:CustomButton HorizontalOptions="Start"  VerticalOptions="Start" TextColor="White"
+                           Text="{Binding TxtCountryCode}" x:Name="ArIntnlCodes" Clicked="MobileCodes_Clicked"
+                       Margin="15,-12,60,-12"
+                                  BackgroundColor="Transparent" >
+                                </custom:CustomButton>
+                                 </StackLayout>
+ </inputLayout:SfTextInputLayout>
+                                     </StackLayout>
                                 <Label  Text="{Binding CountryCode}" Grid.Row="0" Grid.Column="1" TextColor="#D99A29" FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
                             </Grid>
                             <!-- Acticity indicator layout start -->

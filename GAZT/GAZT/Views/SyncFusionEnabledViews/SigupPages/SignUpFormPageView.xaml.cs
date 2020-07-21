@@ -998,10 +998,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                 }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                             }
-                            else
-                            {
-                                viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
-                            }
+                                else
+                                {
+                                    viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                                }
                             }
                                 else if (ResultDuplicateCR.d.Flag == "X")
                                 {
@@ -1221,8 +1221,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                                     }
                                 }
                                 viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
+                             }
+                                else
+                                {
+                                    viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
+                                }
                             }
-                        }
                         catch (GAZTException gex)
                         {
                             // Handle the GAZT custom exception.
