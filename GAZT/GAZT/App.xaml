@@ -716,7 +716,7 @@
 
               <!-- Used for Descrption in gray color-->
 
-            <Style x:Key="GAZTSmallLightBlackLabel" x:Name="GAZTSmallGoldLabel" TargetType="Label">
+            <Style x:Key="GAZTSmallLightBlackLabel" x:Name="GAZTSmallLightBlackLabel" TargetType="Label">
                 <!-- Micro font-->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
