@@ -47,7 +47,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.IndividualRegistrationView = true;
             SetLTR();
             viewModel.currentStep = 1;
-          viewModel.NationalAddressView = false;
+            viewModel.NationalAddressView = false;
             viewModel.ContactInformationView = false;
             viewModel.SummeryView = false;
             viewModel.PasswordView = false;
@@ -132,8 +132,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
 
             }*/
-    #region
-    private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
+        #region
+        private void EntryTIN_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
@@ -420,14 +420,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void DatePicker_Unfocused(object sender, FocusEventArgs e)
         {
-      ValidateIDNumber();
+                ValidateIDNumber();
         }
-
-
-      
-
-
-
 
 
         public async void ValidateIDNumber()
@@ -728,6 +722,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         private void btnDate_Clicked(object sender, EventArgs e)
         {
             SignUpDOB.IsOpen = true;
+        }
+        private void CountryCodes_Clicked(object sender, EventArgs e)
+        {
+
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage());
+
+            
         }
 
         private void LIssuedBy_Clicked(object sender, EventArgs e)
@@ -1098,6 +1099,21 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
+            {
+                IntnlCodes.Text = arg;
+                viewModel.TxtCountryCode = arg;
+            });
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(10, -20, 10, -20);
+            }
+
 
         }
 

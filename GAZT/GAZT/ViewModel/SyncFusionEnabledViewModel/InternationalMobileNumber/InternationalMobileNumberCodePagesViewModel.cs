@@ -56,7 +56,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber
                 RaisePropertyChanged("InternationalMobileCodeText");
             }
         }
+        private string _txtCountryCode = string.Empty;
+        public string TxtCountryCode
+        {
+            get
+            {
+                return _txtCountryCode;
+            }
+            set
+            {
 
+                _txtCountryCode = value;
+                RaisePropertyChanged("TxtCountryCode");
+            }
+        }
         #region Constructor
         public InternationalMobileNumberCodePagesViewModel(INavigationService navigationService, IDialogService dialogService)
         {

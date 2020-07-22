@@ -191,6 +191,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
+            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -242,6 +243,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public InternationalCodeSearchPageViewModel InternationalCodeSearchPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InternationalCodeSearchPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1198,6 +1213,8 @@ namespace EGAZT
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
 
             navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
+
+            navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 
             return navigationService;
         }

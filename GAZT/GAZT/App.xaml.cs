@@ -96,6 +96,7 @@ namespace EGAZT
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
 
         public static string InternationalMobileNumberCodePages = "InternationalMobileNumberCodePages";
+        public static string InternationalCodeSearchPage = "InternationalCodeSearchPage";
 
 
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";

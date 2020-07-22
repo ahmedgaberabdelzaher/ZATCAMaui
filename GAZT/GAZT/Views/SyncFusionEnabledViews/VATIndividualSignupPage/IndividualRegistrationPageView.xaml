@@ -813,8 +813,21 @@
                                                 OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="{Binding FrameMobileNumberError}" >
                                                             
                                                             <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand">
-                                                                <custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>
-                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"   x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}" IsSpellCheckEnabled="False" MaxLength="9" TextChanged="EntryPhoneNumber_TextChanged"  FontFamily="{StaticResource SSTArLight}" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                                    <Image HorizontalOptions="Start" Rotation="270" >
+                                                                    <Image.Source>
+                                                                     <FontImageSource FontFamily="UserIconFont" Color="Black" Size="15"
+                                                                         Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                                                                    </Image.Source>
+                                                                        <Image.GestureRecognizers>
+                                                                    <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                                                                </Image.GestureRecognizers>
+                                                                </Image>
+                                                                <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"
+                                                                 Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodes_Clicked"
+                                                                 BackgroundColor="Transparent" >
+                                                                </custom:CustomButton>
+                                                               <!-- <custom:BorderlessEntry Style="{StaticResource GAZTTextBoxStyleForEntry}" Text="(00966)" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" TextColor="#006450"/>-->
+                                                                <custom:BorderlessEntry Text="{Binding MobileNumber}"   x:Name="EntryMobileNumber" Placeholder="{x:Static local:AppResources.ZZMobileNumber}" IsSpellCheckEnabled="False" MaxLength="15" TextChanged="EntryPhoneNumber_TextChanged"  FontFamily="{StaticResource SSTArLight}" Unfocused="EntryMobileNumber_Unfocused_1"  Keyboard="Telephone" FontSize="Small" Style="{StaticResource GAZTTextBoxStyleForEntry}">
 
                                                                     <Entry.Behaviors>
                                                                         <custom1:OnlyNumericValuesBehaviour/>

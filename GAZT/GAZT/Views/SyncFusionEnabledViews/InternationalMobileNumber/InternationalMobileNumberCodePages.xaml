@@ -63,7 +63,7 @@
              <local1:CustomLabel Text="{Binding Telefto}" LineBreakMode="WordWrap" Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
                                  HorizontalTextAlignment="Start"  TextColor="Black" />
              <local1:CustomLabel Text="{Binding Landx}" Margin="30,0,30,0" LineBreakMode="WordWrap"  Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
-                                 HorizontalTextAlignment="Start" TextColor="Black"   />
+                                 HorizontalTextAlignment="Start" VerticalOptions="Start" TextColor="Black"   />
                          </StackLayout>
                     </Grid>
                 </Frame>
