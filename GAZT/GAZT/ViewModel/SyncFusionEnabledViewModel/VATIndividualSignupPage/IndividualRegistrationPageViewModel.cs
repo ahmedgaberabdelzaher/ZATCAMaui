@@ -1328,7 +1328,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             { }
         }
 
-                    public async Task OnPageLoad()
+  public async Task OnPageLoad()
         {
            // TimerStart(120);
                 currentStep = 1;

@@ -46,6 +46,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             
             viewModel.IndividualRegistrationView = true;
             SetLTR();
+
+            viewModel.TxtCountryCode = "+966";
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                IntnlCodes.Margin = new Thickness(0);
+            }
+            else
+            {
+                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+            }
             viewModel.currentStep = 1;
             viewModel.NationalAddressView = false;
             viewModel.ContactInformationView = false;
@@ -1111,7 +1121,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             else
             {
-                IntnlCodes.Margin = new Thickness(10, -20, 10, -20);
+                IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
             }
 
 

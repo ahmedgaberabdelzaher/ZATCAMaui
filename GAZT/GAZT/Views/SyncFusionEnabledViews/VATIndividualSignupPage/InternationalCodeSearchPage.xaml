@@ -56,11 +56,11 @@
                         <Grid.ColumnDefinitions>
                               <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                     <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="10"  >
+                     <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="10" Grid.RowSpan="2"  >
                                       <local1:CustomLabel Text="{Binding Landx}" Margin="10,0,30,0" LineBreakMode="WordWrap"  Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
                                  HorizontalTextAlignment="Start" TextColor="Black"   />
-             <local1:CustomLabel Text="{Binding Telefto}"  Margin="80,0,60,0" HorizontalOptions="FillAndExpand" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
-                                 HorizontalTextAlignment="ENd" VerticalOptions="FillAndExpand" TextColor="Black" />
+             <local1:CustomLabel Text="{Binding Telefto}"   Margin="60,0,50,0" HorizontalOptions="End" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
+                                 HorizontalTextAlignment="End" LineBreakMode="WordWrap"  VerticalOptions="FillAndExpand" TextColor="Black" />
 
                          </StackLayout>
                     </Grid>
