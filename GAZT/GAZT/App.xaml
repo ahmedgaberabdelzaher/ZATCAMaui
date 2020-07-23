@@ -24,6 +24,11 @@
             <x:String x:Key="Back">&#xe709;</x:String>
             <x:String x:Key="ReverseBack">&#xe71a;</x:String>
 
+            <!--New Ui Integration Color-->
+            <x:String x:Key="NewGrayColor">#909090</x:String>
+            <x:String x:Key="NewBlackColor">#010101</x:String>
+            
+
 
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
@@ -815,6 +820,47 @@
                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
+
+
+            <!-- Used for Standard Card View content for Gray-->
+            <Style x:Key="GAZTMicroMediumGrayLabelForHorizontalStart" x:Name="GAZTMicroMediumGrayLabelForHorizontalStart" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource NewGrayColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+            <!-- Used for Standard Card View content for Black-->
+            <Style x:Key="GAZTMicroMediumBlackLabelForHorizontalEnd" x:Name="GAZTMicroMediumBlackLabelForHorizontalEnd" TargetType="Label">
+                <!-- Medium font-->
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource NewBlackColor}" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
+            <!-- Used for Standard Card View FRAME content for Black-->
+            <Style x:Key="GAZTStandardFrameStyle" x:Name="GAZTStandardFrameStyle" TargetType="Frame">
+                <!-- Medium font-->
+                <Setter Property="BorderColor" Value="{DynamicResource NewGrayColor}" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="HasShadow" Value="False" />
+
+            </Style>
+
 
             <!--heading - medium
             subheading - Small bold

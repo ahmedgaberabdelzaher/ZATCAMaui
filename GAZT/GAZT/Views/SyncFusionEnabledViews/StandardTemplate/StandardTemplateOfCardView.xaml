@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.StandardTemplateOfCardView"
+             FlowDirection="LeftToRight"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Style="{StaticResource GAZTStandardFrameStyle}">
+            <StackLayout >
+                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                    <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                    </Image>
+                    <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
+                </StackLayout>
+                <BoxView Style="{StaticResource lineSeperator}"/>
+                <Grid Padding="10,5,10,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                    <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                    <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                    <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+            <Frame BorderColor="#c7c7c7" Padding="0" CornerRadius="8" Margin="10,10,10,10"  HasShadow="False">
+                <StackLayout >
+                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                        <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                        </Image>
+                        <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource lineSeperator}"/>
+                    <Grid Padding="10,5,10,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            
+            <Frame BorderColor="#c7c7c7" Padding="0" CornerRadius="8" Margin="10,10,10,10"  HasShadow="False">
+                <StackLayout >
+                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
+                        <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                        </Image>
+                        <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
+                    </StackLayout>
+                    <BoxView Style="{StaticResource lineSeperator}"/>
+                    <Grid Padding="10,5,10,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
+                        <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

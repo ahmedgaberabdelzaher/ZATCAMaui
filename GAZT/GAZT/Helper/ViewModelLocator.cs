@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage_ViewModel;
@@ -186,6 +187,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
+
+            //New Design
+            SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
+            
 
         }
         public PdfViewModel pdfView
@@ -1100,6 +1105,24 @@ namespace EGAZT
             }
         }
 
+        public VATReturnUpdatedUIPageViewModel VATReturnUpdatedUIPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATReturnUpdatedUIPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
+
+
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -1177,6 +1200,11 @@ namespace EGAZT
             navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
             navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
+
+            //New Design
+            navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageViewModel));
+           
+
             return navigationService;
         }
     }
