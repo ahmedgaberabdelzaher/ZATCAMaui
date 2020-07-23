@@ -720,6 +720,19 @@
             </Style>
 
               <!-- Used for Descrption in gray color-->
+
+            <Style x:Key="GAZTSmallLightBlackLabel" x:Name="GAZTSmallLightBlackLabel" TargetType="Label">
+                <!-- Micro font-->
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Micro" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="Padding" Value="0,0,0,0"/>
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <!--<Commented as we are provideing inline fontfamily />-->
+            </Style>
+
             <Style x:Key="GAZTMicroGrayLabel" x:Name="GAZTMicroGrayLabel" TargetType="Label">
                 <!-- Medium font-->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
