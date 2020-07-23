@@ -13,10 +13,10 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.DashBoardPageView">
     <ContentPage.Content>
-        <Grid BackgroundColor="#005e4b"  Margin="0" Padding="0,15,0,0">
+        <Grid BackgroundColor="#005e4b" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*" />
-                <RowDefinition Height="80*" />
+                <RowDefinition Height="18*" />
+                <RowDefinition Height="72*" />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Margin="15,0,15,0">
@@ -38,14 +38,16 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
 
                 <custom:CustomLabel Text="Hello Zaed" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0,10,0,10" VerticalOptions="Center" TextColor="White"/>
             </StackLayout>
-            <ScrollView Grid.Row="1">
-                <RelativeLayout>
-                <yummy:PancakeView x:Name="Boxview1" CornerRadius="22,22,0,0" BackgroundColor="{StaticResource GoldLabelTextColor}"   
+            <StackLayout Grid.Row="1" Padding="0">
+            <ScrollView >
+                <StackLayout Padding="0">
+<!--                <yummy:PancakeView x:Name="Boxview1" CornerRadius="22,22,0,0" BackgroundColor="{StaticResource GoldLabelTextColor}"   
             RelativeLayout.WidthConstraint="{ConstraintExpression  
             Type=RelativeToParent,  
             Property=Width,  
-            Factor=1}" Padding="0,0,0,30">
-                    <Grid VerticalOptions="Start" Margin="15,12,15,0" ColumnSpacing="10">
+            Factor=1}" Padding="0,0,0,30">--><!--Register Pancake View
+                    <yummy:PancakeView CornerRadius="22,22,0,0" BackgroundColor="{StaticResource GoldLabelTextColor}" Padding="0,0,0,30">
+                        <Grid VerticalOptions="Start" Margin="15,12,15,0" ColumnSpacing="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
@@ -73,8 +75,8 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="Register now for Value Added Tax in less than 5 minutes" Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="Center" TextColor="White"/>
                     </Grid>
                 </yummy:PancakeView>
-
-                    <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0"
+                    -->
+                    <!--                    <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0"
             RelativeLayout.WidthConstraint="{ConstraintExpression  
             Type=RelativeToParent,  
             Property=Width,  
@@ -87,11 +89,11 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
             Type=RelativeToView,  
             ElementName=Boxview1,  
             Property=Height,  
-            Factor=0.8}">
-
-                        <StackLayout VerticalOptions="Start" Margin="15,12,15,0">
+            Factor=0.8}">-->
+                    <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0">
+                            <StackLayout VerticalOptions="Start" Margin="15,12,15,0">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="Next Commitments" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="Next Commitments" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
                                 <Image HorizontalOptions="EndAndExpand">
                                     <Image.Source>
                                         <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ArrowCollapseRight}"/>
@@ -99,18 +101,21 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                 </Image>
                             </StackLayout>
                             <!--Start Horizontal List View-->
-                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
+                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                <StackLayout Orientation="Horizontal">
+                                <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
                                 <StackLayout Orientation="Horizontal">
                                     <cards:SfCardView BackgroundColor="{StaticResource GoldLabelTextColor}" HasShadow="False" CornerRadius="10" WidthRequest="60" HeightRequest="60">
                                         <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
-                                            <custom:CustomLabel Text="01" Style="{StaticResource GAZTMediumBlackLabel}" TextColor="White"/>
+                                            <custom:CustomLabel Text="01" Style="{StaticResource GAZTSmallBlackLblMediumFont}" TextColor="White"/>
                                             <custom:CustomLabel Text="Jul" Style="{StaticResource GAZTSmallGoldLabel}" TextColor="White"/>
                                         </StackLayout>
                                     </cards:SfCardView>
 
-                                    <StackLayout Margin="10,0,0,0" Padding="0,0,0,10">
-                                        <custom:CustomLabel Text="Partially Bill" Style="{StaticResource GAZTMediumBlackLabel}" />
-                                        <custom:CustomLabel Text="200,000,00 SAR" Style="{StaticResource GAZTSmallBlackLbl}" />
+                                    <StackLayout Margin="10,0,0,0" Padding="0,0,0,10" HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <custom:CustomLabel Text="Partially Bill" Style="{StaticResource GAZTSmallBlackLblMediumFont}" />
+                                                        <custom:CustomLabel Text="200,000,00 SAR" Style="{StaticResource GAZTSmallBlackLblMediumFont}" />
                                     </StackLayout>
 
                                     <Image HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
@@ -120,10 +125,38 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                     </Image>
                                 </StackLayout>
                             </cards:SfCardView>
+
+                            </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
+                                            <StackLayout Orientation="Horizontal">
+                                                <cards:SfCardView BackgroundColor="DarkGreen" HasShadow="False" CornerRadius="10" WidthRequest="60" HeightRequest="60">
+                                                    <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                                        <custom:CustomLabel Text="03" Style="{StaticResource GAZTMediumBlackLabel}" TextColor="White"/>
+                                                        <custom:CustomLabel Text="Jul" Style="{StaticResource GAZTSmallGoldLabel}" TextColor="White"/>
+                                                    </StackLayout>
+                                                </cards:SfCardView>
+
+                                                <StackLayout Margin="10,0,0,0" Padding="0,0,0,10">
+                                                    <custom:CustomLabel Text="Paid Bill" Style="{StaticResource GAZTMediumBlackLabel}" />
+                                                    <custom:CustomLabel Text="200,000,00 SAR" Style="{StaticResource GAZTSmallBlackLbl}" />
+                                                </StackLayout>
+
+                                                <Image HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                                                    <Image.Source>
+                                                        <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ArrowCollapseRight}"/>
+                                                    </Image.Source>
+                                                </Image>
+                                            </StackLayout>
+                                        </cards:SfCardView>
+
+                                    </StackLayout>
+                                </StackLayout>
+                            </ScrollView>
                             <!--End Horizontal List View-->
 
                             <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                <custom:CustomLabel Text="Bills" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="Bills" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
                                 <Image HorizontalOptions="EndAndExpand">
                                     <Image.Source>
                                         <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ArrowCollapseRight}"/>
@@ -132,15 +165,16 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             </StackLayout>
 
                             <!--Start Horizontal List View-->
-                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
+                            
+                                <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
                                 <StackLayout Padding="10">
-                                    <custom:CustomLabel Text="All" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" Margin="10,0,0,0"/>
+                                    <custom:CustomLabel Text="All" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center" Margin="10,0,0,0"/>
 
                                     <!--                                    <chart:SfChart>
                                         <chart:DoughnutSeries DoughnutCoefficient="0.6" ItemsSource ="{Binding Data}" XBindingPath="Expense" YBindingPath="Value" />
                                     </chart:SfChart>-->
 
-                                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal" Spacing="20" HorizontalOptions="Center">
                                         <buttons:SfButton Text="Paid" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White" TextColor="Black" CornerRadius="10"/>
                                         <buttons:SfButton Text="Partially" BorderColor = "LightGray" BorderWidth="1" TextColor="Black" BackgroundColor="White" CornerRadius="10"/>
                                         <buttons:SfButton Text="UnPaid" BorderColor = "LightGray" BorderWidth="1" CornerRadius="10"  BackgroundColor="White" TextColor="Black"/>
@@ -151,18 +185,19 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                             <!--End Horizontal List View-->
 
                             <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                <custom:CustomLabel Text="Returns" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="Returns" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
                                 <Image HorizontalOptions="EndAndExpand">
                                     <Image.Source>
                                         <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ArrowCollapseRight}"/>
                                     </Image.Source>
                                 </Image>
                             </StackLayout>
+                            <ScrollView Orientation="Horizontal">
                             <Grid Margin="0,10,0,0" >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="33*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="37*"/>
                                 </Grid.ColumnDefinitions>
                                 <cards:SfCardView Grid.Column="0" HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10">
                                     <StackLayout Spacing="0">
@@ -183,9 +218,9 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                     </StackLayout>
                                 </cards:SfCardView>
                             </Grid>
-
+                            </ScrollView>
                             <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                <custom:CustomLabel Text="Installments Plans" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                    <custom:CustomLabel Text="Installments Plans" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
                                 <Image HorizontalOptions="EndAndExpand">
                                     <Image.Source>
                                         <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ArrowCollapseRight}"/>
@@ -193,21 +228,26 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
                                 </Image>
                             </StackLayout>
 
-                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10">
+                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,0,0,10">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                            <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center"/>
                                         <custom:CustomLabel Text="4793187498192" Style="{StaticResource GAZTMicroGrayLabel}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="200.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
-                                    
-                                    <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+
+                                    <BoxView BackgroundColor="LightGray" CornerRadius="5" HeightRequest="5"/>
+
+                                    <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
 
                                     <StackLayout Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                     
+                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                        <BoxView BackgroundColor="LightGreen" HeightRequest="10" WidthRequest="10" CornerRadius="5" />
+                                        </StackLayout>
 
-                                        <BoxView BackgroundColor="LightGreen" HeightRequest="10" WidthRequest="10" CornerRadius="5"/>
-
-                                        <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center"/>
+                                        <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </cards:SfCardView>
@@ -215,19 +255,79 @@ xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart
 
                         </StackLayout>
                     </yummy:PancakeView>
-                </RelativeLayout>
+                </StackLayout>
             </ScrollView>
+            </StackLayout>
             <!--Demo-->
-            
-            
-            <Grid Grid.Row="2" BackgroundColor="Black">
+            <StackLayout x:Name="stackMenu" Grid.Row="2" BackgroundColor="White">
+                <yummy:PancakeView x:Name="panMenu" BorderColor="LightGray" BorderThickness="1" CornerRadius="22,22,0,0" Padding="20,0,20,20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <yummy:PancakeView BackgroundColor="DarkGreen" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                    <RowDefinition Height="80*" />
-                    <RowDefinition Height="10*" />
-                </Grid.RowDefinitions>
-            </Grid>
+                            </yummy:PancakeView>
+
+                            <Image>
+                        <Image.Source>
+                            <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Home}"/>
+                        </Image.Source>
+                        </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+
+                            </yummy:PancakeView>
+                            
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Home}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2">
+                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+
+                            </yummy:PancakeView>
+
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Home}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="3">
+                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+
+                            </yummy:PancakeView>
+                            
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Home}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                        <StackLayout Grid.Column="4">
+                            <yummy:PancakeView BackgroundColor="White" Padding="3" CornerRadius="0,0,22,22" Margin="10,0,10,0">
+
+                            </yummy:PancakeView>
+                            
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource Color="Black" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Home}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </Grid>
+                </yummy:PancakeView>
+
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
