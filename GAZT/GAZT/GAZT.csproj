@@ -20,6 +20,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.1.0.54" />
     <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
@@ -127,7 +128,7 @@
     <EmbeddedResource Update="Views\MyBillsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewDesign\DashBoardPageView.xaml">
+    <EmbeddedResource Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">

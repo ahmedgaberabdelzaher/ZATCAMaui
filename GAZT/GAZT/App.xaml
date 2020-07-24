@@ -27,9 +27,12 @@
             <!--New Ui Integration Color-->
             <x:String x:Key="NewGrayColor">#909090</x:String>
             <x:String x:Key="NewBlackColor">#010101</x:String>
-            
-
-
+            <Color x:Key="NewDullOrangeColor">#d99a29</Color>
+            <Color x:Key="NewDarkBlueGreenColor">#006450</Color>
+            <Color x:Key="NewWarmGreyColor">#999999</Color>
+			<x:String x:Key="NewRedColor">#ec0000</x:String>
+			<Color x:Key="NewProgressLightGreenColor">#95d600</Color>
+			<x:String x:Key="NewWhiteColor">#ffffff</x:String>
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
                 <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />

@@ -20,6 +20,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppDynamics.Agent;
+using EGAZT.Views.NewDesign;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -153,7 +154,7 @@ namespace EGAZT
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
-
+           /// Xamarin.Forms.Device.SetFlags(new[] { "CollectionView_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
                          InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
@@ -189,8 +190,9 @@ namespace EGAZT
             dialogService.Initialize(navigationPage);
 
             InitializeAppDynamics();
-           
-            MainPage = navigationPage;
+
+            ///            MainPage = navigationPage;
+            MainPage = new DashBoardPageView();            
         }
 
         public static void CreateClientHandler()

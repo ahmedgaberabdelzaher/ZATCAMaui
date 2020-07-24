@@ -388,6 +388,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
       <Version>18.1.0.42</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
+      <Version>18.1.0.55</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">
       <Version>18.1.0.54</Version>
     </PackageReference>
@@ -1013,5 +1016,32 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_tile_listofsignup_W%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partials-background%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partials-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\partials-background%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ministryJustice%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ministryJustice%403x%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ministryJustice%403x%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 114.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 114%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Group 114%403x.png" />
   </ItemGroup>
 </Project>

@@ -28,14 +28,15 @@
                 <custom:CustomLabel Text="Zaed Hardy" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
                 <ScrollView>
                     <StackLayout Spacing="20" BackgroundColor="#005e4b" Padding="0,0,0,10">
-                    <StackLayout Orientation="Horizontal" Spacing="20">
-                    <Image>
+                    
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Image>
                         <Image.Source>
                             <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NaturePeople}"/>
                         </Image.Source>
-                    </Image>
-                    <custom:CustomLabel Text="Individual Saudi(Resident)" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center" TextColor="White"/>
-                    </StackLayout>
+                        </Image>
+                        <custom:CustomLabel Text="Individual Saudi(Resident)" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center" TextColor="White"/>
+                        </StackLayout>
                     
                 <BoxView BackgroundColor="White" HeightRequest="0.2"/>
 

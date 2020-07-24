@@ -69,6 +69,13 @@ namespace GAZT.iOS
             Syncfusion.SfPdfViewer.XForms.iOS.SfPdfDocumentViewRenderer.Init();
             Syncfusion.SfRangeSlider.XForms.iOS.SfRangeSliderRenderer.Init();
             SfMaskedEditRenderer.Init();
+
+            // Add the below line if you are using SfLinearProgressBar.
+            Syncfusion.XForms.iOS.ProgressBar.SfLinearProgressBarRenderer.Init();
+
+            // Add the below line if you are using SfCircularProgressBar.  
+            Syncfusion.XForms.iOS.ProgressBar.SfCircularProgressBarRenderer.Init();
+
             Distribute.DontCheckForUpdatesInDebug();
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
 
