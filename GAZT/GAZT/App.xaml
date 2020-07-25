@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="EGAZT.App"  
-             xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT">
+             xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT"
+               xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
     <Application.Resources>
         <ResourceDictionary>
             <!--SYNCFUSION INTEGRATION-->
@@ -863,14 +864,32 @@
                 <Setter Property="HasShadow" Value="False" />
 
             </Style>
-
-
-            <!--heading - medium
-            subheading - Small bold
-            label - small medium bold
-            entrytext size
-            description-->
-               <!-- VAT SignUp and VAT Registration Styles End  -->
+            
+           <!--Button Style-->
+            
+            <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
+                <Setter Property="BorderWidth" Value="0" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HeightRequest" Value="56" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="BackgroundColor" Value="#d49504" />
+            </Style>
+            
+            <Style x:Key="SecondaryButtonStyle" TargetType="buttons:SfButton">
+                <Setter Property="TextColor" Value="#d99a29" />
+                <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="HeightRequest" Value="56" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="#d49504" />
+            </Style>
+            <!--Button Style-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>
