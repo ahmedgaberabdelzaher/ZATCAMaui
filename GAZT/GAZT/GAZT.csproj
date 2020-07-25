@@ -66,7 +66,6 @@
     <Folder Include="Connected Services\" />
     <Folder Include="Effect\" />
     <Folder Include="SyncFusionEnabledBehaviors\" />
-    <Folder Include="Views\SyncFusionEnabledViews\Common\" />
     <Folder Include="Enums\" />
     <Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
     <Folder Include="Views\SyncFusionEnabledViews\VATRealEstatePages\" />

@@ -9,6 +9,7 @@
         <StackLayout>
             <buttons:SfButton x:Name="btnprimary" Text="Primary"       Style="{StaticResource PrimaryButtonStyle}"   />
             <buttons:SfButton x:Name="btnSecondary" Text="Primary"       Style="{StaticResource SecondaryButtonStyle}"   />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
