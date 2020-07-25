@@ -93,6 +93,7 @@ using EGAZT.Views.SyncFusionEnabledViews.SFLanding;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using EGAZT.Views.SyncFusionEnabledViews.SFOptionsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SignUpTAndC;
+using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionPages;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportForm;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
@@ -1248,7 +1249,7 @@ namespace EGAZT
 
             //New Design
             navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageViewModel));
-            navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+            navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
            // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
             ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
            
