@@ -6,24 +6,16 @@ using System.Text;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    public class VATReturnUpdatedUIPageViewModel : ViewModelBase
+    public class VATReturnUpdatedUIPageViewModel : BaseViewModel
     {
-
-        #region Veriables
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        #endregion
         #region Constructor
-        public VATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService)
-        {
-            _navigationService = navigationService;
-            _dialogService = dialogService;
+        public VATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+        {  
             //OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
             //{
             //    _navigationService.NavigateTo(App.LogInPageView, App.SFLandingPageView);
             //});
         }
         #endregion
-
     }
 }
