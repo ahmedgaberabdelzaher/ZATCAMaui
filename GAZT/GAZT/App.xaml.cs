@@ -32,6 +32,7 @@ namespace EGAZT
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
         public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView";
+        public static string StyleTestUIPageView = "StyleTestUIPageView";
 
         //SYNCFUSION INTEGRATION
         public static string MyCertificate = "MyCertificate";

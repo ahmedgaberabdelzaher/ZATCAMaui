@@ -39,6 +39,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.StylesTestUi;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage;
@@ -190,6 +191,8 @@ namespace EGAZT
 
             //New Design
             SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
+           // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             
 
         }
@@ -200,6 +203,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<PdfViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }  
+        public StyleTestUIPageViewModel StyleTestUIPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -220,7 +237,21 @@ namespace EGAZT
                     return null;
                 }
             }
-        }
+        }    
+        //public StyleTestUIPageViewModel StyleTestUIPageView
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+        //}
         public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
         {
             get
@@ -262,6 +293,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }   
+        public StyleTestUIPageViewModel StyleTestUIPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1203,6 +1248,9 @@ namespace EGAZT
 
             //New Design
             navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageViewModel));
+            navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+           // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
+            ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
            
 
             return navigationService;
