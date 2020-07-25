@@ -10,6 +10,8 @@
             <!--SYNCFUSION INTEGRATION-->
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
             <Color x:Key="GrayTextColor">#c7c7c7</Color>
+            <Color x:Key="DarkGrayTextColor">#909090</Color>
+
             <Color x:Key="DashboardGrayTextColor">#717171</Color>
             <Color x:Key="DashboardChartStatusGrayTextColor">#292929</Color>
             <Color x:Key="GoldLabelTextColor">#c49b2d</Color>
@@ -393,11 +395,32 @@
              <!--For VAT Sign Up-->
             <Style x:Key="GAZTMediumGrayLabelStyle" x:Name="GAZTMediumGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
                 <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
                 <Setter Property="Margin" Value="14,0,10,1"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+             <!--For UnlockAccount-->
+            <Style x:Key="GAZTDarkGrayLabelStyle" x:Name="GAZTDarkGrayLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="LineHeight" Value="1.2"/>
+                 <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="TextColor" Value="{DynamicResource DarkGrayTextColor}" />
+                <!--<Setter Property="FontFamily" Value="{StaticResource SSTArabicBold}" />-->
+                <Setter Property="Margin" Value="14,0,10,1"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+            <!--For UnlockAccount OTP Entry-->
+            <Style x:Key="GAZTOTPEntry" TargetType="Entry">
+              <Setter Property="HorizontalTextAlignment" Value="Center" />
+              <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+              <Setter Property="FontSize" Value="Small" />
+              <Setter Property="TextColor" Value="{DynamicResource VATRegistrationEntryTextColor}" />
             </Style>
 
 

@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:local="clr-namespace:EGAZT.CustomControl"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountTINPageView"
+                CloseWhenBackgroundIsClicked="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="WidthRequest" Value="10"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+     <ScrollView >
+       <yummy:PancakeView x:Name="mainContentView"  CornerRadius="22,22,0,0" HasShadow="False" BackgroundColor="White" VerticalOptions="EndAndExpand">
+        <Grid>
+                <StackLayout Padding="0,0,0,0" Margin="15,10,15,0" IsVisible="{Binding IsTinContentViewVisible}">
+                    <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsTinContentViewVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="35*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="true" Margin="0"   Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="TappedOnTinContentBackButton"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                        </Label>
+
+                        <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                        <Label Text="{x:Static custom2:AppResources.UnlockAccountResetPassword}" Margin="0,25,0,0"  FontSize="Large"  Style="{StaticResource GAZTMediumBlackLabel}"
+                               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" />
+
+                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,20,0,0">
+                                                            <!--<Label Text="{x:Static custom2:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
+                                                            <custom:CustomLabel Margin="0,20,0,0"  Grid.Row="0"  Style="{StaticResource GAZTDarkGrayLabelStyle}">
+                                                                <custom:CustomLabel.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span  Text="{x:Static custom2:AppResources.TIN}" />
+                                                                    </FormattedString>
+                                                                </custom:CustomLabel.FormattedText>
+                                                            </custom:CustomLabel>
+                                                            <inputLayout:SfTextInputLayout  Margin="0,10,0,10" 
+                                        ContainerType="Outlined" x:Name="FrmTIN" UnfocusedColor="#B1B1B1" 
+                                        OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                                                <custom:BorderlessEntry x:Name="EntryTIN" BackgroundColor="Green" TextChanged="EntryTINNumber_TextChanged"  Unfocused="FrmTIN_Unfocused" Focused="FrmTIN_Focused"
+                                                                                        Text="{Binding TxtTIN}" IsSpellCheckEnabled="False" Style="{StaticResource GAZTEntry}"  TextColor="#bbbbbb"
+                                                                Placeholder="{x:Static custom2:AppResources.TIN}"  >
+                                                                 <Entry.Behaviors>
+                                                                    <custom1:OnlyNumericValuesBehaviour/>
+                                                                </Entry.Behaviors>
+                                                                </custom:BorderlessEntry>
+                                                            </inputLayout:SfTextInputLayout>
+                                                        </StackLayout>
+                    </Grid>
+                
+                    <buttons:SfButton x:Name="btnVerify" Text="{x:Static custom2:AppResources.UnlockAccountVerify}" Clicked="btnVerify_Clicked"  CornerRadius="10" VerticalOptions="End"
+                                      FontAttributes="Bold" HeightRequest="48" Margin="0,60,0,60" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                    BackgroundColor="#d99b29" BorderWidth="0"/>
+                       
+                </StackLayout>
+                <StackLayout Padding="0,0,0,0" Margin="15,10,15,0" IsVisible="{Binding IsOTPContentViewVisible}">
+                    <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsOTPContentViewVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="35*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="true" Margin="0"   Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="TappedOnOtpContentBackButton"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                        </Label>
+
+                        <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                        <Label Text="{x:Static custom2:AppResources.VerificationCode}" Margin="0,25,0,0"  FontSize="Large"  Style="{StaticResource GAZTMediumBlackLabel}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
+                        <Label Text="{x:Static custom2:AppResources.EnterVerificationCode}" Margin="0" Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,10,0,25" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <Label Text="{Binding MobileNumberMasked}" Margin="0" HorizontalOptions="CenterAndExpand"  Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                        <Grid Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="CenterAndExpand" RowSpacing="0" ColumnSpacing="20" 
+                                    VerticalOptions="CenterAndExpand" Margin="20" x:Name="OtpEntryGrid" FlowDirection="LeftToRight">
+                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                                <inputLayout:SfTextInputLayout  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                    <custom:BorderlessEntry WidthRequest="8" HorizontalTextAlignment="Center" IsEnabled="{Binding IsOTPEntryEnable}" x:Name="OtpFirstEntry" MaxLength="1" ReturnType="Next" Keyboard="Numeric"
+                                                            FontAttributes="Bold" 
+                                                            FontSize="Small" TextChanged="OtpFirstEntry_TextChanged"
+                                                    HorizontalOptions="Center" Text="{Binding OtpFirstDigit}"  IsPassword="True" Style="{StaticResource GAZTOTPEntry}"  TextColor="#bbbbbb" >
+                                                    <custom:BorderlessEntry.Behaviors>
+                                                        <local:EntryFocusBehaviour NextFocusElementName="OtpSecondEntry"/>
+                                                        </custom:BorderlessEntry.Behaviors>
+                                </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                                
+                        <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
+                                    OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                <custom:BorderlessEntry WidthRequest="8" HorizontalTextAlignment="Center" x:Name="OtpSecondEntry" IsEnabled="{Binding IsOTPEntryEnable}" Keyboard="Numeric" MaxLength="1" ReturnType="Next" FontAttributes="Bold"
+                                                        FontSize="Small" TextChanged="OtpSecondEntry_TextChanged"
+                                                        HorizontalOptions="Center" Text="{Binding OtpSecondDigit}" IsPassword="True" Style="{StaticResource GAZTOTPEntry}"
+                                                        TextColor="#bbbbbb">
+                                    <custom:BorderlessEntry.Behaviors>
+                                                        <local:EntryFocusBehaviour NextFocusElementName="OtpThirdEntry"/>
+                                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                                
+                        <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
+                                    OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                <custom:BorderlessEntry WidthRequest="8" HorizontalTextAlignment="Center" x:Name="OtpThirdEntry" IsEnabled="{Binding IsOTPEntryEnable}"   MaxLength="1" ReturnType="Next" FontAttributes="Bold" FontSize="Small" TextChanged="OtpThirdEntry_TextChanged"
+                                                        Keyboard="Numeric"  Text="{Binding OtpThirdDigit}" HorizontalOptions="Center" IsPassword="True" Style="{StaticResource GAZTOTPEntry}"  TextColor="#bbbbbb">
+                                    <custom:BorderlessEntry.Behaviors>
+                                                        <local:EntryFocusBehaviour NextFocusElementName="OtpFourthEntry"/>
+                                                        </custom:BorderlessEntry.Behaviors>
+                                    </custom:BorderlessEntry>
+                                </inputLayout:SfTextInputLayout>
+                                
+                        <inputLayout:SfTextInputLayout  Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1"
+                                    ContainerType="Outlined" UnfocusedColor="#B1B1B1"   
+                                    OutlineCornerRadius="12" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                            <custom:BorderlessEntry WidthRequest="8" HorizontalTextAlignment="Center" x:Name="OtpGAZTDarkGrayLabelStyleFourthEntry" IsEnabled="{Binding IsOTPEntryEnable}"   MaxLength="1" ReturnType="Next" FontAttributes="Bold"
+                                                    FontSize="Small"  Text="{Binding OtpFourthDigit}" TextChanged="OtpGAZTDarkGrayLabelStyleFourthEntry_TextChanged"
+                                                    Keyboard="Numeric" Unfocused="OtpFourthEntry_Unfocused" IsPassword="True" HorizontalOptions="Center" Style="{StaticResource GAZTOTPEntry}"  TextColor="#bbbbbb">
+                                </custom:BorderlessEntry> 
+                        </inputLayout:SfTextInputLayout>
+                              
+                        </Grid>  
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3"
+                                     Margin="0,-10,0,0" Spacing="0">
+
+                            <Image  HorizontalOptions="CenterAndExpand" VerticalOptions="End" Source="unlockaccount_clock.png" HeightRequest="24" WidthRequest="24" Aspect="AspectFit"/>
+                            <Label  Text ="{Binding OTPValidDuration}" Margin="10,0,10,0" Padding="0"
+                                    Style="{StaticResource GAZTDarkGrayLabelStyle}" LineHeight="1"/>
+
+                        </StackLayout>
+                        <!--<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+                            
+                        </StackLayout>-->
+                    </Grid>
+                     <buttons:SfButton  x:Name="btnResendVerificationCode" Text="{x:Static custom2:AppResources.ResendVerificationCode}"
+                                          Command="{Binding OnResendOTPClicked}" CornerRadius="10" Margin="0,60,0,0"
+                                              VerticalOptions="End" FontAttributes="Bold" IsEnabled="{Binding IsResendOTPEnabled}"
+                            HeightRequest="48" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                            BackgroundColor="{Binding ButtonDisableColor}" BorderWidth="0"/>
+
+                            <buttons:SfButton x:Name="btnConfirmOtp" Text="{x:Static custom2:AppResources.UnlockAccountVerify}" Command="{Binding ConfirmOtpBtnClicked}"  CornerRadius="10"
+                                              VerticalOptions="End" FontAttributes="Bold" IsEnabled="{Binding IsVerifyOTPEnabled}" 
+                            HeightRequest="48" Margin="0,30,0,60" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                            BackgroundColor="{Binding VerifyButtonDisableColor}" BorderWidth="0"/>
+                </StackLayout >
+                <StackLayout x:Name="ChangePasswordView" Padding="0,0,0,0" Margin="15,10,15,0" IsVisible="{Binding IsChangePasswordViewVisible}">
+                    <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsChangePasswordViewVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="35*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="true" Margin="0"   Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Tapped="TappedOnChangePasswordContentBackButton"></TapGestureRecognizer>
+                                </Label.GestureRecognizers>
+                        </Label>
+
+                        <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                        <Label Text="{x:Static custom2:AppResources.UnlockAccountResetPassword}" Margin="0,25,0,0"  FontSize="Large"  Style="{StaticResource GAZTMediumBlackLabel}"
+                             Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
+                        <Label Text="{x:Static custom2:AppResources.UnlockAccountCreateNewPassword}" Margin="0" Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <BoxView Style="{StaticResource lineSeperator}" Margin="0,10,0,25" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+                        <StackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                                                            <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.NewPassword}"  Padding="0,0,0,0"/>-->
+                                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Margin="0"  Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                                <custom:CustomLabel.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{x:Static custom2:AppResources.NewPassword}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                                    </FormattedString>
+                                                </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+                                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FramePasswordError}"
+                    ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                                    <custom:BorderlessEntry HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SSTArLight}" Text="{Binding Password}" FontSize="Small" MaxLength="16"
+                                                Placeholder="{x:Static custom2:AppResources.NewPassword}" IsPassword="{Binding IsPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                                    </custom:BorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeePassword">
+                                                        <Image.Source>
+                                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                            Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                                        </Image.Source>
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+                                            </inputLayout:SfTextInputLayout>
+                          </StackLayout>
+
+                        <StackLayout Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3">
+                            <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
+                            <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}" Margin="0"  Padding="0,0,0,0" HorizontalOptions="Start" >
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static custom2:AppResources.ZZZZRepeatPassword}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" />
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+                            <inputLayout:SfTextInputLayout  Margin="0,-6,0,-6" ErrorColor="#B00020" HasError="{Binding FrameConfirmPasswordError}"
+            ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b">
+                                <custom:BorderlessEntry x:Name="EntryConfirmPassword" FontFamily="{StaticResource SSTArLight}" Text="{Binding ConfirmPassword}" FontSize="Small" WidthRequest="128"
+                                                        MaxLength="16" TextChanged="EntryConfirmPassword_TextChanged"
+                                Placeholder="{x:Static custom2:AppResources.ZZZZRepeatPassword}" IsPassword="{Binding IsConfirmPasswordEncripted}" Style="{StaticResource GAZTTextBoxStyleForEntry}">
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeConfirmPassword" >
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                                Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
+                                        </Image.GestureRecognizers>
+
+                                    </Image>
+                                </inputLayout:SfTextInputLayout.TrailingView>    
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                            <StackLayout Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" >
+                                <StackLayout Orientation="Horizontal">
+                                    <Image HorizontalOptions="Start">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label  FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image HorizontalOptions="Start">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image HorizontalOptions="Start">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
+                                </StackLayout>
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Image HorizontalOptions="Start">
+                                        <Image.Source>
+                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                    Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <Label  FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static custom2:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />
+                                </StackLayout>
+                            </StackLayout>
+                    </Grid>
+                
+                    <buttons:SfButton x:Name="btnConfirmNewPassword" Text="{x:Static custom2:AppResources.Confirm}" Command="{Binding ConfirmPasswordBtnClicked}"  CornerRadius="10"
+                                      VerticalOptions="End" FontAttributes="Bold" 
+                    HeightRequest="48" Margin="0,60,0,60" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                    BackgroundColor="#d99b29" BorderWidth="0"/>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" Margin="-10" >
+                    <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="35*"/>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="35*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                    <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Source="partials_background" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Padding="40" VerticalOptions="CenterAndExpand">
+                        <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
+                        <Label Text="{x:Static custom2:AppResources.AccountUnlocked}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding PasswordChangedSuccessfully}"  FontFamily="{StaticResource SSTArabicMedium}"
+                               TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Margin="30,60,30,80" >
+                        <buttons:SfButton x:Name="btnLogin" Text="{x:Static custom2:AppResources.LogIn}"  CornerRadius="10"
+                                      VerticalOptions="End" FontAttributes="Bold" Clicked="TappedOnTinContentBackButton"
+                    HeightRequest="48" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
+                    BackgroundColor="#d99b29" BorderWidth="0"/>
+                    </StackLayout>
+                    </Grid>
+                </StackLayout>
+        
+            <Grid Grid.Row="0"    Grid.Column="0"  IsVisible="{Binding IsLoading}" >
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="Center"
+                                           IsBusy="{Binding IsLoading}"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                       TextColor="#006450"/>
+                    </StackLayout>
+                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
+                </StackLayout>
+            </Grid>
+        </Grid>
+        </yummy:PancakeView>
+ </ScrollView>
+</pages:PopupPage>

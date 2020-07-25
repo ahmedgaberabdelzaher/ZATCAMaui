@@ -7193,5 +7193,59 @@ namespace EGAZT {
                 return ResourceManager.GetString("String1", resourceCulture);
             }
         }
+        
+        public static string UnlockAccountRetriveLoginData {
+            get {
+                return ResourceManager.GetString("UnlockAccountRetriveLoginData", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountEnterTIN {
+            get {
+                return ResourceManager.GetString("UnlockAccountEnterTIN", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountVerify {
+            get {
+                return ResourceManager.GetString("UnlockAccountVerify", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountResetPassword {
+            get {
+                return ResourceManager.GetString("UnlockAccountResetPassword", resourceCulture);
+            }
+        }
+        
+        public static string EnterVerificationCodeSentToMobile {
+            get {
+                return ResourceManager.GetString("EnterVerificationCodeSentToMobile", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountCreateNewPassword {
+            get {
+                return ResourceManager.GetString("UnlockAccountCreateNewPassword", resourceCulture);
+            }
+        }
+        
+        public static string UnlockAccountPasswordChangedSuccessfully {
+            get {
+                return ResourceManager.GetString("UnlockAccountPasswordChangedSuccessfully", resourceCulture);
+            }
+        }
+        
+        public static string AccountUnlocked {
+            get {
+                return ResourceManager.GetString("AccountUnlocked", resourceCulture);
+            }
+        }
+        
+        public static string AccountUnlockedCompleteRequiedFields {
+            get {
+                return ResourceManager.GetString("AccountUnlockedCompleteRequiedFields", resourceCulture);
+            }
+        }
     }
 }

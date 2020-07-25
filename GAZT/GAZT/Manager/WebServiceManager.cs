@@ -29,6 +29,7 @@ namespace GAZT.Manager
         public static string ErrorMessage = string.Empty;
         public static string ErrorMessageForVAT = string.Empty;
         public static string NumberOfValiedAttempts = string.Empty;
+        public static string ErrorMessageForUnlockAccount = string.Empty;
 
         private static HttpWebRequest CreateGAZTSOAPWebRequestForAuthenticationService()
         {
@@ -6334,6 +6335,205 @@ namespace GAZT.Manager
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+
+        public static async Task<UnlockAccountResponseModel> GaztUnlockAccount(UnlockAccountModel unlockAccountModel)
+        {
+            UnlockAccountResponseModel _unlockResponseModel = new UnlockAccountResponseModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    if (unlockAccountModel != null)
+                    {
+                        //string url = Constants.GAZTSignUpFirstSubmit;
+                        string LangZAREN = GetLangZParameterAREN();
+
+                        char LangZ = GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.GAZTUnlockAccountAllOperations;
+
+                        unlockAccountModel.Language = LangZ.ToString();
+                        unlockAccountModel.UserLocked = "L";
+
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        var serilized = JsonConvert.SerializeObject(unlockAccountModel);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+                        _unlockResponseModel = JsonConvert.DeserializeObject<UnlockAccountResponseModel>(detailJson);
+                        
+                        if (_unlockResponseModel == null || _unlockResponseModel.D == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                ErrorMessageForUnlockAccount += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+
+                        return _unlockResponseModel;
+                    }
+                    return _unlockResponseModel;
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    throw new GAZTUnlockAccountException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<UnlockAccountResponseModel> GaztUnlockAccountOtp(UnlockAccountModelOtp unlockAccountModel)
+        {
+            UnlockAccountResponseModel _unlockResponseModel = new UnlockAccountResponseModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    if (unlockAccountModel != null)
+                    {
+                        //string url = Constants.GAZTSignUpFirstSubmit;
+                        string LangZAREN = GetLangZParameterAREN();
+
+                        char LangZ = GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.GAZTUnlockAccountAllOperations;
+
+                        unlockAccountModel.Language = LangZ.ToString();
+                        unlockAccountModel.UserLocked = "L";
+
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        var serilized = JsonConvert.SerializeObject(unlockAccountModel);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+                        _unlockResponseModel = JsonConvert.DeserializeObject<UnlockAccountResponseModel>(detailJson);
+
+                        if (_unlockResponseModel == null || _unlockResponseModel.D == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                ErrorMessageForUnlockAccount += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+
+                        return _unlockResponseModel;
+                    }
+                    return _unlockResponseModel;
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    throw new GAZTUnlockAccountException(ex.Message);
+                }
+
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
+        public static async Task<UnlockAccountResponseModel> GaztUnlockAccountChangePassword(UnlockAccountModelChangePassword unlockAccountModel)
+        {
+            UnlockAccountResponseModel _unlockResponseModel = new UnlockAccountResponseModel();
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    if (unlockAccountModel != null)
+                    {
+                        //string url = Constants.GAZTSignUpFirstSubmit;
+                        string LangZAREN = GetLangZParameterAREN();
+
+                        char LangZ = GetLangZParameter();
+                        string lang = UtilityManager.GetLanguageParameter();
+                        String url = Constants.GAZTUnlockAccountAllOperations;
+
+                        unlockAccountModel.Language = LangZ.ToString();
+                        unlockAccountModel.UserLocked = "L";
+
+                        var uri = new Uri(url);
+                        HttpClient client = new HttpClient(App.httpClientHandler);
+
+                        client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                        var serilized = JsonConvert.SerializeObject(unlockAccountModel);
+                        HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                        HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                        var detailJson = res.Content.ReadAsStringAsync().Result;
+                        _unlockResponseModel = JsonConvert.DeserializeObject<UnlockAccountResponseModel>(detailJson);
+
+                        if (_unlockResponseModel == null || _unlockResponseModel.D == null)
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                ErrorMessageForUnlockAccount += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                ErrorMessageForUnlockAccount = WithReplacedString;
+                                //ErrorMessageForVAT
+                                throw new GAZTUnlockAccountException(ErrorMessageForUnlockAccount);
+                            }
+                        }
+
+                        return _unlockResponseModel;
+                    }
+                    return _unlockResponseModel;
+                }
+                catch (GAZTUnlockAccountException ex)
+                {
+                    throw new GAZTUnlockAccountException(ex.Message);
                 }
 
                 catch (Exception ex)

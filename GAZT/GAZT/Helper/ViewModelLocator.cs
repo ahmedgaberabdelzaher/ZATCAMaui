@@ -10,6 +10,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.BillDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeEmailPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangeMobileNumberPage_ViewModel;
+
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChangePasswordPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage;
@@ -47,6 +48,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_ViewMo
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxPayerProfilePage_ViewModel;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATRealEstatePage;
@@ -99,6 +101,7 @@ using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportList;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportMobile;
 using EGAZT.Views.SyncFusionEnabledViews.TaxEvasionReportType;
 using EGAZT.Views.SyncFusionEnabledViews.TaxPayerProfile_View;
+using EGAZT.Views.SyncFusionEnabledViews.UnlockAccount;
 using EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX;
 using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using EGAZT.Views.SyncFusionEnabledViews.VATLookup;
@@ -192,6 +195,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
         }
         public PdfViewModel pdfView
         {
@@ -1134,6 +1138,20 @@ namespace EGAZT
             }
         }
 
+        public UnlockAccountTINPageViewModel UnlockAccountTINPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UnlockAccountTINPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
@@ -1213,12 +1231,11 @@ namespace EGAZT
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
 
             navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
+            navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
 
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 
             return navigationService;
         }
     }
-
-
 }

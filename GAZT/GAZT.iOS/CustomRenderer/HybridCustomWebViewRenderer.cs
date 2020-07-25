@@ -126,6 +126,11 @@ namespace GAZT.iOS.CustomRenderer
                 element.InvokeAction("navigateToForgotUsernamePage");
             }
 
+            if (apiUrl.ToString().Contains("IsRstPw=Y"))
+            {
+                element.InvokeAction("navigateToUnlockAccountPage");
+            }
+
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
                 App.IsLoginCalled = true;

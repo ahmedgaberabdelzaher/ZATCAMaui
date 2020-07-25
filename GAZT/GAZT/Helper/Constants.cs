@@ -43,20 +43,20 @@ namespace GAZT.Helper
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
 
-        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = QADomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        public static string DomainUrlForCookies = QADomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = PreprodDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
-        public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
-        public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
-        public static string DomainUrlForCookies = QADomainForCookies;
-        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+        //public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
+        //public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
+        //public static string DomainUrlForCookies = QADomainForCookies;
+        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
 
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -171,6 +171,10 @@ namespace GAZT.Helper
         public static string GAZTGetVATRegistrationOtherDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string SaveVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
         public static string SaveVATRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet?sap-language=";
+        #endregion
+
+        #region GAZTUnlock Account
+        public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion
     }
 }
