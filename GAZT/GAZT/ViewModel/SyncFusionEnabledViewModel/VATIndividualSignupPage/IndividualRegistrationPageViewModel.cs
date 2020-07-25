@@ -667,7 +667,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _mobileNumber = value;
                 if (_mobileNumber != null && _mobileNumber.Length > 1)
                 {
-                    if (_mobileNumber.Length < 15 )
+                    if (_mobileNumber.Length >= 9 )
                     {
                         string mystring = _mobileNumber.Substring(_mobileNumber.Length - 4);
                      EncriptedMobileNumber ="xxxxxx" + mystring;

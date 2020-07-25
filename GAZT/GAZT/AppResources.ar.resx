@@ -4255,5 +4255,15 @@
        <data name="InternationalCountryCodeSearch" xml:space="preserve">
     <value>البحث عن رمز الدولة</value>
   </data>    
+           <data name="CountryText" xml:space="preserve">
+    <value>الدولة</value>
+  </data>    
+      <data name="SearchText" xml:space="preserve">
+    <value>البحث</value>
+  </data>    
+          <data name="ZZMobilenumberCannotStartWith0" xml:space="preserve">
+    <value>Mobile number cannot start with number 0</value>
+    <comment>Sign Up</comment>
+  </data>
     
 </root>

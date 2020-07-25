@@ -1223,11 +1223,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 StringBuilder Message = new StringBuilder();
                 PopUp popUp = new PopUp();
-                if (EntryMobileNumber.Text.Substring(0, 1) != "5")
+                if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
-                    Message.Append(AppResources.ZZMobilenumberhastostartwithnumber5);
+                    Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
                 }
-                if (EntryMobileNumber.Text.Length != 9)
+                if (EntryMobileNumber.Text.Length < 9)
                 {
                     if (Message.Length > 0)
                     {

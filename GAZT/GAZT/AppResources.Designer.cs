@@ -3964,6 +3964,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZZMobilenumberCannotStartWith0 {
+            get {
+                return ResourceManager.GetString("ZZMobilenumberCannotStartWith0", resourceCulture);
+            }
+        }
+        
         public static string ZZMobilenumberlengthcannotbelessthan9digits {
             get {
                 return ResourceManager.GetString("ZZMobilenumberlengthcannotbelessthan9digits", resourceCulture);
@@ -7167,6 +7173,18 @@ namespace EGAZT {
         public static string InternationalCodeSearch {
             get {
                 return ResourceManager.GetString("InternationalCodeSearch", resourceCulture);
+            }
+        }
+        
+        public static string CountryText {
+            get {
+                return ResourceManager.GetString("CountryText", resourceCulture);
+            }
+        }
+        
+        public static string SearchText {
+            get {
+                return ResourceManager.GetString("SearchText", resourceCulture);
             }
         }
         
