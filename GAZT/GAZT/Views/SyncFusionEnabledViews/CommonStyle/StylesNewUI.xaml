@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
@@ -23,8 +24,18 @@
     <Color x:Key="warningColor">#E39800</Color>
     
     <!--Vat New UI-->
-    
-    
+
+    <!-- SST Arabic Bold.ttf -->
+    <OnPlatform x:TypeArguments="x:String" x:Key="SSTArBold">
+        <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic" />
+        <On Platform="iOS" Value="SSTArabic-Bold" />
+    </OnPlatform>
+
+    <OnPlatform x:TypeArguments="x:String" x:Key="SSTArabicMedium">
+        <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
+        <On Platform="iOS" Value="SSTArabic-Medium" />
+    </OnPlatform>
+
     <!--Button-->
     
     <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
@@ -49,7 +60,101 @@
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="BorderColor" Value="{StaticResource Secondary}" />
     </Style>
-    
+
+
+    <Style x:Key="InputTableGridStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0,10,0,0" />
+    </Style>
+
+    <Style x:Key="InputTableFrameStyle" TargetType="Frame">
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!--<Style x:Key="GAZTSmallBlackLblForInputTable"  TargetType="Label">
+        --><!-- Small font--><!--
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        --><!--<Setter Property="FontAttributes" Value="Bold" />-->
+        <!--<Commented as we are provideing inline fontfamily />--><!--
+    </Style>-->
+
+
+    <!--<Style x:Key="GAZTMicroMediumGrayLabelForHorizontalStartForInputTable" TargetType="Label">
+        --><!-- Medium font--><!--
+        <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontSize" Value="Micro" />
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Padding" Value="0,0,0,0"/>
+        --><!--<Setter Property="FontAttributes" Value="Bold" />-->
+        <!--<Commented as we are provideing inline fontfamily />--><!--
+    </Style>-->
+ 
+
+    <Style x:Key="ImageStyleForInputTable" TargetType="Image">
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <Style x:Key="InputTableTextInputLayoutStyle" TargetType="inputLayout:SfTextInputLayout">
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="ContainerType" Value="Outlined" />
+        <Setter Property="UnfocusedColor" Value="#B1B1B1" />
+        <Setter Property="OutlineCornerRadius" Value="8" />
+        <Setter Property="FocusedColor" Value="#005e4b" />
+        <Setter Property="ErrorColor" Value="#B00020" />
+        <Setter Property="HasError" Value="False" />
+    </Style>
+
+    <Style x:Key="InputTableEntryLayoutStyle"  TargetType="Entry">
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <!--<Setter Property="Margin" Value="15,0,15,0"/>-->
+        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <!--<Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+    </Style>
+
+    <Style x:Key="InputTableLableStyleForSAR" TargetType="Label">
+        <!-- Medium font-->
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontSize" Value="Small" />
+   
+        <!--<Setter Property="FontAttributes" Value="Bold" />-->
+        <!--<Commented as we are provideing inline fontfamily />-->
+    </Style>
+
+    <Style x:Key="InputTableBoxViewStyle" TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="Margin" Value="0" />
+    </Style>
+
+    <Style x:Key="InputTableBoxViewStacklayoutStyle" TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+    </Style>
+
+
     <!--Button-->
 
     <!--Label-->
