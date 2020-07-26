@@ -9,7 +9,10 @@
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    
+    
     <!--Vat New UI-->
+    
     <Color x:Key="Primary">#006450</Color>
     <Color x:Key="Secondary">#D99A29</Color>
     <Color x:Key="NeutralBlack">#232323</Color>
@@ -18,13 +21,17 @@
     <Color x:Key="SuccessColor">#95D600</Color>
     <Color x:Key="ErrorColor">#AA0C19</Color>
     <Color x:Key="warningColor">#E39800</Color>
+    
     <!--Vat New UI-->
+    
+    
     <!--Button-->
+    
     <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="White" />
-        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="BorderWidth" Value="0" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="56" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
@@ -33,14 +40,70 @@
 
     <Style x:Key="SecondaryButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="{StaticResource Secondary}" />
-        <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="56" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="BorderColor" Value="{StaticResource Secondary}" />
     </Style>
+    
     <!--Button-->
+
+    <!--Label-->
+
+    <!--<Setter Property="LineHeight" Value="{OnPlatform Android=1.5, Default=-1}" />-->
+    <Style x:Key="PageTitleBlack" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="28" />
+    </Style>
+    <Style x:Key="PageTitleGrey" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+    <Style x:Key="SectionTitleBlack" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+    <Style x:Key="SectionTitleGrey" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+    <Style x:Key="ValueLabelBlack" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>    
+    <Style x:Key="ValueLabelGrey" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="BodyLabelBlack" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="BodyLabelGrey" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArLight}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+    <Style x:Key="CaptionLabelBlack" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
+    <Style x:Key="CaptionLabelGrey" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+        <Setter Property="FontSize" Value="12" />
+    </Style>
 </ResourceDictionary>
