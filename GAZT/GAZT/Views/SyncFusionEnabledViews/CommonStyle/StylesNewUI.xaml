@@ -59,6 +59,7 @@
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <Style x:Key="PageTitleGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
