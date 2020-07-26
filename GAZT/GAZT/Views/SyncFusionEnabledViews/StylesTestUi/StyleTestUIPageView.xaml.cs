@@ -22,6 +22,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.StylesTestUi
             viewModel = App.Locator.StyleTestUIPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            this.FlowDirection = FlowDirection.LeftToRight;
         }
     }
 }

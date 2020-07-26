@@ -15,6 +15,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CommonStyle
         public StylesNewUI()
         {
             InitializeComponent();
+           
         }
     }
 }
