@@ -20,8 +20,22 @@
         <StackLayout>
             <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
             <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
+                <Label Text="Page Title"   Style="{StaticResource PageTitleBlack}" />
+                <Label Text="Page Title" Style="{StaticResource PageTitleGrey}" />
 
-            <!-- My Bills template UI Starts -->
+                <Label Text="Section Title" Style="{StaticResource SectionTitleBlack}" />
+                <Label Text="Section Title" Style="{StaticResource SectionTitleGrey}" />
+
+                <Label Text="Value Title" Style="{StaticResource ValueLabelBlack}" />
+                <Label Text="Value Title" Style="{StaticResource ValueLabelGrey}" />
+
+                <Label Text="Body Title" Style="{StaticResource BodyLabelBlack}" />
+                <Label Text="Body Title" Style="{StaticResource BodyLabelGrey}" />
+
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelBlack}" />
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelGrey}" />
+
+                <!-- My Bills template UI Starts -->
                           <Frame BorderColor="LightGray" CornerRadius="8" Margin="0,5,0,0" HasShadow="False" Padding="10">
                                                 <StackLayout>
                                                    
