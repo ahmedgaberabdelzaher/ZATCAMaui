@@ -5,10 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <buttons:SfButton x:Name="btnprimary" Text="Primary"       Style="{StaticResource PrimaryButtonStyle}"   />
-            <buttons:SfButton x:Name="btnSecondary" Text="Primary"       Style="{StaticResource SecondaryButtonStyle}"   />
+            <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
             
         </StackLayout>
     </ContentPage.Content>
