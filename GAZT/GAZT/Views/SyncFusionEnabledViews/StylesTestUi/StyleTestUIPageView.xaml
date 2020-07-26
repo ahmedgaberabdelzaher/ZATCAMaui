@@ -25,7 +25,7 @@
         <ScrollView>
         <StackLayout Margin="10">
             <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
-            <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
+            <buttons:SfButton x:Name="btnSecondary" Text="Secondary"  Style="{StaticResource SecondaryButtonStyle}"/>
                 <Label Text="Page Title"   Style="{StaticResource PageTitleBlack}" />
                 <Label Text="Page Title" Style="{StaticResource PageTitleGrey}" />
 
