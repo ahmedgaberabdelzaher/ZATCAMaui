@@ -74,8 +74,8 @@
         <Setter Property="HasShadow" Value="False" />
     </Style>
 
-    <Style x:Key="GAZTSmallBlackLblForInputTable"  TargetType="Label">
-        <!-- Small font-->
+    <!--<Style x:Key="GAZTSmallBlackLblForInputTable"  TargetType="Label">
+        --><!-- Small font--><!--
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
@@ -83,13 +83,13 @@
         <Setter Property="FontSize" Value="Small" />
         <Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="Padding" Value="0,0,0,0"/>
-        <!--<Setter Property="FontAttributes" Value="Bold" />-->
-        <!--<Commented as we are provideing inline fontfamily />-->
-    </Style>
+        --><!--<Setter Property="FontAttributes" Value="Bold" />-->
+        <!--<Commented as we are provideing inline fontfamily />--><!--
+    </Style>-->
 
 
-    <Style x:Key="GAZTMicroMediumGrayLabelForHorizontalStartForInputTable" TargetType="Label">
-        <!-- Medium font-->
+    <!--<Style x:Key="GAZTMicroMediumGrayLabelForHorizontalStartForInputTable" TargetType="Label">
+        --><!-- Medium font--><!--
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
@@ -97,9 +97,9 @@
         <Setter Property="FontSize" Value="Micro" />
         <Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="Padding" Value="0,0,0,0"/>
-        <!--<Setter Property="FontAttributes" Value="Bold" />-->
-        <!--<Commented as we are provideing inline fontfamily />-->
-    </Style>
+        --><!--<Setter Property="FontAttributes" Value="Bold" />-->
+        <!--<Commented as we are provideing inline fontfamily />--><!--
+    </Style>-->
  
 
     <Style x:Key="ImageStyleForInputTable" TargetType="Image">
