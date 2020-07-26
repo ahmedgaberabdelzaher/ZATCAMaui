@@ -4,6 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
+             		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"             
+
              x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -14,25 +16,65 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
             <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
             <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
-            
-            <Label Text="Page Title"   Style="{StaticResource PageTitleBlack}" />
-            <Label Text="Page Title" Style="{StaticResource PageTitleGrey}" />
 
-            <Label Text="Section Title" Style="{StaticResource SectionTitleBlack}" />
-            <Label Text="Section Title" Style="{StaticResource SectionTitleGrey}" />
+            <!-- My Bills template UI Starts -->
+                          <Frame BorderColor="LightGray" CornerRadius="8" Margin="0,5,0,0" HasShadow="False" Padding="10">
+                                                <StackLayout>
+                                                   
+                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <Grid Padding="10,5,10,10" RowSpacing="5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"/>
+                                                            <RowDefinition Height="20"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="ZAKAT" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                       
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="Amendment by GAZT" TextColor="#909090"  Style="{StaticResource GAZTMicroMediumGrayLabel}" Margin="0,-8,0,0"/>
+                                                         <!--<Frame BackgroundColor="#c49b2d" Opacity="0.9" Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" WidthRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" HasShadow="False" CornerRadius="16"></Frame>-->
 
-            <Label Text="Value Title" Style="{StaticResource ValueLabelBlack}" />
-            <Label Text="Value Title" Style="{StaticResource ValueLabelGrey}" />
-           
-            <Label Text="Body Title" Style="{StaticResource BodyLabelBlack}" />
-            <Label Text="Body Title" Style="{StaticResource BodyLabelGrey}" />
-            
-            <Label Text="Caption Title" Style="{StaticResource CaptionLabelBlack}" />
-            <Label Text="Caption Title" Style="{StaticResource CaptionLabelGrey}" />
+ <yummy:PancakeView     Grid.Row="0" Grid.Column="1"
+                               CornerRadius="14"  BorderThickness="1" Grid.RowSpan="2" BackgroundColor="GreenYellow" VerticalOptions="Center" HorizontalOptions="Center" >
+                                    <Label Text="ZAKAT" HorizontalOptions="Center" VerticalOptions="Center"  Margin="5" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                </yummy:PancakeView>
 
-        </StackLayout>
+                                                        <!--<Label Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center"  HorizontalTextAlignment="Center" Margin="5" Text="Submitted" Style="{StaticResource GAZTSmallGrayLblMediumFont}" TextColor="#005e4b"/>-->
+
+ 
+
+                                                        <BoxView Style="{StaticResource lineSeperator}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="0.5" Margin="-10,0,-10,0" />
+
+ 
+
+                                                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="1,200 SAR" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                        <Label Grid.Row="4" Grid.Column="0" Text="SADAD Number" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
+                                                       <Label Grid.Row="4" Grid.Column="1" Text="Due Date" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
+
+ 
+
+                                                        <Label Grid.Row="5" Grid.Column="0"   Text="12345678901230" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
+                                                        <Label Grid.Row="5" Grid.Column="1"   Text="20the May 2020" TextColor="#010101"  Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
+
+ 
+
+                                                    </Grid>
+                                                    </StackLayout>
+ 
+</Frame>
+                                                 
+  <!-- My Bills template UI Ends -->
+         </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
