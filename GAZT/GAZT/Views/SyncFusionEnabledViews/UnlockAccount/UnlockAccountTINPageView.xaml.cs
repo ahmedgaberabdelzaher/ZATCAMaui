@@ -24,6 +24,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             
             SetLTR();
             ChangeAeroIcon();
+            viewModel.EnableTINView();
         }
 
         public void ChangeAeroIcon()

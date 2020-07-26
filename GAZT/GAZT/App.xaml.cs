@@ -103,6 +103,7 @@ namespace EGAZT
 
         public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
+        public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;

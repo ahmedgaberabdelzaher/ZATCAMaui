@@ -196,6 +196,8 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+
         }
         public PdfViewModel pdfView
         {
@@ -1153,6 +1155,21 @@ namespace EGAZT
             }
         }
 
+        public UnlockAccountSuccessPageViewModel UnlockAccountSuccessPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UnlockAccountSuccessPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         //SYNC FUSION INTEGRATION
         private INavigationService CreateNavigationService()
         {
@@ -1232,6 +1249,7 @@ namespace EGAZT
 
             navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
+            navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
 
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 

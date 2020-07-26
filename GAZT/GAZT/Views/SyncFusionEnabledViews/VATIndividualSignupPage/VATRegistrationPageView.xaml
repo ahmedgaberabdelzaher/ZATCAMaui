@@ -17,7 +17,7 @@
              BackgroundColor="#005e4b"
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:custom2="clr-namespace:EGAZT"
-           NavigationPage.BackButtonTitle = ""
+             NavigationPage.BackButtonTitle = ""
               Title="{x:Static custom2:AppResources.ZZZZVatRegistrationTile}"
              xmlns:local1="clr-namespace:GAZT"
              xmlns:syncfusion1="clr-namespace:Syncfusion.XForms.Expander;assembly=Syncfusion.Expander.XForms"

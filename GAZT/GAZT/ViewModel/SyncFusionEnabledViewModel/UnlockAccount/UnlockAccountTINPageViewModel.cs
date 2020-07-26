@@ -32,6 +32,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         int TotalSec;
         public bool StopTimer = false;
         public int currentAttempts = 0;
+        public int totalAttempts = 0;
+
         bool isValiedOTP = false;
         public int numberOfSeconds = 120;
 
@@ -543,6 +545,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public void EnableOtpView()
         {
+            currentAttempts = 0;
             MobileNumberMasked = AppResources.MobileNumber + " " + UnlockAccountModelResponse.D.MobileNo;
             StopTimer = true;
             IsVerifyOTPEnabled = true;
@@ -646,11 +649,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         TotalSec = TotalSec - 1;
                         numberOfSeconds = TotalSec;
                         TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
-                        });
-
+                        OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
+                       
                         return true;
                     }
                 });
@@ -675,6 +675,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 //Action for validating TIN and sending OTP
                 UnlockAccountModel.Action = "01";
                 UnlockAccountModelResponse = await WebServiceManager.GaztUnlockAccount(UnlockAccountModel);
+                totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
+                numberOfSeconds = 120;
                 IsLoading = false;
                 EnableOtpView();
 
@@ -738,8 +740,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
             else
             {
+                currentAttempts++;
                 try
                 {
+
                     IsLoading = true;
                     UnlockAccountModelOtp.Tin = UnlockAccountModel.Tin;
                     UnlockAccountModelOtp.Action = "02";
@@ -895,7 +899,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     PasswordChangedSuccessfully = PasswordChangedSuccessfully.Replace("xxxxxx", UnlockAccountModelChangePassword.Tin);
 
                     IsLoading = false;
-                    EnableAccountUnlockedView();
+
+                    await PopupNavigation.Instance.PopAsync();
+                    _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
