@@ -36,6 +36,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
             {
                 this.FlowDirection = FlowDirection.RightToLeft;
                 CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
+                searchBar.FlowDirection = FlowDirection.RightToLeft;
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
 
             }
@@ -43,6 +44,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                searchBar.FlowDirection = FlowDirection.LeftToRight;
+
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
 
             }
