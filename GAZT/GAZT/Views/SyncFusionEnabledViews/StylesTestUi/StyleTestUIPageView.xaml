@@ -228,9 +228,10 @@
                 </Frame>
                 <!-- My Bills template UI Ends -->
             <!--Total Big-->
-                <yummy:PancakeView  BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0" BackgroundColor="AliceBlue" HasShadow="False">
+                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
                     <StackLayout Padding="0">
-                        <Grid   Margin="0"  RowSpacing="0"  BackgroundColor="White">
+                        
+                        <Grid   Margin="0"  RowSpacing="0"  >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                                 <RowDefinition Height="auto"/>
@@ -267,7 +268,7 @@
                         </Grid>
 
                     </StackLayout>
-                </yummy:PancakeView>
+                </Frame>
                 <!--Total big-->
             </StackLayout>
             </ScrollView>
