@@ -261,7 +261,7 @@
                 </Frame>
                 <!-- My Bills template UI Ends -->
             <!--Total Big-->
-                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
+                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="0" Padding="0"  HasShadow="False">
                     <StackLayout Padding="0">
                         
                         <Grid   Margin="0"  RowSpacing="0"  >
@@ -291,12 +291,12 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
-                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
-                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                                <Label Text="Test" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="Test" Style="{StaticResource ValueLabelBlack}" />
                             </StackLayout>
                             <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
-                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
-                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                                <Label Text="Test" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="Test" Style="{StaticResource ValueLabelBlack}" />
                             </StackLayout>
                         </Grid>
 
