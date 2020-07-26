@@ -10,14 +10,14 @@
             </ResourceDictionary.MergedDictionaries >
 
             <!--Vat New UI-->
-            <Color x:Key="Primary">#006450</Color>
+            <!--<Color x:Key="Primary">#006450</Color>
             <Color x:Key="Secondary">#D99A29</Color>
             <Color x:Key="NeutralBlack">#232323</Color>
             <Color x:Key="NeutralGreay">#999999</Color>
             <Color x:Key="NeutralLightGrey">#EBEBEB</Color>
             <Color x:Key="SuccessColor">#95D600</Color>
             <Color x:Key="ErrorColor">#AA0C19</Color>
-            <Color x:Key="warningColor">#E39800</Color>
+            <Color x:Key="warningColor">#E39800</Color>-->
             <!--Vat New UI-->
             <!--SYNCFUSION INTEGRATION-->
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
@@ -878,7 +878,7 @@
             
            <!--Button Style-->
             
-            <Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
+            <!--<Style x:Key="PrimaryButtonStyle" TargetType="buttons:SfButton">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
                 <Setter Property="BorderWidth" Value="0" />
@@ -899,7 +899,7 @@
                 <Setter Property="VerticalTextAlignment" Value="Center" />
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="BorderColor" Value="{StaticResource Secondary}" />
-            </Style>
+            </Style>-->
             <!--Button Style-->
         </ResourceDictionary>
     </Application.Resources>

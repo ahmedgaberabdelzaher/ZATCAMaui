@@ -10,16 +10,278 @@
              mc:Ignorable="d"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView"
              FlowDirection="LeftToRight">
+             		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"             
+xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
+            <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
+                <Label Text="Page Title"   Style="{StaticResource PageTitleBlack}" />
+                <Label Text="Page Title" Style="{StaticResource PageTitleGrey}" />
+
+                <Label Text="Section Title" Style="{StaticResource SectionTitleBlack}" />
+                <Label Text="Section Title" Style="{StaticResource SectionTitleGrey}" />
+
+                <Label Text="Value Title" Style="{StaticResource ValueLabelBlack}" />
+                <Label Text="Value Title" Style="{StaticResource ValueLabelGrey}" />
+
+                <Label Text="Body Title" Style="{StaticResource BodyLabelBlack}" />
+                <Label Text="Body Title" Style="{StaticResource BodyLabelGrey}" />
+
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelBlack}" />
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelGrey}" />
+            <!--Income card--> 
+                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Individual Zakat" Style="{StaticResource ValueLabelBlack}" />
+                            <Label Text=" Zakat" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <yummy:PancakeView    Padding="15,10,10,10"  
+                               CornerRadius="20"  BorderThickness="1" BackgroundColor="Aquamarine" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                <Label Text="Submitted"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+                <!--Income card-->
+
+              
+                <!--ListIconLeftCard-->
+
+                <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10"  HasShadow="False">
+                    <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!--ListIconLeftCard-->
+                <!--ListIconRightCard-->
+                <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10"  HasShadow="False">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                      
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                </Image.Source>
+                            </Image>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!--ListIconRightCard-->
+                <!--Summery-->
+                <Frame BorderColor="AliceBlue" BackgroundColor="AliceBlue" Padding="0" CornerRadius="8" Margin="10"  HasShadow="False">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
+                <!--Summery-->
+                <!--Total Small-->
+                <Frame BorderColor="AliceBlue" BackgroundColor="AliceBlue" Padding="0" CornerRadius="8" Margin="10"  HasShadow="False">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Label Text="Total" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="Amount" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start"/>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="20"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!--Total Small-->
+            
+            <!--Inbox Unread-->
+                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Message Title" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" />
+                            <Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        
+                            <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="180">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        
+                    </Grid>
+                </Frame>
+                <!--Inbox Unread-->
+                <!--inbod read-->
+                <Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Message Title" Style="{StaticResource ValueLabelBlack}"   />
+                            <Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="180">
+                        </Label>
+
+                    </Grid>
+                </Frame>
+                <!--inbod read-->
+
+
+
+
+
+                <!-- My Bills template UI Starts -->
+                <!--<Frame BorderColor="LightGray"  CornerRadius="15" Margin="10" Padding="0"  HasShadow="False">
+                    <StackLayout Padding="0">
+                        <Grid  Padding="15" RowSpacing="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                <Label  Text="ZAKAT" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
+                                <Label  Text="Amendment by Gazt" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <yummy:PancakeView    Padding="15,10,10,10"  
+                               CornerRadius="20"  BorderThickness="1" BackgroundColor="GreenYellow" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                    <Label Text="Submitted" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </Grid>
+                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <Grid Padding="10,10,10,10" RowSpacing="15" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                            <StackLayout Grid.Row="1" Grid.RowSpan="0" Spacing="-5" Grid.Column="0"  >
+                                <Label  Text="SADAD NUmber" FontSize="Small" Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                <Label  Text="1234567898761234" FontSize="Small" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                            </StackLayout>
+                            <StackLayout  Grid.Row="1" Grid.RowSpan="0" Grid.Column="1" Spacing="-5" >
+                                <Label  HorizontalOptions="Start" Text="Due Date "  Style="{StaticResource GAZTSmallGrayLblMediumFont}"/>
+                                <Label  HorizontalOptions="Start" Text="20 Jan 2020" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>-->
+            
+                <!--<Frame BorderColor="LightGray" CornerRadius="8" Margin="0,5,0,0" HasShadow="False" Padding="10">
+                                                <StackLayout>
+                                                   
+                                                    <BoxView Style="{StaticResource lineSeperator}"/>
+                                                    <Grid Padding="10,5,10,10" RowSpacing="5">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="20"/>
+                                                            <RowDefinition Height="20"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="50*"/>
+                                                            <ColumnDefinition Width="50*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Text="ZAKAT" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                       
+                                                        <Label Grid.Row="1" Grid.Column="0" Text="Amendment by GAZT" TextColor="#909090"  Style="{StaticResource GAZTMicroMediumGrayLabel}" Margin="0,-8,0,0"/>
+                                                         --><!--<Frame BackgroundColor="#c49b2d" Opacity="0.9" Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" WidthRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" HasShadow="False" CornerRadius="16"></Frame>--><!--
+
+ <yummy:PancakeView     Grid.Row="0" Grid.Column="1"
+                               CornerRadius="14"  BorderThickness="1" Grid.RowSpan="2" BackgroundColor="GreenYellow" VerticalOptions="Center" HorizontalOptions="Center" >
+                                    <Label Text="ZAKAT" HorizontalOptions="Center" VerticalOptions="Center"  Margin="5" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
+                                </yummy:PancakeView>
+
+                                                        --><!--<Label Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center"  HorizontalTextAlignment="Center" Margin="5" Text="Submitted" Style="{StaticResource GAZTSmallGrayLblMediumFont}" TextColor="#005e4b"/>--><!--
+
+ 
+
+                                                        <BoxView Style="{StaticResource lineSeperator}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="0.5" Margin="-10,0,-10,0" />
+
+ 
+
+                                                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="1,200 SAR" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
+                                                        <Label Grid.Row="4" Grid.Column="0" Text="SADAD Number" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
+                                                       <Label Grid.Row="4" Grid.Column="1" Text="Due Date" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
+
+ 
+
+                                                        <Label Grid.Row="5" Grid.Column="0"   Text="12345678901230" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
+                                                        <Label Grid.Row="5" Grid.Column="1"   Text="20the May 2020" TextColor="#010101"  Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
+
+ 
+
+                                                    </Grid>
+                                                    </StackLayout>
+ 
+</Frame>-->
+                                                 
+  <!-- My Bills template UI Ends -->
+         </StackLayout>
+            </ScrollView>
             <!--<buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
             <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>-->
 
