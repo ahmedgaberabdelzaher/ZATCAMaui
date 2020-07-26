@@ -18,10 +18,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.StylesTestUi
         public StyleTestUIPageView()
             
         {
-            InitializeComponent();
-            viewModel = App.Locator.StyleTestUIPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.StyleTestUIPageView;
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                this.BindingContext = viewModel;
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }

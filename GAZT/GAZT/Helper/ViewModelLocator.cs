@@ -55,6 +55,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
 using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
 using EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails;
@@ -1248,7 +1249,7 @@ namespace EGAZT
             navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
 
             //New Design
-            navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageViewModel));
+            navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageView));
             navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
            // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
             ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
