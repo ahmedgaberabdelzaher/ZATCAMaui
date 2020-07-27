@@ -326,12 +326,13 @@
                <Frame FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
                    
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
-                    <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" LeadingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                    <inputLayout:SfTextInputLayout   HeightRequest="50" FlowDirection="LeftToRight" LeadingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
                                        HorizontalOptions="FillAndExpand"
                                                    EnableFloating="False"
+                                                   
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
-                        <control:BorderlessEntry   Text="{Binding MobileNumber}"     FontSize="Small" TextColor="Black" Placeholder="Enter Phone Number" PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+                        <control:BorderlessEntry   Text="{Binding MobileNumber}"   Style="{StaticResource DefaultEntry}" Placeholder="Enter Phone Number" Keyboard="Telephone" >
                            
                         </control:BorderlessEntry>
 
@@ -348,7 +349,7 @@
                                      HorizontalOptions="FillAndExpand"
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
-                        <control:BorderlessEntry   Text="{Binding OTP}"     FontSize="Small" TextColor="Black" Placeholder="Enter OTP"  PlaceholderColor="Gray" Keyboard="Numeric" MaxLength="4">
+                        <control:BorderlessEntry   Text="{Binding OTP}"     Style="{StaticResource DefaultEntry}" Placeholder="Enter OTP"  PlaceholderColor="Gray" Keyboard="Numeric" MaxLength="4">
                            
                         </control:BorderlessEntry>
 
@@ -384,7 +385,7 @@
                    
 
 
- <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"
+ <inputLayout:SfTextInputLayout   HeightRequest="50" LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
 
@@ -401,7 +402,7 @@
                     </inputLayout:SfTextInputLayout.LeadingView>
 
 
-<control:BorderlessEntry Text="{Binding MobileNumber}" Placeholder="Test Input Box"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+<control:BorderlessEntry Text="{Binding MobileNumber}" Style="{StaticResource DefaultEntry}" Placeholder="Test Input Box"    Keyboard="Telephone" MaxLength="9">
 
                     </control:BorderlessEntry>
 
@@ -434,7 +435,7 @@
 
                   <!-- Card Details Input Box-->
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
-                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                <Frame Padding="0" BorderColor="#B1B1B1" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
                              
@@ -452,23 +453,23 @@
                                 <ColumnDefinition Width="17*"/>
                             </Grid.ColumnDefinitions>
                        <Image Source="icon.png" Grid.Row="0" Grid.Column="0"></Image>
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center" >
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center" >
                        
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
 
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="7" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
-                       <control:BorderlessEntry BackgroundColor="White" Grid.Row="0" Grid.Column="8" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       <control:BorderlessEntry BackgroundColor="White" Grid.Row="0" Grid.Column="8" Text="{Binding MobileNumber}" Placeholder="0000"  Style="{StaticResource DefaultEntry}"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
@@ -477,7 +478,7 @@
 
                 <!-- Range Input Box-->
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
-                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                <Frame Padding="0" BorderColor="#B1B1B1" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
                              
@@ -490,12 +491,12 @@
                                 <ColumnDefinition Width="10*"/>
                             </Grid.ColumnDefinitions>
 
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="0" Text="{Binding MobileNumber}" Placeholder="From"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="0" Text="{Binding MobileNumber}" Placeholder="From"   Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
                        
                     </control:BorderlessEntry>
                         <Image Source="icon.png" Grid.Row="0" Grid.Column="1"></Image>
 
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="To"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="To"   Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
                        
                     </control:BorderlessEntry>
                         <Image Source="icon.png" Grid.Row="0" Grid.Column="3"></Image>
@@ -506,7 +507,7 @@
 
                  <!-- IBAN Input Box-->
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
-                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                <Frame Padding="0" BorderColor="#B1B1B1" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
                              
@@ -528,23 +529,23 @@
                        
                     </control:BorderlessEntry>
 
-                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="80000000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="80000000"   FontSize="11" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
-                        <control:BorderlessEntry Grid.Row="0" Grid.Column="3" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="3" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
-                        <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
-                        <control:BorderlessEntry Grid.Row="0" Grid.Column="5" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="5" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
-                        <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" Style="{StaticResource DefaultEntry}" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
                        
                     </control:BorderlessEntry>
 
@@ -554,7 +555,7 @@
 
 
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
-                 <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                 <inputLayout:SfTextInputLayout   HeightRequest="50" FlowDirection="LeftToRight" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
                                      HorizontalOptions="FillAndExpand"
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
@@ -566,7 +567,7 @@
 
 
                 <!-- OTP Input Box-->
-                <StackLayout HorizontalOptions="Start" HeightRequest="35" WidthRequest="35">
+                <!--<StackLayout HorizontalOptions="Start" HeightRequest="35" WidthRequest="35">
                     <Label Text="OTP" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
                  <inputLayout:SfTextInputLayout  TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
                                      HorizontalOptions="FillAndExpand" WidthRequest="30" HeightRequest="30"
@@ -576,7 +577,7 @@
                            
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
-                </StackLayout>
+                </StackLayout>-->
                
 
 
