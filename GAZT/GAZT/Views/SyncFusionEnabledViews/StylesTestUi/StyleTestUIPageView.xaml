@@ -10,8 +10,7 @@
              mc:Ignorable="d"
              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:local="clr-namespace:EGAZT.CustomControl" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView"
-             FlowDirection="LeftToRight"
-             	>
+             FlowDirection="LeftToRight">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -321,55 +320,266 @@
 
                 </border:SfBorder >
                 <!--slider-->
-                <StackLayout>
-                    <Frame Padding="0" BorderColor="LightGray" CornerRadius="8" HasShadow="False">
-                        <StackLayout Orientation="Horizontal" FlowDirection="LeftToRight">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="5,8,0,8">
-                                <StackLayout Orientation="Horizontal">
-                                    <BoxView CornerRadius="15" HeightRequest="30" WidthRequest="30" BackgroundColor="DarkGreen"/>
-                                    <Label Text="{x:Static custom2:AppResources.NASA}" TextColor="Black" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontFamily="{StaticResource SSTArBold}"/>
-                                    <!--<Image Rotation="270">
-                                    <Image.Source>
-                                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Size="15"
-                                                 Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
-                                    </Image.Source>
-                                </Image>-->
-                                </StackLayout>
-                            </StackLayout>
-                            <BoxView WidthRequest="1" BackgroundColor="LightGray"/>
-                            <StackLayout Orientation="Horizontal" Padding="0,5,0,5">
-                                <custom:BorderlessEntry x:Name="IbanOne" Placeholder="03" MaxLength="2" ReturnType="Next" Keyboard="Numeric" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartOne}"  >
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="IbanTwo"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanTwo" Keyboard="Numeric" Placeholder="80000000" MaxLength="8" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartTwo}">
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="IbanThree"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanThree" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartThree}" Keyboard="Numeric">
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFour"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanFour" Placeholder="0000" MaxLength="4" ReturnType="Next" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFour}" Keyboard="Numeric">
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <local:EntryFocusBehaviour NextFocusElementName="IbanFive"/>
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                                <BoxView WidthRequest="1" HeightRequest="30" BackgroundColor="LightGray"/>
-                                <custom:BorderlessEntry x:Name="IbanFive" Placeholder="0000" MaxLength="4" FontAttributes="Bold" FontSize="Small" Text="{Binding IbanPartFive}" Keyboard="Numeric"/>
 
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    
+
+               <Frame FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
+                   
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                    <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" LeadingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                                       HorizontalOptions="FillAndExpand"
+                                                   EnableFloating="False"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
+                        <control:BorderlessEntry   Text="{Binding MobileNumber}"     FontSize="Small" TextColor="Black" Placeholder="Enter Phone Number" PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+                           
+                        </control:BorderlessEntry>
+
+                         <inputLayout:SfTextInputLayout.LeadingView>
+                       <Label FlowDirection="LeftToRight" Margin="0,0,-20,0"  Text="+966"  TextColor="#D99A29"
+                                           FontSize="Medium"  VerticalTextAlignment="Center" HorizontalOptions="Center" VerticalOptions="Center"
+                                           HorizontalTextAlignment="Center"></Label>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                    </inputLayout:SfTextInputLayout>
+
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                 <inputLayout:SfTextInputLayout  TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                                     HorizontalOptions="FillAndExpand"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
+                        <control:BorderlessEntry   Text="{Binding OTP}"     FontSize="Small" TextColor="Black" Placeholder="Enter OTP"  PlaceholderColor="Gray" Keyboard="Numeric" MaxLength="4">
+                           
+                        </control:BorderlessEntry>
+
+                         <inputLayout:SfTextInputLayout.TrailingView>
+                      <Image HorizontalOptions="Center" >
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                            </Image.Source>
+                            <!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                            </Image.GestureRecognizers>-->
+                        </Image>
+                    </inputLayout:SfTextInputLayout.TrailingView>
+
+                    </inputLayout:SfTextInputLayout>
+
+                    <!--<inputLayout:SfTextInputLayout FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0"
+                                    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    ContainerType="None" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
+                                        <control:BorderlessEntry FlowDirection="LeftToRight" x:Name="Mobile_Entry" Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused" FontSize="Medium" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+                                            <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
+                                        </control:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>-->
+             
+
+
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                    <Frame FlowDirection="LeftToRight"  BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
+                   
+
+
+ <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+      <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image HorizontalOptions="Center" >
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                            </Image.Source>
+                            <!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                            </Image.GestureRecognizers>-->
+                        </Image>
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+
+<control:BorderlessEntry Text="{Binding MobileNumber}" Placeholder="Test Input Box"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+
+                    </control:BorderlessEntry>
+
+     <inputLayout:SfTextInputLayout.TrailingView>
+                        <Image HorizontalOptions="Center" >
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                         Glyph="{x:Static FontImage:IconFonts.Eye}"/>
+                            </Image.Source>
+                            <!--<Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ImageSeeOtp_Tapped"/>
+                            </Image.GestureRecognizers>-->
+                        </Image>
+                    </inputLayout:SfTextInputLayout.TrailingView>
+
+
+               </inputLayout:SfTextInputLayout>
+
+                 
+                <!--<inputLayout:SfTextInputLayout FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0"
+                                    Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                    ContainerType="None" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
+                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020"   >
+                                        <control:BorderlessEntry FlowDirection="LeftToRight" x:Name="Mobile_Entry" Text="{Binding MobileNumber}"  Unfocused="Mobile_Entry_Unfocused" FontSize="Medium" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
+                                            <Entry.Behaviors>
+                                                <custom1:OnlyNumericValuesBehaviour/>
+                                            </Entry.Behaviors>
+                                        </control:BorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>-->
+
+                  <!-- Card Details Input Box-->
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                   <Grid Padding="5" ColumnSpacing="2">
+                            <Grid.RowDefinitions>
+                             
+                                <RowDefinition Height="100*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="15*"/>
+                                <ColumnDefinition Width="14*"/>
+                                  <ColumnDefinition Width="17*"/>
+                                  <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="17*"/>
+                                 <ColumnDefinition Width="1*"/>
+                                  <ColumnDefinition Width="17*"/>
+                                 <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="17*"/>
+                            </Grid.ColumnDefinitions>
+                       <Image Source="icon.png" Grid.Row="0" Grid.Column="0"></Image>
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center" >
+                       
+                    </control:BorderlessEntry>
+                       <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+                       <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
+
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+                       <BoxView Grid.Row="0" Grid.Column="7" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
+
+                       <control:BorderlessEntry BackgroundColor="White" Grid.Row="0" Grid.Column="8" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                       </Grid>
+                </Frame>
+
+                <!-- Range Input Box-->
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                   <Grid Padding="5" ColumnSpacing="2">
+                            <Grid.RowDefinitions>
+                             
+                                <RowDefinition Height="100*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="10*"/>
+                                 <ColumnDefinition Width="40*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="0" Text="{Binding MobileNumber}" Placeholder="From"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
+                       
+                    </control:BorderlessEntry>
+                        <Image Source="icon.png" Grid.Row="0" Grid.Column="1"></Image>
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="To"   FontSize="Small" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" >
+                       
+                    </control:BorderlessEntry>
+                        <Image Source="icon.png" Grid.Row="0" Grid.Column="3"></Image>
+
+                       </Grid>
+                </Frame>
+
+
+                 <!-- IBAN Input Box-->
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
+                   <Grid Padding="5" ColumnSpacing="2">
+                            <Grid.RowDefinitions>
+                             
+                                <RowDefinition Height="100*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="10*"/>
+                                 <ColumnDefinition Width="26*"/>
+                                <ColumnDefinition Width="14*"/>
+                                  <ColumnDefinition Width="14*"/>
+                                    <ColumnDefinition Width="14*"/>
+                                 <ColumnDefinition Width="14*"/>
+                            </Grid.ColumnDefinitions>
+
+                       <Image Source="icon.png" Grid.Row="0" Grid.Column="0"></Image>
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="1" Text="{Binding MobileNumber}" Placeholder="03"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                       <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="80000000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="3" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="5" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+                        <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
+                       
+                    </control:BorderlessEntry>
+
+
+                       </Grid>
+                </Frame>
+
+
+                <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                 <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                                     HorizontalOptions="FillAndExpand"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
+
+                     <Editor HeightRequest="100" BackgroundColor="White"></Editor>
+
+                       
+                    </inputLayout:SfTextInputLayout>
+
+
+                <!-- OTP Input Box-->
+                <StackLayout HorizontalOptions="Start" HeightRequest="35" WidthRequest="35">
+                    <Label Text="OTP" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
+                 <inputLayout:SfTextInputLayout  TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
+                                     HorizontalOptions="FillAndExpand" WidthRequest="30" HeightRequest="30"
+                                        ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
+                        <control:BorderlessEntry   Text="{Binding OTP}"  IsPassword="True" HorizontalTextAlignment="Center"   FontSize="Small" TextColor="Black" Placeholder="****"  PlaceholderColor="Gray" Keyboard="Numeric" MaxLength="4">
+                           
+                        </control:BorderlessEntry>
+                    </inputLayout:SfTextInputLayout>
                 </StackLayout>
+               
 
+
+               
             </StackLayout>
             </ScrollView>
     </ContentPage.Content>
