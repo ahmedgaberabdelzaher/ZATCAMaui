@@ -22,6 +22,7 @@ using Xamarin.Forms.Xaml;
 using AppDynamics.Agent;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
+using EGAZT.Views.SyncFusionEnabledViews;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT

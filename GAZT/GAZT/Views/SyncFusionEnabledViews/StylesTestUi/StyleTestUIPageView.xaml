@@ -3,32 +3,327 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:custom2="clr-namespace:EGAZT"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              mc:Ignorable="d"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:maskededit="clr-namespace:Syncfusion.XForms.MaskedEdit;assembly=Syncfusion.SfMaskedEdit.XForms"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"             
-                          xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms" 
-             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
-             x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView">
+               xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+             xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             x:Class="EGAZT.Views.SyncFusionEnabledViews.StylesTestUi.StyleTestUIPageView"
+             FlowDirection="LeftToRight">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+        
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Vertical" Padding="5">
-                <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
-                <buttons:SfButton x:Name="btnSecondary" Text="Primary"  Style="{StaticResource SecondaryButtonStyle}"/>
+        <ScrollView>
+        <StackLayout Margin="10">
+            <buttons:SfButton x:Name="btnprimary" Text="Primary" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton x:Name="btnSecondary" Text="Secondary"  Style="{StaticResource SecondaryButtonStyle}"/>
+                <Label Text="Page Title"   Style="{StaticResource PageTitleBlack}" />
+                <Label Text="Page Title" Style="{StaticResource PageTitleGrey}" />
+
+                <Label Text="Section Title" Style="{StaticResource SectionTitleBlack}" />
+                <Label Text="Section Title" Style="{StaticResource SectionTitleGrey}" />
+
+                <Label Text="Value Title" Style="{StaticResource ValueLabelBlack}" />
+                <Label Text="Value Title" Style="{StaticResource ValueLabelGrey}" />
+
+                <Label Text="Body Title" Style="{StaticResource BodyLabelBlack}" />
+                <Label Text="Body Title" Style="{StaticResource BodyLabelGrey}" />
+
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelBlack}" />
+                <Label Text="Caption Title" Style="{StaticResource CaptionLabelGrey}" />
+            <!--Income card-->
+                <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Individual Zakat" Style="{StaticResource ValueLabelBlack}" />
+                            <Label Text=" Zakat" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <yummy:PancakeView    Padding="10,10,10,10"  
+                               CornerRadius="20"  BorderThickness="1" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                <Label Text="Submitted"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </Grid>
+                    </border:SfBorder >
+                <!--Income card-->
+
+              
+                <!--ListIconLeftCard-->
+
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                    <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+
+                        </StackLayout>
+                    </StackLayout>
+                </border:SfBorder>
+                <!--ListIconLeftCard-->
+                <!--ListIconRightCard-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                      
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="3101503102" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                </Image.Source>
+                            </Image>
+
+                        </StackLayout>
+                    </StackLayout>
+                </border:SfBorder >
+                <!--ListIconRightCard-->
+            <!--Distributive-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                </Image.Source>
+                            </Image>
+
+                        </StackLayout>
+                    </StackLayout>
+                </border:SfBorder >
+                <!--Distributive-->
+                <!--Summery-->
+                <Frame BorderColor="AliceBlue" BackgroundColor="AliceBlue" Padding="0" Margin="0,10,0,10" CornerRadius="8"   HasShadow="False">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </Frame>
+                <!--Summery-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Image>
+                            <Image.Source>
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource Primary}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.PlusCircleOutline}"/>
+                            </Image.Source>
+                        </Image>
+                        <Label Text="TIN Number" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
+                    </StackLayout>
+                </border:SfBorder >
+                <!--Total Small-->
+                <Frame BorderColor="AliceBlue" BackgroundColor="AliceBlue" Padding="0" Margin="0,10,0,10" CornerRadius="8"   HasShadow="False">
+                    <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <Label Text="Total" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
+                            <Label Text="Amount" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="Start"/>
+                            <Image>
+                                <Image.Source>
+                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
+                                </Image.Source>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <!--Total Small-->
+            
+            <!--Inbox Unread-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Message Title" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" />
+                            <Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        
+                            <Label x:Name="Image_backArrow" Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="180">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding OnBackButtonClick}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        
+                    </Grid>
+                </border:SfBorder >
+                <!--Inbox Unread-->
+                <!--inbod read-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <Grid Padding="15">
+                        <Grid.RowDefinitions >
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-3">
+                            <Label Text="Message Title" Style="{StaticResource BodyLabelBlack}"   />
+                            <Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />
+                        </StackLayout>
+                        <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center"   Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="180">
+                        </Label>
+
+                    </Grid>
+                </border:SfBorder>
+                <!--inbod read-->
 
 
 
-               
 
-                    <Frame FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
+
+                <!-- My Bills template UI Starts -->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Padding="0">
+                        <Grid  Padding="15" RowSpacing="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Row="0" Grid.Column="0"  Spacing="-10">
+                                <Label  Text="ZAKAT" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                <Label  Text="Amendment by Gazt" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <yummy:PancakeView    Padding="10,10,10,10"  
+                               CornerRadius="20"  BorderThickness="1" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                    <Label Text="Submitted" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                </yummy:PancakeView>
+                            </StackLayout>
+                        </Grid>
+                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <Grid Padding="10,10,10,10" RowSpacing="15" >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                </border:SfBorder >
+                <!-- My Bills template UI Ends -->
+            <!--Total Big-->
+                <yummy:PancakeView  BorderColor="LightGray"  CornerRadius="15" Margin="0,10,0,10" Padding="0" BackgroundColor="AliceBlue" HasShadow="False">
+                    <StackLayout Padding="0">
+                        <Grid   Margin="0"  RowSpacing="0"  BackgroundColor="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Padding="15" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" >
+                                <Label  Text="Total Sales" VerticalOptions="Center" Style="{StaticResource SectionTitleBlackBold}"/>
+                            </StackLayout>
+                       
+                         
+                        </Grid>
+                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <Grid Padding="10,10,10,10" RowSpacing="15"  >
+                            <Grid.RowDefinitions >
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                            <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
+                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                            </StackLayout>
+                            <StackLayout Grid.Row="1" Grid.Column="1" Spacing="-5">
+                                <Label Text="SADAD Number" Style="{StaticResource CaptionLabelGrey}"/>
+                                <Label Text="SADAD Number" Style="{StaticResource ValueLabelBlack}" />
+                            </StackLayout>
+                        </Grid>
+
+                    </StackLayout>
+                </yummy:PancakeView>
+                <!--Total big-->
+            
+            <!--slider-->
+                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout Padding="15">
+                        <Label  Text="What will be your total VAT taxable sales value in upcoming 12 months?"   VerticalOptions="Center" Style="{StaticResource ValueLabelBlack}"></Label>
+                        <Label HorizontalTextAlignment="Start" Text="10,000 SAR" Style="{StaticResource SectionTitleBlack}"/>
+                        <yummy:PancakeView  BackgroundColor="#eaeaea" Margin="0,10,0,0" CornerRadius="10" HorizontalOptions="FillAndExpand">
+                            <Slider x:Name="Slider_Answer1" Margin="0,10,0,10"   Maximum="{Binding MaximumValueOfSlider1}" Minimum="0" MaximumTrackColor="#006450"   MinimumTrackColor="#006450" HorizontalOptions="FillAndExpand">
+                            </Slider>
+                        </yummy:PancakeView>
+                        <StackLayout HorizontalOptions="FillAndExpand" Margin="0,5,0,0" BackgroundColor="White" Orientation="Horizontal">
+                            <Label Text="Less Than"  HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource CaptionLabelGrey}"/>
+                            <Label Text="Greater Than"  HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End" Style="{StaticResource CaptionLabelGrey}"/>
+                        </StackLayout>
+                    </StackLayout>
+
+
+                </border:SfBorder >
+                <!--slider-->
+
+
+               <Frame FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
                    
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
                     <inputLayout:SfTextInputLayout FlowDirection="LeftToRight" LeadingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0"
@@ -37,7 +332,7 @@
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
                         <control:BorderlessEntry   Text="{Binding MobileNumber}"     FontSize="Small" TextColor="Black" Placeholder="Enter Phone Number" PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="9">
-                            
+                           
                         </control:BorderlessEntry>
 
                          <inputLayout:SfTextInputLayout.LeadingView>
@@ -81,12 +376,12 @@
                                             </Entry.Behaviors>
                                         </control:BorderlessEntry>
                                     </inputLayout:SfTextInputLayout>-->
-              
+             
 
 
                 <Label Text="Label" Style="{StaticResource GAZTMicroGrayLabel}" Margin="10"/>
                     <Frame FlowDirection="LeftToRight"  BackgroundColor="Transparent" BorderColor="Transparent" HasShadow="False"/>
-                    
+                   
 
 
  <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" TrailingViewPosition="Inside"  Margin="0,-6,0,-6" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"
@@ -125,7 +420,7 @@
 
                </inputLayout:SfTextInputLayout>
 
-                  
+                 
                 <!--<inputLayout:SfTextInputLayout FlowDirection="LeftToRight" Grid.Row="0" Grid.Column="1" Margin="0,0,10,0"
                                     Hint="{x:Static local1:AppResources.ZTERReportDetailNumber}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                                     ContainerType="None" x:Name="frmMobile" UnfocusedColor="#B1B1B1"
@@ -142,7 +437,7 @@
                 <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
-                              
+                             
                                 <RowDefinition Height="100*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -158,23 +453,23 @@
                             </Grid.ColumnDefinitions>
                        <Image Source="icon.png" Grid.Row="0" Grid.Column="0"></Image>
                        <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center" >
-                        
+                       
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="3" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
                        <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="5" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
 
                        <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
                        <BoxView Grid.Row="0" Grid.Column="7" BackgroundColor="LightGray" HeightRequest="30" WidthRequest="0.1" HorizontalOptions="Center"/>
 
                        <control:BorderlessEntry BackgroundColor="White" Grid.Row="0" Grid.Column="8" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="Micro" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
                        </Grid>
@@ -185,7 +480,7 @@
                 <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
-                              
+                             
                                 <RowDefinition Height="100*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -214,7 +509,7 @@
                 <Frame Padding="0" BorderColor="LightGray" HeightRequest="50" CornerRadius="8" HasShadow="False">
                    <Grid Padding="5" ColumnSpacing="2">
                             <Grid.RowDefinitions>
-                              
+                             
                                 <RowDefinition Height="100*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -230,19 +525,19 @@
                        <Image Source="icon.png" Grid.Row="0" Grid.Column="0"></Image>
 
                        <control:BorderlessEntry Grid.Row="0" Grid.Column="1" Text="{Binding MobileNumber}" Placeholder="03"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
                        <control:BorderlessEntry Grid.Row="0" Grid.Column="2" Text="{Binding MobileNumber}" Placeholder="80000000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
                         <control:BorderlessEntry Grid.Row="0" Grid.Column="3" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
                         <control:BorderlessEntry Grid.Row="0" Grid.Column="4" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
                         <control:BorderlessEntry Grid.Row="0" Grid.Column="5" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
@@ -250,7 +545,7 @@
                     </control:BorderlessEntry>
 
                         <control:BorderlessEntry Grid.Row="0" Grid.Column="6" Text="{Binding MobileNumber}" Placeholder="0000"   FontSize="11" TextColor="Black"  PlaceholderColor="Gray" Keyboard="Telephone" MaxLength="4" BackgroundColor="White" HorizontalTextAlignment="Center">
-                        
+                       
                     </control:BorderlessEntry>
 
 
@@ -266,7 +561,7 @@
 
                      <Editor HeightRequest="100" BackgroundColor="White"></Editor>
 
-                        
+                       
                     </inputLayout:SfTextInputLayout>
 
 
@@ -282,65 +577,11 @@
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
-                
+               
 
 
-                <!-- My Bills template UI Starts -->
-                <Frame Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="LightGray" CornerRadius="8" Margin="0,5,0,0" HasShadow="False" Padding="10">
-                    <StackLayout>
-
-                        <Grid Padding="10,5,10,10" RowSpacing="5">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="50*"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Text="ZAKAT" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
-
-                            <Label Grid.Row="1" Grid.Column="0" Text="Amendment by GAZT" TextColor="#909090"  Style="{StaticResource GAZTMicroMediumGrayLabel}" Margin="0,-8,0,0"/>
-                            <!--<Frame BackgroundColor="#c49b2d" Opacity="0.9" Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" WidthRequest="80" HorizontalOptions="CenterAndExpand" VerticalOptions="Fill" HasShadow="False" CornerRadius="16"></Frame>-->
-
-                            <yummy:PancakeView     Grid.Row="0" Grid.Column="1"
-                               CornerRadius="14"  BorderThickness="1" Grid.RowSpan="2" BackgroundColor="GreenYellow" VerticalOptions="Center" HorizontalOptions="Center" >
-                                <Label Text="ZAKAT" HorizontalOptions="Center" VerticalOptions="Center"  Margin="5" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}"/>
-                            </yummy:PancakeView>
-
-                            <!--<Label Grid.Row="0" Grid.Column="1"  Grid.RowSpan="2" VerticalOptions="Center" HorizontalOptions="Center"  HorizontalTextAlignment="Center" Margin="5" Text="Submitted" Style="{StaticResource GAZTSmallGrayLblMediumFont}" TextColor="#005e4b"/>-->
-
-
-
-                            <BoxView Style="{StaticResource lineSeperator}"  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="0.5" Margin="-20,0,-20,0" />
-
-
-
-                            <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="1,200 SAR" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLbl}"/>
-                            <Label Grid.Row="4" Grid.Column="0" Text="SADAD Number" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
-                            <Label Grid.Row="4" Grid.Column="1" Text="Due Date" TextColor="#909090" Style="{StaticResource GAZTMicroGrayLabel}"/>
-
-
-
-                            <Label Grid.Row="5" Grid.Column="0"   Text="12345678901230" TextColor="#010101" Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
-                            <Label Grid.Row="5" Grid.Column="1"   Text="20the May 2020" TextColor="#010101"  Style="{StaticResource GAZTSmallBlackLblMediumFont}" Margin="0,-12,0,0"/>
-
-
-
-                        </Grid>
-                    </StackLayout>
-
-                </Frame>
-
-                <!-- My Bills template UI Ends -->
-
-
-
-                </StackLayout>
-        </ScrollView>
+               
+            </StackLayout>
+            </ScrollView>
     </ContentPage.Content>
 </ContentPage>
