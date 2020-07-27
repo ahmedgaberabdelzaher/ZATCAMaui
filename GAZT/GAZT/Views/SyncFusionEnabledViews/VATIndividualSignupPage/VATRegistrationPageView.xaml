@@ -2013,7 +2013,7 @@
                                                     </StackLayout>
                                                     <StackLayout Grid.Row="2">
 
-                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}"  Style="{StaticResource GAZTCaptionBlackLabel}"></Label>
+                                                        <Label Text="{x:Static custom2:AppResources.IDNumber}" IsVisible="{Binding IDNumberVisibility}" Style="{StaticResource GAZTCaptionBlackLabel}"></Label>
 
 
                                                         <Label  Style="{StaticResource GAZTCaptionBlackLabel}" IsVisible="{Binding IDNumberMandatoryVisibility}">

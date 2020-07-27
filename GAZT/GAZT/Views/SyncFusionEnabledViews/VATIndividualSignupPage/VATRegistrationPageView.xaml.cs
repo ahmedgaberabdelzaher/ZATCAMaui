@@ -989,6 +989,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (arg != null)
                     {
                         viewModel.VATRegistrationDetailsData.d.ATTDETSet = arg;
+                        FrmNewAttachment.HasError = false;
                     }
                 });
 
@@ -3126,14 +3127,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (code.Equals("L"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                        FrmNewAttachment.HasError = false;
                     }
                     else if (code.Equals("S"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        FrmNewAttachment.HasError = false;
                     }
                     else if (code.Equals("V"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                        FrmNewAttachment.HasError = false;
                     }
                     else if (code.Equals("N"))
                     {
@@ -3143,6 +3147,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     else if (code.Equals("M"))
                     {
                         eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                        FrmNewAttachment.HasError = false;
                     }
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
@@ -3222,14 +3227,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (code.Equals("L"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("S"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("V"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("N"))
                 {
@@ -3241,6 +3249,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 else if (code.Equals("M"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                     // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
@@ -3278,14 +3287,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (code.Equals("L"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("S"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("V"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("N"))
                 {
@@ -3297,6 +3309,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 else if (code.Equals("M"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                     // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
@@ -3334,14 +3347,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (code.Equals("L"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("S"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("V"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("N"))
                 {
@@ -3353,7 +3369,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 else if (code.Equals("M"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
-                    // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                    FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
                 await Task.Run(() =>
@@ -3390,14 +3406,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (code.Equals("L"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrl;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("S"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("V"))
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestvr;
+                    FrmNewAttachment.HasError = false;
                 }
                 else if (code.Equals("N"))
                 {
@@ -3410,6 +3429,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     eligibilityText = AppResources.ZZZZEligibilitylableTestmrs;
                     // eligibilityText = "Mandatory Registration - Small / Medium Taxpayer Group";
+                    FrmNewAttachment.HasError = false;
                 }
                 viewModel.SliderLable1EligibilityText = eligibilityText;
                 await Task.Run(() =>

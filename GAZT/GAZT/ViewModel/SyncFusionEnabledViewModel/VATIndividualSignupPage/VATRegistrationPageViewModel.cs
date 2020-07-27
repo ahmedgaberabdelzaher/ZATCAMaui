@@ -146,11 +146,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _iDNumberMandatoryVisibility = value;
+                if(_iDNumberMandatoryVisibility)
+                {
+                    IDNumberVisibility = false; 
+                }
+                else
+                {
+                    IDNumberVisibility = true; 
+                }
 
                 RaisePropertyChanged("IDNumberMandatoryVisibility");
             }
         }
+        private bool _iDNumberVisibility = true;
+        public bool IDNumberVisibility
+        {
+            get
+            {
+                return _iDNumberVisibility;
+            }
+            set
+            {
+                _iDNumberVisibility = value;
 
+                RaisePropertyChanged("IDNumberVisibility");
+            }
+        }
         private bool _dOBNonMandatoryVisibility = false;
         public bool DOBNonMandatoryVisibility
         {
@@ -640,6 +661,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             set
             {
                 _sliderLable1EligibilityText = value;
+                
                 RaisePropertyChanged("SliderLable1EligibilityText");
             }
         }
