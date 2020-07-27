@@ -66,6 +66,13 @@
                 <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic" />
                 <On Platform="iOS" Value="SSTArabic-Medium" />
             </OnPlatform>
+
+              <!-- SST Arabic Roman.ttf -->
+            <OnPlatform x:TypeArguments="x:String" x:Key="SSTArRoman">
+                <On Platform="Android" Value="SSTArabic-Roman.ttf#SSTArabic" />
+                <On Platform="iOS" Value="SSTArabic-Roman" />
+            </OnPlatform>
+
             <!--<OnPlatform x:TypeArguments="x:String" x:Key="GAZT_FONT_BOLD">
                 <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
                 <On Platform="iOS" Value="GE_SS_Two_Bold" />

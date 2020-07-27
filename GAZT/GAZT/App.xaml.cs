@@ -23,7 +23,7 @@ using AppDynamics.Agent;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 using EGAZT.Views.SyncFusionEnabledViews;
-using EGAZT.Views.NewDesign.ForgotPasswordPages;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -195,7 +195,7 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-            MainPage = new DashBoardPageView();
+            MainPage = navigationPage;
         }
 
         public static void CreateClientHandler()

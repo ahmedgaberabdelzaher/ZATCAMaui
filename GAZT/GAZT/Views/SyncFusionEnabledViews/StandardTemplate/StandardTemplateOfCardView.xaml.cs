@@ -15,6 +15,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews
         public StandardTemplateOfCardView()
         {
             InitializeComponent();
+            App.IsArabic = false;
+            ChangeAeroIcon();
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
         }
     }
 }
