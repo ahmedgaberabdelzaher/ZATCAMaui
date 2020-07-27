@@ -218,6 +218,11 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
+    <Style x:Key="ValueLabelBlackBold" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
     <Style x:Key="ValueLabelPrimary" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource Primary}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
