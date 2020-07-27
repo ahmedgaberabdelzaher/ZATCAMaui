@@ -1574,7 +1574,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 break;
                             
                             case ArButtons.حفظكمسودة:
-                                OperationCode = "04";
+                                OperationCode = "05";
                                 break;
 
                             case ArButtons.تقديم:
