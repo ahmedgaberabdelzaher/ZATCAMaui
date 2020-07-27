@@ -26,6 +26,12 @@ namespace GAZT
                 {
                     Control.TextAlignment = UITextAlignment.Left;
                 }
+
+                base.OnElementPropertyChanged(sender, e);
+                Control.Layer.BorderWidth = 0;
+                Control.BorderStyle = UITextBorderStyle.None;
+                Control.Layer.BorderWidth = 0;
+                Control.BorderStyle = UITextBorderStyle.None;
                 //if (App.IsOTPiew)
                 //{
                 //    Control.TextAlignment = UITextAlignment.Center;
@@ -41,11 +47,11 @@ namespace GAZT
                 //        Control.TextAlignment = UITextAlignment.Left;
                 //    }
                 //}
-                    //if (StyleId.Equals("OTPEntry"))
-                    //{
-                    //    Control.TextAlignment = UITextAlignment.Center;
-                    //}
-                    Control.Layer.BorderWidth = 0;
+                //if (StyleId.Equals("OTPEntry"))
+                //{
+                //    Control.TextAlignment = UITextAlignment.Center;
+                //}
+                Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
                 Control.TextColor = UIColor.Black;
             }
