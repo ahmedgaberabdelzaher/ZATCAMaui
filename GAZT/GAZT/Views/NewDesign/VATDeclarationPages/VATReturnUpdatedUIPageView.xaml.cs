@@ -23,6 +23,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             InitializeComponent();
             viewModel = App.Locator.VATReturnUpdatedUIPageView;
             this.BindingContext = viewModel;
+            ChangeAeroIcon();
+            App.IsArabic = false;
             SetLTR();
 
         }
@@ -32,11 +34,29 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         #region Method
         private void SetLTR()
         {
+
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
         }
+
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["ReverseBack"];
+            }
+            else
+            {
+                Resources["StyleReverseBack"] = App.Current.Resources["Back"];
+            }
+        }
         #endregion
+
+        private void btnprimary_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -23,6 +23,7 @@ using AppDynamics.Agent;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
 using EGAZT.Views.SyncFusionEnabledViews;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
@@ -112,7 +113,7 @@ namespace EGAZT
         public static TIN CurrentDropdownTIN;
         public static bool  IsJailBrokenDevice = false;
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = true;//true
+        public static bool PreviousIsArabic = false;//true
         //public static bool PreviousIsArabic = false;
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
@@ -184,7 +185,7 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new StyleTestUIPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new VATReturnUpdatedUIPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
