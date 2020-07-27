@@ -548,8 +548,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             currentAttempts = 0;
             MobileNumberMasked = AppResources.MobileNumber + " " + UnlockAccountModelResponse.D.MobileNo;
             StopTimer = true;
+
             IsVerifyOTPEnabled = true;
+            IsResendOTPEnabled = false;
+
             VerifyButtonDisableColor = Color.FromHex("#d99b29");
+            ButtonDisableColor = Color.FromHex("#9EA4A9");
 
             OtpFirstDigit = string.Empty;
             OtpSecondDigit = string.Empty;

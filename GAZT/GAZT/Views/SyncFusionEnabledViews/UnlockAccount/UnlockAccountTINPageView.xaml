@@ -115,7 +115,7 @@
                         <Image Source="ic_logo_gazt.png" Grid.Row="0" Grid.Column="1" WidthRequest="40" HeightRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
 
                         <Label Text="{x:Static custom2:AppResources.VerificationCode}" Margin="0,25,0,0"  FontSize="Large"  Style="{StaticResource GAZTMediumBlackLabel}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
-                        <Label Text="{x:Static custom2:AppResources.EnterVerificationCode}" Margin="0" Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
+                        <Label Text="{x:Static custom2:AppResources.EnterVerificationCodeSentToMobile}" Margin="0" Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"/>
                         <BoxView Style="{StaticResource lineSeperator}" Margin="0,10,0,25" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"/>
                         <Label Text="{Binding MobileNumberMasked}" Margin="0" HorizontalOptions="CenterAndExpand"  Style="{StaticResource GAZTDarkGrayLabelStyle}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"/>
 
