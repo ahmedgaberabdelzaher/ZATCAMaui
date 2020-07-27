@@ -6,6 +6,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
@@ -100,7 +101,27 @@
         --><!--<Setter Property="FontAttributes" Value="Bold" />-->
         <!--<Commented as we are provideing inline fontfamily />--><!--
     </Style>-->
- 
+    <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
+        <!--<Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center" />-->
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
+    </Style>
+    <Style x:Key="GreyBorderFrame" TargetType="border:SfBorder">
+        <!--<Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="VerticalOptions" Value="Center" />-->
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
+    </Style>
+
 
     <Style x:Key="ImageStyleForInputTable" TargetType="Image">
         <Setter Property="Margin" Value="10,0,10,0" />
