@@ -19,6 +19,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             InitializeComponent();
             viewModel = App.Locator.ForgotPasswordPageView;
             this.BindingContext = viewModel;
+            viewModel.StartPage = 1;
         }
     }
 }
