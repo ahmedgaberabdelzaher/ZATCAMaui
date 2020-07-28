@@ -209,6 +209,11 @@
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
         <Setter Property="FontSize" Value="20" />
     </Style>
+    <Style x:Key="SectionTitleWhiteBold" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
     <Style x:Key="SectionTitleGreyBold" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SSTArBold}" />
