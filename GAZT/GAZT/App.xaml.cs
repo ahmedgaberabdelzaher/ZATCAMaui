@@ -185,7 +185,7 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new StyleTestUIPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
