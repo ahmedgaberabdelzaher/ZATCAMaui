@@ -115,6 +115,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
 using EGAZT.Views.NewDesign.MyBillsPages;
+using EGAZT.Views.NewDesign.MyReturnsPages;
 
 namespace EGAZT
 {
@@ -204,6 +205,7 @@ namespace EGAZT
             
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<DashBoardPageViewModel>();
+            SimpleIoc.Default.Register<MyReturnsNewPageViewModel>();
 
 
 
@@ -1221,6 +1223,20 @@ namespace EGAZT
                     return null;
                 }
             }
+        }  
+        public MyReturnsNewPageViewModel MyReturnsNewPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyReturnsNewPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
         }
 
         
@@ -1311,6 +1327,7 @@ namespace EGAZT
             navigationService.Configure(App.MyBillsPageView, typeof(MyBillsPageView));
             
             navigationService.Configure(App.DashBoardPageView, typeof(DashBoardPageView));
+            navigationService.Configure(App.MyReturnsNewPageView, typeof(MyReturnsNewPageView));
 
             
 

@@ -108,6 +108,7 @@ namespace EGAZT
         public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
         public static string DashBoardPageView = "DashBoardPageView";
         public static string MyBillsPageView = "MyBillsPageView";
+        public static string MyReturnsNewPageView = "MyReturnsNewPageView";
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
