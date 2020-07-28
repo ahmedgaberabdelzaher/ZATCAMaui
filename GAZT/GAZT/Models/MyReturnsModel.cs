@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Xamarin.Forms;
+
 namespace GAZT.Models
 {
     public class MyReturnsModel
@@ -30,7 +32,53 @@ namespace GAZT.Models
         public string Fbsta { get; set; }
         public string Fbust { get; set; }
         public string CalendarTyp { get; set; }
-        public string StatusTxt { get; set; }
+        private string _statusTxt;
+        public Color TextColorHighlight { get; set; }
+        public Color FrameColorHighlight { get; set; }
+        private string _due;
+        public string Due 
+        {
+            get
+            { return _due; 
+            }
+            set
+            { _due = value;
+            }
+        }
+        public string StatusMessage { get; set; }
+        public string StatusTxt
+        {
+            get
+            {
+                return _statusTxt;
+            }
+            set
+            {
+                _statusTxt = value;
+                if(_statusTxt.Equals("Submitted"))
+                {
+                    FrameColorHighlight = Color.FromHex("#E5EFED");
+                    TextColorHighlight = Color.FromHex("#006450");
+                    StatusMessage = EGAZT.AppResources.Submitted;
+                }
+                if (_statusTxt.Equals("Non Submitted"))
+                {
+                    FrameColorHighlight = Color.FromHex("#F6E6E8");
+                    TextColorHighlight = Color.FromHex("#aa0c19");
+                    StatusMessage = EGAZT.AppResources.UnSubmitted;
+                    if (Due.Equals("X"))
+                    {
+                        FrameColorHighlight = Color.FromHex("#F5F5F5");
+                        TextColorHighlight = Color.FromHex("#999999");
+                        StatusMessage = EGAZT.AppResources.OverDue;
+                    }
+                }
+            } 
+        }
+
+
+
+
         public string Incotyp { get; set; }
         public string Incotext { get; set; }
         private DateTime _abrzu;
@@ -86,7 +134,7 @@ namespace GAZT.Models
         public string Stat { get; set; }
         public string RetStatTxt { get; set; }
         public string DueDtC { get; set; }
-        public string Due { get; set; }
+   
         public string Sortperiod { get; set; }
         public string TaxType { get; set; }
         public string Fbnum { get; set; }

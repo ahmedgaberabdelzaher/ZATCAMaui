@@ -24,6 +24,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsPages
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+           viewModel.OnPageLoad();
         }
 
         private void SetLTR()
