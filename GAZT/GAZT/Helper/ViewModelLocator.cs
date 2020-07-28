@@ -55,6 +55,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.Views.NewDesign.ForgotPasswordPages;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
 using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
@@ -190,11 +191,12 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
+            SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
 
             //New Design
             SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<ForgotPasswordPageViewModel>();
             
 
         }
@@ -1168,6 +1170,22 @@ namespace EGAZT
         }
 
 
+        public ForgotPasswordPageViewModel ForgotPasswordPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ForgotPasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        
 
 
 
@@ -1251,9 +1269,11 @@ namespace EGAZT
             //New Design
             navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageView));
             navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
+            navigationService.Configure(App.ForgotPasswordPageView, typeof(ForgotPasswordPageView));
+            
            // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
             ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
-           
+
 
             return navigationService;
         }
