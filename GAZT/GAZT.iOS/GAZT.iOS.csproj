@@ -207,6 +207,12 @@
     <BundleResource Include="Resources\re_Tile_Background_S.png" />
     <BundleResource Include="Resources\re_Tile_Background_S%403x.png" />
     <BundleResource Include="Resources\re_Tile_Background_S%402x.png" />
+    <BundleResource Include="Resources\partials_background.png" />
+    <BundleResource Include="Resources\partials_background%402x.png" />
+    <BundleResource Include="Resources\partials_background%403x.png" />
+    <BundleResource Include="Resources\group_114.png" />
+    <BundleResource Include="Resources\group_114%402x.png" />
+    <BundleResource Include="Resources\group_114%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1018,15 +1024,6 @@
     <BundleResource Include="Resources\vat_tile_listofsignup_W%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\partials-background%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\partials-background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\partials-background%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ministryJustice%403x.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1034,14 +1031,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ministryJustice%403x%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Group 114.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Group 114%402x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Group 114%403x.png" />
   </ItemGroup>
 </Project>

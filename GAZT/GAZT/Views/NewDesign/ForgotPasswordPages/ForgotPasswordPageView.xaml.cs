@@ -12,9 +12,13 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ForgotPasswordPageView : ContentPage
     {
+        ForgotPasswordPageViewModel viewModel;
         public ForgotPasswordPageView()
         {
+
             InitializeComponent();
+            viewModel = App.Locator.ForgotPasswordPageView;
+            this.BindingContext = viewModel;
         }
     }
 }
