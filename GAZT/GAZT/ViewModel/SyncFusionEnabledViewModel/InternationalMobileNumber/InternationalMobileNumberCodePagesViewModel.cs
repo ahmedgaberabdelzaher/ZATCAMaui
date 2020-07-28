@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -97,7 +98,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumber
             if (mobileData != null && mobileData.Count != 0)
             {
                 MobileCodes = mobileData;
-                
+                MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
+
             }
             else
             {
