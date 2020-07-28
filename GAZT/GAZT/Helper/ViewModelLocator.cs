@@ -114,6 +114,8 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
+using EGAZT.Views.NewDesign.MyBillsPages;
+
 namespace EGAZT
 {
     public class ViewModelLocator
@@ -198,6 +200,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ForgotPasswordPageViewModel>();
+            SimpleIoc.Default.Register<MyBillsPageViewModel>();
             
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<DashBoardPageViewModel>();
@@ -1205,6 +1208,20 @@ namespace EGAZT
                 }
             }
         }
+        public MyBillsPageViewModel MyBillsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyBillsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         
 
@@ -1291,6 +1308,7 @@ namespace EGAZT
             navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageView));
             navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
             navigationService.Configure(App.ForgotPasswordPageView, typeof(ForgotPasswordPageView));
+            navigationService.Configure(App.MyBillsPageView, typeof(MyBillsPageView));
             
             navigationService.Configure(App.DashBoardPageView, typeof(DashBoardPageView));
 
