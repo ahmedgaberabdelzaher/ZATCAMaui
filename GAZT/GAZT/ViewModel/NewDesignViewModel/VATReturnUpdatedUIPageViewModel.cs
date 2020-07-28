@@ -1,15 +1,11 @@
-﻿using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GalaSoft.MvvmLight.Views;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    public class VATReturnUpdatedUIPageViewModel : BaseViewModel
+    public class GAZTNewDesignVATReturnUpdatedUIPageViewModel : BaseViewModel
     {
         #region Constructor
-        public VATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
+        public GAZTNewDesignVATReturnUpdatedUIPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService, dialogService)
         {  
             //OnLoginPageLinkClicked = new Xamarin.Forms.Command(() =>
             //{

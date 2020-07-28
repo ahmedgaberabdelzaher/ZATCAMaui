@@ -269,7 +269,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFOptionsPage_ViewModel
             if (lastTapped < DateTime.Now.AddSeconds(-2))
             {
                 lastTapped = DateTime.Now;
-                _navigationService.NavigateTo(App.MyReturnsNewPageView);
+                _navigationService.NavigateTo(App.GAZTNewDesignMyReturnsNewPageView);
             }
         }
         private void ContactusClicked(object obj)

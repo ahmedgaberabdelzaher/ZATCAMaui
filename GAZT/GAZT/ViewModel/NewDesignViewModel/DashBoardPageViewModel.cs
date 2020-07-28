@@ -8,14 +8,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    public class DashBoardPageViewModel : BaseViewModel
+    public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
 
         #region Fields
@@ -201,7 +200,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-        public DashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
           
         }

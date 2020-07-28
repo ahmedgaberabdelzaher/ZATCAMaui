@@ -1,19 +1,19 @@
 ﻿using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
-namespace DateCultures.Views.Onboarding
+namespace EGAZT.Views.NewDesign.OnboardingPages
 {
     /// <summary>
-    /// Class helps to reduce repetitive markup and allows to change the appearance of apps more easily.
+    /// Page to display on-boarding gradient with animation
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Styles
+    public partial class WalkthroughItemPage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Styles" /> class.
+        /// Initializes a new instance of the <see cref="WalkthroughItemPage" /> class.
         /// </summary>
-        public Styles()
+        public WalkthroughItemPage()
         {
             InitializeComponent();
         }

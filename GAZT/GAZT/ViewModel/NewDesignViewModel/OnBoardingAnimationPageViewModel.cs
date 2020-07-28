@@ -1,4 +1,5 @@
-﻿using EGAZT.Views.SyncFusionEnabledViews.OnBoarding;
+﻿using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.OnboardingPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Models;
@@ -10,13 +11,13 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OnBoardingAnimation
+namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 {
     /// <summary>
     /// ViewModel for on-boarding gradient page with animation.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class OnBoardingAnimationPageViewModel :ViewModelBase
+    public class GAZTNewDesignOnBoardingAnimationPageViewModel : ViewModelBase
     {
         #region Fields
 
@@ -38,7 +39,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.OnBoardingAnimation
         /// <summary>
         /// Initializes a new instance for the <see cref="OnBoardingAnimationPageViewModel" /> class.
         /// </summary>
-        public OnBoardingAnimationPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignOnBoardingAnimationPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

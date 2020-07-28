@@ -96,7 +96,7 @@
     <Compile Update="Views\SyncFusionEnabledViews\LandingPage\SFLandingPageView.xaml.cs">
       <DependentUpon>SFLandingPageView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\NewDesign\Onboarding\OnBoardingAnimationPageView.xaml.cs">
+    <Compile Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml.cs">
       <DependentUpon>OnBoardingAnimationPageView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SyncFusionEnabledViews\Options\SFOptionsPage.xaml.cs">

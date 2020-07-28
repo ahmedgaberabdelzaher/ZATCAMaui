@@ -11,17 +11,17 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.VATDeclarationPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VATReturnUpdatedUIPageView : ContentPage
+    public partial class GAZTNewDesignVATReturnUpdatedUIPageView : ContentPage
     {
         #region Variable
-        public VATReturnUpdatedUIPageViewModel viewModel;
+        public GAZTNewDesignVATReturnUpdatedUIPageViewModel viewModel;
         #endregion
 
         #region Constructor
-        public VATReturnUpdatedUIPageView()
+        public GAZTNewDesignVATReturnUpdatedUIPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.VATReturnUpdatedUIPageView;
+            viewModel = App.Locator.GAZTNewDesignVATReturnUpdatedUIPageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             App.IsArabic = false;

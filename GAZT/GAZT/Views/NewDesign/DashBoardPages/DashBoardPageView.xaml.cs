@@ -2,31 +2,29 @@
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.NewDesign
+namespace EGAZT.Views.NewDesign.DashBoardPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashBoardPageView : ContentPage
+    public partial class GAZTNewDesignDashBoardPageView : ContentPage
     {
 
         #region Variable
-        DashBoardPageViewModel viewModel;
+        GAZTNewDesignDashBoardPageViewModel viewModel;
         #endregion
 
-        public DashBoardPageView()
+        public GAZTNewDesignDashBoardPageView()
         {
             try
             {
                 InitializeComponent();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-                viewModel = App.Locator.DashBoardPageView;
+                viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
                 MenuView.IsVisible = false;
                 HomeView.IsVisible = true;

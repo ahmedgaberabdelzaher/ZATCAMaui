@@ -1,19 +1,19 @@
 ﻿using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.SyncFusionEnabledViews.OnBoarding
+namespace EGAZT.Views.NewDesign.OnboardingPages
 {
     /// <summary>
-    /// Page to display on-boarding gradient with animation
+    /// Class helps to reduce repetitive markup and allows to change the appearance of apps more easily.
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WalkthroughItemPage
+    public partial class Styles
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WalkthroughItemPage" /> class.
+        /// Initializes a new instance of the <see cref="Styles" /> class.
         /// </summary>
-        public WalkthroughItemPage()
+        public Styles()
         {
             InitializeComponent();
         }

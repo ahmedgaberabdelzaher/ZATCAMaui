@@ -1,17 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:custom="clr-namespace:GAZT"
-                   xmlns:custom2="clr-namespace:EGAZT"
-                    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local="clr-namespace:EGAZT.CustomControl"
-             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.ShowVatInformationPopUpPageView">
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 mc:Ignorable="d"
+                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignShowVatInformationPopUpPageView">
     <ScrollView>
         <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White">
             <Grid>
