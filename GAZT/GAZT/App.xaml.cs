@@ -102,7 +102,8 @@ namespace EGAZT
         
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
-
+        public static string ForgotPasswordPageView = "ForgotPasswordPageView";
+        
         //New Design
         public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
         public static string DashBoardPageView = "DashBoardPageView";
@@ -196,7 +197,8 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-            MainPage = navigationPage;
+            //MainPage = navigationPage;
+            MainPage = new DashBoardPageView();
         }
 
         public static void CreateClientHandler()

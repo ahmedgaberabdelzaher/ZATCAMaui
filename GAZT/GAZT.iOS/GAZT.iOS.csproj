@@ -207,6 +207,12 @@
     <BundleResource Include="Resources\re_Tile_Background_S.png" />
     <BundleResource Include="Resources\re_Tile_Background_S%403x.png" />
     <BundleResource Include="Resources\re_Tile_Background_S%402x.png" />
+    <BundleResource Include="Resources\partials_background.png" />
+    <BundleResource Include="Resources\partials_background%402x.png" />
+    <BundleResource Include="Resources\partials_background%403x.png" />
+    <BundleResource Include="Resources\group_114.png" />
+    <BundleResource Include="Resources\group_114%402x.png" />
+    <BundleResource Include="Resources\group_114%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
