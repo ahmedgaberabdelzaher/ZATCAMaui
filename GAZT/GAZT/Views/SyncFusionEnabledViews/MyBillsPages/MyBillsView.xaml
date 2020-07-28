@@ -14,7 +14,7 @@
              FlowDirection="RightToLeft"
              Title="{x:Static local:AppResources.MyBills}"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.MyBillsView.MyBillsView"
-              NavigationPage.HasNavigationBar="False"
+              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png"
                BackgroundColor="#005e4b">
     <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_bell.png" Order="Primary" Priority="0" Command="{Binding OnBellClicked}" />
@@ -23,6 +23,7 @@
         <ResourceDictionary>
             <local2:DataMarkerConverter x:Key="converter" />
             <ResourceDictionary Source="..\Common\Styles.xaml" />
+            <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -45,6 +46,7 @@
                 <ContentPresenter VerticalOptions="FillAndExpand" />
             </StackLayout>-->
             <Grid>
+
                 <StackLayout>
                     <Grid Padding="0,5,0,5">
                         <Grid.RowDefinitions>
@@ -56,7 +58,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.MyBills}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
                         <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>

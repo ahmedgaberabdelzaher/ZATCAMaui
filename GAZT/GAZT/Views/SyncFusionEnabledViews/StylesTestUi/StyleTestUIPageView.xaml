@@ -415,10 +415,12 @@
                                      HorizontalOptions="FillAndExpand"
                                         ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                         OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020">
-                    <control:BorderlessEntry      Style="{StaticResource DefaultEntry}" Placeholder="Enter OTP"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
-                           
+                   
+                        <control:BorderlessEntry      Style="{StaticResource DefaultEntry}" Placeholder="Enter OTP" VerticalTextAlignment="End"  HeightRequest="51" Keyboard="Numeric" MaxLength="4">
+
                         </control:BorderlessEntry>
 
+                  
                          <inputLayout:SfTextInputLayout.TrailingView>
                       <Image HorizontalOptions="Center" >
                             <Image.Source>
@@ -461,7 +463,7 @@
                     <inputLayout:SfTextInputLayout.TrailingView>
                         <Image HorizontalOptions="Center" VerticalOptions="Center" >
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="20"
+                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="16"
                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
                             </Image.Source>
                   
