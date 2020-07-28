@@ -114,7 +114,7 @@ namespace EGAZT
         public static TIN CurrentDropdownTIN;
         public static bool  IsJailBrokenDevice = false;
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = false;//true
+        public static bool PreviousIsArabic = true;//true
         //public static bool PreviousIsArabic = false;
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
