@@ -13,7 +13,17 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              x:Class="EGAZT.Views.NewDesign.DashBoardPageView"
              BackgroundImageSource="partials_background.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
+        
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
@@ -28,7 +38,7 @@
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Margin="15,0,15,0">
                 <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Image Source="group_114.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Start"/>
+                    <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
                     <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand">
                         <Image.Source>
@@ -322,127 +332,138 @@
             <!--Menu Starts-->
 
 
-            <Grid x:Name="MenuView" Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="15*" />
-                    <RowDefinition Height="85*" />
-                </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10,30,10,0" Spacing="10">
-                    <Image Source="group_114.png" WidthRequest="50" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Start"/>
+            <Grid x:Name="MenuView">
+                <ScrollView>
+                    <Grid  Grid.Row="0" >
 
-                    <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand">
-                        <Image.Source>
-                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
-                        </Image.Source>
-                    </Image>
-                </StackLayout>
-                <StackLayout Grid.Row="1" Padding="15,0,0,0">
-                    <custom:CustomLabel Text="Zaed Hardy" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                    <ScrollView>
-                        <StackLayout Spacing="20" Padding="0,0,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Row="1" Padding="15,0,0,0" >
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NaturePeople}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Individual Saudi(Resident)" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
+                            <StackLayout Spacing="20" Padding="0,0,0,10">
 
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image HeightRequest="25">
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NaturePeople}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Individual Saudi(Resident)" Style="{StaticResource CaptionLabelWhite}" />
+                                </StackLayout>
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Calendar}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Commitments" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <BoxView  Style="{StaticResource WhiteLineSeperator}"/>
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Billboard}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Bills" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Calendar}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Commitments" Style="{StaticResource ButtonLabelWhiteBold}" />
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronUpCircle}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Returns" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image >
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Billboard}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Bills" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Tax Management" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronUpCircle}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Returns" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Refunds" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.OfficeBuilding}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Tax Management" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Installment Plan" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CashRefund}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Refunds" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Objections and Reviews" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.FloorPlan}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Installment Plan" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Supports" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
-                            </StackLayout>
-                            <BoxView BackgroundColor="White" HeightRequest="0.2"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.React}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Objections and Reviews" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image>
-                                    <Image.Source>
-                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Logout}"/>
-                                    </Image.Source>
-                                </Image>
-                                <custom:CustomLabel Text="Logout" Style="{StaticResource GAZTMediumBlackLabel}" VerticalOptions="Center" TextColor="White"/>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.HelpNetwork}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Supports" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
+                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Logout}"/>
+                                        </Image.Source>
+                                    </Image>
+                                    <custom:CustomLabel Text="Logout" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                                </StackLayout>
                             </StackLayout>
                         </StackLayout>
-                    </ScrollView>
-                </StackLayout>
+
+
+
+                        <StackLayout Grid.Row="0"  Padding="15,15,15,0" Spacing="10">
+                            <StackLayout  Orientation="Horizontal"  Spacing="10">
+                                <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
+
+                                <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                                    <Image.Source>
+                                        <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
+                                    </Image.Source>
+                                </Image>
+                            </StackLayout >
+                            <custom:CustomLabel Grid.Row="0" Text="Zaed Hardy" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" />
+                        </StackLayout>
+
+                    </Grid>
+                </ScrollView>
+
             </Grid>
 
 
