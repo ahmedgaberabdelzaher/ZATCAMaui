@@ -106,6 +106,9 @@ namespace EGAZT
         
         //New Design
         public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
+        public static string DashBoardPageView = "DashBoardPageView";
+        public static string MyBillsPageView = "MyBillsPageView";
+        public static string MyReturnsNewPageView = "MyReturnsNewPageView";
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
@@ -196,7 +199,8 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-            MainPage = navigationPage;
+           MainPage = navigationPage;
+          //  MainPage = new DashBoardPageView();
         }
 
         public static void CreateClientHandler()

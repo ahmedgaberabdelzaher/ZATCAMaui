@@ -325,7 +325,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
@@ -443,7 +443,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
@@ -559,7 +559,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)

@@ -56,6 +56,7 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
 using EGAZT.Views.NewDesign.ForgotPasswordPages;
+using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
 using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
@@ -113,6 +114,9 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
+using EGAZT.Views.NewDesign.MyBillsPages;
+using EGAZT.Views.NewDesign.MyReturnsPages;
+
 namespace EGAZT
 {
     public class ViewModelLocator
@@ -197,7 +201,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
            // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
             SimpleIoc.Default.Register<ForgotPasswordPageViewModel>();
+            SimpleIoc.Default.Register<MyBillsPageViewModel>();
             
+            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
+            SimpleIoc.Default.Register<DashBoardPageViewModel>();
+            SimpleIoc.Default.Register<MyReturnsNewPageViewModel>();
+
+
+
 
         }
         public PdfViewModel pdfView
@@ -1169,6 +1180,21 @@ namespace EGAZT
             }
         }
 
+        public DashBoardPageViewModel DashBoardPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<DashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
 
         public ForgotPasswordPageViewModel ForgotPasswordPageView
         {
@@ -1177,6 +1203,34 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ForgotPasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public MyBillsPageViewModel MyBillsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyBillsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }  
+        public MyReturnsNewPageViewModel MyReturnsNewPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyReturnsNewPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -1270,7 +1324,13 @@ namespace EGAZT
             navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageView));
             navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
             navigationService.Configure(App.ForgotPasswordPageView, typeof(ForgotPasswordPageView));
+            navigationService.Configure(App.MyBillsPageView, typeof(MyBillsPageView));
             
+            navigationService.Configure(App.DashBoardPageView, typeof(DashBoardPageView));
+            navigationService.Configure(App.MyReturnsNewPageView, typeof(MyReturnsNewPageView));
+
+            
+
            // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
             ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 
