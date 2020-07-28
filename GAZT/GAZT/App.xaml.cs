@@ -196,8 +196,8 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-            //MainPage = navigationPage;
-            MainPage = new DashBoardPageView();
+           MainPage = navigationPage;
+          //  MainPage = new DashBoardPageView();
         }
 
         public static void CreateClientHandler()
