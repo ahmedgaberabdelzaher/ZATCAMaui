@@ -105,6 +105,7 @@ namespace EGAZT
 
         //New Design
         public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
+        public static string DashBoardPageView = "DashBoardPageView";
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
@@ -113,7 +114,7 @@ namespace EGAZT
         public static TIN CurrentDropdownTIN;
         public static bool  IsJailBrokenDevice = false;
         // public static bool IsArabic = false;
-        public static bool PreviousIsArabic = true;//true
+        public static bool PreviousIsArabic = false;//true
         //public static bool PreviousIsArabic = false;
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
@@ -185,7 +186,7 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
             VATDeclaration vAT = null;
-            CustomNavigation navigationPage = new CustomNavigation(new StyleTestUIPageView()) { BarTextColor = Color.White };
+            CustomNavigation navigationPage = new CustomNavigation(new SFAnonymousLandingPageView()) { BarTextColor = Color.White };
             //CustomNavigation navigationPage = new CustomNavigation(new VATRegistrationPageView());
             //new NavigationPage(YouPage) { BarBackgroundColor = Color.White }
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
