@@ -24,8 +24,73 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public MyReturnsRootObject MyReturns { get; set; }
         public ICommand BackButtonClicked { get; set; }
         #region Property
-     
-   
+        public List<ReturnTypes> _returnTypeForFilter;
+        public List<ReturnTypes> ReturnTypeForFilter
+        {
+            get
+            {
+                return _returnTypeForFilter;
+            }
+            set
+            {
+                _returnTypeForFilter = value;
+                RaisePropertyChanged("ReturnTypeForFilter");
+            }
+        }
+        public string _filterLabelText;
+        public string FilterLabelText
+        {
+            get
+            {
+                return _filterLabelText;
+            }
+            set
+            {
+                _filterLabelText = value;
+                RaisePropertyChanged("FilterLabelText");
+            }
+        }
+        public ReturnTypes _selectedReturnTypeForFilter;
+        public ReturnTypes SelectedReturnTypeForFilter
+        {
+            get
+            {
+                return _selectedReturnTypeForFilter;
+            }
+            set
+            {
+                _selectedReturnTypeForFilter = value;
+                if (_selectedReturnTypeForFilter != null)
+                {
+                    FilterLabelText = _selectedReturnTypeForFilter.TaxType;
+                    if (_selectedReturnTypeForFilter.Id == "00")
+                    {
+                        FilterAllData();
+                    }
+                    if (_selectedReturnTypeForFilter.Id == "01")
+                    {
+                        FilterZakatData();
+                    }
+                    if (_selectedReturnTypeForFilter.Id == "02")
+                    {
+                        FilterVatData();
+                    }
+                    if (_selectedReturnTypeForFilter.Id == "03")
+                    {
+                        FilterETData();
+                        FilterETData();
+                    }
+                    if (_selectedReturnTypeForFilter.Id == "04")
+                    {
+                        FilterETData();
+                    }
+
+                }
+
+                RaisePropertyChanged("_selectedReturnTypeForFilter");
+            }
+        }
+
         private bool _isArabic = false;
         public bool IsArabic
         {
@@ -110,7 +175,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
@@ -137,7 +203,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
@@ -164,7 +231,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () => {
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
                             await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
                         });
                     }
@@ -824,7 +892,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsWHVisible");
             }
         }
-    
+
         private bool _isLoading = false;
         public bool IsLoading
         {
@@ -858,7 +926,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Method
-  
+
         public async void GetVATAllReturnsAsync(MyReturnsResult SelectedReturnsVAT)
         {
             Device.BeginInvokeOnMainThread(() =>
@@ -1172,14 +1240,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsVisibleZakatNonSumbitted = false;
                     IsVisibleZakatNonSumbittedLabel = true;
-                //    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+                    //    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
                 }
                 if (ReturnsZakatOverDueChild.Count > 0)
                 {
                     ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleZakatOverDue = true;
                     IsVisibleZakatOverDueLabel = false;
-                  //  OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
+                    //  OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
                 }
                 else
                 {
@@ -1250,7 +1318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsVisibleETNonSumbitted = false;
                     IsVisibleETNonSumbittedLabel = true;
-                   // NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+                    // NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
                 }
                 if (ReturnsETOverDueChild.Count > 0)
                 {
@@ -1270,7 +1338,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.DueDt).ToList<MyReturnsResult>();
                     IsVisibleETSumbitted = true;
                     IsVisibleETSumbittedLabel = false;
-                   // SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
+                    // SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
                 }
                 else
                 {
@@ -1289,7 +1357,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsVisibleWHNonSumbitted = false;
                     IsVisibleWHNonSumbittedLabel = true;
-                   // NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    // NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
                 }
                 if (ReturnsWHOverDueChild.Count > 0)
                 {
@@ -1302,7 +1370,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsVisibleWHOverDue = false;
                     IsVisibleWHOverDueLabel = true;
-                   // OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    // OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
                 }
                 if (ReturnsWHSubmitedChild.Count > 0)
                 {
@@ -1358,7 +1426,116 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
             }
         }
+        public void FilterAllData()
+        {
+            try
+            {
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT" || x.TaxType == "VATX" || x.TaxType == "VTEP" || x.TaxType == "ETAX" || x.TaxType == "WHTX"));
+                }
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            
+        }
+        public void FilterZakatData()
+        {
+            try
+            {
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ITAX" || x.TaxType == "ZAKT"));
+                }
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+            
+        }
+        public void FilterVatData()
+        {
+            try
+            {
 
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "VATX" || x.TaxType == "VTEP"));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void FilterETData()
+        {
+            
+            try
+            {
+
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "ETAX"));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        public void FilterWTData()
+        {
+
+            try
+            {
+
+                if (MyReturns != null && MyReturns.d != null && MyReturns.d.results.Count > 0)
+                {
+                    //AllReturns = MyReturns.d.results;
+                    ListToDisplay = new ObservableCollection<MyReturnsResult>(MyReturns.d.results.Where(x => x.TaxType == "WHTX"));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        public void PopulateReturnTypeList()
+            {
+            try
+            {
+                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>{
+           new ReturnTypes {Id = "00",TaxType = AppResources.All},
+                      new ReturnTypes {Id = "01",TaxType = AppResources.ZAKATReturns},
+                                            new ReturnTypes {Id = "02",TaxType = AppResources.VatReturns},
+                                            new ReturnTypes {Id = "03",TaxType = AppResources.ETReturns},
+                                            new ReturnTypes {Id = "04",TaxType = AppResources.WHTreturns},
+
+
+            };
+                ReturnTypeForFilter = new List<ReturnTypes>();
+                ReturnTypeForFilter = ReturnTypesList;
+                SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            { 
+            
+            }
+
+
+            }
+
+   
         #endregion
 
 

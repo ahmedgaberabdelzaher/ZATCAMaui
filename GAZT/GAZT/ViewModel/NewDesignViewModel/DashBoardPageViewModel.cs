@@ -440,7 +440,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
-
+                        MyBillsChartModels = new ObservableCollection<MyBillsChartModel>();
                         MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
                         ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
 
