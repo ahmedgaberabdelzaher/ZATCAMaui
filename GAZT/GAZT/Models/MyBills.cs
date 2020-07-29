@@ -44,8 +44,7 @@ namespace EGAZT.Models
 
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
-        public Xamarin.Forms.Color statusColor { get; set; }
-        public string statusMessage { get; set; }
+      
         private string _status = string.Empty;
         public string Status {
             get
@@ -59,8 +58,6 @@ namespace EGAZT.Models
                 {
                     StatusImage = "ic_check_circle.png";
                     Colorcode = "#006450";
-                    statusColor = Xamarin.Forms.Color.FromHex("#006450") ;
-                    statusMessage = AppResources.Paid;
 
 
                 }
@@ -68,15 +65,12 @@ namespace EGAZT.Models
                 {
                     StatusImage = "ic_loading.png";
                     Colorcode = "#D99A29";
-                    statusColor = Xamarin.Forms.Color.FromHex("#E39800");
-                    statusMessage = AppResources.PartiallyPaid;
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
                     Colorcode = " #AA0C19";
-                    statusColor = Xamarin.Forms.Color.FromHex("#AA0C19");
-                    statusMessage = AppResources.UnPaid;
+                   
                 }
             }
         }
