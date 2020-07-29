@@ -134,6 +134,32 @@ namespace GAZT.Models
         public string Amount { get; set; }
         public string Waers { get; set; }
         private string _dueDate;
+
+        private string _day;
+        public string Day
+        {
+            get
+            {
+                return _day;
+            }
+            set
+            {
+                _day = value;
+            }
+        }
+        private string _month;
+        public string Month
+        {
+            get
+            {
+                return _month;
+            }
+            set
+            {
+                _month = value;
+            }
+        }
+
         public string DueDate
         {
             get
@@ -145,6 +171,8 @@ namespace GAZT.Models
                 _dueDate = value;
                 if (_dueDate != null)
                 {
+                    Day= Convert.ToDateTime(_dueDate).ToString("dd", new CultureInfo("en-US"));
+                    Month = Convert.ToDateTime(_dueDate).ToString("MMMM", new CultureInfo("en-US"));
                     FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     DueDateDateTime = Convert.ToDateTime(_dueDate);
                     //if (App.IsArabic)
