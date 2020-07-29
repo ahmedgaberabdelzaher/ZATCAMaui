@@ -551,6 +551,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
             IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
+            IsVerifyOTPEnabled = true;
 
             VerifyButtonDisableColor = Color.FromHex("#d99b29");
             ButtonDisableColor = Color.FromHex("#9EA4A9");
