@@ -112,16 +112,16 @@
                                                         <Label.Triggers>
                                                             <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                             <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="P">
-                                                                <Setter Property="Text" Value="{x:Static local:AppResources.Paid}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Paid}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                 
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="I">
-                                                                <Setter Property="Text" Value="{x:Static local:AppResources.PartiallyPaid}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource Secondary}" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="O">
-                                                                <Setter Property="Text" Value="{x:Static local:AppResources.UnPaid}" />
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnPaid}" />
                                                                 <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                                             </DataTrigger>
                                                         </Label.Triggers>

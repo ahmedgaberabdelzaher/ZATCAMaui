@@ -1,5 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
-
+using GAZT.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -20,6 +20,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
            viewModel.OnPageLoad();
+            viewModel.PopulateReturnTypeList();
         }
 
         private void SetLTR()
@@ -39,6 +40,20 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void btn_Clicked(object sender, System.EventArgs e)
+        {
+            TaxTypePicker.IsOpen = true;
+        }
+
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+            TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
+            viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+            //viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
+            //viewModel.TxtFBnum = selectedfbnum.Fbnum;
         }
     }
 }
