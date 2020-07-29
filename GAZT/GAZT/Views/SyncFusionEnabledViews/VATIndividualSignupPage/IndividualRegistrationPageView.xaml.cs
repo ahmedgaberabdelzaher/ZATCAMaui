@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
 using GAZT.Manager;
@@ -31,6 +32,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
     {
         private static int CurrentView;
         IndividualRegistrationPageViewModel viewModel;
+        ObservableCollection<InternationalMobileData> mobileData = null;
+
         public IndividualRegistrationPageView()
         {
             InitializeComponent();
@@ -733,12 +736,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             SignUpDOB.IsOpen = true;
         }
-        private void CountryCodes_Clicked(object sender, EventArgs e)
+        private  void CountryCodes_Clicked(object sender, EventArgs e)
         {
 
-            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage());
 
-            
+            PopupNavigation.Instance.PushAsync(new InternationalCodeSearchPage(mobileData));
+
+
         }
 
         private void LIssuedBy_Clicked(object sender, EventArgs e)
@@ -1122,6 +1126,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             else
             {
                 IntnlCodes.Margin = new Thickness(10, -8, 10, -8);
+            }
+            try
+            {
+                mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
 

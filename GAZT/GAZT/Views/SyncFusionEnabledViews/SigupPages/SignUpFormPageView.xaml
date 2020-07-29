@@ -373,19 +373,19 @@ HeaderTextColor="White"
 <inputLayout:SfTextInputLayout HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Margin="10,-6,10,-6" 
     ContainerType="Outlined" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"
                                UnfocusedColor="#B1B1B1" >
-   <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Grid.Row="14">
+   <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Grid.Row="14" FlowDirection="LeftToRight">
        <Image HorizontalOptions="StartAndExpand" Rotation="270" >
          <Image.Source>
              <FontImageSource FontFamily="UserIconFont" Color="Black" Size="15"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                     </Image.Source>
             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                                <TapGestureRecognizer Tapped="MobileCodes_Clicked" />
                             </Image.GestureRecognizers>
                                                                 </Image>
              <custom:CustomButton HorizontalOptions="FillAndExpand" VerticalOptions="End" TextColor="Black"
                            Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="MobileCodes_Clicked"
-                       
+                     
                                   BackgroundColor="Transparent" >
                                 </custom:CustomButton>
                                  </StackLayout>

@@ -47,9 +47,6 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                  
-
-                    
 
                     <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White" RowSpacing="0" >
@@ -815,11 +812,11 @@
                                                             <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
                                                                     <Image HorizontalOptions="Start" Rotation="270" >
                                                                     <Image.Source>
-                                                                     <FontImageSource FontFamily="UserIconFont" Color="Black" Size="15"
+                                                                     <FontImageSource FontFamily="UserIconFont" Color="Black" Size="18"
                                                                          Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                     </Image.Source>
                                                                         <Image.GestureRecognizers>
-                                                                    <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                                                                    <TapGestureRecognizer Tapped="CountryCodes_Clicked"/>
                                                                 </Image.GestureRecognizers>
                                                                 </Image>
                                                                 <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black"

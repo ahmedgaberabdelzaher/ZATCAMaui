@@ -113,11 +113,11 @@
    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" >
        <Image HorizontalOptions="StartAndExpand" Rotation="270" >
          <Image.Source>
-             <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="15"
+             <FontImageSource FontFamily="UserIconFont" Color="Gray" Size="18"
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                     </Image.Source>
             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                                <TapGestureRecognizer Tapped="MobileCodes_Clicked" />
                             </Image.GestureRecognizers>
               </Image>
              <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Start" TextColor="White"
@@ -132,7 +132,7 @@
     Hint="Enter mobile number" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center" TextColor="White" x:Name="Username" Keyboard="Numeric" FontSize="Small" >
+                                    <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center" TextColor="White" x:Name="MobileNumber" Unfocused="EntryMobileNumber_Unfocused" Keyboard="Numeric" FontSize="Small" >
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <custom:MobileNumberValidatorBehaviour/>
                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -156,7 +156,7 @@
     Hint="{x:Static local:AppResources.EnterNewMobileNumber}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
     OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                    <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center"  TextColor="White" x:Name="UsernameForArabic" Keyboard="Numeric" FontSize="Small" >
+                                    <custom:GAZTBorderlessEntry Text="{Binding NewMobile}" VerticalTextAlignment="Center"  TextColor="White" x:Name="MobileNumberAr"  Unfocused="EntryMobileNumber_Unfocused" Keyboard="Numeric" FontSize="Small" >
                                         <custom:GAZTBorderlessEntry.Behaviors>
                                             <custom:MobileNumberValidatorBehaviour/>
                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -175,7 +175,7 @@
                                      Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
                                                                     </Image.Source>
             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding MobileCodes_Clicked}" />
+                                <TapGestureRecognizer Tapped="MobileCodes_Clicked" />
                             </Image.GestureRecognizers>
               </Image>
              <custom:CustomButton HorizontalOptions="Start"  VerticalOptions="Start" TextColor="White"

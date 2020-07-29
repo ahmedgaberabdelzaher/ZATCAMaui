@@ -78,19 +78,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     #endregion
     public void onPageLoad()
     {
+         MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
 
-        mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
-        if (mobileData != null && mobileData.Count != 0)
-        {
-            MobileCodes = mobileData;
-                MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
-
-
-            }
-            else
-        {
-
-        }
     }
 
     public void refreshList()

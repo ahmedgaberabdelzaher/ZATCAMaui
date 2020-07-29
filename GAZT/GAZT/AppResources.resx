@@ -406,6 +406,9 @@ amendments do not match what was calculated by the General Authority for Zakat a
   <data name="EnterNewMobileNumber" xml:space="preserve">
     <value>Enter your mobile number</value>
   </data>
+      <data name="EnterMobileNumber" xml:space="preserve">
+    <value>Please enter mobile number</value>
+  </data>
   <data name="EnterValidMobileNumber" xml:space="preserve">
     <value>Please enter valid mobile number</value>
   </data>

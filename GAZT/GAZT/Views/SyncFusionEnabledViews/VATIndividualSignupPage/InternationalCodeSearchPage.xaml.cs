@@ -15,22 +15,31 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-
+    
     public partial class InternationalCodeSearchPage : PopupPage
     {
         InternationalCodeSearchPageViewModel viewModel;
+        ObservableCollection<InternationalMobileData> mobileData = null;
 
-        public InternationalCodeSearchPage()
+        public InternationalCodeSearchPage(ObservableCollection<InternationalMobileData> countryCodeData)
         {
             InitializeComponent();
 
             viewModel = App.Locator.InternationalCodeSearchPage;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
+            this.BindingContext =  viewModel;
 
-            viewModel.onPageLoad();
+            this.mobileData = countryCodeData;
+            viewModel.MobileCodes = this.mobileData;
 
             SetLTR();
+        }
+        protected override void OnAppearing()
+
+        {
+            base.OnAppearing();
+
+            viewModel.onPageLoad();
         }
         private void SetLTR()
         {
@@ -67,7 +76,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             if (searchPhrase.Length > 0)
             {
-                viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Landx.ToLower().Contains(searchPhrase.ToLower())));
+                viewModel.MobileCodes = new ObservableCollection<InternationalMobileData>(viewModel.MobileCodes.Where(name => name.Telefto.ToLower().Contains(searchPhrase.ToLower())));
             }
             else
             {
@@ -82,7 +91,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
             PopupNavigation.Instance.PopAsync();
 
-            // viewModel._navigationService.GoBack();
         }
         private void Close_Tapped(object sender, EventArgs e)
         {

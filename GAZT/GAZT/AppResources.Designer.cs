@@ -623,6 +623,12 @@ namespace EGAZT {
             }
         }
         
+        public static string EnterMobileNumber {
+            get {
+                return ResourceManager.GetString("EnterMobileNumber", resourceCulture);
+            }
+        }
+        
         public static string EnterValidMobileNumber {
             get {
                 return ResourceManager.GetString("EnterValidMobileNumber", resourceCulture);
