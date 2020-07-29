@@ -37,6 +37,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ReturnTypeForFilter");
             }
         }
+        public ChipModel _selectedChipFilterItem = null;
+        public ChipModel SelectedChipFilterItem
+        {
+            get
+            {
+                return _selectedChipFilterItem;
+            }
+            set
+            {
+                _selectedChipFilterItem = value;
+                if (_selectedChipFilterItem != null)
+                {
+                    //FilterIfTypeAndStausFilterSelected();
+                }
+                RaisePropertyChanged("SelectedChipFilterItem");
+            }
+        }
+        public ObservableCollection<ChipModel> _chipDataFilterlist = null;
+        public ObservableCollection<ChipModel> ChipDataFilterlist
+        {
+            get
+            {
+                return _chipDataFilterlist;
+            }
+            set
+            {
+                _chipDataFilterlist = value;
+                RaisePropertyChanged("ChipDataFilterlist");
+            }
+        }
         public string _filterLabelText;
         public string FilterLabelText
         {
@@ -1534,8 +1564,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
             }
+        public void PopulateDataInChips()
+        {
+            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+               {
+                new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="ic_check_circle.png"},
+                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "ic_loading.png"},
+                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "ic_money.png"},
 
-   
+               };
+        }
+
         #endregion
 
 

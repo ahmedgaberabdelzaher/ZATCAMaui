@@ -6,7 +6,7 @@
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
              FlowDirection="RightToLeft"    
@@ -124,6 +124,21 @@ HeaderTextColor="White"
                 <!--custom:RoundCornersEffect.CornerRadius="14" SelectionChanged="DDlIDType_SelectionChanged" OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
 
                 <custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+                <StackLayout Margin="0,8,0,8" HorizontalOptions="StartAndExpand">
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice" Margin="0"  HorizontalOptions="CenterAndExpand"  ChipBackgroundColor="Transparent"                                    ChipPadding="0" 
+                                       Padding="0"  ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="ChipGroup_statusFilter_SelectionChanged">
+                            <buttons:SfChipGroup.ItemTemplate>
+                                <DataTemplate >
+                                    <StackLayout Margin="0" Padding="0">
+                                        <buttons:SfChip Margin="0" HeightRequest="40" WidthRequest="115" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}" ImageWidth="30" ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </buttons:SfChipGroup.ItemTemplate>
+                        </buttons:SfChipGroup>
+
+                    </ScrollView>
+                                    </StackLayout>
             </StackLayout>
             <StackLayout Grid.Row="1">
        

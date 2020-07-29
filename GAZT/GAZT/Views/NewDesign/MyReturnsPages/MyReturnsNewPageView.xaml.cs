@@ -21,6 +21,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
            viewModel.OnPageLoad();
             viewModel.PopulateReturnTypeList();
+            viewModel.PopulateDataInChips();
         }
 
         private void SetLTR()
@@ -54,6 +55,13 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             viewModel.SelectedReturnTypeForFilter = selectedReturntype;
             //viewModel.SelectedFormBindleFbnumPrev = selectedfbnum;
             //viewModel.TxtFBnum = selectedfbnum.Fbnum;
+        }
+
+        private void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+            ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+            ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
+            viewModel.SelectedChipFilterItem = selectedReturntype;
         }
     }
 }
