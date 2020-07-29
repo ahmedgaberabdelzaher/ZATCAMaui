@@ -2626,10 +2626,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
 
         private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
             if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
-                StringBuilder Message = new StringBuilder();
-                PopUp popUp = new PopUp();
+           
                 if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
                     Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
@@ -2663,6 +2664,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreateGaztAccount
                 {
                     FrmMobileNumber.HasError = false;
                 }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
 

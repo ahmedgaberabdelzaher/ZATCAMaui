@@ -717,10 +717,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         //}
 
-        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-
-        }
+ 
 
         private void EntryPhoneNumber_Unfocused(object sender, FocusEventArgs e)
         {
@@ -1229,12 +1226,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-        private void EntryMobileNumber_Unfocused_1(object sender, FocusEventArgs e)
+        private void EntryMobileNumber_Unfocused(object sender, FocusEventArgs e)
         {
+
+            StringBuilder Message = new StringBuilder();
+            PopUp popUp = new PopUp();
             if (!string.IsNullOrEmpty(EntryMobileNumber.Text))
             {
-                StringBuilder Message = new StringBuilder();
-                PopUp popUp = new PopUp();
                 if (EntryMobileNumber.Text.Substring(0, 1) == "0")
                 {
                     Message.Append(AppResources.ZZMobilenumberCannotStartWith0);
@@ -1267,9 +1265,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 else
                 {
+                   
                     //FrmMobileNumber.HasError = false;
                     viewModel.FrameMobileNumberError = false;
                 }
+            }
+            else
+            {
+                Message.Append(AppResources.EnterMobileNumber);
+                popUp.Message = Message.ToString();
+                PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
         }
 
