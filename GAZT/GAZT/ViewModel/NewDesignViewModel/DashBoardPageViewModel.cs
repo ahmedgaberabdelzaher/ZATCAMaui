@@ -3,6 +3,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Syncfusion.SfCalendar.XForms;
+using Syncfusion.SfChart.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,175 +17,126 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 {
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
-
         #region Fields
-        private Dashboard DashboardData = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnFive = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnThree = null;
-        public bool _isButtonEnabled = true;
-        private ObservableCollection<eServiceInfo> _eServicesItems = null;
-        private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
-        private ObservableCollection<BillInfo> _PaymentInfoItems = null;
-        private CalendarEventCollection _BillsAndReturnsSchedule = null;
-        private bool _isListviewVisible = false;
-        private bool _isNoDuesLabelVisible = false;
+
         private ICommand EserviceCommand { get; set; }
-        public readonly INavigationService _navigationService;
-        public readonly IDialogService _dialogService;
-        public DateTime lastTapped;
+        private GAZT.Models.TaxPayerProfile _TaxPayerProfile = App.TP;
+        private Dashboard DashboardData = null;
+        private CalendarEventCollection _CommittmentsSchedule = null;
+        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _BillsAndReturnsCommitments = null;
+        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Bills = null;
+        private ObservableCollection<ReturnTypeAndCorrepsondingCount> _SegregatedReturnTypesAndCorrepsondingCounts = null;
+        private ObservableCollection<OverduePaymentAndUnSubmittedReturn> _Returns = null;
+        private ObservableCollection<eServiceInfo> _eServices = null;
+
         #endregion
 
         #region Public Properties
+        public CalendarEventCollection CommittmentsSchedule
+        {
+            get
+            {
+                return this._CommittmentsSchedule;
+            }
+            set
+            {
+                if (this._CommittmentsSchedule == value)
+                {
+                    return;
+                }
+                this._CommittmentsSchedule = value;
+                this.RaisePropertyChanged("CommittmentsSchedule");
+            }
+        }
+        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> BillsAndReturnsCommitments
+        {
+            get
+            {
+                return this._BillsAndReturnsCommitments;
+            }
+            set
+            {
+                this._BillsAndReturnsCommitments = value;
+                this.RaisePropertyChanged("BillsAndReturnsCommitments");
+            }
+        }
+
+        private ChartColorCollection _colors = null;
+        public ChartColorCollection Colors
+        {
+            get
+            {
+                return _colors;
+            }
+            set
+            {
+                _colors = value;
+                RaisePropertyChanged("Colors");
+            }
+        }
+
+        private ObservableCollection<MyBillsChartModel> _MyBillsChartModels = null;
+        public ObservableCollection<MyBillsChartModel> MyBillsChartModels
+        {
+            get
+            {
+                return this._MyBillsChartModels;
+            }
+            set
+            {
+                this._MyBillsChartModels = value;
+                this.RaisePropertyChanged("MyBillsChartModels");
+            }
+        }
+        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Bills
+        {
+            get
+            {
+                return this._Bills;
+            }
+            set
+            {
+                this._Bills = value;
+                this.RaisePropertyChanged("Bills");
+            }
+        }
+        
+        public ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypesAndCorrepsondingCounts
+        {
+            get
+            {
+                return this._SegregatedReturnTypesAndCorrepsondingCounts;
+            }
+            set
+            {
+                this._SegregatedReturnTypesAndCorrepsondingCounts = value;
+                this.RaisePropertyChanged("SegregatedReturnTypesAndCorrepsondingCounts");
+            }
+        }
+        public ObservableCollection<OverduePaymentAndUnSubmittedReturn> Returns
+        {
+            get
+            {
+                return this._Returns;
+            }
+            set
+            {
+                this._Returns = value;
+                this.RaisePropertyChanged("Returns");
+            }
+        }
         public ObservableCollection<eServiceInfo> eServicesAvailableToTheTP
         {
             get
             {
-                return this._eServicesItems;
+                return this._eServices;
             }
             set
             {
-                this._eServicesItems = value;
+                this._eServices = value;
                 this.RaisePropertyChanged("eServicesAvailableToTheTP");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listUnsubmittedReturn
-        {
-            get
-            {
-                return this._listUnsubmittedReturn;
-            }
-            set
-            {
-                this._listUnsubmittedReturn = value;
-                this.RaisePropertyChanged("listUnsubmittedReturn");
-            }
-        }
-        public List<OverduePaymentsAndUnSubmittedReturn> listOverduePaymentReturn
-        {
-            get
-            {
-                return this._listOverduePaymentReturn;
-            }
-            set
-            {
-                this._listOverduePaymentReturn = value;
-                this.RaisePropertyChanged("listOverduePaymentReturn");
-            }
-        }
-        public List<OverduePaymentsAndUnSubmittedReturn> listofPaymentReturn
-        {
-            get
-            {
-                return this._listofPaymentReturn;
-            }
-            set
-            {
-                this._listofPaymentReturn = value;
-                this.RaisePropertyChanged("listofPaymentReturn");
-            }
-        }
-        private List<OverduePaymentsAndUnSubmittedReturn> _commitmentReturnsList;
-        public List<OverduePaymentsAndUnSubmittedReturn> CommitmentReturnsList
-        {
-            get
-            {
-                return this._commitmentReturnsList;
-            }
-            set
-            {
-                this._commitmentReturnsList = value;
-                this.RaisePropertyChanged("CommitmentReturnsList");
-            }
-        }
-        public bool IsButtonEnabled
-        {
-            get
-            {
-                return this._isButtonEnabled;
-            }
-            set
-            {
-                this._isButtonEnabled = value;
-                this.RaisePropertyChanged("IsButtonEnabled");
-            }
-        }
-        public bool IsListviewVisible
-        {
-            get
-            {
-                return this._isListviewVisible;
-            }
-            set
-            {
-                this._isListviewVisible = value;
-                this.RaisePropertyChanged("IsListviewVisible");
-            }
-        }
-        public bool IsNoDuesLabelVisible
-        {
-            get
-            {
-                return this._isNoDuesLabelVisible;
-            }
-            set
-            {
-                this._isNoDuesLabelVisible = value;
-                this.RaisePropertyChanged("IsNoDuesLabelVisible");
-            }
-        }
-        /// <summary>
-        /// Gets or sets the returninfo items collection.
-        /// </summary>
-        public ObservableCollection<ReturnInfo> ReturnInfoItems
-        {
-            get
-            {
-                return this._ReturnInfoItems;
-            }
-            set
-            {
-                this._ReturnInfoItems = value;
-                this.RaisePropertyChanged("ReturnInfoItems");
-            }
-        }
-        /// <summary>
-        /// Gets or sets the billInfo items collection.
-        /// </summary>
-        public ObservableCollection<BillInfo> BillsInfoItems
-        {
-            get
-            {
-                return this._PaymentInfoItems;
-            }
-            set
-            {
-                this._PaymentInfoItems = value;
-                this.RaisePropertyChanged("BillsInfoItems");
-            }
-        }
-        /// <summary>
-        /// Gets or sets the BillsAndReturnsSchedule.
-        /// </summary>
-        public CalendarEventCollection BillsAndReturnsSchedule
-        {
-            get
-            {
-                return this._BillsAndReturnsSchedule;
-            }
-            set
-            {
-                if (this._BillsAndReturnsSchedule == value)
-                {
-                    return;
-                }
-                this._BillsAndReturnsSchedule = value;
-                this.RaisePropertyChanged("BillsAndReturnsSchedule");
-            }
-        }
-        private GAZT.Models.TaxPayerProfile _TaxPayerProfile = App.TP;
         public GAZT.Models.TaxPayerProfile TaxPayerProfile
         {
             get
@@ -202,42 +154,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #region Constructor
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-          
         }
         #endregion
 
         #region Method
         public async Task LoadDashboardData()
         {
-            //await Task.Run(() =>
-            //{
-            //    IsLoading = true;
-            //});
             await Task.Delay(3000);
+
             Task GetDashboardDataTask = null;
-            //Task GetUnsubmittedReturnDataTask = null;
-            //Task GetOverduePaymentDataTask = null;
+            Task GetBillsTask = null;
+            Task GetReturnsTask = null;
+
             if (App.TP != null)
             {
                 GetDashboardDataTask = Task.Run(() =>
                 {
                     DashboardData = WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
                 });
-                //GetUnsubmittedReturnDataTask = Task.Run(async() =>
-                //{
-                //    listUnsubmittedReturn =await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                //});
-                //GetOverduePaymentDataTask = Task.Run(async() =>
-                //{
-                //    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                //});
+
+                GetBillsTask = Task.Run(async () =>
+                {
+                    var TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+
+                    Bills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempBills);
+                });
+
+                GetReturnsTask = Task.Run(async () =>
+                {
+                    var TempReturns = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+
+                    Returns = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)TempReturns);
+                });
             }
             try
             {
                 if (GetDashboardDataTask != null)
                     GetDashboardDataTask.Wait();
-                //GetUnsubmittedReturnDataTask.Wait();
-                //GetOverduePaymentDataTask.Wait();
+
+                if (GetBillsTask != null)
+                    GetBillsTask.Wait();
+
+                if (GetReturnsTask != null)
+                    GetReturnsTask.Wait();
             }
             catch (AggregateException ae)
             {
@@ -307,105 +266,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
             });
         }
-        public void PopToRootPage()
-        {
-            if (App.IsSessionExpired)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
-                });
-            }
-        }
-        public async Task DuesData()
+        public void PopualateCommittmentsInformation()
         {
             try
             {
-                listOverduePaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                listUnsubmittedReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                try
-                {
-                    listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                }
-                catch (Exception ex)
-                {
-                    //Device.BeginInvokeOnMainThread(async () =>
-                    //{
-                    //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    //});
-                }
-                listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                listofPaymentReturn.Clear();
+                List< OverduePaymentAndUnSubmittedReturn> OverduePaymentsAndUnSubmittedReturns = new List<OverduePaymentAndUnSubmittedReturn>();
+
+                if (BillsAndReturnsCommitments == null)
+                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
+
                 // Create events
-                foreach (var PaymentReturn in listOverduePaymentReturn)
+                foreach (var Bill in Bills)
                 {
-                    PaymentReturn.IsUnSubmittedReturn = false;
-                    PaymentReturn.IsPaymentOverdue = true;
-                    PaymentReturn.ColorCode = Color.FromHex("#AA0C19");
-                    listofPaymentReturn.Add(PaymentReturn);
+                    Bill.IsUnSubmittedReturn = false;
+                    Bill.IsPaymentOverdue = true;
+                    Bill.ColorCode = Color.FromHex("#AA0C19");
+                    
+                    BillsAndReturnsCommitments.Add(Bill);
                 }
-                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
+                foreach (var UnsubmittedReturn in Returns)
                 {
                     UnsubmittedReturn.IsUnSubmittedReturn = true;
                     UnsubmittedReturn.IsPaymentOverdue = false;
                     UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
-                    listofPaymentReturn.Add(UnsubmittedReturn);
+                    BillsAndReturnsCommitments.Add(UnsubmittedReturn);
                 }
-                if (listofPaymentReturn != null)
+
+                if (BillsAndReturnsCommitments != null)
                 {
                     DateTime Today = DateTime.Now;
-                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList<OverduePaymentsAndUnSubmittedReturn>();
-                    if (listofPaymentReturn.Count > 3)
+                    var BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList();
+                    if (BillsAndReturnsCommitmentsLocal.Count > 3)
                     {
-                        if (listofPaymentReturn.Count == 4)
+                        if (BillsAndReturnsCommitmentsLocal.Count == 4)
                         {
-                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(4).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.OrderBy(a => a.DueDateDateTime).Take(4).ToList();
                         }
                         else
                         {
-                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                            BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitments.OrderBy(a => a.DueDateDateTime).Take(5).ToList();
                         }
-                        if (listofPaymentReturn.Count > 3)
+                        if (BillsAndReturnsCommitments.Count > 3)
                         {
-                            if (listofPaymentReturn[2].DueDateDateTime.Date == listofPaymentReturn[3].DueDateDateTime.Date)
+                            if (BillsAndReturnsCommitments[2].DueDateDateTime.Date == BillsAndReturnsCommitments[3].DueDateDateTime.Date)
                             {
-                                if (listofPaymentReturn.Count > 4)
+                                if (BillsAndReturnsCommitments.Count > 4)
                                 {
-                                    if (listofPaymentReturn[2].DueDateDateTime.Date == listofPaymentReturn[4].DueDateDateTime.Date)
+                                    if (BillsAndReturnsCommitments[2].DueDateDateTime.Date == BillsAndReturnsCommitments[4].DueDateDateTime.Date)
                                     {
                                     }
                                     else
                                     {
-                                        listofPaymentReturn.RemoveAt(4);
+                                        BillsAndReturnsCommitments.RemoveAt(4);
                                     }
                                 }
                             }
                             else
                             {
-                                if (listofPaymentReturn.Count > 3)
+                                if (BillsAndReturnsCommitments.Count > 3)
                                 {
-                                    listofPaymentReturn.RemoveAt(3);
+                                    BillsAndReturnsCommitments.RemoveAt(3);
                                 }
-                                if (listofPaymentReturn.Count > 3)
+                                if (BillsAndReturnsCommitments.Count > 3)
                                 {
-                                    listofPaymentReturn.RemoveAt(3);
+                                    BillsAndReturnsCommitments.RemoveAt(3);
                                 }
                             }
                         }
                     }
+
+                    BillsAndReturnsCommitmentsLocal = BillsAndReturnsCommitmentsLocal.OrderBy(i => DateTime.Parse(i.DueDate)).ToList();
+
+                    BillsAndReturnsCommitments = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>((IEnumerable<OverduePaymentAndUnSubmittedReturn>)BillsAndReturnsCommitmentsLocal);
                 }
             }
             catch (AggregateException ae)
@@ -459,127 +391,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
-
-        public async Task SetDataForDues()
+        public class BillTypeCorrepsondingCountAndAmount
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                listofPaymentReturn.Clear();
-                // Create events
-                foreach (var PaymentReturn in listOverduePaymentReturn)
-                {
-                    PaymentReturn.IsUnSubmittedReturn = false;
-                    PaymentReturn.IsPaymentOverdue = true;
-                    listofPaymentReturn.Add(PaymentReturn);
-                }
-                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
-                {
-                    UnsubmittedReturn.IsUnSubmittedReturn = true;
-                    UnsubmittedReturn.IsPaymentOverdue = false;
-                    listofPaymentReturn.Add(UnsubmittedReturn);
-                }
-            });
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-        }
-        public void PopulateReturnsInformation()
-        {
-            ObservableCollection<ReturnInfo> _returnInfoItems = new ObservableCollection<ReturnInfo>();
-            ReturnInfoItems = new ObservableCollection<ReturnInfo>();
-            try
-            {
-                if (DashboardData != null)
-                {
-                    if (DashboardData.results != null && DashboardData.results.Count > 0)
-                    {
-                        if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
-                        {
-                            ReturnInfo objReturnInfoRtnTot = new ReturnInfo();
-                            objReturnInfoRtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
-                            String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
-                            if (string.IsNullOrEmpty(RtnTotstr))
-                            {
-                                RtnTotstr = "0";
-                            }
-                            else
-                            {
-                                string returnToString = RtnTotstr.Substring(0, 1);
-                                if (returnToString.Equals("."))
-                                {
-                                    RtnTotstr = "0" + RtnTotstr;
-                                }
-                                else
-                                {
-                                }
-                            }
-                            objReturnInfoRtnTot.ReturnCount = RtnTotstr;
-                            objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
-                            objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
-                            objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
-                            objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
-                            _returnInfoItems.Add(objReturnInfoRtnTot);
-                            ReturnInfoItems = _returnInfoItems;
-                            // ReturnInfoItems.Add(objReturnInfoRtnTot);
-                        }
-                        if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
-                        {
-                            ReturnInfo objReturnInfoNrtnTot = new ReturnInfo();
-                            objReturnInfoNrtnTot.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
-                            String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
-                            if (string.IsNullOrEmpty(NrtnTotstr))
-                            {
-                                NrtnTotstr = "0";
-                            }
-                            else if (NrtnTotstr.Substring(0, 1) == ".")
-                            {
-                                NrtnTotstr = "0" + NrtnTotstr;
-                            }
-                            objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
-                            objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
-                            objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
-                            objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
-                            objReturnInfoNrtnTot.ReturnTypeName = AppResources.UnSubmitted;
-                            ReturnInfoItems.Add(objReturnInfoNrtnTot);
-                        }
-                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
-                        {
-                            ReturnInfo objReturnInfoDueIcr = new ReturnInfo();
-                            objReturnInfoDueIcr.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
-                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
-                            if (string.IsNullOrEmpty(DueIcrstr))
-                            {
-                                DueIcrstr = "0";
-                            }
-                            else if (DueIcrstr.Substring(0, 1) == ".")
-                            {
-                                DueIcrstr = "0" + DueIcrstr;
-                            }
-                            objReturnInfoDueIcr.ReturnCount = DueIcrstr;
-                            objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
-                            objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
-                            objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
-                            objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
-                            ReturnInfoItems.Add(objReturnInfoDueIcr);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-            }
+            public BillType Status;
+            public String BillTypeName;
+            public int BillCount;
+            public String BillAmount;
         }
         public void PopulateBillsInformation()
         {
-            BillsInfoItems = new ObservableCollection<BillInfo>();
+            List<BillTypeCorrepsondingCountAndAmount> SegregatedBillTypeCorrepsondingCountAndAmount = new List<BillTypeCorrepsondingCountAndAmount>();
+            ChartColorCollection ColorsChild = new ChartColorCollection();
+
             try
             {
                 if (DashboardData.results != null && DashboardData.results.Count > 0)
@@ -587,11 +410,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //Paid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].PbillsTot != null)
                     {
-                        BillInfo objBillInfoPbillsTot = new BillInfo();
-                        objBillInfoPbillsTot.BillTypeProperty = BillType.PbillsTot;
+                        BillTypeCorrepsondingCountAndAmount PaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
+
+                        PaidBillCountAndAmount.Status = BillType.PbillsTot;
+
                         String PaidBillsstr = DashboardData.results[0].PbillsTot.TrimStart(new Char[] { '0' });
                         String PaidBillsAmountstr = DashboardData.results[0].PbillsBetrw.TrimStart(new Char[] { '0' });
-                        //PaidBillsstr = Convert.ToDouble(PaidBillsstr).ToString();
+
                         if (string.IsNullOrEmpty(PaidBillsstr))
                         {
                             PaidBillsstr = "0";
@@ -609,19 +434,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             PaidBillsAmountstr = "0" + PaidBillsAmountstr;
                         }
                         string TotalPaidAmount = PaidBillsAmountstr;
-                        objBillInfoPbillsTot.BillCount = PaidBillsstr;
-                        objBillInfoPbillsTot.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
-                        objBillInfoPbillsTot.BackgroundGradientStart = "#006450";
-                        objBillInfoPbillsTot.BackgroundGradientEnd = "#CCE0DC";
-                        objBillInfoPbillsTot.iConImagePath = "sf_ic_Paid.png";
-                        objBillInfoPbillsTot.BillTypeName = AppResources.Paid;
-                        BillsInfoItems.Add(objBillInfoPbillsTot);
+
+                        PaidBillCountAndAmount.BillCount = Convert.ToInt32(PaidBillsstr);
+                        PaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
+                        PaidBillCountAndAmount.BillTypeName = AppResources.Paid;
+
+                        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PaidBillCountAndAmount);
+
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PaidBillCountAndAmount.BillCount, BillType = PaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
+
                     }
                     //Partially Paid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].PrbillsTot != null)
                     {
-                        BillInfo objBillInfoPrbillsTot = new BillInfo();
-                        objBillInfoPrbillsTot.BillTypeProperty = BillType.PrbillsTot;
+                        BillTypeCorrepsondingCountAndAmount PartiallyPaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
+
+                        PartiallyPaidBillCountAndAmount.Status = BillType.PrbillsTot;
                         String PartialPaidBillsstr = DashboardData.results[0].PrbillsTot.TrimStart(new Char[] { '0' });
                         String PartialPaidBillsAmountstr = DashboardData.results[0].PrbillsBetrw.TrimStart(new Char[] { '0' });
                         if (string.IsNullOrEmpty(PartialPaidBillsstr))
@@ -640,19 +469,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             PartialPaidBillsAmountstr = "0" + PartialPaidBillsAmountstr;
                         }
-                        objBillInfoPrbillsTot.BillCount = PartialPaidBillsstr;
-                        objBillInfoPrbillsTot.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
-                        objBillInfoPrbillsTot.BackgroundGradientStart = "#D99A29";
-                        objBillInfoPrbillsTot.BackgroundGradientEnd = "#F7EBD4";
-                        objBillInfoPrbillsTot.iConImagePath = "sf_ic_Partially_Paid.png";
-                        objBillInfoPrbillsTot.BillTypeName = AppResources.Partial;
-                        BillsInfoItems.Add(objBillInfoPrbillsTot);
+                        PartiallyPaidBillCountAndAmount.BillCount = Convert.ToInt32(PartialPaidBillsstr);
+                        PartiallyPaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
+                        PartiallyPaidBillCountAndAmount.BillTypeName = AppResources.Partial;
+
+                        SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
+
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
+
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
                     }
                     //Unpaid Bills
                     if (DashboardData.results[0] != null && DashboardData.results[0].UpbillsTot != null)
                     {
-                        BillInfo objBillInfoUpbillsTot = new BillInfo();
-                        objBillInfoUpbillsTot.BillTypeProperty = BillType.UpbillsTot;
+                        BillTypeCorrepsondingCountAndAmount UnPaidBillCountAndAmount = new BillTypeCorrepsondingCountAndAmount();
+
+                        UnPaidBillCountAndAmount.Status = BillType.UpbillsTot;
                         String UnpaidBillsstr = DashboardData.results[0].UpbillsTot.TrimStart(new Char[] { '0' });
                         String UnpaidBillsAmountstr = DashboardData.results[0].UpbillsBetrw.TrimStart(new Char[] { '0' });
                         if (string.IsNullOrEmpty(UnpaidBillsstr))
@@ -671,13 +503,115 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             UnpaidBillsAmountstr = "0" + UnpaidBillsAmountstr;
                         }
-                        objBillInfoUpbillsTot.BillCount = UnpaidBillsstr;
-                        objBillInfoUpbillsTot.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
-                        objBillInfoUpbillsTot.BackgroundGradientStart = " #AA0C19";
-                        objBillInfoUpbillsTot.BackgroundGradientEnd = "#EECED1";
-                        objBillInfoUpbillsTot.iConImagePath = "sf_ic_Unpaid.png";
-                        objBillInfoUpbillsTot.BillTypeName = AppResources.UnPaid;
-                        BillsInfoItems.Add(objBillInfoUpbillsTot);
+                        UnPaidBillCountAndAmount.BillCount = Convert.ToInt32(UnpaidBillsstr);
+                        UnPaidBillCountAndAmount.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
+                        UnPaidBillCountAndAmount.BillTypeName = AppResources.UnPaid;
+
+                        SegregatedBillTypeCorrepsondingCountAndAmount.Add(UnPaidBillCountAndAmount);
+
+                        MyBillsChartModels.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+
+                        ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
+                    }
+
+                    if (Colors == null)
+                        Colors = new ChartColorCollection();
+
+                    Colors = ColorsChild;
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        public class ReturnTypeAndCorrepsondingCount
+        {
+            public string ReturnTypeName { get; set; }
+            public string ReturnCount { get; set; }
+            public GAZT.Models.ReturnType ReturnTypeProperty { get; set; }
+        }
+        public void PopulateReturnsInformation()
+        {
+            ObservableCollection<ReturnTypeAndCorrepsondingCount> SegregatedReturnTypeAndCorrepsondingCount = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
+            try
+            {
+                if (DashboardData != null)
+                {
+                    if (DashboardData.results != null && DashboardData.results.Count > 0)
+                    {
+                        //Submited
+                        if (DashboardData.results[0] != null && DashboardData.results[0].RtnTot != null)
+                        {
+                            ReturnTypeAndCorrepsondingCount SubmittedReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+                            SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.RtnTot;
+                            String RtnTotstr = DashboardData.results[0].RtnTot.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(RtnTotstr))
+                            {
+                                RtnTotstr = "0";
+                            }
+                            else
+                            {
+                                string returnToString = RtnTotstr.Substring(0, 1);
+                                if (returnToString.Equals("."))
+                                {
+                                    RtnTotstr = "0" + RtnTotstr;
+                                }
+                                else
+                                {
+                                }
+                            }
+                            SubmittedReturnTypeAndCorrepsondingCount.ReturnCount = RtnTotstr;
+                            SubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.Submitted;
+                            
+                            SegregatedReturnTypeAndCorrepsondingCount.Add(SubmittedReturnTypeAndCorrepsondingCount);
+                        }
+
+                        //UnSubmitted
+                        if (DashboardData.results[0] != null && DashboardData.results[0].NrtnTot != null)
+                        {
+                            ReturnTypeAndCorrepsondingCount UnSubmittedReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+
+                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.NrtnTot;
+                            String NrtnTotstr = DashboardData.results[0].NrtnTot.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(NrtnTotstr))
+                            {
+                                NrtnTotstr = "0";
+                            }
+                            else if (NrtnTotstr.Substring(0, 1) == ".")
+                            {
+                                NrtnTotstr = "0" + NrtnTotstr;
+                            }
+                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnCount = NrtnTotstr;
+                            UnSubmittedReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.UnSubmitted;
+
+                            SegregatedReturnTypeAndCorrepsondingCount.Add(UnSubmittedReturnTypeAndCorrepsondingCount);
+                        }
+
+                        //Overdue
+                        if (DashboardData.results[0] != null && DashboardData.results[0].DueIcr != null)
+                        {
+                            ReturnTypeAndCorrepsondingCount OverdueReturnTypeAndCorrepsondingCount = new ReturnTypeAndCorrepsondingCount();
+
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeProperty = GAZT.Models.ReturnType.DueIcr;
+                            String DueIcrstr = DashboardData.results[0].DueIcr.TrimStart(new Char[] { '0' });
+                            if (string.IsNullOrEmpty(DueIcrstr))
+                            {
+                                DueIcrstr = "0";
+                            }
+                            else if (DueIcrstr.Substring(0, 1) == ".")
+                            {
+                                DueIcrstr = "0" + DueIcrstr;
+                            }
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnCount = DueIcrstr;
+                            OverdueReturnTypeAndCorrepsondingCount.ReturnTypeName = AppResources.OverDue;
+
+                            SegregatedReturnTypeAndCorrepsondingCount.Add(OverdueReturnTypeAndCorrepsondingCount);
+                        }
+
+                        if (SegregatedReturnTypesAndCorrepsondingCounts == null)
+                            SegregatedReturnTypesAndCorrepsondingCounts = new ObservableCollection<ReturnTypeAndCorrepsondingCount>();
+
+                        SegregatedReturnTypesAndCorrepsondingCounts = SegregatedReturnTypeAndCorrepsondingCount;
                     }
                 }
             }
@@ -685,52 +619,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
             }
         }
-        public void PopulateBillsAndReturnsSchedule()
-        {
-            try
-            {
-                BillsAndReturnsSchedule = new CalendarEventCollection();
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                listofPaymentReturn.Clear();
-                // Create events
-                foreach (var PaymentReturn in listOverduePaymentReturn)
-                {
-                    PaymentReturn.IsUnSubmittedReturn = false;
-                    PaymentReturn.IsPaymentOverdue = true;
-                    listofPaymentReturn.Add(PaymentReturn);
-                }
-                foreach (var UnsubmittedReturn in listUnsubmittedReturn)
-                {
-                    UnsubmittedReturn.IsUnSubmittedReturn = true;
-                    UnsubmittedReturn.IsPaymentOverdue = false;
-                    listofPaymentReturn.Add(UnsubmittedReturn);
-                }
-                // listofPaymentReturn = listofPaymentReturn.Union(listOverduePaymentReturn).ToList();
-                //foreach (var item in listofPaymentReturn)
-                //{
-                //    CalendarInlineEvent BillOrReturnDueEvent = new CalendarInlineEvent();
-                //    BillOrReturnDueEvent.StartTime = item.DueDt;
-                //    BillOrReturnDueEvent.EndTime = item.DueDt;
-                //    if (item.IcrStatus == "O")
-                //    {
-                //        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
-                //            + " | " + item.Txt50;
-                //        BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
-                //    }
-                //    else
-                //    {
-                //        BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
-                //        BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
-                //    }
-                //    BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
-                //}
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-        public async void PopulateeServicesApplicableToTheTaxPayer()
+        public void PopulateeServicesApplicableToTheTaxPayer()
         {
             //Call the API to get the eSevrices applicable to the TP
             eServicesAvailableToTheTP = new ObservableCollection<eServiceInfo>();
@@ -758,8 +647,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
 
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
-
-            //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
+            
             //Tax Evasion Section
             eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
             //Tax Evasion Section

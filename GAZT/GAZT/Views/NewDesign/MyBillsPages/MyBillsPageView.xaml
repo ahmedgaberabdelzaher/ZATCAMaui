@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -34,7 +34,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.MyBills}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.MyBills}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
                         <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>

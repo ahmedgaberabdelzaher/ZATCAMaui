@@ -4053,12 +4053,12 @@ namespace GAZT.Manager
             }
             return dashboardData;
         }
-        public static async Task<List<OverduePaymentsAndUnSubmittedReturn>> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
+        public static async Task<List<OverduePaymentAndUnSubmittedReturn>> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
         {
             //lang = "E";
             //TIN = "3311620297";
             //Token = "051MiJPS7jgPsOOq374UiG!MjAyMDAzMTUxNzM2MTc";
-            List<OverduePaymentsAndUnSubmittedReturn> overduePayments = null;
+            List<OverduePaymentAndUnSubmittedReturn> overduePayments = null;
             if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
@@ -4100,7 +4100,7 @@ namespace GAZT.Manager
                         {
                             GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["d"].ToString();
                             GAZTGetUnSubmittedReturnSetResponseJSON = JObject.Parse(GAZTGetUnSubmittedReturnSetResponseJSON)["results"].ToString();
-                            overduePayments = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetUnSubmittedReturnSetResponseJSON);
+                            overduePayments = JsonConvert.DeserializeObject<List<OverduePaymentAndUnSubmittedReturn>>(GAZTGetUnSubmittedReturnSetResponseJSON);
                         }
                     }
                 }
@@ -4127,9 +4127,9 @@ namespace GAZT.Manager
             }
             return overduePayments;
         }
-        public static async Task<List<OverduePaymentsAndUnSubmittedReturn>> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
+        public static async Task<List<OverduePaymentAndUnSubmittedReturn>> GAZTGetPaymentOverdueSetForDashboardData(string lang, string TIN)
         {
-            List<OverduePaymentsAndUnSubmittedReturn> paymentOverdueSet = null;
+            List<OverduePaymentAndUnSubmittedReturn> paymentOverdueSet = null;
             if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
@@ -4171,7 +4171,7 @@ namespace GAZT.Manager
                         {
                             GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["d"].ToString();
                             GAZTGetPaymentOverdueSetResponseJSON = JObject.Parse(GAZTGetPaymentOverdueSetResponseJSON)["results"].ToString();
-                            paymentOverdueSet = JsonConvert.DeserializeObject<List<OverduePaymentsAndUnSubmittedReturn>>(GAZTGetPaymentOverdueSetResponseJSON);
+                            paymentOverdueSet = JsonConvert.DeserializeObject<List<OverduePaymentAndUnSubmittedReturn>>(GAZTGetPaymentOverdueSetResponseJSON);
                         }
                     }
                 }

@@ -24,8 +24,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 InitializeComponent();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                
                 viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+
+
+                if (App.TP != null)
+                    viewModel.TaxPayerProfile = App.TP;
+
                 MenuView.IsVisible = false;
                 HomeView.IsVisible = true;
             }
@@ -36,46 +42,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
 
         #region Method
-
-        public async Task LoadDuesData()
-        {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.DuesData();
-                    if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
-                    {
-                        List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                        viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            viewModel.CommitmentReturnsList = viewModel.listofPaymentReturn;
-                            //  ReturnsList.ItemsSource = viewModel.listofPaymentReturn;
-                        });
-                        await Task.Delay(3000);
-                        viewModel.IsListviewVisible = true;
-                        viewModel.IsNoDuesLabelVisible = false;
-                    }
-                    else
-                    {
-                        viewModel.IsListviewVisible = false;
-                        viewModel.IsNoDuesLabelVisible = true;
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            }
-            catch (Exception ex)
-            {
-            }
-        }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -89,24 +55,29 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MenuView.IsVisible = false;
-            HomeView.IsVisible = true;
 
-            App.IsComingFromSleepMode = false;
             SetLTR();
-            viewModel.TaxPayerProfile = App.TP;
-            LoadDuesData();
-            LoadData();
+            App.IsComingFromSleepMode = false;
+
+            MenuView.IsVisible = false;
+            HomeView.IsVisible = true;            
+
+            Task.Run(async () =>
+            {
+                await LoadData();
+                viewModel.IsLoading = false;
+            });
         }
         private async Task LoadData()
         {
             try
             {
                 await viewModel.LoadDashboardData();
-                viewModel.PopulateReturnsInformation();
+
                 viewModel.PopulateBillsInformation();
-                // viewModel.PopulateBillsAndReturnsSchedule();
-                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                viewModel.PopulateReturnsInformation();
+                viewModel.PopualateCommittmentsInformation();
+               // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
@@ -121,10 +92,6 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
         }
 
-        
-
         #endregion
-
-
     }
 }

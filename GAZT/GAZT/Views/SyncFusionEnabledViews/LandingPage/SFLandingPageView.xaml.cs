@@ -76,7 +76,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                     await viewModel.DuesData();
                     if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
                     {
-                        List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
+                        List<OverduePaymentAndUnSubmittedReturn> sortedList = new List<OverduePaymentAndUnSubmittedReturn>();
                         viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
                         Device.BeginInvokeOnMainThread(() =>
                         {
