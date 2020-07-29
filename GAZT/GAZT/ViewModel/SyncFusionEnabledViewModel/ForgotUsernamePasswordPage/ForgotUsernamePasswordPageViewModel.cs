@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
         public ICommand OnChangePasswordSubmitClicked { get; set; }
         public Command OnResendOTPClicked { get; set; }
         public Command OnValidateOTPClicked { get; set; }
+        public Command OnLogInClick { get; set; }
         public ICommand OnLoginPageLinkClicked { get; set; }
         public ICommand BackButtonClicked { get; set; }
         public int currentAttempts = 0;

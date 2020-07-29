@@ -802,7 +802,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             label.BackgroundColor = Color.FromHex("#70FFFFFF");
             await Task.Delay(100);
             label.BackgroundColor = Color.Transparent;
-            _navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
+            _navigationService.NavigateTo(App.ForgotPasswordPageView);
         }
         /// <summary>
         /// Invoked when social media login button is clicked.

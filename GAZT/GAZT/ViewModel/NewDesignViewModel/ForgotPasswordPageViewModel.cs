@@ -31,6 +31,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public Command OnPasswordCardClicked{ get; set; }
         public Command OnCorporateCardClicked { get; set; }
         public Command OnIndividualOrPersonalBusinessCardClicked { get; set; }
+        public Command OnLogInClick { get; set; }
 
         //public ICommand OnLoginPageLinkClicked { get; set; }
         //public ICommand BackButtonClicked { get; set; }
@@ -44,6 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
         public bool StopTimer = true;
         #endregion
+
         #region Property
 
         // New Property starts
@@ -88,6 +90,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("PasswordLayoutVisibility");
             }
         }
+
+
+        private bool _recoverUserNameLayout = false;
+        public bool RecoverUserNameLayout
+        {
+            get
+            {
+                return _recoverUserNameLayout;
+            }
+            set
+            {
+                _recoverUserNameLayout = value;
+                RaisePropertyChanged("RecoverUserNameLayout");
+            }
+        }
+
+        private bool _recoverPasswordLayout = false;
+        public bool RecoverPasswordLayout
+        {
+            get
+            {
+                return _recoverPasswordLayout;
+            }
+            set
+            {
+                _recoverPasswordLayout = value;
+                RaisePropertyChanged("RecoverPasswordLayout");
+            }
+        }
+
+        
+
 
         private bool _verificationCodeVisibility = false;
         public bool VerificationCodeVisibility
@@ -283,6 +317,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 _enteredOTP = value;
                 RaisePropertyChanged("EnteredOTP");
+            }
+        }
+
+
+        private bool _isResendOTPEnabled = false;
+        public bool IsResendOTPEnabled
+        {
+            get
+            {
+                return _isResendOTPEnabled;
+            }
+            set
+            {
+                _isResendOTPEnabled = value;
+                OnResendOTPClicked.ChangeCanExecute();
+                RaisePropertyChanged("IsResendOTPEnabled");
             }
         }
 
@@ -769,20 +819,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("ButtonDisableColor");
             }
         }
-        private bool _isResendOTPEnabled = false;
-        public bool IsResendOTPEnabled
-        {
-            get
-            {
-                return _isResendOTPEnabled;
-            }
-            set
-            {
-                _isResendOTPEnabled = value;
-                OnResendOTPClicked.ChangeCanExecute();
-                RaisePropertyChanged("IsResendOTPEnabled");
-            }
-        }
+       
         private bool _confirmPasswordVisibility = false;
         public bool ConfirmPasswordVisibility
         {
@@ -989,6 +1026,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //{
                         //    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                         //}
+
                         ValidateOTP();
                         PasswordLayoutVisibility = true;
 
@@ -996,6 +1034,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     else if (StartPage == 4)
                     {
                         ChangePassword();
+                        RecoverPasswordLayout = true;
                         // PasswordLayoutVisibility = true;
                     }
 
@@ -1003,6 +1042,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 else
                 {
                     SendUserNameToRegidteredEmail();
+                    RecoverUserNameLayout = true;
                 }
                
 
@@ -1039,8 +1079,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
               
             });
 
-            
+            OnLogInClick = new Command(() =>
+            {
+                RecoverPasswordLayout = false;
+                RecoverUserNameLayout = false;
+                _navigationService.GoBack();
+            });
 
+            OnResendOTPClicked = new Command(ExecuteResendOTPClickCommand, CanExecuteResendOTPClickCommand);
 
         }
         #endregion Constructor
