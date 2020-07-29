@@ -7,7 +7,8 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
              x:Class="EGAZT.Views.NewDesign.MyBillsPages.GAZTNewDesignMyBillsPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
@@ -17,7 +18,14 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
+            <!--<DataTemplate x:Key="BillStatusFilterTemplate">
+                <StackLayout>
+                    <buttons:SfChip HeightRequest="40" WidthRequest="120" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}" ShowIcon="True" ImageSource="{Binding ImageSource}"  ShowCloseButton="False" ShowSelectionIndicator="False" ImageAlignment="Left" />
+                </StackLayout>
+            </DataTemplate>
+            <local1:ChipDataTemplateSelector x:Key="selector" 
+                                          
+                                            SadEmojiTemplate = "{StaticResource BillStatusFilterTemplate}"/>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
@@ -70,9 +78,71 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackLayout Spacing="-5" Grid.Row="0">
-                <custom:CustomLabel Text="All Bills" Style="{StaticResource PageTitleBlack}"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                        <!--<custom:CustomLabel.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="btn_Clicked"/>
+                        </custom:CustomLabel.GestureRecognizers>-->
+                    </custom:CustomLabel>
+                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
+                        <!--Margin="10,0,10,0"-->
+                     
+                    </custom:CustomButton>
+                  
+                    <syncfusion:SfPicker x:Name="TaxTypePicker"
+                    HeaderHeight="55"
+                    ShowHeader="true"
+                    HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+HeaderTextColor="White"
+                                             ShowColumnHeader="False"
+                    ColumnHeaderHeight="46"
+                    PickerMode="Dialog"
+                                            HeaderBackgroundColor="#006450"
+                    SelectedItemTextColor="#006450"
+                    BorderColor="Black"
+                     BackgroundColor="#EAF7CC"
+                    UnSelectedItemTextColor="#006450"
+                                SelectedItemFontSize="15"
+                                           
+                   ItemHeight="40"
+                     DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
+                   PickerHeight="250"
+                    PickerWidth="300"
+                                             HeaderFontSize="14"
+                    OKButtonTextColor="#006450"
+                    CancelButtonTextColor="#006450"
+                        ShowFooter="True" 
+                                    OKButtonBackgroundColor="#EAF7CC"
+                                    CancelButtonBackgroundColor="#EAF7CC"
+                                             FooterHeight="46"
+                                         SelectionChanged="TaxTypePicker_SelectionChanged">
+                        <syncfusion:SfPicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </syncfusion:SfPicker.Behaviors>
+                    </syncfusion:SfPicker>
+                </Grid>
                 <custom:CustomLabel Text="60,0000 SAR" Style="{StaticResource CaptionLabelGrey}"/>
+                <StackLayout Margin="0,8,0,8" >
+                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                    
+                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="AliceBlue"    SelectionChanged="chipgroup_SelectionChanged">
+                        <buttons:SfChipGroup.ItemTemplate>
+                            <DataTemplate >
+                                <StackLayout>
+                                    <buttons:SfChip HeightRequest="40" WidthRequest="90" BorderWidth="1" BorderColor="{StaticResource NeutralLightGrey}" FontSize="12" Text="{Binding Text}" BackgroundColor="White" TextColor="{StaticResource NeutralBlack}"   ImageSource="{Binding ImageSource}"  ShowCloseButton="False"  ImageAlignment="Left"  ShowSelectionIndicator="False" SelectionIndicatorColor="AliceBlue"  ShowIcon="True"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
                 </StackLayout>
+            </StackLayout>
                 <StackLayout Grid.Row="1">
                     <!-- My Bills template UI Starts -->
 

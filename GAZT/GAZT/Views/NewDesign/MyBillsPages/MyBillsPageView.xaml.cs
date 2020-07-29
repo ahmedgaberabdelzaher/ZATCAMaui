@@ -17,6 +17,9 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             this.BindingContext = viewModel;
             viewModel.onPageLoad(billInfo);
+            viewModel.PopulateReturnTypeList();
+            viewModel.PopulateDataInChips();
+
             ChangeAeroIcon();
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
@@ -40,6 +43,26 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
             }
+        }
+
+        private void btn_Clicked(object sender, System.EventArgs e)
+        {
+            TaxTypePicker.IsOpen = true;
+        }
+
+        private void TaxTypePicker_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
+        {
+            ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
+            TaxTypePicker.SelectedItem = selectedReturntype;//Fbnum
+            viewModel.SelectedReturnTypeForFilter = selectedReturntype;
+        }
+
+        private void chipgroup_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangedEventArgs e)
+        {
+          //  ChipModel SelectedChipFilterItem
+                   ChipModel selectedReturntype = (ChipModel)e.AddedItem;
+            ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
+            viewModel.SelectedChipFilterItem = selectedReturntype;
         }
     }
 }

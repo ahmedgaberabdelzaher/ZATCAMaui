@@ -24,6 +24,91 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public ICommand OnVerifyButtonClicked { get; set; }
         public ICommand OnBackButtonClicked { get; set; }
         #region Property
+        public List<ReturnTypes> _returnTypeForFilter=null;
+        public List<ReturnTypes> ReturnTypeForFilter
+        {
+            get
+            {
+                return _returnTypeForFilter;
+            }
+            set
+            {
+                _returnTypeForFilter = value;
+                RaisePropertyChanged("ReturnTypeForFilter");
+            }
+        } 
+        public ChipModel _selectedChipFilterItem=null;
+        public ChipModel SelectedChipFilterItem
+        {
+            get
+            {
+                return _selectedChipFilterItem;
+            }
+            set
+            {
+                _selectedChipFilterItem = value;
+                if (_selectedChipFilterItem != null)
+                {
+                    FilterIfTypeAndStausFilterSelected();
+                }
+                RaisePropertyChanged("SelectedChipFilterItem");
+            }
+        }
+        public ObservableCollection<ChipModel> _chipDataFilterlist=null;
+        public ObservableCollection<ChipModel> ChipDataFilterlist
+        {
+            get
+            {
+                return _chipDataFilterlist;
+            }
+            set
+            {
+                _chipDataFilterlist = value;
+                RaisePropertyChanged("ChipDataFilterlist");
+            }
+        }
+        public ReturnTypes _selectedReturnTypeForFilter=null;
+        public ReturnTypes SelectedReturnTypeForFilter
+        {
+            get
+            {
+                return _selectedReturnTypeForFilter;
+            }
+            set
+            {
+                _selectedReturnTypeForFilter = value;
+                if (_selectedReturnTypeForFilter != null)
+                {
+                    FilterLabelText = _selectedReturnTypeForFilter.TaxType;
+
+                    if (_selectedChipFilterItem != null)
+                    {
+                        FilterIfTypeAndStausFilterSelected();
+                    }
+                    else
+                    {
+                        FilterOnTaxType();
+                    }
+                        
+                }
+                RaisePropertyChanged("SelectedReturnTypeForFilter");
+            }
+        }     //FilterLabelText
+        public string _filterLabelText;
+        public string FilterLabelText
+        {
+            get
+            {
+                return _filterLabelText;
+            }
+            set
+            {
+                _filterLabelText = value;
+
+                RaisePropertyChanged("FilterLabelText");
+            }
+        }
+        //SelectedReturnTypeForFilter
         private ChartColorCollection _colors = null;
         public ChartColorCollection Colors
         {
@@ -192,7 +277,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _myBills = value;
                 RaisePropertyChanged("MyBills");
             }
-        }
+        }    
+  
         private List<MyBills> _myBillsPaid;
         public List<MyBills> MyBillsPaid
         {
@@ -376,10 +462,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         #region Method
 
-        //public void OnPageLoad()
-        //{
-
-        //}
         public void onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
@@ -508,6 +590,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsLoading = false;
             }
             IsLoading = false;
+        }
+        public void FilterIfTypeAndStausFilterSelected() 
+        {
+            if (_selectedChipFilterItem.TemplateType.Equals("Paid"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList());
+            }
+            if (_selectedChipFilterItem.TemplateType.Equals("Partial"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList());
+            }
+            if (_selectedChipFilterItem.TemplateType.Equals("Unpaid"))
+            {
+                FilterOnTaxType();
+                MyBills = new ObservableCollection<MyBills>(MyBills.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
+            }
+        }
+        public void PopulateReturnTypeList()
+        {
+            try
+            {
+                List<ReturnTypes> ReturnTypesList = new List<ReturnTypes>{
+           new ReturnTypes {Id = "00",TaxType = AppResources.All},
+                      new ReturnTypes {Id = "01",TaxType = AppResources.ZZZAKAT},
+                                            new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
+                                            new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
+                                            new ReturnTypes {Id = "04",TaxType = AppResources.WHTreturns},
+            };
+                ReturnTypeForFilter = new List<ReturnTypes>();
+                ReturnTypeForFilter = ReturnTypesList;
+                SelectedReturnTypeForFilter = ReturnTypeForFilter.FirstOrDefault();
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+        public void PopulateDataInChips()
+        {
+            ChipDataFilterlist = new ObservableCollection<ChipModel>()
+               {
+                new ChipModel(){Text =AppResources.Paid, TemplateType = "Paid", ImageSource="ic_check_circle.png"},
+                new ChipModel(){Text =AppResources.Partial, TemplateType = "Partial",ImageSource = "ic_loading.png"},
+                new ChipModel(){Text =AppResources.UnPaid, TemplateType = "Unpaid",ImageSource = "ic_money.png"},
+              
+               };
         }
         private ObservableCollection<MyBills> UpdateDueAmount(ObservableCollection<MyBills> myBills)
         {
@@ -690,7 +823,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         #endregion
+        public void FilterOnTaxType()
+        {
+            if (_selectedReturnTypeForFilter.Id == "00")
+            {
 
+                MyBills = new ObservableCollection<MyBills>(MyBillsOriginal);
+            }
+            if (_selectedReturnTypeForFilter.Id == "01")
+            {if (App.IsArabic)
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("الزكاة") || x.Abtypt.Equals("الزكاة")).ToList());
+                    //MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => )).ToList());
+                }
+                else
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("Zakat")|| x.Abtypt.Equals("Voluntary Zakat")).ToList());
+                   // MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("Voluntary Zakat")).ToList());
+                }
+              
+            }
+            if (_selectedReturnTypeForFilter.Id == "02")
+            {
+                if (App.IsArabic) 
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة")|| x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
+                }
+                else
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
+                }
+            }
+            if (_selectedReturnTypeForFilter.Id == "03")
+            {
+                if (!App.IsArabic)
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
+                }
+                else
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("الضريبة الانتقائية")).ToList());
+                }
+            }
+            if (_selectedReturnTypeForFilter.Id == "04")
+            {
+                if (!App.IsArabic)
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
+                }
+                else
+                {
+                    MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Excise Tax")).ToList());
+                }
+            }
+        }
 
 
     }
