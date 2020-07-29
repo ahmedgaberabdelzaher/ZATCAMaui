@@ -2,7 +2,9 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -11,7 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
 
-        private bool _isLoading = false;
+        private bool _isLoading = true;
         public bool IsLoading
         {
             get
@@ -24,7 +26,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-
         public BaseViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
@@ -35,6 +36,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (dialogService == null)
             {
                 throw new ArgumentNullException("dialogService");
+            }
+        }
+
+        public void PopToRootPage()
+        {
+            if (App.IsSessionExpired)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    var _navigation = Application.Current.MainPage.Navigation;
+                    foreach (var item in _navigation.NavigationStack)
+                    {
+                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                        {
+                            _navigation.RemovePage(item);
+                            break;
+                        }
+                    }
+                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                    _navigation.NavigationStack.ToList().Clear();
+                });
             }
         }
     }

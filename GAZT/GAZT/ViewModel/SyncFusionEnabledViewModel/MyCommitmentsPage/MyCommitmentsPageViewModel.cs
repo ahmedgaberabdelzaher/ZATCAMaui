@@ -30,9 +30,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
         #region Fields
 
         private Dashboard DashboardData = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listUnsubmittedReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listOverduePaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listofPaymentReturn = null;
         public bool _isButtonEnabled = true;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
@@ -194,7 +194,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
 
 
-        public List<OverduePaymentsAndUnSubmittedReturn> listUnsubmittedReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listUnsubmittedReturn
         {
             get
             {
@@ -208,7 +208,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             }
         }
 
-        public List<OverduePaymentsAndUnSubmittedReturn> listOverduePaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listOverduePaymentReturn
         {
             get
             {
@@ -222,7 +222,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             }
         }
 
-        public List<OverduePaymentsAndUnSubmittedReturn> listofPaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listofPaymentReturn
         {
             get
             {
@@ -639,7 +639,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
             {
                 BillsAndReturnsSchedule = new CalendarEventCollection();
 
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
 

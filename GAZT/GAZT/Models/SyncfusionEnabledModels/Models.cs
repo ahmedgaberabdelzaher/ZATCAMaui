@@ -56,7 +56,7 @@ namespace GAZT.Models
         public string iConImagePath { get; set; }
         public string OnClickEvents { get; set; }
     }
-    public class OverduePaymentsAndUnSubmittedReturn
+    public class OverduePaymentAndUnSubmittedReturn
     {
         public DateTime? Abrzu { get; set; }
         public string Gpartz { get; set; }

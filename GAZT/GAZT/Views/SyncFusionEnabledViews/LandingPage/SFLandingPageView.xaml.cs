@@ -76,7 +76,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                     await viewModel.DuesData();
                     if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
                     {
-                        List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
+                        List<OverduePaymentAndUnSubmittedReturn> sortedList = new List<OverduePaymentAndUnSubmittedReturn>();
                         viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -325,7 +325,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
@@ -443,7 +443,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.Bills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.Bills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)
@@ -559,7 +559,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLanding
                         if (BModel != null && BModel.eServiceName == AppResources.MyBills)
                         {
                             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", AppResources.MyBills + " eService");
-                            viewModel._navigationService.NavigateTo(App.MyBillsPageView, new BillInfo());
+                            viewModel._navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, new BillInfo());
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
                         if (BModel != null && BModel.eServiceName == AppResources.ZZZZVatRegistrationTile)

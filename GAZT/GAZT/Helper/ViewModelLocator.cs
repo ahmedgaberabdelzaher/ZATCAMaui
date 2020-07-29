@@ -1,5 +1,8 @@
 ﻿using CommonServiceLocator;
 using EGAZT.ViewModel.NewDesignViewModel;
+using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
+
+#region OldUsing
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AboutUsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AccountCreatedPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AcknowledgementDetailsPage_ViewModel;
@@ -27,7 +30,6 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel;
-using EGAZT.ViewModel.SyncFusionEnabledViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.OTPPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.PrivacyAndPolicyPage_ViewModel;
@@ -55,8 +57,11 @@ using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.ForgotPasswordPages;
-using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.MyBillsPages;
+using EGAZT.Views.NewDesign.MyReturnsNewPages;
+using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.SyncFusionEnabledViews.AboutUs;
 using EGAZT.Views.SyncFusionEnabledViews.AccountCreated;
@@ -85,7 +90,6 @@ using EGAZT.Views.SyncFusionEnabledViews.MyBillsView;
 using EGAZT.Views.SyncFusionEnabledViews.MyCertificate;
 using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage;
-using EGAZT.Views.SyncFusionEnabledViews.OnBoarding;
 using EGAZT.Views.SyncFusionEnabledViews.OTPPage;
 using EGAZT.Views.SyncFusionEnabledViews.PdfView;
 using EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy;
@@ -114,8 +118,7 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using System;
-using EGAZT.Views.NewDesign.MyBillsPages;
-using EGAZT.Views.NewDesign.MyReturnsPages;
+#endregion
 
 namespace EGAZT
 {
@@ -127,14 +130,26 @@ namespace EGAZT
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
-            //SYNCFUSION INTEGRATION
+
+            #region NewDesignIOC
+
+            //SimpleIoc.Default.Register<GAZTNewDesignStyleTestUIPageViewModel>();
+
+            SimpleIoc.Default.Register<GAZTNewDesignOnBoardingAnimationPageViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignForgotPasswordPageViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignDashBoardPageViewModel>();
+            SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
+
+            #endregion
+
+            #region OldIOC
+
             SimpleIoc.Default.Register<SFLandingPageViewModel>();
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<SFOptionsPageViewModel>();
             SimpleIoc.Default.Register<SFAnonymousLandingPageViewModel>();
-            SimpleIoc.Default.Register<OnBoardingAnimationPageViewModel>();
-
-            //SYNCFUSION INTEGRATION
             SimpleIoc.Default.Register<MyCertificateViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
             SimpleIoc.Default.Register<MyBillsViewModel>();
@@ -186,30 +201,221 @@ namespace EGAZT
             SimpleIoc.Default.Register<RegistrationSuccessfulPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationSuccessfullPageViewModel>();
-
             SimpleIoc.Default.Register<VATRealEstateServicesPageViewModel>();
             SimpleIoc.Default.Register<PropertyRegistrationPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionReportAttachmentPageViewModel>();
-
             SimpleIoc.Default.Register<FileAttachmentPopUpPageViewModel>();
             SimpleIoc.Default.Register<VATIndividualSignupTnCPageViewModel>();
             SimpleIoc.Default.Register<FinancialDetailAttachmentPopupPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
             SimpleIoc.Default.Register<NewAccountPopUpPageViewModel>();
+            #endregion
+        }
+      
+        #region NewDesignViewModel
 
-            //New Design
-            SimpleIoc.Default.Register<VATReturnUpdatedUIPageViewModel>();
-           // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-            SimpleIoc.Default.Register<ForgotPasswordPageViewModel>();
-            SimpleIoc.Default.Register<MyBillsPageViewModel>();
-            
-            SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
-            SimpleIoc.Default.Register<DashBoardPageViewModel>();
-            SimpleIoc.Default.Register<MyReturnsNewPageViewModel>();
+        public GAZTNewDesignOnBoardingAnimationPageViewModel GAZTNewDesignOnBoardingAnimationPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignOnBoardingAnimationPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GAZTNewDesignVATReturnUpdatedUIPageViewModel GAZTNewDesignVATReturnUpdatedUIPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GAZTNewDesignDashBoardPageViewModel GAZTNewDesignDashBoardPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GAZTNewDesignForgotPasswordPageViewModel GAZTNewDesignForgotPasswordPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignForgotPasswordPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GAZTNewDesignMyBillsPageViewModel GAZTNewDesignMyBillsPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public GAZTNewDesignMyReturnsNewPageViewModel GAZTNewDesignMyReturnsNewPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        private INavigationService CreateNavigationService()
+        {
+            var navigationService = new NavigationService();
+
+            #region NewDesign
+
+            navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
+            navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
+            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
+            navigationService.Configure(App.ForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
+            navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
+            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
+            navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+
+            #endregion
+
+            #region SYNCFUSION INTEGRATION
+            navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
+            navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
+            navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
+            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
+            navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
+            navigationService.Configure(App.PdfView, typeof(PdfView));
+            navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
+            navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
+            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
+            navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
+            navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
+            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
+            navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
+            navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
+            navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
+            navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
+            navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
+            navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
+            navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
+            navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
+            navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
+            navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
+            navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
+            navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
+            navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
+            navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
+            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
+            navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
+            navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
+            navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
+            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
+            navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
+            navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
+            navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
+            navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
+            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+            navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
+            navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
+            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
+            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
+            navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
+            navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
+            navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
+            navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
+            navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
+            navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
+            navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
+            navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
+            navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
+            navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
+            navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
+            navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
+            navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
+            navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
+            navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
+            navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
+            navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
+            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
+            navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
+            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
+            navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
+            #endregion
+
+            return navigationService;
+        }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+        #region OldDesignViewModel
+        public StyleTestUIPageViewModel StyleTestUIPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
         }
         public PdfViewModel pdfView
         {
@@ -224,7 +430,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }  
+        }
         public StyleTestUIPageViewModel StyleTestUIPage
         {
             get
@@ -252,21 +458,7 @@ namespace EGAZT
                     return null;
                 }
             }
-        }    
-        //public StyleTestUIPageViewModel StyleTestUIPageView
-        //{
-        //    get
-        //    {
-        //        try
-        //        {
-        //            return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //}
+        }
         public VATIndividualSignupTnCPageViewModel VATIndividualSignupTnCPageView
         {
             get
@@ -281,9 +473,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of MyCertificateViewModel
-        /// </summary>
         public MyCertificateViewModel MyCertificate
         {
             get
@@ -298,9 +487,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of TaxPayerProfileViewModel
-        /// </summary>
         public MyBillsViewModel MyBillsView
         {
             get
@@ -308,20 +494,6 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }   
-        public StyleTestUIPageViewModel StyleTestUIPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -413,9 +585,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of VATRealEstateServices
-        /// </summary>
         public VATRealEstateServicesPageViewModel VATRealEstateServicesPage
         {
             get
@@ -430,9 +599,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of VATRealEstateServices
-        /// </summary>
         public PropertyRegistrationPageViewModel PropertyRegistrationPage
         {
             get
@@ -447,10 +613,6 @@ namespace EGAZT
                 }
             }
         }
-
-        /// <summary>
-        /// Returns the current instance of ForgotUsernamePasswordViewModel
-        /// </summary>
         public ForgotUsernamePasswordPageViewModel ForgotUsernamePasswordPageView
         {
             get
@@ -591,7 +753,6 @@ namespace EGAZT
                 }
             }
         }
-
         public VATReturnsPageViewModelEX VATReturnsPageViewEX
         {
             get
@@ -718,7 +879,6 @@ namespace EGAZT
                 }
             }
         }
-        //TaxEvasionReportPhonePageView
         public TaxEvasionReportMobilePageViewModel TaxEvasionReportPhonePageView
         {
             get
@@ -887,7 +1047,9 @@ namespace EGAZT
                 }
             }
         }
-        //SYNC FUSION INTEGRATION
+        #endregion
+
+        #region OldSFViewModels
         public SFLandingPageViewModel SFLandingPageView
         {
             get
@@ -1042,9 +1204,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of VATIndividualSignupPageViewModel
-        /// </summary>
         public VATIndividualSignupPageViewModel VATIndividualSignupPageView
         {
             get
@@ -1059,9 +1218,6 @@ namespace EGAZT
                 }
             }
         }
-        /// <summary>
-        /// Returns the current instance of IndividualRegistrationPageViewModel
-        /// </summary>
         public IndividualRegistrationPageViewModel IndividualRegistrationPageView
         {
             get
@@ -1104,7 +1260,6 @@ namespace EGAZT
                 }
             }
         }
-
         public VATRegistrationSuccessfullPageViewModel VATRegistrationSuccessfullPageView
         {
             get
@@ -1119,7 +1274,6 @@ namespace EGAZT
                 }
             }
         }
-
         public FileAttachmentPopUpPageViewModel FileAttachmentPopUpPageView
         {
             get
@@ -1134,7 +1288,6 @@ namespace EGAZT
                 }
             }
         }
-
         public NewAccountPopUpPageViewModel NewAccountPopUpPageView
         {
             get
@@ -1149,195 +1302,6 @@ namespace EGAZT
                 }
             }
         }
-
-        public OnBoardingAnimationPageViewModel OnBoardingAnimationPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<OnBoardingAnimationPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-
-        public VATReturnUpdatedUIPageViewModel VATReturnUpdatedUIPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<VATReturnUpdatedUIPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-
-        public DashBoardPageViewModel DashBoardPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<DashBoardPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-
-
-        public ForgotPasswordPageViewModel ForgotPasswordPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ForgotPasswordPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-        public MyBillsPageViewModel MyBillsPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<MyBillsPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }  
-        public MyReturnsNewPageViewModel MyReturnsNewPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<MyReturnsNewPageViewModel>();
-                }
-                catch (Exception ex)
-                {
-                    return null;
-                }
-            }
-        }
-
-        
-
-
-
-        //SYNC FUSION INTEGRATION
-        private INavigationService CreateNavigationService()
-        {
-            var navigationService = new NavigationService();
-            //SYNCFUSION INTEGRATION
-            navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
-            navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
-            navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
-            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
-            //navigationService.Configure(App.OnBoardingAnimationPageView, typeof(OnBoardingAnimationPageView));
-
-            //SYNCFUSION INTEGRATION
-            navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
-            navigationService.Configure(App.PdfView, typeof(PdfView));
-            //   navigationService.Configure(App.ForgotUsernamePassword, typeof(ForgotUsernamePassword));
-            navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
-            navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
-            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
-            navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
-            navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
-
-            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
-            navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
-            navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
-            navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
-            navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
-            navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
-            navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
-            navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
-            navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
-            navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
-            navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
-            navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
-            navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
-            navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
-            navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
-            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
-            navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
-            navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
-            navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
-            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
-            navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
-            navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
-            navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
-            navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
-            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
-            navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
-            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
-            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
-            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
-            navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
-            navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
-            navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
-            navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
-            navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
-            navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
-            navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
-            navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
-            navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
-            navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
-            navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
-            navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
-            navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
-            navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
-
-            navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
-            navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
-
-            navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
-            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
-
-            navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
-            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
-            navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
-
-            //New Design
-            navigationService.Configure(App.VATReturnUpdatedUIPageView, typeof(VATReturnUpdatedUIPageView));
-            navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageView));
-            navigationService.Configure(App.ForgotPasswordPageView, typeof(ForgotPasswordPageView));
-            navigationService.Configure(App.MyBillsPageView, typeof(MyBillsPageView));
-            
-            navigationService.Configure(App.DashBoardPageView, typeof(DashBoardPageView));
-            navigationService.Configure(App.MyReturnsNewPageView, typeof(MyReturnsNewPageView));
-
-            
-
-           // navigationService.Configure(App.StyleTestUIPage, typeof(StyleTestUIPageViewModel));
-            ///navigationService.Configure(App.StyleTestUIPageView, typeof(StyleTestUIPageViewModel));
-
-
-            return navigationService;
-        }
+        #endregion
     }
-
-
 }

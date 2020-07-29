@@ -1,28 +1,24 @@
 ﻿
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using EGAZT.Models;
-using EGAZT.ViewModel.NewDesignViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
-using GAZT.Manager;
-using Xamarin.Forms;
-
 using GAZT.Helper;
+using GAZT.Manager;
 using GAZT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 
-namespace EGAZT
+namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    public class ForgotPasswordPageViewModel : ViewModelBase 
+    public class GAZTNewDesignForgotPasswordPageViewModel : ViewModelBase 
     {
-       
-
         #region Variable
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -902,7 +898,7 @@ namespace EGAZT
 
         #endregion
         #region Constructor
-        public ForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignForgotPasswordPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

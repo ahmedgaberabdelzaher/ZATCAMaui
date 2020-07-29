@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -18,8 +17,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-    
-    public class MyBillsPageViewModel : ViewModelBase
+    public class GAZTNewDesignMyBillsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -356,7 +354,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-        public MyBillsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignMyBillsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

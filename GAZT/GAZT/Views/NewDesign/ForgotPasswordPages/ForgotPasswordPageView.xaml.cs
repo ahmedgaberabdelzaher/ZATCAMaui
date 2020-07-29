@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,14 +6,14 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ForgotPasswordPageView : ContentPage
+    public partial class GAZTNewDesignForgotPasswordPageView : ContentPage
     {
-        ForgotPasswordPageViewModel viewModel;
-        public ForgotPasswordPageView()
+        GAZTNewDesignForgotPasswordPageViewModel viewModel;
+        public GAZTNewDesignForgotPasswordPageView()
         {
 
             InitializeComponent();
-            viewModel = App.Locator.ForgotPasswordPageView;
+            viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
             this.BindingContext = viewModel;
             viewModel.StartPage = 1;
         }

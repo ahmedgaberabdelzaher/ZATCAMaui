@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:progressBar="clr-namespace:Syncfusion.XForms.ProgressBar;assembly=Syncfusion.SfProgressBar.XForms"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:custom="clr-namespace:GAZT"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             xmlns:CustomControl="clr-namespace:GAZT.CustomControl"
+             xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             x:Class="EGAZT.Views.NewDesign.DashBoardPageView"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+             mc:Ignorable="d"
+             x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView"
              BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        
+
         <Grid RowSpacing="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="90*" />
@@ -32,65 +32,55 @@
             </Grid.RowDefinitions>
 
             <Grid x:Name="HomeView" Grid.Row="0" RowSpacing="0"  Margin="0" Padding="0,15,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="23*" />
-                <RowDefinition Height="77*" />
-                
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Margin="15,0,15,0">
-                <StackLayout Orientation="Horizontal" Spacing="10">
-                    <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="23*" />
+                    <RowDefinition Height="77*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Margin="15,0,15,0">
+                    <StackLayout Orientation="Horizontal" Spacing="10">
 
-                    <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand">
-                        <Image.Source>
-                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
-                        </Image.Source>
-                    </Image>
+                        <Image Source="group_114.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="Start"/>
 
-                    <Image VerticalOptions="Start" HorizontalOptions="End">
-                        <Image.Source>
-                            <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NotificationClearAll}"/>
-                        </Image.Source>
-                    </Image>
+                        <Image VerticalOptions="Start" HorizontalOptions="EndAndExpand">
+                            <Image.Source>
+                                <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Inbox}"/>
+                            </Image.Source>
+                        </Image>
+
+                        <Image VerticalOptions="Start" HorizontalOptions="End">
+                            <Image.Source>
+                                <FontImageSource Color="White" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.NotificationClearAll}"/>
+                            </Image.Source>
+                        </Image>
+
+                    </StackLayout>
+
+                    <custom:CustomLabel Text="{Binding TaxPayerProfile.Name}" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0,10,0,10" VerticalOptions="Center" TextColor="White"/>
                 </StackLayout>
-                <custom:CustomLabel Text="Hello Zaed" Style="{StaticResource GAZTMediumBlackLabel}" Margin="0,10,0,10" VerticalOptions="Center" TextColor="White"/>
-            </StackLayout>
-            <StackLayout Grid.Row="1" Padding="0">
-                <ScrollView >
-                    <StackLayout Padding="0">
-                        <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
-                            <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
-                                <StackLayout Orientation="Horizontal">
-                                    <custom:CustomLabel Text="Next Commitments" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
-                                    <Image HorizontalOptions="EndAndExpand">
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                        </Image.Source>
-                                    </Image>
-                                </StackLayout>
-                                <!--Start Horizontal List View-->
-                                <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">-->
+                <StackLayout Grid.Row="1" Padding="0">
+                    <ScrollView >
+                        <StackLayout Padding="0">
+                            <yummy:PancakeView BackgroundColor="White" CornerRadius="12,12,0,0">
+                                <StackLayout VerticalOptions="Start" Margin="15,15,15,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <custom:CustomLabel Text="Next Commitments" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
+                                        <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+                                    <!--Start Horizontal List View-->
+                                    <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">-->
                                     <!--<CollectionView HeightRequest="210" ItemsLayout="HorizontalList" >
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>-->
                                     <!--<StackLayout Orientation="Horizontal" Spacing="10">-->
 
-                                    <listView:SfListView  x:Name="ReturnsList" 
-                                          Grid.Row="1" Grid.Column="0"
-          ItemsSource="{Binding CommitmentReturnsList}"
-                                       IsScrollBarVisible="True"
-                                         SelectionBackgroundColor="White"
-                                      Orientation="Vertical"
-                                   
-          HorizontalOptions="FillAndExpand"
-           IsScrollingEnabled="False"
-           AutoFitMode="Height" ItemSpacing="1" 
-                 BackgroundColor="White"     
-            >
+                                    <listView:SfListView  x:Name="xBillsAndReturnsCommitments" ItemsSource="{Binding BillsAndReturnsCommitments}" IsScrollBarVisible="True" SelectionBackgroundColor="White" Orientation="Vertical" HorizontalOptions="FillAndExpand" IsScrollingEnabled="False" AutoFitMode="Height" ItemSpacing="1" BackgroundColor="White">
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
-
                                                     <StackLayout Orientation="Horizontal">
                                                         <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
                                                             <StackLayout Orientation="Horizontal">
@@ -102,7 +92,19 @@
                                                                 </cards:SfCardView>
 
                                                                 <StackLayout Padding="10,5,10,5">
-                                                                    <custom:CustomLabel Text="Partially Bill" TextColor="Black"  />
+                                                                    <custom:CustomLabel Text="{Binding Incotext}" TextColor="Black"  />
+
+                                                                    <custom:CustomLabel>
+                                                                        <custom:CustomLabel.FormattedText>
+                                                                            <FormattedString>
+                                                                                <Span Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}"></Span>
+                                                                                <Span Text=" : "></Span>
+                                                                                <Span Text="{Binding TaxPeriod}"></Span>
+                                                                            </FormattedString>
+                                                                        </custom:CustomLabel.FormattedText>
+
+                                                                    </custom:CustomLabel>
+
                                                                     <custom:CustomLabel Text="200,000,00 SAR" TextColor="Black"  />
                                                                 </StackLayout>
 
@@ -113,246 +115,263 @@
                                                                 </Image>
                                                             </StackLayout>
                                                         </cards:SfCardView>
-
                                                     </StackLayout>
                                                 </ViewCell>
                                             </DataTemplate>
                                         </listView:SfListView.ItemTemplate>
                                     </listView:SfListView>
-                                    <!--<StackLayout Orientation="Horizontal">
-                                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
-                                                <StackLayout Orientation="Horizontal">
-                                                    <cards:SfCardView BackgroundColor="{StaticResource NewDarkBlueGreenColor}" HasShadow="False" CornerRadius="10" WidthRequest="60" HeightRequest="60">
-                                                        <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
-                                                            <custom:CustomLabel Text="03"  TextColor="White"/>
-                                                            <custom:CustomLabel Text="Jul"  TextColor="White"/>
-                                                        </StackLayout>
-                                                    </cards:SfCardView>
+                                    <!--</ScrollView>-->
+                                    <!--End Horizontal List View-->
 
-                                                    <StackLayout Padding="10,5,10,5" >
-                                                        <custom:CustomLabel Text="Paid Bill" TextColor="Black" />
-                                                        <custom:CustomLabel Text="200,000,00 SAR" TextColor="Black" />
+                                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                        <custom:CustomLabel Text="Bills" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
+                                        <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+
+                                    <!--Start Horizontal List View-->
+
+                                    <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
+                                        <StackLayout Padding="10">
+                                            <custom:CustomLabel Text="All" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center" TextColor="Black"/>
+
+                                            <chart:SfChart ChartPadding="15"  BackgroundColor="White" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250" IsVisible="true">
+                                                <chart:SfChart.Legend>
+                                                    <chart:ChartLegend IconHeight="14" IconWidth="14" Margin="0,0,0,5"   OverflowMode="Wrap" DockPosition="Top" ToggleSeriesVisibility="False"  >
+                                                        <chart:ChartLegend.LabelStyle>
+
+                                                            <chart:ChartLegendLabelStyle FontFamily="{StaticResource SSTArabicMedium}"/>
+
+                                                        </chart:ChartLegend.LabelStyle>
+                                                    </chart:ChartLegend>
+                                                </chart:SfChart.Legend>
+                                                <chart:SfChart.Series>
+                                                    <chart:PieSeries  x:Name="pieSeries" EnableSmartLabels="True" EnableDataPointSelection="true"   EnableAnimation="True" ExplodeOnTouch="False" ItemsSource="{Binding MyBillsChartModels,Mode=TwoWay}" XBindingPath="BillType" YBindingPath="BillCount" DataMarkerPosition="OutsideExtended">
+                                                        <chart:PieSeries.ColorModel>
+                                                            <chart:ChartColorModel Palette="Custom" CustomBrushes="{Binding Colors}">
+                                                            </chart:ChartColorModel>
+                                                        </chart:PieSeries.ColorModel>
+                                                        <chart:PieSeries.DataMarker>
+                                                            <chart:ChartDataMarker >
+                                                                <chart:ChartDataMarker.LabelTemplate>
+                                                                    <DataTemplate >
+                                                                        <StackLayout Orientation="Vertical" Spacing="0" VerticalOptions="FillAndExpand" >
+                                                                            <Label FontSize="12" BackgroundColor="White" TextColor="Black" HorizontalOptions="CenterAndExpand"  FontFamily="{StaticResource SSTArabicMedium}" />
+                                                                        </StackLayout>
+                                                                    </DataTemplate>
+                                                                </chart:ChartDataMarker.LabelTemplate>
+                                                                <chart:ChartDataMarker.LabelStyle>
+                                                                    <chart:DataMarkerLabelStyle LabelPosition="Outer"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                                                                </chart:ChartDataMarker.LabelStyle>
+                                                            </chart:ChartDataMarker>
+                                                        </chart:PieSeries.DataMarker>
+                                                    </chart:PieSeries>
+                                                </chart:SfChart.Series>
+                                            </chart:SfChart>
+                                            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                                <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
+                                                    <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start" ImageSource="ic_Paid.png"  ShowIcon="True" Text="Paid" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White" TextColor="Black" CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" ImageSource="ic_loading" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1" TextColor="Black" BackgroundColor="White" CornerRadius="20"/>
+                                                    <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" ImageSource="ic_unsubmitted" ShowIcon="True" Text="UnPaid" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" TextColor="Black"/>
+                                                </StackLayout>
+                                            </ScrollView>
+                                        </StackLayout>
+                                    </cards:SfCardView>
+
+                                    <!--End Horizontal List View-->
+
+                                    <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                        <custom:CustomLabel Text="Returns" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
+                                        <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>
+                                    <listView:SfListView  x:Name="xSegregatedReturnTypesAndCorrepsondingCounts" ItemsSource="{Binding SegregatedReturnTypesAndCorrepsondingCounts}" IsScrollBarVisible="True" SelectionBackgroundColor="White" Orientation="Vertical" HorizontalOptions="FillAndExpand" IsScrollingEnabled="False" AutoFitMode="Height" ItemSpacing="1" BackgroundColor="White">
+                                        <listView:SfListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <cards:SfCardView HasShadow="True" WidthRequest="90" BackgroundColor="White" CornerRadius="10" Padding="10">
+
+                                                            <StackLayout >
+                                                                <Image HorizontalOptions="Start">
+                                                                    <Image.Source>
+                                                                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CheckAll}"/>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                                <StackLayout Padding="5,0,0,0" >
+                                                                    <custom:CustomLabel Text="{Binding ReturnCount}" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                                    <custom:CustomLabel Text="{Binding ReturnTypeName}" TextColor="Black"  VerticalOptions="Center"/>
+                                                                </StackLayout>
+                                                            </StackLayout>
+                                                        </cards:SfCardView>                                                        
                                                     </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </listView:SfListView.ItemTemplate>
+                                    </listView:SfListView>
+                                    
+                                    <!--<ScrollView Orientation="Horizontal" Margin="0,10,0,0" HorizontalScrollBarVisibility="Never">
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <cards:SfCardView HasShadow="True" WidthRequest="90" BackgroundColor="White" CornerRadius="10" Padding="10">
 
-                                                    <Image HorizontalOptions="EndAndExpand" Margin="0,0,10,0">
+                                                <StackLayout >
+                                                    <Image HorizontalOptions="Start">
                                                         <Image.Source>
-                                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRight}"/>
+                                                            <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CheckAll}"/>
                                                         </Image.Source>
                                                     </Image>
+                                                    <StackLayout Padding="5,0,0,0" >
+                                                        <custom:CustomLabel Text="20" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="Submitted" TextColor="Black"  VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </cards:SfCardView>
+                                            
+                                            <cards:SfCardView  HasShadow="True" WidthRequest="85" BackgroundColor="White" CornerRadius="10" Padding="10">
+                                                <StackLayout >
 
-                                        </StackLayout>-->
-                                    <!--</StackLayout>-->
-                                    <!--     </DataTemplate>
-                                    </CollectionView.ItemTemplate>
-                                </CollectionView>-->
+                                                    <Image HorizontalOptions="Start">
+                                                        <Image.Source>
+                                                            <FontImageSource Color="DarkRed" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Clock}"/>
+                                                        </Image.Source>
+                                                    </Image>
 
-                                <!--</ScrollView>-->
-                                <!--End Horizontal List View-->
-
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                    <custom:CustomLabel Text="Bills" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
-                                    <Image HorizontalOptions="EndAndExpand">
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                        </Image.Source>
-                                    </Image>
-                                </StackLayout>
-
-                                <!--Start Horizontal List View-->
-
-                                <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Margin="0,10,0,0">
-                                    <StackLayout Padding="10">
-                                        <custom:CustomLabel Text="All" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center" TextColor="Black"/>
-
-                                        <!--                                        <chart:SfChart>
-                                        <chart:DoughnutSeries x:Name="Data" DoughnutCoefficient="0.6" ItemsSource ="{Binding Data}" XBindingPath="Expense" YBindingPath="Value" />
-                                        </chart:SfChart>-->
-                                        <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                            <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="Center">
-                                                <buttons:SfButton WidthRequest="95" HorizontalTextAlignment="Start" ImageSource="ic_Paid.png"  ShowIcon="True" Text="Paid" BorderColor = "LightGray" BorderWidth="1" BackgroundColor="White" TextColor="Black" CornerRadius="20"/>
-                                                <buttons:SfButton WidthRequest="110" HorizontalTextAlignment="Start" ImageSource="ic_loading" ShowIcon="True" Text="Partially" BorderColor = "LightGray" BorderWidth="1" TextColor="Black" BackgroundColor="White" CornerRadius="20"/>
-                                                <buttons:SfButton WidthRequest="100" HorizontalTextAlignment="Start" ImageSource="ic_unsubmitted" ShowIcon="True" Text="UnPaid" BorderColor="LightGray" BorderWidth="1" CornerRadius="20"  BackgroundColor="White" TextColor="Black"/>
-                                            </StackLayout>
-                                        </ScrollView>
-                                    </StackLayout>
-                                </cards:SfCardView>
-
-                                <!--End Horizontal List View-->
-
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                    <custom:CustomLabel Text="Returns" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
-                                    <Image HorizontalOptions="EndAndExpand">
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                        </Image.Source>
-                                    </Image>
-                                </StackLayout>
-                                <ScrollView Orientation="Horizontal" Margin="0,10,0,0" HorizontalScrollBarVisibility="Never">
-                                    <StackLayout Orientation="Horizontal" Spacing="10">
-                                        <cards:SfCardView HasShadow="True" WidthRequest="90" BackgroundColor="White" CornerRadius="10" Padding="10">
-
-                                            <StackLayout >
-                                                <Image HorizontalOptions="Start">
-                                                    <Image.Source>
-                                                        <FontImageSource Color="DarkGreen" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.CheckAll}"/>
-                                                    </Image.Source>
-                                                </Image>
-                                                <StackLayout Padding="5,0,0,0" >
-                                                    <custom:CustomLabel Text="20" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="Submitted" TextColor="Black"  VerticalOptions="Center"/>
+                                                    <StackLayout Padding="5,0,0,0" >
+                                                        <custom:CustomLabel Text="4" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="Overdue" TextColor="Black"  VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </cards:SfCardView>
-                                        <cards:SfCardView  HasShadow="True" WidthRequest="85" BackgroundColor="White" CornerRadius="10" Padding="10">
-                                            <StackLayout >
+                                            </cards:SfCardView>
+                                            <cards:SfCardView  HasShadow="True" WidthRequest="95" BackgroundColor="White" CornerRadius="10" Padding="10">
+                                                <StackLayout >
 
-                                                <Image HorizontalOptions="Start">
-                                                    <Image.Source>
-                                                        <FontImageSource Color="DarkRed" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Clock}"/>
-                                                    </Image.Source>
-                                                </Image>
+                                                    <Image HorizontalOptions="Start">
+                                                        <Image.Source>
+                                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Square}"/>
+                                                        </Image.Source>
+                                                    </Image>
 
-                                                <StackLayout Padding="5,0,0,0" >
-                                                    <custom:CustomLabel Text="4" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="Overdue" TextColor="Black"  VerticalOptions="Center"/>
+                                                    <StackLayout Padding="5,0,0,0" >
+                                                        <custom:CustomLabel Text="15" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="Unsubmitted" TextColor="Black"  VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </cards:SfCardView>
-                                        <cards:SfCardView  HasShadow="True" WidthRequest="95" BackgroundColor="White" CornerRadius="10" Padding="10">
-                                            <StackLayout >
-
-                                                <Image HorizontalOptions="Start">
-                                                    <Image.Source>
-                                                        <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.Square}"/>
-                                                    </Image.Source>
-                                                </Image>
-
-                                                <StackLayout Padding="5,0,0,0" >
-                                                    <custom:CustomLabel Text="15" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="Unsubmitted" TextColor="Black"  VerticalOptions="Center"/>
-                                                </StackLayout>
-                                            </StackLayout>
-                                        </cards:SfCardView>
-                                    </StackLayout>
-                                </ScrollView>
-                                <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
-                                    <custom:CustomLabel Text="Installments Plans" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
-                                    <Image HorizontalOptions="EndAndExpand">
-                                        <Image.Source>
-                                            <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
-                                        </Image.Source>
-                                    </Image>
-                                </StackLayout>
-                                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                    <StackLayout Orientation="Horizontal" Spacing="12">
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,10,0,10">
-                                            <StackLayout>
-                                                <StackLayout Orientation="Horizontal" >
-                                                    <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="4793187498192" Style="{StaticResource GAZTMicroGrayLabel}" TextColor="{StaticResource NewWarmGreyColor}" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Padding="80,0,0,0" Text="200.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" HorizontalOptions="EndAndExpand"/>
-                                                </StackLayout>
-
-                                                <!--Progress Bar SF-->
-
-                                                <progressBar:SfLinearProgressBar HeightRequest="5" CornerRadius="5" Progress="100">
-
-                                                    <progressBar:SfLinearProgressBar.RangeColors>
-
-                                                        <progressBar:RangeColorCollection>
-
-                                                            <progressBar:RangeColor Color="{StaticResource NewDarkBlueGreenColor}" custom:RoundCornersEffect.CornerRadius="15" Start="0" End="55"/>
-
-                                                            <progressBar:RangeColor Color="{StaticResource NewProgressLightGreenColor}" custom:RoundCornersEffect.CornerRadius="5" Start="55" End="65"/>
-
-                                                            <progressBar:RangeColor Color="LightGray" Start="65" End="100"/>
-
-                                                        </progressBar:RangeColorCollection>
-
-                                                    </progressBar:SfLinearProgressBar.RangeColors>
-
-                                                </progressBar:SfLinearProgressBar>
-
-                                                <!--Progress Bar SF-->
-                                                <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
-
-                                                <StackLayout Orientation="Horizontal" >
-                                                    <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
-
-                                                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                                                        <BoxView BackgroundColor="{StaticResource NewProgressLightGreenColor}" HeightRequest="10" WidthRequest="10" CornerRadius="5" />
+                                            </cards:SfCardView>
+                                        </StackLayout>
+                                    </ScrollView>-->
+                                    <!--<StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                        <custom:CustomLabel Text="Installments Plans" Style="{StaticResource GAZTSmallBlackLbl}" VerticalOptions="Center"/>
+                                        <Image HorizontalOptions="EndAndExpand">
+                                            <Image.Source>
+                                                <FontImageSource Color="LightGray" FontFamily="UserIconFont" Glyph="{x:Static FontImage:IconFonts.ChevronRightCircleOutline}"/>
+                                            </Image.Source>
+                                        </Image>
+                                    </StackLayout>-->
+                                    <!--<ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                                        <StackLayout Orientation="Horizontal" Spacing="12">
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,10,0,10">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="4793187498192" Style="{StaticResource GAZTMicroGrayLabel}" TextColor="{StaticResource NewWarmGreyColor}" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Padding="80,0,0,0" Text="200.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" HorizontalOptions="EndAndExpand"/>
                                                     </StackLayout>
 
-                                                    <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                                    --><!--Progress Bar SF--><!--
+
+                                                    <progressBar:SfLinearProgressBar HeightRequest="5" CornerRadius="5" Progress="100">
+
+                                                        <progressBar:SfLinearProgressBar.RangeColors>
+
+                                                            <progressBar:RangeColorCollection>
+
+                                                                <progressBar:RangeColor Color="{StaticResource NewDarkBlueGreenColor}" custom:RoundCornersEffect.CornerRadius="15" Start="0" End="55"/>
+
+                                                                <progressBar:RangeColor Color="{StaticResource NewProgressLightGreenColor}" custom:RoundCornersEffect.CornerRadius="5" Start="55" End="65"/>
+
+                                                                <progressBar:RangeColor Color="LightGray" Start="65" End="100"/>
+
+                                                            </progressBar:RangeColorCollection>
+
+                                                        </progressBar:SfLinearProgressBar.RangeColors>
+
+                                                    </progressBar:SfLinearProgressBar>
+
+                                                    --><!--Progress Bar SF--><!--
+                                                    <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+
+                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                                            <BoxView BackgroundColor="{StaticResource NewProgressLightGreenColor}" HeightRequest="10" WidthRequest="10" CornerRadius="5" />
+                                                        </StackLayout>
+
+                                                        <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </cards:SfCardView>
-
-
-
-                                        <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,10,0,10">
-                                            <StackLayout>
-                                                <StackLayout Orientation="Horizontal" >
-                                                    <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="4793187498192" Style="{StaticResource GAZTMicroGrayLabel}" TextColor="{StaticResource NewWarmGreyColor}" VerticalOptions="Center"/>
-                                                    <custom:CustomLabel Text="200.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" HorizontalOptions="EndAndExpand"/>
-                                                </StackLayout>
-
-                                                <!--Progress Bar SF-->
-
-                                                <progressBar:SfLinearProgressBar HeightRequest="5" CornerRadius="5" Progress="100">
-
-                                                    <progressBar:SfLinearProgressBar.RangeColors>
-
-                                                        <progressBar:RangeColorCollection>
-
-                                                            <progressBar:RangeColor Color="{StaticResource NewDarkBlueGreenColor}" custom:RoundCornersEffect.CornerRadius="15" Start="0" End="55"/>
-
-                                                            <progressBar:RangeColor Color="{StaticResource NewProgressLightGreenColor}" custom:RoundCornersEffect.CornerRadius="5" Start="55" End="65"/>
-
-                                                            <progressBar:RangeColor Color="LightGray" Start="65" End="100"/>
-
-                                                        </progressBar:RangeColorCollection>
-
-                                                    </progressBar:SfLinearProgressBar.RangeColors>
-
-                                                </progressBar:SfLinearProgressBar>
-
-                                                <!--Progress Bar SF-->
-                                                <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
-
-                                                <StackLayout Orientation="Horizontal" >
-                                                    <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
-
-                                                    <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
-                                                        <BoxView BackgroundColor="{StaticResource NewProgressLightGreenColor}" HeightRequest="10" WidthRequest="10" CornerRadius="5" />
+                                            </cards:SfCardView>
+                                            <cards:SfCardView HasShadow="True" BackgroundColor="White" CornerRadius="10" Padding="10" Margin="0,10,0,10">
+                                                <StackLayout>
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <custom:CustomLabel Text="VAT" Style="{StaticResource GAZTSmallBlackLblMediumFont}" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="4793187498192" Style="{StaticResource GAZTMicroGrayLabel}" TextColor="{StaticResource NewWarmGreyColor}" VerticalOptions="Center"/>
+                                                        <custom:CustomLabel Text="200.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" HorizontalOptions="EndAndExpand"/>
                                                     </StackLayout>
 
-                                                    <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                                    --><!--Progress Bar SF--><!--
+
+                                                    <progressBar:SfLinearProgressBar HeightRequest="5" CornerRadius="5" Progress="100">
+
+                                                        <progressBar:SfLinearProgressBar.RangeColors>
+
+                                                            <progressBar:RangeColorCollection>
+
+                                                                <progressBar:RangeColor Color="{StaticResource NewDarkBlueGreenColor}" custom:RoundCornersEffect.CornerRadius="15" Start="0" End="55"/>
+
+                                                                <progressBar:RangeColor Color="{StaticResource NewProgressLightGreenColor}" custom:RoundCornersEffect.CornerRadius="5" Start="55" End="65"/>
+
+                                                                <progressBar:RangeColor Color="LightGray" Start="65" End="100"/>
+
+                                                            </progressBar:RangeColorCollection>
+
+                                                        </progressBar:SfLinearProgressBar.RangeColors>
+
+                                                    </progressBar:SfLinearProgressBar>
+
+                                                    --><!--Progress Bar SF--><!--
+                                                    <custom:CustomLabel Text="Next Payment" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+
+                                                    <StackLayout Orientation="Horizontal" >
+                                                        <custom:CustomLabel Text="24 January" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+
+                                                        <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                                            <BoxView BackgroundColor="{StaticResource NewProgressLightGreenColor}" HeightRequest="10" WidthRequest="10" CornerRadius="5" />
+                                                        </StackLayout>
+
+                                                        <custom:CustomLabel Text="10.000,00 SAR" Style="{StaticResource GAZTSmallGrayLblMediumFont}" VerticalOptions="Center"/>
+                                                    </StackLayout>
                                                 </StackLayout>
-                                            </StackLayout>
-                                        </cards:SfCardView>
+                                            </cards:SfCardView>
+                                        </StackLayout>
+                                    </ScrollView>-->
+                                </StackLayout>
+                            </yummy:PancakeView>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+                <!--Demo-->
 
 
-
-
-
-                                    </StackLayout>
-                                </ScrollView>
-                            </StackLayout>
-                        </yummy:PancakeView>
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
-            <!--Demo-->
-
-
-        </Grid>
+            </Grid>
 
             <!--Menu Starts-->
-
 
             <Grid x:Name="MenuView">
                 <ScrollView>
@@ -488,8 +507,6 @@
 
             </Grid>
 
-
-
             <!--Menu Ends-->
 
             <StackLayout Grid.Row="1"  x:Name="stackMenu" >
@@ -498,7 +515,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackLayout Grid.Column="0">

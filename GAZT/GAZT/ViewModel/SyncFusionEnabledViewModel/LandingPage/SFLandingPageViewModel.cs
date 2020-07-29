@@ -30,11 +30,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
     {
         #region Fields
         private Dashboard DashboardData = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnFive = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturnThree = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listUnsubmittedReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listOverduePaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listofPaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listofPaymentReturnFive = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listofPaymentReturnThree = null;
         public bool _isButtonEnabled = true;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
@@ -178,8 +178,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         {
             try
             {
-                listOverduePaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
-                listUnsubmittedReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listOverduePaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
+                listUnsubmittedReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 try
                 {
                     listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
@@ -192,7 +192,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                     //});
                 }
                 listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
                 foreach (var PaymentReturn in listOverduePaymentReturn)
@@ -212,16 +212,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 if (listofPaymentReturn != null)
                 {
                     DateTime Today = DateTime.Now;
-                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                    listofPaymentReturn = listofPaymentReturn.Where(a => a.DueDateDateTime.Date >= Today.Date).ToList<OverduePaymentAndUnSubmittedReturn>();
                     if (listofPaymentReturn.Count > 3)
                     {
                         if (listofPaymentReturn.Count == 4)
                         {
-                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(4).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(4).ToList<OverduePaymentAndUnSubmittedReturn>();
                         }
                         else
                         {
-                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentsAndUnSubmittedReturn>();
+                            listofPaymentReturn = listofPaymentReturn.OrderBy(a => a.DueDateDateTime).Take(5).ToList<OverduePaymentAndUnSubmittedReturn>();
                         }
                         if (listofPaymentReturn.Count > 3)
                         {
@@ -333,7 +333,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 this.RaisePropertyChanged("eServicesAvailableToTheTP");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listUnsubmittedReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listUnsubmittedReturn
         {
             get
             {
@@ -345,7 +345,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 this.RaisePropertyChanged("listUnsubmittedReturn");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listOverduePaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listOverduePaymentReturn
         {
             get
             {
@@ -357,7 +357,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 this.RaisePropertyChanged("listOverduePaymentReturn");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listofPaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listofPaymentReturn
         {
             get
             {
@@ -369,8 +369,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
                 this.RaisePropertyChanged("listofPaymentReturn");
             }
         }
-        private List<OverduePaymentsAndUnSubmittedReturn> _commitmentReturnsList;
-        public List<OverduePaymentsAndUnSubmittedReturn> CommitmentReturnsList
+        private List<OverduePaymentAndUnSubmittedReturn> _commitmentReturnsList;
+        public List<OverduePaymentAndUnSubmittedReturn> CommitmentReturnsList
         {
             get
             {
@@ -575,7 +575,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             {
                 listUnsubmittedReturn = await WebServiceManager.GAZTGetUnSubmittedReturnSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
                 listOverduePaymentReturn = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
                 foreach (var PaymentReturn in listOverduePaymentReturn)
@@ -795,7 +795,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
             try
             {
                 BillsAndReturnsSchedule = new CalendarEventCollection();
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
                 foreach (var PaymentReturn in listOverduePaymentReturn)

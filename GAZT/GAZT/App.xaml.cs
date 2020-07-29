@@ -1,12 +1,9 @@
 using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
-using EGAZT.Views.SyncFusionEnabledViews.MyCommitmentsPage;
 using EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding;
-using EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage;
 using GalaSoft.MvvmLight.Views;
 using GAZT.CustomControl;
-using GAZT.Helper;
 using GAZT.Models;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Distribute;
@@ -19,25 +16,29 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using AppDynamics.Agent;
-using EGAZT.Views.NewDesign;
-using EGAZT.Views.SyncFusionEnabledViews.StylesTestUi;
-using EGAZT.Views.SyncFusionEnabledViews;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace EGAZT
 {
     public partial class App : Application
     {
-        //SYNCFUSION INTEGRATION
+        #region new design views
+
+        public static string GAZTNewDesignVATReturnUpdatedUIPageView = "GAZTNewDesignVATReturnUpdatedUIPageView";
+        public static string GAZTNewDesignDashBoardPageView = "GAZTNewDesignDashBoardPageView";
+        public static string GAZTNewDesignMyBillsPageView = "GAZTNewDesignMyBillsPageView";
+        public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
+        public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
+        public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
+    
+        #endregion
+
+        #region old view strings
         public static string SFLandingPageView = "SFLandingPageView";
         public static string SFOptionsPageView = "SFOptionsPageView";
         public static string SFLoginPageView = "SFLoginPageView";
         public static string SFAnonymousLandingPageView = "SFAnonymousLandingPageView";
         public static string StyleTestUIPageView = "StyleTestUIPageView";
-
-        //SYNCFUSION INTEGRATION
         public static string MyCertificate = "MyCertificate";
         public static string PdfView = "PdfView";
         public static string UpdateEmailAddress = "UpdateEmailAddress";
@@ -79,7 +80,6 @@ namespace EGAZT
         public static string TaxEvasionReportFormPageView = "TaxEvasionReportFormPageView";
         public static string TaxEvasionAttachmentPageView = "TaxEvasionAttachmentPageView";
         public static string TaxEvasionFormPage = "TaxEvasionFormPage";
-
         public static string AccountCreatedPageView = "AccountCreatedPageView";
         public static string TaxEvasionReportListPageView = "TaxEvasionReportListPageView";
         public static string ReturnsPageView = "ReturnsPageView";
@@ -94,31 +94,22 @@ namespace EGAZT
         public static string RegistrationSuccessfulPageView = "RegistrationSuccessfulPageView";
         public static string VATRealEstateServicesPageView = "VATRealEstateServicesPageView";
         public static string PropertyRegistrationPage = "PropertyRegistrationPage";
-
         public static string VATRegistrationPageView = "VATRegistrationPageView";
         public static string VATRegistrationSuccessfullPageView = "VATRegistrationSuccessfullPageView";
         public static string VATIndividualSignupTnCPageView = "VATIndividualSignupTnCPageView";
         public static string FinancialDetailAttachmentPopupPageView = "FinancialDetailAttachmentPopupPageView";
-        
         public static string FileAttachmentPopUpPageView = "FileAttachmentPopUpPageView";
         public static string NewAccountPopUpPageView = "NewAccountPopUpPageView";
         public static string ForgotPasswordPageView = "ForgotPasswordPageView";
-        
-        //New Design
-        public static string VATReturnUpdatedUIPageView = "VATReturnUpdatedUIPageView";
-        public static string DashBoardPageView = "DashBoardPageView";
-        public static string MyBillsPageView = "MyBillsPageView";
-        public static string MyReturnsNewPageView = "MyReturnsNewPageView";
+        #endregion
 
         public static string fontFamilyBold = null;
         public static string fontFamilyMedium = null;
         public static string fontFamilyLight = null;
         public static string fontFamilyRoman = null;
         public static TIN CurrentDropdownTIN;
-        public static bool  IsJailBrokenDevice = false;
-        // public static bool IsArabic = false;
+        public static bool IsJailBrokenDevice = false;
         public static bool PreviousIsArabic = true;//true
-        //public static bool PreviousIsArabic = false;
         public static bool IsArabic = false;//true
         public static bool IsOTPiew = false;
         public static string ICRStatus = String.Empty;
@@ -139,32 +130,30 @@ namespace EGAZT
         public static bool IsComingFromSleepMode { get; set; } = false;
         public static bool IsComingFromDashboardToLogOff = false;
         public static bool IsZakatLoadingFromMyReturns = false;
-
         public static bool IsLoginCalled = false;
         public static bool IsSamlApiCalledAndroid = false;
-
         public static bool ArePreLoginLangCookiesSet = false;
         public static List<CookieModel> LoginCookiesRetrieved { get; set; }
         public static LoginModel LoginDataRetrieved { get; set; }
-
         public static bool IsSAMLLoginEnabled = true;
         public static bool IsUserLoggedIn = false;
         //HttpClientHandlerForSSL Certificate Issue
         public static string IncomingChannel = string.Empty;
+
         #region Tax Evasion
         public static string TaxEvasionToken = string.Empty;
         public static TaxEvasionUserRegistrationResponseData TaxEvasionUserData;
         #endregion
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
-
         public static HttpClientHandler httpClientHandler = null;
         public App()
         {
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
-           
+
             AppResources.Culture = CultureInfo.CurrentUICulture;             if (PreviousIsArabic)             {                 String langName = "ar-AE";//"en-US";// "ar-AE";                 ci = new CultureInfo(langName);                 AppResources.Culture = ci;             }
-                         InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
+
+            InitializeComponent();             onFontFamilyChanged();             if (PreviousIsArabic)             {                 IsArabic = true;             } 
             try
             {
                 CreateClientHandler();
@@ -199,17 +188,15 @@ namespace EGAZT
 
             InitializeAppDynamics();
 
-           MainPage = navigationPage;
-          //  MainPage = new DashBoardPageView();
+            MainPage = navigationPage;
+            //  MainPage = new DashBoardPageView();
         }
-
         public static void CreateClientHandler()
         {
             httpClientHandler = new HttpClientHandler();
             httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
             httpClientHandler.CookieContainer = new System.Net.CookieContainer();
         }
-
         private static ViewModelLocator _locator;
         public static ViewModelLocator Locator
         {
@@ -345,7 +332,7 @@ namespace EGAZT
             IsJailBrokenDevice = false;
             try
             {
-               //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
+                //  IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
             catch (Exception ex)
             {
@@ -359,7 +346,6 @@ namespace EGAZT
                   "android=138974d9-a5ae-4afa-b7b3-13ff660d8421",
                   typeof(Distribute));
         }
-
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)
         {
             // Look at releaseDetails public properties to get version information, release notes text or release notes URL
@@ -409,7 +395,6 @@ namespace EGAZT
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
         }
-
         public static void InitializeAppDynamics()
         {
             //var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
@@ -418,7 +403,6 @@ namespace EGAZT
             //config.CollectorURL = "https://eum.gazt.gov.sa:443";
             //AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
-
         public static async void DisplayProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -426,7 +410,6 @@ namespace EGAZT
                 PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
             });
         }
-
         public static async void HideProgressView()
         {
             MainThread.BeginInvokeOnMainThread(() =>

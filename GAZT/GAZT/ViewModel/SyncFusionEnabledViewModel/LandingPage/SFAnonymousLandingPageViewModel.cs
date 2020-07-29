@@ -29,9 +29,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
     {
         #region Fields
         private Dashboard DashboardData = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listUnsubmittedReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listOverduePaymentReturn = null;
-        public List<OverduePaymentsAndUnSubmittedReturn> _listofPaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listUnsubmittedReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listOverduePaymentReturn = null;
+        public List<OverduePaymentAndUnSubmittedReturn> _listofPaymentReturn = null;
         private ObservableCollection<eServiceInfo> _eServicesItems = null;
         private ObservableCollection<ReturnInfo> _ReturnInfoItems = null;
         private ObservableCollection<BillInfo> _PaymentInfoItems = null;
@@ -159,7 +159,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 this.RaisePropertyChanged("eServicesAvailableToTheTP");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listUnsubmittedReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listUnsubmittedReturn
         {
             get
             {
@@ -171,7 +171,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 this.RaisePropertyChanged("listUnsubmittedReturn");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listOverduePaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listOverduePaymentReturn
         {
             get
             {
@@ -183,7 +183,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
                 this.RaisePropertyChanged("listOverduePaymentReturn");
             }
         }
-        public List<OverduePaymentsAndUnSubmittedReturn> listofPaymentReturn
+        public List<OverduePaymentAndUnSubmittedReturn> listofPaymentReturn
         {
             get
             {
@@ -568,7 +568,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFAnonymousLandingPage_View
             try
             {
                 BillsAndReturnsSchedule = new CalendarEventCollection();
-                listofPaymentReturn = new List<OverduePaymentsAndUnSubmittedReturn>();
+                listofPaymentReturn = new List<OverduePaymentAndUnSubmittedReturn>();
                 listofPaymentReturn.Clear();
                 // Create events
                 foreach (var PaymentReturn in listOverduePaymentReturn)

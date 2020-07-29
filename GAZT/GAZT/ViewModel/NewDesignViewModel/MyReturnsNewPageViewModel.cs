@@ -9,15 +9,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
-  
-    public class MyReturnsNewPageViewModel : ViewModelBase
+
+    public class GAZTNewDesignMyReturnsNewPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -842,7 +841,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-        public MyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public GAZTNewDesignMyReturnsNewPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             if (navigationService == null)
             {

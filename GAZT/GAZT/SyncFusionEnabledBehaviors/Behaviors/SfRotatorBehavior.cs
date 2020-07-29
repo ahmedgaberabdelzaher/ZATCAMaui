@@ -1,4 +1,4 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.OnBoardingAnimation;
+﻿using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using GAZT.Models;
 using Syncfusion.SfRotator.XForms;
 using System;
@@ -37,7 +37,7 @@ namespace GAZT.SyncFusionEnabledBehaviors.Behaviors
                 int itemsCount = rotator.ItemsSource.Count();
                 int.TryParse(selectedIndex.ToString(CultureInfo.CurrentCulture), out int index);
 
-                var viewModel = rotator.BindingContext as OnBoardingAnimationPageViewModel;
+                var viewModel = rotator.BindingContext as GAZTNewDesignOnBoardingAnimationPageViewModel;
                 if (selectedIndex == itemsCount - 1)
                 {
                     viewModel.NextButtonText = "DONE";

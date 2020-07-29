@@ -1,10 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
@@ -13,13 +8,13 @@ using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.NewDesign.MyBillsPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyBillsPageView : ContentPage
+    public partial class GAZTNewDesignMyBillsPageView : ContentPage
     {
-        MyBillsPageViewModel viewModel;
-        public MyBillsPageView(BillInfo billInfo = null)
+        GAZTNewDesignMyBillsPageViewModel viewModel;
+        public GAZTNewDesignMyBillsPageView(BillInfo billInfo = null)
         {//MyBillsPageViewModel
             InitializeComponent();
-            viewModel = App.Locator.MyBillsPageView;
+            viewModel = App.Locator.GAZTNewDesignMyBillsPageView;
             this.BindingContext = viewModel;
             viewModel.onPageLoad(billInfo);
             ChangeAeroIcon();

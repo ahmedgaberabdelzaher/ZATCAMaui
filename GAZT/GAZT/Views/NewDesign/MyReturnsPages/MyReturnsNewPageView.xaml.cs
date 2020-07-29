@@ -1,24 +1,19 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.NewDesign.MyReturnsPages
+namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyReturnsNewPageView : ContentPage
+    public partial class GAZTNewDesignMyReturnsNewPageView : ContentPage
     {
-        MyReturnsNewPageViewModel viewModel;
-        public MyReturnsNewPageView()
+        GAZTNewDesignMyReturnsNewPageViewModel viewModel;
+        public GAZTNewDesignMyReturnsNewPageView()
         {
             InitializeComponent();
-            viewModel = App.Locator.MyReturnsNewPageView;
+            viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
             this.BindingContext = viewModel;
             ChangeAeroIcon();
             SetLTR();

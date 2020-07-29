@@ -2,32 +2,36 @@
 using GAZT.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace EGAZT.Views.NewDesign
+namespace EGAZT.Views.NewDesign.DashBoardPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DashBoardPageView : ContentPage
+    public partial class GAZTNewDesignDashBoardPageView : ContentPage
     {
 
         #region Variable
-        DashBoardPageViewModel viewModel;
+        GAZTNewDesignDashBoardPageViewModel viewModel;
         #endregion
 
-        public DashBoardPageView()
+        public GAZTNewDesignDashBoardPageView()
         {
             try
             {
                 InitializeComponent();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-                viewModel = App.Locator.DashBoardPageView;
+                
+                viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
                 this.BindingContext = viewModel;
+
+
+                if (App.TP != null)
+                    viewModel.TaxPayerProfile = App.TP;
+
                 MenuView.IsVisible = false;
                 HomeView.IsVisible = true;
             }
@@ -38,46 +42,6 @@ namespace EGAZT.Views.NewDesign
         }
 
         #region Method
-
-        public async Task LoadDuesData()
-        {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    await viewModel.DuesData();
-                    if (viewModel.listofPaymentReturn != null && viewModel.listofPaymentReturn.Count != 0)
-                    {
-                        List<OverduePaymentsAndUnSubmittedReturn> sortedList = new List<OverduePaymentsAndUnSubmittedReturn>();
-                        viewModel.listofPaymentReturn = viewModel.listofPaymentReturn.OrderBy(icr => DateTime.Parse(icr.DueDate)).ToList();
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            viewModel.CommitmentReturnsList = viewModel.listofPaymentReturn;
-                            //  ReturnsList.ItemsSource = viewModel.listofPaymentReturn;
-                        });
-                        await Task.Delay(3000);
-                        viewModel.IsListviewVisible = true;
-                        viewModel.IsNoDuesLabelVisible = false;
-                    }
-                    else
-                    {
-                        viewModel.IsListviewVisible = false;
-                        viewModel.IsNoDuesLabelVisible = true;
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    viewModel.IsLoading = false;
-                });
-            }
-            catch (Exception ex)
-            {
-            }
-        }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
@@ -91,24 +55,29 @@ namespace EGAZT.Views.NewDesign
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            MenuView.IsVisible = false;
-            HomeView.IsVisible = true;
 
-            App.IsComingFromSleepMode = false;
             SetLTR();
-            viewModel.TaxPayerProfile = App.TP;
-            LoadDuesData();
-            LoadData();
+            App.IsComingFromSleepMode = false;
+
+            MenuView.IsVisible = false;
+            HomeView.IsVisible = true;            
+
+            Task.Run(async () =>
+            {
+                await LoadData();
+                viewModel.IsLoading = false;
+            });
         }
         private async Task LoadData()
         {
             try
             {
                 await viewModel.LoadDashboardData();
-                viewModel.PopulateReturnsInformation();
+
                 viewModel.PopulateBillsInformation();
-                // viewModel.PopulateBillsAndReturnsSchedule();
-                viewModel.PopulateeServicesApplicableToTheTaxPayer();
+                viewModel.PopulateReturnsInformation();
+                viewModel.PopualateCommittmentsInformation();
+               // viewModel.PopulateeServicesApplicableToTheTaxPayer();
             }
             catch (Exception ex)
             {
@@ -123,10 +92,6 @@ namespace EGAZT.Views.NewDesign
             }
         }
 
-        
-
         #endregion
-
-
     }
 }
