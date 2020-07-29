@@ -38,6 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         
         public int currentAttempts = 0;
         public int StartPage = 1;
+        public bool IsPasswordCardSelected = true;
         int TotalSec;
         public int numberOfSeconds = 120;
         ForgotPasswordOTP forgotPasswordOTP { get; set; }
@@ -225,19 +226,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _enteredOTP = "";
-        public string EnteredOTP
-        {
-            get
-            {
-                return _enteredOTP;
-            }
-            set
-            {
-                _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
-            }
-        }
+       
 
 
         private string _newPassword = "";
@@ -282,7 +271,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
+        private string _enteredOTP = "";
+        public string EnteredOTP
+        {
+            get
+            {
+                return _enteredOTP;
+            }
+            set
+            {
+                _enteredOTP = value;
+                RaisePropertyChanged("EnteredOTP");
+            }
+        }
+
         // New Property Ends
 
 
@@ -910,6 +913,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
             //    _navigationService.GoBack();
@@ -960,31 +964,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnContinueClick = new Command(() =>
             {
-                StartPage = StartPage + 1;
-                if(StartPage == 2)
+                if(IsPasswordCardSelected == true)
                 {
-                    DefaultCardLayoutVisibility = false;
-                    UserIDLayoutVisibility = false;
-                    VerificationCodeVisibility = true;
-                   SendOTPToRegisterMobileNumber();
-                   
-                }
-                else if(StartPage == 3)
-                {
-                
-                    VerificationCodeVisibility = false;
-                    EnteredOTP = string.Empty;
-                    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-                     ValidateOTP();
-                    PasswordLayoutVisibility = true;
-                  
-                }
-                else if (StartPage == 4)
-                {
-                     ChangePassword();
-                   // PasswordLayoutVisibility = true;
-                }
+                    StartPage = StartPage + 1;
+                    if (StartPage == 2)
+                    {
+                        DefaultCardLayoutVisibility = false;
+                        UserIDLayoutVisibility = false;
+                        VerificationCodeVisibility = true;
+                        SendOTPToRegisterMobileNumber();
 
+                    }
+                    else if (StartPage == 3)
+                    {
+
+                        VerificationCodeVisibility = false;
+                       // EnteredOTP = string.Empty;
+                        //if(App.IsArabic)
+                        //{
+                       // EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+
+                        //}
+                        //else
+                        //{
+                        //    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+                        //}
+                        ValidateOTP();
+                        PasswordLayoutVisibility = true;
+
+                    }
+                    else if (StartPage == 4)
+                    {
+                        ChangePassword();
+                        // PasswordLayoutVisibility = true;
+                    }
+
+                }
+                else
+                {
+                    SendUserNameToRegidteredEmail();
+                }
+               
 
                 
             });
@@ -992,6 +1012,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnUserNameCardClicked = new Command(() =>
             {
+                IsPasswordCardSelected = false;
                 ForgotUserNameCardLayoutVisibility = true;
                 UserNameLayoutVisibility = false;
 
@@ -999,6 +1020,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnPasswordCardClicked = new Command(() =>
             {
+                IsPasswordCardSelected = true;
                 ForgotUserNameCardLayoutVisibility = false;
                 UserNameLayoutVisibility = true;
 
@@ -1842,7 +1864,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public void ClearData()
         {
-            SelectedTaxPayerType = null;
+    //        PasswordLayoutVisibility = false;
+    //VerificationCodeVisibility = false;
+    //        UserIDLayoutVisibility = false;
+    //        DefaultCardLayoutVisibility = false;
+    //        UserNameLayoutVisibility = false;
+    //        ForgotUserNameCardLayoutVisibility = false;
         }
         #endregion
 

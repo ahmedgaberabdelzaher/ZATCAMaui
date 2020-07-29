@@ -1266,7 +1266,7 @@ namespace GAZT.Manager
                     }
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                 catch (Exception ex)
                 {
                     return null;
                 }

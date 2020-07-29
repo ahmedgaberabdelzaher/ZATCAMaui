@@ -133,8 +133,7 @@
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
                  BackgroundColor="White"     
-            SeparatorVisibility="None"
-            >
+            SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
