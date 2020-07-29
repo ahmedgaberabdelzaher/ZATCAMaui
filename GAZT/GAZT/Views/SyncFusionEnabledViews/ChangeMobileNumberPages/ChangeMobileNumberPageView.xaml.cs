@@ -45,7 +45,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             else
             {
                 IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
-                ArIntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(15, -12, 10, -12);
             }
 
             viewModel.OnPageLoad();
@@ -103,7 +103,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ChangeMobileNumber
             else
             {
                 IntnlCodes.Margin = new Thickness(5, -12, 10, -12);
-                ArIntnlCodes.Margin = new Thickness(5, -12, 10, -12);
+                ArIntnlCodes.Margin = new Thickness(15, -12, 10, -12);
             }
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
