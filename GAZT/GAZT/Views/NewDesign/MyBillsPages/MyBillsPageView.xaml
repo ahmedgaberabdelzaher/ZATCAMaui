@@ -7,6 +7,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+              xmlns:local="clr-namespace:EGAZT;assembly:GAZT"
              mc:Ignorable="d" FlowDirection="RightToLeft"    
              x:Class="EGAZT.Views.NewDesign.MyBillsPages.GAZTNewDesignMyBillsPageView" 
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">

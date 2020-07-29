@@ -226,19 +226,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private string _enteredOTP = "";
-        public string EnteredOTP
-        {
-            get
-            {
-                return _enteredOTP;
-            }
-            set
-            {
-                _enteredOTP = value;
-                RaisePropertyChanged("EnteredOTP");
-            }
-        }
+       
 
 
         private string _newPassword = "";
@@ -283,7 +271,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
+        private string _enteredOTP = "";
+        public string EnteredOTP
+        {
+            get
+            {
+                return _enteredOTP;
+            }
+            set
+            {
+                _enteredOTP = value;
+                RaisePropertyChanged("EnteredOTP");
+            }
+        }
+
         // New Property Ends
 
 
@@ -962,7 +964,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             OnContinueClick = new Command(() =>
             {
-                if(IsPasswordCardSelected == false)
+                if(IsPasswordCardSelected == true)
                 {
                     StartPage = StartPage + 1;
                     if (StartPage == 2)
@@ -977,10 +979,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         VerificationCodeVisibility = false;
-                        EnteredOTP = string.Empty;
+                       // EnteredOTP = string.Empty;
                         //if(App.IsArabic)
                         //{
-                        EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
+                       // EnteredOTP = OTPFourthDigit + OTPThirdDigit + OTPSecondDigit + OTPFirstDigit;
 
                         //}
                         //else
