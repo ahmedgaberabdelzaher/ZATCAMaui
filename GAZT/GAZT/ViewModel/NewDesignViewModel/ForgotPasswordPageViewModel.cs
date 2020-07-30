@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-
+using System.Timers;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -32,7 +32,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public Command OnCorporateCardClicked { get; set; }
         public Command OnIndividualOrPersonalBusinessCardClicked { get; set; }
         public Command OnLogInClick { get; set; }
-
+        public System.Timers.Timer otpTimer;
+        public int countDownSeconds;
         //public ICommand OnLoginPageLinkClicked { get; set; }
         //public ICommand BackButtonClicked { get; set; }
         public ICommand OnContinueClick { get; set; }
@@ -120,7 +121,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
+
+        private string _LblCountDownTimer;
+        public string LblCountDownTimer
+        {
+            get
+            {
+                return _LblCountDownTimer;
+            }
+            set
+            {
+                _LblCountDownTimer = value;
+                RaisePropertyChanged("LblCountDownTimer");
+            }
+        }
+
 
 
         private bool _verificationCodeVisibility = false;
@@ -950,6 +966,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
+
+            // Timer            
+            otpTimer = new System.Timers.Timer();
+            otpTimer.Interval = 1000;
+
+            // Event
+            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
+
+            countDownSeconds = 59;
+            LblCountDownTimer = "0." + countDownSeconds.ToString();
+
+            otpTimer.Enabled = true;
 
             //BackButtonClicked = new Xamarin.Forms.Command(() =>
             //{
@@ -1961,7 +1990,23 @@ DefaultCardLayoutVisibility = true;
                 EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
             }
         }
-               
+
+
+        private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
+        {
+            countDownSeconds--;
+
+            if (countDownSeconds <= 9)
+                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
+            else
+                LblCountDownTimer = "0:" + countDownSeconds.ToString();
+
+            // Stop timer
+            if (countDownSeconds == 0)
+            {
+                otpTimer.Stop();
+            }
+        }
         #endregion
 
 
