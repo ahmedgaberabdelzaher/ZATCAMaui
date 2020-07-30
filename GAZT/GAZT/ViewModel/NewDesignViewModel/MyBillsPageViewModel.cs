@@ -289,7 +289,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         }
                         //\\AmountLabel = Math.Round(count, 2).ToString();
-                        AmountLabel = Amount.ToString();
+                        AmountLabel = Amount.ToString()+" "+AppResources.ZSAR ;
+                        
                         IsListVisible = true;
                         isNoDataLableVisible = false;
                     }

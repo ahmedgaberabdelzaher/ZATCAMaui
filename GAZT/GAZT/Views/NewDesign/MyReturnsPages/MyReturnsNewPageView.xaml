@@ -9,7 +9,8 @@
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              mc:Ignorable="d"
              x:Class="EGAZT.Views.NewDesign.MyReturnsNewPages.GAZTNewDesignMyReturnsNewPageView"
-             FlowDirection="RightToLeft"    
+             FlowDirection="RightToLeft" 
+              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              
              NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
@@ -85,6 +86,12 @@
                             <TapGestureRecognizer Tapped="btn_Clicked"/>
                         </custom:CustomLabel.GestureRecognizers>-->
                     </custom:CustomLabel>
+                    <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Rotation="270">
+                        <Image.Source>
+                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralLightGrey}" Size="25"
+                                                    Glyph="{x:Static FontImage:IconFonts.LessThan}"/>
+                        </Image.Source>
+                    </Image>
                     <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
                     <!--Margin="10,0,10,0"-->
                     </custom:CustomButton>
@@ -98,9 +105,9 @@ HeaderTextColor="White"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
                                             HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
+                    
 
-                    UnSelectedItemTextColor="#006450"
+                    
                                           BorderColor="Black"
                      BackgroundColor="White"
                                 SelectedItemFontSize="15"
@@ -108,6 +115,9 @@ HeaderTextColor="White"
                    ItemHeight="40"
                      DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
                    PickerHeight="250"
+SelectedItemFontAttribute="Bold"
+                                         SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                         UnSelectedItemTextColor="{StaticResource NeutralBlack}"
                     PickerWidth="300"
                                              HeaderFontSize="14"
                     OKButtonTextColor="#006450"
@@ -246,7 +256,7 @@ HeaderTextColor="White"
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
+                                            <!--<Label Grid.Row="0" Grid.Column="0" Text="1200.00 SAR" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>-->
                                             <StackLayout Grid.Row="1" Grid.Column="0" Spacing="-5">
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.SADADNumber}" Style="{StaticResource CaptionLabelGrey}"/>
                                                 <custom:CustomLabel Text="{Binding Vtref}" Style="{StaticResource ValueLabelBlack}" />

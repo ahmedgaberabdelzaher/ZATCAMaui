@@ -16,7 +16,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.MyReturnsPage
         MyReturnsPageViewModel viewModel;
         private double width = 0;
         private double height = 0;
-        public static String ReturnPeriod = "";
+        public static String ReturnPeriod = ""; 
         public MyReturnsPageView(int Index)
         {
             viewModel = App.Locator.MyReturnsPageView;

@@ -1,5 +1,6 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Models;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
@@ -10,7 +11,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
     public partial class GAZTNewDesignMyReturnsNewPageView : ContentPage
     {
         GAZTNewDesignMyReturnsNewPageViewModel viewModel;
-        public GAZTNewDesignMyReturnsNewPageView()
+        public GAZTNewDesignMyReturnsNewPageView(int Index)
         {
             InitializeComponent();
             viewModel = App.Locator.GAZTNewDesignMyReturnsNewPageView;
@@ -22,6 +23,23 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
            viewModel.OnPageLoad();
             viewModel.PopulateReturnTypeList();
             viewModel.PopulateDataInChips();
+            viewModel.SelectedChipFilterItem = null;
+            viewModel.FilterAllData();
+            if(Index == 0)
+            {
+                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("Submitted")).FirstOrDefault();
+
+            }
+            if (Index == 1)
+            {
+                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("UnSubmitted")).FirstOrDefault();
+
+            }
+            if (Index == 2)
+            {
+                viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals("OverDue")).FirstOrDefault();
+
+            }
             ListView_Returns.ItemTapped += (sender, e) =>
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;

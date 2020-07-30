@@ -1689,6 +1689,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "ic_money.png"},
 
                };
+            
         }
         public void FilterOnBasisOfTaxType()
         {
@@ -1707,11 +1708,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             if (_selectedReturnTypeForFilter.Id == "03")
             {
                 FilterETData();
-                FilterETData();
+                
             }
             if (_selectedReturnTypeForFilter.Id == "04")
             {
-                FilterETData();
+                FilterWTData();
             }
         }
         #endregion

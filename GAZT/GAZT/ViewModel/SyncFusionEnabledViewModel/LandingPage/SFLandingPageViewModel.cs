@@ -1002,7 +1002,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLandingPage_ViewModel
         }
         public void NavigateToMyBills(BillInfo billInfo)
         {
-            _navigationService.NavigateTo(App.MyBillsView, billInfo);
+            _navigationService.NavigateTo(App.GAZTNewDesignMyBillsPageView, billInfo);
         }
     }
     #endregion
