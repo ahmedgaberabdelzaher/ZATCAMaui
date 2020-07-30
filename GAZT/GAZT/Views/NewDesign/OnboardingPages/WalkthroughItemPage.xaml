@@ -58,8 +58,8 @@
                                      UWP=1}"
                 Style="{StaticResource SfLabelStyleForOnboarding}"
                 Text="{Binding Content}"
-                TranslationY="{OnPlatform Default=60,
-                                          UWP=0}" />
+                TranslationY="{OnPlatform Default=60, UWP=0}" 
+                LineHeight=".6"/>
 
         </StackLayout>
     </ContentView.Content>

@@ -1076,4 +1076,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\committments_onboarding%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\LaunchImage.launchimage\" />
+  </ItemGroup>
 </Project>
