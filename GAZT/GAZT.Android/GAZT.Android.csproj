@@ -506,6 +506,22 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BannerImage.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BgImage_Gradient_PhoneLandscape.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_LoginBackgroundLand.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-land-xxhdpi\splash.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\Ellipse.png">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -2007,16 +2023,10 @@
     <AndroidResource Include="Resources\drawable-land-xhdpi\sf_BgImage_Gradient_TabletLandscape.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BgImage_Gradient_PhoneLandscape.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxxhdpi\sf_BgImage_Gradient_TabletLandscape.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xhdpi\sf_LoginBackgroundLand.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_LoginBackgroundLand.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxxhdpi\sf_LoginBackgroundLand.png" />
@@ -2427,16 +2437,16 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ministry_justice_3_x.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\inbox_onboarding_3_x.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\inbox_onboarding.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\mockup_gazt_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\committments_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\mockup_mobile_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\returnsubmission_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\payment_method_mockup_3_x.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\paymentmethod_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xhdpi\sf_BannerImage.png" />
@@ -2448,15 +2458,6 @@
     <AndroidResource Include="Resources\drawable-land-xhdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BannerImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_LoginBackground – 1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-land-xxhdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxxhdpi\sf_BannerImage.png" />
   </ItemGroup>
   <ItemGroup>
@@ -2466,55 +2467,94 @@
     <AndroidResource Include="Resources\drawable-land-xxxhdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\inbox_onboarding_3_x.jpg" />
+    <AndroidResource Include="Resources\drawable-mdpi\inbox_onboarding.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\mockup_gazt_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\committments_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\mockup_mobile_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\returnsubmission_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\payment_method_mockup_3_x.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\paymentmethod_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\inbox_onboarding_3_x.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\inbox_onboarding.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\mockup_gazt_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\committments_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\mockup_mobile_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\returnsubmission_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\payment_method_mockup_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\paymentmethod_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\re_Request_Verification.png.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\inbox_onboarding.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\inbox_onboarding_3_x.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\committments_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\mockup_gazt_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\returnsubmission_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\mockup_mobile_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\paymentmethod_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\payment_method_mockup_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\inbox_onboarding.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\inbox_onboarding_3_x.jpg" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\committments_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\mockup_gazt_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\returnsubmission_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\mockup_mobile_1_3_x.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\paymentmethod_onboarding.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\payment_method_mockup_3_x.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_Establishment_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_Iconawesomephonealt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_Iconawesomeusercircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_Iconmetrolocation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_individual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\vat_new_individual_G.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_Establishment_G.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_Establishment_W.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_Iconmetrolocation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_individual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_individual_G.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\vat_new_Iconawesomeusercircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-land\sf_BannerImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-land\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
