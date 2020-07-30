@@ -309,96 +309,96 @@ namespace EGAZT
 
         #endregion
 
-        private INavigationService CreateNavigationService()
-        {
-            var navigationService = new NavigationService();
+        //private INavigationService CreateNavigationService()
+        //{
+        //    var navigationService = new NavigationService();
 
-            #region NewDesign
+        //    #region NewDesign
 
-            navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
-            navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
-            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
-            navigationService.Configure(App.ForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
-            navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
-            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
-            navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
-            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
-            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+        //    navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
+        //    navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
+        //    navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
+        //    navigationService.Configure(App.ForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
+        //    navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
+        //    navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
+        //    navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
+        //    //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
+        //    //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
 
-            #endregion
+        //    #endregion
 
-            #region SYNCFUSION INTEGRATION
-            navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
-            navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
-            navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
-            navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
-            navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
-            navigationService.Configure(App.PdfView, typeof(PdfView));
-            navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
-            navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
-            navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
-            navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
-            navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
-            navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
-            navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
-            navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
-            navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
-            navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
-            navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
-            navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
-            navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
-            navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
-            navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
-            navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
-            navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
-            navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
-            navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
-            navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
-            navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
-            navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
-            navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
-            navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
-            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
-            navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
-            navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
-            navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
-            navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
-            navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
-            navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
-            navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
-            navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
-            navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
-            navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
-            navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
-            navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
-            navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
-            navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
-            navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
-            navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
-            navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
-            navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
-            navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
-            navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
-            navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
-            navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
-            navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
-            navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
-            navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
-            navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
-            navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
-            navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
-            navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
-            navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
-            navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
-            #endregion
+        //    #region SYNCFUSION INTEGRATION
+        //    navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
+        //    navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
+        //    navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
+        //    navigationService.Configure(App.SFAnonymousLandingPageView, typeof(SFAnonymousLandingPageView));
+        //    navigationService.Configure(App.MyCertificate, typeof(MyCertificate));
+        //    navigationService.Configure(App.PdfView, typeof(PdfView));
+        //    navigationService.Configure(App.MyBillsView, typeof(MyBillsView));
+        //    navigationService.Configure(App.TaxPayerProfilePageView, typeof(TaxPayerProfilePageView));
+        //    navigationService.Configure(App.ChangeMobileNumberPageView, typeof(ChangeMobileNumberPageView));
+        //    navigationService.Configure(App.ChangeEmailPageView, typeof(ChangeEmailPageView));
+        //    navigationService.Configure(App.UpdateEmailVerificationPage, typeof(UpdateEmailVerificationPage));
+        //    navigationService.Configure(App.ChangePasswordPageView, typeof(ChangePasswordPageView));
+        //    navigationService.Configure(App.OTPPageView, typeof(OTPPageView));
+        //    navigationService.Configure(App.ForgotUsernamePasswordPageView, typeof(ForgotUsernamePasswordPageView));
+        //    navigationService.Configure(App.VATLookupPageView, typeof(VATLookupPageView));
+        //    navigationService.Configure(App.ZakatReturnListPageView, typeof(ZakatReturnListPageView));
+        //    navigationService.Configure(App.ZakatReturnDetailsPageView, typeof(ZakatReturnDetailsPageView));
+        //    navigationService.Configure(App.BillDetailsPageView, typeof(BillDetailsPageView));
+        //    navigationService.Configure(App.SalesDetailsPageView, typeof(SalesDetailsPageView));
+        //    navigationService.Configure(App.AmendSalesDetailsPageView, typeof(AmendSalesDetailsPageView));
+        //    navigationService.Configure(App.CheckTINStatusPageView, typeof(CheckTINStatusPageView));
+        //    navigationService.Configure(App.ICRListPageView, typeof(ICRListPageView));
+        //    navigationService.Configure(App.VATReturnsPageView, typeof(VATReturnsPageView));
+        //    navigationService.Configure(App.VATReturnsPageViewEX, typeof(VATReturnsPageViewEX));
+        //    navigationService.Configure(App.AAcknowledgementView, typeof(AAcknowledgementView));
+        //    navigationService.Configure(App.AcknowledgementDetailsPageView, typeof(AcknowledgementDetailsPageView));
+        //    navigationService.Configure(App.DisplayNotesPageView, typeof(DisplayNotesPageView));
+        //    navigationService.Configure(App.AttachmentPageView, typeof(AttachmentPageView));
+        //    navigationService.Configure(App.AddNotePageView, typeof(AddNotePageView));
+        //    navigationService.Configure(App.AddPopPageView, typeof(AddPopPageView));
+        //    navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+        //    navigationService.Configure(App.CorrespondancePageView, typeof(CorrespondancePageView));
+        //    navigationService.Configure(App.CorrespondenceDetailsPageView, typeof(CorrespondenceDetailsPageView));
+        //    navigationService.Configure(App.FormBundleStatusPageView, typeof(FormBundleStatusPageView));
+        //    navigationService.Configure(App.SignUpTAndCViewPage, typeof(SignUpTAndCViewPage));
+        //    navigationService.Configure(App.SignUpFormPageView, typeof(SignUpFormPageView));
+        //    navigationService.Configure(App.CreditCarriedPageView, typeof(CreditCarriedPageView));
+        //    navigationService.Configure(App.TaxEvasionRegistrationPageView, typeof(TaxEvasionRegistrationPageView));
+        //    navigationService.Configure(App.TaxEvasionReportTypePageView, typeof(TaxEvasionReportTypePageView));
+        //    navigationService.Configure(App.TaxEvasionReportFormPageView, typeof(TaxEvasionReportFormPageView));
+        //    navigationService.Configure(App.CreateGaztAccountPageView, typeof(CreateGaztAccountPageView));
+        //    navigationService.Configure(App.AccountCreatedPageView, typeof(AccountCreatedPageView));
+        //    navigationService.Configure(App.TaxEvasionReportListPageView, typeof(TaxEvasionReportListPageView));
+        //    navigationService.Configure(App.TaxEvasionReportMobilePageView, typeof(TaxEvasionReportMobilePageView));
+        //    navigationService.Configure(App.ReturnsPageView, typeof(ReturnsPageView));
+        //    navigationService.Configure(App.FAQPageView, typeof(FAQPageView));
+        //    navigationService.Configure(App.AboutUsPageView, typeof(AboutUsPageView));
+        //    navigationService.Configure(App.PrivacyAndPolicyPageView, typeof(PrivacyAndPolicyPageView));
+        //    navigationService.Configure(App.MyReturnsPageView, typeof(MyReturnsPageView));
+        //    navigationService.Configure(App.MyCommitmentsPageView, typeof(MyCommitmentsPageView));
+        //    navigationService.Configure(App.ContactUsPageView, typeof(ContactUsPageView));
+        //    navigationService.Configure(App.VATIndividualSignupPageView, typeof(VATIndividualSignupPageView));
+        //    navigationService.Configure(App.IndividualRegistrationPageView, typeof(IndividualRegistrationPageView));
+        //    navigationService.Configure(App.RegistrationSuccessfulPageView, typeof(RegistrationSuccessfulPageView));
+        //    navigationService.Configure(App.VATRegistrationPageView, typeof(VATRegistrationPageView));
+        //    navigationService.Configure(App.VATRegistrationSuccessfullPageView, typeof(VATRegistrationSuccessfullPageView));
+        //    navigationService.Configure(App.VATRealEstateServicesPageView, typeof(VATRealEstateServicesPage));
+        //    navigationService.Configure(App.PropertyRegistrationPage, typeof(PropertyRegistrationPage));
+        //    navigationService.Configure(App.FileAttachmentPopUpPageView, typeof(FileAttachmentPopUpPageView));
+        //    navigationService.Configure(App.TaxEvasionFormPage, typeof(TaxEvasionFormPage));
+        //    navigationService.Configure(App.TaxEvasionAttachmentPageView, typeof(TaxEvasionAttachmentPageView));
+        //    navigationService.Configure(App.VATIndividualSignupTnCPageView, typeof(VATIndividualSignupTnCPageView));
+        //    navigationService.Configure(App.FinancialDetailAttachmentPopupPageView, typeof(FinancialDetailAttachmentPopupPageView));
+        //    #endregion
 
-            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
-            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+        //    SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
+        //    SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
+        //    SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
 
-            return navigationService;
-        }
+        //    return navigationService;
+        //}
 
 
 
@@ -1459,6 +1459,10 @@ namespace EGAZT
             navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
 
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
+
+            SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
+            SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
 
             return navigationService;
         }
