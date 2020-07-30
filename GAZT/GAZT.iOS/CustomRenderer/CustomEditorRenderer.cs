@@ -8,16 +8,16 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-//[assembly: ExportRenderer(typeof(Editor), typeof(CustomEditorRenderer))]
+[assembly: ExportRenderer(typeof(Editor), typeof(CustomEditorRenderer))]
 namespace GAZT.iOS.CustomRenderer
 {
-    public class CustomEditorRenderer//: EditorRenderer
+    public class CustomEditorRenderer: EditorRenderer
     {
-        //protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
-        //{
-        //    base.OnElementChanged(e);
-        //    Control.TintColor = UIColor.White;
-        //}
+        protected override void OnElementChanged(ElementChangedEventArgs<Editor> e)
+        {
+            base.OnElementChanged(e);
+            Control.TintColor = UIColor.White;
+        }
 
     }
 }
