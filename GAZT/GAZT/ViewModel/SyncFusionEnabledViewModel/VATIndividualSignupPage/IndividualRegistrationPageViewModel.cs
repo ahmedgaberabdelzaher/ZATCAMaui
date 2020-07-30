@@ -2094,7 +2094,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                    Country = _Country,
+                    Country = string.Empty,
+                    MobileCountry = _Country,
+
                     Building = BuildingNumber,
                     Floor = UnitNumber,
                     Street = Neighborhood,
@@ -2304,7 +2306,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 string submitValue;
                 submitValue = "";
-            VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
                 {
                     Type = "1",
                     IdType = SelectedIdType.ID,//"ZS0018",
@@ -2317,7 +2319,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Region = SelectedRegion.Land1,
                     Region = _Region,
                     //Country = SelectedGCCCountry.CountryCode,
-                    Country = _Country,
+                     Country = string.Empty,
+                    MobileCountry = _Country,
                     //Building = BuildingNumber,
                     //Floor = "",
                     //Street = "",
