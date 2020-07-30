@@ -59,5 +59,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
             }
         }
+
+        protected FlowDirection GetFlowDirectionToApply()
+        {
+            if (App.IsArabic)
+                return FlowDirection.LeftToRight;
+            else
+                return FlowDirection.RightToLeft;
+        }
     }
 }

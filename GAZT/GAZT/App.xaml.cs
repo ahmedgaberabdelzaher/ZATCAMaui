@@ -31,7 +31,8 @@ namespace EGAZT
         public static string GAZTNewDesignMyReturnsNewPageView = "GAZTNewDesignMyReturnsNewPageView";
         public static string GAZTNewDesignOnBoardingAnimationPageView = "GAZTNewDesignOnBoardingAnimationPageView";
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
-    
+        public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
+
         #endregion
 
         #region old view strings
@@ -109,8 +110,6 @@ namespace EGAZT
         public static string UnlockAccountTINPageView = "UnlockAccountTINPageView";
         public static string UnlockAccountChangePasswordPageView = "UnlockAccountChangePasswordPageView";
         public static string UnlockAccountSuccessPageView = "UnlockAccountSuccessPageView";
-
-        public static string ForgotPasswordPageView = "ForgotPasswordPageView";
         #endregion
 
         public static string fontFamilyBold = null;

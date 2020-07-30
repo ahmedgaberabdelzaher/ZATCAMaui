@@ -25,6 +25,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private string nextButtonText = "NEXT";
 
+        private string _LanguageText = "ENGLISH";
+
         private bool isSkipButtonVisible = true;
 
         private int selectedIndex;
@@ -40,6 +42,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         {
             this.SkipCommand = new Command(this.Skip);
             this.NextCommand = new Command(this.Next);
+           // this.ChangeLangCommand = new Command(this.ChangeLanguage);
+
             this.Boardings = new ObservableCollection<Boarding>
             {
                 new Boarding()
@@ -121,6 +125,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
             }
         }
 
+        public string LanguageText
+        {
+            get
+            {
+                return this._LanguageText;
+            }
+
+            set
+            {
+                if (this._LanguageText == value)
+                {
+                    return;
+                }
+
+                this._LanguageText = value;
+                RaisePropertyChanged("LanguageText");
+            }
+        }
+
         public bool IsSkipButtonVisible
         {
             get
@@ -173,6 +196,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// </summary>
         public ICommand NextCommand { get; set; }
 
+        /// <summary>
+        /// Gets or sets the command that is executed when the Change Language button is clicked.
+        /// </summary>
+        public ICommand ChangeLangCommand { get; set; }
+        
         #endregion
 
         #region Methods
@@ -207,6 +235,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
             if (this.ValidateAndUpdateSelectedIndex(itemCount))
             {
                 this.MoveToNextPage();
+            }
+        }
+
+
+        /// <summary>
+        /// Invoked when the Change Language button is clicked.
+        /// </summary>
+        /// <param name="obj">The Object</param>
+        private void ChangeLanguage(object obj)
+        {
+            // _dialogService.ShowMessage("Language", "Language changed");
+            
+            //this.GetFlowDirectionToApply();
+
+            if (App.IsArabic)
+            {
+                App.IsArabic = false;
+                App.changeFontFamily(App.appObj);               
+            }
+            else
+            {
+                App.IsArabic = true;
+                App.changeFontFamily(App.appObj);              
             }
         }
 

@@ -1381,7 +1381,24 @@ namespace EGAZT
         private INavigationService CreateNavigationService()
         {
             var navigationService = new NavigationService();
-            //SYNCFUSION INTEGRATION
+
+            #region NewDesign
+
+            navigationService.Configure(App.GAZTNewDesignOnBoardingAnimationPageView, typeof(GAZTNewDesignOnBoardingAnimationPageView));
+            navigationService.Configure(App.GAZTNewDesignVATReturnUpdatedUIPageView, typeof(GAZTNewDesignVATReturnUpdatedUIPageView));
+            navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageView));
+            navigationService.Configure(App.GAZTNewDesignForgotPasswordPageView, typeof(GAZTNewDesignForgotPasswordPageView));
+            navigationService.Configure(App.GAZTNewDesignMyBillsPageView, typeof(GAZTNewDesignMyBillsPageView));
+            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
+            navigationService.Configure(App.GAZTNewDesignMyReturnsNewPageView, typeof(GAZTNewDesignMyReturnsNewPageView));
+
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPage, typeof(StyleTestUIPageViewModel));
+            //navigationService.Configure(App.GAZTNewDesignStyleTestUIPageView, typeof(StyleTestUIPageViewModel));
+
+            #endregion
+
+            #region SYNCFUSION INTEGRATION
+
             navigationService.Configure(App.SFLandingPageView, typeof(SFLandingPageView));
             navigationService.Configure(App.SFOptionsPageView, typeof(SFOptionsPageView));
             navigationService.Configure(App.SFLoginPageView, typeof(SFLoginPageView));
@@ -1457,14 +1474,13 @@ namespace EGAZT
             navigationService.Configure(App.InternationalMobileNumberCodePages, typeof(InternationalMobileNumberCodePages));
             navigationService.Configure(App.UnlockAccountTINPageView, typeof(UnlockAccountTINPageView));
             navigationService.Configure(App.UnlockAccountSuccessPageView, typeof(UnlockAccountSuccessPageView));
-            
-                            navigationService.Configure(App.GAZTNewDesignDashBoardPageView, typeof(GAZTNewDesignDashBoardPageView));
-
             navigationService.Configure(App.InternationalCodeSearchPage, typeof(InternationalCodeSearchPage));
 
             SimpleIoc.Default.Register<InternationalCodeSearchPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountTINPageViewModel>();
             SimpleIoc.Default.Register<UnlockAccountSuccessPageViewModel>();
+
+            #endregion
 
             return navigationService;
         }

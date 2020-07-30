@@ -324,7 +324,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Real Estate Service Tapped");
-                    viewModel._navigationService.NavigateTo(App.ForgotPasswordPageView);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
                 if (BModel.eServiceName == AppResources.ZTEReportReportScreenTitle)
@@ -380,7 +380,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFAnonymousLanding
                 if (BModel.eServiceName == AppResources.ZRealEstateServiceTitle)
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFAnonymousLandingPageView", "OnEServiceTapped", "Real Estate Service Tapped");
-                    viewModel._navigationService.NavigateTo(App.ForgotPasswordPageView);
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
                 }
